@@ -2361,7 +2361,7 @@ msgstr "뭐라고 쓸까? \"요나가 여기 있었다\"?"
 # ball.c - 철구 관련
 #: ../src/ball.c:1008 ../src/ball.c:1023
 msgid "iron ball drags you downstairs!"
-msgstr "철구가 너를 아래층으로 끌어내린다!"
+msgstr "철구가 당신을 아래층으로 끌어내린다!"
 
 # ball.c - 계단 아래로
 #: ../src/ball.c:997
@@ -3071,15 +3071,15 @@ msgstr "%s{이/가} 킬킬거린다."
 
 #, c-format
 msgid "%s brushes against you."
-msgstr "%s{이/가} 너를 스쳤다."
+msgstr "%s{이/가} 당신을 스쳤다."
 
 #, c-format
 msgid "%s brushes against your %s."
-msgstr "%s{이/가} 네 %s{을/를} 스쳤다."
+msgstr "%s{이/가} 당신의 %s{을/를} 스쳤다."
 
 #, c-format
 msgid "%s reaches out, and your body shrivels."
-msgstr "%s{이/가} 손을 뻗었고, 네 몸이 쪼그라든다."
+msgstr "%s{이/가} 손을 뻗었고, 당신의 몸이 쪼그라든다."
 
 #, c-format
 msgid "%s reaches out with its deadly touch."
@@ -3087,15 +3087,15 @@ msgstr "%s{이/가} 치명적인 손길로 손을 뻗는다."
 
 #, c-format
 msgid "%s grabs you!"
-msgstr "%s{이/가} 널 움켜잡았다!"
+msgstr "%s{이/가} 당신을 움켜잡았다!"
 
 #, c-format
 msgid "%s hits you with the %s corpse."
-msgstr "%s{이/가} %s 시체로 널 때렸다."
+msgstr "%s{이/가} %s 시체로 당신을 때렸다."
 
 #, c-format
 msgid "%s nuzzles against your %s %s!"
-msgstr "%s{이/가} 네 %s %s에 코를 비볐다!"
+msgstr "%s{이/가} 당신의 %s %s에 코를 비볐다!"
 
 #, c-format
 msgid "%s tries to %s away with %s."
@@ -5642,7 +5642,7 @@ msgstr "몰록"
 
 # pray.c - 환각 상태 신 이름 (Paranoia 참조)
 msgid "your Friend the Computer"
-msgstr "너의 친구 컴퓨터"
+msgstr "당신의 친구 컴퓨터"
 
 # various - 아무것도 안함. wand of nothing 아님
 msgid "do nothing"

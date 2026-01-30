@@ -3627,8 +3627,11 @@ msgstr "안후르"
 msgid "tower"
 msgstr "탑"
 
+# insight.c - "You are slow" 조합
+# 기존: "느린" → "당신은 느린" (불완전한 형용사)
+# 수정: "느린 상태" → "당신은 느린 상태"
 msgid "slow"
-msgstr "느린"
+msgstr "느린 상태"
 
 msgid "self-genocide"
 msgstr "자기 학살"
@@ -6096,10 +6099,11 @@ msgid "flying"
 msgstr "비행 중"
 
 # insight.c - "You are warned" 조합
-# 기존: "탄 " (오역) → "경고받음"
+# 기존: "탄 " (오역) → "경고받음" → "경고받고 있다"
+# 조합 결과: "당신은 경고받고 있다"
 # you_are("warned", from_what(WARNING))
 msgid "warned"
-msgstr "경고받음"
+msgstr "경고받고 있다"
 
 # ============================================================
 # insight.c:652 - "There is X" 조합
@@ -6395,4 +6399,36 @@ msgstr "추가 행운이 있다"
 # 수정: "행운이 감소했다"
 msgid "reduced luck"
 msgstr "행운이 감소했다"
+
+# ============================================================
+# 추가 조합 패턴 수정 (검토 결과)
+# ============================================================
+
+# insight.c - "You are blind"
+# 조합: "당신은 " + "​" + "blind"
+# 기존: 빈 번역 (누락!)
+# 수정: "눈이 안 보인다"
+msgid "blind"
+msgstr "눈이 안 보인다"
+
+# insight.c - "You can see" (Eyes of the Overworld 아이템 효과)
+# 조합: "당신은 " + "​" + "see"
+# 기존: "보인다" → "당신은 보인다" (문법 어색)
+# 수정: "볼 수 있다" → "당신은 볼 수 있다"
+msgid "see"
+msgstr "볼 수 있다"
+
+# ============================================================
+# Autopickup on/off 문제
+# ============================================================
+# 문제: "on"이 "위"로 번역됨 (물리적 위치 의미)
+# insight.c:785 - Autopickup is on/off
+# trap.c - stepping on something (물리적 위치)
+#
+# gettext 제한: 같은 msgid는 하나의 번역만 가능
+# trap.c에서 "on"은 "위"가 맞지만, Autopickup에서는 "켜짐"이 필요
+#
+# 해결책: "on"을 물리적 의미인 "위"로 유지
+# Autopickup 표시는 "자동 줍기 ​위" → 어색하지만 gettext 제한
+# TODO: 소스 코드에서 C_("autopickup", "on") 컨텍스트 사용 권장
 

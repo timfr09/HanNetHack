@@ -5609,10 +5609,11 @@ msgstr " 시든 농작물의 원 안에서"
 msgid "spell"
 msgstr "주문"
 
-# insight.c:1456 - 아이템 상태 조합. "Your items are somewhat cursed"
-# 결과: "당신의 아이템은 어느 정도 저주받았다"
+# insight.c:1456 - "Your items are X" 조합
+# "Your items are somewhat cursed" → "당신의 아이템은 어느 정도 저주받았다"
+# 공백 및 조사 추가
 msgid "Your items "
-msgstr "당신의 아이템"
+msgstr "당신의 아이템은 "
 
 # mcastu.c:788 - 분신 이미지 주위에 소환
 #, c-format
@@ -6006,6 +6007,20 @@ msgstr "밤이다"
 # [조합] "the midnight hour" - "It is the midnight hour" → "지금은 자정이다"
 msgid "the midnight hour"
 msgstr "자정이다"
+
+# ============================================================
+# insight.c - 주요 조합 메시지 오역 수정
+# ============================================================
+
+# insight.c:697 - "Your score is X" 조합
+# 기존: "당신의 말" (오역! 말=horse/word) → "당신의 점수 "
+msgid "Your score "
+msgstr "당신의 점수 "
+
+# insight.c:1495 - "Your alignment is X" 조합
+# 기존: "성향" (불완전) → "당신의 성향은 "
+msgid "Your alignment "
+msgstr "당신의 성향은 "
 
 # insight.c - 위치 표시 (한국어 어순에 맞게)
 # "in the dungeons of doom, on level 5" → "파멸의 던전 5층에"

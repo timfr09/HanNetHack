@@ -394,23 +394,23 @@ msgstr "부유 장화"
 
 #: (manual addition for i18n)
 msgid "ring of teleportation"
-msgstr "순간이동 반지"
+msgstr "순간이동의 반지"
 
 #: (manual addition for i18n)
 msgid "ring of regeneration"
-msgstr "재생 반지"
+msgstr "재생의 반지"
 
 #: (manual addition for i18n)
 msgid "ring of cold resistance"
-msgstr "냉기 저항 반지"
+msgstr "냉기 저항의 반지"
 
 #: (manual addition for i18n)
 msgid "ring of shock resistance"
-msgstr "전기 저항 반지"
+msgstr "전기 저항의 반지"
 
 #: (manual addition for i18n)
 msgid "ring of slow digestion"
-msgstr "느린 소화 반지"
+msgstr "느린 소화의 반지"
 
 #: (manual addition for i18n)
 msgid "wand of fire"
@@ -901,7 +901,7 @@ msgid "crude dagger"
 msgstr "조잡한 단검"
 
 msgid "crude ring mail"
-msgstr "조잡한 사슬 갑옷"
+msgstr "조잡한 고리 갑옷"
 
 msgid "crude short sword"
 msgstr "조잡한 소검"

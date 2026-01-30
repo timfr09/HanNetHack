@@ -5619,6 +5619,31 @@ msgstr "당신의 아이템"
 msgid "%s summons %s around your displaced image!"
 msgstr "%s{이/가} 분신 이미지 주위에 %s{을/를} 소환했다!"
 
+# ============================================================
+# 잘못된 fuzzy 번역 수정 - "saddled" != "confused"
+# ============================================================
+
+# do_name.c:945 - 안장 얹은 탈것 형용사. "saddled pony"
+# 주의: 뒤에 공백 필수! (몬스터 이름과 결합됨)
+msgid "saddled "
+msgstr "안장을 얹은 "
+
+# eat.c:1836 - 안장 (아이템). "a saddle"
+msgid "saddle"
+msgstr "안장"
+
+# ============================================================
+# 신 이름 번역 수정 - pray.c
+# ============================================================
+
+# pray.c:59 - 몰록 (Gehennom의 악신)
+msgid "Moloch"
+msgstr "몰록"
+
+# pray.c - 환각 상태 신 이름 (Paranoia 참조)
+msgid "your Friend the Computer"
+msgstr "너의 친구 컴퓨터"
+
 # various - 아무것도 안함. wand of nothing 아님
 msgid "do nothing"
 msgstr "아무것도 안 한다"

@@ -6350,4 +6350,49 @@ msgstr "두 무기를 동시에 휘두르고 있다"
 msgid "not subject to light-induced blindness"
 msgstr "빛으로 인한 실명에 면역이다"
 
+# ============================================================
+# 추가 you_have() 조합 수정
+# ============================================================
+
+# insight.c - "You have slower digestion"
+# 기존: "더 느린 소화" → "당신은 더 느린 소화" (불완전)
+# 수정: "소화가 느리다"
+msgid "slower digestion"
+msgstr "소화가 느리다"
+
+# insight.c - "You have polymorph control"
+# 기존: "변신 제어" → "당신은 변신 제어" (불완전)
+# 수정: "변신 제어 능력이 있다"
+msgid "polymorph control"
+msgstr "변신 제어 능력이 있다"
+
+# insight.c - "You have reflection"
+# 기존: "반사" → "당신은 반사" (불완전)
+# 수정: "반사 능력이 있다"
+msgid "reflection"
+msgstr "반사 능력이 있다"
+
+# insight.c - "You have free action"
+# 기존: "자유 행동" → "당신은 자유 행동" (불완전)
+# 수정: "자유 행동 능력이 있다"
+msgid "free action"
+msgstr "자유 행동 능력이 있다"
+
+# insight.c - "You have fixed abilities"
+# 기존: "고정된 능력치" → "당신은 고정된 능력치" (불완전)
+# 수정: "고정된 능력치를 가지고 있다"
+msgid "fixed abilities"
+msgstr "고정된 능력치를 가지고 있다"
+
+# insight.c - "You have extra luck"
+# 기존: "나쁜 행운" (완전 오역! extra = 추가, 나쁜 = bad)
+# 수정: "추가 행운이 있다"
+msgid "extra luck"
+msgstr "추가 행운이 있다"
+
+# insight.c - "You have reduced luck"
+# 기존: "감소된 행운" → "당신은 감소된 행운" (불완전)
+# 수정: "행운이 감소했다"
+msgid "reduced luck"
+msgstr "행운이 감소했다"
 

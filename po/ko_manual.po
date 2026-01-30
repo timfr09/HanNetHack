@@ -3821,9 +3821,11 @@ msgstr "이 잎사귀를 호루라기로 사용하기"
 msgid "trill"
 msgstr "트릴"
 
-# 능력 번역 수정
+# insight.c:1600 - "You have infravision" 조합
+# 기존: "적외선 시야" → "당신은 적외선 시야" (불완전)
+# 수정: "적외선 시야가 있다" → "당신은 적외선 시야가 있다"
 msgid "infravision"
-msgstr "적외선 시야"
+msgstr "적외선 시야가 있다"
 
 msgid "see invisible"
 msgstr "투명 감지"
@@ -3921,9 +3923,11 @@ msgstr "삼켜진"
 msgid "the type of an object in inventory"
 msgstr "소지품 중 물건의 종류"
 
-# attrib.c/insight.c - stealthy 단독 사용 수정
+# attrib.c/insight.c - "You are stealthy" 조합
+# 기존: "은밀한" → "당신은 은밀한" (불완전)
+# 수정: "은밀하다" → "당신은 은밀하다"
 msgid "stealthy"
-msgstr "은밀한"
+msgstr "은밀하다"
 
 # engulfed 수정 (잘못된 번역: "삼킨")
 msgid "engulfed"
@@ -5463,9 +5467,11 @@ msgstr "저 멀리"
 msgid "plastic"
 msgstr "플라스틱"
 
-# insight.c:1591 - 내재 능력. "automatic searching" 특성
+# insight.c:1591 - "You have automatic searching" 조합
+# 기존: "자동 탐색" → "당신은 자동 탐색" (불완전)
+# 수정: "자동 탐색 능력이 있다" → "당신은 자동 탐색 능력이 있다"
 msgid "automatic searching"
-msgstr "자동 탐색"
+msgstr "자동 탐색 능력이 있다"
 
 # invent.c:5361 - 인벤토리 카테고리. "your possessions"
 msgid "possessions"
@@ -6013,9 +6019,21 @@ msgstr "자정이다"
 # ============================================================
 
 # insight.c:697 - "Your score is X" 조합
-# 기존: "당신의 말" (오역! 말=horse/word) → "당신의 점수 "
+# 기존: "당신의 말" (오역! 말=horse/word) → "당신의 점수는 "
+# 조합: "당신의 점수는 " + "​" + X = "당신의 점수는 X"
 msgid "Your score "
-msgstr "당신의 점수 "
+msgstr "당신의 점수는 "
+
+# insight.c:755 - "Your armor class is X" 조합
+# 용어 통일: AC (HP, Pw와 같이 영어 약어 유지)
+# 조합: "당신의 AC는 " + "​" + X = "당신의 AC는 X"
+msgid "Your armor class "
+msgstr "당신의 AC는 "
+
+# insight.c:1896 - "Your luck is X" 조합
+# 조합: "당신의 행운은 " + "​" + X = "당신의 행운은 X"
+msgid "Your luck "
+msgstr "당신의 행운은 "
 
 # insight.c:1495 - "Your alignment is X" 조합
 # 기존: "성향" (불완전) → "당신의 성향은 "
@@ -6110,3 +6128,155 @@ msgstr "글씨가 있다"
 # 공백 없는 버전
 msgid "There is"
 msgstr "여기에"
+
+# ============================================================
+# you_are() 조합 결과 자연스럽게 수정
+# ============================================================
+# 패턴: "당신은 " + "​" + attr
+# 결과가 완전한 문장이 되도록 attr을 수정
+
+# insight.c - "You are invisible"
+# 기존: "보이지 않는" → 조합 결과 "당신은 보이지 않는" (불완전)
+# 수정: "투명 상태" → "당신은 투명 상태"
+msgid "invisible"
+msgstr "투명 상태"
+
+# insight.c - "You are confused"
+# 기존: "혼란스러운" → "당신은 혼란스러운" (불완전)
+# 수정: "혼란 상태" → "당신은 혼란 상태"
+msgid "confused"
+msgstr "혼란 상태"
+
+# insight.c - "You are stunned"
+# 기존: "기절한" → "당신은 기절한" (불완전)
+# 수정: "기절 상태" → "당신은 기절 상태"
+msgid "stunned"
+msgstr "기절 상태"
+
+# insight.c - "You are fast"
+# 기존: "빠름" → "당신은 빠름" (어색)
+# 수정: "빠른 상태" → "당신은 빠른 상태"
+msgid "fast"
+msgstr "빠른 상태"
+
+# insight.c - "You are very fast"
+# 기존: "매우 빠름" → "당신은 매우 빠름" (어색)
+# 수정: "매우 빠른 상태" → "당신은 매우 빠른 상태"
+msgid "very fast"
+msgstr "매우 빠른 상태"
+
+# ============================================================
+# 저항/능력 you_are() 조합 수정
+# ============================================================
+# insight.c:1500 - "You are invulnerable"
+# 기존: "취약하다" (완전 오역! invulnerable = 무적, 취약 = vulnerable)
+# 수정: "무적 상태"
+msgid "invulnerable"
+msgstr "무적 상태"
+
+# insight.c:1504 - "You are fire resistant"
+# 기존: "화염 저항" → "당신은 화염 저항" (불완전)
+# 수정: "화염에 내성이 있다"
+msgid "fire resistant"
+msgstr "화염에 내성이 있다"
+
+# insight.c:1507 - "You are cold resistant"
+# 기존: "냉기 저항" → "당신은 냉기 저항" (불완전)
+# 수정: "냉기에 내성이 있다"
+msgid "cold resistant"
+msgstr "냉기에 내성이 있다"
+
+# insight.c:1519 - "You are poison resistant"
+# 기존: "독 저항" → "당신은 독 저항" (불완전)
+# 수정: "독에 내성이 있다"
+msgid "poison resistant"
+msgstr "독에 내성이 있다"
+
+# insight.c:1510 - "You are sleep resistant"
+msgid "sleep resistant"
+msgstr "수면에 내성이 있다"
+
+# insight.c:1512 - "You are disintegration resistant"
+msgid "disintegration resistant"
+msgstr "분해에 내성이 있다"
+
+# insight.c:1515 - "You are shock resistant"
+msgid "shock resistant"
+msgstr "전기에 내성이 있다"
+
+# insight.c:1528 - "You are level-drain resistant"
+msgid "level-drain resistant"
+msgstr "레벨 흡수에 내성이 있다"
+
+# insight.c:1560 - "You are telepathic"
+# 기존: "텔레파시" → "당신은 텔레파시" (불완전)
+# 수정: "텔레파시 능력이 있다"
+msgid "telepathic"
+msgstr "텔레파시 능력이 있다"
+
+# insight.c:1593 - "You are clairvoyant"
+# 기존: "천리안" → "당신은 천리안" (불완전)
+# 수정: "천리안 능력이 있다"
+msgid "clairvoyant"
+msgstr "천리안 능력이 있다"
+
+# insight.c:1646 - "You are displaced"
+# 기존: "변위" → "당신은 변위" (불완전)
+# 수정: "변위 상태"
+msgid "displaced"
+msgstr "변위 상태"
+
+# insight.c:1502 - "You are magic-protected"
+msgid "magic-protected"
+msgstr "마법 보호 상태"
+
+# insight.c:1530 - "You are immune to sickness"
+msgid "immune to sickness"
+msgstr "질병에 면역이다"
+
+# ============================================================
+# you_can() 조합 수정
+# ============================================================
+# 패턴: "당신은 " + "​" + attr
+# "can "이 제로폭 공백이므로, attr에 "~할 수 있다" 형태로 번역
+
+# insight.c:1541 - "You can recognize detrimental food"
+# 기존: "해로운 음식 인식" → "당신은 해로운 음식 인식" (불완전)
+msgid "recognize detrimental food"
+msgstr "해로운 음식을 감지할 수 있다"
+
+# insight.c:1662 - "You can jump"
+# 기존: "점프" → "당신은 점프" (불완전)
+msgid "jump"
+msgstr "점프할 수 있다"
+
+# insight.c:1664 - "You can teleport"
+# 기존: "순간이동하다" → "당신은 순간이동하다" (어색)
+msgid "teleport"
+msgstr "순간이동할 수 있다"
+
+# insight.c:1734 - "You can walk on water"
+# 기존: "물 위 걷기" → "당신은 물 위 걷기" (불완전)
+msgid "walk on water"
+msgstr "물 위를 걸을 수 있다"
+
+# insight.c:1737 - "You can swim"
+# 기존: "수영" → "당신은 수영" (불완전)
+msgid "swim"
+msgstr "수영할 수 있다"
+
+# insight.c:1739 - "You can survive without air"
+# 기존: "공기 없이 생존" → "당신은 공기 없이 생존" (불완전)
+msgid "survive without air"
+msgstr "공기 없이 생존할 수 있다"
+
+# insight.c:1721 - "You can cling to the ceiling"
+# 기존: "천장에 매달리기" → "당신은 천장에 매달리기" (불완전)
+msgid "cling to the ceiling"
+msgstr "천장에 매달릴 수 있다"
+
+# insight.c:1666 - "You have teleport control"
+# 기존: "순간이동 제어" → "당신은 순간이동 제어" (불완전)
+msgid "teleport control"
+msgstr "순간이동 제어 능력이 있다"
+

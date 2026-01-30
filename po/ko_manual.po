@@ -5981,14 +5981,31 @@ msgstr "힘의 화살"
 # insight.c - 시간/위치 표시 수정
 # ============================================================
 
-# insight.c:632 - "It is nighttime" 조합에서 사용
-# 기존: "기사" (완전 오역!) → "밤"
-msgid "nighttime"
-msgstr "밤"
+# ============================================================
+# insight.c:630,632 - 시간 표시 조합 메시지
+# ============================================================
+# 조합: enl_msg("It ", "is ", "was ", "nighttime/the midnight hour", "")
+# 결과: "It " + "is " + "nighttime" = "It is nighttime"
+#
+# 한국어 목표: "지금은 밤이다" / "지금은 자정이다"
+# - "It " → "지금은 " (시간 맥락)
+# - "is " → "​" (제로 폭 공백으로 생략)
+# - "nighttime" → "밤이다" (동사 어미 포함)
+# - "the midnight hour" → "자정이다"
+# ============================================================
 
-# insight.c:630 - "It is the midnight hour"
+# [조합] "It " - 시간 표시용. insight.c:630,632에서만 사용됨
+msgid "It "
+msgstr "지금은 "
+
+# [조합] "nighttime" - "It is nighttime" → "지금은 밤이다"
+# 기존: "기사" (완전 오역!) → "밤이다"
+msgid "nighttime"
+msgstr "밤이다"
+
+# [조합] "the midnight hour" - "It is the midnight hour" → "지금은 자정이다"
 msgid "the midnight hour"
-msgstr "자정"
+msgstr "자정이다"
 
 # insight.c - 위치 표시 (한국어 어순에 맞게)
 # "in the dungeons of doom, on level 5" → "파멸의 던전 5층에"

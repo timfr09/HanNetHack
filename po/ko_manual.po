@@ -6076,3 +6076,37 @@ msgstr "비행 중"
 # you_are("warned", from_what(WARNING))
 msgid "warned"
 msgstr "경고받음"
+
+# ============================================================
+# insight.c:652 - "There is X" 조합
+# ============================================================
+# enl_msg("There ", "is ", "was ", buf, "")
+# 조합 결과: "There " + "is " + buf
+#
+# 주의: ko.po의 형식 지정자(%1$s, %2$s)는 enl_msg 조합에서 작동 안 함
+# 단순 문자열 연결이므로 "여기에 " 사용
+msgid "There "
+msgstr "여기에 "
+
+# ============================================================
+# fuzzy 매칭으로 인한 형식 지정자 오류 수정
+# ============================================================
+
+# lock.c, pickup.c, trap.c - "There is X here"
+# 기존: 잘못된 형식 지정자 포함 → 간단한 번역으로 수정
+msgid "There is "
+msgstr "여기에 "
+
+# pickup.c:3587 - 컨테이너 기울이기 질문
+# 기존: 완전 오역 → 올바른 번역
+msgid " here, tip it?"
+msgstr "이(가) 여기 있다. 기울일까?"
+
+# read.c:438 - 글씨가 있다
+# 기존: 잘못된 형식 지정자 → 올바른 번역
+msgid "There is writing"
+msgstr "글씨가 있다"
+
+# 공백 없는 버전
+msgid "There is"
+msgstr "여기에"

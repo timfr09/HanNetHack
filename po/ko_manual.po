@@ -2671,7 +2671,7 @@ msgid " had "
 msgstr " ~을 갖고 있었다 "
 
 msgid "ed"
-msgstr ""
+msgstr "​"
 
 msgid "Not s"
 msgstr "아니다"
@@ -2850,7 +2850,7 @@ msgid "used %ld wish%s"
 msgstr "%ld개%s의 소원을 사용했다"
 
 msgid "es"
-msgstr ""
+msgstr "​"
 
 msgid "have not wished"
 msgstr "소원을 빌지 않았다"
@@ -3742,6 +3742,10 @@ msgstr "​"
 
 msgid "was "
 msgstr "​"
+
+# 위저드 모드 메시지
+msgid "<%d,%d> is not considered viable; force anyway?"
+msgstr "<%d,%d>는 유효하지 않음; 강제 진행?"
 
 # 속성 번역 수정
 msgid "charisma"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 00:17+0900\n"
+"POT-Creation-Date: 2026-01-31 02:36+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12238,13 +12238,12 @@ msgid "of features under cursor "
 msgstr ""
 
 #: ../src/getpos.c:966 ../src/iactions.c:680 ../src/insight.c:785
-#: ../src/pray.c:1860 ../src/timeout.c:1277 ../src/trap.c:4905
-#: ../src/trap.c:4965
+msgctxt "toggle"
 msgid "on"
 msgstr ""
 
 #: ../src/getpos.c:966 ../src/iactions.c:680 ../src/insight.c:799
-#: ../src/timeout.c:1277
+msgctxt "toggle"
 msgid "off"
 msgstr ""
 
@@ -27522,6 +27521,11 @@ msgstr ""
 msgid "are not %s an altar."
 msgstr ""
 
+#: ../src/pray.c:1860 ../src/timeout.c:1277 ../src/trap.c:4905
+#: ../src/trap.c:4965
+msgid "on"
+msgstr ""
+
 #: ../src/pray.c:1863
 msgid "are too impaired to perform the rite."
 msgstr ""
@@ -34842,6 +34846,10 @@ msgstr ""
 #: ../src/timeout.c:1267
 #, c-format
 msgid "%s %s %s the ice."
+msgstr ""
+
+#: ../src/timeout.c:1277
+msgid "off"
 msgstr ""
 
 #: ../src/timeout.c:1286

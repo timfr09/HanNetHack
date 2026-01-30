@@ -394,23 +394,23 @@ msgstr "부유 장화"
 
 #: (manual addition for i18n)
 msgid "ring of teleportation"
-msgstr "순간이동 반지"
+msgstr "순간이동의 반지"
 
 #: (manual addition for i18n)
 msgid "ring of regeneration"
-msgstr "재생 반지"
+msgstr "재생의 반지"
 
 #: (manual addition for i18n)
 msgid "ring of cold resistance"
-msgstr "냉기 저항 반지"
+msgstr "냉기 저항의 반지"
 
 #: (manual addition for i18n)
 msgid "ring of shock resistance"
-msgstr "전기 저항 반지"
+msgstr "전기 저항의 반지"
 
 #: (manual addition for i18n)
 msgid "ring of slow digestion"
-msgstr "느린 소화 반지"
+msgstr "느린 소화의 반지"
 
 #: (manual addition for i18n)
 msgid "wand of fire"
@@ -873,7 +873,7 @@ msgid "can of grease"
 msgstr "윤활유 통"
 
 msgid "cancellation"
-msgstr "해제의 지팡이"
+msgstr "해제"
 
 msgid "chrysoberyl"
 msgstr "금록석"
@@ -882,7 +882,7 @@ msgid "citrine"
 msgstr "황수정"
 
 msgid "confuse monster"
-msgstr "몬스터 혼란 두루마리"
+msgstr "몬스터 혼란"
 
 #
 msgid "confusion"
@@ -901,7 +901,7 @@ msgid "crude dagger"
 msgstr "조잡한 단검"
 
 msgid "crude ring mail"
-msgstr "조잡한 사슬 갑옷"
+msgstr "조잡한 고리 갑옷"
 
 msgid "crude short sword"
 msgstr "조잡한 소검"
@@ -928,7 +928,7 @@ msgid "death"
 msgstr "죽음"
 
 msgid "destroy armor"
-msgstr "갑옷 파괴 두루마리"
+msgstr "갑옷 파괴"
 
 msgid "double-headed axe"
 msgstr "양날 도끼"
@@ -967,10 +967,10 @@ msgid "elven spear"
 msgstr "엘프 창"
 
 msgid "enchant armor"
-msgstr "갑옷 강화 두루마리"
+msgstr "갑옷 강화"
 
 msgid "enlightenment"
-msgstr "깨달음의 지팡이"
+msgstr "깨달음"
 
 msgid "expensive camera"
 msgstr "고급 카메라"
@@ -988,7 +988,7 @@ msgid "fluorite"
 msgstr "형석"
 
 msgid "food detection"
-msgstr "음식 탐지 두루마리"
+msgstr "음식 탐지"
 
 msgid "frost horn"
 msgstr "냉기의 뿔피리"
@@ -1018,7 +1018,7 @@ msgid "glass orb"
 msgstr "유리 구슬"
 
 msgid "gold detection"
-msgstr "금 탐지 두루마리"
+msgstr "금 탐지"
 
 msgid "grappling hook"
 msgstr "갈고리"
@@ -1099,7 +1099,7 @@ msgid "magic lamp"
 msgstr "마법 램프"
 
 msgid "magic mapping"
-msgstr "마법 지도 두루마리"
+msgstr "마법 지도"
 
 msgid "magic marker"
 msgstr "마법 마커"
@@ -1244,7 +1244,7 @@ msgid "speed"
 msgstr "속도"
 
 msgid "speed monster"
-msgstr "몬스터 가속의 지팡이"
+msgstr "몬스터 가속"
 
 msgid "spetum"
 msgstr "스페텀"
@@ -1319,7 +1319,7 @@ msgid "two-handed sword"
 msgstr "양손검"
 
 msgid "undead turning"
-msgstr "언데드 퇴치의 지팡이"
+msgstr "언데드 퇴치"
 
 msgid "unicorn horn"
 msgstr "유니콘 뿔"
@@ -2361,7 +2361,7 @@ msgstr "뭐라고 쓸까? \"요나가 여기 있었다\"?"
 # ball.c - 철구 관련
 #: ../src/ball.c:1008 ../src/ball.c:1023
 msgid "iron ball drags you downstairs!"
-msgstr "철구가 너를 아래층으로 끌어내린다!"
+msgstr "철구가 당신을 아래층으로 끌어내린다!"
 
 # ball.c - 계단 아래로
 #: ../src/ball.c:997
@@ -3071,15 +3071,15 @@ msgstr "%s{이/가} 킬킬거린다."
 
 #, c-format
 msgid "%s brushes against you."
-msgstr "%s{이/가} 너를 스쳤다."
+msgstr "%s{이/가} 당신을 스쳤다."
 
 #, c-format
 msgid "%s brushes against your %s."
-msgstr "%s{이/가} 네 %s{을/를} 스쳤다."
+msgstr "%s{이/가} 당신의 %s{을/를} 스쳤다."
 
 #, c-format
 msgid "%s reaches out, and your body shrivels."
-msgstr "%s{이/가} 손을 뻗었고, 네 몸이 쪼그라든다."
+msgstr "%s{이/가} 손을 뻗었고, 당신의 몸이 쪼그라든다."
 
 #, c-format
 msgid "%s reaches out with its deadly touch."
@@ -3087,15 +3087,15 @@ msgstr "%s{이/가} 치명적인 손길로 손을 뻗는다."
 
 #, c-format
 msgid "%s grabs you!"
-msgstr "%s{이/가} 널 움켜잡았다!"
+msgstr "%s{이/가} 당신을 움켜잡았다!"
 
 #, c-format
 msgid "%s hits you with the %s corpse."
-msgstr "%s{이/가} %s 시체로 널 때렸다."
+msgstr "%s{이/가} %s 시체로 당신을 때렸다."
 
 #, c-format
 msgid "%s nuzzles against your %s %s!"
-msgstr "%s{이/가} 네 %s %s에 코를 비볐다!"
+msgstr "%s{이/가} 당신의 %s %s에 코를 비볐다!"
 
 #, c-format
 msgid "%s tries to %s away with %s."
@@ -3627,8 +3627,11 @@ msgstr "안후르"
 msgid "tower"
 msgstr "탑"
 
+# insight.c - "You are slow" 조합
+# 기존: "느린" → "당신은 느린" (불완전한 형용사)
+# 수정: "느린 상태" → "당신은 느린 상태"
 msgid "slow"
-msgstr "느린"
+msgstr "느린 상태"
 
 msgid "self-genocide"
 msgstr "자기 학살"
@@ -3821,9 +3824,11 @@ msgstr "이 잎사귀를 호루라기로 사용하기"
 msgid "trill"
 msgstr "트릴"
 
-# 능력 번역 수정
+# insight.c:1600 - "You have infravision" 조합
+# 기존: "적외선 시야" → "당신은 적외선 시야" (불완전)
+# 수정: "적외선 시야가 있다" → "당신은 적외선 시야가 있다"
 msgid "infravision"
-msgstr "적외선 시야"
+msgstr "적외선 시야가 있다"
 
 msgid "see invisible"
 msgstr "투명 감지"
@@ -3852,9 +3857,11 @@ msgstr "주기적으로 변신 중"
 msgid "on the map"
 msgstr "지도에"
 
-# hallucinating 수정
+# insight.c - "You are hallucinating" 조합
+# 기존: "환각 중" → "당신은 환각 중" (OK, 완전)
+# 수정: "환각 상태" (일관성)
 msgid "hallucinating"
-msgstr "환각 중"
+msgstr "환각 상태"
 
 # wearing a blindfold 수정
 msgid "wearing a blindfold"
@@ -3921,9 +3928,11 @@ msgstr "삼켜진"
 msgid "the type of an object in inventory"
 msgstr "소지품 중 물건의 종류"
 
-# attrib.c/insight.c - stealthy 단독 사용 수정
+# attrib.c/insight.c - "You are stealthy" 조합
+# 기존: "은밀한" → "당신은 은밀한" (불완전)
+# 수정: "은밀하다" → "당신은 은밀하다"
 msgid "stealthy"
-msgstr "은밀한"
+msgstr "은밀하다"
 
 # engulfed 수정 (잘못된 번역: "삼킨")
 msgid "engulfed"
@@ -4209,9 +4218,11 @@ msgstr "무언가에게 반사를 보여주기"
 msgid "Autopickup "
 msgstr "자동 줍기 "
 
-# polyself.c - "You are turning into slime". 상태 변화
+# insight.c - "You are turning into slime" 조합
+# 기존: "슬라임으로 변하다" → 기본형 동사
+# 수정: "슬라임으로 변하는 중" → "당신은 슬라임으로 변하는 중"
 msgid "turning into slime"
-msgstr "슬라임으로 변하다"
+msgstr "슬라임으로 변하는 중"
 
 # artifact.c - 쌍수 무기. "a longsword and two weapons"
 msgid " and two weapons"
@@ -5463,9 +5474,11 @@ msgstr "저 멀리"
 msgid "plastic"
 msgstr "플라스틱"
 
-# insight.c:1591 - 내재 능력. "automatic searching" 특성
+# insight.c:1591 - "You have automatic searching" 조합
+# 기존: "자동 탐색" → "당신은 자동 탐색" (불완전)
+# 수정: "자동 탐색 능력이 있다" → "당신은 자동 탐색 능력이 있다"
 msgid "automatic searching"
-msgstr "자동 탐색"
+msgstr "자동 탐색 능력이 있다"
 
 # invent.c:5361 - 인벤토리 카테고리. "your possessions"
 msgid "possessions"
@@ -5484,9 +5497,11 @@ msgstr "%s 경고"
 msgid "shallow sea"
 msgstr "얕은 바다"
 
-# insight.c:1589 - 언데드 경고 능력
+# insight.c:1589 - "You are warned of undead" 조합
+# 기존: "언데드 경고" → "당신은 언데드 경고" (불완전)
+# 수정: "언데드에 대해 경고받고 있다"
 msgid "warned of undead"
-msgstr "언데드 경고"
+msgstr "언데드에 대해 경고받고 있다"
 
 # pager.c:130 - 아무것도 보이지 않을 때
 msgid "nothing?"
@@ -5609,10 +5624,11 @@ msgstr " 시든 농작물의 원 안에서"
 msgid "spell"
 msgstr "주문"
 
-# insight.c:1456 - 아이템 상태 조합. "Your items are somewhat cursed"
-# 결과: "당신의 아이템은 어느 정도 저주받았다"
+# insight.c:1456 - "Your items are X" 조합
+# "Your items are somewhat cursed" → "당신의 아이템은 어느 정도 저주받았다"
+# 공백 및 조사 추가
 msgid "Your items "
-msgstr "당신의 아이템"
+msgstr "당신의 아이템은 "
 
 # mcastu.c:788 - 분신 이미지 주위에 소환
 #, c-format
@@ -5642,7 +5658,7 @@ msgstr "몰록"
 
 # pray.c - 환각 상태 신 이름 (Paranoia 참조)
 msgid "your Friend the Computer"
-msgstr "너의 친구 컴퓨터"
+msgstr "당신의 친구 컴퓨터"
 
 # various - 아무것도 안함. wand of nothing 아님
 msgid "do nothing"
@@ -5915,3 +5931,510 @@ msgstr "%1$s%2$s{이/가}%4$s %3$s%5$c"
 # "half physical damage" = "물리 피해 절반"
 msgid "physical"
 msgstr "물리"
+
+# ============================================================
+# 자동줍기 및 설정 관련 오역 수정
+# ============================================================
+
+# timeout.c:1277 - 자동줍기 꺼짐. "바칠"이 아님!
+msgid "off"
+msgstr "꺼짐"
+
+# ============================================================
+# 능력치 이름 번역
+# ============================================================
+
+msgid "strength"
+msgstr "근력"
+
+msgid "dexterity"
+msgstr "민첩"
+
+msgid "constitution"
+msgstr "체력"
+
+msgid "intelligence"
+msgstr "지능"
+
+msgid "wisdom"
+msgstr "지혜"
+
+# ============================================================
+# 상태 표시 번역
+# ============================================================
+
+msgid "nominally aligned"
+msgstr "명목상 정렬됨"
+
+msgid "warded"
+msgstr "보호받음"
+
+# ============================================================
+# 인벤토리/단독 용어 번역
+# ============================================================
+
+# 석화 물약
+msgid "stoning"
+msgstr "석화"
+
+# 부유 (단독)
+msgid "levitation"
+msgstr "부유"
+
+# 충전 (단독)
+msgid "charging"
+msgstr "충전"
+
+# 음식 탐지 (단독)
+msgid "detect food"
+msgstr "음식 탐지"
+
+# 힘의 화살 (단독)
+msgid "force bolt"
+msgstr "힘의 화살"
+
+# ============================================================
+# insight.c - 시간/위치 표시 수정
+# ============================================================
+
+# ============================================================
+# insight.c:630,632 - 시간 표시 조합 메시지
+# ============================================================
+# 조합: enl_msg("It ", "is ", "was ", "nighttime/the midnight hour", "")
+# 결과: "It " + "is " + "nighttime" = "It is nighttime"
+#
+# 한국어 목표: "지금은 밤이다" / "지금은 자정이다"
+# - "It " → "지금은 " (시간 맥락)
+# - "is " → "​" (제로 폭 공백으로 생략)
+# - "nighttime" → "밤이다" (동사 어미 포함)
+# - "the midnight hour" → "자정이다"
+# ============================================================
+
+# [조합] "It " - 시간 표시용. insight.c:630,632에서만 사용됨
+msgid "It "
+msgstr "지금은 "
+
+# [조합] "nighttime" - "It is nighttime" → "지금은 밤이다"
+# 기존: "기사" (완전 오역!) → "밤이다"
+msgid "nighttime"
+msgstr "밤이다"
+
+# [조합] "the midnight hour" - "It is the midnight hour" → "지금은 자정이다"
+msgid "the midnight hour"
+msgstr "자정이다"
+
+# ============================================================
+# insight.c - 주요 조합 메시지 오역 수정
+# ============================================================
+
+# insight.c:697 - "Your score is X" 조합
+# 기존: "당신의 말" (오역! 말=horse/word) → "당신의 점수는 "
+# 조합: "당신의 점수는 " + "​" + X = "당신의 점수는 X"
+msgid "Your score "
+msgstr "당신의 점수는 "
+
+# insight.c:755 - "Your armor class is X" 조합
+# 용어 통일: AC (HP, Pw와 같이 영어 약어 유지)
+# 조합: "당신의 AC는 " + "​" + X = "당신의 AC는 X"
+msgid "Your armor class "
+msgstr "당신의 AC는 "
+
+# insight.c:1896 - "Your luck is X" 조합
+# 조합: "당신의 행운은 " + "​" + X = "당신의 행운은 X"
+msgid "Your luck "
+msgstr "당신의 행운은 "
+
+# insight.c:1495 - "Your alignment is X" 조합
+# 기존: "성향" (불완전) → "당신의 성향은 "
+msgid "Your alignment "
+msgstr "당신의 성향은 "
+
+# insight.c - 위치 표시 (한국어 어순에 맞게)
+# "in the dungeons of doom, on level 5" → "파멸의 던전 5층에"
+#, c-format
+msgid "in %s, on %s"
+msgstr "%s %s에"
+
+# ============================================================
+# insight.c - 손잡이 표시 수정 (조합 메시지)
+# ============================================================
+
+# "%s%s-handed" 조합: "normally " + "right" + "-handed"
+# 결과: "정상적으로 오른손잡이" 또는 "오른손잡이"
+#, c-format
+msgid "%s%s-handed"
+msgstr "%s%s손잡이"
+
+# [조합 메시지] 평소 손잡이 (폴리모프 상태에서 사용)
+# 뒤에 오는 "right/left"와 연결되어 "정상적으로 오른손잡이"가 됨
+msgid "normally "
+msgstr "정상적으로 "
+
+# [조합 메시지] 오른손 - 손잡이용 (오른쪽이 아님)
+# "right" + "-handed" = "오른손잡이"
+# insight.c:577에서 사용
+msgid "right"
+msgstr "오른"
+
+# [조합 메시지] 왼손 - 손잡이용 (왼쪽이 아님)
+# "left" + "-handed" = "왼손잡이"
+# insight.c:577에서 사용
+msgid "left"
+msgstr "왼"
+
+# ============================================================
+# insight.c - 상태 표시 조합 오역 수정
+# ============================================================
+
+# insight.c - "You are levitating" 조합
+# 기존: "쏘는 듯한" (완전 오역!) → "부유 중"
+# enl_msg(youtoo, are, were, "levitating", from_what(LEVITATION))
+msgid "levitating"
+msgstr "부유 중"
+
+# insight.c - "You are flying" 조합
+# 기존: "날기 시작했다." (문맥 부적절) → "비행 중"
+# enl_msg(youtoo, are, were, "flying", from_what(FLYING))
+msgid "flying"
+msgstr "비행 중"
+
+# insight.c - "You are warned" 조합
+# 기존: "탄 " (오역) → "경고받음" → "경고받고 있다"
+# 조합 결과: "당신은 경고받고 있다"
+# you_are("warned", from_what(WARNING))
+msgid "warned"
+msgstr "경고받고 있다"
+
+# ============================================================
+# insight.c:652 - "There is X" 조합
+# ============================================================
+# enl_msg("There ", "is ", "was ", buf, "")
+# 조합 결과: "There " + "is " + buf
+#
+# 주의: ko.po의 형식 지정자(%1$s, %2$s)는 enl_msg 조합에서 작동 안 함
+# 단순 문자열 연결이므로 "여기에 " 사용
+msgid "There "
+msgstr "여기에 "
+
+# ============================================================
+# fuzzy 매칭으로 인한 형식 지정자 오류 수정
+# ============================================================
+
+# lock.c, pickup.c, trap.c - "There is X here"
+# 기존: 잘못된 형식 지정자 포함 → 간단한 번역으로 수정
+msgid "There is "
+msgstr "여기에 "
+
+# pickup.c:3587 - 컨테이너 기울이기 질문
+# 기존: 완전 오역 → 올바른 번역
+msgid " here, tip it?"
+msgstr "이(가) 여기 있다. 기울일까?"
+
+# read.c:438 - 글씨가 있다
+# 기존: 잘못된 형식 지정자 → 올바른 번역
+msgid "There is writing"
+msgstr "글씨가 있다"
+
+# 공백 없는 버전
+msgid "There is"
+msgstr "여기에"
+
+# ============================================================
+# you_are() 조합 결과 자연스럽게 수정
+# ============================================================
+# 패턴: "당신은 " + "​" + attr
+# 결과가 완전한 문장이 되도록 attr을 수정
+
+# insight.c - "You are invisible"
+# 기존: "보이지 않는" → 조합 결과 "당신은 보이지 않는" (불완전)
+# 수정: "투명 상태" → "당신은 투명 상태"
+msgid "invisible"
+msgstr "투명 상태"
+
+# insight.c - "You are confused"
+# 기존: "혼란스러운" → "당신은 혼란스러운" (불완전)
+# 수정: "혼란 상태" → "당신은 혼란 상태"
+msgid "confused"
+msgstr "혼란 상태"
+
+# insight.c - "You are stunned"
+# 기존: "기절한" → "당신은 기절한" (불완전)
+# 수정: "기절 상태" → "당신은 기절 상태"
+msgid "stunned"
+msgstr "기절 상태"
+
+# insight.c - "You are fast"
+# 기존: "빠름" → "당신은 빠름" (어색)
+# 수정: "빠른 상태" → "당신은 빠른 상태"
+msgid "fast"
+msgstr "빠른 상태"
+
+# insight.c - "You are very fast"
+# 기존: "매우 빠름" → "당신은 매우 빠름" (어색)
+# 수정: "매우 빠른 상태" → "당신은 매우 빠른 상태"
+msgid "very fast"
+msgstr "매우 빠른 상태"
+
+# ============================================================
+# 저항/능력 you_are() 조합 수정
+# ============================================================
+# insight.c:1500 - "You are invulnerable"
+# 기존: "취약하다" (완전 오역! invulnerable = 무적, 취약 = vulnerable)
+# 수정: "무적 상태"
+msgid "invulnerable"
+msgstr "무적 상태"
+
+# insight.c:1504 - "You are fire resistant"
+# 기존: "화염 저항" → "당신은 화염 저항" (불완전)
+# 수정: "화염에 내성이 있다"
+msgid "fire resistant"
+msgstr "화염에 내성이 있다"
+
+# insight.c:1507 - "You are cold resistant"
+# 기존: "냉기 저항" → "당신은 냉기 저항" (불완전)
+# 수정: "냉기에 내성이 있다"
+msgid "cold resistant"
+msgstr "냉기에 내성이 있다"
+
+# insight.c:1519 - "You are poison resistant"
+# 기존: "독 저항" → "당신은 독 저항" (불완전)
+# 수정: "독에 내성이 있다"
+msgid "poison resistant"
+msgstr "독에 내성이 있다"
+
+# insight.c:1510 - "You are sleep resistant"
+msgid "sleep resistant"
+msgstr "수면에 내성이 있다"
+
+# insight.c:1512 - "You are disintegration resistant"
+msgid "disintegration resistant"
+msgstr "분해에 내성이 있다"
+
+# insight.c:1515 - "You are shock resistant"
+msgid "shock resistant"
+msgstr "전기에 내성이 있다"
+
+# insight.c:1528 - "You are level-drain resistant"
+msgid "level-drain resistant"
+msgstr "레벨 흡수에 내성이 있다"
+
+# insight.c:1560 - "You are telepathic"
+# 기존: "텔레파시" → "당신은 텔레파시" (불완전)
+# 수정: "텔레파시 능력이 있다"
+msgid "telepathic"
+msgstr "텔레파시 능력이 있다"
+
+# insight.c:1593 - "You are clairvoyant"
+# 기존: "천리안" → "당신은 천리안" (불완전)
+# 수정: "천리안 능력이 있다"
+msgid "clairvoyant"
+msgstr "천리안 능력이 있다"
+
+# insight.c:1646 - "You are displaced"
+# 기존: "변위" → "당신은 변위" (불완전)
+# 수정: "변위 상태"
+msgid "displaced"
+msgstr "변위 상태"
+
+# insight.c:1502 - "You are magic-protected"
+msgid "magic-protected"
+msgstr "마법 보호 상태"
+
+# insight.c:1530 - "You are immune to sickness"
+msgid "immune to sickness"
+msgstr "질병에 면역이다"
+
+# ============================================================
+# you_can() 조합 수정
+# ============================================================
+# 패턴: "당신은 " + "​" + attr
+# "can "이 제로폭 공백이므로, attr에 "~할 수 있다" 형태로 번역
+
+# insight.c:1541 - "You can recognize detrimental food"
+# 기존: "해로운 음식 인식" → "당신은 해로운 음식 인식" (불완전)
+msgid "recognize detrimental food"
+msgstr "해로운 음식을 감지할 수 있다"
+
+# insight.c:1662 - "You can jump"
+# 기존: "점프" → "당신은 점프" (불완전)
+msgid "jump"
+msgstr "점프할 수 있다"
+
+# insight.c:1664 - "You can teleport"
+# 기존: "순간이동하다" → "당신은 순간이동하다" (어색)
+msgid "teleport"
+msgstr "순간이동할 수 있다"
+
+# insight.c:1734 - "You can walk on water"
+# 기존: "물 위 걷기" → "당신은 물 위 걷기" (불완전)
+msgid "walk on water"
+msgstr "물 위를 걸을 수 있다"
+
+# insight.c:1737 - "You can swim"
+# 기존: "수영" → "당신은 수영" (불완전)
+msgid "swim"
+msgstr "수영할 수 있다"
+
+# insight.c:1739 - "You can survive without air"
+# 기존: "공기 없이 생존" → "당신은 공기 없이 생존" (불완전)
+msgid "survive without air"
+msgstr "공기 없이 생존할 수 있다"
+
+# insight.c:1721 - "You can cling to the ceiling"
+# 기존: "천장에 매달리기" → "당신은 천장에 매달리기" (불완전)
+msgid "cling to the ceiling"
+msgstr "천장에 매달릴 수 있다"
+
+# insight.c:1666 - "You have teleport control"
+# 기존: "순간이동 제어" → "당신은 순간이동 제어" (불완전)
+msgid "teleport control"
+msgstr "순간이동 제어 능력이 있다"
+
+# ============================================================
+# 추가 you_are() 조합 수정
+# ============================================================
+
+# insight.c - "You are nauseated"
+# 기존: "모독된" (완전 오역! nauseated = 메스꺼움, 모독 = desecrated)
+# 수정: "메스꺼운 상태"
+msgid "nauseated"
+msgstr "메스꺼운 상태"
+
+# insight.c - "You are deaf"
+# 기존: "귀머거리" (현대 한국어에서 부적절한 표현)
+# 수정: "귀가 안 들린다"
+msgid "deaf"
+msgstr "귀가 안 들린다"
+
+# insight.c - "You are underwater"
+# 기존: "물 속에서" → "당신은 물 속에서" (불완전)
+# 수정: "물 속에 있다"
+msgid "underwater"
+msgstr "물 속에 있다"
+
+# insight.c - "You are buried"
+# 기존: "매장된" → "당신은 매장된" (불완전)
+# 수정: "매장된 상태"
+msgid "buried"
+msgstr "매장된 상태"
+
+# insight.c - "You are turning to stone"
+# 기존: "돌로 변했다." → 마침표 일관성 없음
+# 수정: "돌로 변하는 중"
+msgid "turning to stone"
+msgstr "돌로 변하는 중"
+
+# insight.c - "You are terminally sick from illness"
+# 기존: "병으로 치명적으로 아픔" → 어색
+# 수정: "질병으로 위독하다"
+msgid "terminally sick from illness"
+msgstr "질병으로 위독하다"
+
+# insight.c - "You are terminally sick from food poisoning"
+# 기존: "식중독으로 치명적으로 아픔" → 어색
+# 수정: "식중독으로 위독하다"
+msgid "terminally sick from food poisoning"
+msgstr "식중독으로 위독하다"
+
+# insight.c - "You are not wearing any armor"
+# 기존: "갑옷을 입고 있지 않다." → 마침표 있음
+# 수정: "갑옷을 입고 있지 않다" (마침표 제거 - enl_msg가 추가함)
+msgid "not wearing any armor"
+msgstr "갑옷을 입고 있지 않다"
+
+# insight.c - "You are wielding two weapons at once"
+# 기존: "한 번에 두 무기를 휘두르기" → 명사형
+# 수정: "두 무기를 동시에 휘두르고 있다"
+msgid "wielding two weapons at once"
+msgstr "두 무기를 동시에 휘두르고 있다"
+
+# insight.c - "You are not subject to light-induced blindness"
+# 기존: "빛으로 인한 실명에 면역" → 불완전
+# 수정: "빛으로 인한 실명에 면역이다"
+msgid "not subject to light-induced blindness"
+msgstr "빛으로 인한 실명에 면역이다"
+
+# ============================================================
+# 추가 you_have() 조합 수정
+# ============================================================
+
+# insight.c - "You have slower digestion"
+# 기존: "더 느린 소화" → "당신은 더 느린 소화" (불완전)
+# 수정: "소화가 느리다"
+msgid "slower digestion"
+msgstr "소화가 느리다"
+
+# insight.c - "You have polymorph control"
+# 기존: "변신 제어" → "당신은 변신 제어" (불완전)
+# 수정: "변신 제어 능력이 있다"
+msgid "polymorph control"
+msgstr "변신 제어 능력이 있다"
+
+# insight.c - "You have reflection"
+# 기존: "반사" → "당신은 반사" (불완전)
+# 수정: "반사 능력이 있다"
+msgid "reflection"
+msgstr "반사 능력이 있다"
+
+# insight.c - "You have free action"
+# 기존: "자유 행동" → "당신은 자유 행동" (불완전)
+# 수정: "자유 행동 능력이 있다"
+msgid "free action"
+msgstr "자유 행동 능력이 있다"
+
+# insight.c - "You have fixed abilities"
+# 기존: "고정된 능력치" → "당신은 고정된 능력치" (불완전)
+# 수정: "고정된 능력치를 가지고 있다"
+msgid "fixed abilities"
+msgstr "고정된 능력치를 가지고 있다"
+
+# insight.c - "You have extra luck"
+# 기존: "나쁜 행운" (완전 오역! extra = 추가, 나쁜 = bad)
+# 수정: "추가 행운이 있다"
+msgid "extra luck"
+msgstr "추가 행운이 있다"
+
+# insight.c - "You have reduced luck"
+# 기존: "감소된 행운" → "당신은 감소된 행운" (불완전)
+# 수정: "행운이 감소했다"
+msgid "reduced luck"
+msgstr "행운이 감소했다"
+
+# ============================================================
+# 추가 조합 패턴 수정 (검토 결과)
+# ============================================================
+
+# insight.c - "You are blind"
+# 조합: "당신은 " + "​" + "blind"
+# 기존: 빈 번역 (누락!)
+# 수정: "눈이 안 보인다"
+msgid "blind"
+msgstr "눈이 안 보인다"
+
+# insight.c - "You can see" (Eyes of the Overworld 아이템 효과)
+# 조합: "당신은 " + "​" + "see"
+# 기존: "보인다" → "당신은 보인다" (문법 어색)
+# 수정: "볼 수 있다" → "당신은 볼 수 있다"
+msgid "see"
+msgstr "볼 수 있다"
+
+# ============================================================
+# 토글 on/off 컨텍스트 번역
+# ============================================================
+# 소스 코드에서 C_("toggle", "on/off") 사용으로 컨텍스트 구분
+#
+# 사용처:
+# - insight.c:785,799 - Autopickup on/off
+# - getpos.c:966 - Automatic description on/off
+# - iactions.c:680 - Two-weapon combat on/off
+#
+# 물리적 위치의 "on"(위)과 토글 상태의 "on"(켜짐)을 구분
+
+msgctxt "toggle"
+msgid "on"
+msgstr "켜짐"
+
+msgctxt "toggle"
+msgid "off"
+msgstr "꺼짐"
+

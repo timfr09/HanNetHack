@@ -963,7 +963,7 @@ getpos(coord *ccp, boolean force, const char *goal)
             iflags.autodescribe = !iflags.autodescribe;
             pline(_("Automatic description %sis %s."),
                   flags.verbose ? _("of features under cursor ") : "",
-                  iflags.autodescribe ? _("on") : _("off"));
+                  iflags.autodescribe ? C_("toggle", "on") : C_("toggle", "off"));
             if (!iflags.autodescribe)
                 show_goal_msg = TRUE;
             msg_given = TRUE;

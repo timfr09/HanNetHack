@@ -677,7 +677,7 @@ itemactions(struct obj *otmp)
             || (could_twoweap(gy.youmonst.data) && !uarms
                 && uwep && MAYBETWOWEAPON(uwep)
                 && uswapwep && MAYBETWOWEAPON(uswapwep)))) {
-        Sprintf(buf, _("Toggle two-weapon combat %s"), u.twoweap ? _("off") : _("on"));
+        Sprintf(buf, _("Toggle two-weapon combat %s"), u.twoweap ? C_("toggle", "off") : C_("toggle", "on"));
         ia_addmenu(win, IA_TWOWEAPON, 'X', buf);
     }
 

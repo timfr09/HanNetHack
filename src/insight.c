@@ -782,7 +782,7 @@ basics_enlightenment(int mode UNUSED, int final)
     if (flags.pickup) {
         char ocl[MAXOCLASSES + 1];
 
-        Strcpy(buf, _("on"));
+        Strcpy(buf, C_("toggle", "on"));
         if (costly_spot(u.ux, u.uy)) {
             /* being in a shop inhibits autopickup, even 'pickup_thrown' */
             Strcat(buf, _(", but temporarily disabled while inside the shop"));
@@ -796,7 +796,7 @@ basics_enlightenment(int mode UNUSED, int final)
                 Strcat(buf, _(", with exceptions"));
         }
     } else
-        Strcpy(buf, _("off"));
+        Strcpy(buf, C_("toggle", "off"));
     enl_msg(_("Autopickup "), _("is "), _("was "), buf, "");
 }
 

@@ -2539,13 +2539,13 @@ msgstr "사용 안 함"
 # 빈 문자열이 정상! 오역이 아님!
 # ============================================================
 msgid "can "
-msgstr ""
+msgstr "​"
 
 msgid "could "
-msgstr ""
+msgstr "​"
 
 msgid "have been "
-msgstr ""
+msgstr "​"
 
 msgid "have never "
 msgstr "한 번도 "
@@ -2671,7 +2671,7 @@ msgid " had "
 msgstr " ~을 갖고 있었다 "
 
 msgid "ed"
-msgstr ""
+msgstr "​"
 
 msgid "Not s"
 msgstr "아니다"
@@ -2850,7 +2850,7 @@ msgid "used %ld wish%s"
 msgstr "%ld개%s의 소원을 사용했다"
 
 msgid "es"
-msgstr ""
+msgstr "​"
 
 msgid "have not wished"
 msgstr "소원을 빌지 않았다"
@@ -3618,15 +3618,15 @@ msgstr "자기 학살"
 msgid "counter"
 msgstr "카운터"
 
-# 동사 접두어 (한국어에서는 빈 문자열)
+# 동사 접두어 (한국어에서는 제로 폭 공백)
 msgid "have "
-msgstr ""
+msgstr "​"
 
 msgid "had "
-msgstr ""
+msgstr "​"
 
 msgid "had"
-msgstr ""
+msgstr "​"
 
 # 잘못된 번역 수정
 #, c-format
@@ -3732,16 +3732,20 @@ msgstr "악취 나는 "
 msgid "opening the tin"
 msgstr "깡통 여는 중"
 
-# insight.c 동사 접두사 수정 - 한국어에서는 빈 문자열이어야 함
+# insight.c 동사 접두사 수정 - 한국어에서는 제로 폭 공백이어야 함
 # "You are X" → "당신은 X이다" (are 가 따로 번역되면 안됨)
 msgid "are "
-msgstr ""
+msgstr "​"
 
 msgid "were "
-msgstr ""
+msgstr "​"
 
 msgid "was "
-msgstr ""
+msgstr "​"
+
+# 위저드 모드 메시지
+msgid "<%d,%d> is not considered viable; force anyway?"
+msgstr "<%d,%d>는 유효하지 않음; 강제 진행?"
 
 # 속성 번역 수정
 msgid "charisma"

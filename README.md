@@ -2,7 +2,7 @@
 
 ![Version](https://img.shields.io/badge/version-3.7.0--ko.1-blue)
 ![License](https://img.shields.io/badge/license-NGPL-green)
-![Translation](https://img.shields.io/badge/translated-99.9%25-brightgreen)
+![Translation](https://img.shields.io/badge/translation-WIP-yellow)
 
 NetHack 3.7 기반의 한국어 번역 개인 프로젝트입니다.
 
@@ -17,7 +17,7 @@ NetHack 3.7 기반의 한국어 번역 개인 프로젝트입니다.
 ## Features
 
 ### Korean Translation
-- 10,100+ messages translated (99.9% coverage)
+- 10,000+ messages translated (work in progress)
 - Dynamic postposition system for natural Korean grammar
 - Speech style distinction (polite/casual/semi-polite)
 - Consistent terminology across all game messages

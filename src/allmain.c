@@ -44,6 +44,7 @@ early_init(int argc USED_FOR_CRASHREPORT, char *argv[] USED_FOR_CRASHREPORT)
     monst_globals_init();
     sys_early_init();
     runtime_info_init();
+    init_i18n();
 }
 
 staticfn void
@@ -58,14 +59,14 @@ moveloop_preamble(boolean resuming)
     /* side-effects from the real world */
     flags.moonphase = phase_of_the_moon();
     if (flags.moonphase == FULL_MOON) {
-        You("are lucky!  Full moon tonight.");
+        You(_("are lucky!  Full moon tonight."));
         change_luck(1);
     } else if (flags.moonphase == NEW_MOON) {
-        pline("Be careful!  New moon tonight.");
+        pline(_("Be careful!  New moon tonight."));
     }
     flags.friday13 = friday_13th();
     if (flags.friday13) {
-        pline("Watch out!  Bad things can happen on Friday the 13th.");
+        pline(_("Watch out!  Bad things can happen on Friday the 13th."));
         change_luck(-1);
     }
 
@@ -249,7 +250,7 @@ moveloop_core(void)
                  */
                 if (svm.moves >= 1000000000L) {
                     display_nhwindow(WIN_MESSAGE, TRUE);
-                    urgent_pline("The dungeon capitulates.");
+                    urgent_pline(_("The dungeon capitulates."));
                     done(ESCAPED);
                 }
                 /* 'moves' is misnamed; it represents turns; hero_seq is
@@ -574,7 +575,7 @@ maybe_do_tutorial(void)
         assign_level(&u.ucamefrom, &u.uz);
         iflags.nofollowers = TRUE;
         schedule_goto(&sp->dlevel, UTOTYPE_NONE,
-                      "Entering the tutorial.", (char *) 0);
+                      _("Entering the tutorial."), (char *) 0);
         deferred_goto();
         vision_recalc(0);
         docrt();
@@ -610,7 +611,7 @@ regen_pw(int wtcap)
             u.uen = u.uenmax;
         disp.botl = TRUE;
         if (u.uen == u.uenmax)
-            interrupt_multi("You feel full of energy.");
+            interrupt_multi(_("You feel full of energy."));
     }
 }
 
@@ -671,7 +672,7 @@ regen_hp(int wtcap)
     }
 
     if (reached_full)
-        interrupt_multi("You are in full health.");
+        interrupt_multi(_("You are in full health."));
 }
 
 #undef U_CAN_REGEN
@@ -681,7 +682,7 @@ stop_occupation(void)
 {
     if (go.occupation) {
         if (!maybe_finished_meal(TRUE))
-            You("stop %s.", go.occtxt);
+            You(_("stop %s."), go.occtxt);
         go.occupation = (int (*)(void)) 0;
         disp.botl = TRUE; /* in case u.uhs changed */
         nomul(0);
@@ -856,12 +857,12 @@ welcome(boolean new_game) /* false => restoring an old game */
     /* skip "welcome back" if restoring a doomed character */
     if (!new_game && Upolyd && ugenocided()) {
         /* death via self-genocide is pending */
-        pline("You're back, but you still feel %s inside.", udeadinside());
+        pline(_("You're back, but you still feel %s inside."), udeadinside());
         return;
     }
 
     if (Hallucination)
-        pline("NetHack is filmed in front of an undead studio audience.");
+        pline(_("NetHack is filmed in front of an undead studio audience."));
 
     /*
      * The "welcome back" message always describes your innate form
@@ -871,6 +872,10 @@ welcome(boolean new_game) /* false => restoring an old game */
      * Sex is shown for new games except when it is redundant; for
      * restores it's only shown if different from its original value.
      */
+    /*
+     * Korean i18n note: gender, race, and role names are wrapped with _()
+     * for translation in the welcome message.
+     */
     *buf = '\0';
     if (new_game || u.ualignbase[A_ORIGINAL] != u.ualignbase[A_CURRENT])
         Sprintf(eos(buf), " %s", align_str(u.ualignbase[A_ORIGINAL]));
@@ -878,13 +883,13 @@ welcome(boolean new_game) /* false => restoring an old game */
         && (new_game
             ? (gu.urole.allow & ROLE_GENDMASK) == (ROLE_MALE | ROLE_FEMALE)
             : currentgend != flags.initgend))
-        Sprintf(eos(buf), " %s", genders[currentgend].adj);
-    Sprintf(eos(buf), " %s %s", gu.urace.adj,
-            (currentgend && gu.urole.name.f) ? gu.urole.name.f
-                                             : gu.urole.name.m);
+        Sprintf(eos(buf), " %s", _(genders[currentgend].adj));
+    Sprintf(eos(buf), " %s %s", _(gu.urace.adj),
+            _((currentgend && gu.urole.name.f) ? gu.urole.name.f
+                                               : gu.urole.name.m));
 
-    pline(new_game ? "%s %s, welcome to NetHack!  You are a%s."
-                   : "%s %s, the%s, welcome back to NetHack!",
+    pline(new_game ? _("%s %s, welcome to NetHack!  You are a%s.")
+                   : _("%s %s, the%s, welcome back to NetHack!"),
           Hello((struct monst *) 0), svp.plname, buf);
 
     if (new_game) {

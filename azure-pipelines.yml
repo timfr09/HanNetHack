@@ -241,7 +241,7 @@ steps:
   workingDirectory: $(Agent.BuildDirectory)/$(netHackPath)
   displayName: 'Building MSDOS build'
 - bash: |
-    sudo apt install texlive texlive-latex-extra
+    sudo apt-get install texlive
     make Guidebook
     make Guidebook.txt
     make Guidebook.pdf

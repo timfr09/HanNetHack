@@ -33,7 +33,6 @@ staticfn int l_selection_circle(lua_State *);
 staticfn int l_selection_ellipse(lua_State *);
 staticfn int l_selection_gradient(lua_State *);
 staticfn int l_selection_iterate(lua_State *);
-staticfn int l_selection_size_description(lua_State *L);
 staticfn int l_selection_gc(lua_State *);
 staticfn int l_selection_not(lua_State *);
 staticfn int l_selection_and(lua_State *);
@@ -910,8 +909,6 @@ l_selection_gradient(lua_State *L)
     return 1;
 }
 
-DISABLE_WARNING_UNREACHABLE_CODE
-
 /* sel:iterate(function(x,y) ... end);
  * The x, y coordinates passed to the function are map- or room-relative
  * rather than absolute, unless there has been no previous map or room
@@ -952,27 +949,6 @@ l_selection_iterate(lua_State *L)
     return 0;
 }
 
-/* local txt = sel:describe_size(); */
-/* gives a textual description of the selection size */
-staticfn int
-l_selection_size_description(lua_State *L)
-{
-    int argc = lua_gettop(L);
-
-    if (argc == 1) {
-        struct selectionvar *sel = l_selection_check(L, 1);
-        char buf[BUFSZ];
-
-        lua_pushstring(L, selection_size_description(sel, buf));
-        return 1;
-    } else {
-        nhl_error(L, "wrong parameters");
-        /*NOTREACHED*/
-    }
-    return 0;
-}
-
-RESTORE_WARNING_UNREACHABLE_CODE
 
 static const struct luaL_Reg l_selection_methods[] = {
     { "new", l_selection_new },
@@ -998,7 +974,6 @@ static const struct luaL_Reg l_selection_methods[] = {
     { "iterate", l_selection_iterate },
     { "bounds", l_selection_getbounds },
     { "room", l_selection_room },
-    { "describe_size", l_selection_size_description },
     { NULL, NULL }
 };
 

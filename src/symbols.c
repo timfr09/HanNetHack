@@ -409,6 +409,7 @@ const struct symparse loadsyms[] = {
     { SYM_CONTROL, 4, "color" },
     { SYM_CONTROL, 4, "colour" },
     { SYM_CONTROL, 5, "restrictions" },
+    { SYM_CONTROL, 6, "fullwidth" },
 #define PCHAR_PARSE
 #include "defsym.h"
 #undef PCHAR_PARSE
@@ -524,6 +525,7 @@ parse_sym_line(char *buf, int which_set)
                     tmpsp->nocolor = 0;
                     tmpsp->primary = 0;
                     tmpsp->rogue = 0;
+                    tmpsp->fullwidth = 0;
                     break;
                 case 2:
                     /* handler type identified */
@@ -620,6 +622,19 @@ parse_sym_line(char *buf, int which_set)
                             break; /* while loop */
                         }
                         n++;
+                    }
+                }
+                break;
+            case 6: /* fullwidth:yes - for CJK wide character symsets */
+                if (gc.chosen_symset_start) {
+                    if (bufp) {
+                        if (!strcmpi(bufp, "true") || !strcmpi(bufp, "yes")
+                            || !strcmpi(bufp, "on"))
+                            gs.symset[which_set].fullwidth = 1;
+                        else if (!strcmpi(bufp, "false")
+                                 || !strcmpi(bufp, "no")
+                                 || !strcmpi(bufp, "off"))
+                            gs.symset[which_set].fullwidth = 0;
                     }
                 }
                 break;
@@ -957,7 +972,7 @@ do_symset(boolean rogueflag)
                 big_desc = thissize;
         }
         if (!setcount) {
-            There("are no appropriate %s symbol sets available.",
+            There(_("are no appropriate %s symbol sets available."),
                   rogueflag ? "rogue level" : "primary");
             return TRUE;
         }
@@ -1000,8 +1015,8 @@ do_symset(boolean rogueflag)
                                                 : MENU_ITEMFLAGS_NONE);
             }
         }
-        Sprintf(buf, "Select %ssymbol set:",
-                rogueflag ? "rogue level " : "");
+        Sprintf(buf, _("Select %ssymbol set:"),
+                rogueflag ? _("rogue level ") : "");
         end_menu(tmpwin, buf);
         n = select_menu(tmpwin, PICK_ONE, &symset_pick);
         if (n > 0) {
@@ -1039,11 +1054,11 @@ do_symset(boolean rogueflag)
             nothing_to_do = TRUE;
     } else if (!res) {
         /* The symbols file could not be accessed */
-        pline("Unable to access \"%s\" file.", SYMBOLS);
+        pline(_("Unable to access \"%s\" file."), SYMBOLS);
         return TRUE;
     } else if (!gs.symset_list) {
         /* The symbols file was empty */
-        There("were no symbol sets found in \"%s\".", SYMBOLS);
+        There(_("were no symbol sets found in \"%s\"."), SYMBOLS);
         return TRUE;
     }
 

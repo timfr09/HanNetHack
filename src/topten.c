@@ -95,11 +95,11 @@ formatkiller(
 {
     static NEARDATA const char *const killed_by_prefix[] = {
         /* DIED, CHOKING, POISONING, STARVING, */
-        "killed by ", "choked on ", "poisoned by ", "died of ",
+        N_("killed by "), N_("choked on "), N_("poisoned by "), N_("died of "),
         /* DROWNING, BURNING, DISSOLVED, CRUSHING, */
-        "drowned in ", "burned by ", "dissolved in ", "crushed to death by ",
+        N_("drowned in "), N_("burned by "), N_("dissolved in "), N_("crushed to death by "),
         /* STONING, TURNED_SLIME, GENOCIDED, */
-        "petrified by ", "turned to slime by ", "killed by ",
+        N_("petrified by "), N_("turned to slime by "), N_("killed by "),
         /* PANICKED, TRICKED, QUIT, ESCAPED, ASCENDED */
         "", "", "", "", ""
     };
@@ -119,7 +119,7 @@ formatkiller(
         FALLTHROUGH;
         /*FALLTHRU*/
     case KILLED_BY:
-        (void) strncat(buf, killed_by_prefix[how], siz - 1);
+        (void) strncat(buf, _(killed_by_prefix[how]), siz - 1);
         l = Strlen(buf);
         buf += l, siz -= l;
         break;
@@ -153,10 +153,10 @@ formatkiller(
         /* X <= siz: 'sizeof "string"' includes 1 for '\0' terminator */
         if (gm.multi_reason
             && strlen(gm.multi_reason) + sizeof ", while " <= siz)
-            Sprintf(buf, ", while %s", gm.multi_reason);
+            Sprintf(buf, _(", while %s"), gm.multi_reason);
         /* either gm.multi_reason wasn't specified or wouldn't fit */
         else if (sizeof ", while helpless" <= siz)
-            Strcpy(buf, ", while helpless");
+            Strcpy(buf, _(", while helpless"));
         /* else extra death info won't fit, so leave it out */
     }
 }
@@ -702,7 +702,7 @@ topten(int how, time_t when)
 #ifdef LOGFILE /* used for debugging (who dies of what, where) */
     if (lock_file(LOGFILE, SCOREPREFIX, 10)) {
         if (!(lfile = fopen_datafile(LOGFILE, "a", SCOREPREFIX))) {
-            HUP raw_print("Cannot open log file!");
+            HUP raw_print(_("Cannot open log file!"));
         } else {
             writeentry(lfile, t0);
             (void) fclose(lfile);
@@ -713,7 +713,7 @@ topten(int how, time_t when)
 #ifdef XLOGFILE
     if (lock_file(XLOGFILE, SCOREPREFIX, 10)) {
         if (!(xlfile = fopen_datafile(XLOGFILE, "a", SCOREPREFIX))) {
-            HUP raw_print("Cannot open extended log file!");
+            HUP raw_print(_("Cannot open extended log file!"));
         } else {
             writexlentry(xlfile, t0, how);
             (void) fclose(xlfile);
@@ -729,8 +729,8 @@ topten(int how, time_t when)
 
                 topten_print("");
                 Sprintf(pbuf,
-             "Since you were in %s mode, the score list will not be checked.",
-                        wizard ? "wizard" : "discover");
+             _("Since you were in %s mode, the score list will not be checked."),
+                        wizard ? _("wizard") : _("discover"));
                 topten_print(pbuf);
             }
         goto showwin;
@@ -746,7 +746,7 @@ topten(int how, time_t when)
 #endif
 
     if (!rfile) {
-        HUP raw_print("Cannot open record file!");
+        HUP raw_print(_("Cannot open record file!"));
         unlock_file(RECORD);
         goto destroywin;
     }
@@ -792,7 +792,7 @@ topten(int how, time_t when)
                     char pbuf[BUFSZ];
 
                     Sprintf(pbuf,
-                         "You didn't beat your previous score of %ld points.",
+                         _("You didn't beat your previous score of %ld points."),
                             t1->points);
                     topten_print(pbuf);
                     topten_print("");
@@ -819,7 +819,7 @@ topten(int how, time_t when)
 #else
         (void) fclose(rfile);
         if (!(rfile = fopen_datafile(RECORD, "w", SCOREPREFIX))) {
-            HUP raw_print("Cannot write record file");
+            HUP raw_print(_("Cannot write record file"));
             unlock_file(RECORD);
             free_ttlist(tt_head);
             goto destroywin;
@@ -828,12 +828,12 @@ topten(int how, time_t when)
         if (!done_stopprint)
             if (rank0 > 0) {
                 if (rank0 <= 10) {
-                    topten_print("You made the top ten list!");
+                    topten_print(_("You made the top ten list!"));
                 } else {
                     char pbuf[BUFSZ];
 
                     Sprintf(pbuf,
-                            "You reached the %d%s place on the top %d list.",
+                            _("You reached the %d%s place on the top %d list."),
                             rank0, ordin(rank0), sysopt.entrymax);
                     topten_print(pbuf);
                 }
@@ -931,11 +931,11 @@ outheader(void)
     char linebuf[BUFSZ];
     char *bp;
 
-    Strcpy(linebuf, " No  Points     Name");
+    Strcpy(linebuf, _(" No  Points     Name"));
     bp = eos(linebuf);
     while (bp < linebuf + COLNO - 9)
         *bp++ = ' ';
-    Strcpy(bp, "Hp [max]");
+    Strcpy(bp, _("Hp [max]"));
     topten_print(linebuf);
 }
 
@@ -971,7 +971,7 @@ outentry(int rank, struct toptenentry *t1, boolean so)
     else
         Strcat(linebuf, " ");
     if (!strncmp("escaped", t1->death, 7)) {
-        Sprintf(eos(linebuf), "escaped the dungeon %s[max level %d]",
+        Sprintf(eos(linebuf), _("escaped the dungeon %s[max level %d]"),
                 !strncmp(" (", t1->death + 7, 2) ? t1->death + 7 + 2 : "",
                 t1->maxlvl);
         /* fixup for closing paren in "escaped... with...Amulet)[max..." */
@@ -979,60 +979,85 @@ outentry(int rank, struct toptenentry *t1, boolean so)
             *bp = (t1->deathdnum == astral_level.dnum) ? '\0' : ' ';
         second_line = FALSE;
     } else if (!strncmp("ascended", t1->death, 8)) {
-        Sprintf(eos(linebuf), "ascended to demigod%s-hood",
-                (t1->plgend[0] == 'F') ? "dess" : "");
+        Sprintf(eos(linebuf), _("ascended to demigod%s-hood"),
+                (t1->plgend[0] == 'F') ? _("dess") : "");
         second_line = FALSE;
     } else {
+        char death_action[BUFSZ];
+        char location_info[BUFSZ];
+
+        death_action[0] = '\0';
+        location_info[0] = '\0';
+
+        /* Build death action string */
         if (!strncmp(t1->death, "quit", 4)) {
-            Strcat(linebuf, "quit");
+            Strcpy(death_action, _("quit"));
             second_line = FALSE;
         } else if (!strncmp(t1->death, "died of st", 10)) {
-            Strcat(linebuf, "starved to death");
+            Strcpy(death_action, _("starved to death"));
             second_line = FALSE;
         } else if (!strncmp(t1->death, "choked", 6)) {
-            Sprintf(eos(linebuf), "choked on h%s food",
-                    (t1->plgend[0] == 'F') ? "er" : "is");
+            Sprintf(death_action, _("choked on h%s food"),
+                    (t1->plgend[0] == 'F') ? _("er") : _("is"));
         } else if (!strncmp(t1->death, "poisoned", 8)) {
-            Strcat(linebuf, "was poisoned");
+            Strcpy(death_action, _("was poisoned"));
         } else if (!strncmp(t1->death, "crushed", 7)) {
-            Strcat(linebuf, "was crushed to death");
+            Strcpy(death_action, _("was crushed to death"));
         } else if (!strncmp(t1->death, "petrified by ", 13)) {
-            Strcat(linebuf, "turned to stone");
-        } else
-            Strcat(linebuf, "died");
+            Strcpy(death_action, _("turned to stone"));
+        } else {
+            Strcpy(death_action, _("died"));
+        }
 
+        /* Build location info string */
         if (t1->deathdnum == astral_level.dnum) {
-            const char *arg, *fmt = " on the Plane of %s";
+            const char *arg;
 
             switch (t1->deathlev) {
             case -5:
-                fmt = " on the %s Plane";
-                arg = "Astral";
+                Sprintf(location_info, _("on the %s Plane"), _("Astral"));
                 break;
             case -4:
-                arg = "Water";
+                arg = _("Water");
+                Sprintf(location_info, _("on the Plane of %s"), arg);
                 break;
             case -3:
-                arg = "Fire";
+                arg = _("Fire");
+                Sprintf(location_info, _("on the Plane of %s"), arg);
                 break;
             case -2:
-                arg = "Air";
+                arg = _("Air");
+                Sprintf(location_info, _("on the Plane of %s"), arg);
                 break;
             case -1:
-                arg = "Earth";
+                arg = _("Earth");
+                Sprintf(location_info, _("on the Plane of %s"), arg);
                 break;
             default:
-                arg = "Void";
+                arg = _("Void");
+                Sprintf(location_info, _("on the Plane of %s"), arg);
                 break;
             }
-            Sprintf(eos(linebuf), fmt, arg);
         } else {
-            Sprintf(eos(linebuf), " in %s", svd.dungeons[t1->deathdnum].dname);
-            if (t1->deathdnum != knox_level.dnum)
-                Sprintf(eos(linebuf), " on level %d", t1->deathlev);
+            const char *dname = _(svd.dungeons[t1->deathdnum].dname);
+            DISABLE_WARNING_FORMAT  /* positional params for i18n reordering */
+            if (t1->deathdnum != knox_level.dnum) {
+                /* Positional: %1$s=dungeon, %2$d=level */
+                Sprintf(location_info, _("in %1$s on level %2$d"), dname, t1->deathlev);
+            } else {
+                Sprintf(location_info, _("in %s"), dname);
+            }
+            RESTORE_WARNING_FORMAT
             if (t1->deathlev != t1->maxlvl)
-                Sprintf(eos(linebuf), " [max %d]", t1->maxlvl);
+                Sprintf(eos(location_info), _(" [max %d]"), t1->maxlvl);
         }
+
+        /* Combine: positional params allow reordering for different languages */
+        /* English: "%1$s %2$s" = "died in Dungeon on level 5" */
+        /* Korean:  "%2$s %1$s" = "던전 5층에서 죽었다" */
+        DISABLE_WARNING_FORMAT
+        Sprintf(eos(linebuf), _("%1$s %2$s"), death_action, location_info);
+        RESTORE_WARNING_FORMAT
 
         /* kludge for "quit while already on Charon's boat" */
         if (!strncmp(t1->death, "quit ", 5))
@@ -1214,7 +1239,7 @@ prscore(int argc, char **argv)
 
     rfile = fopen_datafile(RECORD, "r", SCOREPREFIX);
     if (!rfile) {
-        raw_print("Cannot open record file!");
+        raw_print(_("Cannot open record file!"));
         return;
     }
 
@@ -1297,15 +1322,15 @@ prscore(int argc, char **argv)
                 (void) outentry(rank, t1, FALSE);
         }
     } else {
-        Sprintf(pbuf, "Cannot find any %sentries for ",
-                current_ver ? "current " : "");
+        Sprintf(pbuf, _("Cannot find any %sentries for "),
+                current_ver ? _("current ") : "");
         if (playerct < 1) {
-            Strcat(pbuf, "you");
+            Strcat(pbuf, _("you"));
         } else {
             /* minor bug: 'nethack -s -u ziggy' will say "any of"
                even though the '-u' doesn't indicate multiple names */
             if (playerct > 1)
-                Strcat(pbuf, "any of ");
+                Strcat(pbuf, _("any of "));
             for (i = 0; i < playerct; i++) {
                 /* accept '-u name' and '-uname' as well as just 'name'
                    so skip '-u' for the none-found feedback */

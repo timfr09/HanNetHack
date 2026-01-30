@@ -39,7 +39,7 @@ wiz_wish(void) /* Unlimited wishes for debug mode by Paul Polderman */
         flags.verbose = save_verbose;
         encumber_msg();
     } else
-        pline(unavailcmd, ecname_from_fn(wiz_wish));
+        pline(_(unavailcmd), ecname_from_fn(wiz_wish));
     return ECMD_OK;
 }
 
@@ -61,7 +61,7 @@ wiz_identify(void)
         (void) display_inventory((char *) 0, FALSE);
         iflags.override_ID = 0;
     } else
-        pline(unavailcmd, ecname_from_fn(wiz_identify));
+        pline(_(unavailcmd), ecname_from_fn(wiz_identify));
     return ECMD_OK;
 }
 
@@ -165,7 +165,7 @@ wiz_makemap(void)
         mklev();
         makemap_prepost(FALSE, was_in_W_tower);
     } else {
-        pline(unavailcmd, ecname_from_fn(wiz_makemap));
+        pline(_(unavailcmd), ecname_from_fn(wiz_makemap));
     }
     return ECMD_OK;
 }
@@ -194,7 +194,7 @@ wiz_map(void)
         HConfusion = save_Hconf;
         HHallucination = save_Hhallu;
     } else
-        pline(unavailcmd, ecname_from_fn(wiz_map));
+        pline(_(unavailcmd), ecname_from_fn(wiz_map));
     return ECMD_OK;
 }
 
@@ -209,7 +209,7 @@ wiz_genesis(void)
         (void) create_particular();
         iflags.debug_mongen = mongen_saved;
     } else
-        pline(unavailcmd, ecname_from_fn(wiz_genesis));
+        pline(_(unavailcmd), ecname_from_fn(wiz_genesis));
     return ECMD_OK;
 }
 
@@ -220,7 +220,7 @@ wiz_where(void)
     if (wizard)
         (void) print_dungeon(FALSE, (schar *) 0, (xint16 *) 0);
     else
-        pline(unavailcmd, ecname_from_fn(wiz_where));
+        pline(_(unavailcmd), ecname_from_fn(wiz_where));
     return ECMD_OK;
 }
 
@@ -231,7 +231,7 @@ wiz_detect(void)
     if (wizard)
         (void) findit();
     else
-        pline(unavailcmd, ecname_from_fn(wiz_detect));
+        pline(_(unavailcmd), ecname_from_fn(wiz_detect));
     return ECMD_OK;
 }
 
@@ -246,7 +246,7 @@ wiz_kill(void)
     coord cc;
     int ans;
     char c, qbuf[QBUFSZ];
-    const char *prompt = "Pick first monster to slay";
+    const char *prompt = _("Pick first monster to slay");
     boolean save_verbose = flags.verbose,
             save_autodescribe = iflags.autodescribe;
     d_level uarehere = u.uz;
@@ -254,7 +254,7 @@ wiz_kill(void)
     cc.x = u.ux, cc.y = u.uy;
     for (;;) {
         pline("%s:", prompt);
-        prompt = "Next monster";
+        prompt = _("Next monster");
 
         flags.verbose = FALSE;
         iflags.autodescribe = TRUE;
@@ -267,17 +267,17 @@ wiz_kill(void)
         mtmp = 0;
         if (u_at(cc.x, cc.y)) {
             if (u.usteed) {
-                Sprintf(qbuf, "Kill %.110s?", mon_nam(u.usteed));
+                Sprintf(qbuf, _("Kill %.110s?"), mon_nam(u.usteed));
                 if ((c = ynq(qbuf)) == 'q')
                     break;
                 if (c == 'y')
                     mtmp = u.usteed;
             }
             if (!mtmp) {
-                Sprintf(qbuf, "%s?", Role_if(PM_SAMURAI) ? "Perform seppuku"
-                                                         : "Commit suicide");
+                Sprintf(qbuf, "%s?", Role_if(PM_SAMURAI) ? _("Perform seppuku")
+                                                         : _("Commit suicide"));
                 if (paranoid_query(TRUE, qbuf)) {
-                    Sprintf(svk.killer.name, "%s own player", uhis());
+                    Sprintf(svk.killer.name, _("%s own player"), uhis());
                     svk.killer.format = KILLED_BY;
                     done(DIED);
                 }
@@ -311,7 +311,7 @@ wiz_kill(void)
 
             if (!iflags.menu_requested) {
                 /* normal case: hero is credited/blamed */
-                You("%s %s!", nonliving(mtmp->data) ? "destroy" : "kill", Mn);
+                You(_("%s %s!"), nonliving(mtmp->data) ? _("destroy") : _("kill"), Mn);
                 xkilled(mtmp, XKILL_NOMSG);
             } else { /* 'm'-prefix */
                 /* we know that monsters aren't moving because player has
@@ -320,8 +320,8 @@ wiz_kill(void)
                    need to have the mon_moving flag be True in order to
                    avoid blaming or crediting hero for their deaths */
                 svc.context.mon_moving = TRUE;
-                pline("%s is %s.", upstart(Mn),
-                      nonliving(mtmp->data) ? "destroyed" : "killed");
+                pline(_("%s is %s."), upstart(Mn),
+                      nonliving(mtmp->data) ? _("destroyed") : _("killed"));
                 /* Null second arg suppresses the usual message */
                 monkilled(mtmp, (char *) 0, AD_PHYS);
                 svc.context.mon_moving = FALSE;
@@ -331,7 +331,7 @@ wiz_kill(void)
             if (u.utotype || !on_level(&u.uz, &uarehere))
                 break;
         } else {
-            There("is no monster there.");
+            There(_("is no monster there."));
             break;
         }
     }
@@ -360,14 +360,14 @@ wiz_load_lua(void)
                 16*1024*1024, 0, 16*1024*1024};
 
         buf[0] = '\0';
-        getlin("Load which lua file?", buf);
+        getlin(_("Load which lua file?"), buf);
         if (buf[0] == '\033' || buf[0] == '\0')
             return ECMD_CANCEL;
         if (!strchr(buf, '.'))
             strcat(buf, ".lua");
         (void) load_lua(buf, &sbi);
     } else
-        pline(unavailcmd, ecname_from_fn(wiz_load_lua));
+        pline(_(unavailcmd), ecname_from_fn(wiz_load_lua));
     return ECMD_OK;
 }
 
@@ -379,7 +379,7 @@ wiz_load_splua(void)
         char buf[BUFSZ];
 
         buf[0] = '\0';
-        getlin("Load which des lua file?", buf);
+        getlin(_("Load which des lua file?"), buf);
         if (buf[0] == '\033' || buf[0] == '\0')
             return ECMD_CANCEL;
         if (!strchr(buf, '.'))
@@ -390,7 +390,7 @@ wiz_load_splua(void)
         lspo_finalize_level(NULL);
 
     } else
-        pline(unavailcmd, ecname_from_fn(wiz_load_splua));
+        pline(_(unavailcmd), ecname_from_fn(wiz_load_splua));
     return ECMD_OK;
 }
 
@@ -401,7 +401,7 @@ wiz_level_tele(void)
     if (wizard)
         level_tele();
     else
-        pline(unavailcmd, ecname_from_fn(wiz_level_tele));
+        pline(_(unavailcmd), ecname_from_fn(wiz_level_tele));
     return ECMD_OK;
 }
 
@@ -435,7 +435,7 @@ wiz_flip_level(void)
 
             docrt();
         } else {
-            pline("%s", Never_mind);
+            pline1(Never_mind);
         }
     }
     return ECMD_OK;
@@ -450,7 +450,7 @@ wiz_level_change(void)
     int ret;
 
     buf[0] = '\0'; /* in case EDIT_GETLIN is enabled */
-    getlin("To what experience level do you want to be set?", buf);
+    getlin(_("To what experience level do you want to be set?"), buf);
     (void) mungspaces(buf);
     if (buf[0] == '\033' || buf[0] == '\0')
         ret = 0;
@@ -462,10 +462,10 @@ wiz_level_change(void)
         return ECMD_OK;
     }
     if (newlevel == u.ulevel) {
-        You("are already that experienced.");
+        You(_("are already that experienced."));
     } else if (newlevel < u.ulevel) {
         if (u.ulevel == 1) {
-            You("are already as inexperienced as you can get.");
+            You(_("are already as inexperienced as you can get."));
             return ECMD_OK;
         }
         if (newlevel < 1)
@@ -474,7 +474,7 @@ wiz_level_change(void)
             losexp("#levelchange");
     } else {
         if (u.ulevel >= MAXULEV) {
-            You("are already as experienced as you can get.");
+            You(_("are already as experienced as you can get."));
             return ECMD_OK;
         }
         if (newlevel > MAXULEV)
@@ -500,7 +500,7 @@ wiz_telekinesis(void)
     cc.x = u.ux;
     cc.y = u.uy;
 
-    pline("Pick a monster to hurtle.");
+    pline(_("Pick a monster to hurtle."));
     do {
         ans = getpos(&cc, TRUE, "a monster");
         if (ans < 0 || cc.x < 1)
@@ -549,8 +549,8 @@ int
 wiz_fuzzer(void)
 {
     if (flags.suppress_alert < FEATURE_NOTICE_VER(3,7,0)) {
-        pline("The fuzz tester will make NetHack execute random keypresses.");
-        There("is no conventional way out of this mode.");
+        pline(_("The fuzz tester will make NetHack execute random keypresses."));
+        There(_("is no conventional way out of this mode."));
     }
     if (paranoid_query(TRUE, "Do you want to start fuzz testing?")) {
         /* Thoth, take the reins */
@@ -893,13 +893,13 @@ wiz_smell(void)
     cc.x = u.ux;
     cc.y = u.uy;
     if (!olfaction(gy.youmonst.data)) {
-        You("are incapable of detecting odors in your present form.");
+        You(_("are incapable of detecting odors in your present form."));
         return ECMD_OK;
     }
 
-    You("can move the cursor to a monster that you want to smell.");
+    You(_("can move the cursor to a monster that you want to smell."));
     do {
-        pline("Pick a monster to smell.");
+        pline(_("Pick a monster to smell."));
         ans = getpos(&cc, TRUE, "a monster");
         if (ans < 0 || cc.x < 0) {
             return ECMD_CANCEL; /* done */
@@ -923,14 +923,14 @@ wiz_smell(void)
         /* Is it a monster? */
         if (mptr) {
             if (is_you)
-                You("surreptitiously sniff under your %s.", body_part(ARM));
+                You(_("surreptitiously sniff under your %s."), body_part(ARM));
             if (!usmellmon(mptr))
-                pline("%s to not give off any smell.",
+                pline(_("%s to not give off any smell."),
                       is_you ? "You seem" : "That monster seems");
             if (!glyph_is_monster(glyph))
                 map_invisible(cc.x, cc.y);
         } else {
-            You("don't smell any monster there.");
+            You(_("don't smell any monster there."));
             if (glyph_is_invisible(glyph))
                 unmap_invisible(cc.x, cc.y);
         }
@@ -993,7 +993,7 @@ wiz_intrinsic(void)
             add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE, clr, buf,
                      MENU_ITEMFLAGS_NONE);
         }
-        end_menu(win, "Which intrinsics?");
+        end_menu(win, _("Which intrinsics?"));
         n = select_menu(win, PICK_ANY, &pick_list);
         destroy_nhwindow(win);
 
@@ -1073,7 +1073,7 @@ wiz_intrinsic(void)
                 if (p != GLIB)
                     incr_itimeout(&u.uprops[p].intrinsic, amt);
                 disp.botl = TRUE; /* have pline() do a status update */
-                pline("Timeout for %s %s %d.", propname,
+                pline(_("Timeout for %s %s %d."), propname,
                       oldtimeout ? "increased by" : "set to", amt);
                 break;
             }
@@ -1091,7 +1091,7 @@ wiz_intrinsic(void)
             free((genericptr_t) pick_list);
         docrt();
     } else
-        pline(unavailcmd, ecname_from_fn(wiz_intrinsic));
+        pline(_(unavailcmd), ecname_from_fn(wiz_intrinsic));
     return ECMD_OK;
 }
 
@@ -1524,7 +1524,7 @@ list_migrating_mons(
             ++other;
     }
     if (here + nxtlv + other == 0) {
-        pline("No monsters currently migrating.");
+        pline(_("No monsters currently migrating."));
     } else {
         pline(
       "%d mon%s pending for current level, %d for next level, %d for others.",
@@ -1536,7 +1536,7 @@ list_migrating_mons(
         Strcat(prmpt, "a q");
         if (*xtra)
             Sprintf(eos(prmpt), "%c%s", '\033', xtra);
-        c = yn_function("List which?", prmpt, 'q', TRUE);
+        c = yn_function(_("List which?"), prmpt, 'q', TRUE);
         n = (c == 'c') ? here
             : (c == 'n') ? nxtlv
               : (c == 'o') ? other
@@ -1548,13 +1548,13 @@ list_migrating_mons(
             case 'c':
             case 'n':
             case 'o':
-                Sprintf(buf, "Monster%s migrating to %s:", plur(n),
-                        (c == 'c') ? "current level"
-                        : (c == 'n') ? "next level"
-                          : "'other' levels");
+                Sprintf(buf, _("Monster%s migrating to %s:"), plur(n),
+                        (c == 'c') ? _("current level")
+                        : (c == 'n') ? _("next level")
+                          : _("'other' levels"));
                 break;
             default:
-                Strcpy(buf, "All migrating monsters:");
+                Strcpy(buf, _("All migrating monsters:"));
                 break;
             }
             putstr(win, 0, buf);
@@ -1603,7 +1603,7 @@ list_migrating_mons(
             display_nhwindow(win, FALSE);
             destroy_nhwindow(win);
         } else if (c != 'q') {
-            pline("None.");
+            pline(_("None."));
         }
 
     }
@@ -1623,7 +1623,7 @@ wiz_show_stats(void)
          total_misc_size, total_misc_count;
 
     win = create_nhwindow(NHW_TEXT);
-    putstr(win, 0, "Current memory statistics:");
+    putstr(win, 0, _("Current memory statistics:"));
 
     total_obj_count = total_obj_size = 0L;
     putstr(win, 0, stats_hdr);
@@ -1771,7 +1771,7 @@ wiz_display_macros(void)
         }
     }
     if (!trouble)
-        putstr(win, 0, "No display macro issues detected.");
+        putstr(win, 0, _("No display macro issues detected."));
     display_nhwindow(win, FALSE);
     destroy_nhwindow(win);
     return ECMD_OK;
@@ -1815,7 +1815,7 @@ wiz_mon_diff(void)
         }
     }
     if (!trouble)
-        putstr(win, 0, "No monster difficulty discrepancies were detected.");
+        putstr(win, 0, _("No monster difficulty discrepancies were detected."));
     display_nhwindow(win, FALSE);
     destroy_nhwindow(win);
     return ECMD_OK;
@@ -1847,10 +1847,10 @@ wiz_migrate_mons(void)
 #ifdef DEBUG_MIGRATING_MONS
     inbuf[0] = inbuf[1] = '\0';
     if (tolevel.dnum || tolevel.dlevel)
-        getlin("How many random monsters to migrate to next level? [0]",
+        getlin(_("How many random monsters to migrate to next level? [0]"),
                inbuf);
     else
-        pline("Can't get there from here.");
+        pline(_("Can't get there from here."));
     if (*inbuf == '\033' || *inbuf == '\0')
         return ECMD_OK;
 
@@ -1930,7 +1930,7 @@ wiz_custom(void)
             free_glyphid_cache();
         docrt();
     } else
-        pline(unavailcmd, ecname_from_fn(wiz_custom));
+        pline(_(unavailcmd), ecname_from_fn(wiz_custom));
     return ECMD_OK;
 }
 

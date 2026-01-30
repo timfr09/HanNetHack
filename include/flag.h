@@ -293,7 +293,6 @@ struct instance_flags {
     boolean debug_overwrite_stairs; /* debug: allow overwriting stairs */
     boolean debug_mongen;  /* debug: prevent monster generation */
     boolean debug_hunger;  /* debug: prevent hunger */
-    boolean debug_prevent_pline;  /* debug: prevent pline going to UI */
     boolean mon_polycontrol; /* debug: control monster polymorphs */
     boolean mon_telecontrol; /* debug: control monster teleports */
     boolean in_dumplog;    /* doing the dumplog right now? */
@@ -303,6 +302,7 @@ struct instance_flags {
 
     /* stuff that is related to options and/or user or platform preferences
      */
+    char language[8];     /* language code for i18n (e.g., "ko", "en") */
     unsigned msg_history; /* hint: # of top lines to save */
     int getpos_coords;    /* show coordinates when getting cursor position */
     int menuinvertmode;   /* 0 = invert toggles every item;

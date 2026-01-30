@@ -2,6 +2,7 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+#include "i18n.h"
 
 staticfn int cost(struct obj *) NONNULLARG1;
 staticfn int write_ok(struct obj *) NO_NNARGS;
@@ -85,45 +86,45 @@ dowrite(struct obj *pen)
     int spell_knowledge;
 
     if (nohands(gy.youmonst.data)) {
-        You("need hands to be able to write!");
+        You(_("need hands to be able to write!"));
         return ECMD_OK;
     } else if (Glib) {
-        pline("%s from your %s.", Tobjnam(pen, "slip"),
+        pline(_("%s from your %s."), Tobjnam(pen, _("slip")),
               fingers_or_gloves(FALSE));
         dropx(pen);
         return ECMD_TIME;
     }
 
     /* get paper to write on */
-    paper = getobj("write on", write_ok, GETOBJ_NOFLAGS);
+    paper = getobj(_("write on"), write_ok, GETOBJ_NOFLAGS);
     if (!paper)
         return ECMD_CANCEL;
     /* can't write on a novel (unless/until it's been converted into a blank
        spellbook), but we want messages saying so to avoid "spellbook" */
-    typeword = (paper->otyp == SPE_NOVEL) ? "book"
-               : (paper->oclass == SPBOOK_CLASS) ? "spellbook"
-                 : "scroll";
+    typeword = (paper->otyp == SPE_NOVEL) ? _("book")
+               : (paper->oclass == SPBOOK_CLASS) ? _("spellbook")
+                 : _("scroll");
     if (Blind) {
         if (!paper->dknown) {
-            You("don't know whether that %s is blank or not.", typeword);
+            You(_("don't know whether that %s is blank or not."), typeword);
             return ECMD_OK;
         } else if (paper->oclass == SPBOOK_CLASS) {
             /* can't write a magic book while blind */
-            pline("%s can't create braille text.",
+            pline(_("%s can't create braille text."),
                   upstart(ysimple_name(pen)));
             return ECMD_OK;
         }
     }
     observe_object(paper);
     if (paper->otyp != SCR_BLANK_PAPER && paper->otyp != SPE_BLANK_PAPER) {
-        pline("That %s is not blank!", typeword);
+        pline(_("That %s is not blank!"), typeword);
         exercise(A_WIS, FALSE);
         return ECMD_TIME;
     }
     makeknown(SCR_BLANK_PAPER);
 
     /* what to write */
-    Sprintf(qbuf, "What type of %s do you want to write?", typeword);
+    Sprintf(qbuf, _("What type of %s do you want to write?"), typeword);
     getlin(qbuf, namebuf);
     (void) mungspaces(namebuf); /* remove any excess whitespace */
     if (namebuf[0] == '\033' || !namebuf[0])
@@ -204,47 +205,47 @@ dowrite(struct obj *pen)
         goto found;
     }
 
-    There("is no such %s!", typeword);
+    There(_("is no such %s!"), typeword);
     return ECMD_TIME;
  found:
 
     if (i == SCR_BLANK_PAPER || i == SPE_BLANK_PAPER) {
-        You_cant("write that!");
-        pline("It's obscene!");
+        You_cant(_("write that!"));
+        pline(_("It's obscene!"));
         return ECMD_TIME;
     } else if (i == SPE_NOVEL) {
         boolean fanfic = !rn2(3), tearup = !rn2(3);
 
         if (!fanfic) {
-            You("%s to write the Great Yendorian Novel, but %s inspiration.",
-                !tearup ? "prepare" : "try",
-                !Hallucination ? "lack" : "have too much");
+            You(_("%s to write the Great Yendorian Novel, but %s inspiration."),
+                !tearup ? _("prepare") : _("try"),
+                !Hallucination ? _("lack") : _("have too much"));
         } else {
-            You("%sproduce really %s fan-fiction.",
-                !tearup ? "start to " : "",
-                !Hallucination ? "lame" : "awesome");
+            You(_("%sproduce really %s fan-fiction."),
+                !tearup ? _("start to ") : "",
+                !Hallucination ? _("lame") : _("awesome"));
         }
         if (!tearup) {
-            You("give up on the idea.");
+            You(_("give up on the idea."));
         } else {
-            You("tear it up.");
+            You(_("tear it up."));
             useup(paper);
         }
         return ECMD_TIME;
     } else if (i == SPE_BOOK_OF_THE_DEAD) {
-        pline("No mere dungeon adventurer could write that.");
+        pline(_("No mere dungeon adventurer could write that."));
         return ECMD_TIME;
     } else if (by_descr && paper->oclass == SPBOOK_CLASS
                && !objects[i].oc_name_known) {
         /* can't write unknown spellbooks by description */
-        pline("Unfortunately you don't have enough information to go on.");
+        pline(_("Unfortunately you don't have enough information to go on."));
         return ECMD_TIME;
     }
 
     /* KMH, conduct */
     if (!u.uconduct.literate++)
         livelog_printf(LL_CONDUCT,
-                       "became literate by writing %s", an(typeword));
+                       _("became literate by writing %s"), an(typeword));
 
     new_obj = mksobj(i, FALSE, FALSE);
     new_obj->bknown = (paper->bknown && pen->bknown);
@@ -255,7 +256,7 @@ dowrite(struct obj *pen)
     /* see if there's enough ink */
     basecost = cost(new_obj);
     if (pen->spe < basecost / 2) {
-        Your("marker is too dry to write that!");
+        Your(_("marker is too dry to write that!"));
         obfree(new_obj, (struct obj *) 0);
         return ECMD_TIME;
     }
@@ -268,13 +269,13 @@ dowrite(struct obj *pen)
     /* dry out marker */
     if (pen->spe < actualcost) {
         pen->spe = 0;
-        Your("marker dries out!");
+        Your(_("marker dries out!"));
         /* scrolls disappear, spellbooks don't */
         if (paper->oclass == SPBOOK_CLASS) {
-            pline_The("spellbook is left unfinished and your writing fades.");
+            pline_The(_("spellbook is left unfinished and your writing fades."));
             update_inventory(); /* pen charges */
         } else {
-            pline_The("scroll is now useless and disappears!");
+            pline_The(_("scroll is now useless and disappears!"));
             useup(paper);
         }
         obfree(new_obj, (struct obj *) 0);
@@ -319,19 +320,19 @@ dowrite(struct obj *pen)
         && rnl(((Role_if(PM_WIZARD) && paper->oclass != SPBOOK_CLASS)
                 || spell_knowledge == spe_GoingStale)
                ? 5 : 15)) {
-        You("%s to write that.", by_descr ? "fail" : "don't know how");
+        You(_("%s to write that."), by_descr ? _("fail") : _("don't know how"));
         /* scrolls disappear, spellbooks don't */
         if (paper->oclass == SPBOOK_CLASS) {
             You(
-      "write in your best handwriting:  \"My Diary\", but it quickly fades.");
+      _("write in your best handwriting:  \"My Diary\", but it quickly fades."));
             update_inventory(); /* pen charges */
         } else {
             if (by_descr) {
                 Strcpy(namebuf, OBJ_DESCR(objects[new_obj->otyp]));
                 wipeout_text(namebuf, (6 + MAXULEV - u.ulevel) / 6, 0);
             } else
-                Sprintf(namebuf, "%s was here!", svp.plname);
-            You("write \"%s\" and the scroll disappears.", namebuf);
+                Sprintf(namebuf, _("%s was here!"), svp.plname);
+            You(_("write \"%s\" and the scroll disappears."), namebuf);
             useup(paper);
         }
         obfree(new_obj, (struct obj *) 0);
@@ -345,7 +346,7 @@ dowrite(struct obj *pen)
            have passed the write-an-unknown scroll test
            above we can still fail this one, so it's doubly
            hard to write an unknown scroll while blind */
-        You("fail to write the scroll correctly and it disappears.");
+        You(_("fail to write the scroll correctly and it disappears."));
         useup(paper);
         obfree(new_obj, (struct obj *) 0);
         return ECMD_TIME;
@@ -357,7 +358,7 @@ dowrite(struct obj *pen)
     /* success */
     if (new_obj->oclass == SPBOOK_CLASS) {
         /* acknowledge the change in the object's description... */
-        pline_The("spellbook warps strangely, then turns %s.",
+        pline_The(_("spellbook warps strangely, then turns %s."),
                   new_book_description(new_obj->otyp, namebuf));
     }
     new_obj->blessed = (curseval > 0);
@@ -377,8 +378,8 @@ dowrite(struct obj *pen)
     if (objects[new_obj->otyp].oc_name_known || by_descr)
         observe_object(new_obj);
 
-    new_obj = hold_another_object(new_obj, "Oops!  %s out of your grasp!",
-                                  The(aobjnam(new_obj, "slip")),
+    new_obj = hold_another_object(new_obj, _("Oops!  %s out of your grasp!"),
+                                  The(aobjnam(new_obj, _("slip"))),
                                   (const char *) 0);
     nhUse(new_obj); /* try to avoid complaint about dead assignment */
     return ECMD_TIME;
@@ -413,7 +414,7 @@ new_book_description(int booktype, char *outbuf)
         if (!strcmpi(descr, *comp_p))
             break;
 
-    Sprintf(outbuf, "%s%s", *comp_p ? "into " : "", descr);
+    Sprintf(outbuf, "%s%s", *comp_p ? _("into ") : "", descr);
     return outbuf;
 }
 

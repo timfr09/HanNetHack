@@ -118,7 +118,7 @@ inven_inuse(boolean quietly)
         otmp2 = otmp->nobj;
         if (otmp->in_use) {
             if (!quietly)
-                pline("Finishing off %s...", xname(otmp));
+                pline(_("Finishing off %s..."), xname(otmp));
             useup(otmp);
         }
     }
@@ -539,7 +539,7 @@ restgamestate(NHFILE *nhfp)
         if (!gc.converted_savefile_loaded)
             /* for wizard mode, issue a reminder; for others, treat it
              * as an attempt to cheat and refuse to restore this file */
-            pline("Saved game was not yours.");
+            pline(_("Saved game was not yours."));
         if (wizard || gc.converted_savefile_loaded) {
             if (gc.converted_savefile_loaded)
                 gc.converted_savefile_loaded = FALSE;
@@ -621,7 +621,7 @@ restgamestate(NHFILE *nhfp)
 #endif
     if (u.uhp <= 0 && (!Upolyd || u.mh <= 0)) {
         u.ux = u.uy = 0; /* affects pline() [hence You()] */
-        You("were not healthy enough to survive restoration.");
+        You(_("were not healthy enough to survive restoration."));
         /* wiz1_level.dlevel is used by mklev.c to see if lots of stuff is
          * uninitialized, so we only have to set it and not the other stuff.
          */
@@ -847,7 +847,7 @@ dorecover(NHFILE *nhfp)
         clear_nhwindow(WIN_MAP);
 #endif
     clear_nhwindow(WIN_MESSAGE);
-    You("return to level %d in %s%s.", depth(&u.uz),
+    You(_("return to level %d in %s%s."), depth(&u.uz),
         svd.dungeons[u.uz.dnum].dname,
         flags.debug ? " while in debug mode"
                     : flags.explore ? " while in explore mode" : "");
@@ -855,7 +855,7 @@ dorecover(NHFILE *nhfp)
     dotcnt = 0;
     dotrow = 2;
     if (!WINDOWPORT(X11))
-        putstr(WIN_MAP, 0, "Restoring:");
+        putstr(WIN_MAP, 0, _("Restoring:"));
 #endif
     restoreinfo.mread_flags = 1; /* return despite error */
     while (1) {
@@ -1026,9 +1026,9 @@ rest_levl(NHFILE *nhfp)
 void
 trickery(char *reason)
 {
-    pline("Strange, this map is not as I remember it.");
-    pline("Somebody is trying some trickery here...");
-    pline("This game is void.");
+    pline(_("Strange, this map is not as I remember it."));
+    pline(_("Somebody is trying some trickery here..."));
+    pline(_("This game is void."));
     Strcpy(svk.killer.name, reason ? reason : "");
     done(TRICKED);
 }
@@ -1529,7 +1529,7 @@ restore_menu(
                 add_menu_str(tmpwin, copyright_banner_line(k));
             add_menu_str(tmpwin, "");
         }
-        add_menu_str(tmpwin, "Select one of your saved games");
+        add_menu_str(tmpwin, _("Select one of your saved games"));
         /* if all the save files have a playmode of '-' then we'll just list
            their character name-role-race-gend-algn values, but if any are
            'X' or 'D', we'll list playmode along with name-role-&c values

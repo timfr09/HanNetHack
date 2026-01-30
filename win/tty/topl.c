@@ -4,6 +4,8 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+#include "ko_postpos.h"  /* for utf8_char_len */
+#include "i18n.h"        /* for utf8_char_width */
 
 #ifdef TTY_GRAPHICS
 
@@ -131,8 +133,11 @@ redotoplin(const char *str)
             g_putch((int) *str++);
             ttyDisplay->curx++;
         }
-        end_glyphout(); /* in case message printed during graphics output */
     }
+    /* Always call end_glyphout() to ensure graphics mode is off before
+     * outputting text - this is especially important for UTF-8 text
+     * which could be misinterpreted if graphics mode is still on */
+    end_glyphout();
     putsyms(str);
     cl_end();
     ttyDisplay->toplin = TOPLINE_NEED_MORE;
@@ -196,6 +201,7 @@ addtopl(const char *s)
     struct WinDesc *cw = wins[WIN_MESSAGE];
 
     tty_curs(BASE_WINDOW, cw->curx + 1, cw->cury);
+    end_glyphout(); /* ensure graphics mode is off for UTF-8 text */
     putsyms(s);
     cl_end();
     ttyDisplay->toplin = TOPLINE_NEED_MORE;
@@ -258,10 +264,11 @@ update_topl(const char *bp)
 
     /* If there is room on the line, print message on same line */
     /* But messages like "You die..." deserve their own line */
-    n0 = strlen(bp);
+    /* Use display width instead of byte count for UTF-8 support */
+    n0 = utf8_display_width(bp);
     if ((ttyDisplay->toplin == TOPLINE_NEED_MORE || skip)
         && cw->cury == 0
-        && n0 + (int) strlen(gt.toplines) + 3 < CO - 8 /* room for --More-- */
+        && n0 + utf8_display_width(gt.toplines) + 3 < CO - 8 /* room for --More-- */
         && (notdied = strncmp(bp, "You die", 7)) != 0) {
         Strcat(gt.toplines, "  ");
         Strcat(gt.toplines, bp);
@@ -281,19 +288,33 @@ update_topl(const char *bp)
     (void) strncpy(gt.toplines, bp, TBUFSZ);
     gt.toplines[TBUFSZ - 1] = 0;
 
-    for (tl = gt.toplines; n0 >= CO; ) {
-        otl = tl;
-        for (tl += CO - 1; tl != otl; --tl)
-            if (*tl == ' ')
-                break;
-        if (tl == otl) {
-            /* Eek!  A huge token.  Try splitting after it. */
-            tl = strchr(otl, ' ');
+    /* UTF-8 aware line wrapping */
+    for (tl = gt.toplines; utf8_display_width(tl) >= CO; ) {
+        char *last_space = NULL;
+        char *p;
+        int col = 0;
+        int charlen;
+
+        /* Walk through characters counting display columns */
+        for (p = tl; *p && col < CO - 1; ) {
+            charlen = utf8_char_len((unsigned char)*p);
+            if (*p == ' ')
+                last_space = p;
+            col += utf8_char_width(p);
+            p += charlen;
+        }
+
+        /* Find where to break */
+        if (last_space && last_space > tl) {
+            /* Break at last space before column limit */
+            tl = last_space;
+        } else {
+            /* No space found, try to find one after current position */
+            tl = strchr(tl, ' ');
             if (!tl)
-                break; /* No choice but to spit it out whole. */
+                break; /* No choice but to spit it out whole */
         }
         *tl++ = '\n';
-        n0 = strlen(tl);
     }
     if (!notdied) /* double negative => "You die"; avoid suppressing mesg */
         cw->flags &= ~WIN_STOP, skip = FALSE;
@@ -346,8 +367,49 @@ topl_putsym(char c)
 void
 putsyms(const char *str)
 {
-    while (*str)
-        topl_putsym(*str++);
+    struct WinDesc *cw = wins[WIN_MESSAGE];
+    int charlen, charwidth;
+
+    if (cw == (struct WinDesc *) 0)
+        panic("Putsym window MESSAGE nonexistent");
+
+    while (*str) {
+        /* Handle special characters via topl_putsym */
+        if (*str == '\n' || *str == '\b') {
+            topl_putsym(*str++);
+            continue;
+        }
+
+        /* Get the UTF-8 character length and display width */
+        charlen = utf8_char_len((unsigned char)*str);
+        charwidth = utf8_char_width(str);
+
+        /* Check if we need to wrap to the next line */
+        if (ttyDisplay->curx + charwidth > CO - 1) {
+            /* Wrap to next line */
+            cl_end();
+            ttyDisplay->curx = 0;
+            ttyDisplay->cury++;
+            cw->cury = ttyDisplay->cury;
+#ifdef WIN32CON
+            (void) putchar('\n');
+#endif
+            cw->curx = ttyDisplay->curx;
+            cl_end();
+#ifndef WIN32CON
+            (void) putchar('\n');
+#endif
+        }
+
+        /* Output all bytes of the UTF-8 character */
+        while (charlen-- > 0 && *str) {
+            (void) putchar(*str++);
+        }
+
+        /* Increment curx by the display width */
+        ttyDisplay->curx += charwidth;
+        cw->curx = ttyDisplay->curx;
+    }
 }
 
 static void

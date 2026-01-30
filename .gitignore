@@ -96,3 +96,12 @@ bundle/*
 util/*.lib
 util/*.exp
 submodules/CHKSUMS.tmp
+
+# PO backup files
+po/*.backup.*
+po/*_base.po
+po/*_merged.po
+
+# Compiled translation files (except installed ones)
+*.mo
+!dat/locale/**/*.mo

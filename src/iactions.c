@@ -49,20 +49,20 @@ item_naming_classification(
     char *ocallbuf)
 {
     static const char
-        Name[] = "Name",
-        Rename[] = "Rename or un-name",
-        Call[] = "Call",
+        Name[] = N_("Name"),
+        Rename[] = N_("Rename or un-name"),
+        Call[] = N_("Call"),
         /* "re-call" seems a bit weird, but "recall" and
            "rename" don't fit for changing a type name */
-        Recall[] = "Re-call or un-call";
+        Recall[] = N_("Re-call or un-call");
 
     onamebuf[0] = ocallbuf[0] = '\0';
     if (name_ok(obj) == GETOBJ_SUGGEST) {
-        Sprintf(onamebuf, "%s %s %s",
-                (!has_oname(obj) || !*ONAME(obj)) ? Name : Rename,
-                the_unique_obj(obj) ? "the"
-                : !is_plural(obj) ? "this specific"
-                  : "this stack of", /*"these",*/
+        Sprintf(onamebuf, _("%s %s %s"),
+                (!has_oname(obj) || !*ONAME(obj)) ? _(Name) : _(Rename),
+                the_unique_obj(obj) ? _("the")
+                : !is_plural(obj) ? _("this specific")
+                  : _("this stack of"), /*"these",*/
                 simpleonames(obj));
     }
     if (call_ok(obj) == GETOBJ_SUGGEST) {
@@ -73,9 +73,9 @@ item_naming_classification(
             callname = the(callname);
         else if (!is_plural(obj))
             callname = makeplural(callname);
-        Sprintf(ocallbuf, "%s the type for %s",
+        Sprintf(ocallbuf, _("%s the type for %s"),
                 (!objects[obj->otyp].oc_uname
-                 || !*objects[obj->otyp].oc_uname) ? Call : Recall,
+                 || !*objects[obj->otyp].oc_uname) ? _(Call) : _(Recall),
                 callname);
     }
     return (*onamebuf || *ocallbuf) ? TRUE : FALSE;
@@ -89,13 +89,13 @@ item_reading_classification(struct obj *obj, char *outbuf)
 
     *outbuf = '\0';
     if (otyp == FORTUNE_COOKIE) {
-        Strcpy(outbuf, "Read the message inside this cookie");
+        Strcpy(outbuf, _("Read the message inside this cookie"));
     } else if (otyp == T_SHIRT) {
-        Strcpy(outbuf, "Read the slogan on the shirt");
+        Strcpy(outbuf, _("Read the slogan on the shirt"));
     } else if (otyp == ALCHEMY_SMOCK) {
-        Strcpy(outbuf, "Read the slogan on the apron");
+        Strcpy(outbuf, _("Read the slogan on the apron"));
     } else if (otyp == HAWAIIAN_SHIRT) {
-        Strcpy(outbuf, "Look at the pattern on the shirt");
+        Strcpy(outbuf, _("Look at the pattern on the shirt"));
     } else if (obj->oclass == SCROLL_CLASS) {
         const char *magic = ((obj->dknown
 #ifdef MAIL_STRUCTURES
@@ -103,9 +103,9 @@ item_reading_classification(struct obj *obj, char *outbuf)
 #endif
                               && (otyp != SCR_BLANK_PAPER
                                   || !objects[otyp].oc_name_known))
-                             ? " to activate its magic" : "");
+                             ? _(" to activate its magic") : "");
 
-        Sprintf(outbuf, "Read this scroll%s", magic);
+        Sprintf(outbuf, _("Read this scroll%s"), magic);
     } else if (obj->oclass == SPBOOK_CLASS) {
         boolean novel = (otyp == SPE_NOVEL),
                 blank = (otyp == SPE_BLANK_PAPER
@@ -113,10 +113,10 @@ item_reading_classification(struct obj *obj, char *outbuf)
                 tome = (otyp == SPE_BOOK_OF_THE_DEAD
                         && objects[otyp].oc_name_known);
 
-        Sprintf(outbuf, "%s this %s",
-                (novel || blank) ? "Read" : tome ? "Examine" : "Study",
+        Sprintf(outbuf, _("%s this %s"),
+                (novel || blank) ? _("Read") : tome ? _("Examine") : _("Study"),
                 novel ? simpleonames(obj) /* "novel" or "paperback book" */
-                      : tome ? "tome" : "spellbook");
+                      : tome ? _("tome") : _("spellbook"));
     } else {
         res = IA_NONE;
     }
@@ -282,7 +282,7 @@ itemactions(struct obj *otmp)
     char buf[BUFSZ], buf2[BUFSZ];
     menu_item *selected;
     struct monst *mtmp;
-    const char *light = otmp->lamplit ? "Extinguish" : "Light";
+    const char *light = otmp->lamplit ? _("Extinguish") : _("Light");
     boolean already_worn = (otmp->owornmask & (W_ARMOR | W_ACCESSORY)) != 0;
 
     win = create_nhwindow(NHW_MENU);
@@ -291,16 +291,16 @@ itemactions(struct obj *otmp)
     /* -: unwield; picking current weapon offers an opportunity for 'w-'
        to wield bare/gloved hands; likewise for 'Q-' with quivered item(s) */
     if (otmp == uwep || otmp == uswapwep || otmp == uquiver) {
-        const char *verb = (otmp == uquiver) ? "Quiver" : "Wield",
-                   *action = (otmp == uquiver) ? "un-ready" : "un-wield",
-                   *which = is_plural(otmp) ? "these" : "this",
+        const char *verb = (otmp == uquiver) ? _("Quiver") : _("Wield"),
+                   *action = (otmp == uquiver) ? _("un-ready") : _("un-wield"),
+                   *which = is_plural(otmp) ? _("these") : _("this"),
                    *what = ((otmp->oclass == WEAPON_CLASS || is_weptool(otmp))
-                            ? "weapon" : "item");
+                            ? _("weapon") : _("item"));
         /*
          * TODO: if uwep is ammo, tell player that to shoot instead of toss,
          *       the corresponding launcher must be wielded;
          */
-        Sprintf(buf,  "%s '%c' to %s %s %s",
+        Sprintf(buf, _("%s '%c' to %s %s %s"),
                 verb, HANDS_SYM, action, which,
                 is_plural(otmp) ? makeplural(what) : what);
         ia_addmenu(win, IA_UNWIELD, '-', buf);
@@ -308,96 +308,96 @@ itemactions(struct obj *otmp)
 
     /* a: apply */
     if (otmp->oclass == COIN_CLASS)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Flip a coin");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Flip a coin"));
     else if (otmp->otyp == CREAM_PIE)
         ia_addmenu(win, IA_APPLY_OBJ, 'a',
-                   "Hit yourself with this cream pie");
+                   _("Hit yourself with this cream pie"));
     else if (otmp->otyp == BULLWHIP)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Lash out with this whip");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Lash out with this whip"));
     else if (otmp->otyp == GRAPPLING_HOOK)
         ia_addmenu(win, IA_APPLY_OBJ, 'a',
-                   "Grapple something with this hook");
+                   _("Grapple something with this hook"));
     else if (otmp->otyp == BAG_OF_TRICKS && objects[otmp->otyp].oc_name_known)
         /* bag of tricks skips this unless discovered */
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Reach into this bag");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Reach into this bag"));
     else if (Is_container(otmp))
         /* bag of tricks gets here only if not yet discovered */
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Open this container");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Open this container"));
     else if (otmp->otyp == CAN_OF_GREASE)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Use the can to grease an item");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Use the can to grease an item"));
     else if (otmp->otyp == LOCK_PICK
              || otmp->otyp == CREDIT_CARD
              || otmp->otyp == SKELETON_KEY)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Use this tool to pick a lock");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Use this tool to pick a lock"));
     else if (otmp->otyp == TINNING_KIT)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Use this kit to tin a corpse");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Use this kit to tin a corpse"));
     else if (otmp->otyp == LEASH)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Tie a pet to this leash");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Tie a pet to this leash"));
     else if (otmp->otyp == SADDLE)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Place this saddle on a pet");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Place this saddle on a pet"));
     else if (otmp->otyp == MAGIC_WHISTLE
              || otmp->otyp == TIN_WHISTLE)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Blow this whistle");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Blow this whistle"));
     else if (otmp->otyp == EUCALYPTUS_LEAF)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Use this leaf as a whistle");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Use this leaf as a whistle"));
     else if (otmp->otyp == STETHOSCOPE)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Listen through the stethoscope");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Listen through the stethoscope"));
     else if (otmp->otyp == MIRROR)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Show something its reflection");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Show something its reflection"));
     else if (otmp->otyp == BELL || otmp->otyp == BELL_OF_OPENING)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Ring the bell");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Ring the bell"));
     else if (otmp->otyp == CANDELABRUM_OF_INVOCATION) {
-        Sprintf(buf, "%s the candelabrum", light);
+        Sprintf(buf, _("%s the candelabrum"), light);
         ia_addmenu(win, IA_APPLY_OBJ, 'a', buf);
     } else if (otmp->otyp == WAX_CANDLE || otmp->otyp == TALLOW_CANDLE) {
         boolean multiple = (otmp->quan == 1L) ? FALSE : TRUE;
-        const char *s = multiple ? "these" : "this";
+        const char *s = multiple ? _("these") : _("this");
         struct obj *o = carrying(CANDELABRUM_OF_INVOCATION);
 
         if (o && o->spe < 7)
-            Sprintf(buf, "Attach %s to your candelabrum, or %s %s", s,
-                    !otmp->lamplit ? "light" : "extinguish", /* [lowercase] */
-                    multiple ? "them" : "it");
+            Sprintf(buf, _("Attach %s to your candelabrum, or %s %s"), s,
+                    !otmp->lamplit ? _("light") : _("extinguish"), /* [lowercase] */
+                    multiple ? _("them") : _("it"));
         else
-            Sprintf(buf, "%s %s %s", light, s, simpleonames(otmp));
+            Sprintf(buf, _("%s %s %s"), light, s, simpleonames(otmp));
         ia_addmenu(win, IA_APPLY_OBJ, 'a', buf);
     } else if (otmp->otyp == OIL_LAMP || otmp->otyp == MAGIC_LAMP
                || otmp->otyp == BRASS_LANTERN) {
-        Sprintf(buf, "%s this light source", light);
+        Sprintf(buf, _("%s this light source"), light);
         ia_addmenu(win, IA_APPLY_OBJ, 'a', buf);
     } else if (otmp->otyp == POT_OIL && objects[otmp->otyp].oc_name_known) {
-        Sprintf(buf, "%s this oil", light);
+        Sprintf(buf, _("%s this oil"), light);
         ia_addmenu(win, IA_APPLY_OBJ, 'a', buf);
     } else if (otmp->oclass == POTION_CLASS) {
         /* FIXME? this should probably be moved to 'D' rather than be 'a' */
-        Sprintf(buf, "Dip something into %s potion%s",
-                is_plural(otmp) ? "one of these" : "this", plur(otmp->quan));
+        Sprintf(buf, _("Dip something into %s potion%s"),
+                is_plural(otmp) ? _("one of these") : _("this"), plur(otmp->quan));
         ia_addmenu(win, IA_DIP_OBJ, 'a', buf);
     } else if (otmp->otyp == EXPENSIVE_CAMERA)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Take a photograph");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Take a photograph"));
     else if (otmp->otyp == TOWEL)
         ia_addmenu(win, IA_APPLY_OBJ, 'a',
-                   "Clean yourself off with this towel");
+                   _("Clean yourself off with this towel"));
     else if (otmp->otyp == CRYSTAL_BALL)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Peer into this crystal ball");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Peer into this crystal ball"));
     else if (otmp->otyp == MAGIC_MARKER)
         ia_addmenu(win, IA_APPLY_OBJ, 'a',
-                   "Write on something with this marker");
+                   _("Write on something with this marker"));
     else if (otmp->otyp == FIGURINE)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Make this figurine transform");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Make this figurine transform"));
     else if (otmp->otyp == UNICORN_HORN)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Use this unicorn horn");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Use this unicorn horn"));
     else if (otmp->otyp == HORN_OF_PLENTY
              && objects[otmp->otyp].oc_name_known)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Blow into the horn of plenty");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Blow into the horn of plenty"));
     else if (otmp->otyp >= WOODEN_FLUTE && otmp->otyp <= DRUM_OF_EARTHQUAKE)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Play this musical instrument");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Play this musical instrument"));
     else if (otmp->otyp == LAND_MINE || otmp->otyp == BEARTRAP)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Arm this trap");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Arm this trap"));
     else if (otmp->otyp == PICK_AXE || otmp->otyp == DWARVISH_MATTOCK)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Dig with this digging tool");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Dig with this digging tool"));
     else if (otmp->oclass == WAND_CLASS)
-        ia_addmenu(win, IA_APPLY_OBJ, 'a', "Break this wand");
+        ia_addmenu(win, IA_APPLY_OBJ, 'a', _("Break this wand"));
 
     /* 'c', 'C' - call an item or its type something */
     if (item_naming_classification(otmp, buf, buf2)) {
@@ -411,37 +411,37 @@ itemactions(struct obj *otmp)
        always have a takeoff/remove choice so we don't have to worry
        about the menu maybe being empty when 'd' is suppressed */
     if (!already_worn) {
-        Sprintf(buf, "Drop this %s", (otmp->quan > 1L) ? "stack" : "item");
+        Sprintf(buf, _("Drop this %s"), (otmp->quan > 1L) ? _("stack") : _("item"));
         ia_addmenu(win, IA_DROP_OBJ, 'd', buf);
     }
 
     /* e: eat item */
     if (otmp->otyp == TIN) {
-        Sprintf(buf, "Open %s%s and eat the contents",
-                (otmp->quan > 1L) ? "one of these tins" : "this tin",
+        Sprintf(buf, _("Open %s%s and eat the contents"),
+                (otmp->quan > 1L) ? _("one of these tins") : _("this tin"),
                 (otmp->otyp == TIN && uwep && uwep->otyp == TIN_OPENER)
-                ? " with your tin opener" : "");
+                ? _(" with your tin opener") : "");
         ia_addmenu(win, IA_EAT_OBJ, 'e', buf);
     } else if (is_edible(otmp)) {
-        Sprintf(buf, "Eat %s", (otmp->quan > 1L) ? "one of these" : "this");
+        Sprintf(buf, _("Eat %s"), (otmp->quan > 1L) ? _("one of these") : _("this"));
         ia_addmenu(win, IA_EAT_OBJ, 'e', buf);
     }
 
     /* E: engrave with item */
     if (otmp->otyp == TOWEL) {
         ia_addmenu(win, IA_ENGRAVE_OBJ, 'E',
-                   "Wipe the floor with this towel");
+                   _("Wipe the floor with this towel"));
     } else if (otmp->otyp == MAGIC_MARKER) {
         ia_addmenu(win, IA_ENGRAVE_OBJ, 'E',
-                   "Scribble graffiti on the floor");
+                   _("Scribble graffiti on the floor"));
     } else if (otmp->oclass == WEAPON_CLASS || otmp->oclass == WAND_CLASS
              || otmp->oclass == GEM_CLASS || otmp->oclass == RING_CLASS) {
-        Sprintf(buf, "%s on the %s with %s",
+        Sprintf(buf, _("%s on the %s with %s"),
                 (is_blade(otmp) || otmp->oclass == WAND_CLASS
                  || ((otmp->oclass == GEM_CLASS || otmp->oclass == RING_CLASS)
-                     && objects[otmp->otyp].oc_tough)) ? "Engrave" : "Write",
+                     && objects[otmp->otyp].oc_tough)) ? _("Engrave") : _("Write"),
                 surface(u.ux, u.uy),
-                (otmp->quan > 1L) ? "one of these items" : "this item");
+                (otmp->quan > 1L) ? _("one of these items") : _("this item"));
         ia_addmenu(win, IA_ENGRAVE_OBJ, 'E', buf);
     }
 
@@ -450,11 +450,11 @@ itemactions(struct obj *otmp)
         boolean shoot = ammo_and_launcher(otmp, uwep);
 
         /* FIXME: see the multi-shot FIXME about "one of" for 't: throw' */
-        Sprintf(buf, "%s %s", shoot ? "Shoot" : "Throw",
-                (otmp->quan > 1L) ? "one of these" : "this");
+        Sprintf(buf, _("%s %s"), shoot ? _("Shoot") : _("Throw"),
+                (otmp->quan > 1L) ? _("one of these") : _("this"));
         if (shoot) {
             assert(uwep != NULL);
-            Sprintf(eos(buf), " with your wielded %s", simpleonames(uwep));
+            Sprintf(eos(buf), _(" with your wielded %s"), simpleonames(uwep));
         }
         ia_addmenu(win, IA_FIRE_OBJ, 'f', buf);
     }
@@ -463,11 +463,11 @@ itemactions(struct obj *otmp)
        is some in a slot other than '$' (which shouldn't be possible) */
     if (otmp->oclass != COIN_CLASS || check_invent_gold("item-action"))
         ia_addmenu(win, IA_ADJUST_OBJ, 'i',
-                   "Adjust inventory by assigning new letter");
+                   _("Adjust inventory by assigning new letter"));
     /* I: #adjust inventory item by splitting its stack  */
     if (otmp->quan > 1L && otmp->oclass != COIN_CLASS)
         ia_addmenu(win, IA_ADJUST_STACK, 'I',
-                   "Adjust inventory by splitting this stack");
+                   _("Adjust inventory by splitting this stack"));
 
     /* O: offer sacrifice */
     if (IS_ALTAR(levl[u.ux][u.uy].typ) && !u.uswallow) {
@@ -475,11 +475,11 @@ itemactions(struct obj *otmp)
            include corpses on Astral and don't include amulets off Astral */
         if (otmp->otyp == CORPSE)
             ia_addmenu(win, IA_SACRIFICE, 'O',
-                       "Offer this corpse as a sacrifice at this altar");
+                       _("Offer this corpse as a sacrifice at this altar"));
         else if (otmp->otyp == AMULET_OF_YENDOR
                  || otmp->otyp == FAKE_AMULET_OF_YENDOR)
             ia_addmenu(win, IA_SACRIFICE, 'O',
-                       "Offer this amulet as a sacrifice at this altar");
+                       _("Offer this amulet as a sacrifice at this altar"));
     }
 
     /* p: pay for unpaid utems */
@@ -488,8 +488,8 @@ itemactions(struct obj *otmp)
            flagged 'unpaid') holding shop owned items */
         && (mtmp = shop_keeper(*in_rooms(u.ux, u.uy, SHOPBASE))) != 0
         && inhishop(mtmp)) {
-        Sprintf(buf, "Buy this unpaid %s",
-                (otmp->quan > 1L) ? "stack" : "item");
+        Sprintf(buf, _("Buy this unpaid %s"),
+                (otmp->quan > 1L) ? _("stack") : _("item"));
         ia_addmenu(win, IA_BUY_OBJ, 'p', buf);
     }
 
@@ -502,23 +502,23 @@ itemactions(struct obj *otmp)
            item actions can be used to learn commands */
         *buf = '\0';
         if (otmp->oclass == AMULET_CLASS) {
-            Strcpy(buf, !uamul ? "Put this amulet on"
-                               : "[already wearing an amulet]");
+            Strcpy(buf, !uamul ? _("Put this amulet on")
+                               : _("[already wearing an amulet]"));
         } else if (otmp->oclass == RING_CLASS || otmp->otyp == MEAT_RING) {
             if (!uleft || !uright)
-                Strcpy(buf, "Put this ring on");
+                Strcpy(buf, _("Put this ring on"));
             else
-                Sprintf(buf, "[both ring %s in use]",
+                Sprintf(buf, _("[both ring %s in use]"),
                         makeplural(body_part(FINGER)));
         } else if (otmp->otyp == BLINDFOLD || otmp->otyp == TOWEL
                    || otmp->otyp == LENSES) {
             if (ublindf)
-                Strcpy(buf, "[already wearing eyewear]");
+                Strcpy(buf, _("[already wearing eyewear]"));
             else if (otmp->otyp == LENSES)
-                Strcpy(buf, "Put these lenses on");
+                Strcpy(buf, _("Put these lenses on"));
             else
-                Sprintf(buf, "Put this on%s",
-                        (otmp->otyp == TOWEL) ? " to blindfold yourself" : "");
+                Sprintf(buf, _("Put this on%s"),
+                        (otmp->otyp == TOWEL) ? _(" to blindfold yourself") : "");
         }
         if (*buf)
             ia_addmenu(win, IA_WEAR_OBJ, 'P', buf);
@@ -526,17 +526,17 @@ itemactions(struct obj *otmp)
 
     /* q: drink item */
     if (otmp->oclass == POTION_CLASS) {
-        Sprintf(buf, "Quaff (drink) %s",
-                (otmp->quan > 1L) ? "one of these potions" : "this potion");
+        Sprintf(buf, _("Quaff (drink) %s"),
+                (otmp->quan > 1L) ? _("one of these potions") : _("this potion"));
         ia_addmenu(win, IA_QUAFF_OBJ, 'q', buf);
     }
 
     /* Q: quiver throwable item */
     if ((otmp->oclass == GEM_CLASS || otmp->oclass == WEAPON_CLASS)
         && otmp != uquiver) {
-        Sprintf(buf, "Quiver this %s for easy %s with \'f\'ire",
-                (otmp->quan > 1L) ? "stack" : "item",
-                ammo_and_launcher(otmp, uwep) ? "shooting" : "throwing");
+        Sprintf(buf, _("Quiver this %s for easy %s with 'f'ire"),
+                (otmp->quan > 1L) ? _("stack") : _("item"),
+                ammo_and_launcher(otmp, uwep) ? _("shooting") : _("throwing"));
         ia_addmenu(win, IA_QUIVER_OBJ, 'Q', buf);
     }
 
@@ -546,19 +546,19 @@ itemactions(struct obj *otmp)
 
     /* R: remove accessory or rub item */
     if (otmp->owornmask & W_ACCESSORY) {
-        Sprintf(buf, "Remove this %s",
-                (otmp->owornmask & W_AMUL) ? "amulet"
-                : (otmp->owornmask & W_RING) ? "ring"
-                  : (otmp->owornmask & W_TOOL) ? "eyewear"
-                    : "accessory"); /* catchall -- can't happen */
+        Sprintf(buf, _("Remove this %s"),
+                (otmp->owornmask & W_AMUL) ? _("amulet")
+                : (otmp->owornmask & W_RING) ? _("ring")
+                  : (otmp->owornmask & W_TOOL) ? _("eyewear")
+                    : _("accessory")); /* catchall -- can't happen */
         ia_addmenu(win, IA_TAKEOFF_OBJ, 'R', buf);
     }
     if (otmp->otyp == OIL_LAMP || otmp->otyp == MAGIC_LAMP
         || otmp->otyp == BRASS_LANTERN) {
-        Sprintf(buf, "Rub this %s", simpleonames(otmp));
+        Sprintf(buf, _("Rub this %s"), simpleonames(otmp));
         ia_addmenu(win, IA_RUB_OBJ, 'R', buf);
     } else if (otmp->oclass == GEM_CLASS && is_graystone(otmp))
-        ia_addmenu(win, IA_RUB_OBJ, 'R', "Rub something on this stone");
+        ia_addmenu(win, IA_RUB_OBJ, 'R', _("Rub something on this stone"));
 
     /* t: throw item */
     if (!already_worn) {
@@ -572,27 +572,27 @@ itemactions(struct obj *otmp)
          *  volley count and that could randomly yield 1 here and 2..N
          *  while throwing or vice versa.
          */
-        Sprintf(buf, "%s %s%s", shoot ? "Shoot" : "Throw",
-                (otmp->quan == 1L) ? "this item"
-                : (otmp->otyp == GOLD_PIECE) ? "them"
-                  : "one of these",
+        Sprintf(buf, _("%s %s%s"), shoot ? _("Shoot") : _("Throw"),
+                (otmp->quan == 1L) ? _("this item")
+                : (otmp->otyp == GOLD_PIECE) ? _("them")
+                  : _("one of these"),
                 /* if otmp is quivered, we've already listed
                    'f - shoot|throw this item' as a choice;
                    if 't' is duplicating that, say so ('t' and 'f'
                    behavior differs for throwing a stack of gold) */
                 (otmp == uquiver && (otmp->otyp != GOLD_PIECE
                                      || otmp->quan == 1L))
-                ? " (same as 'f')" : "");
+                ? _(" (same as 'f')") : "");
         ia_addmenu(win, IA_THROW_OBJ, 't', buf);
     }
 
     /* T: take off armor, tip carried container */
     if (otmp->owornmask & W_ARMOR)
-        ia_addmenu(win, IA_TAKEOFF_OBJ, 'T', "Take off this armor");
+        ia_addmenu(win, IA_TAKEOFF_OBJ, 'T', _("Take off this armor"));
     if ((Is_container(otmp) && (Has_contents(otmp) || !otmp->cknown))
         || (otmp->otyp == HORN_OF_PLENTY && (otmp->spe > 0 || !otmp->known)))
         ia_addmenu(win, IA_TIP_CONTAINER, 'T',
-                   "Tip all the contents out of this container");
+                   _("Tip all the contents out of this container"));
 
     /* V: invoke */
     if ((otmp->otyp == FAKE_AMULET_OF_YENDOR && !otmp->known)
@@ -601,7 +601,7 @@ itemactions(struct obj *otmp)
            the #invoke command lists them as likely candidates */
         || otmp->otyp == CRYSTAL_BALL)
         ia_addmenu(win, IA_INVOKE_OBJ, 'V',
-                   "Try to invoke a unique power of this object");
+                   _("Try to invoke a unique power of this object"));
 
     /* w: wield, hold in hands, works on everything but with different
        advice text; not mentioned for things that are already wielded */
@@ -609,18 +609,18 @@ itemactions(struct obj *otmp)
         ; /* either already wielded or can't wield anything; skip 'w' */
     } else if (otmp->oclass == WEAPON_CLASS || is_weptool(otmp)
                || is_wet_towel(otmp) || otmp->otyp == HEAVY_IRON_BALL) {
-        Sprintf(buf, "Wield this %s as your weapon",
-                (otmp->quan > 1L) ? "stack" : "item");
+        Sprintf(buf, _("Wield this %s as your weapon"),
+                (otmp->quan > 1L) ? _("stack") : _("item"));
         ia_addmenu(win, IA_WIELD_OBJ, 'w', buf);
     } else if (otmp->otyp == TIN_OPENER) {
         ia_addmenu(win, IA_WIELD_OBJ, 'w',
-                   "Wield the tin opener to easily open tins");
+                   _("Wield the tin opener to easily open tins"));
     } else if (!already_worn) {
         /* originally this was using "hold this item in your hands" but
            there's no concept of "holding an item", plus it unwields
            whatever item you already have wielded so use "wield this item" */
-        Sprintf(buf, "Wield this %s in your %s",
-                (otmp->quan > 1L) ? "stack" : "item",
+        Sprintf(buf, _("Wield this %s in your %s"),
+                (otmp->quan > 1L) ? _("stack") : _("item"),
                 /* only two-handed weapons and unicorn horns care about
                    pluralizing "hand" and they won't reach here, but plural
                    sounds better when poly'd into something with "claw" */
@@ -640,9 +640,9 @@ itemactions(struct obj *otmp)
             struct obj *o = wearmask_to_obj(Wmask);
 
             if (!o)
-                Strcpy(buf, "Wear this armor");
+                Strcpy(buf, _("Wear this armor"));
             else
-                Sprintf(buf, "[already wearing %s]", an(armor_simple_name(o)));
+                Sprintf(buf, _("[already wearing %s]"), an(armor_simple_name(o)));
 
             ia_addmenu(win, IA_WEAR_OBJ, 'W', buf);
         }
@@ -651,13 +651,13 @@ itemactions(struct obj *otmp)
     /* x: Swap main and readied weapon */
     if (otmp == uwep && uswapwep)
         ia_addmenu(win, IA_SWAPWEAPON, 'x',
-                   "Swap this with your alternate weapon");
+                   _("Swap this with your alternate weapon"));
     else if (otmp == uwep)
         ia_addmenu(win, IA_SWAPWEAPON, 'x',
-                   "Ready this as an alternate weapon");
+                   _("Ready this as an alternate weapon"));
     else if (otmp == uswapwep)
         ia_addmenu(win, IA_SWAPWEAPON, 'x',
-                   "Swap this with your main weapon");
+                   _("Swap this with your main weapon"));
 
     /* this is based on TWOWEAPOK() in wield.c; we don't call can_two_weapon()
        because it is very verbose; attempting to two-weapon might be rejected
@@ -677,7 +677,7 @@ itemactions(struct obj *otmp)
             || (could_twoweap(gy.youmonst.data) && !uarms
                 && uwep && MAYBETWOWEAPON(uwep)
                 && uswapwep && MAYBETWOWEAPON(uswapwep)))) {
-        Sprintf(buf, "Toggle two-weapon combat %s", u.twoweap ? "off" : "on");
+        Sprintf(buf, _("Toggle two-weapon combat %s"), u.twoweap ? _("off") : _("on"));
         ia_addmenu(win, IA_TWOWEAPON, 'X', buf);
     }
 
@@ -686,16 +686,16 @@ itemactions(struct obj *otmp)
     /* z: Zap wand */
     if (otmp->oclass == WAND_CLASS)
         ia_addmenu(win, IA_ZAP_OBJ, 'z',
-                   "Zap this wand to release its magic");
+                   _("Zap this wand to release its magic"));
 
     /* ?: Look up an item in the game's database */
     if (ia_checkfile(otmp)) {
-        Sprintf(buf, "Look up information about %s",
-                (otmp->quan > 1L) ? "these" : "this");
+        Sprintf(buf, _("Look up information about %s"),
+                (otmp->quan > 1L) ? _("these") : _("this"));
         ia_addmenu(win, IA_WHATIS_OBJ, '/', buf);
     }
 
-    Sprintf(buf, "Do what with %s?", the(cxname(otmp)));
+    Sprintf(buf, _("Do what with %s?"), the(cxname(otmp)));
     end_menu(win, buf);
 
     n = select_menu(win, PICK_ONE, &selected);

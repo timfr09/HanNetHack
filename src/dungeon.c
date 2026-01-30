@@ -6,6 +6,7 @@
 #include "hack.h"
 #include "dgn_file.h"
 #include "dlb.h"
+#include "i18n.h"
 
 #define DUNGEON_FILE "dungeon.lua"
 
@@ -1559,7 +1560,7 @@ earth_sense(void)
 
     for (otmp = svl.level.buriedobjlist; otmp; otmp = otmp->nobj)
         if (u_at(otmp->ox, otmp->oy)) {
-            You("sense something below your %s.", makeplural(body_part(FOOT)));
+            You(_("sense something below your %s."), makeplural(body_part(FOOT)));
             return;
         }
 }
@@ -1714,28 +1715,28 @@ ceiling(coordxy x, coordxy y)
      * see check_special_room()
      */
     if (*in_rooms(x, y, VAULT))
-        what = "vault's ceiling";
+        what = _("vault's ceiling");
     else if (*in_rooms(x, y, TEMPLE))
-        what = "temple's ceiling";
+        what = _("temple's ceiling");
     else if (*in_rooms(x, y, SHOPBASE))
-        what = "shop's ceiling";
+        what = _("shop's ceiling");
     else if (Is_waterlevel(&u.uz))
         /* water plane has no surface; its air bubbles aren't below sky */
-        what = "water above";
+        what = _("water above");
     else if (IS_AIR(lev->typ))
-        what = "sky";
+        what = _("sky");
     else if (Is_firelevel(&u.uz))
-        what = "flames above";
+        what = _("flames above");
     else if (In_quest(&u.uz))
         /* just in case; try to avoid in caller if you can */
-        what = "expanse above";
+        what = _("expanse above");
     else if (Underwater)
-        what = "water's surface";
+        what = _("water's surface");
     else if ((IS_ROOM(lev->typ) && !Is_earthlevel(&u.uz))
              || IS_WALL(lev->typ) || IS_DOOR(lev->typ) || lev->typ == SDOOR)
-        what = "ceiling";
+        what = _("ceiling");
     else
-        what = "rock cavern";
+        what = _("rock cavern");
 
     return what;
 }
@@ -1748,37 +1749,37 @@ surface(coordxy x, coordxy y)
 
     if (u_at(x, y) && u.uswallow && is_animal(u.ustuck->data))
         /* 'husk' is iffy but maw is wrong for 't' class */
-        return digests(u.ustuck->data) ? "maw"
-               : enfolds(u.ustuck->data) ? "husk"
-                 : "nonesuch"; /* can't happen (fingers crossed...) */
+        return digests(u.ustuck->data) ? _("maw")
+               : enfolds(u.ustuck->data) ? _("husk")
+                 : _("nonesuch"); /* can't happen (fingers crossed...) */
     else if (IS_AIR(levtyp))
-        return Is_waterlevel(&u.uz) ? "air bubble"
-                                    : (levtyp == CLOUD) ? "cloud" : "air";
+        return Is_waterlevel(&u.uz) ? _("air bubble")
+                                    : (levtyp == CLOUD) ? _("cloud") : _("air");
     else if (is_pool(x, y))
         return (Underwater && !Is_waterlevel(&u.uz))
-            ? "bottom" : hliquid("water");
+            ? _("bottom") : hliquid("water");
     else if (is_ice(x, y))
-        return "ice";
+        return _("ice");
     else if (is_lava(x, y))
         return hliquid("lava");
     else if (lev->typ == DRAWBRIDGE_DOWN)
-        return "bridge";
+        return _("bridge");
     else if (IS_ALTAR(levtyp))
-        return "altar";
+        return _("altar");
     else if (IS_GRAVE(levtyp))
-        return "headstone";
+        return _("headstone");
     else if (IS_FOUNTAIN(levtyp))
-        return "fountain";
+        return _("fountain");
     else if (On_stairs(x, y))
-        return "stairs";
+        return _("stairs");
     else if (IS_WALL(levtyp) || levtyp == SDOOR)
-        return "wall"; /* 'surface' during Passes_walls */
+        return _("wall"); /* 'surface' during Passes_walls */
     else if (IS_DOOR(levtyp))
-        return "doorway"; /* even for closed door */
+        return _("doorway"); /* even for closed door */
     else if (IS_ROOM(levtyp) && !Is_earthlevel(&u.uz))
-        return "floor";
+        return _("floor");
     else
-        return "ground";
+        return _("ground");
 }
 
 /*
@@ -2235,15 +2236,15 @@ br_string(int type)
 {
     switch (type) {
     case BR_PORTAL:
-        return "Portal";
+        return _("Portal");
     case BR_NO_END1:
-        return "Connection";
+        return _("Connection");
     case BR_NO_END2:
-        return "One way stair";
+        return _("One way stair");
     case BR_STAIR:
-        return "Stair";
+        return _("Stair");
     }
-    return " (unknown)";
+    return _(" (unknown)");
 }
 
 staticfn char
@@ -2360,7 +2361,7 @@ print_dungeon(boolean bymenu, schar *rlev, xint16 *rdgn)
         menu_item *selected;
         int idx;
 
-        end_menu(win, "Level teleport to where:");
+        end_menu(win, _("Level teleport to where:"));
         n = select_menu(win, PICK_ONE, &selected);
         destroy_nhwindow(win);
         if (n > 0) {
@@ -2380,7 +2381,7 @@ print_dungeon(boolean bymenu, schar *rlev, xint16 *rdgn)
         if (br->end1.dnum == svn.n_dgns) {
             if (first) {
                 putstr(win, 0, "");
-                putstr(win, 0, "Floating branches");
+                putstr(win, 0, _("Floating branches"));
                 first = FALSE;
             }
             Sprintf(buf, "   %s to %s", br_string(br->type),
@@ -2417,7 +2418,7 @@ print_dungeon(boolean bymenu, schar *rlev, xint16 *rdgn)
                  || Is_firelevel(&u.uz) || Is_airlevel(&u.uz)
                  || Is_qstart(&u.uz) || at_dgn_entrance("The Quest")
                  || Is_knox(&u.uz))
-            Strcpy(buf, "No portal found.");
+            Strcpy(buf, _("No portal found."));
 
         /* only give output if we found a portal or expected one and didn't */
         if (*buf) {
@@ -2485,7 +2486,7 @@ print_level_annotation(void)
     const char *annotation;
 
     if ((annotation = get_annotation(&u.uz)) != 0)
-        You("remember this level as %s.", annotation);
+        You(_("remember this level as %s."), annotation);
 }
 
 /* ask user to annotate level lev.
@@ -2509,7 +2510,7 @@ query_annotation(d_level *lev)
     if (mptr->custom) {
         char tmpbuf[BUFSZ];
 
-        Sprintf(tmpbuf, "Replace annotation \"%.30s%s\" with?", mptr->custom,
+        Sprintf(tmpbuf, _("Replace annotation \"%.30s%s\" with?"), mptr->custom,
                 (strlen(mptr->custom) > 30) ? "..." : "");
         getlin(tmpbuf, nbuf);
     } else
@@ -2518,7 +2519,7 @@ query_annotation(d_level *lev)
         char qbuf[QBUFSZ], lbuf[QBUFSZ]; /* level description */
 
         if (!lev || on_level(&u.uz, lev)) {
-            Strcpy(lbuf, "this dungeon level");
+            Strcpy(lbuf, _("this dungeon level"));
         } else {
             int dflgs = (lev->dnum == u.uz.dnum) ? 0 : 2;
             d_level save_uz = u.uz;
@@ -2534,7 +2535,7 @@ query_annotation(d_level *lev)
                values will end up with one anyway; remove it */
             (void) trimspaces(lbuf);
         }
-        Snprintf(qbuf, sizeof qbuf, "What do you want to call %s?", lbuf);
+        Snprintf(qbuf, sizeof qbuf, _("What do you want to call %s?"), lbuf);
         getlin(qbuf, nbuf);
     }
 
@@ -3385,16 +3386,16 @@ br_string2(branch *br)
 
     switch (br->type) {
     case BR_PORTAL:
-        return closed_portal ? "Sealed portal" : "Portal";
+        return closed_portal ? _("Sealed portal") : _("Portal");
     case BR_NO_END1:
-        return "Connection";
+        return _("Connection");
     case BR_NO_END2:
-        return br->end1_up ? "One way stairs up" : "One way stairs down";
+        return br->end1_up ? _("One way stairs up") : _("One way stairs down");
     case BR_STAIR:
-        return br->end1_up ? "Stairs up" : "Stairs down";
+        return br->end1_up ? _("Stairs up") : _("Stairs down");
     }
 
-    return "(unknown)";
+    return _("(unknown)");
 }
 
 /* get the name of an endgame level; topten.c does something similar */
@@ -3406,25 +3407,25 @@ endgamelevelname(char *outbuf, int indx)
     *outbuf = '\0';
     switch (indx) {
     case -5:
-        Strcpy(outbuf, "Astral Plane");
+        Strcpy(outbuf, _("Astral Plane"));
         break;
     case -4:
-        planename = "Water";
+        planename = _("Water");
         break;
     case -3:
-        planename = "Fire";
+        planename = _("Fire");
         break;
     case -2:
-        planename = "Air";
+        planename = _("Air");
         break;
     case -1:
-        planename = "Earth";
+        planename = _("Earth");
         break;
     }
     if (planename)
-        Sprintf(outbuf, "Plane of %s", planename);
+        Sprintf(outbuf, _("Plane of %s"), planename);
     else if (!*outbuf)
-        Sprintf(outbuf, "unknown plane #%d", indx);
+        Sprintf(outbuf, _("unknown plane #%d"), indx);
     return outbuf;
 }
 
@@ -3630,42 +3631,42 @@ print_mapseen(
     /* we assume that these are mutually exclusive */
     *buf = '\0';
     if (mptr->flags.oracle) {
-        Sprintf(buf, "%sOracle of Delphi.", PREFIX);
+        Sprintf(buf, _("%sOracle of Delphi."), PREFIX);
     } else if (In_sokoban(&mptr->lev)) {
-        Sprintf(buf, "%s%s.", PREFIX,
-                mptr->flags.sokosolved ? "Solved" : "Unsolved");
+        Sprintf(buf, _("%s%s."), PREFIX,
+                mptr->flags.sokosolved ? _("Solved") : _("Unsolved"));
     } else if (mptr->flags.bigroom) {
-        Sprintf(buf, "%sA very big room.", PREFIX);
+        Sprintf(buf, _("%sA very big room."), PREFIX);
     } else if (mptr->flags.roguelevel) {
-        Sprintf(buf, "%sA primitive area.", PREFIX);
+        Sprintf(buf, _("%sA primitive area."), PREFIX);
     } else if (on_level(&mptr->lev, &qstart_level)) {
-        Sprintf(buf, "%sHome%s.", PREFIX,
-                mptr->flags.notreachable ? " (no way back...)" : "");
+        Sprintf(buf, _("%sHome%s."), PREFIX,
+                mptr->flags.notreachable ? _(" (no way back...)") : "");
         if (u.uevent.qcompleted)
-            Sprintf(buf, "%sCompleted quest for %s.", PREFIX, ldrname());
+            Sprintf(buf, _("%sCompleted quest for %s."), PREFIX, ldrname());
         else if (mptr->flags.questing)
-            Sprintf(buf, "%sGiven quest by %s.", PREFIX, ldrname());
+            Sprintf(buf, _("%sGiven quest by %s."), PREFIX, ldrname());
     } else if (mptr->flags.ludios) {
         /* presence of the ludios branch in #overview output indicates that
            the player has made it onto the level; presence of this annotation
            indicates that the fort's entrance has been seen (or mapped) */
-        Sprintf(buf, "%sFort Ludios.", PREFIX);
+        Sprintf(buf, _("%sFort Ludios."), PREFIX);
     } else if (mptr->flags.castle) {
-        Snprintf(buf, sizeof buf, "%sThe castle%s.", PREFIX,
+        Snprintf(buf, sizeof buf, _("%sThe castle%s."), PREFIX,
                 tunesuffix(mptr, tmpbuf, sizeof tmpbuf));
     } else if (mptr->flags.valley) {
-        Sprintf(buf, "%sValley of the Dead.", PREFIX);
+        Sprintf(buf, _("%sValley of the Dead."), PREFIX);
     } else if (mptr->flags.vibrating_square) {
-        Sprintf(buf, "%sGateway to Moloch's Sanctum.", PREFIX);
+        Sprintf(buf, _("%sGateway to Moloch's Sanctum."), PREFIX);
     } else if (mptr->flags.msanctum) {
-        Sprintf(buf, "%sMoloch's Sanctum.", PREFIX);
+        Sprintf(buf, _("%sMoloch's Sanctum."), PREFIX);
     }
     if (*buf) {
         add_menu_str(win, buf);
     }
     /* quest entrance is not mutually-exclusive with bigroom or rogue level */
     if (mptr->flags.quest_summons) {
-        Sprintf(buf, "%sSummoned by %s.", PREFIX, ldrname());
+        Sprintf(buf, _("%sSummoned by %s."), PREFIX, ldrname());
         add_menu_str(win, buf);
     }
 
@@ -3693,7 +3694,7 @@ print_mapseen(
             if (bp->bonesknown || wizard || final > 0)
                 ++kncnt;
         if (kncnt) {
-            Sprintf(buf, "%s%s", PREFIX, "Final resting place for");
+            Sprintf(buf, "%s%s", PREFIX, _("Final resting place for"));
             add_menu_str(win, buf);
             if (died_here) {
                 /* disclosure occurs before bones creation, so listing dead

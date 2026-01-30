@@ -3854,9 +3854,11 @@ msgstr "주기적으로 변신 중"
 msgid "on the map"
 msgstr "지도에"
 
-# hallucinating 수정
+# insight.c - "You are hallucinating" 조합
+# 기존: "환각 중" → "당신은 환각 중" (OK, 완전)
+# 수정: "환각 상태" (일관성)
 msgid "hallucinating"
-msgstr "환각 중"
+msgstr "환각 상태"
 
 # wearing a blindfold 수정
 msgid "wearing a blindfold"
@@ -4213,9 +4215,11 @@ msgstr "무언가에게 반사를 보여주기"
 msgid "Autopickup "
 msgstr "자동 줍기 "
 
-# polyself.c - "You are turning into slime". 상태 변화
+# insight.c - "You are turning into slime" 조합
+# 기존: "슬라임으로 변하다" → 기본형 동사
+# 수정: "슬라임으로 변하는 중" → "당신은 슬라임으로 변하는 중"
 msgid "turning into slime"
-msgstr "슬라임으로 변하다"
+msgstr "슬라임으로 변하는 중"
 
 # artifact.c - 쌍수 무기. "a longsword and two weapons"
 msgid " and two weapons"
@@ -5490,9 +5494,11 @@ msgstr "%s 경고"
 msgid "shallow sea"
 msgstr "얕은 바다"
 
-# insight.c:1589 - 언데드 경고 능력
+# insight.c:1589 - "You are warned of undead" 조합
+# 기존: "언데드 경고" → "당신은 언데드 경고" (불완전)
+# 수정: "언데드에 대해 경고받고 있다"
 msgid "warned of undead"
-msgstr "언데드 경고"
+msgstr "언데드에 대해 경고받고 있다"
 
 # pager.c:130 - 아무것도 보이지 않을 때
 msgid "nothing?"
@@ -6279,4 +6285,69 @@ msgstr "천장에 매달릴 수 있다"
 # 기존: "순간이동 제어" → "당신은 순간이동 제어" (불완전)
 msgid "teleport control"
 msgstr "순간이동 제어 능력이 있다"
+
+# ============================================================
+# 추가 you_are() 조합 수정
+# ============================================================
+
+# insight.c - "You are nauseated"
+# 기존: "모독된" (완전 오역! nauseated = 메스꺼움, 모독 = desecrated)
+# 수정: "메스꺼운 상태"
+msgid "nauseated"
+msgstr "메스꺼운 상태"
+
+# insight.c - "You are deaf"
+# 기존: "귀머거리" (현대 한국어에서 부적절한 표현)
+# 수정: "귀가 안 들린다"
+msgid "deaf"
+msgstr "귀가 안 들린다"
+
+# insight.c - "You are underwater"
+# 기존: "물 속에서" → "당신은 물 속에서" (불완전)
+# 수정: "물 속에 있다"
+msgid "underwater"
+msgstr "물 속에 있다"
+
+# insight.c - "You are buried"
+# 기존: "매장된" → "당신은 매장된" (불완전)
+# 수정: "매장된 상태"
+msgid "buried"
+msgstr "매장된 상태"
+
+# insight.c - "You are turning to stone"
+# 기존: "돌로 변했다." → 마침표 일관성 없음
+# 수정: "돌로 변하는 중"
+msgid "turning to stone"
+msgstr "돌로 변하는 중"
+
+# insight.c - "You are terminally sick from illness"
+# 기존: "병으로 치명적으로 아픔" → 어색
+# 수정: "질병으로 위독하다"
+msgid "terminally sick from illness"
+msgstr "질병으로 위독하다"
+
+# insight.c - "You are terminally sick from food poisoning"
+# 기존: "식중독으로 치명적으로 아픔" → 어색
+# 수정: "식중독으로 위독하다"
+msgid "terminally sick from food poisoning"
+msgstr "식중독으로 위독하다"
+
+# insight.c - "You are not wearing any armor"
+# 기존: "갑옷을 입고 있지 않다." → 마침표 있음
+# 수정: "갑옷을 입고 있지 않다" (마침표 제거 - enl_msg가 추가함)
+msgid "not wearing any armor"
+msgstr "갑옷을 입고 있지 않다"
+
+# insight.c - "You are wielding two weapons at once"
+# 기존: "한 번에 두 무기를 휘두르기" → 명사형
+# 수정: "두 무기를 동시에 휘두르고 있다"
+msgid "wielding two weapons at once"
+msgstr "두 무기를 동시에 휘두르고 있다"
+
+# insight.c - "You are not subject to light-induced blindness"
+# 기존: "빛으로 인한 실명에 면역" → 불완전
+# 수정: "빛으로 인한 실명에 면역이다"
+msgid "not subject to light-induced blindness"
+msgstr "빛으로 인한 실명에 면역이다"
+
 

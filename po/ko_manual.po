@@ -6070,3 +6070,9 @@ msgstr "부유 중"
 # enl_msg(youtoo, are, were, "flying", from_what(FLYING))
 msgid "flying"
 msgstr "비행 중"
+
+# insight.c - "You are warned" 조합
+# 기존: "탄 " (오역) → "경고받음"
+# you_are("warned", from_what(WARNING))
+msgid "warned"
+msgstr "경고받음"

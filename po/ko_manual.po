@@ -6054,3 +6054,19 @@ msgstr "오른"
 # insight.c:577에서 사용
 msgid "left"
 msgstr "왼"
+
+# ============================================================
+# insight.c - 상태 표시 조합 오역 수정
+# ============================================================
+
+# insight.c - "You are levitating" 조합
+# 기존: "쏘는 듯한" (완전 오역!) → "부유 중"
+# enl_msg(youtoo, are, were, "levitating", from_what(LEVITATION))
+msgid "levitating"
+msgstr "부유 중"
+
+# insight.c - "You are flying" 조합
+# 기존: "날기 시작했다." (문맥 부적절) → "비행 중"
+# enl_msg(youtoo, are, were, "flying", from_what(FLYING))
+msgid "flying"
+msgstr "비행 중"

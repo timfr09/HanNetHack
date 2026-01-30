@@ -56,7 +56,7 @@ staticfn boolean blocked_boulder(int, int);
  *      responsible for the theft of the Amulet from Marduk, the Creator.
  *      Moloch is unaligned.
  */
-static const char *const Moloch = "Moloch";
+static const char *const Moloch = N_("Moloch");
 
 static const char *const godvoices[] = {
     N_("booms out"), N_("thunders"), N_("rings out"), N_("booms"),
@@ -2549,7 +2549,7 @@ align_gname(aligntyp alignment)
     }
     if (*gnam == '_')
         ++gnam;
-    return gnam;
+    return _(gnam);
 }
 
 static const char *const hallu_gods[] = {
@@ -2604,7 +2604,7 @@ halu_gname(aligntyp alignment)
         break;
     case 6:
     case 7:
-        gnam = _(hallu_gods[rn2_on_display_rng(SIZE(hallu_gods))]);
+        gnam = hallu_gods[rn2_on_display_rng(SIZE(hallu_gods))];
         break;
     case 8:
         gnam = Moloch;
@@ -2614,11 +2614,11 @@ halu_gname(aligntyp alignment)
     }
     if (!gnam) {
         impossible("No random god name?");
-        gnam = _("your Friend the Computer"); /* Paranoia */
+        gnam = N_("your Friend the Computer"); /* Paranoia */
     }
     if (*gnam == '_')
         ++gnam;
-    return gnam;
+    return _(gnam);
 }
 
 /* deity's title */

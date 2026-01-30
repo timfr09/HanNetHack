@@ -534,19 +534,35 @@ enl_msg(prefix, present_verb, past_verb, suffix, ps);
 
 ### 9.2 처리 방법
 
-**빈 문자열로 번역**:
+**제로 폭 공백(Zero-Width Space, U+200B)으로 번역**:
 
 ```
 msgid "are "
-msgstr ""
+msgstr "​"   # ← 제로 폭 공백 (눈에 안 보임)
 ```
+
+**중요**: 빈 문자열(`""`)은 gettext에서 영어 원문으로 폴백됨!
+반드시 제로 폭 공백(​)을 사용해야 함.
 
 이유: 한국어는 동사가 문장 끝에 옴.
 의미는 suffix에서 완성.
 
-### 9.3 주의
+### 9.3 동사 접미사 처리
 
-빈 문자열이 **정상**! 반드시 주석 필요.
+영어 복수형/시제 접미사도 제로 폭 공백 사용:
+
+| 접미사 | 용도 | 번역 |
+|--------|------|------|
+| `"s"` | 복수형/3인칭 단수 (skills, contains) | `"​"` |
+| `"ed"` | 과거형 (prayed, contained) | `"​"` |
+| `"es"` | 복수형 (wishes) | `"​"` |
+| `"ing"` | 진행형/명사형 (gleaming) | `"기"` |
+
+**주의**: `"ing"` → `"기"`는 특별 처리 (빛나 + 기 = 빛나기)
+
+### 9.4 주의
+
+제로 폭 공백이 **정상**! 반드시 주석 필요.
 
 ---
 
@@ -569,10 +585,11 @@ msgstr ""
 
 ```
 # ============================================================
-# [동사 접두어] you_are() 매크로용
-# 한국어는 동사가 끝에 오므로 빈 문자열이 정상
+# [조합 메시지] 동사 접두어 - be동사 (are/were/was)
+# insight.c - you_are() 매크로에서 사용
+# 한국어는 동사가 끝에 오므로 제로 폭 공백 사용
 # 예: "You are swimming" → "당신은 수영 중"
-# 주의: 빈 문자열이 정상! 오역 아님!
+# 주의: 빈 문자열은 영어로 폴백됨! 제로 폭 공백 필수!
 # ============================================================
 ```
 
@@ -979,7 +996,43 @@ invalid multibyte sequence
 
 ## 17. 유용한 명령어 모음
 
-### 17.1 검색
+### 17.1 번역 도구 (translate-tool.sh)
+
+번역 관리를 위한 통합 도구:
+
+```bash
+# 번역 통계
+./translate-tool.sh stats
+
+# 문자열 검색
+./translate-tool.sh search "검색어"
+
+# 조합 패턴 확인
+./translate-tool.sh combo
+
+# 조합 패턴 주석 검사
+./translate-tool.sh combo-check
+
+# 동사 접두어 번역 확인
+./translate-tool.sh verb-prefix
+
+# from_what() 패턴 확인
+./translate-tool.sh from-what
+
+# 잠재적 오류 검색
+./translate-tool.sh wrong
+
+# 번역 형식 검증
+./translate-tool.sh validate
+
+# 조사 패턴 검사
+./translate-tool.sh postpos-check
+
+# 번역 빌드 (merge + compile)
+./translate-tool.sh build
+```
+
+### 17.2 검색
 
 ```bash
 # 소스 검색
@@ -995,7 +1048,7 @@ grep 'pline("' ../src/*.c | grep -v '_('
 grep -A2 'msgid "문자열"' ko.po
 ```
 
-### 17.2 통계
+### 17.3 통계
 
 ```bash
 # 전체 상태
@@ -1011,7 +1064,7 @@ msgattrib --untranslated ko.po | grep -c "^msgid"
 grep -c "^msgid " ko.po
 ```
 
-### 17.3 편집
+### 17.4 편집
 
 ```bash
 # PO 업데이트
@@ -1027,7 +1080,7 @@ msgattrib --untranslated ko.po > untranslated.po
 msgattrib --only-fuzzy ko.po > fuzzy.po
 ```
 
-### 17.4 빌드
+### 17.5 빌드
 
 ```bash
 # POT 생성

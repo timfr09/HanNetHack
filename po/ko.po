@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 09:37+0900\n"
+"POT-Creation-Date: 2026-01-31 09:51+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -271,10 +271,11 @@ msgid "those"
 msgstr "그것들"
 
 #: ../src/apply.c:279 ../src/apply.c:438 ../src/do.c:2015 ../src/do.c:2411
-#: ../src/eat.c:2002 ../src/insight.c:431 ../src/insight.c:763
-#: ../src/insight.c:1360 ../src/insight.c:1495 ../src/insight.c:1809
-#: ../src/insight.c:1896 ../src/invent.c:3766 ../src/invent.c:5513
-#: ../src/read.c:1662 ../src/shk.c:687 ../src/steed.c:637 ../src/timeout.c:1614
+#: ../src/eat.c:2002 ../src/insight.c:431 ../src/insight.c:538
+#: ../src/insight.c:763 ../src/insight.c:1214 ../src/insight.c:1360
+#: ../src/insight.c:1495 ../src/insight.c:1809 ../src/insight.c:1896
+#: ../src/invent.c:3766 ../src/invent.c:5513 ../src/read.c:1662
+#: ../src/shk.c:687 ../src/steed.c:637 ../src/timeout.c:1614
 #: ../src/topten.c:1001 ../src/trap.c:5846 ../src/uhitm.c:6214
 #: ../src/wield.c:935 ../src/wield.c:956
 msgid "is"
@@ -284,17 +285,17 @@ msgstr "이다"
 #: ../src/apply.c:1359 ../src/apply.c:2645 ../src/apply.c:2768
 #: ../src/artifact.c:969 ../src/artifact.c:1429 ../src/artifact.c:2115
 #: ../src/artifact.c:2188 ../src/detect.c:1224 ../src/do.c:871 ../src/do.c:2411
-#: ../src/eat.c:3692 ../src/engrave.c:829 ../src/insight.c:1398
-#: ../src/insight.c:1457 ../src/insight.c:2111 ../src/invent.c:3766
-#: ../src/invent.c:4240 ../src/invent.c:5513 ../src/mon.c:5743
-#: ../src/pickup.c:1696 ../src/pickup.c:2586 ../src/pickup.c:2977
-#: ../src/pickup.c:3649 ../src/potion.c:2655 ../src/potion.c:2689
-#: ../src/pray.c:1179 ../src/read.c:1145 ../src/read.c:1598 ../src/steal.c:799
-#: ../src/timeout.c:341 ../src/timeout.c:1614 ../src/trap.c:274
-#: ../src/trap.c:283 ../src/trap.c:389 ../src/trap.c:392 ../src/trap.c:394
-#: ../src/trap.c:5846 ../src/uhitm.c:1897 ../src/uhitm.c:6214
-#: ../src/weapon.c:870 ../src/wield.c:763 ../src/wield.c:1052 ../src/worn.c:979
-#: ../src/zap.c:2232 ../src/zap.c:2237
+#: ../src/eat.c:3692 ../src/engrave.c:829 ../src/insight.c:1097
+#: ../src/insight.c:1398 ../src/insight.c:1457 ../src/insight.c:2111
+#: ../src/invent.c:3766 ../src/invent.c:4240 ../src/invent.c:5513
+#: ../src/mon.c:5743 ../src/pickup.c:1696 ../src/pickup.c:2586
+#: ../src/pickup.c:2977 ../src/pickup.c:3649 ../src/potion.c:2655
+#: ../src/potion.c:2689 ../src/pray.c:1179 ../src/read.c:1145
+#: ../src/read.c:1598 ../src/steal.c:799 ../src/timeout.c:341
+#: ../src/timeout.c:1614 ../src/trap.c:274 ../src/trap.c:283 ../src/trap.c:389
+#: ../src/trap.c:392 ../src/trap.c:394 ../src/trap.c:5846 ../src/uhitm.c:1897
+#: ../src/uhitm.c:6214 ../src/weapon.c:870 ../src/wield.c:763
+#: ../src/wield.c:1052 ../src/worn.c:979 ../src/zap.c:2232 ../src/zap.c:2237
 msgid "are"
 msgstr "이다"
 
@@ -554,7 +555,8 @@ msgid "others"
 msgstr "다른 것들"
 
 #: ../src/apply.c:666 ../src/detect.c:2396 ../src/detect.c:2400
-#: ../src/insight.c:1681
+#: ../src/insight.c:344 ../src/insight.c:350 ../src/insight.c:356
+#: ../src/insight.c:545 ../src/insight.c:1681 ../src/insight.c:3440
 msgid " and"
 msgstr " 그리고"
 
@@ -1243,7 +1245,7 @@ msgstr "깜빡이다"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/apply.c:1598 ../src/iactions.c:61 ../src/iactions.c:362
-#: ../src/insight.c:1392 ../src/trap.c:389
+#: ../src/insight.c:1300 ../src/insight.c:1392 ../src/trap.c:389
 #, c-format
 msgid "%s %s %s"
 msgstr "%s %s %s"
@@ -3129,13 +3131,14 @@ msgstr "%s%s %s 중독됐다!"
 msgid "The "
 msgstr "그 "
 
-#: ../src/attrib.c:333 ../src/insight.c:1399 ../src/insight.c:1458
+#: ../src/attrib.c:333 ../src/insight.c:1097 ../src/insight.c:1399
+#: ../src/insight.c:1458
 msgid "were"
 msgstr "은"
 
-#: ../src/attrib.c:333 ../src/insight.c:431 ../src/insight.c:763
-#: ../src/insight.c:1360 ../src/insight.c:1495 ../src/insight.c:1809
-#: ../src/insight.c:1896
+#: ../src/attrib.c:333 ../src/insight.c:431 ../src/insight.c:538
+#: ../src/insight.c:763 ../src/insight.c:1214 ../src/insight.c:1360
+#: ../src/insight.c:1495 ../src/insight.c:1809 ../src/insight.c:1896
 msgid "was"
 msgstr "은"
 
@@ -3475,7 +3478,7 @@ msgstr "튜토리얼"
 msgid "Dlvl"
 msgstr "던전레벨"
 
-#: ../src/botl.c:473
+#: ../src/botl.c:473 ../src/insight.c:603
 #, fuzzy, c-format
 msgid "level %d"
 msgstr "%s 레벨 %d."
@@ -5177,7 +5180,7 @@ msgstr "%d개의 비밀 통로"
 msgid "a secret corridor"
 msgstr "비밀 통로"
 
-#: ../src/detect.c:1842 ../src/detect.c:1858
+#: ../src/detect.c:1842 ../src/detect.c:1858 ../src/insight.c:1436
 msgid ", and "
 msgstr ", "
 
@@ -7242,7 +7245,7 @@ msgstr "%s{이/가} %s(이)라고 불림"
 
 # 한국어에는 정관사가 없으므로 빈 문자열로 처리
 #: ../src/do_name.c:1028 ../src/do_name.c:1198 ../src/dokick.c:1606
-#: ../src/end.c:208 ../src/end.c:218 ../src/read.c:2900
+#: ../src/end.c:208 ../src/end.c:218 ../src/insight.c:2901 ../src/read.c:2900
 msgid "the "
 msgstr " "
 
@@ -10020,7 +10023,7 @@ msgstr "%s 음식을 먹어서 %s %s{이/가} 미끄러워졌다."
 msgid "even more"
 msgstr "다시는 안 돼!"
 
-#: ../src/eat.c:1640 ../src/read.c:1390
+#: ../src/eat.c:1640 ../src/insight.c:1203 ../src/read.c:1390
 msgid "very"
 msgstr "매우"
 
@@ -13391,12 +13394,13 @@ msgstr "%s 가장자리에서 멈춘다."
 msgid "%s into that %s cloud?"
 msgstr "%s{이/가} %s 구름 속으로?"
 
-#: ../src/hack.c:2543 ../src/invent.c:4171 ../src/pager.c:278
+#: ../src/hack.c:2543 ../src/insight.c:3508 ../src/invent.c:4171
+#: ../src/pager.c:278
 msgid "poison gas"
 msgstr "독이 묻은 "
 
-#: ../src/hack.c:2543 ../src/invent.c:4171 ../src/mondata.c:1464
-#: ../src/pager.c:278
+#: ../src/hack.c:2543 ../src/insight.c:3508 ../src/invent.c:4171
+#: ../src/mondata.c:1464 ../src/pager.c:278
 msgid "vapor"
 msgstr "증기"
 
@@ -14440,7 +14444,7 @@ msgstr "큰"
 msgid "huge"
 msgstr "거대한"
 
-#: ../src/insight.c:190 ../src/insight.c:727
+#: ../src/insight.c:190 ../src/insight.c:727 ../src/insight.c:1295
 msgid "no"
 msgstr "아니오"
 
@@ -14512,6 +14516,35 @@ msgstr "%s에 걸림"
 msgid " in %s"
 msgstr " %s에"
 
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/insight.c:342
+#, fuzzy, c-format
+msgid " %ld day%s"
+msgstr "%ld %s%s"
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/insight.c:348
+#, fuzzy, c-format
+msgid " %ld hour%s"
+msgstr "%ld %s%s"
+
+#: ../src/insight.c:354
+#, fuzzy, c-format
+msgid " %ld minute%s"
+msgstr " 지뢰"
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/insight.c:360
+#, fuzzy, c-format
+msgid " %ld second%s"
+msgstr "%ld %s%s"
+
 #: ../src/insight.c:408
 msgid "Miscellaneous:"
 msgstr "기타 키:"
@@ -14573,9 +14606,93 @@ msgstr "총 경과 플레이 시간 "
 msgid "Background:"
 msgstr "땅"
 
+#: ../src/insight.c:485
+#, fuzzy, c-format
+msgid "%s%s%s%s form"
+msgstr "%s%s%s%s"
+
+#: ../src/insight.c:486 ../src/insight.c:521
+#, fuzzy
+msgid "currently "
+msgstr "현재"
+
+#: ../src/insight.c:487
+#, fuzzy
+msgid "in "
+msgstr "안에"
+
 # === insight.c status descriptions ===
 #: ../src/insight.c:500 ../src/obj_descr_i18n.c:429
 msgid "actually "
+msgstr "실제로 "
+
+#: ../src/insight.c:503
+#, fuzzy, c-format
+msgid "%s, level %d %s%s"
+msgstr "%s 레벨 %d."
+
+#: ../src/insight.c:506
+#, fuzzy, c-format
+msgid "%s, a level %d %s%s %s"
+msgstr "%s, 가격 %ld %s%s%s"
+
+#: ../src/insight.c:514
+#, fuzzy, c-format
+msgid " %s%s%s, %son a mission for %s"
+msgstr "%s{을/를} %s %s, %s 값을 내라!"
+
+#: ../src/insight.c:521 ../src/insight.c:1522 ../src/insight.c:1533
+#, fuzzy
+msgid "temporarily "
+msgstr "잠시 "
+
+#: ../src/insight.c:527
+#, fuzzy
+msgid "now "
+msgstr "이제"
+
+#: ../src/insight.c:527
+msgid "belatedly "
+msgstr ""
+
+#: ../src/insight.c:530
+#, fuzzy
+msgid "nominally "
+msgstr "정상적인"
+
+#: ../src/insight.c:538
+#, c-format
+msgid " who %s opposed by"
+msgstr ""
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/insight.c:540
+#, fuzzy, c-format
+msgid " %s (%s) and"
+msgstr "%s %s %s"
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/insight.c:543
+#, fuzzy, c-format
+msgid " %s (%s)%s"
+msgstr "%s %s %s"
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/insight.c:547
+#, fuzzy, c-format
+msgid " %s (%s)"
+msgstr "%s %s %s"
+
+# === insight.c status descriptions ===
+#: ../src/insight.c:561
+#, fuzzy, c-format
+msgid "actually %s"
 msgstr "실제로 "
 
 #: ../src/insight.c:566
@@ -14607,9 +14724,34 @@ msgstr "금속"
 msgid "on the %s level"
 msgstr "로그 레벨 "
 
+#: ../src/insight.c:608
+#, fuzzy
+msgid ", a primitive area"
+msgstr "%s원시적인 지역."
+
+#: ../src/insight.c:610
+#, fuzzy
+msgid ", a very big room"
+msgstr "%s 매우 따뜻하다."
+
+#: ../src/insight.c:611
+#, fuzzy, c-format
+msgid "in %s, on %s"
+msgstr "%s의 %s"
+
 #: ../src/insight.c:617
 msgid "just started your adventure"
 msgstr "모험을 막 시작했다"
+
+#: ../src/insight.c:620
+#, c-format
+msgid "the dungeon %ld turn%s ago"
+msgstr ""
+
+#: ../src/insight.c:623
+#, fuzzy
+msgid "entered "
+msgstr "바둑판 무늬"
 
 #: ../src/insight.c:630 ../src/insight.c:632
 msgid "It "
@@ -14687,6 +14829,11 @@ msgstr "%s 위로 이동한다."
 msgid "happened"
 msgstr "함정에 빠짐"
 
+#: ../src/insight.c:674
+#, c-format
+msgid "%-1ld experience point%s"
+msgstr ""
+
 #: ../src/insight.c:686
 #, c-format
 msgid " (%ld %smore experience needed for level %d)"
@@ -14695,6 +14842,15 @@ msgstr " (레벨 %3$d까지 %1$ld%2$s 경험치 필요)"
 #: ../src/insight.c:687 ../src/insight.c:1634
 msgid "less "
 msgstr "더 "
+
+#: ../src/insight.c:695
+#, c-format
+msgid "%ld%s"
+msgstr ""
+
+#: ../src/insight.c:696
+msgid " before end-of-game adjustments"
+msgstr ""
 
 # ============================================================
 # 인벤토리 메시지 (Inventory Messages)
@@ -14746,6 +14902,14 @@ msgstr "그것을 때렸다."
 #, c-format
 msgid "%d hit dice"
 msgstr ""
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/insight.c:753
+#, fuzzy, c-format
+msgid ", the %s possible"
+msgstr "%s %s%s 들어갔다!"
 
 #: ../src/insight.c:754
 msgid "best"
@@ -14829,6 +14993,42 @@ msgstr ""
 #, c-format
 msgid "Your %s "
 msgstr "당신의 %s "
+
+#: ../src/insight.c:892
+#, fuzzy
+msgid " ("
+msgstr ", "
+
+#: ../src/insight.c:892
+#, fuzzy
+msgid " (current; "
+msgstr "현재 "
+
+#: ../src/insight.c:894
+#, c-format
+msgid "%sbase:%s"
+msgstr ""
+
+#: ../src/insight.c:896 ../src/insight.c:901 ../src/insight.c:1433
+#: ../src/pager.c:496 ../src/pager.c:502 ../src/pager.c:508 ../src/pager.c:514
+#: ../src/pager.c:521 ../src/pager.c:527 ../src/pager.c:547
+msgid ", "
+msgstr ", "
+
+#: ../src/insight.c:899
+#, fuzzy, c-format
+msgid "%speak:%s"
+msgstr "%s{이/가} 말한다."
+
+#: ../src/insight.c:904
+#, fuzzy, c-format
+msgid "%s%slimit:%s"
+msgstr "%s%s{이/가} 맞았다%s"
+
+#: ../src/insight.c:906
+#, fuzzy
+msgid "innate "
+msgstr "불행히도, %s"
 
 #: ../src/insight.c:940
 #, fuzzy
@@ -14986,6 +15186,16 @@ msgstr "보이지 않는 생물"
 msgid "%s by %s"
 msgstr "%s by %s"
 
+#: ../src/insight.c:1094
+#, fuzzy
+msgid " and got totally digested"
+msgstr "%s{이/가} 당신을 완전히 소화시켰다!"
+
+#: ../src/insight.c:1096
+#, fuzzy, c-format
+msgid " and %s being digested"
+msgstr "%s{이/가} 즉시 소화됐다!"
+
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
@@ -15069,9 +15279,57 @@ msgstr " 빠르게"
 msgid "not hungry"
 msgstr "배고프지 않음"
 
+#: ../src/insight.c:1182
+#, fuzzy
+msgid " from severe hunger"
+msgstr " %s 열기로"
+
+#: ../src/insight.c:1184
+#, fuzzy
+msgid " due to starvation"
+msgstr "굶주림으로 죽었다."
+
+#: ../src/insight.c:1197
+#, fuzzy
+msgid "slightly"
+msgstr "약간 "
+
+#: ../src/insight.c:1200
+#, fuzzy
+msgid "moderately"
+msgstr "모독된"
+
+#: ../src/insight.c:1206
+#, fuzzy
+msgid "extremely"
+msgstr "매우 많이 바랬다"
+
+#: ../src/insight.c:1209
+#, fuzzy
+msgid "not possible"
+msgstr "볼 수 없게"
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/insight.c:1214
+#, fuzzy, c-format
+msgid "; movement %s %s%s"
+msgstr "%s %s%s 들어갔다!"
+
+#: ../src/insight.c:1215
+#, fuzzy
+msgid " slowed"
+msgstr "벽"
+
 #: ../src/insight.c:1221 ../src/obj_descr_i18n.c:435
 msgid "unencumbered"
 msgstr "짐이 없음"
+
+#: ../src/insight.c:1234
+#, fuzzy, c-format
+msgid " due to your %s"
+msgstr "%s{이/가} %s에 융합되었다!"
 
 #: ../src/insight.c:1240 ../src/insight.c:1904 ../src/insight.c:1906
 msgid "did"
@@ -15087,6 +15345,11 @@ msgstr "갑옷을 입고 있지 않다."
 #: ../src/insight.c:1242
 msgid "not wearing any armor"
 msgstr "갑옷을 입고 있지 않다."
+
+#: ../src/insight.c:1273
+#, fuzzy
+msgid "wet towel"
+msgstr "다른 수건"
 
 #: ../src/insight.c:1277
 #, fuzzy, c-format
@@ -15115,6 +15378,11 @@ msgstr "볼 수 있다!"
 msgid "could have enhanced"
 msgstr "%s 위로 이동한다."
 
+#: ../src/insight.c:1333
+#, fuzzy
+msgid "restricted"
+msgstr "복구되었다"
+
 #: ../src/insight.c:1342 ../src/insight.c:1375
 #, c-format
 msgid "Your skill in %s "
@@ -15133,16 +15401,16 @@ msgstr "보조 무기는"
 msgid " limited by "
 msgstr " 제한됨: "
 
-#: ../src/insight.c:1350
+#: ../src/insight.c:1350 ../src/insight.c:1383
 #, c-format
 msgid "being %s"
 msgstr "%s 당하고 있다."
 
-#: ../src/insight.c:1352
+#: ../src/insight.c:1352 ../src/insight.c:1385
 msgid "having no skill"
 msgstr "기술이 없음"
 
-#: ../src/insight.c:1353 ../src/uhitm.c:1604
+#: ../src/insight.c:1353 ../src/insight.c:1386 ../src/uhitm.c:1604
 #, c-format
 msgid " with %s"
 msgstr " %s(으)로"
@@ -15170,6 +15438,16 @@ msgstr "당신은 %s."
 msgid "had"
 msgstr "가지고 있었습니다 "
 
+#: ../src/insight.c:1430
+#, fuzzy, c-format
+msgid " skill%s with %s%s%s%s%s"
+msgstr "%s{은/는} %s %s하지만 %s%s%s%s."
+
+#: ../src/insight.c:1438
+#, fuzzy
+msgid "two weapons"
+msgstr "%s 무기%s{으로/로} 아무것도 강제로 열 수 없다."
+
 #: ../src/insight.c:1456
 msgid "Your items "
 msgstr "발견한 물품"
@@ -15189,6 +15467,16 @@ msgstr "최종 속성:"
 #: ../src/insight.c:1478
 msgid "Attributes:"
 msgstr "속성:"
+
+#: ../src/insight.c:1487 ../src/pager.c:753
+msgid "aligned"
+msgstr "무정렬"
+
+# 점수
+#: ../src/insight.c:1494
+#, fuzzy, c-format
+msgid " %d"
+msgstr " S:%ld"
 
 #: ../src/insight.c:1495
 msgid "Your alignment "
@@ -15226,6 +15514,16 @@ msgstr "전기 저항"
 msgid "poison resistant"
 msgstr "독 저항"
 
+#: ../src/insight.c:1523
+#, fuzzy
+msgid "acid resistant"
+msgstr "산성 저항"
+
+#: ../src/insight.c:1526
+#, fuzzy
+msgid " protected from acid"
+msgstr "변신 생물로부터 보호"
+
 #: ../src/insight.c:1528
 msgid "level-drain resistant"
 msgstr "레벨 흡수 저항"
@@ -15234,6 +15532,11 @@ msgstr "레벨 흡수 저항"
 #: ../src/insight.c:1530
 msgid "immune to sickness"
 msgstr "질병 면역"
+
+#: ../src/insight.c:1534
+#, fuzzy
+msgid "petrification resistant"
+msgstr "분해 저항"
 
 #: ../src/insight.c:1538
 msgid "resisted"
@@ -15362,6 +15665,21 @@ msgstr "적외분홍"
 #: ../src/insight.c:1602 ../src/obj_descr_i18n.c:436
 msgid "sensing the presence of monsters"
 msgstr "몬스터의 존재를 감지하는 중"
+
+#: ../src/insight.c:1612
+#, fuzzy
+msgid " monsters when hitting them"
+msgstr "지도에 표시된 모든 괴물"
+
+#: ../src/insight.c:1615
+#, fuzzy
+msgid " (next hit only)"
+msgstr "당신에게 접근한다."
+
+#: ../src/insight.c:1617
+#, c-format
+msgid " (next %u hits)"
+msgstr ""
 
 #
 #: ../src/insight.c:1619
@@ -15569,6 +15887,21 @@ msgstr "극복하는"
 #: ../src/insight.c:1793
 msgid " reduced poison gas damage"
 msgstr ""
+
+#: ../src/insight.c:1803
+#, c-format
+msgid " impaired by metallic armor%s"
+msgstr ""
+
+#: ../src/insight.c:1804
+msgid ", mitigated by your robe"
+msgstr ""
+
+#
+#: ../src/insight.c:1806
+#, fuzzy
+msgid " enhanced by wearing a robe"
+msgstr "갑옷을 입고 있지 않다."
 
 #: ../src/insight.c:1809
 msgid "Your spell casting "
@@ -15827,6 +16160,52 @@ msgstr "기술이 없음"
 msgid "hiding"
 msgstr "숨어 있음"
 
+#: ../src/insight.c:2038
+#, fuzzy
+msgid "mimicking"
+msgstr "발로 차기"
+
+#: ../src/insight.c:2040 ../src/insight.c:3112
+#, fuzzy, c-format
+msgid " %s"
+msgstr " (%s"
+
+#: ../src/insight.c:2042
+#, fuzzy
+msgid " something"
+msgstr "무언가"
+
+#: ../src/insight.c:2044
+#, fuzzy
+msgid " someone"
+msgstr "몇 개의"
+
+# sit.c messages
+#: ../src/insight.c:2052
+#, fuzzy, c-format
+msgid " in the %s"
+msgstr "%s 위에 앉는다."
+
+#: ../src/insight.c:2057
+#, fuzzy, c-format
+msgid " underneath %s"
+msgstr "%s 아래"
+
+# sit.c messages
+#: ../src/insight.c:2060 ../src/insight.c:2069 ../src/pager.c:253
+#, c-format
+msgid " on the %s"
+msgstr "%s 위에 앉는다."
+
+#: ../src/insight.c:2066
+#, fuzzy, c-format
+msgid " in a %spit"
+msgstr " 상점에"
+
+#: ../src/insight.c:2067 ../src/trap.c:1857
+msgid "spiked "
+msgstr "뾰족한 바닥"
+
 #: ../src/insight.c:2081
 #, c-format
 msgid "are %s %s."
@@ -16063,6 +16442,11 @@ msgstr ""
 msgid "%ld times"
 msgstr " (%d%s 회)"
 
+#: ../src/insight.c:2279
+#, c-format
+msgid "Achievement%s:"
+msgstr ""
+
 #: ../src/insight.c:2301
 #, fuzzy
 msgid "are exploring"
@@ -16244,6 +16628,26 @@ msgstr "처치한 생물:"
 msgid "Rider"
 msgstr "습격자"
 
+#: ../src/insight.c:2906
+#, fuzzy
+msgid " (twice)"
+msgstr "두 번"
+
+#: ../src/insight.c:2909
+#, fuzzy
+msgid " (thrice)"
+msgstr "세 번"
+
+#: ../src/insight.c:2912
+#, fuzzy, c-format
+msgid " (%d times)"
+msgstr " (%d%s 회)"
+
+#: ../src/insight.c:2947
+#, fuzzy, c-format
+msgid "%ld creatures vanquished."
+msgstr "처치된 생물이 없다."
+
 #: ../src/insight.c:2964
 msgid "No creatures have been vanquished."
 msgstr "처치된 생물이 없다."
@@ -16287,6 +16691,21 @@ msgstr "멸종"
 
 #: ../src/insight.c:3096
 msgid " or extinct"
+msgstr " 또는 멸종"
+
+#: ../src/insight.c:3124
+#, fuzzy
+msgid " (extinct)"
+msgstr "멸종"
+
+#: ../src/insight.c:3130
+#, fuzzy, c-format
+msgid "%d species genocided."
+msgstr "학살당했다"
+
+#: ../src/insight.c:3134
+#, fuzzy, c-format
+msgid "%d species extinct."
 msgstr " 또는 멸종"
 
 #: ../src/insight.c:3146
@@ -16334,10 +16753,242 @@ msgstr "중간"
 msgid "gigantic"
 msgstr "초거대한"
 
+#: ../src/insight.c:3252
+#, fuzzy, c-format
+msgid "unknown size (%d)"
+msgstr "알 수 없는 차원 #%d"
+
+#: ../src/insight.c:3307
+#, fuzzy
+msgid ", tame"
+msgstr "길들여진"
+
+#: ../src/insight.c:3311
+#, c-format
+msgid "; hungry %ld; apport %d"
+msgstr ""
+
+#: ../src/insight.c:3316
+#, fuzzy
+msgid ", peaceful"
+msgstr "평화로운"
+
+# worm_parts
+#: ../src/insight.c:3325
+#, fuzzy
+msgid ", single segment"
+msgstr "전방 체절"
+
+#: ../src/insight.c:3329
+#, c-format
+msgid ", %d%s of %d segments"
+msgstr ""
+
+#: ../src/insight.c:3336
+#, fuzzy
+msgid ", shapechanger"
+msgstr "변신 생물로부터 보호"
+
+#: ../src/insight.c:3339
+#, fuzzy
+msgid ", eating"
+msgstr "먹는 중"
+
+#: ../src/insight.c:3348
+#, fuzzy
+msgid ", cancelled"
+msgstr "취소"
+
+#
+#: ../src/insight.c:3350 ../src/insight.c:3453
+#, fuzzy
+msgid ", confused"
+msgstr "혼란스러운"
+
+#: ../src/insight.c:3352 ../src/insight.c:3455
+#, fuzzy
+msgid ", blind"
+msgstr "%s{이/가} 당신의 눈을 멀게 했다!"
+
+#: ../src/insight.c:3354 ../src/insight.c:3464
+#, fuzzy
+msgid ", stunned"
+msgstr "기절한"
+
+#: ../src/insight.c:3356 ../src/pager.c:462
+msgid ", asleep"
+msgstr "잠들었다."
+
+#: ../src/insight.c:3360
+msgid ", paralyzed"
+msgstr ""
+
+#: ../src/insight.c:3363
+#, fuzzy
+msgid ", can't move"
+msgstr "앞이 안 보여!"
+
+#: ../src/insight.c:3367 ../src/pager.c:465
+msgid ", meditating"
+msgstr "구토 중"
+
+#: ../src/insight.c:3369
+msgid ", scared"
+msgstr ""
+
+#: ../src/insight.c:3371 ../src/insight.c:3481
+#, fuzzy
+msgid ", trapped"
+msgstr "함정에 빠짐"
+
+#: ../src/insight.c:3373 ../src/insight.c:3483
+#, fuzzy
+msgid ", fast"
+msgstr "빠름"
+
+#: ../src/insight.c:3374
+#, fuzzy
+msgid ", slow"
+msgstr "더 느리다."
+
+#: ../src/insight.c:3375
+msgid ", [? speed]"
+msgstr ""
+
+#: ../src/insight.c:3377 ../src/insight.c:3489
+#, fuzzy
+msgid ", invisible"
+msgstr "투명한 "
+
+#: ../src/insight.c:3391 ../src/pager.c:447
+msgid ", swallowing you"
+msgstr ", 당신을 삼키는 중"
+
+#: ../src/insight.c:3392 ../src/pager.c:448
+msgid ", engulfing you"
+msgstr ", 당신을 감싸는 중"
+
+#: ../src/insight.c:3395 ../src/pager.c:451
+msgid ", holding you"
+msgstr ", 당신을 붙잡는 중"
+
+#: ../src/insight.c:3396
+#, fuzzy
+msgid ", held by you"
+msgstr ", "
+
+#: ../src/insight.c:3399
+#, fuzzy
+msgid ", carrying you"
+msgstr "너무 많이 들고 있어서 점프할 수 없다!"
+
+# pager.c monster health descriptions
+#: ../src/insight.c:3409 ../src/insight.c:3476
+#, fuzzy, c-format
+msgid ", injured %s"
+msgstr "부상없음"
+
+#: ../src/insight.c:3413
+#, fuzzy
+msgid ", leashed"
+msgstr "목줄"
+
 #: ../src/insight.c:3420
 #, c-format
 msgid "Status of %s (%s, %s):  Level %d  HP %d(%d)  AC %d%s."
 msgstr "%s (%s, %s)의 상태: 레벨 %d HP %d(%d) AC %d%s."
+
+#: ../src/insight.c:3435
+#, fuzzy
+msgid ", dying from"
+msgstr ", 당신을 붙잡는 중"
+
+# 음식
+#: ../src/insight.c:3437
+#, fuzzy
+msgid " food poisoning"
+msgstr "식량"
+
+#
+#: ../src/insight.c:3441
+#, fuzzy
+msgid " illness"
+msgstr "돌로 변했다."
+
+#: ../src/insight.c:3445
+#, fuzzy
+msgid ", solidifying"
+msgstr "%s{이/가} 가라앉는다..."
+
+#: ../src/insight.c:3447
+#, fuzzy
+msgid ", becoming slimy"
+msgstr "투명화의 지팡이"
+
+#: ../src/insight.c:3449
+#, fuzzy
+msgid ", being strangled"
+msgstr "목이 졸리는 중"
+
+#: ../src/insight.c:3451
+#, fuzzy
+msgid ", nauseated"
+msgstr "모독된"
+
+#: ../src/insight.c:3459
+#, fuzzy
+msgid ", cover"
+msgstr "넘어서"
+
+#: ../src/insight.c:3460
+#, fuzzy
+msgid "ed by sticky goop"
+msgstr "가시가 당신에게 박혔다!"
+
+#: ../src/insight.c:3479
+#, fuzzy, c-format
+msgid ", slippery %s"
+msgstr "미끄러운 "
+
+#: ../src/insight.c:3483
+#, fuzzy
+msgid ", very fast"
+msgstr "매우 빠름"
+
+#: ../src/insight.c:3485
+#, fuzzy
+msgid ", concealed"
+msgstr "집중한다."
+
+#: ../src/insight.c:3487
+#, fuzzy
+msgid ", disguised"
+msgstr "%s{이/가} %s(으)로 변장함"
+
+#: ../src/insight.c:3492
+#, fuzzy
+msgid ", being digested by "
+msgstr "%s에 맞음"
+
+#: ../src/insight.c:3493
+#, fuzzy
+msgid ", engulfed by "
+msgstr "삼킨"
+
+#: ../src/insight.c:3495
+#, fuzzy
+msgid ", held by "
+msgstr "~에게 붙잡힘"
+
+#: ../src/insight.c:3497
+#, fuzzy
+msgid ", holding "
+msgstr ", 당신을 붙잡는 중"
+
+#: ../src/insight.c:3507 ../src/pager.c:277
+#, c-format
+msgid ", in a cloud of %s"
+msgstr "%s 구름에 둘러싸였다!"
 
 #: ../src/insight.c:3510
 #, c-format
@@ -24442,20 +25093,9 @@ msgstr "숨어 있음"
 msgid " under "
 msgstr "%s 아래에 숨었다."
 
-# sit.c messages
-#: ../src/pager.c:253
-#, c-format
-msgid " on the %s"
-msgstr "%s 위에 앉는다."
-
 #: ../src/pager.c:258
 msgid " in murky water"
 msgstr " 흐린 물 속에"
-
-#: ../src/pager.c:277
-#, c-format
-msgid ", in a cloud of %s"
-msgstr "%s 구름에 둘러싸였다!"
 
 #: ../src/pager.c:403
 msgid " (buried)"
@@ -24511,33 +25151,13 @@ msgstr "길들인 "
 msgid "peaceful "
 msgstr "평화로운 "
 
-#: ../src/pager.c:447
-msgid ", swallowing you"
-msgstr ", 당신을 삼키는 중"
-
-#: ../src/pager.c:448
-msgid ", engulfing you"
-msgstr ", 당신을 감싸는 중"
-
 #: ../src/pager.c:451
 msgid ", being held"
 msgstr ", 붙잡힌 상태"
 
-#: ../src/pager.c:451
-msgid ", holding you"
-msgstr ", 당신을 붙잡는 중"
-
 #: ../src/pager.c:459
 msgid ", can't move (paralyzed or sleeping or busy)"
 msgstr ", 움직일 수 없음 (마비됨 또는 수면 중 또는 바쁨)"
-
-#: ../src/pager.c:462
-msgid ", asleep"
-msgstr "잠들었다."
-
-#: ../src/pager.c:465
-msgid ", meditating"
-msgstr "구토 중"
 
 #: ../src/pager.c:468
 msgid ", leashed to you"
@@ -24551,11 +25171,6 @@ msgstr ", %s에 갇혀"
 #: ../src/pager.c:492
 msgid "normal vision"
 msgstr "%s{이/가} 당신의 시야를 혼란시킨다!"
-
-#: ../src/pager.c:496 ../src/pager.c:502 ../src/pager.c:508 ../src/pager.c:514
-#: ../src/pager.c:521 ../src/pager.c:527 ../src/pager.c:547
-msgid ", "
-msgstr ", "
 
 #: ../src/pager.c:499 ../src/timeout.c:52
 msgid "see invisible"
@@ -24635,10 +25250,6 @@ msgstr "%s 내부"
 #, c-format
 msgid "%s %saltar"
 msgstr "%s %s제단"
-
-#: ../src/pager.c:753
-msgid "aligned"
-msgstr "무정렬"
 
 #: ../src/pager.c:849
 msgid "Cannot open 'data' file!"
@@ -37221,10 +37832,6 @@ msgstr "연기 냄새를 맡았다."
 #, c-format
 msgid "%s %spit below you."
 msgstr "%s %s구덩이가 아래에 있는 것을."
-
-#: ../src/trap.c:1857
-msgid "spiked "
-msgstr "뾰족한 바닥"
 
 #: ../src/trap.c:1859
 #, c-format

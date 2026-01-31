@@ -6843,3 +6843,420 @@ msgstr "%s안전하게 기도할 수 있다"
 msgid "not "
 msgstr "안전하게 기도할 수 없다"
 
+
+# ===============================================
+# insight.c 추가 번역 - 상태 메시지 및 조합 패턴
+# ===============================================
+
+# insight.c:342-356 - 경과 시간 표시
+# 조합: " %ld day%s", " %ld hour%s", " %ld minute%s", " %ld second%s"
+#, c-format
+msgid " %ld day%s"
+msgstr " %ld일%s"
+
+#, c-format
+msgid " %ld hour%s"
+msgstr " %ld시간%s"
+
+#, c-format
+msgid " %ld minute%s"
+msgstr " %ld분%s"
+
+#, c-format
+msgid " %ld second%s"
+msgstr " %ld초%s"
+
+# insight.c:344,350,356 - 시간 연결어
+msgid " and"
+msgstr "과"
+
+# insight.c:486-488 - 변신 형태
+# 조합: "%s%s%s%s form"
+#, c-format
+msgid "%s%s%s%s form"
+msgstr "%s%s%s%s 형태"
+
+msgid "currently "
+msgstr "현재 "
+
+msgid "in "
+msgstr " "
+
+# insight.c:503-507 - 레벨 및 직업 표시
+# 조합: "%s, level %d %s%s"
+#, c-format
+msgid "%s, level %d %s%s"
+msgstr "%s, %d레벨 %s%s"
+
+#, c-format
+msgid "%s, a level %d %s%s %s"
+msgstr "%s, %d레벨 %s%s %s"
+
+# insight.c:603-611 - 던전 위치
+# "level %d"는 이미 line 2470에 존재 (동일 번역)
+
+msgid ", a primitive area"
+msgstr ", 원시적인 지역"
+
+msgid ", a very big room"
+msgstr ", 매우 큰 방"
+
+# "in %s, on %s"는 이미 line 6055에 존재 (동일 번역)
+
+# insight.c:753 - AC 최대/최소
+#, c-format
+msgid ", the %s possible"
+msgstr ", %s 수준"
+
+# insight.c:892-907 - 능력치 상세
+# 조합: "%sbase:%s", "%speak:%s", "%s%slimit:%s"
+msgid " ("
+msgstr " ("
+
+msgid " (current; "
+msgstr " (현재; "
+
+#, c-format
+msgid "%sbase:%s"
+msgstr "%s기본:%s"
+
+#, c-format
+msgid "%speak:%s"
+msgstr "%s최대:%s"
+
+#, c-format
+msgid "%s%slimit:%s"
+msgstr "%s%s한계:%s"
+
+msgid "innate "
+msgstr "선천적 "
+
+# insight.c:1094-1097 - 소화 상태
+msgid " and got totally digested"
+msgstr " 완전히 소화되었다"
+
+#, c-format
+msgid " and %s being digested"
+msgstr " %s 소화되고 있다"
+
+# insight.c:1182-1184 - 배고픔 상태
+msgid " from severe hunger"
+msgstr " 심한 배고픔으로 인해"
+
+msgid " due to starvation"
+msgstr " 굶주림으로 인해"
+
+# insight.c:1197-1209,1214 - 부담 상태
+msgid "slightly"
+msgstr "약간"
+
+msgid "moderately"
+msgstr "적당히"
+
+# "very"는 이미 존재할 수 있음 - 중복 체크 필요
+
+msgid "not possible"
+msgstr "불가능"
+
+#, c-format
+msgid "; movement %s %s%s"
+msgstr "; 이동 속도 %s %s%s"
+
+msgid " slowed"
+msgstr " 느려짐"
+
+# insight.c:1234 - 갑옷 패널티
+#, c-format
+msgid " due to your %s"
+msgstr " 당신의 %s 때문에"
+
+# insight.c:1273 - 젖은 수건
+msgid "wet towel"
+msgstr "젖은 수건"
+
+# insight.c:1295,1333 - 스킬 표시
+msgid "no"
+msgstr "없는"
+
+msgid "restricted"
+msgstr "제한된"
+
+# insight.c:1383-1386 - 스킬 제한
+#, c-format
+msgid "being %s"
+msgstr "%s"
+
+msgid "having no skill"
+msgstr "스킬이 없음"
+
+#, c-format
+msgid " with %s"
+msgstr " %s에 대해"
+
+# insight.c:1430-1438 - 스킬 향상
+#, c-format
+msgid " skill%s with %s%s%s%s%s"
+msgstr " %s%s%s%s%s에 대한 %s 스킬"
+
+msgid ", and "
+msgstr ", 그리고 "
+
+msgid "two weapons"
+msgstr "쌍수"
+
+# insight.c:1521-1535 - 저항 상태
+# "temporarily "는 이미 line 6528에 존재 (동일 번역)
+# "acid resistant"는 이미 line 6515에 존재 (동일 번역)
+
+msgid " protected from acid"
+msgstr " 산성으로부터 보호"
+
+# "petrification resistant"는 이미 line 6521에 존재 (동일 번역)
+
+# insight.c:1612-1617 - 혼란 공격
+msgid " monsters when hitting them"
+msgstr " 몬스터를 공격할 때 혼란시킨다"
+
+msgid " (next hit only)"
+msgstr " (다음 공격에만)"
+
+#, c-format
+msgid " (next %u hits)"
+msgstr " (다음 %u회 공격)"
+
+# insight.c:1803-1806 - 주문 시전
+#, c-format
+msgid " impaired by metallic armor%s"
+msgstr " 금속 갑옷으로 인해 방해받는다%s"
+
+msgid ", mitigated by your robe"
+msgstr ", 로브로 완화됨"
+
+# " enhanced by wearing a robe"는 이미 line 6564에 존재 (동일 번역)
+
+# insight.c:2035-2069 - 숨기/변장 상태
+msgid "mimicking"
+msgstr "흉내내고 있다"
+
+#, c-format
+msgid " %s"
+msgstr " %s"
+
+msgid " something"
+msgstr " 무언가"
+
+msgid " someone"
+msgstr " 누군가"
+
+#, c-format
+msgid " in the %s"
+msgstr " %s 안에"
+
+#, c-format
+msgid " underneath %s"
+msgstr " %s 아래에"
+
+#, c-format
+msgid " on the %s"
+msgstr " %s 위에"
+
+#, c-format
+msgid " in a %spit"
+msgstr " %s구덩이 안에"
+
+msgid "spiked "
+msgstr "가시 "
+
+# insight.c:2279 - 업적
+#, c-format
+msgid "Achievement%s:"
+msgstr "업적%s:"
+
+# insight.c:2906-2912 - 처치 횟수
+msgid " (twice)"
+msgstr " (2회)"
+
+msgid " (thrice)"
+msgstr " (3회)"
+
+#, c-format
+msgid " (%d times)"
+msgstr " (%d회)"
+
+msgid "the "
+msgstr ""
+
+# insight.c:2947 - 총 처치 수
+#, c-format
+msgid "%ld creatures vanquished."
+msgstr "%ld 마리의 생물을 처치했다."
+
+# insight.c:3112,3124 - 멸종 상태
+msgid " (extinct)"
+msgstr " (멸종)"
+
+# insight.c:3130,3134 - 학살/멸종 통계
+#, c-format
+msgid "%d species genocided."
+msgstr "%d종을 학살했다."
+
+#, c-format
+msgid "%d species extinct."
+msgstr "%d종이 멸종했다."
+
+# insight.c:3252 - 크기 오류
+#, c-format
+msgid "unknown size (%d)"
+msgstr "알 수 없는 크기 (%d)"
+
+# ===============================================
+# 몬스터 상태 표시 (stethoscope/probing)
+# ===============================================
+
+msgid ", tame"
+msgstr ", 길들여짐"
+
+msgid "; hungry %ld; apport %d"
+msgstr "; 배고픔 %ld; 물건가져오기 %d"
+
+msgid ", peaceful"
+msgstr ", 평화적"
+
+msgid ", single segment"
+msgstr ", 단일 마디"
+
+#, c-format
+msgid ", %d%s of %d segments"
+msgstr ", %3$d개 마디 중 %1$d%2$s"
+
+msgid ", shapechanger"
+msgstr ", 변신체"
+
+msgid ", eating"
+msgstr ", 식사 중"
+
+msgid ", cancelled"
+msgstr ", 취소됨"
+
+msgid ", confused"
+msgstr ", 혼란"
+
+msgid ", blind"
+msgstr ", 실명"
+
+msgid ", stunned"
+msgstr ", 기절"
+
+msgid ", asleep"
+msgstr ", 수면"
+
+msgid ", paralyzed"
+msgstr ", 마비"
+
+msgid ", can't move"
+msgstr ", 이동 불가"
+
+msgid ", meditating"
+msgstr ", 명상 중"
+
+msgid ", scared"
+msgstr ", 겁먹음"
+
+msgid ", trapped"
+msgstr ", 함정에 걸림"
+
+msgid ", fast"
+msgstr ", 빠름"
+
+msgid ", slow"
+msgstr ", 느림"
+
+msgid ", [? speed]"
+msgstr ", [? 속도]"
+
+msgid ", invisible"
+msgstr ", 투명"
+
+msgid ", swallowing you"
+msgstr ", 당신을 삼키고 있다"
+
+msgid ", engulfing you"
+msgstr ", 당신을 감싸고 있다"
+
+msgid ", holding you"
+msgstr ", 당신을 붙잡고 있다"
+
+msgid ", held by you"
+msgstr ", 당신에게 붙잡힘"
+
+msgid ", carrying you"
+msgstr ", 당신을 태우고 있다"
+
+#, c-format
+msgid ", injured %s"
+msgstr ", %s 부상"
+
+msgid ", leashed"
+msgstr ", 가죽끈에 매임"
+
+# ===============================================
+# 플레이어 상태 표시 (ustatusline)
+# ===============================================
+
+msgid ", dying from"
+msgstr ", 죽어가는 중:"
+
+msgid " food poisoning"
+msgstr " 식중독"
+
+msgid " illness"
+msgstr " 질병"
+
+msgid ", solidifying"
+msgstr ", 굳어가는 중"
+
+msgid ", becoming slimy"
+msgstr ", 점액화 중"
+
+msgid ", being strangled"
+msgstr ", 목 졸림"
+
+msgid ", nauseated"
+msgstr ", 메스꺼움"
+
+msgid ", cover"
+msgstr ", 덮"
+
+msgid "ed by sticky goop"
+msgstr "여 끈적끈적한 것에"
+
+msgid ", very fast"
+msgstr ", 매우 빠름"
+
+msgid ", concealed"
+msgstr ", 은신"
+
+msgid ", disguised"
+msgstr ", 변장"
+
+msgid ", being digested by "
+msgstr ", 에게 소화되고 있다 "
+
+msgid ", engulfed by "
+msgstr ", 에게 감싸여 있다 "
+
+msgid ", held by "
+msgstr ", 에게 붙잡힘 "
+
+msgid ", holding "
+msgstr ", 을(를) 붙잡고 있다 "
+
+#, c-format
+msgid ", in a cloud of %s"
+msgstr ", %s 구름 속에"
+
+msgid "poison gas"
+msgstr "독가스"
+
+msgid "vapor"
+msgstr "증기"

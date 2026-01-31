@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 02:36+0900\n"
+"POT-Creation-Date: 2026-01-31 09:37+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -413,9 +413,9 @@ msgid "produce a %shigh-%s."
 msgstr ""
 
 #: ../src/apply.c:501 ../src/attrib.c:192 ../src/eat.c:1937
-#: ../src/obj_descr_i18n.c:308 ../src/objnam.c:829 ../src/objnam.c:1158
-#: ../src/objnam.c:1171 ../src/trap.c:706 ../src/uhitm.c:2871
-#: ../src/uhitm.c:5763
+#: ../src/insight.c:1890 ../src/insight.c:1911 ../src/obj_descr_i18n.c:308
+#: ../src/objnam.c:829 ../src/objnam.c:1158 ../src/objnam.c:1171
+#: ../src/trap.c:706 ../src/uhitm.c:2871 ../src/uhitm.c:5763
 msgid "very "
 msgstr ""
 
@@ -575,7 +575,8 @@ msgstr ""
 msgid "fail to %sleash something."
 msgstr ""
 
-#: ../src/apply.c:823 ../src/files.c:1682 ../src/lock.c:132 ../src/read.c:1663
+#: ../src/apply.c:823 ../src/files.c:1682 ../src/insight.c:1891
+#: ../src/lock.c:132 ../src/read.c:1663
 msgid "un"
 msgstr ""
 
@@ -4491,8 +4492,8 @@ msgstr ""
 
 #: ../src/dbridge.c:723 ../src/dig.c:866 ../src/dig.c:925 ../src/dokick.c:1453
 #: ../src/dothrow.c:1098 ../src/hack.c:2484 ../src/insight.c:248
-#: ../src/invent.c:5507 ../src/obj_descr_i18n.c:469 ../src/pickup.c:2052
-#: ../src/trap.c:3975 ../src/zap.c:5215
+#: ../src/insight.c:976 ../src/invent.c:5507 ../src/obj_descr_i18n.c:469
+#: ../src/pickup.c:2052 ../src/trap.c:3975 ../src/zap.c:5215
 msgid "lava"
 msgstr ""
 
@@ -5412,9 +5413,9 @@ msgid "%s avoids the trap."
 msgstr ""
 
 #: ../src/dig.c:866 ../src/dig.c:925 ../src/dig.c:1322 ../src/dokick.c:1453
-#: ../src/dothrow.c:2502 ../src/hack.c:2484 ../src/invent.c:5507
-#: ../src/pager.c:611 ../src/pickup.c:2052 ../src/spell.c:1159
-#: ../src/trap.c:4953 ../src/trap.c:4965 ../src/zap.c:5215
+#: ../src/dothrow.c:2502 ../src/hack.c:2484 ../src/insight.c:975
+#: ../src/invent.c:5507 ../src/pager.c:611 ../src/pickup.c:2052
+#: ../src/spell.c:1159 ../src/trap.c:4953 ../src/trap.c:4965 ../src/zap.c:5215
 msgid "water"
 msgstr ""
 
@@ -13800,7 +13801,8 @@ msgstr ""
 msgid "were "
 msgstr ""
 
-#: ../src/insight.c:46 ../src/insight.c:778 ../src/insight.c:2353
+#: ../src/insight.c:46 ../src/insight.c:778 ../src/insight.c:1925
+#: ../src/insight.c:2353
 msgid "have "
 msgstr ""
 
@@ -14309,6 +14311,16 @@ msgstr ""
 msgid "felt"
 msgstr ""
 
+#: ../src/insight.c:955
+#, c-format
+msgid "riding %s"
+msgstr ""
+
+#: ../src/insight.c:957
+#, c-format
+msgid "and %s "
+msgstr ""
+
 #: ../src/insight.c:962
 msgid "levitating, at will"
 msgstr ""
@@ -14323,6 +14335,11 @@ msgstr ""
 
 #: ../src/insight.c:971 ../src/timeout.c:100
 msgid "swimming"
+msgstr ""
+
+#: ../src/insight.c:974
+#, c-format
+msgid "walking on %s"
 msgstr ""
 
 #: ../src/insight.c:988
@@ -14370,8 +14387,34 @@ msgstr ""
 msgid "hallucinating"
 msgstr ""
 
+#: ../src/insight.c:1039
+#, c-format
+msgid "%s blind"
+msgstr ""
+
+#: ../src/insight.c:1040
+msgid "permanently"
+msgstr ""
+
+#: ../src/insight.c:1041
+msgid "innately"
+msgstr ""
+
+#: ../src/insight.c:1043
+msgid "deliberately"
+msgstr ""
+
+#: ../src/insight.c:1045
+msgid "temporarily"
+msgstr ""
+
 #: ../src/insight.c:1052
 msgid "deaf"
+msgstr ""
+
+#: ../src/insight.c:1057
+#, c-format
+msgid "chained to %s"
 msgstr ""
 
 #: ../src/insight.c:1060 ../src/obj_descr_i18n.c:432
@@ -14420,6 +14463,11 @@ msgstr ""
 
 #: ../src/insight.c:1143
 msgid " had "
+msgstr ""
+
+#: ../src/insight.c:1150
+#, c-format
+msgid "slippery %s"
 msgstr ""
 
 #: ../src/insight.c:1157
@@ -14472,6 +14520,16 @@ msgstr ""
 
 #: ../src/insight.c:1242
 msgid "not wearing any armor"
+msgstr ""
+
+#: ../src/insight.c:1277
+#, c-format
+msgid "wielding some %s"
+msgstr ""
+
+#: ../src/insight.c:1280
+#, c-format
+msgid "wielding %s"
 msgstr ""
 
 #: ../src/insight.c:1301 ../src/insight.c:1393
@@ -14660,6 +14718,35 @@ msgstr ""
 
 #: ../src/insight.c:1562
 msgid "warned"
+msgstr ""
+
+#: ../src/insight.c:1564 ../src/insight.c:1572 ../src/insight.c:1584
+#, c-format
+msgid "aware of the presence of %s"
+msgstr ""
+
+#: ../src/insight.c:1565 ../src/insight.c:1577
+msgid "orcs"
+msgstr ""
+
+#: ../src/insight.c:1566 ../src/insight.c:1576
+msgid "elves"
+msgstr ""
+
+#: ../src/insight.c:1567 ../src/insight.c:1578
+msgid "demons"
+msgstr ""
+
+#: ../src/insight.c:1574
+msgid "humans and elves"
+msgstr ""
+
+#: ../src/insight.c:1575
+msgid "humans"
+msgstr ""
+
+#: ../src/insight.c:1579
+msgid "certain monsters"
 msgstr ""
 
 #: ../src/insight.c:1589
@@ -14928,8 +15015,22 @@ msgstr ""
 msgid "polymorph control"
 msgstr ""
 
+#: ../src/insight.c:1845
+#, c-format
+msgid "polymorphed into %s"
+msgstr ""
+
+#: ../src/insight.c:1849
+#, c-format
+msgid "polymorphed into %s in %s form"
+msgstr ""
+
 #: ../src/insight.c:1858
 msgid "lay eggs"
+msgstr ""
+
+#: ../src/insight.c:1864
+msgid " in beast form"
 msgstr ""
 
 #: ../src/insight.c:1873
@@ -14968,6 +15069,15 @@ msgstr ""
 msgid " saved"
 msgstr ""
 
+#: ../src/insight.c:1889
+#, c-format
+msgid "%s%slucky"
+msgstr ""
+
+#: ../src/insight.c:1890 ../src/insight.c:1911
+msgid "extremely "
+msgstr ""
+
 #: ../src/insight.c:1896
 msgid "Your luck "
 msgstr ""
@@ -15000,8 +15110,27 @@ msgstr ""
 msgid "Good luck "
 msgstr ""
 
+#: ../src/insight.c:1910
+#, c-format
+msgid " %sangry with you"
+msgstr ""
+
 #: ../src/insight.c:1914
 msgid " was"
+msgstr ""
+
+#: ../src/insight.c:1924
+#, c-format
+msgid "%s%ssafely pray%s"
+msgstr ""
+
+#: ../src/insight.c:1924 ../src/insight.c:1927
+msgid "not "
+msgstr ""
+
+#: ../src/insight.c:1927
+#, c-format
+msgid "%ssafely pray"
 msgstr ""
 
 #: ../src/insight.c:1946

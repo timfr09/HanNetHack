@@ -26,6 +26,7 @@
 #define P_(Singular, Plural, N) ngettext(Singular, Plural, N)
 
 /* Context-aware translation (pgettext) */
+extern const char *pgettext(const char *msgctxt, const char *msgid);
 #define C_(Context, String) pgettext(Context, String)
 
 /* Initialize internationalization subsystem */

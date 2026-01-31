@@ -6438,3 +6438,408 @@ msgctxt "toggle"
 msgid "off"
 msgstr "꺼짐"
 
+# ============================================================
+# [조합 메시지] you_can() 패턴 수정 - insight.c
+# ============================================================
+# 패턴: "당신은 " + "​"(제로폭 공백) + attr
+# "can "이 제로폭 공백이므로, attr에 "~할 수 있다" 형태 필요
+
+# insight.c:1743 - "You can walk through walls"
+# 기존: "벽 통과" → "당신은 벽 통과" (불완전)
+# 수정: "벽을 통과할 수 있다" → "당신은 벽을 통과할 수 있다"
+msgid "walk through walls"
+msgstr "벽을 통과할 수 있다"
+
+# insight.c:1741 - "You can breathe water"
+# 기존: "수중 호흡" → "당신은 수중 호흡" (불완전)
+# 수정: "물 속에서 숨 쉴 수 있다"
+msgid "breathe water"
+msgstr "물 속에서 숨 쉴 수 있다"
+
+# insight.c:1858 - "You can lay eggs"
+# 기존: 번역 없음
+# 수정: "알을 낳을 수 있다"
+msgid "lay eggs"
+msgstr "알을 낳을 수 있다"
+
+# insight.c:1819,1871 - "You can not change from your current form"
+# 기존: 번역 없음
+# 수정: "현재 형태에서 변할 수 없다"
+msgid "not change from your current form"
+msgstr "현재 형태에서 변할 수 없다"
+
+# ============================================================
+# [조합 메시지] you_are() 패턴 수정 - insight.c
+# ============================================================
+# 패턴: "당신은 " + "​"(제로폭 공백) + attr
+# "are "가 제로폭 공백이므로, attr에 완전한 상태 표현 필요
+
+# insight.c:1644 - "You are visible"
+# 기존: "보이는" → "당신은 보이는" (불완전)
+# 수정: "보이는 상태"
+msgid "visible"
+msgstr "보이는 상태"
+
+# insight.c:1813 - "You are protected from shape changers"
+# 기존: 번역 없음
+# 수정: "변신 생물로부터 보호받고 있다"
+msgid "protected from shape changers"
+msgstr "변신 생물로부터 보호받고 있다"
+
+# insight.c:1873 - "You are harmed by silver"
+# 기존: 번역 없음
+# 수정: "은에 취약하다"
+msgid "harmed by silver"
+msgstr "은에 취약하다"
+
+# 참고: "polymorphing periodically"는 3853에 정의됨
+# 참고: "fast", "very fast"는 6169, 6175에 정의됨
+
+# insight.c:1780-1786 - magic cancellation types (you_are)
+# "warded", "guarded", "protected" - 마법 무효화 단계
+# 기존: "보호받음" (warded만)
+# 수정: 단계별로 구분
+msgid "guarded"
+msgstr "수호받고 있다"
+
+msgid "protected"
+msgstr "보호받고 있다"
+
+# ============================================================
+# [조합 메시지] 저항 상태 추가 - insight.c
+# ============================================================
+
+# insight.c:1520-1524 - "You are [temporarily] acid resistant"
+# 기존: 번역 없음
+# 수정: "산에 내성이 있다"
+msgid "acid resistant"
+msgstr "산에 내성이 있다"
+
+# insight.c:1531-1535 - "You are [temporarily] petrification resistant"
+# 기존: 번역 없음
+# 수정: "석화에 내성이 있다"
+msgid "petrification resistant"
+msgstr "석화에 내성이 있다"
+
+# insight.c:1522,1533 - 임시 저항 접두어
+# 조합: "temporarily " + "acid resistant" 등
+# 기존: 번역 없음
+# 수정: "일시적으로 "
+msgid "temporarily "
+msgstr "일시적으로 "
+
+# ============================================================
+# [조합 메시지] 감지 및 인식 - insight.c
+# ============================================================
+
+# insight.c:1602 - "You are sensing the presence of monsters"
+# 기존: 번역 없음
+# 수정: "몬스터의 존재를 감지하고 있다"
+msgid "sensing the presence of monsters"
+msgstr "몬스터의 존재를 감지하고 있다"
+
+# insight.c:1564-1580 - "You are aware of the presence of ..."
+# 조합: "aware of the presence of " + orcs/elves/demons 등
+# 기존: 번역 없음
+# 참고: 동적 조합이므로 부분 문자열로 처리 어려움
+
+# ============================================================
+# [조합 메시지] 주술 및 특수 능력 - insight.c
+# ============================================================
+
+# insight.c:1803-1809 - "Your spell casting is/was..."
+# 조합 메시지: "Your spell casting " + "is"/"was" + suffix
+msgid "Your spell casting "
+msgstr "당신의 주문 시전 능력이 "
+
+# insight.c:1803-1804 - " impaired by metallic armor, mitigated by your robe"
+msgid " impaired by metallic armor, mitigated by your robe"
+msgstr " 금속 갑옷으로 방해받지만, 로브가 완화시킨다"
+
+# insight.c:1803 - " impaired by metallic armor"
+msgid " impaired by metallic armor"
+msgstr " 금속 갑옷으로 방해받고 있다"
+
+# insight.c:1806 - " enhanced by wearing a robe"
+msgid " enhanced by wearing a robe"
+msgstr " 로브 착용으로 강화된다"
+
+# ============================================================
+# [조합 메시지] 생명 보호 - insight.c
+# ============================================================
+
+# insight.c:1884 - "Your life will be/would have been saved"
+# 조합: "Your life " + "will be"/"would have been" + " saved"
+# 참고: "would have been"은 3967에 정의됨
+msgid "Your life "
+msgstr "당신의 생명이 "
+
+msgid "will be"
+msgstr "​"
+
+msgid " saved"
+msgstr " 보존될 것이다"
+
+# ============================================================
+# [조합 메시지] 행운 타이머 - insight.c
+# ============================================================
+
+# insight.c:1904 - "Bad luck does/did not time out for you"
+# 조합: "Bad luck " + "does"/"did" + " not time out for you"
+msgid "Bad luck "
+msgstr "불운이 "
+
+msgid "Good luck "
+msgstr "행운이 "
+
+msgid " not time out for you"
+msgstr " 시간이 지나도 사라지지 않는다"
+
+# ============================================================
+# [조합 메시지] 재생 - insight.c
+# ============================================================
+# 참고: "take", "took"는 3332, 4303에 정의됨
+# 참고: "You aggravate", "You cause"는 4241, 4315에 정의됨
+# 참고: "would have seen"은 3961에 정의됨
+
+# insight.c:1747 - "You regenerate/regenerated"
+# 조합: "You regenerate" + ""(빈 suffix) + from_what()
+msgid "You regenerate"
+msgstr "당신은 재생한다"
+
+# ============================================================
+# [조합 메시지] 추가 suffix 번역 - insight.c
+# ============================================================
+
+msgid " monsters"
+msgstr " 몬스터들을"
+
+msgid " conflict"
+msgstr " 분쟁"
+
+# ============================================================
+# [조합 메시지] 환각 저항 - insight.c
+# ============================================================
+
+# insight.c:1538 - "You resist/resisted hallucinations"
+# 조합: You_ + "resist"/"resisted" + " hallucinations" + from_what()
+msgid "resist"
+msgstr "저항한다:"
+
+msgid "resisted"
+msgstr "저항했다:"
+
+msgid " hallucinations"
+msgstr " 환각에"
+
+# ============================================================
+# [조합 메시지] 투명 감지 - insight.c
+# ============================================================
+
+# insight.c:1551 - "You see/saw invisible"
+# 조합: You_ + "see"/"saw" + " invisible" + from_what()
+msgid "saw"
+msgstr "보았다"
+
+msgid " invisible"
+msgstr " 투명한 것을 볼 수 있다"
+
+# insight.c:1553-1554 - "You will see/would have seen invisible when not blind"
+msgid "will see"
+msgstr "볼 것이다"
+
+msgid " invisible when not blind"
+msgstr " 눈이 멀지 않으면 투명한 것을"
+
+msgid " invisible if not blind"
+msgstr " 눈이 멀지 않았다면 투명한 것을"
+
+# ============================================================
+# [조합 메시지] 천장 매달리기 - insight.c
+# ============================================================
+# 참고: "could be", "could have been", "could cling", "could have clung"
+#       "would have levitated", " if circumstances permitted"
+#       는 이미 2600-2650, 3371 라인에 정의됨
+
+# insight.c:1729 - "You could cling/could have clung to the ceiling if..."
+msgid " to the ceiling if %s%s%s"
+msgstr " 천장에 - %s%s%s"
+
+msgid "there was one"
+msgstr "천장이 있었다면"
+
+msgid " and "
+msgstr "이고 "
+
+msgid "you weren't underwater"
+msgstr "물 속에 있지 않았다면"
+
+msgid "you weren't in the water"
+msgstr "물에 있지 않았다면"
+
+# ============================================================
+# [조합 메시지] 신의 분노 - insight.c
+# ============================================================
+# 참고: saving-grace, survived 관련 항목들은
+#       2709-2719, 3384-3391 라인에 이미 정의됨
+# 참고: "nighttime"은 6019에 이미 정의됨
+# 참고: " is", " was"는 3377-3378에 다른 용도로 정의됨
+#       신 분노 메시지는 동적으로 조합되므로 별도 처리 필요
+
+# insight.c:1910-1914 - "[god] is/was angry with you"
+# 조합: u_gname() + " is"/" was" + " [very/extremely] angry with you"
+msgid " angry with you"
+msgstr "이(가) 당신에게 분노하고 있다"
+
+msgid " very angry with you"
+msgstr "이(가) 당신에게 매우 분노하고 있다"
+
+msgid " extremely angry with you"
+msgstr "이(가) 당신에게 극도로 분노하고 있다"
+
+# ============================================================
+# [조합 메시지] conduct 관련 참고
+# ============================================================
+# you_have_been, you_have_never, you_have_X 관련 항목들은
+# 2735-2810, 3393-3410 라인에 이미 정의됨
+# "followed a strict vegan diet" → 3400
+# "hit with a wielded weapon" → 2772
+
+# ============================================================
+# [조합 메시지] 새로 래핑된 문자열 - insight.c
+# ============================================================
+# 이 문자열들은 _() 래핑이 없어서 번역 불가능했으나,
+# 소스 코드에 래핑을 추가함
+
+# insight.c:955 - "You are riding %s"
+# 조합: you_are("riding %s", "")
+#, c-format
+msgid "riding %s"
+msgstr "%s{을/를} 타고 있다"
+
+# insight.c:957 - "and %s " (youtoo에 추가)
+#, c-format
+msgid "and %s "
+msgstr "그리고 %s "
+
+# insight.c:974 - "You are walking on %s"
+# 조합: you_are("walking on %s", from_what())
+# 참고: "water", "lava"는 이미 2319, 2376에 정의됨
+#, c-format
+msgid "walking on %s"
+msgstr "%s 위를 걷고 있다"
+
+# insight.c:1057 - "You are chained to %s"
+# 조합: you_are("chained to %s", "")
+#, c-format
+msgid "chained to %s"
+msgstr "%s에 사슬로 묶여 있다"
+
+# insight.c:1150 - "You have slippery %s"
+# 조합: you_have("slippery %s", "")
+#, c-format
+msgid "slippery %s"
+msgstr "미끄러운 %s"
+
+# insight.c:1277 - "You are wielding some %s"
+#, c-format
+msgid "wielding some %s"
+msgstr "%s{을/를} 휘두르고 있다"
+
+# insight.c:1280 - "You are wielding %s"
+#, c-format
+msgid "wielding %s"
+msgstr "%s{을/를} 휘두르고 있다"
+
+# insight.c:1564,1572,1584 - "You are aware of the presence of %s"
+# 조합: you_are("aware of the presence of %s", from_what())
+#, c-format
+msgid "aware of the presence of %s"
+msgstr "%s의 존재를 감지하고 있다"
+
+# 경고 대상 종족들
+msgid "orcs"
+msgstr "오크"
+
+msgid "elves"
+msgstr "엘프"
+
+msgid "demons"
+msgstr "악마"
+
+msgid "humans"
+msgstr "인간"
+
+msgid "humans and elves"
+msgstr "인간과 엘프"
+
+msgid "certain monsters"
+msgstr "특정 몬스터"
+
+# insight.c:1845 - "You are polymorphed into %s"
+# 조합: you_are("polymorphed into %s", "")
+#, c-format
+msgid "polymorphed into %s"
+msgstr "%s{으로/로} 변신해 있다"
+
+# insight.c:1849 - "You are polymorphed into %s in %s form"
+#, c-format
+msgid "polymorphed into %s in %s form"
+msgstr "%2$s 형태의 %1$s{으로/로} 변신해 있다"
+
+# insight.c:1864 - " in beast form"
+msgid " in beast form"
+msgstr " 야수 형태로"
+
+# insight.c:1039-1045 - blind 상태 수식어
+msgid "permanently"
+msgstr "영구적으로"
+
+msgid "innately"
+msgstr "선천적으로"
+
+msgid "deliberately"
+msgstr "의도적으로"
+
+msgid "temporarily"
+msgstr "일시적으로"
+
+# insight.c:1039 - "%s blind"
+# 조합: you_are("%s blind", from_what())
+#, c-format
+msgid "%s blind"
+msgstr "%s 눈이 먼 상태"
+
+# insight.c:1889-1891 - luck 상태
+# 조합: "%s%slucky" (extremely/very + un + lucky)
+msgid "lucky"
+msgstr "운이 좋다"
+
+msgid "unlucky"
+msgstr "운이 나쁘다"
+
+#, c-format
+msgid "%s%slucky"
+msgstr "%s%s운이 좋다"
+
+msgid "un"
+msgstr "불"
+
+# insight.c:1910 - " %sangry with you"
+# 조합: enl_msg(u_gname(), " is", " was", buf, "")
+#, c-format
+msgid " %sangry with you"
+msgstr "이(가) 당신에게 %s분노하고 있다"
+
+# insight.c:1927 - "%ssafely pray"
+# 조합: you_can("%ssafely pray", "")
+msgid "safely pray"
+msgstr "안전하게 기도할 수 있다"
+
+#, c-format
+msgid "%ssafely pray"
+msgstr "%s안전하게 기도할 수 있다"
+
+msgid "not "
+msgstr "안전하게 기도할 수 없다"
+

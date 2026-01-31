@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 00:17+0900\n"
+"POT-Creation-Date: 2026-01-31 09:37+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -460,9 +460,9 @@ msgid "produce a %shigh-%s."
 msgstr "%s고음의 %s{을/를} 낸다."
 
 #: ../src/apply.c:501 ../src/attrib.c:192 ../src/eat.c:1937
-#: ../src/obj_descr_i18n.c:308 ../src/objnam.c:829 ../src/objnam.c:1158
-#: ../src/objnam.c:1171 ../src/trap.c:706 ../src/uhitm.c:2871
-#: ../src/uhitm.c:5763
+#: ../src/insight.c:1890 ../src/insight.c:1911 ../src/obj_descr_i18n.c:308
+#: ../src/objnam.c:829 ../src/objnam.c:1158 ../src/objnam.c:1171
+#: ../src/trap.c:706 ../src/uhitm.c:2871 ../src/uhitm.c:5763
 msgid "very "
 msgstr "매우 "
 
@@ -622,7 +622,8 @@ msgstr "거기에 생물이 없다."
 msgid "fail to %sleash something."
 msgstr "무언가에 %s끈을 매지 못했다."
 
-#: ../src/apply.c:823 ../src/files.c:1682 ../src/lock.c:132 ../src/read.c:1663
+#: ../src/apply.c:823 ../src/files.c:1682 ../src/insight.c:1891
+#: ../src/lock.c:132 ../src/read.c:1663
 msgid "un"
 msgstr "풀"
 
@@ -4683,8 +4684,8 @@ msgstr "%s{이/가} %s{을/를} 하고 사라진다."
 
 #: ../src/dbridge.c:723 ../src/dig.c:866 ../src/dig.c:925 ../src/dokick.c:1453
 #: ../src/dothrow.c:1098 ../src/hack.c:2484 ../src/insight.c:248
-#: ../src/invent.c:5507 ../src/obj_descr_i18n.c:469 ../src/pickup.c:2052
-#: ../src/trap.c:3975 ../src/zap.c:5215
+#: ../src/insight.c:976 ../src/invent.c:5507 ../src/obj_descr_i18n.c:469
+#: ../src/pickup.c:2052 ../src/trap.c:3975 ../src/zap.c:5215
 msgid "lava"
 msgstr "용암"
 
@@ -5623,9 +5624,9 @@ msgstr "%s{이/가} 함정을 피했다."
 
 # 액체
 #: ../src/dig.c:866 ../src/dig.c:925 ../src/dig.c:1322 ../src/dokick.c:1453
-#: ../src/dothrow.c:2502 ../src/hack.c:2484 ../src/invent.c:5507
-#: ../src/pager.c:611 ../src/pickup.c:2052 ../src/spell.c:1159
-#: ../src/trap.c:4953 ../src/trap.c:4965 ../src/zap.c:5215
+#: ../src/dothrow.c:2502 ../src/hack.c:2484 ../src/insight.c:975
+#: ../src/invent.c:5507 ../src/pager.c:611 ../src/pickup.c:2052
+#: ../src/spell.c:1159 ../src/trap.c:4953 ../src/trap.c:4965 ../src/zap.c:5215
 msgid "water"
 msgstr "물"
 
@@ -12688,13 +12689,14 @@ msgid "of features under cursor "
 msgstr "커서 아래 지형의 "
 
 #: ../src/getpos.c:966 ../src/iactions.c:680 ../src/insight.c:785
-#: ../src/pray.c:1860 ../src/timeout.c:1277 ../src/trap.c:4905
-#: ../src/trap.c:4965
+#, fuzzy
+msgctxt "toggle"
 msgid "on"
 msgstr "위"
 
 #: ../src/getpos.c:966 ../src/iactions.c:680 ../src/insight.c:799
-#: ../src/timeout.c:1277
+#, fuzzy
+msgctxt "toggle"
 msgid "off"
 msgstr "바칠"
 
@@ -14304,7 +14306,8 @@ msgstr "당신은 "
 msgid "were "
 msgstr ""
 
-#: ../src/insight.c:46 ../src/insight.c:778 ../src/insight.c:2353
+#: ../src/insight.c:46 ../src/insight.c:778 ../src/insight.c:1925
+#: ../src/insight.c:2353
 msgid "have "
 msgstr ""
 
@@ -14850,6 +14853,19 @@ msgstr "지뢰"
 msgid "felt"
 msgstr ""
 
+# ============================================================
+# 물약 (Potions)
+# ============================================================
+#: ../src/insight.c:955
+#, fuzzy, c-format
+msgid "riding %s"
+msgstr "%s{을/를} 울렸다."
+
+#: ../src/insight.c:957
+#, fuzzy, c-format
+msgid "and %s "
+msgstr " 그리고 %s"
+
 #: ../src/insight.c:962
 msgid "levitating, at will"
 msgstr "의지에 따라 부유 중"
@@ -14866,6 +14882,11 @@ msgstr "날기 시작했다."
 #: ../src/insight.c:971 ../src/timeout.c:100
 msgid "swimming"
 msgstr "수영 중"
+
+#: ../src/insight.c:974
+#, fuzzy, c-format
+msgid "walking on %s"
+msgstr "%s의 반지"
 
 #
 #: ../src/insight.c:988
@@ -14914,9 +14935,39 @@ msgstr "모독된"
 msgid "hallucinating"
 msgstr "환각의 물약"
 
+#: ../src/insight.c:1039
+#, fuzzy, c-format
+msgid "%s blind"
+msgstr "%s{이/가} 당신의 눈을 멀게 했다!"
+
+#: ../src/insight.c:1040
+#, fuzzy
+msgid "permanently"
+msgstr "현재"
+
+#: ../src/insight.c:1041
+#, fuzzy
+msgid "innately"
+msgstr "불행히도, %s"
+
+#: ../src/insight.c:1043
+#, fuzzy
+msgid "deliberately"
+msgstr "%s{이/가} %s에게서 %s{을/를} 빼앗았다!"
+
+#: ../src/insight.c:1045
+#, fuzzy
+msgid "temporarily"
+msgstr "잠시 "
+
 #: ../src/insight.c:1052
 msgid "deaf"
 msgstr "귀머거리"
+
+#: ../src/insight.c:1057
+#, fuzzy, c-format
+msgid "chained to %s"
+msgstr ", %s에 사슬로 묶여"
 
 #: ../src/insight.c:1060 ../src/obj_descr_i18n.c:432
 msgid "punished"
@@ -14973,6 +15024,11 @@ msgstr "이제"
 #, fuzzy
 msgid " had "
 msgstr "가지고 있었습니다 "
+
+#: ../src/insight.c:1150
+#, fuzzy, c-format
+msgid "slippery %s"
+msgstr "미끄러운 "
 
 #: ../src/insight.c:1157
 msgid "fumble"
@@ -15031,6 +15087,16 @@ msgstr "갑옷을 입고 있지 않다."
 #: ../src/insight.c:1242
 msgid "not wearing any armor"
 msgstr "갑옷을 입고 있지 않다."
+
+#: ../src/insight.c:1277
+#, fuzzy, c-format
+msgid "wielding some %s"
+msgstr " (%s %s에 장착)"
+
+#: ../src/insight.c:1280
+#, fuzzy, c-format
+msgid "wielding %s"
+msgstr "폭발하는 %s"
 
 #: ../src/insight.c:1301 ../src/insight.c:1393
 msgid "skill with"
@@ -15223,6 +15289,43 @@ msgstr "텔레파시"
 #: ../src/insight.c:1562
 msgid "warned"
 msgstr "탄 "
+
+#: ../src/insight.c:1564 ../src/insight.c:1572 ../src/insight.c:1584
+#, fuzzy, c-format
+msgid "aware of the presence of %s"
+msgstr "악의 존재를 느낀다."
+
+#: ../src/insight.c:1565 ../src/insight.c:1577
+msgid "orcs"
+msgstr ""
+
+#: ../src/insight.c:1566 ../src/insight.c:1576
+#, fuzzy
+msgid "elves"
+msgstr "그들 자체"
+
+#: ../src/insight.c:1567 ../src/insight.c:1578
+#, fuzzy
+msgid "demons"
+msgstr "악마"
+
+#: ../src/insight.c:1574
+#, fuzzy
+msgid "humans and elves"
+msgstr "그들 자체"
+
+# ============================================================
+# 종족 형용사 (Race Adjectives)
+# ============================================================
+#: ../src/insight.c:1575
+#, fuzzy
+msgid "humans"
+msgstr "인간"
+
+#: ../src/insight.c:1579
+#, fuzzy
+msgid "certain monsters"
+msgstr " 괴물"
 
 #: ../src/insight.c:1589
 msgid "warned of undead"
@@ -15517,9 +15620,24 @@ msgstr "%s 변신 함정!"
 msgid "polymorph control"
 msgstr "변신 제어"
 
+#: ../src/insight.c:1845
+#, fuzzy, c-format
+msgid "polymorphed into %s"
+msgstr "%s{으로/로} 변신한다."
+
+#: ../src/insight.c:1849
+#, fuzzy, c-format
+msgid "polymorphed into %s in %s form"
+msgstr "%s{으로/로} 변신한다."
+
 #: ../src/insight.c:1858
 msgid "lay eggs"
 msgstr "알 낳기"
+
+#: ../src/insight.c:1864
+#, fuzzy
+msgid " in beast form"
+msgstr "짐승 모습으로 남아있으겠습니까?"
 
 #: ../src/insight.c:1873
 msgid "harmed by silver"
@@ -15557,6 +15675,16 @@ msgstr "이 될 것이다"
 msgid " saved"
 msgstr " 구원받음"
 
+#: ../src/insight.c:1889
+#, fuzzy, c-format
+msgid "%s%slucky"
+msgstr "%s%s"
+
+#: ../src/insight.c:1890 ../src/insight.c:1911
+#, fuzzy
+msgid "extremely "
+msgstr "매우 많이 바랬다"
+
 #: ../src/insight.c:1896
 msgid "Your luck "
 msgstr "당신의 행운 "
@@ -15589,8 +15717,28 @@ msgstr " 시간 초과되지 않다"
 msgid "Good luck "
 msgstr "좋은 행운 "
 
+#: ../src/insight.c:1910
+#, fuzzy, c-format
+msgid " %sangry with you"
+msgstr " 당신과 함께"
+
 #: ../src/insight.c:1914
 msgid " was"
+msgstr ""
+
+#: ../src/insight.c:1924
+#, fuzzy, c-format
+msgid "%s%ssafely pray%s"
+msgstr "%s%s사용료, %ld %s."
+
+#: ../src/insight.c:1924 ../src/insight.c:1927
+#, fuzzy
+msgid "not "
+msgstr "볼 수 없게"
+
+#: ../src/insight.c:1927
+#, c-format
+msgid "%ssafely pray"
 msgstr ""
 
 #: ../src/insight.c:1946
@@ -28632,6 +28780,11 @@ msgstr "내 이름으로 현명하게 사용하라!"
 msgid "are not %s an altar."
 msgstr "제단에 %s 있지 않다."
 
+#: ../src/pray.c:1860 ../src/timeout.c:1277 ../src/trap.c:4905
+#: ../src/trap.c:4965
+msgid "on"
+msgstr "위"
+
 #: ../src/pray.c:1863
 msgid "are too impaired to perform the rite."
 msgstr "의식을 수행하기에 너무 손상되어 있다."
@@ -36222,6 +36375,10 @@ msgstr "%s에 걸려 넘어졌다."
 #, c-format
 msgid "%s %s %s the ice."
 msgstr "%s{이/가} %s 얼음을 %s."
+
+#: ../src/timeout.c:1277
+msgid "off"
+msgstr "바칠"
 
 #: ../src/timeout.c:1286
 msgid "lose your balance."

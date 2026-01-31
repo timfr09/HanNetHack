@@ -120,6 +120,34 @@ get_localized_filename(const char *fname)
 /* Domain name for gettext */
 #define TEXTDOMAIN "nethack"
 
+/*
+ * Context-aware gettext (pgettext)
+ *
+ * GNU gettext stores context-aware messages as "context\004msgid".
+ * This function looks up the combined key and returns the translation.
+ * If not found, returns the original msgid.
+ */
+const char *
+pgettext(const char *msgctxt, const char *msgid)
+{
+    static char msg_ctxt_id[BUFSZ];
+    const char *translation;
+
+    if (!msgctxt || !*msgctxt)
+        return gettext(msgid);
+
+    /* Build the context-aware key: "context\004msgid" */
+    snprintf(msg_ctxt_id, sizeof(msg_ctxt_id), "%s\004%s", msgctxt, msgid);
+
+    translation = gettext(msg_ctxt_id);
+
+    /* If not translated (gettext returns the input), return original msgid */
+    if (translation == msg_ctxt_id || strcmp(translation, msg_ctxt_id) == 0)
+        return msgid;
+
+    return translation;
+}
+
 /* Cached language info */
 static char current_lang[8] = "";
 static boolean korean_locale = FALSE;

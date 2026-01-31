@@ -952,9 +952,9 @@ status_enlightenment(int mode, int final)
     /* not a trouble, but we want to display riding status before maybe
        reporting steed as trapped or hero stuck to cursed saddle */
     if (Riding) {
-        Sprintf(buf, "riding %s", steedname);
+        Sprintf(buf, _("riding %s"), steedname);
         you_are(buf, "");
-        Sprintf(eos(youtoo), "and %s ", steedname);
+        Sprintf(eos(youtoo), _("and %s "), steedname);
     }
     /* other movement situations that hero should always know */
     if (Levitation) {
@@ -971,9 +971,9 @@ status_enlightenment(int mode, int final)
         you_are(Swimming ? _("swimming") : _("in water"), from_what(SWIMMING));
     } else if (walking_on_water()) {
         /* show active Wwalking here, potential Wwalking elsewhere */
-        Sprintf(buf, "walking on %s",
-                is_pool(u.ux, u.uy) ? "water"
-                : is_lava(u.ux, u.uy) ? "lava"
+        Sprintf(buf, _("walking on %s"),
+                is_pool(u.ux, u.uy) ? _("water")
+                : is_lava(u.ux, u.uy) ? _("lava")
                   : surface(u.ux, u.uy)); /* catchall; shouldn't happen */
         you_are(buf, from_what(WWALKING));
     }
@@ -1036,13 +1036,13 @@ status_enlightenment(int mode, int final)
         you_are(_("hallucinating"), "");
     if (Blind) {
         /* check the reasons in same order as from_what() */
-        Sprintf(buf, "%s blind",
-                (HBlinded & FROMOUTSIDE) != 0L ? "permanently"
-                : (HBlinded & FROMFORM) ? "innately"
+        Sprintf(buf, _("%s blind"),
+                (HBlinded & FROMOUTSIDE) != 0L ? _("permanently")
+                : (HBlinded & FROMFORM) ? _("innately")
                   /* better phrasing desperately wanted... */
-                  : Blindfolded_only ? "deliberately"
+                  : Blindfolded_only ? _("deliberately")
                     /* timed, possibly combined with blindfold */
-                    : "temporarily");
+                    : _("temporarily"));
         if (wizard && (HBlinded == BlindedTimeout && !Blindfolded))
             Sprintf(eos(buf), " (%ld)", BlindedTimeout);
         /* !haseyes: avoid "you are innately blind innately" */
@@ -1054,7 +1054,7 @@ status_enlightenment(int mode, int final)
     /* external troubles, more or less */
     if (Punished) {
         if (uball) {
-            Sprintf(buf, "chained to %s", ansimpleoname(uball));
+            Sprintf(buf, _("chained to %s"), ansimpleoname(uball));
         } else {
             impossible("Punished without uball?");
             Strcpy(buf, _("punished"));
@@ -1147,7 +1147,7 @@ status_enlightenment(int mode, int final)
         }
     }
     if (Glib) {
-        Sprintf(buf, "slippery %s", fingers_or_gloves(TRUE));
+        Sprintf(buf, _("slippery %s"), fingers_or_gloves(TRUE));
         if (wizard)
             Sprintf(eos(buf), " (%ld)", (Glib & TIMEOUT));
         you_have(buf, "");
@@ -1274,10 +1274,10 @@ weapon_insight(int final)
 
         if (!strcmpi(what, "armor") || !strcmpi(what, "food")
             || !strcmpi(what, "venom"))
-            Sprintf(buf, "wielding some %s", what);
+            Sprintf(buf, _("wielding some %s"), what);
         else
             /* [maybe include known blessed?] */
-            Sprintf(buf, "wielding %s",
+            Sprintf(buf, _("wielding %s"),
                     (uwep->quan == 1L) ? an(what) : makeplural(what));
         you_are(buf, "");
     }
@@ -1561,27 +1561,27 @@ attributes_enlightenment(
     if (Warning)
         you_are(_("warned"), from_what(WARNING));
     if (Warn_of_mon && svc.context.warntype.obj) {
-        Sprintf(buf, "aware of the presence of %s",
-                (svc.context.warntype.obj & M2_ORC) ? "orcs"
-                : (svc.context.warntype.obj & M2_ELF) ? "elves"
-                  : (svc.context.warntype.obj & M2_DEMON) ? "demons"
+        Sprintf(buf, _("aware of the presence of %s"),
+                (svc.context.warntype.obj & M2_ORC) ? _("orcs")
+                : (svc.context.warntype.obj & M2_ELF) ? _("elves")
+                  : (svc.context.warntype.obj & M2_DEMON) ? _("demons")
                     : something);
         you_are(buf, from_what(WARN_OF_MON));
     }
     if (Warn_of_mon && svc.context.warntype.polyd) {
-        Sprintf(buf, "aware of the presence of %s",
+        Sprintf(buf, _("aware of the presence of %s"),
                 ((svc.context.warntype.polyd & (M2_HUMAN | M2_ELF))
-                 == (M2_HUMAN | M2_ELF)) ? "humans and elves"
-                    : (svc.context.warntype.polyd & M2_HUMAN) ? "humans"
-                      : (svc.context.warntype.polyd & M2_ELF) ? "elves"
-                        : (svc.context.warntype.polyd & M2_ORC) ? "orcs"
-                          : (svc.context.warntype.polyd & M2_DEMON) ? "demons"
-                            : "certain monsters");
+                 == (M2_HUMAN | M2_ELF)) ? _("humans and elves")
+                    : (svc.context.warntype.polyd & M2_HUMAN) ? _("humans")
+                      : (svc.context.warntype.polyd & M2_ELF) ? _("elves")
+                        : (svc.context.warntype.polyd & M2_ORC) ? _("orcs")
+                          : (svc.context.warntype.polyd & M2_DEMON) ? _("demons")
+                            : _("certain monsters"));
         you_are(buf, "");
     }
     warnspecies =  svc.context.warntype.speciesidx;
     if (Warn_of_mon && ismnum(warnspecies)) {
-        Sprintf(buf, "aware of the presence of %s",
+        Sprintf(buf, _("aware of the presence of %s"),
                 makeplural(mons[warnspecies].pmnames[NEUTRAL]));
         you_are(buf, from_what(WARN_OF_MON));
     }
@@ -1842,11 +1842,11 @@ attributes_enlightenment(
              && u.umonnum == PM_GREEN_SLIME && !Unchanging)) {
         /* foreign shape (except were-form which is handled below) */
         if (!vampshifted(&gy.youmonst))
-            Sprintf(buf, "polymorphed into %s",
+            Sprintf(buf, _("polymorphed into %s"),
                     an(pmname(gy.youmonst.data,
                               flags.female ? FEMALE : MALE)));
         else
-            Sprintf(buf, "polymorphed into %s in %s form",
+            Sprintf(buf, _("polymorphed into %s in %s form"),
                     an(pmname(&mons[gy.youmonst.cham],
                               flags.female ? FEMALE : MALE)),
                     pmname(gy.youmonst.data, flags.female ? FEMALE : MALE));
@@ -1861,7 +1861,7 @@ attributes_enlightenment(
         Strcpy(buf, an(pmname(&mons[u.ulycn],
                flags.female ? FEMALE : MALE)));
         if (u.umonnum == u.ulycn) {
-            Strcat(buf, " in beast form");
+            Strcat(buf, _(" in beast form"));
             if (wizard)
                 Sprintf(eos(buf), " (%d)", u.mtimedone);
         }
@@ -1886,9 +1886,9 @@ attributes_enlightenment(
     /*** Miscellany ***/
     if (Luck) {
         ltmp = abs((int) Luck);
-        Sprintf(buf, "%s%slucky",
-                ltmp >= 10 ? "extremely " : ltmp >= 5 ? "very " : "",
-                Luck < 0 ? "un" : "");
+        Sprintf(buf, _("%s%slucky"),
+                ltmp >= 10 ? _("extremely ") : ltmp >= 5 ? _("very ") : "",
+                Luck < 0 ? _("un") : "");
         if (wizard)
             Sprintf(eos(buf), " (%d)", Luck);
         you_are(buf, "");
@@ -1907,8 +1907,8 @@ attributes_enlightenment(
     }
 
     if (u.ugangr) {
-        Sprintf(buf, " %sangry with you",
-                u.ugangr > 6 ? "extremely " : u.ugangr > 3 ? "very " : "");
+        Sprintf(buf, _(" %sangry with you"),
+                u.ugangr > 6 ? _("extremely ") : u.ugangr > 3 ? _("very ") : "");
         if (wizard)
             Sprintf(eos(buf), " (%d)", u.ugangr);
         enl_msg(u_gname(), _(" is"), _(" was"), buf, "");
@@ -1921,10 +1921,10 @@ attributes_enlightenment(
         if (!final) {
 #if 0
             /* "can [not] safely pray" vs "could [not] have safely prayed" */
-            Sprintf(buf, "%s%ssafely pray%s", can_pray(FALSE) ? "" : "not ",
-                    final ? "have " : "", final ? "ed" : "");
+            Sprintf(buf, _("%s%ssafely pray%s"), can_pray(FALSE) ? "" : _("not "),
+                    final ? _("have ") : "", final ? "ed" : "");
 #else
-            Sprintf(buf, "%ssafely pray", can_pray(FALSE) ? "" : "not ");
+            Sprintf(buf, _("%ssafely pray"), can_pray(FALSE) ? "" : _("not "));
 #endif
             if (wizard)
                 Sprintf(eos(buf), " (%d)", u.ublesscnt);

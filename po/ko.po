@@ -13013,7 +13013,7 @@ msgstr "%s{이/가} 이 %s에서 대각선으로 굴러가지 않는다."
 
 #: src/hack.c:452
 msgid "You sense movement on the other side."
-msgstr "반대편에 %s{이/가} 있다."
+msgstr "반대편에서 움직임이 느껴진다."
 
 #: src/hack.c:463
 #, c-format
@@ -18503,9 +18503,10 @@ msgstr "%s{이/가} %s%s 시작했다."
 msgid "Please disregard previous letter."
 msgstr "이전 편지는 무시해 줘."
 
+# 우편 메시지 (Mail message - joke/Easter egg)
 #: src/mail.c:495
 msgid "Welcome to NetHack."
-msgstr "%s %s, NetHack에 오신 것을 환영합니다! 당신은 %s이다."
+msgstr "NetHack에 오신 것을 환영합니다."
 
 #: src/mail.c:497
 msgid "Only Amiga makes it possible."
@@ -20986,17 +20987,18 @@ msgstr "... 그리고 정상으로 돌아왔다."
 msgid "The lapidifying %s %s %s"
 msgstr "석화되는 %s{이/가} %s %s"
 
+# 조합 패턴: 트롤/몬스터 재생 메시지 (troll/monster regeneration)
 #: src/mon.c:3777
 msgid "coalesces on the"
-msgstr "유백색의"
+msgstr "합쳐지다"
 
 #: src/mon.c:3778
 msgid "drops to the"
-msgstr "%s{으로/로} 떨어졌다."
+msgstr "떨어지다"
 
 #: src/mon.c:3779
 msgid "writhes on the"
-msgstr "%s에 쓸 수 없다!"
+msgstr "몸부림치다"
 
 #: src/mon.c:3806
 #, c-format
@@ -21110,13 +21112,14 @@ msgstr "위"
 msgid "%s %s%s!"
 msgstr "%s %s%s!"
 
+# 조합 패턴: 갑옷에서 나오는 동사 (emerging from armor)
 #: src/mon.c:5423
 msgid "emerge from"
-msgstr "%s{이/가} 합쳐져 굳어졌다!"
+msgstr "나왔다"
 
 #: src/mon.c:5423
 msgid "break out of"
-msgstr "갑옷을 부수고 나왔다!"
+msgstr "부수고 나왔다"
 
 #: src/mon.c:5457
 #, c-format

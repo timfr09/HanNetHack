@@ -8031,7 +8031,7 @@ msgstr "%s더 이상 %s."
 # 동사 - 한국어에서는 빈 문자열로 처리
 #: src/do_wear.c:2837 src/insight.c:44 src/insight.c:1072
 msgid "are "
-msgstr ""
+msgstr "​"
 
 #: src/do_wear.c:2838 src/insight.c:1261
 msgid "wielding two weapons at once"
@@ -14422,44 +14422,59 @@ msgid "Do what with %s?"
 msgstr "%s{으로/로} 그것을 할 수 없다."
 
 # ============================================================
-# 시스템 메시지 (System Messages)
+# ============================================================
+# insight.c 문장 조합 패턴 (Sentence Composition Pattern)
+# ============================================================
+# 영어: "You " + "are "/"have "/"can " + "동작 문구"
+# 예: "You " + "have " + "entered Gehennom" → "You have entered Gehennom"
+# 한국어: "당신은 " + (제로너비공백) + "게헨놈에 들어갔다"
+# 결과: "당신은 게헨놈에 들어갔다"
+#
+# 영어 be동사/조동사는 한국어에서 불필요하므로 제로너비공백(U+200B)으로 처리
 # ============================================================
 #: src/insight.c:43 src/insight.c:1164
 msgid "You "
 msgstr "당신은 "
 
+# 영어 be동사 - 한국어에서 불필요 (제로너비공백)
 #: src/insight.c:45 src/insight.c:1073
 msgid "were "
-msgstr ""
+msgstr "​"
 
+# 영어 조동사 have - 한국어에서 불필요 (제로너비공백)
 #: src/insight.c:46 src/insight.c:778 src/insight.c:1928 src/insight.c:2356
 msgid "have "
-msgstr ""
+msgstr "​"
 
+# 영어 조동사 had - 한국어에서 불필요 (제로너비공백)
 #: src/insight.c:47 src/insight.c:778
 msgid "had "
-msgstr ""
+msgstr "​"
 
+# 영어 조동사 can - 한국어에서 불필요 (제로너비공백)
 #: src/insight.c:48
 msgid "can "
-msgstr ""
+msgstr "​"
 
+# 영어 조동사 could - 한국어에서 불필요 (제로너비공백)
 #: src/insight.c:49
 msgid "could "
-msgstr ""
+msgstr "​"
 
+# 영어 have been - 한국어에서 불필요 (제로너비공백)
 #: src/insight.c:50
 msgid "have been "
-msgstr ""
+msgstr "​"
 
-#
+# 영어 have never - 한국어에서 불필요 (제로너비공백)
 #: src/insight.c:51
 msgid "have never "
-msgstr ""
+msgstr "​"
 
+# 영어 never - 한국어에서 불필요 (제로너비공백)
 #: src/insight.c:52
 msgid "never "
-msgstr ""
+msgstr "​"
 
 #: src/insight.c:63
 msgid "acquired the Bell of Opening"
@@ -14720,7 +14735,7 @@ msgstr "현재 "
 
 #: src/insight.c:487
 msgid "in "
-msgstr ""
+msgstr "​"
 
 # === insight.c status descriptions ===
 #: src/insight.c:500 src/obj_descr_i18n.c:429
@@ -14841,19 +14856,19 @@ msgstr "들어간 "
 
 #: src/insight.c:630 src/insight.c:632
 msgid "It "
-msgstr ""
+msgstr "​"
 
 #: src/insight.c:630 src/insight.c:632 src/insight.c:652 src/insight.c:697
 #: src/insight.c:755 src/insight.c:800 src/insight.c:913 src/insight.c:1072
 #: src/insight.c:1950 src/insight.c:1952 src/insight.c:1954
 msgid "is "
-msgstr ""
+msgstr "​"
 
 #: src/insight.c:630 src/insight.c:632 src/insight.c:652 src/insight.c:697
 #: src/insight.c:755 src/insight.c:800 src/insight.c:913 src/insight.c:1073
 #: src/insight.c:1950 src/insight.c:1952 src/insight.c:1954
 msgid "was "
-msgstr ""
+msgstr "​"
 
 #: src/insight.c:630
 msgid "the midnight hour"
@@ -14893,7 +14908,7 @@ msgstr " 모험이 끝났을 때"
 # ============================================================
 #: src/insight.c:652
 msgid "There "
-msgstr ""
+msgstr "​"
 
 #: src/insight.c:660
 #, c-format
@@ -15015,7 +15030,7 @@ msgstr " 지갑에 %ld %s이(가) 있다"
 
 #: src/insight.c:765
 msgid "ed"
-msgstr ""
+msgstr "​"
 
 #: src/insight.c:770
 msgid ", but"
@@ -15416,7 +15431,7 @@ msgstr " %s 때문에"
 
 #: src/insight.c:1240 src/insight.c:1907 src/insight.c:1909
 msgid "did"
-msgstr ""
+msgstr "​"
 
 # 누드 플레이 관련
 #: src/insight.c:1240
@@ -16188,7 +16203,7 @@ msgstr " 당신에게 %s화가 난"
 
 #: src/insight.c:1917
 msgid " was"
-msgstr ""
+msgstr "​"
 
 # ============================================================
 # 기도 관련 메시지 (Prayer)
@@ -16469,7 +16484,7 @@ msgstr "%ld번%s 소원을 빌었다"
 # 영어 복수형 접미사 - 한국어에서는 불필요
 #: src/insight.c:2189
 msgid "es"
-msgstr ""
+msgstr "​"
 
 #: src/insight.c:2200 src/pager.c:2167
 #, c-format
@@ -16487,7 +16502,7 @@ msgstr "둘 다 "
 #: src/insight.c:2204
 #, c-format
 msgid " (%ld "
-msgstr ""
+msgstr " (%ld "
 
 # 소원 세부 정보 - "for an artifact"
 #: src/insight.c:2206
@@ -24477,11 +24492,11 @@ msgstr " 시체"
 # 영어 관사 - 한국어에서는 불필요하지만 빈 문자열로 번역
 #: src/objnam.c:2137 src/priest.c:332 src/priest.c:341 src/priest.c:346
 msgid "an "
-msgstr ""
+msgstr "​"
 
 #: src/objnam.c:2151
 msgid "an []"
-msgstr ""
+msgstr "​"
 
 #: src/objnam.c:3617
 #, c-format
@@ -33719,8 +33734,7 @@ msgstr "%s{이/가} 신을 섬기는 자들이 번영한다는 것을 알아챘�
 #: src/shk.c:5450
 #, c-format
 msgid "%s says: 'Don't try to steal from me - I have friends in high places!'"
-msgstr ""
-"%s이(가) 말한다: '나한테서 훔치려고 하지 마 - 나는 높은 곳에 친구가 있어!'"
+msgstr "%s{이/가} 말한다: '나한테서 훔치려고 하지 마 - 나는 높은 곳에 친구가 있어!'"
 
 #: src/shk.c:5451
 #, c-format
@@ -36718,8 +36732,7 @@ msgstr "%s{이/가} 순간이동한다."
 #: src/teleport.c:1916
 #, c-format
 msgid "<%d,%d> is not considered viable; force anyway?"
-msgstr ""
-"<%d,%d>은(는) 유효하지 않은 것으로 간주됩니다; 그래도 강제하시겠습니까?"
+msgstr "<%d,%d>은(는) 유효하지 않은 것으로 간주됩니다; 그래도 강제하시겠습니까?"
 
 #: src/teleport.c:1922
 #, c-format
@@ -42330,11 +42343,11 @@ msgstr "%s{이/가} %s에 융합되었다!"
 
 #: src/windows.c:1169
 msgid "{game start cookie}"
-msgstr ""
+msgstr "{게임 시작 쿠키}"
 
 #: src/windows.c:1175
 msgid "{current time cookie}"
-msgstr ""
+msgstr "{현재 시간 쿠키}"
 
 #: src/windows.c:1182
 msgid "{game start date+time}"
@@ -42498,9 +42511,7 @@ msgstr "겁쟁이"
 
 #: src/wizard.c:824
 msgid "rattlepate"
-msgstr ""
-"덜렁이전투 도끼\n"
-"전투도끼"
+msgstr "덜렁이"
 
 #: src/wizard.c:824
 msgid "reprobate"

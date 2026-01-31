@@ -173,38 +173,38 @@ do_statusline2(void)
      * unusual for more than one of them to apply at a time.]
      */
     if (Stoned)
-        Strcpy(nb = eos(nb), " Stone");
+        Strcpy(nb = eos(nb), _(" Stone"));
     if (Slimed)
-        Strcpy(nb = eos(nb), " Slime");
+        Strcpy(nb = eos(nb), _(" Slime"));
     if (Strangled)
-        Strcpy(nb = eos(nb), " Strngl");
+        Strcpy(nb = eos(nb), _(" Strngl"));
     if (Sick) {
         if (u.usick_type & SICK_VOMITABLE)
-            Strcpy(nb = eos(nb), " FoodPois");
+            Strcpy(nb = eos(nb), _(" FoodPois"));
         if (u.usick_type & SICK_NONVOMITABLE)
-            Strcpy(nb = eos(nb), " TermIll");
+            Strcpy(nb = eos(nb), _(" TermIll"));
     }
     if (u.uhs != NOT_HUNGRY)
         Sprintf(nb = eos(nb), " %s", hu_stat[u.uhs]);
     if ((cap = near_capacity()) > UNENCUMBERED)
         Sprintf(nb = eos(nb), " %s", enc_stat[cap]);
     if (Blind)
-        Strcpy(nb = eos(nb), " Blind");
+        Strcpy(nb = eos(nb), _(" Blind"));
     if (Deaf)
-        Strcpy(nb = eos(nb), " Deaf");
+        Strcpy(nb = eos(nb), _(" Deaf"));
     if (Stunned)
-        Strcpy(nb = eos(nb), " Stun");
+        Strcpy(nb = eos(nb), _(" Stun"));
     if (Confusion)
-        Strcpy(nb = eos(nb), " Conf");
+        Strcpy(nb = eos(nb), _(" Conf"));
     if (Hallucination)
-        Strcpy(nb = eos(nb), " Hallu");
+        Strcpy(nb = eos(nb), _(" Hallu"));
     /* levitation and flying are mutually exclusive; riding is not */
     if (Levitation)
-        Strcpy(nb = eos(nb), " Lev");
+        Strcpy(nb = eos(nb), _(" Lev"));
     if (Flying)
-        Strcpy(nb = eos(nb), " Fly");
+        Strcpy(nb = eos(nb), _(" Fly"));
     if (u.usteed)
-        Strcpy(nb = eos(nb), " Ride");
+        Strcpy(nb = eos(nb), _(" Ride"));
     cln = strlen(cond);
 
     /* version on status line, with leading space */

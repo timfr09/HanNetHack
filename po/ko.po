@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 09:51+0900\n"
+"POT-Creation-Date: 2026-01-31 10:25+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -3453,6 +3453,63 @@ msgstr "Lv:%d"
 msgid "T:%ld"
 msgstr "T:%ld"
 
+#: ../src/botl.c:176 ../src/windows.c:994
+#, fuzzy
+msgid " Stone"
+msgstr " 돌"
+
+#: ../src/botl.c:178 ../src/windows.c:996
+#, fuzzy
+msgid " Slime"
+msgstr "숭고한"
+
+#: ../src/botl.c:180 ../src/windows.c:998
+msgid " Strngl"
+msgstr ""
+
+#: ../src/botl.c:183 ../src/windows.c:1000
+msgid " FoodPois"
+msgstr ""
+
+#: ../src/botl.c:185 ../src/windows.c:1002
+msgid " TermIll"
+msgstr ""
+
+#: ../src/botl.c:192 ../src/windows.c:1004
+#, fuzzy
+msgid " Blind"
+msgstr "%s{이/가} 당신의 눈을 멀게 했다!"
+
+#: ../src/botl.c:194 ../src/windows.c:1006
+msgid " Deaf"
+msgstr ""
+
+#: ../src/botl.c:196 ../src/windows.c:1008
+msgid " Stun"
+msgstr ""
+
+#: ../src/botl.c:198 ../src/windows.c:1010
+msgid " Conf"
+msgstr ""
+
+#: ../src/botl.c:200 ../src/windows.c:1012
+#, fuzzy
+msgid " Hallu"
+msgstr "벽"
+
+#: ../src/botl.c:203 ../src/windows.c:1014
+msgid " Lev"
+msgstr ""
+
+#: ../src/botl.c:205 ../src/windows.c:1016
+msgid " Fly"
+msgstr ""
+
+#: ../src/botl.c:207 ../src/windows.c:1018
+#, fuzzy
+msgid " Ride"
+msgstr "습격자"
+
 # ============================================================
 # 상태 표시줄 (Status Line)
 # ============================================================
@@ -4688,7 +4745,8 @@ msgstr "%s{이/가} %s{을/를} 하고 사라진다."
 #: ../src/dbridge.c:723 ../src/dig.c:866 ../src/dig.c:925 ../src/dokick.c:1453
 #: ../src/dothrow.c:1098 ../src/hack.c:2484 ../src/insight.c:248
 #: ../src/insight.c:976 ../src/invent.c:5507 ../src/obj_descr_i18n.c:469
-#: ../src/pickup.c:2052 ../src/trap.c:3975 ../src/zap.c:5215
+#: ../src/pager.c:1194 ../src/pickup.c:2052 ../src/trap.c:3975
+#: ../src/zap.c:5215
 msgid "lava"
 msgstr "용암"
 
@@ -7228,6 +7286,17 @@ msgstr "몇 개의"
 msgid "something"
 msgstr "무언가"
 
+# 한국어에는 정관사가 없으므로 빈 문자열로 처리
+#: ../src/do_name.c:923 ../src/do_name.c:1028 ../src/do_name.c:1198
+#: ../src/dokick.c:1606 ../src/end.c:208 ../src/end.c:218 ../src/insight.c:2901
+#: ../src/objnam.c:1294 ../src/read.c:2900
+msgid "the "
+msgstr " "
+
+#: ../src/do_name.c:929 ../src/mplayer.c:90
+msgid " the "
+msgstr "%s (%s)"
+
 #: ../src/do_name.c:931 ../src/do_name.c:942 ../src/end.c:223
 #: ../src/mhitu.c:240 ../src/mhitu.c:246 ../src/obj_descr_i18n.c:426
 #: ../src/pager.c:119
@@ -7242,12 +7311,6 @@ msgstr "혼란스러운"
 #, c-format
 msgid "%s called %s"
 msgstr "%s{이/가} %s(이)라고 불림"
-
-# 한국어에는 정관사가 없으므로 빈 문자열로 처리
-#: ../src/do_name.c:1028 ../src/do_name.c:1198 ../src/dokick.c:1606
-#: ../src/end.c:208 ../src/end.c:218 ../src/insight.c:2901 ../src/read.c:2900
-msgid "the "
-msgstr " "
 
 #: ../src/do_name.c:1199
 msgid "high priestess"
@@ -7264,6 +7327,10 @@ msgstr "그 자체"
 #: ../src/do_name.c:1222
 msgid "herself"
 msgstr "당신 자신"
+
+#: ../src/do_name.c:1396
+msgid "bogon"
+msgstr ""
 
 #: ../src/do_name.c:1493
 msgid "colorless"
@@ -7305,8 +7372,8 @@ msgstr "투구"
 
 # 방어구 - 방패
 #: ../src/do_wear.c:14 ../src/mhitu.c:2119 ../src/muse.c:2769
-#: ../src/muse.c:2807 ../src/obj_descr_i18n.c:126 ../src/read.c:1149
-#: ../src/read.c:1601
+#: ../src/muse.c:2807 ../src/obj_descr_i18n.c:126 ../src/objnam.c:730
+#: ../src/read.c:1149 ../src/read.c:1601
 msgid "shield"
 msgstr "방패"
 
@@ -9984,6 +10051,40 @@ msgstr "와! 대단하다!"
 msgid "guilty."
 msgstr "죄책감."
 
+#: ../src/eat.c:1439
+#, fuzzy
+msgid " of spinach"
+msgstr "시금치가 들어있다."
+
+# Item states
+#: ../src/eat.c:1441
+#, fuzzy
+msgid "empty tin"
+msgstr "빈 "
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/eat.c:1446
+#, fuzzy, c-format
+msgid "%s %s of "
+msgstr "%s %s %s."
+
+#: ../src/eat.c:1449
+#, fuzzy, c-format
+msgid " of %s "
+msgstr " %s의"
+
+#: ../src/eat.c:1452 ../src/obj_descr_i18n.c:342 ../src/objnam.c:839
+#: ../src/objnam.c:858
+msgid " of "
+msgstr " "
+
+#: ../src/eat.c:1457
+#, fuzzy, c-format
+msgid "%s meat"
+msgstr "고기"
+
 # ============================================================
 # 물약 메시지 (Potion Messages)
 # ============================================================
@@ -10450,6 +10551,7 @@ msgstr "반지"
 # --- 부적 (Amulets) ---
 #: ../src/eat.c:2257 ../src/iactions.c:550 ../src/muse.c:2781
 #: ../src/obj_descr_i18n.c:112 ../src/obj_descr_i18n.c:359 ../src/objnam.c:249
+#: ../src/objnam.c:675
 msgid "amulet"
 msgstr "부적"
 
@@ -21391,10 +21493,6 @@ msgstr "사이에"
 msgid "I'm late!"
 msgstr "늦었다!"
 
-#: ../src/mplayer.c:90
-msgid " the "
-msgstr "%s (%s)"
-
 #: ../src/mplayer.c:361
 msgid "I can't win, and neither will you!"
 msgstr "내가 이길 수 없다면, 너도 못 이겨!"
@@ -23669,7 +23767,7 @@ msgid "poisoned "
 msgstr "독이 묻은 "
 
 #: ../src/obj_descr_i18n.c:333 ../src/obj_descr_i18n.c:360 ../src/objnam.c:258
-#: ../src/objnam.c:696
+#: ../src/objnam.c:696 ../src/objnam.c:726
 msgid "pair of "
 msgstr "꼬리: "
 
@@ -23697,10 +23795,6 @@ msgstr "불경한 "
 #: ../src/obj_descr_i18n.c:341 ../src/objnam.c:850
 msgid " potion"
 msgstr " 물약"
-
-#: ../src/obj_descr_i18n.c:342 ../src/objnam.c:839 ../src/objnam.c:858
-msgid " of "
-msgstr " "
 
 #: ../src/obj_descr_i18n.c:343 ../src/objnam.c:829
 msgid "heavy iron ball"
@@ -23821,7 +23915,7 @@ msgstr "이구아나"
 msgid "lizard"
 msgstr "도마뱀"
 
-#: ../src/obj_descr_i18n.c:381
+#: ../src/obj_descr_i18n.c:381 ../src/were.c:169
 msgid "jackal"
 msgstr "자칼"
 
@@ -23833,7 +23927,7 @@ msgstr "여우"
 msgid "coyote"
 msgstr "코요테"
 
-#: ../src/obj_descr_i18n.c:384
+#: ../src/obj_descr_i18n.c:384 ../src/were.c:175
 msgid "wolf"
 msgstr "늑대"
 
@@ -23973,7 +24067,7 @@ msgstr "엘프 좀비"
 msgid "human zombie"
 msgstr "인간 좀비"
 
-#: ../src/obj_descr_i18n.c:419
+#: ../src/obj_descr_i18n.c:419 ../src/were.c:163
 msgid "rat"
 msgstr "쥐"
 
@@ -24217,6 +24311,16 @@ msgstr ""
 msgid "hardcover"
 msgstr "게임 오버:"
 
+# 방어구 - 방패
+#: ../src/objnam.c:733
+#, fuzzy
+msgid "smooth shield"
+msgstr "방패"
+
+#: ../src/objnam.c:753
+msgid "fruit"
+msgstr ""
+
 #: ../src/objnam.c:788
 msgid "very large"
 msgstr "많이 바랬다"
@@ -24224,6 +24328,16 @@ msgstr "많이 바랬다"
 #: ../src/objnam.c:810
 msgid "historic "
 msgstr ""
+
+#: ../src/objnam.c:1286 ../src/read.c:2959 ../src/timeout.c:1101
+#: ../src/timeout.c:1562 ../src/timeout.c:1580 ../src/timeout.c:1621
+msgid "some "
+msgstr "몇 개의"
+
+#: ../src/objnam.c:1300 ../src/objnam.c:2139 ../src/role.c:1637
+#: ../src/timeout.c:1563 ../src/timeout.c:1581
+msgid "a "
+msgstr "하나의"
 
 # ============================================================
 # 전투 메시지 (Combat Messages)
@@ -24362,6 +24476,15 @@ msgstr "판매용"
 msgid " (no charge)"
 msgstr "무료다."
 
+#: ../src/objnam.c:2137
+#, fuzzy
+msgid "an "
+msgstr "그리고 "
+
+#: ../src/objnam.c:2151
+msgid "an []"
+msgstr ""
+
 #: ../src/objnam.c:3606
 #, c-format
 msgid "Creation of %s failed."
@@ -24452,6 +24575,11 @@ msgstr "%s{이/가} 도개교를 %s."
 #: ../src/objnam.c:3952
 msgid "in front of"
 msgstr "앞에"
+
+#: ../src/objnam.c:4740
+#, fuzzy
+msgid "worthless piece of "
+msgstr "가치 없는 붉은 유리 조각"
 
 #: ../src/objnam.c:5405
 #, c-format
@@ -25080,6 +25208,11 @@ msgstr "간신히 "
 #: ../src/pager.c:154
 msgid "heavily "
 msgstr "심하게 "
+
+#: ../src/pager.c:209
+#, fuzzy
+msgid ", mimicking "
+msgstr "발로 차기"
 
 #: ../src/pager.c:238
 msgid ", masquerading as "
@@ -30790,11 +30923,6 @@ msgstr "권위있는 명령에 따라, %s..."
 msgid "Sent in %s%s."
 msgstr "%s%s{을/를} 보냈다."
 
-#: ../src/read.c:2959 ../src/timeout.c:1101 ../src/timeout.c:1562
-#: ../src/timeout.c:1580 ../src/timeout.c:1621
-msgid "some "
-msgstr "몇 개의"
-
 #: ../src/read.c:2978
 msgid "are being punished for your misbehavior!"
 msgstr "잘못된 행동으로 인해 벌을 받고 있다!"
@@ -31790,10 +31918,6 @@ msgstr "? [ynaq] "
 #: ../src/role.c:1633
 msgid "Shall I pick "
 msgstr "내가 골라줄까요 "
-
-#: ../src/role.c:1637 ../src/timeout.c:1563 ../src/timeout.c:1581
-msgid "a "
-msgstr "하나의"
 
 #: ../src/role.c:1767
 #, fuzzy

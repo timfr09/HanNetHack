@@ -991,31 +991,31 @@ genl_status_update(
             nb = status_vals[idx];
             *nb = '\0';
             if (cond & BL_MASK_STONE)
-                Strcpy(nb = eos(nb), " Stone");
+                Strcpy(nb = eos(nb), _(" Stone"));
             if (cond & BL_MASK_SLIME)
-                Strcpy(nb = eos(nb), " Slime");
+                Strcpy(nb = eos(nb), _(" Slime"));
             if (cond & BL_MASK_STRNGL)
-                Strcpy(nb = eos(nb), " Strngl");
+                Strcpy(nb = eos(nb), _(" Strngl"));
             if (cond & BL_MASK_FOODPOIS)
-                Strcpy(nb = eos(nb), " FoodPois");
+                Strcpy(nb = eos(nb), _(" FoodPois"));
             if (cond & BL_MASK_TERMILL)
-                Strcpy(nb = eos(nb), " TermIll");
+                Strcpy(nb = eos(nb), _(" TermIll"));
             if (cond & BL_MASK_BLIND)
-                Strcpy(nb = eos(nb), " Blind");
+                Strcpy(nb = eos(nb), _(" Blind"));
             if (cond & BL_MASK_DEAF)
-                Strcpy(nb = eos(nb), " Deaf");
+                Strcpy(nb = eos(nb), _(" Deaf"));
             if (cond & BL_MASK_STUN)
-                Strcpy(nb = eos(nb), " Stun");
+                Strcpy(nb = eos(nb), _(" Stun"));
             if (cond & BL_MASK_CONF)
-                Strcpy(nb = eos(nb), " Conf");
+                Strcpy(nb = eos(nb), _(" Conf"));
             if (cond & BL_MASK_HALLU)
-                Strcpy(nb = eos(nb), " Hallu");
+                Strcpy(nb = eos(nb), _(" Hallu"));
             if (cond & BL_MASK_LEV)
-                Strcpy(nb = eos(nb), " Lev");
+                Strcpy(nb = eos(nb), _(" Lev"));
             if (cond & BL_MASK_FLY)
-                Strcpy(nb = eos(nb), " Fly");
+                Strcpy(nb = eos(nb), _(" Fly"));
             if (cond & BL_MASK_RIDE)
-                Strcpy(nb = eos(nb), " Ride");
+                Strcpy(nb = eos(nb), _(" Ride"));
             break;
         default:
             Sprintf(status_vals[idx],

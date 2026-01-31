@@ -1436,25 +1436,25 @@ tin_details(struct obj *obj, int mnum, char *buf)
     int r = tin_variety(obj, TRUE);
 
     if (r == SPINACH_TIN)
-        Strcat(buf, " of spinach");
+        Strcat(buf, _(" of spinach"));
     else if (mnum == NON_PM)
-        Strcpy(buf, "empty tin");
+        Strcpy(buf, _("empty tin"));
     else {
         if ((obj->cknown || iflags.override_ID) && obj->spe < 0) {
             if (r == ROTTEN_TIN || r == HOMEMADE_TIN) {
                 /* put these before the word tin */
-                Sprintf(buf2, "%s %s of ", tintxts[r].txt, buf);
+                Sprintf(buf2, _("%s %s of "), tintxts[r].txt, buf);
                 Strcpy(buf, buf2);
             } else {
-                Sprintf(eos(buf), " of %s ", tintxts[r].txt);
+                Sprintf(eos(buf), _(" of %s "), tintxts[r].txt);
             }
         } else {
-            Strcpy(eos(buf), " of ");
+            Strcpy(eos(buf), _(" of "));
         }
         if (vegetarian(&mons[mnum]))
             Sprintf(eos(buf), "%s", mons[mnum].pmnames[NEUTRAL]);
         else
-            Sprintf(eos(buf), "%s meat", mons[mnum].pmnames[NEUTRAL]);
+            Sprintf(eos(buf), _("%s meat"), mons[mnum].pmnames[NEUTRAL]);
     }
 }
 

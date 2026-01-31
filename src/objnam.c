@@ -672,7 +672,7 @@ xname_flags(
     switch (obj->oclass) {
     case AMULET_CLASS:
         if (!dknown)
-            Strcpy(buf, "amulet");
+            Strcpy(buf, _("amulet"));
         else if (typ == AMULET_OF_YENDOR || typ == FAKE_AMULET_OF_YENDOR)
             /* each must be identified individually */
             Strcpy(buf, known ? actualn : dn);
@@ -723,14 +723,14 @@ xname_flags(
             Sprintf(buf, "set of %s", actualn);
             break;
         } else if (is_boots(obj) || is_gloves(obj)) {
-            Strcpy(buf, "pair of ");
+            Strcpy(buf, _("pair of "));
             /*FALLTHRU*/
         } else if (is_shield(obj) && !dknown) {
             if (obj->otyp >= ELVEN_SHIELD && obj->otyp <= ORCISH_SHIELD) {
-                Strcpy(buf, "shield");
+                Strcpy(buf, _("shield"));
                 break;
             } else if (obj->otyp == SHIELD_OF_REFLECTION) {
-                Strcpy(buf, "smooth shield");
+                Strcpy(buf, _("smooth shield"));
                 break;
             }
         }
@@ -750,7 +750,7 @@ xname_flags(
 
             if (!f) {
                 impossible("Bad fruit #%d?", obj->spe);
-                Strcpy(buf, "fruit");
+                Strcpy(buf, _("fruit"));
             } else {
                 /* fruit name is limited in length to PL_FSIZ; converting
                    to/from singular/plural might increase the length a
@@ -1283,7 +1283,7 @@ doname_base(
         if (dknown || !vague_quan)
             Sprintf(prefix, "%ld ", obj->quan);
         else
-            Strcpy(prefix, "some ");
+            Strcpy(prefix, _("some "));
     } else if (obj->otyp == CORPSE) {
         /* skip article prefix for corpses [else corpse_xname()
            would have to be taught how to strip it off again] */
@@ -1291,13 +1291,13 @@ doname_base(
     } else if (force_the || obj_is_pname(obj) || the_unique_obj(obj)) {
         if (!strncmpi(bp, "the ", 4))
             bp += 4; /* doesn't affect bp_eos or bpspaceleft */
-        Strcpy(prefix, "the ");
+        Strcpy(prefix, _("the "));
     } else if (!fake_arti) {
         /* default prefix: "a " for English, "1 " for Korean */
         if (is_korean_locale())
             Strcpy(prefix, "1 ");
         else
-            Strcpy(prefix, "a ");
+            Strcpy(prefix, _("a "));
     }
 
     /* "empty" goes at the beginning, but item count goes at the end */
@@ -2134,9 +2134,9 @@ just_an(char *outbuf, const char *str)
              && strncmpi(str, "unicorn", 7) && strncmpi(str, "uranium", 7)
              && strncmpi(str, "useful", 6)) /* "useful tool" */
             || (c0 == 'x' && !strchr(vowels, lowc(str[1]))))
-            Strcpy(outbuf, "an ");
+            Strcpy(outbuf, _("an "));
         else
-            Strcpy(outbuf, "a ");
+            Strcpy(outbuf, _("a "));
     }
     return outbuf;
 }
@@ -2148,7 +2148,7 @@ an(const char *str)
 
     if (!str || !*str) {
         impossible("Alphabet soup: 'an(%s)'.", str ? "\"\"" : "<null>");
-        return strcpy(buf, "an []");
+        return strcpy(buf, _("an []"));
     }
     (void) just_an(buf, str);
     return strncat(buf, str, BUFSZ - 1 - Strlen(buf));
@@ -4737,7 +4737,7 @@ readobjnam_postparse2(struct _readobjnam_data *d)
         } else { /* try to construct canonical form */
             char tbuf[BUFSZ];
 
-            Strcpy(tbuf, "worthless piece of ");
+            Strcpy(tbuf, _("worthless piece of "));
             Strcat(tbuf, s); /* assume it starts with the color */
             Strcpy(d->bp, tbuf);
         }

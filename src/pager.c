@@ -206,7 +206,7 @@ mhidden_description(
     if (M_AP_TYPE(mon) == M_AP_FURNITURE
         || M_AP_TYPE(mon) == M_AP_OBJECT) {
         if (incl_prefix)
-            Strcpy(outbuf, ", mimicking ");
+            Strcpy(outbuf, _(", mimicking "));
         if (M_AP_TYPE(mon) == M_AP_FURNITURE) {
             what = _(defsyms[mon->mappearance].explanation);
             if (incl_article)
@@ -1191,7 +1191,7 @@ add_cmap_descr(
         if (!strcmp(mbuf, "pool of water"))
             mbuf[4] = '\0';
         else if (!strcmp(mbuf, "molten lava"))
-            Strcpy(mbuf, "lava");
+            Strcpy(mbuf, _("lava"));
         x_str = mbuf;
         /* avoid "an ice" and so forth; "a pool", "a moat", and
            "a wall of ..." are grammatically correct but make

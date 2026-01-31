@@ -7260,3 +7260,122 @@ msgstr "독가스"
 
 msgid "vapor"
 msgstr "증기"
+
+# ===============================================
+# 추가 번역 - objnam.c, botl.c, etc.
+# ===============================================
+
+# objnam.c - 아이템 이름 및 관사
+msgid "amulet"
+msgstr "부적"
+
+msgid "pair of "
+msgstr ""
+
+msgid "shield"
+msgstr "방패"
+
+# "smooth shield"는 이미 line 1602에 존재
+
+msgid "fruit"
+msgstr "과일"
+
+msgid "some "
+msgstr "약간의 "
+
+# 영어 관사 - 한국어에서는 대부분 생략
+# "the "는 이미 line 7086에 존재
+
+msgid "a "
+msgstr ""
+
+msgid "an "
+msgstr ""
+
+msgid "an []"
+msgstr "[]"
+
+msgid "worthless piece of "
+msgstr "무가치한 "
+
+# botl.c, windows.c - 상태줄 약어
+msgid " Stone"
+msgstr " 석화"
+
+msgid " Slime"
+msgstr " 점액"
+
+msgid " Strngl"
+msgstr " 질식"
+
+msgid " FoodPois"
+msgstr " 식중독"
+
+msgid " TermIll"
+msgstr " 중병"
+
+msgid " Blind"
+msgstr " 실명"
+
+msgid " Deaf"
+msgstr " 청각"
+
+msgid " Stun"
+msgstr " 기절"
+
+msgid " Conf"
+msgstr " 혼란"
+
+msgid " Hallu"
+msgstr " 환각"
+
+msgid " Lev"
+msgstr " 부유"
+
+msgid " Fly"
+msgstr " 비행"
+
+msgid " Ride"
+msgstr " 승마"
+
+# pager.c - 몬스터 정보
+msgid ", mimicking "
+msgstr ", 흉내내는 중: "
+
+# eat.c - 통조림 내용
+msgid " of spinach"
+msgstr " 시금치"
+
+msgid "empty tin"
+msgstr "빈 통조림"
+
+#, c-format
+msgid "%s %s of "
+msgstr "%s %s "
+
+#, c-format
+msgid " of %s "
+msgstr " %s "
+
+msgid " of "
+msgstr " "
+
+#, c-format
+msgid "%s meat"
+msgstr "%s 고기"
+
+# do_name.c - 몬스터 이름
+# " the "는 이미 line 4953에 존재
+
+msgid "bogon"
+msgstr "보곤"
+
+# were.c - 늑대인간 종류
+msgid "rat"
+msgstr "쥐"
+
+msgid "jackal"
+msgstr "자칼"
+
+msgid "wolf"
+msgstr "늑대"

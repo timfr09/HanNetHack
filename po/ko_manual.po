@@ -7245,11 +7245,12 @@ msgstr ", 에게 소화되고 있다 "
 msgid ", engulfed by "
 msgstr ", 에게 감싸여 있다 "
 
+# insight.c - 몬스터와의 관계 (몬스터 이름 뒤에 붙음)
 msgid ", held by "
-msgstr ", 에게 붙잡힘 "
+msgstr ", 에게 붙잡혀 있다 "
 
 msgid ", holding "
-msgstr ", 을(를) 붙잡고 있다 "
+msgstr ", {을/를} 붙잡고 있다 "
 
 #, c-format
 msgid ", in a cloud of %s"
@@ -7503,13 +7504,13 @@ msgstr "문 없는 출입구"
 msgid "door"
 msgstr "문"
 
-# detect.c - 탐지
+# detect.c - 탐지 (예: "potions and/or large stones")
 msgid " and/or large stones"
-msgstr " 그리고/또는 큰 돌"
+msgstr "이나 큰 돌"
 
-# dungeon.c - 던전 입구
+# dungeon.c - 던전 입구 (던전 개요에서 사용)
 msgid ", entrance from below"
-msgstr ", 아래에서 입구"
+msgstr ", 아래층에서 진입"
 
 # polyself.c - 변신
 # "riding %s"는 이미 line 6717에 존재
@@ -7546,10 +7547,10 @@ msgstr "을 자동 선택할까요? [ynaq] "
 # cmd.c - 확장 명령어 선택
 # " or "는 이미 line 4916에 존재
 
-# pager.c - 몬스터 부상 정도
+# pager.c - 몬스터 부상 정도 (예: "barely wounded", "heavily wounded")
 #, c-format
 msgid "%swounded"
-msgstr "%s부상"
+msgstr "%s부상당함"
 
 # region.c - 가스 구름
 #, c-format
@@ -7563,10 +7564,10 @@ msgstr "독 가스 (%d)"
 msgid "Line %d: "
 msgstr "%d번째 줄: "
 
-# dungeon.c - 제단 설명
+# dungeon.c - 제단 설명 (예: "altar to Mitra")
 #, c-format
 msgid " to %s"
-msgstr " (%s에게)"
+msgstr " (%s의)"
 
 # objnam.c - 물체 이름
 #, c-format
@@ -7581,14 +7582,14 @@ msgstr "%s 세트"
 msgid "died born"
 msgstr "사망 탄생"
 
-# zap.c - 플레이어 해방
+# zap.c - 플레이어 해방 (You "are released %s" -> "%s에서 풀려났다")
 #, c-format
 msgid "from %s grasp"
-msgstr "%s의 손아귀에서"
+msgstr "%s의 손아귀"
 
 #, c-format
 msgid "by %s"
-msgstr "%s에 의해"
+msgstr "%s"
 
 # options.c - 옵션 설정
 #, c-format
@@ -7609,11 +7610,12 @@ msgid "always"
 msgstr "항상"
 
 msgid "criticalhp"
-msgstr "치명적HP"
+msgstr "위험HP"
 
+# botl.c - 상태 조건 메뉴 정렬 (예: "sorted alphabetically")
 #, c-format
 msgid "sorted %s"
-msgstr "%s 순서"
+msgstr "%s순 정렬"
 
 # options.c - 오류 및 자동줍기
 msgid "ERROR"

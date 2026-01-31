@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 11:00+0900\n"
+"POT-Creation-Date: 2026-01-31 11:03+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24419,6 +24419,26 @@ msgstr ""
 msgid "warned of %s"
 msgstr ""
 
+#: ../src/pager.c:573
+#, c-format
+msgid "molten %s"
+msgstr ""
+
+#: ../src/pager.c:578
+#, c-format
+msgid "frozen %s"
+msgstr ""
+
+#: ../src/pager.c:581
+#, c-format
+msgid "pool of %s"
+msgstr ""
+
+#: ../src/pager.c:586
+#, c-format
+msgid "deep %s"
+msgstr ""
+
 #: ../src/pager.c:591
 msgid "shallow sea"
 msgstr ""
@@ -24433,6 +24453,11 @@ msgstr ""
 
 #: ../src/pager.c:603 ../src/pager.c:1158
 msgid "limitless water"
+msgstr ""
+
+#: ../src/pager.c:604 ../src/pager.c:607
+#, c-format
+msgid "wall of %s"
 msgstr ""
 
 #: ../src/pager.c:618 ../src/polyself.c:1493

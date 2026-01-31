@@ -7688,3 +7688,25 @@ msgstr "죽은 %2$s 시체를 들고 있는데도 %1$s{을/를} 벗으시겠습�
 # do.c - 버리기 질문
 msgid "Drop what type of items?"
 msgstr "어떤 종류의 물건을 버리시겠습니까?"
+
+# pager.c - 액체/물 관련 타일 설명
+# 참고: %s는 hliquid()가 반환하는 환각 액체 이름 (예: "water", "rum" 등)
+#, c-format
+msgid "molten %s"
+msgstr "녹은 %s"
+
+#, c-format
+msgid "frozen %s"
+msgstr "얼어붙은 %s"
+
+#, c-format
+msgid "pool of %s"
+msgstr "%s 웅덩이"
+
+#, c-format
+msgid "deep %s"
+msgstr "깊은 %s"
+
+#, c-format
+msgid "wall of %s"
+msgstr "%s 벽"

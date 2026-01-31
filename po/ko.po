@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 11:00+0900\n"
+"POT-Creation-Date: 2026-01-31 11:03+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -25562,6 +25562,26 @@ msgstr "악마"
 msgid "warned of %s"
 msgstr "%s의 마법봉"
 
+#: ../src/pager.c:573
+#, fuzzy, c-format
+msgid "molten %s"
+msgstr "녹은 용암"
+
+#: ../src/pager.c:578
+#, fuzzy, c-format
+msgid "frozen %s"
+msgstr "%s에 의해 얼어붙었다!"
+
+#: ../src/pager.c:581
+#, fuzzy, c-format
+msgid "pool of %s"
+msgstr " %s의"
+
+#: ../src/pager.c:586
+#, fuzzy, c-format
+msgid "deep %s"
+msgstr "깊은 "
+
 #: ../src/pager.c:591
 msgid "shallow sea"
 msgstr "벽"
@@ -25577,6 +25597,11 @@ msgstr "연못"
 #: ../src/pager.c:603 ../src/pager.c:1158
 msgid "limitless water"
 msgstr "묽은 물"
+
+#: ../src/pager.c:604 ../src/pager.c:607
+#, fuzzy, c-format
+msgid "wall of %s"
+msgstr "벽 %s"
 
 #: ../src/pager.c:618 ../src/polyself.c:1493
 msgid "solid"

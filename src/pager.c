@@ -570,20 +570,20 @@ waterbody_name(coordxy x, coordxy y)
     ltyp = SURFACE_AT(x, y);
 
     if (ltyp == LAVAPOOL) {
-        Snprintf(pooltype, sizeof pooltype, "molten %s", hliquid("lava"));
+        Snprintf(pooltype, sizeof pooltype, _("molten %s"), hliquid("lava"));
         return pooltype;
     } else if (ltyp == ICE) {
         if (!hallucinate)
             return _("ice");
-        Snprintf(pooltype, sizeof pooltype, "frozen %s", hliquid("water"));
+        Snprintf(pooltype, sizeof pooltype, _("frozen %s"), hliquid("water"));
         return pooltype;
     } else if (ltyp == POOL) {
-        Snprintf(pooltype, sizeof pooltype, "pool of %s", hliquid("water"));
+        Snprintf(pooltype, sizeof pooltype, _("pool of %s"), hliquid("water"));
         return pooltype;
     } else if (ltyp == MOAT) {
         /* a bit of extra flavor over general moat */
         if (hallucinate) {
-            Snprintf(pooltype, sizeof pooltype, "deep %s", hliquid("water"));
+            Snprintf(pooltype, sizeof pooltype, _("deep %s"), hliquid("water"));
             return pooltype;
         } else if (Is_medusa_level(&u.uz)) {
             /* somewhat iffy since ordinary stairs can take you beneath,
@@ -601,10 +601,10 @@ waterbody_name(coordxy x, coordxy y)
     } else if (IS_WATERWALL(ltyp)) {
         if (Is_waterlevel(&u.uz))
             return _("limitless water"); /* even if hallucinating */
-        Snprintf(pooltype, sizeof pooltype, "wall of %s", hliquid("water"));
+        Snprintf(pooltype, sizeof pooltype, _("wall of %s"), hliquid("water"));
         return pooltype;
     } else if (ltyp == LAVAWALL) {
-        Snprintf(pooltype, sizeof pooltype, "wall of %s", hliquid("lava"));
+        Snprintf(pooltype, sizeof pooltype, _("wall of %s"), hliquid("lava"));
         return pooltype;
     }
     /* default; should be unreachable */

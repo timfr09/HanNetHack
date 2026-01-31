@@ -53,6 +53,7 @@ extern boolean is_korean_locale(void);
  *   Output: "오크를 때렸다."
  */
 extern char *process_korean_postpositions(char *buf, const char *format, ...);
+extern char *apply_korean_postpositions(char *str);
 
 #else /* !ENABLE_NLS */
 
@@ -67,6 +68,7 @@ extern char *process_korean_postpositions(char *buf, const char *format, ...);
 #define get_current_language() "en"
 #define is_korean_locale() FALSE
 #define process_korean_postpositions(buf, fmt, ...) (buf)
+#define apply_korean_postpositions(str) (str)
 
 #endif /* ENABLE_NLS */
 

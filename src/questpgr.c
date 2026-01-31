@@ -432,6 +432,7 @@ deliver_by_pline(const char *str)
         msgp += strlen(in_line) + 1;
 
         convert_line(in_line, out_line);
+        apply_korean_postpositions(out_line);
         pline(_("%s"), out_line);
     }
 }
@@ -449,6 +450,7 @@ deliver_by_window(const char *msg, int how)
         msgp += strlen(in_line) + 1;
 
         convert_line(in_line, out_line);
+        apply_korean_postpositions(out_line);
         putstr(datawin, 0, out_line);
     }
 
@@ -606,6 +608,7 @@ com_pager_core(
         Strcpy(in_line, synopsis);
 #endif
         convert_line(in_line, out_line);
+        apply_korean_postpositions(out_line);
         /* bypass message delivery but be available for ^P recall */
         putmsghistory(out_line, FALSE);
     }

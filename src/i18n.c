@@ -458,4 +458,29 @@ process_korean_postpositions(char *buf, const char *format, ...)
     return buf;
 }
 
+/*
+ * Apply Korean postpositions to an already-formatted string
+ *
+ * This is a simpler wrapper for cases where the string is already
+ * formatted and we just need to process the postposition patterns.
+ * The string is modified in place.
+ *
+ * Usage:
+ *   apply_korean_postpositions(out_line);
+ */
+char *
+apply_korean_postpositions(char *str)
+{
+    char temp[BUFSZ];
+
+    if (!str || !korean_locale)
+        return str;
+
+    /* Copy to temp buffer and process back into original */
+    strncpy(temp, str, BUFSZ - 1);
+    temp[BUFSZ - 1] = '\0';
+
+    return process_korean_postpositions(str, "%s", temp);
+}
+
 #endif /* ENABLE_NLS */

@@ -2557,12 +2557,12 @@ msgstr "​"
 # 조합 예: "have never genocided any monsters" = "[행동 안 함] 몬스터 학살"
 # 결과: "한 적 없다" 형태
 msgid "have never "
-msgstr "[안 함] "
+msgstr ""
 
 # [조합] "never " + 동사 조합
 # 결과: "[안 함] X" 형태
 msgid "never "
-msgstr "[안 함] "
+msgstr ""
 
 msgid "debug"
 msgstr "디버그"
@@ -2737,71 +2737,74 @@ msgid "have been killed "
 msgstr "죽임을 당했다 "
 
 msgid "blind from birth"
-msgstr "선천적으로 눈이 먼"
+msgstr "태어날 때부터 눈이 멀었다"
 
 msgid "deaf from birth"
-msgstr "선천적으로 귀가 먼"
+msgstr "태어날 때부터 귀가 들리지 않았다"
 
 msgid "started"
-msgstr "시작했다"
+msgstr ""
 
 msgid "started out"
-msgstr "시작했다"
+msgstr ""
 
 msgid " without possessions"
-msgstr " 소지품 없이"
+msgstr " 소유물 없이 시작했다"
 
 #, c-format
 msgid "rerolled your character %ld time%s"
-msgstr "캐릭터를 %ld번%s 다시 굴렸다"
+msgstr "캐릭터를 %ld회%.0s 재생성했다"
 
 # ============================================================
 # [조합 메시지] insight.c - "You have gone/went without food"
 # 영어: You_ + "have gone"/"went" + " without food"
-# 한국어: 당신은 + "음식 없이" + " 지냈다"
-# 결과: "당신은 음식 없이 지냈다"
+# 한국어: 당신은 + "" + " 음식 없이 지냈다"
+# have gone/went를 빈 문자열로 처리하고 " without food"에 전체 술어
 # ============================================================
 msgid "have gone"
-msgstr "음식 없이"
+msgstr ""
+
+msgid "went"
+msgstr ""
 
 msgid " without food"
-msgstr " 지냈다"
+msgstr " 음식 없이 지냈다"
 
 msgid "vegetarian"
-msgstr "채식주의자"
+msgstr "채식주의자였다"
 
 msgid "an atheist"
-msgstr "무신론자"
+msgstr "무신론자였다"
 
 msgid "hit with a wielded weapon"
-msgstr "장착한 무기로 때렸다"
+msgstr "무기로 공격한 적이 없다"
 
 #, c-format
 msgid "hit with a wielded weapon %ld time%s"
-msgstr "장착한 무기로 %ld번%s 때렸다"
+msgstr "무기로 %ld회%.0s 공격했다"
 
 msgid "illiterate"
-msgstr "문맹"
+msgstr "문맹이었다"
 
 msgid "had a pet"
-msgstr "펫을 가졌다"
+msgstr "애완동물을 가진 적이 없다"
 
 msgid "genocided any monsters"
-msgstr "몬스터를 학살했다"
+msgstr "몬스터를 학살한 적이 없다"
 
 #, c-format
 msgid "genocided %d type%s of monster%s"
-msgstr "%d종%s의 몬스터%s를 학살했다"
+msgstr "%d종%.0s의 몬스터를%.0s 학살했다"
 
 msgid "polymorphed an object"
-msgstr "물체를 변신시켰다"
+msgstr "물체를 변형한 적이 없다"
 
 #, c-format
 msgid "polymorphed %ld item%s"
-msgstr "%ld개%s 아이템을 변신시켰다"
+msgstr "%ld개%.0s의 물체를 변형했다"
 
 msgid "changed form"
-msgstr "모습을 바꿨다"
+msgstr "형태를 바꾼 적이 없다"
 
 msgid "used no wishes"
 msgstr "소원을 사용하지 않았다"
@@ -2864,7 +2867,7 @@ msgstr "'%s', '%s', '%s', '%s'{을/를} 눌러 커서를 %s(으)로 이동하세
 # 더 많은 conduct 관련
 #, c-format
 msgid "used %ld wish%s"
-msgstr "%ld개%s의 소원을 사용했다"
+msgstr "%ld개%.0s의 소원을 사용했다"
 
 # ============================================================
 # [조합 메시지] 복수형 접미사 "es"
@@ -3395,25 +3398,21 @@ msgid "survived after being killed "
 msgstr "죽임을 당한 후 살아남았다 "
 
 msgid "faithfully nudist"
-msgstr "철저한 나체주의자"
-
-# [조합 메시지] "went without food" 조합용 - have gone과 동일
-msgid "went"
-msgstr "음식 없이"
+msgstr "충실한 나체주의자였다"
 
 msgid "followed a strict vegan diet"
 msgstr "엄격한 비건 식단을 따랐다"
 
 msgid "a pacifist"
-msgstr "평화주의자"
+msgstr "평화주의자였다"
 
 #, c-format
 msgid "read items or engraved %ld time%s"
-msgstr "아이템을 읽거나 %ld번%s 새겼다"
+msgstr "읽거나 새긴 횟수 %ld회%.0s"
 
 #, c-format
 msgid "changed form %ld time%s"
-msgstr "모습을 %ld번%s 바꿨다"
+msgstr "형태를 %ld회%.0s 바꿨다"
 
 #, c-format
 msgid " (%ld "
@@ -4884,7 +4883,8 @@ msgstr "에 걸렸다"
 msgid "KAABLAMM!!!  "
 msgstr "쾅!!! "
 
-# do_wear.c - 미끄러짐 (변형). "The ring slips off of your finger"
+# do_wear.c, uhitm.c - 미끄러짐. "The ring slips off of your finger"
+# uhitm.c에서 "%s %s %s %s!" 패턴과 함께 사용됨
 msgid "slip off of"
 msgstr "에서 미끄러졌다"
 
@@ -7821,3 +7821,844 @@ msgstr "%-1ld 경험치%.0s"
 
 msgid " before end-of-game adjustments"
 msgstr " (게임 종료 조정 전)"
+
+# pray.c - align_gtitle() 에서 사용되는 신 호칭
+# 잘못된 번역 수정: "god" → "금" (X) → "신" (O)
+msgid "god"
+msgstr "신"
+
+msgid "goddess"
+msgstr "여신"
+
+# ============================================================
+# eat.c - "The world spins and %s %s." 패턴 수정
+# 영어: "goes dark" / "you lose control of yourself" / "you slap against the floor"
+# 한국어 어순에 맞게 수정
+# ============================================================
+
+# eat.c:1837 - 세계가 돌고 %s %s 패턴
+# %s %s 조합이 자연스럽게 되도록 개별 부분 번역
+# 주의: 이 번역들은 이 패턴에서만 사용됨
+msgid "goes"
+msgstr ""
+
+msgid "dark"
+msgstr "어두워진다"
+
+msgid "you lose control of"
+msgstr ""
+
+msgid "yourself"
+msgstr "자제력을 잃는다"
+
+msgid "you slap against the"
+msgstr ""
+
+# surface()가 반환하는 값에 조사를 붙여야 함 - 해당 번역은 별도로 처리
+
+# 이미 있는 번역이지만 조합에 맞게 수정
+#, c-format
+msgid "world spins and %s %s."
+msgstr "세상이 빙글빙글 돌고 %s%s"
+
+# ============================================================
+# read.c - "neighborhood %s %sfriendlier" 패턴
+# 이 패턴은 소스 코드 수정이 필요함 (is/seems/un이 다른 곳에서도 사용됨)
+# TODO: 소스 코드에서 더 나은 번역 구조로 변경 필요
+# ============================================================
+
+# ============================================================
+# worn.c - 장비 관련 메시지
+# ============================================================
+
+# worn.c:946 - "%s %s %s %s for a moment."
+# 영어: "The orc's armor glows black for a moment."
+# %1=s_suffix(Monnam), %2=simpleonames, %3=otense(glow), %4=hcolor
+# 한국어에서는 색상이 동사 앞에 와야 하고, glow(%3)는 무시
+#, c-format
+msgid "%s %s %s %s for a moment."
+msgstr "%1$s %2$s{이/가} 잠시 %4$s 빛을 발했다%3$.0s."
+
+# ============================================================
+# 색상 관련 (hcolor 함수 반환값)
+# ============================================================
+
+msgid "black"
+msgstr "검은"
+
+msgid "red"
+msgstr "붉은"
+
+msgid "blue"
+msgstr "푸른"
+
+msgid "green"
+msgstr "초록"
+
+msgid "yellow"
+msgstr "노란"
+
+msgid "orange"
+msgstr "주황"
+
+msgid "white"
+msgstr "흰"
+
+msgid "gray"
+msgstr "회색"
+
+msgid "silver"
+msgstr "은색"
+
+msgid "golden"
+msgstr "금색"
+
+# ============================================================
+# do.c - 싱크대 관련 메시지
+# ============================================================
+
+# "sink glows %s for a moment" - %s는 색상
+#, c-format
+msgid "sink glows %s for a moment."
+msgstr "싱크대가 잠시 %s으로 빛났다."
+
+# ============================================================
+# uhitm.c - 미끄러짐/잡기 실패 메시지
+# ============================================================
+
+# uhitm.c:2052 - 기름칠된/미끄러운 장비에서 미끄러지는 메시지
+# %1=slip off of / grab but cannot hold onto
+# %2=s_suffix(mon_nam) = "오크의"
+# %3=greased/slippery = "기름칠된"/"미끄러운"
+# %4=xname(obj) = "망토"
+# 영어: "You slip off of the orc's greased cloak!"
+# 한국어: "오크의 기름칠된 망토에서 미끄러졌다!"
+# 주의: slip off of = "에서 미끄러졌다" 이므로 패턴에서 {에서} 불필요
+#, c-format
+msgid "%s %s %s %s!"
+msgstr "%2$s %3$s %4$s %1$s!"
+
+msgid "greased"
+msgstr "기름칠된"
+
+msgid "slippery"
+msgstr "미끄러운"
+
+# ============================================================
+# 잘못된 번역 수정
+# ============================================================
+
+# zap.c - 녹아 사라짐 (잘못된 번역: "그것이 굴러갔다")
+msgid "melts away"
+msgstr "녹아 사라진다"
+
+# zap.c - 얼음 녹음 (잘못된 번역: "그것이 굴러갔다")
+msgid "Some ice melts away."
+msgstr "일부 얼음이 녹아 사라졌다."
+
+# zap.c - 부식되어 사라짐 (불완전한 번역)
+msgid "corrode away"
+msgstr "부식되어 사라진다"
+
+# zap.c - 용암 굳어짐 (조사 수정)
+#, c-format
+msgid "The %s cools and solidifies."
+msgstr "%s{이/가} 식어서 굳어진다."
+
+# zap.c:5319 - 철창 부식/녹음
+#, c-format
+msgid "The %s %s somewhat but remain intact."
+msgstr "%s{이/가} 약간 %s 온전히 남아있다."
+
+# zap.c:5326 - 철창 파괴
+#, c-format
+msgid "The %s %s."
+msgstr "%s{이/가} %s."
+
+# 부식/녹음 동사
+msgid "corrode"
+msgstr "부식되지만"
+
+msgid "melt"
+msgstr "녹지만"
+
+# ============================================================
+# apply.c - 떨림 관련
+# ============================================================
+
+# apply.c - 떨림 패턴 (quiver 동사는 패턴에 포함)
+#, c-format
+msgid "The %s %s feebly."
+msgstr "%s{이/가} 약하게 떨린다%.0s."
+
+#, c-format
+msgid "The %s %s briefly."
+msgstr "%s{이/가} 잠깐 떨린다%.0s."
+
+# ============================================================
+# do_wear.c - 방어구 파괴 관련
+# ============================================================
+
+# do_wear.c:3222 - 갑옷이 먼지로 변해 떨어짐
+# suit(%1$s), turn(%2$s), fall(%3$s), surface(%4$s)
+#, c-format
+msgid "Your %s %s to dust and %s to the %s!"
+msgstr "%1$s{이/가} 먼지로 변해 %4$s에 떨어졌다!%2$.0s%3$.0s"
+
+# do_wear.c:3228 - 셔츠가 실로 부서짐
+#, c-format
+msgid "Your %s crumbles into tiny threads and falls apart!"
+msgstr "%s{이/가} 작은 실 조각으로 부서져 흩어졌다!"
+
+# do_wear.c:3231 - 투구가 먼지가 되어 날아감
+#, c-format
+msgid "Your %s turns to dust and is blown away!"
+msgstr "%s{이/가} 먼지가 되어 날아갔다!"
+
+# do_wear.c:3234 - 장갑이 사라짐
+#, c-format
+msgid "Your %s vanish!"
+msgstr "%s{이/가} 사라졌다!"
+
+# do_wear.c:3237 - 신발이 분해됨
+#, c-format
+msgid "Your %s disintegrate!"
+msgstr "%s{이/가} 분해되었다!"
+
+# ============================================================
+# wield.c - 손 관련
+# ============================================================
+
+# wield.c:915 - 오른손 저림
+#, c-format
+msgid "Your right %s tingles."
+msgstr "오른쪽 %s{이/가} 저렸다."
+
+# wield.c:920 - 손이 경련/가려움
+# hands(%1$s), twitch/itch(%2$s)
+#, c-format
+msgid "Your %s %s."
+msgstr "%s{이/가} %s."
+
+msgid "twitch"
+msgstr "경련했다"
+
+msgid "itch"
+msgstr "가려웠다"
+
+# ============================================================
+# pray.c - 기도 관련
+# ============================================================
+
+# pray.c:565 - 눈이 나아짐
+# eyes(%1$s), feel(%2$s)
+#, c-format
+msgid "Your %s %s better"
+msgstr "%s{이/가} 나아진 것 같다%.0s"
+
+# pray.c:572-573 - 다시 들을 수 있음
+#, c-format
+msgid "%s can hear again"
+msgstr "%s 다시 들을 수 있게 되었다"
+
+msgid "You"
+msgstr "당신은"
+
+msgid " and you"
+msgstr " 그리고 당신은"
+
+# ============================================================
+# apply.c - 얼굴 관련
+# ============================================================
+
+# apply.c:139 - 얼굴에 뭔가 묻음
+# face(%1$s), has more/now has(%2$s)
+#, c-format
+msgid "Yecch!  Your %s %s gunk on it!"
+msgstr "으웩! %s에 끈적거리는 것{이/가} %s!"
+
+msgid "has more"
+msgstr "더 많이 묻었다"
+
+msgid "now has"
+msgstr "묻었다"
+
+# ============================================================
+# mhitu.c - 몬스터 공격 미끄러짐
+# ============================================================
+
+# mhitu.c:1063 - 몬스터가 기름칠된 장비에서 미끄러짐
+# Monnam(%1$s), slips off of/grabs(%2$s), greased(%3$s), armor(%4$s)
+#, c-format
+msgid "%s %s your %s %s!"
+msgstr "%1$s{이/가} 당신의 %3$s %4$s에서 %2$s!"
+
+# grabs you, but cannot hold onto (mhitu.c:1065)
+msgid "grabs you, but cannot hold onto"
+msgstr "붙잡으려 했지만 잡지 못했다"
+
+# mhitu.c:1074 - 기름이 닳음
+msgid "grease wears off."
+msgstr "기름이 닳았다."
+
+# ============================================================
+# uhitm.c - 플레이어 공격 미끄러짐
+# ============================================================
+
+# uhitm.c:2052 - 플레이어가 기름칠된 장비에서 미끄러짐
+# slip off of(%1$s), mon's(%2$s), greased(%3$s), armor(%4$s)
+#, c-format
+msgid "You %s %s %s %s!"
+msgstr "%2$s %3$s %4$s에서 %1$s!"
+
+# grab, but cannot hold onto (uhitm.c:2054)
+msgid "grab, but cannot hold onto"
+msgstr "붙잡으려 했지만 잡지 못했다"
+
+# ============================================================
+# read.c - 친근함 두루마리
+# ============================================================
+
+# read.c:1658-1659 - 아무 일도 안 일어남
+#, c-format
+msgid "Nothing interesting %s."
+msgstr "흥미로운 일이 %s."
+
+msgid "happens"
+msgstr "일어나지 않았다"
+
+msgid "seems to happen"
+msgstr "일어나지 않은 것 같다"
+
+# read.c:1661-1663 - 주변이 친근해짐/비친근해짐
+# is/seems(%1$s), un/""(%2$s)
+# 이 패턴은 영어에서 un-접두사를 사용하지만 한국어에서는 문장 구조가 다름
+# 소스 코드 수정이 필요한 패턴이므로 임시로 처리
+#, c-format
+msgid "neighborhood %s %sfriendlier."
+msgstr "주변이 %2$s친근해%1$s."
+
+# "is"와 "seems"는 다른 곳에서도 사용되므로 별도 항목 대신 C_() 컨텍스트 필요
+# "un"도 다른 곳에서 "불-" 접두사로 사용됨
+
+# ============================================================
+# 석화/소멸 관련 패턴
+# ============================================================
+
+# 몬스터가 돌로 변함 - 여러 파일에서 공통 사용
+#, c-format
+msgid "%s turns to stone!"
+msgstr "%s{이/가} 돌로 변했다!"
+
+#, c-format
+msgid "%s turns to stone."
+msgstr "%s{이/가} 돌로 변했다."
+
+# 몬스터가 사라짐
+#, c-format
+msgid "%s vanishes!"
+msgstr "%s{이/가} 사라졌다!"
+
+#, c-format
+msgid "%s vanishes."
+msgstr "%s{이/가} 사라졌다."
+
+# teleport.c:1703 - 몬스터가 사라졌다가 다시 나타남
+#, c-format
+msgid "%s vanishes and reappears%s."
+msgstr "%s{이/가} 사라졌다가 %s 다시 나타났다."
+
+# pray.c:652 - 몬스터가 먼지 더미로 분해됨
+#, c-format
+msgid "%s disintegrates into a pile of dust!"
+msgstr "%s{이/가} 먼지 더미로 분해되었다!"
+
+# zap.c:4827 - 몬스터가 분해됨
+#, c-format
+msgid "%s disintegrates."
+msgstr "%s{이/가} 분해되었다."
+
+# zap.c:4828 - 몸이 재결합
+#, c-format
+msgid "%s body reintegrates before your %s!"
+msgstr "%s의 몸이 당신의 %s 앞에서 재결합했다!"
+
+# engrave.c:669 - 새김이 사라짐
+#, c-format
+msgid "engraving on the %s vanishes!"
+msgstr "%s 위의 새김이 사라졌다!"
+
+# read.c:1552 - 걸쇠가 사라짐
+#, c-format
+msgid "clasp on your %s vanishes."
+msgstr "%s의 걸쇠가 사라졌다."
+
+# zap.c:4947 - 광선이 에테르로 사라짐
+#, c-format
+msgid "%s vanishes into the aether!"
+msgstr "%s{이/가} 에테르 속으로 사라졌다!"
+
+# shk.c:4700/4712 - 함정이 사라짐
+#, c-format
+msgid "The %s vanishes."
+msgstr "%s{이/가} 사라졌다."
+
+# minion.c:336 - 악마가 웃으며 사라짐
+#, c-format
+msgid "%s vanishes, laughing about cowardly mortals."
+msgstr "%s{이/가} 겁쟁이 인간들을 비웃으며 사라졌다."
+
+# zap.c:358 - 몬스터가 투명해짐
+#, c-format
+msgid "%s turns transparent!"
+msgstr "%s{이/가} 투명해졌다!"
+
+# vault.c:476 - 경비원이 돌아서 떠남
+#, c-format
+msgid "Puzzled, %s turns around and leaves."
+msgstr "당혹스러워하며 %s{이/가} 돌아서 떠났다."
+
+# pickup.c:2103 - 잠긴 것으로 밝혀짐
+#, c-format
+msgid "Hmmm, %s turns out to be locked."
+msgstr "흠, %s{이/가} 잠겨 있다."
+
+# pickup.c:2804 - 아이템이 사라짐
+#, c-format
+msgid "%s %s vanished!"
+msgstr "%s{이/가} 사라졌다!%.0s"
+
+# ============================================================
+# do_wear.c - 추가 방어구 파괴 패턴
+# ============================================================
+
+# do_wear.c:3211 - 외투가 먼지로 부서짐
+#, c-format
+msgid "Your %s crumbles and turns to dust!"
+msgstr "%s{이/가} 부서져 먼지가 되었다!"
+
+# do_wear.c:3239 - 방패가 부서짐
+#, c-format
+msgid "Your %s crumbles away!"
+msgstr "%s{이/가} 부서져 사라졌다!"
+
+# ============================================================
+# dig.c - 파기 관련
+# ============================================================
+
+# dig.c:714 - 표면이 부서짐
+#, c-format
+msgid "%s crumbles into %s."
+msgstr "%s{이/가} 부서져 %s{이/가} 되었다."
+
+# ============================================================
+# 몬스터 변신 관련
+# ============================================================
+
+# mon.c:5465 - 몬스터가 다른 것으로 변함
+#, c-format
+msgid "%s turns into %s!"
+msgstr "%s{이/가} %s{으로/로} 변했다!"
+
+# mhitm.c:1177 - 몬스터가 변신 (복잡한 패턴)
+# Before(%1$s), freaky/""(%2$s), verbosely?" and":"(%3$s), after(%4$s)
+#, c-format
+msgid "%s%s%s turns into %s."
+msgstr "%1$s%2$s{이/가}%3$s %4$s{으로/로} 변했다."
+
+# ============================================================
+# music.c - 자물쇠 소리
+# ============================================================
+
+#, c-format
+msgid "%d tumbler%s click and %d gear%s turn."
+msgstr "%d개의 텀블러%s 딸깍거리고 %d개의 기어%s 돌아간다."
+
+#, c-format
+msgid "%d gear%s turn."
+msgstr "%d개의 기어%s 돌아간다."
+
+# ============================================================
+# shk.c - 상점 관련
+# ============================================================
+
+# shk.c:552-553 - 결제 전 나가지 말라
+#, c-format
+msgid "%s!  Please pay before leaving."
+msgstr "%s! 나가시기 전에 계산해 주세요."
+
+#, c-format
+msgid "%s!  Don't you leave without paying!"
+msgstr "%s! 계산도 안 하고 나가려고?!"
+
+# shk.c:556-559 - 상점 주인이 말함/분명히 함
+#, c-format
+msgid "%s %s that you need to pay before leaving%s"
+msgstr "%s{이/가} 나가기 전에 계산해야 한다고 %s%s"
+
+# "points out"는 이미 정의되어 있음 (line 4828)
+# "makes it clear"는 이미 정의되어 있음
+
+# shk.c:758-759 - 다시 돌아왔는가
+#, c-format
+msgid "So, %s, you dare return to %s %s?!"
+msgstr "그래서, %s, 감히 %s %s에 다시 돌아왔어?!"
+
+# shk.c:768-769 - 또 왔군
+#, c-format
+msgid "Back again, %s?  I've got my %s on you."
+msgstr "또 왔군, %s? 내 %s{이/가} 널 지켜보고 있다."
+
+# shk.c:786-788 - 환영 인사
+# Hello(%1$s), plname(%2$s), again/""(%3$s), shopkeeper's(%4$s), shop(%5$s)
+#, c-format
+msgid "%s, %s!  Welcome%s to %s %s!"
+msgstr "%1$s, %2$s! %4$s %5$s에%3$s 환영해!"
+
+msgid " again"
+msgstr " 다시"
+
+# shk.c:790-793 - 상점 입장 (청각장애시)
+#, c-format
+msgid "enter %s %s%s!"
+msgstr "%s %s에%s 들어갔다!"
+
+# shk.c:840-841 - 물건 밖에 두라
+#, c-format
+msgid "Will you please leave %s outside?"
+msgstr "%s{을/를} 밖에 두시겠어요?"
+
+#, c-format
+msgid "Leave %s outside."
+msgstr "%s{을/를} 밖에 둬."
+
+# shk.c:878-879 - 곡괭이 들고 나가라
+#, c-format
+msgid "You sneaky %s!  Get out of here with that pick!"
+msgstr "이 교활한 %s! 그 곡괭이 들고 당장 나가!"
+
+# shk.c:1956-1957 - 구매 감사
+#, c-format
+msgid "Thank you for shopping in %s %s%s"
+msgstr "%s %s에서 쇼핑해 주셔서 감사합니다%s"
+
+# shk.c:2075 - 미지불 물건 분리
+#, c-format
+msgid "You need to remove any unpaid items from that %s and buy them separately."
+msgstr "%s에서 미지불 물건을 꺼내 따로 구매해야 합니다."
+
+# ============================================================
+# 감각 관련 (detect.c, etc.)
+# ============================================================
+
+# detect.c:391 - 백만장자 기분
+#, c-format
+msgid "You feel like a million %s!"
+msgstr "백만 %s를 가진 기분이다!"
+
+# detect.c:394 - 미래 재정 걱정
+msgid "You feel worried about your future financial situation."
+msgstr "미래 재정 상황이 걱정된다."
+
+# detect.c:396 - 타인 재정 상황 관심
+#, c-format
+msgid "You feel interested in %s financial situation."
+msgstr "%s 재정 상황에 관심이 생겼다."
+
+# detect.c:403 - 물질적 빈곤
+msgid "You feel materially poor."
+msgstr "물질적으로 가난하게 느껴진다."
+
+# detect.c:690 - 뭔가 부족함
+msgid "You feel a lack of something."
+msgstr "뭔가 부족함을 느꼈다."
+
+# detect.c:821 - 위협을 느낌
+msgid "You feel threatened."
+msgstr "위협을 느꼈다."
+
+# eat.c:876 - 유연해짐
+msgid "You feel limber!"
+msgstr "몸이 유연해졌다!"
+
+# pray.c:384 - 더 유연해짐 (석화 해제)
+msgid "You feel more limber."
+msgstr "몸이 더 유연해졌다."
+
+# sit.c:297 - 장소 이질감
+msgid "You feel extremely out of place."
+msgstr "극도로 장소가 어울리지 않는 느낌이다."
+
+# uhitm.c:4258 - 열이 남
+msgid "You feel feverish."
+msgstr "열이 나는 것 같다."
+
+# polyself.c:440 - 새 사람 느낌
+#, c-format
+msgid "You feel like a new %s!"
+msgstr "새로운 %s{이/가} 된 기분이다!"
+
+# hack.c:3309 - 얼음 움직임
+msgid "You feel the ice shift beneath you!"
+msgstr "발 밑의 얼음이 움직이는 것을 느꼈다!"
+
+# "You sense movement on the other side."는 이미 정의됨 (line 4166)
+# "You seem to have some trouble breathing."은 이미 정의됨 (line 4639)
+
+# do.c:1453 - 데자뷰
+msgid "You feel like you've been here before."
+msgstr "전에 여기 와본 것 같은 느낌이 든다."
+
+# ============================================================
+# 전투/공격 관련
+# ============================================================
+
+# trap.c:4532 - 용암에 부딪힘
+#, c-format
+msgid "%s hit lava and burn up!"
+msgstr "%s{이/가} 용암에 부딪혀 타버렸다!"
+
+# hack.c:3354 - 기습 공격
+#, c-format
+msgid "%s attacks you by surprise!"
+msgstr "%s{이/가} 기습 공격했다!"
+
+# uhitm.c:3265 - 투구가 공격 막음
+#, c-format
+msgid "%s helmet blocks %s attack to %s head."
+msgstr "%s 투구가 %s의 %s 머리 공격을 막았다."
+
+# "%s grabs you!", "%s hits you with the %s corpse."는 이미 정의됨 (line 3097, 3101)
+
+# uhitm.c:4080 - 맞으면서 분열
+#, c-format
+msgid "divide as %s hits you!"
+msgstr "%s{이/가} 당신을 치자 분열했다!"
+
+# ============================================================
+# 추가 메시지 패턴
+# ============================================================
+
+# mcastu.c:70 - 저주 소리
+msgid "You hear a mumbled curse."
+msgstr "중얼거리는 저주 소리가 들린다."
+
+# monmove.c:59 - 문 폭발
+msgid "KABOOM!!  You see a door explode."
+msgstr "콰쾅!! 문이 폭발하는 것을 보았다."
+
+# engrave.c:693-695 - 드릴 소리/진동
+msgid "You hear drilling!"
+msgstr "드릴 소리가 들린다!"
+
+msgid "You feel tremors."
+msgstr "진동이 느껴진다."
+
+# engrave.c:714 - 지팡이 과열
+msgid "You feel the wand heat up."
+msgstr "지팡이가 뜨거워지는 것을 느꼈다."
+
+# engrave.c:730 - 균열 소리
+msgid "You hear crackling!"
+msgstr "파직거리는 소리가 들린다!"
+
+# fountain.c:812 - 물 소리
+msgid "You hear a sloshing sound"
+msgstr "철벅거리는 소리가 들린다"
+
+# ============================================================
+# trap.c - 함정 관련
+# ============================================================
+
+# trap.c:1022 - 거미줄 통과
+#, c-format
+msgid "flow through %s spider web."
+msgstr "%s 거미줄을 통과했다."
+
+# trap.c:1240/1310 - 함정 작동 안 함
+#, c-format
+msgid "%s triggers a trap but nothing happens."
+msgstr "%s{이/가} 함정을 발동시켰지만 아무 일도 없었다."
+
+# trap.c:1342 - 함정문 열림 (빈)
+#, c-format
+msgid "A trap door in %s opens, but nothing falls out!"
+msgstr "%s의 함정문이 열렸지만 아무것도 떨어지지 않았다!"
+
+# trap.c:1354 - 함정문에서 물체 떨어짐
+# ceiling(%1$s), object(%2$s), bodypart(%3$s)
+#, c-format
+msgid "A trap door in %s opens and %s falls on your %s!"
+msgstr "%s의 함정문이 열리고 %s{이/가} 당신의 %s 위로 떨어졌다!"
+
+# trap.c:1391 - 몬스터 위 함정문
+#, c-format
+msgid "A trap door above %s opens, but nothing falls out!"
+msgstr "%s 위의 함정문이 열렸지만 아무것도 떨어지지 않았다!"
+
+# trap.c:1476 - 삐걱 소리
+#, c-format
+msgid "%s squeak %s."
+msgstr "%s{이/가} %s 삐걱거렸다."
+
+# trap.c:1505 - 곰 덫이 허공을 통과
+#, c-format
+msgid "%s bear trap closes harmlessly through you."
+msgstr "%s 곰 덫이 당신을 무해하게 통과하며 닫혔다."
+
+# ============================================================
+# 추가 번역 필요 패턴
+# ============================================================
+
+# common - 당신의 소유
+msgid "a"
+msgstr ""
+
+msgid "your"
+msgstr "당신의"
+
+# "A <monster>" prefix for messages
+msgid "A "
+msgstr ""
+
+msgid "An "
+msgstr ""
+
+msgid "The "
+msgstr ""
+
+# ============================================================
+# vtense() 패턴 - 눈/머리카락 관련
+# ============================================================
+
+# potion.c:291/405 - 눈이 가려움
+#, c-format
+msgid "%s momentarily %s."
+msgstr "%s{이/가} 잠시 %s."
+
+# potion.c:1944 - 눈이 쓰라림 (같은 패턴: "%s %s!")
+
+# sounds.c:103 - 머리카락이 곤두섬
+#, c-format
+msgid "The hair on the back of your %s %s."
+msgstr "%s 뒤의 머리카락이 %s."
+
+msgid "stand"
+msgstr "곤두섰다"
+
+# sounds.c:107 - 머리카락이 이상해 보임
+#, c-format
+msgid "The hair on your %s %s to stand up."
+msgstr "%s의 머리카락이 곤두서는 것 %s."
+
+# do.c:2458 - 다리가 나아짐 (같은 패턴: "%s %s better.")
+
+# mthrowu.c:113 - 빗나감 (같은 패턴: "%s %s you.")
+
+# trap.c:4712/4736 - 희미해짐 (같은 패턴: "%s %s.")
+
+# trap.c:4757 - 더 희석됨
+#, c-format
+msgid "%s %s further."
+msgstr "%s{이/가} 더 %s."
+
+# artifact.c:2017 - 사라짐
+msgid "disappear"
+msgstr "사라졌다"
+
+# polyself.c:1282 - 떨어짐
+#, c-format
+msgid "%s %s off!"
+msgstr "%s{이/가} %s!"
+
+# sit.c:173 - 눈이 찌릿
+#, c-format
+msgid "%s %s..."
+msgstr "%s{이/가} %s..."
+
+# "tingle"은 이미 정의됨 (line 4993)
+
+# apply.c:1344-1345 - 깜빡이다 죽음
+#, c-format
+msgid "%s %s for a moment, then %s."
+msgstr "%s{이/가} 잠시 %s, 그리고 %s."
+
+# "flicker"는 이미 정의됨 (line 5692)
+
+# apply.c:1359 - 빠르게 소모
+#, c-format
+msgid "%s %s being rapidly consumed!"
+msgstr "%s{이/가} 빠르게 소모되고 %s!"
+
+# mkobj.c:2883 - 쏟아짐
+#, c-format
+msgid "%s %s out."
+msgstr "%s{이/가} %s."
+
+# pray.c:795 - 떨어짐
+#, c-format
+msgid "%s %s into %s %s."
+msgstr "%s{이/가} %s %s 속으로 %s."
+
+# trap.c:4622 - 폭발
+msgid "explode"
+msgstr "폭발했다"
+
+# polyself.c:1221 - 뚫음
+#, c-format
+msgid "%s %s through %s."
+msgstr "%s{이/가} %s{을/를} %s."
+
+msgid "pierce"
+msgstr "관통했다"
+
+# ============================================================
+# insight.c - fuzzy 항목 수정
+# ============================================================
+
+# insight.c:514 - 임무 메시지
+# You_(%1$s), are/were(%2$s), alignment(%3$s), currently/now/etc(%4$s), god(%5$s)
+#, c-format
+msgid " %s%s%s, %son a mission for %s"
+msgstr " %1$s%2$s %4$s%3$s, %5$s을(를) 위한 임무 중"
+
+# "currently ", "temporarily ", "now ", "belatedly ", "nominally "는 이미 정의됨
+# " who %s opposed by"는 이미 정의됨
+
+# insight.c:540 - 신 이름과 성향 (and로 이어짐)
+#, c-format
+msgid " %s (%s) and"
+msgstr " %s (%s) 그리고"
+
+# insight.c:543 - 신 이름과 성향 (and 접미사)
+#, c-format
+msgid " %s (%s)%s"
+msgstr " %s (%s)%s"
+
+# " and"는 이미 정의됨
+
+# insight.c:547 - 신 이름과 성향
+#, c-format
+msgid " %s (%s)"
+msgstr " %s (%s)"
+
+# insight.c:561 - 실제로
+#, c-format
+msgid "actually %s"
+msgstr "실제로 %s"
+
+# insight.c:1494 - 점수 표시
+#, c-format
+msgid " %d"
+msgstr " %d"
+
+# insight.c:1924 - 안전하게 기도 가능
+# can/cannot/could(%1$s), ""(%2$s), ""(%3$s)
+#, c-format
+msgid "%s%ssafely pray%s"
+msgstr "%1$s%2$s 안전하게 기도할 수 %3$s"
+
+# insight.c:3479 - 미끄러운 손
+#, c-format
+msgid ", slippery %s"
+msgstr ", 미끄러운 %s"

@@ -2643,7 +2643,7 @@ align_gtitle(aligntyp alignment)
     }
     if (gnam && *gnam == '_')
         result = N_("goddess");
-    return result;
+    return _(result);
 }
 
 void

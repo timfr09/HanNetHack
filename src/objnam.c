@@ -2570,6 +2570,17 @@ vtense(const char *subj, const char *verb)
     const char *sp, *spot;
     const char *const *spec;
 
+    /* For non-ASCII text (e.g., Korean), skip English verb conjugation
+     * and return the verb unchanged. Korean doesn't conjugate verbs
+     * based on subject plurality. */
+    if (verb) {
+        const unsigned char *p;
+        for (p = (const unsigned char *) verb; *p; p++) {
+            if (*p >= 0x80) /* non-ASCII byte (UTF-8) */
+                return strcpy(buf, verb);
+        }
+    }
+
     /*
      * verb is given in plural (without trailing s).  Return as input
      * if subj appears to be plural.  Add special cases as necessary.

@@ -11442,10 +11442,10 @@ msgstr "슈뢰딩거의 고양이!"
 msgid "%s is empty."
 msgstr "%s{이/가} 비어 있다."
 
+# 죽음 메시지 접속사
 #: src/end.c:1870
-#, fuzzy
 msgid "or "
-msgstr "%s 또는 %s"
+msgstr "또는 "
 
 #: src/engrave.c:221
 #, c-format
@@ -12665,13 +12665,11 @@ msgstr "철퍽!  "
 msgid "a ring shining in its midst."
 msgstr "그 속에서 반지가 빛나고 있다."
 
-# ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
-# ============================================================
+# 커서 조작 안내 메시지
 #: src/getpos.c:156
-#, fuzzy, c-format
+#, c-format
 msgid "Use '%s'/'%s' to %s%s%s."
-msgstr "'%2$c' %1$s{이/가} %3$s %4$s %5$s"
+msgstr "'%s'/'%s'로 %s%s%s."
 
 #: src/getpos.c:158
 msgid "get a menu of "
@@ -14955,8 +14953,8 @@ msgstr "모든 %d 체력"
 msgid "%d out of %d hit point%s"
 msgstr "%d/%d 체력%s"
 
+# 양쪽 (예: 양 눈, 양쪽 다리 등)
 #: src/insight.c:727
-#, fuzzy
 msgid "both"
 msgstr "둘 다"
 
@@ -15058,33 +15056,37 @@ msgstr "게임 옵션 목록."
 msgid "Autopickup "
 msgstr "자동 줍기: %s."
 
+# ============================================================
+# 능력치 표시 (Characteristics Display)
+# 형식: "Your strength is 15 (base:18, innate limit:18/100)"
+# ============================================================
 #: src/insight.c:810
 msgid "Final "
-msgstr ""
+msgstr "최종 "
 
 #: src/insight.c:810
 msgid "Characteristics:"
-msgstr ""
+msgstr "특성:"
 
 #: src/insight.c:875
 #, c-format
 msgid "Your %s "
 msgstr "당신의 %s "
 
+# 능력치 괄호 안 표시 - 예: " (base:15, peak:18)"
 #: src/insight.c:892
-#, fuzzy
 msgid " ("
-msgstr ", "
+msgstr " ("
 
 #: src/insight.c:892
-#, fuzzy
 msgid " (current; "
-msgstr "현재 "
+msgstr " (현재; "
 
+# 기본/최고/한계 능력치 표시
 #: src/insight.c:894
 #, c-format
 msgid "%sbase:%s"
-msgstr ""
+msgstr "%s기본:%s"
 
 #: src/insight.c:896 src/insight.c:901 src/insight.c:1433 src/pager.c:496
 #: src/pager.c:502 src/pager.c:508 src/pager.c:514 src/pager.c:521
@@ -15093,17 +15095,16 @@ msgid ", "
 msgstr ", "
 
 #: src/insight.c:899
-#, fuzzy, c-format
+#, c-format
 msgid "%speak:%s"
-msgstr "%s{이/가} 말한다."
+msgstr "%s최고:%s"
 
 #: src/insight.c:904
-#, fuzzy, c-format
+#, c-format
 msgid "%s%slimit:%s"
-msgstr "%s%s{이/가} 맞았다%s"
+msgstr "%s%s한계:%s"
 
 #: src/insight.c:906
-#, fuzzy
 msgid "innate "
 msgstr "선천적 "
 
@@ -15225,10 +15226,10 @@ msgstr "선천적으로"
 msgid "deliberately"
 msgstr "고의적으로"
 
+# 조합: "temporarily blinded" → "일시적으로 눈이 멀었다"
 #: src/insight.c:1045
-#, fuzzy
 msgid "temporarily"
-msgstr "잠시 "
+msgstr "일시적으로"
 
 #: src/insight.c:1052
 msgid "deaf"
@@ -15292,20 +15293,25 @@ msgstr "%s %s에 달라붙었다"
 msgid "%swounded %s%s"
 msgstr "%s부상당함 %s%s"
 
+# ============================================================
+# 말(탈것) 부상 상태 메시지 (Steed Wounded Legs)
+# 조합: enl_msg(steednambuf, " has ", " had ", "wounded left leg", "")
+# 예시: "Your horse has wounded left leg" → "당신의 말은 왼쪽 다리에 부상을 입었다"
+# 한국어에서는 조합이 자연스럽지 않으므로 동사 부분만 번역
+# ============================================================
 #: src/insight.c:1143
-#, fuzzy
 msgid " has "
-msgstr "이제"
+msgstr "은 "
 
 #: src/insight.c:1143
-#, fuzzy
 msgid " had "
-msgstr "가지고 있었습니다 "
+msgstr "은 "
 
+# 조합: "slippery fingers" → "미끄러운 손가락"
 #: src/insight.c:1150
-#, fuzzy, c-format
+#, c-format
 msgid "slippery %s"
-msgstr "미끄러운 "
+msgstr "미끄러운 %s"
 
 #: src/insight.c:1157
 msgid "fumble"
@@ -15315,28 +15321,35 @@ msgstr "더듬거리는 중"
 msgid "fumbled"
 msgstr "더듬거리는 중"
 
+# ============================================================
+# 수면 상태 메시지 (Sleep Status)
+# 조합: enl_msg("You ", "fall asleep", "fell asleep", " uncontrollably", ...)
+# 예시: "You fall asleep uncontrollably" → "당신은 통제할 수 없이 잠들게 됩니다"
+# ============================================================
 #: src/insight.c:1164
-#, fuzzy
 msgid "fall asleep"
-msgstr "잠들었다."
+msgstr "잠든다"
 
 #: src/insight.c:1164
-#, fuzzy
 msgid "fell asleep"
-msgstr "잠들었다."
+msgstr "잠들었다"
 
 #: src/insight.c:1164
-#, fuzzy
 msgid " uncontrollably"
 msgstr " 통제할 수 없이"
 
+# ============================================================
+# 배고픔 증가 속도 메시지 (Hunger Rate)
+# 조합: enl_msg("You ", "hunger", "hungered", " rapidly", ...)
+# 예시: "You hunger rapidly" → "당신은 빠르게 배고파진다"
+# ============================================================
 #: src/insight.c:1170
 msgid "hunger"
-msgstr "레인저"
+msgstr "배고파진다"
 
 #: src/insight.c:1170
 msgid "hungered"
-msgstr "짐이 없음"
+msgstr "배고파졌다"
 
 #: src/insight.c:1170
 msgid " rapidly"
@@ -15346,109 +15359,113 @@ msgstr " 빠르게"
 msgid "not hungry"
 msgstr "배고프지 않음"
 
+# ============================================================
+# 허기와 기절 관련 메시지
+# 형식: "fainted from severe hunger" 또는 "fainted due to starvation"
+# ============================================================
 #: src/insight.c:1182
-#, fuzzy
 msgid " from severe hunger"
-msgstr " %s 열기로"
+msgstr " 극심한 배고픔으로"
 
 #: src/insight.c:1184
-#, fuzzy
 msgid " due to starvation"
-msgstr "굶주림으로 죽었다."
+msgstr " 굶주림으로"
 
+# ============================================================
+# 짐 부담 레벨 (Encumbrance Levels)
+# 조합: "slightly encumbered" → "약간 과중 상태"
+# ============================================================
 #: src/insight.c:1197
-#, fuzzy
 msgid "slightly"
-msgstr "약간 "
+msgstr "약간"
 
 #: src/insight.c:1200
-#, fuzzy
 msgid "moderately"
-msgstr "모독된"
+msgstr "적당히"
 
 #: src/insight.c:1206
-#, fuzzy
 msgid "extremely"
-msgstr "매우 많이 바랬다"
+msgstr "극도로"
 
 #: src/insight.c:1209
-#, fuzzy
 msgid "not possible"
-msgstr "볼 수 없게"
+msgstr "불가능"
 
-# ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
-# ============================================================
+# 이동 속도 표시 - 형식: "; movement is slowed" → "; 이동 느려짐"
 #: src/insight.c:1214
-#, fuzzy, c-format
+#, c-format
 msgid "; movement %s %s%s"
-msgstr "%s %s%s 들어갔다!"
+msgstr "; 이동 %s%s%s"
 
 #: src/insight.c:1215
-#, fuzzy
 msgid " slowed"
-msgstr "벽"
+msgstr " 느려짐"
 
 #: src/insight.c:1221 src/obj_descr_i18n.c:435
 msgid "unencumbered"
 msgstr "짐이 없음"
 
+# 능력 저하 원인 - 형식: " due to your straining"
 #: src/insight.c:1234
-#, fuzzy, c-format
+#, c-format
 msgid " due to your %s"
-msgstr "%s{이/가} %s에 융합되었다!"
+msgstr " %s 때문에"
 
 #: src/insight.c:1240 src/insight.c:1907 src/insight.c:1909
 msgid "did"
-msgstr "죽음"
+msgstr ""
 
-#
+# 누드 플레이 관련
 #: src/insight.c:1240
-#, fuzzy
 msgid " not wear any armor"
-msgstr "갑옷을 입고 있지 않다."
+msgstr " 갑옷을 입지 않았다"
 
 #
 #: src/insight.c:1242
 msgid "not wearing any armor"
-msgstr "갑옷을 입고 있지 않다."
+msgstr "갑옷을 입고 있지 않음"
 
 #: src/insight.c:1273
-#, fuzzy
 msgid "wet towel"
-msgstr "다른 수건"
+msgstr "젖은 수건"
 
+# 조합: "wielding some iron weapons" → "철제 무기를 들고 있다"
 #: src/insight.c:1277
-#, fuzzy, c-format
+#, c-format
 msgid "wielding some %s"
-msgstr " (%s %s에 장착)"
+msgstr "%s을 들고"
 
+# 조합: "wielding a long sword" → "장검을 들고 있다"
 #: src/insight.c:1280
-#, fuzzy, c-format
+#, c-format
 msgid "wielding %s"
-msgstr "폭발하는 %s"
+msgstr "%s을 들고"
 
 #: src/insight.c:1301 src/insight.c:1393
 msgid "skill with"
 msgstr "쓸"
 
+# ============================================================
+# 기술 향상 가능 메시지 (Skill Enhancement)
+# 조합: "skill with long sword and can enhance that"
+# ============================================================
 #: src/insight.c:1305
 #, c-format
 msgid " and %s that"
-msgstr "그것을 %s할 수 없다!"
+msgstr " 그리고 %s"
 
 #: src/insight.c:1306 src/insight.c:1439
 msgid "can enhance"
-msgstr "볼 수 있다!"
+msgstr "향상 가능"
 
 #: src/insight.c:1306 src/insight.c:1439
 msgid "could have enhanced"
-msgstr "%s 위로 이동한다."
+msgstr "향상할 수 있었다"
 
+# 기술 제한 상태 - 해당 기술을 사용할 수 없음
 #: src/insight.c:1333
-#, fuzzy
 msgid "restricted"
-msgstr "복구되었다"
+msgstr "제한됨"
 
 #: src/insight.c:1342 src/insight.c:1375
 #, c-format
@@ -15460,18 +15477,20 @@ msgstr "%s의 숙련도 "
 msgid " limited by being %s with two weapons"
 msgstr " 두 무기로 %s이라 제한됨"
 
+# 쌍수 무기 기술 메시지
 #: src/insight.c:1347 src/insight.c:1380
 msgid "Your two weapon skill "
-msgstr "보조 무기는"
+msgstr "쌍수 무기 기술이"
 
 #: src/insight.c:1348
 msgid " limited by "
 msgstr " 제한됨: "
 
+# 기술 레벨 제한 원인
 #: src/insight.c:1350 src/insight.c:1383
 #, c-format
 msgid "being %s"
-msgstr "%s 당하고 있다."
+msgstr "%s 상태"
 
 #: src/insight.c:1352 src/insight.c:1385
 msgid "having no skill"
@@ -15482,9 +15501,10 @@ msgstr "기술이 없음"
 msgid " with %s"
 msgstr " %s(으)로"
 
+# 쌍수 무기 관련 추가 정보
 #: src/insight.c:1356 src/insight.c:1394
 msgid " and two weapons"
-msgstr "%s 무기%s{으로/로} 아무것도 강제로 열 수 없다."
+msgstr " 및 쌍수 무기"
 
 #: src/insight.c:1376
 #, c-format
@@ -15498,26 +15518,31 @@ msgstr " %s제한됨 "
 
 #: src/insight.c:1396
 msgid "You also "
-msgstr "당신은 %s."
+msgstr "당신은 또한 "
 
+# 과거형 동사 - 여러 조합에서 사용됨
 #: src/insight.c:1399 src/insight.c:2352 src/insight.c:2361 src/insight.c:2367
 #: src/insight.c:2379
 msgid "had"
-msgstr "가지고 있었습니다 "
+msgstr "가졌다"
 
+# ============================================================
+# 기술 요약 메시지 (Skill Summary)
+# 조합: " skill with long sword, dagger, and two weapons"
+# ============================================================
 #: src/insight.c:1430
-#, fuzzy, c-format
+#, c-format
 msgid " skill%s with %s%s%s%s%s"
-msgstr "%s{은/는} %s %s하지만 %s%s%s%s."
+msgstr " %s%s%s%s%s 기술%s"
 
 #: src/insight.c:1438
-#, fuzzy
 msgid "two weapons"
-msgstr "%s 무기%s{으로/로} 아무것도 강제로 열 수 없다."
+msgstr "쌍수 무기"
 
+# 아이템 상태 메시지 - 조합: "Your items are somewhat damaged"
 #: src/insight.c:1456
 msgid "Your items "
-msgstr "발견한 물품"
+msgstr "소지품이 "
 
 #: src/insight.c:1457
 msgid "are somewhat"
@@ -15551,19 +15576,20 @@ msgstr "아리오크의 영광"
 msgid "aligned"
 msgstr "정렬된"
 
-# 점수
+# 성향 점수 숫자
 #: src/insight.c:1497
-#, fuzzy, c-format
+#, c-format
 msgid " %d"
-msgstr " S:%ld"
+msgstr " %d"
 
 #: src/insight.c:1498
 msgid "Your alignment "
 msgstr "성향"
 
+# invulnerable = 무적/불사 상태 (데미지를 받지 않음)
 #: src/insight.c:1503 src/timeout.c:32
 msgid "invulnerable"
-msgstr "취약하다."
+msgstr "무적"
 
 #: src/insight.c:1505
 msgid "magic-protected"
@@ -15594,14 +15620,13 @@ msgid "poison resistant"
 msgstr "독 저항"
 
 #: src/insight.c:1526
-#, fuzzy
 msgid "acid resistant"
 msgstr "산성 저항"
 
+# 산성으로부터 보호 (장비에 의한 효과)
 #: src/insight.c:1529
-#, fuzzy
 msgid " protected from acid"
-msgstr "변신 생물로부터 보호"
+msgstr " 산성으로부터 보호"
 
 #: src/insight.c:1531
 msgid "level-drain resistant"
@@ -15612,10 +15637,10 @@ msgstr "레벨 흡수 저항"
 msgid "immune to sickness"
 msgstr "질병 면역"
 
+# 석화 저항 (메두사 등에 대한 방어)
 #: src/insight.c:1537
-#, fuzzy
 msgid "petrification resistant"
-msgstr "분해 저항"
+msgstr "석화 저항"
 
 #: src/insight.c:1541
 msgid "resisted"
@@ -15634,141 +15659,146 @@ msgid "not subject to light-induced blindness"
 msgstr "빛으로 인한 실명에 면역"
 
 # ============================================================
-# 지형 (Terrain/Surface)
+# 투명 감지 능력 (See Invisible)
+# 조합: enl_msg("You ", "see"/"saw", "will see", " invisible", ...)
+# 예시: "You see invisible" → "당신은 투명한 것을 볼 수 있다"
 # ============================================================
 #: src/insight.c:1554
 msgid "saw"
-msgstr "아가리"
+msgstr "볼 수 있었다"
 
 #: src/insight.c:1554
 msgid " invisible"
-msgstr "투명한 "
+msgstr " 투명한 것을"
 
 #: src/insight.c:1556
 msgid "will see"
-msgstr "이 될 것이다"
+msgstr "볼 수 있게 될 것이다"
 
 #: src/insight.c:1556 src/insight.c:1559
 msgid "would have seen"
-msgstr "%s 위로 이동한다."
+msgstr "볼 수 있었을 것이다"
 
 #: src/insight.c:1557
 msgid " invisible when not blind"
-msgstr " 눈이 멀지 않으면 투명"
+msgstr " 눈이 멀지 않으면 투명한 것을"
 
 #: src/insight.c:1559
 msgid "would see"
-msgstr "%s 위로 이동한다."
+msgstr "볼 수 있을 것이다"
 
 #: src/insight.c:1560
 msgid " invisible if not blind"
-msgstr "투명한 "
+msgstr " 눈이 멀지 않으면 투명한 것을"
 
 #: src/insight.c:1563 src/timeout.c:87
 msgid "telepathic"
 msgstr "텔레파시"
 
+# ============================================================
+# 경고 능력 (Warning)
+# 조합: "You are warned" / "aware of the presence of orcs"
+# ============================================================
 #: src/insight.c:1565
 msgid "warned"
-msgstr "탄 "
+msgstr "경고를 받는"
 
+# 조합: "You are aware of the presence of orcs"
 #: src/insight.c:1567 src/insight.c:1575 src/insight.c:1587
-#, fuzzy, c-format
+#, c-format
 msgid "aware of the presence of %s"
-msgstr "악의 존재를 느낀다."
+msgstr "%s의 존재를 감지한다"
 
 #: src/insight.c:1568 src/insight.c:1580
 msgid "orcs"
-msgstr ""
+msgstr "오크"
 
 #: src/insight.c:1569 src/insight.c:1579
-#, fuzzy
 msgid "elves"
-msgstr "그들 자체"
+msgstr "엘프"
 
 #: src/insight.c:1570 src/insight.c:1581
-#, fuzzy
 msgid "demons"
 msgstr "악마"
 
 #: src/insight.c:1577
-#, fuzzy
 msgid "humans and elves"
-msgstr "그들 자체"
+msgstr "인간과 엘프"
 
 # ============================================================
-# 종족 형용사 (Race Adjectives)
+# 종족 (Races)
 # ============================================================
 #: src/insight.c:1578
-#, fuzzy
 msgid "humans"
 msgstr "인간"
 
 #: src/insight.c:1582
-#, fuzzy
 msgid "certain monsters"
-msgstr " 괴물"
+msgstr "특정 괴물"
 
+# 언데드 경고 능력
 #: src/insight.c:1592
 msgid "warned of undead"
-msgstr "죽음의 지팡이"
+msgstr "언데드를 경고받는"
 
+# 자동 탐색 능력
 #: src/insight.c:1594
 msgid "automatic searching"
-msgstr "마법 호흡의 부적"
+msgstr "자동 탐색"
 
 #: src/insight.c:1596 src/timeout.c:50
 msgid "clairvoyant"
 msgstr "천리안"
 
+# ============================================================
+# 천리안 능력 (Clairvoyance)
+# 조합: "You could be clairvoyant" (실명 상태에서)
+# ============================================================
 #: src/insight.c:1600
-#, fuzzy
 msgid "could be"
-msgstr "%s 위로 이동한다."
+msgstr "될 수 있다"
 
 #: src/insight.c:1600
-#, fuzzy
 msgid "could have been"
-msgstr "%s 위로 이동한다."
+msgstr "될 수 있었다"
 
 #: src/insight.c:1600
-#, fuzzy
 msgid " clairvoyant"
-msgstr "천리안"
+msgstr " 천리안"
 
+# 적외선 시야 - 어둠 속에서 열기로 생물을 볼 수 있음
 #: src/insight.c:1603 src/pager.c:505 src/pager.c:696 src/timeout.c:92
 msgid "infravision"
-msgstr "적외분홍"
+msgstr "적외선 시야"
 
 #: src/insight.c:1605 src/obj_descr_i18n.c:436
 msgid "sensing the presence of monsters"
 msgstr "몬스터의 존재를 감지하는 중"
 
+# ============================================================
+# 혼란 공격 능력 (Confusing Touch)
+# 조합: "You will confuse monsters when hitting them (next hit only)"
+# ============================================================
 #: src/insight.c:1615
-#, fuzzy
 msgid " monsters when hitting them"
-msgstr "지도에 표시된 모든 괴물"
+msgstr " 공격 시 괴물을"
 
 #: src/insight.c:1618
-#, fuzzy
 msgid " (next hit only)"
-msgstr "당신에게 접근한다."
+msgstr " (다음 한 번만)"
 
 #: src/insight.c:1620
 #, c-format
 msgid " (next %u hits)"
-msgstr ""
+msgstr " (다음 %u번)"
 
-#
 #: src/insight.c:1622
-#, fuzzy
 msgid "will confuse"
-msgstr "혼란스러운"
+msgstr "혼란시킬 것이다"
 
 #: src/insight.c:1622
-#, fuzzy
 msgid "would have confused"
-msgstr "%s 위로 이동한다."
+msgstr "혼란시켰을 것이다"
 
 #: src/insight.c:1636
 #, c-format
@@ -15791,28 +15821,30 @@ msgstr "보이는"
 msgid "displaced"
 msgstr "변위"
 
+# ============================================================
+# 은신 능력 (Stealth)
+# 조합: "You are stealthy if not mounted"
+# ============================================================
 #: src/insight.c:1653
-#, fuzzy, c-format
+#, c-format
 msgid " stealthy%s"
-msgstr "건강해진 느낌이다."
+msgstr " 은밀%s"
 
 #: src/insight.c:1654
-#, fuzzy
 msgid " if not mounted"
-msgstr " 탑승 중"
+msgstr " (탑승 중이 아닐 때)"
 
 #: src/insight.c:1655
-#, fuzzy
 msgid "would be"
-msgstr "%s 위로 이동한다."
+msgstr "일 것이다"
 
 #: src/insight.c:1655 src/insight.c:1887
 msgid "would have been"
-msgstr "%s 위로 이동한다."
+msgstr "이었을 것이다"
 
 #: src/insight.c:1658
 msgid "You aggravate"
-msgstr "당신은 %s."
+msgstr "당신은 자극한다"
 
 #: src/insight.c:1658 src/insight.c:1661 src/insight.c:1750
 msgid "d"
@@ -15824,7 +15856,7 @@ msgstr " 괴물"
 
 #: src/insight.c:1661
 msgid "You cause"
-msgstr "당신은 %s."
+msgstr "당신은 일으킨다"
 
 #: src/insight.c:1661
 msgid " conflict"
@@ -15838,44 +15870,45 @@ msgstr "순간이동하다"
 msgid "teleport control"
 msgstr "순간이동 제어"
 
+# ============================================================
+# 공중 부양 (Levitation)
+# 조합: "You levitate if not trapped"
+# ============================================================
 #: src/insight.c:1683
-#, fuzzy
 msgid " if not trapped"
-msgstr "%s{은/는} 함정에 걸리지 않았다."
+msgstr " (함정에 안 걸렸으면)"
 
 #: src/insight.c:1686
-#, fuzzy
 msgid "would levitate"
-msgstr "%s 위로 이동한다."
+msgstr "부양할 것이다"
 
 #: src/insight.c:1686
-#, fuzzy
 msgid "would have levitated"
-msgstr "%s 위로 이동한다."
+msgstr "부양했을 것이다"
 
+# ============================================================
+# 비행 능력 (Flying)
+# 조합: "You would fly if you weren't levitating"
+# ============================================================
 #: src/insight.c:1696
-#, fuzzy
 msgid "would fly"
-msgstr "%s 위로 이동한다."
+msgstr "날 수 있을 것이다"
 
 #: src/insight.c:1696
-#, fuzzy
 msgid "would have flown"
-msgstr "%s 위로 이동한다."
+msgstr "날 수 있었을 것이다"
 
 #: src/insight.c:1703
-#, fuzzy
 msgid " if you weren't levitating"
-msgstr "물에 있지 않았다면"
+msgstr " (부양 중이 아니면)"
 
 #: src/insight.c:1708
-#, fuzzy
 msgid " if you weren't trapped"
-msgstr "물속에 있지 않았다면"
+msgstr " (함정에 안 걸렸으면)"
 
 #: src/insight.c:1713
 msgid " if circumstances permitted"
-msgstr ""
+msgstr " (상황이 허락하면)"
 
 #: src/insight.c:1724
 msgid "cling to the ceiling"
@@ -15902,15 +15935,14 @@ msgstr "물속에 있지 않았다면"
 msgid "you weren't in the water"
 msgstr "물에 있지 않았다면"
 
+# 천장 매달리기 조건부 표현
 #: src/insight.c:1732
-#, fuzzy
 msgid "could cling"
-msgstr "킬킬거리는"
+msgstr "매달릴 수 있다"
 
 #: src/insight.c:1732
-#, fuzzy
 msgid "could have clung"
-msgstr "%s 위로 이동한다."
+msgstr "매달릴 수 있었다"
 
 #: src/insight.c:1737
 msgid "walk on water"
@@ -15987,11 +16019,10 @@ msgstr ""
 msgid ", mitigated by your robe"
 msgstr ""
 
-#
+# 로브 착용 시 주문 시전 향상
 #: src/insight.c:1809
-#, fuzzy
 msgid " enhanced by wearing a robe"
-msgstr "갑옷을 입고 있지 않다."
+msgstr " 로브 착용으로 향상"
 
 #: src/insight.c:1812
 msgid "Your spell casting "
@@ -16001,66 +16032,68 @@ msgstr "당신의 주문 시전 "
 msgid "protected from shape changers"
 msgstr "변신 생물로부터 보호"
 
+# 변신 불가 상태
 #: src/insight.c:1822 src/insight.c:1874
 msgid "not change from your current form"
-msgstr "현재 모습으로는 두 무기를 사용할 수 없다."
+msgstr "현재 모습에서 변할 수 없다"
 
+# ============================================================
+# 변신 관련 메시지 (Polymorph)
+# 조합: "You polymorph periodically" / "would change shape"
+# ============================================================
 #: src/insight.c:1826
-#, fuzzy
 msgid "polymorph"
-msgstr "%s 변신 함정!"
+msgstr "변신한다"
 
 #: src/insight.c:1826
-#, fuzzy
 msgid "have polymorphed"
-msgstr "%s 변신 함정!"
+msgstr "변신했다"
 
 #: src/insight.c:1828
-#, fuzzy
 msgid "change shape"
-msgstr "변화"
+msgstr "모습을 바꾼다"
 
 #: src/insight.c:1828
-#, fuzzy
 msgid "have changed shape"
-msgstr "값 변화"
+msgstr "모습을 바꿨다"
 
 #: src/insight.c:1830
-#, fuzzy, c-format
+#, c-format
 msgid "would %s periodically"
-msgstr "%s 변신 함정!"
+msgstr "주기적으로 %s"
 
 #: src/insight.c:1832
-#, fuzzy
 msgid " if not locked into your current form"
-msgstr "현재 모습으로는 두 무기를 사용할 수 없다."
+msgstr " (현재 모습에 고정되지 않았다면)"
 
 #: src/insight.c:1836
 msgid "polymorphing periodically"
-msgstr "%s 변신 함정!"
+msgstr "주기적으로 변신"
 
 #: src/insight.c:1839 src/timeout.c:108
 msgid "polymorph control"
 msgstr "변신 제어"
 
+# 현재 변신 상태 표시
 #: src/insight.c:1848
-#, fuzzy, c-format
+#, c-format
 msgid "polymorphed into %s"
-msgstr "%s{으로/로} 변신한다."
+msgstr "%s(으)로 변신"
 
+# 예: "polymorphed into a dragon in female form"
 #: src/insight.c:1852
-#, fuzzy, c-format
+#, c-format
 msgid "polymorphed into %s in %s form"
-msgstr "%s{으로/로} 변신한다."
+msgstr "%2$s %1$s(으)로 변신"
 
 #: src/insight.c:1861
 msgid "lay eggs"
 msgstr "알 낳기"
 
+# 늑대인간 등 짐승 모습일 때
 #: src/insight.c:1867
-#, fuzzy
 msgid " in beast form"
-msgstr "짐승 모습으로 남아있으겠습니까?"
+msgstr " 짐승 모습으로"
 
 #: src/insight.c:1876
 msgid "harmed by silver"
@@ -16098,15 +16131,18 @@ msgstr "이 될 것이다"
 msgid " saved"
 msgstr " 구원받음"
 
+# ============================================================
+# 행운 관련 메시지 (Luck)
+# 조합: "You are extremely lucky"
+# ============================================================
 #: src/insight.c:1892
-#, fuzzy, c-format
+#, c-format
 msgid "%s%slucky"
-msgstr "%s%s"
+msgstr "%s%s행운"
 
 #: src/insight.c:1893 src/insight.c:1914
-#, fuzzy
 msgid "extremely "
-msgstr "매우 많이 바랬다"
+msgstr "극도로 "
 
 #: src/insight.c:1899
 msgid "Your luck "
@@ -16116,9 +16152,10 @@ msgstr "당신의 행운 "
 msgid " zero"
 msgstr " 0이다"
 
+# 행운 증가 효과 (럭키스톤 등)
 #: src/insight.c:1901
 msgid "extra luck"
-msgstr "나쁜 행운 "
+msgstr "추가 행운"
 
 #: src/insight.c:1903
 msgid "reduced luck"
@@ -16140,29 +16177,33 @@ msgstr " 시간 초과되지 않다"
 msgid "Good luck "
 msgstr "좋은 행운 "
 
+# 신의 분노 상태
 #: src/insight.c:1913
-#, fuzzy, c-format
+#, c-format
 msgid " %sangry with you"
-msgstr " 당신과 함께"
+msgstr " 당신에게 %s화가 난"
 
 #: src/insight.c:1917
 msgid " was"
 msgstr ""
 
+# ============================================================
+# 기도 관련 메시지 (Prayer)
+# 조합: "You could safely pray" / "You could not safely pray"
+# ============================================================
 #: src/insight.c:1927
-#, fuzzy, c-format
+#, c-format
 msgid "%s%ssafely pray%s"
-msgstr "%s%s사용료, %ld %s."
+msgstr "%s%s안전하게 기도%s"
 
 #: src/insight.c:1927 src/insight.c:1930
-#, fuzzy
 msgid "not "
-msgstr "볼 수 없게"
+msgstr "할 수 없다 "
 
 #: src/insight.c:1930
 #, c-format
 msgid "%ssafely pray"
-msgstr ""
+msgstr "%s안전하게 기도"
 
 #: src/insight.c:1949
 #, c-format
@@ -16221,10 +16262,11 @@ msgstr "두 번"
 msgid "thrice"
 msgstr "세 번"
 
+# 4회 이상 사망/부활 시
 #: src/insight.c:1993
-#, fuzzy, c-format
+#, c-format
 msgid "%d times"
-msgstr " (%d%s 회)"
+msgstr "%d번"
 
 #
 #: src/insight.c:1997
@@ -16300,142 +16342,131 @@ msgstr "지금"
 msgid "Voluntary challenges:"
 msgstr "자발적 도전:"
 
+# ============================================================
+# 자발적 도전 (Voluntary Challenges)
+# ============================================================
 #: src/insight.c:2108
-#, fuzzy
 msgid "blind from birth"
-msgstr "에서 "
+msgstr "태어날 때부터 눈이 멀었다"
 
 #: src/insight.c:2110
-#, fuzzy
 msgid "deaf from birth"
-msgstr "에서 "
+msgstr "태어날 때부터 귀가 멀었다"
 
 #: src/insight.c:2114
-#, fuzzy
 msgid "started"
-msgstr "굶어 죽었다"
+msgstr "시작했다"
 
 #: src/insight.c:2114
-#, fuzzy
 msgid "started out"
-msgstr "무너지기 시작해"
+msgstr "처음부터 시작했다"
 
 #: src/insight.c:2115
-#, fuzzy
 msgid " without possessions"
-msgstr "폭발."
+msgstr " 소유물 없이"
 
 #: src/insight.c:2117
-#, fuzzy, c-format
+#, c-format
 msgid "rerolled your character %ld time%s"
-msgstr "이 캐릭터를 다시 굴릴까요?"
+msgstr "캐릭터를 %ld번%s 다시 굴렸다"
 
+# ============================================================
+# 도전 플레이 통계 (Challenge Statistics)
+# ============================================================
 #: src/insight.c:2126
 msgid "faithfully nudist"
-msgstr ""
+msgstr "충실한 누드족"
 
 #: src/insight.c:2129 src/insight.c:2308
-#, fuzzy
 msgid "have gone"
-msgstr "가지고 있었습니다 "
+msgstr "지내다"
 
 #: src/insight.c:2129 src/insight.c:2308
 msgid "went"
-msgstr ""
+msgstr "지냈다"
 
 #: src/insight.c:2129
-#, fuzzy
 msgid " without food"
-msgstr "손이 없이"
+msgstr " 음식 없이"
 
 #: src/insight.c:2132
 msgid "followed a strict vegan diet"
-msgstr ""
+msgstr "엄격한 비건 식단을 따랐다"
 
 #: src/insight.c:2134
-#, fuzzy
 msgid "vegetarian"
-msgstr "굶주림으로 죽었다."
+msgstr "채식주의자"
 
 #: src/insight.c:2137
-#, fuzzy
 msgid "an atheist"
-msgstr "아티팩트"
+msgstr "무신론자"
 
 #: src/insight.c:2140
-#, fuzzy
 msgid "hit with a wielded weapon"
-msgstr "장착한 무기(%s)로 처음 맞았다"
+msgstr "장착한 무기로 친 적 없음"
 
 #: src/insight.c:2142
-#, fuzzy, c-format
+#, c-format
 msgid "hit with a wielded weapon %ld time%s"
-msgstr "장착한 무기(%s)로 처음 맞았다"
+msgstr "장착한 무기로 %ld번%s 쳤다"
 
 #: src/insight.c:2147
 msgid "a pacifist"
-msgstr ""
+msgstr "평화주의자"
 
 #: src/insight.c:2150
-#, fuzzy
 msgid "illiterate"
-msgstr "%s{이/가} 분해됐다."
+msgstr "문맹"
 
 #: src/insight.c:2152
 #, c-format
 msgid "read items or engraved %ld time%s"
-msgstr ""
+msgstr "읽거나 새긴 횟수 %ld번%s"
 
 #: src/insight.c:2158
-#, fuzzy
 msgid "had a pet"
-msgstr "가지고 있었습니다 "
+msgstr "애완동물이 있었다"
 
 #: src/insight.c:2162
-#, fuzzy
 msgid "genocided any monsters"
-msgstr "근처 괴물"
+msgstr "학살한 괴물이 없다"
 
 #: src/insight.c:2164
-#, fuzzy, c-format
+#, c-format
 msgid "genocided %d type%s of monster%s"
-msgstr "괴물의 존재를 감지했다."
+msgstr "%d종류%s의 괴물%s을 학살했다"
 
 #: src/insight.c:2170
-#, fuzzy
 msgid "polymorphed an object"
-msgstr "%s 변신 함정!"
+msgstr "물건을 변신시킨 적 없음"
 
 #: src/insight.c:2172
-#, fuzzy, c-format
+#, c-format
 msgid "polymorphed %ld item%s"
-msgstr "%s{으로/로} 변신한다."
+msgstr "%ld개%s의 물건을 변신시켰다"
 
 #: src/insight.c:2178
-#, fuzzy
 msgid "changed form"
-msgstr "여마법사"
+msgstr "변신한 적 없음"
 
 #: src/insight.c:2180
 #, c-format
 msgid "changed form %ld time%s"
-msgstr ""
+msgstr "%ld번%s 변신했다"
 
 #: src/insight.c:2186
-#, fuzzy
 msgid "used no wishes"
-msgstr "%s{이/가} 사라진다."
+msgstr "소원을 사용하지 않았다"
 
-# Pet interaction verbs (hack.c)
 #: src/insight.c:2188
-#, fuzzy, c-format
+#, c-format
 msgid "used %ld wish%s"
-msgstr "%2$s{으로/로} %1$s자신을 발사했다"
+msgstr "%ld번%s 소원을 빌었다"
 
+# 영어 복수형 접미사 - 한국어에서는 불필요
 #: src/insight.c:2189
-#, fuzzy
 msgid "es"
-msgstr "예"
+msgstr ""
 
 #: src/insight.c:2200 src/pager.c:2167
 #, c-format
@@ -16444,24 +16475,22 @@ msgstr " (%s"
 
 #: src/insight.c:2201 src/read.c:2884
 msgid "all "
-msgstr "벽 %s"
+msgstr "모두 "
 
 #: src/insight.c:2202
 msgid "both "
-msgstr "둘 다; "
+msgstr "둘 다 "
 
 #: src/insight.c:2204
 #, c-format
 msgid " (%ld "
 msgstr ""
 
-# ============================================================
-# 인벤토리 메시지 (Inventory Messages)
-# ============================================================
+# 소원 세부 정보 - "for an artifact"
 #: src/insight.c:2206
 #, c-format
 msgid "for %s)"
-msgstr "당신의 %s"
+msgstr "%s을 위해)"
 
 #: src/insight.c:2207
 msgid "an artifact"
@@ -16471,57 +16500,49 @@ msgstr "아티팩트"
 msgid "artifacts"
 msgstr "아티팩트"
 
+# ============================================================
+# 소코반 규칙 위반 통계 (Sokoban Rules Violation)
+# ============================================================
 #: src/insight.c:2213
-#, fuzzy
 msgid "have not wished"
-msgstr "손이 없다!"
+msgstr "빌지 않았다"
 
 #: src/insight.c:2213
 msgid "did not wish"
-msgstr ""
+msgstr "빌지 않았다"
 
 #: src/insight.c:2214
-#, fuzzy
 msgid " for any artifacts"
-msgstr "아티팩트"
+msgstr " 아티팩트를"
 
-#
 #: src/insight.c:2219
-#, fuzzy
 msgid "have violated"
-msgstr "개종했다."
+msgstr "위반했다"
 
 #: src/insight.c:2219
-#, fuzzy
 msgid "violated"
-msgstr "모독된"
+msgstr "위반했다"
 
 #: src/insight.c:2221
 msgid " the special Sokoban rules "
-msgstr ""
+msgstr " 소코반 특별 규칙을 "
 
-# ============================================================
-# 아이템 메시지 (Item Messages)
-# ============================================================
-#
 #: src/insight.c:2224
-#, fuzzy
 msgid "have not violated"
-msgstr "금화가 없다."
+msgstr "위반하지 않았다"
 
 #: src/insight.c:2225
-#, fuzzy
 msgid "did not violate"
-msgstr "아직 늦지 않았다."
+msgstr "위반하지 않았다"
 
 #: src/insight.c:2226
 msgid " any of the special Sokoban rules"
-msgstr ""
+msgstr " 소코반 특별 규칙 중 어느 것도"
 
 #: src/insight.c:2238
-#, fuzzy, c-format
+#, c-format
 msgid "%ld times"
-msgstr " (%d%s 회)"
+msgstr "%ld번"
 
 #: src/insight.c:2282
 #, c-format

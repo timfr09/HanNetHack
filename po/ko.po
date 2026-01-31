@@ -6725,9 +6725,10 @@ msgstr "%s{이/가} 쉽게 맞지 않는다."
 msgid "Try to squeeze %s?"
 msgstr "%s{을/를} 억지로 통과시키겠습니까?"
 
+# 조합 패턴: 동작 동사 (action verb for hole/trap)
 #: src/do.c:1268
 msgid "manage to squeeze"
-msgstr "%s{을/를} 억지로 통과시키겠습니까?"
+msgstr "억지로 통과했다"
 
 #: src/do.c:1270
 msgid "contusion from a small passage"
@@ -11834,9 +11835,10 @@ msgstr "각인이 이제 \"%s\"(이)라고 읽힌다."
 msgid "%s %sturns to dust."
 msgstr "%s{이/가} %s먼지로 변한다."
 
+# 조합 패턴: "%s glows violently, then turns to dust"
 #: src/engrave.c:1088
 msgid "glows violently, then "
-msgstr "%s 잠시, 그리고 %s!"
+msgstr "격렬하게 빛나더니 "
 
 #: src/engrave.c:1091
 #, c-format
@@ -18031,7 +18033,7 @@ msgstr "%s{을/를} %s열었다."
 
 #: src/lock.c:425
 msgid "Invalid location!"
-msgstr "유효한 방향키%s%s%s는:"
+msgstr "잘못된 위치!"
 
 #: src/lock.c:437
 #, c-format
@@ -18455,13 +18457,14 @@ msgstr "MAIL=\"%s\"의 상태를 가져올 수 없다."
 msgid "Gangway!"
 msgstr "비켜!"
 
+# 우편 배달부 대사 (Mail daemon quotes)
 #: src/mail.c:277
 msgid "Look out!"
-msgstr "감시자"
+msgstr "조심해!"
 
 #: src/mail.c:278
 msgid "Pardon me!"
-msgstr "실례합니다, %s."
+msgstr "실례합니다!"
 
 #: src/mail.c:342
 msgid "Excuse me."
@@ -20057,9 +20060,10 @@ msgstr "당신 귀에 속삭이는 것 같다"
 msgid "murmurs sweet nothings into your ear"
 msgstr "당신 귀에 달콤한 말을 속삭인다"
 
+# 조합 패턴: 유혹 공격 (seduction attack)
 #: src/mhitu.c:2111
 msgid "murmurs in your ear"
-msgstr "%s{이/가} 당신의 %s에."
+msgstr "당신 귀에 속삭인다"
 
 #: src/mhitu.c:2112
 msgid ", while helping you undress"
@@ -20559,13 +20563,14 @@ msgstr "%s{을/를} %s %s, %s 값을 내라!"
 msgid "You %s %s, you pay for %s!"
 msgstr "%s{을/를} %s, %s 값을 내라!"
 
+# 조합 패턴: 물체 상태 변화 동사 (object state change verbs)
 #: src/mkobj.c:1606
 msgid "dissolves completely"
-msgstr "%s %s %s{이/가} 완전히 %s."
+msgstr "완전히 녹았다"
 
 #: src/mkobj.c:1606
 msgid "shrinks"
-msgstr "비명을 지른다."
+msgstr "줄어들었다"
 
 #: src/mkobj.c:1630
 #, c-format
@@ -20793,37 +20798,38 @@ msgstr "당신은 꿈을 꾼다 "
 msgid "seemingly dead"
 msgstr "죽은 것처럼 보이는"
 
+# 조합 패턴: 몬스터 출현/변화 수식어
 #: src/mon.c:2914 src/teleport.c:1713
 msgid "suddenly "
-msgstr "%s%s{이/가} 갑자기 %s%s%s!"
+msgstr "갑자기 "
 
 #: src/mon.c:2915
 msgid "reconstitutes"
-msgstr "%s{이/가} 재구성됐다!"
+msgstr "재구성됐다"
 
 #: src/mon.c:2915
 msgid "transforms"
-msgstr "변신 상태"
+msgstr "변신했다"
 
+# 소리 메시지 (sound messages)
 #: src/mon.c:2947
 msgid "a door being smashed"
-msgstr "문이 부서졌다%s"
+msgstr "문이 부서지는 소리"
 
+# 소리 메시지 (sound messages)
 #: src/mon.c:2948
 msgid "a door exploding"
-msgstr "%s 폭발."
+msgstr "문이 폭발하는 소리"
 
 #: src/mon.c:2959
 #, c-format
 msgid "door is smashed%s"
 msgstr "문이 부서졌다%s"
 
-# ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
-# ============================================================
+# 조합 패턴: "door is smashed" + " and it explodes!"
 #: src/mon.c:2960
 msgid " and it explodes!"
-msgstr "%s %s{이/가} 폭발했다!"
+msgstr " 그리고 폭발했다!"
 
 #: src/mon.c:2976 src/uhitm.c:3048
 #, c-format
@@ -20896,9 +20902,10 @@ msgstr "새 %s의 구멍을 통해 %s."
 msgid "%s is %s%s%s!"
 msgstr "%s is %s%s%s!"
 
+# 조합 패턴: "killed by the monster"
 #: src/mon.c:3384
 msgid " by the "
-msgstr "%s (%s)"
+msgstr "에게 "
 
 #: src/mon.c:3406
 msgid "roast"

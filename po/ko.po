@@ -16740,10 +16740,11 @@ msgstr "처치된 생물이 없다."
 msgid "No creatures were vanquished."
 msgstr "처치된 생물이 없다."
 
+# 학살/멸종 종 목록 메뉴
 #: src/insight.c:3060
-#, fuzzy, c-format
+#, c-format
 msgid "Do you want a list of %sspecies%s%s?"
-msgstr "튜토리얼을 진행하시겠습니까?"
+msgstr "%s%s%s종 목록을 보겠습니까?"
 
 # 학살/멸종 관련 메시지
 #: src/insight.c:3061
@@ -17065,25 +17066,22 @@ msgstr ", 숨어 있음"
 msgid ", disguised"
 msgstr "%s{이/가} %s(으)로 변장함"
 
+# 몬스터 간 상호작용 상태
 #: src/insight.c:3495
-#, fuzzy
 msgid ", being digested by "
-msgstr "%s에 맞음"
+msgstr ", 소화되는 중: "
 
 #: src/insight.c:3496
-#, fuzzy
 msgid ", engulfed by "
-msgstr "삼킨"
+msgstr ", 삼켜진 상태: "
 
 #: src/insight.c:3498
-#, fuzzy
 msgid ", held by "
-msgstr "~에게 붙잡힘"
+msgstr ", 붙잡힌 상태: "
 
 #: src/insight.c:3500
-#, fuzzy
 msgid ", holding "
-msgstr ", 당신을 붙잡는 중"
+msgstr ", 붙잡는 중: "
 
 #: src/insight.c:3510 src/pager.c:277
 #, c-format
@@ -18519,12 +18517,13 @@ msgid "It appears to be all gibberish."
 msgstr "전부 헛소리인 것 같다."
 
 # ============================================================
-# 확장 명령 메뉴 (Extended Commands Menu)
+# ============================================================
+# 메일 시스템 명령 (Mail System Command)
 # ============================================================
 #: src/mail.c:781
-#, fuzzy, c-format
+#, c-format
 msgid "System command (%s)"
-msgstr "확장 명령: %s"
+msgstr "시스템 명령 (%s)"
 
 #: src/makemon.c:111
 #, c-format
@@ -22437,10 +22436,10 @@ msgstr "부끄러운 줄 알아라!"
 msgid "Falling down, you"
 msgstr "떨어지며"
 
+# 조합: "Falling down, you fall into a chasm"
 #: src/music.c:346
-#, fuzzy
 msgid " into a chasm"
-msgstr "균열에 빠졌다!"
+msgstr " 균열 속으로"
 
 #: src/music.c:375
 #, c-format
@@ -24117,35 +24116,32 @@ msgstr "안개/수증기 구름"
 msgid "unexplored"
 msgstr "미탐험"
 
+# ============================================================
+# 던전 이름 (Dungeon Names)
+# ============================================================
 #: src/obj_descr_i18n.c:475
-#, fuzzy
 msgid "The Dungeons of Doom"
-msgstr "그 내용물이 쏟아졌다."
+msgstr "파멸의 던전"
 
 #: src/obj_descr_i18n.c:476
-#, fuzzy
 msgid "The Gnomish Mines"
-msgstr "노움 광산에 들어갔다"
+msgstr "노움 광산"
 
 #: src/obj_descr_i18n.c:477
-#, fuzzy
 msgid "Sokoban"
-msgstr "소코반에 들어갔다"
+msgstr "소코반"
 
 #: src/obj_descr_i18n.c:478
-#, fuzzy
 msgid "The Quest"
-msgstr "디자인"
+msgstr "퀘스트"
 
 #: src/obj_descr_i18n.c:479
-#, fuzzy
 msgid "Fort Ludios"
-msgstr "%s루디오스 요새."
+msgstr "루디오스 요새"
 
 #: src/obj_descr_i18n.c:480
-#, fuzzy
 msgid "Gehennom"
-msgstr "게헨놈에 들어갔다"
+msgstr "게헨놈"
 
 #: src/obj_descr_i18n.c:481
 msgid "The Elemental Planes"
@@ -24153,157 +24149,140 @@ msgstr "원소 차원"
 
 #: src/obj_descr_i18n.c:482
 msgid "Vlad's Tower"
-msgstr ""
+msgstr "블라드의 탑"
 
 #: src/obj_descr_i18n.c:483
-#, fuzzy
 msgid "The Tutorial"
 msgstr "튜토리얼"
 
+# ============================================================
+# 마법서 외형 (Spellbook Appearance)
+# ============================================================
 #: src/obj_descr_i18n.c:486
-#, fuzzy
 msgid "parchment"
-msgstr "복부"
+msgstr "양피지"
 
 #: src/obj_descr_i18n.c:487
-#, fuzzy
 msgid "vellum"
-msgstr "환대"
+msgstr "송아지 가죽"
 
 #: src/obj_descr_i18n.c:488
-#, fuzzy
 msgid "ragged"
-msgstr "기록됨"
+msgstr "낡은"
 
 #: src/obj_descr_i18n.c:489
 msgid "dog eared"
-msgstr ""
+msgstr "귀퉁이 접힌"
 
 #: src/obj_descr_i18n.c:490
-#, fuzzy
 msgid "stained"
-msgstr "용기를 여는 중"
+msgstr "얼룩진"
 
-#
 #: src/obj_descr_i18n.c:491
-#, fuzzy
 msgid "leathery"
-msgstr "가죽"
+msgstr "가죽 같은"
 
 #: src/obj_descr_i18n.c:492
 msgid "velvet"
-msgstr ""
+msgstr "벨벳"
 
+# 마법서 색상
 #: src/obj_descr_i18n.c:493
-#, fuzzy
 msgid "light green"
-msgstr "어지러운"
+msgstr "연두색"
 
 #: src/obj_descr_i18n.c:495
 msgid "turquoise"
-msgstr ""
+msgstr "청록색"
 
 #: src/obj_descr_i18n.c:496
-#, fuzzy
 msgid "light blue"
-msgstr "선명한 파란색"
+msgstr "하늘색"
 
 #: src/obj_descr_i18n.c:497
-#, fuzzy
 msgid "dark blue"
-msgstr "하늘색"
+msgstr "진한 파란색"
 
 #: src/obj_descr_i18n.c:498
 msgid "indigo"
-msgstr ""
+msgstr "남색"
 
 #: src/obj_descr_i18n.c:499
-#, fuzzy
 msgid "purple"
-msgstr "자주색"
+msgstr "보라색"
 
 #: src/obj_descr_i18n.c:500
-#, fuzzy
 msgid "violet"
-msgstr "난폭한"
+msgstr "제비꽃색"
 
-# 지팡이
-# --- 지팡이 (Wands) ---
+# ============================================================
+# 마법서 외형 추가 (More Spellbook Appearance)
+# ============================================================
 #: src/obj_descr_i18n.c:501
-#, fuzzy
 msgid "tan"
-msgstr "하나의"
+msgstr "황갈색"
 
 #: src/obj_descr_i18n.c:502
-#, fuzzy
 msgid "plaid"
-msgstr "평범한"
+msgstr "체크무늬"
 
 #: src/obj_descr_i18n.c:503
-#, fuzzy
 msgid "light brown"
-msgstr "가벼운"
+msgstr "연한 갈색"
 
 #: src/obj_descr_i18n.c:504
-#, fuzzy
 msgid "dark brown"
-msgstr "짙은 녹색"
+msgstr "진한 갈색"
 
 #: src/obj_descr_i18n.c:505 src/potion.c:2583
 msgid "wrinkled"
 msgstr "주름졌다"
 
 #: src/obj_descr_i18n.c:507
-#, fuzzy
 msgid "glittering"
-msgstr "쏘는 듯한"
+msgstr "반짝이는"
 
 #: src/obj_descr_i18n.c:508
-#, fuzzy
 msgid "shining"
-msgstr "%s 빛나고 있다."
+msgstr "빛나는"
 
 #: src/obj_descr_i18n.c:509
-#, fuzzy
 msgid "dull"
-msgstr "죽었다"
+msgstr "칙칙한"
 
 # ============================================================
-# 공통 문자열 (decl.h macros)
+# 마법서 두께/질감 (Book Thickness/Texture)
 # ============================================================
 #: src/obj_descr_i18n.c:510 src/pager.c:622
 msgid "thin"
 msgstr "얇은"
 
 #: src/obj_descr_i18n.c:511
-#, fuzzy
 msgid "thick"
-msgstr "부르릉거린다."
+msgstr "두꺼운"
 
 #: src/obj_descr_i18n.c:512
-#, fuzzy
 msgid "checkered"
 msgstr "바둑판 무늬"
 
 #: src/obj_descr_i18n.c:513
 msgid "canvas"
-msgstr ""
+msgstr "캔버스"
 
 #: src/obj_descr_i18n.c:514
-#, fuzzy
 msgid "hardcover"
-msgstr "게임 오버:"
+msgstr "양장본"
 
+# 아이템 세트
 #: src/objnam.c:723
-#, fuzzy, c-format
+#, c-format
 msgid "set of %s"
-msgstr "세트 "
+msgstr "%s 세트"
 
 # 방어구 - 방패
 #: src/objnam.c:733
-#, fuzzy
 msgid "smooth shield"
-msgstr "방패"
+msgstr "매끄러운 방패"
 
 #: src/objnam.c:753
 msgid "fruit"

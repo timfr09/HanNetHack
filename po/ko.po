@@ -156,7 +156,7 @@ msgstr "더욱 더러워졌다"
 
 #: src/apply.c:131
 msgid "get slimy"
-msgstr "점액투성이가 되다"
+msgstr "슬라임투성이가 되다"
 
 #: src/apply.c:139
 #, c-format
@@ -3454,7 +3454,7 @@ msgstr " 석화"
 
 #: src/botl.c:178 src/windows.c:996
 msgid " Slime"
-msgstr " 점액화"
+msgstr " 슬라임화"
 
 #: src/botl.c:180 src/windows.c:998
 msgid " Strngl"
@@ -14847,10 +14847,15 @@ msgstr "뒤늦게 "
 msgid "nominally "
 msgstr "명목상 "
 
+# ============================================================
+# 신 관계 표시 - 반대 (God relationship - opposed by)
+# 조합 패턴: "You are a %s, %s%s who %s opposed by %s (%s) and %s (%s)."
+# %s = "is"/"are" (주어 단복수에 따라)
+# ============================================================
 #: src/insight.c:538
 #, c-format
 msgid " who %s opposed by"
-msgstr " 의 반대자:"
+msgstr " %s 반대자:"
 
 # 신 이름과 성향 표시
 #: src/insight.c:540
@@ -15092,15 +15097,23 @@ msgstr "최악"
 msgid "Your armor class "
 msgstr "당신의 방어도 "
 
+# ============================================================
+# 지갑 상태 - 빔 (Wallet status - empty)
+# %s = "is"/"are" (영어 문법)
+# ============================================================
 #: src/insight.c:763
 #, c-format
 msgid " Your wallet %s empty"
-msgstr " 지갑이 비어 있다"
+msgstr " 지갑이 %s비어 있다"
 
+# ============================================================
+# 지갑 상태 - 금화 있음 (Wallet status - has gold)
+# %s = 동사 어미 ("s"/"ed"), %ld = 금화 수량, %s = 금화 이름
+# ============================================================
 #: src/insight.c:765
 #, c-format
 msgid " Your wallet contain%s %ld %s"
-msgstr " 지갑에 %ld %s이(가) 있다"
+msgstr " 지갑에%s %ld %s이(가) 있다"
 
 #: src/insight.c:765
 msgid "ed"
@@ -16821,10 +16834,14 @@ msgstr " (3번)"
 msgid " (%d times)"
 msgstr " (%d번)"
 
+# ============================================================
+# 처치 생물 수 (Creatures vanquished count)
+# %ld = 처치된 생물 수
+# ============================================================
 #: src/insight.c:2950
 #, c-format
 msgid "%ld creatures vanquished."
-msgstr "처치된 생물이 없다."
+msgstr "%ld마리의 생물을 처치했다."
 
 #: src/insight.c:2967
 msgid "No creatures have been vanquished."
@@ -17141,7 +17158,7 @@ msgstr ", 덮"
 
 #: src/insight.c:3463
 msgid "ed by sticky goop"
-msgstr "임 (끈적끈적한 점액)"
+msgstr "임 (끈적끈적한 슬라임)"
 
 #: src/insight.c:3482
 #, c-format
@@ -19831,7 +19848,7 @@ msgstr "해롭지 않아 보이는 끈적거리는 것으로 뒤덮였다."
 
 #: src/mhitu.c:1460
 msgid "Ouch!  You've been slimed!"
-msgstr "아야! 점액에 뒤덮였다!"
+msgstr "아야! 슬라임에 뒤덮였다!"
 
 #
 #: src/mhitu.c:1462
@@ -29284,10 +29301,10 @@ msgstr "오른손 반지가 부드럽게 빛난다"
 msgid "You feel more limber."
 msgstr "몸이 더 유연해진 것 같다."
 
-# 점액 해제 메시지
+# 슬라임 해제 메시지
 #: src/pray.c:387
 msgid "The slime disappears."
-msgstr "점액이 사라진다."
+msgstr "슬라임이 사라진다."
 
 #: src/pray.c:391 src/timeout.c:899
 msgid "amulet vanishes!"
@@ -30261,9 +30278,16 @@ msgstr "목소리가 울려 퍼진다:"
 msgid "Despite your deafness, you seem to hear"
 msgstr "청각 장애에도 불구하고 들리는 것 같다"
 
+# ============================================================
+# 신의 속삭임 문장 끝 (God whispers - sentence ending)
+# 조합 패턴: "A voice (could it be %s?) whispers:"
+#   "A voice (could it be" + 신 이름 + "?) whispers" + ":"
+# 독립 문구로 %s 없이 사용됨
+# 예: "A voice (could it be Anhur?) whispers:"
+# ============================================================
 #: src/pray.c:2663
 msgid "?) whispers"
-msgstr "%s{이/가} %s{을/를} 속삭였다."
+msgstr "?)가 속삭인다"
 
 #: src/pray.c:2663
 msgid " say"
@@ -36225,10 +36249,10 @@ msgstr "마법 에너지가 방출됐다!"
 msgid "are no longer ill."
 msgstr "더 이상 아프지 않다."
 
-# 점액 치료 메시지 (Slime cure - cure sickness spell)
+# 슬라임 치료 메시지 (Slime cure - cure sickness spell)
 #: src/spell.c:1556
 msgid "The slime disappears!"
-msgstr "점액이 사라졌다!"
+msgstr "슬라임이 사라졌다!"
 
 #: src/spell.c:1569
 #, c-format
@@ -37622,25 +37646,25 @@ msgstr "%s 위로 이동한다."
 
 #: src/timeout.c:418
 msgid "green slime"
-msgstr "분홍 점액"
+msgstr "분홍 슬라임"
 
 #: src/timeout.c:452
 msgid "The slime that covers you is burned away!"
 msgstr "슬라임이 불타 사라졌다!"
 
-# 점액 사망 원인 (Slime death reason)
+# 슬라임 사망 원인 (Slime death reason)
 #: src/timeout.c:473
 msgid "turned into green slime"
-msgstr "녹색 점액으로 변함"
+msgstr "녹색 슬라임으로 변함"
 
 #: src/timeout.c:504
 msgid "slimicide"
-msgstr "점액 살해"
+msgstr "슬라임 살해"
 
-# 점액 학살 메시지 (Slime genocided message)
+# 슬라임 학살 메시지 (Slime genocided message)
 #: src/timeout.c:507
 msgid "green slime has been genocided..."
-msgstr "녹색 점액이 학살되었다..."
+msgstr "녹색 슬라임이 학살되었다..."
 
 #: src/timeout.c:510
 #, c-format
@@ -38282,13 +38306,18 @@ msgstr "%s %s %s{이/가} %s에 영향받지 않았다."
 msgid "Somehow, %s %s %s not affected by the %s."
 msgstr "어쩐지, %s %s %s{이/가} %s에 영향받지 않았다."
 
+# ============================================================
+# 부식 정도 부사 (Erosion degree adverbs)
+# 조합 패턴: "%s %s %s%s!" + 부사 (완전히/더/없음)
+# 예: "Your sword rusts completely!"
+# ============================================================
 #: src/trap.c:297
 msgid " completely"
-msgstr "%s %s{이/가} 완전히 %s."
+msgstr " 완전히"
 
 #: src/trap.c:298 src/uhitm.c:1254
 msgid " further"
-msgstr "%s{이/가} 더 %s."
+msgstr " 더"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -38358,9 +38387,10 @@ msgstr "%s{이/가} 아래에서 열린다!"
 msgid "don't fall in."
 msgstr "떨어지지 마라!"
 
+# 큰 생물 함정 통과 불가 (Large creature can't fit through trap)
 #: src/trap.c:661
 msgid "don't fit through."
-msgstr "멈춰. %s{은/는} 통과하지 못한다."
+msgstr "통과하지 못한다."
 
 #: src/trap.c:671
 msgid "opening under you closes up."
@@ -38727,9 +38757,16 @@ msgstr "인접한 구덩이로 이동했다."
 msgid "stumble over debris%s."
 msgstr "잔해 위에서 비틀거렸다%s."
 
+# ============================================================
+# 구덩이 사이 잔해 (Debris between pits - optional suffix)
+# 조합 패턴: "You stumble over debris%s."
+# 20% 확률로 " between the pits" 추가, 아니면 ""
+# 독립 문구로 %s 없이 사용됨
+# 예: "You stumble over debris between the pits."
+# ============================================================
 #: src/trap.c:1886
 msgid " between the pits"
-msgstr "%s 위의 물체"
+msgstr " 구덩이 사이에서"
 
 #: src/trap.c:1889
 msgid "dive"
@@ -38844,9 +38881,13 @@ msgstr "자신의 거미줄 위를 걸어간다."
 msgid "There is a spider web here."
 msgstr "여기에 거미줄이 있다."
 
+# ============================================================
+# 거미줄 함정 걸림 (Spider web trap caught)
+# 조합 패턴: "%s %s a/the web."
+# ============================================================
 #: src/trap.c:2133
 msgid "are caught by"
-msgstr "%s에 맞았다!"
+msgstr "에 걸렸다"
 
 #: src/trap.c:2135
 #, c-format
@@ -38898,13 +38939,25 @@ msgstr "몸이 마법 에너지의 일부를 흡수했다!"
 msgid "unbearably torpid!"
 msgstr "견딜 수 없이 나른하다!"
 
+# ============================================================
+# 반-마법 함정 피해 정도 (Anti-magic trap damage level)
+# 조합 패턴: You_feel("very lethargic." | "sluggish." | "unbearably torpid!")
+# 독립적인 문구로 %s 없이 단독으로 사용됨
+# 예: "You feel very lethargic."
+# ============================================================
 #: src/trap.c:2354
 msgid "very lethargic."
-msgstr "%s{이/가} 찡그리는 것 같다."
+msgstr "매우 나른하다."
 
+# ============================================================
+# 반-마법 함정 피해 정도 (Anti-magic trap damage level - lowest)
+# 조합 패턴: You_feel("sluggish." | "very lethargic." | "unbearably torpid!")
+# 독립적인 문구로 %s 없이 단독으로 사용됨
+# 예: "You feel sluggish."
+# ============================================================
 #: src/trap.c:2355
 msgid "sluggish."
-msgstr "생선 냄새를 맡았다."
+msgstr "무기력하다."
 
 #: src/trap.c:2357
 msgid "anti-magic implosion"
@@ -38954,13 +39007,28 @@ msgstr "방아쇠를"
 msgid "KAABLAMM!!!  %s %s%s off!"
 msgstr "쾅!!! %s{이/가} %s%s 날아갔다!"
 
+# ============================================================
+# 지뢰 작동 주체 (Land mine trigger subject - player's clumsy action)
+# 조합 패턴: "KAABLAMM!!!  %s %s%s off!"
+#   첫번째 %s = "Your inept attempt sets" 또는 "The air currents set"
+#   두번째 %s = "your"/"the" 또는 ""
+#   세번째 %s = " land mine" 또는 "it"
+# 한국어 조합: "쾅!!! %s{이/가} %s%s 작동시켰다!"
+# 예: "쾅!!! 서투른 시도가 당신의 지뢰를 작동시켰다!"
+# ============================================================
 #: src/trap.c:2507
 msgid "Your inept attempt sets"
-msgstr "%s 노력을 계속한다."
+msgstr "서투른 시도"
 
+# ============================================================
+# 지뢰 작동 주체 (Land mine trigger subject - air currents)
+# 조합 패턴: "KAABLAMM!!!  %s %s%s off!"
+# 한국어 조합: "쾅!!! %s{이/가} %s%s 작동시켰다!"
+# 예: "쾅!!! 기류가 그 지뢰를 작동시켰다!"
+# ============================================================
 #: src/trap.c:2508
 msgid "The air currents set"
-msgstr "기류가 %s{을/를} 작동시켰다!"
+msgstr "기류"
 
 #: src/trap.c:2510
 msgid " land mine"
@@ -38990,13 +39058,28 @@ msgid "a land mine"
 msgstr "지뢰"
 
 #: src/trap.c:2575
+# ============================================================
+# 몬스터가 지뢰를 밟음 (Monster triggers land mine)
+# 조합 패턴: pline("%s%s triggers %s land mine!", sound, Monnam, a_your)
+#   첫번째 %s = "KAABLAMM!!!  " 또는 "" (소리)
+#   두번째 %s = 몬스터 이름 (예: "The goblin")
+#   세번째 %s = "a" 또는 "your" (소유격)
+# 예: "KAABLAMM!!!  The goblin triggers your land mine!"
+# ============================================================
 #, c-format
 msgid "%s%s triggers %s land mine!"
-msgstr "%s! %s %s 지뢰."
+msgstr "%s%s{이/가} %s 지뢰를 밟았다!"
 
+# ============================================================
+# 지뢰 폭발 소리 접두사 (Land mine explosion sound prefix)
+# 조합 패턴: "%s%s triggers %s land mine!" - 첫번째 %s로 사용
+# !Deaf 조건일 때만 소리가 들림 (청각 장애 없을 때)
+# 독립 문구로 %s 없이 사용됨
+# 예: "KAABLAMM!!!  The goblin triggers a land mine!"
+# ============================================================
 #: src/trap.c:2576
 msgid "KAABLAMM!!!  "
-msgstr "쾅!!!%s"
+msgstr "쾅!!!  "
 
 #: src/trap.c:2580
 #, c-format
@@ -39120,13 +39203,27 @@ msgstr "갑자기 굴러가던 바위가 사라졌다!"
 msgid "a rumbling stop abruptly."
 msgstr "우르릉거리는 소리가 갑자기 멈췄다."
 
+# ============================================================
+# 바위 충돌 소리 - 연쇄 반응 (Boulder crash - chain reaction)
+# 조합 패턴: "You hear a loud crash%s!" - 바위가 보이면 이유 추가
+# 바위가 다른 바위를 밀어서 움직이게 할 때
+# 독립 문구로 %s 없이 사용됨
+# 예: "You hear a loud crash as one boulder sets another in motion!"
+# ============================================================
 #: src/trap.c:3441
 msgid " as one boulder sets another in motion"
-msgstr "바위가 %s구덩이에 안착한다."
+msgstr ", 바위가 다른 바위를 밀었다"
 
+# ============================================================
+# 바위 충돌 소리 - 막힘 (Boulder crash - blocked)
+# 조합 패턴: "You hear a loud crash%s!" - 바위가 보이면 이유 추가
+# 바위가 다른 바위에 막혀서 멈출 때
+# 독립 문구로 %s 없이 사용됨
+# 예: "You hear a loud crash as one boulder hits another!"
+# ============================================================
 #: src/trap.c:3445
 msgid " as one boulder hits another"
-msgstr "여기 바위 위로 %s."
+msgstr ", 바위가 다른 바위에 부딪혔다"
 
 #: src/trap.c:3448
 #, c-format
@@ -39371,13 +39468,26 @@ msgstr "타다"
 msgid "%s is still in a pit."
 msgstr "%s{이} 아직 구덩이에 있다."
 
+# ============================================================
+# 구덩이 탈출 실패 메시지 - 환각 버전 (Pit escape fail - Hallucination)
+# 독립 문구로 %s 없이 단독 사용됨
+# 미국 TV 광고 "Life Alert" 패러디 메시지
+# 조건: Hallucination && !rn2(5)
+# 예: (구덩이에서 나오려다 실패할 때 환각 상태이면 가끔 출력)
+# ============================================================
 #: src/trap.c:4153
 msgid "You've fallen, and you can't get up."
-msgstr "당신은 최대한 %s %s 상태다."
+msgstr "넘어졌는데 일어날 수가 없다."
 
+# ============================================================
+# 구덩이 탈출 실패 메시지 - 일반 버전 (Pit escape fail - normal)
+# 독립 문구로 %s 없이 단독 사용됨 (플레이어 전용)
+# 참고: "%s is still in a pit."는 탈것(steed)용
+# 예: (구덩이에서 나오려다 실패할 때)
+# ============================================================
 #: src/trap.c:4154
 msgid "You are still in a pit."
-msgstr "%s{이} 아직 구덩이에 있다."
+msgstr "당신은 아직 구덩이에 있다."
 
 #: src/trap.c:4171
 #, c-format
@@ -39960,9 +40070,17 @@ msgstr "해제했다!"
 msgid "cannot deal with %s while trapped%s!"
 msgstr "갇힌 상태로 %s{을/를} 처리할 수 없다%s!"
 
+# ============================================================
+# 함정 처리 불가 - 위치 접미사 (Trap handling - location suffix)
+# 조합 패턴: "You cannot deal with %s while trapped%s!"
+#   첫번째 %s = 함정 이름
+#   두번째 %s = " in it" 또는 "" (같은 위치에 있으면 " in it")
+# 독립 문구로 %s 없이 사용됨
+# 예: "You cannot deal with the bear trap while trapped in it!"
+# ============================================================
 #: src/trap.c:5883
 msgid " in it"
-msgstr " %s에"
+msgstr " 그 안에"
 
 #: src/trap.c:5907
 msgid "are already on the edge of the pit."
@@ -40013,9 +40131,16 @@ msgstr "이 문에는 함정이 없었다."
 msgid "find no traps on the door."
 msgstr "문에서 함정을 발견하지 못했다."
 
+# ============================================================
+# 함정 탈출 주어 (Trap release subject - player)
+# 조합 패턴: "%s released from %s%s."
+#   첫번째 %s = "You are" | "You and %s are" | "%s is" (주어+be동사)
+# 독립 문구로 %s 없이 사용됨
+# 예: "You are released from the pit."
+# ============================================================
 #: src/trap.c:6099
 msgid "You are"
-msgstr "당신은 %s."
+msgstr "당신은"
 
 #: src/trap.c:6101
 #, c-format
@@ -40246,9 +40371,18 @@ msgstr "아직 타고 있다."
 msgid "sink into the %s%s!"
 msgstr "%s%s에 빠지고 있다!"
 
+# ============================================================
+# 용암 피해 정도 - 약함 (Lava damage level - light)
+# 조합 패턴: "You sink into the %s%s!"
+#   첫번째 %s = 용암 이름 (lava 등)
+#   두번째 %s = ", but it only burns slightly" 또는 " and are about to be immolated"
+# 화염 저항이 있으면 약간만 데임
+# 독립 문구로 %s 없이 사용됨
+# 예: "You sink into the lava, but it only burns slightly!"
+# ============================================================
 #: src/trap.c:6899
 msgid ", but it only burns slightly"
-msgstr "%s{이/가} 약간 %s."
+msgstr ", 하지만 약간만 데인다"
 
 # 조합 패턴: "You are stuck in lava and are about to be immolated"
 #: src/trap.c:6900
@@ -40809,9 +40943,17 @@ msgstr "%s %s %s%s%s."
 msgid "%s %s %s %s!"
 msgstr "%s %s %s %s!"
 
+# ============================================================
+# 기름칠된 장비에서 미끄러짐 (Slip off greased equipment)
+# 조합 패턴: "You %s %s %s %s!"
+#   첫번째 %s = "slip off of" 또는 "grab, but cannot hold onto"
+#   나머지 %s = 몬스터 소유격, "greased"/"slippery", 장비명
+# 독립 문구로 %s 없이 사용됨
+# 예: "You slip off of the gnome's greased cloak!"
+# ============================================================
 #: src/uhitm.c:2053
 msgid "slip off of"
-msgstr "%s에서 %s 떨어졌다!"
+msgstr "미끄러져 떨어졌다"
 
 #: src/uhitm.c:2054
 msgid "grab, but cannot hold onto"
@@ -40854,9 +40996,17 @@ msgstr "썩어버렸다!"
 msgid "%s becomes weaker!"
 msgstr "%s{이/가} 약해졌다!"
 
+# ============================================================
+# 완전 연소 (Burns completely - paper/straw golem)
+# 조합 패턴: "%s %s!" 또는 "%s %s!"
+#   첫번째 %s = 몬스터 이름 (예: "The straw golem")
+#   두번째 %s = "burns completely" 또는 "is totally engulfed in flames"
+# 독립 문구로 %s 없이 사용됨
+# 예: "The paper golem burns completely!"
+# ============================================================
 #: src/uhitm.c:2517 src/uhitm.c:2576
 msgid "burns completely"
-msgstr "%s %s{이/가} 완전히 %s."
+msgstr "완전히 불탔다"
 
 #
 #: src/uhitm.c:2518 src/uhitm.c:2577
@@ -41598,9 +41748,16 @@ msgstr "%s꿈쩍도 안 한다."
 msgid "%s doesn't budge."
 msgstr "%s{은/는} 꿈쩍도 안 한다."
 
+# ============================================================
+# 밀려난 방향 - 안장에서 (Knocked direction - out of saddle)
+# 조합 패턴: knockedhow 변수로 사용됨
+#   "out of your saddle" | "backward" | "back"
+# 독립 문구로 %s 없이 사용됨
+# 예: "You knock the orc out of your saddle."
+# ============================================================
 #: src/uhitm.c:5332
 msgid "out of your saddle"
-msgstr "%s에서 줄어들어 빠져나왔다!"
+msgstr "안장에서"
 
 #: src/uhitm.c:5333
 msgid "backward"
@@ -41713,9 +41870,18 @@ msgstr "마법 미사일 세례가 간신히 빗나갔다!"
 msgid "are hit by magic missiles appearing from thin air!"
 msgstr "허공에서 나타난 마법 미사일에 맞았다!"
 
+# ============================================================
+# 정도 부사 - 다소 (Degree adverb - rather)
+# 조합 패턴: "%s looks %s%s."
+#   첫번째 %s = 몬스터 이름
+#   두번째 %s = "" 또는 "rather " (50% 확률)
+#   세번째 %s = "numb" 또는 "stupefied"
+# 독립 문구로 %s 없이 사용됨
+# 예: "The floating eye looks rather numb."
+# ============================================================
 #: src/uhitm.c:6011
 msgid "rather "
-msgstr "다소 %s."
+msgstr "다소 "
 
 #: src/uhitm.c:6012
 msgid "numb"
@@ -41835,9 +42001,17 @@ msgstr "%s{이/가} 밝혀졌다."
 msgid "wails in agony"
 msgstr "고통 속에서 통곡하다"
 
+# ============================================================
+# 고통의 비명 (Cry of pain - gremlin hit by light)
+# 조합 패턴: "%s %s!" - 한국어 특수 처리됨 (is_korean_locale)
+#   첫번째 %s = 몬스터 이름
+#   두번째 %s = "wails in agony" 또는 "cries out in pain"
+# 독립 문구로 %s 없이 사용됨 (한국어 코드에서 {이/가} 자동 추가)
+# 예: "The gremlin cries out in pain!"
+# ============================================================
 #: src/uhitm.c:6406
 msgid "cries out in pain"
-msgstr "%s %s{이/가} 고통스럽다!"
+msgstr "고통에 울부짖는다"
 
 #: src/uhitm.c:6413
 #, c-format
@@ -41982,9 +42156,18 @@ msgstr "손상된 금고의 벽이 마법으로 복원되었다!"
 msgid "%s%s picks up the gold%s."
 msgstr "%s%s{이/가} 금화%s{을/를} 주웠다."
 
+# ============================================================
+# 금고 경비원 진정 (Vault guard calms down - optional suffix)
+# 조합 패턴: "%s%s picks up the gold%s."
+#   첫번째 %s = 경비원 이름
+#   두번째 %s = " calms down and" 또는 "" (화내다가 진정)
+#   세번째 %s = " from beneath you" 또는 ""
+# 독립 문구로 %s 없이 사용됨
+# 예: "The guard calms down and picks up the gold."
+# ============================================================
 #: src/vault.c:819
 msgid " calms down and"
-msgstr "%s{이/가} 진정되었다."
+msgstr " 진정되어"
 
 #: src/vault.c:820
 msgid " from beneath you"
@@ -42018,9 +42201,16 @@ msgstr "%s{이/가} 당신과 대면한다."
 msgid "How dare you %s that gold, scoundrel!"
 msgstr "감히 금화를 %s하다니, 악당!"
 
+# ============================================================
+# 금화 행위 - 먹다 (Gold action - consume)
+# 조합 패턴: "How dare you %s that gold, scoundrel!"
+#   %s = "consume" (먹음) 또는 "destroy" (파괴)
+# 독립 문구로 %s 없이 사용됨
+# 예: "How dare you consume that gold, scoundrel!"
+# ============================================================
 #: src/vault.c:937
 msgid "consume"
-msgstr "%s %s{을/를} 먹었다."
+msgstr "먹다니"
 
 #: src/vault.c:951
 #, c-format
@@ -42109,18 +42299,32 @@ msgstr "파일 \"%s\"의 버전이 일치하지 않는다."
 msgid "Configuration incompatibility for file \"%s\"."
 msgstr "파일 \"%s\"의 구성이 호환되지 않는다."
 
+# ============================================================
+# 무기 스킬 이름 - 없음 (Weapon skill name - none)
+# 스킬 표시에 사용되는 이름
+# 독립 문구로 %s 없이 사용됨
+# ============================================================
 #: src/weapon.c:54
 msgid "no skill"
-msgstr "%s{이/가} 죽었다."
+msgstr "무기술"
 
-#
+# ============================================================
+# 무기 스킬 이름 - 맨손 (Weapon skill name - bare hands)
+# 맨손 전투 스킬 이름
+# 독립 문구로 %s 없이 사용됨
+# ============================================================
 #: src/weapon.c:54
 msgid "bare hands"
-msgstr "해를 입지 않았다!"
+msgstr "맨손"
 
+# ============================================================
+# 무기 스킬 이름 - 쌍수 전투 (Weapon skill name - two weapon)
+# 두 무기 사용 전투 스킬 이름
+# 독립 문구로 %s 없이 사용됨
+# ============================================================
 #: src/weapon.c:55
 msgid "two weapon combat"
-msgstr "이도류 전투를 시작한다."
+msgstr "쌍수 전투"
 
 #: src/weapon.c:55
 msgid "polearms"
@@ -42150,18 +42354,32 @@ msgstr "부여 주문"
 msgid "clerical spells"
 msgstr "사제 주문"
 
+# ============================================================
+# 마법 스킬 이름 - 탈출 주문 (Spell skill name - escape spells)
+# 탈출 계열 마법 스킬 이름
+# 독립 문구로 %s 없이 사용됨
+# ============================================================
 #: src/weapon.c:57
 msgid "escape spells"
-msgstr "%s %s{을/를} 피했다."
+msgstr "탈출 주문"
 
+# ============================================================
+# 마법 스킬 이름 - 물질 주문 (Spell skill name - matter spells)
+# 물질 조작 계열 마법 스킬 이름
+# 독립 문구로 %s 없이 사용됨
+# ============================================================
 #: src/weapon.c:57
 msgid "matter spells"
-msgstr "마법 시전하기"
+msgstr "물질 주문"
 
-#
+# ============================================================
+# 무기 스킬 이름 - 맨손 전투 (Weapon skill name - bare handed)
+# 맨손 전투 스킬 이름 (비무도가용)
+# 독립 문구로 %s 없이 사용됨
+# ============================================================
 #: src/weapon.c:61
 msgid "bare handed combat"
-msgstr "해를 입지 않았다!"
+msgstr "맨손 전투"
 
 #: src/weapon.c:61
 msgid "martial arts"
@@ -42283,17 +42501,22 @@ msgstr "%s{이/가} 마른%s."
 msgid "%s %s dries%s."
 msgstr "%s %s{이/가} 말랐다%s."
 
+# ============================================================
+# 스킬 숙련도 레벨 (Skill proficiency levels)
+# 무기/마법 스킬의 숙련도 수준
+# 독립 문구로 %s 없이 사용됨
+# ============================================================
 #: src/weapon.c:1094
 msgid "Unskilled"
-msgstr "%s{이/가} 죽었다."
+msgstr "비숙련"
 
 #: src/weapon.c:1097
 msgid "Basic"
-msgstr "기본 정보:"
+msgstr "기초"
 
 #: src/weapon.c:1100
 msgid "Skilled"
-msgstr "기술:"
+msgstr "숙련"
 
 #: src/weapon.c:1103
 msgid "Expert"
@@ -44466,18 +44689,19 @@ msgid "shattered potion"
 msgstr " 물약"
 
 # ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
+# 아이템 파괴 동사 - 끓어 폭발 (Item destruction verb - boils)
+# 조합 패턴: "%s%s %s!" = mult + item_name + destruction_verb
+#   예: "Your potion boils and explodes!"
+# 단수형/복수형이 있음 (한국어에서는 동일)
+# 독립 문구로 %s 없이 사용됨
 # ============================================================
 #: src/zap.c:5747
 msgid "boils and explodes"
-msgstr "%s %s{이/가} 폭발했다!"
+msgstr "끓어서 폭발했다"
 
-# ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
-# ============================================================
 #: src/zap.c:5747
 msgid "boil and explode"
-msgstr "%s %s{이/가} 폭발했다!"
+msgstr "끓어서 폭발했다"
 
 # " again" - already defined at line 21554
 # "%s %s%s%s" - already defined at line 1998 (update existing entry for Korean word order)
@@ -44487,30 +44711,36 @@ msgid "boiling potion"
 msgstr "물이 부글거리는 소리."
 
 # ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
+# 아이템 파괴 동사 - 점화 폭발 (Item destruction verb - ignites)
+# 조합 패턴: "%s%s %s!" = mult + item_name + destruction_verb
+#   예: "Your potion ignites and explodes!"
+# 독립 문구로 %s 없이 사용됨
 # ============================================================
 #: src/zap.c:5748
 msgid "ignites and explodes"
-msgstr "%s %s{이/가} 폭발했다!"
+msgstr "점화되어 폭발했다"
 
-# ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
-# ============================================================
 #: src/zap.c:5748
 msgid "ignite and explode"
-msgstr "%s %s{이/가} 폭발했다!"
+msgstr "점화되어 폭발했다"
 
 #: src/zap.c:5748
 msgid "exploding potion"
 msgstr "폭발했다"
 
+# ============================================================
+# 아이템 파괴 동사 - 불타다 (Item destruction verb - catches fire)
+# 조합 패턴: "%s%s %s!" = mult + item_name + destruction_verb
+#   예: "Your scroll catches fire and burns!"
+# 독립 문구로 %s 없이 사용됨
+# ============================================================
 #: src/zap.c:5749 src/zap.c:5750
 msgid "catches fire and burns"
-msgstr "%s{이/가} 불이 붙어 탔다."
+msgstr "불이 붙어 탔다"
 
 #: src/zap.c:5749
 msgid "catch fire and burn"
-msgstr "%s{이/가} 불이 붙어 탔다."
+msgstr "불이 붙어 탔다"
 
 #: src/zap.c:5749
 msgid "burning scroll"
@@ -44520,16 +44750,25 @@ msgstr "탄 "
 msgid "burning book"
 msgstr "탄 "
 
+# ============================================================
+# 아이템 파괴 동사 - 먼지로 변함 (Item destruction verb - turns to dust)
+# 조합 패턴: "%s%s %s!" = mult + item_name + destruction_verb
+#   예: "Your ring turns to dust and vanishes!"
+# 독립 문구로 %s 없이 사용됨
+# ============================================================
 #: src/zap.c:5751
 msgid "turns to dust and vanishes"
-msgstr "살로 변하고 "
+msgstr "먼지로 변해 사라졌다"
 
 # ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
+# 아이템 파괴 동사 - 분해 폭발 (Item destruction verb - breaks apart)
+# 조합 패턴: "%s%s %s!" = mult + item_name + destruction_verb
+#   예: "Your wand breaks apart and explodes!"
+# 독립 문구로 %s 없이 사용됨
 # ============================================================
 #: src/zap.c:5752
 msgid "breaks apart and explodes"
-msgstr "%s %s{이/가} 폭발했다!"
+msgstr "부서지며 폭발했다"
 
 #: src/zap.c:5872
 msgid "Some of "
@@ -44551,9 +44790,14 @@ msgstr "다치지 않았다!"
 msgid "exploding glob of slime"
 msgstr "폭발하는 도개교"
 
+# ============================================================
+# 소원 도움말 제목 (Wish help screen title)
+# 소원 입력 방법을 설명하는 도움말 화면의 제목
+# 독립 문구로 %s 없이 사용됨
+# ============================================================
 #: src/zap.c:6135
 msgid "Wish details:"
-msgstr "%s 꼬리"
+msgstr "소원 상세 정보:"
 
 #: src/zap.c:6137
 msgid "Enter the name of an object, such as \"potion of monster detection\","
@@ -44628,9 +44872,15 @@ msgstr "너무 무겁다."
 msgid "may wish for an object."
 msgstr "물건을 소원할 수 있다."
 
+# ============================================================
+# 소원 입력 프롬프트 (Wish input prompt)
+# 소원 입력을 요청하는 프롬프트 (뒤에 "?" 붙음)
+# 독립 문구로 %s 없이 사용됨
+# 예: "For what do you wish?" 또는 "For what do you wish (enter 'help' for assistance)?"
+# ============================================================
 #: src/zap.c:6205
 msgid "For what do you wish"
-msgstr "%s{으로/로} 그것을 할 수 없다."
+msgstr "무엇을 원하는가"
 
 #: src/zap.c:6207
 msgid " (enter 'help' for assistance)"

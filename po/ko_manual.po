@@ -8711,3 +8711,143 @@ msgstr "꿈틀거린다"
 #, c-format
 msgid "%s %s better."
 msgstr "%1$s{이/가} 나아졌다%2$.0s."
+
+# ============================================================
+# role.c - 직업명 (Roles)
+# ============================================================
+msgid "Archeologist"
+msgstr "고고학자"
+
+msgid "Barbarian"
+msgstr "야만인"
+
+msgid "Caveman"
+msgstr "혈거인"
+
+msgid "Cavewoman"
+msgstr "혈거인"
+
+msgid "Healer"
+msgstr "치료사"
+
+msgid "Knight"
+msgstr "기사"
+
+msgid "Monk"
+msgstr "수도승"
+
+msgid "Priest"
+msgstr "사제"
+
+msgid "Priestess"
+msgstr "여사제"
+
+msgid "Rogue"
+msgstr "도적"
+
+msgid "Ranger"
+msgstr "순찰자"
+
+msgid "Samurai"
+msgstr "사무라이"
+
+msgid "Tourist"
+msgstr "관광객"
+
+msgid "Valkyrie"
+msgstr "발키리"
+
+msgid "Wizard"
+msgstr "마법사"
+
+# ============================================================
+# role.c - 종족명 (Races)
+# ============================================================
+# Note: humanity, elven, elvenkind, dwarven, dwarvenkind,
+# gnomish, gnomehood, orcish, orcdom are already defined earlier
+
+msgid "human"
+msgstr "인간"
+
+msgid "man"
+msgstr "남자"
+
+msgid "woman"
+msgstr "여자"
+
+msgid "elf"
+msgstr "엘프"
+
+msgid "dwarf"
+msgstr "드워프"
+
+msgid "gnome"
+msgstr "노움"
+
+msgid "orc"
+msgstr "오크"
+
+# ============================================================
+# role.c - 성별 (Genders)
+# ============================================================
+# Note: male, female, neuter are already defined earlier
+
+msgid "group"
+msgstr "그룹"
+
+msgid "he"
+msgstr "그"
+
+msgid "she"
+msgstr "그녀"
+
+msgid "it"
+msgstr "그것"
+
+msgid "they"
+msgstr "그들"
+
+msgid "him"
+msgstr "그를"
+
+msgid "her"
+msgstr "그녀를"
+
+msgid "them"
+msgstr "그들을"
+
+msgid "his"
+msgstr "그의"
+
+msgid "its"
+msgstr "그것의"
+
+msgid "their"
+msgstr "그들의"
+
+# ============================================================
+# role.c - 성향 (Alignments)
+# ============================================================
+msgid "law"
+msgstr "질서"
+
+msgid "lawful"
+msgstr "질서"
+
+msgid "balance"
+msgstr "균형"
+
+msgid "neutral"
+msgstr "중립"
+
+msgid "chaos"
+msgstr "혼돈"
+
+msgid "chaotic"
+msgstr "혼돈"
+
+msgid "evil"
+msgstr "사악"
+
+msgid "unaligned"
+msgstr "무성향"

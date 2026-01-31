@@ -1204,158 +1204,151 @@ cyclops
 	이것만큼 뚜렷한 형태로.
 		[ 맥베스, 윌리엄 셰익스피어 저 ]
 dark one
-	... But he ruled rather by force and fear, if they might
-	avail; and those who perceived his shadow spreading over the
-	world called him the Dark Lord and named him the Enemy; and
-	he gathered again under his government all the evil things of
-	the days of Morgoth that remained on earth or beneath it,
-	and the Orcs were at his command and multiplied like flies.
-	Thus the Black Years began ...
-		[ The Silmarillion, by J.R.R. Tolkien ]
+어둠의 자
+	... 하지만 그는 힘과 공포로 다스렸으며, 그것들이 통할 때면;
+	그리고 그의 그림자가 세상에 퍼지는 것을 감지한 자들은 그를
+	어둠의 군주라 부르고 적이라 이름 붙였다; 그리고 그는 다시
+	자신의 지배 아래 모르고스 시대의 악한 것들 중 땅 위나
+	아래에 남은 모든 것을 모았고, 오크들은 그의 명령 아래
+	있었고 파리처럼 번식했다. 이렇게 흑년이 시작되었다 ...
+		[ 실마릴리온, J.R.R. 톨킨 저 ]
 # includes "dart trap"
 dart*
-	Darts are missile weapons, designed to fly such that a sharp,
-	often weighted point will strike first.  They can be
-	distinguished from javelins by fletching (i.e., feathers on
-	the tail) and a shaft that is shorter and/or more flexible,
-	and from arrows by the fact that they are not of the right
-	length to use with a normal bow.
-		[ Wikipedia, the free encyclopedia ]
+다트 / 투창
+	다트는 발사 무기로, 날카로운, 종종 무게가 실린 끝이 먼저
+	맞도록 날아가게 설계되었다. 깃(즉, 꼬리의 깃털)과 더 짧고/
+	또는 더 유연한 자루로 투창과 구별할 수 있고, 일반 활에
+	사용하기에 적절한 길이가 아니라는 점에서 화살과 구별된다.
+		[ 위키피디아, 무료 백과사전 ]
 
-	Against my foe I hurled a murderous dart.
-	He caught it in his hand -- I heard him laugh --
-	I saw the thing that should have pierced his heart
-	Turn to a golden staff.
-		[ Gifts, by Mary Coleridge ]
+	적에게 살인적인 다트를 던졌다.
+	그가 손으로 잡았다 -- 그의 웃음이 들렸다 --
+	그의 심장을 뚫어야 할 것이
+	황금 지팡이로 변하는 것을 보았다.
+		[ 선물들, 메리 콜리지 저 ]
 demogorgon
-	A terrible deity, whose very name was capable of producing the
-	most horrible effects.  He is first mentioned by the 4th-century
-	Christian writer, Lactantius, who in doing so broke with the
-	superstition that the very reference to Demogorgon by name
-	brought death and disaster.
-		[ Brewer's Concise Dictionary of Phrase and Fable ]
+데모고르곤
+	이름만으로도 가장 끔찍한 효과를 낼 수 있는 무서운 신.
+	4세기 기독교 작가 락탄티우스에 의해 처음 언급되었는데,
+	그렇게 함으로써 데모고르곤의 이름을 언급하면 죽음과 재앙을
+	가져온다는 미신을 깼다.
+		[ 브루어의 간결한 구절과 우화 사전 ]
 
-	Demogorgon, the prince of demons, wallows in filth and can
-	spread a quickly fatal illness to his victims while rending
-	them.  He is a mighty spellcaster, and he can drain the life
-	of mortals with a touch of his tail.
+	데모고르곤, 악마들의 군주는 오물 속에서 뒹굴며 희생자들을
+	찢으면서 빠르게 치명적인 질병을 퍼뜨릴 수 있다. 그는 강력한
+	주문 시전자이며, 꼬리 한 번의 접촉으로 필멸자들의 생명력을
+	빨아들일 수 있다.
 # takes "major demon" when specifying '&'
 demon
 major demon
-	It is often very hard to discover what any given Demon looks
-	like, apart from a general impression of large size, huge
-	fangs, staring eyes, many limbs, and an odd color; but all
-	accounts agree that Demons are very powerful, very Magic (in
-	a nonhuman manner), and made of some substance that can squeeze
-	through a keyhole yet not be pierced with a Sword.  This makes
-	them difficult to deal with, even on the rare occasions when
-	they are friendly.
-	  [ The Tough Guide to Fantasyland, by Diana Wynne Jones ]
+악마
+	어떤 악마가 어떻게 생겼는지 알아내기가 매우 어렵다, 거대한
+	크기, 거대한 송곳니, 응시하는 눈, 많은 팔다리, 이상한 색의
+	일반적인 인상 외에는; 하지만 모든 기록은 악마가 매우 강력하고,
+	매우 마법적이며 (비인간적 방식으로), 열쇠구멍을 통과할 수
+	있지만 검으로 뚫을 수 없는 어떤 물질로 만들어졌다는 데
+	동의한다. 이것이 그들을 다루기 어렵게 만든다, 드물게 그들이
+	친절한 경우에도.
+	  [ 판타지랜드 안내서, 다이애나 윈 존스 저 ]
 # added by PR #1108 by NullCGT then replaced by PR #1109 by entrez
 # (Demonbane has been changed from a sword to a mace so the new quote doesn't
 # seem to be very appropriate)
 demonbane
-#	Do not be deceived, Wormwood. Our cause is never more in danger
-#	than when a human, no longer desiring, but still intending, to do
-#	our Enemy's will, looks round upon a universe from which every
-#	trace of Him seems to have vanished, and asks why he has been
-#	forsaken, and still obeys.
-#		[ The Screwtape Letters, by C.S. Lewis ]
+악마 파멸자
+#	속지 마라, 웜우드. 우리의 목적은 더 이상 욕망하지 않지만
+#	여전히 의도하여 적의 뜻을 행하는 인간이 그의 모든 흔적이
+#	사라진 것 같은 우주를 둘러보고 왜 버림받았는지 묻고도
+#	여전히 순종할 때보다 더 위험한 적이 없다.
+#		[ 스크루테이프의 편지, C.S. 루이스 저 ]
 #
-	Think not that I am come to send peace on earth:  I came not to
-	send peace, but a sword.
-		[ The Gospel According to Matthew, 10:34 ]
+	내가 세상에 화평을 주러 온 줄로 생각하지 말라: 화평이 아니요
+	검을 주러 왔노라.
+		[ 마태복음, 10:34 ]
 dented pot
-	Here was a sight to beat all: a man in the prime of life rambling
-	barefoot down the wilderness road, dressed in raggedy pantaloons
-	sewn out of two meal sacks, a shirt so tattered and scrappish
-	that its owner had a proud choice of holes to stick his arms
-	through, and -- the crowning glory -- a hat in the exact
-	likeness of a tin mush pot, somewhat dented, but snugly fitted,
-	with the handle turned to one side, as if it were the very
-	latest and smartest of fashions.
-		[ Johnny Appleseed, by James Howard Kunstler ]
+찌그러진 냄비
+	모든 것을 압도하는 광경이 있었다: 전성기의 한 남자가 황야의
+	길을 맨발로 어슬렁거리며, 식사용 자루 두 개로 꿰맨 너덜너덜한
+	바지를 입고, 주인이 팔을 꿰뚫을 구멍을 자랑스럽게 선택할
+	수 있을 만큼 낡고 조각난 셔츠를 입고, 그리고 -- 영광의
+	절정 -- 양철 죽 냄비와 똑같은 모자를, 약간 찌그러졌지만
+	딱 맞게, 손잡이를 한쪽으로 돌려, 마치 가장 최신의 가장
+	멋진 유행인 것처럼.
+		[ 조니 애플시드, 제임스 하워드 쿤슬러 저 ]
 diamond
-	The hardest known mineral (with a hardness of 10 on Mohs' scale).
-	It is an allotropic form of pure carbon that has crystallized in
-	the cubic system, usually as octahedra or cubes, under great
-	pressure.
-		[ A Concise Dictionary of Physics ]
+다이아몬드
+	알려진 가장 단단한 광물(모스 경도 10). 순수한 탄소의 동소체로
+	높은 압력 아래 보통 팔면체나 정육면체로 입방 체계에서
+	결정화되었다.
+		[ 물리학 간결 사전 ]
 
-	The diamond, _adamas_ or _dyamas_, is a transparent stone, like
-	crystal, but having the colour of polished iron, but it cannot
-	be destroyed by iron, fire or any other means, unless it is
-	placed in the hot blood of a goat; with sharp pieces of diamond
-	other stones are engraved and polished.  It is no greater than
-	a small nut.  There are six kinds, however Adamant attracts
-	metal; it expels venom; it produces amber (and is efficacious
-	against empty fears and for those resisting spells).  It is
-	found in India, in Greece and in Cyprus, where magicians make
-	use of it.  It gives you courage; it averts apparitions; it
-	removes anger and quarrels; it heals the mad; it defends you
-	from your enemies.  It should be set in gold or silver and worn
-	on the left arm.  It is likewise found in Arabia.
-	 	[ The Aberdeen Bestiary, translated by Colin McLaren ]
+	다이아몬드, _아다마스_ 또는 _디아마스_는 수정처럼 투명한
+	돌이지만, 광택 낸 철의 색을 가지고 있으며, 염소의 뜨거운
+	피에 담그지 않는 한 철, 불 또는 다른 수단으로 파괴할 수
+	없다; 날카로운 다이아몬드 조각으로 다른 돌을 새기고 연마한다.
+	작은 견과보다 크지 않다. 여섯 종류가 있지만, 아다만트는
+	금속을 끌어당긴다; 독을 내쫓는다; 호박을 만든다 (그리고
+	공허한 두려움과 주문에 저항하는 자들에게 효과적이다). 인도,
+	그리스, 키프로스에서 발견되며 마법사들이 사용한다. 용기를
+	준다; 유령을 물리친다; 분노와 다툼을 없앤다; 미친 자를
+	치유한다; 적으로부터 지켜준다. 금이나 은에 세팅하여 왼팔에
+	착용해야 한다. 아라비아에서도 발견된다.
+	 	[ 애버딘 동물우화집, 콜린 맥라렌 번역 ]
 dilithium*
-	The most famous and the first to be named of the imaginary
-	"minerals" of Star Trek is dilithium. ... Because of this
-	mineral's central role in the storyline, a whole mythology
-	surrounds it.  It is, however, a naturally occurring substance
-	within the mythology, as there are various episodes that
-	make reference to the mining of dilithium deposits. ...
-	This name itself is imaginary and gives no real information on
-	the structure or make-up of this substance other than that this
-	version of the name implies a lithium and iron-bearing
-	aluminosilicate of some sort.  That said, the real mineral that
-	most closely matches the descriptive elements of this name is
-	ferroholmquistite which is a dilithium triferrodiallosilicate.
-	If one goes on the premise that nature follows certain general
-	norms, then one could extrapolate that dilithium might have a
-	similar number of silicon atoms in its structure.
-	Keeping seven (i.e. hepto) ferrous irons and balancing the
-	oxygens would give a theoretical formula of Li2Fe7Al2Si8O27.
-	A mineral with this composition could theoretically exist,
-	although it is doubtful that it would possess the more fantastic
-	properties ascribed to dilithium.
-		[ The Mineralogy of Star Trek, by Jeffrey de Fourestier ]
+다이리튬
+	스타트렉의 상상의 "광물" 중 가장 유명하고 첫 번째로 명명된
+	것이 다이리튬이다. ... 이 광물의 줄거리에서의 핵심적 역할
+	때문에 전체 신화가 그것을 둘러싸고 있다. 그러나 신화 내에서
+	자연 발생 물질로, 다이리튬 광상 채굴을 언급하는 다양한
+	에피소드가 있다. ...
+	이 이름 자체는 상상이며 이 이름의 버전이 어떤 종류의 리튬 및
+	철 함유 알루미노규산염을 암시한다는 것 외에 이 물질의 구조나
+	구성에 대한 실제 정보를 제공하지 않는다. 그렇지만, 이 이름의
+	서술적 요소와 가장 근접하게 일치하는 실제 광물은 다이리튬
+	삼철이알로규산염인 페로홀름퀴스타이트이다.
+	자연이 특정 일반적 규범을 따른다는 전제에서 추론하면, 다이리튬은
+	구조에 비슷한 수의 규소 원자를 가질 수 있다.
+	일곱(즉, 헵토) 철 이온을 유지하고 산소의 균형을 맞추면
+	Li2Fe7Al2Si8O27의 이론적 공식이 나온다.
+	이 조성을 가진 광물은 이론적으로 존재할 수 있지만, 다이리튬에
+	부여된 더 환상적인 특성을 가질지는 의심스럽다.
+		[ 스타트렉의 광물학, 제프리 드 포레스티에 저 ]
 dingo
-	A wolflike wild dog, Canis dingo, of Australia, having a
-	reddish- or yellowish-brown coat, believed to have been
-	introduced by the aborigines.
-		[ Webster's Encyclopedic Unabridged Dictionary
-		    of the English Language ]
+딩고
+	호주의 늑대 같은 야생 개, Canis dingo, 적갈색 또는 황갈색
+	털을 가지며, 원주민에 의해 도입되었다고 여겨진다.
+		[ 웹스터 영어 백과사전 ]
 disenchanter
-	Ask not, what your magic can do to it.  Ask what it can do
-	to your magic.
+마법제거 괴물
+	네 마법이 그것에게 무엇을 할 수 있는지 묻지 말라. 그것이
+	네 마법에게 무엇을 할 수 있는지 물어라.
 dispater
-	The Roman ruler of the underworld and fortune, similar to the
-	Greek Hades.  Every hundred years, the Ludi Tarentini were
-	celebrated in his honor.  The Gauls regarded Dis Pater as
-	their ancestor.  The name is a contraction of the Latin Dives,
-	"the wealthy", Dives Pater, "the wealthy father", or "Fater
-	Wealth".  It refers to the wealth of precious stone below the
-	earth.
-		[ Encyclopedia Mythica, ed. M.F. Lindemans ]
+디스 파테르
+	그리스의 하데스와 유사한 로마의 지하세계와 재물의 지배자.
+	백 년마다 루디 타렌티니가 그를 기리기 위해 열렸다. 갈리아인들은
+	디스 파테르를 조상으로 여겼다. 이름은 라틴어 디베스("부유한"),
+	디베스 파테르("부유한 아버지") 또는 "아버지 부"의 축약이다.
+	땅 아래의 보석의 부를 가리킨다.
+		[ 신화 백과사전, M.F. 린데만스 편 ]
 # 3.7; monster adapted from slash'em based on an AD&D Monster Manual entry;
 # slash'em lacked a description so this entry has been created from scratch;
 # the puma comparison is how the AD&D monster is described (except that
 # that creature has six legs and two tentacles!) but the actual monster's
 # behavior is substantially different
 displacer beast
-	This strange creature appears to be mutant form of puma (aka
-	cougar or mountain lion) which lives in underground settings
-	rather than outdoor wilderness.  It is capable of exchanging
-	positions with people or creatures in its path and is not
-	fooled by displaced images of others.
+변위 야수
+	이 이상한 생물은 야외 황야가 아닌 지하 환경에 사는 퓨마(쿠거
+	또는 산사자라고도 함)의 돌연변이 형태로 보인다. 길목에 있는
+	사람이나 생물과 위치를 바꿀 수 있으며 다른 자들의 변위된
+	이미지에 속지 않는다.
 djinn*
-	The djinn are genies from the elemental plane of Air.  There,
-	among their kind, they have their own societies.  They are
-	sometimes encountered on earth and may even be summoned here
-	to perform some service for powerful wizards.  The wizards
-	often leave them about for later service, safely tucked away
-	in a flask or lamp.  Once in a while, such a tool is found by
-	a lucky rogue, and some djinn are known to be so grateful
-	when released that they might grant their rescuer a wish.
+지니
+	지니는 공기의 원소 차원에서 온 정령이다. 거기서 그들의 종족
+	사이에서 자신만의 사회를 가지고 있다. 때때로 지상에서 마주치며
+	강력한 마법사를 위해 어떤 봉사를 수행하도록 이곳에 소환될
+	수도 있다. 마법사들은 종종 나중에 사용하기 위해 그들을 병이나
+	램프에 안전하게 넣어둔다. 때때로, 운 좋은 도적이 그런 도구를
+	발견하고, 일부 지니는 풀려났을 때 너무 감사해서 구해준 자에게
+	소원을 들어줄 수 있다고 알려져 있다.
 # takes "dog or other canine" when specifying 'd'
 ~hachi
 ~slasher
@@ -1363,155 +1356,154 @@ djinn*
 *dog
 pup*
 *canine
-	A domestic animal, the _tame dog_ (_Canis familiaris_), of
-	which numerous breeds exist.  The male is called a dog,
-	while the female is called a bitch.  Because of its known
-	loyalty to man and gentleness with children, it is the
-	world's most popular domestic animal.  It can easily be
-	trained to perform various tasks.
+개
+	가축, _길든 개_ (_Canis familiaris_), 수많은 품종이 존재한다.
+	수컷은 dog(수개)이라 불리고, 암컷은 bitch(암개)라 불린다.
+	사람에 대한 충성심과 아이들에 대한 온순함으로 알려져 세계에서
+	가장 인기 있는 가축이다. 다양한 작업을 수행하도록 쉽게
+	훈련시킬 수 있다.
 # typing "spellbook or a closed door" (map description for "+" when using
 # the default symbol set) shouldn't yield this entry
 ~trap*door
 ~*spellbook*
 *door
 doorway
-	Through me you pass into the city of woe:
-	Through me you pass into eternal pain:
-	Through me among the people lost for aye.
-	Justice the founder of my fabric mov'd:
-	To rear me was the task of power divine,
-	Supremest wisdom, and primeval love.
-	Before me things create were none, save things
-	Eternal, and eternal I endure.
-	All hope abandon ye who enter here.
-	    [ The Inferno, from The Divine Comedy of Dante Alighieri,
-	      translated by H.F. Cary ]
+문
+	나를 통해 비탄의 도시로 들어가리:
+	나를 통해 영원한 고통으로 들어가리:
+	나를 통해 영원히 잃어버린 자들 사이로.
+	정의가 나의 구조를 세운 창시자였으니:
+	나를 세우는 것은 신성한 권능의 과업,
+	최고의 지혜, 그리고 태초의 사랑이었다.
+	나보다 먼저 창조된 것은 없었으니, 오직
+	영원한 것들뿐, 그리고 나는 영원히 지속하리.
+	여기 들어오는 자 모든 희망을 버려라.
+	    [ 지옥편, 단테 알리기에리의 신곡에서,
+	      H.F. 캐리 번역 ]
 doppelganger
-	"Then we can only give thanks that this is Antarctica, where
-	there is not one, single, solitary, living thing for it to
-	imitate, except these animals in camp."
+도플갱어
+	"그렇다면 이곳이 남극대륙이라는 것에 감사할 수밖에 없어요.
+	캠프의 이 동물들 외에는 흉내 낼 살아 있는 것이 단 하나도
+	없으니까요."
 
-	"Us," Blair giggled. "It can imitate us. Dogs can't make four
-	hundred miles to the sea; there's no food. There aren't any
-	skua gulls to imitate at this season. There aren't any
-	penguins this far inland. There's nothing that can reach the
-	sea from this point - except us. We've got brains. We can do
-	it. Don't you see - it's got to imitate us - it's got to be one
-	of us - that's the only way it can fly an airplane - fly a plane
-	for two hours, and rule - be - all Earth's inhabitants. A world
-	for the taking - if it imitates us!
-		[ Who Goes There?, by John W. Campbell ]
+	"우리가 있죠," 블레어가 킬킬거렸다. "그건 우리를 흉내 낼 수
+	있어요. 개들은 바다까지 400마일을 갈 수 없어요; 먹이가 없거든요.
+	이 계절에 흉내 낼 도둑갈매기도 없어요. 이 내륙 깊숙이 펭귄도
+	없어요. 이 지점에서 바다에 도달할 수 있는 건 없어요 - 우리를
+	제외하고. 우린 두뇌가 있어요. 할 수 있어요. 이해 못 해요? -
+	그건 우리를 흉내 내야 해요 - 우리 중 하나가 되어야 해요 -
+	그게 비행기를 조종할 수 있는 유일한 방법이에요 - 두 시간
+	비행기를 조종하고, 지배하고 - 되는 거예요 - 지구의 모든 주민을.
+	점령할 세계 - 우리를 흉내 내면!"
+		[ 거기 누구야?, 존 W. 캠벨 저 ]
 
-	Xander: Let go!  I have to kill the demon bot!
-	Xander Double (grabbing the gun): Anya, get out of the way.
-	Buffy: Xander!
-	Xander Double: That's all right, Buffy.  I have him.
-	Xander: No, Buffy, I'm me.  Help me!
-	Anya: My gun, he's got my gun.
-	Riley: You own a gun?
-	Buffy: Xander, gun holding Xander, give it to me.
-	Anya: Buffy, which one's real?
-	Xander: I am.
-	Xander Double: No, _I_ am.
-	    [ Buffy the Vampire Slayer, Episode 5.03, "The Replacement" ]
+	잰더: 놔! 악마 로봇을 죽여야 해!
+	잰더 분신 (총을 잡으며): 안야, 비켜.
+	버피: 잰더!
+	잰더 분신: 괜찮아, 버피. 내가 잡았어.
+	잰더: 아니, 버피, 나야. 도와줘!
+	안야: 내 총, 저 사람이 내 총을 가졌어.
+	라일리: 총을 가지고 있었어?
+	버피: 잰더, 총 들고 있는 잰더, 나한테 줘.
+	안야: 버피, 어느 쪽이 진짜야?
+	잰더: 나야.
+	잰더 분신: 아니, _내_가 진짜야.
+	    [ 버피 더 뱀파이어 슬레이어, 에피소드 5.03, "대체자" ]
 *dragon
 *xoth
-	In the West the dragon was the natural enemy of man.  Although
-	preferring to live in bleak and desolate regions, whenever it
-	was seen among men it left in its wake a trail of destruction
-	and disease.  Yet any attempt to slay this beast was a perilous
-	undertaking.  For the dragon's assailant had to contend
-	not only with clouds of sulphurous fumes pouring from its fire
-	breathing nostrils, but also with the thrashings of its tail,
-	the most deadly part of its serpent-like body.
-	 [ Mythical Beasts, by Deirdre Headon (The Leprechaun Library) ]
+용
+	서양에서 용은 인간의 자연적인 적이었다. 황량하고 적막한
+	지역에 살기를 선호했지만, 인간들 사이에서 보일 때마다 파괴와
+	질병의 흔적을 남겼다. 그러나 이 야수를 죽이려는 시도는 위험한
+	일이었다. 용의 공격자는 불을 뿜는 콧구멍에서 쏟아지는 유황
+	연기 구름뿐 아니라, 뱀 같은 몸에서 가장 치명적인 부분인
+	꼬리의 휘두름과도 싸워야 했다.
+	 [ 신화 속 짐승들, 디어드레 헤돈 저 (레프러콘 라이브러리) ]
 
-	"One whom the dragons will speak with," he said, "that is a
-	dragonlord, or at least that is the center of the matter.  It's
-	not a trick of mastering the dragons, as most people think.
-	Dragons have no masters.  The question is always the same, with
-	a dragon:  will he talk to you or will he eat you?  If you can
-	count upon his doing the former, and not doing the latter, why
-	then you're a dragonlord."
-		[ The Tombs of Atuan, by Ursula K. Le Guin ]
+	"용들이 말을 걸 자," 그가 말했다, "그게 용군주이고, 적어도
+	그게 문제의 핵심이야. 대부분의 사람들이 생각하는 것처럼 용을
+	지배하는 기술이 아니야. 용은 주인이 없어. 질문은 용에게 항상
+	같아: 그가 너와 말할 것인가 아니면 너를 먹을 것인가? 그가
+	전자를 하고 후자를 하지 않을 것을 믿을 수 있다면, 그러면
+	넌 용군주야."
+		[ 아투안의 무덤, 어슐러 K. 르 귄 저 ]
 *dragon*scale*
-	Stephen had argued, and the expert armorer had grudgingly
-	admitted, that dragonscale shield or armor, provided it proved
-	feasible to make at all, ought to offer some real, practical
-	advantages over any metal breastplate or shield -- gram for
-	gram of weight, such a defense would probably be a lot
-	tougher and more protective than any human smiths could
-	make of steel.
-		[ The Last Book of Swords: Shieldbreaker's Story,
-			by Fred Saberhagen ]
+용비늘
+	스티븐이 주장했고, 전문 갑옷장이가 마지못해 인정했듯이,
+	용비늘 방패나 갑옷은, 만들 수 있다고 증명된다면, 어떤 금속
+	흉갑이나 방패보다 실질적이고 실용적인 장점을 제공해야 한다
+	-- 무게 그램당, 그러한 방어구는 아마도 인간 대장장이가
+	강철로 만들 수 있는 것보다 훨씬 더 단단하고 보호적일 것이다.
+		[ 검의 마지막 책: 쉴드브레이커의 이야기,
+			프레드 사버하겐 저 ]
 dragonbane
-	And now the youth
-	was to enter the line of battle with his lord,
-	his first time to be tested as a fighter.
-	His spirit did not break and the ancestral blade
-	would keep its edge, as the dragon discovered
-	as soon as they came together in combat.
-		[ Beowulf, translated by Seamus Heaney ]
+용파멸자
+	그리고 이제 그 젊은이는
+	주군과 함께 전투의 대열에 들어가려 했다,
+	전사로서 시험받는 첫 번째 시간이었다.
+	그의 정신은 꺾이지 않았고 조상의 검은
+	날카로움을 유지할 것이었다, 용이 발견했듯이
+	그들이 전투에서 맞붙자마자.
+		[ 베오울프, 시머스 히니 번역 ]
 *drum*
-	Many travelers have seen the drums of the great apes, and
-	some have heard the sounds of their beating and the noise of
-	the wild, weird revelry of these first lords of the jungle,
-	but Tarzan, Lord Greystoke, is, doubtless, the only human
-	being who ever joined in the fierce, mad, intoxicating revel
-	of the Dum-Dum.
-		[ Tarzan of the Apes, by Edgar Rice Burroughs ]
+북
+	많은 여행자들이 대형 유인원의 북을 보았고, 일부는 그것이
+	치는 소리와 정글의 이 첫 번째 군주들의 거칠고 기이한 향연의
+	소음을 들었지만, 타잔, 그레이스토크 경은, 의심할 여지 없이,
+	덤-덤의 사납고, 미치고, 취하게 하는 향연에 참가한 유일한
+	인간이다.
+		[ 유인원 타잔, 에드거 라이스 버로스 저 ]
 dunce*
-	A dunce cap, also variously known as a dunce hat, dunce's
-	cap, or dunce's hat, is a tall conical hat.  In popular
-	culture, it is typically made of paper and often marked with
-	a D, and given to schoolchildren to wear as punishment for
-	being stupid or lazy.  While this is now a rare practice,
-	it is frequently depicted in popular culture such as
-	children's cartoons.
-		[ Wikipedia, the free encyclopedia ]
+바보 모자
+	던스 캡은 던스 햇, 던스의 캡, 던스의 햇으로도 다양하게
+	알려진 높은 원뿔형 모자이다. 대중 문화에서는 보통 종이로
+	만들어지고 종종 D로 표시되며, 어리석거나 게으른 벌로 학생들에게
+	씌운다. 이것은 이제 드문 관행이지만, 어린이 만화 같은 대중
+	문화에서 자주 묘사된다.
+		[ 위키피디아, 무료 백과사전 ]
 dungeon*
-	At once as far as Angels kenn he views
-	The dismal Situation waste and wilde,
-	A Dungeon horrible, on all sides round
-	As one great Furnace flam'd, yet from those flames
-	No light, but rather darkness visible
-	Serv'd only to discover sights of woe,
-	Regions of sorrow, doleful shades, where peace
-	And rest can never dwell, hope never comes
-	That comes to all; but torture without end
-	Still urges, and a fiery Deluge, fed
-	With ever-burning Sulphur unconsum'd:
-	Such place Eternal Justice had prepar'd
-	For those rebellious, here their Prison ordain'd
-	In utter darkness, and their portion set
-	As far remov'd from God and light of Heav'n
-	As from the Center thrice to th' utmost Pole.
-		[ Paradise Lost, by John Milton ]
+던전
+	천사의 눈으로 볼 수 있는 한 멀리 그는 본다
+	황폐하고 거친 음울한 상황을,
+	끔찍한 던전, 사방에서 마치
+	하나의 거대한 용광로처럼 타오르지만, 그 불꽃에서
+	빛이 아니라, 오히려 보이는 어둠이
+	비탄의 광경을 발견하는 데만 쓰였다,
+	슬픔의 영역, 애통한 그늘, 평화와
+	휴식이 결코 머물 수 없고, 모두에게 오는 희망이
+	결코 오지 않는 곳; 그러나 끝없는 고문이
+	여전히 몰아붙이고, 타는 홍수가,
+	영원히 타지만 소진되지 않는 유황으로 먹여진:
+	그런 곳을 영원한 정의가 준비했다
+	저 반역자들을 위해, 여기 그들의 감옥이 정해지고
+	완전한 어둠 속에, 그들의 몫이 정해져
+	하느님과 하늘의 빛에서 멀리 떨어지기를
+	중심에서 가장 먼 극까지 세 번만큼.
+		[ 실낙원, 존 밀턴 저 ]
 ~dwarf ??m*
 ~dwar* cloak
 #~dwar* cave*man
 dwarf*
-	Dwarfs have faces like men (ugly men, with wrinkled, leathery
-	skins), but are generally either flat-footed, duck-footed, or
-	have feet pointing backwards.  They are of the earth, earthy,
-	living in the darkest of caverns and venturing forth only
-	with the cloaks by which they can make themselves invisible,
-	and others disguised as toads.  Miners often come across them,
-	and sometimes establish reasonably close relations with them.
-	... The miners of Cornwall were always delighted to hear a
-	bucca busily mining away, for all dwarfs have an infallible
-	nose for precious metals.
-	Among other things, dwarfs are rightly valued for their skill
-	as blacksmiths and jewellers: they made Odin his famous spear
-	Gungnir, and Thor his hammer; for Freya they designed a
-	magnificent necklace, and for Frey a golden boar.  And in their
-	spare time they are excellent bakers.  Ironically, despite
-	their odd feet, they are particularly fond of dancing.  They
-	can also see into the future, and consequently are excellent
-	meteorologists.  They can be free with presents to people
-	they like, and a dwarvish gift is likely to turn to gold in
-	the hand.  But on the whole they are a snappish lot.
-	    [ The Immortals, by Derek and Julia Parker ]
+드워프
+	드워프는 사람과 같은 얼굴을 가졌지만 (못생긴 사람, 주름지고
+	가죽 같은 피부를 가진), 일반적으로 평발이거나, 오리발이거나,
+	발이 뒤로 향한다. 그들은 땅에서 왔고, 흙 냄새가 나며, 가장
+	어두운 동굴에 살고 자신을 보이지 않게 만들 수 있는 망토를
+	두르거나 두꺼비로 변장해야만 밖으로 나간다. 광부들은 종종
+	그들을 만나며, 때때로 상당히 가까운 관계를 맺는다.
+	... 콘월의 광부들은 항상 버카가 열심히 캐는 소리를 듣고
+	기뻐했는데, 모든 드워프는 귀금속에 대한 틀림없는 코를 가졌기
+	때문이다.
+	무엇보다도, 드워프는 대장장이와 보석 세공인으로서의 기술로
+	정당하게 평가받는다: 그들은 오딘에게 유명한 창 궁그니르를,
+	토르에게 망치를 만들었고; 프레이야에게 웅장한 목걸이를,
+	프레이에게 황금 멧돼지를 디자인했다. 그리고 여가 시간에
+	훌륭한 제빵사다. 아이러니하게도, 이상한 발에도 불구하고,
+	특히 춤추기를 좋아한다. 미래를 볼 수도 있어서, 결과적으로
+	훌륭한 기상학자다. 좋아하는 사람들에게 선물을 아끼지 않으며,
+	드워프의 선물은 손에서 금으로 변할 가능성이 높다. 하지만
+	전체적으로 그들은 퉁명스러운 무리이다.
+	    [ 불멸자들, 데릭과 줄리아 파커 저 ]
 # accept "dwarfish" and "dwarvish"
 dwar* cloak
 hooded cloak

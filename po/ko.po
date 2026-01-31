@@ -24292,14 +24292,14 @@ msgstr ""
 msgid "very large"
 msgstr "많이 바랬다"
 
+# 아이템 접두사
 #: src/objnam.c:810
 msgid "historic "
-msgstr ""
+msgstr "역사적인 "
 
 #: src/objnam.c:819
-#, fuzzy
 msgid "next "
-msgstr "다음"
+msgstr "다음 "
 
 #: src/objnam.c:1286 src/read.c:2959 src/timeout.c:1101 src/timeout.c:1562
 #: src/timeout.c:1580 src/timeout.c:1621
@@ -24324,13 +24324,14 @@ msgid " (being worn)"
 msgstr " (착용 중)"
 
 #: src/objnam.c:1437
+# 목줄 연결 상태
 #, c-format
 msgid " (attached to %s)"
-msgstr "%s에게 매우 끌린다."
+msgstr " (%s에 연결됨)"
 
 #: src/objnam.c:1454
 msgid " attached"
-msgstr "공격한다"
+msgstr " 장착됨"
 
 #: src/objnam.c:1454
 msgid ", lit"
@@ -24341,10 +24342,10 @@ msgstr ", 불 붙은"
 msgid " (%d of 7 candle%s)"
 msgstr " (7개의 초 중 %d개%s)"
 
+# 부분 사용된 아이템 (촛불 등)
 #: src/objnam.c:1476
-#, fuzzy
 msgid "partly used "
-msgstr "부분적으로 용서받았다."
+msgstr "부분 사용된 "
 
 #: src/objnam.c:1479 src/objnam.c:1492
 msgid " (lit)"
@@ -24355,32 +24356,32 @@ msgstr " (켜짐)"
 msgid " (%d:%d)"
 msgstr " (%d:%d)"
 
+# 반지 착용 위치
 #: src/objnam.c:1497
 msgid " (on right "
-msgstr "당신의 오른쪽 %s{을/를} %s!"
+msgstr " (오른쪽 "
 
 #: src/objnam.c:1499
 msgid " (on left "
-msgstr "로그 레벨 "
+msgstr " (왼쪽 "
 
 #: src/objnam.c:1501
 #, c-format
 msgid "%s)"
 msgstr "%s"
 
+# 음식 상태
 #: src/objnam.c:1508
-#, fuzzy
 msgid "partly eaten "
-msgstr "부분적으로 상쇄하는"
+msgstr "일부 먹은 "
 
 #: src/objnam.c:1529
-#, fuzzy
 msgid "stale "
-msgstr "남성 "
+msgstr "상한 "
 
 #: src/objnam.c:1536
 msgid " (laid by you)"
-msgstr ", "
+msgstr " (당신이 낳은)"
 
 #: src/objnam.c:1546
 #, c-format
@@ -24389,11 +24390,11 @@ msgstr " (당신에게 %s)"
 
 #: src/objnam.c:1547
 msgid "chained"
-msgstr "용기를 여는 중"
+msgstr "사슬로 묶인"
 
 #: src/objnam.c:1547
 msgid "attached"
-msgstr "공격한다"
+msgstr "연결된"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -24403,17 +24404,18 @@ msgstr "공격한다"
 msgid " (%s %s)"
 msgstr " (%s %s)"
 
+# 무기 장착 상태 설명
 #: src/objnam.c:1594
 msgid "tethered to"
-msgstr "강화된 "
+msgstr "연결됨"
 
 #: src/objnam.c:1595
 msgid "wielded in"
-msgstr "장비됨"
+msgstr "장착 위치"
 
 #: src/objnam.c:1596
 msgid "weapon in"
-msgstr "무기 사용"
+msgstr "무기 위치"
 
 #: src/objnam.c:1617
 #, c-format
@@ -24430,17 +24432,18 @@ msgstr " (보조 무기%s; 미장착)"
 msgid " (%s)"
 msgstr " (%s)"
 
+# 발사체 준비 상태
 #: src/objnam.c:1645
 msgid "in quiver"
-msgstr "화살통에 넣을"
+msgstr "화살통에"
 
 #: src/objnam.c:1646
 msgid "in quiver pouch"
-msgstr "화살통에"
+msgstr "화살통 주머니에"
 
 #: src/objnam.c:1647
 msgid "at the ready"
-msgstr "나머지를 갚는다."
+msgstr "준비됨"
 
 #: src/objnam.c:1662 src/objnam.c:1672
 #, c-format
@@ -24461,17 +24464,17 @@ msgstr "판매용"
 
 #: src/objnam.c:1675
 msgid " (no charge)"
-msgstr "무료다."
+msgstr " (무료)"
 
+# 시체 접미사
 #: src/objnam.c:1895
-#, fuzzy
 msgid " corpse"
-msgstr "시체"
+msgstr " 시체"
 
+# 영어 관사 - 한국어에서는 불필요하지만 빈 문자열로 번역
 #: src/objnam.c:2137 src/priest.c:332 src/priest.c:341 src/priest.c:346
-#, fuzzy
 msgid "an "
-msgstr "그리고 "
+msgstr ""
 
 #: src/objnam.c:2151
 msgid "an []"
@@ -24489,7 +24492,7 @@ msgstr "%s분수."
 
 #: src/objnam.c:3634
 msgid "magic "
-msgstr "마법 램프"
+msgstr "마법 "
 
 #: src/objnam.c:3639
 msgid "A throne."
@@ -24514,9 +24517,10 @@ msgstr "%s 제단."
 msgid "A %sgrave."
 msgstr "%s무덤."
 
+# 파헤쳐진 무덤
 #: src/objnam.c:3750
 msgid "disturbed "
-msgstr "언데드를 방해했다!"
+msgstr "파헤쳐진 "
 
 #: src/objnam.c:3753
 msgid "Can't place a grave here."
@@ -24534,20 +24538,18 @@ msgstr "철창."
 msgid "A cloud."
 msgstr "구름."
 
+# 문 상태
 #: src/objnam.c:3843
-#, fuzzy
 msgid "closed "
-msgstr "가까이"
+msgstr "닫힌 "
 
 #: src/objnam.c:3845
-#, fuzzy
 msgid "open "
-msgstr "열"
+msgstr "열린 "
 
 #: src/objnam.c:3849
-#, fuzzy
 msgid "doorless doorway"
-msgstr "출입구"
+msgstr "문 없는 출입구"
 
 #: src/objnam.c:3857
 #, c-format
@@ -24583,19 +24585,20 @@ msgstr "%s{이/가} 도개교를 %s."
 msgid "in front of"
 msgstr "앞에"
 
+# 가치 없는 유리 조각
 #: src/objnam.c:4751
-#, fuzzy
 msgid "worthless piece of "
-msgstr "가치 없는 붉은 유리 조각"
+msgstr "가치 없는 "
 
 #: src/objnam.c:5416
 #, c-format
 msgid "For a moment, you feel %s in your %s, but it disappears!"
 msgstr "잠시 %s에서 %s{을/를} 느꼈지만, 사라졌다!"
 
+# 모자 (헬멧 대체 단어)
 #: src/objnam.c:5565
 msgid "hat"
-msgstr "그것은"
+msgstr "모자"
 
 # ============================================================
 # 옵션 카테고리 (Option Categories)
@@ -24864,10 +24867,10 @@ msgstr "('y' 또는 'n'을 선택해.)"
 msgid "Do you want a tutorial?"
 msgstr "튜토리얼을 진행하시겠습니까?"
 
+# 옵션 값 - 없음
 #: src/options.c:1161
-#, fuzzy
 msgid "none"
-msgstr "알 수 없음"
+msgstr "없음"
 
 #: src/options.c:1755
 msgid "Doing that so many times isn't very fruitful."
@@ -24907,10 +24910,10 @@ msgstr ""
 msgid "%ld (on: highlight status for %ld turns)"
 msgstr ""
 
+# 지원되지 않는 기능
 #: src/options.c:4091
-#, fuzzy
 msgid "unsupported"
-msgstr "%s{이/가} 지지되지 않아 떨어졌다!"
+msgstr "지원되지 않음"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -24934,18 +24937,20 @@ msgstr "메뉴 스타일 선택:"
 msgid "'menustyle' %s \"%s\"."
 msgstr "'menustyle' %s \"%s\"."
 
+# 창 위치 - 상단
 #: src/options.c:5616
 msgid "top"
-msgstr "토파즈"
+msgstr "상단"
 
 #: src/options.c:5627
 #, c-format
 msgid "Select %s window placement relative to the map:"
 msgstr "지도에 대한 %s 창 위치 선택:"
 
+# 창 이름
 #: src/options.c:5628
 msgid "message"
-msgstr "통로"
+msgstr "메시지"
 
 #: src/options.c:5628
 msgid "status"
@@ -25044,10 +25049,10 @@ msgstr "무게 부담 표시 수준 선택:"
 msgid "Select run/travel display mode:"
 msgstr "달리기/여행 화면 표시 모드 선택:"
 
+# 애완동물 강조 표시 속성 선택
 #: src/options.c:6173
-#, fuzzy
 msgid "Select pet highlight attribute"
-msgstr "강조 표시할 항목을 선택하세요:"
+msgstr "애완동물 강조 표시 속성 선택"
 
 #: src/options.c:6206
 msgid "Select loot sorting type:"
@@ -25099,20 +25104,18 @@ msgstr ""
 msgid "Select coordinate display when auto-describing a map position:"
 msgstr ""
 
-#
+# 위치 필터링 옵션
 #: src/options.c:6311
-#, fuzzy
 msgid "no filtering"
-msgstr "열이 나는 것 같다."
+msgstr "필터링 없음"
 
 #: src/options.c:6316
 msgid "in view only"
-msgstr ""
+msgstr "시야 내만"
 
 #: src/options.c:6321
-#, fuzzy
 msgid "in same area"
-msgstr "와 연기가"
+msgstr "같은 영역 내"
 
 #: src/options.c:6325
 msgid "Select location filtering when going for next/previous map position:"
@@ -25131,13 +25134,14 @@ msgstr "항상 '<' 줍기; 절대 '>' 안 줍기"
 msgid "%s autopickup exceptions"
 msgstr "%s 자동 줍기 예외"
 
+# 목록/제거 동작
 #: src/options.c:6405 src/options.c:6501 src/options.c:6573
 msgid "List of"
-msgstr "세트 "
+msgstr "목록:"
 
 #: src/options.c:6405 src/options.c:6501 src/options.c:6573
 msgid "Remove which"
-msgstr "%s{이/가} %s{을/를} 벗었다."
+msgstr "제거할 항목 선택:"
 
 #: src/options.c:6452
 msgid "What new menucolor pattern?"
@@ -25148,9 +25152,8 @@ msgid "Error adding the menu color."
 msgstr "메뉴 색상 추가 오류."
 
 #: src/options.c:6502
-#, fuzzy
 msgid "menu colors"
-msgstr "무색의"
+msgstr "메뉴 색상"
 
 #: src/options.c:6535
 msgid "What new message pattern?"
@@ -25161,9 +25164,8 @@ msgid "Error adding the message type."
 msgstr "메시지 유형 추가 오류."
 
 #: src/options.c:6574
-#, fuzzy
 msgid "message types"
-msgstr "통로"
+msgstr "메시지 유형"
 
 #: src/options.c:6623
 msgid "Select version information flags:"
@@ -25195,10 +25197,10 @@ msgstr "메시지 표시 방법"
 msgid "out of menu map space."
 msgstr "메뉴 맵 공간이 부족하다."
 
+# 설탕 절임 과일
 #: src/options.c:8288
-#, fuzzy
 msgid "candied "
-msgstr "양초"
+msgstr "설탕 절임 "
 
 #: src/options.c:8621
 msgid "Use command '#optionsfull' to get the complete options list."
@@ -25210,25 +25212,24 @@ msgstr "도움말 숨기기"
 
 #: src/options.c:8628
 msgid "show help"
-msgstr "오크 투구"
+msgstr "도움말 표시"
 
 #: src/options.c:8673
 msgid "ERROR"
 msgstr ""
 
 #: src/options.c:8682
-#, fuzzy
 msgid "  (for autopickup)"
-msgstr "자동 줍기: %s."
+msgstr "  (자동 줍기용)"
 
 #: src/options.c:8692
 msgid "Options"
 msgstr "옵션"
 
 #: src/options.c:8722 src/options.c:9020
-#, fuzzy, c-format
+#, c-format
 msgid "Set %s to what?"
-msgstr "그것을 %s할 수 없다!"
+msgstr "%s{을/를} 무엇으로 설정하시겠습니까?"
 
 #: src/options.c:8908
 msgid "Booleans (selecting will toggle value):"
@@ -25316,10 +25317,11 @@ msgstr "죽음"
 msgid "defunct"
 msgstr "작동안함"
 
+# 부상 정도 - "barely wounded", "heavily wounded"
 #: src/pager.c:151
-#, fuzzy, c-format
+#, c-format
 msgid "%swounded"
-msgstr "%s부상당함 %s%s"
+msgstr "%s부상"
 
 #: src/pager.c:152
 msgid "barely "
@@ -25329,10 +25331,10 @@ msgstr "간신히 "
 msgid "heavily "
 msgstr "심하게 "
 
+# 미믹 상태 - 무언가를 흉내내는 중
 #: src/pager.c:209
-#, fuzzy
 msgid ", mimicking "
-msgstr "발로 차기"
+msgstr ", 흉내내는 중: "
 
 #: src/pager.c:238
 msgid ", masquerading as "
@@ -25340,11 +25342,11 @@ msgstr ", 변장한 "
 
 #: src/pager.c:245
 msgid ", hiding"
-msgstr "숨어 있음"
+msgstr ", 숨어 있음"
 
 #: src/pager.c:247
 msgid " under "
-msgstr "%s 아래에 숨었다."
+msgstr " 아래에: "
 
 #: src/pager.c:258
 msgid " in murky water"
@@ -25412,67 +25414,72 @@ msgstr ", 붙잡힌 상태"
 msgid ", can't move (paralyzed or sleeping or busy)"
 msgstr ", 움직일 수 없음 (마비됨 또는 수면 중 또는 바쁨)"
 
+# 목줄 연결 상태
 #: src/pager.c:468
 msgid ", leashed to you"
-msgstr "%s{이/가} 당신에게 뛰어들었다!"
+msgstr ", 당신에게 목줄로 연결됨"
 
 #: src/pager.c:475
 #, c-format
 msgid ", trapped in %s"
 msgstr ", %s에 갇혀"
 
+# 시야 유형
 #: src/pager.c:492
 msgid "normal vision"
-msgstr "%s{이/가} 당신의 시야를 혼란시킨다!"
+msgstr "일반 시야"
 
 #: src/pager.c:499 src/timeout.c:52
 msgid "see invisible"
-msgstr "투명한 "
+msgstr "투명 감지"
 
+# 특수 시야 유형
 #: src/pager.c:518
 msgid "astral vision"
-msgstr "%s{이/가} 당신의 시야를 혼란시킨다!"
+msgstr "천상 시야"
 
 #: src/pager.c:524 src/pager.c:702 src/timeout.c:51
 msgid "monster detection"
-msgstr "몬스터 탐지의 물약"
+msgstr "몬스터 탐지"
 
 #: src/pager.c:531
 msgid "paranoid delusion"
-msgstr "편집증적이다."
+msgstr "편집증적 망상"
 
 #: src/pager.c:539
 msgid "demon"
 msgstr "악마"
 
+# 경고 유형
 #: src/pager.c:543
 #, c-format
 msgid "warned of %s"
-msgstr "%s의 마법봉"
+msgstr "%s 경고"
 
+# 지형 상태 설명
 #: src/pager.c:573
-#, fuzzy, c-format
+#, c-format
 msgid "molten %s"
-msgstr "녹은 용암"
+msgstr "녹은 %s"
 
 #: src/pager.c:578
-#, fuzzy, c-format
+#, c-format
 msgid "frozen %s"
-msgstr "%s에 의해 얼어붙었다!"
+msgstr "얼어붙은 %s"
 
 #: src/pager.c:581
-#, fuzzy, c-format
+#, c-format
 msgid "pool of %s"
-msgstr " %s의"
+msgstr "%s 웅덩이"
 
 #: src/pager.c:586
-#, fuzzy, c-format
+#, c-format
 msgid "deep %s"
-msgstr "깊은 "
+msgstr "깊은 %s"
 
 #: src/pager.c:591
 msgid "shallow sea"
-msgstr "벽"
+msgstr "얕은 바다"
 
 #: src/pager.c:593
 msgid "swamp"
@@ -25484,12 +25491,12 @@ msgstr "연못"
 
 #: src/pager.c:603 src/pager.c:1158
 msgid "limitless water"
-msgstr "묽은 물"
+msgstr "무한한 물"
 
 #: src/pager.c:604 src/pager.c:607
-#, fuzzy, c-format
+#, c-format
 msgid "wall of %s"
-msgstr "벽 %s"
+msgstr "%s의 벽"
 
 #: src/pager.c:618 src/polyself.c:1493
 msgid "solid"

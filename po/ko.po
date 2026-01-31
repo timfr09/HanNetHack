@@ -10897,12 +10897,10 @@ msgstr "%s{은/는} 음식이 매우 필요하다!"
 msgid "%s weak."
 msgstr "%s 약하다."
 
-# ============================================================
-# 두루마리 (Scrolls)
-# ============================================================
+# 조합 패턴: "You are still hungry"
 #: src/eat.c:3489
 msgid "are still"
-msgstr "%s."
+msgstr "아직"
 
 #: src/eat.c:3491
 msgid "are beginning to feel"
@@ -18765,13 +18763,14 @@ msgstr "이중 문제..."
 msgid "Destroy the thief, my pet%s!"
 msgstr "도둑을 처치해라, 내 애완동물%s!"
 
+# 조합 패턴: "A monster/Monsters appear at a spot near you!"
 #: src/mcastu.c:501
 msgid "A monster appears"
-msgstr "괴물이"
+msgstr "괴물이 나타났다"
 
 #: src/mcastu.c:502
 msgid "Monsters appear"
-msgstr "%s %s{이/가} 나타난다"
+msgstr "괴물들이 나타났다"
 
 #: src/mcastu.c:508
 #, c-format
@@ -20221,13 +20220,14 @@ msgstr "%s{을/를} 벗어라; %s."
 msgid "let's get a little closer"
 msgstr "좀 더 가까이 가자"
 
+# 유혹 공격 대사 (seduction attack dialogue)
 #: src/mhitu.c:2335
 msgid "it's in the way"
-msgstr "%s{이/가} 길을 막고 있다."
+msgstr "이게 거슬리네"
 
 #: src/mhitu.c:2337
 msgid "let me rub your feet"
-msgstr "여기서 나가게 해줘."
+msgstr "발 좀 주물러 줄게"
 
 #: src/mhitu.c:2339
 msgid "they're too clumsy"
@@ -20602,9 +20602,10 @@ msgstr "%s{이/가} %s %s%s."
 msgid "brighter"
 msgstr "밝아진다"
 
+# 조합 패턴: 빛 상태 변화 (light state change)
 #: src/mkobj.c:1730
 msgid "less brightly"
-msgstr "%s{이/가} 약간 %s."
+msgstr "덜 밝아진다"
 
 # Item type names (note: "potion" is already defined elsewhere)
 #: src/mkobj.c:2875
@@ -20748,13 +20749,14 @@ msgstr "씹는 소리."
 msgid "vanishes"
 msgstr "사라진다"
 
+# 조합 패턴: 몬스터 투명화 메시지 (monster invisibility messages)
 #: src/mon.c:1792
 msgid "seems to flicker"
-msgstr "%s{이/가} 찡그리는 것 같다."
+msgstr "깜빡이는 것 같다"
 
 #: src/mon.c:1793
 msgid "becomes invisible"
-msgstr "투명화의 지팡이"
+msgstr "투명해졌다"
 
 #: src/mon.c:1820
 #, c-format

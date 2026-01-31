@@ -26737,14 +26737,14 @@ msgstr "%s에게 이 메시지를 보고해 줘."
 msgid "Alternatively, contact local support: %s"
 msgstr "또는 현지 지원에 연락하세요: %s"
 
+# 시스템 메시지
 #: src/pline.c:697
 msgid "Report now?"
-msgstr ""
+msgstr "지금 보고하겠습니까?"
 
 #: src/pline.c:744
-#, fuzzy
 msgid "Fork to message handler failed."
-msgstr "%s{을/를} %s압축하는 데 실패했다."
+msgstr "메시지 핸들러 분기에 실패했다."
 
 #: src/polyself.c:35
 msgid "No longer petrify-resistant, you"
@@ -26758,21 +26758,23 @@ msgstr "더 이상 석화에 저항하지 못해, 당신은"
 msgid "%s %s your %s!"
 msgstr "%s{이/가} 당신의 %s{을/를} %s!"
 
+# 조이기 공격 메시지
 #: src/polyself.c:182
 msgid "still constricts"
-msgstr "아직 볼 수 없다."
+msgstr "계속 조인다"
 
 #: src/polyself.c:182
 msgid "begins constricting"
-msgstr "%s%s{을/를} 설치하기 시작했다."
+msgstr "조이기 시작한다"
 
 #: src/polyself.c:192
 msgid "are no longer being strangled."
 msgstr "더 이상 목 졸리지 않는다."
 
+# 자기 학살 (자신의 종을 학살)
 #: src/polyself.c:243
 msgid "self-genocide"
-msgstr "멸종됨"
+msgstr "자기 학살"
 
 #: src/polyself.c:323
 #, c-format
@@ -26781,15 +26783,15 @@ msgstr "%s{이/가} %s 안으로."
 
 #: src/polyself.c:324
 msgid "polymorphed"
-msgstr "%s 변신 함정!"
+msgstr "변신했다"
 
 #: src/polyself.c:423
 msgid "Your new form doesn't seem healthy enough to survive."
-msgstr "이전 형태가 생존하기에 충분히 건강하지 않았다."
+msgstr "새 형태가 생존하기에 충분히 건강하지 않은 것 같다."
 
 #: src/polyself.c:425
 msgid "unsuccessful polymorph"
-msgstr "변신의 반지"
+msgstr "변신 실패"
 
 #: src/polyself.c:440
 #, c-format
@@ -31167,15 +31169,15 @@ msgstr "주변의 가스 구름이 흩어졌다."
 msgid "%s gas cloud%s dissipate."
 msgstr "%s 가스 구름%s이 흩어지는 것을."
 
+# 디버그 메뉴
 #: src/region.c:688
-#, fuzzy
 msgid "Visible regions"
-msgstr "후부"
+msgstr "보이는 영역"
 
 #: src/region.c:702
-#, fuzzy, c-format
+#, c-format
 msgid "poison gas (%d)"
-msgstr "독이 묻은 "
+msgstr "독가스 (%d)"
 
 #: src/region.c:989
 #, c-format
@@ -31184,13 +31186,11 @@ msgstr "%s에 부딪혔다. 아야!"
 
 #: src/region.c:990
 msgid "an invisible tree"
-msgstr "투명한 "
+msgstr "보이지 않는 나무"
 
 #: src/region.c:991
 msgid "some kind of invisible wall"
-msgstr ""
-"어떤 종류의 보이지 않는 벽투명 보기의 물약\n"
-"투명 감지의 물약"
+msgstr "어떤 종류의 보이지 않는 벽"
 
 #: src/region.c:997
 #, c-format
@@ -31213,11 +31213,11 @@ msgstr "기침을 하며 피를 뱉었다!"
 
 #: src/region.c:1125
 msgid "gas cloud"
-msgstr "구름"
+msgstr "가스 구름"
 
 #: src/region.c:1129
 msgid "cough!"
-msgstr "기침%s"
+msgstr "기침을 했다!"
 
 #: src/region.c:1141
 #, c-format
@@ -31231,7 +31231,7 @@ msgstr "%s 구름에 둘러싸였다!"
 
 #: src/region.c:1202
 msgid "noxious gas"
-msgstr "독이 묻은 "
+msgstr "유독 가스"
 
 #: src/region.c:1393
 msgid "able to breathe."
@@ -31285,15 +31285,16 @@ msgstr "누군가 여기서 속임수를 쓰고 있다..."
 msgid "This game is void."
 msgstr "이 게임은 무효다."
 
+# 저장 파일 검증 오류
 #: src/restore.c:1085
 #, c-format
 msgid "PID (%d) doesn't match saved PID (%d)!"
-msgstr ""
+msgstr "PID (%d)가 저장된 PID (%d)와 일치하지 않는다!"
 
 #: src/restore.c:1088
-#, fuzzy, c-format
+#, c-format
 msgid "This is level %d, not %d!"
-msgstr "%s 레벨 %d."
+msgstr "이것은 레벨 %d이지, %d가 아니다!"
 
 #: src/restore.c:1532
 msgid "Select one of your saved games"
@@ -31346,17 +31347,18 @@ msgstr "수집가"
 msgid "Curator"
 msgstr "관리인"
 
+# 고고학자의 신들 (아즈텍 신화)
 #: src/role.c:42
 msgid "Quetzalcoatl"
-msgstr ""
+msgstr "케찰코아틀"
 
 #: src/role.c:42
 msgid "Camaxtli"
-msgstr ""
+msgstr "카막스틀리"
 
 #: src/role.c:42
 msgid "Huhetotl"
-msgstr ""
+msgstr "우에우에토틀"
 
 #: src/role.c:73
 msgid "Barbarian"

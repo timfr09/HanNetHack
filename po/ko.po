@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 10:27+0900\n"
+"POT-Creation-Date: 2026-01-31 10:28+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -26410,6 +26410,11 @@ msgstr "%s{이/가} %s 나갔다!"
 #, c-format
 msgid "%s what type of objects?"
 msgstr "%s 어떤 종류의 물건을?"
+
+#: ../src/pickup.c:3341
+#, fuzzy, c-format
+msgid "%s what?"
+msgstr "무엇을 하시겠습니까?"
 
 # ============================================================
 # 물약 (Potions)

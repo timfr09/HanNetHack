@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 10:27+0900\n"
+"POT-Creation-Date: 2026-01-31 10:28+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25252,6 +25252,11 @@ msgstr ""
 #: ../src/pickup.c:3263
 #, c-format
 msgid "%s what type of objects?"
+msgstr ""
+
+#: ../src/pickup.c:3341
+#, c-format
+msgid "%s what?"
 msgstr ""
 
 #: ../src/pickup.c:3400

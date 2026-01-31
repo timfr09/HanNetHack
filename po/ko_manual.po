@@ -7407,3 +7407,8 @@ msgstr "%s: %d층부터 %d층"
 #, c-format
 msgid "%sLevel %d:"
 msgstr "%s%d층:"
+
+# pickup.c - 컨테이너 질문
+#, c-format
+msgid "%s what?"
+msgstr "무엇을 %s?"

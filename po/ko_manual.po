@@ -7769,3 +7769,44 @@ msgstr "; 열 80은 사용되지 않음"
 #, c-format
 msgid "screen: upper-left: [%02d,%02d], lower-right: [%d,%d]%s"
 msgstr "화면: 좌상단: [%02d,%02d], 우하단: [%d,%d]%s"
+
+# 퍼지 번역 수정
+msgid "now "
+msgstr "지금 "
+
+msgid "nominally "
+msgstr "명목상 "
+
+msgid "extremely"
+msgstr "극도로"
+
+msgid "extremely "
+msgstr "극도로 "
+
+msgid "none"
+msgstr "없음"
+
+msgid "character"
+msgstr "캐릭터"
+
+msgid "entered "
+msgstr "들어간 "
+
+# 미번역 항목 번역
+msgid "belatedly "
+msgstr "뒤늦게 "
+
+#, c-format
+msgid " who %s opposed by"
+msgstr " %s{이/가} 반대하는"
+
+#, c-format
+msgid "the dungeon %ld turn%s ago"
+msgstr "%ld턴%s 전 던전"
+
+#, c-format
+msgid "%-1ld experience point%s"
+msgstr "%-1ld 경험치%s"
+
+msgid " before end-of-game adjustments"
+msgstr " (게임 종료 조정 전)"

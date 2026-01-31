@@ -361,7 +361,7 @@ priestname(
     if (do_hallu || !high_priest || reveal_high_priest
         || !Is_astralevel(&u.uz)
         || m_next2u(mon) || program_state.gameover) {
-        Strcat(pname, " of ");
+        Strcat(pname, _(" of "));
         Strcat(pname, halu_gname(mon_aligntyp(mon)));
     }
     return pname;

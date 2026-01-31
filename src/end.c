@@ -1867,7 +1867,7 @@ build_english_list(char *in)
                 Strcat(out, ", ");
             } while (--words > 1);
         }
-        Strcat(out, "or ");
+        Strcat(out, _("or "));
         bel_copy1(&p, out);
         break;
     }

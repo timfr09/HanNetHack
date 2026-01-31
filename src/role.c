@@ -1567,7 +1567,7 @@ root_plselection_prompt(
         && !validrole(rolenum)) {
         if (donefirst)
             Strcat(buf, " ");
-        Strcat(buf, "character");
+        Strcat(buf, _("character"));
         /*donefirst = TRUE;*/
     }
     /* <your lawful female gnomish cavewoman> || <your lawful female gnome>
@@ -1675,22 +1675,22 @@ build_plselection_prompt(
     if (num_post_attribs) {
         if (gr.role_pa[BP_RACE]) {
             (void) promptsep(eos(buf), num_post_attribs);
-            Strcat(buf, "race");
+            Strcat(buf, _("race"));
         }
         if (gr.role_pa[BP_ROLE]) {
             (void) promptsep(eos(buf), num_post_attribs);
-            Strcat(buf, "role");
+            Strcat(buf, _("role"));
         }
         if (gr.role_pa[BP_GEND]) {
             (void) promptsep(eos(buf), num_post_attribs);
-            Strcat(buf, "gender");
+            Strcat(buf, _("gender"));
         }
         if (gr.role_pa[BP_ALIGN]) {
             (void) promptsep(eos(buf), num_post_attribs);
-            Strcat(buf, "alignment");
+            Strcat(buf, _("alignment"));
         }
     }
-    Strcat(buf, " for you? [ynaq] ");
+    Strcat(buf, _(" for you? [ynaq] "));
     return buf;
 }
 

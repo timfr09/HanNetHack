@@ -1166,26 +1166,26 @@ dump_fmtstr(
                 if (fullsubs)
                     Sprintf(tmpbuf, "%lu", (unsigned long) ubirthday);
                 else
-                    Strcpy(tmpbuf, "{game start cookie}");
+                    Strcpy(tmpbuf, _("{game start cookie}"));
                 break;
             case 'T': /* current time, timestamp */
                 if (fullsubs)
                     Sprintf(tmpbuf, "%lu", (unsigned long) now);
                 else
-                    Strcpy(tmpbuf, "{current time cookie}");
+                    Strcpy(tmpbuf, _("{current time cookie}"));
                 break;
             case 'd': /* game start, YYYYMMDDhhmmss */
                 if (fullsubs)
                     Sprintf(tmpbuf, "%08ld%06ld",
                             yyyymmdd(ubirthday), hhmmss(ubirthday));
                 else
-                    Strcpy(tmpbuf, "{game start date+time}");
+                    Strcpy(tmpbuf, _("{game start date+time}"));
                 break;
             case 'D': /* current time, YYYYMMDDhhmmss */
                 if (fullsubs)
                     Sprintf(tmpbuf, "%08ld%06ld", yyyymmdd(now), hhmmss(now));
                 else
-                    Strcpy(tmpbuf, "{current date+time}");
+                    Strcpy(tmpbuf, _("{current date+time}"));
                 break;
             case 'v': /* version, eg. "3.7.0-0" */
                 Sprintf(tmpbuf, "%s", version_string(verbuf, sizeof verbuf));
@@ -1198,13 +1198,13 @@ dump_fmtstr(
                     Sprintf(tmpbuf, "%s",
                             *svp.plname ? svp.plname : "unknown");
                 else
-                    Strcpy(tmpbuf, "{hero name}");
+                    Strcpy(tmpbuf, _("{hero name}"));
                 break;
             case 'N': /* first character of player name */
                 if (fullsubs)
                     Sprintf(tmpbuf, "%c", *svp.plname ? *svp.plname : 'u');
                 else
-                    Strcpy(tmpbuf, "{hero initial}");
+                    Strcpy(tmpbuf, _("{hero initial}"));
                 break;
             }
             if (fullsubs) {

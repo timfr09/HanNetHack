@@ -148,7 +148,7 @@ monhealthdescr(struct monst *mon, boolean addspace, char *outbuf)
         Sprintf(outbuf, "%s%s", (mon->mhp > 0) ? _("nearly ") : "",
                 !nonliving(mon->data) ? _("deceased") : _("defunct"));
     else
-        Sprintf(outbuf, "%swounded",
+        Sprintf(outbuf, _("%swounded"),
                 (pct >= 95) ? _("barely ")
                 : (pct >= 80) ? _("slightly ")
                   : (pct < 20) ? _("heavily ")
@@ -2735,7 +2735,7 @@ docontact(void)
     putstr(cwin, 0, buf);
     putstr(cwin, 0, "");
     putstr(cwin, 0, _("For more information on NetHack, or to report a bug,"));
-    Sprintf(buf, "visit our website \"%s\".", DEVTEAM_URL);
+    Sprintf(buf, _("visit our website \"%s\"."), DEVTEAM_URL);
     putstr(cwin, 0, buf);
     display_nhwindow(cwin, FALSE);
     destroy_nhwindow(cwin);

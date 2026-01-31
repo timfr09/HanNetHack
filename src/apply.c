@@ -1407,7 +1407,7 @@ use_candle(struct obj **optr)
     (void) safe_qbuf(qbuf, _("Attach "), qsfx, obj, yname, thesimpleoname, s);
     /* strip temporary candelabrum suffix */
     if ((q = strstri(qbuf, " to\033")) != 0)
-        Strcpy(q, " to ");
+        Strcpy(q, _(" to "));
     /* last, format final "attach candles to candelabrum?" query */
     if (y_n(safe_qbuf(qbuf, qbuf, "?", otmp, yname, thesimpleoname, "it"))
         == 'n') {

@@ -699,9 +699,9 @@ visible_region_summary(winid win)
         Sprintf(buf, "%5ld", reg->ttl + 1L);
         damg = reg->arg.a_int;
         if (damg)
-            Sprintf(typbuf, "poison gas (%d)", damg);
+            Sprintf(typbuf, _("poison gas (%d)"), damg);
         else
-            Strcpy(typbuf, "vapor");
+            Strcpy(typbuf, _("vapor"));
         Sprintf(eos(buf), "%s%-16s", fldsep, typbuf);
         Sprintf(eos(buf), "%s@[%d,%d..%d,%d]", fldsep,
                 reg->bounding_box.lx, reg->bounding_box.ly,

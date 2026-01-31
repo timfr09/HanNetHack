@@ -1787,7 +1787,7 @@ armor_or_accessory_off(struct obj *obj)
             Snprintf(why, sizeof why, " without taking off your %s first",
                      what);
         } else {
-            Strcpy(why, "; it's embedded");
+            Strcpy(why, _("; it's embedded"));
         }
         You_cant(_("take that off%s."), why);
         return ECMD_OK;

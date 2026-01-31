@@ -2297,7 +2297,7 @@ spellretention(int idx, char * outbuf)
         Strcpy(outbuf, _("(gone)"));
     } else if (turnsleft >= (long) KEEN) {
         /* full retention, first turn or immediately after reading book */
-        Strcpy(outbuf, "100%");
+        Strcpy(outbuf, _("100%"));
     } else {
         /*
          * Retention is displayed as a range of percentages of

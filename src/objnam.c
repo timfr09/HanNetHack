@@ -284,7 +284,7 @@ obj_typename(int otyp)
         if (ocl->oc_unique)
             Strcpy(buf, actualn); /* avoid spellbook of Book of the Dead */
         else
-            Sprintf(eos(buf), " of %s", actualn);
+            Sprintf(eos(buf), _(" of %s"), actualn);
     }
     if (un) /* 3: length of " (" + ")" which will enclose 'dn' */
         xcalled(buf, BUFSZ - (dn ? (int) strlen(dn) + 3 : 0), "", un);
@@ -720,7 +720,7 @@ xname_flags(
     case ARMOR_CLASS:
         /* depends on order of the dragon scales objects */
         if (typ >= GRAY_DRAGON_SCALES && typ <= YELLOW_DRAGON_SCALES) {
-            Sprintf(buf, "set of %s", actualn);
+            Sprintf(buf, _("set of %s"), actualn);
             break;
         } else if (is_boots(obj) || is_gloves(obj)) {
             Strcpy(buf, _("pair of "));
@@ -816,7 +816,7 @@ xname_flags(
                originally we just tested for non-0 but checking for 1 is
                more robust because the default value for that overloaded
                field (obj->corpsenm) is NON_PM (-1) rather than 0 */
-            Strcat(strcpy(buf, "next "), actualn); /* "next boulder" */
+            Strcat(strcpy(buf, _("next ")), actualn); /* "next boulder" */
             /* once "next boulder" occurs, subsequent messages should just
                use ordinary "boulder" */
             obj->next_boulder = 0;
@@ -1473,7 +1473,7 @@ doname_base(
                     turns_left += peek_timer(BURN_OBJECT, &timer) - svm.moves;
                 }
                 if (turns_left < full_burn_time)
-                    Strcat(prefix, "partly used ");
+                    Strcat(prefix, _("partly used "));
             }
             if (obj->lamplit)
                 Concat(bp, 0, _(" (lit)"));
@@ -1505,7 +1505,7 @@ doname_base(
         break;
     case FOOD_CLASS:
         if (obj->oeaten)
-            Strcat(prefix, "partly eaten ");
+            Strcat(prefix, _("partly eaten "));
         if (obj->otyp == CORPSE) {
             /* (quan == 1) => want corpse_xname() to supply article,
                (quan != 1) => already have count or "some" as prefix;
@@ -1526,7 +1526,7 @@ doname_base(
         } else if (obj->otyp == EGG) {
 #if 0 /* corpses don't tell if they're stale either */
             if (known && stale_egg(obj))
-                Strcat(prefix, "stale ");
+                Strcat(prefix, _("stale "));
 #endif
             if (ismnum(omndx)
                 && (known || (svm.mvitals[omndx].mvflags & MV_KNOWS_EGG))) {
@@ -1867,7 +1867,7 @@ corpse_xname(
        that's usually the behavior wanted, but here we need to force "the"
        to precede capitalized unique monsters (pnames are handled above) */
     if (the_prefix)
-        Strcat(nambuf, "the ");
+        Strcat(nambuf, _("the "));
     /* note: over time, various instances of the(mon_name()) have crept
        into the code, so the() has been modified to deal with capitalized
        monster names; we could switch to using it below like an() */
@@ -1892,10 +1892,10 @@ corpse_xname(
     if (glob) {
         ; /* omit_corpse doesn't apply; quantity is always 1 */
     } else if (!omit_corpse) {
-        Strcat(nambuf, " corpse");
+        Strcat(nambuf, _(" corpse"));
         /* makeplural(nambuf) => append "s" to "corpse" */
         if (otmp->quan > 1L && !ignore_quan) {
-            Strcat(nambuf, "s");
+            Strcat(nambuf, _("s"));
             any_prefix = FALSE; /* avoid "a newt corpses" */
         }
     }
@@ -2227,7 +2227,7 @@ the(const char *str)
         }
     }
     if (insert_the)
-        Strcpy(buf, "the ");
+        Strcpy(buf, _("the "));
     else
         buf[0] = '\0';
     return strncat(buf, str, BUFSZ - 1 - Strlen(buf));
@@ -3820,29 +3820,29 @@ wizterrainwish(struct _readobjnam_data *d)
             /* feedback */
             dbuf[0] = '\0';
             if (lev->doormask & D_TRAPPED)
-                Strcat(dbuf, "trapped ");
+                Strcat(dbuf, _("trapped "));
             if (lev->doormask & D_LOCKED)
-                Strcat(dbuf, "locked ");
+                Strcat(dbuf, _("locked "));
             if (lev->typ == SDOOR) {
-                Strcat(dbuf, "secret door");
+                Strcat(dbuf, _("secret door"));
             } else {
                 /* these should be mutually exclusive but we describe them
                    as if they're independent to maybe catch future bugs... */
                 if (lev->doormask & D_CLOSED)
-                    Strcat(dbuf, "closed ");
+                    Strcat(dbuf, _("closed "));
                 if (lev->doormask & D_ISOPEN)
-                    Strcat(dbuf, "open ");
+                    Strcat(dbuf, _("open "));
                 if (lev->doormask & D_BROKEN)
-                    Strcat(dbuf, "broken ");
+                    Strcat(dbuf, _("broken "));
                 if ((lev->doormask & ~D_TRAPPED) == D_NODOOR)
-                    Strcat(dbuf, "doorless doorway");
+                    Strcat(dbuf, _("doorless doorway"));
                 else
-                    Strcat(dbuf, "door");
+                    Strcat(dbuf, _("door"));
             }
             pline(_("%s."), upstart(an(dbuf)));
             madeterrain = TRUE;
         } else {
-            Strcpy(dbuf, secret ? "secret door" : "door");
+            Strcpy(dbuf, secret ? _("secret door") : _("door"));
             pline(_("%s requires door or wall location."), upstart(dbuf));
             badterrain = TRUE;
         }

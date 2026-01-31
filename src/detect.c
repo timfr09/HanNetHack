@@ -635,7 +635,7 @@ object_detect(struct obj *detector, /* object doing the detecting */
     else
         Strcpy(stuff, class ? def_oc_syms[class].name : "objects");
     if (boulder && class != ROCK_CLASS)
-        Strcat(stuff, " and/or large stones");
+        Strcat(stuff, _(" and/or large stones"));
 
     if (do_dknown)
         for (obj = gi.invent; obj; obj = obj->nobj)

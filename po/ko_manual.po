@@ -7412,3 +7412,217 @@ msgstr "%s%d층:"
 #, c-format
 msgid "%s what?"
 msgstr "무엇을 %s?"
+
+# ===============================================
+# 추가 번역 - spell.c, getpos.c, options.c 등
+# ===============================================
+
+# spell.c - 주문 기억력
+msgid "100%"
+msgstr "100%"
+
+# getpos.c - 방향 입력
+msgid "aborted"
+msgstr "취소됨"
+
+#, c-format
+msgid "use '%s', '%s', '%s', '%s' or '%s'"
+msgstr "'%s', '%s', '%s', '%s' 또는 '%s' 사용"
+
+# options.c - 옵션 값
+msgid "0 (off: don't highlight status fields)"
+msgstr "0 (끔: 상태 필드 강조 안 함)"
+
+#, c-format
+msgid "%ld (on: highlight status for %ld turns)"
+msgstr "%ld (켬: %ld 턴 동안 상태 강조)"
+
+msgid "unsupported"
+msgstr "지원 안 됨"
+
+msgid "unknown"
+msgstr "알 수 없음"
+
+# windows.c - 파일 이름 템플릿 플레이스홀더
+msgid "{game start cookie}"
+msgstr "{게임 시작 쿠키}"
+
+msgid "{current time cookie}"
+msgstr "{현재 시간 쿠키}"
+
+msgid "{game start date+time}"
+msgstr "{게임 시작 날짜+시간}"
+
+msgid "{current date+time}"
+msgstr "{현재 날짜+시간}"
+
+msgid "{hero name}"
+msgstr "{영웅 이름}"
+
+msgid "{hero initial}"
+msgstr "{영웅 이니셜}"
+
+# objnam.c - 물체 상태
+msgid "next "
+msgstr "다음 "
+
+msgid "partly used "
+msgstr "일부 사용된 "
+
+msgid "partly eaten "
+msgstr "일부 먹은 "
+
+msgid "stale "
+msgstr "상한 "
+
+msgid " corpse"
+msgstr " 시체"
+
+# objnam.c - 문 상태
+msgid "trapped "
+msgstr "함정이 있는 "
+
+msgid "locked "
+msgstr "잠긴 "
+
+msgid "secret door"
+msgstr "비밀문"
+
+msgid "closed "
+msgstr "닫힌 "
+
+msgid "open "
+msgstr "열린 "
+
+msgid "broken "
+msgstr "부서진 "
+
+msgid "doorless doorway"
+msgstr "문 없는 출입구"
+
+msgid "door"
+msgstr "문"
+
+# detect.c - 탐지
+msgid " and/or large stones"
+msgstr " 그리고/또는 큰 돌"
+
+# dungeon.c - 던전 입구
+msgid ", entrance from below"
+msgstr ", 아래에서 입구"
+
+# polyself.c - 변신
+# "riding %s"는 이미 line 6717에 존재
+
+#, c-format
+msgid "horn%s"
+msgstr "뿔%s"
+
+# pager.c - 정보
+#, c-format
+msgid "visit our website \"%s\"."
+msgstr "우리 웹사이트 \"%s\"를 방문하세요."
+
+# end.c - 목록 연결
+msgid "or "
+msgstr "또는 "
+
+# priest.c - 사제 이름 (신의 ~)
+# " of "는 이미 line 7360에 존재 (빈 번역으로 한국어에서는 조사로 처리됨)
+
+# options.c - 과일 이름 접두사
+msgid "candied "
+msgstr "설탕에 절인 "
+
+# objnam.c - the() 함수에서 사용
+# "the "는 이미 번역되어 있으나 다른 문맥용으로 추가
+
+# role.c - 캐릭터 선택 프롬프트 (English path용, 한국어는 is_korean_locale에서 처리)
+# "character", "race", "role", "gender", "alignment"은 이미 번역 있음
+
+msgid " for you? [ynaq] "
+msgstr "을 자동 선택할까요? [ynaq] "
+
+# cmd.c - 확장 명령어 선택
+# " or "는 이미 line 4916에 존재
+
+# pager.c - 몬스터 부상 정도
+#, c-format
+msgid "%swounded"
+msgstr "%s부상"
+
+# region.c - 가스 구름
+#, c-format
+msgid "poison gas (%d)"
+msgstr "독 가스 (%d)"
+
+# "vapor"는 이미 line 7262에 존재
+
+# cfgfiles.c - 설정 오류
+#, c-format
+msgid "Line %d: "
+msgstr "%d번째 줄: "
+
+# dungeon.c - 제단 설명
+#, c-format
+msgid " to %s"
+msgstr " (%s에게)"
+
+# objnam.c - 물체 이름
+#, c-format
+msgid " of %s"
+msgstr " %s의"
+
+#, c-format
+msgid "set of %s"
+msgstr "%s 세트"
+
+# insight.c - 몬스터 통계 헤더 (위저드 모드)
+msgid "died born"
+msgstr "사망 탄생"
+
+# zap.c - 플레이어 해방
+#, c-format
+msgid "from %s grasp"
+msgstr "%s의 손아귀에서"
+
+#, c-format
+msgid "by %s"
+msgstr "%s에 의해"
+
+# options.c - 옵션 설정
+#, c-format
+msgid "Set %s to what?"
+msgstr "%s{을/를} 무엇으로 설정할까요?"
+
+# botl.c - 상태 강조 설정
+msgid "down"
+msgstr "하락"
+
+msgid "up"
+msgstr "상승"
+
+msgid "changed"
+msgstr "변화"
+
+msgid "always"
+msgstr "항상"
+
+msgid "criticalhp"
+msgstr "치명적HP"
+
+#, c-format
+msgid "sorted %s"
+msgstr "%s 순서"
+
+# options.c - 오류 및 자동줍기
+msgid "ERROR"
+msgstr "오류"
+
+msgid "  (for autopickup)"
+msgstr "  (자동줍기용)"
+
+# bones.c - 본즈 레벨 오류
+#, c-format
+msgid "This is bones level '%s', not '%s'!"
+msgstr "이것은 '%s' 본즈 레벨이지, '%s'가 아니다!"

@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 10:50+0900\n"
+"POT-Creation-Date: 2026-01-31 11:00+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -3569,6 +3569,11 @@ msgstr "중립"
 msgid "Lawful"
 msgstr "질서"
 
+#: ../src/botl.c:1168
+#, fuzzy, c-format
+msgid "change sort order from \"%s\" to \"%s\""
+msgstr "키 '%s'를 \"%s\"에서 \"%s\"(으)로 변경했다."
+
 #: ../src/botl.c:1174
 #, fuzzy, c-format
 msgid "sorted %s"
@@ -3641,6 +3646,11 @@ msgstr "위험 수준의 %s 강조"
 #, c-format
 msgid "%s text match"
 msgstr "%s 텍스트 일치"
+
+#: ../src/botl.c:3544
+#, fuzzy, c-format
+msgid "Select %s field hilite behavior:"
+msgstr "강조 표시할 항목을 선택하세요:"
 
 #: ../src/botl.c:3583 ../src/botl.c:3622
 #, c-format
@@ -3849,6 +3859,25 @@ msgstr "hilite 조건/%s/%s 추가됨"
 #, c-format
 msgid "Added hilite %s"
 msgstr "hilite %s 추가됨"
+
+#: ../src/botl.c:4143
+#, fuzzy, c-format
+msgid "No current hilites for %s"
+msgstr "현재 %s 대신 %s{이다/다}."
+
+#: ../src/botl.c:4154
+msgid "Remove selected hilites"
+msgstr ""
+
+#: ../src/botl.c:4170
+#, fuzzy
+msgid "Add new hilites"
+msgstr "hilite %s 추가됨"
+
+#: ../src/botl.c:4173
+#, fuzzy, c-format
+msgid "Current %s hilites:"
+msgstr "현재 기술:"
 
 #: ../src/botl.c:4299
 msgid "Status hilites:"
@@ -5295,7 +5324,7 @@ msgstr ", "
 msgid "%d traps"
 msgstr "%d개의 함정"
 
-#: ../src/detect.c:1847
+#: ../src/detect.c:1847 ../src/pager.c:1220
 msgid "a trap"
 msgstr "함정"
 
@@ -6630,6 +6659,11 @@ msgstr "버릴 것이 없다."
 #, c-format
 msgid "Drop the %s corpse without %s protection on?"
 msgstr "%s 보호 없이 %s 시체를 버리겠습니까?"
+
+#: ../src/do.c:995
+#, fuzzy
+msgid "Drop what type of items?"
+msgstr "%s 어떤 종류의 물건을?"
 
 #: ../src/do.c:1072
 msgid "What would you like to drop?"
@@ -8099,6 +8133,11 @@ msgstr "더 이상 탄약이 준비되어 있지 않다."
 msgid "finish %s."
 msgstr "%s{을/를} 끝낸다."
 
+#: ../src/do_wear.c:3001
+#, c-format
+msgid "Take off your %s despite carrying a dead %s?"
+msgstr ""
+
 #: ../src/do_wear.c:3023
 #, c-format
 msgid "continue %s."
@@ -8108,6 +8147,11 @@ msgstr "%s{을/를} 계속했다."
 #: ../src/do_wear.c:3028
 msgid "are not wearing anything."
 msgstr "아무것도 입고 있지 않다."
+
+#: ../src/do_wear.c:3096
+#, fuzzy
+msgid "What type of things do you want to take off?"
+msgstr "%s 것이 무엇입니까?"
 
 #: ../src/do_wear.c:3122
 msgid "What do you want to take off?"
@@ -9702,6 +9746,20 @@ msgstr "%s의 평면"
 #, c-format
 msgid "unknown plane #%d"
 msgstr "알 수 없는 차원 #%d"
+
+#: ../src/dungeon.c:3463
+#, fuzzy, c-format
+msgid "notes \"%s\""
+msgstr "\"%s\"{을/를} 열 수 없다."
+
+#: ../src/dungeon.c:3465
+msgid "5-note tune"
+msgstr ""
+
+#: ../src/dungeon.c:3466
+#, fuzzy, c-format
+msgid " (play %s to open or close drawbridge)"
+msgstr "도개교에 자물쇠가 %s 없다."
 
 #: ../src/dungeon.c:3537
 #, fuzzy, c-format
@@ -31309,6 +31367,16 @@ msgstr "누군가 여기서 속임수를 쓰고 있다..."
 #: ../src/restore.c:1031
 msgid "This game is void."
 msgstr "이 게임은 무효다."
+
+#: ../src/restore.c:1085
+#, c-format
+msgid "PID (%d) doesn't match saved PID (%d)!"
+msgstr ""
+
+#: ../src/restore.c:1088
+#, fuzzy, c-format
+msgid "This is level %d, not %d!"
+msgstr "%s 레벨 %d."
 
 #: ../src/restore.c:1532
 msgid "Select one of your saved games"

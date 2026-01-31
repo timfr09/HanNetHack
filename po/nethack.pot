@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 10:50+0900\n"
+"POT-Creation-Date: 2026-01-31 11:00+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3439,6 +3439,11 @@ msgstr ""
 msgid "Lawful"
 msgstr ""
 
+#: ../src/botl.c:1168
+#, c-format
+msgid "change sort order from \"%s\" to \"%s\""
+msgstr ""
+
 #: ../src/botl.c:1174
 #, c-format
 msgid "sorted %s"
@@ -3508,6 +3513,11 @@ msgstr ""
 #: ../src/botl.c:3538
 #, c-format
 msgid "%s text match"
+msgstr ""
+
+#: ../src/botl.c:3544
+#, c-format
+msgid "Select %s field hilite behavior:"
 msgstr ""
 
 #: ../src/botl.c:3583 ../src/botl.c:3622
@@ -3716,6 +3726,24 @@ msgstr ""
 #: ../src/botl.c:4039 ../src/botl.c:4048
 #, c-format
 msgid "Added hilite %s"
+msgstr ""
+
+#: ../src/botl.c:4143
+#, c-format
+msgid "No current hilites for %s"
+msgstr ""
+
+#: ../src/botl.c:4154
+msgid "Remove selected hilites"
+msgstr ""
+
+#: ../src/botl.c:4170
+msgid "Add new hilites"
+msgstr ""
+
+#: ../src/botl.c:4173
+#, c-format
+msgid "Current %s hilites:"
 msgstr ""
 
 #: ../src/botl.c:4299
@@ -5090,7 +5118,7 @@ msgstr ""
 msgid "%d traps"
 msgstr ""
 
-#: ../src/detect.c:1847
+#: ../src/detect.c:1847 ../src/pager.c:1220
 msgid "a trap"
 msgstr ""
 
@@ -6398,6 +6426,10 @@ msgstr ""
 #: ../src/do.c:958
 #, c-format
 msgid "Drop the %s corpse without %s protection on?"
+msgstr ""
+
+#: ../src/do.c:995
+msgid "Drop what type of items?"
 msgstr ""
 
 #: ../src/do.c:1072
@@ -7811,6 +7843,11 @@ msgstr ""
 msgid "finish %s."
 msgstr ""
 
+#: ../src/do_wear.c:3001
+#, c-format
+msgid "Take off your %s despite carrying a dead %s?"
+msgstr ""
+
 #: ../src/do_wear.c:3023
 #, c-format
 msgid "continue %s."
@@ -7818,6 +7855,10 @@ msgstr ""
 
 #: ../src/do_wear.c:3028
 msgid "are not wearing anything."
+msgstr ""
+
+#: ../src/do_wear.c:3096
+msgid "What type of things do you want to take off?"
 msgstr ""
 
 #: ../src/do_wear.c:3122
@@ -9351,6 +9392,20 @@ msgstr ""
 #: ../src/dungeon.c:3428
 #, c-format
 msgid "unknown plane #%d"
+msgstr ""
+
+#: ../src/dungeon.c:3463
+#, c-format
+msgid "notes \"%s\""
+msgstr ""
+
+#: ../src/dungeon.c:3465
+msgid "5-note tune"
+msgstr ""
+
+#: ../src/dungeon.c:3466
+#, c-format
+msgid " (play %s to open or close drawbridge)"
 msgstr ""
 
 #: ../src/dungeon.c:3537
@@ -29992,6 +30047,16 @@ msgstr ""
 
 #: ../src/restore.c:1031
 msgid "This game is void."
+msgstr ""
+
+#: ../src/restore.c:1085
+#, c-format
+msgid "PID (%d) doesn't match saved PID (%d)!"
+msgstr ""
+
+#: ../src/restore.c:1088
+#, c-format
+msgid "This is level %d, not %d!"
 msgstr ""
 
 #: ../src/restore.c:1532

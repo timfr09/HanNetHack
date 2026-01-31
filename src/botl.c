@@ -1165,7 +1165,7 @@ cond_menu(void)
 
         any = cg.zeroany;
         any.a_int = 1;
-        Sprintf(mbuf, "change sort order from \"%s\" to \"%s\"",
+        Sprintf(mbuf, _("change sort order from \"%s\" to \"%s\""),
                 menutitle[gc.condmenu_sortorder],
                 menutitle[1 - gc.condmenu_sortorder]);
         add_menu(tmpwin, &nul_glyphinfo, &any, 'S', 0, ATR_NONE,
@@ -3541,7 +3541,7 @@ status_hilite_menu_choose_behavior(int fld)
         nopts++;
     }
 
-    Sprintf(buf, "Select %s field hilite behavior:",
+    Sprintf(buf, _("Select %s field hilite behavior:"),
             initblstats[fld].fldname);
     end_menu(tmpwin, buf);
 
@@ -4140,7 +4140,7 @@ status_hilite_menu_fld(int fld)
             hlstr = hlstr->next;
         }
     } else {
-        Sprintf(buf, "No current hilites for %s", initblstats[fld].fldname);
+        Sprintf(buf, _("No current hilites for %s"), initblstats[fld].fldname);
         add_menu_str(tmpwin, buf);
     }
 
@@ -4151,7 +4151,7 @@ status_hilite_menu_fld(int fld)
         any = cg.zeroany;
         any.a_int = -1;
         add_menu(tmpwin, &nul_glyphinfo, &any, 'X', 0, ATR_NONE, clr,
-                 "Remove selected hilites", MENU_ITEMFLAGS_NONE);
+                 _("Remove selected hilites"), MENU_ITEMFLAGS_NONE);
     }
 
 #ifndef SCORE_ON_BOTL
@@ -4167,10 +4167,10 @@ status_hilite_menu_fld(int fld)
         any = cg.zeroany;
         any.a_int = -2;
         add_menu(tmpwin, &nul_glyphinfo, &any, 'Z', 0, ATR_NONE,
-                 clr, "Add new hilites", MENU_ITEMFLAGS_NONE);
+                 clr, _("Add new hilites"), MENU_ITEMFLAGS_NONE);
     }
 
-    Sprintf(buf, "Current %s hilites:", initblstats[fld].fldname);
+    Sprintf(buf, _("Current %s hilites:"), initblstats[fld].fldname);
     end_menu(tmpwin, buf);
 
     acted = FALSE;

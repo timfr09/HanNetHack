@@ -3460,10 +3460,10 @@ tunesuffix(
         char tmp[BUFSZ];
 
         if (u.uevent.uheard_tune == 2)
-            Sprintf(tmp, "notes \"%s\"", svt.tune);
+            Sprintf(tmp, _("notes \"%s\""), svt.tune);
         else
-            Strcpy(tmp, "5-note tune");
-        Snprintf(outbuf, bsz, " (play %s to open or close drawbridge)", tmp);
+            Strcpy(tmp, _("5-note tune"));
+        Snprintf(outbuf, bsz, _(" (play %s to open or close drawbridge)"), tmp);
     }
     return outbuf;
 }

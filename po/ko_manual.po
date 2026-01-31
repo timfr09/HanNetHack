@@ -7628,3 +7628,63 @@ msgstr "  (자동줍기용)"
 #, c-format
 msgid "This is bones level '%s', not '%s'!"
 msgstr "이것은 '%s' 본즈 레벨이지, '%s'가 아니다!"
+
+# restore.c - 저장 파일 오류
+#, c-format
+msgid "PID (%d) doesn't match saved PID (%d)!"
+msgstr "PID(%d){이/가} 저장된 PID(%d){과/와} 일치하지 않는다!"
+
+#, c-format
+msgid "This is level %d, not %d!"
+msgstr "이것은 레벨 %d이지, %d가 아니다!"
+
+# botl.c - 상태 하이라이트 메뉴
+#, c-format
+msgid "No current hilites for %s"
+msgstr "%s에 대한 현재 하이라이트 없음"
+
+#, c-format
+msgid "change sort order from \"%s\" to \"%s\""
+msgstr "정렬 순서를 \"%s\"에서 \"%s\"(으)로 변경"
+
+#, c-format
+msgid "Select %s field hilite behavior:"
+msgstr "%s 필드 하이라이트 동작 선택:"
+
+msgid "Remove selected hilites"
+msgstr "선택한 하이라이트 제거"
+
+msgid "Add new hilites"
+msgstr "새 하이라이트 추가"
+
+#, c-format
+msgid "Current %s hilites:"
+msgstr "현재 %s 하이라이트:"
+
+# dungeon.c - 도개교(drawbridge) 정보
+#, c-format
+msgid "notes \"%s\""
+msgstr "\"%s\" 음표"
+
+msgid "5-note tune"
+msgstr "5음 곡조"
+
+#, c-format
+msgid " (play %s to open or close drawbridge)"
+msgstr " (%s{을/를} 연주하면 도개교가 열리거나 닫힌다)"
+
+# pager.c - 함정 탐지
+msgid "a trap"
+msgstr "함정"
+
+# do_wear.c - 장비 해제
+msgid "What type of things do you want to take off?"
+msgstr "어떤 종류의 장비를 벗으시겠습니까?"
+
+#, c-format
+msgid "Take off your %s despite carrying a dead %s?"
+msgstr "죽은 %2$s 시체를 들고 있는데도 %1$s{을/를} 벗으시겠습니까?"
+
+# do.c - 버리기 질문
+msgid "Drop what type of items?"
+msgstr "어떤 종류의 물건을 버리시겠습니까?"

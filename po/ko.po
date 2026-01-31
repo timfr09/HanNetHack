@@ -9199,18 +9199,20 @@ msgstr "떠오른다"
 msgid "%s doesn't budge!"
 msgstr "%s{은/는} 꿈쩍도 안 한다!"
 
+# 조합 패턴: "%s flies up into the %s" (object flies up into the sky)
 #: src/dothrow.c:1267
 msgid "flies up into"
-msgstr "%s{이/가} %s에 부딪혔다."
+msgstr "날아 올라간다"
 
 #: src/dothrow.c:1270
 #, c-format
 msgid "%s hits the %s."
 msgstr "%s{이/가} %s{을/를} 맞췄다."
 
+# 조합 패턴: "%s almost hits the %s"
 #: src/dothrow.c:1283
 msgid "almost hits"
-msgstr "%s에 거의 맞을 뻔했다!"
+msgstr "거의 맞을 뻔한다"
 
 #: src/dothrow.c:1285
 #, c-format
@@ -13047,13 +13049,14 @@ msgstr "%s{을/를} 움직일 수 없다."
 msgid "%s!  %s %s land mine."
 msgstr "%s! %s %s 지뢰."
 
+# 지뢰 폭발 소리 (Land mine explosion sound)
 #: src/hack.c:520
 msgid "KAABLAMM!!"
-msgstr "쾅!!!%s"
+msgstr "쾅!!!"
 
 #: src/hack.c:524
 msgid "Gadzooks"
-msgstr "같다"
+msgstr "이런"
 
 # Archeologist ranks
 #: src/hack.c:525 src/hack.c:558 src/teleport.c:1534 src/trap.c:2449
@@ -13138,25 +13141,27 @@ msgstr "문"
 msgid "eat the boulder."
 msgstr "바위를 먹었다."
 
+# 소화 능력으로 철창 먹기 (digesting iron bars)
 #: src/hack.c:767
 msgid "devour the iron bars."
-msgstr "%s{이} %s 철창을 %s."
+msgstr "철창을 집어삼켰다."
 
 #: src/hack.c:768
 msgid "eat through the bars."
-msgstr "%s{이} %s 철창을 %s."
+msgstr "철창을 뚫어 먹었다."
 
 #: src/hack.c:773 src/objnam.c:3838 src/objnam.c:3856
 msgid "secret door"
-msgstr "비밀 통로."
+msgstr "비밀문"
 
 #: src/hack.c:775
 msgid "chew through the secret door."
-msgstr "바위가 문을 뚫고 나갔다."
+msgstr "비밀문을 씹어 뚫었다."
 
+# 사망 원인 메시지 (death cause)
 #: src/hack.c:823
 msgid "fell onto a sink"
-msgstr "%s 위에 떨어졌다."
+msgstr "싱크대 위에 떨어짐"
 
 #: src/hack.c:837
 msgid "wobble unsteadily for a moment."
@@ -17606,21 +17611,23 @@ msgstr "몇 개"
 msgid "%s %s%s."
 msgstr "%s %s%s."
 
+# 조합 패턴: "%s %s%s." (Including/They're/It's + corpse name + , unfortunately)
+# 코카트리스 시체 감지 메시지
 #: src/invent.c:4270
 msgid "Including"
-msgstr "포함"
+msgstr "포함해서"
 
 #: src/invent.c:4271
 msgid "They're"
-msgstr "%s{이/가} 산산조각났다!"
+msgstr "그것들은"
 
 #: src/invent.c:4272
 msgid "It's"
-msgstr "%s이다."
+msgstr "그것은"
 
 #: src/invent.c:4275
 msgid ", unfortunately"
-msgstr "불행히도, %s"
+msgstr ", 불행히도"
 
 # ============================================================
 # 던전 메시지 (Dungeon Messages)
@@ -18626,21 +18633,22 @@ msgstr "만료된다"
 msgid "dies"
 msgstr "죽는다"
 
+# 조합 패턴: 몬스터 변화 동사 (monster transformation verbs)
 #: src/makemon.c:2142
 msgid "changes into"
-msgstr "여마법사"
+msgstr "변했다"
 
 #: src/makemon.c:2143 src/mkobj.c:1632
 msgid "becomes"
-msgstr "%s{이/가} 되겠습니까?"
+msgstr "되었다"
 
 #: src/makemon.c:2144
 msgid "grows up into"
-msgstr "%s{이/가} %s에 부딪혔다."
+msgstr "성장했다"
 
 #: src/makemon.c:2559
 msgid "It's empty."
-msgstr "%s{이/가} 비었다."
+msgstr "비어 있다."
 
 #: src/mcastu.c:56
 msgid "all around, then curses"
@@ -19062,9 +19070,10 @@ msgstr "잡다"
 msgid "%.99s %s attempt %s %.99s!"
 msgstr "%.99s{이/가} %.99s{을/를} %s하려 %s!"
 
+# 조합 패턴: 공격 결과 (attack result)
 #: src/mhitm.c:633
 msgid "passes right through"
-msgstr "%s{이/가} %s{을/를} 통과한다!"
+msgstr "그대로 통과했다"
 
 #: src/mhitm.c:633
 msgid "fails to hold"
@@ -19525,13 +19534,14 @@ msgstr "그것이 당신에게 달라붙었다."
 msgid "Wait, %s!  That's a %s named %s!"
 msgstr "잠깐, %s! 그건 %s라는 이름의 %s{이다/다}!"
 
+# 조합 패턴: 변장 중인 플레이어에게 접근하는 몬스터 (monster approaching disguised player)
 #: src/mhitu.c:689
 msgid "tries to pick you up"
-msgstr "%s{이/가} 당신의 %s %s{을/를} 잡으려 한다!"
+msgstr "당신을 집으려 한다"
 
 #: src/mhitu.c:690
 msgid "disturbs you"
-msgstr "%s{이/가} 당신을 태웠다!"
+msgstr "당신을 방해한다"
 
 #: src/mhitu.c:692
 #, c-format
@@ -19619,9 +19629,10 @@ msgstr "약간의 질병."
 msgid "%s %s your %s %s!"
 msgstr "%s이(가) %s 당신의 %s %s!"
 
+# 조합 패턴: "%s slips off of your greased armor"
 #: src/mhitu.c:1064
 msgid "slips off of"
-msgstr "%s에서 %s 떨어졌다!"
+msgstr "미끄러져 빠졌다"
 
 #: src/mhitu.c:1065
 msgid "grabs you, but cannot hold onto"
@@ -19665,17 +19676,18 @@ msgstr "스며나온다"
 msgid "surges"
 msgstr "밀려온다"
 
+# 조합 패턴: 삼키기/감싸기 공격 동사 (engulf/swallow attack verbs)
 #: src/mhitu.c:1332
 msgid "swallows you whole"
-msgstr ", 당신을 삼키는 중"
+msgstr "당신을 통째로 삼킨다"
 
 #: src/mhitu.c:1333
 msgid "folds itself around you"
-msgstr "%s{이/가} 당신을 %s 감쌌다!"
+msgstr "당신을 감싼다"
 
 #: src/mhitu.c:1334
 msgid "engulfs you"
-msgstr ", 당신을 감싸는 중"
+msgstr "당신을 집어삼킨다"
 
 #: src/mhitu.c:1340
 #, c-format
@@ -19794,17 +19806,18 @@ msgstr "바삭하게 타고 있다!"
 msgid "%s very hurriedly %s you!"
 msgstr "%s{이/가} 매우 서둘러 당신을 %s!"
 
+# 조합 패턴: 방출/토해내기 동사 (regurgitate/release/expel verbs)
 #: src/mhitu.c:1565
 msgid "regurgitates"
-msgstr "토해졌다!"
+msgstr "토해낸다"
 
 #: src/mhitu.c:1566
 msgid "releases"
-msgstr "%s{을/를} 풀어줬다!"
+msgstr "풀어준다"
 
 #: src/mhitu.c:1567
 msgid "expels"
-msgstr "%s{이/가} %s{을/를} 내뱉었다."
+msgstr "내뱉는다"
 
 #: src/mhitu.c:1574
 #, c-format

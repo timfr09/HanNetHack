@@ -1356,7 +1356,7 @@ msgstr "%s물약을 켰다.%s"
 
 #: src/apply.c:1736
 msgid "  It gives off a dim light."
-msgstr "%s{은/는} 냄새가 나지 않는 것 같다."
+msgstr "  희미한 빛을 낸다."
 
 #: src/apply.c:1747
 msgid "That's in addition to the cost of the potion, of course."
@@ -2282,18 +2282,20 @@ msgstr "현재 모습으로는 도구를 사용하거나 적용할 수 없다."
 msgid "are already %s."
 msgstr "이미 %s."
 
+# 조합 패턴: "You are already %s." (You are already covered by a towel.)
 #: src/apply.c:4249
 msgid "covered by a towel"
-msgstr "%s{이/가} 이미 수건으로 덮여 있다."
+msgstr "수건으로 덮여 있다"
 
-#
+# 조합 패턴: "You are already %s." (You are already wearing a blindfold.)
 #: src/apply.c:4250
 msgid "wearing a blindfold"
-msgstr "눈가리개를 하고 있지 않다."
+msgstr "눈가리개를 하고 있다"
 
+# 조합 패턴: "You are already %s." (You are already wearing lenses.)
 #: src/apply.c:4251
 msgid "wearing lenses"
-msgstr "운동화"
+msgstr "렌즈를 끼고 있다"
 
 #: src/apply.c:4314 src/attrib.c:661 src/dig.c:1308 src/dog.c:1332
 #: src/dokick.c:212 src/dothrow.c:1949 src/dothrow.c:2502 src/eat.c:3039
@@ -3080,9 +3082,10 @@ msgstr "갑옷을 부수고 나왔다!"
 msgid "innately weaker"
 msgstr "본래 약해졌다"
 
+# 체력 저하 시 메시지 (Constitution max drop message)
 #: src/attrib.c:307
 msgid "sick inside"
-msgstr "%s 안에."
+msgstr "속이 안 좋다"
 
 #: src/attrib.c:331
 #, c-format
@@ -3113,45 +3116,62 @@ msgstr "독이 영향을 미치지 않는 것 같다."
 msgid "poison was deadly..."
 msgstr "독이 치명적이었다..."
 
+# ============================================================
+# 운동 효과 메시지 (Exercise effect messages)
+# 조합 패턴: "You " + "must have been"/"haven't been" + "활동 설명"
+# 긍정: "당신은 틀림없이 [활동]이었다." (힘이 오름)
+# 부정: "당신은 [활동 부정]이었다." (힘이 내림)
+# ============================================================
+# 힘 (Strength) - 긍정
 #: src/attrib.c:586
 msgid "exercising diligently"
-msgstr "열심히 운동 중"
+msgstr "열심히 운동했다"
 
+# 힘 (Strength) - 부정 (haven't been과 결합됨)
 #: src/attrib.c:586
 msgid "exercising properly"
-msgstr "제대로 운동 중"
+msgstr "제대로 운동하지 않았다"
 
+# 지혜 (Wisdom) - 긍정
 #: src/attrib.c:588
 msgid "very observant"
-msgstr "많이 바랬다"
+msgstr "매우 관찰력이 좋았다"
 
+# 지혜 (Wisdom) - 부정 (haven't been과 결합됨)
 #: src/attrib.c:588
 msgid "paying attention"
-msgstr "용기를 여는 중"
+msgstr "주의를 기울이지 않았다"
 
+# 민첩 (Dexterity) - 긍정
 #: src/attrib.c:589
 msgid "working on your reflexes"
-msgstr "%s{을/를} 닦는 중"
+msgstr "반사 신경을 단련했다"
 
+# 민첩 (Dexterity) - 부정 (haven't been과 결합됨)
 #: src/attrib.c:589
 msgid "working on reflexes lately"
-msgstr "최근 반사 신경을 단련 중"
+msgstr "최근 반사 신경을 단련하지 않았다"
 
+# 체력 (Constitution) - 긍정
 #: src/attrib.c:590
 msgid "leading a healthy life-style"
-msgstr "건강한 생활을 하는 중"
+msgstr "건강한 생활을 했다"
 
+# 체력 (Constitution) - 부정 (haven't been과 결합됨)
 #: src/attrib.c:590
 msgid "watching your health"
-msgstr "건강을 관리하는 중"
+msgstr "건강을 관리하지 않았다"
 
+# 조합 패턴: "You %s %s." (You must have been exercising diligently.)
 #: src/attrib.c:662
 msgid "must have been"
-msgstr "%s 위로 이동한다."
+msgstr "틀림없이"
 
+# 조합 패턴: "You %s %s." (You haven't been exercising properly.)
+# 부정 표현 - 제로너비공백 사용 (한국어에서 뒤따르는 구절에 부정이 표현됨)
 #: src/attrib.c:662
 msgid "haven't been"
-msgstr "하지 않았다"
+msgstr "​"
 
 #: src/attrib.c:912
 #, c-format
@@ -3987,9 +4007,10 @@ msgstr "일치하는 항목 없음"
 msgid "Extended command list search phrase"
 msgstr "확장 명령 목록 검색어"
 
+# 조합 패턴: Strcat으로 연결됨 (예: "choice1" + " or " + "choice2")
 #: src/cmd.c:841 src/hack.c:2055
 msgid " or "
-msgstr "%s 또는 %s"
+msgstr " 또는 "
 
 # ============================================================
 # 확장 명령 메뉴 (Extended Commands Menu)
@@ -5026,20 +5047,21 @@ msgid "location"
 msgstr "질식한다."
 
 #: src/detect.c:1152 src/detect.c:1167
+# 거리/방향 설명 (Distance/direction descriptions)
 msgid "far away"
-msgstr "슬라임이 불타 사라졌다!"
+msgstr "멀리서"
 
 #: src/detect.c:1154
 msgid "far below"
-msgstr "%s %s구덩이가 아래에 있는 것을."
+msgstr "저 아래에서"
 
 #: src/detect.c:1157
 msgid "away below you"
-msgstr "%s %s구덩이가 아래에 있는 것을."
+msgstr "당신 아래 멀리서"
 
 #: src/detect.c:1159
 msgid "below you"
-msgstr "%s %s구덩이가 아래에 있는 것을."
+msgstr "당신 아래에서"
 
 #: src/detect.c:1161 src/detect.c:1176 src/detect.c:1181 src/muse.c:148
 #: src/muse.c:209 src/read.c:1434 src/trap.c:1478 src/trap.c:2706
@@ -9006,19 +9028,15 @@ msgstr "바닥"
 msgid "the spirits holding you back."
 msgstr "영혼들이 당신을 붙잡고 있다."
 
-# ============================================================
-# 전투 메시지 (Combat Messages)
-# ============================================================
+# 사망 원인 메시지 (Death cause - used in losehp())
 #: src/dothrow.c:806
 msgid "bumping into a tree"
-msgstr "%s에 부딪혔다."
+msgstr "나무에 부딪힘"
 
-# ============================================================
-# 전투 메시지 (Combat Messages)
-# ============================================================
+# 사망 원인 메시지 (Death cause - used in losehp())
 #: src/dothrow.c:807
 msgid "bumping into a wall"
-msgstr "%s에 부딪혔다."
+msgstr "벽에 부딪힘"
 
 #: src/dothrow.c:808
 msgid "bumping into a door frame"
@@ -9036,34 +9054,38 @@ msgstr "문틀에 부딪혔다!"
 msgid "Ouch!"
 msgstr "아야!"
 
+# 사망 원인 메시지 (Death cause - used in losehp())
 #: src/dothrow.c:814
 msgid "crashing into iron bars"
-msgstr "철창에 부딪혔다. 아야!"
+msgstr "철창에 부딪힘"
 
 #: src/dothrow.c:815
 msgid "crash into some iron bars.  Ouch!"
 msgstr "철창에 부딪혔다. 아야!"
 
+# 사망 원인 메시지 (Death cause - used in losehp())
 #: src/dothrow.c:817
 msgid "bumping into a boulder"
-msgstr "문틀에서 대각선으로 점프할 수 없다."
+msgstr "바위에 부딪힘"
 
 #: src/dothrow.c:818
 #, c-format
 msgid "bump into a %s.  Ouch!"
 msgstr "%s에 부딪혔다. 아야!"
 
+# 사망 원인 메시지 (Death cause - used in losehp())
 #: src/dothrow.c:821
 msgid "touching the edge of the universe"
-msgstr "%s{이/가} %s의 가장자리로."
+msgstr "우주의 끝에 닿음"
 
 #: src/dothrow.c:822
 msgid "smack into something!"
 msgstr "무언가에 부딪혔다!"
 
+# 사망 원인 메시지 (Death cause - used in losehp())
 #: src/dothrow.c:830
 msgid "wedging into a narrow crevice"
-msgstr "거울을 응시하는 중"
+msgstr "좁은 틈에 끼임"
 
 #: src/dothrow.c:831
 #, c-format
@@ -11566,7 +11588,7 @@ msgstr "%s{이/가} 움직임을 멈춘다."
 
 #: src/engrave.c:660
 msgid "A few ice cubes drop from the wand."
-msgstr "%s 진흙이 배수구에서 솟아올랐다!"
+msgstr "지팡이에서 얼음 조각이 몇 개 떨어졌다."
 
 #: src/engrave.c:669 src/engrave.c:677
 #, c-format
@@ -13405,12 +13427,14 @@ msgid "%s through the web."
 msgstr "거미줄을 %s."
 
 #: src/hack.c:2069
+# 무기 동작 동사
 msgid "cut"
-msgstr "척후"
+msgstr "베다"
 
+# 무기 동작 동사 (주먹으로 공격)
 #: src/hack.c:2069
 msgid "punch"
-msgstr "충전할"
+msgstr "주먹으로 치다"
 
 #: src/hack.c:2111
 #, c-format
@@ -13587,9 +13611,10 @@ msgstr "이상한 진동 %s."
 msgid "throbs palpably"
 msgstr "뚜렷하게 진동한다"
 
+# 조합 패턴: object + "glows with a strange light"
 #: src/hack.c:3082
 msgid "glows with a strange light"
-msgstr "%s 이상한 빛과 함께!"
+msgstr "이상한 빛으로 빛난다"
 
 #: src/hack.c:3101
 msgid "levitate in here."
@@ -13902,9 +13927,10 @@ msgstr "그렇게 많은 짐을 들고는 그렇게 할 수 없다."
 msgid "Rename or un-name"
 msgstr "이름 바꾸기 또는 이름 지우기"
 
+# 메뉴 옵션 (Menu option for naming)
 #: src/iactions.c:54
 msgid "Call"
-msgstr "벽 %s"
+msgstr "별명 부르기"
 
 #: src/iactions.c:57
 msgid "Re-call or un-call"
@@ -14057,29 +14083,30 @@ msgstr "이 도구로 시체를 통조림하기"
 msgid "Tie a pet to this leash"
 msgstr "이 끈에 애완동물 묶기"
 
+# 아이템 사용 메뉴 옵션들 (Item use menu options)
 #: src/iactions.c:337
 msgid "Place this saddle on a pet"
-msgstr "%s에게 안장을 씌웠다."
+msgstr "애완동물에게 안장 씌우기"
 
 #: src/iactions.c:340
 msgid "Blow this whistle"
-msgstr "양철 호루라기"
+msgstr "호루라기 불기"
 
 #: src/iactions.c:342
 msgid "Use this leaf as a whistle"
-msgstr "경비원 호루라기의 날카로운 소리"
+msgstr "이 나뭇잎을 호루라기로 사용하기"
 
 #: src/iactions.c:344
 msgid "Listen through the stethoscope"
-msgstr "%s{을/를} 통해 떠오른다!"
+msgstr "청진기로 듣기"
 
 #: src/iactions.c:346
 msgid "Show something its reflection"
-msgstr "%s{이/가} 반사에 의해 얼어붙었다."
+msgstr "무언가에게 반사를 보여주기"
 
 #: src/iactions.c:348
 msgid "Ring the bell"
-msgstr "상자를 잠그는 중"
+msgstr "종 울리기"
 
 #: src/iactions.c:350
 #, c-format
@@ -15067,12 +15094,14 @@ msgid " plus thrown"
 msgstr "던질"
 
 #: src/insight.c:796
+# 조합 패턴: "on" + ", with exceptions"
 msgid ", with exceptions"
-msgstr "게임 옵션 목록."
+msgstr ", 예외 있음"
 
+# 조합 패턴: enl_msg("Autopickup ", "is/was ", buf)
 #: src/insight.c:800
 msgid "Autopickup "
-msgstr "자동 줍기: %s."
+msgstr "자동 줍기 "
 
 # ============================================================
 # 능력치 표시 (Characteristics Display)
@@ -18102,9 +18131,10 @@ msgstr "열기"
 msgid "Lock"
 msgstr "잠금"
 
+# 조합 패턴: Sprintf로 조합됨 (예: "Unlock it" + " with " + "skeleton key")
 #: src/lock.c:623
 msgid " with "
-msgstr "%s{이/가} %s{과/와} 함께!"
+msgstr "{으로/로} "
 
 #: src/lock.c:689
 msgid "force anything from inside here."
@@ -19023,23 +19053,27 @@ msgstr "%s{이/가} %s{을/를} 통과한다!"
 
 #: src/mhitm.c:633
 msgid "fails to hold"
-msgstr "구멍에 빠졌다"
+msgstr "붙잡지 못했다"
 
+# 조합 패턴: "%s smiles at you %s" (monster smiles at you seductively)
 #: src/mhitm.c:668 src/mhitu.c:41
 msgid "smiles at"
-msgstr "~에게 미소짓는다"
+msgstr "미소짓는다"
 
+# 조합 패턴: "%s talks to you %s" (monster talks to you engagingly)
 #: src/mhitm.c:668 src/mhitu.c:41
 msgid "talks to"
-msgstr "줄기"
+msgstr "말을 건다"
 
+# 조합 패턴: 유혹 관련 부사
 #: src/mhitm.c:670 src/mhitu.c:42 src/mhitu.c:239 src/uhitm.c:5561
 msgid "engagingly"
-msgstr "약혼"
+msgstr "매력적으로"
 
+# 조합 패턴: 유혹 관련 부사
 #: src/mhitm.c:670 src/mhitu.c:42 src/mhitu.c:239 src/uhitm.c:5561
 msgid "seductively"
-msgstr "유혹적인 목소리."
+msgstr "유혹적으로"
 
 # Complete sentence combat messages (new format for proper Korean)
 #: src/mhitm.c:676
@@ -19247,9 +19281,10 @@ msgstr "%s{이/가} 찡그리는 것 같다."
 msgid "%s %s you %s."
 msgstr "%s{이/가} 당신의 %s{을/를} %s!"
 
+# 조합 패턴: "%s touches you %s" (monster touches you seductively)
 #: src/mhitu.c:41
 msgid "touches"
-msgstr "%s{이/가} 만져"
+msgstr "만진다"
 
 # === Monster attack verbs (mhitu.c) ===
 #: src/mhitu.c:46
@@ -19413,9 +19448,10 @@ msgstr "미사일 소나기에 맞았다!"
 msgid " in a blast of frost"
 msgstr "냉기 폭발"
 
+# 조합 패턴: 괴물에게서 방출될 때 소리
 #: src/mhitu.c:292
 msgid " with a squelch"
-msgstr "%s 이상한 빛과 함께!"
+msgstr " 찌걱 소리와 함께"
 
 #: src/mhitu.c:294
 #, c-format
@@ -20424,25 +20460,26 @@ msgstr "버블 ymax: y = %d, ymax = %d"
 msgid "cancel"
 msgstr "취소"
 
+# 아이템 상태 변경 동사들 (Item status change verbs)
 #: src/mkobj.c:746
 msgid "drain"
-msgstr "빠져나간다..."
+msgstr "고갈"
 
 #: src/mkobj.c:746
 msgid "uncharge"
-msgstr "충전할"
+msgstr "충전 해제"
 
 #: src/mkobj.c:746
 msgid "unbless"
-msgstr "음정 없는"
+msgstr "축복 제거"
 
 #: src/mkobj.c:746
 msgid "uncurse"
-msgstr "저주받지 않은 "
+msgstr "저주 해제"
 
 #: src/mkobj.c:747
 msgid "disenchant"
-msgstr "먼 곳에서 들리는 노랫소리."
+msgstr "마법 해제"
 
 #: src/mkobj.c:747
 msgid "degrade"
@@ -22390,9 +22427,10 @@ msgstr "들린다"
 msgid "KADOOM!  The boulder falls into a chasm%s!"
 msgstr "쿵! 바위가 틈새로 떨어진다%s!"
 
+# 조합 패턴: 위치 설명 (location description fragment)
 #: src/music.c:237
 msgid " below you"
-msgstr "%s %s구덩이가 아래에 있는 것을."
+msgstr " 당신 아래에서"
 
 #: src/music.c:266
 #, c-format
@@ -24909,7 +24947,7 @@ msgstr "%s %s %s"
 
 #: src/options.c:3399
 msgid "Autopickup what?"
-msgstr "자동 줍기: %s."
+msgstr "자동 줍기 대상?"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -25805,9 +25843,10 @@ msgstr " 파여진"
 msgid " set"
 msgstr "설정 안됨"
 
+# 조합 패턴: 함정 정보 ("trap" + " set" + " by you")
 #: src/pager.c:2381
 msgid " by you"
-msgstr "%s %s구덩이가 아래에 있는 것을."
+msgstr " 당신이 만든"
 
 #: src/pager.c:2384
 msgid "I can't see a trap there."
@@ -26080,13 +26119,14 @@ msgstr "참고: 선택하지 않으면 \"모두\"가 적용된다."
 msgid "All worn and wielded types"
 msgstr "모든 착용 및 장비 종류"
 
+# 메뉴 옵션 (Menu option)
 #: src/pickup.c:1345
 msgid "All types"
-msgstr "벽 %s"
+msgstr "모든 종류"
 
 #: src/pickup.c:1391
 msgid "Unpaid items"
-msgstr "고유 물품"
+msgstr "미지불 물품"
 
 #: src/pickup.c:1399
 msgid "Unpaid items already used up"
@@ -26111,7 +26151,7 @@ msgstr "축복/저주 상태를 알 수 없는 물품"
 #: src/pickup.c:1438
 #, c-format
 msgid "Just picked up: %s"
-msgstr "자동 줍기: %s."
+msgstr "방금 주움: %s"
 
 #: src/pickup.c:1441
 msgid "Items you just picked up"
@@ -37038,9 +37078,10 @@ msgstr "%s{은/는} 지금 아무것도 볼 수 없다."
 msgid "feel incredibly sick."
 msgstr "엄청나게 아픔을 느낍니다."
 
+# 조합 패턴: "You " + "are about to vomit."
 #: src/timeout.c:194
 msgid "are about to vomit."
-msgstr "%s{이} 곧 꺼질 것 같다."
+msgstr "토할 것 같다."
 
 #
 #: src/timeout.c:212 src/timeout.c:213
@@ -38244,10 +38285,11 @@ msgstr "%s{이} %s에서 분출하는 것을!"
 msgid "smell smoke."
 msgstr "연기 냄새를 맡았다."
 
+# a/your + "spiked " + "pit below you" (You see a spiked pit below you.)
 #: src/trap.c:1856
 #, c-format
 msgid "%s %spit below you."
-msgstr "%s %s구덩이가 아래에 있는 것을."
+msgstr "당신 아래에 %s%s구덩이가 있다."
 
 #: src/trap.c:1859
 #, c-format
@@ -39275,7 +39317,7 @@ msgstr "아직도 익사하고 있다."
 
 #: src/trap.c:5191
 msgid "You're too strained to do that."
-msgstr "%s{을/를} 밀기엔 너무 작다."
+msgstr "그것을 하기에는 너무 지쳐있다."
 
 #: src/trap.c:5194
 msgid "And just how do you expect to do that?"
@@ -39813,9 +39855,10 @@ msgstr "%s%s에 빠지고 있다!"
 msgid ", but it only burns slightly"
 msgstr "%s{이/가} 약간 %s."
 
+# 조합 패턴: "You are stuck in lava and are about to be immolated"
 #: src/trap.c:6900
 msgid " and are about to be immolated"
-msgstr "%s{이} 곧 꺼질 것 같다."
+msgstr " 그리고 곧 불에 타죽을 것 같다"
 
 #: src/trap.c:6939
 msgid "You sink below the surface and die."
@@ -41076,9 +41119,10 @@ msgstr "%s{이/가} 습기로 젖었다."
 msgid "%s seems unharmed."
 msgstr "%s{은/는} 해를 입지 않은 것 같다."
 
+# 공격 동사 (attack verb for golem)
 #: src/uhitm.c:5093
 msgid "pummeled with your debris"
-msgstr "%s{이/가} 당신의 피부와 합쳐졌다!"
+msgstr "잔해로 두들겨 맞았다"
 
 #: src/uhitm.c:5097
 #, c-format
@@ -41201,9 +41245,10 @@ msgstr "%s{이/가} %s 밀려났다!"
 msgid "smile at"
 msgstr "미소 짓다"
 
+# 조합 패턴: "You smile at/talk to monster seductively"
 #: src/uhitm.c:5559
 msgid "talk to"
-msgstr "대화? -- %s"
+msgstr "에게 말한다"
 
 #: src/uhitm.c:5573
 msgid "claws"
@@ -41518,7 +41563,7 @@ msgstr "%s이(가) %s 손바닥을 내밀고 %s 다른 손으로 손짓한다."
 
 #: src/vault.c:580
 msgid "Most likely all your gold was stolen from this vault."
-msgstr "%s{이/가} 당신의 금화를 금고로 보낸다."
+msgstr "아마도 당신의 금화 전부가 이 금고에서 도둑맞은 것 같다."
 
 #: src/vault.c:723
 #, c-format
@@ -42575,7 +42620,7 @@ msgstr "넌 나에게 벼룩 같은 존재다,"
 
 #: src/wizard.c:834
 msgid "Thou art doomed,"
-msgstr "감히 나를 %s하겠다고?"
+msgstr "너는 저주받았다,"
 
 #: src/wizard.c:834
 msgid "Thy fate is sealed,"
@@ -43833,7 +43878,7 @@ msgstr "%s{이/가} 튕겼다!"
 
 #: src/zap.c:5013
 msgid "The ice crackles and melts."
-msgstr "%s 주변의 공기가 탁탁거린다."
+msgstr "얼음이 갈라지며 녹는다."
 
 #: src/zap.c:5032
 #, c-format
@@ -43842,7 +43887,7 @@ msgstr "%s{이/가} 가라앉는다..."
 
 #: src/zap.c:5096
 msgid "Some ice melts away."
-msgstr "그것이 굴러갔다."
+msgstr "얼음이 조금 녹았다."
 
 #: src/zap.c:5134
 msgid "A web bursts into flames!"
@@ -43940,11 +43985,11 @@ msgstr "%s %s{이/가} 비밀문을 드러냈다."
 
 #: src/zap.c:5386
 msgid "The door is consumed in flames!"
-msgstr "제물이 %s에 소모되었다!"
+msgstr "문이 불길에 소멸되었다!"
 
 #: src/zap.c:5391
 msgid "The door freezes and shatters!"
-msgstr "아래의 함정문이 산산이 부서졌다."
+msgstr "문이 얼어서 산산이 부서졌다!"
 
 #: src/zap.c:5392
 msgid "a deep cracking sound."

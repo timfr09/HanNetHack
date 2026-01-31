@@ -34919,9 +34919,10 @@ msgstr "주사위가 굴러가는 소리."
 msgid "General MacArthur!"
 msgstr "맥아더 장군!"
 
+# 상점 소리 (Shop sound)
 #: src/sounds.c:323
 msgid "someone cursing shoplifters."
-msgstr "누군가 %s{을/를} 소환한다."
+msgstr "누군가 좀도둑을 욕하는 소리."
 
 #: src/sounds.c:324
 msgid "the chime of a cash register."
@@ -35882,9 +35883,10 @@ msgstr "책을 읽는 동안, 그것이 당신의 %s에서 %s!"
 msgid "exploding rune"
 msgstr "폭발했다"
 
+# 혼란 상태에서 마법서 읽기 실패 (Reading spellbook while confused)
 #: src/spell.c:197
 msgid "Being confused you have difficulties in controlling your actions."
-msgstr "괴물들이%s 당신의 위치를 파악하기 어려워한다."
+msgstr "혼란스러워서 행동을 제어하기 어렵다."
 
 #: src/spell.c:199
 msgid "accidentally tear the spellbook to pieces."
@@ -35899,9 +35901,13 @@ msgstr "같은 %s줄을 계속 반복해서 읽고 있는 자신을 발견했다
 msgid "turn the pages of the Book of the Dead..."
 msgstr "죽음의 책 페이지를 넘긴다..."
 
+# ============================================================
+# 저주받은 죽음의 책 (Cursed Book of the Dead)
+# 조합 패턴: pline_The("%s!", Blind ? "Book..." : "runes...")
+# ============================================================
 #: src/spell.c:249
 msgid "Book seems to be ignoring you"
-msgstr "%s{이/가} 잡고 있는 것 같다."
+msgstr "책이 당신을 무시하는 것 같다"
 
 #: src/spell.c:250
 msgid "runes appear scrambled.  You can't read them"
@@ -36219,9 +36225,10 @@ msgstr "마법 에너지가 방출됐다!"
 msgid "are no longer ill."
 msgstr "더 이상 아프지 않다."
 
+# 점액 치료 메시지 (Slime cure - cure sickness spell)
 #: src/spell.c:1556
 msgid "The slime disappears!"
-msgstr "%s{이/가} 사라졌다."
+msgstr "점액이 사라졌다!"
 
 #: src/spell.c:1569
 #, c-format
@@ -37403,21 +37410,25 @@ msgstr "생명이 보존될 것이다"
 msgid "You are slowing down."
 msgstr "느려지고 있다."
 
+# ============================================================
+# 석화 진행 메시지 (Petrification progress messages)
+# 이 메시지들은 석화가 진행되면서 순차적으로 표시됨
+# ============================================================
 #: src/timeout.c:131
 msgid "Your limbs are stiffening."
-msgstr "사지가 질퍽해지고 있다."
+msgstr "사지가 굳어가고 있다."
 
 #: src/timeout.c:132
 msgid "Your limbs have turned to stone."
-msgstr "%s{이/가} 돌로 변했다!"
+msgstr "사지가 돌로 변했다."
 
 #: src/timeout.c:133
 msgid "You have turned to stone."
-msgstr "돌로 변했다..."
+msgstr "돌로 변했다."
 
 #: src/timeout.c:134
 msgid "You are a statue."
-msgstr "당신은 %s."
+msgstr "당신은 석상이다."
 
 # animal_parts
 #: src/timeout.c:146 src/timeout.c:147 src/timeout.c:409 src/timeout.c:410
@@ -37432,22 +37443,25 @@ msgstr "말단"
 msgid "getting stoned"
 msgstr "돌이 되어가는 중"
 
-#
+# ============================================================
+# 구토 진행 메시지 (Vomiting progress messages)
+# 조합 패턴: You_ + 메시지
+# ============================================================
 #: src/timeout.c:190
 msgid "are feeling mildly nauseated."
-msgstr "혼란스러워지고 있다."
+msgstr "약간 메스꺼움을 느낀다."
 
 #: src/timeout.c:191
 msgid "feel slightly confused."
-msgstr "약간 바랬다"
+msgstr "약간 혼란스럽다."
 
 #: src/timeout.c:192
 msgid "can't seem to think straight."
-msgstr "%s{은/는} 지금 아무것도 볼 수 없다."
+msgstr "똑바로 생각할 수가 없다."
 
 #: src/timeout.c:193
 msgid "feel incredibly sick."
-msgstr "엄청나게 아픔을 느낍니다."
+msgstr "엄청나게 아프다."
 
 # 조합 패턴: "You " + "are about to vomit."
 #: src/timeout.c:194
@@ -37499,13 +37513,16 @@ msgstr "크게 토한다"
 msgid "You find it hard to breathe."
 msgstr "왕좌는 너무 단단해서 부술 수 없다."
 
+# ============================================================
+# 질식 진행 메시지 (Suffocation progress messages)
+# ============================================================
 #: src/timeout.c:281
 msgid "You're gasping for air."
-msgstr "공중에 앉아있다."
+msgstr "헐떡이며 공기를 찾고 있다."
 
 #: src/timeout.c:282
 msgid "You can no longer breathe."
-msgstr "더 이상 %s{을/를} 탈 수 없다."
+msgstr "더 이상 숨을 쉴 수 없다."
 
 #: src/timeout.c:283
 #, c-format
@@ -37611,17 +37628,19 @@ msgstr "분홍 점액"
 msgid "The slime that covers you is burned away!"
 msgstr "슬라임이 불타 사라졌다!"
 
+# 점액 사망 원인 (Slime death reason)
 #: src/timeout.c:473
 msgid "turned into green slime"
-msgstr "%s{을/를} 슬라임으로 만들었다."
+msgstr "녹색 점액으로 변함"
 
 #: src/timeout.c:504
 msgid "slimicide"
 msgstr "점액 살해"
 
+# 점액 학살 메시지 (Slime genocided message)
 #: src/timeout.c:507
 msgid "green slime has been genocided..."
-msgstr "학살된 생물이 없다%s."
+msgstr "녹색 점액이 학살되었다..."
 
 #: src/timeout.c:510
 #, c-format
@@ -37633,9 +37652,13 @@ msgstr "그래, 그렇다.  %s"
 msgid "Unfortunately, %s"
 msgstr "불행히도, %s"
 
+# ============================================================
+# 페이징 아웃 메시지 (Phasing out messages)
+# 물질을 통과하는 능력이 끝나갈 때 표시
+# ============================================================
 #: src/timeout.c:530
 msgid "You start to feel bloated."
-msgstr "%s{이} 굴러가기 시작하는 것을."
+msgstr "부풀어 오르는 느낌이 든다."
 
 #: src/timeout.c:531
 msgid "You are feeling rather flabby."
@@ -37643,7 +37666,7 @@ msgstr "몸이 축 처지는 느낌이다."
 
 #: src/timeout.c:550
 msgid "You seem to have some trouble breathing."
-msgstr "%s보다 더 즐긴 것 같다..."
+msgstr "숨쉬기가 힘든 것 같다."
 
 #: src/timeout.c:551
 msgid "The air here seems foul."
@@ -37743,9 +37766,10 @@ msgstr "많은 소음을 냈다!"
 msgid "sleeping"
 msgstr "자는 중"
 
+# 기상 메시지 (Wake up message)
 #: src/timeout.c:974
 msgid "You wake up."
-msgstr "%s{이/가} 깨어났다."
+msgstr "깨어났다."
 
 #: src/timeout.c:1117
 #, c-format

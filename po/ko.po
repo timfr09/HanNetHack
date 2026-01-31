@@ -26529,9 +26529,10 @@ msgstr "효과적으로 약탈하려면 무덤을 파야 한다..."
 msgid "Loot in what direction?"
 msgstr "어느 방향으로?"
 
+# 잘못된 약탈 위치 오류 메시지
 #: src/pickup.c:2293
 msgid "Invalid loot location"
-msgstr "유효한 방향키%s%s%s는:"
+msgstr "잘못된 약탈 위치"
 
 #: src/pickup.c:2299
 #, c-format
@@ -31391,13 +31392,17 @@ msgstr "안 돼, 필멸자여! 그것은 이루어지지 않을 것이다."
 msgid "Wiped out %s%s."
 msgstr "%s%s{을/를} 전멸시켰다."
 
+# ============================================================
+# 학살 사망 원인 (Genocide death reasons)
+# 이 문자열들은 killer.name에 사용되는 사망 원인
+# ============================================================
 #: src/read.c:2920
 msgid "genocidal confusion"
-msgstr "허브차"
+msgstr "학살적 혼란"
 
 #: src/read.c:2924
 msgid "imperious order"
-msgstr "권위있는 명령에 따라, %s..."
+msgstr "왕좌의 권위적 명령"
 
 #: src/read.c:2959
 #, c-format
@@ -32821,13 +32826,18 @@ msgstr "그 내용물이 쏟아졌다."
 msgid "quite upset"
 msgstr "꽤 화가 난"
 
+# ============================================================
+# 상인 분노 수준 (Shopkeeper anger levels)
+# 조합 패턴: "%s seems to be %s." + 분노 수준
+# 수준: "quite upset", "ticked off", "furious"
+# ============================================================
 #: src/shk.c:141
 msgid "ticked off"
-msgstr "벗을"
+msgstr "화가 난"
 
 #: src/shk.c:141
 msgid "furious"
-msgstr "%s{이} 격노했다!"
+msgstr "격노한"
 
 #: src/shk.c:207
 msgid "have no room for the gold!"
@@ -32861,21 +32871,30 @@ msgstr "%s! 계산 안 하고 가려고?!"
 msgid "%s %s that you need to pay before leaving%s"
 msgstr "%s{이/가} 떠나기 전에 돈을 내야 한다고 %s%s"
 
+# ============================================================
+# 상인 의사소통 (Shopkeeper communication)
+# 조합 패턴 1: "%s %s that you need to pay before leaving%s"
+# 조합 패턴 2: "%s %s%s your bill for the other %s first."
+# ============================================================
 #: src/shk.c:558 src/shk.c:2388
 msgid "points out"
-msgstr "%s의 반지"
+msgstr "지적한다"
 
 #: src/shk.c:558
 msgid "makes it clear"
-msgstr "분명히 하다"
+msgstr "분명히 한다"
 
+# ============================================================
+# 상점 빚/신용 변동 (Shop debt/credit changes)
+# 조합 패턴: "%s by %ld %s." + 변동 설명
+# ============================================================
 #: src/shk.c:589
 msgid "debt has increased"
-msgstr "빚이 %ld %s 늘었다."
+msgstr "빚이 늘었다"
 
 #: src/shk.c:593
 msgid "credit has been reduced"
-msgstr "신용이 지워졌다."
+msgstr "신용이 줄었다"
 
 #: src/shk.c:600
 #, c-format
@@ -32901,17 +32920,22 @@ msgstr "%ld %s 가치의 물건을 훔쳤다."
 msgid "This shop %s %s."
 msgstr "이 상점은 %s %s."
 
+# ============================================================
+# 상태 불확실 표현 (Uncertain state expression)
+# 조합 패턴 1: "This shop %s %s." + "seems to be"/"is" + "deserted"/"untended"
+# 조합 패턴 2: "The saddle %s cursed." + "seems to be"/"is"
+# ============================================================
 #: src/shk.c:687 src/steed.c:637
 msgid "seems to be"
-msgstr "이것은 %s인 것 같다."
+msgstr "인 것 같다"
 
 #: src/shk.c:688
 msgid "deserted"
-msgstr "모독된"
+msgstr "버려진"
 
 #: src/shk.c:688
 msgid "untended"
-msgstr "손잡이"
+msgstr "무인"
 
 #: src/shk.c:742
 #, c-format
@@ -33018,13 +33042,18 @@ msgstr "이 교활한 %s! 그 곡괭이를 가지고 여기서 나가!"
 msgid "%s %s your pick!"
 msgstr "%s{이/가} 당신의 곡괭이를 %s!"
 
+# ============================================================
+# 상인 반응 (Shopkeeper reaction to pick)
+# 조합 패턴: "%s %s your pick!" + 반응
+# 눈이 있으면: "glares at", 없으면: "is dismayed because of"
+# ============================================================
 #: src/shk.c:883
 msgid "glares at"
-msgstr "%s{이/가} 당신을%s 노려보았다."
+msgstr "노려본다"
 
 #: src/shk.c:884
 msgid "is dismayed because of"
-msgstr "~때문에 낙담하다"
+msgstr "당황해한다"
 
 #: src/shk.c:954
 msgid "have no credit or debt in here."
@@ -33059,13 +33088,17 @@ msgstr "가격이 크레딧에서 차감된다."
 msgid "price is partially covered by your credit."
 msgstr "가격이 부분적으로 크레딧으로 지불된다."
 
+# ============================================================
+# 상인 회복 (Shopkeeper recovery)
+# 조합 패턴: "%s %s." + Shknam + 회복 동작
+# ============================================================
 #: src/shk.c:1329
 msgid "wakes up"
-msgstr "%s{이/가} 깨어났다."
+msgstr "깨어났다"
 
 #: src/shk.c:1329
 msgid "can move again"
-msgstr "다시 볼 수 있다."
+msgstr "다시 움직일 수 있다"
 
 #: src/shk.c:1355 src/shk.c:5259
 #, c-format
@@ -33082,13 +33115,18 @@ msgstr "만족한 %s{이/가} 갑자기 사라졌다!"
 msgid "%s calms down."
 msgstr "%s{이/가} 진정되었다."
 
+# ============================================================
+# 상인 분노 (Shopkeeper anger)
+# 조합 패턴: "%s %s!" + Shknam + 분노 상태
+# 경우: "gets angry" (새로 화남), "is furious" (이미 화난 상태에서 더 화남)
+# ============================================================
 #: src/shk.c:1429
 msgid "gets angry"
-msgstr "%s{이/가} 화났다!"
+msgstr "화났다"
 
 #: src/shk.c:1429
 msgid "is furious"
-msgstr "%s{이/가} 당신의 %s{을/를} 태우고 있다!"
+msgstr "격노했다"
 
 #: src/shk.c:1434
 #, c-format
@@ -33158,13 +33196,17 @@ msgstr "%s{은/는} 지불에 관심이 없다."
 msgid "%s is too far to receive your payment."
 msgstr "%s{이/가} 너무 멀어 지불을 받을 수 없다."
 
+# ============================================================
+# 상인 잠자기 (Shopkeeper sleeping/helpless)
+# 조합 패턴: "%s %s." + Shknam + 상태
+# ============================================================
 #: src/shk.c:1807
 msgid "seems to be napping"
-msgstr "%s{이/가} 잡고 있는 것 같다."
+msgstr "낮잠을 자는 것 같다"
 
 #: src/shk.c:1807
 msgid "doesn't respond"
-msgstr "%s{은/는} 반응하지 않는다."
+msgstr "반응하지 않는다"
 
 #: src/shk.c:1814 src/shk.c:1844
 #, c-format
@@ -33249,19 +33291,21 @@ msgid "You owe %s %ld %s "
 msgstr "%s{에게} %ld %s{을/를} 빚졌다."
 
 # ============================================================
-# 던전 메시지 (Dungeon Messages)
+# 상점 빚 이유 (Shop debt reasons)
+# 조합 패턴: "You owe %s %ld %s " + 빚 이유
+# 예: "You owe Izchak 100 zorkmids for the use of merchandise."
 # ============================================================
 #: src/shk.c:1904
 msgid "you picked up in the store."
-msgstr "여기서 내려갈 수%s 없다."
+msgstr "상점에서 주운 것에 대한."
 
 #: src/shk.c:1907
 msgid "for gold picked up and the use of merchandise."
-msgstr "%ld %s 가치의 물건을 훔쳤다."
+msgstr "금화와 상품 사용에 대한."
 
 #: src/shk.c:1909
 msgid "for the use of merchandise."
-msgstr "%ld %s 가치의 물건을 훔쳤다."
+msgstr "상품 사용에 대한."
 
 # ============================================================
 # 아이템 메시지 (Item Messages)

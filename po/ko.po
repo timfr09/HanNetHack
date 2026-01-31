@@ -33457,13 +33457,18 @@ msgstr ", %s %s을(를) 흔들며,"
 msgid "%s %slooks at your corpse%s and %s."
 msgstr "%s{이/가} %s당신의 시체를%s 보고 %s."
 
+# ============================================================
+# 상인 시체 관찰 (Shopkeeper corpse viewing)
+# 조합 패턴: "%s %slooks at your corpse%s and %s."
+# "wakes up, " 삽입 후 "sighs" 또는 "disappears"
+# ============================================================
 #: src/shk.c:2545
 msgid "wakes up, "
-msgstr "%s{이/가} 깨어났다."
+msgstr "깨어나서, "
 
 #: src/shk.c:2546
 msgid "sighs"
-msgstr "히힝 운다."
+msgstr "한숨 쉰다"
 
 #: src/shk.c:2559
 #, c-format
@@ -33637,11 +33642,13 @@ msgid "have no credit remaining."
 msgstr "남은 신용이 없다."
 
 # ============================================================
-# 두루마리 (Scrolls)
+# 빚 상태 부사 (Debt status adverb)
+# 조합 패턴: "%sowe %s %ld %s" + "still " (여전히)
+# 예: "You still owe Izchak 100 zorkmids"
 # ============================================================
 #: src/shk.c:3780
 msgid "still "
-msgstr "%s."
+msgstr "여전히 "
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -34257,9 +34264,14 @@ msgstr "빚이 %ld %s 늘었다."
 msgid "%s%s blocks your way!"
 msgstr "%s%s{이/가} 길을 막았다!"
 
+# ============================================================
+# 투명 감지 (Invisible detection)
+# 조합 패턴: "%s%s blocks your way!" + " senses your motion and"
+# 투명 상태일 때 삽입, 아니면 빈 문자열
+# ============================================================
 #: src/shk.c:5752 src/shk.c:5789
 msgid " senses your motion and"
-msgstr "%s{이/가} 당신의 정신을 공격한다!"
+msgstr " 당신의 움직임을 감지하고"
 
 #: src/shk.c:5983
 #, c-format
@@ -34293,9 +34305,11 @@ msgstr "방금 섞었다"
 msgid " stinking batch!"
 msgstr " 악취 나는 무리!"
 
+# 소유격 접미사 (Possessive suffix - "yours.")
+# 한국어는 소유격이 불필요, 마침표만 사용
 #: src/shk.c:6024
 msgid "s."
-msgstr "%s."
+msgstr "."
 
 #: src/shk.c:6044
 msgid "You set it, you buy it!"
@@ -34702,9 +34716,11 @@ msgstr "편집증적이다."
 msgid "tawt you taw a puttie tat"
 msgstr "고양이 본 것 같아"
 
+# 왕좌 앉기 효과 - 투시 (Throne sitting - see invisible)
+# 조합 패턴: You("%s!", option) - 환각 또는 일반
 #: src/sit.c:709
 msgid "thought you saw something"
-msgstr "%s{이/가} 뭔가 말한다."
+msgstr "뭔가를 본 것 같다"
 
 #: src/sit.c:718
 msgid "slower."
@@ -34766,13 +34782,17 @@ msgstr "멀리서"
 msgid "%s on your %s %s to stand up."
 msgstr "%s{이/가} %s 위에서 %s 일어서려 한다."
 
+# ============================================================
+# 동물 관련 소리 (Animal-related sounds)
+# 이 메시지들은 You_hear()로 사용됨
+# ============================================================
 #: src/sounds.c:122
 msgid "a sound reminiscent of an elephant stepping on a peanut."
-msgstr "동물 굴을 연상시키는 냄새를 감지했다."
+msgstr "코끼리가 땅콩을 밟는 듯한 소리."
 
 #: src/sounds.c:123
 msgid "a sound reminiscent of a seal barking."
-msgstr "마구간을 연상시키는%s 냄새를 감지했다."
+msgstr "물개가 짖는 듯한 소리."
 
 #: src/sounds.c:123
 msgid "Doctor Dolittle!"
@@ -34859,9 +34879,10 @@ msgstr "습지 가스 냄새가 난다!"
 msgid "hear Donald Duck!"
 msgstr "도널드 덕 소리가 들린다!"
 
+# 금고 소리 (Vault sound)
 #: src/sounds.c:258
 msgid "someone counting gold coins."
-msgstr "누군가 %s{을/를} 소환한다."
+msgstr "누군가 금화를 세는 소리."
 
 #: src/sounds.c:259
 msgid "the quarterback calling the play."
@@ -34879,16 +34900,16 @@ msgstr "순찰 중인 경비병의 발소리."
 msgid "Ebenezer Scrooge!"
 msgstr "에베네저 스크루지!"
 
+# ============================================================
+# 병영 소리 (Barracks sounds)
+# ============================================================
 #: src/sounds.c:289
 msgid "blades being honed."
-msgstr "짓눌리고 있다."
+msgstr "칼날을 가는 소리."
 
-# ============================================================
-# 두루마리 (Scrolls)
-# ============================================================
 #: src/sounds.c:289
 msgid "loud snoring."
-msgstr "%s{을/를} 가렸다."
+msgstr "시끄러운 코골이 소리."
 
 #: src/sounds.c:289
 msgid "dice being thrown."

@@ -13916,7 +13916,7 @@ msgstr "Cwn Annwn의 울부짖음을..."
 
 #: src/hack.c:4185 src/trap.c:5073
 msgid "Suddenly you wake up!"
-msgstr "갑자기 %s할 수 있게 되었다."
+msgstr "갑자기 깨어났다!"
 
 #: src/hack.c:4199
 #, c-format
@@ -17121,9 +17121,10 @@ msgstr ", 매우 빠름"
 msgid ", concealed"
 msgstr ", 숨어 있음"
 
+# 조합 패턴: 몬스터 상태 설명 추가 (monster status suffix)
 #: src/insight.c:3490
 msgid ", disguised"
-msgstr "%s{이/가} %s(으)로 변장함"
+msgstr ", 변장 중"
 
 # 몬스터 간 상호작용 상태
 #: src/insight.c:3495
@@ -17349,7 +17350,7 @@ msgstr "모든"
 
 #: src/invent.c:2722
 msgid "the rest"
-msgstr "%s"
+msgstr "나머지"
 
 #: src/invent.c:2838
 #, c-format
@@ -18417,13 +18418,14 @@ msgstr "셔츠가 갈기갈기 찢어졌다!"
 msgid "is crushed"
 msgstr "처벌받는 중"
 
+# 문/상자 파괴 상태 (door/chest destruction states)
 #: src/lock.c:1301
 msgid "is pulped"
-msgstr "촉지가 있는"
+msgstr "으깨졌다"
 
 #: src/lock.c:1304
 msgid "is mashed"
-msgstr "문이 부서졌다%s"
+msgstr "뭉개졌다"
 
 #: src/lock.c:1307 src/trap.c:328
 msgid "shatters"
@@ -18435,7 +18437,7 @@ msgstr "조각조각 부서졌다"
 
 #: src/lock.c:1313
 msgid "is destroyed"
-msgstr "%s{이/가} 파괴되었다!"
+msgstr "파괴되었다"
 
 #: src/mail.c:135
 #, c-format
@@ -18598,17 +18600,18 @@ msgstr "cnt=%d using %d, cnttmp=%d, cntdiv=%d"
 msgid "%s%s %s%s%c"
 msgstr "%s%s %s %s%c"
 
+# 조합 패턴: 몬스터 출현 설명 (monster appearance modifiers)
 #: src/makemon.c:1490
 msgid " suddenly"
-msgstr "%s%s{이/가} 갑자기 %s%s%s!"
+msgstr " 갑자기"
 
 #: src/makemon.c:1493 src/monmove.c:44 src/teleport.c:1695
 msgid " next to you"
-msgstr "당신에게 접근한다."
+msgstr " 당신 옆에"
 
 #: src/makemon.c:1494 src/teleport.c:1696
 msgid " close by"
-msgstr "너무 가깝다!"
+msgstr " 가까이에"
 
 #: src/makemon.c:2121
 #, c-format

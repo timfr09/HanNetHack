@@ -10496,7 +10496,7 @@ msgstr "윽 - 개밥이잖아!"
 
 #: src/eat.c:2146
 msgid "!#?&* elf kibble!"
-msgstr ""
+msgstr "!#?&* 엘프 사료!"
 
 #: src/eat.c:2149
 msgid "A little goes a long way."
@@ -11205,12 +11205,12 @@ msgstr "최근 메시지:"
 #: src/end.c:567
 #, c-format
 msgid "Game began %4.4s-%2.2s-%2.2s %2.2s:%2.2s:%2.2s"
-msgstr ""
+msgstr "게임 시작 %4.4s-%2.2s-%2.2s %2.2s:%2.2s:%2.2s"
 
 #: src/end.c:571
 #, c-format
 msgid ", ended %4.4s-%2.2s-%2.2s %2.2s:%2.2s:%2.2s."
-msgstr ""
+msgstr ", 종료 %4.4s-%2.2s-%2.2s %2.2s:%2.2s:%2.2s."
 
 #: src/end.c:594
 msgid "Inventory:"
@@ -12178,11 +12178,11 @@ msgstr "오래된 %s이(가) 남아있을 수 있다."
 
 #: src/files.c:2893
 msgid "Checkpoint data incompletely written or subsequently clobbered."
-msgstr ""
+msgstr "체크포인트 데이터가 불완전하게 기록되었거나 손상되었다."
 
 #: src/files.c:2895
 msgid "Recovery impossible."
-msgstr ""
+msgstr "복구 불가능."
 
 #: src/files.c:3171 src/options.c:8976
 msgid "Variable playground locations:"
@@ -14611,7 +14611,7 @@ msgstr "벗을"
 
 #: src/insight.c:223 src/insight.c:1796
 msgid "took"
-msgstr ""
+msgstr "걸렸다"
 
 # === trap_predicament (hack.c) ===
 #: src/insight.c:245 src/obj_descr_i18n.c:467
@@ -14675,7 +14675,7 @@ msgstr "탐험"
 #: src/insight.c:418
 #, c-format
 msgid "disabled loading%s of bones levels"
-msgstr ""
+msgstr "bones 레벨%s 불러오기 비활성화"
 
 # ============================================================
 # bones level 관련
@@ -16016,11 +16016,11 @@ msgstr " 독가스 피해 감소"
 #: src/insight.c:1806
 #, c-format
 msgid " impaired by metallic armor%s"
-msgstr ""
+msgstr " 금속 갑옷%s에 의해 손상"
 
 #: src/insight.c:1807
 msgid ", mitigated by your robe"
-msgstr ""
+msgstr ", 로브로 완화됨"
 
 # 로브 착용 시 주문 시전 향상
 #: src/insight.c:1809
@@ -16211,7 +16211,7 @@ msgstr "%s안전하게 기도"
 #: src/insight.c:1949
 #, c-format
 msgid "Fruit #%d "
-msgstr ""
+msgstr "과일 #%d "
 
 #: src/insight.c:1952
 msgid "The current fruit "
@@ -16550,7 +16550,7 @@ msgstr "%ld번"
 #: src/insight.c:2282
 #, c-format
 msgid "Achievement%s:"
-msgstr ""
+msgstr "업적%s:"
 
 # ============================================================
 # 게임 진행 업적 (Game Progress Achievements)
@@ -16667,7 +16667,7 @@ msgstr "%s 계급에 도달했다"
 #: src/insight.c:2407
 #, c-format
 msgid " [Unexpected achievement #%d.]"
-msgstr ""
+msgstr " [예상치 못한 업적 #%d.]"
 
 #: src/insight.c:2552
 msgid "No chronicled events."
@@ -16698,11 +16698,11 @@ msgstr "%s 정렬 순서"
 
 #: src/insight.c:2764
 msgid "vanquished monster counts (also genocided types)"
-msgstr ""
+msgstr "처치한 괴물 수 (학살된 종류 포함)"
 
 #: src/insight.c:2765
 msgid "genocided monster types (also vanquished counts)"
-msgstr ""
+msgstr "학살된 괴물 종류 (처치 수 포함)"
 
 #: src/insight.c:2856
 msgid "Do you want an account of creatures vanquished?"
@@ -16895,7 +16895,7 @@ msgstr ", 길들여진"
 #: src/insight.c:3314
 #, c-format
 msgid "; hungry %ld; apport %d"
-msgstr ""
+msgstr "; 배고픔 %ld; 운반력 %d"
 
 # ============================================================
 # 몬스터 상태 표시 (Monster Status)
@@ -16973,7 +16973,7 @@ msgstr ", 느림"
 
 #: src/insight.c:3378
 msgid ", [? speed]"
-msgstr ""
+msgstr ", [? 속도]"
 
 #: src/insight.c:3380 src/insight.c:3492
 msgid ", invisible"
@@ -24289,11 +24289,11 @@ msgstr "매끄러운 방패"
 
 #: src/objnam.c:753
 msgid "fruit"
-msgstr ""
+msgstr "과일"
 
 #: src/objnam.c:788
 msgid "very large"
-msgstr "많이 바랬다"
+msgstr "매우 큰"
 
 # 아이템 접두사
 #: src/objnam.c:810
@@ -24906,12 +24906,12 @@ msgstr "'%s' %s \"%s: %s\"."
 
 #: src/options.c:4086
 msgid "0 (off: don't highlight status fields)"
-msgstr ""
+msgstr "0 (끔: 상태 필드 강조 안 함)"
 
 #: src/options.c:4088
 #, c-format
 msgid "%ld (on: highlight status for %ld turns)"
-msgstr ""
+msgstr "%ld (켬: %ld 턴 동안 상태 강조)"
 
 # 지원되지 않는 기능
 #: src/options.c:4091
@@ -25063,49 +25063,49 @@ msgstr "전리품 정렬 방식 선택:"
 
 #: src/options.c:6240
 msgid "compass ('east' or '3s' or '2n,4w')"
-msgstr ""
+msgstr "나침반 ('east' 또는 '3s' 또는 '2n,4w')"
 
 #: src/options.c:6246
 msgid "full compass ('east' or '3south' or '2north,4west')"
-msgstr ""
+msgstr "전체 나침반 ('east' 또는 '3south' 또는 '2north,4west')"
 
 #: src/options.c:6251
 msgid "map <x,y>"
-msgstr ""
+msgstr "맵 <x,y>"
 
 #: src/options.c:6256
 msgid "screen [row,column]"
-msgstr ""
+msgstr "화면 [행,열]"
 
 #: src/options.c:6261
 msgid "none (no coordinates displayed)"
-msgstr ""
+msgstr "없음 (좌표 표시 안 함)"
 
 #: src/options.c:6265
 #, c-format
 msgid "map: upper-left: <%d,%d>, lower-right: <%d,%d>%s"
-msgstr ""
+msgstr "맵: 좌상단: <%d,%d>, 우하단: <%d,%d>%s"
 
 #: src/options.c:6267
 msgid "; column 0 unused, off left edge"
-msgstr ""
+msgstr "; 0열 미사용, 왼쪽 가장자리 밖"
 
 #: src/options.c:6271
 msgid "screen: row is offset to accommodate tty interface's use of top line"
-msgstr ""
+msgstr "화면: 행이 tty 인터페이스의 상단 줄 사용을 수용하기 위해 오프셋됨"
 
 #: src/options.c:6273
 msgid "; column 80 is not used"
-msgstr ""
+msgstr "; 80열 미사용"
 
 #: src/options.c:6277
 #, c-format
 msgid "screen: upper-left: [%02d,%02d], lower-right: [%d,%d]%s"
-msgstr ""
+msgstr "화면: 좌상단: [%02d,%02d], 우하단: [%d,%d]%s"
 
 #: src/options.c:6283
 msgid "Select coordinate display when auto-describing a map position:"
-msgstr ""
+msgstr "맵 위치 자동 설명 시 좌표 표시 방식 선택:"
 
 # 위치 필터링 옵션
 #: src/options.c:6311
@@ -25122,7 +25122,7 @@ msgstr "같은 영역 내"
 
 #: src/options.c:6325
 msgid "Select location filtering when going for next/previous map position:"
-msgstr ""
+msgstr "다음/이전 맵 위치 이동 시 위치 필터링 선택:"
 
 #: src/options.c:6368
 msgid "What new autopickup exception pattern?"
@@ -25219,7 +25219,7 @@ msgstr "도움말 표시"
 
 #: src/options.c:8673
 msgid "ERROR"
-msgstr ""
+msgstr "오류"
 
 #: src/options.c:8682
 msgid "  (for autopickup)"
@@ -27032,18 +27032,18 @@ msgid "become much too small for your shirt!"
 msgstr "셔츠에 비해 너무 작아졌다!"
 
 #: src/polyself.c:1220
-#, fuzzy, c-format
+#, c-format
 msgid "horn%s"
-msgstr "뿔피리"
+msgstr "뿔%s"
 
 #: src/polyself.c:1221
 #, c-format
 msgid "%s %s through %s."
-msgstr "%s{이/가} %s{을/를} %s 통과했다."
+msgstr "%s{이/가} %s{을/를} %s 뚫었다."
 
 #: src/polyself.c:1221
 msgid "pierce"
-msgstr "더 행복하다"
+msgstr "뚫다"
 
 #: src/polyself.c:1226 src/polyself.c:1252
 #, c-format
@@ -28999,23 +28999,23 @@ msgstr "%s{이/가} 새 에너지를 얻었다."
 
 #: src/pray.c:59
 msgid "Moloch"
-msgstr ""
+msgstr "몰로크"
 
 #: src/pray.c:62
 msgid "booms out"
-msgstr "%s 나갔다."
+msgstr "울려 퍼진다"
 
 #: src/pray.c:62
 msgid "thunders"
-msgstr "약탈자"
+msgstr "천둥치듯 말한다"
 
 #: src/pray.c:62
 msgid "rings out"
-msgstr "%s의 반지"
+msgstr "울려 퍼진다"
 
 #: src/pray.c:62
 msgid "booms"
-msgstr "울립니다"
+msgstr "쿵쿵거린다"
 
 #: src/pray.c:364 src/pray.c:595 src/pray.c:1183 src/pray.c:1195
 #: src/pray.c:1298
@@ -29658,9 +29658,8 @@ msgid "blood covers the altar!"
 msgstr "피가 제단을 덮는다!"
 
 #: src/pray.c:1749
-#, fuzzy
 msgid "something dreadful"
-msgstr "무언가"
+msgstr "무시무시한 무언가"
 
 #: src/pray.c:1752
 #, c-format
@@ -30019,11 +30018,11 @@ msgstr "사제"
 
 #: src/priest.c:348
 msgid "renegade "
-msgstr ""
+msgstr "배교자 "
 
 #: src/priest.c:353
 msgid "grand "
-msgstr ", "
+msgstr "대 "
 
 #: src/priest.c:356
 msgid "guardian "
@@ -31413,17 +31412,18 @@ msgstr "정복자"
 msgid "Conqueress"
 msgstr "정복자"
 
+# 야만인의 신들 (코난 세계관)
 #: src/role.c:83
 msgid "Mitra"
-msgstr ""
+msgstr "미트라"
 
 #: src/role.c:83
 msgid "Crom"
-msgstr ""
+msgstr "크롬"
 
 #: src/role.c:83 src/role.c:1983
 msgid "Set"
-msgstr "설정"
+msgstr "세트"
 
 #: src/role.c:114
 msgid "Caveman"
@@ -31470,19 +31470,18 @@ msgstr "모험가"
 msgid "Pioneer"
 msgstr "개척자"
 
-# 단수 항목을 나타냄
+# 동굴인의 신들 (바빌로니아 신화)
 #: src/role.c:124
-#, fuzzy
 msgid "Anu"
-msgstr "한"
+msgstr "아누"
 
 #: src/role.c:124
 msgid "_Ishtar"
-msgstr ""
+msgstr "이슈타르"
 
 #: src/role.c:124
 msgid "Anshar"
-msgstr ""
+msgstr "안샤르"
 
 #: src/role.c:155
 msgid "Healer"
@@ -31533,17 +31532,18 @@ msgstr "의사"
 msgid "Chirurgeon"
 msgstr "외과의"
 
+# 치유사의 신들 (그리스 신화)
 #: src/role.c:165
 msgid "_Athena"
-msgstr ""
+msgstr "아테나"
 
 #: src/role.c:165
 msgid "Hermes"
-msgstr ""
+msgstr "헤르메스"
 
 #: src/role.c:165
 msgid "Poseidon"
-msgstr ""
+msgstr "포세이돈"
 
 #: src/role.c:195 src/role.c:200
 msgid "Knight"
@@ -31590,18 +31590,18 @@ msgstr "귀부인"
 msgid "Paladin"
 msgstr "성기사"
 
+# 기사의 신들 (켈트 신화)
 #: src/role.c:205
 msgid "Lugh"
-msgstr ""
+msgstr "루"
 
 #: src/role.c:205
-#, fuzzy
 msgid "_Brigit"
-msgstr "밝은 빛!"
+msgstr "브리짓"
 
 #: src/role.c:205
 msgid "Manannan Mac Lir"
-msgstr ""
+msgstr "마난난 막 리르"
 
 #: src/role.c:235
 msgid "Monk"
@@ -31644,17 +31644,18 @@ msgstr "불의 제자"
 msgid "Master"
 msgstr "스승"
 
+# 수도승의 신들 (중국 신화)
 #: src/role.c:245
 msgid "Shan Lai Ching"
-msgstr ""
+msgstr "산라이칭"
 
 #: src/role.c:245
 msgid "Chih Sung-tzu"
-msgstr ""
+msgstr "적송자"
 
 #: src/role.c:245
 msgid "Huan Ti"
-msgstr ""
+msgstr "환제"
 
 #: src/role.c:276 src/role.c:280
 msgid "Priest"
@@ -31756,17 +31757,15 @@ msgstr "도둑"
 
 #: src/role.c:329
 msgid "Issek"
-msgstr ""
+msgstr "이섹"
 
 #: src/role.c:329
-#, fuzzy
 msgid "Mog"
-msgstr "개"
+msgstr "모그"
 
 #: src/role.c:329
-#, fuzzy
 msgid "Kos"
-msgstr "코쿠슈"
+msgstr "코스"
 
 #: src/role.c:359
 msgid "Ranger"
@@ -31824,15 +31823,15 @@ msgstr "여저격수"
 
 #: src/role.c:383
 msgid "Mercury"
-msgstr ""
+msgstr "메르쿠리우스"
 
 #: src/role.c:383
 msgid "_Venus"
-msgstr ""
+msgstr "베누스"
 
 #: src/role.c:383
 msgid "Mars"
-msgstr ""
+msgstr "마르스"
 
 #: src/role.c:414
 msgid "Samurai"
@@ -31881,15 +31880,15 @@ msgstr "쇼군"
 
 #: src/role.c:424
 msgid "_Amaterasu Omikami"
-msgstr ""
+msgstr "아마테라스 오미카미"
 
 #: src/role.c:424
 msgid "Raijin"
-msgstr ""
+msgstr "라이진"
 
 #: src/role.c:424
 msgid "Susanowo"
-msgstr ""
+msgstr "스사노오"
 
 #: src/role.c:454
 msgid "Tourist"
@@ -31938,17 +31937,15 @@ msgstr "모험가"
 
 #: src/role.c:464
 msgid "Blind Io"
-msgstr ""
+msgstr "블라인드 이오"
 
 #: src/role.c:464
-#, fuzzy
 msgid "_The Lady"
-msgstr "그 "
+msgstr "레이디"
 
 #: src/role.c:464
-#, fuzzy
 msgid "Offler"
-msgstr "훌쩍거리다"
+msgstr "오플러"
 
 #: src/role.c:494
 msgid "Valkyrie"
@@ -32006,18 +32003,16 @@ msgid "Lady"
 msgstr "여군주"
 
 #: src/role.c:504
-#, fuzzy
 msgid "Tyr"
-msgstr "%s{이/가} 산산조각났다!"
+msgstr "티르"
 
 #: src/role.c:504
-#, fuzzy
 msgid "Odin"
-msgstr "\"오딘.\""
+msgstr "오딘"
 
 #: src/role.c:504
 msgid "Loki"
-msgstr ""
+msgstr "로키"
 
 #: src/role.c:534 src/role.c:542
 msgid "Wizard"
@@ -32068,134 +32063,114 @@ msgstr "마도사"
 
 #: src/role.c:544
 msgid "Ptah"
-msgstr ""
+msgstr "프타"
 
 #: src/role.c:544
 msgid "Thoth"
-msgstr ""
+msgstr "토트"
 
 #: src/role.c:544
 msgid "Anhur"
-msgstr ""
+msgstr "안후르"
 
 # ============================================================
 # 종족 형용사 (Race Adjectives)
 # ============================================================
 #: src/role.c:586
-#, fuzzy
 msgid "humanity"
-msgstr "인간"
+msgstr "인류"
 
 #: src/role.c:588
-#, fuzzy
 msgid "man"
-msgstr "많은"
+msgstr "남자"
 
 #: src/role.c:588
-#, fuzzy
 msgid "woman"
-msgstr "혈거인"
+msgstr "여자"
 
 #: src/role.c:606
-#, fuzzy
 msgid "elven"
-msgstr "그들 자체"
+msgstr "엘프의"
 
 #: src/role.c:607
-#, fuzzy
 msgid "elvenkind"
-msgstr "엘프왕"
+msgstr "엘프족"
 
 #: src/role.c:626
-#, fuzzy
 msgid "dwarven"
-msgstr "드워프"
+msgstr "드워프의"
 
 #: src/role.c:627
-#, fuzzy
 msgid "dwarvenkind"
-msgstr "드워프 왕"
+msgstr "드워프족"
 
 #: src/role.c:646
-#, fuzzy
 msgid "gnomish"
-msgstr "노움 마법사"
+msgstr "노움의"
 
 #: src/role.c:647
-#, fuzzy
 msgid "gnomehood"
-msgstr "노움 군주"
+msgstr "노움족"
 
 #: src/role.c:666
 msgid "orcish"
-msgstr ""
+msgstr "오크의"
 
 #: src/role.c:667
 msgid "orcdom"
-msgstr ""
+msgstr "오크족"
 
 #: src/role.c:690
-#, fuzzy
 msgid "male"
-msgstr "남성 "
+msgstr "남성"
 
 #: src/role.c:690
-#, fuzzy
 msgid "he"
 msgstr "그"
 
 #: src/role.c:690
-#, fuzzy
 msgid "him"
-msgstr "때렸다"
+msgstr "그를"
 
 #: src/role.c:690
-#, fuzzy
 msgid "his"
-msgstr "이것"
+msgstr "그의"
 
 #: src/role.c:691
-#, fuzzy
 msgid "female"
-msgstr "여성 "
+msgstr "여성"
 
 #: src/role.c:691
-#, fuzzy
 msgid "she"
-msgstr "빛나다"
+msgstr "그녀"
 
 # ============================================================
 # UI 메시지 (invent.c - "here" 관련)
 # ============================================================
 # %1$s = "is"/"are", %2$s = object name
 #: src/role.c:691
-#, fuzzy
 msgid "her"
-msgstr "여기"
+msgstr "그녀의"
 
 #: src/role.c:692
-#, fuzzy
 msgid "neuter"
-msgstr "중립"
+msgstr "중성"
 
 #: src/role.c:694
-#, fuzzy
 msgid "group"
-msgstr "땅"
+msgstr "집단"
 
 #: src/role.c:694
-#, fuzzy
 msgid "their"
 msgstr "그들의"
 
 #: src/role.c:702
 msgid "evil"
-msgstr ""
+msgstr "악"
 
 #: src/role.c:1570
-#, fuzzy
 msgid "character"
-msgstr "충전할"
+msgstr "캐릭터"
 
 #: src/role.c:1588 src/role.c:1606
 msgid "Shall I pick a character for you? [ynaq] "
@@ -32230,49 +32205,40 @@ msgid "Shall I pick "
 msgstr "내가 골라줄까요 "
 
 #: src/role.c:1693
-#, fuzzy
 msgid " for you? [ynaq] "
-msgstr "? [ynaq] "
+msgstr "를 제가 골라드릴까요? [ynaq] "
 
 #: src/role.c:1767
-#, fuzzy
 msgid " choosing now"
-msgstr "쉬익거리는 소리."
+msgstr " 선택 중"
 
 #: src/role.c:1768
-#, fuzzy
 msgid " not yet specified"
-msgstr "괴물 유형이 지정되지 않았다"
+msgstr " 아직 지정되지 않음"
 
 #: src/role.c:1769
-#, fuzzy
 msgid " random"
-msgstr "무작위"
+msgstr " 무작위"
 
 #: src/role.c:1810
-#, fuzzy
 msgid "name:"
-msgstr "이름 지을"
+msgstr "이름:"
 
 #: src/role.c:1814
-#, fuzzy
 msgid "role:"
-msgstr "역할"
+msgstr "역할:"
 
 #: src/role.c:1831
-#, fuzzy
 msgid "race:"
-msgstr "종족"
+msgstr "종족:"
 
 #: src/role.c:1839
-#, fuzzy
 msgid "gender:"
-msgstr "성별"
+msgstr "성별:"
 
 #: src/role.c:1845
-#, fuzzy
 msgid "alignment:"
-msgstr "성향"
+msgstr "성향:"
 
 #: src/role.c:1975
 #, c-format
@@ -32296,59 +32262,52 @@ msgid "Random"
 msgstr "무작위"
 
 #: src/role.c:2160
-#, fuzzy
 msgid "Salutations"
-msgstr " 환각"
+msgstr "인사"
 
 #: src/role.c:2163
 msgid "Irasshaimase"
-msgstr ""
+msgstr "이랏샤이마세"
 
 #: src/role.c:2164
-#, fuzzy
 msgid "Konnichi wa"
-msgstr "쿠노이치"
+msgstr "곤니치와"
 
 #: src/role.c:2166 src/role.c:2187
-#, fuzzy
 msgid "Aloha"
-msgstr "알로하."
+msgstr "알로하"
 
 #: src/role.c:2170
-#, fuzzy
 msgid "Hallo"
-msgstr "벽"
+msgstr "할로"
 
 #: src/role.c:2172
 msgid "Velkommen"
-msgstr ""
+msgstr "벨콤멘"
 
 #: src/role.c:2174
-#, fuzzy
 msgid "Hello"
-msgstr "노란색"
+msgstr "안녕하세요"
 
 # ============================================================
 # 두루마리 (Scrolls)
 # ============================================================
 #
 #: src/role.c:2183
-#, fuzzy
 msgid "Fare thee well"
-msgstr "두루마리를 읽었다."
+msgstr "부디 평안하시길"
 
 #: src/role.c:2185
 msgid "Sayonara"
-msgstr ""
+msgstr "사요나라"
 
 #: src/role.c:2189
-#, fuzzy
 msgid "Farvel"
-msgstr "굶어 죽었다"
+msgstr "파르벨"
 
 #: src/role.c:2191
 msgid "Goodbye"
-msgstr ""
+msgstr "안녕히 가세요"
 
 #
 #: src/role.c:2338
@@ -35740,9 +35699,8 @@ msgid "don't know that spell."
 msgstr "그 주문을 모른다."
 
 #: src/spell.c:781
-#, fuzzy
 msgid "Choose which spell to cast"
-msgstr "어떤 주문을 시전하시겠습니까?"
+msgstr "시전할 주문 선택"
 
 #: src/spell.c:806
 msgid "Cast which spell?"
@@ -35796,15 +35754,15 @@ msgstr "안개"
 
 #: src/spell.c:1155
 msgid "maelstrom"
-msgstr "%s{을/를} 파괴했다!"
+msgstr "소용돌이"
 
 #: src/spell.c:1156
 msgid "folds"
-msgstr "%s{이/가} 펼쳐진다!"
+msgstr "주름"
 
 #: src/spell.c:1161
 msgid "vegetation"
-msgstr "굶주림으로 죽었다."
+msgstr "식물"
 
 #: src/spell.c:1164
 #, c-format
@@ -35979,9 +35937,8 @@ msgid "Name\tLevel\tCategory\tFail\tRetention"
 msgstr "이름\t레벨\t분류\t실패\t유지"
 
 #: src/spell.c:2132
-#, fuzzy
 msgid "[sort spells]"
-msgstr "마법 시전하기"
+msgstr "[주문 정렬]"
 
 #: src/spell.c:2297
 msgid "(gone)"
@@ -35989,7 +35946,7 @@ msgstr "(사라짐)"
 
 #: src/spell.c:2300
 msgid "100%"
-msgstr ""
+msgstr "100%"
 
 #: src/stairs.c:198
 msgid "staircase"
@@ -36294,9 +36251,8 @@ msgid "%s resists%s!"
 msgstr "%s{이/가} 저항한다%s!"
 
 #: src/steed.c:313
-#, fuzzy
 msgid " and its leash comes off"
-msgstr "와 그 내용물"
+msgstr " 그리고 목줄이 벗겨졌다"
 
 #: src/steed.c:319
 #, c-format
@@ -36776,7 +36732,7 @@ msgstr "무작위 선택"
 
 #: src/teleport.c:1922
 msgid "Using derived"
-msgstr "여기서 날 수 없다."
+msgstr "파생 사용"
 
 #: src/teleport.c:1944
 #, c-format
@@ -37005,13 +36961,11 @@ msgstr "나의 보호"
 
 #: src/timeout.c:107
 msgid "protection from shape changers"
-msgstr ""
-"변신자로부터 보호변신 괴물 방어의 반지\n"
-"변신술사 방호의 반지"
+msgstr "변신 생물 방어"
 
 #: src/timeout.c:109
 msgid "unchanging"
-msgstr "충전할"
+msgstr "불변"
 
 #: src/timeout.c:110
 msgid "reflecting"
@@ -37023,7 +36977,7 @@ msgstr "생명이 보존될 것이다"
 
 #: src/timeout.c:130
 msgid "You are slowing down."
-msgstr "느려지는 것을 느꼈다%s."
+msgstr "느려지고 있다."
 
 #: src/timeout.c:131
 msgid "Your limbs are stiffening."
@@ -37649,19 +37603,19 @@ msgstr "우르릉거리는 소리."
 #: src/timeout.c:2054
 #, c-format
 msgid "Current time = %ld."
-msgstr ""
+msgstr "현재 시간 = %ld."
 
 #: src/timeout.c:2057
 msgid "Active timeout queue:"
-msgstr ""
+msgstr "활성 타임아웃 큐:"
 
 #: src/timeout.c:2079
 msgid "No timed properties."
-msgstr ""
+msgstr "시간제한 속성 없음."
 
 #: src/timeout.c:2081
 msgid "Timed properties:"
-msgstr ""
+msgstr "시간제한 속성:"
 
 #: src/topten.c:98 src/topten.c:102
 msgid "killed by "
@@ -37799,9 +37753,9 @@ msgid "was crushed to death"
 msgstr "압사당했다"
 
 #: src/topten.c:1018
-#, fuzzy, c-format
+#, c-format
 msgid "on the %s Plane"
-msgstr " %s 평면에서"
+msgstr "%s 평면에서"
 
 #: src/topten.c:1018
 msgid "Astral"
@@ -37809,9 +37763,9 @@ msgstr "천상"
 
 #: src/topten.c:1022 src/topten.c:1026 src/topten.c:1030 src/topten.c:1034
 #: src/topten.c:1038
-#, fuzzy, c-format
+#, c-format
 msgid "on the Plane of %s"
-msgstr " %s의 평면에서"
+msgstr "%s의 평면에서"
 
 #: src/topten.c:1037
 msgid "Void"
@@ -39892,10 +39846,7 @@ msgstr "전기 거미줄"
 
 #: src/trap.c:7034
 msgid "owlbear trap"
-msgstr ""
-"올빼미곰 함정#\n"
-"곰 덫\n"
-"곰덫"
+msgstr "올빼미곰 함정"
 
 #: src/trap.c:7034
 msgid "sand mine"
@@ -40031,13 +39982,11 @@ msgstr "달콤한 향기 가스 배출구"
 
 #: src/trap.c:7050
 msgid "phone booth"
-msgstr ""
-"전화 부스신속의 장화\n"
-"신속의 부츠"
+msgstr "전화 부스"
 
 #: src/trap.c:7050
 msgid "exploding runes"
-msgstr "폭발했다"
+msgstr "폭발하는 룬"
 
 #: src/trap.c:7051
 msgid "never-ending elevator"
@@ -40045,9 +39994,7 @@ msgstr "끝없는 엘리베이터"
 
 #: src/trap.c:7051
 msgid "slime pit"
-msgstr ""
-"슬라임 구덩이점균\n"
-"슬라임 곰팡이"
+msgstr "슬라임 구덩이"
 
 #: src/trap.c:7051
 msgid "warp zone"
@@ -40059,11 +40006,11 @@ msgstr "환상의 바닥"
 
 #: src/trap.c:7052
 msgid "pile of poo"
-msgstr "천 조각"
+msgstr "똥 더미"
 
 #: src/trap.c:7052
 msgid "honey trap"
-msgstr "꿀"
+msgstr "꿀 함정"
 
 #: src/trap.c:7053
 msgid "tourist trap"
@@ -40540,7 +40487,7 @@ msgid "zap doesn't shock you!"
 msgstr "전기 충격이 효과가 없다!"
 
 #: src/uhitm.c:2705
-#, fuzzy, c-format
+#, c-format
 msgid "%s gets zapped!"
 msgstr "%s{이/가} 감전되었다!"
 
@@ -40560,9 +40507,9 @@ msgid "%s is covered in %s, but it seems harmless."
 msgstr "%s{이/가} %s{으로/로} 뒤덮였지만, 해롭지 않은 것 같다."
 
 #: src/uhitm.c:2754
-#, fuzzy, c-format
+#, c-format
 msgid "%s is covered in %s!"
-msgstr "%s{이/가} 서리에 뒤덮였다!"
+msgstr "%s{이/가} %s{으로} 뒤덮였다!"
 
 #: src/uhitm.c:2755
 #, c-format
@@ -40617,9 +40564,9 @@ msgid "laughter."
 msgstr "웃음소리."
 
 #: src/uhitm.c:3024 src/uhitm.c:3068
-#, fuzzy, c-format
+#, c-format
 msgid "%s chuckles."
-msgstr "킬킬거린다."
+msgstr "%s{이/가} 킬킬거린다."
 
 #: src/uhitm.c:3028
 msgid "Some writing vanishes from your head!"
@@ -40729,14 +40676,14 @@ msgid "are being crushed."
 msgstr "짓눌리고 있다."
 
 #: src/uhitm.c:3385
-#, fuzzy, c-format
+#, c-format
 msgid "%s brushes against you."
-msgstr "%s{이/가} %s{을/를} 스쳤다."
+msgstr "%s{이/가} 당신을 스쳤다."
 
 #: src/uhitm.c:3388
-#, fuzzy, c-format
+#, c-format
 msgid "%s brushes against your %s."
-msgstr "%s{이/가} %s{을/를} 스쳤다."
+msgstr "%s{이/가} 당신의 %s{을/를} 스쳤다."
 
 #: src/uhitm.c:3400
 #, c-format
@@ -40832,19 +40779,19 @@ msgid "aren't transformed."
 msgstr "변신하지 않았다."
 
 #: src/uhitm.c:3767
-#, fuzzy, c-format
+#, c-format
 msgid "%s reaches out, and your body shrivels."
-msgstr "%s{이/가} 당신의 왜곡된 상에 손을 뻗었다."
+msgstr "%s{이/가} 손을 뻗자, 당신의 몸이 쪼그라들었다."
 
 #: src/uhitm.c:3798
 #, c-format
 msgid "%s reaches out, and you feel fever and chills."
-msgstr ""
+msgstr "%s{이/가} 손을 뻗자, 열과 오한이 느껴진다."
 
 #: src/uhitm.c:3827
-#, fuzzy, c-format
+#, c-format
 msgid "%s reaches out with its deadly touch."
-msgstr "%s{이/가} %s{을/를} %s{으로/로} 대체했다."
+msgstr "%s{이/가} 치명적인 손길을 뻗었다."
 
 #: src/uhitm.c:3831
 msgid "Was that the touch of death?"
@@ -40864,9 +40811,9 @@ msgid "bad shade attack function flow?"
 msgstr "잘못된 그림자 공격 함수 흐름?"
 
 #: src/uhitm.c:4006
-#, fuzzy, c-format
+#, c-format
 msgid "%s grabs you!"
-msgstr "%s{이/가} 당신을 태웠다!"
+msgstr "%s{이/가} 당신을 붙잡았다!"
 
 #: src/uhitm.c:4011
 #, c-format
@@ -40874,9 +40821,9 @@ msgid "are being %s."
 msgstr "%s 당하고 있다."
 
 #: src/uhitm.c:4026
-#, fuzzy, c-format
+#, c-format
 msgid "%s hits you with the %s corpse."
-msgstr "%s{이/가} %s 시체를 만졌다."
+msgstr "%s{이/가} %s 시체로 당신을 때렸다."
 
 #: src/uhitm.c:4080
 #, c-format
@@ -40910,7 +40857,7 @@ msgstr "열이 나는 것 같다."
 #: src/uhitm.c:4297
 #, c-format
 msgid "%s hits!  (I hope you don't mind.)"
-msgstr ""
+msgstr "%s{이/가} 때렸다! (신경 안 쓰길 바랍니다.)"
 
 #: src/uhitm.c:4427
 #, c-format
@@ -40918,9 +40865,9 @@ msgid "%s tries to reach your %s %s!"
 msgstr "%s{이/가} 당신의 %s %s{을/를} 잡으려 한다!"
 
 #: src/uhitm.c:4430
-#, fuzzy, c-format
+#, c-format
 msgid "%s nuzzles against your %s %s!"
-msgstr "%s 검이 당신의 %s{을/를} 빼앗았다!"
+msgstr "%s{이/가} 당신의 %s %s{에} 코를 비볐다!"
 
 #: src/uhitm.c:4437
 #, c-format
@@ -40964,7 +40911,7 @@ msgstr "꺼억!"
 
 #: src/uhitm.c:4624
 msgid "says something but you can't hear it"
-msgstr "%s{이/가} %s %s하지만 %s%s에 닿을 수 없다."
+msgstr "무언가를 말했지만 들을 수 없다"
 
 #: src/uhitm.c:4626
 msgid "brags about the goods some dungeon explorer provided"
@@ -40981,7 +40928,7 @@ msgstr "%s{이/가} %s하려 하지만, %s 것 같다."
 
 #: src/uhitm.c:4637
 msgid "charm"
-msgstr "충전할"
+msgstr "매혹하다"
 
 #: src/uhitm.c:4637
 msgid "seduce"
@@ -40990,19 +40937,19 @@ msgstr "유혹하다"
 #
 #: src/uhitm.c:4638
 msgid "unaffected"
-msgstr "영향을 받지 않았다!"
+msgstr "영향받지 않은"
 
 #: src/uhitm.c:4638
 msgid "uninterested"
-msgstr "%s{이/가} 관심 없어 보인다."
+msgstr "관심 없는"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: src/uhitm.c:4661
-#, fuzzy, c-format
+#, c-format
 msgid "%s tries to %s away with %s."
-msgstr "%s이(가) %s을(를) 휘두르려 한다."
+msgstr "%s{이/가} %s{을/를} 가지고 %s하려 한다."
 
 #: src/uhitm.c:4700
 #, c-format
@@ -41992,9 +41939,9 @@ msgid "%s changes into a %s."
 msgstr "%s{이/가} %s{으로/로} 변했다."
 
 #: src/were.c:202
-#, fuzzy, c-format
+#, c-format
 msgid "Do you want to change into %s?"
-msgstr "%s{을/를} 뭐라고 부르겠습니까?"
+msgstr "%s{으로/로} 변신하시겠습니까?"
 
 #: src/were.c:219
 msgid "purified."
@@ -42030,7 +41977,7 @@ msgstr "빈 "
 #
 #: src/wield.c:158
 msgid "bare handed"
-msgstr "해를 입지 않았다!"
+msgstr "맨손으로"
 
 #
 #: src/wield.c:160
@@ -42391,24 +42338,23 @@ msgstr ""
 
 #: src/windows.c:1182
 msgid "{game start date+time}"
-msgstr ""
+msgstr "{게임 시작 날짜+시간}"
 
 #: src/windows.c:1188
-#, fuzzy
 msgid "{current date+time}"
-msgstr "현재 "
+msgstr "{현재 날짜+시간}"
 
 #: src/windows.c:1201
 msgid "{hero name}"
-msgstr ""
+msgstr "{영웅 이름}"
 
 #: src/windows.c:1207
 msgid "{hero initial}"
-msgstr ""
+msgstr "{영웅 이니셜}"
 
 #: src/windows.c:1721
 msgid "All classes of objects"
-msgstr "%s 어떤 종류의 물건을?"
+msgstr "모든 종류의 물건"
 
 #: src/windows.c:1729
 msgid "Note: when no choices are selected, \"all\" is implied."
@@ -42466,19 +42412,19 @@ msgstr "%s 빛이 주변을 감싸는 것을 알아챘다."
 
 #: src/wizard.c:819
 msgid "antic"
-msgstr "초거대한"
+msgstr "어릿광대"
 
 #: src/wizard.c:819
 msgid "blackguard"
-msgstr "검은색"
+msgstr "악한"
 
 #: src/wizard.c:819
 msgid "caitiff"
-msgstr "비열한 놈!"
+msgstr "비열한 놈"
 
 #: src/wizard.c:819
 msgid "chucklehead"
-msgstr "킥킥 웃는다."
+msgstr "멍청이"
 
 #: src/wizard.c:820
 msgid "coistrel"
@@ -42663,51 +42609,46 @@ msgstr "%s{이/가} 조상을 욕한다."
 
 #
 #: src/wizcmds.c:249
-#, fuzzy
 msgid "Pick first monster to slay"
-msgstr "냄새 맡을 몬스터를 선택해."
+msgstr "처치할 첫 번째 괴물 선택"
 
 #: src/wizcmds.c:257
-#, fuzzy
 msgid "Next monster"
-msgstr "괴물이"
+msgstr "다음 괴물"
 
 #: src/wizcmds.c:270
 #, c-format
 msgid "Kill %.110s?"
-msgstr ""
+msgstr "%.110s{을/를} 죽일까요?"
 
 #: src/wizcmds.c:277
 msgid "Perform seppuku"
-msgstr ""
+msgstr "할복 수행"
 
 #: src/wizcmds.c:278
-#, fuzzy
 msgid "Commit suicide"
-msgstr "자살했다"
+msgstr "자살하기"
 
 #: src/wizcmds.c:280
 #, c-format
 msgid "%s own player"
-msgstr "%s의 플레이어"
+msgstr "%s 자신의 플레이어"
 
 #: src/wizcmds.c:334
 msgid "is no monster there."
 msgstr "거기에 괴물이 없다."
 
 #: src/wizcmds.c:363
-#, fuzzy
 msgid "Load which lua file?"
-msgstr "용기를 여는 중"
+msgstr "어떤 lua 파일을 불러올까요?"
 
 #: src/wizcmds.c:382
 msgid "Load which des lua file?"
-msgstr ""
+msgstr "어떤 des lua 파일을 불러올까요?"
 
 #: src/wizcmds.c:453
-#, fuzzy
 msgid "To what experience level do you want to be set?"
-msgstr "무엇을 버리겠습니까?"
+msgstr "몇 레벨로 설정하시겠습니까?"
 
 #: src/wizcmds.c:465
 msgid "are already that experienced."
@@ -42762,9 +42703,8 @@ msgid "don't smell any monster there."
 msgstr "거기서 괴물 냄새가 나지 않는다."
 
 #: src/wizcmds.c:996
-#, fuzzy
 msgid "Which intrinsics?"
-msgstr " 본질적으로"
+msgstr "어떤 내재 속성?"
 
 #: src/wizcmds.c:1076
 #, c-format
@@ -42776,34 +42716,29 @@ msgid "No monsters currently migrating."
 msgstr "현재 이동 중인 괴물이 없다."
 
 #: src/wizcmds.c:1539
-#, fuzzy
 msgid "List which?"
-msgstr "무엇을 보시겠습니까?"
+msgstr "어떤 것을 나열할까요?"
 
 #: src/wizcmds.c:1551
-#, fuzzy, c-format
+#, c-format
 msgid "Monster%s migrating to %s:"
-msgstr "%s{이/가} %s{을/를} 모방함"
+msgstr "%s{으로/로} 이동 중인 괴물%s:"
 
 #: src/wizcmds.c:1552
-#, fuzzy
 msgid "current level"
-msgstr "현재 "
+msgstr "현재 층"
 
 #: src/wizcmds.c:1553
-#, fuzzy
 msgid "next level"
-msgstr "로그 레벨 "
+msgstr "다음 층"
 
 #: src/wizcmds.c:1554
-#, fuzzy
 msgid "'other' levels"
-msgstr "로그 레벨 "
+msgstr "'다른' 층"
 
 #: src/wizcmds.c:1557
-#, fuzzy
 msgid "All migrating monsters:"
-msgstr "%s{과/와} 괴물"
+msgstr "이동 중인 모든 괴물:"
 
 #: src/wizcmds.c:1606
 msgid "None."
@@ -42811,19 +42746,19 @@ msgstr "없음."
 
 #: src/wizcmds.c:1626
 msgid "Current memory statistics:"
-msgstr ""
+msgstr "현재 메모리 통계:"
 
 #: src/wizcmds.c:1774
 msgid "No display macro issues detected."
-msgstr ""
+msgstr "디스플레이 매크로 문제가 감지되지 않았다."
 
 #: src/wizcmds.c:1818
 msgid "No monster difficulty discrepancies were detected."
-msgstr ""
+msgstr "괴물 난이도 불일치가 감지되지 않았다."
 
 #: src/wizcmds.c:1850
 msgid "How many random monsters to migrate to next level? [0]"
-msgstr ""
+msgstr "다음 층으로 이동할 무작위 괴물 수? [0]"
 
 #: src/wizcmds.c:1853
 msgid "Can't get there from here."
@@ -42850,29 +42785,29 @@ msgid "cut %s in half."
 msgstr "%s{을/를} 반으로 잘랐다."
 
 #: src/worn.c:542
-#, fuzzy, c-format
+#, c-format
 msgid "%s is slowing down."
-msgstr "%s{이/가} 느려진다."
+msgstr "%s{이/가} 느려지고 있다."
 
 #: src/worn.c:544
-#, fuzzy, c-format
+#, c-format
 msgid "%s is suddenly moving %sfaster."
-msgstr "갑자기 %s더 빨리 움직인다."
+msgstr "%s{이/가} 갑자기 %s더 빨리 움직인다."
 
 #: src/worn.c:547
-#, fuzzy, c-format
+#, c-format
 msgid "%s seems to be moving %sslower."
-msgstr "%s{이/가} 잡고 있는 것 같다."
+msgstr "%s{이/가} %s더 느리게 움직이는 것 같다."
 
 #: src/worn.c:940
-#, fuzzy, c-format
+#, c-format
 msgid "%s removes %s and puts on %s."
-msgstr "%s이(가) %s에서 %s을(를) 꺼냈다."
+msgstr "%s{이/가} %s{을/를} 벗고 %s{을/를} 입었다."
 
 #: src/worn.c:943
-#, fuzzy, c-format
+#, c-format
 msgid "%s puts on %s."
-msgstr "%s{이/가} %s{을/를} 들이받았다."
+msgstr "%s{이/가} %s{을/를} 입었다."
 
 #: src/worn.c:946
 #, c-format
@@ -42900,108 +42835,107 @@ msgid "%s is shining %s."
 msgstr "%s{이/가} %s 빛나고 있다."
 
 #: src/worn.c:1190
-#, fuzzy, c-format
+#, c-format
 msgid "%s breaks out of %s armor!"
-msgstr "%s{이/가} %s 몽상에서 깨어났다!"
+msgstr "%s{이/가} %s 갑옷을 부수고 나왔다!"
 
 #: src/worn.c:1193
 msgid "a cracking sound."
 msgstr "금이 가는 소리."
 
 #: src/worn.c:1202
-#, fuzzy, c-format
+#, c-format
 msgid "%s %s falls off!"
-msgstr "%s{이/가} 떨어졌다."
+msgstr "%s의 %s{이/가} 떨어졌다!"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: src/worn.c:1208
-#, fuzzy, c-format
+#, c-format
 msgid "%s %s tears apart!"
-msgstr "%s %s{이/가} %s{을/를} 태웠다!"
+msgstr "%s의 %s{이/가} 찢어졌다!"
 
 #: src/worn.c:1211 src/worn.c:1220
 msgid "a ripping sound."
 msgstr "찢어지는 소리."
 
 #: src/worn.c:1217
-#, fuzzy, c-format
+#, c-format
 msgid "%s shirt rips to shreds!"
-msgstr "셔츠가 갈기갈기 찢어졌다!"
+msgstr "%s의 셔츠가 갈기갈기 찢어졌다!"
 
 #: src/worn.c:1230
-#, fuzzy, c-format
+#, c-format
 msgid "%s armor falls around %s!"
-msgstr "갑옷이 당신 주변으로 떨어졌다!"
+msgstr "%s의 갑옷이 %s 주위로 떨어졌다!"
 
 #: src/worn.c:1233
 msgid "a thud."
 msgstr "쿵 하는 소리."
 
 #: src/worn.c:1241
-#, fuzzy, c-format
+#, c-format
 msgid "%s %s falls, unsupported!"
-msgstr "%s{이/가} 지지되지 않아 떨어졌다!"
+msgstr "%s의 %s{이/가} 지지되지 않아 떨어졌다!"
 
 #: src/worn.c:1244
-#, fuzzy, c-format
+#, c-format
 msgid "%s shrinks out of %s %s!"
-msgstr "%s{이} %s에서 %s%s!"
+msgstr "%s{이/가} %s의 %s에서 빠져나갈 정도로 줄어들었다!"
 
 #: src/worn.c:1253
-#, fuzzy, c-format
+#, c-format
 msgid "%s seeps right through %s shirt!"
-msgstr "셔츠를 뚫고 스며든다!"
+msgstr "%s{이/가} %s의 셔츠를 뚫고 스며든다!"
 
 #: src/worn.c:1256
-#, fuzzy, c-format
+#, c-format
 msgid "%s becomes much too small for %s shirt!"
-msgstr "셔츠에 비해 너무 작아졌다!"
+msgstr "%s{이/가} %s의 셔츠에 비해 너무 작아졌다!"
 
 #: src/worn.c:1266
-#, fuzzy, c-format
+#, c-format
 msgid "%s drops %s gloves%s!"
-msgstr "장갑%s{을/를} 떨어뜨렸다!"
+msgstr "%s{이/가} %s의 장갑%s{을/를} 떨어뜨렸다!"
 
 #: src/worn.c:1268
-#, fuzzy
 msgid " and weapon"
-msgstr "%s 무기%s{으로/로} 아무것도 강제로 열 수 없다."
+msgstr "과 무기"
 
 #: src/worn.c:1274
-#, fuzzy, c-format
+#, c-format
 msgid "%s can no longer hold %s shield!"
-msgstr "더 이상 방패를 들 수 없다!"
+msgstr "%s{이/가} 더 이상 %s의 방패를 들 수 없다!"
 
 #: src/worn.c:1277 src/worn.c:1289
 msgid "a clank."
 msgstr "쨍그랑 소리."
 
 #: src/worn.c:1286
-#, fuzzy, c-format
+#, c-format
 msgid "%s helmet falls to the %s!"
-msgstr "%s{이/가} %s{으로/로} 떨어졌다!"
+msgstr "%s의 투구가 %s{으로} 떨어졌다!"
 
 #: src/worn.c:1297
-#, fuzzy, c-format
+#, c-format
 msgid "%s boots fall away!"
-msgstr "부츠가 떨어졌다!"
+msgstr "%s의 부츠가 떨어졌다!"
 
 #: src/worn.c:1300
 #, c-format
 msgid "%s boots %s off %s feet!"
-msgstr "%s이(가) %s의 발에서 %s을(를) 벗겼다!"
+msgstr "%s의 부츠가 %s의 발에서 %s 벗겨졌다!"
 
 #: src/worn.c:1311
-#, fuzzy, c-format
+#, c-format
 msgid "%s saddle falls off."
-msgstr "%s{이/가} 떨어졌다."
+msgstr "%s의 안장이 떨어졌다."
 
 #: src/worn.c:1322
-#, fuzzy, c-format
+#, c-format
 msgid "falling off %s"
-msgstr "%s의 반지"
+msgstr "%s에서 떨어지다"
 
 #: src/write.c:89
 msgid "need hands to be able to write!"
@@ -43009,7 +42943,7 @@ msgstr "글을 쓰려면 손이 필요하다!"
 
 #: src/write.c:99
 msgid "write on"
-msgstr "%s에 글을 쓴다!"
+msgstr "에 쓰다"
 
 #: src/write.c:109
 #, c-format
@@ -43029,7 +42963,7 @@ msgstr "그 %s{은/는} 비어있지 않다!"
 #: src/write.c:127
 #, c-format
 msgid "What type of %s do you want to write?"
-msgstr "%s 것이 무엇입니까?"
+msgstr "어떤 종류의 %s{을/를} 쓰시겠습니까?"
 
 #: src/write.c:208
 #, c-format
@@ -43055,14 +42989,14 @@ msgstr "준비하다"
 
 #: src/write.c:222
 msgid "lack"
-msgstr "검은색"
+msgstr "부족하다"
 
 # ============================================================
 # 아이템 메시지 (Item Messages)
 # ============================================================
 #: src/write.c:222
 msgid "have too much"
-msgstr "%c{이/가} 없다."
+msgstr "너무 많다"
 
 #: src/write.c:224
 #, c-format
@@ -43071,15 +43005,15 @@ msgstr "정말 %s 팬픽션을 %s썼다."
 
 #: src/write.c:225
 msgid "start to "
-msgstr "무너지기 시작해"
+msgstr "시작하다 "
 
 #: src/write.c:226
 msgid "lame"
-msgstr "절름발이"
+msgstr "시시한"
 
 #: src/write.c:226
 msgid "awesome"
-msgstr "몇 개의"
+msgstr "멋진"
 
 #: src/write.c:229
 msgid "give up on the idea."
@@ -43100,7 +43034,7 @@ msgstr "불행히도 진행할 충분한 정보가 없다."
 #: src/write.c:248
 #, c-format
 msgid "became literate by writing %s"
-msgstr "이미 %s{을/를} 타고 있다."
+msgstr "%s{을/를} 써서 글을 깨우쳤다"
 
 #: src/write.c:259
 msgid "marker is too dry to write that!"
@@ -43125,7 +43059,7 @@ msgstr "그것을 쓰기 위해 %s한다."
 
 #: src/write.c:323
 msgid "don't know how"
-msgstr "당신을 모르겠는데."
+msgstr "방법을 모르다"
 
 #: src/write.c:327
 msgid "write in your best handwriting:  \"My Diary\", but it quickly fades."
@@ -43134,7 +43068,7 @@ msgstr "최선을 다해 \"나의 일기\"라고 썼지만 금세 사라졌다."
 #: src/write.c:334
 #, c-format
 msgid "%s was here!"
-msgstr "여기에 %s{이/가} 있다."
+msgstr "%s{이/가} 여기 있었다!"
 
 #: src/write.c:335
 #, c-format
@@ -43283,14 +43217,14 @@ msgid "a sudden rush of air!"
 msgstr "갑작스러운 공기의 돌진!"
 
 #: src/zap.c:603
-#, fuzzy, c-format
+#, c-format
 msgid "from %s grasp"
-msgstr " %s 열기로"
+msgstr "%s의 손아귀에서"
 
 #: src/zap.c:605
-#, fuzzy, c-format
+#, c-format
 msgid "by %s"
-msgstr "%s by %s"
+msgstr "%s에 의해"
 
 # ============================================================
 # 두루마리 (Scrolls)

@@ -34947,13 +34947,18 @@ msgstr "잃는"
 msgid "belche"
 msgstr "절도범"
 
+# ============================================================
+# 환각 소리 동사 (Hallucination sound verbs)
+# h_sounds[] 배열: 환각 상태에서 들리는 랜덤 소리
+# 조합 패턴: "You hear %s %s" 등에서 사용
+# ============================================================
 #: src/sounds.c:343
 msgid "creak"
-msgstr "비명!"
+msgstr "삐걱거리다"
 
 #: src/sounds.c:343
 msgid "cough"
-msgstr "기침%s"
+msgstr "기침하다"
 
 #: src/sounds.c:344
 msgid "ululate"
@@ -34963,9 +34968,10 @@ msgstr "울부짖다"
 msgid "pop"
 msgstr "철벅"
 
+# 환각 소리 동사
 #: src/sounds.c:344
 msgid "jingle"
-msgstr "%s{이/가} 얼얼하다."
+msgstr "쨍그랑거리다"
 
 #: src/sounds.c:344
 msgid "sniffle"
@@ -35141,17 +35147,19 @@ msgstr "으르렁댄다."
 msgid "bluff"
 msgstr "허세부리다"
 
+# 몬스터 소리 동사 (Monster sound verbs)
 #: src/sounds.c:459
 msgid "screak"
-msgstr "비명!"
+msgstr "끽끽거리다"
 
+# 청각장애시 밴시 울음에 대한 반응 동사
 #: src/sounds.c:463
 msgid "cringe"
-msgstr "%s 반지"
+msgstr "움츠러든다"
 
 #: src/sounds.c:494
 msgid "whimper"
-msgstr "더 축축한"
+msgstr "훌쩍인다"
 
 #: src/sounds.c:497
 msgid "whine"
@@ -35723,9 +35731,14 @@ msgstr "혼잣말은 던전 탐험가에게 나쁜 습관이다."
 msgid "It's like talking to a wall."
 msgstr "벽에 대고 말하는 것과 같다."
 
+# ============================================================
+# 벽 대화 메시지 (Wall talking - hallucination)
+# walltalk[] 배열: 환각 상태에서 벽과 대화할 때 나오는 메시지
+# 조합 패턴: "The wall %s" 등에서 사용
+# ============================================================
 #: src/sounds.c:1356
 msgid "gripes about its job."
-msgstr "%s{이/가} 걱정된다."
+msgstr "일에 대해 불평한다."
 
 #: src/sounds.c:1357
 msgid "tells you a funny joke!"
@@ -36410,13 +36423,18 @@ msgstr "%s{이/가} 훔치려 하지만, 금화에는 관심이 없다."
 msgid "%s tries to rob you, but there is nothing to steal!"
 msgstr "%s{이/가} 훔치려 하지만, 훔칠 것이 없다!"
 
+# ============================================================
+# 도둑질 동사 (Stealing verbs)
+# how[] 배열: 도둑질 시도 동사들
+# 조합 패턴: "%s tries to %s %s%s but gives up."
+# ============================================================
 #: src/steal.c:477
 msgid "steal"
 msgstr "훔치다"
 
 #: src/steal.c:477
 msgid "snatch"
-msgstr "%s{을/를} 낚아챘다!"
+msgstr "낚아채다"
 
 #: src/steal.c:480
 #, c-format
@@ -36449,22 +36467,27 @@ msgstr "벗을"
 msgid "%s seduces you and %s off your %s."
 msgstr "%s{이/가} 유혹하여 %s{을/를} %s 벗겼다."
 
+# ============================================================
+# 유혹/갑옷 제거 동작 (Seduction armor removal actions)
+# 조합 패턴: "%s seduces you and %s off your %s."
+# 저주된 갑옷이면: "helps you to take"
+# 정상이면: "you take", "you continue taking", "you start taking"
+# ============================================================
 #: src/steal.c:542
 msgid "helps you to take"
-msgstr "%s에서 떠올랐다!"
+msgstr "벗는 것을 도와준다"
 
 #: src/steal.c:543
 msgid "you take"
-msgstr "벗을"
+msgstr "벗는다"
 
 #: src/steal.c:544
 msgid "you continue taking"
-msgstr "계속 먹으겠습니까?"
+msgstr "계속 벗는다"
 
-#
 #: src/steal.c:545
 msgid "you start taking"
-msgstr "날기 시작했다."
+msgstr "벗기 시작한다"
 
 #: src/steal.c:550
 msgid "taking off clothes"
@@ -36506,9 +36529,13 @@ msgstr "%s{이/가} %s{을/를} 떨어뜨렸다."
 msgid "%s gold %s."
 msgstr "%s 금화 %s."
 
+# ============================================================
+# 금화 소멸 (Gold vanishing - guard death)
+# 조합 패턴: "%s gold %s." + "vanishes" (보임) 또는 "seems to vanish" (안 보임)
+# ============================================================
 #: src/steal.c:887
 msgid "seems to vanish"
-msgstr "%s{이/가} 찡그리는 것 같다."
+msgstr "사라지는 것 같다"
 
 #: src/steed.c:20
 #, c-format
@@ -36801,13 +36828,18 @@ msgstr "\"%s\"에서 기호 세트를 찾을 수 없었다."
 msgid "materialize in %s location!"
 msgstr "%s 위치에 구체화됐다!"
 
+# ============================================================
+# 순간이동 위치 (Teleport location)
+# 조합 패턴: "materialize in %s location!"
+# 경우: "the same" (같은 위치), "a different" (다른 위치)
+# ============================================================
 #: src/teleport.c:543
 msgid "the same"
-msgstr "%s (%s)"
+msgstr "같은"
 
 #: src/teleport.c:543
 msgid "a different"
-msgstr "잠시 달라졌다."
+msgstr "다른"
 
 #: src/teleport.c:845
 msgid "A mysterious force prevents you from teleporting!"
@@ -36867,21 +36899,26 @@ msgstr "아무것도 들을 수 없게 되었다."
 msgid "are too weak from hunger"
 msgstr "배고파서 약해지고 있다."
 
+# ============================================================
+# 순간이동 불가 이유 (Teleport inability reasons)
+# 조합 패턴: "You %s %s." + 이유 + 목적
+# 예: "You lack the energy to teleport."
+# ============================================================
 #: src/teleport.c:1108
 msgid "lack the strength"
-msgstr "점프할 힘이 부족하다!"
+msgstr "힘이 부족하다"
 
 #: src/teleport.c:1110
 msgid "lack the energy"
-msgstr "%s{이/가} 새 에너지를 얻었다."
+msgstr "에너지가 부족하다"
 
 #: src/teleport.c:1114
 msgid "for a teleport spell"
-msgstr "순간이동 주문을 시도한다."
+msgstr "순간이동 주문을 위해"
 
 #: src/teleport.c:1114
 msgid "to teleport"
-msgstr "%s{이/가} 순간이동한다."
+msgstr "순간이동하기에"
 
 #: src/teleport.c:1117
 msgid "Your concentration falters from carrying so much."
@@ -36958,13 +36995,17 @@ msgstr "(사실, 9층 구름 위에 있다!)"
 msgid "are now high above the clouds..."
 msgstr "이제 구름 위 높이 있다..."
 
+# ============================================================
+# 하늘에서 탈출 (Escape from sky teleport)
+# 조합 패턴: You(escape_method) - 공중 부양이나 비행으로 탈출
+# ============================================================
 #: src/teleport.c:1340
 msgid "float gently down to earth"
-msgstr "%s{으로/로} 부드럽게 떠내려갔다."
+msgstr "부드럽게 땅으로 내려온다"
 
 #: src/teleport.c:1342
 msgid "fly down to the ground"
-msgstr "서비스다!"
+msgstr "땅으로 날아 내려간다"
 
 #: src/teleport.c:1344
 msgid "Unfortunately, you don't know how to fly."
@@ -37028,13 +37069,18 @@ msgstr "층 순간이동 함정을 %s!"
 msgid "briefly feel %s."
 msgstr "잠시 %s{을/를} 느꼈다."
 
+# ============================================================
+# 레벨 순간이동 후 느낌 (Level teleport feeling)
+# 조합 패턴: "briefly feel %s."
+# 환각: "oriented", 순간이동 제어: "centered"
+# ============================================================
 #: src/teleport.c:1552
 msgid "oriented"
-msgstr "%s방향 감각을 잃었다."
+msgstr "방향 감각이 생긴"
 
 #: src/teleport.c:1552
 msgid "centered"
-msgstr "바둑판 무늬"
+msgstr "중심이 잡힌"
 
 #: src/teleport.c:1554
 #, c-format
@@ -37055,13 +37101,18 @@ msgstr "%s{과/와} 함께 순간이동한다."
 msgid "%s vanishes and reappears%s."
 msgstr "%s{이/가} 사라졌다가 다시 나타났다%s."
 
+# ============================================================
+# 몬스터 순간이동 상대 위치 (Monster teleport relative position)
+# 조합 패턴: "%s vanishes and reappears%s."
+# 경우: " closer to you" (가까이), " farther away" (멀리), "" (같은 거리)
+# ============================================================
 #: src/teleport.c:1708
 msgid " closer to you"
-msgstr "%s{이/가} 당신에게 뛰어들었다!"
+msgstr " 당신에게 더 가까이"
 
 #: src/teleport.c:1709
 msgid " farther away"
-msgstr "%s{이/가} 더 %s."
+msgstr " 더 멀리"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -37180,17 +37231,21 @@ msgstr "눈가리개"
 msgid "deafness"
 msgstr "귀머거리"
 
+# ============================================================
+# 내재 상태 이름 (Intrinsic condition names)
+# intrinsic_data[] 배열: 상태 효과 이름들
+# ============================================================
 #: src/timeout.c:43
 msgid "slippery fingers"
-msgstr "미끄러운 "
+msgstr "미끄러운 손가락"
 
 #: src/timeout.c:44
 msgid "wounded legs"
-msgstr "바위가 %s%s."
+msgstr "다친 다리"
 
 #: src/timeout.c:45
 msgid "sleepy"
-msgstr "잠들다"
+msgstr "졸림"
 
 #: src/timeout.c:46
 msgid "teleporting"

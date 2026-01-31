@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 10:25+0900\n"
+"POT-Creation-Date: 2026-01-31 10:27+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -7289,7 +7289,7 @@ msgstr "무언가"
 # 한국어에는 정관사가 없으므로 빈 문자열로 처리
 #: ../src/do_name.c:923 ../src/do_name.c:1028 ../src/do_name.c:1198
 #: ../src/dokick.c:1606 ../src/end.c:208 ../src/end.c:218 ../src/insight.c:2901
-#: ../src/objnam.c:1294 ../src/read.c:2900
+#: ../src/objnam.c:1294 ../src/priest.c:328 ../src/read.c:2900
 msgid "the "
 msgstr " "
 
@@ -7299,7 +7299,7 @@ msgstr "%s (%s)"
 
 #: ../src/do_name.c:931 ../src/do_name.c:942 ../src/end.c:223
 #: ../src/mhitu.c:240 ../src/mhitu.c:246 ../src/obj_descr_i18n.c:426
-#: ../src/pager.c:119
+#: ../src/pager.c:119 ../src/priest.c:342
 msgid "invisible "
 msgstr "투명한 "
 
@@ -9650,6 +9650,21 @@ msgstr "%s의 평면"
 #, c-format
 msgid "unknown plane #%d"
 msgstr "알 수 없는 차원 #%d"
+
+#: ../src/dungeon.c:3537
+#, fuzzy, c-format
+msgid "%s: levels %d up to %d"
+msgstr "%s 레벨 %d."
+
+#: ../src/dungeon.c:3542
+#, fuzzy, c-format
+msgid "%s: levels %d to %d"
+msgstr "%s 레벨 %d."
+
+#: ../src/dungeon.c:3555
+#, fuzzy, c-format
+msgid "%sLevel %d:"
+msgstr "%s 레벨 %d."
 
 #: ../src/dungeon.c:3634
 #, c-format
@@ -24334,8 +24349,9 @@ msgstr ""
 msgid "some "
 msgstr "몇 개의"
 
-#: ../src/objnam.c:1300 ../src/objnam.c:2139 ../src/role.c:1637
-#: ../src/timeout.c:1563 ../src/timeout.c:1581
+#: ../src/objnam.c:1300 ../src/objnam.c:2139 ../src/priest.c:340
+#: ../src/priest.c:347 ../src/role.c:1637 ../src/timeout.c:1563
+#: ../src/timeout.c:1581
 msgid "a "
 msgstr "하나의"
 
@@ -24476,7 +24492,8 @@ msgstr "판매용"
 msgid " (no charge)"
 msgstr "무료다."
 
-#: ../src/objnam.c:2137
+#: ../src/objnam.c:2137 ../src/priest.c:332 ../src/priest.c:341
+#: ../src/priest.c:346
 #, fuzzy
 msgid "an "
 msgstr "그리고 "
@@ -29489,6 +29506,11 @@ msgstr "피가 제단을 범람하고, %s 구름 속으로 사라졌다!"
 msgid "blood covers the altar!"
 msgstr "피가 제단을 덮는다!"
 
+#: ../src/pray.c:1749
+#, fuzzy
+msgid "something dreadful"
+msgstr "무언가"
+
 #: ../src/pray.c:1752
 #, c-format
 msgid "have summoned %s!"
@@ -29844,6 +29866,10 @@ msgstr "여사제"
 #: ../src/priest.c:321
 msgid "priest"
 msgstr "사제"
+
+#: ../src/priest.c:348
+msgid "renegade "
+msgstr ""
 
 #: ../src/priest.c:353
 msgid "grand "

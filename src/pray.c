@@ -1746,7 +1746,7 @@ sacrifice_your_race(
 
             Strcpy(dbuf, a_monnam(dmon));
             if (!strcmpi(dbuf, "it"))
-                Strcpy(dbuf, "something dreadful");
+                Strcpy(dbuf, _("something dreadful"));
             else
                 dmon->mstrategy &= ~STRAT_APPEARMSG;
             You(_("have summoned %s!"), dbuf);

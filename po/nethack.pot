@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 10:25+0900\n"
+"POT-Creation-Date: 2026-01-31 10:27+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7032,7 +7032,7 @@ msgstr ""
 
 #: ../src/do_name.c:923 ../src/do_name.c:1028 ../src/do_name.c:1198
 #: ../src/dokick.c:1606 ../src/end.c:208 ../src/end.c:218 ../src/insight.c:2901
-#: ../src/objnam.c:1294 ../src/read.c:2900
+#: ../src/objnam.c:1294 ../src/priest.c:328 ../src/read.c:2900
 msgid "the "
 msgstr ""
 
@@ -7042,7 +7042,7 @@ msgstr ""
 
 #: ../src/do_name.c:931 ../src/do_name.c:942 ../src/end.c:223
 #: ../src/mhitu.c:240 ../src/mhitu.c:246 ../src/obj_descr_i18n.c:426
-#: ../src/pager.c:119
+#: ../src/pager.c:119 ../src/priest.c:342
 msgid "invisible "
 msgstr ""
 
@@ -9301,6 +9301,21 @@ msgstr ""
 #: ../src/dungeon.c:3428
 #, c-format
 msgid "unknown plane #%d"
+msgstr ""
+
+#: ../src/dungeon.c:3537
+#, c-format
+msgid "%s: levels %d up to %d"
+msgstr ""
+
+#: ../src/dungeon.c:3542
+#, c-format
+msgid "%s: levels %d to %d"
+msgstr ""
+
+#: ../src/dungeon.c:3555
+#, c-format
+msgid "%sLevel %d:"
 msgstr ""
 
 #: ../src/dungeon.c:3634
@@ -23245,8 +23260,9 @@ msgstr ""
 msgid "some "
 msgstr ""
 
-#: ../src/objnam.c:1300 ../src/objnam.c:2139 ../src/role.c:1637
-#: ../src/timeout.c:1563 ../src/timeout.c:1581
+#: ../src/objnam.c:1300 ../src/objnam.c:2139 ../src/priest.c:340
+#: ../src/priest.c:347 ../src/role.c:1637 ../src/timeout.c:1563
+#: ../src/timeout.c:1581
 msgid "a "
 msgstr ""
 
@@ -23381,7 +23397,8 @@ msgstr ""
 msgid " (no charge)"
 msgstr ""
 
-#: ../src/objnam.c:2137
+#: ../src/objnam.c:2137 ../src/priest.c:332 ../src/priest.c:341
+#: ../src/priest.c:346
 msgid "an "
 msgstr ""
 
@@ -28243,6 +28260,10 @@ msgstr ""
 msgid "blood covers the altar!"
 msgstr ""
 
+#: ../src/pray.c:1749
+msgid "something dreadful"
+msgstr ""
+
 #: ../src/pray.c:1752
 #, c-format
 msgid "have summoned %s!"
@@ -28587,6 +28608,10 @@ msgstr ""
 
 #: ../src/priest.c:321
 msgid "priest"
+msgstr ""
+
+#: ../src/priest.c:348
+msgid "renegade "
 msgstr ""
 
 #: ../src/priest.c:353

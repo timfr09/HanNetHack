@@ -7379,3 +7379,31 @@ msgstr "자칼"
 
 msgid "wolf"
 msgstr "늑대"
+
+# ===============================================
+# 추가 번역 - priest.c, pray.c, dungeon.c
+# ===============================================
+
+# priest.c - 사제 이름
+msgid "invisible "
+msgstr "투명한 "
+
+msgid "renegade "
+msgstr "배반자 "
+
+# pray.c - 소환
+msgid "something dreadful"
+msgstr "무시무시한 무언가"
+
+# dungeon.c - 던전 개요
+#, c-format
+msgid "%s: levels %d up to %d"
+msgstr "%s: %d층에서 %d층 위"
+
+#, c-format
+msgid "%s: levels %d to %d"
+msgstr "%s: %d층부터 %d층"
+
+#, c-format
+msgid "%sLevel %d:"
+msgstr "%s%d층:"

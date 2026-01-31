@@ -325,11 +325,11 @@ priestname(
         if (article == ARTICLE_YOUR || (article == ARTICLE_A && high_priest))
             article = ARTICLE_THE;
         if (article == ARTICLE_THE) {
-            Strcpy(pname, "the ");
+            Strcpy(pname, _("the "));
         } else if (!strcmp(what, "Angel")) {
             /* bypass just_an(); it would yield "" due to treating capital A
                as indicating a personal name */
-            Strcpy(pname, "an ");
+            Strcpy(pname, _("an "));
         } else {
             (void) just_an(pname, what);
         }
@@ -337,15 +337,15 @@ priestname(
     /* pname[] contains "" or {"a ","an ","the "} */
     if (mon->minvis) {
         /* avoid "a invisible priest" */
-        if (!strcmp(pname, "a "))
-            Strcpy(pname, "an ");
-        Strcat(pname, "invisible ");
+        if (!strcmp(pname, _("a ")))
+            Strcpy(pname, _("an "));
+        Strcat(pname, _("invisible "));
     }
     if (mon->isminion && EMIN(mon)->renegade) {
         /* avoid "an renegade Angel" */
-        if (!strcmp(pname, "an ") && !mon->minvis)
-            Strcpy(pname, "a ");
-        Strcat(pname, "renegade ");
+        if (!strcmp(pname, _("an ")) && !mon->minvis)
+            Strcpy(pname, _("a "));
+        Strcat(pname, _("renegade "));
     }
 
     if (mon->ispriest || aligned_priest) {

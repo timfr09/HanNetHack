@@ -8851,3 +8851,562 @@ msgstr "사악"
 
 msgid "unaligned"
 msgstr "무성향"
+
+# ============================================================
+# 전투 메시지 (Combat Messages)
+# ============================================================
+
+# uhitm.c - 플레이어가 몬스터를 공격
+# "You hit X with Y." → "Y(으)로 X를 때렸다."
+#, c-format
+msgid "hit %s with %s."
+msgstr "%2$s{으로/로} %1$s{을/를} 때렸다."
+
+# "You miss X." → "X에 대한 공격이 빗나갔다."
+#, c-format
+msgid "miss %s."
+msgstr "%s에 대한 공격이 빗나갔다."
+
+# "You hit it."
+msgid "hit it."
+msgstr "맞혔다."
+
+# "You miss it."
+msgid "miss it."
+msgstr "빗나갔다."
+
+# "You miss wildly and stumble forwards."
+msgid "miss wildly and stumble forwards."
+msgstr "크게 빗나가며 앞으로 비틀거렸다."
+
+# zap.c - 원거리 공격 (볼트, 광선 등)
+# "The bolt hits X" → "번개가 X를 맞혔다"
+# 패턴: "%s %s %s%s" (The str, vtense hit, target, force)
+#, c-format
+msgid "%s %s %s%s"
+msgstr "%1$s{이/가} %3$s{을/를} 맞혔다%4$s%2$.0s"
+
+# "The bolt misses X." → "번개가 X를 빗나갔다."
+# 패턴: "%s %s %s." (The str, vtense miss, target)
+#, c-format
+msgid "%s %s %s."
+msgstr "%1$s{이/가} %3$s{을/를} 빗나갔다%2$.0s."
+
+# ============================================================
+# 몬스터 소리 (Monster Sounds)
+# ============================================================
+
+# sounds.c - 몬스터 으르렁거림/울음 등
+# "The monster growls!" → "몬스터가 으르렁거린다!"
+# 패턴: "%s %s!" (Monnam, verb)
+#, c-format
+msgid "%s %s!"
+msgstr "%1$s{이/가} %2$s!"
+
+# ============================================================
+# 동사 (Verbs) - vtense()에서 사용되는 동사들
+# ============================================================
+
+msgid "hit"
+msgstr "맞혔다"
+
+msgid "hits"
+msgstr "맞혔다"
+
+msgid "miss"
+msgstr "빗나갔다"
+
+msgid "misses"
+msgstr "빗나갔다"
+
+msgid "spill"
+msgstr "쏟아진다"
+
+msgid "spills"
+msgstr "쏟아진다"
+
+msgid "drop"
+msgstr "떨어진다"
+
+msgid "drops"
+msgstr "떨어진다"
+
+msgid "appear"
+msgstr "나타난다"
+
+msgid "appears"
+msgstr "나타난다"
+
+# Note: resist, resists, flicker, flickers already defined earlier
+
+msgid "snap"
+msgstr "끊어진다"
+
+msgid "snaps"
+msgstr "끊어진다"
+
+msgid "ignite"
+msgstr "점화된다"
+
+msgid "ignites"
+msgstr "점화된다"
+
+msgid "wake"
+msgstr "깨어난다"
+
+msgid "wakes"
+msgstr "깨어난다"
+
+msgid "get"
+msgstr "된다"
+
+msgid "gets"
+msgstr "된다"
+
+# ============================================================
+# 몬스터 울음소리 동사
+# ============================================================
+
+msgid "growl"
+msgstr "으르렁거린다"
+
+msgid "growls"
+msgstr "으르렁거린다"
+
+msgid "roar"
+msgstr "포효한다"
+
+msgid "roars"
+msgstr "포효한다"
+
+msgid "snarl"
+msgstr "으르렁댄다"
+
+msgid "snarls"
+msgstr "으르렁댄다"
+
+msgid "bark"
+msgstr "짖는다"
+
+msgid "barks"
+msgstr "짖는다"
+
+msgid "yelp"
+msgstr "낑낑거린다"
+
+msgid "yelps"
+msgstr "낑낑거린다"
+
+msgid "whine"
+msgstr "낑낑댄다"
+
+msgid "whines"
+msgstr "낑낑댄다"
+
+msgid "whimper"
+msgstr "훌쩍인다"
+
+msgid "whimpers"
+msgstr "훌쩍인다"
+
+msgid "shriek"
+msgstr "비명을 지른다"
+
+msgid "shrieks"
+msgstr "비명을 지른다"
+
+msgid "squeak"
+msgstr "삑삑거린다"
+
+msgid "squeaks"
+msgstr "삑삑거린다"
+
+msgid "buzz"
+msgstr "윙윙거린다"
+
+msgid "buzzes"
+msgstr "윙윙거린다"
+
+msgid "hiss"
+msgstr "쉿 소리를 낸다"
+
+msgid "hisses"
+msgstr "쉿 소리를 낸다"
+
+# ============================================================
+# 일반 동작 동사
+# ============================================================
+
+msgid "splash"
+msgstr "튀긴다"
+
+msgid "splashes"
+msgstr "튀긴다"
+
+# Note: feel, feels already defined earlier
+
+msgid "are"
+msgstr "이다"
+
+msgid "is"
+msgstr "이다"
+
+# ============================================================
+# 물약/마법 효과
+# ============================================================
+
+# potion.c - 물약 효과
+# Note: "%s %s oily.", "%s %s full." are generic patterns,
+# translations handled via verb translations above
+
+# ============================================================
+# 분열 몬스터
+# ============================================================
+
+# uhitm.c:1605 - 분열
+#, c-format
+msgid "%s divides as you hit it%s!"
+msgstr "당신이 공격하자 %1$s{이/가} 분열했다%2$s!"
+
+# ============================================================
+# 새 초 점화
+# ============================================================
+
+# apply.c:1439 - 새 초 점화
+#, c-format
+msgid "new %s magically %s!"
+msgstr "새 %1$s{이/가} 마법처럼 %2$s!"
+
+# ============================================================
+# 소유격 패턴 (s_suffix) - X's Y
+# s_suffix()는 "'s"를 추가하므로, 한국어에서는 "의"로 처리
+# ============================================================
+
+# eat.c:626 - 뇌 먹기
+#, c-format
+msgid "eat %s brain!"
+msgstr "%s의 뇌를 먹었다!"
+
+# eat.c:628
+msgid "brain is eaten!"
+msgstr "뇌가 먹혔다!"
+
+# eat.c:631
+#, c-format
+msgid "%s brain is eaten!"
+msgstr "%s의 뇌가 먹혔다!"
+
+# dog.c:877 - 목줄
+#, c-format
+msgid "%s leash goes slack."
+msgstr "%s의 목줄이 느슨해졌다."
+
+# apply.c:969
+#, c-format
+msgid "%s leash snaps loose!"
+msgstr "%s의 목줄이 끊어졌다!"
+
+# Note: "%s saddle falls off.", "%s %s falls off!", "%s %s tears apart!"
+# already defined earlier in the file
+
+# timeout.c:1374 - 랜턴
+#, c-format
+msgid "%s lantern is getting dim."
+msgstr "%s의 랜턴이 어두워지고 있다."
+
+# mhitm.c:1251 - 잡기
+#, c-format
+msgid "%s grip relaxes."
+msgstr "%s의 잡기가 느슨해졌다."
+
+# steal.c:886 - 금화
+#, c-format
+msgid "%s gold %s."
+msgstr "%1$s의 금화가 %2$s."
+
+# uhitm.c:3084 - 독
+#, c-format
+msgid "%s %s was poisoned!"
+msgstr "%1$s의 %2$s에 독이 묻어있었다!"
+
+# read.c:2505 - 위장 밝혀짐
+#, c-format
+msgid "%s %s is lit."
+msgstr "%1$s의 %2$s{이/가} 밝혀졌다."
+
+# ============================================================
+# 신체 부위 관련 메시지
+# ============================================================
+
+msgid "head"
+msgstr "머리"
+
+msgid "arm"
+msgstr "팔"
+
+msgid "leg"
+msgstr "다리"
+
+msgid "foot"
+msgstr "발"
+
+msgid "hand"
+msgstr "손"
+
+msgid "eye"
+msgstr "눈"
+
+msgid "face"
+msgstr "얼굴"
+
+msgid "body"
+msgstr "몸"
+
+msgid "neck"
+msgstr "목"
+
+msgid "back"
+msgstr "등"
+
+msgid "stomach"
+msgstr "위장"
+
+msgid "skin"
+msgstr "피부"
+
+msgid "blood"
+msgstr "피"
+
+msgid "brain"
+msgstr "뇌"
+
+msgid "finger"
+msgstr "손가락"
+
+msgid "toe"
+msgstr "발가락"
+
+# ============================================================
+# 장비 관련
+# ============================================================
+
+msgid "weapon"
+msgstr "무기"
+
+msgid "armor"
+msgstr "갑옷"
+
+# Note: shield, amulet already defined earlier
+
+msgid "helmet"
+msgstr "투구"
+
+msgid "gloves"
+msgstr "장갑"
+
+msgid "boots"
+msgstr "부츠"
+
+msgid "cloak"
+msgstr "망토"
+
+msgid "ring"
+msgstr "반지"
+
+msgid "wand"
+msgstr "마법봉"
+
+msgid "scroll"
+msgstr "두루마리"
+
+msgid "potion"
+msgstr "물약"
+
+msgid "spellbook"
+msgstr "주문서"
+
+msgid "food"
+msgstr "음식"
+
+msgid "corpse"
+msgstr "시체"
+
+msgid "gold"
+msgstr "금화"
+
+msgid "gem"
+msgstr "보석"
+
+msgid "tool"
+msgstr "도구"
+
+# ============================================================
+# 일반적인 형용사/부사
+# ============================================================
+# Note: very, extremely, slightly, temporarily, permanently
+# already defined earlier in the file
+
+msgid "somewhat"
+msgstr "다소"
+
+msgid "completely"
+msgstr "완전히"
+
+msgid "partially"
+msgstr "부분적으로"
+
+msgid "suddenly"
+msgstr "갑자기"
+
+msgid "slowly"
+msgstr "천천히"
+
+msgid "quickly"
+msgstr "빠르게"
+
+msgid "quietly"
+msgstr "조용히"
+
+msgid "loudly"
+msgstr "시끄럽게"
+
+# ============================================================
+# 공통 문구
+# ============================================================
+# Note: "Nothing happens.", "Never mind." already defined earlier
+
+msgid "You feel nothing."
+msgstr "아무것도 느끼지 못했다."
+
+msgid "You hear nothing."
+msgstr "아무것도 들리지 않았다."
+
+msgid "You see nothing."
+msgstr "아무것도 보이지 않았다."
+
+msgid "That's a silly thing to do."
+msgstr "그건 어리석은 행동이다."
+
+msgid "You can't do that."
+msgstr "그렇게 할 수 없다."
+
+msgid "You don't have that."
+msgstr "그것을 가지고 있지 않다."
+
+msgid "You can't reach that."
+msgstr "거기에 닿을 수 없다."
+
+msgid "That is a strange direction!"
+msgstr "이상한 방향이다!"
+
+msgid "You can't go that way."
+msgstr "그쪽으로 갈 수 없다."
+
+msgid "There's no way to go that direction."
+msgstr "그 방향으로 갈 방법이 없다."
+
+msgid "You don't have anything to eat."
+msgstr "먹을 것이 없다."
+
+msgid "You don't have anything to drink."
+msgstr "마실 것이 없다."
+
+msgid "You don't have anything to read."
+msgstr "읽을 것이 없다."
+
+msgid "You have no weapon in hand."
+msgstr "손에 무기가 없다."
+
+msgid "You are already wearing that."
+msgstr "이미 착용하고 있다."
+
+msgid "You are not wearing that."
+msgstr "착용하고 있지 않다."
+
+msgid "You can't wear that."
+msgstr "그것을 착용할 수 없다."
+
+msgid "You can't remove that."
+msgstr "그것을 벗을 수 없다."
+
+msgid "You finish eating."
+msgstr "다 먹었다."
+
+msgid "You finish drinking."
+msgstr "다 마셨다."
+
+msgid "This tastes terrible!"
+msgstr "맛이 끔찍하다!"
+
+msgid "This is delicious!"
+msgstr "맛있다!"
+
+# ============================================================
+# 상태 메시지
+# ============================================================
+
+msgid "You feel weak."
+msgstr "기운이 없다."
+
+msgid "You feel strong."
+msgstr "힘이 세진 것 같다."
+
+msgid "You feel healthy."
+msgstr "건강해진 것 같다."
+
+msgid "You feel sick."
+msgstr "몸이 아프다."
+
+msgid "You feel confused."
+msgstr "혼란스럽다."
+
+msgid "You feel dizzy."
+msgstr "어지럽다."
+
+msgid "You feel sleepy."
+msgstr "졸립다."
+
+msgid "You feel tired."
+msgstr "피곤하다."
+
+msgid "You feel better."
+msgstr "기분이 나아졌다."
+
+msgid "You feel worse."
+msgstr "기분이 나빠졌다."
+
+msgid "You feel very sick."
+msgstr "매우 아프다."
+
+msgid "You feel much better."
+msgstr "훨씬 나아졌다."
+
+msgid "You faint."
+msgstr "기절했다."
+
+msgid "You regain consciousness."
+msgstr "의식을 되찾았다."
+
+# ============================================================
+# 죽음 관련
+# ============================================================
+
+msgid "You die."
+msgstr "죽었다."
+
+msgid "You die..."
+msgstr "죽었다..."
+
+msgid "You are dead."
+msgstr "죽었다."
+
+msgid "DYWYPI?"
+msgstr "정말 죽기 직전의 소지품을 볼까요?"
+
+msgid "Do you want your possessions identified?"
+msgstr "소지품을 확인하겠습니까?"
+
+# Note: "Really quit?" already defined earlier
+
+msgid "Game over."
+msgstr "게임 오버."

@@ -1478,10 +1478,13 @@ attributes_enlightenment(
     enlght_out(final ? _("Final Attributes:") : _("Attributes:"));
 
     if (u.uevent.uhand_of_elbereth) {
-        static const char *const hofe_titles[3] = { "the Hand of Elbereth",
-                                                    "the Envoy of Balance",
-                                                    "the Glory of Arioch" };
-        you_are(hofe_titles[u.uevent.uhand_of_elbereth - 1], "");
+        const char *hofe_title;
+        switch (u.uevent.uhand_of_elbereth) {
+        case 1: hofe_title = _("the Hand of Elbereth"); break;
+        case 2: hofe_title = _("the Envoy of Balance"); break;
+        default: hofe_title = _("the Glory of Arioch"); break;
+        }
+        you_are(hofe_title, "");
     }
 
     Sprintf(buf, "%s", piousness(TRUE, _("aligned")));
@@ -1777,13 +1780,13 @@ attributes_enlightenment(
     }
     if ((armpro = magic_negation(&gy.youmonst)) > 0) {
         /* magic cancellation factor, conferred by worn armor */
-        static const char *const mc_types[] = {
-            "" /*ordinary*/, "warded", "guarded", "protected",
-        };
-        /* sanity check */
-        if (armpro >= SIZE(mc_types))
-            armpro = SIZE(mc_types) - 1;
-        you_are(mc_types[armpro], "");
+        const char *mc_type;
+        switch (armpro) {
+        case 1: mc_type = _("warded"); break;
+        case 2: mc_type = _("guarded"); break;
+        default: mc_type = _("protected"); break;
+        }
+        you_are(mc_type, "");
     }
     if (Half_physical_damage)
         enlght_halfdmg(HALF_PHDAM, final);
@@ -3264,27 +3267,27 @@ piousness(boolean showneg, const char *suffix)
 
     /* note: piousness 20 matches MIN_QUEST_ALIGN (quest.h) */
     if (u.ualign.record >= 20)
-        pio = "piously";
+        pio = _("piously");
     else if (u.ualign.record > 13)
-        pio = "devoutly";
+        pio = _("devoutly");
     else if (u.ualign.record > 8)
-        pio = "fervently";
+        pio = _("fervently");
     else if (u.ualign.record > 3)
-        pio = "stridently";
+        pio = _("stridently");
     else if (u.ualign.record == 3)
         pio = "";
     else if (u.ualign.record > 0)
-        pio = "haltingly";
+        pio = _("haltingly");
     else if (u.ualign.record == 0)
-        pio = "nominally";
+        pio = _("nominally");
     else if (!showneg)
-        pio = "insufficiently";
+        pio = _("insufficiently");
     else if (u.ualign.record >= -3)
-        pio = "strayed";
+        pio = _("strayed");
     else if (u.ualign.record >= -8)
-        pio = "sinned";
+        pio = _("sinned");
     else
-        pio = "transgressed";
+        pio = _("transgressed");
 
     Sprintf(buf, "%s", pio);
     if (suffix && (!showneg || u.ualign.record >= 0)) {

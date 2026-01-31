@@ -953,7 +953,7 @@ polymon(int mntmp)
         if (touch_petrifies(u.usteed->data) && !Stone_resistance && rnl(3)) {
             pline(_("%s touch %s."), no_longer_petrify_resistant,
                   mon_nam(u.usteed));
-            Sprintf(buf, "riding %s",
+            Sprintf(buf, _("riding %s"),
                     an(pmname(u.usteed->data, Mgender(u.usteed))));
             instapetrify(buf);
         }
@@ -1217,7 +1217,7 @@ break_armor(void)
                 char hornbuf[BUFSZ];
 
                 /* Future possibilities: This could damage/destroy helmet */
-                Sprintf(hornbuf, "horn%s", plur(num_horns(uptr)));
+                Sprintf(hornbuf, _("horn%s"), plur(num_horns(uptr)));
                 Your(_("%s %s through %s."), hornbuf, vtense(hornbuf, _("pierce")),
                      yname(otmp));
             } else {

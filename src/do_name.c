@@ -920,13 +920,13 @@ x_monnam(
         if (adjective && article == ARTICLE_THE) {
             /* pathological case: "the angry Asidonhopo the blue dragon"
                sounds silly */
-            Strcpy(buf, "the ");
+            Strcpy(buf, _("the "));
             Strcat(strcat(buf, adjective), " ");
             Strcat(buf, shkname(mtmp));
         } else {
             Strcat(buf, shkname(mtmp));
             if (mdat != &mons[PM_SHOPKEEPER] || do_invis){
-                Strcat(buf, " the ");
+                Strcat(buf, _(" the "));
                 if (do_invis)
                     Strcat(buf, _("invisible "));
                 Strcat(buf, _(pm_name));
@@ -1393,7 +1393,7 @@ bogusmon(char *buf, char *code)
     /* might fail (return empty buf[]) if the file isn't available */
     get_rnd_text(BOGUSMONFILE, buf, rn2_on_display_rng, MD_PAD_BOGONS);
     if (!*mnam) {
-        Strcpy(buf, "bogon");
+        Strcpy(buf, _("bogon"));
     } else if (strchr(bogon_codes, *mnam)) { /* strip prefix if present */
         if (code)
             *code = *mnam;

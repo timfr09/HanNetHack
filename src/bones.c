@@ -685,7 +685,7 @@ getbones(void)
         if (strcmp(bonesid, oldbonesid) != 0) {
             char errbuf[BUFSZ];
 
-            Sprintf(errbuf, "This is bones level '%s', not '%s'!",
+            Sprintf(errbuf, _("This is bones level '%s', not '%s'!"),
                     oldbonesid, bonesid);
             if (wizard) {
                 pline1(errbuf);

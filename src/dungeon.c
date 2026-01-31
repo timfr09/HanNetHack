@@ -2317,7 +2317,7 @@ print_dungeon(boolean bymenu, schar *rlev, xint16 *rdgn)
         /* Most entrances are uninteresting. */
         if (dptr->entry_lev != 1) {
             if (dptr->entry_lev == nlev)
-                Strcat(buf, ", entrance from below");
+                Strcat(buf, _(", entrance from below"));
             else
                 Sprintf(eos(buf), ", entrance on %d",
                         dptr->depth_start + dptr->entry_lev - 1);
@@ -3460,10 +3460,10 @@ tunesuffix(
         char tmp[BUFSZ];
 
         if (u.uevent.uheard_tune == 2)
-            Sprintf(tmp, "notes \"%s\"", svt.tune);
+            Sprintf(tmp, _("notes \"%s\""), svt.tune);
         else
-            Strcpy(tmp, "5-note tune");
-        Snprintf(outbuf, bsz, " (play %s to open or close drawbridge)", tmp);
+            Strcpy(tmp, _("5-note tune"));
+        Snprintf(outbuf, bsz, _(" (play %s to open or close drawbridge)"), tmp);
     }
     return outbuf;
 }
@@ -3534,12 +3534,12 @@ print_mapseen(
             || In_endgame(&mptr->lev))
             Sprintf(buf, "%s:", svd.dungeons[dnum].dname);
         else if (builds_up(&mptr->lev))
-            Sprintf(buf, "%s: levels %d up to %d",
+            Sprintf(buf, _("%s: levels %d up to %d"),
                     svd.dungeons[dnum].dname,
                     depthstart + svd.dungeons[dnum].entry_lev - 1,
                     depthstart + svd.dungeons[dnum].dunlev_ureached - 1);
         else
-            Sprintf(buf, "%s: levels %d to %d",
+            Sprintf(buf, _("%s: levels %d to %d"),
                     svd.dungeons[dnum].dname, depthstart,
                     depthstart + svd.dungeons[dnum].dunlev_ureached - 1);
 
@@ -3552,7 +3552,7 @@ print_mapseen(
         Sprintf(buf, "%s%s:", (final != -1) ? TAB : "",
                 endgamelevelname(tmpbuf, i));
     else
-        Sprintf(buf, "%sLevel %d:", (final != -1) ? TAB : "", i);
+        Sprintf(buf, _("%sLevel %d:"), (final != -1) ? TAB : "", i);
 
     /* wizmode prints out proto dungeon names for clarity */
     if (wizard) {
@@ -3608,7 +3608,7 @@ print_mapseen(
             atmp = mptr->feat.msalign;              /*    0,  1,  2,  3 */
             atmp = Msa2amask(atmp);                 /*    0,  1,  2,  4 */
             if (Amask2align(atmp) == u.ualign.type) /* -128, -1,  0, +1 */
-                Sprintf(eos(buf), " to %s", align_gname(u.ualign.type));
+                Sprintf(eos(buf), _(" to %s"), align_gname(u.ualign.type));
         }
         ADDNTOBUF("throne", mptr->feat.nthrone);
         ADDNTOBUF("fountain", mptr->feat.nfount);

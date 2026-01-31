@@ -105,3 +105,7 @@ po/*_merged.po
 # Compiled translation files (except installed ones)
 *.mo
 !dat/locale/**/*.mo
+
+# Claude Code local settings
+.claude/
+CLAUDE.local.md

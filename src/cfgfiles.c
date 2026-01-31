@@ -1572,7 +1572,7 @@ config_erradd(const char *buf)
         config_error_data->origline_shown = TRUE;
     }
     if (config_error_data->line_num > 0 && !config_error_data->secure) {
-        Sprintf(lineno, "Line %d: ", config_error_data->line_num);
+        Sprintf(lineno, _("Line %d: "), config_error_data->line_num);
     } else
         lineno[0] = '\0';
 

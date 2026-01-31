@@ -120,6 +120,34 @@ get_localized_filename(const char *fname)
 /* Domain name for gettext */
 #define TEXTDOMAIN "nethack"
 
+/*
+ * Context-aware gettext (pgettext)
+ *
+ * GNU gettext stores context-aware messages as "context\004msgid".
+ * This function looks up the combined key and returns the translation.
+ * If not found, returns the original msgid.
+ */
+const char *
+pgettext(const char *msgctxt, const char *msgid)
+{
+    static char msg_ctxt_id[BUFSZ];
+    const char *translation;
+
+    if (!msgctxt || !*msgctxt)
+        return gettext(msgid);
+
+    /* Build the context-aware key: "context\004msgid" */
+    snprintf(msg_ctxt_id, sizeof(msg_ctxt_id), "%s\004%s", msgctxt, msgid);
+
+    translation = gettext(msg_ctxt_id);
+
+    /* If not translated (gettext returns the input), return original msgid */
+    if (translation == msg_ctxt_id || strcmp(translation, msg_ctxt_id) == 0)
+        return msgid;
+
+    return translation;
+}
+
 /* Cached language info */
 static char current_lang[8] = "";
 static boolean korean_locale = FALSE;
@@ -428,6 +456,31 @@ process_korean_postpositions(char *buf, const char *format, ...)
 
     *outp = '\0';
     return buf;
+}
+
+/*
+ * Apply Korean postpositions to an already-formatted string
+ *
+ * This is a simpler wrapper for cases where the string is already
+ * formatted and we just need to process the postposition patterns.
+ * The string is modified in place.
+ *
+ * Usage:
+ *   apply_korean_postpositions(out_line);
+ */
+char *
+apply_korean_postpositions(char *str)
+{
+    char temp[BUFSZ];
+
+    if (!str || !korean_locale)
+        return str;
+
+    /* Copy to temp buffer and process back into original */
+    strncpy(temp, str, BUFSZ - 1);
+    temp[BUFSZ - 1] = '\0';
+
+    return process_korean_postpositions(str, "%s", temp);
 }
 
 #endif /* ENABLE_NLS */

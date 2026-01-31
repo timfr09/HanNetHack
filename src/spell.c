@@ -778,7 +778,7 @@ getspell(int *spell_no)
             return TRUE;
         }
     }
-    return dospellmenu("Choose which spell to cast", SPELLMENU_CAST,
+    return dospellmenu(_("Choose which spell to cast"), SPELLMENU_CAST,
                        spell_no);
 }
 
@@ -2129,7 +2129,7 @@ dospellmenu(
             /* more than 1 spell, add an extra menu entry */
             any.a_int = SPELLMENU_SORT + 1;
             add_menu(tmpwin, &nul_glyphinfo, &any, '+', 0,
-                     ATR_NONE, clr, "[sort spells]", MENU_ITEMFLAGS_NONE);
+                     ATR_NONE, clr, _("[sort spells]"), MENU_ITEMFLAGS_NONE);
         }
     }
     end_menu(tmpwin, prompt);
@@ -2297,7 +2297,7 @@ spellretention(int idx, char * outbuf)
         Strcpy(outbuf, _("(gone)"));
     } else if (turnsleft >= (long) KEEN) {
         /* full retention, first turn or immediately after reading book */
-        Strcpy(outbuf, "100%");
+        Strcpy(outbuf, _("100%"));
     } else {
         /*
          * Retention is displayed as a range of percentages of

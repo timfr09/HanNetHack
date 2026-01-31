@@ -991,31 +991,31 @@ genl_status_update(
             nb = status_vals[idx];
             *nb = '\0';
             if (cond & BL_MASK_STONE)
-                Strcpy(nb = eos(nb), " Stone");
+                Strcpy(nb = eos(nb), _(" Stone"));
             if (cond & BL_MASK_SLIME)
-                Strcpy(nb = eos(nb), " Slime");
+                Strcpy(nb = eos(nb), _(" Slime"));
             if (cond & BL_MASK_STRNGL)
-                Strcpy(nb = eos(nb), " Strngl");
+                Strcpy(nb = eos(nb), _(" Strngl"));
             if (cond & BL_MASK_FOODPOIS)
-                Strcpy(nb = eos(nb), " FoodPois");
+                Strcpy(nb = eos(nb), _(" FoodPois"));
             if (cond & BL_MASK_TERMILL)
-                Strcpy(nb = eos(nb), " TermIll");
+                Strcpy(nb = eos(nb), _(" TermIll"));
             if (cond & BL_MASK_BLIND)
-                Strcpy(nb = eos(nb), " Blind");
+                Strcpy(nb = eos(nb), _(" Blind"));
             if (cond & BL_MASK_DEAF)
-                Strcpy(nb = eos(nb), " Deaf");
+                Strcpy(nb = eos(nb), _(" Deaf"));
             if (cond & BL_MASK_STUN)
-                Strcpy(nb = eos(nb), " Stun");
+                Strcpy(nb = eos(nb), _(" Stun"));
             if (cond & BL_MASK_CONF)
-                Strcpy(nb = eos(nb), " Conf");
+                Strcpy(nb = eos(nb), _(" Conf"));
             if (cond & BL_MASK_HALLU)
-                Strcpy(nb = eos(nb), " Hallu");
+                Strcpy(nb = eos(nb), _(" Hallu"));
             if (cond & BL_MASK_LEV)
-                Strcpy(nb = eos(nb), " Lev");
+                Strcpy(nb = eos(nb), _(" Lev"));
             if (cond & BL_MASK_FLY)
-                Strcpy(nb = eos(nb), " Fly");
+                Strcpy(nb = eos(nb), _(" Fly"));
             if (cond & BL_MASK_RIDE)
-                Strcpy(nb = eos(nb), " Ride");
+                Strcpy(nb = eos(nb), _(" Ride"));
             break;
         default:
             Sprintf(status_vals[idx],
@@ -1166,26 +1166,26 @@ dump_fmtstr(
                 if (fullsubs)
                     Sprintf(tmpbuf, "%lu", (unsigned long) ubirthday);
                 else
-                    Strcpy(tmpbuf, "{game start cookie}");
+                    Strcpy(tmpbuf, _("{game start cookie}"));
                 break;
             case 'T': /* current time, timestamp */
                 if (fullsubs)
                     Sprintf(tmpbuf, "%lu", (unsigned long) now);
                 else
-                    Strcpy(tmpbuf, "{current time cookie}");
+                    Strcpy(tmpbuf, _("{current time cookie}"));
                 break;
             case 'd': /* game start, YYYYMMDDhhmmss */
                 if (fullsubs)
                     Sprintf(tmpbuf, "%08ld%06ld",
                             yyyymmdd(ubirthday), hhmmss(ubirthday));
                 else
-                    Strcpy(tmpbuf, "{game start date+time}");
+                    Strcpy(tmpbuf, _("{game start date+time}"));
                 break;
             case 'D': /* current time, YYYYMMDDhhmmss */
                 if (fullsubs)
                     Sprintf(tmpbuf, "%08ld%06ld", yyyymmdd(now), hhmmss(now));
                 else
-                    Strcpy(tmpbuf, "{current date+time}");
+                    Strcpy(tmpbuf, _("{current date+time}"));
                 break;
             case 'v': /* version, eg. "3.7.0-0" */
                 Sprintf(tmpbuf, "%s", version_string(verbuf, sizeof verbuf));
@@ -1198,13 +1198,13 @@ dump_fmtstr(
                     Sprintf(tmpbuf, "%s",
                             *svp.plname ? svp.plname : "unknown");
                 else
-                    Strcpy(tmpbuf, "{hero name}");
+                    Strcpy(tmpbuf, _("{hero name}"));
                 break;
             case 'N': /* first character of player name */
                 if (fullsubs)
                     Sprintf(tmpbuf, "%c", *svp.plname ? *svp.plname : 'u');
                 else
-                    Strcpy(tmpbuf, "{hero initial}");
+                    Strcpy(tmpbuf, _("{hero initial}"));
                 break;
             }
             if (fullsubs) {

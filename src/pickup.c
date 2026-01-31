@@ -3338,7 +3338,7 @@ menu_loot(int retry, boolean put_in)
             mflags |= JUSTPICKED;
         if (!put_in)
             gc.current_container->cknown = 1;
-        Sprintf(buf, "%s what?", action);
+        Sprintf(buf, _("%s what?"), action);
         n = query_objlist(buf,
                           put_in ? &gi.invent : &(gc.current_container->cobj),
                           mflags, &pick_list, PICK_ANY,

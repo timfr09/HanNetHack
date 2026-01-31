@@ -992,7 +992,7 @@ menu_drop(int retry)
         all_categories = (retry == -2);
     } else if (flags.menu_style == MENU_FULL) {
         all_categories = FALSE;
-        n = query_category("Drop what type of items?", gi.invent,
+        n = query_category(_("Drop what type of items?"), gi.invent,
                            (UNPAID_TYPES | ALL_TYPES | CHOOSE_ALL
                             | BUC_BLESSED | BUC_CURSED | BUC_UNCURSED
                             | BUC_UNKNOWN | JUSTPICKED | INCLUDE_VENOM),

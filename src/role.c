@@ -581,11 +581,11 @@ const struct Role roles[NUM_ROLES+1] = {
 /* NUM_RACES is defined in hack.h */
 const struct Race races[NUM_RACES + 1] = {
     {
-        "human",
-        "human",
-        "humanity",
+        N_("human"),
+        N_("human"),
+        N_("humanity"),
         "Hum",
-        { "man", "woman" },
+        { N_("man"), N_("woman") },
         PM_HUMAN,
         PM_HUMAN_MUMMY,
         PM_HUMAN_ZOMBIE,
@@ -602,9 +602,9 @@ const struct Race races[NUM_RACES + 1] = {
         { 1, 0, 2, 0, 2, 0 }  /* Energy */
     },
     {
-        "elf",
-        "elven",
-        "elvenkind",
+        N_("elf"),
+        N_("elven"),
+        N_("elvenkind"),
         "Elf",
         { 0, 0 },
         PM_ELF,
@@ -622,9 +622,9 @@ const struct Race races[NUM_RACES + 1] = {
         { 2, 0, 3, 0, 3, 0 }  /* Energy */
     },
     {
-        "dwarf",
-        "dwarven",
-        "dwarvenkind",
+        N_("dwarf"),
+        N_("dwarven"),
+        N_("dwarvenkind"),
         "Dwa",
         { 0, 0 },
         PM_DWARF,
@@ -642,9 +642,9 @@ const struct Race races[NUM_RACES + 1] = {
         { 0, 0, 0, 0, 0, 0 }  /* Energy */
     },
     {
-        "gnome",
-        "gnomish",
-        "gnomehood",
+        N_("gnome"),
+        N_("gnomish"),
+        N_("gnomehood"),
         "Gno",
         { 0, 0 },
         PM_GNOME,
@@ -662,9 +662,9 @@ const struct Race races[NUM_RACES + 1] = {
         { 2, 0, 2, 0, 2, 0 }  /* Energy */
     },
     {
-        "orc",
-        "orcish",
-        "orcdom",
+        N_("orc"),
+        N_("orcish"),
+        N_("orcdom"),
         "Orc",
         { 0, 0 },
         PM_ORC,
@@ -687,19 +687,19 @@ const struct Race races[NUM_RACES + 1] = {
 
 /* Table of all genders */
 const struct Gender genders[] = {
-    { "male", "he", "him", "his", "Mal", ROLE_MALE },
-    { "female", "she", "her", "her", "Fem", ROLE_FEMALE },
-    { "neuter", "it", "it", "its", "Ntr", ROLE_NEUTER },
+    { N_("male"), N_("he"), N_("him"), N_("his"), "Mal", ROLE_MALE },
+    { N_("female"), N_("she"), N_("her"), N_("her"), "Fem", ROLE_FEMALE },
+    { N_("neuter"), N_("it"), N_("it"), N_("its"), "Ntr", ROLE_NEUTER },
     /* used by pronoun_gender() when hallucinating */
-    { "group", "they", "them", "their", "Grp", 0 },
+    { N_("group"), N_("they"), N_("them"), N_("their"), "Grp", 0 },
 };
 
 /* Table of all alignments */
 const struct Align aligns[] = {
-    { "law", "lawful", "Law", ROLE_LAWFUL, A_LAWFUL },
-    { "balance", "neutral", "Neu", ROLE_NEUTRAL, A_NEUTRAL },
-    { "chaos", "chaotic", "Cha", ROLE_CHAOTIC, A_CHAOTIC },
-    { "evil", "unaligned", "Una", 0, A_NONE }
+    { N_("law"), N_("lawful"), "Law", ROLE_LAWFUL, A_LAWFUL },
+    { N_("balance"), N_("neutral"), "Neu", ROLE_NEUTRAL, A_NEUTRAL },
+    { N_("chaos"), N_("chaotic"), "Cha", ROLE_CHAOTIC, A_CHAOTIC },
+    { N_("evil"), N_("unaligned"), "Una", 0, A_NONE }
 };
 
 staticfn int randrole_filtered(void);
@@ -1567,7 +1567,7 @@ root_plselection_prompt(
         && !validrole(rolenum)) {
         if (donefirst)
             Strcat(buf, " ");
-        Strcat(buf, "character");
+        Strcat(buf, _("character"));
         /*donefirst = TRUE;*/
     }
     /* <your lawful female gnomish cavewoman> || <your lawful female gnome>
@@ -1675,22 +1675,22 @@ build_plselection_prompt(
     if (num_post_attribs) {
         if (gr.role_pa[BP_RACE]) {
             (void) promptsep(eos(buf), num_post_attribs);
-            Strcat(buf, "race");
+            Strcat(buf, _("race"));
         }
         if (gr.role_pa[BP_ROLE]) {
             (void) promptsep(eos(buf), num_post_attribs);
-            Strcat(buf, "role");
+            Strcat(buf, _("role"));
         }
         if (gr.role_pa[BP_GEND]) {
             (void) promptsep(eos(buf), num_post_attribs);
-            Strcat(buf, "gender");
+            Strcat(buf, _("gender"));
         }
         if (gr.role_pa[BP_ALIGN]) {
             (void) promptsep(eos(buf), num_post_attribs);
-            Strcat(buf, "alignment");
+            Strcat(buf, _("alignment"));
         }
     }
-    Strcat(buf, " for you? [ynaq] ");
+    Strcat(buf, _(" for you? [ynaq] "));
     return buf;
 }
 
@@ -2915,16 +2915,16 @@ setup_rolemenu(
         thisch = lowc(*roles[i].name.m);
         if (thisch == lastch)
             thisch = highc(thisch);
-        Strcpy(rolenamebuf, roles[i].name.m);
+        Strcpy(rolenamebuf, _(roles[i].name.m));
         if (roles[i].name.f) {
             /* role has distinct name for female (C,P) */
             if (gend == 1) {
                 /* female already chosen; replace male name */
-                Strcpy(rolenamebuf, roles[i].name.f);
+                Strcpy(rolenamebuf, _(roles[i].name.f));
             } else if (gend < 0) {
                 /* not chosen yet; append slash+female name */
                 Strcat(rolenamebuf, "/");
-                Strcat(rolenamebuf, roles[i].name.f);
+                Strcat(rolenamebuf, _(roles[i].name.f));
             }
         }
         /* !filtering implies reset_role_filtering() where we want to
@@ -2969,7 +2969,7 @@ setup_racemenu(
         add_menu(win, &nul_glyphinfo, &any,
                  filtering ? this_ch : highc(this_ch),
                  filtering ? highc(this_ch) : 0,
-                 ATR_NONE, clr, races[i].noun,
+                 ATR_NONE, clr, _(races[i].noun),
                  (!filtering && !race_ok)
                     ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     }

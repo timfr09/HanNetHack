@@ -160,19 +160,19 @@ were_summon(
             typ = rn2(3) ? PM_SEWER_RAT
                          : rn2(3) ? PM_GIANT_RAT : PM_RABID_RAT;
             if (genbuf)
-                Strcpy(genbuf, "rat");
+                Strcpy(genbuf, _("rat"));
             break;
         case PM_WEREJACKAL:
         case PM_HUMAN_WEREJACKAL:
             typ = rn2(7) ? PM_JACKAL : rn2(3) ? PM_COYOTE : PM_FOX;
             if (genbuf)
-                Strcpy(genbuf, "jackal");
+                Strcpy(genbuf, _("jackal"));
             break;
         case PM_WEREWOLF:
         case PM_HUMAN_WEREWOLF:
             typ = rn2(5) ? PM_WOLF : rn2(2) ? PM_WARG : PM_WINTER_WOLF;
             if (genbuf)
-                Strcpy(genbuf, "wolf");
+                Strcpy(genbuf, _("wolf"));
             break;
         default:
             continue;

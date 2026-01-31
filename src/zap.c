@@ -600,9 +600,9 @@ release_hold(void)
 
         unstuck(u.ustuck);
         if (!nohands(mtmp->data))
-            Sprintf(relbuf, "from %s grasp", s_suffix(mon_nam(mtmp)));
+            Sprintf(relbuf, _("from %s grasp"), s_suffix(mon_nam(mtmp)));
         else
-            Sprintf(relbuf, "by %s", mon_nam(mtmp));
+            Sprintf(relbuf, _("by %s"), mon_nam(mtmp));
         You(_("are released %s."), relbuf);
     }
 }

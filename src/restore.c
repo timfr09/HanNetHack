@@ -1082,10 +1082,10 @@ getlev(NHFILE *nhfp, int pid, xint8 lev)
         char trickbuf[BUFSZ];
 
         if (pid && pid != hpid)
-            Sprintf(trickbuf, "PID (%d) doesn't match saved PID (%d)!", hpid,
+            Sprintf(trickbuf, _("PID (%d) doesn't match saved PID (%d)!"), hpid,
                     pid);
         else
-            Sprintf(trickbuf, "This is level %d, not %d!", dlvl, lev);
+            Sprintf(trickbuf, _("This is level %d, not %d!"), dlvl, lev);
         if (wizard)
             pline1(trickbuf);
         trickery(trickbuf);

@@ -1158,7 +1158,7 @@ optfn_autounlock(
     }
     if (req == get_val || req == get_cnf_val) {
         if (!flags.autounlock) {
-            Strcpy(opts, "none");
+            Strcpy(opts, _("none"));
         } else {
             static const char plus[] = " + ";
             const char *p = "";
@@ -4083,12 +4083,12 @@ optfn_statushilites(
     if (req == get_val) {
 #ifdef STATUS_HILITES
         if (!iflags.hilite_delta)
-            Strcpy(opts, "0 (off: don't highlight status fields)");
+            Strcpy(opts, _("0 (off: don't highlight status fields)"));
         else
-            Sprintf(opts, "%ld (on: highlight status for %ld turns)",
+            Sprintf(opts, _("%ld (on: highlight status for %ld turns)"),
                     iflags.hilite_delta, iflags.hilite_delta);
 #else
-        Strcpy(opts, "unsupported");
+        Strcpy(opts, _("unsupported"));
 #endif
         return optn_ok;
     }
@@ -4139,7 +4139,7 @@ optfn_statuslines(
         if (wc2_supported(allopt[optidx].name))
             Strcpy(opts, (iflags.wc2_statuslines < 3) ? "2" : "3");
         else
-            Strcpy(opts, "unknown");
+            Strcpy(opts, _("unknown"));
         return optn_ok;
     }
     return optn_ok;
@@ -6170,7 +6170,7 @@ staticfn int
 handler_petattr(void)
 {
     int tmp
-        = query_attr("Select pet highlight attribute", iflags.wc2_petattr);
+        = query_attr(_("Select pet highlight attribute"), iflags.wc2_petattr);
 
     if (tmp != -1) {
         iflags.wc2_petattr = tmp;
@@ -6237,50 +6237,50 @@ handler_whatis_coord(void)
     any.a_char = GPCOORDS_COMPASS;
     add_menu(tmpwin, &nul_glyphinfo, &any, GPCOORDS_COMPASS,
              0, ATR_NONE, clr,
-             "compass ('east' or '3s' or '2n,4w')",
+             _("compass ('east' or '3s' or '2n,4w')"),
              (gpc == GPCOORDS_COMPASS)
                 ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     any.a_char = GPCOORDS_COMFULL;
     add_menu(tmpwin, &nul_glyphinfo, &any, GPCOORDS_COMFULL,
              0, ATR_NONE, clr,
-             "full compass ('east' or '3south' or '2north,4west')",
+             _("full compass ('east' or '3south' or '2north,4west')"),
              (gpc == GPCOORDS_COMFULL)
                 ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     any.a_char = GPCOORDS_MAP;
     add_menu(tmpwin, &nul_glyphinfo, &any, GPCOORDS_MAP,
-             0, ATR_NONE, clr, "map <x,y>",
+             0, ATR_NONE, clr, _("map <x,y>"),
              (gpc == GPCOORDS_MAP)
                 ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     any.a_char = GPCOORDS_SCREEN;
     add_menu(tmpwin, &nul_glyphinfo, &any, GPCOORDS_SCREEN,
-             0, ATR_NONE, clr, "screen [row,column]",
+             0, ATR_NONE, clr, _("screen [row,column]"),
              (gpc == GPCOORDS_SCREEN)
                 ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     any.a_char = GPCOORDS_NONE;
     add_menu(tmpwin, &nul_glyphinfo, &any, GPCOORDS_NONE,
-             0, ATR_NONE, clr, "none (no coordinates displayed)",
+             0, ATR_NONE, clr, _("none (no coordinates displayed)"),
              (gpc == GPCOORDS_NONE)
                 ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     add_menu_str(tmpwin, "");
-    Sprintf(buf, "map: upper-left: <%d,%d>, lower-right: <%d,%d>%s",
+    Sprintf(buf, _("map: upper-left: <%d,%d>, lower-right: <%d,%d>%s"),
             1, 0, COLNO - 1, ROWNO - 1,
-            flags.verbose ? "; column 0 unused, off left edge" : "");
+            flags.verbose ? _("; column 0 unused, off left edge") : "");
     add_menu_str(tmpwin, buf);
     if (strcmp(windowprocs.name, "tty")) /* only show for non-tty */
         add_menu_str(tmpwin,
-      "screen: row is offset to accommodate tty interface's use of top line");
+      _("screen: row is offset to accommodate tty interface's use of top line"));
 #if COLNO == 80
-#define COL80ARG flags.verbose ? "; column 80 is not used" : ""
+#define COL80ARG flags.verbose ? _("; column 80 is not used") : ""
 #else
 #define COL80ARG ""
 #endif
-    Sprintf(buf, "screen: upper-left: [%02d,%02d], lower-right: [%d,%d]%s",
+    Sprintf(buf, _("screen: upper-left: [%02d,%02d], lower-right: [%d,%d]%s"),
             0 + 2, 1, ROWNO - 1 + 2, COLNO - 1, COL80ARG);
 #undef COL80ARG
     add_menu_str(tmpwin, buf);
     add_menu_str(tmpwin, "");
     end_menu(tmpwin,
-        "Select coordinate display when auto-describing a map position:");
+        _("Select coordinate display when auto-describing a map position:"));
     if ((pick_cnt = select_menu(tmpwin, PICK_ONE, &window_pick)) > 0) {
         iflags.getpos_coords = window_pick[0].item.a_char;
         /* PICK_ONE doesn't unselect preselected entry when
@@ -6308,21 +6308,21 @@ handler_whatis_filter(void)
     any = cg.zeroany;
     any.a_char = (GFILTER_NONE + 1);
     add_menu(tmpwin, &nul_glyphinfo, &any, 'n',
-             0, ATR_NONE, clr, "no filtering",
+             0, ATR_NONE, clr, _("no filtering"),
              (gfilt == GFILTER_NONE)
                 ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     any.a_char = (GFILTER_VIEW + 1);
     add_menu(tmpwin, &nul_glyphinfo, &any, 'v',
-             0, ATR_NONE, clr, "in view only",
+             0, ATR_NONE, clr, _("in view only"),
              (gfilt == GFILTER_VIEW)
                 ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     any.a_char = (GFILTER_AREA + 1);
     add_menu(tmpwin, &nul_glyphinfo, &any, 'a',
-             0, ATR_NONE, clr, "in same area",
+             0, ATR_NONE, clr, _("in same area"),
              (gfilt == GFILTER_AREA)
                 ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     end_menu(tmpwin,
-      "Select location filtering when going for next/previous map position:");
+      _("Select location filtering when going for next/previous map position:"));
     if ((pick_cnt = select_menu(tmpwin, PICK_ONE, &window_pick)) > 0) {
         iflags.getloc_filter = (window_pick[0].item.a_char - 1);
         /* PICK_ONE doesn't unselect preselected entry when
@@ -8285,7 +8285,7 @@ fruitadd(char *str, struct fruit *replace_fruit)
                  || str_end_is(svp.pl_fruit, " egg"))
                 && ismnum(name_to_mon(svp.pl_fruit, (int *) 0)))) {
             Strcpy(buf, svp.pl_fruit);
-            Strcpy(svp.pl_fruit, "candied ");
+            Strcpy(svp.pl_fruit, _("candied "));
             nmcpy(svp.pl_fruit + 8, buf, PL_FSIZ - 8);
         }
         *altname = '\0';
@@ -8670,7 +8670,7 @@ doset_simple_menu(void)
                              ? (const char *) buf2 : "unknown"));
                 break;
             default:
-                Sprintf(buf, "ERROR");
+                Sprintf(buf, _("ERROR"));
                 break;
             }
             /* pickup_types is separated from autopickup due to the
@@ -8679,7 +8679,7 @@ doset_simple_menu(void)
                 || allopt[i].idx == opt_pickup_thrown
                 || allopt[i].idx == opt_pickup_stolen
                 || allopt[i].idx == opt_dropped_nopick)
-                Strcat(buf, "  (for autopickup)");
+                Strcat(buf, _("  (for autopickup)"));
             add_menu(tmpwin, &nul_glyphinfo, &any, 0, 0,
                      ATR_NONE, NO_COLOR, buf, MENU_ITEMFLAGS_NONE);
             if (gs.simple_options_help && allopt[i].descr) {
@@ -8719,7 +8719,7 @@ doset_simple_menu(void)
                 if (reslt == optn_ok && allopt[k].idx != pfx_cond_)
                     opt_set_in_config[k] = TRUE;
             } else {
-                Sprintf(buf, "Set %s to what?", allopt[k].name);
+                Sprintf(buf, _("Set %s to what?"), allopt[k].name);
                 getlin(buf, abuf);
                 if (abuf[0] != '\033') { /* ESC */
                     Sprintf(buf, "%s:", allopt[k].name);
@@ -9017,7 +9017,7 @@ doset(void) /* changing options via menu by Per Liboriussen */
                 } else {
                     char abuf[BUFSZ];
 
-                    Sprintf(buf, "Set %s to what?", allopt[opt_indx].name);
+                    Sprintf(buf, _("Set %s to what?"), allopt[opt_indx].name);
                     abuf[0] = '\0';
                     getlin(buf, abuf);
                     if (abuf[0] == '\033')
@@ -9118,7 +9118,7 @@ doset_add_menu(
                 Sprintf(buf2, "%s", gf.fqn_prefix[j]);
 #endif
         if (!buf2[0])
-            Strcpy(buf2, "unknown");
+            Strcpy(buf2, _("unknown"));
         value = (const char *) buf2;
     }
 

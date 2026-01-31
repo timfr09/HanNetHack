@@ -1118,9 +1118,9 @@ getpos(coord *ccp, boolean force, const char *goal)
                     char note[QBUFSZ];
 
                     if (!force)
-                        Strcpy(note, "aborted");
+                        Strcpy(note, _("aborted"));
                     else /* hjkl */
-                        Sprintf(note, "use '%s', '%s', '%s', '%s' or '%s'",
+                        Sprintf(note, _("use '%s', '%s', '%s', '%s' or '%s'"),
                                 visctrl(cmd_from_func(do_move_west)),
                                 visctrl(cmd_from_func(do_move_south)),
                                 visctrl(cmd_from_func(do_move_north)),

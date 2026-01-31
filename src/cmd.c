@@ -838,7 +838,7 @@ extcmd_via_menu(void)
                 Sprintf(prompt, "%s%s or %s", wastoolong ? "or " : "",
                         choices[i - 1]->ef_txt, choices[i]->ef_txt);
             } else {
-                Strcat(prompt, " or ");
+                Strcat(prompt, _(" or "));
                 Strcat(prompt, choices[i]->ef_txt);
             }
             ++acount;

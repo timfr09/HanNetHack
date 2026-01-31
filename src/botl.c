@@ -173,38 +173,38 @@ do_statusline2(void)
      * unusual for more than one of them to apply at a time.]
      */
     if (Stoned)
-        Strcpy(nb = eos(nb), " Stone");
+        Strcpy(nb = eos(nb), _(" Stone"));
     if (Slimed)
-        Strcpy(nb = eos(nb), " Slime");
+        Strcpy(nb = eos(nb), _(" Slime"));
     if (Strangled)
-        Strcpy(nb = eos(nb), " Strngl");
+        Strcpy(nb = eos(nb), _(" Strngl"));
     if (Sick) {
         if (u.usick_type & SICK_VOMITABLE)
-            Strcpy(nb = eos(nb), " FoodPois");
+            Strcpy(nb = eos(nb), _(" FoodPois"));
         if (u.usick_type & SICK_NONVOMITABLE)
-            Strcpy(nb = eos(nb), " TermIll");
+            Strcpy(nb = eos(nb), _(" TermIll"));
     }
     if (u.uhs != NOT_HUNGRY)
         Sprintf(nb = eos(nb), " %s", hu_stat[u.uhs]);
     if ((cap = near_capacity()) > UNENCUMBERED)
         Sprintf(nb = eos(nb), " %s", enc_stat[cap]);
     if (Blind)
-        Strcpy(nb = eos(nb), " Blind");
+        Strcpy(nb = eos(nb), _(" Blind"));
     if (Deaf)
-        Strcpy(nb = eos(nb), " Deaf");
+        Strcpy(nb = eos(nb), _(" Deaf"));
     if (Stunned)
-        Strcpy(nb = eos(nb), " Stun");
+        Strcpy(nb = eos(nb), _(" Stun"));
     if (Confusion)
-        Strcpy(nb = eos(nb), " Conf");
+        Strcpy(nb = eos(nb), _(" Conf"));
     if (Hallucination)
-        Strcpy(nb = eos(nb), " Hallu");
+        Strcpy(nb = eos(nb), _(" Hallu"));
     /* levitation and flying are mutually exclusive; riding is not */
     if (Levitation)
-        Strcpy(nb = eos(nb), " Lev");
+        Strcpy(nb = eos(nb), _(" Lev"));
     if (Flying)
-        Strcpy(nb = eos(nb), " Fly");
+        Strcpy(nb = eos(nb), _(" Fly"));
     if (u.usteed)
-        Strcpy(nb = eos(nb), " Ride");
+        Strcpy(nb = eos(nb), _(" Ride"));
     cln = strlen(cond);
 
     /* version on status line, with leading space */
@@ -1165,13 +1165,13 @@ cond_menu(void)
 
         any = cg.zeroany;
         any.a_int = 1;
-        Sprintf(mbuf, "change sort order from \"%s\" to \"%s\"",
+        Sprintf(mbuf, _("change sort order from \"%s\" to \"%s\""),
                 menutitle[gc.condmenu_sortorder],
                 menutitle[1 - gc.condmenu_sortorder]);
         add_menu(tmpwin, &nul_glyphinfo, &any, 'S', 0, ATR_NONE,
                  clr, mbuf, MENU_ITEMFLAGS_SKIPINVERT);
         any = cg.zeroany;
-        Sprintf(mbuf, "sorted %s", menutitle[gc.condmenu_sortorder]);
+        Sprintf(mbuf, _("sorted %s"), menutitle[gc.condmenu_sortorder]);
         add_menu_heading(tmpwin, mbuf);
         for (i = 0; i < SIZE(condtests); i++) {
             idx = sequence[i];
@@ -3373,11 +3373,11 @@ status_hilite2str(struct hilite_s *hl)
         break;
     case BL_TH_UPDOWN:
         if (hl->rel == LT_VALUE)
-            Sprintf(behavebuf, "down");
+            Sprintf(behavebuf, _("down"));
         else if (hl->rel == GT_VALUE)
-            Sprintf(behavebuf, "up");
+            Sprintf(behavebuf, _("up"));
         else if (hl->rel == EQ_VALUE)
-            Sprintf(behavebuf, "changed");
+            Sprintf(behavebuf, _("changed"));
         else
             impossible("hl->behavior=updown, rel error");
         break;
@@ -3400,10 +3400,10 @@ status_hilite2str(struct hilite_s *hl)
             impossible("hl->behavior=condition, rel error");
         break;
     case BL_TH_ALWAYS_HILITE:
-        Sprintf(behavebuf, "always");
+        Sprintf(behavebuf, _("always"));
         break;
     case BL_TH_CRITICALHP:
-        Sprintf(behavebuf, "criticalhp");
+        Sprintf(behavebuf, _("criticalhp"));
         break;
     case BL_TH_NONE:
         break;
@@ -3541,7 +3541,7 @@ status_hilite_menu_choose_behavior(int fld)
         nopts++;
     }
 
-    Sprintf(buf, "Select %s field hilite behavior:",
+    Sprintf(buf, _("Select %s field hilite behavior:"),
             initblstats[fld].fldname);
     end_menu(tmpwin, buf);
 
@@ -4140,7 +4140,7 @@ status_hilite_menu_fld(int fld)
             hlstr = hlstr->next;
         }
     } else {
-        Sprintf(buf, "No current hilites for %s", initblstats[fld].fldname);
+        Sprintf(buf, _("No current hilites for %s"), initblstats[fld].fldname);
         add_menu_str(tmpwin, buf);
     }
 
@@ -4151,7 +4151,7 @@ status_hilite_menu_fld(int fld)
         any = cg.zeroany;
         any.a_int = -1;
         add_menu(tmpwin, &nul_glyphinfo, &any, 'X', 0, ATR_NONE, clr,
-                 "Remove selected hilites", MENU_ITEMFLAGS_NONE);
+                 _("Remove selected hilites"), MENU_ITEMFLAGS_NONE);
     }
 
 #ifndef SCORE_ON_BOTL
@@ -4167,10 +4167,10 @@ status_hilite_menu_fld(int fld)
         any = cg.zeroany;
         any.a_int = -2;
         add_menu(tmpwin, &nul_glyphinfo, &any, 'Z', 0, ATR_NONE,
-                 clr, "Add new hilites", MENU_ITEMFLAGS_NONE);
+                 clr, _("Add new hilites"), MENU_ITEMFLAGS_NONE);
     }
 
-    Sprintf(buf, "Current %s hilites:", initblstats[fld].fldname);
+    Sprintf(buf, _("Current %s hilites:"), initblstats[fld].fldname);
     end_menu(tmpwin, buf);
 
     acted = FALSE;

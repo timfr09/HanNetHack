@@ -148,7 +148,7 @@ monhealthdescr(struct monst *mon, boolean addspace, char *outbuf)
         Sprintf(outbuf, "%s%s", (mon->mhp > 0) ? _("nearly ") : "",
                 !nonliving(mon->data) ? _("deceased") : _("defunct"));
     else
-        Sprintf(outbuf, "%swounded",
+        Sprintf(outbuf, _("%swounded"),
                 (pct >= 95) ? _("barely ")
                 : (pct >= 80) ? _("slightly ")
                   : (pct < 20) ? _("heavily ")
@@ -206,7 +206,7 @@ mhidden_description(
     if (M_AP_TYPE(mon) == M_AP_FURNITURE
         || M_AP_TYPE(mon) == M_AP_OBJECT) {
         if (incl_prefix)
-            Strcpy(outbuf, ", mimicking ");
+            Strcpy(outbuf, _(", mimicking "));
         if (M_AP_TYPE(mon) == M_AP_FURNITURE) {
             what = _(defsyms[mon->mappearance].explanation);
             if (incl_article)
@@ -570,20 +570,20 @@ waterbody_name(coordxy x, coordxy y)
     ltyp = SURFACE_AT(x, y);
 
     if (ltyp == LAVAPOOL) {
-        Snprintf(pooltype, sizeof pooltype, "molten %s", hliquid("lava"));
+        Snprintf(pooltype, sizeof pooltype, _("molten %s"), hliquid("lava"));
         return pooltype;
     } else if (ltyp == ICE) {
         if (!hallucinate)
             return _("ice");
-        Snprintf(pooltype, sizeof pooltype, "frozen %s", hliquid("water"));
+        Snprintf(pooltype, sizeof pooltype, _("frozen %s"), hliquid("water"));
         return pooltype;
     } else if (ltyp == POOL) {
-        Snprintf(pooltype, sizeof pooltype, "pool of %s", hliquid("water"));
+        Snprintf(pooltype, sizeof pooltype, _("pool of %s"), hliquid("water"));
         return pooltype;
     } else if (ltyp == MOAT) {
         /* a bit of extra flavor over general moat */
         if (hallucinate) {
-            Snprintf(pooltype, sizeof pooltype, "deep %s", hliquid("water"));
+            Snprintf(pooltype, sizeof pooltype, _("deep %s"), hliquid("water"));
             return pooltype;
         } else if (Is_medusa_level(&u.uz)) {
             /* somewhat iffy since ordinary stairs can take you beneath,
@@ -601,10 +601,10 @@ waterbody_name(coordxy x, coordxy y)
     } else if (IS_WATERWALL(ltyp)) {
         if (Is_waterlevel(&u.uz))
             return _("limitless water"); /* even if hallucinating */
-        Snprintf(pooltype, sizeof pooltype, "wall of %s", hliquid("water"));
+        Snprintf(pooltype, sizeof pooltype, _("wall of %s"), hliquid("water"));
         return pooltype;
     } else if (ltyp == LAVAWALL) {
-        Snprintf(pooltype, sizeof pooltype, "wall of %s", hliquid("lava"));
+        Snprintf(pooltype, sizeof pooltype, _("wall of %s"), hliquid("lava"));
         return pooltype;
     }
     /* default; should be unreachable */
@@ -1191,7 +1191,7 @@ add_cmap_descr(
         if (!strcmp(mbuf, "pool of water"))
             mbuf[4] = '\0';
         else if (!strcmp(mbuf, "molten lava"))
-            Strcpy(mbuf, "lava");
+            Strcpy(mbuf, _("lava"));
         x_str = mbuf;
         /* avoid "an ice" and so forth; "a pool", "a moat", and
            "a wall of ..." are grammatically correct but make
@@ -1217,7 +1217,7 @@ add_cmap_descr(
     if (!found) {
         /* this is the first match */
         if (is_cmap_trap(idx) && idx != S_vibrating_square) {
-            Sprintf(out_str, "%sa trap", prefix);
+            Sprintf(out_str, "%s%s", prefix, _("a trap"));
             *hit_trap = TRUE;
         } else {
             Sprintf(out_str, "%s%s", prefix, (article == 2) ? the(x_str)
@@ -2735,7 +2735,7 @@ docontact(void)
     putstr(cwin, 0, buf);
     putstr(cwin, 0, "");
     putstr(cwin, 0, _("For more information on NetHack, or to report a bug,"));
-    Sprintf(buf, "visit our website \"%s\".", DEVTEAM_URL);
+    Sprintf(buf, _("visit our website \"%s\"."), DEVTEAM_URL);
     putstr(cwin, 0, buf);
     display_nhwindow(cwin, FALSE);
     destroy_nhwindow(cwin);

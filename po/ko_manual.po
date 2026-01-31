@@ -7710,3 +7710,26 @@ msgstr "깊은 %s"
 #, c-format
 msgid "wall of %s"
 msgstr "%s 벽"
+
+# options.c - 옵션 메뉴 문자열
+msgid "Select pet highlight attribute"
+msgstr "반려동물 강조 속성 선택"
+
+msgid "Select coordinate display when auto-describing a map position:"
+msgstr "맵 위치 자동 설명시 좌표 표시 방식 선택:"
+
+msgid "Select location filtering when going for next/previous map position:"
+msgstr "다음/이전 맵 위치 이동시 위치 필터링 방식 선택:"
+
+msgid "no filtering"
+msgstr "필터 없음"
+
+msgid "in view only"
+msgstr "시야 내만"
+
+msgid "in same area"
+msgstr "같은 영역 내만"
+
+# spell.c - 주문 시전 메뉴
+msgid "Choose which spell to cast"
+msgstr "시전할 주문 선택"

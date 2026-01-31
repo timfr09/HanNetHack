@@ -778,7 +778,7 @@ getspell(int *spell_no)
             return TRUE;
         }
     }
-    return dospellmenu("Choose which spell to cast", SPELLMENU_CAST,
+    return dospellmenu(_("Choose which spell to cast"), SPELLMENU_CAST,
                        spell_no);
 }
 

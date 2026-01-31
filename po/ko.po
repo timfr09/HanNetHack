@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 11:03+0900\n"
+"POT-Creation-Date: 2026-01-31 11:06+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -25226,9 +25226,37 @@ msgstr "무게 부담 표시 수준 선택:"
 msgid "Select run/travel display mode:"
 msgstr "달리기/여행 화면 표시 모드 선택:"
 
+#: ../src/options.c:6173
+#, fuzzy
+msgid "Select pet highlight attribute"
+msgstr "강조 표시할 항목을 선택하세요:"
+
 #: ../src/options.c:6206
 msgid "Select loot sorting type:"
 msgstr "전리품 정렬 방식 선택:"
+
+#: ../src/options.c:6283
+msgid "Select coordinate display when auto-describing a map position:"
+msgstr ""
+
+#
+#: ../src/options.c:6311
+#, fuzzy
+msgid "no filtering"
+msgstr "열이 나는 것 같다."
+
+#: ../src/options.c:6316
+msgid "in view only"
+msgstr ""
+
+#: ../src/options.c:6321
+#, fuzzy
+msgid "in same area"
+msgstr "와 연기가"
+
+#: ../src/options.c:6325
+msgid "Select location filtering when going for next/previous map position:"
+msgstr ""
 
 #: ../src/options.c:6368
 msgid "What new autopickup exception pattern?"
@@ -35733,6 +35761,11 @@ msgstr "시도는 충분히 했다."
 #: ../src/spell.c:774
 msgid "don't know that spell."
 msgstr "그 주문을 모른다."
+
+#: ../src/spell.c:781
+#, fuzzy
+msgid "Choose which spell to cast"
+msgstr "어떤 주문을 시전하시겠습니까?"
 
 #: ../src/spell.c:806
 msgid "Cast which spell?"

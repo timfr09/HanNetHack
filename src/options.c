@@ -6170,7 +6170,7 @@ staticfn int
 handler_petattr(void)
 {
     int tmp
-        = query_attr("Select pet highlight attribute", iflags.wc2_petattr);
+        = query_attr(_("Select pet highlight attribute"), iflags.wc2_petattr);
 
     if (tmp != -1) {
         iflags.wc2_petattr = tmp;
@@ -6280,7 +6280,7 @@ handler_whatis_coord(void)
     add_menu_str(tmpwin, buf);
     add_menu_str(tmpwin, "");
     end_menu(tmpwin,
-        "Select coordinate display when auto-describing a map position:");
+        _("Select coordinate display when auto-describing a map position:"));
     if ((pick_cnt = select_menu(tmpwin, PICK_ONE, &window_pick)) > 0) {
         iflags.getpos_coords = window_pick[0].item.a_char;
         /* PICK_ONE doesn't unselect preselected entry when
@@ -6308,21 +6308,21 @@ handler_whatis_filter(void)
     any = cg.zeroany;
     any.a_char = (GFILTER_NONE + 1);
     add_menu(tmpwin, &nul_glyphinfo, &any, 'n',
-             0, ATR_NONE, clr, "no filtering",
+             0, ATR_NONE, clr, _("no filtering"),
              (gfilt == GFILTER_NONE)
                 ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     any.a_char = (GFILTER_VIEW + 1);
     add_menu(tmpwin, &nul_glyphinfo, &any, 'v',
-             0, ATR_NONE, clr, "in view only",
+             0, ATR_NONE, clr, _("in view only"),
              (gfilt == GFILTER_VIEW)
                 ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     any.a_char = (GFILTER_AREA + 1);
     add_menu(tmpwin, &nul_glyphinfo, &any, 'a',
-             0, ATR_NONE, clr, "in same area",
+             0, ATR_NONE, clr, _("in same area"),
              (gfilt == GFILTER_AREA)
                 ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     end_menu(tmpwin,
-      "Select location filtering when going for next/previous map position:");
+      _("Select location filtering when going for next/previous map position:"));
     if ((pick_cnt = select_menu(tmpwin, PICK_ONE, &window_pick)) > 0) {
         iflags.getloc_filter = (window_pick[0].item.a_char - 1);
         /* PICK_ONE doesn't unselect preselected entry when

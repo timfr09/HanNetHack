@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 11:03+0900\n"
+"POT-Creation-Date: 2026-01-31 11:06+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24093,8 +24093,32 @@ msgstr ""
 msgid "Select run/travel display mode:"
 msgstr ""
 
+#: ../src/options.c:6173
+msgid "Select pet highlight attribute"
+msgstr ""
+
 #: ../src/options.c:6206
 msgid "Select loot sorting type:"
+msgstr ""
+
+#: ../src/options.c:6283
+msgid "Select coordinate display when auto-describing a map position:"
+msgstr ""
+
+#: ../src/options.c:6311
+msgid "no filtering"
+msgstr ""
+
+#: ../src/options.c:6316
+msgid "in view only"
+msgstr ""
+
+#: ../src/options.c:6321
+msgid "in same area"
+msgstr ""
+
+#: ../src/options.c:6325
+msgid "Select location filtering when going for next/previous map position:"
 msgstr ""
 
 #: ../src/options.c:6368
@@ -34258,6 +34282,10 @@ msgstr ""
 
 #: ../src/spell.c:774
 msgid "don't know that spell."
+msgstr ""
+
+#: ../src/spell.c:781
+msgid "Choose which spell to cast"
 msgstr ""
 
 #: ../src/spell.c:806

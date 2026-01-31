@@ -2554,11 +2554,15 @@ msgid "have been "
 msgstr "​"
 
 # [조합] "have never " - 현재완료 부정
+# 조합 예: "have never genocided any monsters" = "[행동 안 함] 몬스터 학살"
+# 결과: "한 적 없다" 형태
 msgid "have never "
-msgstr "한 번도 "
+msgstr "[안 함] "
 
+# [조합] "never " + 동사 조합
+# 결과: "[안 함] X" 형태
 msgid "never "
-msgstr "절대 "
+msgstr "[안 함] "
 
 msgid "debug"
 msgstr "디버그"
@@ -7796,17 +7800,24 @@ msgstr "들어간 "
 msgid "belatedly "
 msgstr "뒤늦게 "
 
+# insight.c - 반대하는 신들 목록 접두사
+# 원문: " who is/was opposed by" + "Godname (alignment) and" + ...
+# %s = "is" 또는 "was" (한국어에서는 무시)
 #, c-format
 msgid " who %s opposed by"
-msgstr " %s{이/가} 반대하는"
+msgstr "%.0s의 반대자:"
 
+# insight.c - 던전 진입 시간
+# %s는 복수형 접미사로 한국어에서는 불필요
 #, c-format
 msgid "the dungeon %ld turn%s ago"
-msgstr "%ld턴%s 전 던전"
+msgstr "%ld턴%.0s 전에 던전 진입"
 
+# insight.c - 경험치
+# %s는 복수형 접미사로 한국어에서는 불필요
 #, c-format
 msgid "%-1ld experience point%s"
-msgstr "%-1ld 경험치%s"
+msgstr "%-1ld 경험치%.0s"
 
 msgid " before end-of-game adjustments"
 msgstr " (게임 종료 조정 전)"

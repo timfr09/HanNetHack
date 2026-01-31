@@ -10467,9 +10467,10 @@ msgstr "아주 좋은"
 msgid "grody"
 msgstr "역겨운"
 
+# 조합 패턴: "Mmm, this %s tastes delicious!"
 #: src/eat.c:2008
 msgid "delicious"
-msgstr "%s%s{이/가} 맛있다!"
+msgstr "맛있는"
 
 #: src/eat.c:2009
 msgid "terrible"
@@ -10789,21 +10790,23 @@ msgstr "이 반지는 소화가 안 된다!"
 msgid "%s your meal."
 msgstr "식사를 %s."
 
+# 조합 패턴: "You resume your meal." / "You consume the last bite of your meal."
 #: src/eat.c:2943
 msgid "resume"
-msgstr "%s %s{을/를} 먹었다."
+msgstr "다시 시작한다"
 
 #: src/eat.c:2943
 msgid "consume the last bite of"
-msgstr "하나의 "
+msgstr "마지막 한 입을 먹는다"
 
 #: src/eat.c:3040 src/obj_descr_i18n.c:225
 msgid "eat"
 msgstr "먹을"
 
+# 조합 패턴: "You begin eating X"
 #: src/eat.c:3040
 msgid "begin eating"
-msgstr "%s%s{을/를} 설치하기 시작했다."
+msgstr "먹기 시작한다"
 
 #: src/eat.c:3100
 msgid "have no tin to open."
@@ -11729,13 +11732,14 @@ msgid "write strangely on"
 msgstr "이상하게 슬픈"
 
 #
+# 조합 패턴: 새김 관련 동작 (engraving actions)
 #: src/engrave.c:903
 msgid "add to the writing in"
-msgstr "반지를 끼고 있지 않다."
+msgstr "글씨에 추가하다"
 
 #: src/engrave.c:903
 msgid "write in"
-msgstr "%s에 글을 쓴다!"
+msgstr "글쓰기"
 
 #: src/engrave.c:907
 msgid "add to the epitaph on"
@@ -11875,9 +11879,10 @@ msgstr "여기 %s에 %s되어 있는 메시지를 지울 수 없다."
 msgid "melted into"
 msgstr "녹아 들어갔다"
 
+# 새김 방법 설명 (engraving method description)
 #: src/engrave.c:1151
 msgid "burned into"
-msgstr "%s{을/를} 슬라임으로 만들었다."
+msgstr "태워 새긴"
 
 #: src/engrave.c:1152
 msgid "engraved in"
@@ -11950,13 +11955,14 @@ msgstr "마커가 말랐다."
 msgid "your weird engraving"
 msgstr "새겨진 글씨"
 
+# 새김 진행 메시지 (engraving progress messages)
 #: src/engrave.c:1415
 msgid "writing in the frost"
-msgstr "%s에 쓸 수 없다!"
+msgstr "서리에 글쓰는 중"
 
 #: src/engrave.c:1416
 msgid "writing in the dust"
-msgstr "%s에 쓸 수 없다!"
+msgstr "먼지에 글쓰는 중"
 
 #: src/engrave.c:1423
 msgid "melting your message into the ice"
@@ -12100,13 +12106,14 @@ msgstr "치명적이다."
 msgid "%s is fatal."
 msgstr "%s{은/는} 치명적이다."
 
+# 물체 파괴 동사 (object destruction verbs)
 #: src/explode.c:682 src/zap.c:4995
 msgid "burn away"
-msgstr "슬라임이 불타 사라졌다!"
+msgstr "불타 사라지다"
 
 #: src/explode.c:684 src/zap.c:4999
 msgid "disintegrate"
-msgstr "%s{이/가} 분해됐다."
+msgstr "분해되다"
 
 #: src/explode.c:754
 msgid "chain shatters!"
@@ -12351,9 +12358,10 @@ msgstr "%s{이/가} 진심으로 %s %s %s!"
 msgid "shakes"
 msgstr "흔들린다"
 
+# 조합 패턴: "%s angrily waves %s %s" (monster waves his hand)
 #: src/fountain.c:189 src/monmove.c:116
 msgid "waves"
-msgstr "%s{이/가} 손을 흔들었다."
+msgstr "흔든다"
 
 #: src/fountain.c:213
 msgid "flow reduces to a trickle."
@@ -12932,9 +12940,10 @@ msgstr "%s에서 %s{을/를} %s할 만큼 숙련되지 않았다."
 msgid "pick up"
 msgstr "줍다"
 
+# 조합 패턴: "You aren't skilled enough to push aside X"
 #: src/hack.c:281
 msgid "push aside"
-msgstr "%s 안에."
+msgstr "밀어내다"
 
 #: src/hack.c:290
 #, c-format
@@ -13343,13 +13352,15 @@ msgstr "%s에 뿌리가 내려졌다."
 msgid "in place"
 msgstr "제자리에서 굴렀다."
 
+# 조합 패턴: "X falls to the ground"
 #: src/hack.c:1685
 msgid "to the ground"
-msgstr "서비스다!"
+msgstr "땅으로"
 
+# 조합 패턴: "You notice something"
 #: src/hack.c:1705 src/pickup.c:2806
 msgid "notice"
-msgstr "%s{을/를} 알아챘다."
+msgstr "알아챈다"
 
 #: src/hack.c:1711 src/hack.c:2162
 msgid "peaceful"
@@ -14067,13 +14078,14 @@ msgstr "무언가에 부딪혔다!"
 msgid "Open this container"
 msgstr "용기를 여는 중"
 
+# 아이템 사용 메뉴 옵션들 (Item use menu options)
 #: src/iactions.c:327
 msgid "Use the can to grease an item"
-msgstr "알을 낳으려면 #sit 명령을 사용해라."
+msgstr "기름통으로 아이템에 기름칠하기"
 
 #: src/iactions.c:331
 msgid "Use this tool to pick a lock"
-msgstr "이봐, 그 %s{을/를} 손상시키지 마라!"
+msgstr "이 도구로 자물쇠 따기"
 
 #: src/iactions.c:333
 msgid "Use this kit to tin a corpse"

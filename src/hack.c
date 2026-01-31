@@ -1550,7 +1550,7 @@ trapmove(
     switch (u.utraptype) {
     case TT_BEARTRAP:
         if (flags.verbose) {
-            predicament = "caught in a bear trap";
+            predicament = _("caught in a bear trap");
             if (u.usteed)
                 Norep(_("%s is %s."), upstart(steedname), predicament);
             else
@@ -1578,7 +1578,7 @@ trapmove(
         }
         if (--u.utrap) {
             if (flags.verbose) {
-                predicament = "stuck to the web";
+                predicament = _("stuck to the web");
                 if (u.usteed)
                     Norep(_("%s is %s."), upstart(steedname), predicament);
                 else

@@ -3362,10 +3362,11 @@ msgstr "오래된 유골 파일을 삭제할 수 없다."
 msgid "Discarding unusable bones; no need to panic..."
 msgstr "사용할 수 없는 유골을 버린다. 걱정할 필요 없다..."
 
+# 유골 레벨 오류 메시지
 #: src/bones.c:688
 #, c-format
 msgid "This is bones level '%s', not '%s'!"
-msgstr ""
+msgstr "이것은 유골 레벨 '%s'이지, '%s'이 아니다!"
 
 #: src/bones.c:797
 #, c-format
@@ -4942,9 +4943,10 @@ msgstr "%s{을/를} 감지했다."
 msgid "food"
 msgstr "먹을 것"
 
+# 보석 탐지 추가 메시지
 #: src/detect.c:638
 msgid " and/or large stones"
-msgstr ""
+msgstr " 그리고/또는 큰 돌"
 
 # You_see and interrupt_multi messages
 #: src/detect.c:690
@@ -7327,9 +7329,10 @@ msgstr "그 자체"
 msgid "herself"
 msgstr "당신 자신"
 
+# 오류 발생 시 기본 몬스터 이름
 #: src/do_name.c:1396
 msgid "bogon"
-msgstr ""
+msgstr "알 수 없는 괴물"
 
 #: src/do_name.c:1493
 msgid "colorless"
@@ -7695,9 +7698,10 @@ msgstr "벗는 중"
 msgid "are not wearing that."
 msgstr "그것을 입고 있지 않다."
 
+# 아이템이 피부에 박힌 경우
 #: src/do_wear.c:1790
 msgid "; it's embedded"
-msgstr ""
+msgstr "; 피부에 박혀 있다"
 
 #: src/do_wear.c:1792
 #, c-format
@@ -8024,9 +8028,7 @@ msgstr "%s."
 msgid "%sno longer %s."
 msgstr "%s더 이상 %s."
 
-# ============================================================
-# 두루마리 (Scrolls)
-# ============================================================
+# 동사 - 한국어에서는 빈 문자열로 처리
 #: src/do_wear.c:2837 src/insight.c:44 src/insight.c:1072
 msgid "are "
 msgstr ""
@@ -11105,17 +11107,18 @@ msgstr "저장하지 않고 정말 종료하시겠습니까?"
 msgid "Resuming regular play."
 msgstr "일반 플레이 재개."
 
+# 디버그 관련 메시지
 #: src/end.c:129
 msgid "Enter debugger?"
-msgstr ""
+msgstr "디버거에 진입하겠습니까?"
 
 #: src/end.c:132
 msgid "Create SnapShot?"
-msgstr ""
+msgstr "스냅샷을 생성하겠습니까?"
 
 #: src/end.c:134
 msgid "Dump core?"
-msgstr ""
+msgstr "코어 덤프하겠습니까?"
 
 #
 #: src/end.c:199
@@ -25824,15 +25827,16 @@ msgstr "%8.8s%s"
 msgid "No such command '%s', char code %d (0%03o or 0x%02x)."
 msgstr "그런 명령 '%s'가 없다, 문자 코드 %d (0%03o 또는 0x%02x)."
 
+# 지원 연락처 정보
 #: src/pager.c:2722
-#, fuzzy, c-format
+#, c-format
 msgid "To contact local support, %s"
-msgstr "또는 현지 지원에 연락하세요: %s"
+msgstr "현지 지원에 연락하려면, %s"
 
 #: src/pager.c:2726
-#, fuzzy, c-format
+#, c-format
 msgid "To contact local support, contact %s."
-msgstr "또는 현지 지원에 연락하세요: %s"
+msgstr "현지 지원에 연락하려면, %s에 연락하세요."
 
 #: src/pager.c:2731
 msgid "To contact the NetHack development team directly,"
@@ -25841,17 +25845,16 @@ msgstr "NetHack 개발팀에 직접 연락하려면,"
 #: src/pager.c:2733
 #, c-format
 msgid "see the 'Contact' form on our website or email <%s>."
-msgstr ""
+msgstr "웹사이트의 '연락처' 양식을 사용하거나 <%s>로 이메일하세요."
 
 #: src/pager.c:2737
 msgid "For more information on NetHack, or to report a bug,"
 msgstr "NetHack에 대한 자세한 정보나 버그 신고는,"
 
-# sit.c messages
 #: src/pager.c:2738
-#, fuzzy, c-format
+#, c-format
 msgid "visit our website \"%s\"."
-msgstr "%s 위에 앉는다."
+msgstr "웹사이트 \"%s\"를 방문하세요."
 
 #: src/pager.c:2831
 msgid "About NetHack (version information)."
@@ -26535,34 +26538,30 @@ msgstr "다른 "
 msgid "put in"
 msgstr "착용할"
 
+# 용기 조작 메뉴
 #: src/pickup.c:3251
 msgid "Put in"
-msgstr "착용할"
+msgstr "넣기"
 
-# ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
-# ============================================================
 #: src/pickup.c:3251
 msgid "Take out"
-msgstr "%s{이/가} %s 나갔다!"
+msgstr "꺼내기"
 
 #: src/pickup.c:3263
 #, c-format
 msgid "%s what type of objects?"
 msgstr "%s 어떤 종류의 물건을?"
 
+# 용기 조작 질문
 #: src/pickup.c:3341
-#, fuzzy, c-format
+#, c-format
 msgid "%s what?"
-msgstr "무엇을 하시겠습니까?"
+msgstr "무엇을 %s?"
 
-# ============================================================
-# 물약 (Potions)
-# ============================================================
 #: src/pickup.c:3400
 #, c-format
 msgid "Look inside %s"
-msgstr "%s{처럼} 보인다."
+msgstr "%s 안을 본다"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -26595,14 +26594,15 @@ msgstr "%s넣은 후 꺼내기"
 msgid "both reversed; "
 msgstr "반대로 둘 다; "
 
+# 용기 메뉴 옵션
 #: src/pickup.c:3428
 #, c-format
 msgid "stash one item into %s"
-msgstr "%s{으로/로} 변신했다."
+msgstr "%s에 물건 하나 넣기"
 
 #: src/pickup.c:3436
 msgid "loot next container"
-msgstr "용기를 여는 중"
+msgstr "다음 용기 열기"
 
 #: src/pickup.c:3440
 msgid "done"
@@ -26610,7 +26610,7 @@ msgstr "완료"
 
 #: src/pickup.c:3440
 msgid "do nothing"
-msgstr "아무것도 없는 지팡이"
+msgstr "아무것도 안 함"
 
 #: src/pickup.c:3516
 msgid "Tip which container?"

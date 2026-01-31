@@ -7733,3 +7733,39 @@ msgstr "같은 영역 내만"
 # spell.c - 주문 시전 메뉴
 msgid "Choose which spell to cast"
 msgstr "시전할 주문 선택"
+
+msgid "[sort spells]"
+msgstr "[주문 정렬]"
+
+# options.c - 좌표 표시 옵션
+msgid "compass ('east' or '3s' or '2n,4w')"
+msgstr "나침반 ('east' 또는 '3s' 또는 '2n,4w')"
+
+msgid "full compass ('east' or '3south' or '2north,4west')"
+msgstr "전체 나침반 ('east' 또는 '3south' 또는 '2north,4west')"
+
+msgid "map <x,y>"
+msgstr "맵 <x,y>"
+
+msgid "screen [row,column]"
+msgstr "화면 [행,열]"
+
+msgid "none (no coordinates displayed)"
+msgstr "없음 (좌표 표시 안 함)"
+
+#, c-format
+msgid "map: upper-left: <%d,%d>, lower-right: <%d,%d>%s"
+msgstr "맵: 좌상단: <%d,%d>, 우하단: <%d,%d>%s"
+
+msgid "; column 0 unused, off left edge"
+msgstr "; 열 0은 사용되지 않음, 왼쪽 가장자리 바깥"
+
+msgid "screen: row is offset to accommodate tty interface's use of top line"
+msgstr "화면: tty 인터페이스의 상단 줄 사용을 위해 행이 오프셋됨"
+
+msgid "; column 80 is not used"
+msgstr "; 열 80은 사용되지 않음"
+
+#, c-format
+msgid "screen: upper-left: [%02d,%02d], lower-right: [%d,%d]%s"
+msgstr "화면: 좌상단: [%02d,%02d], 우하단: [%d,%d]%s"

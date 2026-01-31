@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-01-31 11:06+0900\n"
+"POT-Creation-Date: 2026-01-31 11:07+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24101,6 +24101,48 @@ msgstr ""
 msgid "Select loot sorting type:"
 msgstr ""
 
+#: ../src/options.c:6240
+msgid "compass ('east' or '3s' or '2n,4w')"
+msgstr ""
+
+#: ../src/options.c:6246
+msgid "full compass ('east' or '3south' or '2north,4west')"
+msgstr ""
+
+#: ../src/options.c:6251
+msgid "map <x,y>"
+msgstr ""
+
+#: ../src/options.c:6256
+msgid "screen [row,column]"
+msgstr ""
+
+#: ../src/options.c:6261
+msgid "none (no coordinates displayed)"
+msgstr ""
+
+#: ../src/options.c:6265
+#, c-format
+msgid "map: upper-left: <%d,%d>, lower-right: <%d,%d>%s"
+msgstr ""
+
+#: ../src/options.c:6267
+msgid "; column 0 unused, off left edge"
+msgstr ""
+
+#: ../src/options.c:6271
+msgid "screen: row is offset to accommodate tty interface's use of top line"
+msgstr ""
+
+#: ../src/options.c:6273
+msgid "; column 80 is not used"
+msgstr ""
+
+#: ../src/options.c:6277
+#, c-format
+msgid "screen: upper-left: [%02d,%02d], lower-right: [%d,%d]%s"
+msgstr ""
+
 #: ../src/options.c:6283
 msgid "Select coordinate display when auto-describing a map position:"
 msgstr ""
@@ -34515,6 +34557,10 @@ msgstr ""
 
 #: ../src/spell.c:2100
 msgid "Name\tLevel\tCategory\tFail\tRetention"
+msgstr ""
+
+#: ../src/spell.c:2132
+msgid "[sort spells]"
 msgstr ""
 
 #: ../src/spell.c:2297

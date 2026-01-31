@@ -2129,7 +2129,7 @@ dospellmenu(
             /* more than 1 spell, add an extra menu entry */
             any.a_int = SPELLMENU_SORT + 1;
             add_menu(tmpwin, &nul_glyphinfo, &any, '+', 0,
-                     ATR_NONE, clr, "[sort spells]", MENU_ITEMFLAGS_NONE);
+                     ATR_NONE, clr, _("[sort spells]"), MENU_ITEMFLAGS_NONE);
         }
     }
     end_menu(tmpwin, prompt);

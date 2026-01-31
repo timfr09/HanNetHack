@@ -16549,134 +16549,117 @@ msgstr "%ld번"
 msgid "Achievement%s:"
 msgstr ""
 
+# ============================================================
+# 게임 진행 업적 (Game Progress Achievements)
+# ============================================================
 #: src/insight.c:2304
-#, fuzzy
 msgid "are exploring"
-msgstr "%s 폭발."
+msgstr "탐험 중"
 
 #: src/insight.c:2304
-#, fuzzy
 msgid "explored"
-msgstr "미탐험"
+msgstr "탐험했다"
 
 #: src/insight.c:2305
-#, fuzzy
 msgid " without being able to see"
-msgstr "장갑을 끼지 않고 %s{을/를} 깡통에 담는다."
+msgstr " 볼 수 없는 상태로"
 
 #: src/insight.c:2308
-#, fuzzy
 msgid " without any armor"
-msgstr "깡통 따개"
+msgstr " 갑옷 없이"
 
 #: src/insight.c:2314
-#, fuzzy
 msgid "entered Minetown"
-msgstr "광산 마을에 도착했다"
+msgstr "광산 마을에 들어갔다"
 
 #: src/insight.c:2323
-#, fuzzy
 msgid "consulted the Oracle of Delphi"
-msgstr "신탁에게 상담했다"
+msgstr "델피의 신탁에게 상담했다"
 
 #: src/insight.c:2326
-#, fuzzy
 msgid "read from a Discworld novel"
 msgstr "디스크월드 소설을 읽었다"
 
 #: src/insight.c:2332
-#, fuzzy
 msgid "completed Sokoban"
-msgstr "소코반에 들어갔다"
+msgstr "소코반을 완료했다"
 
 #: src/insight.c:2335
-#, fuzzy
 msgid "completed the Gnomish Mines"
-msgstr "노움 광산에 들어갔다"
+msgstr "노움 광산을 완료했다"
 
 #: src/insight.c:2338
-#, fuzzy
 msgid "entered the Big Room"
 msgstr "큰 방에 들어갔다"
 
 #: src/insight.c:2341
-#, fuzzy
 msgid "defeated Medusa"
 msgstr "메두사를 처치했다"
 
 #: src/insight.c:2345
 msgid "learned the tune to open and close the Castle's drawbridge"
-msgstr ""
+msgstr "성의 도개교를 여닫는 곡조를 배웠다"
 
-#
+# ============================================================
+# 퀘스트 아이템 관련 업적 (Quest Item Achievements)
+# 조합: "You have handled the Bell of Opening"
+# ============================================================
 #: src/insight.c:2351 src/insight.c:2360 src/insight.c:2366
-#, fuzzy
 msgid "have handled"
-msgstr "해를 입지 않았다!"
+msgstr "다뤘다"
 
 #: src/insight.c:2352 src/insight.c:2361 src/insight.c:2367
-#, fuzzy
 msgid "handled"
-msgstr "손"
+msgstr "다뤘다"
 
 #: src/insight.c:2353
-#, fuzzy
 msgid " the Bell of Opening"
-msgstr "개봉의 종"
+msgstr " 개봉의 종을"
 
 #: src/insight.c:2362
-#, fuzzy
 msgid " the Candelabrum of Invocation"
-msgstr "소환의 촛대를 획득했다"
+msgstr " 소환의 촛대를"
 
 #: src/insight.c:2368
-#, fuzzy
 msgid " the Book of the Dead"
-msgstr "죽음의 책 페이지를 넘긴다..."
+msgstr " 죽음의 책을"
 
 #: src/insight.c:2371
-#, fuzzy
 msgid "gained access to Moloch's Sanctum"
-msgstr "%s몰록 성소로 가는 관문."
+msgstr "몰록 성소에 도달했다"
 
 #: src/insight.c:2377
-#, fuzzy
 msgid "have obtained"
-msgstr "손이 없다!"
+msgstr "획득했다"
 
 #: src/insight.c:2378
-#, fuzzy
 msgid "delivered"
-msgstr "여러"
+msgstr "전달했다"
 
 #: src/insight.c:2379
-#, fuzzy
 msgid "had obtained"
-msgstr "용기를 여는 중"
+msgstr "획득했다"
 
 #: src/insight.c:2380
-#, fuzzy
 msgid " the Amulet of Yendor"
-msgstr "옌더의 부적"
+msgstr " 옌더의 부적을"
 
 #: src/insight.c:2387
 msgid "reached the Elemental Planes"
 msgstr "원소 차원에 도달했다"
 
 #: src/insight.c:2390
-#, fuzzy
 msgid "reached the Astral Plane"
-msgstr "원소의 평면으로"
+msgstr "천상계에 도달했다"
 
 #: src/insight.c:2394
-#, fuzzy
 msgid " You ascended!"
-msgstr "승천했다"
+msgstr " 승천했다!"
 
 #: src/insight.c:2400
-#, fuzzy, c-format
+#, c-format
 msgid "attained the rank of %s"
-msgstr "무모하게 %s의 뇌를 먹었다"
+msgstr "%s 계급에 도달했다"
 
 #: src/insight.c:2407
 #, c-format
@@ -16704,10 +16687,11 @@ msgstr "주요"
 msgid "Logged"
 msgstr "기록됨"
 
+# 정렬 순서 선택 메뉴
 #: src/insight.c:2763
-#, fuzzy, c-format
+#, c-format
 msgid "Sort order for %s"
-msgstr "%s에 질식한다."
+msgstr "%s 정렬 순서"
 
 #: src/insight.c:2764
 msgid "vanquished monster counts (also genocided types)"
@@ -16729,23 +16713,22 @@ msgstr "처치한 생물:"
 msgid "Rider"
 msgstr "습격자"
 
+# 처치 횟수 표시
 #: src/insight.c:2909
-#, fuzzy
 msgid " (twice)"
-msgstr "두 번"
+msgstr " (2번)"
 
 #: src/insight.c:2912
-#, fuzzy
 msgid " (thrice)"
-msgstr "세 번"
+msgstr " (3번)"
 
 #: src/insight.c:2915
-#, fuzzy, c-format
+#, c-format
 msgid " (%d times)"
-msgstr " (%d%s 회)"
+msgstr " (%d번)"
 
 #: src/insight.c:2950
-#, fuzzy, c-format
+#, c-format
 msgid "%ld creatures vanquished."
 msgstr "처치된 생물이 없다."
 
@@ -16762,20 +16745,18 @@ msgstr "처치된 생물이 없다."
 msgid "Do you want a list of %sspecies%s%s?"
 msgstr "튜토리얼을 진행하시겠습니까?"
 
+# 학살/멸종 관련 메시지
 #: src/insight.c:3061
-#, fuzzy
 msgid "extinct "
-msgstr "멸종"
+msgstr "멸종된 "
 
 #: src/insight.c:3062
-#, fuzzy
 msgid " genocided"
-msgstr "멸종됨"
+msgstr " 학살된"
 
 #: src/insight.c:3063
-#, fuzzy
 msgid " and extinct"
-msgstr " 또는 멸종"
+msgstr " 및 멸종된"
 
 #: src/insight.c:3097
 #, c-format
@@ -16795,19 +16776,18 @@ msgid " or extinct"
 msgstr " 또는 멸종"
 
 #: src/insight.c:3127
-#, fuzzy
 msgid " (extinct)"
-msgstr "멸종"
+msgstr " (멸종)"
 
 #: src/insight.c:3133
-#, fuzzy, c-format
+#, c-format
 msgid "%d species genocided."
-msgstr "학살당했다"
+msgstr "%d종이 학살됐다."
 
 #: src/insight.c:3137
-#, fuzzy, c-format
+#, c-format
 msgid "%d species extinct."
-msgstr " 또는 멸종"
+msgstr "%d종이 멸종됐다."
 
 #: src/insight.c:3149
 #, c-format
@@ -16822,10 +16802,10 @@ msgstr " 아직"
 msgid "No species were genocided or became extinct."
 msgstr "학살되거나 멸종된 종이 없다."
 
+# 일찍 죽은 경우 (태어나자마자 죽음)
 #: src/insight.c:3177
-#, fuzzy
 msgid "died born"
-msgstr "(으)로 사망: "
+msgstr "태어나자마자 죽었다"
 
 # ============================================================
 # 정렬 형용사 - 소문자 (Alignment Adjectives - lowercase)
@@ -16860,9 +16840,9 @@ msgid "gigantic"
 msgstr "초거대한"
 
 #: src/insight.c:3255
-#, fuzzy, c-format
+#, c-format
 msgid "unknown size (%d)"
-msgstr "알 수 없는 차원 #%d"
+msgstr "알 수 없는 크기 (%d)"
 
 #: src/insight.c:3270
 msgid "piously"
@@ -16913,97 +16893,87 @@ msgstr ", 길들여진"
 msgid "; hungry %ld; apport %d"
 msgstr ""
 
+# ============================================================
+# 몬스터 상태 표시 (Monster Status)
+# 조합: "orc, peaceful, eating" → "오크, 평화로운, 먹는 중"
+# ============================================================
 #: src/insight.c:3319
-#, fuzzy
 msgid ", peaceful"
-msgstr "평화로운"
+msgstr ", 평화로운"
 
-# worm_parts
+# 벌레 체절 상태
 #: src/insight.c:3328
-#, fuzzy
 msgid ", single segment"
-msgstr "전방 체절"
+msgstr ", 단일 체절"
 
 #: src/insight.c:3332
 #, c-format
 msgid ", %d%s of %d segments"
-msgstr ""
+msgstr ", %d%s/%d 체절"
 
 #: src/insight.c:3339
-#, fuzzy
 msgid ", shapechanger"
-msgstr "변신 생물로부터 보호"
+msgstr ", 변신 생물"
 
 #: src/insight.c:3342
-#, fuzzy
 msgid ", eating"
-msgstr "먹는 중"
+msgstr ", 먹는 중"
 
 #: src/insight.c:3351
-#, fuzzy
 msgid ", cancelled"
-msgstr "취소"
+msgstr ", 취소됨"
 
-#
 #: src/insight.c:3353 src/insight.c:3456
-#, fuzzy
 msgid ", confused"
-msgstr "혼란스러운"
+msgstr ", 혼란"
 
 #: src/insight.c:3355 src/insight.c:3458
-#, fuzzy
 msgid ", blind"
-msgstr "%s{이/가} 당신의 눈을 멀게 했다!"
+msgstr ", 실명"
 
 #: src/insight.c:3357 src/insight.c:3467
-#, fuzzy
 msgid ", stunned"
-msgstr "기절한"
+msgstr ", 기절"
 
 #: src/insight.c:3359 src/pager.c:462
 msgid ", asleep"
-msgstr "잠들었다."
+msgstr ", 수면"
 
 #: src/insight.c:3363
 msgid ", paralyzed"
-msgstr ""
+msgstr ", 마비"
 
 #: src/insight.c:3366
-#, fuzzy
 msgid ", can't move"
-msgstr "앞이 안 보여!"
+msgstr ", 움직일 수 없음"
 
 #: src/insight.c:3370 src/pager.c:465
 msgid ", meditating"
-msgstr "구토 중"
+msgstr ", 명상 중"
 
 #: src/insight.c:3372
 msgid ", scared"
-msgstr ""
+msgstr ", 겁먹음"
 
 #: src/insight.c:3374 src/insight.c:3484
-#, fuzzy
 msgid ", trapped"
-msgstr "함정에 빠짐"
+msgstr ", 함정에 빠짐"
 
 #: src/insight.c:3376 src/insight.c:3486
-#, fuzzy
 msgid ", fast"
-msgstr "빠름"
+msgstr ", 빠름"
 
 #: src/insight.c:3377
-#, fuzzy
 msgid ", slow"
-msgstr "더 느리다."
+msgstr ", 느림"
 
 #: src/insight.c:3378
 msgid ", [? speed]"
 msgstr ""
 
 #: src/insight.c:3380 src/insight.c:3492
-#, fuzzy
 msgid ", invisible"
-msgstr "투명한 "
+msgstr ", 투명"
 
 #: src/insight.c:3394 src/pager.c:447
 msgid ", swallowing you"
@@ -17018,95 +16988,80 @@ msgid ", holding you"
 msgstr ", 당신을 붙잡는 중"
 
 #: src/insight.c:3399
-#, fuzzy
 msgid ", held by you"
-msgstr ", "
+msgstr ", 당신에게 잡힘"
 
 #: src/insight.c:3402
-#, fuzzy
 msgid ", carrying you"
-msgstr "너무 많이 들고 있어서 점프할 수 없다!"
+msgstr ", 당신을 태우는 중"
 
-# pager.c monster health descriptions
+# 몬스터 부상 정도
 #: src/insight.c:3412 src/insight.c:3479
-#, fuzzy, c-format
+#, c-format
 msgid ", injured %s"
-msgstr "부상없음"
+msgstr ", 부상 %s"
 
 #: src/insight.c:3416
-#, fuzzy
 msgid ", leashed"
-msgstr "목줄"
+msgstr ", 목줄 착용"
 
 #: src/insight.c:3423
 #, c-format
 msgid "Status of %s (%s, %s):  Level %d  HP %d(%d)  AC %d%s."
 msgstr "%s (%s, %s)의 상태: 레벨 %d HP %d(%d) AC %d%s."
 
+# 사망 원인 표시
 #: src/insight.c:3438
-#, fuzzy
 msgid ", dying from"
-msgstr ", 당신을 붙잡는 중"
+msgstr ", 죽어가는 중:"
 
-# 음식
 #: src/insight.c:3440
-#, fuzzy
 msgid " food poisoning"
-msgstr "식량"
+msgstr " 식중독"
 
-#
 #: src/insight.c:3444
-#, fuzzy
 msgid " illness"
-msgstr "돌로 변했다."
+msgstr " 질병"
 
 #: src/insight.c:3448
-#, fuzzy
 msgid ", solidifying"
-msgstr "%s{이/가} 가라앉는다..."
+msgstr ", 석화 중"
 
 #: src/insight.c:3450
-#, fuzzy
 msgid ", becoming slimy"
-msgstr "투명화의 지팡이"
+msgstr ", 슬라임화 중"
 
 #: src/insight.c:3452
-#, fuzzy
 msgid ", being strangled"
-msgstr "목이 졸리는 중"
+msgstr ", 목 졸리는 중"
 
 #: src/insight.c:3454
-#, fuzzy
 msgid ", nauseated"
-msgstr "모독된"
+msgstr ", 구역질"
 
+# 조합: ", covered by sticky goop"
 #: src/insight.c:3462
-#, fuzzy
 msgid ", cover"
-msgstr "넘어서"
+msgstr ", 덮"
 
 #: src/insight.c:3463
-#, fuzzy
 msgid "ed by sticky goop"
-msgstr "가시가 당신에게 박혔다!"
+msgstr "임 (끈적끈적한 점액)"
 
 #: src/insight.c:3482
-#, fuzzy, c-format
+#, c-format
 msgid ", slippery %s"
-msgstr "미끄러운 "
+msgstr ", 미끄러운 %s"
 
 #: src/insight.c:3486
-#, fuzzy
 msgid ", very fast"
-msgstr "매우 빠름"
+msgstr ", 매우 빠름"
 
 #: src/insight.c:3488
-#, fuzzy
 msgid ", concealed"
-msgstr "집중한다."
+msgstr ", 숨어 있음"
 
 #: src/insight.c:3490
-#, fuzzy
 msgid ", disguised"
 msgstr "%s{이/가} %s(으)로 변장함"
 

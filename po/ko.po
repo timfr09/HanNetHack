@@ -16460,19 +16460,19 @@ msgstr "생성된 과일 플래그 "
 # 참고: 동사 시제 구분(might/have/could)이 사라지지만, 자연스러운 한국어가 됨
 #: ../src/insight.c:1961
 msgid "might avoid"
-msgstr ""
+msgstr "피할 수도 있다"
 
 #: ../src/insight.c:1961
 msgid "have avoided"
-msgstr ""
+msgstr "피했다"
 
 #: ../src/insight.c:1962
 msgid "could have avoided"
-msgstr ""
+msgstr "피할 수도 있었다"
 
 #: ../src/insight.c:1962
 msgid "avoided"
-msgstr ""
+msgstr "피했다"
 
 #: ../src/insight.c:1970
 msgid " a one-shot death via saving-grace"
@@ -23617,16 +23617,15 @@ msgstr "연금술 작업복"
 
 #: ../src/obj_descr_i18n.c:157
 msgid "robe"
-msgstr ""
+msgstr "로브"
 
 #: ../src/obj_descr_i18n.c:158
-#, fuzzy
 msgid "cloak of protection"
-msgstr "나의 보호"
+msgstr "보호의 망토"
 
 #: ../src/obj_descr_i18n.c:159
 msgid "cloak of invisibility"
-msgstr ""
+msgstr "투명의 망토"
 
 #: ../src/obj_descr_i18n.c:160
 msgid "cloak of magic resistance"
@@ -23668,11 +23667,9 @@ msgstr "드워프 원형 방패"
 msgid "shield of reflection"
 msgstr "반사의 방패"
 
-#
 #: ../src/obj_descr_i18n.c:171
-#, fuzzy
 msgid "leather gloves"
-msgstr "가죽"
+msgstr "가죽 장갑"
 
 # 장갑류 (Gloves/Gauntlets)
 #: ../src/obj_descr_i18n.c:172
@@ -23739,134 +23736,115 @@ msgstr "투구"
 
 #: ../src/obj_descr_i18n.c:194
 msgid "conical hat"
-msgstr ""
+msgstr "원뿔형 모자"
 
+# ============================================================
+# 방어구 외형 설명 (미감정 상태)
+# ============================================================
+# 투구 외형
 #: ../src/obj_descr_i18n.c:195
-#, fuzzy
 msgid "plumed helmet"
-msgstr "투구"
+msgstr "깃털 달린 투구"
 
 #: ../src/obj_descr_i18n.c:196
-#, fuzzy
 msgid "etched helmet"
-msgstr "투구"
+msgstr "조각된 투구"
 
 #: ../src/obj_descr_i18n.c:197
-#, fuzzy
 msgid "crested helmet"
-msgstr "건강이 회복됐다!"
+msgstr "볏 달린 투구"
 
 #: ../src/obj_descr_i18n.c:198
-#, fuzzy
 msgid "visored helmet"
-msgstr "건강이 회복됐다!"
+msgstr "바이저 달린 투구"
 
+# 망토 외형
 #: ../src/obj_descr_i18n.c:199
-#, fuzzy
 msgid "faded pall"
-msgstr "봉인된 포탈"
+msgstr "바랜 수의"
 
 #: ../src/obj_descr_i18n.c:200
 msgid "coarse mantelet"
-msgstr ""
+msgstr "거친 망토"
 
 #: ../src/obj_descr_i18n.c:201
 msgid "hooded cloak"
-msgstr ""
+msgstr "후드 망토"
 
 #: ../src/obj_descr_i18n.c:202
-#, fuzzy
 msgid "slippery cloak"
-msgstr "미끄러운 "
+msgstr "미끄러운 망토"
 
 #: ../src/obj_descr_i18n.c:203
 msgid "apron"
-msgstr ""
+msgstr "앞치마"
 
-# 방어구 - 방패
+# 방패 외형
 #: ../src/obj_descr_i18n.c:204
-#, fuzzy
 msgid "red shield"
-msgstr "방패"
+msgstr "붉은 방패"
 
-# 슬라임 사망 원인 (Slime death reason)
 #: ../src/obj_descr_i18n.c:205
-#, fuzzy
 msgid "blue and green shield"
-msgstr "녹색 슬라임으로 변함"
+msgstr "청록색 방패"
 
 #: ../src/obj_descr_i18n.c:206
 msgid "white-handed shield"
-msgstr ""
+msgstr "흰 손 방패"
 
 #: ../src/obj_descr_i18n.c:207
-#, fuzzy
 msgid "large round shield"
-msgstr "큰 코볼트"
+msgstr "큰 원형 방패"
 
 #: ../src/obj_descr_i18n.c:208
 msgid "polished silver shield"
-msgstr ""
+msgstr "광택 은 방패"
 
+# 장갑 외형
 #: ../src/obj_descr_i18n.c:209
-#, fuzzy
 msgid "old gloves"
-msgstr "장갑"
+msgstr "낡은 장갑"
 
 #: ../src/obj_descr_i18n.c:210
-#, fuzzy
 msgid "padded gloves"
-msgstr "장갑"
+msgstr "패딩 장갑"
 
-# 상태 메시지
 #: ../src/obj_descr_i18n.c:211
-#, fuzzy
 msgid "riding gloves"
-msgstr "%s{을/를} 타고 있음"
+msgstr "승마 장갑"
 
+# 신발 외형
 #: ../src/obj_descr_i18n.c:212
-#, fuzzy
 msgid "walking shoes"
-msgstr "%s 위를 걷는 중"
+msgstr "워킹화"
 
 #: ../src/obj_descr_i18n.c:213
-#, fuzzy
 msgid "hard shoes"
-msgstr "묘비"
+msgstr "단단한 신발"
 
-# 방어구 - 신발
 #: ../src/obj_descr_i18n.c:214
-#, fuzzy
 msgid "jackboots"
-msgstr "장화"
+msgstr "군화"
 
-# 방어구 - 신발
 #: ../src/obj_descr_i18n.c:215
-#, fuzzy
 msgid "mud boots"
-msgstr "장화"
+msgstr "진흙 부츠"
 
 #: ../src/obj_descr_i18n.c:216
-#, fuzzy
 msgid "buckled boots"
-msgstr "버클 장화"
+msgstr "버클 부츠"
 
-# 상태 메시지
 #: ../src/obj_descr_i18n.c:217
-#, fuzzy
 msgid "riding boots"
-msgstr "%s{을/를} 타고 있음"
+msgstr "승마 부츠"
 
-# 방어구 - 신발
 #: ../src/obj_descr_i18n.c:218
-#, fuzzy
 msgid "snow boots"
-msgstr "장화"
+msgstr "스노우 부츠"
 
 #: ../src/obj_descr_i18n.c:219
-#, fuzzy
 msgid "hiking boots"
-msgstr "맨발로 %s{을/를} 차는 중"
+msgstr "등산화"
 
 # ============================================================
 # 무기류 (Weapons)
@@ -23926,11 +23904,11 @@ msgstr "다트"
 
 #: ../src/obj_descr_i18n.c:236
 msgid "dwarvish mattock"
-msgstr ""
+msgstr "드워프 곡괭이"
 
 #: ../src/obj_descr_i18n.c:237
 msgid "dwarvish short sword"
-msgstr ""
+msgstr "드워프 단검"
 
 #: ../src/obj_descr_i18n.c:238
 msgid "dwarvish spear"
@@ -24034,10 +24012,7 @@ msgid "ranseur"
 msgstr "랑쇠르"
 
 # ============================================================
-# 인벤토리 메시지 (Inventory Messages)
-# ============================================================
 #: ../src/obj_descr_i18n.c:262
-#, fuzzy
 msgid "rubber hose"
 msgstr "고무 호스"
 
@@ -24091,30 +24066,28 @@ msgid "stiletto"
 msgstr "스틸레토"
 
 #: ../src/obj_descr_i18n.c:275
-#, fuzzy
 msgid "trident"
-msgstr "강경하게"
+msgstr "삼지창"
 
 #: ../src/obj_descr_i18n.c:276
 msgid "tsurugi"
-msgstr ""
+msgstr "쓰루기"
 
 #: ../src/obj_descr_i18n.c:277
 msgid "two-handed sword"
-msgstr ""
+msgstr "양손검"
 
 #: ../src/obj_descr_i18n.c:278
 msgid "voulge"
-msgstr ""
+msgstr "볼지"
 
 #: ../src/obj_descr_i18n.c:279
-#, fuzzy
 msgid "war hammer"
-msgstr "망치"
+msgstr "워해머"
 
 #: ../src/obj_descr_i18n.c:280
 msgid "worm tooth"
-msgstr ""
+msgstr "벌레 이빨"
 
 # 활/석궁
 #: ../src/obj_descr_i18n.c:283
@@ -25078,14 +25051,13 @@ msgid "Angel"
 msgstr "천사"
 
 #: ../src/obj_descr_i18n.c:585
-#, fuzzy
 msgid "Arch Priest"
 msgstr "대사제"
 
+# 천사 종류
 #: ../src/obj_descr_i18n.c:586
-#, fuzzy
 msgid "Archon"
-msgstr "궁수"
+msgstr "아르콘"
 
 #: ../src/obj_descr_i18n.c:587
 msgid "Ashikaga Takauji"
@@ -25123,34 +25095,33 @@ msgstr "키클롭스"
 msgid "Dark One"
 msgstr "어둠의 자"
 
+# 묵시록의 네 기사 (Four Horsemen)
 #: ../src/obj_descr_i18n.c:596
-#, fuzzy
 msgid "Death"
-msgstr "아래에"
+msgstr "죽음"
 
 #: ../src/obj_descr_i18n.c:597
 msgid "Demogorgon"
 msgstr "데모고르곤"
 
+# 악마 군주
 #: ../src/obj_descr_i18n.c:598
-#, fuzzy
 msgid "Dispater"
-msgstr "빠르게 흩어집니다"
+msgstr "디스파테르"
 
 #: ../src/obj_descr_i18n.c:599
 msgid "Earendil"
 msgstr "에아렌딜"
 
-# bird_parts
+# 톨킨 캐릭터
 #: ../src/obj_descr_i18n.c:600
-#, fuzzy
 msgid "Elwing"
-msgstr "날개"
+msgstr "엘윙"
 
+# 묵시록의 네 기사
 #: ../src/obj_descr_i18n.c:601
-#, fuzzy
 msgid "Famine"
-msgstr "살펴보기"
+msgstr "기근"
 
 #: ../src/obj_descr_i18n.c:602
 msgid "Geryon"
@@ -25165,14 +25136,13 @@ msgid "Grand Master"
 msgstr "스승"
 
 #: ../src/obj_descr_i18n.c:605
-#, fuzzy
 msgid "High-elf"
-msgstr "대신전"
+msgstr "하이엘프"
 
+# 의학의 아버지
 #: ../src/obj_descr_i18n.c:606
-#, fuzzy
 msgid "Hippocrates"
-msgstr "진동한다"
+msgstr "히포크라테스"
 
 #: ../src/obj_descr_i18n.c:607
 msgid "Ixoth"
@@ -25182,37 +25152,35 @@ msgstr "익소스"
 msgid "Juiblex"
 msgstr "주이블렉스"
 
+# 키스톤 경찰 (Keystone Kops)
 #: ../src/obj_descr_i18n.c:609
-#, fuzzy
 msgid "Keystone Kop"
-msgstr "키스톤 경찰이 나타났다!"
+msgstr "키스톤 경찰"
 
 #: ../src/obj_descr_i18n.c:610
 msgid "King Arthur"
 msgstr "아서 왕"
 
 #: ../src/obj_descr_i18n.c:611
-#, fuzzy
 msgid "Kop Kaptain"
-msgstr "오크 대장"
+msgstr "경찰 대위"
 
 #: ../src/obj_descr_i18n.c:612
 msgid "Kop Lieutenant"
 msgstr "경찰 중위"
 
 #: ../src/obj_descr_i18n.c:613
-#, fuzzy
 msgid "Kop Sergeant"
-msgstr "하사"
+msgstr "경찰 하사"
 
 #: ../src/obj_descr_i18n.c:614
 msgid "Lord Carnarvon"
 msgstr "카나본 경"
 
+# 사무라이 퀘스트 적
 #: ../src/obj_descr_i18n.c:615
-#, fuzzy
 msgid "Lord Sato"
-msgstr "군주"
+msgstr "사토 경"
 
 #: ../src/obj_descr_i18n.c:616
 msgid "Lord Surtur"
@@ -25222,25 +25190,24 @@ msgstr "수르트르 경"
 msgid "Master Assassin"
 msgstr "암살 대가"
 
+# 승려 퀘스트 적
 #: ../src/obj_descr_i18n.c:618
-#, fuzzy
 msgid "Master Kaen"
-msgstr "스승"
+msgstr "카엔 사부"
 
+# 도적 퀘스트 NPC
 #: ../src/obj_descr_i18n.c:619
-#, fuzzy
 msgid "Master of Thieves"
-msgstr "관심 있는 함정"
+msgstr "도적단 두목"
 
 #: ../src/obj_descr_i18n.c:620
-#, fuzzy
 msgid "Medusa"
-msgstr "메두사를 처치했다"
+msgstr "메두사"
 
+# 고고학자 퀘스트 적
 #: ../src/obj_descr_i18n.c:621
-#, fuzzy
 msgid "Minion of Huhetotl"
-msgstr "우에우에토틀"
+msgstr "우에우에토틀의 하수인"
 
 #: ../src/obj_descr_i18n.c:622
 msgid "Nalzok"
@@ -25278,29 +25245,29 @@ msgstr "오리온"
 msgid "Pelias"
 msgstr "펠리아스"
 
+# 묵시록의 네 기사
 #: ../src/obj_descr_i18n.c:631
-#, fuzzy
 msgid "Pestilence"
-msgstr "존재"
+msgstr "역병"
 
+# 레인저 퀘스트 적
 #: ../src/obj_descr_i18n.c:632
-#, fuzzy
 msgid "Scorpius"
-msgstr "시체"
+msgstr "스콜피우스"
 
 #: ../src/obj_descr_i18n.c:633
 msgid "Shaman Karnov"
 msgstr "주술사 카르노프"
 
+# 마법사 퀘스트 적
 #: ../src/obj_descr_i18n.c:634
-#, fuzzy
 msgid "Thoth Amon"
-msgstr "토트"
+msgstr "토트 아몬"
 
+# 관광객 퀘스트 NPC (디스크월드)
 #: ../src/obj_descr_i18n.c:635
-#, fuzzy
 msgid "Twoflower"
-msgstr "더 느리다."
+msgstr "투플라워"
 
 #: ../src/obj_descr_i18n.c:636
 msgid "Vlad the Impaler"
@@ -25318,47 +25285,38 @@ msgstr "예노구"
 msgid "abbot"
 msgstr "수도원장"
 
+# 몬스터 이름 (일반)
 #: ../src/obj_descr_i18n.c:640
-#, fuzzy
 msgid "acid blob"
 msgstr "산성 덩어리"
 
 #: ../src/obj_descr_i18n.c:641
-#, fuzzy
 msgid "acolyte"
 msgstr "시종"
 
 #: ../src/obj_descr_i18n.c:642
-#, fuzzy
 msgid "air elemental"
-msgstr "원소 "
+msgstr "공기 정령"
 
 #: ../src/obj_descr_i18n.c:643
-#, fuzzy
 msgid "ape"
-msgstr "사과"
+msgstr "유인원"
 
 #: ../src/obj_descr_i18n.c:644
-#, fuzzy
 msgid "apprentice"
-msgstr "어릿광대"
+msgstr "견습생"
 
 #: ../src/obj_descr_i18n.c:645
-#, fuzzy
 msgid "arch-lich"
-msgstr "총대주교"
+msgstr "아크리치"
 
-# Valkyrie ranks
-# Role names
 #: ../src/obj_descr_i18n.c:646
-#, fuzzy
 msgid "archeologist"
 msgstr "고고학자"
 
 #: ../src/obj_descr_i18n.c:647
-#, fuzzy
 msgid "attendant"
-msgstr "평평해진다"
+msgstr "시종"
 
 #: ../src/obj_descr_i18n.c:648
 msgid "baby black dragon"
@@ -25377,9 +25335,8 @@ msgid "baby gold dragon"
 msgstr "아기 금룡"
 
 #: ../src/obj_descr_i18n.c:652
-#, fuzzy
 msgid "baby gray dragon"
-msgstr "화난 윙윙 소리."
+msgstr "아기 회색 용"
 
 #: ../src/obj_descr_i18n.c:653
 msgid "baby green dragon"
@@ -25402,9 +25359,8 @@ msgid "baby red dragon"
 msgstr "아기 적룡"
 
 #: ../src/obj_descr_i18n.c:658
-#, fuzzy
 msgid "baby shimmering dragon"
-msgstr "숨었다!"
+msgstr "아기 빛나는 용"
 
 #: ../src/obj_descr_i18n.c:659
 msgid "baby silver dragon"
@@ -25415,9 +25371,8 @@ msgid "baby white dragon"
 msgstr "아기 백룡"
 
 #: ../src/obj_descr_i18n.c:661
-#, fuzzy
 msgid "baby yellow dragon"
-msgstr "용 냄새를 맡았다!"
+msgstr "아기 황룡"
 
 #: ../src/obj_descr_i18n.c:662
 msgid "balrog"
@@ -25428,7 +25383,6 @@ msgid "baluchitherium"
 msgstr "발루키테리움"
 
 #: ../src/obj_descr_i18n.c:664
-#, fuzzy
 msgid "barbarian"
 msgstr "야만인"
 
@@ -25437,48 +25391,40 @@ msgid "barbed devil"
 msgstr "가시 악마"
 
 #: ../src/obj_descr_i18n.c:666
-#, fuzzy
 msgid "barrow wight"
-msgstr "밝은"
+msgstr "바로우 와이트"
 
 #: ../src/obj_descr_i18n.c:667
-#, fuzzy
 msgid "beholder"
-msgstr "바위"
+msgstr "비홀더"
 
 #: ../src/obj_descr_i18n.c:668
-#, fuzzy
 msgid "black dragon"
-msgstr "검은 오닉스"
+msgstr "흑룡"
 
 #: ../src/obj_descr_i18n.c:669
-#, fuzzy
 msgid "black light"
-msgstr "검은 오닉스"
+msgstr "검은 빛"
 
 #: ../src/obj_descr_i18n.c:670
-#, fuzzy
 msgid "black naga"
-msgstr "검은 오닉스"
+msgstr "검은 나가"
 
 #: ../src/obj_descr_i18n.c:671
 msgid "black naga hatchling"
 msgstr "검은 나가 새끼"
 
 #: ../src/obj_descr_i18n.c:672
-#, fuzzy
 msgid "black pudding"
-msgstr "검은 오닉스"
+msgstr "블랙 푸딩"
 
 #: ../src/obj_descr_i18n.c:673
-#, fuzzy
 msgid "black unicorn"
 msgstr "검은 오닉스"
 
 #: ../src/obj_descr_i18n.c:674
-#, fuzzy
 msgid "blue dragon"
-msgstr "용 냄새를 맡았다!"
+msgstr "청룡"
 
 #: ../src/obj_descr_i18n.c:675
 msgid "blue jelly"
@@ -25489,50 +25435,42 @@ msgid "bone devil"
 msgstr "뼈 악마"
 
 #: ../src/obj_descr_i18n.c:677
-#, fuzzy
 msgid "brown mold"
-msgstr "갈색"
+msgstr "갈색 곰팡이"
 
 #: ../src/obj_descr_i18n.c:678
-#, fuzzy
 msgid "brown pudding"
-msgstr "익사"
+msgstr "브라운 푸딩"
 
 #: ../src/obj_descr_i18n.c:679
 msgid "bugbear"
 msgstr "버그베어"
 
 #: ../src/obj_descr_i18n.c:680
-#, fuzzy
 msgid "captain"
-msgstr "오크 대장"
+msgstr "대장"
 
 #: ../src/obj_descr_i18n.c:681
-#, fuzzy
 msgid "carnivorous ape"
-msgstr "육식 가방"
+msgstr "육식 유인원"
 
 #: ../src/obj_descr_i18n.c:682
-#, fuzzy
 msgid "cave spider"
-msgstr "피했다"
+msgstr "동굴 거미"
 
 #: ../src/obj_descr_i18n.c:683
-#, fuzzy
 msgid "centipede"
-msgstr "중심이 잡힌"
+msgstr "지네"
 
 #: ../src/obj_descr_i18n.c:684
 msgid "chameleon"
 msgstr "카멜레온"
 
 #: ../src/obj_descr_i18n.c:685
-#, fuzzy
 msgid "chickatrice"
-msgstr "닭"
+msgstr "치카트리스"
 
 #: ../src/obj_descr_i18n.c:686
-#, fuzzy
 msgid "chieftain"
 msgstr "족장"
 
@@ -25545,9 +25483,8 @@ msgid "cobra"
 msgstr "코브라"
 
 #: ../src/obj_descr_i18n.c:689
-#, fuzzy
 msgid "cockatrice"
-msgstr "세 번"
+msgstr "코카트리스"
 
 #: ../src/obj_descr_i18n.c:690
 msgid "couatl"
@@ -25562,19 +25499,16 @@ msgid "demilich"
 msgstr "데미리치"
 
 #: ../src/obj_descr_i18n.c:693
-#, fuzzy
 msgid "dingo"
-msgstr "숨어 있음"
+msgstr "딩고"
 
 #: ../src/obj_descr_i18n.c:694
-#, fuzzy
 msgid "disenchanter"
-msgstr "마법 해제"
+msgstr "마법해제수"
 
 #: ../src/obj_descr_i18n.c:695
-#, fuzzy
 msgid "displacer beast"
-msgstr "변위"
+msgstr "디스플레이서 비스트"
 
 #: ../src/obj_descr_i18n.c:696
 msgid "djinni"
@@ -25589,24 +25523,20 @@ msgid "dust vortex"
 msgstr "먼지 소용돌이"
 
 #: ../src/obj_descr_i18n.c:699
-#, fuzzy
 msgid "dwarf mummy"
-msgstr "드워프"
+msgstr "드워프 미라"
 
 #: ../src/obj_descr_i18n.c:700
-#, fuzzy
 msgid "dwarf zombie"
-msgstr "엘프 좀비"
+msgstr "드워프 좀비"
 
 #: ../src/obj_descr_i18n.c:701
-#, fuzzy
 msgid "earth elemental"
-msgstr "원소 "
+msgstr "대지 정령"
 
 #: ../src/obj_descr_i18n.c:702
-#, fuzzy
 msgid "electric eel"
-msgstr "전기의자"
+msgstr "전기 뱀장어"
 
 #: ../src/obj_descr_i18n.c:703
 msgid "elf mummy"
@@ -25629,78 +25559,64 @@ msgid "ettin mummy"
 msgstr "에틴 미라"
 
 #: ../src/obj_descr_i18n.c:708
-#, fuzzy
 msgid "ettin zombie"
-msgstr "엘프 좀비"
+msgstr "에틴 좀비"
 
 #: ../src/obj_descr_i18n.c:709
-#, fuzzy
 msgid "fire ant"
-msgstr "화염 저항"
+msgstr "불개미"
 
 #: ../src/obj_descr_i18n.c:710
-#, fuzzy
 msgid "fire elemental"
-msgstr "원소 "
+msgstr "화염 정령"
 
 #: ../src/obj_descr_i18n.c:711
-#, fuzzy
 msgid "fire giant"
-msgstr "화염 저항"
+msgstr "화염 거인"
 
 #: ../src/obj_descr_i18n.c:712
-#, fuzzy
 msgid "fire vortex"
-msgstr "화염 저항"
+msgstr "화염 소용돌이"
 
 #: ../src/obj_descr_i18n.c:713
-#, fuzzy
 msgid "flaming sphere"
-msgstr "여기서 날 수 없다."
+msgstr "화염구"
 
 #: ../src/obj_descr_i18n.c:714
 msgid "flesh golem"
 msgstr "살 골렘"
 
 #: ../src/obj_descr_i18n.c:715
-#, fuzzy
 msgid "floating eye"
-msgstr "여기서 날 수 없다."
+msgstr "떠다니는 눈"
 
 #: ../src/obj_descr_i18n.c:716
-#, fuzzy
 msgid "fog cloud"
-msgstr "가스 구름"
+msgstr "안개 구름"
 
 #: ../src/obj_descr_i18n.c:717
-#, fuzzy
 msgid "forest centaur"
-msgstr "발포성"
+msgstr "숲 켄타우로스"
 
 #: ../src/obj_descr_i18n.c:718
-#, fuzzy
 msgid "freezing sphere"
-msgstr "아래의 함정문이 산산이 부서졌다."
+msgstr "냉동구"
 
 #: ../src/obj_descr_i18n.c:719
-#, fuzzy
 msgid "frost giant"
-msgstr "서리"
+msgstr "서리 거인"
 
 #: ../src/obj_descr_i18n.c:720
-#, fuzzy
 msgid "gargoyle"
-msgstr "꿀꺽꿀꺽 소리를 낸다."
+msgstr "가고일"
 
 #: ../src/obj_descr_i18n.c:721
-#, fuzzy
 msgid "garter snake"
-msgstr "화난 뱀 소리!"
+msgstr "줄무늬뱀"
 
 #: ../src/obj_descr_i18n.c:722
-#, fuzzy
 msgid "gas spore"
-msgstr "포자"
+msgstr "가스 포자"
 
 #: ../src/obj_descr_i18n.c:723
 msgid "gelatinous cube"
@@ -25715,49 +25631,40 @@ msgid "ghoul"
 msgstr "구울"
 
 #: ../src/obj_descr_i18n.c:727
-#, fuzzy
 msgid "giant"
-msgstr "거대 박쥐"
+msgstr "거인"
 
 #: ../src/obj_descr_i18n.c:728
-#, fuzzy
 msgid "giant ant"
-msgstr "거대 박쥐"
+msgstr "거대 개미"
 
 #: ../src/obj_descr_i18n.c:729
-#, fuzzy
 msgid "giant beetle"
-msgstr "거대 박쥐"
+msgstr "거대 딱정벌레"
 
 #: ../src/obj_descr_i18n.c:730
-#, fuzzy
 msgid "giant eel"
-msgstr "거대 박쥐"
+msgstr "거대 뱀장어"
 
 #: ../src/obj_descr_i18n.c:731
-#, fuzzy
 msgid "giant mimic"
-msgstr "거대 박쥐"
+msgstr "거대 미믹"
 
 #: ../src/obj_descr_i18n.c:732
-#, fuzzy
 msgid "giant mummy"
-msgstr "미라가 보고 싶다"
+msgstr "거대 미라"
 
 #: ../src/obj_descr_i18n.c:733
-#, fuzzy
 msgid "giant spider"
-msgstr "거대 쥐"
+msgstr "거대 거미"
 
 #: ../src/obj_descr_i18n.c:734
-#, fuzzy
 msgid "giant zombie"
-msgstr "노움 좀비"
+msgstr "거대 좀비"
 
 #: ../src/obj_descr_i18n.c:735
-#, fuzzy
 msgid "glass golem"
-msgstr "유리"
+msgstr "유리 골렘"
 
 # ============================================================
 # 아이템 이름 (Item Names)
@@ -25765,47 +25672,40 @@ msgstr "유리"
 # 화폐
 # --- 기타 (Miscellaneous) ---
 #: ../src/obj_descr_i18n.c:736
-#, fuzzy
 msgid "glass piercer"
-msgstr "금화"
+msgstr "유리 피어서"
 
 #: ../src/obj_descr_i18n.c:737
-#, fuzzy
 msgid "gnome mummy"
-msgstr "노움"
+msgstr "노움 미라"
 
 #: ../src/obj_descr_i18n.c:738
-#, fuzzy
 msgid "gold dragon"
-msgstr "금"
+msgstr "금룡"
 
 #: ../src/obj_descr_i18n.c:739
-#, fuzzy
 msgid "gold golem"
-msgstr "금"
+msgstr "금 골렘"
 
 # ============================================================
 # 아이템 이름 (Item Names)
 # ============================================================
 # 화폐
 #: ../src/obj_descr_i18n.c:740
-#, fuzzy
 msgid "golden naga"
-msgstr "금빛"
+msgstr "황금 나가"
 
 #: ../src/obj_descr_i18n.c:741
 msgid "golden naga hatchling"
 msgstr "황금 나가 새끼"
 
 #: ../src/obj_descr_i18n.c:742
-#, fuzzy
 msgid "gray dragon"
-msgstr "용 냄새를 맡았다!"
+msgstr "회색 용"
 
 #: ../src/obj_descr_i18n.c:743
-#, fuzzy
 msgid "gray ooze"
-msgstr "회색"
+msgstr "회색 점액"
 
 #: ../src/obj_descr_i18n.c:744
 msgid "gray unicorn"
@@ -25816,13 +25716,12 @@ msgid "green dragon"
 msgstr "녹룡"
 
 #: ../src/obj_descr_i18n.c:746
-#, fuzzy
 msgid "green mold"
-msgstr "분홍 슬라임"
+msgstr "녹색 곰팡이"
 
 #: ../src/obj_descr_i18n.c:747 ../src/timeout.c:418
 msgid "green slime"
-msgstr "분홍 슬라임"
+msgstr "녹색 슬라임"
 
 #: ../src/obj_descr_i18n.c:748
 msgid "gremlin"
@@ -25833,14 +25732,12 @@ msgid "grid bug"
 msgstr "그리드 버그"
 
 #: ../src/obj_descr_i18n.c:750
-#, fuzzy
 msgid "guard"
-msgstr "경비병%s"
+msgstr "경비병"
 
 #: ../src/obj_descr_i18n.c:751
-#, fuzzy
 msgid "guardian naga"
-msgstr "수호자 "
+msgstr "수호 나가"
 
 #: ../src/obj_descr_i18n.c:752
 msgid "guardian naga hatchling"
@@ -25851,23 +25748,20 @@ msgid "guide"
 msgstr "안내인"
 
 #: ../src/obj_descr_i18n.c:754
-#, fuzzy
 msgid "healer"
 msgstr "치유사"
 
 #: ../src/obj_descr_i18n.c:755
-#, fuzzy
 msgid "hell hound pup"
-msgstr "지옥 사냥개"
+msgstr "지옥 사냥개 새끼"
 
 #: ../src/obj_descr_i18n.c:756
 msgid "hezrou"
 msgstr "헤즈로우"
 
 #: ../src/obj_descr_i18n.c:757
-#, fuzzy
 msgid "hill giant"
-msgstr "차가운"
+msgstr "언덕 거인"
 
 #: ../src/obj_descr_i18n.c:758
 msgid "hobbit"
@@ -25889,43 +25783,36 @@ msgstr "집고양이"
 # 종족 형용사 (Race Adjectives)
 # ============================================================
 #: ../src/obj_descr_i18n.c:762
-#, fuzzy
 msgid "human mummy"
-msgstr "인류"
+msgstr "인간 미라"
 
 #: ../src/obj_descr_i18n.c:763
-#, fuzzy
 msgid "hunter"
-msgstr "중심"
+msgstr "사냥꾼"
 
 #: ../src/obj_descr_i18n.c:764
-#, fuzzy
 msgid "ice devil"
-msgstr "악"
+msgstr "얼음 악마"
 
 #: ../src/obj_descr_i18n.c:765
-#, fuzzy
 msgid "ice troll"
-msgstr "얼음 함정"
+msgstr "얼음 트롤"
 
 #: ../src/obj_descr_i18n.c:766
-#, fuzzy
 msgid "ice vortex"
-msgstr "아이스박스"
+msgstr "얼음 소용돌이"
 
 #: ../src/obj_descr_i18n.c:767
-#, fuzzy
 msgid "imp"
-msgstr "어두워진다"
+msgstr "임프"
 
 #: ../src/obj_descr_i18n.c:768
 msgid "iron golem"
 msgstr "철 골렘"
 
 #: ../src/obj_descr_i18n.c:769
-#, fuzzy
 msgid "iron piercer"
-msgstr "뚫다"
+msgstr "철 피어서"
 
 #: ../src/obj_descr_i18n.c:770
 msgid "jabberwock"
@@ -25938,48 +25825,41 @@ msgstr "재버워크"
 # 복수: "guards' whistles" → "경비병들의 호루라기"
 # ============================================================
 #: ../src/obj_descr_i18n.c:771
-#, fuzzy
 msgid "jaguar"
-msgstr "경비병의"
+msgstr "재규어"
 
 #: ../src/obj_descr_i18n.c:772
-#, fuzzy
 msgid "jellyfish"
-msgstr "생선 냄새를 맡았다."
+msgstr "해파리"
 
 #: ../src/obj_descr_i18n.c:773
 msgid "ki-rin"
 msgstr "기린"
 
 #: ../src/obj_descr_i18n.c:774
-#, fuzzy
 msgid "killer bee"
-msgstr "에게 살해됨: "
+msgstr "살인벌"
 
 #: ../src/obj_descr_i18n.c:775
-#, fuzzy
 msgid "knight"
 msgstr "기사"
 
 #: ../src/obj_descr_i18n.c:776
-#, fuzzy
 msgid "kobold mummy"
-msgstr "코볼트"
+msgstr "코볼트 미라"
 
 #: ../src/obj_descr_i18n.c:777
 msgid "kraken"
 msgstr "크라켄"
 
 #: ../src/obj_descr_i18n.c:778
-#, fuzzy
 msgid "large mimic"
-msgstr "큰 고양이"
+msgstr "큰 미믹"
 
 #
 #: ../src/obj_descr_i18n.c:779
-#, fuzzy
 msgid "leather golem"
-msgstr "가죽"
+msgstr "가죽 골렘"
 
 #: ../src/obj_descr_i18n.c:780
 msgid "lemure"
@@ -26006,32 +25886,28 @@ msgid "lieutenant"
 msgstr "중위"
 
 #: ../src/obj_descr_i18n.c:786
-#, fuzzy
 msgid "long worm"
-msgstr "긴"
+msgstr "긴 벌레"
 
 #: ../src/obj_descr_i18n.c:787
 msgid "long worm tail"
 msgstr "긴 벌레 꼬리"
 
 #: ../src/obj_descr_i18n.c:788
-#, fuzzy
 msgid "lurker above"
-msgstr "위쪽 물"
+msgstr "천장 잠복자"
 
 #: ../src/obj_descr_i18n.c:789
 msgid "lynx"
 msgstr "스라소니"
 
 #: ../src/obj_descr_i18n.c:790
-#, fuzzy
 msgid "mail daemon"
-msgstr "악마"
+msgstr "메일 데몬"
 
 #: ../src/obj_descr_i18n.c:791
-#, fuzzy
 msgid "manes"
-msgstr "갈기"
+msgstr "마네스"
 
 #: ../src/obj_descr_i18n.c:792
 msgid "marilith"
@@ -26053,9 +25929,8 @@ msgstr "마스토돈"
 # 상태 표시줄 (Status Line)
 # ============================================================
 #: ../src/obj_descr_i18n.c:796
-#, fuzzy
 msgid "mind flayer"
-msgstr "플레이어"
+msgstr "마인드 플레이어"
 
 #: ../src/obj_descr_i18n.c:797
 msgid "minotaur"
@@ -26070,14 +25945,12 @@ msgid "monkey"
 msgstr "원숭이"
 
 #: ../src/obj_descr_i18n.c:800
-#, fuzzy
 msgid "mountain centaur"
-msgstr "용기를 여는 중"
+msgstr "산 켄타우로스"
 
 #: ../src/obj_descr_i18n.c:801
-#, fuzzy
 msgid "mountain nymph"
-msgstr "분수"
+msgstr "산 님프"
 
 #: ../src/obj_descr_i18n.c:802
 msgid "mumak"
@@ -26092,14 +25965,12 @@ msgid "neanderthal"
 msgstr "네안데르탈인"
 
 #: ../src/obj_descr_i18n.c:805
-#, fuzzy
 msgid "ninja"
 msgstr "닌자"
 
 #: ../src/obj_descr_i18n.c:806
-#, fuzzy
 msgid "nurse"
-msgstr "저주 해제"
+msgstr "간호사"
 
 #: ../src/obj_descr_i18n.c:807
 msgid "ochre jelly"
@@ -26110,45 +25981,39 @@ msgid "ogre"
 msgstr "오우거"
 
 #: ../src/obj_descr_i18n.c:809
-#, fuzzy
 msgid "orange dragon"
-msgstr "오렌지"
+msgstr "주황색 용"
 
 #: ../src/obj_descr_i18n.c:810
 msgid "orc mummy"
 msgstr "오크 미라"
 
 #: ../src/obj_descr_i18n.c:811
-#, fuzzy
 msgid "owlbear"
-msgstr "올빼미곰 함정"
+msgstr "올빼미곰"
 
 #: ../src/obj_descr_i18n.c:812
 msgid "page"
 msgstr "시동"
 
 #: ../src/obj_descr_i18n.c:813
-#, fuzzy
 msgid "panther"
-msgstr "또 다른"
+msgstr "흑표범"
 
 #: ../src/obj_descr_i18n.c:814
-#, fuzzy
 msgid "paper golem"
-msgstr "종이"
+msgstr "종이 골렘"
 
 # ============================================================
 # 사제 계급 (Priest Ranks)
 # ============================================================
 #: ../src/obj_descr_i18n.c:815
-#, fuzzy
 msgid "piranha"
-msgstr "지망생"
+msgstr "피라냐"
 
 #: ../src/obj_descr_i18n.c:816
-#, fuzzy
 msgid "pit fiend"
-msgstr "긴장이 고조된다."
+msgstr "피트 핀드"
 
 #: ../src/obj_descr_i18n.c:817
 msgid "pit viper"
@@ -26159,14 +26024,12 @@ msgid "plains centaur"
 msgstr "평원 켄타우로스"
 
 #: ../src/obj_descr_i18n.c:819
-#, fuzzy
 msgid "prisoner"
-msgstr "중독됨"
+msgstr "죄수"
 
 #: ../src/obj_descr_i18n.c:820
-#, fuzzy
 msgid "purple worm"
-msgstr "보라색"
+msgstr "보라색 벌레"
 
 #: ../src/obj_descr_i18n.c:821
 msgid "pyrolisk"
@@ -26185,34 +26048,28 @@ msgid "quasit"
 msgstr "쿼짓"
 
 #: ../src/obj_descr_i18n.c:825
-#, fuzzy
 msgid "queen bee"
-msgstr "보이지 않는 생물"
+msgstr "여왕벌"
 
 #: ../src/obj_descr_i18n.c:826
-#, fuzzy
 msgid "quivering blob"
-msgstr "탄 "
+msgstr "떨리는 젤리"
 
 #: ../src/obj_descr_i18n.c:827
-#, fuzzy
 msgid "rabid rat"
-msgstr "산성 저항"
+msgstr "광견병 쥐"
 
 #: ../src/obj_descr_i18n.c:828
-#, fuzzy
 msgid "ranger"
 msgstr "레인저"
 
 #: ../src/obj_descr_i18n.c:829
-#, fuzzy
 msgid "raven"
-msgstr "겁쟁이"
+msgstr "까마귀"
 
 #: ../src/obj_descr_i18n.c:830
-#, fuzzy
 msgid "red dragon"
-msgstr "용 냄새를 맡았다!"
+msgstr "적룡"
 
 #: ../src/obj_descr_i18n.c:831
 msgid "red mold"
@@ -26223,29 +26080,24 @@ msgid "red naga"
 msgstr "빨간 나가"
 
 #: ../src/obj_descr_i18n.c:833
-#, fuzzy
 msgid "red naga hatchling"
-msgstr "덜커덕거리는 소리에 놀람"
+msgstr "빨간 나가 새끼"
 
 #: ../src/obj_descr_i18n.c:834
-#, fuzzy
 msgid "rock mole"
-msgstr "돌"
+msgstr "바위 두더지"
 
 #: ../src/obj_descr_i18n.c:835
-#, fuzzy
 msgid "rock piercer"
-msgstr "바위 동굴"
+msgstr "바위 피어서"
 
 # 두루마리
 # --- 스크롤 (Scrolls) ---
 #: ../src/obj_descr_i18n.c:836
-#, fuzzy
 msgid "rock troll"
-msgstr "두루마리"
+msgstr "바위 트롤"
 
 #: ../src/obj_descr_i18n.c:837
-#, fuzzy
 msgid "rogue"
 msgstr "도적"
 
@@ -26258,42 +26110,35 @@ msgid "roshi"
 msgstr "노사"
 
 #: ../src/obj_descr_i18n.c:840
-#, fuzzy
 msgid "rothe"
-msgstr "형제"
+msgstr "로테"
 
 #: ../src/obj_descr_i18n.c:841
-#, fuzzy
 msgid "rust monster"
-msgstr " 괴물"
+msgstr "녹 괴물"
 
 #: ../src/obj_descr_i18n.c:842
 msgid "salamander"
 msgstr "샐러맨더"
 
 #: ../src/obj_descr_i18n.c:843
-#, fuzzy
 msgid "samurai"
 msgstr "사무라이"
 
 # 운명 (환상 속 신 이름)
 #: ../src/obj_descr_i18n.c:844
-#, fuzzy
 msgid "sandestin"
-msgstr "운명"
+msgstr "산데스틴"
 
 #: ../src/obj_descr_i18n.c:845
-#, fuzzy
 msgid "sasquatch"
-msgstr "낚아채다"
+msgstr "사스콰치"
 
 #: ../src/obj_descr_i18n.c:846
-#, fuzzy
 msgid "scorpion"
-msgstr "각막"
+msgstr "전갈"
 
 #: ../src/obj_descr_i18n.c:847
-#, fuzzy
 msgid "sergeant"
 msgstr "하사"
 
@@ -26302,48 +26147,40 @@ msgid "shade"
 msgstr "망령"
 
 #: ../src/obj_descr_i18n.c:849
-#, fuzzy
 msgid "shark"
-msgstr "안샤르"
+msgstr "상어"
 
 #: ../src/obj_descr_i18n.c:850
-#, fuzzy
 msgid "shimmering dragon"
-msgstr "숨었다!"
+msgstr "반짝이는 용"
 
 #: ../src/obj_descr_i18n.c:851
-#, fuzzy
 msgid "shocking sphere"
-msgstr "문 잠그는 중"
+msgstr "충격구"
 
 #: ../src/obj_descr_i18n.c:852
-#, fuzzy
 msgid "shopkeeper"
-msgstr "%s%s, 상점 주인"
+msgstr "상점 주인"
 
 #: ../src/obj_descr_i18n.c:853
-#, fuzzy
 msgid "shrieker"
-msgstr "비명을 질렀다."
+msgstr "비명자"
 
 #: ../src/obj_descr_i18n.c:854
-#, fuzzy
 msgid "silver dragon"
-msgstr "은"
+msgstr "은룡"
 
 #: ../src/obj_descr_i18n.c:855
 msgid "skeleton"
 msgstr "해골"
 
 #: ../src/obj_descr_i18n.c:856
-#, fuzzy
 msgid "small mimic"
-msgstr "작은"
+msgstr "작은 미믹"
 
 #: ../src/obj_descr_i18n.c:857
-#, fuzzy
 msgid "snake"
-msgstr "화난 뱀 소리!"
+msgstr "뱀"
 
 #: ../src/obj_descr_i18n.c:858
 msgid "soldier"
@@ -26354,14 +26191,12 @@ msgid "soldier ant"
 msgstr "병정개미"
 
 #: ../src/obj_descr_i18n.c:860
-#, fuzzy
 msgid "spotted jelly"
-msgstr "썩은 "
+msgstr "점박이 젤리"
 
 #: ../src/obj_descr_i18n.c:861
-#, fuzzy
 msgid "stalker"
-msgstr "수정"
+msgstr "스토커"
 
 #: ../src/obj_descr_i18n.c:862
 msgid "steam vortex"
@@ -26369,199 +26204,165 @@ msgstr "증기 소용돌이"
 
 #
 #: ../src/obj_descr_i18n.c:863
-#, fuzzy
 msgid "stone giant"
-msgstr "돌"
+msgstr "돌 거인"
 
 #
 #: ../src/obj_descr_i18n.c:864
-#, fuzzy
 msgid "stone golem"
-msgstr "돌"
+msgstr "돌 골렘"
 
 #: ../src/obj_descr_i18n.c:865
 msgid "storm giant"
 msgstr "폭풍 거인"
 
 #: ../src/obj_descr_i18n.c:866
-#, fuzzy
 msgid "straw golem"
-msgstr "이상한"
+msgstr "짚 골렘"
 
 #: ../src/obj_descr_i18n.c:867
-#, fuzzy
 msgid "student"
-msgstr "강경하게"
+msgstr "학생"
 
 #: ../src/obj_descr_i18n.c:868
-#, fuzzy
 msgid "tengu"
-msgstr "삼킨"
+msgstr "텐구"
 
 #: ../src/obj_descr_i18n.c:869
 msgid "thug"
 msgstr "깡패"
 
 #: ../src/obj_descr_i18n.c:870
-#, fuzzy
 msgid "tiger"
-msgstr "호안석"
+msgstr "호랑이"
 
 #: ../src/obj_descr_i18n.c:871
-#, fuzzy
 msgid "titan"
-msgstr "계단"
+msgstr "티탄"
 
 #: ../src/obj_descr_i18n.c:872
-#, fuzzy
 msgid "titanothere"
-msgstr "또 다른"
+msgstr "티타노테레"
 
 #: ../src/obj_descr_i18n.c:873
-#, fuzzy
 msgid "tourist"
 msgstr "관광객"
 
 #: ../src/obj_descr_i18n.c:874
-#, fuzzy
 msgid "trapper"
-msgstr "함정에 빠짐"
+msgstr "트래퍼"
 
 # 두루마리
 # --- 스크롤 (Scrolls) ---
 #: ../src/obj_descr_i18n.c:875
-#, fuzzy
 msgid "troll"
-msgstr "두루마리"
+msgstr "트롤"
 
 #: ../src/obj_descr_i18n.c:876
-#, fuzzy
 msgid "umber hulk"
-msgstr "수치 임계값"
+msgstr "엄버 헐크"
 
 #: ../src/obj_descr_i18n.c:877
-#, fuzzy
 msgid "valkyrie"
 msgstr "발키리"
 
 #: ../src/obj_descr_i18n.c:878
-#, fuzzy
 msgid "vampire"
-msgstr "흡혈 박쥐"
+msgstr "뱀파이어"
 
 #: ../src/obj_descr_i18n.c:879
-#, fuzzy
 msgid "vampire mage"
-msgstr "흡혈 박쥐"
+msgstr "뱀파이어 마법사"
 
 #: ../src/obj_descr_i18n.c:880
-#, fuzzy
 msgid "violet fungus"
-msgstr "제비꽃색"
+msgstr "제비꽃색 균류"
 
 #: ../src/obj_descr_i18n.c:881
 msgid "vorpal jabberwock"
 msgstr "보팔 재버워크"
 
 #: ../src/obj_descr_i18n.c:882
-#, fuzzy
 msgid "vrock"
-msgstr "돌"
+msgstr "브록"
 
 #: ../src/obj_descr_i18n.c:883
-#, fuzzy
 msgid "warrior"
 msgstr "무사"
 
 #: ../src/obj_descr_i18n.c:884
-#, fuzzy
 msgid "watch captain"
-msgstr "오크 대장"
+msgstr "경비대장"
 
 #: ../src/obj_descr_i18n.c:885
-#, fuzzy
 msgid "watchman"
-msgstr "잡다"
+msgstr "경비원"
 
 #: ../src/obj_descr_i18n.c:886
-#, fuzzy
 msgid "water demon"
-msgstr "묽은 "
+msgstr "물 악마"
 
 # worm_parts
 #: ../src/obj_descr_i18n.c:887
-#, fuzzy
 msgid "water elemental"
-msgstr "전방 체절"
+msgstr "물 정령"
 
 #: ../src/obj_descr_i18n.c:888
-#, fuzzy
 msgid "water moccasin"
-msgstr "물 위 걷기"
+msgstr "물뱀"
 
 # 액체
 #: ../src/obj_descr_i18n.c:889
-#, fuzzy
 msgid "water nymph"
-msgstr "물"
+msgstr "물 님프"
 
 #: ../src/obj_descr_i18n.c:890
-#, fuzzy
 msgid "water troll"
-msgstr "위쪽 물"
+msgstr "물 트롤"
 
 #: ../src/obj_descr_i18n.c:891
-#, fuzzy
 msgid "werejackal"
-msgstr "자칼"
+msgstr "늑대자칼"
 
 #: ../src/obj_descr_i18n.c:892
-#, fuzzy
 msgid "wererat"
-msgstr "은"
+msgstr "늑대쥐"
 
 #: ../src/obj_descr_i18n.c:893
-#, fuzzy
 msgid "werewolf"
-msgstr "겨울 늑대"
+msgstr "늑대인간"
 
 #: ../src/obj_descr_i18n.c:894
-#, fuzzy
 msgid "white dragon"
-msgstr "에 쓰다"
+msgstr "백룡"
 
 #: ../src/obj_descr_i18n.c:895
-#, fuzzy
 msgid "white unicorn"
-msgstr "글쓰기"
+msgstr "흰 유니콘"
 
 #: ../src/obj_descr_i18n.c:896
 msgid "winged gargoyle"
 msgstr "날개 달린 가고일"
 
 #: ../src/obj_descr_i18n.c:897
-#, fuzzy
 msgid "winter wolf cub"
-msgstr "겨울 늑대"
+msgstr "겨울 늑대 새끼"
 
 #: ../src/obj_descr_i18n.c:898 ../src/topten.c:733
 msgid "wizard"
 msgstr "마법사"
 
 #: ../src/obj_descr_i18n.c:899
-#, fuzzy
 msgid "wood golem"
-msgstr "나무"
+msgstr "나무 골렘"
 
 #: ../src/obj_descr_i18n.c:900
-#, fuzzy
 msgid "wood nymph"
-msgstr "나무"
+msgstr "숲 님프"
 
 #: ../src/obj_descr_i18n.c:901
-#, fuzzy
 msgid "woodchuck"
-msgstr "나무"
+msgstr "우드척"
 
 #: ../src/obj_descr_i18n.c:902
 msgid "wraith"
@@ -26574,28 +26375,24 @@ msgstr "움퍼스"
 # 지팡이
 # --- 지팡이 (Wands) ---
 #: ../src/obj_descr_i18n.c:904
-#, fuzzy
 msgid "xan"
-msgstr "하나의"
+msgstr "잔"
 
 #: ../src/obj_descr_i18n.c:905
 msgid "xorn"
 msgstr "쏜"
 
 #: ../src/obj_descr_i18n.c:906
-#, fuzzy
 msgid "yellow dragon"
-msgstr "용 냄새를 맡았다!"
+msgstr "황룡"
 
 #: ../src/obj_descr_i18n.c:907
-#, fuzzy
 msgid "yellow light"
-msgstr "빛의 마법"
+msgstr "노란 빛"
 
 #: ../src/obj_descr_i18n.c:908
-#, fuzzy
 msgid "yellow mold"
-msgstr "노란 눈"
+msgstr "노란 곰팡이"
 
 #: ../src/obj_descr_i18n.c:909
 msgid "yeti"
@@ -26813,9 +26610,8 @@ msgstr "야만인"
 
 # 영어 have never - 한국어에서 불필요 (제로너비공백)
 #: ../src/obj_descr_i18n.c:1004
-#, fuzzy
 msgid "Cave Dweller"
-msgstr "​"
+msgstr "동굴 거주자"
 
 #: ../src/obj_descr_i18n.c:1005 ../src/role.c:114
 msgid "Caveman"
@@ -26886,71 +26682,58 @@ msgid "orcish"
 msgstr "오크의"
 
 #: ../src/obj_descr_i18n.c:1039
-#, fuzzy
 msgid "brass lantern"
-msgstr "랜턴"
+msgstr "놋쇠 랜턴"
 
 #: ../src/obj_descr_i18n.c:1040
-#, fuzzy
 msgid "oil lamp"
-msgstr "램프"
+msgstr "기름 램프"
 
 #: ../src/obj_descr_i18n.c:1041
-#, fuzzy
 msgid "magic lamp"
-msgstr "마법 "
+msgstr "마법 램프"
 
 #: ../src/obj_descr_i18n.c:1042
-#, fuzzy
 msgid "tallow candle"
-msgstr "양초"
+msgstr "수지 양초"
 
 #: ../src/obj_descr_i18n.c:1043
-#, fuzzy
 msgid "wax candle"
-msgstr "양초"
+msgstr "밀랍 양초"
 
 #: ../src/obj_descr_i18n.c:1044
-#, fuzzy
 msgid "skeleton key"
-msgstr "해골"
+msgstr "만능 열쇠"
 
 #: ../src/obj_descr_i18n.c:1045
-#, fuzzy
 msgid "credit card"
-msgstr "신용이 지워졌다."
+msgstr "신용카드"
 
 #: ../src/obj_descr_i18n.c:1046
-#, fuzzy
 msgid "tinning kit"
 msgstr "통조림 도구"
 
 #: ../src/obj_descr_i18n.c:1047
-#, fuzzy
 msgid "tin opener"
-msgstr " 깡통 따개로"
+msgstr "깡통 따개"
 
 #: ../src/obj_descr_i18n.c:1048
-#, fuzzy
 msgid "can of grease"
-msgstr "하나의 "
+msgstr "윤활유 통"
 
 #: ../src/obj_descr_i18n.c:1049
 msgid "expensive camera"
-msgstr ""
+msgstr "고급 카메라"
 
 #: ../src/obj_descr_i18n.c:1050
-#, fuzzy
 msgid "magic marker"
-msgstr "마법 "
+msgstr "마법 마커"
 
 #: ../src/obj_descr_i18n.c:1051
-#, fuzzy
 msgid "stethoscope"
-msgstr "그것들"
+msgstr "청진기"
 
 #: ../src/obj_descr_i18n.c:1054
-#, fuzzy
 msgid "beartrap"
 msgstr "곰덫"
 
@@ -26960,143 +26743,118 @@ msgstr "지뢰"
 
 #: ../src/obj_descr_i18n.c:1056
 msgid "figurine"
-msgstr ""
+msgstr "조각상"
 
 #: ../src/obj_descr_i18n.c:1057
-#, fuzzy
 msgid "crystal ball"
-msgstr "수정"
+msgstr "수정 구슬"
 
 #: ../src/obj_descr_i18n.c:1058
-#, fuzzy
 msgid "tin whistle"
-msgstr "호루라기"
+msgstr "양철 호루라기"
 
 #: ../src/obj_descr_i18n.c:1059
-#, fuzzy
 msgid "magic whistle"
-msgstr "마법 화살"
+msgstr "마법 호루라기"
 
 #: ../src/obj_descr_i18n.c:1060
-#, fuzzy
 msgid "wooden flute"
-msgstr "나무"
+msgstr "나무 피리"
 
 #: ../src/obj_descr_i18n.c:1061
-#, fuzzy
 msgid "magic flute"
-msgstr "마법 "
+msgstr "마법 피리"
 
 #: ../src/obj_descr_i18n.c:1062
 msgid "tooled horn"
-msgstr ""
+msgstr "장식 뿔나팔"
 
 #: ../src/obj_descr_i18n.c:1063
-#, fuzzy
 msgid "fire horn"
-msgstr "화염 저항"
+msgstr "화염의 뿔"
 
 #: ../src/obj_descr_i18n.c:1064
-#, fuzzy
 msgid "frost horn"
-msgstr "서리"
+msgstr "서리의 뿔"
 
 #: ../src/obj_descr_i18n.c:1065
-#, fuzzy
 msgid "horn of plenty"
-msgstr "풍요의 뿔 불기"
+msgstr "풍요의 뿔"
 
 #: ../src/obj_descr_i18n.c:1066
-#, fuzzy
 msgid "wooden harp"
-msgstr "나무"
+msgstr "나무 하프"
 
 #: ../src/obj_descr_i18n.c:1067
-#, fuzzy
 msgid "magic harp"
-msgstr "마법 "
+msgstr "마법 하프"
 
 #
 #: ../src/obj_descr_i18n.c:1068
-#, fuzzy
 msgid "leather drum"
-msgstr "가죽"
+msgstr "가죽 북"
 
 #: ../src/obj_descr_i18n.c:1069
-#, fuzzy
 msgid "drum of earthquake"
-msgstr "대지 두루마리"
+msgstr "지진의 북"
 
 #: ../src/obj_descr_i18n.c:1070
 msgid "bugle"
-msgstr ""
+msgstr "군용 나팔"
 
 #: ../src/obj_descr_i18n.c:1073
-#, fuzzy
 msgid "(being worn)"
-msgstr " (착용 중)"
+msgstr "(착용 중)"
 
 #: ../src/obj_descr_i18n.c:1074
-#, fuzzy
 msgid "(weapon in hand)"
-msgstr "무기 위치"
+msgstr "(손에 든 무기)"
 
 #: ../src/obj_descr_i18n.c:1075
-#, fuzzy
 msgid "(wielded)"
-msgstr " (장비됨)"
+msgstr "(장비됨)"
 
 #: ../src/obj_descr_i18n.c:1076
-#, fuzzy
 msgid "(alternate weapon; not wielded)"
-msgstr " (보조 무기%s; 미장착)"
+msgstr "(보조 무기; 미장착)"
 
 # 발사체 준비 상태
 #: ../src/obj_descr_i18n.c:1077
-#, fuzzy
 msgid "(in quiver)"
-msgstr "화살통에"
+msgstr "(화살통에)"
 
 #: ../src/obj_descr_i18n.c:1078
-#, fuzzy
 msgid "(at the ready)"
-msgstr "준비됨"
+msgstr "(준비됨)"
 
 #: ../src/obj_descr_i18n.c:1079
-#, fuzzy
 msgid "(on left hand)"
-msgstr " (왼쪽 "
+msgstr "(왼손에)"
 
 # 반지 착용 위치
 #: ../src/obj_descr_i18n.c:1080
-#, fuzzy
 msgid "(on right hand)"
-msgstr " (오른쪽 "
+msgstr "(오른손에)"
 
 #: ../src/obj_descr_i18n.c:1081
-#, fuzzy
 msgid "(lit)"
-msgstr " (켜짐)"
+msgstr "(켜짐)"
 
 #: ../src/obj_descr_i18n.c:1082
-#, fuzzy
 msgid "(unpaid)"
-msgstr "미지불"
+msgstr "(미지불)"
 
 #: ../src/obj_descr_i18n.c:1083
-#, fuzzy
 msgid "blessed"
-msgstr "축복받은 "
+msgstr "축복받은"
 
 #: ../src/obj_descr_i18n.c:1084
-#, fuzzy
 msgid "uncursed"
-msgstr "저주받지 않은 "
+msgstr "저주받지 않은"
 
 #: ../src/obj_descr_i18n.c:1085
-#, fuzzy
 msgid "cursed"
-msgstr "저주받은 "
+msgstr "저주받은"
 
 # ============================================================
 # 인벤토리 카테고리 (Inventory Categories)
@@ -27156,45 +26914,37 @@ msgid "energy points"
 msgstr "에너지"
 
 #: ../src/obj_descr_i18n.c:1102
-#, fuzzy
 msgid "spell power"
-msgstr "더 느리다."
+msgstr "마법력"
 
 #: ../src/obj_descr_i18n.c:1103
-#, fuzzy
 msgid "armor class"
-msgstr "당신의 방어도 "
+msgstr "방어도"
 
 #: ../src/obj_descr_i18n.c:1104
-#, fuzzy
 msgid "experience"
-msgstr "더 경험이 쌓였다."
+msgstr "경험치"
 
 #: ../src/obj_descr_i18n.c:1105
-#, fuzzy
 msgid "experience level"
-msgstr "%s경험 레벨 %d에 온 것을 환영한다."
+msgstr "경험 레벨"
 
 #: ../src/obj_descr_i18n.c:1106
-#, fuzzy
 msgid "hit points"
-msgstr "모든 %d 체력"
+msgstr "체력"
 
 #: ../src/obj_descr_i18n.c:1107
-#, fuzzy
 msgid "magic power"
-msgstr "마법 "
+msgstr "마력"
 
 #: ../src/obj_descr_i18n.c:1108
-#, fuzzy
 msgid "turns"
-msgstr "회전"
+msgstr "턴"
 
 #: ../src/obj_descr_i18n.c:1110 ../src/obj_descr_i18n.c:1114
 #: ../src/obj_descr_i18n.c:1115
-#, fuzzy
 msgid "Strenth:"
-msgstr "힘"
+msgstr "힘:"
 
 # 아이템 세트
 #: ../src/objnam.c:723
@@ -36743,8 +36493,7 @@ msgstr "%s{이/가} 신을 섬기는 자들이 번영한다는 것을 알아챘�
 #: ../src/shk.c:5450
 #, c-format
 msgid "%s says: 'Don't try to steal from me - I have friends in high places!'"
-msgstr ""
-"%s{이/가} 말한다: '나한테서 훔치려고 하지 마 - 나는 높은 곳에 친구가 있어!'"
+msgstr "%s{이/가} 말한다: '나한테서 훔치려고 하지 마 - 나는 높은 곳에 친구가 있어!'"
 
 #: ../src/shk.c:5451
 #, c-format
@@ -39817,8 +39566,7 @@ msgstr "%s{이/가} 순간이동한다."
 #: ../src/teleport.c:1916
 #, c-format
 msgid "<%d,%d> is not considered viable; force anyway?"
-msgstr ""
-"<%d,%d>은(는) 유효하지 않은 것으로 간주됩니다; 그래도 강제하시겠습니까?"
+msgstr "<%d,%d>은(는) 유효하지 않은 것으로 간주됩니다; 그래도 강제하시겠습니까?"
 
 #: ../src/teleport.c:1922
 #, c-format

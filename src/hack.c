@@ -304,7 +304,7 @@ cannot_push(struct obj *otmp, coordxy sx, coordxy sy)
 
     if (could_move_onto_boulder(sx, sy)) {
         pline(
-           "However, you can squeeze yourself into a small opening.");
+           _("However, you can squeeze yourself into a small opening."));
         sokoban_guilt();
         return 0;
     } else {

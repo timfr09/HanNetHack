@@ -2284,7 +2284,7 @@ accessory_or_armor_on(struct obj *obj)
             }
             if (uarmg && Glib) {
                 Your(
-              "%s are too slippery to remove, so you cannot put on the ring.",
+              _("%s are too slippery to remove, so you cannot put on the ring."),
                      gloves_simple_name(uarmg));
                 return ECMD_TIME; /* always uses move */
             }

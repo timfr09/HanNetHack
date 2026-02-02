@@ -102,9 +102,8 @@ po/*.backup.*
 po/*_base.po
 po/*_merged.po
 
-# Compiled translation files (except installed ones)
+# Compiled translation files (generated from .po during build)
 *.mo
-!dat/locale/**/*.mo
 
 # Claude Code local settings
 .claude/

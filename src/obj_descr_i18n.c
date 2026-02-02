@@ -114,38 +114,192 @@ obj_descr_strings_for_extraction(void)
     (void) N_("gem");
     (void) N_("stone");
 
-    /* === Armor descriptions === */
-    (void) N_("leather");
-    (void) N_("studded leather");
+    /* === Armor names (from objects.h) === */
+    /* Body armor */
+    (void) N_("Hawaiian shirt");
+    (void) N_("T-shirt");
+    (void) N_("leather jacket");
+    (void) N_("leather armor");
+    (void) N_("studded leather armor");
     (void) N_("ring mail");
+    (void) N_("orcish ring mail");
     (void) N_("scale mail");
     (void) N_("chain mail");
+    (void) N_("orcish chain mail");
+    (void) N_("banded mail");
+    (void) N_("splint mail");
     (void) N_("plate mail");
+    (void) N_("bronze plate mail");
+    (void) N_("crystal plate mail");
+    (void) N_("elven mithril-coat");
+    (void) N_("dwarvish mithril-coat");
+    /* Helms */
     (void) N_("helmet");
+    (void) N_("elven leather helm");
+    (void) N_("orcish helm");
+    (void) N_("dwarvish iron helm");
+    (void) N_("dented pot");
+    (void) N_("fedora");
+    (void) N_("cornuthaum");
+    (void) N_("dunce cap");
+    (void) N_("helm of brilliance");
+    (void) N_("helm of caution");
+    (void) N_("helm of opposite alignment");
+    (void) N_("helm of telepathy");
+    /* Cloaks */
+    (void) N_("mummy wrapping");
+    (void) N_("elven cloak");
+    (void) N_("orcish cloak");
+    (void) N_("dwarvish cloak");
+    (void) N_("oilskin cloak");
+    (void) N_("leather cloak");
+    (void) N_("alchemy smock");
+    (void) N_("robe");
+    (void) N_("cloak of protection");
+    (void) N_("cloak of invisibility");
+    (void) N_("cloak of magic resistance");
+    (void) N_("cloak of displacement");
+    /* Shields */
+    (void) N_("small shield");
+    (void) N_("elven shield");
+    (void) N_("Uruk-hai shield");
+    (void) N_("orcish shield");
+    (void) N_("large shield");
+    (void) N_("dwarvish roundshield");
+    (void) N_("shield of reflection");
+    /* Gloves */
+    (void) N_("leather gloves");
+    (void) N_("gauntlets of fumbling");
+    (void) N_("gauntlets of power");
+    (void) N_("gauntlets of dexterity");
+    /* Boots */
+    (void) N_("low boots");
+    (void) N_("high boots");
+    (void) N_("iron shoes");
+    (void) N_("elven boots");
+    (void) N_("kicking boots");
+    (void) N_("fumble boots");
+    (void) N_("levitation boots");
+    (void) N_("jumping boots");
+    (void) N_("speed boots");
+    (void) N_("water walking boots");
+    /* Armor descriptions (unidentified appearance) */
+    (void) N_("leather");
+    (void) N_("studded leather");
     (void) N_("helm");
     (void) N_("shield");
     (void) N_("cloak");
     (void) N_("gloves");
     (void) N_("boots");
+    (void) N_("conical hat");
+    (void) N_("plumed helmet");
+    (void) N_("etched helmet");
+    (void) N_("crested helmet");
+    (void) N_("visored helmet");
+    (void) N_("faded pall");
+    (void) N_("coarse mantelet");
+    (void) N_("hooded cloak");
+    (void) N_("slippery cloak");
+    (void) N_("apron");
+    (void) N_("red shield");
+    (void) N_("blue and green shield");
+    (void) N_("white-handed shield");
+    (void) N_("large round shield");
+    (void) N_("polished silver shield");
+    (void) N_("old gloves");
+    (void) N_("padded gloves");
+    (void) N_("riding gloves");
+    (void) N_("walking shoes");
+    (void) N_("hard shoes");
+    (void) N_("jackboots");
+    (void) N_("mud boots");
+    (void) N_("buckled boots");
+    (void) N_("riding boots");
+    (void) N_("snow boots");
+    (void) N_("hiking boots");
 
-    /* === Weapon descriptions === */
-    (void) N_("sword");
-    (void) N_("dagger");
-    (void) N_("knife");
+    /* === Weapon names (from objects.h) === */
+    (void) N_("aklys");
+    (void) N_("athame");
     (void) N_("axe");
+    (void) N_("bardiche");
+    (void) N_("battle-axe");
+    (void) N_("bec de corbin");
+    (void) N_("bill-guisarme");
+    (void) N_("boomerang");
+    (void) N_("broadsword");
+    (void) N_("bullwhip");
+    (void) N_("club");
+    (void) N_("crysknife");
+    (void) N_("dagger");
+    (void) N_("dart");
+    (void) N_("dwarvish mattock");
+    (void) N_("dwarvish short sword");
+    (void) N_("dwarvish spear");
+    (void) N_("elven broadsword");
+    (void) N_("elven dagger");
+    (void) N_("elven short sword");
+    (void) N_("elven spear");
+    (void) N_("fauchard");
+    (void) N_("flail");
+    (void) N_("glaive");
+    (void) N_("guisarme");
+    (void) N_("halberd");
+    (void) N_("javelin");
+    (void) N_("katana");
+    (void) N_("knife");
+    (void) N_("lance");
+    (void) N_("long sword");
+    (void) N_("lucern hammer");
+    (void) N_("mace");
+    (void) N_("morning star");
+    (void) N_("orcish dagger");
+    (void) N_("orcish short sword");
+    (void) N_("orcish spear");
+    (void) N_("partisan");
+    (void) N_("quarterstaff");
+    (void) N_("ranseur");
+    (void) N_("rubber hose");
+    (void) N_("runesword");
+    (void) N_("scalpel");
+    (void) N_("scimitar");
+    (void) N_("short sword");
+    (void) N_("shuriken");
+    (void) N_("silver dagger");
+    (void) N_("silver mace");
+    (void) N_("silver saber");
+    (void) N_("silver spear");
+    (void) N_("spear");
+    (void) N_("spetum");
+    (void) N_("stiletto");
+    (void) N_("trident");
+    (void) N_("tsurugi");
+    (void) N_("two-handed sword");
+    (void) N_("voulge");
+    (void) N_("war hammer");
+    (void) N_("worm tooth");
+    /* Weapon descriptions (unidentified appearance) */
+    (void) N_("sword");
     (void) N_("bow");
     (void) N_("arrow");
-    (void) N_("spear");
-    (void) N_("lance");
-    (void) N_("mace");
-    (void) N_("flail");
-    (void) N_("hammer");
-    (void) N_("staff");
-    (void) N_("whip");
-    (void) N_("club");
-    (void) N_("quarterstaff");
     (void) N_("crossbow");
     (void) N_("bolt");
+    (void) N_("staff");
+    (void) N_("whip");
+    (void) N_("hammer");
+    (void) N_("runed broadsword");
+    (void) N_("runed spear");
+    (void) N_("runed dagger");
+    (void) N_("runed short sword");
+    (void) N_("crude spear");
+    (void) N_("crude dagger");
+    (void) N_("crude short sword");
+    (void) N_("stout spear");
+    (void) N_("broad short sword");
+    (void) N_("throwing star");
+    (void) N_("throwing spear");
+    (void) N_("long samurai sword");
+    (void) N_("samurai sword");
 
     /* === Tool descriptions === */
     (void) N_("lamp");
@@ -843,6 +997,122 @@ obj_descr_strings_for_extraction(void)
     (void) N_("canvas");
     (void) N_("hardcover");
     (void) N_("plain");
+
+    /* === Role names === */
+    (void) N_("Archeologist");
+    (void) N_("Barbarian");
+    (void) N_("Cave Dweller");
+    (void) N_("Caveman");
+    (void) N_("Cavewoman");
+    (void) N_("Healer");
+    (void) N_("Knight");
+    (void) N_("Monk");
+    (void) N_("Priest");
+    (void) N_("Priestess");
+    (void) N_("Ranger");
+    (void) N_("Rogue");
+    (void) N_("Samurai");
+    (void) N_("Tourist");
+    (void) N_("Valkyrie");
+    (void) N_("Wizard");
+
+    /* === Race names === */
+    (void) N_("human");
+    (void) N_("elf");
+    (void) N_("elven");
+    (void) N_("dwarf");
+    (void) N_("dwarven");
+    (void) N_("gnome");
+    (void) N_("gnomish");
+    (void) N_("orc");
+    (void) N_("orcish");
+
+    /* === Attribute names === */
+    (void) N_("strength");
+    (void) N_("dexterity");
+    (void) N_("constitution");
+    (void) N_("intelligence");
+    (void) N_("wisdom");
+    (void) N_("charisma");
+
+    /* === Tool names (full names from objects.h) === */
+    (void) N_("brass lantern");
+    (void) N_("oil lamp");
+    (void) N_("magic lamp");
+    (void) N_("tallow candle");
+    (void) N_("wax candle");
+    (void) N_("skeleton key");
+    (void) N_("credit card");
+    (void) N_("tinning kit");
+    (void) N_("tin opener");
+    (void) N_("can of grease");
+    (void) N_("expensive camera");
+    (void) N_("magic marker");
+    (void) N_("stethoscope");
+    (void) N_("leash");
+    (void) N_("saddle");
+    (void) N_("beartrap");
+    (void) N_("land mine");
+    (void) N_("figurine");
+    (void) N_("crystal ball");
+    (void) N_("tin whistle");
+    (void) N_("magic whistle");
+    (void) N_("wooden flute");
+    (void) N_("magic flute");
+    (void) N_("tooled horn");
+    (void) N_("fire horn");
+    (void) N_("frost horn");
+    (void) N_("horn of plenty");
+    (void) N_("wooden harp");
+    (void) N_("magic harp");
+    (void) N_("leather drum");
+    (void) N_("drum of earthquake");
+    (void) N_("bugle");
+
+    /* === Status and UI strings === */
+    (void) N_("(being worn)");
+    (void) N_("(weapon in hand)");
+    (void) N_("(wielded)");
+    (void) N_("(alternate weapon; not wielded)");
+    (void) N_("(in quiver)");
+    (void) N_("(at the ready)");
+    (void) N_("(on left hand)");
+    (void) N_("(on right hand)");
+    (void) N_("(lit)");
+    (void) N_("(unpaid)");
+    (void) N_("blessed");
+    (void) N_("uncursed");
+    (void) N_("cursed");
+    (void) N_("(end)");
+    (void) N_("Weapons");
+    (void) N_("Armor");
+    (void) N_("Comestibles");
+    (void) N_("Tools");
+    (void) N_("Rings");
+    (void) N_("Amulets");
+    (void) N_("Wands");
+    (void) N_("Scrolls");
+    (void) N_("Spellbooks");
+    (void) N_("Potions");
+    (void) N_("Gems");
+    (void) N_("Coins");
+
+    /* === Insight/enlightenment strings === */
+    (void) N_("energy points");
+    (void) N_("spell power");
+    (void) N_("armor class");
+    (void) N_("experience");
+    (void) N_("experience level");
+    (void) N_("hit points");
+    (void) N_("magic power");
+    (void) N_("turns");
+    (void) N_("Background:");
+    (void) N_("Strenth:");
+    (void) N_("Characteristics:");
+    (void) N_("Final Attributes:");
+    (void) N_("Final Status:");
+    (void) N_("Strenth:");
+    (void) N_("Strenth:");
 }
 
 /*obj_descr_i18n.c*/

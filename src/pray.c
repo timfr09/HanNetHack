@@ -2547,9 +2547,10 @@ align_gname(aligntyp alignment)
         gnam = N_("someone");
         break;
     }
+    gnam = _(gnam);
     if (*gnam == '_')
         ++gnam;
-    return _(gnam);
+    return gnam;
 }
 
 static const char *const hallu_gods[] = {
@@ -2616,9 +2617,10 @@ halu_gname(aligntyp alignment)
         impossible("No random god name?");
         gnam = N_("your Friend the Computer"); /* Paranoia */
     }
+    gnam = _(gnam);
     if (*gnam == '_')
         ++gnam;
-    return _(gnam);
+    return gnam;
 }
 
 /* deity's title */

@@ -9814,6 +9814,21 @@ msgstr "%s: %d층 ~ %d층"
 msgid "%s: levels %d to %d"
 msgstr "%s: %d층 ~ %d층"
 
+#: ../src/dungeon.c
+#, c-format
+msgid "%s: level %d"
+msgstr "%s: %d층"
+
+#: ../src/dungeon.c
+#, c-format
+msgid "%c %s to %s: %d"
+msgstr "%c %s에서 %s로: %d층"
+
+#: ../src/dungeon.c
+#, c-format
+msgid "   %s to %s"
+msgstr "   %s에서 %s로"
+
 #: ../src/dungeon.c:3555
 #, c-format
 msgid "%sLevel %d:"

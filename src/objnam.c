@@ -1389,13 +1389,13 @@ doname_base(
     case ARMOR_CLASS:
         if (obj->owornmask & W_ARMOR) {
             Concat(bp, 0,
-                   (obj == uskin) ? " (embedded in your skin)"
+                   (obj == uskin) ? _(" (embedded in your skin)")
                    /* in case of perm_invent update while Wear/Takeoff
                       is in progress; check doffing() before donning()
                       because donning() returns True for both cases */
-                   : doffing(obj) ? " (being doffed)"
-                     : donning(obj) ? " (being donned)"
-                       : " (being worn)");
+                   : doffing(obj) ? _(" (being doffed)")
+                     : donning(obj) ? _(" (being donned)")
+                       : _(" (being worn)"));
             /* we just added a parenthesized phrase, but the right paren
                might be absent if the appended string got truncated */
             if (bp_eos[-1] == ')') {
@@ -1405,7 +1405,7 @@ doname_base(
                 if (obj == uarmg && Glib) /* just appended "(something)",
                                            * replace paren, changing that
                                            * to be "(something; slippery)" */
-                    Concat(bp,  1, "; slippery)");
+                    Concat(bp,  1, _("; slippery)"));
             }
             if (bp_eos[-1] == ')') {
                 /* there could be light-emitting artifact gloves someday,

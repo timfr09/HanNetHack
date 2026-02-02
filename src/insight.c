@@ -149,7 +149,11 @@ enlght_line(
 #endif
     char buf[BUFSZ];
 
-    Sprintf(buf, " %s%s%s%s.", start, middle, end, ps);
+    /* Format: start=subject, middle=verb, end=object/modifier, ps=extra
+     * English: " %s%s%s%s." = "You went without food."
+     * Korean uses positional specifiers for SOV order:
+     * " %1$s%3$s%2$s%4$s." = "당신은 음식 없이 지냈다." */
+    Sprintf(buf, _(" %s%s%s%s."), start, middle, end, ps);
 #ifndef NO_ENLGHT_CONTRACTIONS
     if (strstri(buf, " not ")) { /* TODO: switch to libc strstr() */
         for (i = 0; i < SIZE(contra); ++i)
@@ -872,7 +876,7 @@ one_characteristic(int mode, int final, int attrindx)
 
     acurrent = ACURR(attrindx);
     (void) attrval(attrindx, acurrent, valubuf); /* Sprintf(valubuf,"%d",) */
-    Sprintf(subjbuf, _("Your %s "), attrname[attrindx]);
+    Sprintf(subjbuf, _("Your %s "), _(attrname[attrindx]));
 
     if (!hide_innate_value) {
         /* show abase, amax, and/or attrmax if acurr doesn't match abase
@@ -2887,7 +2891,7 @@ list_vanquished(char defquery, boolean ask)
                 if (class_header
                     && (mlet != prev_mlet || (special_hdr && !Rider))) {
                     if (!Rider) {
-                        Strcpy(buf, def_monsyms[(int) mlet].explain);
+                        Strcpy(buf, _(def_monsyms[(int) mlet].explain));
                         special_hdr = FALSE;
                     } else {
                         Strcpy(buf, _("Rider"));
@@ -2902,7 +2906,7 @@ list_vanquished(char defquery, boolean ask)
                 if (UniqCritterIndx(i)) {
                     Sprintf(buf, "%s%s",
                             !type_is_pname(&mons[i]) ? _("the ") : "",
-                            mons[i].pmnames[NEUTRAL]);
+                            _(mons[i].pmnames[NEUTRAL]));
                     if (nkilled > 1) {
                         switch (nkilled) {
                         case 2:
@@ -2925,10 +2929,10 @@ list_vanquished(char defquery, boolean ask)
                     /* trolls or undead might have come back,
                        but we don't keep track of that */
                     if (nkilled == 1)
-                        Strcpy(buf, an(mons[i].pmnames[NEUTRAL]));
+                        Strcpy(buf, an(_(mons[i].pmnames[NEUTRAL])));
                     else
                         Sprintf(buf, "%3d %s", nkilled,
-                                makeplural(mons[i].pmnames[NEUTRAL]));
+                                makeplural(_(mons[i].pmnames[NEUTRAL])));
                 }
                 /* number of leading spaces to match 3 digit prefix */
                 pfx = !strncmpi(buf, "the ", 4) ? 0

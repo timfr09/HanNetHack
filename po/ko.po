@@ -9814,6 +9814,21 @@ msgstr "%s: %d층 ~ %d층"
 msgid "%s: levels %d to %d"
 msgstr "%s: %d층 ~ %d층"
 
+#: ../src/dungeon.c
+#, c-format
+msgid "%s: level %d"
+msgstr "%s: %d층"
+
+#: ../src/dungeon.c
+#, c-format
+msgid "%c %s to %s: %d"
+msgstr "%c %s에서 %s로: %d층"
+
+#: ../src/dungeon.c
+#, c-format
+msgid "   %s to %s"
+msgstr "   %s에서 %s로"
+
 #: ../src/dungeon.c:3555
 #, c-format
 msgid "%sLevel %d:"
@@ -14669,6 +14684,13 @@ msgstr "​"
 #: ../src/insight.c:52
 msgid "never "
 msgstr "​"
+
+# enlght_line 포맷: 한국어 어순 (주어+목적어+동사)
+# %1$s=주어(You), %2$s=동사(went), %3$s=목적어( without food), %4$s=추가
+#: ../src/insight.c:156
+#, c-format
+msgid " %s%s%s%s."
+msgstr " %1$s%3$s%2$s%4$s."
 
 #: ../src/insight.c:63
 msgid "acquired the Bell of Opening"
@@ -26805,6 +26827,23 @@ msgstr "군용 나팔"
 #: ../src/obj_descr_i18n.c:1073
 msgid "(being worn)"
 msgstr "(착용 중)"
+
+# objnam.c armor status strings
+#: ../src/objnam.c:1392
+msgid " (embedded in your skin)"
+msgstr " (피부에 박힘)"
+
+#: ../src/objnam.c:1396
+msgid " (being doffed)"
+msgstr " (벗는 중)"
+
+#: ../src/objnam.c:1397
+msgid " (being donned)"
+msgstr " (입는 중)"
+
+#: ../src/objnam.c:1408
+msgid "; slippery)"
+msgstr "; 미끄러움)"
 
 #: ../src/obj_descr_i18n.c:1074
 msgid "(weapon in hand)"

@@ -2267,10 +2267,10 @@ print_branch(
     for (br = svb.branches; br; br = br->next) {
         if (br->end1.dnum == dnum && lower_bound < br->end1.dlevel
             && br->end1.dlevel <= upper_bound) {
-            Sprintf(buf, "%c %s to %s: %d",
+            Sprintf(buf, _("%c %s to %s: %d"),
                     bymenu ? chr_u_on_lvl(&br->end1) : ' ',
-                    br_string(br->type),
-                    svd.dungeons[br->end2.dnum].dname, depth(&br->end1));
+                    _(br_string(br->type)),
+                    _(svd.dungeons[br->end2.dnum].dname), depth(&br->end1));
             if (bymenu)
                 tport_menu(win, buf, lchoices_p, &br->end1,
                            unreachable_level(&br->end1, FALSE));
@@ -2304,15 +2304,14 @@ print_dungeon(boolean bymenu, schar *rlev, xint16 *rdgn)
         if (bymenu && In_endgame(&u.uz) && i != astral_level.dnum)
             continue;
         unplaced = unplaced_floater(dptr);
-        descr = unplaced ? "depth" : "level";
         nlev = dptr->num_dunlevs;
         if (nlev > 1)
-            Snprintf(buf, sizeof buf, "%s: %s %d to %d", dptr->dname,
-                     makeplural(descr), dptr->depth_start,
+            Snprintf(buf, sizeof buf, _("%s: levels %d to %d"), _(dptr->dname),
+                     dptr->depth_start,
                      dptr->depth_start + nlev - 1);
         else
-            Snprintf(buf, sizeof buf, "%s: %s %d", dptr->dname,
-                     descr, dptr->depth_start);
+            Snprintf(buf, sizeof buf, _("%s: level %d"), _(dptr->dname),
+                     dptr->depth_start);
 
         /* Most entrances are uninteresting. */
         if (dptr->entry_lev != 1) {
@@ -2384,8 +2383,8 @@ print_dungeon(boolean bymenu, schar *rlev, xint16 *rdgn)
                 putstr(win, 0, _("Floating branches"));
                 first = FALSE;
             }
-            Sprintf(buf, "   %s to %s", br_string(br->type),
-                    svd.dungeons[br->end2.dnum].dname);
+            Sprintf(buf, _("   %s to %s"), _(br_string(br->type)),
+                    _(svd.dungeons[br->end2.dnum].dname));
             putstr(win, 0, buf);
         }
     }
@@ -3532,15 +3531,15 @@ print_mapseen(
         if (svd.dungeons[dnum].dunlev_ureached == svd.dungeons[dnum].entry_lev
             /* suppress the negative numbers in the endgame */
             || In_endgame(&mptr->lev))
-            Sprintf(buf, "%s:", svd.dungeons[dnum].dname);
+            Sprintf(buf, "%s:", _(svd.dungeons[dnum].dname));
         else if (builds_up(&mptr->lev))
             Sprintf(buf, _("%s: levels %d up to %d"),
-                    svd.dungeons[dnum].dname,
+                    _(svd.dungeons[dnum].dname),
                     depthstart + svd.dungeons[dnum].entry_lev - 1,
                     depthstart + svd.dungeons[dnum].dunlev_ureached - 1);
         else
             Sprintf(buf, _("%s: levels %d to %d"),
-                    svd.dungeons[dnum].dname, depthstart,
+                    _(svd.dungeons[dnum].dname), depthstart,
                     depthstart + svd.dungeons[dnum].dunlev_ureached - 1);
 
         add_menu_heading(win, buf);

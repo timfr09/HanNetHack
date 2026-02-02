@@ -23467,39 +23467,35 @@ msgid "gem"
 msgstr "보석"
 
 #: ../src/obj_descr_i18n.c:119
+# ============================================================
+# 갑옷류 (Body Armor)
+# ============================================================
 msgid "Hawaiian shirt"
-msgstr ""
+msgstr "하와이안 셔츠"
 
 #: ../src/obj_descr_i18n.c:120
-#, fuzzy
 msgid "T-shirt"
 msgstr "티셔츠"
 
 #: ../src/obj_descr_i18n.c:121
-#, fuzzy
 msgid "leather jacket"
 msgstr "가죽 재킷"
 
-#
 #: ../src/obj_descr_i18n.c:122
-#, fuzzy
 msgid "leather armor"
-msgstr "가죽"
+msgstr "가죽 갑옷"
 
-#
 #: ../src/obj_descr_i18n.c:123
-#, fuzzy
 msgid "studded leather armor"
-msgstr "징박힌 가죽"
+msgstr "징박힌 가죽 갑옷"
 
 #: ../src/obj_descr_i18n.c:124
 msgid "ring mail"
 msgstr "고리 갑옷"
 
 #: ../src/obj_descr_i18n.c:125
-#, fuzzy
 msgid "orcish ring mail"
-msgstr "고리 갑옷"
+msgstr "오크 고리 갑옷"
 
 #: ../src/obj_descr_i18n.c:126
 msgid "scale mail"
@@ -23510,129 +23506,114 @@ msgid "chain mail"
 msgstr "사슬 갑옷"
 
 #: ../src/obj_descr_i18n.c:128
-#, fuzzy
 msgid "orcish chain mail"
-msgstr "사슬 갑옷"
+msgstr "오크 사슬 갑옷"
 
 #: ../src/obj_descr_i18n.c:129
-#, fuzzy
 msgid "banded mail"
-msgstr "비늘 갑옷"
+msgstr "띠 갑옷"
 
-# --- 방어구 (Armor) ---
 #: ../src/obj_descr_i18n.c:130
-#, fuzzy
 msgid "splint mail"
-msgstr "판금 갑옷"
+msgstr "경편 갑옷"
 
-# --- 방어구 (Armor) ---
 #: ../src/obj_descr_i18n.c:131
 msgid "plate mail"
 msgstr "판금 갑옷"
 
-# --- 방어구 (Armor) ---
 #: ../src/obj_descr_i18n.c:132
-#, fuzzy
 msgid "bronze plate mail"
-msgstr "판금 갑옷"
+msgstr "청동 판금 갑옷"
 
-# --- 방어구 (Armor) ---
 #: ../src/obj_descr_i18n.c:133
-#, fuzzy
 msgid "crystal plate mail"
-msgstr "판금 갑옷"
+msgstr "수정 판금 갑옷"
 
 #: ../src/obj_descr_i18n.c:134
 msgid "elven mithril-coat"
-msgstr ""
+msgstr "엘프 미스릴 코트"
 
 #: ../src/obj_descr_i18n.c:135
 msgid "dwarvish mithril-coat"
-msgstr ""
+msgstr "드워프 미스릴 코트"
 
-#
+# ============================================================
+# 투구류 (Helms)
+# ============================================================
 #: ../src/obj_descr_i18n.c:138
-#, fuzzy
 msgid "elven leather helm"
-msgstr "가죽"
+msgstr "엘프 가죽 투구"
 
 #: ../src/obj_descr_i18n.c:139
-#, fuzzy
 msgid "orcish helm"
-msgstr "오크의"
+msgstr "오크 투구"
 
 #: ../src/obj_descr_i18n.c:140
 msgid "dwarvish iron helm"
-msgstr ""
+msgstr "드워프 철 투구"
 
 #: ../src/obj_descr_i18n.c:141
-#, fuzzy
 msgid "dented pot"
-msgstr "들어간 "
+msgstr "찌그러진 냄비"
 
 #: ../src/obj_descr_i18n.c:142
 msgid "fedora"
-msgstr ""
+msgstr "페도라"
 
 #: ../src/obj_descr_i18n.c:143
-#, fuzzy
 msgid "cornuthaum"
-msgstr "각막"
+msgstr "코르누타움"
 
 #: ../src/obj_descr_i18n.c:144
 msgid "dunce cap"
-msgstr ""
+msgstr "바보 모자"
 
 #: ../src/obj_descr_i18n.c:145
 msgid "helm of brilliance"
-msgstr ""
+msgstr "총명의 투구"
 
 #: ../src/obj_descr_i18n.c:146
-#, fuzzy
 msgid "helm of caution"
-msgstr "질식한다."
+msgstr "경계의 투구"
 
 #: ../src/obj_descr_i18n.c:147
 msgid "helm of opposite alignment"
-msgstr ""
+msgstr "반대 성향의 투구"
 
 #: ../src/obj_descr_i18n.c:148
-#, fuzzy
 msgid "helm of telepathy"
-msgstr "텔레파시"
+msgstr "텔레파시의 투구"
 
+# ============================================================
+# 망토류 (Cloaks)
+# ============================================================
 #: ../src/obj_descr_i18n.c:150
-#, fuzzy
 msgid "mummy wrapping"
-msgstr "저장 중:"
+msgstr "미라 붕대"
 
 #: ../src/obj_descr_i18n.c:151
-#, fuzzy
 msgid "elven cloak"
-msgstr "망토"
+msgstr "엘프 망토"
 
 #: ../src/obj_descr_i18n.c:152
-#, fuzzy
 msgid "orcish cloak"
-msgstr "오크의"
+msgstr "오크 망토"
 
 #: ../src/obj_descr_i18n.c:153
 msgid "dwarvish cloak"
-msgstr ""
+msgstr "드워프 망토"
 
 #: ../src/obj_descr_i18n.c:154
 msgid "oilskin cloak"
-msgstr ""
+msgstr "유포 망토"
 
-#
 #: ../src/obj_descr_i18n.c:155
-#, fuzzy
 msgid "leather cloak"
-msgstr "가죽"
+msgstr "가죽 망토"
 
 #: ../src/obj_descr_i18n.c:156
 msgid "alchemy smock"
-msgstr ""
+msgstr "연금술 작업복"
 
 #: ../src/obj_descr_i18n.c:157
 msgid "robe"
@@ -23887,44 +23868,43 @@ msgstr "장화"
 msgid "hiking boots"
 msgstr "맨발로 %s{을/를} 차는 중"
 
+# ============================================================
+# 무기류 (Weapons)
+# 참고: 폴암(polearm)류 무기는 원어 음차를 사용
+# ============================================================
 #: ../src/obj_descr_i18n.c:222
 msgid "aklys"
-msgstr ""
+msgstr "아클리스"
 
 #: ../src/obj_descr_i18n.c:223
-#, fuzzy
 msgid "athame"
-msgstr "부끄러운"
+msgstr "아타메"
 
 #: ../src/obj_descr_i18n.c:225
 msgid "bardiche"
-msgstr ""
+msgstr "바르디슈"
 
 #: ../src/obj_descr_i18n.c:226
-#, fuzzy
 msgid "battle-axe"
-msgstr "덜렁이"
+msgstr "전투 도끼"
 
 #: ../src/obj_descr_i18n.c:227
 msgid "bec de corbin"
-msgstr ""
+msgstr "베크 드 코르뱅"
 
 #: ../src/obj_descr_i18n.c:228
 msgid "bill-guisarme"
-msgstr ""
+msgstr "빌 기사르메"
 
 #: ../src/obj_descr_i18n.c:229 ../src/zap.c:4190
 msgid "boomerang"
 msgstr "부메랑"
 
 #: ../src/obj_descr_i18n.c:230
-#, fuzzy
 msgid "broadsword"
-msgstr "검"
+msgstr "브로드소드"
 
-# 무기 - 채찍
 #: ../src/obj_descr_i18n.c:231
-#, fuzzy
 msgid "bullwhip"
 msgstr "채찍"
 
@@ -23933,18 +23913,16 @@ msgid "club"
 msgstr "곤봉"
 
 #: ../src/obj_descr_i18n.c:233
-#, fuzzy
 msgid "crysknife"
-msgstr "칼"
+msgstr "크리스나이프"
 
-# 무기 - 단검
 #: ../src/obj_descr_i18n.c:234
 msgid "dagger"
 msgstr "단검"
 
 #: ../src/obj_descr_i18n.c:235
 msgid "dart"
-msgstr ""
+msgstr "다트"
 
 #: ../src/obj_descr_i18n.c:236
 msgid "dwarvish mattock"
@@ -24169,67 +24147,58 @@ msgstr "채찍"
 msgid "hammer"
 msgstr "망치"
 
+# 무기 외형 설명 (미감정 상태 - 엘프/오크/드워프 무기)
 #: ../src/obj_descr_i18n.c:290
 msgid "runed broadsword"
-msgstr ""
+msgstr "룬 새겨진 브로드소드"
 
 #: ../src/obj_descr_i18n.c:291
-#, fuzzy
 msgid "runed spear"
-msgstr "룬문자가 새겨진"
+msgstr "룬 새겨진 창"
 
-# 무기 - 단검
 #: ../src/obj_descr_i18n.c:292
-#, fuzzy
 msgid "runed dagger"
-msgstr "단검"
+msgstr "룬 새겨진 단검"
 
 #: ../src/obj_descr_i18n.c:293
 msgid "runed short sword"
-msgstr ""
+msgstr "룬 새겨진 숏소드"
 
 #: ../src/obj_descr_i18n.c:294
-#, fuzzy
 msgid "crude spear"
-msgstr "피했다"
+msgstr "조잡한 창"
 
-# 무기 - 단검
 #: ../src/obj_descr_i18n.c:295
-#, fuzzy
 msgid "crude dagger"
-msgstr "단검"
+msgstr "조잡한 단검"
 
 #: ../src/obj_descr_i18n.c:296
 msgid "crude short sword"
-msgstr ""
+msgstr "조잡한 숏소드"
 
 #: ../src/obj_descr_i18n.c:297
-#, fuzzy
 msgid "stout spear"
-msgstr "깡통 따개"
+msgstr "튼튼한 창"
 
 #: ../src/obj_descr_i18n.c:298
 msgid "broad short sword"
-msgstr ""
+msgstr "넓은 숏소드"
 
 #: ../src/obj_descr_i18n.c:299
-#, fuzzy
 msgid "throwing star"
-msgstr "던질"
+msgstr "표창"
 
 #: ../src/obj_descr_i18n.c:300
-#, fuzzy
 msgid "throwing spear"
-msgstr "던질"
+msgstr "투척용 창"
 
 #: ../src/obj_descr_i18n.c:301
 msgid "long samurai sword"
-msgstr ""
+msgstr "긴 사무라이 검"
 
 #: ../src/obj_descr_i18n.c:302
-#, fuzzy
 msgid "samurai sword"
-msgstr "사무라이"
+msgstr "사무라이 검"
 
 #: ../src/obj_descr_i18n.c:308
 msgid "mirror"

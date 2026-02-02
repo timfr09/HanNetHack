@@ -16449,25 +16449,34 @@ msgstr "현재 과일 "
 msgid "The made fruit flag "
 msgstr "생성된 과일 플래그 "
 
+# ============================================================
+# 구원의 은총 (Saving Grace) 메시지
+# ============================================================
+# 조합 패턴: enl_msg(You_, verb, verb, " a one-shot death via saving-grace", "")
+# 영어: "You " + "avoided" + " a one-shot death via saving-grace."
+# 한국어 어순 문제: 영어는 "주어+동사+목적어"이지만 한국어는 "주어+목적어+동사"
+# 해결책: 동사 번역을 비우고, suffix에 완전한 한국어 문장을 넣음
+# 결과: "당신은 " + "" + "구원의 은총으로 일격사를 피할 수 있었다."
+# 참고: 동사 시제 구분(might/have/could)이 사라지지만, 자연스러운 한국어가 됨
 #: ../src/insight.c:1961
 msgid "might avoid"
-msgstr "피할 수 있을지도 모른다"
+msgstr ""
 
 #: ../src/insight.c:1961
 msgid "have avoided"
-msgstr "피했다"
+msgstr ""
 
 #: ../src/insight.c:1962
 msgid "could have avoided"
-msgstr "피할 수 있었다"
+msgstr ""
 
 #: ../src/insight.c:1962
 msgid "avoided"
-msgstr "피했다"
+msgstr ""
 
 #: ../src/insight.c:1970
 msgid " a one-shot death via saving-grace"
-msgstr " 구원의 은총으로 일격사를"
+msgstr "구원의 은총으로 일격사를 피할 수 있었다"
 
 #: ../src/insight.c:1978
 msgid "survived after being killed "
@@ -23684,70 +23693,59 @@ msgstr "반사의 방패"
 msgid "leather gloves"
 msgstr "가죽"
 
+# 장갑류 (Gloves/Gauntlets)
 #: ../src/obj_descr_i18n.c:172
 msgid "gauntlets of fumbling"
-msgstr ""
+msgstr "실수의 건틀릿"
 
 #: ../src/obj_descr_i18n.c:173
-#, fuzzy
 msgid "gauntlets of power"
-msgstr "랜턴의 전원이 다 됐다."
+msgstr "힘의 건틀릿"
 
 #: ../src/obj_descr_i18n.c:174
 msgid "gauntlets of dexterity"
-msgstr ""
+msgstr "민첩의 건틀릿"
 
-# 방어구 - 신발
+# 신발류 (Boots)
 #: ../src/obj_descr_i18n.c:176
-#, fuzzy
 msgid "low boots"
-msgstr "장화"
+msgstr "낮은 부츠"
 
-# 방어구 - 신발
 #: ../src/obj_descr_i18n.c:177
-#, fuzzy
 msgid "high boots"
-msgstr "장화"
+msgstr "높은 부츠"
 
 #: ../src/obj_descr_i18n.c:178
-#, fuzzy
 msgid "iron shoes"
-msgstr "철 골렘"
+msgstr "철제 신발"
 
 #: ../src/obj_descr_i18n.c:179
-#, fuzzy
 msgid "elven boots"
-msgstr "금속 장화"
+msgstr "엘프 부츠"
 
 #: ../src/obj_descr_i18n.c:180
-#, fuzzy
 msgid "kicking boots"
-msgstr "맨발로 %s{을/를} 차는 중"
+msgstr "발차기 부츠"
 
 #: ../src/obj_descr_i18n.c:181
-#, fuzzy
 msgid "fumble boots"
-msgstr "금속 장화"
+msgstr "실수의 부츠"
 
 #: ../src/obj_descr_i18n.c:182
-#, fuzzy
 msgid "levitation boots"
-msgstr "부유 중"
+msgstr "부유의 부츠"
 
 #: ../src/obj_descr_i18n.c:183
-#, fuzzy
 msgid "jumping boots"
-msgstr "점프"
+msgstr "점프 부츠"
 
 #: ../src/obj_descr_i18n.c:184
-#, fuzzy
 msgid "speed boots"
-msgstr "%s 빨라졌다."
+msgstr "신속의 부츠"
 
 #: ../src/obj_descr_i18n.c:185
-#, fuzzy
 msgid "water walking boots"
-msgstr "물 위 걷기"
+msgstr "수상 보행 부츠"
 
 #
 #: ../src/obj_descr_i18n.c:188
@@ -27131,73 +27129,62 @@ msgstr "저주받지 않은 "
 msgid "cursed"
 msgstr "저주받은 "
 
+# ============================================================
+# 인벤토리 카테고리 (Inventory Categories)
+# ============================================================
+# 인벤토리 목록 끝에 표시되는 문자열
 #: ../src/obj_descr_i18n.c:1086
 msgid "(end)"
-msgstr ""
+msgstr "(끝)"
 
 #: ../src/obj_descr_i18n.c:1087
-#, fuzzy
 msgid "Weapons"
 msgstr "무기"
 
 #: ../src/obj_descr_i18n.c:1088
-#, fuzzy
 msgid "Armor"
-msgstr "갑옷"
+msgstr "방어구"
 
 #: ../src/obj_descr_i18n.c:1089
 msgid "Comestibles"
-msgstr ""
+msgstr "음식"
 
 #: ../src/obj_descr_i18n.c:1090
 msgid "Tools"
-msgstr ""
+msgstr "도구"
 
-# 부적
-# --- 부적 (Amulets) ---
 #: ../src/obj_descr_i18n.c:1092
-#, fuzzy
 msgid "Amulets"
 msgstr "부적"
 
 #: ../src/obj_descr_i18n.c:1093
-#, fuzzy
 msgid "Wands"
-msgstr "손"
+msgstr "완드"
 
-# 두루마리
-# --- 스크롤 (Scrolls) ---
 #: ../src/obj_descr_i18n.c:1094
-#, fuzzy
 msgid "Scrolls"
 msgstr "두루마리"
 
-# 마법서
-# --- 마법서 (Spellbooks) ---
 #: ../src/obj_descr_i18n.c:1095
-#, fuzzy
 msgid "Spellbooks"
 msgstr "마법서"
 
-# 물약
-# --- 포션 (Potions) ---
 #: ../src/obj_descr_i18n.c:1096
-#, fuzzy
 msgid "Potions"
 msgstr "물약"
 
 #: ../src/obj_descr_i18n.c:1097
 msgid "Gems"
-msgstr ""
+msgstr "보석"
 
 #: ../src/obj_descr_i18n.c:1098
 msgid "Coins"
-msgstr ""
+msgstr "금화"
 
+# 스탯 관련 용어
 #: ../src/obj_descr_i18n.c:1101
-#, fuzzy
 msgid "energy points"
-msgstr "에너지 소용돌이"
+msgstr "에너지"
 
 #: ../src/obj_descr_i18n.c:1102
 #, fuzzy

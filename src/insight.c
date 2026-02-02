@@ -149,7 +149,11 @@ enlght_line(
 #endif
     char buf[BUFSZ];
 
-    Sprintf(buf, " %s%s%s%s.", start, middle, end, ps);
+    /* Format: start=subject, middle=verb, end=object/modifier, ps=extra
+     * English: " %s%s%s%s." = "You went without food."
+     * Korean uses positional specifiers for SOV order:
+     * " %1$s%3$s%2$s%4$s." = "당신은 음식 없이 지냈다." */
+    Sprintf(buf, _(" %s%s%s%s."), start, middle, end, ps);
 #ifndef NO_ENLGHT_CONTRACTIONS
     if (strstri(buf, " not ")) { /* TODO: switch to libc strstr() */
         for (i = 0; i < SIZE(contra); ++i)

@@ -14685,6 +14685,13 @@ msgstr "​"
 msgid "never "
 msgstr "​"
 
+# enlght_line 포맷: 한국어 어순 (주어+목적어+동사)
+# %1$s=주어(You), %2$s=동사(went), %3$s=목적어( without food), %4$s=추가
+#: ../src/insight.c:156
+#, c-format
+msgid " %s%s%s%s."
+msgstr " %1$s%3$s%2$s%4$s."
+
 #: ../src/insight.c:63
 msgid "acquired the Bell of Opening"
 msgstr "개봉의 종을 획득했다"

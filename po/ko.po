@@ -26806,6 +26806,23 @@ msgstr "군용 나팔"
 msgid "(being worn)"
 msgstr "(착용 중)"
 
+# objnam.c armor status strings
+#: ../src/objnam.c:1392
+msgid " (embedded in your skin)"
+msgstr " (피부에 박힘)"
+
+#: ../src/objnam.c:1396
+msgid " (being doffed)"
+msgstr " (벗는 중)"
+
+#: ../src/objnam.c:1397
+msgid " (being donned)"
+msgstr " (입는 중)"
+
+#: ../src/objnam.c:1408
+msgid "; slippery)"
+msgstr "; 미끄러움)"
+
 #: ../src/obj_descr_i18n.c:1074
 msgid "(weapon in hand)"
 msgstr "(손에 든 무기)"

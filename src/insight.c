@@ -872,7 +872,7 @@ one_characteristic(int mode, int final, int attrindx)
 
     acurrent = ACURR(attrindx);
     (void) attrval(attrindx, acurrent, valubuf); /* Sprintf(valubuf,"%d",) */
-    Sprintf(subjbuf, _("Your %s "), attrname[attrindx]);
+    Sprintf(subjbuf, _("Your %s "), _(attrname[attrindx]));
 
     if (!hide_innate_value) {
         /* show abase, amax, and/or attrmax if acurr doesn't match abase

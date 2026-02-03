@@ -22005,7 +22005,7 @@ msgstr "화염구"
 
 #: ../src/mondata.c:1483
 msgid "flame"
-msgstr "절름발이"
+msgstr "불꽃"
 
 #: ../src/mondata.c:1487
 msgid "flash"
@@ -22077,7 +22077,7 @@ msgstr "%s{이/가} 찡그리는 것 같다."
 #: ../src/monmove.c:499
 #, c-format
 msgid "%s is frightened."
-msgstr "%s{이/가} 눈이 멀었다."
+msgstr "%s{이/가} 겁에 질렸다."
 
 #: ../src/monmove.c:511
 #, c-format
@@ -22091,7 +22091,7 @@ msgstr "밝은 빛!"
 #: ../src/monmove.c:518
 #, c-format
 msgid "%s turns to flee."
-msgstr "%s{이/가} 돌로 변했다!"
+msgstr "%s{이/가} 도망치려 돌아섰다."
 
 #: ../src/monmove.c:589
 #, c-format
@@ -22120,9 +22120,10 @@ msgstr "그것이 %s에 달라붙었다!"
 msgid "telepathy"
 msgstr "텔레파시"
 
+# 정신 폭발 대상: 잠재적 텔레파시
 #: ../src/monmove.c:618 ../src/polyself.c:1914
 msgid "latent telepathy"
-msgstr "텔레파시의 투구"
+msgstr "잠재적 텔레파시"
 
 #: ../src/monmove.c:619 ../src/polyself.c:1915
 msgid "mind"
@@ -22169,7 +22170,7 @@ msgstr "문이 열리는 소리."
 #: ../src/monmove.c:1584
 #, c-format
 msgid "%s opens a door."
-msgstr "%s{이/가} 열린다..."
+msgstr "%s{이/가} 문을 열었다."
 
 #: ../src/monmove.c:1586 ../src/monmove.c:1588
 msgid "a door open."
@@ -40653,9 +40654,10 @@ msgstr "기침%s"
 msgid "suffocation"
 msgstr "질식한다."
 
+# 사망 원인: 질식
 #: ../src/timeout.c:894
 msgid "strangulation"
-msgstr "질식의 부적"
+msgstr "질식"
 
 #: ../src/timeout.c:917
 msgid "make a lot of noise!"

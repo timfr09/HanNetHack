@@ -14983,9 +14983,10 @@ msgstr "만나지 않았다"
 msgid "didn't encounter"
 msgstr "만나지 않았다"
 
+# suffix 앞 공백 제거, 뒤 공백 추가
 #: ../src/insight.c:423
 msgid " any bones levels"
-msgstr " 아무 뼈 레벨도"
+msgstr "아무 뼈 레벨도 "
 
 #: ../src/insight.c:425
 #, c-format
@@ -15763,9 +15764,13 @@ msgid "did"
 msgstr "​"
 
 # 누드 플레이 관련
+# 조합: enl_msg(You_, "do", "did", " not wear any armor", "")
+# 영어: "You do not wear any armor."
+# 한국어: "당신은 갑옷을 입지 않았다."
+# suffix 앞 공백 제거 ("do"가 제로너비공백이므로 suffix에 동사 포함)
 #: ../src/insight.c:1240
 msgid " not wear any armor"
-msgstr " 갑옷을 입지 않았다"
+msgstr "갑옷을 입지 않았다"
 
 #
 #: ../src/insight.c:1242
@@ -15992,16 +15997,23 @@ msgstr "질병 면역"
 msgid "petrification resistant"
 msgstr "석화 저항"
 
+# ============================================================
+# 환각 저항 메시지 (Hallucination Resistance)
 # 조합: enl_msg(You_, "resist", "resisted", " hallucinations", from_what(...))
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
 # 영어: "You resist hallucinations (because of ring)."
 # 한국어: "당신은 환각에 저항한다 (반지의 영향)."
+#
+# 참고: suffix 앞 공백 제거, 뒤 공백 추가 (verb와 분리)
+# ============================================================
 #: ../src/insight.c:1541
 msgid "resisted"
 msgstr "저항했다"
 
 #: ../src/insight.c:1541
 msgid " hallucinations"
-msgstr " 환각에"
+msgstr "환각에 "
 
 #: ../src/insight.c:1544
 msgid "recognize detrimental food"
@@ -16014,11 +16026,13 @@ msgstr "빛으로 인한 실명에 면역"
 # ============================================================
 # 투명 감지 능력 (See Invisible)
 # 조합: enl_msg(You_, "see", "saw", " invisible", from_what(...))
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
 # 영어: "You see invisible (because of ring)."
 # 한국어: "당신은 투명한 것을 본다 (반지의 영향)."
 #
-# 문제: "see"가 다른 맥락(lock.c 등)에서도 사용되어 제로너비공백으로 처리
-# 해결: suffix(" invisible")에 동사 포함
+# 참고: "see"가 다른 맥락(lock.c 등)에서도 사용되어 제로너비공백으로 처리
+#       suffix에 동사 포함, 앞 공백 제거 (prefix 끝에 이미 있음)
 # ============================================================
 #: ../src/insight.c:1554
 msgid "saw"
@@ -16026,8 +16040,11 @@ msgstr "​"
 
 #: ../src/insight.c:1554
 msgid " invisible"
-msgstr " 투명한 것을 본다"
+msgstr "투명한 것을 본다"
 
+# 조합: enl_msg(You_, "will see", "would have seen", " invisible when not blind", ...)
+# 영어: "You will see invisible when not blind."
+# 한국어: "당신은 눈이 멀지 않으면 투명한 것을 볼 수 있게 될 것이다."
 #: ../src/insight.c:1556
 msgid "will see"
 msgstr "볼 수 있게 될 것이다"
@@ -16038,7 +16055,7 @@ msgstr "볼 수 있었을 것이다"
 
 #: ../src/insight.c:1557
 msgid " invisible when not blind"
-msgstr " 눈이 멀지 않으면 투명한 것을"
+msgstr "눈이 멀지 않으면 투명한 것을 "
 
 #: ../src/insight.c:1559
 msgid "would see"
@@ -16046,7 +16063,7 @@ msgstr "볼 수 있을 것이다"
 
 #: ../src/insight.c:1560
 msgid " invisible if not blind"
-msgstr " 눈이 멀지 않으면 투명한 것을"
+msgstr "눈이 멀지 않으면 투명한 것을 "
 
 #: ../src/insight.c:1563 ../src/timeout.c:87
 msgid "telepathic"
@@ -16110,8 +16127,12 @@ msgstr "천리안"
 # ============================================================
 # 천리안 능력 (Clairvoyance)
 # 조합: enl_msg(You_, "could be", "could have been", " clairvoyant", buf)
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
 # 영어: "You could be clairvoyant (if not blind)."
 # 한국어: "당신은 천리안이 될 수 있다 (눈이 멀지 않으면)."
+#
+# 참고: suffix 앞 공백 제거, 뒤 공백 추가 (verb와 분리)
 # ============================================================
 #: ../src/insight.c:1600
 msgid "could be"
@@ -16123,7 +16144,7 @@ msgstr "될 수 있었다"
 
 #: ../src/insight.c:1600
 msgid " clairvoyant"
-msgstr " 천리안이"
+msgstr "천리안이 "
 
 # 적외선 시야 - 어둠 속에서 열기로 생물을 볼 수 있음
 #: ../src/insight.c:1603 ../src/pager.c:505 ../src/pager.c:696
@@ -16188,16 +16209,16 @@ msgstr "변위"
 #
 # 영어 (현재): "You would be stealthy if not mounted."
 # 영어 (과거): "You would have been stealthy if not mounted."
-# 한국어 (현재): "당신은 은밀하게 (탑승 중이 아닐 때)될 것이다."
-# 한국어 (과거): "당신은 은밀하게 (탑승 중이 아닐 때)되었을 것이다."
+# 한국어 (현재): "당신은 은밀하게 (탑승 중이 아닐 때) 될 것이다."
+# 한국어 (과거): "당신은 은밀하게 (탑승 중이 아닐 때) 되었을 것이다."
 #
-# 참고: "would be"/"would have been"은 life saved 패턴과 공유됨
-#       두 패턴 모두 "~게 되다" 형태로 자연스럽게 조합됨
+# 참고: suffix 앞 공백 제거, %s 뒤 공백 추가 (verb와 분리)
+#       "would be"/"would have been"은 life saved 패턴과 공유됨
 # ============================================================
 #: ../src/insight.c:1653
 #, c-format
 msgid " stealthy%s"
-msgstr " 은밀하게%s"
+msgstr "은밀하게%s "
 
 #: ../src/insight.c:1654
 msgid " if not mounted"
@@ -16400,16 +16421,32 @@ msgid "protected"
 msgstr "방어됨"
 
 # 조합: enl_msg(You_, "take", "took", " reduced poison gas damage", "")
-# 포맷: 당신은 + suffix + verb = "당신은 감소된 독가스 피해를 받는다"
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
+# 영어: "You take reduced poison gas damage."
+# 한국어: "당신은 감소된 독가스 피해를 받는다."
+#
 # 참고: "take"/"took"가 제로너비공백이므로 suffix에 동사 포함
+#       suffix 앞 공백 제거 (prefix 끝에 이미 있음)
 #: ../src/insight.c:1796
 msgid " reduced poison gas damage"
-msgstr " 감소된 독가스 피해를 받는다"
+msgstr "감소된 독가스 피해를 받는다"
 
+# ============================================================
+# 주문 시전 상태 메시지 (Spell Casting Status)
+# 조합: enl_msg("Your spell casting ", "is", "was", buf, "")
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
+# 영어: "Your spell casting is impaired by metallic armor."
+# 한국어: "당신의 주문 시전은 금속 갑옷에 의해 손상됨이다."
+#
+# 참고: suffix 앞 공백 제거 (prefix 끝에 이미 있음)
+#       "is"="이다"가 suffix 뒤에 붙지만 문맥상 허용
+# ============================================================
 #: ../src/insight.c:1806
 #, c-format
 msgid " impaired by metallic armor%s"
-msgstr " 금속 갑옷%s에 의해 손상"
+msgstr "금속 갑옷%s에 의해 손상됨"
 
 #: ../src/insight.c:1807
 msgid ", mitigated by your robe"
@@ -16418,11 +16455,8 @@ msgstr ", 로브로 완화됨"
 # 로브 착용 시 주문 시전 향상
 #: ../src/insight.c:1809
 msgid " enhanced by wearing a robe"
-msgstr " 로브 착용으로 향상"
+msgstr "로브 착용으로 향상됨"
 
-# 조합: enl_msg("Your spell casting ", "is", "was", buf, "")
-# 영어: "Your spell casting is impaired by metallic armor."
-# 한국어: "당신의 주문 시전은 금속 갑옷에 의해 방해받는다."
 #: ../src/insight.c:1812
 msgid "Your spell casting "
 msgstr "당신의 주문 시전은 "
@@ -16538,9 +16572,10 @@ msgstr "당신의 생명은 "
 msgid "will be"
 msgstr "될 것이다"
 
+# suffix 앞 공백 제거, 뒤 공백 추가
 #: ../src/insight.c:1887
 msgid " saved"
-msgstr " 구원받게"
+msgstr "구원받게 "
 
 # ============================================================
 # 행운 관련 메시지 (Luck)
@@ -16555,16 +16590,24 @@ msgstr "%s%s행운"
 msgid "extremely "
 msgstr "극도로 "
 
+# ============================================================
+# 행운 상태 메시지 (Luck Status)
 # 조합: enl_msg("Your luck ", "is", "was", " zero", "")
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
 # 영어: "Your luck is zero."
 # 한국어: "당신의 행운은 0이다."
+#
+# 참고: suffix의 앞 공백은 prefix 끝에 이미 있으므로 불필요
+#       동사는 "is"="이다"에서 제공되므로 suffix에 포함하면 안됨
+# ============================================================
 #: ../src/insight.c:1899
 msgid "Your luck "
 msgstr "당신의 행운은 "
 
 #: ../src/insight.c:1899
 msgid " zero"
-msgstr " 0이다"
+msgstr "0"
 
 # 행운 증가 효과 (럭키스톤 등)
 #: ../src/insight.c:1901
@@ -16696,9 +16739,10 @@ msgstr "피할 수도 있었다"
 msgid "avoided"
 msgstr "피했다"
 
+# suffix 앞 공백 제거, 뒤 공백 추가
 #: ../src/insight.c:1970
 msgid " a one-shot death via saving-grace"
-msgstr " 구원의 은총으로 일격사를"
+msgstr "구원의 은총으로 일격사를 "
 
 #: ../src/insight.c:1978
 msgid "survived after being killed "
@@ -16823,9 +16867,10 @@ msgstr "시작했다"
 msgid "started out"
 msgstr "처음부터 시작했다"
 
+# suffix 앞 공백 제거, 뒤 공백 추가
 #: ../src/insight.c:2115
 msgid " without possessions"
-msgstr " 소유물 없이"
+msgstr "소유물 없이 "
 
 #: ../src/insight.c:2117
 #, c-format
@@ -17005,9 +17050,10 @@ msgstr "위반하지 않았다"
 msgid "did not violate"
 msgstr "위반하지 않았다"
 
+# suffix 앞 공백 제거, 뒤 공백 추가
 #: ../src/insight.c:2226
 msgid " any of the special Sokoban rules"
-msgstr " 소코반 특별 규칙 중 어느 것도"
+msgstr "소코반 특별 규칙 중 어느 것도 "
 
 #: ../src/insight.c:2238
 #, c-format
@@ -17030,9 +17076,10 @@ msgstr "탐험 중"
 msgid "explored"
 msgstr "탐험했다"
 
+# suffix 앞 공백 제거, 뒤 공백 추가
 #: ../src/insight.c:2305
 msgid " without being able to see"
-msgstr " 볼 수 없는 상태로"
+msgstr "볼 수 없는 상태로 "
 
 # 조합: enl_msg(You_, "have gone", "went", " without any armor", "")
 # 한국어: "당신은 갑옷 없이 지낸다."
@@ -17084,17 +17131,18 @@ msgstr "다뤘다"
 msgid "handled"
 msgstr "다뤘다"
 
+# suffix 앞 공백 제거, 뒤 공백 추가
 #: ../src/insight.c:2353
 msgid " the Bell of Opening"
-msgstr " 개봉의 종을"
+msgstr "개봉의 종을 "
 
 #: ../src/insight.c:2362
 msgid " the Candelabrum of Invocation"
-msgstr " 소환의 촛대를"
+msgstr "소환의 촛대를 "
 
 #: ../src/insight.c:2368
 msgid " the Book of the Dead"
-msgstr " 죽음의 책을"
+msgstr "죽음의 책을 "
 
 #: ../src/insight.c:2371
 msgid "gained access to Moloch's Sanctum"
@@ -17112,9 +17160,10 @@ msgstr "전달했다"
 msgid "had obtained"
 msgstr "획득했다"
 
+# suffix 앞 공백 제거, 뒤 공백 추가
 #: ../src/insight.c:2380
 msgid " the Amulet of Yendor"
-msgstr " 옌더의 부적을"
+msgstr "옌더의 부적을 "
 
 #: ../src/insight.c:2387
 msgid "reached the Elemental Planes"

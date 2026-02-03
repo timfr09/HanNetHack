@@ -9350,9 +9350,10 @@ msgstr "%s에 맞음"
 msgid "are anchored by the %s."
 msgstr "%s에 의해 고정되어 있다."
 
+# 조합: 발에 묶인 쇠공이 매장됨
 #: ../src/dothrow.c:1100
 msgid "buried ball"
-msgstr "매장된"
+msgstr "매장된 쇠공"
 
 #: ../src/dothrow.c:1101 ../src/mhitu.c:1341 ../src/teleport.c:2014
 msgid "trap"
@@ -9367,18 +9368,11 @@ msgstr "공중을 이동하는 중"
 msgid "%s in the opposite direction."
 msgstr "%s{이/가} 반대 방향으로."
 
-# ============================================================
-# 액체 (Liquids - hliquids array)
-# ============================================================
-# ============================================================
-# 액체 (Liquids)
-# ============================================================
-# ============================================================
-# 액체 (Liquids)
-# ============================================================
+# 조합: 공중 이동 동사 (aerial movement verbs)
+# 예: "You hurtle in the opposite direction."
 #: ../src/dothrow.c:1118
 msgid "hurtle"
-msgstr "요거트"
+msgstr "돌진한다"
 
 #: ../src/dothrow.c:1118 ../src/hack.c:1811 ../src/mondata.c:1367
 msgid "float"
@@ -18396,9 +18390,10 @@ msgid "%s %s under the %s here."
 msgstr "%s{이/가} 여기 %s 아래에 %s."
 
 # Barbarian ranks
+# 조합: 여러 물체 아래에 있는 것을 설명
 #: ../src/invent.c:5519
 msgid "under them"
-msgstr "약탈자"
+msgstr "그것들 아래에"
 
 #: ../src/invent.c:5519
 msgid "beneath it"
@@ -20249,9 +20244,10 @@ msgstr "%s{이/가} %s 앞으로 나와 당신을 %s에서 잡아챘다!"
 msgid "whirls"
 msgstr "고인다"
 
+# 조합: 액체 몬스터의 이동 동사 (슬라임 등)
 #: ../src/mhitu.c:1323 ../src/monmove.c:1552
 msgid "flows"
-msgstr "우렁차게 운다!"
+msgstr "흐른다"
 
 #: ../src/mhitu.c:1325 ../src/monmove.c:1552
 msgid "oozes"
@@ -21587,10 +21583,13 @@ msgstr "떨어지다"
 msgid "writhes on the"
 msgstr "몸부림치다"
 
+# 조합: 석화 해제된 몬스터가 일어남
+# %1$s = 몬스터명, %2$s = 표면 (floor, ground)
+# 예: "The troll rises from the floor with renewed agility!"
 #: ../src/mon.c:3806
 #, c-format
 msgid "%s rises from the %s with renewed agility!"
-msgstr "%s{이/가} 죽음에서 일어났다%s!"
+msgstr "%1$s{이/가} %2$s에서 새로운 활력으로 일어났다!"
 
 #: ../src/mon.c:3883
 msgid "besieged."
@@ -21610,10 +21609,11 @@ msgstr "%s{이/가} %s 화가 난 것 같다..."
 msgid "Halt!  You're under arrest!"
 msgstr "멈춰! 체포한다!"
 
+# 조합: 몬스터가 숨을 헐떡임
 #: ../src/mon.c:4187
 #, c-format
 msgid "%s gasps"
-msgstr "%s{이/가} 질주한다!"
+msgstr "%s{이/가} 숨을 헐떡인다"
 
 #: ../src/mon.c:4190
 #, c-format
@@ -37459,13 +37459,15 @@ msgstr "%s 위에 앉는다."
 msgid "%s gets wet."
 msgstr "%s{이/가} 젖었다."
 
+# 조합: 앉았을 때 젖는 부위 (body part that gets wet when sitting)
 #: ../src/sit.c:524
 msgid "rump"
-msgstr "뿌오하고 운다!"
+msgstr "엉덩이"
 
+# 조합: 비인간형 몬스터의 밑면
 #: ../src/sit.c:524
 msgid "underside"
-msgstr "약탈자"
+msgstr "밑면"
 
 #: ../src/sit.c:539
 #, c-format
@@ -43682,9 +43684,10 @@ msgstr "%s{이/가} 맞고 분열했다%s!"
 msgid "hit it."
 msgstr "그것을 때렸다."
 
+# 조합: 채찍이나 젖은 수건으로 때릴 때
 #: ../src/uhitm.c:1631
 msgid "lash"
-msgstr "쨍!"
+msgstr "후려친다"
 
 #: ../src/uhitm.c:1632
 msgid "smite"

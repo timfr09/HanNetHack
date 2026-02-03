@@ -22719,7 +22719,7 @@ msgstr "여기의 %s{은/는} 너무 단단해서 팔 수 없다."
 #: ../src/muse.c:945
 #, c-format
 msgid "%s has made a pit in the %s."
-msgstr "%s{이/가} %s에 나타났다."
+msgstr "%s{이/가} %s에 구덩이를 팠다."
 
 #: ../src/muse.c:958
 #, c-format
@@ -22881,7 +22881,7 @@ msgstr "화염 두루마리"
 #: ../src/muse.c:1998
 #, c-format
 msgid "%s hurls %s!"
-msgstr "%s{이/가} %s{을/를} 태웠다!"
+msgstr "%s{이/가} %s{을/를} 던졌다!"
 
 #: ../src/muse.c:2325
 #, c-format
@@ -22906,7 +22906,7 @@ msgstr "%s이(가) %s을(를) 통해 위로 올라갔다!"
 #: ../src/muse.c:2404
 #, c-format
 msgid "%s looks uneasy."
-msgstr "%s{이/가} 다치지 않아 보인다."
+msgstr "%s{이/가} 불안해 보인다."
 
 #: ../src/muse.c:2412
 #, c-format
@@ -23017,9 +23017,10 @@ msgstr "비늘"
 msgid "medallion"
 msgstr "메달"
 
+# 비늘 광택 상태
 #: ../src/muse.c:2824
 msgid "luster"
-msgstr "생기가 없다."
+msgstr "광택"
 
 #: ../src/muse.c:2844
 #, c-format
@@ -23053,19 +23054,21 @@ msgstr "%s이(가) 심한 위산 과다 증상이 있다."
 msgid "What a pity - %s just ruined a future piece of art!"
 msgstr "안타깝다 - %s{이/가} 미래의 예술 작품을 망쳤다!"
 
+# 석화가 풀린 상태 - 유연해짐
 #: ../src/muse.c:2928
 #, c-format
 msgid "%s seems limber!"
-msgstr "%s{이/가} 찡그리는 것 같다."
+msgstr "%s{이/가} 유연해진 것 같다!"
 
 #: ../src/muse.c:3081
 #, c-format
 msgid "%s starts turning %s."
 msgstr "%s이(가) %s(으)로 변하기 시작했다."
 
+# 진흙으로 변하기 (녹는 중)
 #: ../src/muse.c:3082
 msgid "into ooze"
-msgstr "술"
+msgstr "진흙으로"
 
 #: ../src/muse.c:3091
 #, c-format
@@ -23080,11 +23083,11 @@ msgstr "%s{이/가} %s 화염 함정을 작동시켰다!"
 msgid "%s %s %s %s fire trap!"
 msgstr "%s %s %s %s 화염 함정!"
 
-# Complete sentence combat messages (new format for proper Korean)
+# 몬스터가 물약 등을 점화함
 #: ../src/muse.c:3152
 #, c-format
 msgid "%s ignites %s."
-msgstr "%s{이/가} %s{을/를} 물었다."
+msgstr "%s{이/가} %s{을/를} 점화시켰다."
 
 #: ../src/muse.c:3160
 #, c-format

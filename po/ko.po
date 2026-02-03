@@ -10458,16 +10458,14 @@ msgstr "용기를 여는 중"
 msgid "Blecch!  %s %s!"
 msgstr "웩! %s %s!"
 
-# ============================================================
-# 몬스터 이름 (Monster Names)
-# ============================================================
+# 음식 상태 형용사 (food condition adjectives)
 #: ../src/eat.c:1812
 msgid "Rotten"
-msgstr "새끼 고양이"
+msgstr "썩은"
 
 #: ../src/eat.c:1812
 msgid "Awful"
-msgstr "질서"
+msgstr "끔찍한"
 
 #: ../src/eat.c:1815
 msgid "rather trippy."
@@ -12057,12 +12055,10 @@ msgstr "먼지에 쓰여진"
 msgid "scrawled in blood"
 msgstr "피로 휘갈겨 쓴"
 
-# ============================================================
-# 몬스터 이름 (Monster Names)
-# ============================================================
+# 새김 방법 - 일반 글쓰기 (engraving method - general writing)
 #: ../src/engrave.c:1139
 msgid "written"
-msgstr "새끼 고양이"
+msgstr "쓰여진"
 
 #: ../src/engrave.c:1149
 #, c-format
@@ -12090,19 +12086,30 @@ msgstr "현재 메시지를 덮어쓸 것이다."
 msgid "is no room to add anything else here."
 msgstr "여기에 다른 것을 추가할 공간이 없다."
 
+# 조합 패턴: "%s the %s with %s%s."
+#   %1$s = 동사 (engrave, burn 등)
+#   %2$s = 표면 (floor, ground 등)
+#   %3$s = "1 of " 또는 ""
+#   %4$s = 도구 이름
+# 예: "You engrave the floor with 1 of your daggers."
+# → "1개의 단검으로 바닥을 새긴다."
 #: ../src/engrave.c:1175
 #, c-format
 msgid "%s the %s with %s%s."
-msgstr "%s%s{으로/로} %s{을/를} %s."
+msgstr "%3$s%4$s{으로/로} %2$s{을/를} %1$s"
 
 #: ../src/engrave.c:1179
 msgid "1 of "
-msgstr "1개 중 "
+msgstr "1개의 "
 
+# 조합 패턴: "%s the %s with your %s."
+#   %1$s = 동사, %2$s = 표면, %3$s = 신체 부위 (손가락 끝)
+# 예: "You scribble the floor with your fingertip."
+# → "손가락 끝으로 바닥을 휘갈겨 쓴다."
 #: ../src/engrave.c:1182
 #, c-format
 msgid "%s the %s with your %s."
-msgstr "%s{으로/로} %s{을/를} %s."
+msgstr "%3$s{으로/로} %2$s{을/를} %1$s"
 
 #: ../src/engrave.c:1186
 #, c-format
@@ -31786,16 +31793,14 @@ msgstr "%s{이/가} 잠들었다."
 msgid "%s %s in pain!"
 msgstr "%s %s{이/가} 고통스럽다!"
 
-# ============================================================
-# 몬스터 이름 (Monster Names)
-# ============================================================
+# 물약 효과 동작 동사 (potion effect action verbs)
 #: ../src/potion.c:1820 ../src/potion.c:1857
 msgid "writhes"
-msgstr "새끼 고양이"
+msgstr "뒤틀린다"
 
 #: ../src/potion.c:1820 ../src/potion.c:1857
 msgid "shrieks"
-msgstr "비명을 지른다."
+msgstr "비명을 지른다"
 
 #: ../src/potion.c:1832
 #, c-format
@@ -39785,10 +39790,10 @@ msgstr "몸이 뒤틀리기 시작하자 고통에 %s..."
 
 # ============================================================
 # 몬스터 이름 (Monster Names)
-# ============================================================
+# 텔레포트 실패 시 동작 동사
 #: ../src/teleport.c:1250
 msgid "writhe"
-msgstr "새끼 고양이"
+msgstr "뒤틀리다"
 
 #: ../src/teleport.c:1252
 msgid "cease to exist."

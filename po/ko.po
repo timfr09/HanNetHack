@@ -20703,9 +20703,10 @@ msgstr ", 옷을 벗기는 것을 도우면서"
 msgid "You're such a %s; I wish..."
 msgstr "당신은 정말 %s이네요; 저는 바랍니다..."
 
+# 유혹 대사 - 여성 칭호
 #: ../src/mhitu.c:2138
 msgid "sweet lady"
-msgstr "단"
+msgstr "사랑스러운 여인"
 
 #: ../src/mhitu.c:2138
 msgid "nice guy"
@@ -20716,10 +20717,10 @@ msgstr "좋은 사람"
 msgid "Well, then you owe me %s%s!"
 msgstr "그럼 당신은 나에게 %s%s{을/를} 빚졌어!"
 
-# 방어구 - 장갑
+# 유혹 대사 - 장갑 요구 (농담)
 #: ../src/mhitu.c:2148
 msgid "twelve pairs of gloves"
-msgstr "가죽 장갑"
+msgstr "열두 켤레의 장갑"
 
 #: ../src/mhitu.c:2149
 msgid " and eleven more pairs of gloves"
@@ -20799,7 +20800,7 @@ msgstr "%s{이/가} %s{을/를} 지불하라고 요구하지만, 거절한다...
 #: ../src/mhitu.c:2263
 #, c-format
 msgid "%s tries to take your gold, but fails..."
-msgstr "%s{이/가} 당신을 공격하려다 물러났다."
+msgstr "%s{이/가} 당신의 금을 가져가려 했지만 실패했다..."
 
 #: ../src/mhitu.c:2283
 msgid "It's on the house!"
@@ -20812,7 +20813,7 @@ msgstr "무료다."
 #: ../src/mhitu.c:2288
 #, c-format
 msgid "%s takes %ld %s for services rendered!"
-msgstr "파괴된 물건에 대해 %s{에게} %ld %s{을/를} 빚졌다."
+msgstr "%s{이/가} 서비스 대가로 %ld %s{을/를} 가져갔다!"
 
 #: ../src/mhitu.c:2318
 #, c-format
@@ -20824,17 +20825,19 @@ msgstr "%s{이/가} 당신의 %s{을/를} 벗겼다."
 msgid "\"Shall I remove your %s, %s?\""
 msgstr "\"%s{을/를} 벗겨드릴까요, %s?\""
 
+# 유혹 대사 - 애칭
 #: ../src/mhitu.c:2322
 msgid "lover"
-msgstr "넘어서"
+msgstr "연인"
 
 #: ../src/mhitu.c:2322
 msgid "dear"
 msgstr "친애하는"
 
+# 유혹 대사 - 애칭
 #: ../src/mhitu.c:2322
 msgid "sweetheart"
-msgstr "단"
+msgstr "자기야"
 
 #: ../src/mhitu.c:2328
 #, c-format
@@ -21159,9 +21162,10 @@ msgstr "지우다"
 msgid "neutralize"
 msgstr "중립"
 
+# 아이템 상태 변경 동사 - 흩뿌리다/튀기다
 #: ../src/mkobj.c:748
 msgid "splatter"
-msgstr "덜그럭거리는"
+msgstr "흩뿌리다"
 
 #: ../src/mkobj.c:748 ../src/obj_descr_i18n.c:393
 msgid "open"
@@ -21300,13 +21304,15 @@ msgstr "%s의 최근에 자란 뿔이 먼지로 부서졌다."
 msgid "%s rusts."
 msgstr "%s{이/가} 녹슬었다."
 
+# 조합: 몬스터 상태 변화 - 열로 인한 죽음
 #: ../src/mon.c:1011
 msgid "boils away"
-msgstr "그것이 굴러갔다."
+msgstr "끓어 사라졌다"
 
+# 조합: 몬스터 상태 변화 - 열로 인한 죽음
 #: ../src/mon.c:1012
 msgid "melts away"
-msgstr "그것이 굴러갔다."
+msgstr "녹아 사라졌다"
 
 #
 #: ../src/mon.c:1013
@@ -21326,7 +21332,7 @@ msgstr "%s이(가) 약간 탔다."
 #: ../src/mon.c:1065
 #, c-format
 msgid "%s drowns."
-msgstr "%s{이/가} 당신을 익사시킨다..."
+msgstr "%s{이/가} 익사했다."
 
 #: ../src/mon.c:1068
 #, c-format
@@ -21355,7 +21361,7 @@ msgstr "바삭거리는 소리."
 #: ../src/mon.c:1586
 #, c-format
 msgid "%s engulfs %s."
-msgstr "%s{이/가} %s{을/를} 내뱉었다."
+msgstr "%s{이/가} %s{을/를} 삼켰다."
 
 #: ../src/mon.c:1588
 #, c-format

@@ -30038,10 +30038,10 @@ msgstr "남성 "
 msgid "turn into"
 msgstr "변했다"
 
-#
+# 조합: "You feel like a new X" - 변신 후 느낌
 #: ../src/polyself.c:802
 msgid "feel like"
-msgstr "나를 풀어줬다!"
+msgstr "느껴진다"
 
 #: ../src/polyself.c:807
 msgid "You turn to stone!"
@@ -30244,9 +30244,10 @@ msgstr "부츠가 떨어졌다!"
 msgid "boots %s off your feet!"
 msgstr "부츠가 발에서 %s 벗겨졌다!"
 
+# 조합: "boots are pushed off your feet" - 부츠가 밀려남
 #: ../src/polyself.c:1267 ../src/worn.c:1302
 msgid "are pushed"
-msgstr "물보라를 맞았다!"
+msgstr "밀려났다"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -30265,9 +30266,10 @@ msgstr "놓아주다"
 msgid "find you must %s %s %s!"
 msgstr "%s %s{을/를} %s해야 한다는 것을 알았다!"
 
+# 사망 원인 - 생물 형태에 갇힌 채 죽음
 #: ../src/polyself.c:1360
 msgid "killed while stuck in creature form"
-msgstr "그런 생물을 탄다."
+msgstr "생물 형태에 갇힌 채 죽었다"
 
 #: ../src/polyself.c:1380
 #, c-format
@@ -30323,9 +30325,10 @@ msgstr ", "
 msgid "fries and "
 msgstr ", "
 
+# 조합: "web freezes, shatters and is swept away"
 #: ../src/polyself.c:1522
 msgid "freezes, shatters and "
-msgstr "아래의 함정문이 산산이 부서졌다."
+msgstr "얼어붙어 산산조각 나고 "
 
 #: ../src/polyself.c:1525
 #, c-format

@@ -30838,9 +30838,10 @@ msgstr "지하경"
 msgid "sporulated"
 msgstr "구멍 뚫린"
 
+# 버섯/균류의 줄기 (fungus stalk)
 #: ../src/polyself.c:1999
 msgid "stalk"
-msgstr "수정"
+msgstr "자루"
 
 #: ../src/polyself.c:2000
 msgid "rhizome tip"
@@ -31055,9 +31056,10 @@ msgstr "뒷지느러미"
 msgid "pectoral fin"
 msgstr "가슴지느러미"
 
+# 물고기 신체 부위 형용사
 #: ../src/polyself.c:2028
 msgid "finned"
-msgstr "기절한"
+msgstr "지느러미가 달린"
 
 #: ../src/polyself.c:2029
 msgid "peduncle"

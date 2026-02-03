@@ -16283,11 +16283,14 @@ msgstr "순간이동 제어"
 
 # ============================================================
 # 공중 부양 (Levitation)
-# 조합: "You levitate if not trapped"
+# 조합: enl_msg(You_, "would levitate", ..., " if not trapped", "")
+# 영어: "You would levitate if not trapped."
+# 한국어: "당신은 (함정에 안 걸렸으면) 부양할 것이다."
+# suffix 앞 공백 제거, 뒤 공백 추가
 # ============================================================
 #: ../src/insight.c:1683
 msgid " if not trapped"
-msgstr " (함정에 안 걸렸으면)"
+msgstr "(함정에 안 걸렸으면) "
 
 #: ../src/insight.c:1686
 msgid "would levitate"
@@ -16309,17 +16312,18 @@ msgstr "날 수 있을 것이다"
 msgid "would have flown"
 msgstr "날 수 있었을 것이다"
 
+# suffix 앞 공백 제거, 뒤 공백 추가
 #: ../src/insight.c:1703
 msgid " if you weren't levitating"
-msgstr " (부양 중이 아니면)"
+msgstr "(부양 중이 아니면) "
 
 #: ../src/insight.c:1708
 msgid " if you weren't trapped"
-msgstr " (함정에 안 걸렸으면)"
+msgstr "(함정에 안 걸렸으면) "
 
 #: ../src/insight.c:1713
 msgid " if circumstances permitted"
-msgstr " (상황이 허락하면)"
+msgstr "(상황이 허락하면) "
 
 #: ../src/insight.c:1724
 msgid "cling to the ceiling"
@@ -16495,9 +16499,10 @@ msgstr "모습을 바꿨다"
 msgid "would %s periodically"
 msgstr "주기적으로 %s"
 
+# suffix 앞 공백 제거, 뒤 공백 추가
 #: ../src/insight.c:1832
 msgid " if not locked into your current form"
-msgstr " (현재 모습에 고정되지 않았다면)"
+msgstr "(현재 모습에 고정되지 않았다면) "
 
 #: ../src/insight.c:1836
 msgid "polymorphing periodically"
@@ -16934,9 +16939,13 @@ msgstr "문맹"
 msgid "read items or engraved %ld time%s"
 msgstr "읽거나 새긴 횟수 %ld번%s"
 
+# 조합: you_have_never("had a pet")
+# 영어: "You have never had a pet."
+# 한국어: "당신은 애완동물을 키운 적 없다."
+# 참고: you_have_never 패턴이므로 부정문이어야 함
 #: ../src/insight.c:2158
 msgid "had a pet"
-msgstr "애완동물이 있었다"
+msgstr "애완동물을 키운 적 없다"
 
 #: ../src/insight.c:2162
 msgid "genocided any monsters"

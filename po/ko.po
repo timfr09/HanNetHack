@@ -42128,19 +42128,21 @@ msgstr "%s이(가) 빠져나왔다..."
 msgid "%s climbs %sout of the pit."
 msgstr "%s{이/가} 구덩이에서 %s 기어 나왔다."
 
+# 구덩이에서 쉽게 나오기 (날 수 있을 때)
 #: ../src/trap.c:3692
 msgid "easily "
-msgstr "심하게 "
+msgstr "쉽게 "
 
 #: ../src/trap.c:3694
 #, c-format
 msgid "%s pulls free of the %s."
 msgstr "%s{이/가} %s에서 빠져나왔다."
 
+# 녹슬게 하는 몬스터가 곰 덫을 먹음
 #: ../src/trap.c:3702
 #, c-format
 msgid "%s eats a bear trap!"
-msgstr "%s 곰 덫을 해제했다."
+msgstr "%s{이/가} 곰 덫을 먹었다!"
 
 #: ../src/trap.c:3709
 #, c-format
@@ -45997,21 +45999,24 @@ msgstr "비열한 놈"
 msgid "chucklehead"
 msgstr "멍청이"
 
+# 마법사 모욕어: 비열한 하인
 #: ../src/wizard.c:820
 msgid "coistrel"
-msgstr "황갈색"
+msgstr "비열한 놈"
 
 #: ../src/wizard.c:820
 msgid "craven"
 msgstr "겁쟁이"
 
+# 마법사 모욕어: 바보
 #: ../src/wizard.c:820
 msgid "cretin"
-msgstr "망막"
+msgstr "얼간이"
 
+# 마법사 모욕어: 잡종개/비열한 자
 #: ../src/wizard.c:820
 msgid "cur"
-msgstr "털"
+msgstr "잡종개"
 
 #: ../src/wizard.c:821
 msgid "dastard"
@@ -46048,20 +46053,19 @@ msgstr "백치"
 msgid "knave"
 msgstr "악한"
 
-# ============================================================
-# 성별 형용사 (Gender Adjectives)
-# ============================================================
+# 마법사 모욕어: 저주받은 자
 #: ../src/wizard.c:823
 msgid "maledict"
-msgstr "남성"
+msgstr "저주받은 자"
 
 #: ../src/wizard.c:823
 msgid "miscreant"
 msgstr "악인"
 
+# 마법사 모욕어: 비겁한 자
 #: ../src/wizard.c:823
 msgid "niddering"
-msgstr "숨었다!"
+msgstr "비겁한 자"
 
 #: ../src/wizard.c:823
 msgid "poltroon"
@@ -46095,9 +46099,10 @@ msgstr "바보"
 msgid "worm"
 msgstr "벌레"
 
+# 마법사 모욕어: 가련한 자
 #: ../src/wizard.c:826
 msgid "wretch"
-msgstr "케첩"
+msgstr "불쌍한 놈"
 
 #: ../src/wizard.c:830
 msgid "Hell shall soon claim thy remains,"

@@ -2570,10 +2570,15 @@ msgstr "%s{을/를} 풀어줬다!"
 msgid "%s is insightful."
 msgstr "%s{이/가} 통찰력이 있다."
 
+# 여러 맥락에서 사용:
+# - insight.c: enl_msg(You_, "resist", "resisted", " hallucinations", ...)
+#   조합: "당신은 환각에 저항한다 (반지의 영향)"
+# - artifact.c/sit.c/wield.c: Tobjnam/vtense 함수와 함께 사용
+#   예: "바위가 저항한다!" "악마가 저항한다!"
 #: ../src/artifact.c:1415 ../src/insight.c:1541 ../src/sit.c:605
 #: ../src/wield.c:777
 msgid "resist"
-msgstr "저항하다"
+msgstr "저항한다"
 
 #: ../src/artifact.c:1424 ../src/insight.c:1032 ../src/mhitu.c:1665
 #: ../src/timeout.c:37
@@ -3155,11 +3160,14 @@ msgstr "그 "
 msgid "were"
 msgstr "은"
 
+# 조합: "Total elapsed playing time was 1 day."
+#       "Your score was 100."
+# 한국어: "총 경과 플레이 시간은 1일이었다." / "당신의 점수는 100이었다."
 #: ../src/attrib.c:333 ../src/insight.c:431 ../src/insight.c:538
 #: ../src/insight.c:763 ../src/insight.c:1214 ../src/insight.c:1360
 #: ../src/insight.c:1498 ../src/insight.c:1812 ../src/insight.c:1899
 msgid "was"
-msgstr "은"
+msgstr "이었다"
 
 #
 #: ../src/attrib.c:338
@@ -5307,6 +5315,13 @@ msgid "You %s an explosion!"
 msgstr "폭발 %s!"
 
 # Verbs for look_here function (Blind: feel, otherwise: see)
+# 문제: "see"는 여러 맥락에서 사용됨
+# 1. insight.c: "see invisible" → 동사가 suffix에 포함되어야 함
+# 2. lock.c: "see no door" → 부정 맥락, "없다"로 처리
+# 3. 기타: 다양한 문맥
+# 해결: 제로너비공백으로 처리, 각 문장 패턴에서 동사를 직접 포함
+#       insight.c의 " invisible" → " 투명한 것을 본다"
+#       lock.c의 "%s no door" → "거기에 문이 없다.%s"
 #: ../src/detect.c:1757 ../src/dogmove.c:1527 ../src/getpos.c:681
 #: ../src/hack.c:1705 ../src/hack.c:3703 ../src/insight.c:1548
 #: ../src/insight.c:1554 ../src/invent.c:4112 ../src/lock.c:590
@@ -5314,7 +5329,7 @@ msgstr "폭발 %s!"
 #: ../src/pickup.c:2806 ../src/questpgr.c:313 ../src/shk.c:1775
 #: ../src/trap.c:5980
 msgid "see"
-msgstr "보인다"
+msgstr "​"
 
 #: ../src/detect.c:1757 ../src/lock.c:1282 ../src/pray.c:2282
 msgid "hear"
@@ -8702,13 +8717,21 @@ msgid "It doesn't come loose."
 msgstr "풀리지 않는다."
 
 #: ../src/dokick.c:625
+# 조합: "%s" + "do/does" + "n't come loose"
+# 영어: "The rock doesn't come loose."
+# 한국어: "do/does"는 불필요, 제로너비공백으로 처리
+# 결과: "바위가 느슨해지지 않았다."
+# 참고: %2$s는 "do/does"로 제로너비공백이지만 포맷 검증을 위해 포함
 #, c-format
 msgid "%s %sn't come loose."
-msgstr "%s{이/가} %s 느슨해지지 않았다."
+msgstr "%1$s{이/가} %2$s느슨해지지 않았다."
 
+# 영어 조동사 do - 한국어에서 불필요 (제로너비공백)
+# insight.c: enl_msg(You_, "do", "did", " not wear any armor", "")
+# dokick.c: otense(obj, "do") - 단복수 시제 조동사
 #: ../src/dokick.c:627 ../src/insight.c:1240
 msgid "do"
-msgstr "하다"
+msgstr "​"
 
 #: ../src/dokick.c:631
 msgid "It comes loose."
@@ -14780,9 +14803,14 @@ msgstr "큰 방에 들어갔다"
 msgid "learned castle drawbridge's tune"
 msgstr "성 도개교의 선율을 배웠다"
 
+# ============================================================
+# 피해/방어 수정치 크기 표시 (Combat Modifier Magnitude)
+# 조합: enlght_combatinc() - "a moderate damage bonus" 등
+# 예시: "a moderate to hit penalty" → "적당한 명중 페널티"
+# ============================================================
 #: ../src/insight.c:184
 msgid "moderate"
-msgstr "모독된"
+msgstr "적당한"
 
 #: ../src/insight.c:186 ../src/insight.c:3246 ../src/obj_descr_i18n.c:930
 #: ../src/objnam.c:787
@@ -14801,19 +14829,23 @@ msgstr "아니오"
 msgid "bonus"
 msgstr "보너스"
 
+# 조합: "a large damage penalty" → "큰 피해 페널티"
 #: ../src/insight.c:191
 msgid "penalty"
-msgstr "짠"
+msgstr "페널티"
 
+# 조합: enlght_halfdmg() - "half physical damage" → "절반의 물리적 피해"
+# 예시: "You take half physical damage" → "당신은 절반의 물리적 피해를 받는다"
 #: ../src/insight.c:212
 msgid "physical"
-msgstr "의사"
+msgstr "물리적"
 
-# 마법서
-# --- 마법서 (Spellbooks) ---
+# 조합: enlght_halfdmg() - "half spell damage" → "절반의 마법 피해"
+# 예시: "You take reduced spell damage" → "당신은 감소된 마법 피해를 받는다"
+# 주의: "spellbook"과 다름 - 여기서는 "spell damage" 맥락
 #: ../src/insight.c:215
 msgid "spell"
-msgstr "마법서"
+msgstr "마법"
 
 #: ../src/insight.c:218 ../src/insight.c:3227 ../src/obj_descr_i18n.c:939
 #: ../src/options.c:4142 ../src/options.c:9121 ../src/pager.c:735
@@ -14822,28 +14854,48 @@ msgid "unknown"
 msgstr "미지"
 
 # ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
+# 피해 감소 메시지 (Half Damage Messages)
+# ============================================================
+# 조합: enlght_halfdmg() 함수
+# 코드: Sprintf(buf, " %s %s damage", half/reduced, physical/spell);
+#       enl_msg(You_, "take", "took", buf, from_what(category));
+# 포맷: " %1$s%3$s%2$s%4$s." (주어+suffix+동사+ps)
+#
+# 영어 조합 예시:
+#   "You " + "take" + " half physical damage" + " (because of ring)"
+#   → "You take half physical damage (because of ring)."
+#
+# 한국어 조합 결과:
+#   "당신은 " + " 절반의 물리적 피해를 받는다" + "​" + " (반지의 영향)"
+#   → "당신은 절반의 물리적 피해를 받는다 (반지의 영향)."
+#
+# 해결: 동사 "take"/"took"를 제로너비공백으로, suffix에 동사 포함
+#       이렇게 하면 steal.c에서의 맥락 충돌도 해결됨
 # ============================================================
 #: ../src/insight.c:221
 #, c-format
 msgid " %s %s damage"
-msgstr "%s{이/가} %s 화났다!"
+msgstr " %2$s %1$s 피해를 받는다"
 
 #: ../src/insight.c:221
 msgid "half"
-msgstr "절반"
+msgstr "절반의"
 
 #: ../src/insight.c:221
 msgid "reduced"
-msgstr "감소"
+msgstr "감소된"
 
+# "take"는 두 맥락에서 사용됨:
+# 1. insight.c - "take damage" (피해를 받다) → suffix에 동사 포함됨
+# 2. steal.c - "tries to take your armor" → 문장 패턴에서 무시됨
+# 두 맥락 모두 해결: 제로너비공백 사용
 #: ../src/insight.c:223 ../src/insight.c:1796 ../src/steal.c:477
 msgid "take"
-msgstr "벗을"
+msgstr "​"
 
 #: ../src/insight.c:223 ../src/insight.c:1796
 msgid "took"
-msgstr "걸렸다"
+msgstr "​"
 
 # === trap_predicament (hack.c) ===
 #: ../src/insight.c:245 ../src/obj_descr_i18n.c:951
@@ -15894,13 +15946,16 @@ msgstr "질병 면역"
 msgid "petrification resistant"
 msgstr "석화 저항"
 
+# 조합: enl_msg(You_, "resist", "resisted", " hallucinations", from_what(...))
+# 영어: "You resist hallucinations (because of ring)."
+# 한국어: "당신은 환각에 저항한다 (반지의 영향)."
 #: ../src/insight.c:1541
 msgid "resisted"
 msgstr "저항했다"
 
 #: ../src/insight.c:1541
 msgid " hallucinations"
-msgstr " 환각"
+msgstr " 환각에"
 
 #: ../src/insight.c:1544
 msgid "recognize detrimental food"
@@ -15912,16 +15967,20 @@ msgstr "빛으로 인한 실명에 면역"
 
 # ============================================================
 # 투명 감지 능력 (See Invisible)
-# 조합: enl_msg("You ", "see"/"saw", "will see", " invisible", ...)
-# 예시: "You see invisible" → "당신은 투명한 것을 볼 수 있다"
+# 조합: enl_msg(You_, "see", "saw", " invisible", from_what(...))
+# 영어: "You see invisible (because of ring)."
+# 한국어: "당신은 투명한 것을 본다 (반지의 영향)."
+#
+# 문제: "see"가 다른 맥락(lock.c 등)에서도 사용되어 제로너비공백으로 처리
+# 해결: suffix(" invisible")에 동사 포함
 # ============================================================
 #: ../src/insight.c:1554
 msgid "saw"
-msgstr "볼 수 있었다"
+msgstr "​"
 
 #: ../src/insight.c:1554
 msgid " invisible"
-msgstr " 투명한 것을"
+msgstr " 투명한 것을 본다"
 
 #: ../src/insight.c:1556
 msgid "will see"
@@ -16004,7 +16063,9 @@ msgstr "천리안"
 
 # ============================================================
 # 천리안 능력 (Clairvoyance)
-# 조합: "You could be clairvoyant" (실명 상태에서)
+# 조합: enl_msg(You_, "could be", "could have been", " clairvoyant", buf)
+# 영어: "You could be clairvoyant (if not blind)."
+# 한국어: "당신은 천리안이 될 수 있다 (눈이 멀지 않으면)."
 # ============================================================
 #: ../src/insight.c:1600
 msgid "could be"
@@ -16016,7 +16077,7 @@ msgstr "될 수 있었다"
 
 #: ../src/insight.c:1600
 msgid " clairvoyant"
-msgstr " 천리안"
+msgstr " 천리안이"
 
 # 적외선 시야 - 어둠 속에서 열기로 생물을 볼 수 있음
 #: ../src/insight.c:1603 ../src/pager.c:505 ../src/pager.c:696
@@ -16076,12 +16137,21 @@ msgstr "변위"
 
 # ============================================================
 # 은신 능력 (Stealth)
-# 조합: "You are stealthy if not mounted"
+# 조합: enl_msg(You_, "would be", "would have been", " stealthy if not mounted", "")
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
+# 영어 (현재): "You would be stealthy if not mounted."
+# 영어 (과거): "You would have been stealthy if not mounted."
+# 한국어 (현재): "당신은 은밀하게 (탑승 중이 아닐 때)될 것이다."
+# 한국어 (과거): "당신은 은밀하게 (탑승 중이 아닐 때)되었을 것이다."
+#
+# 참고: "would be"/"would have been"은 life saved 패턴과 공유됨
+#       두 패턴 모두 "~게 되다" 형태로 자연스럽게 조합됨
 # ============================================================
 #: ../src/insight.c:1653
 #, c-format
 msgid " stealthy%s"
-msgstr " 은밀%s"
+msgstr " 은밀하게%s"
 
 #: ../src/insight.c:1654
 msgid " if not mounted"
@@ -16089,31 +16159,52 @@ msgstr " (탑승 중이 아닐 때)"
 
 #: ../src/insight.c:1655
 msgid "would be"
-msgstr "일 것이다"
+msgstr "될 것이다"
 
 #: ../src/insight.c:1655 ../src/insight.c:1887
 msgid "would have been"
-msgstr "이었을 것이다"
+msgstr "되었을 것이다"
 
+# ============================================================
+# 특수 조합 패턴: 영어 동사+d 형태 (aggravate+d = aggravated)
+# 조합: enl_msg("You aggravate", "", "d", " monsters", from_what(...))
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
+# 문제: 영어에서는 동사에 'd'를 붙여 과거형 생성
+#       한국어에서는 이 방식이 불가능
+#
+# 해결: prefix에 전체 문장 포함, suffix와 'd'는 제로너비공백 처리
+#       과거 시제는 포기 (enlightenment는 주로 현재 상태 표시)
+#
+# 영어 예시: "You aggravate" + "" + " monsters" = "You aggravate monsters"
+#           "You aggravate" + "d" + " monsters" = "You aggravated monsters"
+# 한국어 결과: "당신은 괴물을 자극한다 (반지의 영향)"
+# ============================================================
 #: ../src/insight.c:1658
 msgid "You aggravate"
-msgstr "당신은 자극한다"
+msgstr "당신은 괴물을 자극한다"
 
+# 영어 과거형 접미사 - 한국어에서는 prefix에 포함되므로 제로너비공백
 #: ../src/insight.c:1658 ../src/insight.c:1661 ../src/insight.c:1750
 msgid "d"
-msgstr "했다"
+msgstr "​"
 
+# prefix에 이미 포함되어 있으므로 제로너비공백
 #: ../src/insight.c:1658
 msgid " monsters"
-msgstr " 괴물"
+msgstr "​"
 
+# 조합: enl_msg("You cause", "", "d", " conflict", from_what(...))
+# 영어: "You cause conflict" / "You caused conflict"
+# 한국어 결과: "당신은 분쟁을 일으킨다 (반지의 영향)"
 #: ../src/insight.c:1661
 msgid "You cause"
-msgstr "당신은 일으킨다"
+msgstr "당신은 분쟁을 일으킨다"
 
+# prefix에 이미 포함되어 있으므로 제로너비공백
 #: ../src/insight.c:1661
 msgid " conflict"
-msgstr " 분쟁"
+msgstr "​"
 
 #: ../src/insight.c:1667
 msgid "teleport"
@@ -16218,9 +16309,12 @@ msgstr "수중 호흡"
 msgid "walk through walls"
 msgstr "벽 통과"
 
+# 조합: enl_msg("You regenerate", "", "d", "", from_what(REGENERATION))
+# 영어: "You regenerate" / "You regenerated"
+# 한국어 결과: "당신은 재생한다 (반지의 영향)"
 #: ../src/insight.c:1750
 msgid "You regenerate"
-msgstr "재생한다"
+msgstr "당신은 재생한다"
 
 #: ../src/insight.c:1752
 msgid "slower digestion"
@@ -16259,9 +16353,12 @@ msgstr "보호됨"
 msgid "protected"
 msgstr "방어됨"
 
+# 조합: enl_msg(You_, "take", "took", " reduced poison gas damage", "")
+# 포맷: 당신은 + suffix + verb = "당신은 감소된 독가스 피해를 받는다"
+# 참고: "take"/"took"가 제로너비공백이므로 suffix에 동사 포함
 #: ../src/insight.c:1796
 msgid " reduced poison gas damage"
-msgstr " 독가스 피해 감소"
+msgstr " 감소된 독가스 피해를 받는다"
 
 #: ../src/insight.c:1806
 #, c-format
@@ -16372,17 +16469,29 @@ msgstr "자유 행동"
 msgid "fixed abilities"
 msgstr "고정된 능력치"
 
+# ============================================================
+# 생명 보존 메시지 (Life Saved)
+# 조합: enl_msg("Your life ", "will be", "would have been", " saved", "")
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
+# 영어 (현재): "Your life will be saved."
+# 영어 (과거): "Your life would have been saved."
+# 한국어 (현재): "당신의 생명은 구원받게 될 것이다."
+# 한국어 (과거): "당신의 생명은 구원받게 되었을 것이다."
+#
+# 참고: "would have been"은 stealthy 패턴과 공유됨
+# ============================================================
 #: ../src/insight.c:1887
 msgid "Your life "
-msgstr "당신의 생명 "
+msgstr "당신의 생명은 "
 
 #: ../src/insight.c:1887
 msgid "will be"
-msgstr "이 될 것이다"
+msgstr "될 것이다"
 
 #: ../src/insight.c:1887
 msgid " saved"
-msgstr " 구원받음"
+msgstr " 구원받게"
 
 # ============================================================
 # 행운 관련 메시지 (Luck)
@@ -16414,27 +16523,51 @@ msgstr "추가 행운"
 msgid "reduced luck"
 msgstr "감소된 행운"
 
+# ============================================================
+# 행운 시간 초과 메시지 (Luck Timeout)
+# 조합: enl_msg("Bad luck ", "does", "did", " not time out for you", "")
+#       enl_msg("Good luck ", "does", "did", " not time out for you", "")
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
+# 영어 (현재): "Bad luck does not time out for you."
+# 영어 (과거): "Bad luck did not time out for you."
+# 한국어: "악운은 시간이 지나도 사라지지 않는다."
+#
+# 참고: 럭키스톤 등을 소지하여 행운이 감소하지 않을 때 표시
+#       동사는 제로너비공백 처리, suffix에 전체 서술어 포함
+# ============================================================
 #: ../src/insight.c:1907
 msgid "Bad luck "
-msgstr "나쁜 행운 "
+msgstr "악운은"
 
 #: ../src/insight.c:1907 ../src/insight.c:1909
 msgid "does"
-msgstr "은"
+msgstr "​"
 
 #: ../src/insight.c:1907 ../src/insight.c:1909
 msgid " not time out for you"
-msgstr " 시간 초과되지 않다"
+msgstr " 시간이 지나도 사라지지 않는다"
 
 #: ../src/insight.c:1909
 msgid "Good luck "
-msgstr "좋은 행운 "
+msgstr "행운은"
 
-# 신의 분노 상태
+# ============================================================
+# 신의 분노 상태 (God's Anger)
+# 조합: enl_msg(u_gname(), " is", " was", " %sangry with you", "")
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
+# 영어: "Anu is extremely angry with you."
+# 한국어 (이상적): "아누는 당신에게 극도로 화가 나 있다."
+# 한국어 (현재): "아누 당신에게 극도로 화가 나 있다 이다."
+#
+# 문제: " is"가 candle 메시지("촛불이 짧아지고 있다")에서 주격조사로 사용되어
+#       제로너비공백이나 "이다"로 변경 불가. suffix에 서술어를 포함하여 처리.
+# ============================================================
 #: ../src/insight.c:1913
 #, c-format
 msgid " %sangry with you"
-msgstr " 당신에게 %s화가 난"
+msgstr " 당신에게 %s화가 나 있다"
 
 #: ../src/insight.c:1917
 msgid " was"
@@ -16442,21 +16575,31 @@ msgstr "​"
 
 # ============================================================
 # 기도 관련 메시지 (Prayer)
-# 조합: "You could safely pray" / "You could not safely pray"
+# 조합: you_can(buf, "") where buf = "[not ]safely pray"
+# 패턴: enl_msg(You_, can, could, buf, "")
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
+# 영어 (기도 가능): "You can safely pray."
+# 영어 (기도 불가): "You can not safely pray."
+# 한국어 (기도 가능): "당신은 안전하게 기도할 수 있다."
+# 한국어 (기도 불가): "당신은 (할 수 없음) 안전하게 기도할 수 있다."
+#
+# 문제: "not " 접두사를 한국어 어미에 반영하기 어려움
+#       괄호로 부정 의미 표시
 # ============================================================
 #: ../src/insight.c:1927
 #, c-format
 msgid "%s%ssafely pray%s"
-msgstr "%s%s안전하게 기도%s"
+msgstr "%s%s안전하게 기도할 수 있다%s"
 
 #: ../src/insight.c:1927 ../src/insight.c:1930
 msgid "not "
-msgstr "할 수 없다 "
+msgstr "(할 수 없음) "
 
 #: ../src/insight.c:1930
 #, c-format
 msgid "%ssafely pray"
-msgstr "%s안전하게 기도"
+msgstr "%s안전하게 기도할 수 있다"
 
 #: ../src/insight.c:1949
 #, c-format
@@ -16473,13 +16616,18 @@ msgstr "생성된 과일 플래그 "
 
 # ============================================================
 # 구원의 은총 (Saving Grace) 메시지
+# 조합: enl_msg(You_, verb, verb, " a one-shot death via saving-grace", "")
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
+# 영어: "You avoided a one-shot death via saving-grace."
+# 한국어: "당신은 구원의 은총으로 일격사를 피했다."
+#
+# 동사 변형:
+# - might avoid: 게임 중, 아직 사용 안함 → "피할 수도 있다"
+# - have avoided: 게임 중, 사용함 → "피했다"
+# - could have avoided: 게임 종료, 사용 안함 → "피할 수도 있었다"
+# - avoided: 게임 종료, 사용함 → "피했다"
 # ============================================================
-# 조합 패턴: enl_msg(You_, verb, verb, " a one-shot death via saving-grace", "")
-# 영어: "You " + "avoided" + " a one-shot death via saving-grace."
-# 한국어 어순 문제: 영어는 "주어+동사+목적어"이지만 한국어는 "주어+목적어+동사"
-# 해결책: 동사 번역을 비우고, suffix에 완전한 한국어 문장을 넣음
-# 결과: "당신은 " + "" + "구원의 은총으로 일격사를 피할 수 있었다."
-# 참고: 동사 시제 구분(might/have/could)이 사라지지만, 자연스러운 한국어가 됨
 #: ../src/insight.c:1961
 msgid "might avoid"
 msgstr "피할 수도 있다"
@@ -16498,7 +16646,7 @@ msgstr "피했다"
 
 #: ../src/insight.c:1970
 msgid " a one-shot death via saving-grace"
-msgstr "구원의 은총으로 일격사를 피할 수 있었다"
+msgstr " 구원의 은총으로 일격사를"
 
 #: ../src/insight.c:1978
 msgid "survived after being killed "
@@ -16639,9 +16787,12 @@ msgstr "캐릭터를 %ld번%s 다시 굴렸다"
 msgid "faithfully nudist"
 msgstr "충실한 누드족"
 
+# 조합: enl_msg(You_, "have gone", "went", " without food", "")
+# 영어: "You have gone without food." / "You went without food."
+# 한국어: "당신은 음식 없이 지낸다." / "당신은 음식 없이 지냈다."
 #: ../src/insight.c:2129 ../src/insight.c:2308
 msgid "have gone"
-msgstr "지내다"
+msgstr "지낸다"
 
 #: ../src/insight.c:2129 ../src/insight.c:2308
 msgid "went"
@@ -18330,14 +18481,24 @@ msgid "I don't think %s would appreciate that."
 msgstr "%s{이/가} 그것을 좋아할 것 같지 않다."
 
 #: ../src/lock.c:590
+# 조합: You("%s no lock...", Blind ? "feel" : "see")
+# 영어: "You see no lock on the drawbridge." / "You feel no lock..."
+# 문제: "see"는 insight.c에서 "본다"로 번역되어야 하지만
+#       여기서는 "안 보인다"가 필요함 (부정 맥락)
+# 해결: 문장 패턴에서 "없다"를 직접 표현, %s는 무시하도록 조정
+# 한국어: "도개교에 자물쇠가 없다." (see/feel 구분 포기)
 #, c-format
 msgid "%s no lock on the drawbridge."
-msgstr "도개교에 자물쇠가 %s 없다."
+msgstr "도개교에 자물쇠가 없다.%s"
 
+# 조합: You("%s no door there.", Blind ? "feel" : "see")
+# 영어: "You see no door there." / "You feel no door there."
+# 해결: 문장 패턴에서 "없다"를 직접 표현, %s는 무시하도록 조정
+# 한국어: "거기에 문이 없다." (see/feel 구분 포기)
 #: ../src/lock.c:592 ../src/lock.c:852 ../src/lock.c:1014 ../src/trap.c:5980
 #, c-format
 msgid "%s no door there."
-msgstr "거기에 문이 %s 없다."
+msgstr "거기에 문이 없다.%s"
 
 #: ../src/lock.c:608
 msgid "Check this door for a trap?"
@@ -38891,8 +39052,20 @@ msgstr "%s{이/가} 훔치려 하지만, 훔칠 것이 없다!"
 
 # ============================================================
 # 도둑질 동사 (Stealing verbs)
-# how[] 배열: 도둑질 시도 동사들
-# 조합 패턴: "%s tries to %s %s%s but gives up."
+# how[] 배열: steal, snatch, grab, take (steal.c:477)
+#
+# 문제 1: 한국어 활용 - 받침 유무에 따라 "려"/"으려" 다름
+#         훔치+려=훔치려 ✓, 잡+으려=잡으려 ✓
+#
+# 문제 2: "take"는 insight.c에서 "받는다"(피해를 받다)로 번역됨
+#         steal.c에서는 "빼앗다"(아이템을 빼앗다) 의미
+#
+# 해결: 동사(%2$s)를 무시하고 일반적인 "빼앗으려"를 사용
+#       뉘앙스 차이(steal vs grab)는 손실되지만 의미 전달됨
+#
+# 조합 예시:
+#   영어: "The monkey tries to steal your armor but gives up."
+#   한국어: "원숭이가 당신의 갑옷을 빼앗으려 하지만 포기했다."
 # ============================================================
 #: ../src/steal.c:477
 msgid "steal"
@@ -38902,10 +39075,13 @@ msgstr "훔치다"
 msgid "snatch"
 msgstr "낚아채다"
 
+# 조합: "%s tries to %s %s%s but gives up."
+# %1$s = 몬스터명, %2$s = 동사(take/steal 등) → 제로너비공백, %3$s = 아이템, %4$s = 추가
+# "take"가 제로너비공백이므로 %2$s 포함해도 무시됨
 #: ../src/steal.c:480
 #, c-format
 msgid "%s tries to %s %s%s but gives up."
-msgstr "%s{이/가} %s%s{을/를} %s하려 하지만 포기했다."
+msgstr "%1$s{이/가} %3$s%4$s{을/를} %2$s빼앗으려 하지만 포기했다."
 
 #: ../src/steal.c:532
 #, c-format

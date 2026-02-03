@@ -40634,18 +40634,27 @@ msgstr "깨어났다."
 msgid "%s %s out of your pack!"
 msgstr "%s{이} 가방에서 %s!"
 
+# 조합 패턴: 알에서 부화한 몬스터의 울음 소리
+# "%s %s %s like \"%s%s\""
+#   %1$s = "Their"/"Its" (소유격)
+#   %2$s = 울음 소리 (chirping, squeaking 등)
+#   %3$s = "seems"/"sounds" (동사)
+#   %4$s = "mommy"/"daddy"
+#   %5$s = "."/"?" (문장 부호)
+# 예: "Its chirping sounds like \"mommy.\""
+# → "그것의 짹짹거림이 '엄마.'처럼 들린다."
 #: ../src/timeout.c:1120
 #, c-format
 msgid "%s %s %s like \"%s%s\""
-msgstr "%s{이/가} \"%s%s\"처럼 %s %s"
+msgstr "%1$s %2$s{이/가} \"%4$s%5$s\"처럼 %3$s"
 
 #: ../src/timeout.c:1121
 msgid "Their"
-msgstr "그들의"
+msgstr "그것들의"
 
 #: ../src/timeout.c:1123
 msgid "sounds"
-msgstr "소리"
+msgstr "들린다"
 
 #: ../src/timeout.c:1124
 msgid "mommy"

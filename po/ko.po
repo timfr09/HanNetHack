@@ -19247,10 +19247,11 @@ msgstr "네 허상을 향해 저주한다"
 msgid "at you, then curses"
 msgstr "너를 보고 저주한다"
 
+# 조합: 몬스터가 가리키며 저주 (monster points at target and curses)
 #: ../src/mcastu.c:67
 #, c-format
 msgid "%s points %s."
-msgstr "%s{이/가} %s{을/를} 때렸다."
+msgstr "%s{이/가} %s 가리킨다."
 
 #: ../src/mcastu.c:70
 msgid "You hear a mumbled curse."
@@ -19259,7 +19260,7 @@ msgstr "중얼거리는 저주가 들린다."
 #: ../src/mcastu.c:250
 #, c-format
 msgid "%s casts a spell at %s!"
-msgstr "%s{이/가} %s{을/를} 깊이 베었다!"
+msgstr "%s{이/가} %s{에게} 주문을 건다!"
 
 # ============================================================
 # 공통 문자열 (decl.h macros)
@@ -19375,9 +19376,10 @@ msgstr "주위에"
 msgid "%s %s your displaced image!"
 msgstr "%s{이/가} 이동한 이미지를 %s!"
 
+# 조합: "Monsters appear by your displaced image" - 이미지 곁에
 #: ../src/mcastu.c:512
 msgid "by"
-msgstr "루비"
+msgstr "곁에"
 
 #: ../src/mcastu.c:514
 #, c-format
@@ -19531,9 +19533,10 @@ msgstr "몬스터에 의해 마비됨"
 msgid "momentarily dizzy."
 msgstr "잠시 어지럽다."
 
+# 조합: "feel trippier" - 환각이 더 심해지다
 #: ../src/mcastu.c:846
 msgid "trippier"
-msgstr "파문"
+msgstr "더 환각적인"
 
 #: ../src/mcastu.c:848
 #, c-format
@@ -19559,7 +19562,7 @@ msgstr "몸이 고통스러운 상처로 덮였다!"
 #: ../src/mcastu.c:996
 #, c-format
 msgid "%s zaps you with a %s!"
-msgstr "%s{이/가} %s{을/를} 가볍게 친다."
+msgstr "%s{이/가} %s{으로/로} 당신을 공격한다!"
 
 #: ../src/mhitm.c:33 ../src/mon.c:2955
 msgid "an explosion"
@@ -19618,7 +19621,7 @@ msgstr "%s{을/를} 꿈꿨다."
 #: ../src/mhitm.c:343
 #, c-format
 msgid "%s emerges from hiding."
-msgstr "%s{이/가} 합쳐져 굳어졌다!"
+msgstr "%s{이/가} 숨어 있던 곳에서 나왔다!"
 
 #: ../src/mhitm.c:345
 #, c-format
@@ -19765,9 +19768,10 @@ msgstr "%s의 %s에 의해 시선이 반사되었다."
 msgid "%s doesn't seem to notice that %s gaze was reflected."
 msgstr "%s{은/는} %s 시선이 반사된 것을 알아채지 못한 것 같다."
 
+# 조합: "%s swallows %s" - 몬스터가 다른 몬스터를 삼키다
 #: ../src/mhitm.c:860
 msgid "swallows"
-msgstr "벽"
+msgstr "삼킨다"
 
 #: ../src/mhitm.c:861
 msgid "encloses"
@@ -19880,7 +19884,7 @@ msgstr "%s이(가) 갑자기 매우 뜨거워졌다!"
 #: ../src/mhitm.c:1431
 #, c-format
 msgid "%s is mildly tingled."
-msgstr "%s{이/가} 아직 먹고 있다."
+msgstr "%s{이/가} 약간 찌릿거렸다."
 
 #: ../src/mhitm.c:1438
 #, c-format
@@ -19890,7 +19894,7 @@ msgstr "%s이(가) 전기 충격을 받았다!"
 #: ../src/mhitm.c:1465 ../src/trap.c:2391
 #, c-format
 msgid "%s seems lethargic."
-msgstr "%s{이/가} 찡그리는 것 같다."
+msgstr "%s{이/가} 무기력해 보인다."
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -19948,25 +19952,29 @@ msgstr "%s이(가) 친근한 척한다."
 msgid "%s %smisses!"
 msgstr "%s이(가) %s빗나갔다!"
 
+# 조합: "just misses" - 간신히 빗나갔다
 #: ../src/mhitu.c:98
 msgid "just "
-msgstr "조정할"
+msgstr "간신히 "
 
 #: ../src/mhitu.c:119
 msgid "bashes with"
 msgstr "~으로 강타한다"
 
+# 조합: 몬스터 공격 동사 - 채찍질하다
 #: ../src/mhitu.c:120
 msgid "lashes"
-msgstr "쨍!"
+msgstr "채찍질한다"
 
+# 조합: 몬스터 공격 동사 - 찌르다
 #: ../src/mhitu.c:121
 msgid "thrusts"
-msgstr "녹슬다!"
+msgstr "찌른다"
 
+# 조합: 몬스터 공격 동사 - 휘두르다
 #: ../src/mhitu.c:122 ../src/mhitu.c:212 ../src/uhitm.c:3362
 msgid "swings"
-msgstr "쏘았다"
+msgstr "휘두른다"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -19976,9 +19984,10 @@ msgstr "쏘았다"
 msgid "%s %s %s%s %s."
 msgstr "%s %s %s%s%s."
 
+# 조합: 공격 타입 - 접촉
 #: ../src/mhitu.c:154
 msgid "contact"
-msgstr "용기를 여는 중"
+msgstr "접촉"
 
 #: ../src/mhitu.c:155
 msgid "gaze"

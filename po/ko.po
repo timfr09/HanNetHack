@@ -11995,9 +11995,10 @@ msgstr "낙서에 추가하다"
 msgid "scribble on"
 msgstr "휘갈겨 쓰다"
 
+# 조합: 갈겨 쓴 글에 추가하기 (adding to existing scrawl)
 #: ../src/engrave.c:921
 msgid "add to the scrawl on"
-msgstr "안장뿔에 부딪혔다."
+msgstr "갈겨 쓴 글에 추가하다"
 
 #: ../src/engrave.c:921
 msgid "scrawl on"
@@ -20597,9 +20598,10 @@ msgstr "%s에게 매우 끌린다."
 msgid "She"
 msgstr "그"
 
+# 조합: 유혹 몬스터의 대명사 (남성)
 #: ../src/mhitu.c:2004
 msgid "He"
-msgstr "영웅"
+msgstr "그"
 
 #: ../src/mhitu.c:2027 ../src/mhitu.c:2058
 msgid "\"That "
@@ -32555,9 +32557,10 @@ msgstr "텔레파시"
 msgid "Speed"
 msgstr "속도"
 
+# 신이 주는 선물 - 은신
 #: ../src/pray.c:1324
 msgid "Stealth"
-msgstr "건강해진 느낌이다."
+msgstr "은신"
 
 #: ../src/pray.c:1332
 msgid "my protection"
@@ -32577,9 +32580,10 @@ msgstr "제단의 %s 물약%s{이/가} 잠시 %s %s 빛난다."
 msgid "voice of %s %s: %s%s%s"
 msgstr "%s의 목소리 %s: %s%s%s"
 
+# 신이 분노했을 때 (divine anger)
 #: ../src/pray.c:1429
 msgid "Thou hast angered me."
-msgstr "나에게 합당한 자였도다!"
+msgstr "네가 나를 분노케 하였다."
 
 #: ../src/pray.c:1449
 msgid "sacrifice sprouts wings and a propeller and roars away!"

@@ -40080,10 +40080,11 @@ msgstr "%s{이/가} 갑자기 사라졌다!"
 msgid "%s avoids the %s."
 msgstr "%s이(가) %s을(를) 피했다."
 
+# 순간이동 시도할 때 어른거림
 #: ../src/teleport.c:2026
 #, c-format
 msgid "%s seems to shimmer for a moment."
-msgstr "%s{이/가} 잠시 매우 혼란스러워 보인다."
+msgstr "%s{이/가} 잠시 어른거린다."
 
 #: ../src/teleport.c:2072
 #, c-format
@@ -40116,21 +40117,24 @@ msgstr "더 이상 %s 안에 없다!"
 msgid "petrifying"
 msgstr "석화"
 
+# 상태 효과: 슬라임화 진행 중
 #: ../src/timeout.c:34
 msgid "becoming slime"
-msgstr "투명화의 지팡이"
+msgstr "슬라임화 중"
 
+# 상태 효과: 질식
 #: ../src/timeout.c:35
 msgid "strangling"
-msgstr "질식의 부적"
+msgstr "질식"
 
 #: ../src/timeout.c:36
 msgid "fatally sick"
 msgstr "치명적으로 아프다."
 
+# 상태 효과: 실명
 #: ../src/timeout.c:40
 msgid "blinded"
-msgstr "눈가리개"
+msgstr "실명"
 
 #: ../src/timeout.c:41
 msgid "deafness"

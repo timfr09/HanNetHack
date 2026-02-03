@@ -20274,9 +20274,10 @@ msgstr "%s{이/가} %s 아래에 숨어 있었다!"
 msgid "%s %s forward and plucks you off %s!"
 msgstr "%s{이/가} %s 앞으로 나와 당신을 %s에서 잡아챘다!"
 
+# 조합: 몬스터 이동 동사 - 빙글빙글 돌다
 #: ../src/mhitu.c:1321
 msgid "whirls"
-msgstr "고인다"
+msgstr "휘몰아친다"
 
 # 조합: 액체 몬스터의 이동 동사 (슬라임 등)
 #: ../src/mhitu.c:1323 ../src/monmove.c:1552
@@ -20344,9 +20345,10 @@ msgstr " 완전히"
 msgid "are laden with moisture and %s"
 msgstr "습기로 가득 차 있고 %s"
 
+# 삼켜진 상태에서 서서히 타들어가는 중
 #: ../src/mhitu.c:1438
 msgid "are smoldering out!"
-msgstr "마커가 말랐다!"
+msgstr "서서히 타들어가고 있다!"
 
 #: ../src/mhitu.c:1439
 msgid "find it mildly uncomfortable."
@@ -20361,9 +20363,10 @@ msgstr "약간 불편함을 느낀다."
 msgid "feel comforted."
 msgstr "편안함을 느낀다."
 
+# 물 속에서 거의 숨을 쉴 수 없는 상태
 #: ../src/mhitu.c:1442
 msgid "can barely breathe!"
-msgstr "숨을 쉴 수 있다."
+msgstr "거의 숨을 쉴 수 없다!"
 
 #: ../src/mhitu.c:1446
 #, c-format
@@ -20500,25 +20503,30 @@ msgstr "영향을 받지 않은 것 같다."
 msgid "seem unaffected by it."
 msgstr "그것에 영향을 받지 않은 것 같다."
 
+# 조합: 만화경 빛 효과 상태 - 어리둥절한
 #: ../src/mhitu.c:1666
 msgid "puzzled"
-msgstr "퍼즐"
+msgstr "어리둥절한"
 
+# 조합: 만화경 빛 효과 상태 - 눈부신
 #: ../src/mhitu.c:1666
 msgid "dazzled"
-msgstr "퍼즐"
+msgstr "눈부신"
 
+# 조합: 만화경 빛 효과 상태 - 짜증난
 #: ../src/mhitu.c:1667
 msgid "irritated"
-msgstr "토해졌다!"
+msgstr "짜증난"
 
+# 조합: 만화경 빛 효과 상태 - 염증이 생긴
 #: ../src/mhitu.c:1667
 msgid "inflamed"
-msgstr "절름발이"
+msgstr "염증이 생긴"
 
+# 조합: 만화경 빛 효과 상태 - 둔해진
 #: ../src/mhitu.c:1669
 msgid "dulled"
-msgstr "죽었다"
+msgstr "둔해진"
 
 #: ../src/mhitu.c:1706
 msgid "Someone seems overdue for a serpent cut."
@@ -20585,26 +20593,29 @@ msgstr "%s의 시선이 매우 졸리게 한다..."
 msgid "%s looks %s%s."
 msgstr "%s{이/가} %s%s 보인다."
 
+# 조합: 시선 효과 정도 - 꽤
 #: ../src/mhitu.c:1886
 msgid "quite "
-msgstr "포기"
+msgstr "꽤 "
 
 #: ../src/mhitu.c:1887
 msgid "a bit "
 msgstr "약간 "
 
+# 조합: 시선 효과 정도 - 다소
 #: ../src/mhitu.c:1887
 msgid "somewhat "
-msgstr "은 어느 정도"
+msgstr "다소 "
 
 #: ../src/mhitu.c:1989
 #, c-format
 msgid "%s acts as though %s has got a %sheadache."
 msgstr "%s이(가) %s 머리가 %s아픈 것처럼 행동한다."
 
+# 조합: 두통 정도 - 심한
 #: ../src/mhitu.c:1990
 msgid "severe "
-msgstr "여러"
+msgstr "심하게 "
 
 #: ../src/mhitu.c:1994
 #, c-format

@@ -5303,9 +5303,10 @@ msgstr "%s, %s."
 msgid "the Wizard of Yendor gazing out at you."
 msgstr "옌도르의 마법사가 당신을 응시하는 것을."
 
+# browse_map()에서 표시할 항목 레이블
 #: ../src/detect.c:1437 ../src/detect.c:1559 ../src/detect.c:2410
 msgid "anything of interest"
-msgstr "관심 있는 함정"
+msgstr "관심 있는 것"
 
 #: ../src/detect.c:1556
 msgid "sense your surroundings."
@@ -6119,7 +6120,7 @@ msgstr "항의하는"
 
 #: ../src/dig.c:1533
 msgid "fleeing"
-msgstr "도망 중"
+msgstr "도망가는"
 
 #: ../src/dig.c:1542
 #, c-format
@@ -6198,7 +6199,7 @@ msgstr "사다리는 영향을 받지 않았다."
 
 #: ../src/dig.c:1822
 msgid "throne"
-msgstr "왕좌."
+msgstr "왕좌"
 
 #: ../src/dig.c:1824 ../src/dungeon.c:1768 ../src/pray.c:1517
 msgid "altar"
@@ -6418,21 +6419,25 @@ msgstr "아래에서 쾅!"
 msgid "boulder %s%s."
 msgstr "바위가 %s%s."
 
+# 조합 패턴: "boulder %s%s." (바위가 함정을 막을 때)
+#   %1$s = "triggers and " 또는 ""
+#   %2$s = "plugs a trap door" / "plugs a hole" / "fills a pit"
+# 예: "boulder triggers and plugs a trap door." → "바위가 함정을 발동시키고 함정문을 막았다."
 #: ../src/do.c:246
 msgid "triggers and "
-msgstr "함정을 발동시켰다!"
+msgstr "함정을 발동시키고 "
 
 #: ../src/do.c:247
 msgid "plugs a trap door"
-msgstr "함정문을 통해 떨어졌다"
+msgstr "함정문을 막았다"
 
 #: ../src/do.c:248
 msgid "plugs a hole"
-msgstr "검은 오닉스"
+msgstr "구멍을 막았다"
 
 #: ../src/do.c:249
 msgid "fills a pit"
-msgstr "구멍에 빠졌다"
+msgstr "구덩이를 메웠다"
 
 #: ../src/do.c:252
 #, c-format
@@ -6642,15 +6647,17 @@ msgstr "공기"
 msgid "sink seems to blend into the floor for a moment."
 msgstr "싱크대가 잠시 바닥과 섞이는 것 같다."
 
+# %s = hliquid("water") → "물"
 #: ../src/do.c:616
 #, c-format
 msgid "hot %s faucet flashes brightly for a moment."
-msgstr "뜨거운 물 %s 수도꼭지가 잠시 밝게 빛난다."
+msgstr "뜨거운 %s 수도꼭지가 잠시 밝게 빛난다."
 
+# %s = hliquid("water") → "물"
 #: ../src/do.c:620
 #, c-format
 msgid "cold %s faucet flashes brightly for a moment."
-msgstr "찬물 %s 수도꼭지가 잠시 밝게 빛난다."
+msgstr "차가운 %s 수도꼭지가 잠시 밝게 빛난다."
 
 #
 #: ../src/do.c:624
@@ -7035,7 +7042,7 @@ msgstr "덥다"
 
 #: ../src/do.c:1998 ../src/fountain.c:709
 msgid "cold"
-msgstr "추위"
+msgstr "춥다"
 
 #: ../src/do.c:2001
 #, c-format
@@ -7080,9 +7087,10 @@ msgstr " 유령 해골의 소용돌이 속에서"
 msgid " in a churning pillar of flies"
 msgstr " 파리 기둥의 소용돌이 속에서"
 
+# 사기 기수 Famine의 특수 효과 (시든 농작물 고리)
 #: ../src/do.c:2161
 msgid " in a ring of withered crops"
-msgstr "싱크대에서 반지를 발견했다!"
+msgstr " 시든 농작물의 고리 속에서"
 
 #: ../src/do.c:2164
 #, c-format
@@ -7243,7 +7251,7 @@ msgstr "%s{이/가} %s 기존 %s{을/를} 유지하고 싶어한다."
 
 #: ../src/do_name.c:167 ../src/role.c:692
 msgid "its"
-msgstr "때렸다"
+msgstr "그것의"
 
 #: ../src/do_name.c:168 ../src/do_name.c:567 ../src/obj_descr_i18n.c:390
 msgid "name"
@@ -7437,7 +7445,7 @@ msgstr "%s %s{을/를} 이름을 지을 만큼 잘 모른다 %s."
 
 #: ../src/do_name.c:881 ../src/pray.c:2547
 msgid "someone"
-msgstr "몇 개의"
+msgstr "누군가"
 
 #: ../src/do_name.c:882 ../src/mhitm.c:752 ../src/obj_descr_i18n.c:458
 #: ../src/shk.c:4503
@@ -7471,7 +7479,7 @@ msgstr "투명한 "
 
 #: ../src/do_name.c:945
 msgid "saddled "
-msgstr "혼란스러운"
+msgstr "안장을 단 "
 
 #: ../src/do_name.c:967
 #, c-format
@@ -7492,7 +7500,7 @@ msgstr "그 자체"
 
 #: ../src/do_name.c:1222
 msgid "herself"
-msgstr "당신 자신"
+msgstr "그녀 자신"
 
 # 오류 발생 시 기본 몬스터 이름
 #: ../src/do_name.c:1396
@@ -7565,10 +7573,11 @@ msgstr "도끼"
 msgid "were wearing %s."
 msgstr "%s{을/를} 입고 있었다."
 
+# 장신구 착용 위치 (목걸이 등)
 #: ../src/do_wear.c:95
 #, c-format
 msgid " around your %s"
-msgstr "%s{을/를} 태웠다."
+msgstr " %s에"
 
 #: ../src/do_wear.c:96
 #, c-format
@@ -27572,7 +27581,7 @@ msgstr "마법 "
 
 #: ../src/objnam.c:3639
 msgid "A throne."
-msgstr "왕좌."
+msgstr "왕좌"
 
 #: ../src/objnam.c:3646
 msgid "A sink."

@@ -5111,9 +5111,10 @@ msgstr "이 층에는 관심 있는 것이 없는 것 같다."
 msgid "map already shows all relevant locations."
 msgstr "지도가 이미 모든 관련 위치를 보여주고 있다."
 
+# 지도 탐색 시 위치 표시
 #: ../src/detect.c:1131
 msgid "location"
-msgstr "질식한다."
+msgstr "위치"
 
 # 거리/방향 설명 (Distance/direction descriptions)
 #: ../src/detect.c:1152 ../src/detect.c:1167
@@ -5154,13 +5155,15 @@ msgstr "당신 위 멀리"
 msgid "above you"
 msgstr "위에"
 
+# 거리/방향: 바로 위
 #: ../src/detect.c:1178
 msgid "just above"
-msgstr "조정할"
+msgstr "바로 위"
 
+# 거리/방향: 당신 근처에
 #: ../src/detect.c:1183
 msgid "near you"
-msgstr "당신 아래에"
+msgstr "당신 근처에"
 
 #: ../src/detect.c:1215
 #, c-format

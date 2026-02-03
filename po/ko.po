@@ -40012,12 +40012,12 @@ msgstr "잠시 어지러웠지만, 아무 일도 일어나지 않았다..."
 
 #: ../src/teleport.c:1473
 msgid "You feel slightly dizzy."
-msgstr "조금 더 낮게 떠 있다."
+msgstr "약간 어지럽다."
 
-#
+# 순간이동 제어 실패 시 느낌
 #: ../src/teleport.c:1474
 msgid "You feel dizzier."
-msgstr "나를 풀어줬다!"
+msgstr "더 어지럽다."
 
 #: ../src/teleport.c:1537 ../src/trap.c:2455
 #, c-format
@@ -40052,9 +40052,10 @@ msgstr "중심이 잡힌"
 msgid "%sdisoriented."
 msgstr "%s방향 감각을 잃었다."
 
+# 조합: "even more disoriented" - 훨씬 더 방향 감각을 잃음
 #: ../src/teleport.c:1554 ../src/zap.c:1229
 msgid "even more "
-msgstr "다시는 안 돼!"
+msgstr "훨씬 더 "
 
 #: ../src/teleport.c:1701
 #, c-format
@@ -40332,25 +40333,29 @@ msgstr "점프"
 msgid "slow digestion"
 msgstr "느린 소화"
 
+# 내재 상태: 마법 피해 절반 받음
 #: ../src/timeout.c:102
 msgid "half spell damage"
-msgstr "피해 증가의 반지"
+msgstr "마법 피해 절반"
 
 #: ../src/timeout.c:103
 msgid "half physical damage"
 msgstr "물리 피해 절반"
 
+# 내재 상태: HP 재생
 #: ../src/timeout.c:104
 msgid "HP regeneration"
-msgstr "굶주림으로 죽었다."
+msgstr "HP 재생"
 
+# 내재 상태: 에너지 재생
 #: ../src/timeout.c:105
 msgid "energy regeneration"
-msgstr "굶주림으로 죽었다."
+msgstr "에너지 재생"
 
+# 내재 상태: 추가 보호
 #: ../src/timeout.c:106
 msgid "extra protection"
-msgstr "나의 보호"
+msgstr "추가 보호"
 
 #: ../src/timeout.c:107
 msgid "protection from shape changers"

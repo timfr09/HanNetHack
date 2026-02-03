@@ -7206,10 +7206,17 @@ msgstr "%s{은/는} 이미 깨끗하다."
 msgid "%s is in no shape for %s."
 msgstr "%s{은/는} %s할 상태가 아니다."
 
+# 조합 패턴: "%s%s %s in no shape for %s."
+#   %1$s = "left "/"right "/""
+#   %2$s = 신체 부위 (leg, legs)
+#   %3$s = "is"/"are" (한국어에서 생략)
+#   %4$s = 동작 (jumping, kicking)
+# 예: "Your left leg is in no shape for jumping."
+# → "왼 다리는 점프할 상태가 아니다."
 #: ../src/do.c:2409
 #, c-format
 msgid "%s%s %s in no shape for %s."
-msgstr "%s%s{은/는} %s할 상태가 아니다. (%s)"
+msgstr "%1$s%2$s{은/는} %4$s할 상태가 아니다."
 
 #: ../src/do.c:2410 ../src/do_wear.c:2575 ../src/do_wear.c:2610
 #: ../src/insight.c:1132 ../src/weapon.c:463 ../src/wield.c:762
@@ -22861,19 +22868,23 @@ msgstr "%s 몸이 %s 투명해진다."
 msgid "Suddenly you cannot see %s."
 msgstr "갑자기 %s{을/를} 볼 수 없게 됐다."
 
+# 조합: 몬스터가 변이 물약 사용
 #: ../src/muse.c:2482
 #, c-format
 msgid "%s suddenly mutates!"
-msgstr "%s{이/가} 갑자기 나타났다!"
+msgstr "%s{이/가} 갑자기 변이했다!"
 
+# 조합 패턴: "%s deliberately %s onto a %s!"
+#   %1$s = 몬스터명, %2$s = 이동 동사, %3$s = 함정
+# 예: "The goblin deliberately steps onto a hidden trap!"
 #: ../src/muse.c:2493
 #, c-format
 msgid "%s deliberately %s onto a %s!"
-msgstr "%s{이/가} %s에게서 %s{을/를} 빼앗았다!"
+msgstr "%1$s{이/가} 의도적으로 %3$s 위로 %2$s!"
 
 #: ../src/muse.c:2495
 msgid "hidden trap"
-msgstr "함정 살펴보기"
+msgstr "숨겨진 함정"
 
 # 무기 - 채찍
 #: ../src/muse.c:2520

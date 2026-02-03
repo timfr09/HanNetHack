@@ -18034,9 +18034,10 @@ msgstr "아무것도 가지고 있지 않다."
 msgid "No used-up objects%s."
 msgstr "사용된 물건%s 없다."
 
+# 사용된 물건 필터 - 쇼핑 청구서에
 #: ../src/invent.c:3950
 msgid " on your shopping bill"
-msgstr "균형을 잃었다."
+msgstr " 쇼핑 청구서에"
 
 #: ../src/invent.c:3957
 msgid "are not carrying any unpaid objects."
@@ -18047,18 +18048,17 @@ msgstr "미결제 물건을 가지고 있지 않다."
 msgid "have no %sobjects%s."
 msgstr "%s물건%s{이/가} 없다."
 
+# 인벤토리 목록 제목
 #: ../src/invent.c:4012
 #, c-format
 msgid "Items %s"
-msgstr "%s이다."
+msgstr "물건 %s"
 
-# ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
-# ============================================================
+# 제단 설명: "[high ]altar to [신 이름] ([성향])"
 #: ../src/invent.c:4078
 #, c-format
 msgid "%saltar to %s (%s)"
-msgstr "%s{이/가} %s %s{을/를}!"
+msgstr "%s%s{에게} 바친 제단 (%s)"
 
 #: ../src/invent.c:4079 ../src/pager.c:755 ../src/priest.c:353
 msgid "high "
@@ -18129,9 +18129,10 @@ msgstr "여기 위 "
 msgid "try to feel what is %s%s."
 msgstr "%s%s에 뭐가 있는지 느껴보려 한다."
 
+# 위치 설명: 여기 떠 있는 물체
 #: ../src/invent.c:4209
 msgid "floating here"
-msgstr "여기서 날 수 없다."
+msgstr "여기 떠 있는"
 
 #: ../src/invent.c:4217
 msgid "But you can't reach it!"
@@ -19000,7 +19001,7 @@ msgstr "셔츠가 갈기갈기 찢어졌다!"
 
 #: ../src/lock.c:1298
 msgid "is crushed"
-msgstr "처벌받는 중"
+msgstr "부서졌다"
 
 # 문/상자 파괴 상태 (door/chest destruction states)
 #: ../src/lock.c:1301
@@ -19074,7 +19075,7 @@ msgstr "들어봐! \"%s.\""
 #: ../src/mail.c:493
 #, c-format
 msgid "%sReport bugs to <%s>.%s"
-msgstr "%s{이/가} %s%s 시작했다."
+msgstr "%s버그를 <%s>에 보고해 주세요.%s"
 
 #: ../src/mail.c:494
 msgid "Please disregard previous letter."

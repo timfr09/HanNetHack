@@ -23202,9 +23202,10 @@ msgstr "격렬하게 흔들렸다!"
 msgid "hurt in a chasm"
 msgstr "균열에 빠졌다!"
 
+# 지진으로 흔들린 후 행동
 #: ../src/music.c:332
 msgid "Shaken, you"
-msgstr "부끄러운 줄 알아라!"
+msgstr "흔들리며, 당신은"
 
 # selftouch messages
 #: ../src/music.c:333
@@ -23262,9 +23263,10 @@ msgstr "비밀문이 드러났다."
 msgid "door collapses."
 msgstr "문이 무너졌다."
 
+# 차원계 종류 - 아스트랄 차원
 #: ../src/music.c:481
 msgid "astral plane"
-msgstr "원소의 평면으로"
+msgstr "아스트랄 차원"
 
 #: ../src/music.c:483
 msgid "plane"
@@ -23278,9 +23280,10 @@ msgstr "성소"
 msgid "puzzle"
 msgstr "퍼즐"
 
+# 레벨 종류 - 탑
 #: ../src/music.c:489
 msgid "tower"
-msgstr "더 느리다."
+msgstr "탑"
 
 #: ../src/music.c:491
 msgid "dungeon"
@@ -23320,9 +23323,10 @@ msgstr "연주하는 것이 음악과는 거리가 멀다..."
 msgid "%sproduce %s%s music."
 msgstr "%s%s 음악을 %s연주한다."
 
+# 조합: "You seem to produce" - 연주 결과 수식
 #: ../src/music.c:592 ../src/shk.c:1816 ../src/shk.c:2005 ../src/shk.c:2410
 msgid "seem to "
-msgstr " 및 "
+msgstr "것 같이 "
 
 #: ../src/music.c:593
 msgid "piped"
@@ -23332,9 +23336,10 @@ msgstr "연주했다"
 msgid "soft"
 msgstr "부드러운"
 
+# 조합: 음악 수식 - 익숙한 (주의: familiar creature와 다름)
 #: ../src/music.c:594 ../src/music.c:652
 msgid ", familiar"
-msgstr ", 사역수"
+msgstr ", 익숙한"
 
 #: ../src/music.c:602 ../src/music.c:605
 msgid "trill"
@@ -23363,9 +23368,10 @@ msgstr "%s{이/가} 뿔피리에서 폭발한다!"
 msgid "produce a frightful, grave%s sound."
 msgstr "섬뜩하고 엄숙한 소리를 낸다%s."
 
+# 조합: 음악 수식 - 익숙한
 #: ../src/music.c:642
 msgid ", yet familiar,"
-msgstr ", 사역수"
+msgstr ", 하지만 익숙한,"
 
 #: ../src/music.c:644
 msgid "blow into the horn."
@@ -23439,25 +23445,28 @@ msgstr "전체 %s{이/가} 주변에서 흔들리고 있다!"
 msgid "beat a %sdeafening row!"
 msgstr "%s귀가 먹먹한 소음을 낸다!"
 
+# 조합: 음악 수식 - 익숙한
 #: ../src/music.c:707
 msgid "familiar "
-msgstr ", 사역수"
+msgstr "익숙한 "
 
 #: ../src/music.c:711
 msgid "pound on the drum."
 msgstr "북을 두드린다."
 
+# 연주 품질 - 엉망으로 연주하다
 #: ../src/music.c:717
 msgid "butcher"
-msgstr "궁수"
+msgstr "엉망으로 연주하다"
 
 #: ../src/music.c:717
 msgid "manage"
 msgstr "연주하다"
 
+# 연주 품질 - 성공적으로 해내다
 #: ../src/music.c:717
 msgid "pull off"
-msgstr "경외감으로 가득하다."
+msgstr "해내다"
 
 #: ../src/music.c:767
 msgid "play music underwater!"

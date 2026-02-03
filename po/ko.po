@@ -6307,31 +6307,46 @@ msgstr "set_wall_type: 벽 모드 문제: "
 msgid "%s %d;"
 msgstr "%s %d;"
 
+# 조합 패턴: "%s %s %s into the %s."
+#   %1$s = 행위자 (you, your horse 등)
+#   %2$s = 동사 (push, pushes)
+#   %3$s = 물체 (the boulder)
+#   %4$s = 장소 (pit, hole)
+# 예: "You push the boulder into the pit."
+# → "당신이 바위를 구덩이 속으로 밀었다."
 #: ../src/do.c:104
 #, c-format
 msgid "%s %s %s into the %s."
-msgstr "%s{이/가} %s{을/를} %s 속으로 %s."
+msgstr "%1$s{이/가} %3$s{을/를} %4$s 속으로 %2$s"
 
 #: ../src/do.c:105
 msgid "push"
-msgstr "밀다"
+msgstr "밀었다"
 
 #: ../src/do.c:107
 msgid "Now you can cross it!"
 msgstr "이제 건널 수 있다!"
 
+# 조합 패턴: "is a large splash as %s %s the %s."
+#   %1$s = 물체 (the boulder)
+#   %2$s = 동사 (fills, falls into)
+#   %3$s = 장소 (water, lava, pit)
+# 예: "There is a large splash as the boulder falls into the water."
+# → "바위가 물에 빠지며 큰 물보라가 인다."
 #: ../src/do.c:114
 #, c-format
 msgid "is a large splash as %s %s the %s."
-msgstr "%s{이/가} %s{을/를} %s 큰 물보라가 인다."
+msgstr "%1$s{이/가} %3$s에 %2$s 큰 물보라가 인다."
 
+# 조합: 구멍을 채울 때 (바위가 구멍을 채움)
 #: ../src/do.c:115
 msgid "fills"
-msgstr "채운다"
+msgstr "빠지며"
 
+# 조합: 물/용암에 빠질 때
 #: ../src/do.c:115
 msgid "falls into"
-msgstr "빠진다"
+msgstr "빠지며"
 
 #: ../src/do.c:123
 #, c-format
@@ -6910,16 +6925,23 @@ msgid "A mysterious force prevents you from descending."
 msgstr "신비로운 힘이 내려가는 것을 막는다."
 
 # ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
+# 계단/사다리 오르기 메시지 (Climbing stairs/ladder message)
+# 조합 패턴: "%s %s up%s the %s."
+#   %1$s = "With great effort, you"/"You"
+#   %2$s = 이동 동사 (climb, fly 등)
+#   %3$s = " along" (사다리) 또는 "" (계단)
+#   %4$s = "ladder"/"stairs"
+# 예: "You climb up the stairs." → "당신이 계단 위로 올라간다."
+# 예: "You fly up along the ladder." → "당신이 사다리를 따라 위로 날아간다."
 # ============================================================
 #: ../src/do.c:1761
 #, c-format
 msgid "%s %s up%s the %s."
-msgstr "%s{이/가} %s{을/를} %s 위로 %s."
+msgstr "%1$s{이/가} %4$s%3$s 위로 %2$s"
 
 #: ../src/do.c:1762
 msgid "With great effort, you"
-msgstr "큰 노력으로"
+msgstr "큰 노력으로, 당신"
 
 #: ../src/do.c:1762 ../src/do_wear.c:3248 ../src/end.c:1454
 #: ../src/engrave.c:224 ../src/pray.c:573 ../src/timeout.c:1270
@@ -42249,10 +42271,10 @@ msgstr "%s{을/를} 빼냈다."
 msgid "%s from the %s."
 msgstr "%s{이/가} %s에서."
 
-# animal_parts
+# 이동 동사 (locomotion verb)
 #: ../src/trap.c:4131
 msgid "climb"
-msgstr "앞다리"
+msgstr "올라간다"
 
 #: ../src/trap.c:4137
 #, c-format

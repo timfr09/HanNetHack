@@ -37010,18 +37010,20 @@ msgstr "%s{이/가} 최근 강도 사건에 대해 %s."
 msgid "complains"
 msgstr "불평하다"
 
+# 상점 주인 대화 - 우려 표시
 #: ../src/shk.c:5516
 msgid "indicates concern"
-msgstr "와 그 내용물"
+msgstr "우려를 나타낸다"
 
 #: ../src/shk.c:5518
 #, c-format
 msgid "%s %s that %s is watching you carefully."
 msgstr "%s{이/가} %s{이/가} 주의 깊게 보고 있다고 %s."
 
+# 상점 주인 대화 - 경고
 #: ../src/shk.c:5519
 msgid "warns you"
-msgstr ", "
+msgstr "경고한다"
 
 #: ../src/shk.c:5522
 #, c-format
@@ -37051,10 +37053,11 @@ msgstr "경찰%s{이/가} (실망하며) 허공으로 사라진다%s."
 msgid "%sYou owe%s %ld %s."
 msgstr "%s당신은%s %ld %s을(를) 빚지고 있습니다."
 
+# 상점 주인 대화 - 물약 비용 청구
 #: ../src/shk.c:5642
 #, c-format
 msgid "This is no free library, %s!  "
-msgstr "이것은 당신을 %s 같은 느낌이 들게 한다!"
+msgstr "여기는 무료 도서관이 아니다, %s!  "
 
 #: ../src/shk.c:5644
 msgid " an additional"
@@ -37176,9 +37179,10 @@ msgstr "doormax=%d doorct=%d fdoor=%d"
 msgid "door [%d,%d]"
 msgstr "문 [%d,%d]"
 
+# 폐업한 상점 표시
 #: ../src/shknam.c:761
 msgid "Closed for inventory"
-msgstr "영구 인벤토리 모드 선택:"
+msgstr "재고 조사로 휴업 중"
 
 #: ../src/sit.c:28
 msgid "a strange sensation."
@@ -38049,9 +38053,10 @@ msgstr "왜?"
 msgid "gurgle"
 msgstr "꿀꺽꿀꺽 소리를 낸다."
 
+# 동물 소리: 째깍거리다 (곤충, 다람쥐 등)
 #: ../src/sounds.c:630
 msgid "chitter"
-msgstr "쓴"
+msgstr "째깍거린다"
 
 #: ../src/sounds.c:640
 msgid "chirp"
@@ -38061,9 +38066,10 @@ msgstr "짹짹거린다."
 msgid "grunt"
 msgstr "꿀꿀거린다."
 
+# 소리: 중얼거리다
 #: ../src/sounds.c:652
 msgid "mumble"
-msgstr "비틀거린다."
+msgstr "중얼거린다"
 
 # sounds.c vampire messages
 #: ../src/sounds.c:762

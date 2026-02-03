@@ -21525,7 +21525,7 @@ msgstr "%s이(가) 찢어졌다!"
 #: ../src/mon.c:3223
 #, c-format
 msgid "%s seems to have indigestion."
-msgstr "%s{이/가} 뭔가를 요구하는 것 같다."
+msgstr "%s{이/가} 소화불량인 것 같다."
 
 #: ../src/mon.c:3365
 #, c-format
@@ -21603,7 +21603,7 @@ msgstr "스튜디오 관객이 박수를 친다!"
 #: ../src/mon.c:3748
 #, c-format
 msgid "%s solidifies..."
-msgstr "%s{이/가} 가라앉는다..."
+msgstr "%s{이/가} 굳어진다..."
 
 # ============================================================
 # 전투 메시지 (Combat Messages)
@@ -21721,10 +21721,11 @@ msgstr "%s{이} %s 밑에서 %s."
 msgid "Change %s"
 msgstr "%s 변경"
 
+# 위즈모드: 몬스터 변경 프롬프트
 #: ../src/mon.c:5078
 #, c-format
 msgid " @ %s into what?"
-msgstr "그것을 %s할 수 없다!"
+msgstr " @ %s{을/를} 무엇으로 바꾸겠습니까?"
 
 #: ../src/mon.c:5099
 msgid " kind of monster?"
@@ -21810,9 +21811,10 @@ msgstr "%s{이/가} %s 화났다!"
 msgid "%s %s %s approaching!"
 msgstr "%s %s %s{이/가} 다가온다!"
 
+# 조합: "An angry guard is approaching!"
 #: ../src/mon.c:5742
 msgid "An angry"
-msgstr "배고프지 않음"
+msgstr "화난"
 
 #: ../src/mon.c:5742
 msgid "Angry"
@@ -21922,61 +21924,63 @@ msgstr "흔들리다"
 msgid "Wobble"
 msgstr "흔들림"
 
+# 이동 동사 - 펄럭이다 (날개 달린 괴물)
 #: ../src/mondata.c:1368
 msgid "flutter"
-msgstr "피리"
+msgstr "펄럭인다"
 
 #: ../src/mondata.c:1368
 msgid "Flutter"
-msgstr "덜그럭거리는"
+msgstr "펄럭인다"
 
-# 무기 - 단검
+# 이동 동사 - 비틀거리다 (피해 입은 괴물)
 #: ../src/mondata.c:1369
 msgid "stagger"
-msgstr "단검"
+msgstr "비틀거린다"
 
-# 무기 - 단검
 #: ../src/mondata.c:1369
 msgid "Stagger"
-msgstr "단검"
+msgstr "비틀거린다"
 
-#
+# 이동 동사 - 미끄러지다 (뱀 등)
 #: ../src/mondata.c:1370
 msgid "slither"
-msgstr "가죽"
+msgstr "미끄러진다"
 
-#
 #: ../src/mondata.c:1370
 msgid "Slither"
-msgstr "가죽"
+msgstr "미끄러진다"
 
+# 이동 동사 - 주춤하다
 #: ../src/mondata.c:1370 ../src/mondata.c:1377
 msgid "falter"
-msgstr "교체"
+msgstr "주춤한다"
 
 #: ../src/mondata.c:1370 ../src/mondata.c:1377
 msgid "Falter"
-msgstr "교체"
+msgstr "주춤한다"
 
 #: ../src/mondata.c:1375
 msgid "Ooze"
 msgstr "흐르다"
 
+# 이동 동사 - 떨다
 #: ../src/mondata.c:1375
 msgid "tremble"
-msgstr "굴러 떨어지다"
+msgstr "떤다"
 
 #: ../src/mondata.c:1375
 msgid "Tremble"
-msgstr "비틀거린다."
+msgstr "떤다"
 
+# 이동 동사 - 꿈틀거리다
 #: ../src/mondata.c:1376
 msgid "wiggle"
-msgstr "킥킥거린다."
+msgstr "꿈틀거린다"
 
 #: ../src/mondata.c:1376
 msgid "Wiggle"
-msgstr "킥킥거린다."
+msgstr "꿈틀거린다"
 
 #: ../src/mondata.c:1376 ../src/read.c:808
 msgid "pulsate"
@@ -21990,9 +21994,10 @@ msgstr "맥동하다"
 msgid "Crawl"
 msgstr "기어가다"
 
+# 몬스터 상태 - 이미 불타고 있음
 #: ../src/mondata.c:1420
 msgid "already on fire"
-msgstr "화염 폭발"
+msgstr "이미 불타고 있다"
 
 #: ../src/mondata.c:1425
 msgid "boiling"

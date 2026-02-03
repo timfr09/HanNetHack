@@ -20002,7 +20002,7 @@ msgstr "덥석 문다"
 
 #: ../src/mhitu.c:211 ../src/mhitu.c:1319
 msgid "lunges"
-msgstr "폐"
+msgstr "돌진한다"
 
 #: ../src/mhitu.c:215
 #, c-format
@@ -20053,14 +20053,16 @@ msgstr "%s{이/가} 물의 반사에 속아 빗나갔다!"
 msgid "get regurgitated!"
 msgstr "토해졌다!"
 
+# 삼켜진 상태에서 풀려날 때
 #: ../src/mhitu.c:273
 #, c-format
 msgid "%s unfolds and you are released!"
-msgstr "%s{이/가} 흐려져서 반사하지 않는다!"
+msgstr "%s{이/가} 펼쳐져서 풀려났다!"
 
+# 몬스터에게서 방출될 때 - 불꽃 샤워
 #: ../src/mhitu.c:285
 msgid " in a shower of sparks"
-msgstr "미사일 소나기에 맞았다!"
+msgstr " 불꽃 소나기 속에서"
 
 #: ../src/mhitu.c:288
 msgid " in a blast of frost"
@@ -20085,10 +20087,11 @@ msgstr "브로아... 어느 정도 거리에서 세게 착지했다."
 msgid "fall from the %s!"
 msgstr "%s에서 떨어졌다!"
 
+# 피어서가 떨어질 때 몬스터가 뒤로 물러남
 #: ../src/mhitu.c:577
 #, c-format
 msgid "%s draws back as you drop!"
-msgstr "%s{이/가} 기습 공격했다!"
+msgstr "%s{이/가} 당신이 떨어질 때 물러섰다!"
 
 #: ../src/mhitu.c:600
 #, c-format
@@ -20181,9 +20184,10 @@ msgstr "근처에 %s{이/가} 있다."
 msgid "rushing noise"
 msgstr "우르릉거리는 소리."
 
+# 의성어: 철퍽 소리
 #: ../src/mhitu.c:867
 msgid "splat"
-msgstr "덜그럭거리는"
+msgstr "철퍽"
 
 #: ../src/mhitu.c:940
 msgid "The combat suddenly awakens you."
@@ -20192,7 +20196,7 @@ msgstr "전투가 갑자기 당신을 깨웠다."
 #: ../src/mhitu.c:993
 #, c-format
 msgid "%s summons help!"
-msgstr "%s{을/를} 소환한다!"
+msgstr "%s{이/가} 도움을 소환했다!"
 
 #: ../src/mhitu.c:998 ../src/mhitu.c:1014
 msgid "hemmed in."
@@ -25094,7 +25098,7 @@ msgstr "잠긴 "
 
 #: ../src/obj_descr_i18n.c:484 ../src/objnam.c:1369
 msgid "unlocked "
-msgstr "잠긴 "
+msgstr "잠기지 않은 "
 
 #: ../src/obj_descr_i18n.c:485 ../src/objnam.c:1373
 msgid "greased "
@@ -25104,10 +25108,11 @@ msgstr "기름칠된 "
 msgid "poisoned "
 msgstr "독이 묻은 "
 
+# 장갑, 장화 등 한 쌍의 물건
 #: ../src/obj_descr_i18n.c:487 ../src/obj_descr_i18n.c:514 ../src/objnam.c:258
 #: ../src/objnam.c:696 ../src/objnam.c:726
 msgid "pair of "
-msgstr "꼬리: "
+msgstr "한 쌍의 "
 
 #: ../src/obj_descr_i18n.c:488 ../src/objnam.c:698
 msgid "moist "
@@ -25171,9 +25176,10 @@ msgstr "소설"
 msgid "%s book"
 msgstr "%s 책"
 
+# 조합 패턴: "spellbook of [주문 이름]"
 #: ../src/obj_descr_i18n.c:508 ../src/objnam.c:896
 msgid "spellbook of "
-msgstr "수면의 마법서"
+msgstr " 마법서"
 
 #: ../src/obj_descr_i18n.c:509 ../src/objnam.c:901
 #, c-format

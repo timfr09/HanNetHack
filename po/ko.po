@@ -5747,15 +5747,23 @@ msgstr "안에"
 msgid "dig an adjacent %s."
 msgstr "인접한 %s{을/를} 판다."
 
+# 조합 패턴: "dig %s %s the %s."
+#   %1$s = 함정 이름 (a hole, a pit)
+#   %2$s = 방향 (through, in) - 한국어에서 생략
+#   %3$s = 표면 유형 (floor, ground)
+# 예: "dig a hole through the floor." → "바닥에 구멍을 팠다."
 #: ../src/dig.c:708
 #, c-format
 msgid "dig %s %s the %s."
-msgstr "%s{을/를} %s %s{을/를} 팠다."
+msgstr "%3$s에 %1$s{을/를} 팠다."
 
+# 조합 패턴: "%s digs %s %s the %s."
+#   %1$s = 몬스터 이름, %2$s = 함정 이름, %3$s = 방향, %4$s = 표면
+# 예: "The goblin digs a hole through the floor." → "고블린이 바닥에 구멍을 팠다."
 #: ../src/dig.c:710
 #, c-format
 msgid "%s digs %s %s the %s."
-msgstr "%s{이/가} %s{을/를} %s %s{을/를} 팠다."
+msgstr "%1$s{이/가} %4$s에 %2$s{을/를} 팠다."
 
 #: ../src/dig.c:714
 #, c-format
@@ -8068,19 +8076,33 @@ msgstr "반지가 미끄러진다"
 msgid "ring slips"
 msgstr "반지가 미끄러진다"
 
+# ============================================================
+# 무기 미끄러짐 메시지 (Weapon slipping message)
+# 조합 패턴: "%s %s%s from your %s%s."
+#   %1$s = 무기명, %2$s = "also "/"", %3$s = slip (동사)
+#   %4$s = "left "/"right "/"", %5$s = hand
+# 예: "Your sword also slips from your left hand."
+# → "검이 왼손에서 또한 미끄러졌다."
+# ============================================================
 #: ../src/do_wear.c:2576
 #, c-format
 msgid "%s %s%s from your %s%s."
-msgstr "%s{이/가} %s%s에서 %s%s."
+msgstr "%1$s{이/가} %4$s%5$s에서 %2$s%3$s"
 
 #: ../src/do_wear.c:2576 ../src/do_wear.c:2614
 msgid "also "
 msgstr "또한 "
 
+# 조합 패턴: "%s %s%s %s%s from your %s%s."
+#   %1$s = "The"/"Your", %2$s = "other "/""
+#   %3$s = 무기명, %4$s = "also "/"", %5$s = slip (동사)
+#   %6$s = "left "/"right "/"", %7$s = hand
+# 예: "Your other sword also slips from your left hand."
+# → "당신의 다른 검이 왼손에서 또한 미끄러졌다."
 #: ../src/do_wear.c:2612
 #, c-format
 msgid "%s %s%s %s%s from your %s%s."
-msgstr "%s{이/가} %s%s %s%s에서 %s%s."
+msgstr "%1$s %2$s%3$s{이/가} %6$s%7$s에서 %4$s%5$s"
 
 #: ../src/do_wear.c:2613 ../src/do_wear.c:2734 ../src/eat.c:623
 #: ../src/read.c:388 ../src/trap.c:273 ../src/trap.c:303 ../src/trap.c:330
@@ -8456,10 +8478,15 @@ msgstr "풀려났다!"
 msgid "%s breaks loose of %s leash!"
 msgstr "%s{이/가} %s 목줄에서 벗어났다!"
 
+# 조합 패턴: "%s %s reluctantly %s %s."
+#   %1$s = 애완동물 이름, %2$s = 이동 동사 (steps, walks 등)
+#   %3$s = "over"/"onto", %4$s = 물체 이름
+# 예: "Your dog steps reluctantly onto the bones."
+# → "당신의 개가 마지못해 뼈 위로 걸어갔다."
 #: ../src/dogmove.c:1301
 #, c-format
 msgid "%s %s reluctantly %s %s."
-msgstr "%s{이/가} 마지못해 %s{을/를} %s %s."
+msgstr "%1$s{이/가} 마지못해 %4$s %3$s %2$s"
 
 #: ../src/dogmove.c:1302 ../src/hack.c:2542 ../src/hack.c:2568
 #: ../src/teleport.c:1537 ../src/trap.c:1911 ../src/trap.c:2455
@@ -8473,25 +8500,34 @@ msgid "onto"
 msgstr "위로"
 
 # ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
+# 애완동물 변신 메시지 (Pet transformation message)
+# 조합 패턴: "You %s %s %s where %s was!"
+#   %1$s = "see"/"sense that"
+#   %2$s = 새 생물 이름
+#   %3$s = "appear"/"has appeared"
+#   %4$s = 이전 애완동물 이름
+# 예: "You see a dog appear where your cat was!"
+# → "고양이가 있던 곳에서 개가 나타난 것을 봤다!"
 # ============================================================
 #: ../src/dogmove.c:1526
 #, c-format
 msgid "%s %s %s where %s was!"
-msgstr "%s{이/가} %s가 있던 곳에서 %s{을/를} %s!"
+msgstr "%4$s가 있던 곳에서 %2$s{이/가} %3$s 것을 %1$s"
 
+# 조합: 시각적으로 볼 수 없을 때
 #: ../src/dogmove.c:1527
 msgid "sense that"
-msgstr "느끼다"
+msgstr "느꼈다"
 
 #: ../src/dogmove.c:1529 ../src/makemon.c:1492 ../src/mcastu.c:768
 #: ../src/mcastu.c:770 ../src/mon.c:4152 ../src/pray.c:799
 msgid "appear"
-msgstr "나타나다"
+msgstr "나타난"
 
+# 조합: 시각적으로 볼 수 없을 때 (과거형)
 #: ../src/dogmove.c:1529
 msgid "has appeared"
-msgstr "나타났다"
+msgstr "나타난"
 
 #: ../src/dogmove.c:1531
 #, c-format
@@ -19567,9 +19603,12 @@ msgstr "꿀꺽"
 # UI 메시지 (invent.c - "here" 관련)
 # ============================================================
 # %1$s = "is"/"are", %2$s = object name
+# 조합: 점착 공격 동사 (미믹 등)
+# 예: "The mimic adhere attempt passes right through the ghost!"
+# → "미믹이 유령을 달라붙기 하려 그대로 통과했다!"
 #: ../src/mhitm.c:613
 msgid "adhere"
-msgstr "여기에 %2$s{이/가} 있다.%1$.0s"
+msgstr "달라붙기"
 
 #: ../src/mhitm.c:614 ../src/steal.c:477
 msgid "grab"
@@ -29201,9 +29240,10 @@ msgstr "배낭에 더 이상 물건을 넣을 수 없다%s."
 msgid " (except gold)"
 msgstr " (금화 제외)"
 
+# 조합: 물건을 들어올릴 때 사용
 #: ../src/pickup.c:1773
 msgid "lifting"
-msgstr "쏘는 듯한"
+msgstr "들어올리는"
 
 #: ../src/pickup.c:1854
 #, c-format
@@ -35690,10 +35730,19 @@ msgstr "%s이(가) %s 당신이 거기 있다는 것을 아는 것처럼 굳건�
 msgid "So, %s, you dare return to %s %s?!"
 msgstr "그래서, %s, 감히 %s %s에 돌아왔나?!"
 
+# ============================================================
+# 상인 감정 표현 (Shopkeeper emotional state)
+# 조합 패턴: "%s seems %s over your return to %s %s!"
+#   %1$s = 상인명, %2$s = 감정 (furious, irate 등)
+#   %3$s = 소유격 (his, her), %4$s = 상점명
+# 조합 예시:
+#   영어: "Asidonhopo seems furious over your return to his shop!"
+#   한국어: "아시돈호포가 그의 상점에 돌아온 것에 대해 분노해 보인다!"
+# ============================================================
 #: ../src/shk.c:761
 #, c-format
 msgid "%s seems %s over your return to %s %s!"
-msgstr "%s{이/가} %s %s에 돌아온 것에 대해 %s해 보인다!"
+msgstr "%1$s{이/가} %3$s %4$s에 돌아온 것에 대해 %2$s해 보인다!"
 
 #: ../src/shk.c:768
 #, c-format
@@ -39200,31 +39249,64 @@ msgstr "낚아채다"
 msgid "%s tries to %s %s%s but gives up."
 msgstr "%1$s{이/가} %3$s%4$s{을/를} %2$s빼앗으려 하지만 포기했다."
 
+# ============================================================
+# 매혹 메시지 - 여성 플레이어 (Charm message - female player)
+# 조합 패턴: "%s charms you. You gladly %s your %s."
+#   %1$s = 몬스터명 (She 또는 몬스터이름)
+#   %2$s = 동작 (let her take, hand over, continue/start removing)
+#   %3$s = 갑옷명
+# 조합 예시:
+#   영어: "She charms you. You gladly hand over your leather armor."
+#   한국어: "그녀가 매혹한다. 기꺼이 가죽 갑옷을 건네준다"
+# ============================================================
 #: ../src/steal.c:532
 #, c-format
 msgid "%s charms you.  You gladly %s your %s."
-msgstr "%s{이/가} 매혹한다. 기꺼이 %s{을/를} %s한다."
+msgstr "%1$s{이/가} 매혹한다. 기꺼이 %3$s{을/를} %2$s"
 
+# 조합: "charms you" 패턴에서 저주된 갑옷일 때
+# 예: "She charms you. You gladly let her take your cursed armor."
+# → "그녀가 매혹한다. 기꺼이 저주받은 갑옷을 그녀에게 건네준다"
 #: ../src/steal.c:534
 msgid "let her take"
-msgstr "가죽 재킷"
+msgstr "그녀에게 건네준다"
 
+# 조합: "charms you" 패턴에서 빠르게 넘길 때
+# 예: "She charms you. You gladly hand over your armor."
+# → "그녀가 매혹한다. 기꺼이 갑옷을 건네준다"
 #: ../src/steal.c:535
 msgid "hand over"
-msgstr "게임 오버:"
+msgstr "건네준다"
 
+# 조합: "charms you" 패턴에서 벗던 중일 때
+# 예: "She charms you. You gladly continue removing your armor."
+# → "그녀가 매혹한다. 기꺼이 갑옷을 계속 벗는다"
 #: ../src/steal.c:536
 msgid "continue removing"
-msgstr "계속 먹으겠습니까?"
+msgstr "계속 벗는다"
 
+# 조합: "charms you" 패턴에서 새로 시작할 때
+# 예: "She charms you. You gladly start removing your armor."
+# → "그녀가 매혹한다. 기꺼이 갑옷을 벗기 시작한다"
 #: ../src/steal.c:537
 msgid "start removing"
-msgstr "벗을"
+msgstr "벗기 시작한다"
 
+# ============================================================
+# 유혹 메시지 - 남성 플레이어 (Seduction message - male player)
+# 조합 패턴: "%s seduces you and %s off your %s."
+#   %1$s = 몬스터명 (She 또는 "beautiful" + 몬스터이름)
+#   %2$s = 동작 (helps you to take, you take, you continue/start taking)
+#   %3$s = 갑옷명
+# 조합 예시:
+#   영어: "The beautiful nymph seduces you and you take off your armor."
+#   한국어: "아름다운 님프가 유혹하여 갑옷을 벗는다"
+# 참고: %2$s 동작 번역에 이미 "벗다" 동사가 포함되어 있음
+# ============================================================
 #: ../src/steal.c:540
 #, c-format
 msgid "%s seduces you and %s off your %s."
-msgstr "%s{이/가} 유혹하여 %s{을/를} %s 벗겼다."
+msgstr "%1$s{이/가} 유혹하여 %3$s{을/를} %2$s"
 
 # ============================================================
 # 유혹/갑옷 제거 동작 (Seduction armor removal actions)
@@ -44533,27 +44615,41 @@ msgstr "%s{이/가} %s{을/를} 해를 끼치지 않고 %s 통과했다."
 msgid "tentacles suck %s."
 msgstr "촉수가 %s{을/를} 빨아들인다."
 
+# 조합: 그림자에 대한 포옹 공격 동사
+# 예: "You hug the shade"
 #: ../src/uhitm.c:5694
 msgid "hug"
-msgstr "거대한"
+msgstr "껴안다"
 
 #: ../src/uhitm.c:5705
 #, c-format
 msgid "%s passes harmlessly through %s."
 msgstr "%s{이/가} %s{을/를} 해를 끼치지 않고 통과했다."
 
+# ============================================================
+# 포옹/목조르기 공격 메시지 (Hug/throttle attack message)
+# 조합 패턴: "%s is being %s%s."
+#   %1$s = 몬스터명
+#   %2$s = "throttled" (목 졸림) 또는 "crushed" (짓눌림)
+#   %3$s = " but doesn't seem concerned" (호흡 불필요 시) 또는 ""
+# 조합 예시:
+#   영어: "The orc is being throttled but doesn't seem concerned."
+#   한국어: "오크가 목이 졸리고 있다 하지만 신경 쓰지 않는 것 같다."
+# ============================================================
 #: ../src/uhitm.c:5715
 #, c-format
 msgid "%s is being %s%s."
-msgstr "%s{이/가} %s%s 당하고 있다."
+msgstr "%s{이/가} %s%s."
 
+# 조합: 로프 골렘 등의 손으로 목 조르기 공격
 #: ../src/uhitm.c:5716
 msgid "throttled"
-msgstr "썩은 "
+msgstr "목이 졸리고 있다"
 
+# 조합: 호흡이 필요 없는 몬스터가 목 졸림에 신경 쓰지 않을 때
 #: ../src/uhitm.c:5718
 msgid " but doesn't seem concerned"
-msgstr "서리가 차갑게 느껴지지 않는다!"
+msgstr " 하지만 신경 쓰지 않는 것 같다"
 
 #: ../src/uhitm.c:5729
 #, c-format
@@ -47330,13 +47426,14 @@ msgstr "부적이 분해되었다!"
 msgid "crashing wood."
 msgstr "부서지는 바위."
 
+# 지팡이/마법으로 문을 공격할 때
 #: ../src/zap.c:5404
 msgid "The door splinters!"
-msgstr "이 문은 잠겨있다."
+msgstr "문이 갈라졌다!"
 
 #: ../src/zap.c:5405
 msgid "crackling."
-msgstr "부드러운 딱딱거리는 소리."
+msgstr "딱딱거리는 소리."
 
 #: ../src/zap.c:5413
 msgid "The door crashes open!"
@@ -47384,18 +47481,20 @@ msgstr "%s %s{을/를} 부러뜨렸다."
 msgid "guilty about damaging such a historic statue."
 msgstr "그런 역사적인 조각상을 손상시킨 것에 대해 죄책감."
 
+# 조합 패턴: 물약이 냉기에 의해 파괴될 때
+# 예: "Your potion freezes and shatters!"
 #: ../src/zap.c:5746
 msgid "freezes and shatters"
-msgstr "아래의 함정문이 산산이 부서졌다."
+msgstr "얼어서 산산이 부서졌다"
 
 #: ../src/zap.c:5746
 msgid "freeze and shatter"
-msgstr "아래의 함정문이 산산이 부서졌다."
+msgstr "얼어서 산산이 부서졌다"
 
-# Item type names (note: "potion" is already defined elsewhere)
+# 파괴된 물약 표시
 #: ../src/zap.c:5746
 msgid "shattered potion"
-msgstr " 물약"
+msgstr "깨진 물약"
 
 # ============================================================
 # 아이템 파괴 동사 - 끓어 폭발 (Item destruction verb - boils)
@@ -47412,12 +47511,10 @@ msgstr "끓어서 폭발했다"
 msgid "boil and explode"
 msgstr "끓어서 폭발했다"
 
-# " again" - already defined at line 21554
-# "%s %s%s%s" - already defined at line 1998 (update existing entry for Korean word order)
-# === Sound descriptions (sounds.c) ===
+# 끓는 물약 표시
 #: ../src/zap.c:5747
 msgid "boiling potion"
-msgstr "물이 부글거리는 소리."
+msgstr "끓는 물약"
 
 # ============================================================
 # 아이템 파괴 동사 - 점화 폭발 (Item destruction verb - ignites)

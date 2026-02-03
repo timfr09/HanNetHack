@@ -22227,10 +22227,11 @@ msgstr "%s이(가) 철창을 먹어치웠다."
 msgid "%s %s %s the iron bars."
 msgstr "%s{이} %s 철창을 %s."
 
+# 조합: "pass between the iron bars" - 철창 사이를 지나가다
 #: ../src/monmove.c:1638 ../src/uhitm.c:2016 ../src/uhitm.c:2019
 #: ../src/uhitm.c:5624 ../src/zap.c:3955
 msgid "pass"
-msgstr "통로"
+msgstr "지나간다"
 
 #: ../src/monmove.c:1639 ../src/steal.c:93
 msgid "between"
@@ -22311,9 +22312,10 @@ msgstr "그것이 %s."
 msgid "passes harmlessly through"
 msgstr "발길질{이/가} 해를 끼치지 않고 통과한다"
 
+# 조합: "It doesn't harm you"
 #: ../src/mthrowu.c:133
 msgid "doesn't harm"
-msgstr "원하지 않는다"
+msgstr "해를 끼치지 않는다"
 
 #: ../src/mthrowu.c:143 ../src/uhitm.c:4053
 msgid "silver sears your flesh!"
@@ -22332,10 +22334,10 @@ msgstr "불탄다!"
 msgid "%s %s %s%s%s!"
 msgstr "%s %s %s%s%s!"
 
-# 방어구 - 신발
+# 조합: 몬스터 공격 동사 - 쏘다
 #: ../src/mthrowu.c:292
 msgid "shoots"
-msgstr "장화"
+msgstr "쏜다"
 
 #: ../src/mthrowu.c:292
 msgid "throws"
@@ -22409,9 +22411,10 @@ msgstr "%s{이/가} %s에 의해 눈이 멀었다."
 msgid "venom"
 msgstr "산성 독"
 
+# 눈을 멀게 하는 물체 - 파이
 #: ../src/mthrowu.c:482
 msgid "pie"
-msgstr "소나무"
+msgstr "파이"
 
 #: ../src/mthrowu.c:516
 #, c-format
@@ -22601,7 +22604,7 @@ msgstr "%s{이/가} %s{과/와} 함께!"
 #: ../src/muse.c:187
 #, c-format
 msgid "%s zaps %s!"
-msgstr "%s{이/가} %s{을/를} 먹었다!"
+msgstr "%s{이/가} %s{을/를} 발사했다!"
 
 #: ../src/muse.c:207
 #, c-format
@@ -22618,34 +22621,35 @@ msgstr "%s(이)가 향하는"
 msgid "%s %s %s directed at you!"
 msgstr "%s %s %s{이/가} 향해 발사됐다!"
 
+# 조합: 몬스터가 악기를 연주하다
 #: ../src/muse.c:228
 msgid "plays"
-msgstr "지친"
+msgstr "연주한다"
 
 #: ../src/muse.c:252
 #, c-format
 msgid "%s reads %s!"
-msgstr "%s{이/가} %s{을/를} 먹었다!"
+msgstr "%s{이/가} %s{을/를} 읽었다!"
 
 # ============================================================
-# 물약 (Potions)
+# 두루마리 읽기 (Scroll reading)
 # ============================================================
 #: ../src/muse.c:278
 #, c-format
 msgid "reading %s"
-msgstr "%s{을/를} 울렸다."
+msgstr "%s 읽는 중"
 
 #: ../src/muse.c:279
 msgid "reading a scroll labeled"
-msgstr "디스크월드 소설을 읽었다"
+msgstr "라벨이 붙은 두루마리를 읽는 중"
 
 #: ../src/muse.c:280
 msgid "attempting to incant"
-msgstr "함정 해제 시도"
+msgstr "주문을 외우려 시도 중"
 
 #: ../src/muse.c:280
 msgid "incant"
-msgstr "백열의"
+msgstr "주문을 외우다"
 
 #: ../src/muse.c:288
 #, c-format
@@ -22692,7 +22696,7 @@ msgstr "%s이(가) 이제 더 안정적이다."
 #: ../src/muse.c:842
 #, c-format
 msgid "%s plays %s!"
-msgstr "%s{이/가} %s{을/를} 먹었다!"
+msgstr "%s{이/가} %s{을/를} 연주했다!"
 
 #: ../src/muse.c:845
 msgid "a bugle playing reveille!"

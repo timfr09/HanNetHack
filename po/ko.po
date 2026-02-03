@@ -38016,14 +38016,15 @@ msgstr "울부짖다"
 msgid "groan"
 msgstr "신음한다."
 
+# 동물 소리: 소 울음소리
 #: ../src/sounds.c:390
 msgid "low"
-msgstr "빛나다"
+msgstr "음매하고 운다"
 
-# Item type names (note: "potion" is already defined elsewhere)
+# 소리: 소란/소동 (곤충이나 많은 동물의 소리)
 #: ../src/sounds.c:393
 msgid "commotion"
-msgstr " 물약"
+msgstr "소란"
 
 #: ../src/sounds.c:396 ../src/teleport.c:1250
 msgid "scream"
@@ -38033,9 +38034,10 @@ msgstr "비명!"
 msgid "yowl"
 msgstr "야옹야옹 울어댄다."
 
+# 동물 행동: 등을 구부리다 (고양이 등)
 #: ../src/sounds.c:443
 msgid "arch"
-msgstr "총대주교"
+msgstr "등을 구부린다"
 
 #: ../src/sounds.c:448
 msgid "yelp"

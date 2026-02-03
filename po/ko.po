@@ -14967,7 +14967,14 @@ msgstr "bones 레벨%s 불러오기 비활성화"
 msgid " and storing"
 msgstr " 및 저장"
 
+# ============================================================
+# Bones 레벨 메시지
+# 조합: enl_msg(You_, "haven't encountered", "didn't encounter", " any bones levels", "")
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
 #
+# 영어: "You haven't encountered any bones levels."
+# 한국어: "당신은 아무 뼈 레벨도 만나지 않았다."
+# ============================================================
 #: ../src/insight.c:422
 msgid "haven't encountered"
 msgstr "만나지 않았다"
@@ -14978,16 +14985,19 @@ msgstr "만나지 않았다"
 
 #: ../src/insight.c:423
 msgid " any bones levels"
-msgstr " 아무 bones 레벨도"
+msgstr " 아무 뼈 레벨도"
 
 #: ../src/insight.c:425
 #, c-format
 msgid "encountered %ld bones level%s"
 msgstr "%ld개의 bones 레벨을 만났다%s"
 
+# 조합: enl_msg("Total elapsed playing time ", "is", "was", buf, "")
+# 영어: "Total elapsed playing time is 1 day."
+# 한국어: "총 경과 플레이 시간은 1일이다."
 #: ../src/insight.c:431
 msgid "Total elapsed playing time "
-msgstr "총 경과 플레이 시간 "
+msgstr "총 경과 플레이 시간은 "
 
 #: ../src/insight.c:464 ../src/obj_descr_i18n.c:1109
 msgid "Background:"
@@ -15128,6 +15138,21 @@ msgstr "%ld턴%s 전에 던전 진입"
 msgid "entered "
 msgstr "들어간 "
 
+# ============================================================
+# 시간/상태 조합 패턴 (is/was 동사)
+# 조합: enl_msg(prefix, "is ", "was ", suffix, "")
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
+# 예시 1: enl_msg("It ", "is ", "was ", "the midnight hour", "")
+#   영어: "It is the midnight hour."
+#   한국어: "​자정이다." → "자정이다."
+#
+# 예시 2: enl_msg("Your score ", "is ", "was ", "100", "")
+#   영어: "Your score is 100."
+#   한국어: "당신의 점수는 100이다."
+#
+# 참고: "It ", "There " 등은 제로너비공백으로, suffix와 verb만 표시됨
+# ============================================================
 #: ../src/insight.c:630 ../src/insight.c:632
 msgid "It "
 msgstr "​"
@@ -15137,22 +15162,22 @@ msgstr "​"
 #: ../src/insight.c:913 ../src/insight.c:1072 ../src/insight.c:1950
 #: ../src/insight.c:1952 ../src/insight.c:1954
 msgid "is "
-msgstr "​"
+msgstr "이다"
 
 #: ../src/insight.c:630 ../src/insight.c:632 ../src/insight.c:652
 #: ../src/insight.c:697 ../src/insight.c:755 ../src/insight.c:800
 #: ../src/insight.c:913 ../src/insight.c:1073 ../src/insight.c:1950
 #: ../src/insight.c:1952 ../src/insight.c:1954
 msgid "was "
-msgstr "​"
+msgstr "이었다"
 
 #: ../src/insight.c:630
 msgid "the midnight hour"
-msgstr "자정이다"
+msgstr "자정"
 
 #: ../src/insight.c:632
 msgid "nighttime"
-msgstr "밤이다"
+msgstr "밤"
 
 #: ../src/insight.c:642
 #, c-format
@@ -15228,10 +15253,13 @@ msgstr " 게임 종료 조정 전"
 
 # ============================================================
 # insight.c 점수/상태
+# 조합: enl_msg("Your score ", "is ", "was ", buf, "")
+# 영어: "Your score is 100."
+# 한국어: "당신의 점수는 100이다."
 # ============================================================
 #: ../src/insight.c:697
 msgid "Your score "
-msgstr "당신의 점수 "
+msgstr "당신의 점수는 "
 
 #: ../src/insight.c:714
 msgid "Basics:"
@@ -15290,9 +15318,12 @@ msgstr "최고"
 msgid "worst"
 msgstr "최악"
 
+# 조합: enl_msg("Your armor class ", "is ", "was ", buf, "")
+# 영어: "Your armor class is 10."
+# 한국어: "당신의 방어도는 10이다."
 #: ../src/insight.c:755
 msgid "Your armor class "
-msgstr "당신의 방어도 "
+msgstr "당신의 방어도는 "
 
 # ============================================================
 # 지갑 상태 - 빔 (Wallet status - empty)
@@ -15355,10 +15386,12 @@ msgstr "던질"
 msgid ", with exceptions"
 msgstr ", 예외 있음"
 
-# 조합 패턴: enl_msg("Autopickup ", "is/was ", buf)
+# 조합: enl_msg("Autopickup ", "is ", "was ", buf, "")
+# 영어: "Autopickup is on."
+# 한국어: "자동 줍기는 켜짐이다."
 #: ../src/insight.c:800
 msgid "Autopickup "
-msgstr "자동 줍기 "
+msgstr "자동 줍기는 "
 
 # ============================================================
 # 능력치 표시 (Characteristics Display)
@@ -15627,8 +15660,13 @@ msgstr "더듬거리는 중"
 
 # ============================================================
 # 수면 상태 메시지 (Sleep Status)
-# 조합: enl_msg("You ", "fall asleep", "fell asleep", " uncontrollably", ...)
-# 예시: "You fall asleep uncontrollably" → "당신은 통제할 수 없이 잠들게 됩니다"
+# 조합: enl_msg("You ", "fall asleep", "fell asleep", " uncontrollably", buf)
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
+# 영어: "You fall asleep uncontrollably."
+# 한국어: "당신은 통제할 수 없이 잠든다."
+#
+# 참고: suffix 끝에 공백 추가로 자연스러운 어순
 # ============================================================
 #: ../src/insight.c:1164
 msgid "fall asleep"
@@ -15640,12 +15678,17 @@ msgstr "잠들었다"
 
 #: ../src/insight.c:1164
 msgid " uncontrollably"
-msgstr " 통제할 수 없이"
+msgstr "통제할 수 없이 "
 
 # ============================================================
 # 배고픔 증가 속도 메시지 (Hunger Rate)
-# 조합: enl_msg("You ", "hunger", "hungered", " rapidly", ...)
-# 예시: "You hunger rapidly" → "당신은 빠르게 배고파진다"
+# 조합: enl_msg(You_, "hunger", "hungered", " rapidly", from_what(...))
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+#
+# 영어: "You hunger rapidly."
+# 한국어: "당신은 빠르게 배고파진다."
+#
+# 참고: suffix 끝에 공백 추가로 자연스러운 어순
 # ============================================================
 #: ../src/insight.c:1170
 msgid "hunger"
@@ -15657,7 +15700,7 @@ msgstr "배고파졌다"
 
 #: ../src/insight.c:1170
 msgid " rapidly"
-msgstr " 빠르게"
+msgstr "빠르게 "
 
 #: ../src/insight.c:1178 ../src/obj_descr_i18n.c:918
 msgid "not hungry"
@@ -15886,9 +15929,12 @@ msgstr "정렬된"
 msgid " %d"
 msgstr " %d"
 
+# 조합: enl_msg("Your alignment ", "is", "was", buf, "")
+# 영어: "Your alignment is chaotic."
+# 한국어: "당신의 성향은 혼돈이다."
 #: ../src/insight.c:1498
 msgid "Your alignment "
-msgstr "성향"
+msgstr "당신의 성향은 "
 
 # invulnerable = 무적/불사 상태 (데미지를 받지 않음)
 #: ../src/insight.c:1503 ../src/timeout.c:32
@@ -16374,9 +16420,12 @@ msgstr ", 로브로 완화됨"
 msgid " enhanced by wearing a robe"
 msgstr " 로브 착용으로 향상"
 
+# 조합: enl_msg("Your spell casting ", "is", "was", buf, "")
+# 영어: "Your spell casting is impaired by metallic armor."
+# 한국어: "당신의 주문 시전은 금속 갑옷에 의해 방해받는다."
 #: ../src/insight.c:1812
 msgid "Your spell casting "
-msgstr "당신의 주문 시전 "
+msgstr "당신의 주문 시전은 "
 
 #: ../src/insight.c:1816
 msgid "protected from shape changers"
@@ -16506,9 +16555,12 @@ msgstr "%s%s행운"
 msgid "extremely "
 msgstr "극도로 "
 
+# 조합: enl_msg("Your luck ", "is", "was", " zero", "")
+# 영어: "Your luck is zero."
+# 한국어: "당신의 행운은 0이다."
 #: ../src/insight.c:1899
 msgid "Your luck "
-msgstr "당신의 행운 "
+msgstr "당신의 행운은 "
 
 #: ../src/insight.c:1899
 msgid " zero"
@@ -16788,8 +16840,9 @@ msgid "faithfully nudist"
 msgstr "충실한 누드족"
 
 # 조합: enl_msg(You_, "have gone", "went", " without food", "")
-# 영어: "You have gone without food." / "You went without food."
-# 한국어: "당신은 음식 없이 지낸다." / "당신은 음식 없이 지냈다."
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+# 영어: "You have gone without food."
+# 한국어: "당신은 음식 없이 지낸다."
 #: ../src/insight.c:2129 ../src/insight.c:2308
 msgid "have gone"
 msgstr "지낸다"
@@ -16800,7 +16853,7 @@ msgstr "지냈다"
 
 #: ../src/insight.c:2129
 msgid " without food"
-msgstr " 음식 없이"
+msgstr "음식 없이 "
 
 #: ../src/insight.c:2132
 msgid "followed a strict vegan diet"
@@ -16924,9 +16977,11 @@ msgstr "빌지 않았다"
 msgid "did not wish"
 msgstr "빌지 않았다"
 
+# 조합: enl_msg(You_, "have not wished", "did not wish", " for any artifacts", "")
+# 한국어: "당신은 아티팩트를 빌지 않았다."
 #: ../src/insight.c:2214
 msgid " for any artifacts"
-msgstr " 아티팩트를"
+msgstr "아티팩트를 "
 
 #: ../src/insight.c:2219
 msgid "have violated"
@@ -16936,9 +16991,11 @@ msgstr "위반했다"
 msgid "violated"
 msgstr "위반했다"
 
+# 조합: enl_msg(You_, "have violated", "violated", " the special Sokoban rules ", ...)
+# 한국어: "당신은 소코반 특별 규칙을 위반했다."
 #: ../src/insight.c:2221
 msgid " the special Sokoban rules "
-msgstr " 소코반 특별 규칙을 "
+msgstr "소코반 특별 규칙을 "
 
 #: ../src/insight.c:2224
 msgid "have not violated"
@@ -16977,9 +17034,11 @@ msgstr "탐험했다"
 msgid " without being able to see"
 msgstr " 볼 수 없는 상태로"
 
+# 조합: enl_msg(You_, "have gone", "went", " without any armor", "")
+# 한국어: "당신은 갑옷 없이 지낸다."
 #: ../src/insight.c:2308
 msgid " without any armor"
-msgstr " 갑옷 없이"
+msgstr "갑옷 없이 "
 
 #: ../src/insight.c:2314
 msgid "entered Minetown"

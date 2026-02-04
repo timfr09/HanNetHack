@@ -2970,24 +2970,42 @@ msgstr "큰 방에 들어갔다"
 msgid "defeated Medusa"
 msgstr "메두사를 물리쳤다"
 
+# insight.c:2351-2384 업적 아이템 소유 패턴
+# "have" = 현재 소유 중 ("가지고 있다")
+# "had" = 과거 소유 ("가지고 있었다")
+# ko.po의 "가지다"는 기본형이라 문장으로 부적절
+msgid "have"
+msgstr "가지고 있다"
+
+msgid "had"
+msgstr "가지고 있었다"
+
 msgid "have handled"
 msgstr "다뤘다"
 
 msgid "handled"
 msgstr "다뤘다"
 
+# insight.c:2351-2358 - 업적: 아이템 소유/획득
+# enl_msg(You_, "have"/"have handled", "had"/"handled", suffix, "")
+# 포맷: " %1$s%3$s%2$s%4$s."
+# 조합예: "당신은 개봉의 종을 가지고 있다." / "당신은 개봉의 종을 다뤘다."
+# suffix - 앞 공백 제거, 뒤 공백 추가
 msgid " the Bell of Opening"
-msgstr " 개봉의 종을"
+msgstr "개봉의 종을 "
 
 msgid " the Candelabrum of Invocation"
-msgstr " 소환의 촛대를"
+msgstr "소환의 촛대를 "
 
 msgid " the Book of the Dead"
-msgstr " 죽음의 책을"
+msgstr "죽음의 책을 "
 
 msgid "gained access to Moloch's Sanctum"
 msgstr "몰록의 성소에 접근했다"
 
+# insight.c:2377-2380 - 업적: 부적
+# "have obtained" = 획득했다 (현재도 가지고 있지 않음)
+# "have" = 가지고 있다 (현재 가지고 있음)
 msgid "have obtained"
 msgstr "획득했다"
 
@@ -2997,8 +3015,9 @@ msgstr "전달했다"
 msgid "had obtained"
 msgstr "획득했었다"
 
+# suffix - 앞 공백 제거, 뒤 공백 추가
 msgid " the Amulet of Yendor"
-msgstr " 옌더의 부적을"
+msgstr "옌더의 부적을 "
 
 msgid "reached the Elemental Planes"
 msgstr "원소의 차원에 도달했다"
@@ -3699,12 +3718,9 @@ msgstr "카운터"
 msgid "have "
 msgstr "​"
 
-# [조합] "had " - 과거완료/과거소유
+# [조합] "had " - 과거완료/과거소유 (you_have() 매크로에서 사용)
+# 참고: "had" (공백 없음)는 line 2980에서 "가지고 있었다"로 번역 (업적 패턴용)
 msgid "had "
-msgstr "​"
-
-# [조합] "had" - 뒤에 공백 없는 경우
-msgid "had"
 msgstr "​"
 
 # 잘못된 번역 수정
@@ -3719,8 +3735,13 @@ msgstr "~였을 것이다"
 msgid "could have happened"
 msgstr "일어날 수 있었다"
 
+# insight.c:1439 - 스킬 향상 조합용 동사
+# 조합: "당신은 장검 스킬을 향상할 수 있다."
+msgid "can enhance"
+msgstr "향상할 수 있다"
+
 msgid "could have enhanced"
-msgstr "강화할 수 있었다"
+msgstr "향상할 수 있었다"
 
 #, c-format
 msgid "You move over %s."
@@ -6106,6 +6127,12 @@ msgstr "당신의 AC는 "
 msgid "Your luck "
 msgstr "당신의 행운은 "
 
+# insight.c:1903 - enl_msg("Your luck ", "is", "was", " zero", "")
+# 조합: "당신의 행운은 0이다."
+# suffix - 앞 공백 제거
+msgid " zero"
+msgstr "0"
+
 # insight.c:1495 - "Your alignment is X" 조합
 # 기존: "성향" (불완전) → "당신의 성향은 "
 msgid "Your alignment "
@@ -6170,13 +6197,13 @@ msgstr "경고받고 있다"
 # ============================================================
 # insight.c:652 - "There is X" 조합
 # ============================================================
-# enl_msg("There ", "is ", "was ", buf, "")
-# 조합 결과: "There " + "is " + buf
-#
-# 주의: ko.po의 형식 지정자(%1$s, %2$s)는 enl_msg 조합에서 작동 안 함
-# 단순 문자열 연결이므로 "여기에 " 사용
+# insight.c:656 - enl_msg("There ", "is ", "was ", buf, "")
+# buf = "a %s moon in effect%s" (보름달이 효과 중)
+# 포맷: " %1$s%3$s%2$s%4$s."
+# 조합: " 현재 보름달이 효과 중​."
+# "여기에"보다 "현재"가 더 자연스러움
 msgid "There "
-msgstr "여기에 "
+msgstr "현재 "
 
 # ============================================================
 # fuzzy 매칭으로 인한 형식 지정자 오류 수정
@@ -7076,9 +7103,15 @@ msgid " with %s"
 msgstr " %s에 대해"
 
 # insight.c:1430-1438 - 스킬 향상
+# 원문: " skill%s with %s%s%s%s%s"
+#   %1$s = "s" or "" (복수형), %2$s = 주 스킬명, %3$s = 구분자,
+#   %4$s = 보조 스킬명, %5$s = 구분자, %6$s = "two weapons" or ""
+# enl_msg(You_, "can enhance", "could have enhanced", sfx, "") 조합
+# 조합결과: "당신은 장검, 단검 스킬을 향상 가능."
+# 주의: " and also with "가 _()로 래핑되지 않아 번역 불가 (i18n 버그)
 #, c-format
 msgid " skill%s with %s%s%s%s%s"
-msgstr " %s%s%s%s%s에 대한 %s 스킬"
+msgstr "%2$s%3$s%4$s%5$s%6$s%1$.0s 스킬을 "
 
 msgid ", and "
 msgstr ", 그리고 "

@@ -2587,27 +2587,40 @@ msgstr "%s 모드로 실행 중"
 msgid " and storing"
 msgstr " 저장 중"
 
-# insight.c 상태 메시지들
+# ============================================================
+# insight.c 조합 메시지 - 수면/갑옷/천리안 관련
+# ============================================================
+
+# enl_msg("You ", "fall asleep", "fell asleep", " uncontrollably", buf)
+# 포맷: " %1$s%3$s%2$s%4$s."
+# 조합: " 당신은 통제 불가능하게 잠들었다 (원인)."
 msgid "fall asleep"
 msgstr "잠들다"
 
 msgid "fell asleep"
 msgstr "잠들었다"
 
+# suffix - 앞 공백 제거, 뒤 공백 추가하여 verb와 자연스럽게 연결
 msgid " uncontrollably"
-msgstr " 통제 불가능하게"
+msgstr "통제 불가능하게 "
 
+# enl_msg(You_, "do", "did", " not wear any armor", "")
+# do/did는 "​"(제로폭 공백)이므로 suffix가 직접 연결됨
+# 조합: " 당신은 갑옷을 입지 않는다."
 msgid " not wear any armor"
-msgstr " 갑옷을 입지 않는다"
+msgstr "갑옷을 입지 않는다"
 
+# enl_msg(You_, "could be", "could have been", " clairvoyant", buf)
+# 조합: " 당신은 천리안 능력자가 될 수 있었다 (원인)."
 msgid "could be"
 msgstr "될 수 있다"
 
 msgid "could have been"
 msgstr "될 수 있었다"
 
+# suffix - 앞 공백 제거, 조사 "가" 추가, 뒤 공백 추가
 msgid " clairvoyant"
-msgstr " 천리안 능력자"
+msgstr "천리안 능력자가 "
 
 msgid "will confuse"
 msgstr "혼란시킬 것이다"
@@ -2615,17 +2628,24 @@ msgstr "혼란시킬 것이다"
 msgid "would have confused"
 msgstr "혼란시킬 수 있었다"
 
+# insight.c:1657 - Sprintf(buf, " stealthy%s", " if not mounted" 또는 "")
+# enl_msg(You_, "would be", "would have been", buf, "")
+# 포맷: " %1$s%3$s%2$s%4$s."
+# suffix에 동사 포함하여 자연스러운 조합
+# 조합: " 당신은 은밀해질 것이다 (탑승하지 않았다면)​."
 msgid " stealthy%s"
-msgstr " 은밀하게%s"
+msgstr "은밀해질 것이다%s"
 
 msgid " if not mounted"
-msgstr " 탑승하지 않았다면"
+msgstr " (탑승하지 않았다면)"
 
+# verb - 제로폭 공백 (suffix에 동사 포함)
 msgid "would be"
-msgstr "될 것이다"
+msgstr "​"
 
+# insight.c:1690 - " if not trapped" 조건
 msgid " if not trapped"
-msgstr " 함정에 걸리지 않았다면"
+msgstr " (함정에 걸리지 않았다면)"
 
 msgid "would levitate"
 msgstr "부유할 것이다"
@@ -2639,11 +2659,15 @@ msgstr "날 것이다"
 msgid "would have flown"
 msgstr "날 수 있었다"
 
+# insight.c:1707 - suffix, enl_msg(You_, "would fly", "would have flown", suffix, "")
+# 조합: " 당신은 부유하지 않았다면 날 것이다."
 msgid " if you weren't levitating"
-msgstr " 부유하지 않았다면"
+msgstr "부유하지 않았다면 "
 
+# insight.c:1712 - suffix
+# 조합: " 당신은 함정에 걸리지 않았다면 날 것이다."
 msgid " if you weren't trapped"
-msgstr " 함정에 걸리지 않았다면"
+msgstr "함정에 걸리지 않았다면 "
 
 msgid "could cling"
 msgstr "달라붙을 수 있다"
@@ -3375,11 +3399,17 @@ msgstr "특성:"
 msgid "felt"
 msgstr "느꼈다"
 
+# insight.c:1717 - suffix, enl_msg(You_, "would fly", "would have flown", suffix, "")
+# 조합: " 당신은 상황이 허락한다면 날 것이다."
 msgid " if circumstances permitted"
-msgstr " 상황이 허락한다면"
+msgstr "상황이 허락한다면 "
 
+# insight.c:1800 - enl_msg(You_, "take", "took", " reduced poison gas damage", "")
+# 포맷: " %1$s%3$s%2$s%4$s."
+# 조합: " 당신은 감소된 독 가스 피해를 받았다."
+# suffix - 앞 공백 제거, 뒤 공백 추가
 msgid " reduced poison gas damage"
-msgstr " 독 가스 피해 감소"
+msgstr "감소된 독 가스 피해를 "
 
 msgid " was"
 msgstr " ~였다"
@@ -3967,8 +3997,10 @@ msgstr "보았을 것이다"
 msgid "would see"
 msgstr "볼 것이다"
 
+# insight.c:1659, 1891 - 조합 메시지의 과거형 verb
+# suffix에 동사가 포함되어 있으므로 제로폭 공백으로 처리
 msgid "would have been"
-msgstr "~이었을 것이다"
+msgstr "​"
 
 # timeout.c - become (잘못된 번역: "%s 위로 이동한다.")
 #, c-format
@@ -4239,10 +4271,13 @@ msgstr "당신은 또한 "
 # fuzzy 매칭 오류 수정 - Part 4 (insight.c 조합 메시지)
 # ============================================================
 
-# insight.c:1655 - enl_msg("You aggravate", "", "d", " monsters", from_what())
-# 조합: "You aggravated monsters (원인)"
+# insight.c:1662 - enl_msg("You aggravate", "", "d", " monsters", from_what())
+# 포맷: " %1$s%3$s%2$s%4$s."
+# 영어: "You aggravate monsters" / "You aggravated monsters"
+# 한국어: prefix에 완전한 문장 포함, suffix/verb는 제로폭 공백
+# 조합: " 당신은 몬스터들을 자극한다​ (원인)."
 msgid "You aggravate"
-msgstr "자극했다"
+msgstr "당신은 몬스터들을 자극한다"
 
 # invent.c:4206 - "a dagger lying here on the floor"
 msgid "lying here on the "
@@ -4314,9 +4349,12 @@ msgstr "받다"
 msgid "Welcome to NetHack."
 msgstr "NetHack에 오신 것을 환영합니다."
 
-# insight.c - "You cause conflict". 조합: You_ + cause + suffix
+# insight.c:1665 - enl_msg("You cause", "", "d", " conflict", from_what())
+# 포맷: " %1$s%3$s%2$s%4$s."
+# " conflict"가 제로폭 공백이므로 prefix에 완전한 문장 포함
+# 조합: " 당신은 분쟁을 일으킨다​ (원인)."
 msgid "You cause"
-msgstr "당신은 일으킨다"
+msgstr "당신은 분쟁을 일으킨다"
 
 # eat.c - "eat the rest". 메뉴 옵션
 msgid "the rest"
@@ -5843,11 +5881,14 @@ msgstr "냉장하다"
 msgid " %s your chain"
 msgstr " 당신의 사슬을 %s"
 
-# insight.c:221 - "half spell damage" 등 피해 감소
-# 결과: "half physical damage" → "물리 피해 절반"
+# insight.c:225 - enl_msg(You_, "take", "took", buf, from_what())
+# buf = " %s %s damage" 로 생성됨 (예: " half physical damage")
+# 포맷: " %1$s%3$s%2$s%4$s."
+# 조합: " 당신은 감소된 물리적 피해를 받았다 (원인)."
+# suffix - 앞 공백 제거, 뒤 공백 추가 (verb와 연결)
 #, c-format
 msgid " %s %s damage"
-msgstr " %s %s 피해"
+msgstr "%s %s 피해를 "
 
 # mhitu.c:285 - 소용돌이에서 배출될 때
 # 결과: "expelled from X in a shower of sparks" → "불꽃 소나기 속에서 X에서 배출"
@@ -6572,17 +6613,19 @@ msgstr " 로브 착용으로 강화된다"
 # [조합 메시지] 생명 보호 - insight.c
 # ============================================================
 
-# insight.c:1884 - "Your life will be/would have been saved"
-# 조합: "Your life " + "will be"/"would have been" + " saved"
-# 참고: "would have been"은 3967에 정의됨
+# insight.c:1891 - "Your life will be/would have been saved"
+# 포맷: " %1$s%3$s%2$s%4$s."
+# verb는 제로폭 공백, suffix에 완전한 동사 포함
+# 조합: " 당신의 생명이 보존될 것이다​."
 msgid "Your life "
 msgstr "당신의 생명이 "
 
 msgid "will be"
 msgstr "​"
 
+# suffix - 앞 공백 제거, 완전한 동사 포함
 msgid " saved"
-msgstr " 보존될 것이다"
+msgstr "보존될 것이다"
 
 # ============================================================
 # [조합 메시지] 행운 타이머 - insight.c
@@ -6615,38 +6658,48 @@ msgstr "당신은 재생한다"
 # [조합 메시지] 추가 suffix 번역 - insight.c
 # ============================================================
 
+# "You aggravate" + " monsters" 조합에서 prefix에 완전한 문장 포함했으므로
+# suffix는 제로폭 공백으로 처리
+# 조합: " 당신은 몬스터들을 자극한다​ (원인)."
 msgid " monsters"
-msgstr " 몬스터들을"
+msgstr "​"
 
+# "You cause" + " conflict" 조합 - 아래 "You cause" 수정과 연동
+# 조합: " 당신은 분쟁을 일으킨다​ (원인)."
 msgid " conflict"
-msgstr " 분쟁"
+msgstr "​"
 
 # ============================================================
-# [조합 메시지] 환각 저항 - insight.c
+# [조합 메시지] 환각 저항 - insight.c:1545
 # ============================================================
 
-# insight.c:1538 - "You resist/resisted hallucinations"
-# 조합: You_ + "resist"/"resisted" + " hallucinations" + from_what()
+# enl_msg(You_, "resist", "resisted", " hallucinations", from_what())
+# 포맷: " %1$s%3$s%2$s%4$s."
+# 조합: " 당신은 환각에 저항한다 (원인)."
 msgid "resist"
-msgstr "저항한다:"
+msgstr "저항한다"
 
 msgid "resisted"
-msgstr "저항했다:"
+msgstr "저항했다"
 
+# suffix - 앞 공백 제거, 뒤 공백 추가
 msgid " hallucinations"
-msgstr " 환각에"
+msgstr "환각에 "
 
 # ============================================================
-# [조합 메시지] 투명 감지 - insight.c
+# [조합 메시지] 투명 감지 - insight.c:1558
 # ============================================================
 
-# insight.c:1551 - "You see/saw invisible"
-# 조합: You_ + "see"/"saw" + " invisible" + from_what()
+# enl_msg(You_, "see", "saw", " invisible", from_what())
+# 포맷: " %1$s%3$s%2$s%4$s."
+# 조합: " 당신은 투명한 것을 볼 수 있다 (원인)."
+# verb에 완전한 동사 포함, suffix에 목적어만 포함
 msgid "saw"
-msgstr "보았다"
+msgstr "볼 수 있다"
 
+# suffix - 앞 공백 제거, 뒤 공백 추가 (목적어만)
 msgid " invisible"
-msgstr " 투명한 것을 볼 수 있다"
+msgstr "투명한 것을 "
 
 # insight.c:1553-1554 - "You will see/would have seen invisible when not blind"
 msgid "will see"

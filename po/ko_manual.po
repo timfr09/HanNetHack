@@ -8517,15 +8517,15 @@ msgstr ""
 msgid "your"
 msgstr "당신의"
 
-# "A <monster>" prefix for messages
+# "A <monster>" prefix for messages - 한국어에는 부정관사가 없으므로 공백으로 처리
 msgid "A "
-msgstr ""
+msgstr " "
 
 msgid "An "
-msgstr ""
+msgstr " "
 
 msgid "The "
-msgstr ""
+msgstr " "
 
 # ============================================================
 # vtense() 패턴 - 눈/머리카락 관련
@@ -9410,3 +9410,28 @@ msgstr "소지품을 확인하겠습니까?"
 
 msgid "Game over."
 msgstr "게임 오버."
+
+# ============================================================
+# 포맷 문자열 오류 수정 - dig.c, do.c
+# ============================================================
+
+# 조합 패턴: "dig %s %s the %s."
+#   %1$s = 구멍/함정 이름, %2$s = 방향 (through/into), %3$s = 표면 유형
+# 예: "dig a hole through the floor." → "바닥에 구멍을 팠다."
+#: ../src/dig.c:708
+msgid "dig %s %s the %s."
+msgstr "%3$s에%2$.0s %1$s{을/를} 팠다."
+
+# 조합 패턴: "%s digs %s %s the %s."
+#   %1$s = 몬스터 이름, %2$s = 구멍/함정 이름, %3$s = 방향, %4$s = 표면
+# 예: "The goblin digs a hole through the floor." → "고블린이 바닥에 구멍을 팠다."
+#: ../src/dig.c:710
+msgid "%s digs %s %s the %s."
+msgstr "%1$s{이/가} %4$s에%3$.0s %2$s{을/를} 팠다."
+
+# 조합 패턴: "%s%s %s in no shape for %s."
+#   %1$s = 소유격 (Your/His/Her), %2$s = 신체부위, %3$s = be동사 (is/are), %4$s = 동작
+# 예: "Your left leg is in no shape for jumping." → "왼 다리는 점프할 상태가 아니다."
+#: ../src/do.c:2409
+msgid "%s%s %s in no shape for %s."
+msgstr "%1$s%2$s{은/는}%3$.0s %4$s할 상태가 아니다."

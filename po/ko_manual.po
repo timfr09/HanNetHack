@@ -2731,8 +2731,12 @@ msgstr "모습을 바꿨다"
 msgid "would %s periodically"
 msgstr "주기적으로 %s할 것이다"
 
+# insight.c:1836 - enl_msg(You_, buf, buf, " if not locked into your current form", "")
+# buf = "would %s periodically" (주기적으로 %s할 것이다)
+# 조합: " 당신은 현재 모습에 고정되지 않았다면 주기적으로 변신할 것이다."
+# suffix - 앞 공백 제거, 뒤 공백 추가
 msgid " if not locked into your current form"
-msgstr " 현재 모습에 고정되지 않았다면"
+msgstr "현재 모습에 고정되지 않았다면 "
 
 msgid "might avoid"
 msgstr "피할 수 있다"
@@ -2782,8 +2786,11 @@ msgstr "캐릭터를 %ld회%.0s 재생성했다"
 # ============================================================
 # [조합 메시지] insight.c - "You have gone/went without food"
 # 영어: You_ + "have gone"/"went" + " without food"
-# 한국어: 당신은 + "" + " 음식 없이 지냈다"
-# have gone/went를 빈 문자열로 처리하고 " without food"에 전체 술어
+# ============================================================
+# enl_msg(You_, "have gone", "went", " without food", "")
+# 포맷: " %1$s%3$s%2$s%4$s."
+# verb를 빈 문자열로 처리하고 suffix에 전체 술어 포함
+# 조합: " 당신은 음식 없이 지냈다."
 # ============================================================
 msgid "have gone"
 msgstr ""
@@ -2791,8 +2798,9 @@ msgstr ""
 msgid "went"
 msgstr ""
 
+# suffix - 앞 공백 제거 (prefix "당신은 "과 연결)
 msgid " without food"
-msgstr " 음식 없이 지냈다"
+msgstr "음식 없이 지냈다"
 
 msgid "vegetarian"
 msgstr "채식주의자였다"
@@ -2929,11 +2937,16 @@ msgstr "탐험 중이다"
 msgid "explored"
 msgstr "탐험했다"
 
+# insight.c:2309 - enl_msg(You_, "have gone", "went", " without being able to see", "")
+# have gone/went가 빈 문자열이므로 suffix에 전체 술어 포함
+# 조합: " 당신은 볼 수 없이 지냈다."
 msgid " without being able to see"
-msgstr " 볼 수 없이"
+msgstr "볼 수 없이 지냈다"
 
+# insight.c:2312 - enl_msg(You_, "have gone", "went", " without any armor", "")
+# 조합: " 당신은 갑옷 없이 지냈다."
 msgid " without any armor"
-msgstr " 갑옷 없이"
+msgstr "갑옷 없이 지냈다"
 
 # 업적 관련
 msgid "entered Minetown"
@@ -3418,11 +3431,15 @@ msgstr " ~였다"
 msgid "Fruit #%d "
 msgstr "과일 #%d "
 
+# insight.c:1974 - enl_msg(You_, verb, verb, " a one-shot death via saving-grace", "")
+# verb = "might avoid"/"have avoided"/"could have avoided"/"avoided"
+# 조합: " 당신은 구원 은총으로 즉사를 피했다."
 msgid "have avoided"
 msgstr "피했다"
 
+# suffix - 앞 공백 제거, 뒤 공백 추가
 msgid " a one-shot death via saving-grace"
-msgstr " 구원 은총으로 즉사를"
+msgstr "구원 은총으로 즉사를 "
 
 msgid "survived after being killed "
 msgstr "죽임을 당한 후 살아남았다 "
@@ -6633,14 +6650,18 @@ msgstr "보존될 것이다"
 
 # insight.c:1904 - "Bad luck does/did not time out for you"
 # 조합: "Bad luck " + "does"/"did" + " not time out for you"
+# insight.c:1911,1913 - enl_msg("Bad/Good luck ", "does", "did", " not time out for you", "")
+# does/did가 제로폭 공백이므로 suffix에 전체 술어 포함
+# 조합: " 불운이 시간이 지나도 사라지지 않는다."
 msgid "Bad luck "
 msgstr "불운이 "
 
 msgid "Good luck "
 msgstr "행운이 "
 
+# suffix - 앞 공백 제거
 msgid " not time out for you"
-msgstr " 시간이 지나도 사라지지 않는다"
+msgstr "시간이 지나도 사라지지 않는다"
 
 # ============================================================
 # [조합 메시지] 재생 - insight.c
@@ -6701,15 +6722,19 @@ msgstr "볼 수 있다"
 msgid " invisible"
 msgstr "투명한 것을 "
 
-# insight.c:1553-1554 - "You will see/would have seen invisible when not blind"
+# insight.c:1560-1561 - enl_msg(You_, "will see", "would have seen", " invisible when not blind", "")
+# 조합: " 당신은 눈이 멀지 않으면 투명한 것을 볼 것이다."
 msgid "will see"
 msgstr "볼 것이다"
 
+# suffix - 앞 공백 제거, 뒤 공백 추가
 msgid " invisible when not blind"
-msgstr " 눈이 멀지 않으면 투명한 것을"
+msgstr "눈이 멀지 않으면 투명한 것을 "
 
+# insight.c:1563-1564 - "would see"/"would have seen" + " invisible if not blind"
+# suffix - 앞 공백 제거, 뒤 공백 추가
 msgid " invisible if not blind"
-msgstr " 눈이 멀지 않았다면 투명한 것을"
+msgstr "눈이 멀지 않았다면 투명한 것을 "
 
 # ============================================================
 # [조합 메시지] 천장 매달리기 - insight.c
@@ -7071,15 +7096,19 @@ msgstr " 산성으로부터 보호"
 # "petrification resistant"는 이미 line 6521에 존재 (동일 번역)
 
 # insight.c:1612-1617 - 혼란 공격
+# you_can(" monsters when hitting them", from_what()) 조합
 msgid " monsters when hitting them"
-msgstr " 몬스터를 공격할 때 혼란시킨다"
+msgstr "몬스터를 공격할 때 혼란시킬 수 있다"
 
+# enl_msg(You_, "will confuse", "would have confused", buf, "")
+# buf가 " (next hit only)" 또는 빈 문자열
+# 조합: " 당신은 (다음 공격에만) 혼란시킬 것이다."
 msgid " (next hit only)"
-msgstr " (다음 공격에만)"
+msgstr "(다음 공격에만) "
 
 #, c-format
 msgid " (next %u hits)"
-msgstr " (다음 %u회 공격)"
+msgstr "(다음 %u회 공격에) "
 
 # insight.c:1803-1806 - 주문 시전
 #, c-format

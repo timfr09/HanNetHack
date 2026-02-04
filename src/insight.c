@@ -1314,7 +1314,6 @@ weapon_insight(int final)
                 you_are(buf, "");
 
         } else { /* two-weapon */
-            static const char also_[] = "also ";
             char pfx[QBUFSZ], sfx[QBUFSZ],
                 sknambuf2[20], sklvlbuf2[20], twobuf[20];
             const char *also = "", *also2 = "", *also3 = (char *) 0,
@@ -1345,7 +1344,7 @@ weapon_insight(int final)
                 /* twoskil won't be restricted so sklvl is at least basic */
                 Sprintf(pfx, _("Your skill in %s "), skill_name(wtype));
                 Sprintf(sfx, _(" limited by being %s with two weapons"), twobuf);
-                also = also_;
+                also = _("also ");
             } else if (twoskl > sklvl) {
                 /* sklvl might be restricted */
                 Strcpy(pfx, _("Your two weapon skill "));
@@ -1355,10 +1354,10 @@ weapon_insight(int final)
                 else
                     Sprintf(eos(sfx), _("having no skill"));
                 Sprintf(eos(sfx), _(" with %s"), skill_name(wtype));
-                also2 = also_;
+                also2 = _("also ");
             } else {
                 Strcat(buf, _(" and two weapons"));
-                also3 = also_;
+                also3 = _("also ");
             }
             if (*pfx)
                 enl_msg(pfx, _("is"), _("was"), sfx, "");
@@ -1372,7 +1371,7 @@ weapon_insight(int final)
             if (wtype2 != wtype) {
                 Strcpy(sknambuf2, skill_name(wtype2));
                 (void) lcase(skill_level_name(wtype2, sklvlbuf2));
-                verb_present = "is", verb_past = "was";
+                verb_present = _("is"), verb_past = _("was");
                 pfx[0] = sfx[0] = buf[0] = '\0';
                 if (twoskl < sklvl2) {
                     /* twoskil is at least unskilled, sklvl2 at least basic */
@@ -1420,8 +1419,6 @@ weapon_insight(int final)
             a2 = (wtype2 != wtype) ? can_advance(wtype2, FALSE) : FALSE;
             ab = can_advance(P_TWO_WEAPON_COMBAT, FALSE);
             if (a1 || a2 || ab) {
-                static const char also_wik_[] = " and also with ";
-
                 /* for just one, the conditionals yield
                    1) "skill with <that one>"; for more than one:
                    2) "skills with <primary> and also with <secondary>" or
@@ -1435,10 +1432,12 @@ weapon_insight(int final)
                         ((int) a1 + (int) a2 + (int) ab > 1) ? "s" : "",
                         a1 ? skill_name(wtype) : "",
                         ((a1 && a2 && ab) ? _(", ")
-                         : (a1 && (a2 || ab)) ? also_wik_ : ""),
+                         : (a1 && (a2 || ab))
+                           ? _(" and also with ") : ""),
                         a2 ? skill_name(wtype2) : "",
                         ((a1 && a2 && ab) ? _(", and ")
-                         : (a2 && ab) ? also_wik_ : ""),
+                         : (a2 && ab)
+                           ? _(" and also with ") : ""),
                         ab ? _("two weapons") : "");
                 enl_msg(You_, _("can enhance"), _("could have enhanced"), sfx, "");
             }

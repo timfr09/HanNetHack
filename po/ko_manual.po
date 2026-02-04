@@ -7107,14 +7107,19 @@ msgstr " %s에 대해"
 #   %1$s = "s" or "" (복수형), %2$s = 주 스킬명, %3$s = 구분자,
 #   %4$s = 보조 스킬명, %5$s = 구분자, %6$s = "two weapons" or ""
 # enl_msg(You_, "can enhance", "could have enhanced", sfx, "") 조합
-# 조합결과: "당신은 장검, 단검 스킬을 향상 가능."
-# 주의: " and also with "가 _()로 래핑되지 않아 번역 불가 (i18n 버그)
+# 조합결과: "당신은 장검, 단검 스킬을 향상할 수 있다."
 #, c-format
 msgid " skill%s with %s%s%s%s%s"
 msgstr "%2$s%3$s%4$s%5$s%6$s%1$.0s 스킬을 "
 
+# insight.c:1436,1440 - 스킬 구분자 (2개일 때)
+# 영어: "skills with long sword and also with dagger"
+# 한국어: "장검, 단검 스킬을" (쉼표 구분자 사용)
+msgid " and also with "
+msgstr ", "
+
 msgid ", and "
-msgstr ", 그리고 "
+msgstr ", "
 
 msgid "two weapons"
 msgstr "쌍수"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-05 10:39+0900\n"
+"POT-Creation-Date: 2026-02-05 11:13+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14493,11 +14493,13 @@ msgstr ""
 msgid "a %s moon in effect%s"
 msgstr ""
 
-#: ../src/insight.c:647 ../src/pray.c:1083
+#: ../src/insight.c:647
+msgctxt "moon"
 msgid "full"
 msgstr ""
 
 #: ../src/insight.c:648
+msgctxt "moon"
 msgid "new"
 msgstr ""
 
@@ -30606,6 +30608,10 @@ msgstr ""
 
 #: ../src/pray.c:1082
 msgid "pleased"
+msgstr ""
+
+#: ../src/pray.c:1083
+msgid "full"
 msgstr ""
 
 #: ../src/pray.c:1083

@@ -2646,9 +2646,11 @@ msgstr " (탑승하지 않았다면)"
 msgid "would be"
 msgstr "​"
 
-# insight.c:1690 - " if not trapped" 조건
+# insight.c:1691 - " if not trapped" 조건
+# 앞 공백 제거, 뒤 공백 추가 (verb 연결용)
+# 조합: " 당신은 함정에 걸리지 않았다면 부유할 것이다."
 msgid " if not trapped"
-msgstr " (함정에 걸리지 않았다면)"
+msgstr "함정에 걸리지 않았다면 "
 
 # insight.c:1688,1713 - " if surroundings permitted" 조건
 # 부유/비행 차단 조건 (지형이 허락하면)
@@ -2978,10 +2980,12 @@ msgid "explored"
 msgstr "탐험했다"
 
 # insight.c:2309 - enl_msg(You_, "have gone", "went", " without being able to see", "")
-# have gone/went가 빈 문자열이므로 suffix에 전체 술어 포함
-# 조합: " 당신은 볼 수 없이 지냈다."
+# enl_msg(You_, "are exploring", "explored", " without being able to see", "")
+# 포맷: " %1$s%3$s%2$s%4$s."
+# verb에 동사 포함 ("탐험 중이다"/"탐험했다"), suffix는 수식어 형태
+# 조합: " 당신은 볼 수 없는 상태로 탐험 중이다."
 msgid " without being able to see"
-msgstr "볼 수 없이 지냈다"
+msgstr "볼 수 없는 상태로 "
 
 # insight.c:2312 - enl_msg(You_, "have gone", "went", " without any armor", "")
 # 조합: " 당신은 갑옷 없이 지냈다."
@@ -3929,9 +3933,28 @@ msgstr "불변"
 msgid "charm"
 msgstr "매혹"
 
-# hunger가 레인저로 잘못 번역됨
+# insight.c:1161 - enl_msg(You_, "fumble", "fumbled", "", from_what())
+# 포맷: " %1$s%3$s%2$s%4$s."
+# 조합: " 당신은 더듬거린다 (원인)."
+msgid "fumble"
+msgstr "더듬거린다"
+
+msgid "fumbled"
+msgstr "더듬거렸다"
+
+# insight.c:1174 - enl_msg(You_, "hunger", "hungered", " rapidly", from_what())
+# verb 위치에 동사형 필요 (명사 "배고픔"이 아닌 동사형)
+# 조합: " 당신은 빠르게 배고파진다."
 msgid "hunger"
-msgstr "배고픔"
+msgstr "배고파진다"
+
+msgid "hungered"
+msgstr "배고파졌다"
+
+# insight.c:1174 - suffix
+# 앞 공백 제거, 뒤 공백 추가 (verb 연결용)
+msgid " rapidly"
+msgstr "빠르게 "
 
 # mithril이 날카로운으로 잘못 번역됨
 msgid "mithril"
@@ -6251,6 +6274,27 @@ msgstr "경고받고 있다"
 msgid "There "
 msgstr "현재 "
 
+# insight.c:647-652 - 달 종류 (C_("moon", ...) 컨텍스트 사용)
+# pray.c:1083의 _("full") (배부르다)과 충돌 방지
+msgctxt "moon"
+msgid "full"
+msgstr "보름"
+
+msgctxt "moon"
+msgid "new"
+msgstr "초승"
+
+# pray.c:1083 - "You feel that [god] is full." (환각 시 포만감)
+# 달 종류의 "full" → "보름"과 충돌하므로 분리
+msgid "full"
+msgstr "배부르다"
+
+# insight.c:782 - enl_msg("you ", "have ", "had ", buf, "")
+# 소문자 "you " (대문자 "You "와 다름)
+# 숨겨진 금화 표시에 사용
+msgid "you "
+msgstr "당신은 "
+
 # ============================================================
 # fuzzy 매칭으로 인한 형식 지정자 오류 수정
 # ============================================================
@@ -6793,7 +6837,7 @@ msgstr "환각에 "
 # 조합: " 당신은 투명한 것을 볼 수 있다 (원인)."
 # verb에 완전한 동사 포함, suffix에 목적어만 포함
 msgid "saw"
-msgstr "볼 수 있다"
+msgstr "볼 수 있었다"
 
 # suffix - 앞 공백 제거, 뒤 공백 추가 (목적어만)
 msgid " invisible"
@@ -6820,16 +6864,23 @@ msgstr "눈이 멀지 않았다면 투명한 것을 "
 #       "would have levitated", " if circumstances permitted"
 #       는 이미 2600-2650, 3371 라인에 정의됨
 
-# insight.c:1729 - "You could cling/could have clung to the ceiling if..."
+# insight.c:1734 - "You could cling/could have clung to the ceiling if..."
+# 포맷: Sprintf(buf, " to the ceiling if %s%s%s", cond1, cond2, cond3)
+# 한국어: 조건절을 앞에, "천장에"를 뒤에 배치 (SOV)
+# 조합: " 당신은 천장이 있었다면 천장에 달라붙을 수 있다."
+#, c-format
 msgid " to the ceiling if %s%s%s"
-msgstr " 천장에 - %s%s%s"
+msgstr "%s%s%s 천장에 "
 
+# 조건절: 뒤 공백 없음 (" and "의 앞 공백이 구분자 역할)
 msgid "there was one"
 msgstr "천장이 있었다면"
 
+# insight.c:1736 등 - 조건절 연결어
 msgid " and "
-msgstr "이고 "
+msgstr " 그리고 "
 
+# 조건절: 뒤 공백 없음 (포맷의 " 천장에 "가 앞 공백 포함)
 msgid "you weren't underwater"
 msgstr "물 속에 있지 않았다면"
 
@@ -7025,9 +7076,10 @@ msgstr " %ld분%s"
 msgid " %ld second%s"
 msgstr " %ld초%s"
 
-# insight.c:344,350,356 - 시간 연결어
+# insight.c:344,350,356,1692 - 연결어
+# 시간 연결, 조건 연결 등 범용 접속사
 msgid " and"
-msgstr "과"
+msgstr " 그리고"
 
 # insight.c:486-488 - 변신 형태
 # 조합: "%s%s%s%s form"
@@ -7122,9 +7174,14 @@ msgstr "적당히"
 msgid "not possible"
 msgstr "불가능"
 
+# insight.c:1218 - 짐 무게 이동 속도
+# Sprintf(eos(buf), "; movement %s %s%s", "is"/"was", adj, " slowed"/""
+# %1$s = verb ("이다"/"이었다"), %2$s = 부사 (약간/적당히/...), %3$s = " 느려짐"/""
+# verb를 %.0s로 억제, 부사+상태만 표시
+# 조합: "; 이동이 약간 느려짐"
 #, c-format
 msgid "; movement %s %s%s"
-msgstr "; 이동 속도 %s %s%s"
+msgstr "; 이동이 %2$s%3$s%1$.0s"
 
 msgid " slowed"
 msgstr " 느려짐"
@@ -7211,10 +7268,12 @@ msgstr "산성에 대해 보호 상태"
 
 # "petrification resistant"는 이미 line 6521에 존재 (동일 번역)
 
-# insight.c:1612-1617 - 혼란 공격
-# you_can(" monsters when hitting them", from_what()) 조합
+# insight.c:1623 - 혼란 공격 suffix
+# enl_msg(You_, "will confuse", "would have confused", buf, "")
+# verb에 동사 포함 ("혼란시킬 것이다"/"혼란시킬 수 있었다"), suffix는 목적어+조건만
+# 조합: " 당신은 몬스터를 공격할 때 혼란시킬 것이다."
 msgid " monsters when hitting them"
-msgstr "몬스터를 공격할 때 혼란시킬 수 있다"
+msgstr "몬스터를 공격할 때 "
 
 # enl_msg(You_, "will confuse", "would have confused", buf, "")
 # buf가 " (next hit only)" 또는 빈 문자열

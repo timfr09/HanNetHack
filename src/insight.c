@@ -644,8 +644,8 @@ background_enlightenment(int unused_mode UNUSED, int final)
            report the values that currently affect play--or affected
            play when game ended--rather than actual outside situation.] */
         Sprintf(buf, _("a %s moon in effect%s"),
-                (flags.moonphase == FULL_MOON) ? _("full")
-                : (flags.moonphase == NEW_MOON) ? _("new")
+                (flags.moonphase == FULL_MOON) ? C_("moon", "full")
+                : (flags.moonphase == NEW_MOON) ? C_("moon", "new")
                   /* showing these would probably just lead to confusion
                      since they have no effect on game play... */
                   : (flags.moonphase < FULL_MOON) ? _("first quarter")
@@ -1689,7 +1689,7 @@ attributes_enlightenment(
 
             Sprintf(buf, "%s%s%s",
                     trapped ? _(" if not trapped") : "",
-                    (trapped && terrain) ? _(" and") : "",
+                    (trapped && terrain) ? _(" and ") : "",
                     terrain ? _(" if surroundings permitted") : "");
             enl_msg(You_, _("would levitate"), _("would have levitated"), buf, "");
         }

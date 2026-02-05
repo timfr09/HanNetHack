@@ -98,10 +98,11 @@ NetHack 3.7의 한국어 번역 프로젝트입니다. GNU gettext 기반 i18n �
 ### 3.3 매크로 종류
 
 ```c
-_("text")       // 런타임 번역 (일반적)
-N_("text")      // 마킹만 (정적 배열용)
-gettext("text") // _()와 동일
-P_("s", "p", n) // 복수형 (한국어는 불필요)
+_("text")              // 런타임 번역 (일반적)
+N_("text")             // 마킹만 (정적 배열용)
+C_("ctx", "text")      // 컨텍스트 분리 번역 (동일 문자열, 다른 번역)
+gettext("text")        // _()와 동일
+P_("s", "p", n)        // 복수형 (한국어는 불필요)
 ```
 
 ---
@@ -327,6 +328,74 @@ enl_msg(You_, verb, verb, suffix, "");  // 마지막 ""
 #include "hack.h"
 #include "i18n.h"  // 필수!
 ```
+
+### 5.8 C_() 컨텍스트 분리
+
+동일한 영어 문자열이 여러 곳에서 다른 의미로 사용될 때, `C_()` 매크로로 컨텍스트를 분리합니다.
+
+#### 문제 상황
+
+```c
+// insight.c: enlightenment 화면에서 문장으로 사용
+you_are(_("invisible"), from_what(INVIS));
+// → "당신은 투명 상태이다 (투명의 반지 때문에)."
+
+// timeout.c: propertynames[] 배열에서 레이블로 사용
+N_("invisible")
+// → "투명" (목록 레이블)
+```
+
+`_("invisible")`를 "투명 상태이다"로 번역하면 timeout.c에서 "투명 상태이다"가 출력됨.
+`_("invisible")`를 "투명"으로 번역하면 insight.c에서 "당신은 투명."이 되어 서술어가 빠짐.
+
+#### 해결: C_() 사용
+
+```c
+// insight.c - 컨텍스트 분리
+you_are(C_("insight", "invisible"), from_what(INVIS));
+
+// timeout.c - 기존 _() 유지
+N_("invisible")
+```
+
+#### ko_manual.po 항목
+
+```
+# timeout.c 레이블용 (기존)
+msgid "invisible"
+msgstr "투명"
+
+# insight.c 문장용 (새로 추가)
+msgctxt "insight"
+msgid "invisible"
+msgstr "투명 상태이다"
+```
+
+#### 현재 C_("insight") 적용 항목
+
+| 영어 msgid | insight.c (문장) | 기본 (레이블) |
+|-----------|-----------------|-------------|
+| `levitating` | 부유 상태이다 | 부유 |
+| `flying` | 비행 상태이다 | 비행 |
+| `swimming` | 수영 중이다 | 수영 |
+| `stunned` | 기절 상태이다 | 기절 |
+| `confused` | 혼란 상태이다 | 혼란 |
+| `hallucinating` | 환각 상태이다 | 환각 |
+| `telepathic` | 텔레파시 능력이 있다 | 텔레파시 |
+| `clairvoyant` | 천리안 능력이 있다 | 천리안 |
+| `invisible` | 투명 상태이다 | 투명 |
+| `displaced` | 변위 상태이다 | 변위 |
+| `stealthy` | 은밀한 상태이다 | 은밀 |
+| `invulnerable` | 무적 상태이다 | 무적 |
+| `very fast` | 매우 빠른 상태이다 | 매우 빠른 |
+| `fast` | 빠른 상태이다 | 빠른 |
+
+#### C_() 사용 규칙
+
+1. **같은 msgid가 다른 파일/컨텍스트에서 다른 번역이 필요할 때만** 사용
+2. 컨텍스트 이름은 소스 파일 또는 기능을 나타냄 (예: `"insight"`, `"combat"`)
+3. ko_manual.po에 반드시 `msgctxt` 행을 포함해야 함
+4. 기존 `_()` 항목은 가장 일반적인 용법으로 유지
 
 ---
 
@@ -923,7 +992,7 @@ invalid multibyte sequence
 ### 15.4 공유 문자열 충돌
 
 해결:
-1. 소스에서 문자열 분리 (권장)
+1. `C_("context", "text")`로 컨텍스트 분리 (권장, 5.8절 참조)
 2. 두 컨텍스트 모두 작동하는 번역
 
 ---
@@ -1160,8 +1229,8 @@ A: 원문이 변경되어 번역 검토가 필요하다는 표시입니다.
 
 ### Q: 공유 문자열은 어떻게 처리하나요?
 A: `#:` 줄에서 여러 파일이 나열되면 공유 문자열입니다.
-   모든 컨텍스트에서 작동하는 번역을 선택하거나,
-   소스에서 문자열을 분리하세요.
+   `C_("context", "text")`로 컨텍스트를 분리하세요 (5.8절 참조).
+   또는 모든 컨텍스트에서 작동하는 번역을 선택하세요.
 
 ### Q: 조사({은/는})가 안 되는데요?
 A: `ko_postpos.c`가 제대로 링크되었는지 확인하세요.

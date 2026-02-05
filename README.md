@@ -1,6 +1,6 @@
 # HanNetHack - 한국어 NetHack
 
-![Version](https://img.shields.io/badge/version-3.7.0--ko.1-blue)
+![Version](https://img.shields.io/badge/version-3.7.0--ko.3-blue)
 ![License](https://img.shields.io/badge/license-NGPL-green)
 ![Translation](https://img.shields.io/badge/translation-WIP-yellow)
 
@@ -22,6 +22,8 @@ NetHack 3.7 기반의 한국어 번역 개인 프로젝트입니다.
 - Speech style distinction (polite/casual/semi-polite)
 - Consistent terminology across all game messages
 - Word order optimized for natural Korean (positional format specifiers)
+- Context-aware translations using `C_()` for shared strings
+- Encyclopedia (data.base) Korean translation
 
 ### Enhanced Display
 - Korean full-width symbol set
@@ -125,7 +127,7 @@ Please report translation errors or suggestions on [GitHub Issues](https://githu
 HanNetHack uses semantic versioning with Korean translation suffix:
 
 ```
-v3.7.0-ko.1
+v3.7.0-ko.3
   │    │  └── Korean translation version
   │    └───── Based on NetHack 3.7.0
   └────────── Major version

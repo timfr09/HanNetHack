@@ -1097,8 +1097,8 @@ status_enlightenment(int mode, int final)
             if (final && !u.uswldtim)
                 Strcat(buf, _(" and got totally digested"));
             else
-                Sprintf(eos(buf), _(" and %s being digested"),
-                        final ? _("were") : _("are"));
+                Strcat(buf, final ? _(" and were being digested")
+                                  : _(" and are being digested"));
         }
         if (wizard)
             Sprintf(eos(buf), " (%u)", u.uswldtim);
@@ -1455,11 +1455,16 @@ item_resistance_message(
 
     if (protection) {
         boolean somewhat = protection < 99;
+        char sfx[BUFSZ];
 
-        enl_msg(_("Your items "),
-                somewhat ? _("are somewhat") : _("are"),
-                somewhat ? _("were somewhat") : _("were"),
-                prot_message, item_what(adtyp));
+        /* i18n: fold "somewhat" into suffix so that "are"/"were" can be
+           translated independently without cross-pattern conflicts */
+        if (somewhat)
+            Sprintf(sfx, _(" somewhat%s"), prot_message);
+        else
+            Strcpy(sfx, prot_message);
+        enl_msg(_("Your items "), _("are"), _("were"),
+                sfx, item_what(adtyp));
     }
 }
 
@@ -1469,8 +1474,7 @@ attributes_enlightenment(
     int unused_mode UNUSED,
     int final)
 {
-    static NEARDATA const char
-        if_surroundings_permitted[] = " if surroundings permitted";
+    /* i18n: use _() at point of use instead of static const */
     int ltmp, armpro, warnspecies;
     char buf[BUFSZ];
 
@@ -1508,19 +1512,20 @@ attributes_enlightenment(
         you_are(_("magic-protected"), from_what(ANTIMAGIC));
     if (Fire_resistance)
         you_are(_("fire resistant"), from_what(FIRE_RES));
-    item_resistance_message(AD_FIRE, " protected from fire", final);
+    item_resistance_message(AD_FIRE, _(" protected from fire"), final);
     if (Cold_resistance)
         you_are(_("cold resistant"), from_what(COLD_RES));
-    item_resistance_message(AD_COLD, " protected from cold", final);
+    item_resistance_message(AD_COLD, _(" protected from cold"), final);
     if (Sleep_resistance)
         you_are(_("sleep resistant"), from_what(SLEEP_RES));
     if (Disint_resistance)
         you_are(_("disintegration resistant"), from_what(DISINT_RES));
-    item_resistance_message(AD_DISN, " protected from disintegration", final);
+    item_resistance_message(AD_DISN,
+                            _(" protected from disintegration"), final);
     if (Shock_resistance)
         you_are(_("shock resistant"), from_what(SHOCK_RES));
-    item_resistance_message(AD_ELEC, " protected from electric shocks",
-                            final);
+    item_resistance_message(AD_ELEC,
+                            _(" protected from electric shocks"), final);
     if (Poison_resistance)
         you_are(_("poison resistant"), from_what(POISON_RES));
     if (Acid_resistance) {
@@ -1685,7 +1690,7 @@ attributes_enlightenment(
             Sprintf(buf, "%s%s%s",
                     trapped ? _(" if not trapped") : "",
                     (trapped && terrain) ? _(" and") : "",
-                    terrain ? if_surroundings_permitted : "");
+                    terrain ? _(" if surroundings permitted") : "");
             enl_msg(You_, _("would levitate"), _("would have levitated"), buf, "");
         }
         BLevitation = save_BLev;
@@ -1710,7 +1715,7 @@ attributes_enlightenment(
                              would still be blocked after escaping trap */
                           ? _(" if you weren't trapped")
                           : (save_BFly == FROMOUTSIDE)
-                             ? if_surroundings_permitted
+                             ? _(" if surroundings permitted")
                              /* two or more of levitation, surroundings,
                                 and being trapped in the floor */
                              : _(" if circumstances permitted"),
@@ -2113,9 +2118,15 @@ show_conduct(int final)
         you_have_been(_("deaf from birth"));
     /* note: we don't report "you are without possessions" unless the
        game started with the pauper option set */
-    if (u.uroleplay.pauper)
-        enl_msg(You_, gi.invent ? _("started") : _("are"), _("started out"),
-                _(" without possessions"), "");
+    /* i18n: split into separate calls so "are" vs "started" can have
+       different suffix translations for Korean SOV order */
+    if (u.uroleplay.pauper) {
+        if (gi.invent)
+            enl_msg(You_, _("started"), _("started out"),
+                    _(" without possessions"), "");
+        else
+            you_are(_("without possessions"), "");
+    }
     if (u.uroleplay.reroll) {
         Sprintf(buf, _("rerolled your character %ld time%s"),
                 u.uroleplay.numrerolls, plur(u.uroleplay.numrerolls));

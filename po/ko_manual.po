@@ -2570,14 +2570,17 @@ msgstr "디버그"
 msgid "explore"
 msgstr "탐험"
 
+# insight.c:426 - enl_msg(You_, "haven't encountered", "didn't encounter", " any bones levels", "")
+# 조합: " 당신은 뼈 레벨을 만나지 못했다."
 msgid "haven't encountered"
 msgstr "만나지 못했다"
 
 msgid "didn't encounter"
 msgstr "만나지 못했다"
 
+# suffix - 앞 공백 제거, 뒤 공백 추가
 msgid " any bones levels"
-msgstr " 뼈 레벨을"
+msgstr "뼈 레벨을 "
 
 # 문장 패턴
 #, c-format
@@ -2646,6 +2649,11 @@ msgstr "​"
 # insight.c:1690 - " if not trapped" 조건
 msgid " if not trapped"
 msgstr " (함정에 걸리지 않았다면)"
+
+# insight.c:1688,1713 - " if surroundings permitted" 조건
+# 부유/비행 차단 조건 (지형이 허락하면)
+msgid " if surroundings permitted"
+msgstr "주변 환경이 허락한다면 "
 
 msgid "would levitate"
 msgstr "부유할 것이다"
@@ -2750,19 +2758,35 @@ msgstr "피했다"
 msgid "survived"
 msgstr "살아남았다"
 
+# insight.c:1992-2001, 2243-2252 - 사망/소코반 횟수
+# suffix로 사용되므로 뒤 공백 추가 (verb와 연결)
+msgid "once"
+msgstr "한 번 "
+
+msgid "twice"
+msgstr "두 번 "
+
+msgid "thrice"
+msgstr "세 번 "
+
 #, c-format
 msgid "%d times"
-msgstr "%d번"
+msgstr "%d번 "
 
 msgid "are dead"
 msgstr "죽었다"
 
+# insight.c:2014 - 사망 횟수 (dead case)
+# %d = 횟수, %s = 영어 서수 접미사 (st/nd/rd/th) → %.0s로 억제
 #, c-format
 msgid " (%d%s time!)"
-msgstr " (%d%s번!)"
+msgstr " (%1$d번째!%2$.0s)"
 
+# insight.c:2020 - enl_msg(You_, "have been killed ", p, buf, "")
+# 한국어에서 동사가 끝에 오므로 뒷 공백 불필요
+# 조합: "당신은 [한 번 ]죽임을 당했다."
 msgid "have been killed "
-msgstr "죽임을 당했다 "
+msgstr "죽임을 당했다"
 
 msgid "blind from birth"
 msgstr "태어날 때부터 눈이 멀었다"
@@ -2770,14 +2794,26 @@ msgstr "태어날 때부터 눈이 멀었다"
 msgid "deaf from birth"
 msgstr "태어날 때부터 귀가 들리지 않았다"
 
+# insight.c:2122 - 빈민 도전 (소유물 있는 경우)
+# enl_msg(You_, "started", "started out", " without possessions", "")
+# 영어: "You started without possessions."
+# 한국어: "당신은 소유물 없이 시작했다."
 msgid "started"
-msgstr ""
+msgstr "시작했다"
 
 msgid "started out"
-msgstr ""
+msgstr "시작했다"
 
+# 빈민 도전 접미사 (소유물 있는 경우, "started" 동사와 조합)
 msgid " without possessions"
-msgstr " 소유물 없이 시작했다"
+msgstr "소유물 없이 "
+
+# insight.c:2125 - 빈민 도전 (소유물 없는 경우)
+# you_are("without possessions", "") → "are " 매크로(​) 사용
+# 영어: "You are without possessions."
+# 한국어: "당신은 소유물이 없다."
+msgid "without possessions"
+msgstr "소유물이 없다"
 
 #, c-format
 msgid "rerolled your character %ld time%s"
@@ -2912,8 +2948,10 @@ msgstr "​"
 msgid "have not wished"
 msgstr "소원을 빌지 않았다"
 
+# insight.c:2228 - suffix, 앞 공백 제거, 뒤 공백 추가
+# verb "소원을 빌지 않았다"와 조합: "아티팩트에 대해 소원을 빌지 않았다."
 msgid " for any artifacts"
-msgstr " 아티팩트를 위해"
+msgstr "아티팩트에 대해 "
 
 msgid "have violated"
 msgstr "위반했다"
@@ -2928,8 +2966,10 @@ msgid "did not violate"
 msgstr "위반하지 않았다"
 
 #, c-format
+# suffix로 사용되므로 뒤 공백 추가
+#, c-format
 msgid "%ld times"
-msgstr "%ld번"
+msgstr "%ld번 "
 
 msgid "are exploring"
 msgstr "탐험 중이다"
@@ -3390,10 +3430,8 @@ msgstr " 'm|M', 'o|O', 'd|D', 'x|X' 용"
 msgid "S"
 msgstr "S"
 
-# insight.c - "You took damage" 조합에서 과거형
-# 조합: You_ + "took" + " reduced poison damage"
-msgid "took"
-msgstr "받았다"
+# "took"는 ko.po에서 "​"(제로폭 공백)으로 처리
+# suffix에 동사를 포함시키는 방식 사용
 
 #, c-format
 msgid "disabled loading%s of bones levels"
@@ -3437,14 +3475,18 @@ msgid " if circumstances permitted"
 msgstr "상황이 허락한다면 "
 
 # insight.c:1800 - enl_msg(You_, "take", "took", " reduced poison gas damage", "")
-# 포맷: " %1$s%3$s%2$s%4$s."
-# 조합: " 당신은 감소된 독 가스 피해를 받았다."
-# suffix - 앞 공백 제거, 뒤 공백 추가
+# take/took은 "​"(제로폭 공백)이므로 suffix에 동사 포함
+# 조합: " 당신은 감소된 독 가스 피해를 받는다​."
 msgid " reduced poison gas damage"
-msgstr "감소된 독 가스 피해를 "
+msgstr "감소된 독 가스 피해를 받는다"
+
+# insight.c:1925 - 신 분노 패턴: u_gname() + " is"/" was" + buf
+# 접미사에 동사 포함 ("분노하고 있다")이므로 verb는 제로폭 공백
+msgid " is"
+msgstr "​"
 
 msgid " was"
-msgstr " ~였다"
+msgstr "​"
 
 #, c-format
 msgid "Fruit #%d "
@@ -3460,8 +3502,10 @@ msgstr "피했다"
 msgid " a one-shot death via saving-grace"
 msgstr "구원 은총으로 즉사를 "
 
+# insight.c:1986 - past verb for killed count
+# 한국어에서 동사가 끝에 오므로 뒷 공백 불필요
 msgid "survived after being killed "
-msgstr "죽임을 당한 후 살아남았다 "
+msgstr "죽임을 당한 후 살아남았다"
 
 msgid "faithfully nudist"
 msgstr "충실한 나체주의자였다"
@@ -3487,11 +3531,16 @@ msgstr " (%ld "
 msgid "did not wish"
 msgstr "소원을 빌지 않았다"
 
+# insight.c:2235 - 소코반 규칙 위반 (위반 있음)
+# 뒤에 "once"/"twice" 등이 붙어서 suffix 형성
+# 앞 공백 제거 (prefix "당신은 "의 뒤 공백과 중복 방지)
 msgid " the special Sokoban rules "
-msgstr " 소코반 특별 규칙을 "
+msgstr "소코반 특별 규칙을 "
 
+# insight.c:2240 - 소코반 규칙 위반 (위반 없음)
+# suffix 전체 - 앞 공백 제거, 뒤 공백 추가 (verb와 연결)
 msgid " any of the special Sokoban rules"
-msgstr " 소코반 특별 규칙 중 어떤 것도"
+msgstr "소코반 특별 규칙 중 어떤 것도 "
 
 msgid "learned the tune to open and close the Castle's drawbridge"
 msgstr "성의 도개교를 열고 닫는 곡조를 배웠다"
@@ -4373,11 +4422,9 @@ msgstr " 아래에 "
 msgid "expels"
 msgstr "내뱉다"
 
-# insight.c:223 - enl_msg(You_, "take", "took", buf, from_what())
-# 조합: "You take/took damage", "You take reduced poison damage"
-# "take"는 "받다" 의미로 사용됨
-msgid "take"
-msgstr "받다"
+# "take"는 ko.po에서 "​"(제로폭 공백)으로 처리
+# steal.c에서도 "take"를 사용하므로 ko_manual.po에서 오버라이드하지 않음
+# 대신 suffix에 동사를 포함시킴
 
 # ============================================================
 # 추가 fuzzy 오류 수정 - Part 5
@@ -5921,12 +5968,11 @@ msgstr " 당신의 사슬을 %s"
 
 # insight.c:225 - enl_msg(You_, "take", "took", buf, from_what())
 # buf = " %s %s damage" 로 생성됨 (예: " half physical damage")
-# 포맷: " %1$s%3$s%2$s%4$s."
-# 조합: " 당신은 감소된 물리적 피해를 받았다 (원인)."
-# suffix - 앞 공백 제거, 뒤 공백 추가 (verb와 연결)
+# take/took은 "​"(제로폭 공백)이므로 suffix에 동사 포함
+# 조합: " 당신은 절반의 물리 피해를 받는다 (원인)."
 #, c-format
 msgid " %s %s damage"
-msgstr "%s %s 피해를 "
+msgstr "%s %s 피해를 받는다"
 
 # mhitu.c:285 - 소용돌이에서 배출될 때
 # 결과: "expelled from X in a shower of sparks" → "불꽃 소나기 속에서 X에서 배출"
@@ -6641,17 +6687,21 @@ msgstr "몬스터의 존재를 감지하고 있다"
 msgid "Your spell casting "
 msgstr "당신의 주문 시전 능력이 "
 
-# insight.c:1803-1804 - " impaired by metallic armor, mitigated by your robe"
+# [사용되지 않는 엔트리] 실제로는 " impaired by metallic armor%s" c-format 사용
+# Sprintf 결과이므로 gettext 룩업 안 됨
 msgid " impaired by metallic armor, mitigated by your robe"
-msgstr " 금속 갑옷으로 방해받지만, 로브가 완화시킨다"
+msgstr "금속 갑옷으로 인해 저하된 상태(로브로 완화)"
 
-# insight.c:1803 - " impaired by metallic armor"
+# [사용되지 않는 엔트리] 실제로는 " impaired by metallic armor%s" c-format 사용
 msgid " impaired by metallic armor"
-msgstr " 금속 갑옷으로 방해받고 있다"
+msgstr "금속 갑옷으로 인해 저하된 상태"
 
-# insight.c:1806 - " enhanced by wearing a robe"
+# insight.c:1817 - " enhanced by wearing a robe"
+# enl_msg("Your spell casting ", "is", "was", cast_adj, "")
+# "is" → "이다"이므로 상태 명사형
+# 조합: "당신의 주문 시전 능력이 로브 착용으로 강화된 상태이다."
 msgid " enhanced by wearing a robe"
-msgstr " 로브 착용으로 강화된다"
+msgstr "로브 착용으로 강화된 상태"
 
 # ============================================================
 # [조합 메시지] 생명 보호 - insight.c
@@ -7044,9 +7094,14 @@ msgstr "선천적 "
 msgid " and got totally digested"
 msgstr " 완전히 소화되었다"
 
-#, c-format
-msgid " and %s being digested"
-msgstr " %s 소화되고 있다"
+# insight.c:1100-1101 - 소화 진행 상태 (분리된 문자열)
+# 영어: "swallowed by X and are being digested" → you_are() 호출
+# 한국어: "X에게 삼켜져 소화되고 있는 중이다"
+msgid " and are being digested"
+msgstr " 소화되고 있는 중이다"
+
+msgid " and were being digested"
+msgstr " 소화되었다"
 
 # insight.c:1182-1184 - 배고픔 상태
 msgid " from severe hunger"
@@ -7128,8 +7183,31 @@ msgstr "쌍수"
 # "temporarily "는 이미 line 6528에 존재 (동일 번역)
 # "acid resistant"는 이미 line 6515에 존재 (동일 번역)
 
+# insight.c:1448-1470 - item_resistance_message 조합
+# enl_msg("Your items ", "are"/"were", sfx, item_what())
+# "somewhat" 여부는 " somewhat%s" 포맷으로 접미사에 병합
+# 영어: "Your items are protected from fire."
+# 한국어: "당신의 아이템은 화염에 대해 보호 상태이다."
+# 영어(somewhat): "Your items are somewhat protected from fire."
+# 한국어(somewhat): "당신의 아이템은 어느 정도 화염에 대해 보호 상태이다."
+#, c-format
+msgid " somewhat%s"
+msgstr "어느 정도 %s"
+
+msgid " protected from fire"
+msgstr "화염에 대해 보호 상태"
+
+msgid " protected from cold"
+msgstr "냉기에 대해 보호 상태"
+
+msgid " protected from disintegration"
+msgstr "분해에 대해 보호 상태"
+
+msgid " protected from electric shocks"
+msgstr "전기 충격에 대해 보호 상태"
+
 msgid " protected from acid"
-msgstr " 산성으로부터 보호"
+msgstr "산성에 대해 보호 상태"
 
 # "petrification resistant"는 이미 line 6521에 존재 (동일 번역)
 
@@ -7148,13 +7226,16 @@ msgstr "(다음 공격에만) "
 msgid " (next %u hits)"
 msgstr "(다음 %u회 공격에) "
 
-# insight.c:1803-1806 - 주문 시전
+# insight.c:1814-1815 - 주문 시전 (Sprintf → suffix)
+# enl_msg("Your spell casting ", "is", "was", cast_adj, "")
+# "is" → "이다"이므로 접미사는 상태 명사형 (동사 끝 아님)
+# 조합: "당신의 주문 시전 능력이 금속 갑옷으로 인해 저하된 상태이다."
 #, c-format
 msgid " impaired by metallic armor%s"
-msgstr " 금속 갑옷으로 인해 방해받는다%s"
+msgstr "금속 갑옷으로 인해 저하된 상태%s"
 
 msgid ", mitigated by your robe"
-msgstr ", 로브로 완화됨"
+msgstr "(로브로 완화)"
 
 # " enhanced by wearing a robe"는 이미 line 6564에 존재 (동일 번역)
 
@@ -9165,11 +9246,21 @@ msgstr "튀긴다"
 
 # Note: feel, feels already defined earlier
 
+# "are"/"is" (공백 없음) - 계사 (copula)
+# vtense/otense 패턴: "%s %s full." 등에서 사용
+# insight.c: item_resistance (are + 보호 상태), two-weapon (are + 스킬 상태)
+# vtense는 비ASCII(한국어) 감지 시 변환 없이 반환
 msgid "are"
 msgstr "이다"
 
+msgid "were"
+msgstr "이었다"
+
 msgid "is"
 msgstr "이다"
+
+msgid "was"
+msgstr "이었다"
 
 # ============================================================
 # 물약/마법 효과

@@ -644,8 +644,8 @@ background_enlightenment(int unused_mode UNUSED, int final)
            report the values that currently affect play--or affected
            play when game ended--rather than actual outside situation.] */
         Sprintf(buf, _("a %s moon in effect%s"),
-                (flags.moonphase == FULL_MOON) ? _("full")
-                : (flags.moonphase == NEW_MOON) ? _("new")
+                (flags.moonphase == FULL_MOON) ? C_("moon", "full")
+                : (flags.moonphase == NEW_MOON) ? C_("moon", "new")
                   /* showing these would probably just lead to confusion
                      since they have no effect on game play... */
                   : (flags.moonphase < FULL_MOON) ? _("first quarter")
@@ -1097,8 +1097,8 @@ status_enlightenment(int mode, int final)
             if (final && !u.uswldtim)
                 Strcat(buf, _(" and got totally digested"));
             else
-                Sprintf(eos(buf), _(" and %s being digested"),
-                        final ? _("were") : _("are"));
+                Strcat(buf, final ? _(" and were being digested")
+                                  : _(" and are being digested"));
         }
         if (wizard)
             Sprintf(eos(buf), " (%u)", u.uswldtim);
@@ -1314,7 +1314,6 @@ weapon_insight(int final)
                 you_are(buf, "");
 
         } else { /* two-weapon */
-            static const char also_[] = "also ";
             char pfx[QBUFSZ], sfx[QBUFSZ],
                 sknambuf2[20], sklvlbuf2[20], twobuf[20];
             const char *also = "", *also2 = "", *also3 = (char *) 0,
@@ -1345,7 +1344,7 @@ weapon_insight(int final)
                 /* twoskil won't be restricted so sklvl is at least basic */
                 Sprintf(pfx, _("Your skill in %s "), skill_name(wtype));
                 Sprintf(sfx, _(" limited by being %s with two weapons"), twobuf);
-                also = also_;
+                also = _("also ");
             } else if (twoskl > sklvl) {
                 /* sklvl might be restricted */
                 Strcpy(pfx, _("Your two weapon skill "));
@@ -1355,10 +1354,10 @@ weapon_insight(int final)
                 else
                     Sprintf(eos(sfx), _("having no skill"));
                 Sprintf(eos(sfx), _(" with %s"), skill_name(wtype));
-                also2 = also_;
+                also2 = _("also ");
             } else {
                 Strcat(buf, _(" and two weapons"));
-                also3 = also_;
+                also3 = _("also ");
             }
             if (*pfx)
                 enl_msg(pfx, _("is"), _("was"), sfx, "");
@@ -1372,7 +1371,7 @@ weapon_insight(int final)
             if (wtype2 != wtype) {
                 Strcpy(sknambuf2, skill_name(wtype2));
                 (void) lcase(skill_level_name(wtype2, sklvlbuf2));
-                verb_present = "is", verb_past = "was";
+                verb_present = _("is"), verb_past = _("was");
                 pfx[0] = sfx[0] = buf[0] = '\0';
                 if (twoskl < sklvl2) {
                     /* twoskil is at least unskilled, sklvl2 at least basic */
@@ -1420,8 +1419,6 @@ weapon_insight(int final)
             a2 = (wtype2 != wtype) ? can_advance(wtype2, FALSE) : FALSE;
             ab = can_advance(P_TWO_WEAPON_COMBAT, FALSE);
             if (a1 || a2 || ab) {
-                static const char also_wik_[] = " and also with ";
-
                 /* for just one, the conditionals yield
                    1) "skill with <that one>"; for more than one:
                    2) "skills with <primary> and also with <secondary>" or
@@ -1435,10 +1432,12 @@ weapon_insight(int final)
                         ((int) a1 + (int) a2 + (int) ab > 1) ? "s" : "",
                         a1 ? skill_name(wtype) : "",
                         ((a1 && a2 && ab) ? _(", ")
-                         : (a1 && (a2 || ab)) ? also_wik_ : ""),
+                         : (a1 && (a2 || ab))
+                           ? _(" and also with ") : ""),
                         a2 ? skill_name(wtype2) : "",
                         ((a1 && a2 && ab) ? _(", and ")
-                         : (a2 && ab) ? also_wik_ : ""),
+                         : (a2 && ab)
+                           ? _(" and also with ") : ""),
                         ab ? _("two weapons") : "");
                 enl_msg(You_, _("can enhance"), _("could have enhanced"), sfx, "");
             }
@@ -1456,11 +1455,16 @@ item_resistance_message(
 
     if (protection) {
         boolean somewhat = protection < 99;
+        char sfx[BUFSZ];
 
-        enl_msg(_("Your items "),
-                somewhat ? _("are somewhat") : _("are"),
-                somewhat ? _("were somewhat") : _("were"),
-                prot_message, item_what(adtyp));
+        /* i18n: fold "somewhat" into suffix so that "are"/"were" can be
+           translated independently without cross-pattern conflicts */
+        if (somewhat)
+            Sprintf(sfx, _(" somewhat%s"), prot_message);
+        else
+            Strcpy(sfx, prot_message);
+        enl_msg(_("Your items "), _("are"), _("were"),
+                sfx, item_what(adtyp));
     }
 }
 
@@ -1470,8 +1474,7 @@ attributes_enlightenment(
     int unused_mode UNUSED,
     int final)
 {
-    static NEARDATA const char
-        if_surroundings_permitted[] = " if surroundings permitted";
+    /* i18n: use _() at point of use instead of static const */
     int ltmp, armpro, warnspecies;
     char buf[BUFSZ];
 
@@ -1509,19 +1512,20 @@ attributes_enlightenment(
         you_are(_("magic-protected"), from_what(ANTIMAGIC));
     if (Fire_resistance)
         you_are(_("fire resistant"), from_what(FIRE_RES));
-    item_resistance_message(AD_FIRE, " protected from fire", final);
+    item_resistance_message(AD_FIRE, _(" protected from fire"), final);
     if (Cold_resistance)
         you_are(_("cold resistant"), from_what(COLD_RES));
-    item_resistance_message(AD_COLD, " protected from cold", final);
+    item_resistance_message(AD_COLD, _(" protected from cold"), final);
     if (Sleep_resistance)
         you_are(_("sleep resistant"), from_what(SLEEP_RES));
     if (Disint_resistance)
         you_are(_("disintegration resistant"), from_what(DISINT_RES));
-    item_resistance_message(AD_DISN, " protected from disintegration", final);
+    item_resistance_message(AD_DISN,
+                            _(" protected from disintegration"), final);
     if (Shock_resistance)
         you_are(_("shock resistant"), from_what(SHOCK_RES));
-    item_resistance_message(AD_ELEC, " protected from electric shocks",
-                            final);
+    item_resistance_message(AD_ELEC,
+                            _(" protected from electric shocks"), final);
     if (Poison_resistance)
         you_are(_("poison resistant"), from_what(POISON_RES));
     if (Acid_resistance) {
@@ -1685,8 +1689,8 @@ attributes_enlightenment(
 
             Sprintf(buf, "%s%s%s",
                     trapped ? _(" if not trapped") : "",
-                    (trapped && terrain) ? _(" and") : "",
-                    terrain ? if_surroundings_permitted : "");
+                    (trapped && terrain) ? _(" and ") : "",
+                    terrain ? _(" if surroundings permitted") : "");
             enl_msg(You_, _("would levitate"), _("would have levitated"), buf, "");
         }
         BLevitation = save_BLev;
@@ -1711,7 +1715,7 @@ attributes_enlightenment(
                              would still be blocked after escaping trap */
                           ? _(" if you weren't trapped")
                           : (save_BFly == FROMOUTSIDE)
-                             ? if_surroundings_permitted
+                             ? _(" if surroundings permitted")
                              /* two or more of levitation, surroundings,
                                 and being trapped in the floor */
                              : _(" if circumstances permitted"),
@@ -2114,9 +2118,15 @@ show_conduct(int final)
         you_have_been(_("deaf from birth"));
     /* note: we don't report "you are without possessions" unless the
        game started with the pauper option set */
-    if (u.uroleplay.pauper)
-        enl_msg(You_, gi.invent ? _("started") : _("are"), _("started out"),
-                _(" without possessions"), "");
+    /* i18n: split into separate calls so "are" vs "started" can have
+       different suffix translations for Korean SOV order */
+    if (u.uroleplay.pauper) {
+        if (gi.invent)
+            enl_msg(You_, _("started"), _("started out"),
+                    _(" without possessions"), "");
+        else
+            you_are(_("without possessions"), "");
+    }
     if (u.uroleplay.reroll) {
         Sprintf(buf, _("rerolled your character %ld time%s"),
                 u.uroleplay.numrerolls, plur(u.uroleplay.numrerolls));

@@ -105,6 +105,11 @@ po/*_merged.po
 # Compiled translation files (generated from .po during build)
 *.mo
 
+# Game save/lock files (accidentally added during development)
+dat/alock.*
+dat/block.*
+dat/save/
+
 # Claude Code local settings
 .claude/
 CLAUDE.local.md

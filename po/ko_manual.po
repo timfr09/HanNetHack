@@ -2730,27 +2730,27 @@ msgstr "아니다"
 
 # conduct/행동 규칙 관련
 msgid "have polymorphed"
-msgstr "변신했다"
+msgstr "변신했을 것이다"
 
 msgid "change shape"
-msgstr "모습을 바꾸다"
+msgstr "형태를 바꾸다"
 
 msgid "have changed shape"
-msgstr "모습을 바꿨다"
+msgstr "형태를 바꿨을 것이다"
 
 #, c-format
 msgid "would %s periodically"
-msgstr "주기적으로 %s할 것이다"
+msgstr "주기적으로 %s"
 
 # insight.c:1836 - enl_msg(You_, buf, buf, " if not locked into your current form", "")
 # buf = "would %s periodically" (주기적으로 %s할 것이다)
 # 조합: " 당신은 현재 모습에 고정되지 않았다면 주기적으로 변신할 것이다."
 # suffix - 앞 공백 제거, 뒤 공백 추가
 msgid " if not locked into your current form"
-msgstr "현재 모습에 고정되지 않았다면 "
+msgstr " (현재 형태에 고정되지 않았다면)"
 
 msgid "might avoid"
-msgstr "피할 수 있다"
+msgstr "피할 수도 있다"
 
 msgid "could have avoided"
 msgstr "피할 수 있었다"
@@ -2759,7 +2759,7 @@ msgid "avoided"
 msgstr "피했다"
 
 msgid "survived"
-msgstr "살아남았다"
+msgstr "생존했다"
 
 # insight.c:1992-2001, 2243-2252 - 사망/소코반 횟수
 # suffix로 사용되므로 뒤 공백 추가 (verb와 연결)
@@ -2777,13 +2777,13 @@ msgid "%d times"
 msgstr "%d번 "
 
 msgid "are dead"
-msgstr "죽었다"
+msgstr "사망했다"
 
 # insight.c:2014 - 사망 횟수 (dead case)
 # %d = 횟수, %s = 영어 서수 접미사 (st/nd/rd/th) → %.0s로 억제
 #, c-format
 msgid " (%d%s time!)"
-msgstr " (%1$d번째!%2$.0s)"
+msgstr " (%d%s번째!)"
 
 # insight.c:2020 - enl_msg(You_, "have been killed ", p, buf, "")
 # 한국어에서 동사가 끝에 오므로 뒷 공백 불필요
@@ -2795,7 +2795,7 @@ msgid "blind from birth"
 msgstr "태어날 때부터 눈이 멀었다"
 
 msgid "deaf from birth"
-msgstr "태어날 때부터 귀가 들리지 않았다"
+msgstr "태어날 때부터 귀가 안 들렸다"
 
 # insight.c:2122 - 빈민 도전 (소유물 있는 경우)
 # enl_msg(You_, "started", "started out", " without possessions", "")
@@ -2820,7 +2820,7 @@ msgstr "소유물이 없다"
 
 #, c-format
 msgid "rerolled your character %ld time%s"
-msgstr "캐릭터를 %ld회%.0s 재생성했다"
+msgstr "캐릭터를 %ld회%.0s 재굴림했다"
 
 # ============================================================
 # [조합 메시지] insight.c - "You have gone/went without food"
@@ -2832,14 +2832,14 @@ msgstr "캐릭터를 %ld회%.0s 재생성했다"
 # 조합: " 당신은 음식 없이 지냈다."
 # ============================================================
 msgid "have gone"
-msgstr ""
+msgstr "지냈다"
 
 msgid "went"
-msgstr ""
+msgstr "지냈다"
 
 # suffix - 앞 공백 제거 (prefix "당신은 "과 연결)
 msgid " without food"
-msgstr "음식 없이 지냈다"
+msgstr "음식 없이 "
 
 msgid "vegetarian"
 msgstr "채식주의자였다"
@@ -2848,31 +2848,31 @@ msgid "an atheist"
 msgstr "무신론자였다"
 
 msgid "hit with a wielded weapon"
-msgstr "무기로 공격한 적이 없다"
+msgstr "휘두른 무기로 때린 적이 없다"
 
 #, c-format
 msgid "hit with a wielded weapon %ld time%s"
-msgstr "무기로 %ld회%.0s 공격했다"
+msgstr "휘두른 무기로 %ld회%.0s 때렸다"
 
 msgid "illiterate"
 msgstr "문맹이었다"
 
 msgid "had a pet"
-msgstr "애완동물을 가진 적이 없다"
+msgstr "펫을 가진 적이 없다"
 
 msgid "genocided any monsters"
 msgstr "몬스터를 학살한 적이 없다"
 
 #, c-format
 msgid "genocided %d type%s of monster%s"
-msgstr "%d종%.0s의 몬스터를%.0s 학살했다"
+msgstr "%d종%.0s%.0s의 몬스터를 학살했다"
 
 msgid "polymorphed an object"
-msgstr "물체를 변형한 적이 없다"
+msgstr "물건을 변이시킨 적이 없다"
 
 #, c-format
 msgid "polymorphed %ld item%s"
-msgstr "%ld개%.0s의 물체를 변형했다"
+msgstr "%ld개%.0s의 물건을 변이시켰다"
 
 msgid "changed form"
 msgstr "형태를 바꾼 적이 없다"
@@ -2882,18 +2882,18 @@ msgstr "소원을 사용하지 않았다"
 
 # 지갑/골드 관련
 msgid " Your wallet %s empty"
-msgstr " 지갑이 비어 있다"
+msgstr " 당신의 지갑은 %s 비어 있다"
 
 #, c-format
 msgid " Your wallet contain%s %ld %s"
-msgstr " 지갑에 %2$ld %3$s이(가) 있다%1$.0s"
+msgstr " 당신의 지갑에는 %2$ld %3$s%1$s 들어 있다"
 
 #, c-format
 msgid "%ld %s stashed away in your pack"
-msgstr "배낭에 %ld %s{이/가} 저장되어 있다"
+msgstr "%ld %s{이/가} 가방에 숨겨져 있다"
 
 msgid " and %s %s inside"
-msgstr " 그리고 안에 %s %s"
+msgstr ", 안에서 뭔가 죽은 것을 %s%s"
 
 #, c-format
 msgid "all %d %s"
@@ -2938,7 +2938,7 @@ msgstr "'%s', '%s', '%s', '%s'{을/를} 눌러 커서를 %s(으)로 이동하세
 # 더 많은 conduct 관련
 #, c-format
 msgid "used %ld wish%s"
-msgstr "%ld개%.0s의 소원을 사용했다"
+msgstr "%ld회%.0s 소원을 사용했다"
 
 # ============================================================
 # [조합 메시지] 복수형 접미사 "es"
@@ -2954,7 +2954,7 @@ msgstr "소원을 빌지 않았다"
 # insight.c:2228 - suffix, 앞 공백 제거, 뒤 공백 추가
 # verb "소원을 빌지 않았다"와 조합: "아티팩트에 대해 소원을 빌지 않았다."
 msgid " for any artifacts"
-msgstr "아티팩트에 대해 "
+msgstr "아티팩트를 위해 "
 
 msgid "have violated"
 msgstr "위반했다"
@@ -2975,7 +2975,7 @@ msgid "%ld times"
 msgstr "%ld번 "
 
 msgid "are exploring"
-msgstr "탐험 중이다"
+msgstr "탐험하고 있다"
 
 msgid "explored"
 msgstr "탐험했다"
@@ -2986,12 +2986,12 @@ msgstr "탐험했다"
 # verb에 동사 포함 ("탐험 중이다"/"탐험했다"), suffix는 수식어 형태
 # 조합: " 당신은 볼 수 없는 상태로 탐험 중이다."
 msgid " without being able to see"
-msgstr "볼 수 없는 상태로 "
+msgstr "앞을 보지 못한 채 "
 
 # insight.c:2312 - enl_msg(You_, "have gone", "went", " without any armor", "")
 # 조합: " 당신은 갑옷 없이 지냈다."
 msgid " without any armor"
-msgstr "갑옷 없이 지냈다"
+msgstr "갑옷 없이 "
 
 # 업적 관련
 msgid "entered Minetown"
@@ -3001,7 +3001,7 @@ msgid "consulted the Oracle of Delphi"
 msgstr "델피의 신탁에게 상담했다"
 
 msgid "read from a Discworld novel"
-msgstr "디스크월드 소설에서 읽었다"
+msgstr "디스크월드 소설을 읽었다"
 
 msgid "completed Sokoban"
 msgstr "소코반을 완료했다"
@@ -3026,10 +3026,10 @@ msgid "had"
 msgstr "가지고 있었다"
 
 msgid "have handled"
-msgstr "다뤘다"
+msgstr "다뤄 봤다"
 
 msgid "handled"
-msgstr "다뤘다"
+msgstr "다뤄 봤다"
 
 # insight.c:2351-2358 - 업적: 아이템 소유/획득
 # enl_msg(You_, "have"/"have handled", "had"/"handled", suffix, "")
@@ -3050,7 +3050,7 @@ msgstr "죽음의 책을 "
 # suffix에 완전한 술어 포함
 # 조합: " 당신은 게헨나에 들어갔다​."
 msgid "entered Gehennom"
-msgstr "게헨나에 들어갔다"
+msgstr "게헨놈에 들어갔다"
 
 msgid "gained access to Moloch's Sanctum"
 msgstr "몰록의 성소에 접근했다"
@@ -3059,30 +3059,30 @@ msgstr "몰록의 성소에 접근했다"
 # "have obtained" = 획득했다 (현재도 가지고 있지 않음)
 # "have" = 가지고 있다 (현재 가지고 있음)
 msgid "have obtained"
-msgstr "획득했다"
+msgstr "얻었다"
 
 msgid "delivered"
 msgstr "전달했다"
 
 msgid "had obtained"
-msgstr "획득했었다"
+msgstr "얻었다"
 
 # suffix - 앞 공백 제거, 뒤 공백 추가
 msgid " the Amulet of Yendor"
 msgstr "옌더의 부적을 "
 
 msgid "reached the Elemental Planes"
-msgstr "원소의 차원에 도달했다"
+msgstr "원소의 평면에 도달했다"
 
 msgid "reached the Astral Plane"
-msgstr "천상의 차원에 도달했다"
+msgstr "아스트랄 평면에 도달했다"
 
 msgid " You ascended!"
-msgstr " 승천했다!"
+msgstr " 당신은 승천했다!"
 
 #, c-format
 msgid "attained the rank of %s"
-msgstr "%s의 계급에 도달했다"
+msgstr "%s의 직위에 올랐다"
 
 #, c-format
 msgid "Sort order for %s"
@@ -3447,11 +3447,11 @@ msgstr "S"
 
 #, c-format
 msgid "disabled loading%s of bones levels"
-msgstr "뼈 레벨%s 불러오기 비활성화됨"
+msgstr "뼈 레벨 불러오기%s를 비활성화했다"
 
 #, c-format
 msgid "encountered %ld bones level%s"
-msgstr "%ld개%s의 뼈 레벨을 만났다"
+msgstr "뼈 레벨 %ld개%.0s를 만났다"
 
 #, c-format
 msgid "all %d hit points"
@@ -3944,7 +3944,6 @@ msgstr "<%d,%d>는 유효하지 않음; 강제 진행?"
 msgid "charisma"
 msgstr "매력"
 
-
 # 잘못된 번역 수정
 msgid "flowerpot"
 msgstr "화분"
@@ -4190,7 +4189,7 @@ msgstr "모든 종류"
 # pickup.c - all (공백 포함) (잘못된 번역: "벽 %s")
 # 사용 맥락: "all items" 등에서 접두사로 사용
 msgid "all "
-msgstr "모든 "
+msgstr "모두 "
 
 # hack.c - engulfs (잘못된 번역: "삼킨")
 # 사용 맥락: 몬스터가 플레이어를 삼킬 때 동사
@@ -5525,7 +5524,7 @@ msgstr "화난"
 # various - enl_msg 조합용. "You feel [stronger/weaker/etc]"
 # potion.c, pray.c, read.c, trap.c, wizard.c 등에서 사용
 msgid "feel"
-msgstr "느끼다"
+msgstr "느낀다"
 
 # detect.c:856 - 탐지 결과 표시. "monster of interest"
 msgid "monster of interest"
@@ -6176,7 +6175,7 @@ msgid "nominally aligned"
 msgstr "명목상 정렬됨"
 
 msgid "warded"
-msgstr "보호받음"
+msgstr "방어받고 있다"
 
 # ============================================================
 # 인벤토리/단독 용어 번역
@@ -7291,7 +7290,6 @@ msgstr "안전하게 기도할 수 있다 "
 msgid "not safely pray"
 msgstr "안전하게 기도할 수 없다 "
 
-
 # ===============================================
 # insight.c 추가 번역 - 상태 메시지 및 조합 패턴
 # ===============================================
@@ -8292,7 +8290,7 @@ msgid "character"
 msgstr "캐릭터"
 
 msgid "entered "
-msgstr "들어간 "
+msgstr "들어갔다 "
 
 # 미번역 항목 번역
 msgid "belatedly "
@@ -8309,7 +8307,7 @@ msgstr "%.0s의 반대자:"
 # %s는 복수형 접미사로 한국어에서는 불필요
 #, c-format
 msgid "the dungeon %ld turn%s ago"
-msgstr "%ld턴%.0s 전에 던전 진입"
+msgstr "%ld턴%.0s 전에 던전에 "
 
 # insight.c - 경험치
 # %s는 복수형 접미사로 한국어에서는 불필요
@@ -8317,10 +8315,10 @@ msgstr "%ld턴%.0s 전에 던전 진입"
 # insight.c:695 - you_have() 패턴: "당신은 12345 경험치가 있다."
 # %.0s로 plur() 결과 억제
 msgid "%-1ld experience point%s"
-msgstr "%-1ld 경험치가 있다%.0s"
+msgstr "%ld 경험치%.0s가 있다"
 
 msgid " before end-of-game adjustments"
-msgstr " (게임 종료 조정 전)"
+msgstr " (게임 종료 보정 전)"
 
 # pray.c - align_gtitle() 에서 사용되는 신 호칭
 # 잘못된 번역 수정: "god" → "금" (X) → "신" (O)
@@ -9145,7 +9143,7 @@ msgstr " %s (%s)"
 # insight.c:561 - 실제로
 #, c-format
 msgid "actually %s"
-msgstr "실제로 %s"
+msgstr "실제로는 %s이다"
 
 # insight.c:1494 - 점수 표시
 #, c-format
@@ -10153,3 +10151,329 @@ msgstr " (%s)"
 msgctxt "skill_twowep"
 msgid " and two weapons"
 msgstr " (양손 무기 포함)"
+
+# ============================================================
+# insight.c 조합 패턴 종합 검토 (2026-02-06)
+# ============================================================
+#
+# 검토 방법: insight.c의 모든 enl_msg/you_* 호출을 추적하여
+# 한국어 조합 결과를 확인하고, 번역이 자연스러운지 점검.
+#
+# 핵심 포맷: " %1$s%3$s%2$s%4$s."
+#   %1$s = prefix (당신은 )
+#   %2$s = verb (​, 제로폭 공백)
+#   %3$s = suffix (한국어 서술어 포함)
+#   %4$s = ps (from_what 등)
+#
+# ============================================================
+
+# ============================================================
+# [조합 검토] Section A: Background (insight.c:430-720)
+# ============================================================
+
+# [조합] insight.c:434 - you_are("running in %s mode", "")
+# 영어: " You are running in debug mode."
+# 한국어: " 당신은 디버그 모드로 실행 중​."
+# 결과 OK ✓
+
+# [조합] insight.c:443 - enl_msg(You_, "haven't encountered", ...)
+# 영어: " You haven't encountered any bones levels."
+# 한국어: " 당신은 뼈 레벨을 만나지 못했다."
+# 결과 OK ✓ (이미 번역됨: line 2573)
+
+# [조합] insight.c:452 - enl_msg("Total elapsed playing time ", "is", "was", buf, "")
+# 영어: " Total elapsed playing time is 1 hour and 23 minutes."
+# 한국어: " 총 경과 플레이 시간은  1시간 23분​."
+# 결과 OK ✓ (ko.po에 존재)
+
+# [조합] insight.c:582 - 원래 성별/성향 변경 메시지
+# 직접 enlght_out 호출이므로 조합 포맷 사용 안 함
+# " You started out female and chaotic."
+# 결과 OK ✓ (ko.po에 존재)
+
+# [조합] insight.c:624 - "level %d" (던전 표시)
+# 이미 번역됨 ✓
+
+# [조합] insight.c:638 - you_have("just started your adventure", "")
+# 영어: " You have just started your adventure."
+# 한국어: " 당신은 모험을 막 시작했다​."
+# ko.po에 존재하나 ko_manual.po로 이관 (safe-update 보호)
+msgid "just started your adventure"
+msgstr "모험을 막 시작했다"
+
+# [조합] insight.c:663 - "a %s moon in effect%s"
+# 영어: " There is a full moon in effect."
+# ko.po에 존재하나 ko_manual.po로 이관
+#, c-format
+msgid "a %s moon in effect%s"
+msgstr "%s달이 효과 중%s"
+
+# [조합] insight.c:672 - " when your adventure ended"
+msgid " when your adventure ended"
+msgstr " 모험이 끝났을 때"
+
+# [조합] insight.c:707 - " (%ld %smore experience needed for level %d)"
+# 영어: " (1234 more experience needed for level 5)"
+# 한국어: " (%ld 경험치 %s더 필요, %d레벨까지)"
+#, c-format
+msgid " (%ld %smore experience needed for level %d)"
+msgstr " (%3$d레벨까지 %1$ld 경험치 %2$s더 필요)"
+
+# [조합] insight.c:717 - enl_msg("Your score ", "is ", "was ", buf, "")
+# 영어: " Your score is 1234 before end-of-game adjustments."
+# 한국어: " 당신의 점수는 1234 (게임 종료 보정 전)​."
+# 결과 OK ✓
+
+# ============================================================
+# [조합 검토] Section B: Basics (insight.c:726-828)
+# ============================================================
+
+# HP/에너지/AC/지갑/자동줍기 - 모두 이미 번역됨 ✓
+# C_("hp_all",...), C_("hp_partial",...), C_("energy_*",...)
+# "Your armor class ", "Your wallet ", "Autopickup " 등
+
+# [조합] insight.c:816 - ", but temporarily disabled while inside the shop"
+msgid ", but temporarily disabled while inside the shop"
+msgstr ", 하지만 상점 안에서는 일시적으로 비활성화"
+
+# [조합] insight.c:819 - "on for %s%s%s"
+#, c-format
+msgid " for %s%s%s"
+msgstr " %s%s%s 대상"
+
+msgid " plus thrown"
+msgstr " 및 던진 물건"
+
+msgid ", with exceptions"
+msgstr ", 예외 있음"
+
+# ============================================================
+# [조합 검토] Section C: Status (insight.c:967-1272)
+# ============================================================
+
+# [조합] insight.c:974 - you_are("transformed", "")
+# 영어: " You are transformed."
+# ko.po: "변신 상태" → " 당신은 변신 상태​." (서술어 누락)
+# 수정: "변신한 상태이다"
+msgid "transformed"
+msgstr "변신한 상태이다"
+
+# [조합] insight.c:1008-1130 - 삼킴/붙잡힘 관련
+# 이미 번역됨 ✓
+
+# [조합] insight.c:1206 - you_are("not hungry", "")
+# 영어: " You are not hungry."
+# ko.po: "배고프지 않음" → " 당신은 배고프지 않음​." (서술어 부족)
+# 수정: "배고프지 않다"
+msgid "not hungry"
+msgstr "배고프지 않다"
+
+# [조합] insight.c:1249 - you_are("unencumbered", "")
+# 영어: " You are unencumbered."
+# ko.po: "짐이 없음" → " 당신은 짐이 없음​." (서술어 부족)
+# 수정: "짐이 없다"
+msgid "unencumbered"
+msgstr "짐이 없다"
+
+# [조합] insight.c:1088 - you_are("punished", "")
+# 영어: " You are punished." (impossible() fallback)
+# ko.po: "처벌받는 중" → " 당신은 처벌받는 중​." (서술어 부족)
+# 수정: "처벌받고 있다"
+msgid "punished"
+msgstr "처벌받고 있다"
+
+# [조합] insight.c:2082 - you_are("hiding", "")
+# 영어: " You are hiding."
+# ko.po: "숨어 있음" → " 당신은 숨어 있음​." (서술어 부족)
+# 수정: "숨어 있다"
+# 참고: 이 뒤에 " in the %s", " underneath %s" 등이 append됨
+msgid "hiding"
+msgstr "숨어 있다"
+
+# ============================================================
+# [조합 검토] Section D: Weapons (insight.c:1276-1476)
+# ============================================================
+# skill_have, skill_are, skill_enhance, skill_twowep 모두 이미 번역됨 ✓
+# " skill%s with ..." 이미 번역됨 ✓
+
+# ============================================================
+# [조합 검토] Section E: Protection (insight.c:1500-1539)
+# ============================================================
+# you_are(hofe_title, "") - Hand of Elbereth 등
+# piousness() - 경건도 부사 + "aligned"
+# "Your alignment " 조합 - 모두 이미 번역됨 ✓
+
+# [조합] insight.c:1524 - you_are("the Hand of Elbereth", "")
+msgid "the Hand of Elbereth"
+msgstr "엘베레스의 손이다"
+
+msgid "the Envoy of Balance"
+msgstr "균형의 사절이다"
+
+msgid "the Glory of Arioch"
+msgstr "아리오크의 영광이다"
+
+# ============================================================
+# [조합 검토] Section F: Resistances (insight.c:1542-1584)
+# ============================================================
+# 모든 저항 you_are() 패턴 이미 번역됨 ✓
+# fire/cold/sleep/disintegration/shock/poison/acid/drain/sick/stone resistant
+# item_resistance_message 패턴 (" somewhat%s", " protected from X")도 이미 번역됨 ✓
+# hallucination resistance (resist/resisted + " hallucinations") ✓
+# "recognize detrimental food" ✓
+
+# ============================================================
+# [조합 검토] Section G: Vision (insight.c:1586-1668)
+# ============================================================
+# see/saw + " invisible" ✓
+# will see/would have seen + " invisible when not blind" ✓
+# would see/would have seen + " invisible if not blind" ✓
+# C_("insight", "telepathic") ✓
+# "warned"/"warned of undead" ✓
+# "aware of the presence of %s" ✓
+# "automatic searching" ✓
+# C_("insight", "clairvoyant") ✓
+# C_("insight", "infravision") ✓
+# "sensing the presence of monsters" ✓
+# "will confuse"/"would have confused" + " monsters when hitting them" ✓
+
+# ============================================================
+# [조합 검토] Section H: Appearance (insight.c:1670-1706)
+# ============================================================
+# "%scharismatic" ✓
+# C_("insight", "invisible") ✓
+# "invisible to others" ✓ - ko.po에서 확인 필요
+# "visible" ✓
+# C_("insight", "displaced") ✓
+# C_("insight", "stealthy") ✓
+# " stealthy%s" + "would be"/"would have been" ✓
+# "You aggravate" + "d" + " monsters" ✓
+# "You cause" + "d" + " conflict" ✓
+
+# [조합] insight.c:1688 - you_are("invisible to others", from_what(INVIS))
+# 영어: " You are invisible to others."
+# 한국어: " 당신은 다른 이에게 투명한 상태이다."
+msgid "invisible to others"
+msgstr "다른 이에게 투명한 상태이다"
+
+# ============================================================
+# [조합 검토] Section I: Transport (insight.c:1708-1791)
+# ============================================================
+# "jump"/"teleport"/"teleport control" ✓
+# "would levitate"/"would have levitated" + " if not trapped" 등 ✓
+# "would fly"/"would have flown" + " if you weren't levitating" 등 ✓
+# "could cling"/"could have clung" + " to the ceiling if %s%s%s" ✓
+# "walk on water"/"swim"/"survive without air"/"breathe water" ✓
+# "walk through walls" ✓
+
+# ============================================================
+# [조합 검토] Section J: Physical (insight.c:1793-1858)
+# ============================================================
+# "You regenerate" + "d" ✓
+# "slower digestion" ✓
+# enlght_combatinc ("to hit"/"damage"/"defense") ✓
+# enlght_halfdmg (C_("damage","take"/"took") + " %s %s damage") ✓
+# " reduced poison gas damage" ✓
+# "Your spell casting " + " impaired by metallic armor%s" ✓
+# " enhanced by wearing a robe" ✓
+# "warded"/"guarded"/"protected" ✓
+
+# [조합] insight.c:1801-1806 - suit penalty offset messages
+msgid "increasing"
+msgstr "증가시키는"
+
+msgid "partly offsetting"
+msgstr "부분적으로 상쇄하는"
+
+msgid "nearly offsetting"
+msgstr "거의 상쇄하는"
+
+msgid "overcoming"
+msgstr "극복하는"
+
+# [조합] insight.c:1801 - " %s your suit's penalty"
+#, c-format
+msgid " %s your suit's penalty"
+msgstr " 당신의 갑옷 페널티를 %s"
+
+# ============================================================
+# [조합 검토] Section K: Shape (insight.c:1860-1933)
+# ============================================================
+# "protected from shape changers" ✓
+# "not change from your current form" ✓
+# "polymorphing periodically" ✓
+# "polymorph control" ✓
+# "polymorphed into %s" ✓
+# "lay eggs" ✓
+# " in beast form" ✓
+# "harmed by silver" ✓
+# C_("insight", "very fast"/"fast") ✓
+# "reflection"/"free action"/"fixed abilities" ✓
+# "Your life " + " saved" ✓
+
+# ============================================================
+# [조합 검토] Section L: Miscellany (insight.c:1935-2001)
+# ============================================================
+# "%slucky"/"%sunlucky" ✓
+# "extremely " ✓
+# "extra luck"/"reduced luck" ✓
+# "Bad luck "/"Good luck " + " not time out for you" ✓
+# " %sangry with you" ✓
+# "safely pray"/"not safely pray" ✓
+# Fruit debugging - 위저드 전용, OK
+
+# ============================================================
+# [조합 검토] Section M: Death (insight.c:2004-2060)
+# ============================================================
+# saving-grace: "might avoid"/"have avoided"/"could have avoided"/"avoided" ✓
+# death count: "have been killed "/"survived after being killed " ✓
+# "once"/"twice"/"thrice" (사망 횟수) - Sokoban과 공유
+
+# ============================================================
+# [조합 검토] Section N: Conduct (insight.c:2142-2294)
+# ============================================================
+
+# ============================================================
+# [조합 검토] Section O: Achievements (insight.c:2308-2450)
+# ============================================================
+# 대부분 you_have_X() 패턴으로 이미 번역됨 ✓
+
+# [조합] insight.c:2363-2397 - 다양한 업적 (대부분 you_have_X)
+# ko.po에 존재하나 ko_manual.po로 이관
+
+msgid "entered the Gnomish Mines"
+msgstr "노움 광산에 들어갔다"
+
+msgid "entered a shop"
+msgstr "상점에 들어갔다"
+
+msgid "entered a temple"
+msgstr "사원에 들어갔다"
+
+msgid "entered Sokoban"
+msgstr "소코반에 들어갔다"
+
+# [조합] insight.c:2402-2432 - 퀘스트 아이템 (have/had/handled 패턴)
+# 이미 번역됨 ✓
+
+# ============================================================
+# [조합 검토] 공유 문자열 충돌 확인
+# ============================================================
+#
+# 1. "once"/"twice"/"thrice" — 사망 횟수 + 소코반 위반 횟수
+#    결론: "한 번 "/"두 번 "/"세 번 " → 두 맥락 모두 자연스러움 ✓
+#    C_() 분리 불필요.
+#
+# 2. "have"/"had" — 업적 아이템 소유 vs 보조동사
+#    "have" (공백 없음) = "가지고 있다" → 업적용
+#    "have " (공백 있음) = "​" → you_have() 매크로용
+#    다른 msgid이므로 충돌 없음 ✓
+#
+# 3. " if surroundings permitted" — 부유/비행 차단
+#    동일 번역 "주변 환경이 허락한다면 " → 두 맥락 모두 동일 의미 ✓
+#
+# 4. "have gone"/"went" — 음식 없이 + 갑옷 없이
+#    "지냈다" → 두 맥락 모두 OK ✓
+#    (suffix가 다르므로: " without food" vs " without any armor")
+#
+# ============================================================

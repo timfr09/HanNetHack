@@ -171,7 +171,7 @@ enlght_combatinc(
     int final,          /* ENL_{GAMEINPROGRESS,GAMEOVERALIVE,GAMEOVERDEAD} */
     char *outbuf)
 {
-    const char *modif, *bonus;
+    const char *modif, *bonus, *tr_inctyp;
     boolean invrt;
     int absamt;
 
@@ -182,22 +182,38 @@ enlght_combatinc(
     if (!strcmp(inctyp, "defense"))
         absamt = (absamt * 2) / 3;
 
+    /* i18n: C_("combat_mod") context separates these from size_str()
+       translations; "small" for a size means 작은 (small-sized) but
+       for a combat modifier means 약간의 (slight/minor) */
     if (absamt <= 3)
-        modif = _("small");
+        modif = C_("combat_mod", "small");
     else if (absamt <= 6)
-        modif = _("moderate");
+        modif = C_("combat_mod", "moderate");
     else if (absamt <= 12)
-        modif = _("large");
+        modif = C_("combat_mod", "large");
     else
-        modif = _("huge");
+        modif = C_("combat_mod", "huge");
 
     modif = !incamt ? _("no") : an(modif); /* ("no" case shouldn't happen) */
     bonus = (incamt >= 0) ? _("bonus") : _("penalty");
     /* "bonus <foo>" (to hit) vs "<bar> bonus" (damage, defense) */
     invrt = strcmp(inctyp, "to hit") ? TRUE : FALSE;
 
-    Sprintf(outbuf, "%s %s %s", modif, invrt ? inctyp : bonus,
-            invrt ? bonus : inctyp);
+    /* i18n: translate inctyp for display; C_() context differentiates
+       from other uses of "damage"/"defense" in different contexts */
+    tr_inctyp = !strcmp(inctyp, "damage") ? C_("combat_inc", "damage")
+              : !strcmp(inctyp, "defense") ? C_("combat_inc", "defense")
+              : C_("combat_inc", "to hit");
+    /* i18n: separate format strings for the two word orders so that
+       translators can reorder with positional specifiers (%1$s etc.);
+       for "to hit": English "a small bonus to hit";
+       for damage/defense: English "a small damage bonus" */
+    if (invrt)
+        Sprintf(outbuf, C_("combat_type", "%s %s %s"),
+                modif, tr_inctyp, bonus);
+    else
+        Sprintf(outbuf, C_("combat_hit", "%s %s %s"),
+                modif, bonus, tr_inctyp);
     if (final || wizard)
         Sprintf(eos(outbuf), " (%s%d)", (incamt > 0) ? "+" : "", incamt);
 
@@ -224,7 +240,8 @@ enlght_halfdmg(int category, int final)
     }
     Sprintf(buf, _(" %s %s damage"), (final || wizard) ? _("half") : _("reduced"),
             category_name);
-    enl_msg(You_, _("take"), _("took"), buf, from_what(category));
+    enl_msg(You_, C_("damage", "take"), C_("damage", "took"),
+            buf, from_what(category));
 }
 
 /* is hero actively using water walking capability on water (or lava)? */
@@ -381,7 +398,7 @@ enlightenment(
     *tmpbuf = highc(*tmpbuf); /* same adjustment as bottom line */
     /* as in background_enlightenment, when poly'd we need to use the saved
        gender in u.mfemale rather than the current you-as-monster gender */
-    Snprintf(buf, sizeof(buf), "%s the %s's attributes:", tmpbuf,
+    Snprintf(buf, sizeof(buf), _("%s the %s's attributes:"), tmpbuf,
              ((Upolyd ? u.mfemale : flags.female) && gu.urole.name.f)
                 ? gu.urole.name.f
                 : gu.urole.name.m);
@@ -709,7 +726,7 @@ background_enlightenment(int unused_mode UNUSED, int final)
 staticfn void
 basics_enlightenment(int mode UNUSED, int final)
 {
-    static char Power[] = "energy points (spell power)";
+    static const char Power[] = N_("energy points (spell power)");
     char buf[BUFSZ];
     int pw = u.uen, hp = (Upolyd ? u.mh : u.uhp),
         pwmax = u.uenmax, hpmax = (Upolyd ? u.mhmax : u.uhpmax);
@@ -719,20 +736,27 @@ basics_enlightenment(int mode UNUSED, int final)
 
     if (hp < 0)
         hp = 0;
-    /* "1 out of 1" rather than "all" if max is only 1; should never happen */
+    /* "1 out of 1" rather than "all" if max is only 1; should never happen;
+       i18n: C_() contexts let translators add verbs for SOV languages */
     if (hp == hpmax && hpmax > 1)
-        Sprintf(buf, _("all %d hit points"), hpmax);
+        Sprintf(buf, C_("hp_all", "all %d hit points"), hpmax);
     else
-        Sprintf(buf, _("%d out of %d hit point%s"), hp, hpmax, plur(hpmax));
+        Sprintf(buf, C_("hp_partial", "%d out of %d hit point%s"),
+                hp, hpmax, plur(hpmax));
     you_have(buf, "");
 
-    /* low max energy is feasible, so handle couple of extra special cases */
-    if (pwmax == 0 || (pw == pwmax && pwmax == 2)) /* both: not "all 2" */
-        Sprintf(buf, _("%s %s"), !pwmax ? _("no") : _("both"), Power);
+    /* low max energy is feasible, so handle couple of extra special cases;
+       i18n: C_() contexts let translators add verbs for SOV languages
+       (Korean "have" translates to nothing, so content needs a verb) */
+    if (pwmax == 0)
+        Sprintf(buf, C_("energy_none", "no %s"), _(Power));
+    else if (pw == pwmax && pwmax == 2) /* both: not "all 2" */
+        Sprintf(buf, C_("energy_both", "both %s"), _(Power));
     else if (pw == pwmax && pwmax > 2)
-        Sprintf(buf, _("all %d %s"), pwmax, Power);
+        Sprintf(buf, C_("energy_all", "all %d %s"), pwmax, _(Power));
     else
-        Sprintf(buf, _("%d out of %d %s"), pw, pwmax, Power);
+        Sprintf(buf, C_("energy_partial", "%d out of %d %s"),
+                pw, pwmax, _(Power));
     you_have(buf, "");
 
     if (Upolyd) {
@@ -965,14 +989,14 @@ status_enlightenment(int mode, int final)
         if (Lev_at_will && magic)
             you_are(_("levitating, at will"), "");
         else
-            enl_msg(youtoo, are, were, _("levitating"), from_what(LEVITATION));
+            enl_msg(youtoo, are, were, C_("insight", "levitating"), from_what(LEVITATION));
     } else if (Flying) { /* can only fly when not levitating */
-        enl_msg(youtoo, are, were, _("flying"), from_what(FLYING));
+        enl_msg(youtoo, are, were, C_("insight", "flying"), from_what(FLYING));
     }
     if (Underwater) {
         you_are(_("underwater"), "");
     } else if (u.uinwater) {
-        you_are(Swimming ? _("swimming") : _("in water"), from_what(SWIMMING));
+        you_are(Swimming ? C_("insight", "swimming") : _("in water"), from_what(SWIMMING));
     } else if (walking_on_water()) {
         /* show active Wwalking here, potential Wwalking elsewhere */
         Sprintf(buf, _("walking on %s"),
@@ -987,13 +1011,13 @@ status_enlightenment(int mode, int final)
     /* internal troubles, mostly in the order that prayer ranks them */
     if (Stoned) {
         if (final && (Stoned & I_SPECIAL))
-            enlght_out(" You turned into stone.");
+            enlght_out(_(" You turned into stone."));
         else
             you_are(_("turning to stone"), "");
     }
     if (Slimed) {
         if (final && (Slimed & I_SPECIAL))
-            enlght_out(" You turned into slime.");
+            enlght_out(_(" You turned into slime."));
         else
             you_are(_("turning into slime"), "");
     }
@@ -1002,7 +1026,7 @@ status_enlightenment(int mode, int final)
             you_are(_("buried"), "");
         } else {
             if (final && (Strangled & I_SPECIAL)) {
-                enlght_out(" You died from strangulation.");
+                enlght_out(_(" You died from strangulation."));
             } else {
                 Strcpy(buf, _("being strangled"));
                 if (wizard)
@@ -1033,11 +1057,11 @@ status_enlightenment(int mode, int final)
     if (Vomiting)
         you_are(_("nauseated"), "");
     if (Stunned)
-        you_are(_("stunned"), "");
+        you_are(C_("insight", "stunned"), "");
     if (Confusion)
-        you_are(_("confused"), "");
+        you_are(C_("insight", "confused"), "");
     if (Hallucination)
-        you_are(_("hallucinating"), "");
+        you_are(C_("insight", "hallucinating"), "");
     if (Blind) {
         /* check the reasons in same order as from_what() */
         Sprintf(buf, _("%s blind"),
@@ -1300,13 +1324,19 @@ weapon_insight(int final)
         else
             (void) lcase(skill_level_name(wtype, sklvlbuf));
         /* "you have no/basic/expert/master/grand-master skill with <skill>"
-           or "you are unskilled/skilled in <skill>" */
-        Sprintf(buf, _("%s %s %s"), sklvlbuf,
-                hav ? _("skill with") : _("in"), skill_name(wtype));
+           or "you are unskilled/skilled in <skill>";
+           i18n: C_() contexts let translators add verb endings and reorder
+           for SOV languages; "skill with" case needs "있다" verb */
+        if (hav)
+            Sprintf(buf, C_("skill_have", "%s %s %s"), sklvlbuf,
+                    _("skill with"), skill_name(wtype));
+        else
+            Sprintf(buf, C_("skill_are", "%s %s %s"), sklvlbuf,
+                    _("in"), skill_name(wtype));
 
         if (!u.twoweap) {
             if (can_advance(wtype, FALSE))
-                Sprintf(eos(buf), _(" and %s that"),
+                Sprintf(eos(buf), C_("skill_enhance", " and %s that"),
                         !final ? _("can enhance") : _("could have enhanced"));
             if (hav)
                 you_have(buf, "");
@@ -1356,7 +1386,7 @@ weapon_insight(int final)
                 Sprintf(eos(sfx), _(" with %s"), skill_name(wtype));
                 also2 = _("also ");
             } else {
-                Strcat(buf, _(" and two weapons"));
+                Strcat(buf, C_("skill_twowep", " and two weapons"));
                 also3 = _("also ");
             }
             if (*pfx)
@@ -1392,9 +1422,13 @@ weapon_insight(int final)
                        too; "you [also] have basic/expert/master/grand-master
                        skill with <skill>" or "you [also] are unskilled/
                        skilled in <skill> */
-                    Sprintf(buf, _("%s %s %s"), sklvlbuf2,
-                            hav2 ? _("skill with") : _("in"), sknambuf2);
-                    Strcat(buf, _(" and two weapons"));
+                    if (hav2)
+                        Sprintf(buf, C_("skill_have", "%s %s %s"), sklvlbuf2,
+                                _("skill with"), sknambuf2);
+                    else
+                        Sprintf(buf, C_("skill_are", "%s %s %s"), sklvlbuf2,
+                                _("in"), sknambuf2);
+                    Strcat(buf, C_("skill_twowep", " and two weapons"));
                     if (also3) {
                         Strcpy(pfx, _("You also "));
                         Snprintf(sfx, sizeof(sfx), " %s", buf), buf[0] = '\0';
@@ -1507,7 +1541,7 @@ attributes_enlightenment(
 
     /*** Resistances to troubles ***/
     if (Invulnerable)
-        you_are(_("invulnerable"), from_what(INVULNERABLE));
+        you_are(C_("insight", "invulnerable"), from_what(INVULNERABLE));
     if (Antimagic)
         you_are(_("magic-protected"), from_what(ANTIMAGIC));
     if (Fire_resistance)
@@ -1568,7 +1602,7 @@ attributes_enlightenment(
                     _(" invisible if not blind"), "");
     }
     if (Blind_telepat)
-        you_are(_("telepathic"), from_what(TELEPAT));
+        you_are(C_("insight", "telepathic"), from_what(TELEPAT));
     if (Warning)
         you_are(_("warned"), from_what(WARNING));
     if (Warn_of_mon && svc.context.warntype.obj) {
@@ -1601,14 +1635,17 @@ attributes_enlightenment(
     if (Searching)
         you_have(_("automatic searching"), from_what(SEARCHING));
     if (Clairvoyant) {
-        you_are(_("clairvoyant"), from_what(CLAIRVOYANT));
+        you_are(C_("insight", "clairvoyant"), from_what(CLAIRVOYANT));
     } else if ((HClairvoyant || EClairvoyant) && BClairvoyant) {
         Strcpy(buf, from_what(-CLAIRVOYANT));
         (void) strsubst(buf, " because of ", " if not for ");
         enl_msg(You_, _("could be"), _("could have been"), _(" clairvoyant"), buf);
     }
     if (Infravision)
-        you_have(_("infravision"), from_what(INFRAVISION));
+        /* i18n: C_() context separates from pager.c's list-style usage;
+           "infravision" in a comma-separated list should stay "적외선 시야",
+           but in you_have() it needs a verb ending: "적외선 시야가 있다" */
+        you_have(C_("insight", "infravision"), from_what(INFRAVISION));
     if (Detect_monsters) {
         Strcpy(buf, _("sensing the presence of monsters"));
         if (wizard) {
@@ -1646,7 +1683,7 @@ attributes_enlightenment(
         you_are(buf, from_what(ADORNED));
     }
     if (Invisible)
-        you_are(_("invisible"), from_what(INVIS));
+        you_are(C_("insight", "invisible"), from_what(INVIS));
     else if (Invis)
         you_are(_("invisible to others"), from_what(INVIS));
     /* ordinarily "visible" is redundant; this is a special case for
@@ -1654,9 +1691,9 @@ attributes_enlightenment(
     else if ((HInvis || EInvis) && BInvis)
         you_are(_("visible"), from_what(-INVIS));
     if (Displaced)
-        you_are(_("displaced"), from_what(DISPLACED));
+        you_are(C_("insight", "displaced"), from_what(DISPLACED));
     if (Stealth) {
-        you_are(_("stealthy"), from_what(STEALTH));
+        you_are(C_("insight", "stealthy"), from_what(STEALTH));
     } else if (BStealth && (HStealth || EStealth)) {
         Sprintf(buf, _(" stealthy%s"),
                 (BStealth == FROMOUTSIDE) ? _(" if not mounted") : "");
@@ -1801,7 +1838,8 @@ attributes_enlightenment(
     if (Half_spell_damage)
         enlght_halfdmg(HALF_SPDAM, final);
     if (Half_gas_damage)
-        enl_msg(You_, _("take"), _("took"), _(" reduced poison gas damage"), "");
+        enl_msg(You_, C_("damage", "take"), C_("damage", "took"),
+                _(" reduced poison gas damage"), "");
     if (spellid(0) > NO_SPELL) { /* skip if no spells are known yet */
         /* greatly simplified edition of percent_success(spell.c)--may need
            to be suppressed if oversimplification leads to player confusion */
@@ -1884,7 +1922,7 @@ attributes_enlightenment(
         you_are(_("harmed by silver"), "");
     /* movement and non-armor-based protection */
     if (Fast)
-        you_are(Very_fast ? _("very fast") : _("fast"), from_what(FAST));
+        you_are(Very_fast ? C_("insight", "very fast") : C_("insight", "fast"), from_what(FAST));
     if (Reflecting)
         you_have(_("reflection"), from_what(REFLECTING));
     if (Free_action)
@@ -1897,9 +1935,8 @@ attributes_enlightenment(
     /*** Miscellany ***/
     if (Luck) {
         ltmp = abs((int) Luck);
-        Sprintf(buf, _("%s%slucky"),
-                ltmp >= 10 ? _("extremely ") : ltmp >= 5 ? _("very ") : "",
-                Luck < 0 ? _("un") : "");
+        Sprintf(buf, Luck < 0 ? _("%sunlucky") : _("%slucky"),
+                ltmp >= 10 ? _("extremely ") : ltmp >= 5 ? _("very ") : "");
         if (wizard)
             Sprintf(eos(buf), " (%d)", Luck);
         you_are(buf, "");
@@ -1935,7 +1972,8 @@ attributes_enlightenment(
             Sprintf(buf, _("%s%ssafely pray%s"), can_pray(FALSE) ? "" : _("not "),
                     final ? _("have ") : "", final ? "ed" : "");
 #else
-            Sprintf(buf, _("%ssafely pray"), can_pray(FALSE) ? "" : _("not "));
+            Strcpy(buf, can_pray(FALSE) ? _("safely pray")
+                                        : _("not safely pray"));
 #endif
             if (wizard)
                 Sprintf(eos(buf), " (%d)", u.ublesscnt);

@@ -2694,8 +2694,9 @@ msgstr "원소의 "
 msgid "on the %s level"
 msgstr "%s 레벨에서"
 
+# insight.c:769 - you_have() 패턴: "당신은 1 히트 다이스가 있다."
 msgid "1 hit die"
-msgstr "1 히트 다이스"
+msgstr "1 히트 다이스가 있다"
 
 msgid "both"
 msgstr "둘 다"
@@ -3043,6 +3044,13 @@ msgstr "소환의 촛대를 "
 
 msgid " the Book of the Dead"
 msgstr "죽음의 책을 "
+
+# insight.c:2408 - enl_msg(You_, "have ", "", "entered Gehennom", "")
+# "have " → "​"(제로폭 공백), past=""(빈 문자열)
+# suffix에 완전한 술어 포함
+# 조합: " 당신은 게헨나에 들어갔다​."
+msgid "entered Gehennom"
+msgstr "게헨나에 들어갔다"
 
 msgid "gained access to Moloch's Sanctum"
 msgstr "몰록의 성소에 접근했다"
@@ -3449,12 +3457,15 @@ msgstr "%ld개%s의 뼈 레벨을 만났다"
 msgid "all %d hit points"
 msgstr "모든 %d 체력"
 
+# insight.c:766 - you_have() 패턴: "당신은 0 히트 다이스가 있다 (실제로 1/2)."
 msgid "0 hit dice (actually 1/2)"
-msgstr "0 히트 다이스 (실제로 1/2)"
+msgstr "0 히트 다이스가 있다 (실제로 1/2)"
 
 #, c-format
+# insight.c:772 - you_have() 패턴: "당신은 5 히트 다이스가 있다."
+#, c-format
 msgid "%d hit dice"
-msgstr "%d 히트 다이스"
+msgstr "%d 히트 다이스가 있다"
 
 msgid ", but"
 msgstr ", 하지만"
@@ -3478,11 +3489,12 @@ msgstr "느꼈다"
 msgid " if circumstances permitted"
 msgstr "상황이 허락한다면 "
 
-# insight.c:1800 - enl_msg(You_, "take", "took", " reduced poison gas damage", "")
-# take/took은 "​"(제로폭 공백)이므로 suffix에 동사 포함
-# 조합: " 당신은 감소된 독 가스 피해를 받는다​."
+# insight.c:1805 - enl_msg(You_, C_("damage","take"), C_("damage","took"),
+#   " reduced poison gas damage", "")
+# take/took은 C_()로 구분, "받는다"/"받았다"로 번역
+# 조합: " 당신은 감소된 독 가스 피해를 받는다."
 msgid " reduced poison gas damage"
-msgstr "감소된 독 가스 피해를 받는다"
+msgstr "감소된 독 가스 피해를 "
 
 # insight.c:1925 - 신 분노 패턴: u_gname() + " is"/" was" + buf
 # 접미사에 동사 포함 ("분노하고 있다")이므로 verb는 제로폭 공백
@@ -3528,9 +3540,29 @@ msgstr "읽거나 새긴 횟수 %ld회%.0s"
 msgid "changed form %ld time%s"
 msgstr "형태를 %ld회%.0s 바꿨다"
 
+# insight.c:2214 - 소원 수량 (모두/둘 다/없음 + 아티팩트)
+# 조합: "used 3 wishes (all for artifacts)" etc.
+#, c-format
+msgid " (%s"
+msgstr " (%s"
+
 #, c-format
 msgid " (%ld "
 msgstr " (%ld "
+
+msgid "both "
+msgstr "둘 다 "
+
+# insight.c:2220 - "for an artifact"/"for artifacts"
+#, c-format
+msgid "for %s)"
+msgstr "%s를 위해)"
+
+msgid "an artifact"
+msgstr "아티팩트"
+
+msgid "artifacts"
+msgstr "아티팩트"
 
 msgid "did not wish"
 msgstr "소원을 빌지 않았다"
@@ -3749,11 +3781,11 @@ msgstr "안후르"
 msgid "tower"
 msgstr "탑"
 
-# insight.c - "You are slow" 조합
-# 기존: "느린" → "당신은 느린" (불완전한 형용사)
-# 수정: "느린 상태" → "당신은 느린 상태"
+# attrib.c - You_feel("less slow!") 맥락에서 사용
+# insight.c에서는 ", slow" (쉼표 포함)로 별도 msgid 사용
+# "느린" → You_feel("less %s!") 조합에서 "덜 느린 느낌이다!" 등
 msgid "slow"
-msgstr "느린 상태"
+msgstr "느린"
 
 msgid "self-genocide"
 msgstr "자기 학살"
@@ -3969,7 +4001,14 @@ msgstr "트릴"
 
 # insight.c:1600 - "You have infravision" 조합
 # 기존: "적외선 시야" → "당신은 적외선 시야" (불완전)
-# 수정: "적외선 시야가 있다" → "당신은 적외선 시야가 있다"
+# pager.c에서 쉼표 구분 목록으로 사용 → 서술어 없이 명사만
+# 예: "[보임: 적외선 시야, 텔레파시]"
+msgid "infravision"
+msgstr "적외선 시야"
+
+# insight.c:1635 - you_have() 패턴에서는 서술어 필요
+# "당신은 적외선 시야가 있다."
+msgctxt "insight"
 msgid "infravision"
 msgstr "적외선 시야가 있다"
 
@@ -3992,19 +4031,20 @@ msgstr "진흙괴물"
 msgid "polymorphed"
 msgstr "변신했다"
 
-# polymorphing periodically 수정
+# insight.c:1882 - you_are("polymorphing periodically", from_what(POLYMORPH))
+# 조합: " 당신은 주기적으로 변신 중이다​ (...)."
 msgid "polymorphing periodically"
-msgstr "주기적으로 변신 중"
+msgstr "주기적으로 변신 중이다"
 
 # on the map 수정
 msgid "on the map"
 msgstr "지도에"
 
-# insight.c - "You are hallucinating" 조합
-# 기존: "환각 중" → "당신은 환각 중" (OK, 완전)
-# 수정: "환각 상태" (일관성)
+# timeout.c - "hallucinating" (목록/레이블 용도)
+# timeout.c:39 - propertynames[] 배열에서 N_("hallucinating")로 사용
+# insight.c에서는 C_("insight", "hallucinating") 사용 (별도 항목)
 msgid "hallucinating"
-msgstr "환각 상태"
+msgstr "환각"
 
 # wearing a blindfold 수정
 msgid "wearing a blindfold"
@@ -4071,9 +4111,10 @@ msgstr "삼켜진"
 msgid "the type of an object in inventory"
 msgstr "소지품 중 물건의 종류"
 
-# attrib.c/insight.c - "You are stealthy" 조합
-# 기존: "은밀한" → "당신은 은밀한" (불완전)
-# 수정: "은밀하다" → "당신은 은밀하다"
+# timeout.c/attrib.c - "stealthy" (목록/레이블 용도)
+# timeout.c:94 - propertynames[] 배열에서 N_("stealthy")로 사용
+# attrib.c - You_feel("stealthy!") 맥락: "은밀해졌다!"
+# insight.c에서는 C_("insight", "stealthy") 사용 (별도 항목)
 msgid "stealthy"
 msgstr "은밀하다"
 
@@ -4363,11 +4404,10 @@ msgstr "무언가에게 반사를 보여주기"
 msgid "Autopickup "
 msgstr "자동 줍기 "
 
-# insight.c - "You are turning into slime" 조합
-# 기존: "슬라임으로 변하다" → 기본형 동사
-# 수정: "슬라임으로 변하는 중" → "당신은 슬라임으로 변하는 중"
+# insight.c - you_are("turning into slime", "")
+# 조합: " 당신은 슬라임으로 변하는 중이다​."
 msgid "turning into slime"
-msgstr "슬라임으로 변하는 중"
+msgstr "슬라임으로 변하는 중이다"
 
 # artifact.c - 쌍수 무기. "a longsword and two weapons"
 msgid " and two weapons"
@@ -5989,13 +6029,30 @@ msgstr "냉장하다"
 msgid " %s your chain"
 msgstr " 당신의 사슬을 %s"
 
-# insight.c:225 - enl_msg(You_, "take", "took", buf, from_what())
+# insight.c:227,1805 - C_("damage", "take"/"took") 동사
+# steal.c의 N_("take")와 구분 (steal = 가져가다, damage = 받다)
+msgctxt "damage"
+msgid "take"
+msgstr "받는다"
+
+msgctxt "damage"
+msgid "took"
+msgstr "받았다"
+
+# insight.c:225 - enl_msg(You_, C_("damage","take"), C_("damage","took"), buf, ...)
 # buf = " %s %s damage" 로 생성됨 (예: " half physical damage")
-# take/took은 "​"(제로폭 공백)이므로 suffix에 동사 포함
-# 조합: " 당신은 절반의 물리 피해를 받는다 (원인)."
+# C_("damage","take") → "받는다", C_("damage","took") → "받았다"
+# 조합: " 당신은 절반의 물리 피해를 받는다."
 #, c-format
 msgid " %s %s damage"
-msgstr "%s %s 피해를 받는다"
+msgstr "%s %s 피해를 "
+
+# insight.c:225 - "half"/"reduced" (피해 절반/감소)
+msgid "half"
+msgstr "절반의"
+
+msgid "reduced"
+msgstr "감소된"
 
 # mhitu.c:285 - 소용돌이에서 배출될 때
 # 결과: "expelled from X in a shower of sparks" → "불꽃 소나기 속에서 X에서 배출"
@@ -6244,17 +6301,23 @@ msgstr "왼"
 # insight.c - 상태 표시 조합 오역 수정
 # ============================================================
 
-# insight.c - "You are levitating" 조합
-# 기존: "쏘는 듯한" (완전 오역!) → "부유 중"
-# enl_msg(youtoo, are, were, "levitating", from_what(LEVITATION))
+# timeout.c/attrib.c - "levitating" (목록/레이블 용도)
+# timeout.c:48 - propertynames[] 배열에서 N_("levitating")로 사용
+# insight.c에서는 C_("insight", "levitating") 사용 (아래 별도 항목)
 msgid "levitating"
-msgstr "부유 중"
+msgstr "부유"
 
-# insight.c - "You are flying" 조합
-# 기존: "날기 시작했다." (문맥 부적절) → "비행 중"
-# enl_msg(youtoo, are, were, "flying", from_what(FLYING))
+# timeout.c/attrib.c - "flying" (목록/레이블 용도)
+# timeout.c:99 - propertynames[] 배열에서 N_("flying")로 사용
+# insight.c에서는 C_("insight", "flying") 사용 (아래 별도 항목)
 msgid "flying"
-msgstr "비행 중"
+msgstr "비행"
+
+# timeout.c - "swimming" (목록/레이블 용도)
+# timeout.c:100 - propertynames[] 배열에서 N_("swimming")로 사용
+# insight.c에서는 C_("insight", "swimming") 사용 (별도 항목)
+msgid "swimming"
+msgstr "수영"
 
 # insight.c - "You are warned" 조합
 # 기존: "탄 " (오역) → "경고받음" → "경고받고 있다"
@@ -6324,44 +6387,138 @@ msgstr "여기에"
 # 패턴: "당신은 " + "​" + attr
 # 결과가 완전한 문장이 되도록 attr을 수정
 
-# insight.c - "You are invisible"
-# 기존: "보이지 않는" → 조합 결과 "당신은 보이지 않는" (불완전)
-# 수정: "투명 상태" → "당신은 투명 상태"
+# timeout.c/attrib.c - "invisible" (목록/레이블 용도)
+# timeout.c:53 - propertynames[] 배열에서 N_("invisible")로 사용
+# attrib.c에서도 You_feel() 맥락에서 사용 가능
+# insight.c에서는 C_("insight", "invisible") 사용 (아래 별도 항목)
 msgid "invisible"
-msgstr "투명 상태"
+msgstr "투명"
 
-# insight.c - "You are confused"
-# 기존: "혼란스러운" → "당신은 혼란스러운" (불완전)
-# 수정: "혼란 상태" → "당신은 혼란 상태"
+# timeout.c/attrib.c - "confused" (목록/레이블 용도)
+# timeout.c:38 - propertynames[] 배열에서 N_("confused")로 사용
+# insight.c에서는 C_("insight", "confused") 사용 (아래 별도 항목)
 msgid "confused"
-msgstr "혼란 상태"
+msgstr "혼란"
 
-# insight.c - "You are stunned"
-# 기존: "기절한" → "당신은 기절한" (불완전)
-# 수정: "기절 상태" → "당신은 기절 상태"
+# timeout.c/attrib.c - "stunned" (목록/레이블 용도)
+# timeout.c:37 - propertynames[] 배열에서 N_("stunned")로 사용
+# insight.c에서는 C_("insight", "stunned") 사용 (아래 별도 항목)
 msgid "stunned"
-msgstr "기절 상태"
+msgstr "기절"
 
-# insight.c - "You are fast"
-# 기존: "빠름" → "당신은 빠름" (어색)
-# 수정: "빠른 상태" → "당신은 빠른 상태"
+# timeout.c - "fast" (목록/레이블 용도)
+# timeout.c에는 "fast" 단독 항목 없음 (N_("very fast")만 있음)
+# attrib.c에서 N_("slow")만 사용, N_("fast")는 없음
+# insight.c에서는 C_("insight", "fast") 사용 (아래 별도 항목)
 msgid "fast"
-msgstr "빠른 상태"
+msgstr "빠른"
 
-# insight.c - "You are very fast"
-# 기존: "매우 빠름" → "당신은 매우 빠름" (어색)
-# 수정: "매우 빠른 상태" → "당신은 매우 빠른 상태"
+# timeout.c - "very fast" (목록/레이블 용도)
+# timeout.c:49 - propertynames[] 배열에서 N_("very fast")로 사용
+# insight.c에서는 C_("insight", "very fast") 사용 (아래 별도 항목)
 msgid "very fast"
-msgstr "매우 빠른 상태"
+msgstr "매우 빠른"
+
+# ============================================================
+# C_("insight") 컨텍스트 항목 — insight.c 전용 번역
+# ============================================================
+# insight.c에서 you_are()/enl_msg() 조합에 사용되는 문자열.
+# timeout.c/attrib.c의 목록 용도와 분리하여 서술어(이다/있다 등) 포함.
+# 조합 패턴: " 당신은 ​<suffix>​."
+# "are " → "​"(제로폭 공백)이므로 suffix에 완전한 서술어 필요.
+
+# insight.c:992 - enl_msg(youtoo, are, were, "levitating", from_what())
+# 조합: " 당신은(그리고 탈것도) 부유 중이다​ (...)."
+msgctxt "insight"
+msgid "levitating"
+msgstr "부유 중이다"
+
+# insight.c:994 - enl_msg(youtoo, are, were, "flying", from_what())
+# 조합: " 당신은(그리고 탈것도) 비행 중이다​ (...)."
+msgctxt "insight"
+msgid "flying"
+msgstr "비행 중이다"
+
+# insight.c:999 - you_are("swimming", from_what(SWIMMING))
+# 조합: " 당신은 수영 중이다​ (...)."
+msgctxt "insight"
+msgid "swimming"
+msgstr "수영 중이다"
+
+# insight.c:1060 - you_are("stunned", "")
+# 조합: " 당신은 기절 상태이다​."
+msgctxt "insight"
+msgid "stunned"
+msgstr "기절 상태이다"
+
+# insight.c:1062 - you_are("confused", "")
+# 조합: " 당신은 혼란 상태이다​."
+msgctxt "insight"
+msgid "confused"
+msgstr "혼란 상태이다"
+
+# insight.c:1064 - you_are("hallucinating", "")
+# 조합: " 당신은 환각 상태이다​."
+msgctxt "insight"
+msgid "hallucinating"
+msgstr "환각 상태이다"
+
+# insight.c:1544 - you_are("invulnerable", from_what())
+# 조합: " 당신은 무적 상태이다​ (...)."
+msgctxt "insight"
+msgid "invulnerable"
+msgstr "무적 상태이다"
+
+# insight.c:1605 - you_are("telepathic", from_what(TELEPAT))
+# 조합: " 당신은 텔레파시 능력이 있다​ (...)."
+msgctxt "insight"
+msgid "telepathic"
+msgstr "텔레파시 능력이 있다"
+
+# insight.c:1638 - you_are("clairvoyant", from_what(CLAIRVOYANT))
+# 조합: " 당신은 천리안 능력이 있다​ (...)."
+msgctxt "insight"
+msgid "clairvoyant"
+msgstr "천리안 능력이 있다"
+
+# insight.c:1686 - you_are("invisible", from_what(INVIS))
+# 조합: " 당신은 투명 상태이다​ (...)."
+msgctxt "insight"
+msgid "invisible"
+msgstr "투명 상태이다"
+
+# insight.c:1694 - you_are("displaced", from_what(DISPLACED))
+# 조합: " 당신은 변위 상태이다​ (...)."
+msgctxt "insight"
+msgid "displaced"
+msgstr "변위 상태이다"
+
+# insight.c:1696 - you_are("stealthy", from_what(STEALTH))
+# 조합: " 당신은 은밀한 상태이다​ (...)."
+msgctxt "insight"
+msgid "stealthy"
+msgstr "은밀한 상태이다"
+
+# insight.c:1925 - you_are("very fast", from_what(FAST))
+# 조합: " 당신은 매우 빠른 상태이다​ (...)."
+msgctxt "insight"
+msgid "very fast"
+msgstr "매우 빠른 상태이다"
+
+# insight.c:1925 - you_are("fast", from_what(FAST))
+# 조합: " 당신은 빠른 상태이다​ (...)."
+msgctxt "insight"
+msgid "fast"
+msgstr "빠른 상태이다"
 
 # ============================================================
 # 저항/능력 you_are() 조합 수정
 # ============================================================
-# insight.c:1500 - "You are invulnerable"
-# 기존: "취약하다" (완전 오역! invulnerable = 무적, 취약 = vulnerable)
-# 수정: "무적 상태"
+# timeout.c - "invulnerable" (목록/레이블 용도)
+# timeout.c:32 - propertynames[] 배열에서 N_("invulnerable")로 사용
+# insight.c에서는 C_("insight", "invulnerable") 사용 (아래 별도 항목)
 msgid "invulnerable"
-msgstr "무적 상태"
+msgstr "무적"
 
 # insight.c:1504 - "You are fire resistant"
 # 기존: "화염 저항" → "당신은 화염 저항" (불완전)
@@ -6397,27 +6554,28 @@ msgstr "전기에 내성이 있다"
 msgid "level-drain resistant"
 msgstr "레벨 흡수에 내성이 있다"
 
-# insight.c:1560 - "You are telepathic"
-# 기존: "텔레파시" → "당신은 텔레파시" (불완전)
-# 수정: "텔레파시 능력이 있다"
+# timeout.c - "telepathic" (목록/레이블 용도)
+# timeout.c:87 - propertynames[] 배열에서 N_("telepathic")로 사용
+# insight.c에서는 C_("insight", "telepathic") 사용 (아래 별도 항목)
 msgid "telepathic"
-msgstr "텔레파시 능력이 있다"
+msgstr "텔레파시"
 
-# insight.c:1593 - "You are clairvoyant"
-# 기존: "천리안" → "당신은 천리안" (불완전)
-# 수정: "천리안 능력이 있다"
+# timeout.c - "clairvoyant" (목록/레이블 용도)
+# timeout.c:50 - propertynames[] 배열에서 N_("clairvoyant")로 사용
+# insight.c에서는 C_("insight", "clairvoyant") 사용 (아래 별도 항목)
 msgid "clairvoyant"
-msgstr "천리안 능력이 있다"
+msgstr "천리안"
 
-# insight.c:1646 - "You are displaced"
-# 기존: "변위" → "당신은 변위" (불완전)
-# 수정: "변위 상태"
+# timeout.c - "displaced" (목록/레이블 용도)
+# timeout.c:58 - propertynames[] 배열에서 N_("displaced")로 사용
+# insight.c에서는 C_("insight", "displaced") 사용 (아래 별도 항목)
 msgid "displaced"
-msgstr "변위 상태"
+msgstr "변위"
 
-# insight.c:1502 - "You are magic-protected"
+# insight.c - you_are("magic-protected", from_what(ANTIMAGIC))
+# 조합: " 당신은 마법 보호 상태이다​ (...)."
 msgid "magic-protected"
-msgstr "마법 보호 상태"
+msgstr "마법 보호 상태이다"
 
 # insight.c:1530 - "You are immune to sickness"
 msgid "immune to sickness"
@@ -6473,11 +6631,10 @@ msgstr "순간이동 제어 능력이 있다"
 # 추가 you_are() 조합 수정
 # ============================================================
 
-# insight.c - "You are nauseated"
-# 기존: "모독된" (완전 오역! nauseated = 메스꺼움, 모독 = desecrated)
-# 수정: "메스꺼운 상태"
+# insight.c - you_are("nauseated", "")
+# 조합: " 당신은 메스꺼운 상태이다​."
 msgid "nauseated"
-msgstr "메스꺼운 상태"
+msgstr "메스꺼운 상태이다"
 
 # insight.c - "You are deaf"
 # 기존: "귀머거리" (현대 한국어에서 부적절한 표현)
@@ -6491,17 +6648,30 @@ msgstr "귀가 안 들린다"
 msgid "underwater"
 msgstr "물 속에 있다"
 
-# insight.c - "You are buried"
-# 기존: "매장된" → "당신은 매장된" (불완전)
-# 수정: "매장된 상태"
-msgid "buried"
-msgstr "매장된 상태"
+# insight.c:999 - you_are("in water", from_what(SWIMMING))
+# 조합: " 당신은 물에 들어가 있다​ (...)."
+msgid "in water"
+msgstr "물에 들어가 있다"
 
-# insight.c - "You are turning to stone"
-# 기존: "돌로 변했다." → 마침표 일관성 없음
-# 수정: "돌로 변하는 중"
+# insight.c:990 - you_are("levitating, at will", "")
+# 조합: " 당신은 자유의지로 부유 중이다​."
+msgid "levitating, at will"
+msgstr "자유의지로 부유 중이다"
+
+# insight.c:1031 - you_are("being strangled", from_what(STRANGLED))
+# 조합: " 당신은 목이 졸리고 있다​ (...)."
+msgid "being strangled"
+msgstr "목이 졸리고 있다"
+
+# insight.c - you_are("buried", "")
+# 조합: " 당신은 매장된 상태이다​."
+msgid "buried"
+msgstr "매장된 상태이다"
+
+# insight.c - you_are("turning to stone", "")
+# 조합: " 당신은 돌로 변하는 중이다​."
 msgid "turning to stone"
-msgstr "돌로 변하는 중"
+msgstr "돌로 변하는 중이다"
 
 # insight.c - "You are terminally sick from illness"
 # 기존: "병으로 치명적으로 아픔" → 어색
@@ -6653,11 +6823,10 @@ msgstr "현재 형태에서 변할 수 없다"
 # 패턴: "당신은 " + "​"(제로폭 공백) + attr
 # "are "가 제로폭 공백이므로, attr에 완전한 상태 표현 필요
 
-# insight.c:1644 - "You are visible"
-# 기존: "보이는" → "당신은 보이는" (불완전)
-# 수정: "보이는 상태"
+# insight.c - you_are("visible", from_what(-INVIS))
+# 조합: " 당신은 보이는 상태이다​ (...)."
 msgid "visible"
-msgstr "보이는 상태"
+msgstr "보이는 상태이다"
 
 # insight.c:1813 - "You are protected from shape changers"
 # 기존: 번역 없음
@@ -6734,18 +6903,18 @@ msgstr "당신의 주문 시전 능력이 "
 # [사용되지 않는 엔트리] 실제로는 " impaired by metallic armor%s" c-format 사용
 # Sprintf 결과이므로 gettext 룩업 안 됨
 msgid " impaired by metallic armor, mitigated by your robe"
-msgstr "금속 갑옷으로 인해 저하된 상태(로브로 완화)"
+msgstr "금속 갑옷으로 인해 저하된 상태이다(로브로 완화)"
 
 # [사용되지 않는 엔트리] 실제로는 " impaired by metallic armor%s" c-format 사용
 msgid " impaired by metallic armor"
-msgstr "금속 갑옷으로 인해 저하된 상태"
+msgstr "금속 갑옷으로 인해 저하된 상태이다"
 
 # insight.c:1817 - " enhanced by wearing a robe"
 # enl_msg("Your spell casting ", "is", "was", cast_adj, "")
-# "is" → "이다"이므로 상태 명사형
-# 조합: "당신의 주문 시전 능력이 로브 착용으로 강화된 상태이다."
+# "is" → "​"(제로폭 공백)이므로 suffix에 서술어 포함 필요
+# 조합: " 당신의 주문 시전 능력이 로브 착용으로 강화된 상태이다​."
 msgid " enhanced by wearing a robe"
-msgstr "로브 착용으로 강화된 상태"
+msgstr "로브 착용으로 강화된 상태이다"
 
 # ============================================================
 # [조합 메시지] 생명 보호 - insight.c
@@ -6800,9 +6969,14 @@ msgstr "당신은 재생한다"
 # [조합 메시지] 추가 suffix 번역 - insight.c
 # ============================================================
 
+# "d" - "You aggravate"+"d" 과거형 접미사
+# 한국어에서는 prefix에 이미 완전한 문장이므로 제로폭 공백 처리
+msgid "d"
+msgstr "​"
+
 # "You aggravate" + " monsters" 조합에서 prefix에 완전한 문장 포함했으므로
 # suffix는 제로폭 공백으로 처리
-# 조합: " 당신은 몬스터들을 자극한다​ (원인)."
+# 조합: " 당신은 몬스터들을 자극한다​​ (원인)."
 msgid " monsters"
 msgstr "​"
 
@@ -6948,8 +7122,11 @@ msgstr "%s에 사슬로 묶여 있다"
 # insight.c:1150 - "You have slippery %s"
 # 조합: you_have("slippery %s", "")
 #, c-format
+# insight.c:1178 - you_have() 패턴: "당신은 손가락{이/가} 미끄럽다."
+# insight.c에서만 사용 (다른 파일의 "slippery"는 다른 msgid)
+#, c-format
 msgid "slippery %s"
-msgstr "미끄러운 %s"
+msgstr "%s{이/가} 미끄럽다"
 
 # insight.c:1277 - "You are wielding some %s"
 #, c-format
@@ -7016,12 +7193,15 @@ msgstr "일시적으로"
 
 # insight.c:1039 - "%s blind"
 # 조합: you_are("%s blind", from_what())
+# 결과: " 당신은 %s 눈이 먼 상태이다​ (...)."
 #, c-format
 msgid "%s blind"
-msgstr "%s 눈이 먼 상태"
+msgstr "%s 눈이 먼 상태이다"
 
-# insight.c:1889-1891 - luck 상태
-# 조합: "%s%slucky" (extremely/very + un + lucky)
+# insight.c:1900-1904 - luck 상태
+# 소스 코드 변경: "%s%slucky"를 "%slucky"/"%sunlucky"로 분리
+# 한국어에서 "un" 접두사 조합이 불가능하므로 별도 포맷 문자열 사용
+# 조합: you_are("%slucky"/"extremely lucky"/etc.)
 msgid "lucky"
 msgstr "운이 좋다"
 
@@ -7029,11 +7209,71 @@ msgid "unlucky"
 msgstr "운이 나쁘다"
 
 #, c-format
-msgid "%s%slucky"
-msgstr "%s%s운이 좋다"
+msgid "%slucky"
+msgstr "%s운이 좋다 "
 
-msgid "un"
-msgstr "불"
+#, c-format
+msgid "%sunlucky"
+msgstr "%s운이 나쁘다 "
+
+# insight.c:1901 - "very " (lucky/anger 수식어, 후행 공백)
+msgid "very "
+msgstr "매우 "
+
+# insight.c:1644-1646 - 매력 상태
+# 조합: you_are("%scharismatic", from_what(ADORNED))
+# "more charismatic" / "less charismatic" / "charismatic"
+#, c-format
+msgid "%scharismatic"
+msgstr "%s매력적이다 "
+
+msgid "more "
+msgstr "더 "
+
+msgid "less "
+msgstr "덜 "
+
+# insight.c:3277-3313 - piousness() 경건도 부사
+# 조합: piousness(TRUE, "aligned") → "부사 aligned" → you_are/you_have
+msgid "piously"
+msgstr "경건하게"
+
+msgid "devoutly"
+msgstr "독실하게"
+
+msgid "fervently"
+msgstr "열렬하게"
+
+msgid "stridently"
+msgstr "격렬하게"
+
+msgid "haltingly"
+msgstr "머뭇거리며"
+
+msgid "nominally"
+msgstr "명목상"
+
+msgid "insufficiently"
+msgstr "불충분하게"
+
+msgid "strayed"
+msgstr "방황했다"
+
+msgid "sinned"
+msgstr "죄를 지었다"
+
+msgid "transgressed"
+msgstr "크게 어긋났다"
+
+# insight.c:1497 - piousness() suffix
+# "piously aligned" → "경건하게 충실하다" (you_are)
+msgid "aligned"
+msgstr "충실하다"
+
+# insight.c:1207 - 부담 상태 수식어 "very" (후행 공백 없음)
+# 참고: "very " (후행 공백 있음)과 별개 msgid
+msgid "very"
+msgstr "매우"
 
 # insight.c:1910 - " %sangry with you"
 # 조합: enl_msg(u_gname(), " is", " was", buf, "")
@@ -7041,17 +7281,15 @@ msgstr "불"
 msgid " %sangry with you"
 msgstr "이(가) 당신에게 %s분노하고 있다"
 
-# insight.c:1927 - "%ssafely pray"
-# 조합: you_can("%ssafely pray", "")
+# insight.c:1939 - 기도 안전 여부
+# 소스 변경: "%ssafely pray"를 "safely pray"/"not safely pray"로 분리
+# 한국어에서 "not " 접두사로 부정 불가능하므로 별도 msgid 사용
+# 조합: you_can("safely pray"/"not safely pray", "")
 msgid "safely pray"
-msgstr "안전하게 기도할 수 있다"
+msgstr "안전하게 기도할 수 있다 "
 
-#, c-format
-msgid "%ssafely pray"
-msgstr "%s안전하게 기도할 수 있다"
-
-msgid "not "
-msgstr "안전하게 기도할 수 없다"
+msgid "not safely pray"
+msgstr "안전하게 기도할 수 없다 "
 
 
 # ===============================================
@@ -7287,11 +7525,11 @@ msgstr "(다음 %u회 공격에) "
 
 # insight.c:1814-1815 - 주문 시전 (Sprintf → suffix)
 # enl_msg("Your spell casting ", "is", "was", cast_adj, "")
-# "is" → "이다"이므로 접미사는 상태 명사형 (동사 끝 아님)
-# 조합: "당신의 주문 시전 능력이 금속 갑옷으로 인해 저하된 상태이다."
+# "is" → "​"(제로폭 공백)이므로 suffix에 서술어 포함 필요
+# 조합: " 당신의 주문 시전 능력이 금속 갑옷으로 인해 저하된 상태이다%s​."
 #, c-format
 msgid " impaired by metallic armor%s"
-msgstr "금속 갑옷으로 인해 저하된 상태%s"
+msgstr "금속 갑옷으로 인해 저하된 상태이다%s"
 
 msgid ", mitigated by your robe"
 msgstr "(로브로 완화)"
@@ -8076,8 +8314,10 @@ msgstr "%ld턴%.0s 전에 던전 진입"
 # insight.c - 경험치
 # %s는 복수형 접미사로 한국어에서는 불필요
 #, c-format
+# insight.c:695 - you_have() 패턴: "당신은 12345 경험치가 있다."
+# %.0s로 plur() 결과 억제
 msgid "%-1ld experience point%s"
-msgstr "%-1ld 경험치%.0s"
+msgstr "%-1ld 경험치가 있다%.0s"
 
 msgid " before end-of-game adjustments"
 msgstr " (게임 종료 조정 전)"
@@ -9705,3 +9945,211 @@ msgstr "%1$s{이/가} %4$s에%3$.0s %2$s{을/를} 팠다."
 #: ../src/do.c:2409
 msgid "%s%s %s in no shape for %s."
 msgstr "%1$s%2$s{은/는}%3$.0s %4$s할 상태가 아니다."
+
+# ============================================================
+# insight.c - 래핑 누락 수정 및 조합 패턴 번역 (2026-02-05)
+# ============================================================
+
+# [중요] insight.c:156 - 핵심 enl_msg 조합 포맷 문자열
+# 이 번역은 ko.po에만 있었으나, safe-update로 덮어쓰기 방지를 위해
+# ko_manual.po에도 추가함.
+# 영어: " %1$s(prefix) %2$s(verb) %3$s(suffix) %4$s(postscript)."
+# 한국어 SOV 어순: " %1$s(prefix) %3$s(suffix) %2$s(verb) %4$s(postscript)."
+# 예: " You are fire resistant." → " 당신은 화염 저항​."
+#, c-format
+msgid " %s%s%s%s."
+msgstr " %1$s%3$s%2$s%4$s."
+
+# insight.c:385 - 속성 표시 제목
+# 영어: "Conan the Archeologist's attributes:"
+# 한국어: "Conan(고고학자)의 속성:"
+#, c-format
+msgid "%s the %s's attributes:"
+msgstr "%1$s(%2$s)의 속성:"
+
+# insight.c:726 - 에너지 포인트 표시
+# 영어: "You have all 42 energy points (spell power)."
+# 한국어: "당신은 에너지 포인트 (주문력) 42 전부 있다."
+msgid "energy points (spell power)"
+msgstr "에너지 포인트 (주문력)"
+
+# insight.c:991 - 석화 사망 메시지
+msgid " You turned into stone."
+msgstr " 당신은 돌이 되었다."
+
+# insight.c:997 - 슬라임화 사망 메시지
+msgid " You turned into slime."
+msgstr " 당신은 슬라임이 되었다."
+
+# insight.c:1006 - 교살 사망 메시지
+msgid " You died from strangulation."
+msgstr " 당신은 교살로 죽었다."
+
+# ============================================================
+# insight.c:185-213 - enlght_combatinc 전투 보너스/페널티 조합
+# ============================================================
+#
+# 영어 조합 결과 예시:
+#   you_have("a small bonus to hit") → " You have a small bonus to hit."
+#   you_have("a small damage bonus") → " You have a small damage bonus."
+#   you_have("a moderate defense penalty") → " You have a moderate defense penalty."
+#
+# 한국어 조합 결과 (개선):
+#   "당신은 명중에 약간의 보너스가 있다."
+#   "당신은 피해에 약간의 보너스가 있다."
+#   "당신은 방어에 상당한 페널티가 있다."
+
+# combat_mod 컨텍스트 - 전투 수식어 (크기 수식어와 분리)
+# size_str의 "small" → "작은" (크기)과 구분
+msgctxt "combat_mod"
+msgid "small"
+msgstr "약간의"
+
+msgctxt "combat_mod"
+msgid "moderate"
+msgstr "상당한"
+
+msgctxt "combat_mod"
+msgid "large"
+msgstr "큰"
+
+msgctxt "combat_mod"
+msgid "huge"
+msgstr "막대한"
+
+# combat_inc 컨텍스트 - 전투 유형 이름 (inctyp)
+msgctxt "combat_inc"
+msgid "damage"
+msgstr "피해"
+
+msgctxt "combat_inc"
+msgid "defense"
+msgstr "방어"
+
+msgctxt "combat_inc"
+msgid "to hit"
+msgstr "명중"
+
+# combat_type: invrt=TRUE (damage/defense)
+# args: %1$s=modif(약간의), %2$s=tr_inctyp(피해), %3$s=bonus(보너스)
+# 영어: "a small damage bonus" (modif type bonus)
+# 한국어: "피해에 약간의 보너스가 있다" (type에 modif bonus가 있다)
+#, c-format
+msgctxt "combat_type"
+msgid "%s %s %s"
+msgstr "%2$s에 %1$s %3$s가 있다"
+
+# combat_hit: invrt=FALSE (to hit)
+# args: %1$s=modif(약간의), %2$s=bonus(보너스), %3$s=tr_inctyp(명중)
+# 영어: "a small bonus to hit" (modif bonus type)
+# 한국어: "명중에 약간의 보너스가 있다" (type에 modif bonus가 있다)
+#, c-format
+msgctxt "combat_hit"
+msgid "%s %s %s"
+msgstr "%3$s에 %1$s %2$s가 있다"
+
+# ============================================================
+# insight.c:737-751 - 체력/에너지 포인트 표시 (서술어 보완)
+# ============================================================
+# you_have()의 "have" → "​"(제로 폭 스페이스)로 동사가 사라지므로,
+# 내용 문자열에 "있다"/"없다" 서술어를 포함해야 자연스러운 한국어가 됨.
+
+# 체력 전부 있음 (hp == hpmax && hpmax > 1)
+# 영어: "You have all 42 hit points."
+# 한국어: "당신은 42 체력 전부 있다."
+#, c-format
+msgctxt "hp_all"
+msgid "all %d hit points"
+msgstr "%d 체력 전부 있다"
+
+# 체력 일부 (hp != hpmax 또는 hpmax <= 1)
+# 영어: "You have 10 out of 42 hit points."
+# 한국어: "당신은 10/42 체력이 있다."
+# %3$.0s로 plur() 결과(""/"s")를 억제
+#, c-format
+msgctxt "hp_partial"
+msgid "%d out of %d hit point%s"
+msgstr "%1$d/%2$d 체력이 있다%3$.0s"
+
+# 에너지 없음 (pwmax == 0)
+# 영어: "You have no energy points (spell power)."
+# 한국어: "당신은 에너지 포인트 (주문력) 없다."
+#, c-format
+msgctxt "energy_none"
+msgid "no %s"
+msgstr "%s 없다"
+
+# 에너지 둘 다 (pwmax == 2, 전부 보유)
+# 영어: "You have both energy points (spell power)."
+# 한국어: "당신은 에너지 포인트 (주문력) 둘 다 있다."
+#, c-format
+msgctxt "energy_both"
+msgid "both %s"
+msgstr "%s 둘 다 있다"
+
+# 에너지 전부 (pw == pwmax, pwmax > 2)
+# 영어: "You have all 42 energy points (spell power)."
+# 한국어: "당신은 에너지 포인트 (주문력) 42 전부 있다."
+#, c-format
+msgctxt "energy_all"
+msgid "all %d %s"
+msgstr "%2$s %1$d 전부 있다"
+
+# 에너지 일부 (pw != pwmax)
+# 영어: "You have 10 out of 42 energy points (spell power)."
+# 한국어: "당신은 에너지 포인트 (주문력) 10/42 있다."
+#, c-format
+msgctxt "energy_partial"
+msgid "%d out of %d %s"
+msgstr "%3$s %1$d/%2$d 있다"
+
+# ============================================================
+# insight.c - 부상/상태 you_have() 서술어 보완
+# ============================================================
+
+# insight.c:1161 - 부상당한 다리 (you_have 패턴)
+# 영어: "You have a wounded left leg."
+# %1$s = "a " 또는 "" (영어 관사 → 한국어에서 억제)
+# %2$s = "왼쪽 "/"오른쪽 "/"" (방향)
+# %3$s = "다리" (신체부위, 복수형일 수 있음)
+# 한국어: "당신은 왼쪽 다리가 부상당했다."
+#, c-format
+msgid "%swounded %s%s"
+msgstr "%2$s%3$s{이/가} 부상당했다%1$.0s"
+
+# ============================================================
+# insight.c:1276-1445 - 무기 기술 (weapon_insight) 서술어 보완
+# ============================================================
+
+# skill_have: you_have() 패턴 - 기술 보유 표시
+# args: %1$s=기술수준(초급/전문가/달인/대달인/없는), %2$s="skill with"(억제), %3$s=무기이름
+# 영어: "basic skill with dagger" → "You have basic skill with dagger."
+# 한국어: "당신은 단검에 초급 기술이 있다."
+#, c-format
+msgctxt "skill_have"
+msgid "%s %s %s"
+msgstr "%3$s에 %1$s 기술이 있다%2$.0s"
+
+# skill_are: you_are() 패턴 - 기술 수준 표시
+# args: %1$s=기술수준(미숙련/숙련), %2$s="in"(억제), %3$s=무기이름
+# 영어: "unskilled in dagger" → "You are unskilled in dagger."
+# 한국어: "당신은 단검에 미숙련이다."
+#, c-format
+msgctxt "skill_are"
+msgid "%s %s %s"
+msgstr "%3$s에 %1$s이다%2$.0s"
+
+# skill_enhance: 기술 강화 가능 부가 정보
+# 영어: " and can enhance that" → " (향상할 수 있다)"
+# 괄호로 감싸서 "있다" 서술어 뒤에 자연스럽게 배치
+#, c-format
+msgctxt "skill_enhance"
+msgid " and %s that"
+msgstr " (%s)"
+
+# skill_twowep: 양손 무기 동일 기술 수준 부가 정보
+# 영어: " and two weapons" → " (양손 무기 포함)"
+# 괄호로 감싸서 서술어 뒤에 배치
+msgctxt "skill_twowep"
+msgid " and two weapons"
+msgstr " (양손 무기 포함)"

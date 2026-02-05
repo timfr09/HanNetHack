@@ -3478,11 +3478,12 @@ msgstr "느꼈다"
 msgid " if circumstances permitted"
 msgstr "상황이 허락한다면 "
 
-# insight.c:1800 - enl_msg(You_, "take", "took", " reduced poison gas damage", "")
-# take/took은 "​"(제로폭 공백)이므로 suffix에 동사 포함
-# 조합: " 당신은 감소된 독 가스 피해를 받는다​."
+# insight.c:1805 - enl_msg(You_, C_("damage","take"), C_("damage","took"),
+#   " reduced poison gas damage", "")
+# take/took은 C_()로 구분, "받는다"/"받았다"로 번역
+# 조합: " 당신은 감소된 독 가스 피해를 받는다."
 msgid " reduced poison gas damage"
-msgstr "감소된 독 가스 피해를 받는다"
+msgstr "감소된 독 가스 피해를 "
 
 # insight.c:1925 - 신 분노 패턴: u_gname() + " is"/" was" + buf
 # 접미사에 동사 포함 ("분노하고 있다")이므로 verb는 제로폭 공백
@@ -5989,13 +5990,30 @@ msgstr "냉장하다"
 msgid " %s your chain"
 msgstr " 당신의 사슬을 %s"
 
-# insight.c:225 - enl_msg(You_, "take", "took", buf, from_what())
+# insight.c:227,1805 - C_("damage", "take"/"took") 동사
+# steal.c의 N_("take")와 구분 (steal = 가져가다, damage = 받다)
+msgctxt "damage"
+msgid "take"
+msgstr "받는다"
+
+msgctxt "damage"
+msgid "took"
+msgstr "받았다"
+
+# insight.c:225 - enl_msg(You_, C_("damage","take"), C_("damage","took"), buf, ...)
 # buf = " %s %s damage" 로 생성됨 (예: " half physical damage")
-# take/took은 "​"(제로폭 공백)이므로 suffix에 동사 포함
-# 조합: " 당신은 절반의 물리 피해를 받는다 (원인)."
+# C_("damage","take") → "받는다", C_("damage","took") → "받았다"
+# 조합: " 당신은 절반의 물리 피해를 받는다."
 #, c-format
 msgid " %s %s damage"
-msgstr "%s %s 피해를 받는다"
+msgstr "%s %s 피해를 "
+
+# insight.c:225 - "half"/"reduced" (피해 절반/감소)
+msgid "half"
+msgstr "절반의"
+
+msgid "reduced"
+msgstr "감소된"
 
 # mhitu.c:285 - 소용돌이에서 배출될 때
 # 결과: "expelled from X in a shower of sparks" → "불꽃 소나기 속에서 X에서 배출"
@@ -7020,8 +7038,10 @@ msgstr "일시적으로"
 msgid "%s blind"
 msgstr "%s 눈이 먼 상태"
 
-# insight.c:1889-1891 - luck 상태
-# 조합: "%s%slucky" (extremely/very + un + lucky)
+# insight.c:1900-1904 - luck 상태
+# 소스 코드 변경: "%s%slucky"를 "%slucky"/"%sunlucky"로 분리
+# 한국어에서 "un" 접두사 조합이 불가능하므로 별도 포맷 문자열 사용
+# 조합: you_are("%slucky"/"extremely lucky"/etc.)
 msgid "lucky"
 msgstr "운이 좋다"
 
@@ -7029,11 +7049,71 @@ msgid "unlucky"
 msgstr "운이 나쁘다"
 
 #, c-format
-msgid "%s%slucky"
-msgstr "%s%s운이 좋다"
+msgid "%slucky"
+msgstr "%s운이 좋다 "
 
-msgid "un"
-msgstr "불"
+#, c-format
+msgid "%sunlucky"
+msgstr "%s운이 나쁘다 "
+
+# insight.c:1901 - "very " (lucky/anger 수식어, 후행 공백)
+msgid "very "
+msgstr "매우 "
+
+# insight.c:1644-1646 - 매력 상태
+# 조합: you_are("%scharismatic", from_what(ADORNED))
+# "more charismatic" / "less charismatic" / "charismatic"
+#, c-format
+msgid "%scharismatic"
+msgstr "%s매력적이다 "
+
+msgid "more "
+msgstr "더 "
+
+msgid "less "
+msgstr "덜 "
+
+# insight.c:3277-3313 - piousness() 경건도 부사
+# 조합: piousness(TRUE, "aligned") → "부사 aligned" → you_are/you_have
+msgid "piously"
+msgstr "경건하게"
+
+msgid "devoutly"
+msgstr "독실하게"
+
+msgid "fervently"
+msgstr "열렬하게"
+
+msgid "stridently"
+msgstr "격렬하게"
+
+msgid "haltingly"
+msgstr "머뭇거리며"
+
+msgid "nominally"
+msgstr "명목상"
+
+msgid "insufficiently"
+msgstr "불충분하게"
+
+msgid "strayed"
+msgstr "방황했다"
+
+msgid "sinned"
+msgstr "죄를 지었다"
+
+msgid "transgressed"
+msgstr "크게 어긋났다"
+
+# insight.c:1497 - piousness() suffix
+# "piously aligned" → "경건하게 충실하다" (you_are)
+msgid "aligned"
+msgstr "충실하다"
+
+# insight.c:1207 - 부담 상태 수식어 "very" (후행 공백 없음)
+# 참고: "very " (후행 공백 있음)과 별개 msgid
+msgid "very"
+msgstr "매우"
 
 # insight.c:1910 - " %sangry with you"
 # 조합: enl_msg(u_gname(), " is", " was", buf, "")
@@ -7041,17 +7121,15 @@ msgstr "불"
 msgid " %sangry with you"
 msgstr "이(가) 당신에게 %s분노하고 있다"
 
-# insight.c:1927 - "%ssafely pray"
-# 조합: you_can("%ssafely pray", "")
+# insight.c:1939 - 기도 안전 여부
+# 소스 변경: "%ssafely pray"를 "safely pray"/"not safely pray"로 분리
+# 한국어에서 "not " 접두사로 부정 불가능하므로 별도 msgid 사용
+# 조합: you_can("safely pray"/"not safely pray", "")
 msgid "safely pray"
-msgstr "안전하게 기도할 수 있다"
+msgstr "안전하게 기도할 수 있다 "
 
-#, c-format
-msgid "%ssafely pray"
-msgstr "%s안전하게 기도할 수 있다"
-
-msgid "not "
-msgstr "안전하게 기도할 수 없다"
+msgid "not safely pray"
+msgstr "안전하게 기도할 수 없다 "
 
 
 # ===============================================

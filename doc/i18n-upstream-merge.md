@@ -7,8 +7,9 @@
 1. [번역 시스템 개요](#번역-시스템-개요)
 2. [파일 유형별 전략](#파일-유형별-전략)
 3. [업스트림 병합 절차](#업스트림-병합-절차)
-4. [자동화 스크립트](#자동화-스크립트)
-5. [문제 해결](#문제-해결)
+4. [충돌 해결 전략](#충돌-해결-전략)
+5. [자동화 스크립트](#자동화-스크립트)
+6. [문제 해결](#문제-해결)
 
 ---
 
@@ -19,11 +20,14 @@ HanNetHack은 두 가지 번역 메커니즘을 사용합니다:
 ### 1. gettext (C 소스 코드)
 
 ```
-src/*.c의 _("메시지") → po/nethack.pot → po/ko.po → nethack.mo
+src/*.c의 _("메시지") → po/nethack.pot → po/ko.po + ko_manual.po → nethack.mo
 ```
 
 - 런타임에 `gettext()` 함수가 번역을 조회
-- `po/ko.po` 파일 하나로 모든 C 소스 메시지 관리
+- **ko_manual.po**: 수동으로 관리하는 번역 (절대 자동 덮어쓰기 안 됨, 우선권)
+- **ko.po**: `xgettext`/`msgmerge`로 자동 관리되는 번역 (덮어쓰기 가능)
+- **ko_merged.po**: 빌드 시 `msgcat --use-first ko_manual.po ko.po`로 자동 생성
+- `ko_manual.po`의 번역이 항상 `ko.po`보다 우선
 
 ### 2. 파일 교체 (데이터 파일, Lua)
 
@@ -50,8 +54,11 @@ if (do_dlb_fopen(dp, locale_name, mode)) {  // 한국어 파일 시도
 
 ```
 po/
+├── Makefile             # 번역 빌드 시스템 (make pot, make compile 등)
 ├── nethack.pot          # 번역 템플릿 (xgettext로 생성)
-└── ko.po                # 한국어 번역
+├── ko.po                # 한국어 번역 (자동 관리, 덮어쓰기 가능!)
+├── ko_manual.po         # 한국어 수동 번역 (우선권, 안전)
+└── ko_merged.po         # 빌드 시 자동 생성 (ko_manual.po + ko.po)
 
 dat/locale/ko/
 ├── LC_MESSAGES/
@@ -65,38 +72,60 @@ dat/locale/ko/
 └── ...                  # 기타 번역 파일
 ```
 
+### ko_manual.po를 쓰는 이유
+
+`make safe-update`나 `make update-po`는 `ko.po`를 업스트림 변경에 맞춰 자동으로
+수정합니다. 이 과정에서 수동으로 세심하게 조정한 번역이 fuzzy로 표시되거나
+덮어쓰기될 수 있습니다. `ko_manual.po`에 넣은 번역은 이 과정에서 절대 영향받지 않으며,
+빌드 시 `msgcat --use-first`로 합칠 때 항상 우선권을 가집니다.
+
+**편집 규칙: `ko_manual.po`만 직접 편집. `ko.po`는 자동 관리 전용.**
+
 ---
 
 ## 파일 유형별 전략
 
 ### 1. C 소스 코드 메시지 (`src/*.c`)
 
-**메커니즘:** gettext `_()` 매크로로 래핑된 문자열 → `po/nethack.pot` → `po/ko.po`
+**메커니즘:** gettext `_()`, `C_()`, `N_()` 매크로로 래핑된 문자열
 
-**업스트림 변경 시 처리:**
+```
+src/*.c → xgettext → po/nethack.pot → msgmerge → po/ko.po
+                                                   ↓
+                                    po/ko_manual.po + ko.po
+                                                   ↓ msgcat --use-first
+                                            ko_merged.po → ko.mo
+```
+
+**업스트림 변경 시 처리 (po/Makefile 사용):**
 
 ```bash
 # 1. 업스트림 병합 후 .pot 파일 재생성
-xgettext --keyword=_ --keyword=N_ --language=C \
-  --add-comments --sort-output --from-code=UTF-8 \
-  -o po/nethack.pot src/*.c
+cd po && make pot
 
-# 2. 기존 ko.po에 새 문자열 병합
-msgmerge --update --backup=none po/ko.po po/nethack.pot
+# 2. ko.po 안전 업데이트 (자동 백업)
+make safe-update
 
-# 3. 통계 확인 (fuzzy/untranslated 확인)
-msgfmt --statistics po/ko.po -o /dev/null
+# 3. 새 문자열 중 수동 번역 필요한 것 → ko_manual.po에 추가
+# (ko.po는 직접 편집하지 않음)
 
-# 4. 새 문자열 번역 추가
-# fuzzy 제거하고 번역 수정
+# 4. 컴파일 (merge + compile 자동 수행)
+make compile
 
-# 5. 컴파일
-msgfmt -c -o dat/locale/ko/LC_MESSAGES/nethack.mo po/ko.po
+# 5. 통계 확인
+make stats
 ```
 
 **주의사항:**
 - 새로 추가된 `_()` 래핑이 없는 메시지 확인 필요
-- 검색 패턴: `grep -r "pline(\"" src/*.c | grep -v "_(\""`
+- 업스트림 커밋에서 새 pline/You/verbalize 등의 메시지를 추가했다면 i18n 래핑 필요
+- `C_("context", "string")` 사용 시 ko_manual.po에 `msgctxt` 항목 추가 필요
+
+**i18n 래핑 키워드:**
+- `_("string")` — 기본 번역
+- `C_("context", "string")` — 동음이의어 구분 (예: `C_("moon", "full")` vs `_("full")`)
+- `N_("string")` — 지연 번역 (컴파일 타임에 등록, 런타임에 번역)
+- `P_("singular", "plural")` — 복수형 (한국어는 보통 불필요)
 
 ---
 
@@ -213,101 +242,202 @@ make data -C dat/locale/ko
 
 ## 업스트림 병합 절차
 
+### Git 리모트 설정
+
+```bash
+# origin = HanNetHack 포크 (push 가능)
+git remote add origin git@github.com:timfr09/HanNetHack.git
+
+# upstream = NetHack 원본 (fetch만, push 금지)
+git remote add upstream https://github.com/NetHack/NetHack.git
+git remote set-url --push upstream no_push
+```
+
 ### 전체 워크플로우
 
 ```bash
 # 1. 업스트림 가져오기
-git fetch upstream
-git checkout feature/your-branch
-git merge upstream/master
+git fetch upstream NetHack-3.7
 
-# 2. 충돌 해결 (있다면)
-# ko.po 충돌: 양쪽 번역 모두 유지
-# locale/ko/* 충돌: 한국어 버전 우선
+# 2. 업스트림 변경 사항 사전 분석
+#    - 어떤 파일이 변경되었는지 확인
+#    - i18n 래핑된 파일과 겹치는지 확인
+git log --oneline HEAD..upstream/NetHack-3.7
+git log --oneline --stat upstream/NetHack-3.7 -N  # N = 새 커밋 수
 
-# 3. 새 번역 가능 문자열 확인
-./scripts/i18n-check.sh  # (아래 스크립트 참조)
+# 3. 병합
+git merge upstream/NetHack-3.7 --no-edit
 
-# 4. 번역 업데이트
-# - po/ko.po 편집
-# - dat/locale/ko/* 편집
+# 4. 충돌 해결 (있다면) → "충돌 해결 전략" 섹션 참조
 
-# 5. 컴파일 및 테스트
-make
-msgfmt -c -o dat/locale/ko/LC_MESSAGES/nethack.mo po/ko.po
+# 5. 번역 파일 업데이트
+cd po
+make pot              # nethack.pot 재생성
+make safe-update      # ko.po 안전 업데이트 (백업 생성)
+make compile          # merge + compile
 
-# 6. 커밋
-git add po/ko.po po/nethack.pot dat/locale/ko/
-git commit -m "Update Korean translations for upstream merge"
+# 6. 새 메시지에 대한 번역 추가
+#    - make untranslated로 미번역 문자열 확인
+#    - ko_manual.po에 번역 추가
+make untranslated
+# ko_manual.po 편집
+make compile          # 다시 컴파일
+
+# 7. 빌드 테스트
+cd .. && make -C sys/unix all  # 또는 프로젝트 빌드 명령
+
+# 8. 커밋
+git add po/ko_manual.po po/nethack.pot
+git commit --author="timfr09 <crefrog@gmail.com>" \
+  -m "Update translations after upstream merge"
 ```
+
+### 사전 분석이 중요한 이유
+
+업스트림 커밋이 다음 파일을 수정했는지 반드시 확인:
+
+| 파일 유형 | 충돌 가능성 | 확인 사항 |
+|-----------|------------|----------|
+| `src/*.c` (i18n 래핑됨) | **높음** | `_()`, `C_()` 래핑 주변 코드 변경 |
+| `include/*.h` | 보통 | 새 선언, 매크로 변경 |
+| `dat/*.lua` | 보통 | 메시지 변경 여부 |
+| `doc/*`, `sys/*` | 낮음 | 보통 충돌 없음 |
+| `po/*` | 없음 | 업스트림에 po/ 없음 |
+
+---
+
+## 충돌 해결 전략
+
+### C 소스 코드 충돌 (`src/*.c`)
+
+HanNetHack에서 수정한 C 소스 파일은 크게 두 종류:
+
+#### 1. i18n 래핑만 한 경우 (대부분)
+
+```c
+// 업스트림 원본
+pline("You hit the monster.");
+
+// HanNetHack 수정
+pline(_("You hit the monster."));
+```
+
+**충돌 해결:** 업스트림 코드를 가져온 후 `_()` 래핑을 다시 적용.
+
+```c
+// 업스트림이 메시지를 변경한 경우
+// 업스트림: pline("You strike the monster.");
+// 해결:
+pline(_("You strike the monster."));
+// 그리고 ko_manual.po에 새 번역 추가
+```
+
+#### 2. 조합 패턴 수정 (insight.c 등)
+
+```c
+// 업스트림이 로직을 변경한 경우
+// HanNetHack의 C_(), 포맷 문자열 수정 등도 반영해야 함
+```
+
+**충돌 해결 순서:**
+1. 업스트림 로직 변경을 먼저 이해
+2. HanNetHack의 i18n 래핑과 C_() 컨텍스트를 다시 적용
+3. 새 메시지의 조합 패턴을 분석하여 ko_manual.po에 번역 추가
+
+### PO 파일 충돌
+
+업스트림에는 `po/` 디렉토리가 없으므로 PO 파일 충돌은 발생하지 않습니다.
+HanNetHack 내부에서 여러 브랜치가 ko_manual.po를 동시에 수정할 경우:
+
+```bash
+# 양쪽의 번역을 모두 유지 (msgcat으로 병합)
+msgcat --use-first branch_a.po branch_b.po -o merged.po
+```
+
+### 한국어 조사 시스템 충돌
+
+`src/ko_postpos.c`, `include/ko_postpos.h`, `src/objnam.c` 등에 있는 한국어
+조사 처리 코드(`{이/가}`, `{을/를}` 등)는 업스트림에 없는 코드이므로,
+업스트림이 같은 함수를 수정하면 충돌 가능.
+
+**해결:** 업스트림 변경을 먼저 적용한 후 한국어 조사 처리를 다시 적용.
 
 ---
 
 ## 자동화 스크립트
 
-### `scripts/i18n-check.sh`
+### po/Makefile 타겟 (권장)
+
+`po/Makefile`에 필요한 모든 빌드 타겟이 이미 정의되어 있습니다:
 
 ```bash
-#!/bin/bash
-# 업스트림 병합 후 번역 상태 확인
+cd po
 
-echo "=== 1. C 소스 새 문자열 확인 ==="
-xgettext --keyword=_ --keyword=N_ --language=C \
-  --add-comments --sort-output --from-code=UTF-8 \
-  -o /tmp/new.pot src/*.c 2>/dev/null
-
-if [ -f po/nethack.pot ]; then
-  diff <(grep "^msgid" po/nethack.pot | sort) \
-       <(grep "^msgid" /tmp/new.pot | sort) | grep "^>" | head -20
-fi
-
-echo ""
-echo "=== 2. ko.po 통계 ==="
-msgfmt --statistics po/ko.po -o /dev/null 2>&1
-
-echo ""
-echo "=== 3. 래핑 안 된 메시지 확인 ==="
-grep -rn 'pline("[^_]' src/*.c | grep -v '_("' | head -10
-grep -rn 'You("[^_]' src/*.c | grep -v '_("' | head -10
-
-echo ""
-echo "=== 4. Lua 파일 메시지 변경 확인 ==="
-for f in dat/nhcore.lua dat/nhlib.lua dat/quest.lua; do
-  if [ -f "$f" ]; then
-    if ! diff -q "$f" "dat/locale/ko/$(basename $f)" > /dev/null 2>&1; then
-      echo "변경됨: $f"
-    fi
-  fi
-done
-
-echo ""
-echo "=== 5. 도움말 파일 변경 확인 ==="
-for f in help hh cmdhelp keyhelp opthelp; do
-  if ! diff -q "dat/$f" "dat/locale/ko/$f" > /dev/null 2>&1; then
-    echo "확인 필요: dat/$f vs dat/locale/ko/$f"
-  fi
-done
+make pot          # 소스에서 nethack.pot 재생성
+make safe-update  # ko.po 안전 업데이트 (자동 백업)
+make merge        # ko_manual.po + ko.po → ko_merged.po
+make compile      # merge + 컴파일 (ko.mo 생성)
+make stats        # 번역 통계
+make check        # 번역 오류 검사
+make untranslated # 미번역 문자열 목록
+make fuzzy        # fuzzy 번역 목록
+make clean        # 생성 파일 삭제
 ```
 
-### `scripts/i18n-update.sh`
+### `scripts/merge-upstream.sh`
+
+업스트림 병합 전체 과정을 자동화하는 스크립트:
 
 ```bash
 #!/bin/bash
-# 번역 파일 업데이트
+# 업스트림 병합 스크립트
+set -e
 
-echo "=== .pot 파일 재생성 ==="
-xgettext --keyword=_ --keyword=N_ --language=C \
-  --add-comments --sort-output --from-code=UTF-8 \
-  -o po/nethack.pot src/*.c
+echo "=== 1. 업스트림 fetch ==="
+git fetch upstream NetHack-3.7
 
-echo "=== ko.po 병합 ==="
-msgmerge --update --backup=none po/ko.po po/nethack.pot
+echo ""
+echo "=== 2. 새 업스트림 커밋 확인 ==="
+NEW_COMMITS=$(git log --oneline HEAD..upstream/NetHack-3.7 | wc -l)
+if [ "$NEW_COMMITS" -eq 0 ]; then
+    echo "업스트림과 동기화되어 있습니다."
+    exit 0
+fi
+echo "$NEW_COMMITS 개의 새 커밋:"
+git log --oneline HEAD..upstream/NetHack-3.7
 
-echo "=== 컴파일 ==="
-msgfmt -c -v -o dat/locale/ko/LC_MESSAGES/nethack.mo po/ko.po
+echo ""
+echo "=== 3. 변경된 파일 확인 ==="
+git log --stat HEAD..upstream/NetHack-3.7
 
+echo ""
+echo "=== 4. 병합 ==="
+git merge upstream/NetHack-3.7 --no-edit
+
+echo ""
+echo "=== 5. POT 파일 재생성 ==="
+cd po
+make pot
+
+echo ""
+echo "=== 6. ko.po 안전 업데이트 ==="
+make safe-update
+
+echo ""
+echo "=== 7. 컴파일 ==="
+make compile
+
+echo ""
+echo "=== 8. 통계 ==="
+make stats
+
+echo ""
+echo "=== 9. 미번역 문자열 ==="
+make untranslated
+
+echo ""
 echo "=== 완료 ==="
-msgfmt --statistics po/ko.po -o /dev/null 2>&1
+echo "필요시 ko_manual.po에 새 번역을 추가한 후 make compile을 실행하세요."
 ```
 
 ---
@@ -360,14 +490,39 @@ done
 
 문자열이 조합되어 출력되는 경우, 개별 문자열 번역이 맞아도 조합 결과가 어색할 수 있음.
 
-**확인 방법:**
-```bash
-# msgid에 %s가 없는데 msgstr에 %s가 있는 경우 찾기
-grep -B1 "^msgstr" po/ko.po | grep -A1 "^msgid \"[^%\"]*\"$" | \
-  grep -v "^--$" | grep -B1 "msgstr \".*%s" | grep "msgid"
+**핵심 예시 — insight.c의 enl_msg 매크로:**
+
+```c
+// 영어: " prefix verb suffix postscript."  (SVO)
+Sprintf(buf, _(" %s%s%s%s."), start, middle, end, ps);
+// %1$s=prefix, %2$s=verb, %3$s=suffix, %4$s=postscript
+
+// 한국어: " prefix suffix verb postscript."  (SOV)
+// ko_manual.po에서 포맷 문자열 재배열:
+msgid " %s%s%s%s."
+msgstr " %1$s%3$s%2$s%4$s."
 ```
 
+**조합 패턴 번역 규칙:**
+1. 접미사(suffix)에 한국어 서술어가 포함된 경우 → 동사 슬롯에 영폭 공백(​) 사용
+2. 영어 "have "/"are "/"is " 등 → "​" (영폭 공백)으로 번역하여 빈 동사 슬롯
+3. 접미사에 선행 공백 없이, 후행 공백 포함 (SOV 어순에서 동사 앞에 공백)
+4. `C_("context", "string")` 사용하여 동음이의어 구분
+
 **해결:** 소스 코드에서 조합 패턴 확인 후 번역 수정.
+
+### Q: C_() 컨텍스트 항목이 번역이 안 됨
+
+`C_("context", "string")` 사용 시 ko_manual.po에 `msgctxt` 포함한 항목 필요:
+
+```
+msgctxt "moon"
+msgid "full"
+msgstr "보름"
+```
+
+**그리고** ko.po에도 해당 항목이 있어야 합니다. `make pot && make safe-update` 후
+ko.po에 새 `msgctxt` 항목이 자동 추가되지만, fuzzy 플래그가 붙을 수 있으므로 확인 필요.
 
 ---
 
@@ -375,8 +530,10 @@ grep -B1 "^msgstr" po/ko.po | grep -A1 "^msgid \"[^%\"]*\"$" | \
 
 - [GNU gettext 매뉴얼](https://www.gnu.org/software/gettext/manual/)
 - [NetHack 소스 코드](https://github.com/NetHack/NetHack)
-- `po/ko.po` 내 주석 - 조합 패턴 설명 포함
+- `po/ko_manual.po` — 수동 번역 (편집 대상)
+- `po/TRANSLATION_GUIDE_KO.md` — 한국어 번역 가이드 상세
+- `po/I18N_SYSTEM.md` — i18n 시스템 기술 문서
 
 ---
 
-*최종 업데이트: 2026-01-31*
+*최종 업데이트: 2026-02-05*

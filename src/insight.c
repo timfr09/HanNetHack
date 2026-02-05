@@ -224,7 +224,8 @@ enlght_halfdmg(int category, int final)
     }
     Sprintf(buf, _(" %s %s damage"), (final || wizard) ? _("half") : _("reduced"),
             category_name);
-    enl_msg(You_, _("take"), _("took"), buf, from_what(category));
+    enl_msg(You_, C_("damage", "take"), C_("damage", "took"),
+            buf, from_what(category));
 }
 
 /* is hero actively using water walking capability on water (or lava)? */
@@ -1801,7 +1802,8 @@ attributes_enlightenment(
     if (Half_spell_damage)
         enlght_halfdmg(HALF_SPDAM, final);
     if (Half_gas_damage)
-        enl_msg(You_, _("take"), _("took"), _(" reduced poison gas damage"), "");
+        enl_msg(You_, C_("damage", "take"), C_("damage", "took"),
+                _(" reduced poison gas damage"), "");
     if (spellid(0) > NO_SPELL) { /* skip if no spells are known yet */
         /* greatly simplified edition of percent_success(spell.c)--may need
            to be suppressed if oversimplification leads to player confusion */
@@ -1897,9 +1899,8 @@ attributes_enlightenment(
     /*** Miscellany ***/
     if (Luck) {
         ltmp = abs((int) Luck);
-        Sprintf(buf, _("%s%slucky"),
-                ltmp >= 10 ? _("extremely ") : ltmp >= 5 ? _("very ") : "",
-                Luck < 0 ? _("un") : "");
+        Sprintf(buf, Luck < 0 ? _("%sunlucky") : _("%slucky"),
+                ltmp >= 10 ? _("extremely ") : ltmp >= 5 ? _("very ") : "");
         if (wizard)
             Sprintf(eos(buf), " (%d)", Luck);
         you_are(buf, "");
@@ -1935,7 +1936,8 @@ attributes_enlightenment(
             Sprintf(buf, _("%s%ssafely pray%s"), can_pray(FALSE) ? "" : _("not "),
                     final ? _("have ") : "", final ? "ed" : "");
 #else
-            Sprintf(buf, _("%ssafely pray"), can_pray(FALSE) ? "" : _("not "));
+            Strcpy(buf, can_pray(FALSE) ? _("safely pray")
+                                        : _("not safely pray"));
 #endif
             if (wizard)
                 Sprintf(eos(buf), " (%d)", u.ublesscnt);

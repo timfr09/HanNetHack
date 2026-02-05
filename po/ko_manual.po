@@ -3529,9 +3529,29 @@ msgstr "읽거나 새긴 횟수 %ld회%.0s"
 msgid "changed form %ld time%s"
 msgstr "형태를 %ld회%.0s 바꿨다"
 
+# insight.c:2214 - 소원 수량 (모두/둘 다/없음 + 아티팩트)
+# 조합: "used 3 wishes (all for artifacts)" etc.
+#, c-format
+msgid " (%s"
+msgstr " (%s"
+
 #, c-format
 msgid " (%ld "
 msgstr " (%ld "
+
+msgid "both "
+msgstr "둘 다 "
+
+# insight.c:2220 - "for an artifact"/"for artifacts"
+#, c-format
+msgid "for %s)"
+msgstr "%s를 위해)"
+
+msgid "an artifact"
+msgstr "아티팩트"
+
+msgid "artifacts"
+msgstr "아티팩트"
 
 msgid "did not wish"
 msgstr "소원을 빌지 않았다"

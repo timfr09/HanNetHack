@@ -101,88 +101,88 @@ tshirt_text(struct obj *tshirt, char *buf)
 {
     static const char *const shirt_msgs[] = {
         /* Scott Bigham */
-      "I explored the Dungeons of Doom and all I got was this lousy T-shirt!",
-        "Is that Mjollnir in your pocket or are you just happy to see me?",
-      "It's not the size of your sword, it's how #enhance'd you are with it.",
-        "Madame Elvira's House O' Succubi Lifetime Customer",
-        "Madame Elvira's House O' Succubi Employee of the Month",
-        "Ludios Vault Guards Do It In Small, Dark Rooms",
-        "Yendor Military Soldiers Do It In Large Groups",
-        "I survived Yendor Military Boot Camp",
-        "Ludios Accounting School Intra-Mural Lacrosse Team",
-        "Oracle(TM) Fountains 10th Annual Wet T-Shirt Contest",
-        "Hey, black dragon!  Disintegrate THIS!",
-        "I'm With Stupid -->",
-        "Don't blame me, I voted for Izchak!",
-        "Don't Panic", /* HHGTTG */
-        "Furinkan High School Athletic Dept.",                /* Ranma 1/2 */
-        "Hel-LOOO, Nurse!",                                   /* Animaniacs */
-        "=^.^=",
-        "100% goblin hair - do not wash",
-        "Aberzombie and Fitch",
-        "cK -- Cockatrice touches the Kop",
-        "Don't ask me, I only adventure here",
-        "Down with pants!",
-        "d, your dog or a killer?",
-        "FREE PUG AND NEWT!",
-        "Go team ant!",
-        "Got newt?",
-        "Hello, my darlings!", /* Charlie Drake */
-        "Hey!  Nymphs!  Steal This T-Shirt!",
-        "I <3 Dungeon of Doom",
-        "I <3 Maud",
+      N_("I explored the Dungeons of Doom and all I got was this lousy T-shirt!"),
+        N_("Is that Mjollnir in your pocket or are you just happy to see me?"),
+      N_("It's not the size of your sword, it's how #enhance'd you are with it."),
+        N_("Madame Elvira's House O' Succubi Lifetime Customer"),
+        N_("Madame Elvira's House O' Succubi Employee of the Month"),
+        N_("Ludios Vault Guards Do It In Small, Dark Rooms"),
+        N_("Yendor Military Soldiers Do It In Large Groups"),
+        N_("I survived Yendor Military Boot Camp"),
+        N_("Ludios Accounting School Intra-Mural Lacrosse Team"),
+        N_("Oracle(TM) Fountains 10th Annual Wet T-Shirt Contest"),
+        N_("Hey, black dragon!  Disintegrate THIS!"),
+        N_("I'm With Stupid -->"),
+        N_("Don't blame me, I voted for Izchak!"),
+        N_("Don't Panic"), /* HHGTTG */
+        N_("Furinkan High School Athletic Dept."),                /* Ranma 1/2 */
+        N_("Hel-LOOO, Nurse!"),                                   /* Animaniacs */
+        N_("=^.^="),
+        N_("100% goblin hair - do not wash"),
+        N_("Aberzombie and Fitch"),
+        N_("cK -- Cockatrice touches the Kop"),
+        N_("Don't ask me, I only adventure here"),
+        N_("Down with pants!"),
+        N_("d, your dog or a killer?"),
+        N_("FREE PUG AND NEWT!"),
+        N_("Go team ant!"),
+        N_("Got newt?"),
+        N_("Hello, my darlings!"), /* Charlie Drake */
+        N_("Hey!  Nymphs!  Steal This T-Shirt!"),
+        N_("I <3 Dungeon of Doom"),
+        N_("I <3 Maud"),
         /* note: there is a similarly worded apron (alchemy smock) slogan */
-        "I am a Valkyrie.  If you see me running, try to keep up.",
-        "I am not a pack rat - I am a collector",
-        "I bounced off a rubber tree",         /* Monkey Island */
-        "Plunder Island Brimstone Beach Club", /* Monkey Island */
-        "If you can read this, I can hit you with my polearm",
-        "I'm confused!",
-        "I scored with the princess",
-        "I want to live forever or die in the attempt.",
-        "Lichen Park",
-        "LOST IN THOUGHT - please send search party",
-        "Meat is Mordor",
-        "Minetown Better Business Bureau",
-        "Minetown Watch",
+        N_("I am a Valkyrie.  If you see me running, try to keep up."),
+        N_("I am not a pack rat - I am a collector"),
+        N_("I bounced off a rubber tree"),         /* Monkey Island */
+        N_("Plunder Island Brimstone Beach Club"), /* Monkey Island */
+        N_("If you can read this, I can hit you with my polearm"),
+        N_("I'm confused!"),
+        N_("I scored with the princess"),
+        N_("I want to live forever or die in the attempt."),
+        N_("Lichen Park"),
+        N_("LOST IN THOUGHT - please send search party"),
+        N_("Meat is Mordor"),
+        N_("Minetown Better Business Bureau"),
+        N_("Minetown Watch"),
         /* Discworld riff; unfortunately long */
-        ("Ms. Palm's House of Negotiable Affection--A Very Reputable"
+        N_("Ms. Palm's House of Negotiable Affection--A Very Reputable"
             " House Of Disrepute"),
-        "Protection Racketeer",
-        "Real men love Crom",
-        "Somebody stole my Mojo!",
-        "The Hellhound Gang",
-        "The Werewolves",
-        "They Might Be Storm Giants",
-        "Weapons don't kill people, I kill people",
-        "White Zombie",
-        "You're killing me!",
-        "Anhur State University - Home of the Fighting Fire Ants!",
-        "FREE HUGS",
-        "Serial Ascender",
-        "Real men are valkyries",
-        "Young Men's Cavedigging Association",
-        "Occupy Fort Ludios",
-        "I couldn't afford this T-shirt so I stole it!",
-        "Mind flayers suck",
-        "I'm not wearing any pants",
-        "Down with the living!",
-        "Pudding farmer",
-        "Vegetarian",
-        "Hello, I'm War!",
-        "It is better to light a candle than to curse the darkness",
-        "It is easier to curse the darkness than to light a candle",
+        N_("Protection Racketeer"),
+        N_("Real men love Crom"),
+        N_("Somebody stole my Mojo!"),
+        N_("The Hellhound Gang"),
+        N_("The Werewolves"),
+        N_("They Might Be Storm Giants"),
+        N_("Weapons don't kill people, I kill people"),
+        N_("White Zombie"),
+        N_("You're killing me!"),
+        N_("Anhur State University - Home of the Fighting Fire Ants!"),
+        N_("FREE HUGS"),
+        N_("Serial Ascender"),
+        N_("Real men are valkyries"),
+        N_("Young Men's Cavedigging Association"),
+        N_("Occupy Fort Ludios"),
+        N_("I couldn't afford this T-shirt so I stole it!"),
+        N_("Mind flayers suck"),
+        N_("I'm not wearing any pants"),
+        N_("Down with the living!"),
+        N_("Pudding farmer"),
+        N_("Vegetarian"),
+        N_("Hello, I'm War!"),
+        N_("It is better to light a candle than to curse the darkness"),
+        N_("It is easier to curse the darkness than to light a candle"),
         /* expanded "rock--paper--scissors" featured in TV show "Big Bang
            Theory" although they didn't create it (and an actual T-shirt
            with pentagonal diagram showing which choices defeat which) */
-        "rock--paper--scissors--lizard--Spock!",
+        N_("rock--paper--scissors--lizard--Spock!"),
         /* "All men must die -- all men must serve" challenge and response
            from book series _A_Song_of_Ice_and_Fire_ by George R.R. Martin,
            TV show "Game of Thrones" (probably an actual T-shirt too...) */
-        "/Valar morghulis/ -- /Valar dohaeris/",
+        N_("/Valar morghulis/ -- /Valar dohaeris/"),
     };
 
-    Strcpy(buf, shirt_msgs[tshirt->o_id % SIZE(shirt_msgs)]);
+    Strcpy(buf, _(shirt_msgs[tshirt->o_id % SIZE(shirt_msgs)]));
     return erode_obj_text(tshirt, buf);
 }
 
@@ -191,32 +191,32 @@ hawaiian_motif(struct obj *shirt, char *buf)
 {
     static const char *const hawaiian_motifs[] = {
         /* birds */
-        "flamingo",
-        "parrot",
-        "toucan",
-        "bird of paradise", /* could be a bird or a flower */
+        N_("flamingo"),
+        N_("parrot"),
+        N_("toucan"),
+        N_("bird of paradise"), /* could be a bird or a flower */
         /* sea creatures */
-        "sea turtle",
-        "tropical fish",
-        "jellyfish",
-        "giant eel",
-        "water nymph",
+        N_("sea turtle"),
+        N_("tropical fish"),
+        N_("jellyfish"),
+        N_("giant eel"),
+        N_("water nymph"),
         /* plants */
-        "plumeria",
-        "orchid",
-        "hibiscus flower",
-        "palm tree",
+        N_("plumeria"),
+        N_("orchid"),
+        N_("hibiscus flower"),
+        N_("palm tree"),
         /* other */
-        "hula dancer",
-        "sailboat",
-        "ukulele",
+        N_("hula dancer"),
+        N_("sailboat"),
+        N_("ukulele"),
     };
 
     /* a tourist's starting shirt always has the same o_id; we need some
        additional randomness or else its design will never differ */
     unsigned motif = shirt->o_id ^ (unsigned) ubirthday;
 
-    Strcpy(buf, hawaiian_motifs[motif % SIZE(hawaiian_motifs)]);
+    Strcpy(buf, _(hawaiian_motifs[motif % SIZE(hawaiian_motifs)]));
     return buf;
 }
 
@@ -225,18 +225,18 @@ hawaiian_design(struct obj *shirt, char *buf)
 {
     static const char *const hawaiian_bgs[] = {
         /* solid colors */
-        "purple",
-        "yellow",
-        "red",
-        "blue",
-        "orange",
-        "black",
-        "green",
+        N_("purple"),
+        N_("yellow"),
+        N_("red"),
+        N_("blue"),
+        N_("orange"),
+        N_("black"),
+        N_("green"),
         /* adjectives */
-        "abstract",
-        "geometric",
-        "patterned",
-        "naturalistic",
+        N_("abstract"),
+        N_("geometric"),
+        N_("patterned"),
+        N_("naturalistic"),
     };
 
     /* This hash method is slightly different than the one in hawaiian_motif;
@@ -244,9 +244,9 @@ hawaiian_design(struct obj *shirt, char *buf)
        never appearing, if the sizes of the two lists have common factors. */
     unsigned bg = shirt->o_id ^ (unsigned) ~ubirthday;
 
-    Sprintf(buf, "%s on %s background",
+    Sprintf(buf, _("%s on %s background"),
             makeplural(hawaiian_motif(shirt, buf)),
-            an(hawaiian_bgs[bg % SIZE(hawaiian_bgs)]));
+            an(_(hawaiian_bgs[bg % SIZE(hawaiian_bgs)])));
     return buf;
 }
 
@@ -254,15 +254,15 @@ char *
 apron_text(struct obj *apron, char *buf)
 {
     static const char *const apron_msgs[] = {
-        "Kiss the cook",
-        "I'm making SCIENCE!",
-        "Don't mess with the chef",
-        "Don't make me poison you",
-        "Gehennom's Kitchen",
-        "Rat: The other white meat",
-        "If you can't stand the heat, get out of Gehennom!",
-        "If we weren't meant to eat animals, why are they made out of meat?",
-        "If you don't like the food, I'll stab you",
+        N_("Kiss the cook"),
+        N_("I'm making SCIENCE!"),
+        N_("Don't mess with the chef"),
+        N_("Don't make me poison you"),
+        N_("Gehennom's Kitchen"),
+        N_("Rat: The other white meat"),
+        N_("If you can't stand the heat, get out of Gehennom!"),
+        N_("If we weren't meant to eat animals, why are they made out of meat?"),
+        N_("If you don't like the food, I'll stab you"),
         /* In the movie "The Sum of All Fears", a Russian worker in a weapons
            facility wears a T-shirt that a translator says reads, "I am a
            bomb technician, if you see me running ... try to catch up."
@@ -273,22 +273,22 @@ apron_text(struct obj *apron, char *buf)
             "I am a Valkyrie.  If you see me running, try to keep up."
            so this one has been revised a little:  added alchemist prefix,
            changed "keep up" to original source's "catch up"] */
-        "I am an alchemist; if you see me running, try to catch up...",
+        N_("I am an alchemist; if you see me running, try to catch up..."),
     };
 
-    Strcpy(buf, apron_msgs[apron->o_id % SIZE(apron_msgs)]);
+    Strcpy(buf, _(apron_msgs[apron->o_id % SIZE(apron_msgs)]));
     return erode_obj_text(apron, buf);
 }
 
 static const char *const candy_wrappers[] = {
-    "",                         /* (none -- should never happen) */
-    "Apollo",                   /* Lost */
-    "Moon Crunchy",             /* South Park */
-    "Snacky Cake",    "Chocolate Nuggie", "The Small Bar",
-    "Crispy Yum Yum", "Nilla Crunchie",   "Berry Bar",
-    "Choco Nummer",   "Om-nom", /* Cat Macro */
-    "Fruity Oaty",              /* Serenity */
-    "Wonka Bar",                /* Charlie and the Chocolate Factory */
+    "",                           /* (none -- should never happen) */
+    N_("Apollo"),                 /* Lost */
+    N_("Moon Crunchy"),           /* South Park */
+    N_("Snacky Cake"),    N_("Chocolate Nuggie"), N_("The Small Bar"),
+    N_("Crispy Yum Yum"), N_("Nilla Crunchie"),   N_("Berry Bar"),
+    N_("Choco Nummer"),   N_("Om-nom"), /* Cat Macro */
+    N_("Fruity Oaty"),            /* Serenity */
+    N_("Wonka Bar"),              /* Charlie and the Chocolate Factory */
 };
 
 /* return the text of a candy bar's wrapper */
@@ -296,7 +296,7 @@ const char *
 candy_wrapper_text(struct obj *obj)
 {
     /* modulo operation is just bullet proofing; 'spe' is already in range */
-    return candy_wrappers[obj->spe % SIZE(candy_wrappers)];
+    return _(candy_wrappers[obj->spe % SIZE(candy_wrappers)]);
 }
 
 /* assign a wrapper to a candy bar stack */
@@ -448,20 +448,20 @@ doread(void)
         return ECMD_TIME;
     } else if (otyp == CREDIT_CARD) {
         static const char *const card_msgs[] = {
-            "Leprechaun Gold Tru$t - Shamrock Card",
-            "Magic Memory Vault Charge Card",
-            "Larn National Bank",                /* Larn */
-            "First Bank of Omega",               /* Omega */
-            "Bank of Zork - Frobozz Magic Card", /* Zork */
-            "Ankh-Morpork Merchant's Guild Barter Card",
-            "Ankh-Morpork Thieves' Guild Unlimited Transaction Card",
-            "Ransmannsby Moneylenders Association",
-            "Bank of Gehennom - 99% Interest Card",
-            "Yendorian Express - Copper Card",
-            "Yendorian Express - Silver Card",
-            "Yendorian Express - Gold Card",
-            "Yendorian Express - Mithril Card",
-            "Yendorian Express - Platinum Card", /* must be last */
+            N_("Leprechaun Gold Tru$t - Shamrock Card"),
+            N_("Magic Memory Vault Charge Card"),
+            N_("Larn National Bank"),                /* Larn */
+            N_("First Bank of Omega"),               /* Omega */
+            N_("Bank of Zork - Frobozz Magic Card"), /* Zork */
+            N_("Ankh-Morpork Merchant's Guild Barter Card"),
+            N_("Ankh-Morpork Thieves' Guild Unlimited Transaction Card"),
+            N_("Ransmannsby Moneylenders Association"),
+            N_("Bank of Gehennom - 99% Interest Card"),
+            N_("Yendorian Express - Copper Card"),
+            N_("Yendorian Express - Silver Card"),
+            N_("Yendorian Express - Gold Card"),
+            N_("Yendorian Express - Mithril Card"),
+            N_("Yendorian Express - Platinum Card"), /* must be last */
         };
 
         if (Blind) {
@@ -471,8 +471,8 @@ doread(void)
                 pline(_("It reads:"));
             pline(_("\"%s\""),
                   scroll->oartifact
-                      ? card_msgs[SIZE(card_msgs) - 1]
-                      : card_msgs[scroll->o_id % (SIZE(card_msgs) - 1)]);
+                      ? _(card_msgs[SIZE(card_msgs) - 1])
+                      : _(card_msgs[scroll->o_id % (SIZE(card_msgs) - 1)]));
         }
         /* Make a credit card number */
         pline(_("\"%d0%d %ld%d1 0%d%d0\"%s"),

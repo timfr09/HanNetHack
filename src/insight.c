@@ -121,6 +121,13 @@ static struct ll_achieve_msg achieve_msg [] = {
 staticfn void
 enlght_out(const char *buf)
 {
+#ifdef ENABLE_NLS
+    char processed[BUFSZ];
+    if (is_korean_locale() && strchr(buf, KO_PP_START)) {
+        ko_process_string(processed, sizeof processed, buf);
+        buf = processed;
+    }
+#endif
     if (ge.en_via_menu) {
         add_menu_str(ge.en_win, buf);
     } else

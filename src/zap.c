@@ -4140,6 +4140,7 @@ boomhit(struct obj *obj, coordxy dx, coordxy dy)
     int boom; /* showsym[] index  */
     struct monst *mtmp;
     boolean counterclockwise = URIGHTY; /* ULEFTY => clockwise */
+    int nhits = (obj->spe + 1);
 
     /* counterclockwise traversal patterns, from @ to 1 then on through to 9
      *  ..........................54.................................
@@ -4174,8 +4175,12 @@ boomhit(struct obj *obj, coordxy dx, coordxy dy)
         }
         if ((mtmp = m_at(gb.bhitpos.x, gb.bhitpos.y)) != 0) {
             m_respond(mtmp);
-            tmp_at(DISP_END, 0);
-            return mtmp;
+            if (nhits-- < 0) {
+                tmp_at(DISP_END, 0);
+                return mtmp;
+            } else if (throwit_mon_hit(obj, mtmp) || !gt.thrownobj) {
+                break;
+            }
         }
         if (!ZAP_POS(levl[gb.bhitpos.x][gb.bhitpos.y].typ)
             || closed_door(gb.bhitpos.x, gb.bhitpos.y)) {

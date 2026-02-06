@@ -1,0 +1,3834 @@
+# Translatable strings extracted from NetHack Lua files.
+# Copyright (C) 2026 HanNetHack Project
+# This file is distributed under the same license as NetHack.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: NetHack 3.7\n"
+"Report-Msgid-Bugs-To: hannethack@example.com\n"
+"POT-Creation-Date: 2026-02-06 14:56\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: HanNetHack Project\n"
+"Language-Team: Korean\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: dat/Arc-loca.lua:90
+#: dat/Arc-loca.lua:91
+#: dat/Arc-loca.lua:92
+#: dat/Arc-loca.lua:93
+#. text field
+msgid "X marks the spot."
+msgstr ""
+
+#: dat/Mon-loca.lua:67
+#: dat/castle.lua:151
+#: dat/soko1-1.lua:109
+#: dat/soko1-2.lua:111
+#. text field
+msgid "Elbereth"
+msgstr ""
+
+#: dat/quest.lua:77
+#: dat/quest.lua:78
+#: dat/quest.lua:79
+#: dat/quest.lua:80
+#: dat/quest.lua:81
+#: dat/quest.lua:82
+#: dat/quest.lua:83
+#: dat/quest.lua:84
+#: dat/quest.lua:85
+#: dat/quest.lua:86
+#: dat/quest.lua:87
+#: dat/quest.lua:88
+#: dat/quest.lua:89
+#: dat/quest.lua:90
+#: dat/quest.lua:107
+#: dat/quest.lua:108
+#: dat/quest.lua:109
+#: dat/quest.lua:110
+#: dat/quest.lua:111
+#: dat/quest.lua:112
+#: dat/quest.lua:113
+#: dat/quest.lua:114
+#: dat/quest.lua:115
+#: dat/quest.lua:116
+#: dat/quest.lua:117
+#: dat/quest.lua:118
+#: dat/quest.lua:119
+#: dat/quest.lua:120
+#: dat/quest.lua:121
+#: dat/quest.lua:122
+#: dat/quest.lua:123
+#: dat/quest.lua:124
+#: dat/quest.lua:125
+#: dat/quest.lua:126
+#: dat/quest.lua:127
+#: dat/quest.lua:128
+#: dat/quest.lua:129
+#: dat/quest.lua:130
+#: dat/quest.lua:131
+#: dat/quest.lua:132
+#: dat/quest.lua:133
+#: dat/quest.lua:372
+#: dat/quest.lua:581
+#: dat/quest.lua:584
+#: dat/quest.lua:604
+#: dat/quest.lua:607
+#: dat/quest.lua:650
+#: dat/quest.lua:806
+#: dat/quest.lua:809
+#: dat/quest.lua:836
+#: dat/quest.lua:839
+#: dat/quest.lua:1062
+#: dat/quest.lua:1065
+#: dat/quest.lua:1261
+#: dat/quest.lua:1264
+#: dat/quest.lua:1283
+#: dat/quest.lua:1286
+#: dat/quest.lua:1323
+#: dat/quest.lua:1469
+#: dat/quest.lua:1472
+#: dat/quest.lua:1495
+#: dat/quest.lua:1498
+#: dat/quest.lua:1501
+#: dat/quest.lua:1535
+#: dat/quest.lua:1688
+#: dat/quest.lua:1691
+#: dat/quest.lua:1717
+#: dat/quest.lua:1720
+#: dat/quest.lua:1723
+#: dat/quest.lua:1755
+#: dat/quest.lua:1909
+#: dat/quest.lua:1912
+#: dat/quest.lua:1945
+#: dat/quest.lua:1948
+#: dat/quest.lua:2138
+#: dat/quest.lua:2141
+#: dat/quest.lua:2376
+#: dat/quest.lua:2572
+#: dat/quest.lua:2575
+#: dat/quest.lua:2822
+#: dat/quest.lua:2825
+#: dat/quest.lua:2828
+#: dat/quest.lua:3015
+#. text field, angel_cuss array, text field (partial, has concatenation), demon_cuss array
+msgid "\\"
+msgstr ""
+
+#: dat/quest.lua:93
+#. synopsis field
+msgid "[You are banished from %H for betraying your allegiance to %d.]"
+msgstr ""
+
+#: dat/quest.lua:95
+#. text field
+msgid ""
+"\"You have betrayed all those who hold allegiance to %d, as you once did.\n"
+"My allegiance to %d holds fast and I cannot condone or accept what you\n"
+"have done.\n"
+"\n"
+"Leave this place.  You shall never set foot at %H again.\n"
+"That which you seek is now lost forever, for without the Bell of Opening,\n"
+"you will never be able to enter the place where he who has the Amulet\n"
+"resides.\n"
+"\n"
+"Go now!  You are banished from this place."
+msgstr ""
+
+#: dat/quest.lua:136
+#: dat/quest.lua:158
+#. synopsis field
+msgid "[%dC has chosen you to recover the Amulet of Yendor for %dI.]"
+msgstr ""
+
+#: dat/quest.lua:138
+#. text field
+msgid ""
+"It is written in the Book of %d:\n"
+"\n"
+"    After the Creation, the cruel god Moloch rebelled\n"
+"    against the authority of Marduk the Creator.\n"
+"    Moloch stole from Marduk the most powerful of all\n"
+"    the artifacts of the gods, the Amulet of Yendor,\n"
+"    and he hid it in the dark cavities of Gehennom, the\n"
+"    Under World, where he now lurks, and bides his time.\n"
+"\n"
+"Your %G %d seeks to possess the Amulet, and with it\n"
+"to gain deserved ascendance over the other gods.\n"
+"\n"
+"You, a newly trained %r, have been heralded\n"
+"from birth as the instrument of %d.  You are destined\n"
+"to recover the Amulet for your deity, or die in the\n"
+"attempt.  Your hour of destiny has come.  For the sake\n"
+"of us all:  Go bravely with %d!"
+msgstr ""
+
+#: dat/quest.lua:160
+#. text field
+msgid ""
+"It is written in the Book of %d:\n"
+"\n"
+"    After the Creation, the cruel god Moloch rebelled\n"
+"    against the authority of Marduk the Creator.\n"
+"    Moloch stole from Marduk the most powerful of all\n"
+"    the artifacts of the gods, the Amulet of Yendor,\n"
+"    and he hid it in the dark cavities of Gehennom, the\n"
+"    Under World, where he now lurks, and bides his time.\n"
+"\n"
+"Your %G %d seeks to possess the Amulet, and with it\n"
+"to gain deserved ascendance over the other gods.\n"
+"\n"
+"You, an untrained %r, have been unable to adequately\n"
+"prepare to be the instrument of %d.  Nevertheless, you\n"
+"are destined to recover the Amulet for your deity, or die\n"
+"in the attempt.  Your hour of destiny has come.  For the\n"
+"sake of us all:  Go bravely with %d!"
+msgstr ""
+
+#: dat/quest.lua:179
+#. text field
+msgid ""
+"\"The silver bell which was hoarded by %n will be\n"
+"essential in locating the Amulet of Yendor.\""
+msgstr ""
+
+#: dat/quest.lua:184
+#. text field
+msgid ""
+"You receive a faint telepathic message from %l:\n"
+"Your help is urgently needed at %H!\n"
+"Look for a ...ic transporter.\n"
+"You couldn't quite make out that last message."
+msgstr ""
+
+#: dat/quest.lua:190
+#. text field
+msgid "You again sense %l pleading for help."
+msgstr ""
+
+#: dat/quest.lua:193
+#. text field
+msgid "You again sense %l demanding your attendance."
+msgstr ""
+
+#: dat/quest.lua:198
+#. synopsis field
+msgid "[%nC has stolen %o.  Locate %i, defeat %ni, and return %O.]"
+msgstr ""
+
+#: dat/quest.lua:200
+#. text field
+msgid ""
+"\"Grave times have befallen the college, for %na has\n"
+"stolen %o.  Without it, the board of directors of\n"
+"the university will soon have no choice but to revoke our research grants.\n"
+"\n"
+"\"You must locate the entrance to %i.  Within it,\n"
+"you will find %n.\n"
+"\n"
+"\"You must then defeat %n and return %o\n"
+"to me.\n"
+"\n"
+"\"Only in this way will we be able to prevent the budget cuts that could\n"
+"close this college.\n"
+"\n"
+"\"May the wisdom of %d be your guide.\""
+msgstr ""
+
+#: dat/quest.lua:216
+#: dat/quest.lua:321
+#: dat/quest.lua:328
+#: dat/quest.lua:355
+#: dat/quest.lua:363
+#: dat/quest.lua:397
+#: dat/quest.lua:409
+#: dat/quest.lua:417
+#: dat/quest.lua:444
+#: dat/quest.lua:452
+#: dat/quest.lua:530
+#: dat/quest.lua:563
+#: dat/quest.lua:571
+#: dat/quest.lua:637
+#: dat/quest.lua:677
+#: dat/quest.lua:685
+#: dat/quest.lua:768
+#: dat/quest.lua:785
+#: dat/quest.lua:795
+#: dat/quest.lua:845
+#: dat/quest.lua:859
+#: dat/quest.lua:990
+#: dat/quest.lua:1054
+#: dat/quest.lua:2229
+#: dat/quest.lua:2611
+#: dat/quest.lua:2787
+#: dat/quest.lua:2813
+#: dat/quest.lua:3009
+#: dat/quest.lua:3028
+#: dat/quest.lua:3038
+#. synopsis field
+msgid "[\\"
+msgstr ""
+
+#: dat/quest.lua:218
+#. text field
+msgid ""
+"\"%pC!  I've heard that you've been using sloppy techniques.  Your\n"
+"results lately can hardly be called suitable for %ra!\n"
+"\n"
+"\"How could you have strayed from the %a path?  Go from here, and come\n"
+"back only when you have purified yourself.\""
+msgstr ""
+
+#: dat/quest.lua:225
+#. synopsis field
+msgid "[%pC, a mere %r is too inexperienced.]"
+msgstr ""
+
+#: dat/quest.lua:227
+#. text field
+msgid ""
+"\"%p, you are yet too inexperienced to undertake such a demanding\n"
+"quest.  A mere %r could not possibly face the rigors demanded and\n"
+"survive.  Go forth, and come here again when your adventures have further\n"
+"taught you.\""
+msgstr ""
+
+#: dat/quest.lua:257
+#. synopsis field
+msgid "[You arrive at %H, but all is not well.]"
+msgstr ""
+
+#: dat/quest.lua:259
+#. text field
+msgid ""
+"You are suddenly in familiar surroundings.  The buildings in the distance\n"
+"seem to be those of your old alma mater, but something is wrong.  It feels\n"
+"as if there has been a riot recently, or %H has\n"
+"been under siege.\n"
+"\n"
+"All of the windows are boarded up, and there are objects scattered around\n"
+"the entrance.\n"
+"\n"
+"Strange forbidding shapes seem to be moving in the distance."
+msgstr ""
+
+#: dat/quest.lua:270
+#: dat/quest.lua:2505
+#: dat/quest.lua:2945
+#. text field
+msgid "You have returned to %ns lair."
+msgstr ""
+
+#: dat/quest.lua:273
+#. synopsis field
+msgid "[This strange feeling must be the presence of %o.]"
+msgstr ""
+
+#: dat/quest.lua:275
+#. text field
+msgid ""
+"A strange feeling washes over you, and you think back to things you\n"
+"learned during the many lectures of %l.\n"
+"\n"
+"You realize the feeling must be the presence of %o."
+msgstr ""
+
+#: dat/quest.lua:281
+#. text field
+msgid "The familiar presence of %o is in the ether."
+msgstr ""
+
+#: dat/quest.lua:284
+#. synopsis field
+msgid "[The power of %o flows through your body!  You must return it to %l.]"
+msgstr ""
+
+#: dat/quest.lua:286
+#. text field
+msgid ""
+"The power of %o flows through your body!  You feel\n"
+"as if you could now take on the Wizard of Yendor himself and win, but\n"
+"you know you must return %o to %l."
+msgstr ""
+
+#: dat/quest.lua:305
+#. synopsis field
+msgid "[Take the Amulet to the Astral Plane and sacrifice it at the altar of %d.]"
+msgstr ""
+
+#: dat/quest.lua:307
+#. text field
+msgid ""
+"\"Congratulations, %p.  I wondered if anyone could prevail against\n"
+"the Wizard and the minions of Moloch.  Now, you must embark on one\n"
+"final adventure.\n"
+"\n"
+"\"Take the Amulet, and find your way onto the Astral Plane.\n"
+"There you must find the altar of %d and sacrifice the\n"
+"Amulet on that altar to fulfill your destiny.\n"
+"\n"
+"\"Remember, your path now should always be upwards.\""
+msgstr ""
+
+#: dat/quest.lua:318
+#. text field
+msgid "The body of %n dissipates in a cloud of noxious fumes."
+msgstr ""
+
+#: dat/quest.lua:323
+#. text field
+msgid ""
+"\"Finally you have returned, %p.  You were always\n"
+"my most promising student.  Allow me to see if you are ready for the\n"
+"most difficult task of your career.\""
+msgstr ""
+
+#: dat/quest.lua:330
+#. text field
+msgid ""
+"\"%p, you have failed us.  All of my careful training has been in\n"
+"vain.  Begone!  Your tenure at this college has been revoked!\n"
+"\n"
+"\"You are a disgrace to the profession!\""
+msgstr ""
+
+#: dat/quest.lua:336
+#. text field
+msgid ""
+"\"Again, %p, you stand before me.\n"
+"Let me see if you have gained experience in the interim.\""
+msgstr ""
+
+#: dat/quest.lua:340
+#. text field
+msgid ""
+"\"Once more, %p, you have returned from the field.\n"
+"Are you finally ready for the task that must be accomplished?\""
+msgstr ""
+
+#: dat/quest.lua:344
+#. synopsis field
+msgid "[This foreboding edifice must hide the entrance to %i.]"
+msgstr ""
+
+#: dat/quest.lua:346
+#. text field
+msgid ""
+"A plain opens before you.  Beyond the plain lies a foreboding edifice.\n"
+"\n"
+"You have the feeling that you will soon find the entrance to\n"
+"%i."
+msgstr ""
+
+#: dat/quest.lua:352
+#. text field
+msgid "Once again, you are near the entrance to %i."
+msgstr ""
+
+#: dat/quest.lua:357
+#. text field
+msgid ""
+"\"So, %p, you think that you can succeed in recovering\n"
+"%o, when your teacher, %l, has already failed.\n"
+"\n"
+"\"Come, try your best!  I shall destroy you, and gnaw on your bones.\""
+msgstr ""
+
+#: dat/quest.lua:365
+#. text field
+msgid ""
+"\"Again you try to best me, eh %p?  Well, you shall fail again.\n"
+"\n"
+"\"You shall never recover %o.\n"
+"\n"
+"\"I shall bear your soul to the Plane of Origins for my master's pleasure.\""
+msgstr ""
+
+#: dat/quest.lua:375
+#. text field
+msgid ""
+"\"I shall have %o from you, %p, then feast\n"
+"upon your entrails!\""
+msgstr ""
+
+#: dat/quest.lua:379
+#: dat/quest.lua:2384
+#: dat/quest.lua:2620
+#: dat/quest.lua:3054
+#. text field
+msgid "Once again, you are back at %H."
+msgstr ""
+
+#: dat/quest.lua:382
+#. synopsis field
+msgid "[%lC instructs you to guard %o from now on.]"
+msgstr ""
+
+#: dat/quest.lua:384
+#. text field
+msgid ""
+"%lC touches %o briefly, gazes into it,\n"
+"then smiles at you and says:\n"
+"\n"
+"\"Well done, %p.  You have defeated %n and\n"
+"recovered %o.  But I fear that it shall never be safe\n"
+"here.\n"
+"\n"
+"Please take %o with you.  You, %p, can\n"
+"guard it now far better than I.\n"
+"\n"
+"May the blessings of %d follow you and guard you.\""
+msgstr ""
+
+#: dat/quest.lua:399
+#: dat/quest.lua:2848
+#. text field
+msgid ""
+"\"Careful, %p!  %oC might break, and that would be\n"
+"a tragic loss.  You are its keeper now, and the time has come to\n"
+"resume your search for the Amulet.  %Z await your\n"
+"return through the magic portal that brought you here.\""
+msgstr ""
+
+#: dat/quest.lua:405
+#: dat/quest.lua:3079
+#. text field
+msgid ""
+"You are back at %H.\n"
+"You have an odd feeling this may be the last time you ever come here."
+msgstr ""
+
+#: dat/quest.lua:411
+#. text field
+msgid ""
+"\"Welcome back, %p.  Have you progressed with your quest to\n"
+"regain the Amulet of Yendor for %d?\""
+msgstr ""
+
+#: dat/quest.lua:419
+#. text field
+msgid ""
+"\"The world is in great need of your assistance, %p.\n"
+"\n"
+"\"About six months ago, I learned that a mysterious sorcerer, known\n"
+"as %n, had begun to gather a large group of cutthroats and brigands\n"
+"about %ni.\n"
+"\n"
+"\"At about the same time, these people you once rode with `liberated' a\n"
+"potent magical talisman, %o, from a Turanian caravan.\n"
+"\n"
+"\"%nC and %nj Black Horde swept down upon %i and defeated\n"
+"the people there, driving them out into the desert.  He has taken\n"
+"%o, and seeks to bend it to %nj will.  I detected the\n"
+"subtle changes in the currents of fate, and joined these people.\n"
+"Then I sent forth a summons for you.\n"
+"\n"
+"\"If %n can bend %o to %nj will, he will become\n"
+"almost indestructible.  He will then be able to enslave the minds of\n"
+"men across the world.  You are the only hope.  The gods smile upon you,\n"
+"and with %d behind you, you alone can defeat %n.\n"
+"\n"
+"\"You must go to %i.  From there, you can track down\n"
+"%n, defeat %ni, and return %o to us.  Only\n"
+"then will the world be safe.\""
+msgstr ""
+
+#: dat/quest.lua:446
+#. text field
+msgid ""
+"\"%pC!  You have wandered from the path of the %a!\n"
+"If you attempt to overcome %n in this state, he will surely\n"
+"enslave your soul.  Your only hope, and ours, lies in your purification.\n"
+"Go forth, and return when you feel ready.\""
+msgstr ""
+
+#: dat/quest.lua:454
+#. text field
+msgid ""
+"\"%p, I fear that you are as yet too inexperienced to face\n"
+"%n.  Only %Ra with the help of %d could ever hope to\n"
+"defeat %ni.\""
+msgstr ""
+
+#: dat/quest.lua:483
+#. synopsis field
+msgid "[You reach the vicinity of %H, but sense evil magic nearby.]"
+msgstr ""
+
+#: dat/quest.lua:485
+#. text field
+msgid ""
+"Warily you scan your surroundings, all of your senses alert for signs\n"
+"of possible danger.  Off in the distance, you can %x the familiar shapes\n"
+"of %H.\n"
+"\n"
+"But why, you think, should %l be there?\n"
+"\n"
+"Suddenly, the hairs on your neck stand on end as you detect the aura of\n"
+"evil magic in the air.\n"
+"\n"
+"Without thought, you ready your weapon, and mutter under your breath:\n"
+"\n"
+"    \"By %d, there will be blood spilt today.\""
+msgstr ""
+
+#: dat/quest.lua:499
+#. synopsis field
+msgid "[This is surely the lair of %n.]"
+msgstr ""
+
+#: dat/quest.lua:501
+#. text field
+msgid ""
+"The hairs on the nape of your neck lift as you sense an energy in the\n"
+"very air around you.  You fight down a primordial panic that seeks to\n"
+"make you turn and run.  This is surely the lair of %n."
+msgstr ""
+
+#: dat/quest.lua:506
+#. text field
+msgid "Yet again you feel the air around you heavy with malevolent magical energy."
+msgstr ""
+
+#: dat/quest.lua:509
+#. synopsis field
+msgid "[You feel the power of %o flowing through your hands.]"
+msgstr ""
+
+#: dat/quest.lua:511
+#. text field
+msgid ""
+"As you pick up %o, you feel the power of it\n"
+"flowing through your hands.  It seems to be in two or more places\n"
+"at once, even though you are holding it."
+msgstr ""
+
+#: dat/quest.lua:532
+#. text field
+msgid ""
+"\"This is wondrous, %p.  I feared that you could not possibly\n"
+"succeed in your quest, but here you are in possession of the Amulet\n"
+"of Yendor!\n"
+"\n"
+"\"I have studied the texts of the magi constantly since you left.  In\n"
+"the Book of Skelos, I found this:\n"
+"\n"
+"    %d will cause a child to be sent into the world.  This child is to\n"
+"    be made strong by trial of battle and magic, for %d has willed it so.\n"
+"    It is said that the child of %d will recover the Amulet of Yendor\n"
+"    that was stolen from the Creator at the beginning of time.\n"
+"\n"
+"\"As you now possess the amulet, %p, I suspect that the Book\n"
+"speaks of you.\n"
+"\n"
+"    The child of %d will take the Amulet, and travel to the Astral\n"
+"    Plane, where the Great Temple of %d is to be found.  The Amulet\n"
+"    will be sacrificed to %d, there on %dJ altar.  Then the child will\n"
+"    stand by %d as champion of all %cP for eternity.\n"
+"\n"
+"\"This is all I know, %p.  I hope it will help you.\""
+msgstr ""
+
+#: dat/quest.lua:555
+#. synopsis field
+msgid "[%nC curses you, but you feel the overpowering aura of magic fading.]"
+msgstr ""
+
+#: dat/quest.lua:557
+#. text field
+msgid ""
+"%nC falls to the ground, and utters a last curse at you.  Then %nj\n"
+"body fades slowly, seemingly dispersing into the air around you.  You\n"
+"slowly become aware that the overpowering aura of magic in the air has\n"
+"begun to fade."
+msgstr ""
+
+#: dat/quest.lua:565
+#. text field
+msgid ""
+"\"Ah, %p.  You have returned at last.  The world is in dire\n"
+"need of your help.  There is a great quest you must undertake.\n"
+"\n"
+"\"But first, I must see if you are ready to take on such a challenge.\""
+msgstr ""
+
+#: dat/quest.lua:573
+#. text field
+msgid ""
+"\"Pah!  You have betrayed the gods, %p.  You will never attain\n"
+"the glory which you aspire to.  Your failure to follow the true path has\n"
+"closed this future to you.\n"
+"\n"
+"\"I will protect these people as best I can, but soon %n will overcome\n"
+"me and destroy all who once called you %s.  Now begone!\""
+msgstr ""
+
+#: dat/quest.lua:587
+#. synopsis field
+msgid "[You have located %i.]"
+msgstr ""
+
+#: dat/quest.lua:589
+#. text field
+msgid ""
+"The scent of water comes to you in the desert breeze.  You know that\n"
+"you have located %i."
+msgstr ""
+
+#: dat/quest.lua:593
+#. text field
+msgid "Yet again you have a chance to infiltrate %i."
+msgstr ""
+
+#: dat/quest.lua:596
+#. synopsis field
+msgid "[%nC boasts that %nh has slain many.  \\"
+msgstr ""
+
+#: dat/quest.lua:598
+#. text field
+msgid ""
+"\"So.  This is what that second rate sorcerer %l sends to do %lj bidding.\n"
+"I have slain many before you.  You shall give me little sport.\n"
+"\n"
+"\"Prepare to die, %c.\""
+msgstr ""
+
+#: dat/quest.lua:610
+#. text field
+msgid ""
+"\"I shall have %o back, you pitiful excuse for %ca.\n"
+"And your life as well.\""
+msgstr ""
+
+#: dat/quest.lua:614
+#. text field
+msgid ""
+"Once again, you near %H.  You know that %l\n"
+"will be waiting."
+msgstr ""
+
+#: dat/quest.lua:618
+#. synopsis field
+msgid "[%lC tells you to guard %o, and to return when you have triumphed.]"
+msgstr ""
+
+#: dat/quest.lua:620
+#. text field
+msgid ""
+"When %l sees %o, he smiles, and says:\n"
+"\n"
+"    Well done, %p.  You have saved the world from certain doom.\n"
+"    What, now, should be done with %o?\n"
+"\n"
+"    These people, brave as they are, cannot hope to guard it from\n"
+"    other sorcerers who will detect it, as surely as %n did.\n"
+"\n"
+"    Take %o with you, %p.  It will guard you in\n"
+"    your adventures, and you can best guard it.  You embark on a\n"
+"    quest far greater than you realize.\n"
+"\n"
+"    Remember me, %p, and return when you have triumphed.  I\n"
+"    will tell you then of what you must do.  You will understand when the\n"
+"    time comes."
+msgstr ""
+
+#: dat/quest.lua:639
+#. text field
+msgid ""
+"%l gazes reverently at %o, then back at you.\n"
+"\n"
+"\"You are its keeper now, and the time has come to resume your search\n"
+"for the Amulet.  %Z await your return through the\n"
+"magic portal which brought you here.\""
+msgstr ""
+
+#: dat/quest.lua:646
+#. text field
+msgid ""
+"Again, and you think possibly for the last time, you approach\n"
+"%H."
+msgstr ""
+
+#: dat/quest.lua:655
+#. synopsis field
+msgid "[Find and defeat %n, recover %o, and return with it.]"
+msgstr ""
+
+#: dat/quest.lua:657
+#. text field
+msgid ""
+"\"You are indeed ready now, %p.  I shall tell you a tale of\n"
+"great suffering among your people:\n"
+"\n"
+"\"Shortly after you left on your vision quest, the caves were invaded by\n"
+"the creatures sent against us by %n.\n"
+"\n"
+"\"She, herself, could not attack us due to her great size, but her minions\n"
+"have harassed us ever since.  In the first attacks, many died, and the\n"
+"minions of %n managed to steal %o.\n"
+"They took it to %i and there, none of our\n"
+"%g warriors have been able to go.\n"
+"\n"
+"\"You must find %i, and within it wrest\n"
+"%o from %n.  She guards it as\n"
+"jealously as she guards all treasures she attains.  But with it,\n"
+"we can make our caves safe once more.\n"
+"\n"
+"\"Please, %p, recover %o for us, and return it here.\""
+msgstr ""
+
+#: dat/quest.lua:679
+#. text field
+msgid ""
+"\"%pC!  You have deviated from my teachings.  You no longer follow\n"
+"the path of the %a as you should.  I banish you from these caves, to\n"
+"go forth and purify yourself.  Then, you might be able to accomplish this\n"
+"quest.\""
+msgstr ""
+
+#: dat/quest.lua:687
+#. text field
+msgid ""
+"\"Alas, %p, you are as yet too inexperienced to embark upon such\n"
+"a difficult quest as that I propose to give you.\n"
+"\n"
+"\"%rA could not possibly survive the rigors demanded to find\n"
+"%i, never mind to confront %n herself.\n"
+"\n"
+"\"Adventure some more, and you will learn the skills you will require.\n"
+"%d decrees it.\""
+msgstr ""
+
+#: dat/quest.lua:721
+#. synopsis field
+msgid "[You arrive back at %H, but something is wrong here.]"
+msgstr ""
+
+#: dat/quest.lua:723
+#. text field
+msgid ""
+"You descend through a barely familiar stairwell that you remember\n"
+"%l showing you when you embarked upon your vision quest.\n"
+"\n"
+"You arrive back at %H, but something seems\n"
+"wrong here.  The usual smoke and glowing light of the fires of the\n"
+"outer caves are absent, and an uneasy quiet fills the damp air."
+msgstr ""
+
+#: dat/quest.lua:731
+#. synopsis field
+msgid "[You enter a large cavern.  %nC is present.]"
+msgstr ""
+
+#: dat/quest.lua:733
+#. text field
+msgid ""
+"You find yourself in a large cavern, with neatly polished walls, that\n"
+"nevertheless show signs of being scorched by fire.\n"
+"\n"
+"Bones litter the floor, and there are objects scattered everywhere.\n"
+"The air is close with the stench of sulphurous fumes.\n"
+"\n"
+"%nC is clearly visible, but %nh seems to be asleep."
+msgstr ""
+
+#: dat/quest.lua:742
+#. text field
+msgid "Once again, you find yourself in the lair of %n."
+msgstr ""
+
+#: dat/quest.lua:745
+#. synopsis field
+msgid "[%oC fills you with a feeling of power.]"
+msgstr ""
+
+#: dat/quest.lua:747
+#. text field
+msgid ""
+"As you pick up %o it seems heavy at first, but as you\n"
+"hold it strength flows into your arms.\n"
+"\n"
+"You suddenly feel full of power, as if nothing could possibly stand\n"
+"in your path."
+msgstr ""
+
+#: dat/quest.lua:770
+#. text field
+msgid ""
+"\"You have been successful, I see, %p.\n"
+"\n"
+"\"Now that the Amulet of Yendor is yours, here is what you must do:\n"
+"\n"
+"\"Journey upwards to the open air.  The Amulet you carry will then\n"
+"take you into the Astral Planes, where the Great Temple of %d\n"
+"casts its influence throughout our world.\n"
+"\n"
+"\"Sacrifice the Amulet on the altar.  Thus shall %d become supreme!\""
+msgstr ""
+
+#: dat/quest.lua:781
+#. text field
+msgid ""
+"%nC sinks to the ground, her heads flailing about.\n"
+"As she dies, a cloud of noxious fumes billows about her."
+msgstr ""
+
+#: dat/quest.lua:787
+#. text field
+msgid ""
+"\"You have returned from your vision quest, %p.  Thank %d.\n"
+"\n"
+"\"We are in dire need of your help, my %S.\n"
+"\n"
+"\"But first, I must see if you are yet capable of the quest I would\n"
+"ask you to undertake.\""
+msgstr ""
+
+#: dat/quest.lua:797
+#. text field
+msgid ""
+"\"%pC!  You have sealed our fate.  You seem unable to reform yourself,\n"
+"so I must select another to take your place.\n"
+"\n"
+"\"Begone from %H!  You have betrayed us by choosing\n"
+"the path of the %C over the true path of the %L.\n"
+"\n"
+"\"You no longer live in our eyes.\""
+msgstr ""
+
+#: dat/quest.lua:812
+#. synopsis field
+msgid "[You %x many large claw marks, smell carrion, and notice bones.]"
+msgstr ""
+
+#: dat/quest.lua:814
+#. text field
+msgid ""
+"You %x many large claw marks on the ground.  The tunnels ahead\n"
+"of you are larger than most of those in any cave complex you have\n"
+"ever been in before.\n"
+"\n"
+"Your nose detects the smell of carrion from within, and bones litter\n"
+"the sides of the tunnels."
+msgstr ""
+
+#: dat/quest.lua:822
+#. text field
+msgid "Once again, you approach %i."
+msgstr ""
+
+#: dat/quest.lua:825
+#. synopsis field
+msgid "[%nC threatens to eat you.]"
+msgstr ""
+
+#: dat/quest.lua:827
+#. text field
+msgid ""
+"\"So, follower of %l, you seek to invade the lair of\n"
+"%n.  Only my meals are allowed down here.  Prepare\n"
+"to be eaten!\""
+msgstr ""
+
+#: dat/quest.lua:832
+#. text field
+msgid ""
+"\"So, again you face me, %c.  No one has ever before escaped me.\n"
+"Now I shall kill you.\""
+msgstr ""
+
+#: dat/quest.lua:842
+#. text field
+msgid "Once again, you arrive back at %H."
+msgstr ""
+
+#: dat/quest.lua:847
+#. text field
+msgid ""
+"%lC glimpses %o in your possession.\n"
+"He smiles and says:\n"
+"\n"
+"    You have done it!  We are saved.  But I fear that %o\n"
+"    will always be a target for %C forces who will want it for their\n"
+"    own.\n"
+"\n"
+"    To prevent further trouble, I would like you, %p,\n"
+"    to take %o away with you.  It will help you as you\n"
+"    quest for the Amulet of Yendor."
+msgstr ""
+
+#: dat/quest.lua:861
+#. text field
+msgid ""
+"%l grasps %o proudly for a moment, then looks at you.\n"
+"\n"
+"\"You are its keeper now, and the time has come to resume your search\n"
+"for the Amulet.  %Z await your return through the\n"
+"magic portal which brought you here.\""
+msgstr ""
+
+#: dat/quest.lua:868
+#. text field
+msgid ""
+"For some reason, you think that this may be the last time you will\n"
+"enter %H."
+msgstr ""
+
+#: dat/quest.lua:872
+#. text field
+msgid ""
+"\"%pC!  Welcome back.\n"
+"How goes your quest to recover the Amulet for %d?\""
+msgstr ""
+
+#: dat/quest.lua:878
+#. synopsis field
+msgid "[Travel to %i on your way to recover %o from %n.]"
+msgstr ""
+
+#: dat/quest.lua:880
+#. text field
+msgid ""
+"For the first time, you sense a smile on %ls face.\n"
+"\n"
+"    \"You have indeed learned as much as we can teach you in preparation\n"
+"    for this task.  Let me tell you what I know of the symptoms and hope\n"
+"    that you can provide a cure.\n"
+"\n"
+"    \"A short while ago, the dreaded %nt was fooled by the gods\n"
+"    into thinking that %nh could use %o to find a\n"
+"    cure for old age.  Think of it, eternal youth!  But %nj good\n"
+"    health is accomplished by drawing the health from those around %ni.\n"
+"\n"
+"    \"He has exhausted %nj own supply of healthy people and now %nh seeks to\n"
+"    extend %nj influence into our world.  You must recover from %ni\n"
+"    %o and break the spell.\n"
+"\n"
+"    \"You must travel into the swamps to %i, and from there\n"
+"    follow the trail to %ns island lair.  Be careful.\""
+msgstr ""
+
+#: dat/quest.lua:899
+#. synopsis field
+msgid "[Return when you are more %a.]"
+msgstr ""
+
+#: dat/quest.lua:901
+#. text field
+msgid ""
+"\"You have learned much of the remedies that benefit, but you must also\n"
+"know which physic for which ail.  That is why %ds teachings are a\n"
+"part of your training.\n"
+"\n"
+"\"Return to us when you have healed thyself.\""
+msgstr ""
+
+#: dat/quest.lua:908
+#. synopsis field
+msgid "[You are too inexperienced.  Return when you are %Ra.]"
+msgstr ""
+
+#: dat/quest.lua:910
+#. text field
+msgid ""
+"\"Alas, %p, you are yet too inexperienced to deal with the rigors\n"
+"of such a task.  You must be able to draw on the knowledge of botany,\n"
+"alchemy and veterinary practices before I can send you on this quest \n"
+"with good conscience.\n"
+"\n"
+"\"Return when you wear %Ra's caduceus.\""
+msgstr ""
+
+#: dat/quest.lua:942
+#. synopsis field
+msgid "[You arrive back at %H and must find %l.]"
+msgstr ""
+
+#: dat/quest.lua:944
+#. text field
+msgid ""
+"What sorcery has brought you back to %H?  The smell\n"
+"of fresh funeral pyres tells you that something is amiss with the healing\n"
+"powers that used to practice here.\n"
+"\n"
+"No rhizotomists are tending the materia medica gardens, and where are the\n"
+"common folk who used to come for the cures?\n"
+"\n"
+"You know that you must quickly make your way to the collegium, and\n"
+"%ls iatreion, and find out what has happened in your absence."
+msgstr ""
+
+#: dat/quest.lua:955
+#. synopsis field
+msgid "[You have reached the lair of %n.  Take %o away from %ni.]"
+msgstr ""
+
+#: dat/quest.lua:957
+#. text field
+msgid ""
+"You stand within sight of the infamous Isle of %n.  Even\n"
+"the words of %l had not prepared you for this.\n"
+"\n"
+"Steeling yourself against the wails of the ill that pierce your ears,\n"
+"you hurry on your task.  Maybe with %o you can\n"
+"heal them on your return, but not now."
+msgstr ""
+
+#: dat/quest.lua:965
+#. text field
+msgid "Once again, you %x the Isle of %n in the distance."
+msgstr ""
+
+#: dat/quest.lua:968
+#. synopsis field
+msgid "[You feel the healing power of %o and should return it to %l.]"
+msgstr ""
+
+#: dat/quest.lua:970
+#. text field
+msgid ""
+"As you pick up %o, you feel its healing begin to\n"
+"warm your soul.  You curse Zeus for taking it from its rightful owner,\n"
+"but at least you hope that %l can put it to good use once\n"
+"again."
+msgstr ""
+
+#: dat/quest.lua:992
+#. text field
+msgid ""
+"\"Ah, you have recovered the Amulet, %p.  Well done!\n"
+"\n"
+"\"Now, you should know that you must travel through the Elemental Planes\n"
+"to the Astral, and there return the Amulet to %d.  Go forth and\n"
+"may our prayers be as a wind upon your back.\""
+msgstr ""
+
+#: dat/quest.lua:999
+#: dat/quest.lua:1234
+#: dat/quest.lua:1885
+#: dat/quest.lua:2990
+#. synopsis field
+msgid "[%nC curses you as %nh dies.]"
+msgstr ""
+
+#: dat/quest.lua:1001
+#. text field
+msgid ""
+"The battered body of %n slumps to the ground and gasps\n"
+"out one last curse:\n"
+"\n"
+"    \"You have defeated me, %p, but I shall have my revenge.\n"
+"    How, I shall not say, but this curse shall be like a cancer\n"
+"    on you.\"\n"
+"\n"
+"With that %n dies."
+msgstr ""
+
+#: dat/quest.lua:1011
+#. synopsis field
+msgid "[%l is weak from the struggle with %n.  %lH wants to examine you.]"
+msgstr ""
+
+#: dat/quest.lua:1013
+#. text field
+msgid ""
+"Feebly, %l raises %lj head to look at you.\n"
+"\n"
+"\"It is good to see you again, %p.  I see the concern in your\n"
+"eyes, but do not worry for me.  I am not ready for Hades yet.  We have\n"
+"exhausted much of our healing powers holding off %n.\n"
+"I need your fresh strength to carry on our work.\n"
+"\n"
+"\"Come closer and let me lay hands on you, and determine if you have\n"
+"the skills necessary to accomplish this mission.\""
+msgstr ""
+
+#: dat/quest.lua:1024
+#. synopsis field
+msgid "[You are a failure as a healer.]"
+msgstr ""
+
+#: dat/quest.lua:1026
+#. text field
+msgid ""
+"\"You have failed us, %p.  You are a quack!  A charlatan!\n"
+"\n"
+"\"Hades will be happy to hear that you are once again practicing your\n"
+"arts on the unsuspecting.\""
+msgstr ""
+
+#: dat/quest.lua:1032
+#. text field
+msgid ""
+"\"Again you return to me, %p.  I sense that each trip back\n"
+"the pleurisy and maladies of our land begin to infect you.  Let us\n"
+"hope and pray to %d that you become ready for your task before\n"
+"you fall victim to the bad humors.\""
+msgstr ""
+
+#: dat/quest.lua:1038
+#. text field
+msgid ""
+"\"Chiron has fallen, Hermes has fallen, what else must I tell you to\n"
+"impress upon you the importance of your mission!  I hope that you\n"
+"have come prepared this time.\""
+msgstr ""
+
+#: dat/quest.lua:1043
+#. synopsis field
+msgid "[You have reached %i but all is not well.]"
+msgstr ""
+
+#: dat/quest.lua:1045
+#. text field
+msgid ""
+"You stand before the entrance to %i.  Strange\n"
+"scratching noises come from within the building.\n"
+"\n"
+"The swampy ground around you seems to stink with disease."
+msgstr ""
+
+#: dat/quest.lua:1051
+#. text field
+msgid "Once again you stand at the entrance to %i."
+msgstr ""
+
+#: dat/quest.lua:1056
+#. text field
+msgid ""
+"\"They have made a mistake in sending you, %p.\n"
+"\n"
+"\"When I add your youth to mine, it will just make it easier for me\n"
+"to defeat %l.\""
+msgstr ""
+
+#: dat/quest.lua:1068
+#. text field
+msgid ""
+"\"I'll have %o back from you, %r.  You are\n"
+"not going to live to escape this place.\""
+msgstr ""
+
+#: dat/quest.lua:1072
+#. text field
+msgid ""
+"After your last experience you expected to be here, but you certainly\n"
+"did not expect to see things so much worse.  This time you must succeed."
+msgstr ""
+
+#: dat/quest.lua:1076
+#. synopsis field
+msgid "[%l touches %o and tells %lj %gP to do so too, then tells you to take it with you.]"
+msgstr ""
+
+#: dat/quest.lua:1078
+#. text field
+msgid ""
+"As soon as %l sees %o %lh summons %lj\n"
+"%gP.\n"
+"\n"
+"Gently, %l reaches out and touches %o.\n"
+"He instructs each of the assembled to do the same.  When everyone\n"
+"has finished %lh speaks to you.\n"
+"\n"
+"    \"Now that we have been replenished we can defeat this plague.  You must\n"
+"    take %o with you and replenish the worlds you have\n"
+"    been called upon to travel next.  I wish you could ride Chiron to the\n"
+"    end of your journey, but I need him to help me spread the cure.  Go\n"
+"    now and continue your journey.\""
+msgstr ""
+
+#: dat/quest.lua:1092
+#. synopsis field
+msgid "[%l tells you to keep %o and return to %Z to search for the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:1094
+#. text field
+msgid ""
+"%l cautiously handles %o while watching you.\n"
+"\n"
+"\"You are its keeper now, and the time has come to resume your search\n"
+"for the Amulet.  %Z await your return through the\n"
+"magic portal which brought you here.\""
+msgstr ""
+
+#: dat/quest.lua:1101
+#. text field
+msgid ""
+"Again, you %x %H in the distance.\n"
+"\n"
+"The smell of death and disease permeates the air.  You do not have\n"
+"to be %Ra to know that %n is on the verge of victory."
+msgstr ""
+
+#: dat/quest.lua:1107
+#. text field
+msgid ""
+"\"You have again returned to us, %p.  We have done well in your\n"
+"absence, yes?  How fare you upon your quest for the Amulet?\""
+msgstr ""
+
+#: dat/quest.lua:1113
+#. synopsis field
+msgid "[Pass through %i to reach %n.  Destroy %ni and return with %o.]"
+msgstr ""
+
+#: dat/quest.lua:1115
+#. text field
+msgid ""
+"\"Ah, %p.  Thou art truly ready, as no %c before thee hath\n"
+"been.  Hear now Our words:\n"
+"\n"
+"\"As thou noticed as thou approached %H, a great battle hath\n"
+"been fought recently in these fields.  Know thou that Merlin himself\n"
+"came to aid Us here as We battled the foul %n.  In the midst of that\n"
+"battle, %n struck Merlin a great blow, felling him.  Then, as Our\n"
+"forces were pressed back, %n stole %o.\n"
+"\n"
+"\"We eventually turned the tide, but lost many %cP in doing so.\n"
+"Merlin was taken off by his apprentice, but hath not recovered.  We have\n"
+"been told that so long as %n possesseth %o,\n"
+"Merlin will not regain his health.\n"
+"\n"
+"\"We hereby charge thee with this most important of duties:\n"
+"\n"
+"\"Go forth from this place, to the fens, and there thou wilt find\n"
+"%i.  From there, thou must track down %n.  Destroy the\n"
+"beast, and return to Us %o.  Only then can\n"
+"We restore Merlin to health.\""
+msgstr ""
+
+#: dat/quest.lua:1137
+#. synopsis field
+msgid "[Go and do penance.  Return when you are truly %a.]"
+msgstr ""
+
+#: dat/quest.lua:1139
+#. text field
+msgid ""
+"\"Thou dishonourest Us, %p!  Thou hast strayed from the path of\n"
+"chivalry! Go from Our presence and do penance.  Only when thou art again\n"
+"pure mayst thou return hence.\""
+msgstr ""
+
+#: dat/quest.lua:1144
+#. synopsis field
+msgid "[You are not prepared to face %n.  Return when you are %Ra.]"
+msgstr ""
+
+#: dat/quest.lua:1146
+#. text field
+msgid ""
+"\"Verily, %p, thou hast done well.  That thou hast survived thus\n"
+"far is a credit to thy valor, but thou art yet unprepared for\n"
+"the demands required as Our Champion.  %rA, no matter how\n"
+"pure, could never hope to defeat the foul %n.\n"
+"\n"
+"\"Journey forth from this place, and hone thy skills.  Return to\n"
+"Our presence when thou hast attained the noble title of %R.\""
+msgstr ""
+
+#: dat/quest.lua:1179
+#. synopsis field
+msgid "[Signs of battle include long gouges in the walls of %H.]"
+msgstr ""
+
+#: dat/quest.lua:1181
+#. text field
+msgid ""
+"You materialize in the shadows of %H.  Immediately, you notice\n"
+"that something is wrong.  The fields around the castle are trampled and\n"
+"withered, as if some great battle has been recently fought.\n"
+"\n"
+"Exploring further, you %x long gouges in the walls of %H.\n"
+"You know of only one creature that makes those kinds of marks..."
+msgstr ""
+
+#: dat/quest.lua:1189
+#. synopsis field
+msgid "[You %x the entrance to a cavern inside a hill.]"
+msgstr ""
+
+#: dat/quest.lua:1191
+#. text field
+msgid ""
+"As you exit the swamps, you %x before you a huge, gaping hole in the\n"
+"side of a hill.  From within, you smell the foul stench of carrion.\n"
+"\n"
+"The pools on either side of the entrance are fouled with blood, and\n"
+"pieces of rusted metal and broken weapons show above the surface."
+msgstr ""
+
+#: dat/quest.lua:1198
+#. text field
+msgid "Again, you stand at the entrance to %ns lair."
+msgstr ""
+
+#: dat/quest.lua:1201
+#. synopsis field
+msgid "[You feel the magic of %o.]"
+msgstr ""
+
+#: dat/quest.lua:1203
+#. text field
+msgid ""
+"As you pick up %o, you feel its protective fields\n"
+"form around your body.  You also feel a faint stirring in your mind, as\n"
+"if you are in two places at once, and in the second, you are waking from\n"
+"a long sleep."
+msgstr ""
+
+#: dat/quest.lua:1223
+#: dat/quest.lua:1435
+#. synopsis field
+msgid "[Take the Amulet to the Astral Plane and deliver it to %d.]"
+msgstr ""
+
+#: dat/quest.lua:1225
+#. text field
+msgid ""
+"\"Thou hast succeeded, We see, %p!  Now thou art commanded to take\n"
+"the Amulet to be sacrificed to %d in the Plane of the Astral.\n"
+"\n"
+"\"Merlin hath counseled Us that thou must travel always upwards through\n"
+"the Planes of the Elements, to achieve this goal.\n"
+"\n"
+"\"Go with %d, %p.\""
+msgstr ""
+
+#: dat/quest.lua:1236
+#. text field
+msgid ""
+"As %n sinks to the ground, blood gushing from %nj open mouth, %nh\n"
+"defiantly curses you and %l:\n"
+"\n"
+"    \"Thou hast not won yet, %r.  By the gods, I shall return\n"
+"    and dog thy steps to the grave!\"\n"
+"\n"
+"%nJ tail flailing madly, %n tries to crawl towards you, but slumps\n"
+"to the ground and dies in a pool of %nj own blood."
+msgstr ""
+
+#: dat/quest.lua:1246
+#. synopsis field
+msgid "[%lC checks whether you are ready for a great undertaking.]"
+msgstr ""
+
+#: dat/quest.lua:1248
+#. text field
+msgid ""
+"\"Ah, %p.  We see thou hast received Our summons.\n"
+"We are in dire need of thy prowess.  But first, We must needs\n"
+"decide if thou art ready for this great undertaking.\""
+msgstr ""
+
+#: dat/quest.lua:1253
+#. synopsis field
+msgid "[You are a disgrace as %ca.]"
+msgstr ""
+
+#: dat/quest.lua:1255
+#. text field
+msgid ""
+"\"Thou disgracest this noble court with thine impure presence.  We have been\n"
+"lenient with thee, but no more.  Thy name shall be spoken no more.  We\n"
+"hereby strip thee of thy title, thy lands, and thy standing as %ca.\n"
+"Begone from Our sight!\""
+msgstr ""
+
+#: dat/quest.lua:1267
+#. synopsis field
+msgid "[You have reached %i and can %x a shrine.]"
+msgstr ""
+
+#: dat/quest.lua:1269
+#. text field
+msgid ""
+"You stand at the foot of %i.  Atop, you can %x a shrine.\n"
+"Strange energies seem to be focused here, and the hair on the back of\n"
+"your neck stands on end."
+msgstr ""
+
+#: dat/quest.lua:1274
+#. text field
+msgid "Again, you stand at the foot of %i."
+msgstr ""
+
+#: dat/quest.lua:1277
+#. synopsis field
+msgid "[%nC taunts you and issues a threat against %H.]"
+msgstr ""
+
+#: dat/quest.lua:1279
+#. text field
+msgid ""
+"\"Hah!  Another puny %c seeks death.  I shall dine well tonight,\n"
+"then tomorrow, %H shall fall!\""
+msgstr ""
+
+#: dat/quest.lua:1289
+#. text field
+msgid ""
+"\"So, thou darest touch MY property!  I shall have that bauble back,\n"
+"puny %r.  Thou wilt die in agony!\""
+msgstr ""
+
+#: dat/quest.lua:1293
+#. text field
+msgid "Once again you stand in the shadows of %H."
+msgstr ""
+
+#: dat/quest.lua:1296
+#. synopsis field
+msgid "[%oC is yours now.  It will aid in your search for the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:1298
+#. text field
+msgid ""
+"As you approach %l, %lh beams at you and says:\n"
+"\n"
+"    \"Well done!  Thou art truly the Champion of %H.  We\n"
+"    have received word that Merlin is recovering, and shall soon\n"
+"    rejoin Us.\n"
+"\n"
+"    \"He hath instructed Us that thou art now to be the guardian of\n"
+"    %o.  He feeleth that thou mayst have need of\n"
+"    its powers in thine adventures.  It is Our wish that thou keepest\n"
+"    %o with thee as thou searchest for the fabled\n"
+"    Amulet of Yendor.\""
+msgstr ""
+
+#: dat/quest.lua:1311
+#. synopsis field
+msgid "[You are the keeper of %o.  Return to %Z and find the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:1313
+#. text field
+msgid ""
+"\"Careful, %p!  %oC might break, and that would\n"
+"be a tragic loss.  Thou art its keeper now, and the time hath come\n"
+"to resume thy search for the Amulet.  %Z await thy\n"
+"return through the magic portal that brought thee here.\""
+msgstr ""
+
+#: dat/quest.lua:1319
+#. text field
+msgid ""
+"Again, you stand before %H.  You vaguely sense that this\n"
+"may be the last time you stand before %l."
+msgstr ""
+
+#: dat/quest.lua:1328
+#. synopsis field
+msgid "[Find %i, then continue to %ns lair.  Defeat %ni and return with %o.]"
+msgstr ""
+
+#: dat/quest.lua:1330
+#. text field
+msgid ""
+"\"Yes, %p.  You are truly ready now.  Attend to me and I shall\n"
+"tell you of what has transpired:\n"
+"\n"
+"\"During one of the Great Meditations a short time ago, %n and\n"
+"a legion of elementals invaded %H.  Many %gP\n"
+"were killed, including the one bearing %o.\n"
+"\n"
+"Now, there are barely enough %gP left to keep the elementals\n"
+"at bay.\n"
+"\n"
+"\"We need you to find %i, then, from there,\n"
+"travel to %ns lair.  If you can manage to defeat %n and\n"
+"return %o here, we can then drive off the legions\n"
+"of elementals that slay our students.\n"
+"\n"
+"\"Go with %d as your guide, %p.\""
+msgstr ""
+
+#: dat/quest.lua:1348
+#. synopsis field
+msgid "[You must atone.  Come back when you are worthy of %d.]"
+msgstr ""
+
+#: dat/quest.lua:1350
+#: dat/quest.lua:1563
+#. text field
+msgid ""
+"\"This is terrible, %p.  You have deviated from the true path!\n"
+"You know that %d requires the most strident devotion of this\n"
+"order.  The %shood must stand for utmost piety.\n"
+"\n"
+"\"Go from here, atone for your sins against %d.  Return only when\n"
+"you have purified yourself.\""
+msgstr ""
+
+#: dat/quest.lua:1358
+#. synopsis field
+msgid "[You are not ready to face %n.  Come back when you are %Ra.]"
+msgstr ""
+
+#: dat/quest.lua:1360
+#. text field
+msgid ""
+"\"Alas, %p, it is not yet to be.  A mere %r could never\n"
+"withstand the might of %n.  Go forth, again into the world, and\n"
+"return when you have attained the post of %R.\""
+msgstr ""
+
+#: dat/quest.lua:1389
+#. synopsis field
+msgid "[You have reached %H but something is wrong.  %lC needs your aid.]"
+msgstr ""
+
+#: dat/quest.lua:1391
+#. text field
+msgid ""
+"You find yourself standing in sight of %H.\n"
+"Something is obviously wrong here.  Strange shapes lumber around\n"
+"outside %H!\n"
+"\n"
+"You realize that %l needs your assistance!"
+msgstr ""
+
+#: dat/quest.lua:1398
+#. synopsis field
+msgid "[You are surrounded by brimstone, lava, and elementals.]"
+msgstr ""
+
+#: dat/quest.lua:1400
+#. text field
+msgid ""
+"The stench of brimstone is all about you, and the elementals close in\n"
+"from all sides!\n"
+"\n"
+"Ahead, there is a small clearing amidst the bubbling pits of lava..."
+msgstr ""
+
+#: dat/quest.lua:1406
+#: dat/quest.lua:1620
+#. text field
+msgid "Again, you have invaded %ns domain."
+msgstr ""
+
+#: dat/quest.lua:1409
+#. synopsis field
+msgid "[You feel the essence of %d and realize that you should take %o to %l.]"
+msgstr ""
+
+#: dat/quest.lua:1411
+#. text field
+msgid ""
+"As you pick up %o, you feel the essence of\n"
+"%d fill your soul.  You know now why %n stole %oi from\n"
+"%H, for with %oi, %ca of %d could\n"
+"easily defeat his plans.\n"
+"\n"
+"You sense a message from %d.  Though not verbal, you\n"
+"get the impression that you must return to %l as soon\n"
+"as possible."
+msgstr ""
+
+#: dat/quest.lua:1437
+#. text field
+msgid ""
+"\"You have prevailed, %p!  %d is surely with you.  Now,\n"
+"you must take the Amulet, and sacrifice it on %ds altar on\n"
+"the Astral Plane.  I suspect that I shall never see you again in this\n"
+"life, but I hope to at %ds feet.\""
+msgstr ""
+
+#: dat/quest.lua:1443
+#. synopsis field
+msgid "[As %n dies, %nh threatens to return.]"
+msgstr ""
+
+#: dat/quest.lua:1453
+#. synopsis field
+msgid "[%lC checks whether you are ready for the great challenge.]"
+msgstr ""
+
+#: dat/quest.lua:1455
+#: dat/quest.lua:1674
+#. text field
+msgid ""
+"\"Ah, %p, my %S.  You have returned to us at last.\n"
+"A great blow has befallen our order; perhaps you can help us.\n"
+"First, however, I must determine if you are prepared for this\n"
+"great challenge.\""
+msgstr ""
+
+#: dat/quest.lua:1461
+#. synopsis field
+msgid "[You are a heretic and have failed utterly.]"
+msgstr ""
+
+#: dat/quest.lua:1463
+#: dat/quest.lua:1682
+#. text field
+msgid ""
+"\"You are a heretic, %p!  How can you, %ra, deviate so from the\n"
+"teachings of %d?  Begone from this temple.  You are no longer\n"
+"%sa to this order.  We will pray to %d for other assistance,\n"
+"as you have failed us utterly.\""
+msgstr ""
+
+#: dat/quest.lua:1475
+#. synopsis field
+msgid "[You have reached %i.  %nC lurks further ahead.]"
+msgstr ""
+
+#: dat/quest.lua:1477
+#. text field
+msgid ""
+"You remember the descriptions of %i, given\n"
+"to you by %l.  It is ahead that you will find\n"
+"%n's trail."
+msgstr ""
+
+#: dat/quest.lua:1482
+#: dat/quest.lua:1704
+#. text field
+msgid "Again, you stand before %i."
+msgstr ""
+
+#: dat/quest.lua:1485
+#. synopsis field
+msgid "[You are no %g.  You shall never regain %o.]"
+msgstr ""
+
+#: dat/quest.lua:1487
+#. text field
+msgid ""
+"\"Ah, so %l has sent another %g to retrieve\n"
+"%o.\n"
+"\n"
+"\"No, I see you are no %g.  Perhaps I shall have some fun today\n"
+"after all.  Prepare to die, %r!  You shall never regain\n"
+"%o.\""
+msgstr ""
+
+#: dat/quest.lua:1504
+#: dat/quest.lua:1726
+#: dat/quest.lua:1955
+#. text field
+msgid "Once again, you stand before %H."
+msgstr ""
+
+#: dat/quest.lua:1507
+#. synopsis field
+msgid "[Keep %o.  %oH will help you recover the Amulet of Yendor.]"
+msgstr ""
+
+#: dat/quest.lua:1509
+#. text field
+msgid ""
+"\"You have returned, %p.  And with %o, I see.\n"
+"Congratulations.\n"
+"\n"
+"\"I have been in meditation, and have received direction from\n"
+"a minion of %d.  %d commands that you retain\n"
+"%o.  With %oi, you must recover the Amulet\n"
+"of Yendor.\n"
+"\n"
+"\"Go forth, and let %d guide your steps.\""
+msgstr ""
+
+#: dat/quest.lua:1520
+#. synopsis field
+msgid "[Keep %o and return to %Z to search for the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:1522
+#. text field
+msgid ""
+"%lC studies %o for a moment,\n"
+"then returns his gaze to you.\n"
+"\n"
+"\"%oC must remain with you.  Use %oi\n"
+"as you resume your search for the Amulet.\n"
+"%Z await your return through the magic portal\n"
+"that brought you here.\""
+msgstr ""
+
+#: dat/quest.lua:1531
+#. text field
+msgid ""
+"Again you face %H.  Your intuition hints that this\n"
+"may be the final time you come here."
+msgstr ""
+
+#: dat/quest.lua:1540
+#. synopsis field
+msgid "[%nC invaded %H and captured %o.  Defeat %ni and retrieve %oh.]"
+msgstr ""
+
+#: dat/quest.lua:1542
+#. text field
+msgid ""
+"\"Yes, %p.  You are truly ready now.  Attend to me and I shall\n"
+"tell you of what has transpired:\n"
+"\n"
+"\"At one of the Great Festivals a short time ago, %n and a legion\n"
+"of undead invaded %H.  Many %gP were killed, including\n"
+"the one carrying %o.\n"
+"\n"
+"\"As a final act of vengefulness, %n desecrated the altar here.\n"
+"Without it, we could not mount a counter-attack.  Now, there are\n"
+"barely enough %gP left to keep the undead at bay.\n"
+"\n"
+"\"We need you to find %i, then, from there, travel\n"
+"to %ns lair.  If you can manage to defeat %n and return\n"
+"%o here, we can then drive off the legions of\n"
+"undead that befoul the land.\n"
+"\n"
+"\"Go with %d as your guide, %p.\""
+msgstr ""
+
+#: dat/quest.lua:1561
+#. synopsis field
+msgid "[You have deviated from the path.  Return when you have purified yourself.]"
+msgstr ""
+
+#: dat/quest.lua:1571
+#. synopsis field
+msgid "[%rA cannot withstand %n.  Come back when you are %Ra.]"
+msgstr ""
+
+#: dat/quest.lua:1573
+#. text field
+msgid ""
+"\"Alas, %p, it is not yet to be.  A mere %r could never\n"
+"withstand the might of %n.  Go forth, again into the world, and return\n"
+"when you have attained the post of %R.\""
+msgstr ""
+
+#: dat/quest.lua:1602
+#. synopsis field
+msgid "[You are at %H; the doors are closed.  %lC needs your help!]"
+msgstr ""
+
+#: dat/quest.lua:1604
+#. text field
+msgid ""
+"You find yourself standing in sight of %H.  Something\n"
+"is obviously wrong here.  The doors to %H, which usually\n"
+"stand open, are closed.  Strange human shapes shamble around\n"
+"outside.\n"
+"\n"
+"You realize that %l needs your assistance!"
+msgstr ""
+
+#: dat/quest.lua:1612
+#. synopsis field
+msgid "[The stench of brimstone surrounds you, the shrieks and moans are endless.]"
+msgstr ""
+
+#: dat/quest.lua:1614
+#. text field
+msgid ""
+"The stench of brimstone is all about you, and the shrieks and moans\n"
+"of tortured souls assault your psyche.\n"
+"\n"
+"Ahead, there is a small clearing amidst the bubbling pits of lava..."
+msgstr ""
+
+#: dat/quest.lua:1623
+#. synopsis field
+msgid "[You feel %d as you pick up %o; return %oh to %l.]"
+msgstr ""
+
+#: dat/quest.lua:1625
+#. text field
+msgid ""
+"As you pick up %o, you feel the essence of\n"
+"%d fill your soul.  You know now why %n stole it from\n"
+"%H, for with it, %ca of %d could\n"
+"easily defeat his plans.\n"
+"\n"
+"You sense a message from %d.  Though not verbal, you\n"
+"get the impression that you must return to %l as soon\n"
+"as possible."
+msgstr ""
+
+#: dat/quest.lua:1649
+#. synopsis field
+msgid "[Take the Amulet to the Astral Plane and offer it on %ds altar.]"
+msgstr ""
+
+#: dat/quest.lua:1651
+#. text field
+msgid ""
+"\"You have prevailed, %p!  %d is surely with you.  Now,\n"
+"you must take the amulet, and sacrifice it on %ds altar on\n"
+"the Astral Plane.  I suspect that I shall never see you again in this\n"
+"life, but I hope to at %ds feet.\""
+msgstr ""
+
+#: dat/quest.lua:1657
+#. synopsis field
+msgid "[%nC dies.  Moloch is aware of you and angry at %n.]"
+msgstr ""
+
+#: dat/quest.lua:1659
+#. text field
+msgid ""
+"You feel a wrenching shift in the ether as %ns body dissolves\n"
+"into a cloud of noxious gas.\n"
+"\n"
+"Suddenly, a voice booms out:\n"
+"\n"
+"    \"Thou hast defeated the least of my minions, %r.\n"
+"    Know now that Moloch is aware of thy presence.\n"
+"    As for thee, %n, I shall deal with thy failure\n"
+"    at my leisure.\"\n"
+"\n"
+"You then hear the voice of %n, screaming in terror..."
+msgstr ""
+
+#: dat/quest.lua:1672
+#. synopsis field
+msgid "[You have returned and we need your help.  Are you ready?]"
+msgstr ""
+
+#: dat/quest.lua:1680
+#. synopsis field
+msgid "[You are a heretic who has deviated from the teachings of %d.]"
+msgstr ""
+
+#: dat/quest.lua:1694
+#. synopsis field
+msgid "[You have found %i.  The trail to %n lies ahead.]"
+msgstr ""
+
+#: dat/quest.lua:1696
+#. text field
+msgid ""
+"You stand facing a large graveyard.  The sky above is filled with clouds\n"
+"that seem to get thicker closer to the center.  You sense the presence of\n"
+"undead in larger numbers than you have ever encountered before.\n"
+"\n"
+"You remember the descriptions of %i, given to you by\n"
+"%l.  It is ahead that you will find %ns trail."
+msgstr ""
+
+#: dat/quest.lua:1707
+#. synopsis field
+msgid "[%lC has sent you, but you are no %gC.  I shall destroy you.]"
+msgstr ""
+
+#: dat/quest.lua:1709
+#. text field
+msgid ""
+"\"Ah, so %l has sent another %gC to retrieve\n"
+"%o.\n"
+"\n"
+"\"No, I see you are no %gC.  Perhaps I shall have some fun today\n"
+"after all.  Prepare to die, %r!  You shall never regain\n"
+"%o.\""
+msgstr ""
+
+#: dat/quest.lua:1729
+#. synopsis field
+msgid "[Congratulations, %p.  Keep %o; go and recover the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:1731
+#. text field
+msgid ""
+"\"You have returned, %p.  And with %o, I see.\n"
+"Congratulations.\n"
+"\n"
+"\"I have been in meditation, and have received direction from\n"
+"a minion of %d.  %d commands that you retain\n"
+"%o.  With it, you must recover the Amulet\n"
+"of Yendor.\n"
+"\n"
+"\"Go forth, and let %d guide your steps.\""
+msgstr ""
+
+#: dat/quest.lua:1742
+#. synopsis field
+msgid "[%oC is yours now.  Return to %Z and find the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:1744
+#. text field
+msgid ""
+"%lC reiterates that %o is yours now.\n"
+"\n"
+"\"The time has come to resume your search for the Amulet.\n"
+"%Z await your return through the magic portal\n"
+"that brought you here.\""
+msgstr ""
+
+#: dat/quest.lua:1751
+#. text field
+msgid ""
+"Again you face %H.  Your intuition hints that this may be\n"
+"the final time you come here."
+msgstr ""
+
+#: dat/quest.lua:1760
+#. synopsis field
+msgid "[%nC has stolen %o.  Infiltrate %i and retrieve %oh for us.]"
+msgstr ""
+
+#: dat/quest.lua:1762
+#. text field
+msgid ""
+"\"You are indeed ready, %p.  I shall tell you what has transpired,\n"
+"and why we so desperately need your help:\n"
+"\n"
+"\"A short time ago, the mountain centaurs to the east invaded\n"
+"and enslaved the plains centaurs in this area.  The local\n"
+"leader is now only a figurehead, and serves %n.\n"
+"\n"
+"\"During our last gathering of worship here, we were beset by hordes of\n"
+"hostile centaurs, as you witnessed.  In the first onslaught a group,\n"
+"headed by %n %niself, managed to breach the grove and steal\n"
+"%o.\n"
+"\n"
+"\"Since then, we have been besieged.  We do not know how much longer\n"
+"we will be able to maintain our magical barriers.\n"
+"\n"
+"\"If we are to survive, you, %p, must infiltrate\n"
+"%i.  There, you will find a pathway down, to the\n"
+"underground cavern of %n.  He has always coveted\n"
+"%o, and will surely keep it.\n"
+"\n"
+"\"Recover %o for us, %p!  Only then will %d be safe.\""
+msgstr ""
+
+#: dat/quest.lua:1785
+#. synopsis field
+msgid "[You are not sufficiently %a.  Come back when you have purified yourself.]"
+msgstr ""
+
+#: dat/quest.lua:1787
+#. text field
+msgid ""
+"\"You have strayed, %p!  You know that %d requires that\n"
+"we maintain a pure devotion to things %a!\n"
+"\n"
+"\"You must go from us.  Return when you have purified yourself.\""
+msgstr ""
+
+#: dat/quest.lua:1793
+#. synopsis field
+msgid "[You are too inexperienced.  Come back when you are %Ra.]"
+msgstr ""
+
+#: dat/quest.lua:1795
+#. text field
+msgid ""
+"\"%p, you are yet too inexperienced to withstand the demands of that\n"
+"which we need you to do.  %RA might just be able to do this thing.\n"
+"\n"
+"\"Return to us when you have learned more, my %S.\""
+msgstr ""
+
+#: dat/quest.lua:1825
+#. synopsis field
+msgid "[The ancient forest grove is surrounded by centaurs.]"
+msgstr ""
+
+#: dat/quest.lua:1827
+#. text field
+msgid ""
+"You arrive in familiar surroundings.  In the distance, you %x the\n"
+"ancient forest grove, the place of worship to %d.\n"
+"\n"
+"Something is wrong, though.  Surrounding the grove are centaurs!\n"
+"And they've noticed you!"
+msgstr ""
+
+#: dat/quest.lua:1834
+#. synopsis field
+msgid "[You descend into a subterranean complex.  Hooves clatter in the distance.]"
+msgstr ""
+
+#: dat/quest.lua:1836
+#. text field
+msgid ""
+"You descend into a weird place, in which roughly cut cave-like walls\n"
+"join with smooth, finished ones, as if someone was in the midst of\n"
+"finishing off the construction of a subterranean complex.\n"
+"\n"
+"Off in the distance, you hear a sound like the clattering of many\n"
+"hooves on rock."
+msgstr ""
+
+#: dat/quest.lua:1844
+#. text field
+msgid "Once again, you enter the distorted castle of %n."
+msgstr ""
+
+#: dat/quest.lua:1847
+#. synopsis field
+msgid "[You pick up %o and feel power.  It's time to return %oh to %l.]"
+msgstr ""
+
+#: dat/quest.lua:1849
+#. text field
+msgid ""
+"As you pick up %o, it seems to glow, and a warmth\n"
+"fills you completely.  You realize that its power is what has protected\n"
+"your %sp against their enemies for so long.\n"
+"\n"
+"You must now return it to %l without delay -- their lives depend\n"
+"on your speed."
+msgstr ""
+
+#: dat/quest.lua:1871
+#. synopsis field
+msgid "[You have the Amulet!  Take it to the Astral Plane and offer it to %d.]"
+msgstr ""
+
+#: dat/quest.lua:1873
+#. text field
+msgid ""
+"\"You have it!  You have recovered the Amulet of Yendor!\n"
+"Now attend to me, %p, and I will tell you what must be done:\n"
+"\n"
+"\"The Amulet has within it magic, the capability to transport you to\n"
+"the Astral Plane, where the primary circle of %d resides.\n"
+"\n"
+"\"To activate this magic, you must travel upwards as far as you can.\n"
+"When you reach the temple, sacrifice the Amulet to %d.\n"
+"\n"
+"\"Thus will you fulfill your destiny.\""
+msgstr ""
+
+#: dat/quest.lua:1887
+#. text field
+msgid ""
+"%nC collapses to the ground, cursing you and %l, then says:\n"
+"\n"
+"    \"You have defeated me, %r!  But I curse you one final time, with\n"
+"    my dying breath!  You shall die before you leave my castle!\""
+msgstr ""
+
+#: dat/quest.lua:1893
+#. synopsis field
+msgid "[You have returned, %p.  We need your help.  Are you ready?]"
+msgstr ""
+
+#: dat/quest.lua:1895
+#. text field
+msgid ""
+"\"%pC!  You have returned!  Thank %d.\n"
+"\n"
+"\"We have great need of you.  But first, I must see if you have the\n"
+"required abilities to take on this responsibility.\""
+msgstr ""
+
+#: dat/quest.lua:1901
+#. synopsis field
+msgid "[You are not sufficiently %a.  We renounce your %shood.]"
+msgstr ""
+
+#: dat/quest.lua:1903
+#. text field
+msgid ""
+"\"%pC!  You have doomed us all.  You fairly radiate %L influences\n"
+"and weaken the power we have raised in this grove as a result!\n"
+"\n"
+"\"Begone!  We renounce your %shood with us!  You are an outcast now!\""
+msgstr ""
+
+#: dat/quest.lua:1915
+#. synopsis field
+msgid "[This is %i.  There are bats nearby.  Beware the wumpus!]"
+msgstr ""
+
+#: dat/quest.lua:1917
+#. text field
+msgid ""
+"This must be %i.\n"
+"\n"
+"You are in a cave built of many different rooms, all interconnected\n"
+"by tunnels.  Your quest is to find and shoot the evil wumpus that\n"
+"resides elsewhere in the cave without running into any bottomless\n"
+"pits or using up your limited supply of arrows.  Good luck.\n"
+"\n"
+"You are in room 9 of the cave.  There are tunnels to rooms\n"
+"5, 8, and 10.\n"
+"*rustle* *rustle* (must be bats nearby.)\n"
+"*sniff* (I can smell the evil wumpus nearby!)"
+msgstr ""
+
+#: dat/quest.lua:1930
+#. synopsis field
+msgid "[You are in %i.  There are pits.  There are bats nearby.]"
+msgstr ""
+
+#: dat/quest.lua:1932
+#. text field
+msgid ""
+"Once again, you descend into %i.\n"
+"\n"
+"*whoosh* (I feel a draft from some pits.)\n"
+"*rustle* *rustle* (must be bats nearby.)"
+msgstr ""
+
+#: dat/quest.lua:1938
+#. synopsis field
+msgid "[You have come to recover %o, but I shall keep %oh and you shall die.]"
+msgstr ""
+
+#: dat/quest.lua:1940
+#. text field
+msgid ""
+"\"So, %c.  %lC has sent you to recover %o.\n"
+"\n"
+"\"Well, I shall keep that bauble.  It pleases me.  You, %c, shall die.\""
+msgstr ""
+
+#: dat/quest.lua:1951
+#. text field
+msgid ""
+"\"I shall have %o from you, %r.  Then I shall\n"
+"kill you.\""
+msgstr ""
+
+#: dat/quest.lua:1958
+#. synopsis field
+msgid "[You have succeeded.  Take %o with you as you go to find the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:1960
+#. text field
+msgid ""
+"\"%pC!  You have succeeded!  I feared it was not possible!\n"
+"\n"
+"\"You have returned with %o!\n"
+"\n"
+"\"I fear, now, that the Centaurs will regroup and plot yet another raid.\n"
+"This will take some time, but if you can recover the Amulet of Yendor\n"
+"for %d before that happens, we will be eternally safe.\n"
+"\n"
+"\"Take %o with you.  It will aid in your quest for\n"
+"the Amulet.\""
+msgstr ""
+
+#: dat/quest.lua:1972
+#. synopsis field
+msgid "[You are the keeper of %o now.  Go and find the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:1974
+#. text field
+msgid ""
+"%l flexes %o reverently.\n"
+"\n"
+"\"With this wondrous bow, one need never run out of arrows.\n"
+"You are its keeper now, and the time has come to resume your\n"
+"search for the Amulet.  %Z await your return\n"
+"through the magic portal that brought you here.\""
+msgstr ""
+
+#: dat/quest.lua:1982
+#. text field
+msgid ""
+"You have the oddest feeling that this may be the last time you\n"
+"are to enter %H."
+msgstr ""
+
+#: dat/quest.lua:1986
+#. text field
+msgid ""
+"\"Welcome, %p.  How have you fared on your quest for the Amulet\n"
+"of Yendor?\""
+msgstr ""
+
+#: dat/quest.lua:1992
+#. synopsis field
+msgid "[Get %o from %n and bring it to %l.]"
+msgstr ""
+
+#: dat/quest.lua:1994
+#. text field
+msgid ""
+"\"Will everyone not going to retrieve %o from that\n"
+"jerk, %n, take one step backwards.  Good choice,\n"
+"%p, because I was going to send you anyway.  My other %gp\n"
+"are too valuable to me.\n"
+"\n"
+"\"Here's the deal.  I want %o, %n\n"
+"has %o.  You are going to get %o\n"
+"and bring it back to me.  So simple an assignment even you can understand\n"
+"it.\""
+msgstr ""
+
+#: dat/quest.lua:2005
+#. synopsis field
+msgid "[Come back when you are really %a.]"
+msgstr ""
+
+#: dat/quest.lua:2007
+#. text field
+msgid ""
+"\"Maybe I should chain you to my perch here for a while.  Perhaps watching\n"
+"real %a men at work will bring some sense back to you.  I don't\n"
+"think I could stand the sight of you for that long though.  Come back\n"
+"when you can be trusted to act properly.\""
+msgstr ""
+
+#: dat/quest.lua:2013
+#. synopsis field
+msgid "[%rA is not adequately trained to handle this job.]"
+msgstr ""
+
+#: dat/quest.lua:2015
+#. text field
+msgid ""
+"\"In the time that you've been gone you've only been able to master the\n"
+"arts of %ra?  I've trained ten times again as many %Rp\n"
+"in that time.  Maybe I should send one of them, no?  Where would that\n"
+"leave you, %p?  Oh yeah, I remember, I was going to kill you!\""
+msgstr ""
+
+#: dat/quest.lua:2045
+#. synopsis field
+msgid "[You are in Ransmannsby, where you trained.  Find %l.]"
+msgstr ""
+
+#: dat/quest.lua:2047
+#. text field
+msgid ""
+"Unexpectedly, you find yourself back in Ransmannsby, where you trained to\n"
+"be a thief.  Quickly you make the guild sign, hoping that you AND word\n"
+"of your arrival reach %ls den."
+msgstr ""
+
+#: dat/quest.lua:2052
+#. synopsis field
+msgid "[You sense %o.]"
+msgstr ""
+
+#: dat/quest.lua:2054
+#. text field
+msgid ""
+"You feel a great swelling up of courage, sensing the presence of\n"
+"%o.  Or is it fear?"
+msgstr ""
+
+#: dat/quest.lua:2058
+#. text field
+msgid "The hairs on the back of your neck whisper -- it's fear."
+msgstr ""
+
+#: dat/quest.lua:2061
+#. synopsis field
+msgid "[You pick up %o and know that %l should not have it.]"
+msgstr ""
+
+#: dat/quest.lua:2063
+#. text field
+msgid ""
+"As you pick up %o, the hairs on the back of your\n"
+"neck fall out.  At once you realize why %n was\n"
+"willing to die to keep it out of %ls hands.  Somehow\n"
+"you know that you must do likewise."
+msgstr ""
+
+#: dat/quest.lua:2083
+#. synopsis field
+msgid "[Take the Amulet to the Astral Plane and find %ds temple.]"
+msgstr ""
+
+#: dat/quest.lua:2085
+#. text field
+msgid ""
+"\"I see that with your abilities, and my brains, we could rule this world.\n"
+"\n"
+"\"All that we would need to be all-powerful is for you to take that little\n"
+"trinket you've got there up to the Astral Plane.  From there, %d will\n"
+"show you what to do with it.  Once that's done, we will be invincible!\""
+msgstr ""
+
+#: dat/quest.lua:2092
+#. synopsis field
+msgid "[Before dying, %n tells you to use the %o wisely.]"
+msgstr ""
+
+#: dat/quest.lua:2094
+#. text field
+msgid ""
+"\"I know what you are thinking, %p.  It is not too late for you\n"
+"to use %o wisely.  For the sake of your guild\n"
+"%sp, do what is right.\"\n"
+"\n"
+"You sit and wait for death to come for %n, and then you\n"
+"brace yourself for your next meeting with %l!"
+msgstr ""
+
+#: dat/quest.lua:2102
+#. synopsis field
+msgid "[You owe back dues to your guild.  You can pay them off if you're up to the job.]"
+msgstr ""
+
+#: dat/quest.lua:2104
+#. text field
+msgid ""
+"\"Well, look who it is boys -- %p has come home.  You seem to have\n"
+"fallen behind in your dues.  I should kill you as an example to these\n"
+"other worthless cutpurses, but I have a better plan.  If you are ready\n"
+"maybe you could work off your back dues by performing a little job for\n"
+"me.  Let us just see if you are ready...\""
+msgstr ""
+
+#: dat/quest.lua:2111
+#. synopsis field
+msgid "[You must go.]"
+msgstr ""
+
+#: dat/quest.lua:2113
+#. text field
+msgid ""
+"\"Well %gp, it looks like our friend has forgotten who is the boss\n"
+"around here.  Our friend seems to think that %rp have been put in\n"
+"charge.  Wrong.  DEAD WRONG!\"\n"
+"\n"
+"Your sudden shift in surroundings prevents you from hearing the end\n"
+"of %ls curse."
+msgstr ""
+
+#: dat/quest.lua:2121
+#. synopsis field
+msgid "[Are you stupid or are you ready?]"
+msgstr ""
+
+#: dat/quest.lua:2123
+#. text field
+msgid ""
+"\"Well, I didn't expect to see you back.  It shows that you are either stupid,\n"
+"or you are finally ready to accept my offer.  Let us hope for your sake it\n"
+"isn't stupidity that brings you back.\""
+msgstr ""
+
+#: dat/quest.lua:2128
+#. text field
+msgid ""
+"\"Did you perhaps mistake me for some other %lt?  You must\n"
+"think me as stupid as your behavior.  I warn you not to try my patience.\""
+msgstr ""
+
+#: dat/quest.lua:2132
+#. text field
+msgid "Those damn little hairs tell you that you are nearer to %o."
+msgstr ""
+
+#: dat/quest.lua:2135
+#. text field
+msgid "Not wanting to face %l without having stolen %o, you continue."
+msgstr ""
+
+#: dat/quest.lua:2144
+#. synopsis field
+msgid "[You cannot trust %l.]"
+msgstr ""
+
+#: dat/quest.lua:2146
+#. text field
+msgid ""
+"\"Surely, %p, you have learned that you cannot trust any bargains\n"
+"that %l has made.  I can show you how to continue on\n"
+"your quest without having to run into him again.\""
+msgstr ""
+
+#: dat/quest.lua:2151
+#. synopsis field
+msgid "[%lC should not have %o.]"
+msgstr ""
+
+#: dat/quest.lua:2153
+#. text field
+msgid ""
+"\"Please, think for a moment about what you are doing.  Do you truly\n"
+"believe that %d would want %l to have\n"
+"%o?\""
+msgstr ""
+
+#: dat/quest.lua:2158
+#. text field
+msgid ""
+"Once again, you find yourself back in Ransmannsby.  Fond memories are\n"
+"replaced by fear, knowing that %l is waiting for you."
+msgstr ""
+
+#: dat/quest.lua:2162
+#. synopsis field
+msgid "[Take %o with you and go.]"
+msgstr ""
+
+#: dat/quest.lua:2164
+#. text field
+msgid ""
+"\"Well, I'll be damned.  You got it.  I am proud of you, a fine %r\n"
+"you've turned out to be.\n"
+"\n"
+"\"While you were gone I got to thinking, you and %o\n"
+"together could bring me more treasure than either of you apart, so why don't\n"
+"you take it with you.  All I ask is a cut of whatever loot you come by.\n"
+"That is a better deal than I offered %n.\n"
+"\n"
+"\"But, you see what happened to %n when he refused.\n"
+"Don't make me find another to send after you this time.\""
+msgstr ""
+
+#: dat/quest.lua:2176
+#. synopsis field
+msgid "[Take %o and acquire the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:2178
+#. text field
+msgid ""
+"%lC seems tempted to swap %o for\n"
+"the mundane one you detect in his pocket, but noticing your alertness,\n"
+"evidently chickens out.\n"
+"\n"
+"\"Go filch the Amulet before someone else beats you to it.\n"
+"%Z are back the way you came, through the magic portal.\""
+msgstr ""
+
+#: dat/quest.lua:2186
+#. text field
+msgid ""
+"You rub your hands through your hair, hoping that the little ones on\n"
+"the back of your neck stay down, and prepare yourself for your meeting\n"
+"with %l."
+msgstr ""
+
+#: dat/quest.lua:2191
+#. synopsis field
+msgid "[How about trading %o for something?]"
+msgstr ""
+
+#: dat/quest.lua:2193
+#. text field
+msgid ""
+"\"Quite the little thief, aren't we, %p.  Can I interest you in a\n"
+"swap for %o?  Look around, anything in the keep\n"
+"is yours for the asking.\""
+msgstr ""
+
+#: dat/quest.lua:2200
+#. synopsis field
+msgid "[You must enter %i, then regain %o from %n.]"
+msgstr ""
+
+#: dat/quest.lua:2202
+#. text field
+msgid ""
+"\"Domo %p-san, indeed you are ready.  I can now tell you what\n"
+"it is that I require of you.\n"
+"\n"
+"\"The daimyo, %n, has betrayed us.  He has stolen from us\n"
+"%o and taken it to his donjon deep within\n"
+"%i.\n"
+"\n"
+"\"If I cannot show the emperor %o when he comes\n"
+"for the festival he will know that I have failed in my duty, and\n"
+"request that I commit seppuku.\n"
+"\n"
+"\"You must gain entrance to %i and retrieve the\n"
+"emperor's property.  Be quick!  The emperor will be here for the\n"
+"cha-no-you in 5 sticks.\n"
+"\n"
+"\"Wakarimasu ka?\""
+msgstr ""
+
+#: dat/quest.lua:2220
+#. synopsis field
+msgid "[When you can think %a and act %a then return.]"
+msgstr ""
+
+#: dat/quest.lua:2222
+#. text field
+msgid ""
+"\"%p-san, you would do better to join the kyokaku.\n"
+"\n"
+"\"You have skills, but until you can call upon the bushido to know when and\n"
+"how to use them you are not samurai.  When you can think %a and\n"
+"act %a then return.\""
+msgstr ""
+
+#: dat/quest.lua:2231
+#. text field
+msgid ""
+"\"%p-san, you have learned well and honored your family.\n"
+"I require the skills of %Ra in order to defeat %n.\n"
+"Go and seek out teachers.  Learn what they have learned.  When you\n"
+"are ready, return to me.\""
+msgstr ""
+
+#: dat/quest.lua:2261
+#. synopsis field
+msgid "[The banner of %n flies above town.  What has happened to %l?]"
+msgstr ""
+
+#: dat/quest.lua:2263
+#. text field
+msgid ""
+"Even before your senses adjust, you recognize the kami of\n"
+"%H.\n"
+"\n"
+"You %x the standard of your teki, %n, flying above\n"
+"the town.  How could such a thing have happened?  Why are ninja\n"
+"wandering freely; where are the samurai of your daimyo, %l?\n"
+"\n"
+"You quickly say a prayer to Izanagi and Izanami and walk towards\n"
+"town."
+msgstr ""
+
+#: dat/quest.lua:2274
+#. text field
+msgid "As you arrive once again at the home of %n."
+msgstr ""
+
+#: dat/quest.lua:2277
+#. synopsis field
+msgid "[You feel the taunts %n, but after offering a prayer to %d, you proceed.]"
+msgstr ""
+
+#: dat/quest.lua:2279
+#. text field
+msgid ""
+"In your mind, you hear the taunts of %n.\n"
+"\n"
+"You become like the rice plant and bend to the ground, offering a\n"
+"prayer to %d.  But when the wind has passed, you stand\n"
+"proudly again.  Putting your kami in the hands of fate, you advance."
+msgstr ""
+
+#: dat/quest.lua:2286
+#. text field
+msgid ""
+"As you arrive once again at the home of %n, your thoughts\n"
+"turn only to %o."
+msgstr ""
+
+#: dat/quest.lua:2290
+#. synopsis field
+msgid "[You feel the power of %o and are humbled.]"
+msgstr ""
+
+#: dat/quest.lua:2292
+#. text field
+msgid ""
+"As you pick up %o, you feel the strength of its karma.\n"
+"You realize at once why so many good samurai had to die to defend it.\n"
+"You are humbled knowing that you hold one of the artifacts of the\n"
+"sun goddess."
+msgstr ""
+
+#: dat/quest.lua:2312
+#. synopsis field
+msgid "[Take the Amulet to the Astral Plane to finish your task.]"
+msgstr ""
+
+#: dat/quest.lua:2314
+#. text field
+msgid ""
+"\"Ah, %p-sama.  You have wasted your efforts returning home.\n"
+"Now that you are in possession of the Amulet, you are honor-bound to\n"
+"finish the quest you have undertaken.  There will be plenty of time\n"
+"for saki and stories when you have finished.\n"
+"\n"
+"\"Go now, and may our prayers be a wind at your back.\""
+msgstr ""
+
+#: dat/quest.lua:2322
+#. synopsis field
+msgid "[%nC dies without honor.]"
+msgstr ""
+
+#: dat/quest.lua:2324
+#. text field
+msgid ""
+"Your healing skills tell you that %ns wounds are mortal.\n"
+"\n"
+"You know that the bushido tells you to finish him and let his kami\n"
+"die with honor, but the thought of so many samurai dead due to this\n"
+"man's dishonor prevents you from giving the final blow.\n"
+"\n"
+"You order that his unwashed head be given to the crows and his body\n"
+"thrown into the sea."
+msgstr ""
+
+#: dat/quest.lua:2334
+#. synopsis field
+msgid "[%lC needs someone to lead %lj samurai against %n.  Are you ready?]"
+msgstr ""
+
+#: dat/quest.lua:2336
+#. text field
+msgid ""
+"\"Ah, %p-san, it is good to see you again.  I need someone who can\n"
+"lead my samurai against %n.  If you are ready, you will be\n"
+"that person.\""
+msgstr ""
+
+#: dat/quest.lua:2341
+#. synopsis field
+msgid "[Leave and do not come back.]"
+msgstr ""
+
+#: dat/quest.lua:2343
+#. text field
+msgid ""
+"\"You are no longer my samurai, %p.\n"
+"\n"
+"\"Hara-kiri is denied.  You are ordered to shave your head and then to\n"
+"become a monk.  Your fief and family are forfeit.  Wakarimasu ka?\""
+msgstr ""
+
+#: dat/quest.lua:2349
+#. text field
+msgid ""
+"\"Once again, %p-san, you kneel before me.  Are you yet capable of\n"
+"being my vassal?\""
+msgstr ""
+
+#: dat/quest.lua:2353
+#. synopsis field
+msgid "[Are you truly a samurai?]"
+msgstr ""
+
+#: dat/quest.lua:2355
+#. text field
+msgid ""
+"\"You begin to test my matsu, %p-san.\n"
+"If you cannot determine what I want in a samurai, how can I rely on you\n"
+"to figure out what I need from a samurai?\""
+msgstr ""
+
+#: dat/quest.lua:2360
+#. text field
+msgid ""
+"You instinctively reach for your swords.  You do not recognize the\n"
+"lay of this land, but you know that your teki are everywhere."
+msgstr ""
+
+#: dat/quest.lua:2364
+#. text field
+msgid ""
+"Thankful that your %sp at %H cannot see\n"
+"your fear, you prepare again to advance."
+msgstr ""
+
+#: dat/quest.lua:2368
+#. text field
+msgid ""
+"\"Ah, so it is to be you, %p-san.  I offer you seppuku.\n"
+"I will be your second if you wish.\""
+msgstr ""
+
+#: dat/quest.lua:2372
+#. text field
+msgid ""
+"\"I have offered you the honorable exit.  Now I will have your\n"
+"head to send unwashed to %l.\""
+msgstr ""
+
+#: dat/quest.lua:2379
+#. text field
+msgid ""
+"\"You have fought my samurai; surely you must know that you\n"
+"will not be able to take %o back to\n"
+"%H.\""
+msgstr ""
+
+#: dat/quest.lua:2387
+#. synopsis field
+msgid "[The emperor wants you to take %o and recover the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:2389
+#. text field
+msgid ""
+"As you bow before %l, he welcomes you:\n"
+"\n"
+"    \"You have brought your family great honor, %p-sama.\n"
+"\n"
+"    \"While you have been gone the emperor's advisors have discovered in\n"
+"    the ancient texts that the karma of the samurai who seeks to recover\n"
+"    the Amulet and the karma of %o are joined\n"
+"    as the seasons join to make a year.\n"
+"\n"
+"    \"Because you have shown such fidelity, the emperor requests\n"
+"    that you take leave of other obligations and continue on the\n"
+"    road that fate has set your feet upon.  I would consider it\n"
+"    an honor if you would allow me to watch your household until\n"
+"    you return with the Amulet.\"\n"
+"\n"
+"With that, %l bows, and places his sword atop\n"
+"%o."
+msgstr ""
+
+#: dat/quest.lua:2408
+#. synopsis field
+msgid "[Take %o, return to %Z, and recover the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:2410
+#. text field
+msgid ""
+"%l holds %o tightly for a moment, then returns\n"
+"his gaze to you.\n"
+"\n"
+"\"The time is ripe to recover the Amulet.  Return to %Z\n"
+"through the magic portal that transported you here so that you may\n"
+"achieve the destiny which awaits you.\""
+msgstr ""
+
+#: dat/quest.lua:2418
+#. synopsis field
+msgid "[%HC is threatened by %n.]"
+msgstr ""
+
+#: dat/quest.lua:2420
+#. text field
+msgid ""
+"You are back at %H.\n"
+"\n"
+"Instantly you sense a subtle change in your karma.  You seem to know that\n"
+"if you do not succeed in your quest, %n will have destroyed\n"
+"the kami of %H before you return again."
+msgstr ""
+
+#: dat/quest.lua:2427
+#. text field
+msgid "%lC bows.  \\"
+msgstr ""
+
+#: dat/quest.lua:2432
+#. synopsis field
+msgid "[Enter %i and recover %o from %n.]"
+msgstr ""
+
+#: dat/quest.lua:2434
+#. text field
+msgid ""
+"\"You have indeed proven yourself a worthy %c, %p.\n"
+"\n"
+"\"But now your kinfolk and I must ask you to put aside your travels and\n"
+"help us in our time of need.  After you left us we elected a new mayor,\n"
+"%n.  He proved to be a most heinous and vile creature.\n"
+"\n"
+"\"Soon after taking office he absconded with %o\n"
+"and fled town, leaving behind his henchmen to rule over us.  In order\n"
+"for us to regain control of our town, you must enter %i\n"
+"and recover %o.\n"
+"\n"
+"\"Do not be distracted on your quest.  If you do not return quickly I fear\n"
+"that all will be lost.  Let us both pray now that %d will guide you\n"
+"and keep you safe.\""
+msgstr ""
+
+#: dat/quest.lua:2450
+#. synopsis field
+msgid "[You are not sufficiently %a.  Return when you are.]"
+msgstr ""
+
+#: dat/quest.lua:2452
+#. text field
+msgid ""
+"\"It would be an affront to %d to have one not true to the\n"
+"%a path undertake her bidding.\n"
+"\n"
+"\"You must not return to us until you have purified yourself of these\n"
+"bad influences on your actions.  Remember, only by following the %a\n"
+"path can you hope to overcome the obstacles you will face.\""
+msgstr ""
+
+#: dat/quest.lua:2460
+#. synopsis field
+msgid "[Return when you are %Ra.]"
+msgstr ""
+
+#: dat/quest.lua:2462
+#. text field
+msgid ""
+"\"There is still too much that you have to learn before you can undertake\n"
+"the next step.  Return to us as a proven %R, and perhaps then\n"
+"you will be ready.\n"
+"\n"
+"\"Go back now, and may the teachings of %d serve you well.\""
+msgstr ""
+
+#: dat/quest.lua:2493
+#. synopsis field
+msgid "[You find yourself back at %H, but the quiet is ominous.]"
+msgstr ""
+
+#: dat/quest.lua:2495
+#. text field
+msgid ""
+"You breathe a sigh of relief as you find yourself back in the familiar\n"
+"surroundings of %H.\n"
+"\n"
+"You quickly notice that things do not appear the way they did when you\n"
+"left.  The town is dark and quiet.  There are no sounds coming from\n"
+"behind the town walls, and no campfires burning in the fields.  As a\n"
+"matter of fact, you do not %x any movement in the fields at all, and\n"
+"the crops seem as though they have been untended for many weeks."
+msgstr ""
+
+#: dat/quest.lua:2508
+#. text field
+msgid "You sense the presence of %o."
+msgstr ""
+
+#: dat/quest.lua:2511
+#. text field
+msgid ""
+"You gain confidence, knowing that you may soon be united with\n"
+"%o."
+msgstr ""
+
+#: dat/quest.lua:2515
+#. synopsis field
+msgid "[You pick up %o and feel relief.  Return it to %l.]"
+msgstr ""
+
+#: dat/quest.lua:2517
+#. text field
+msgid ""
+"As you pick up %o, you feel a great\n"
+"weight has been lifted from your shoulders.  Your only thoughts are\n"
+"to quickly return to %H and find %l."
+msgstr ""
+
+#: dat/quest.lua:2536
+#. synopsis field
+msgid "[You have the Amulet.  Take it to the Astral Plane to finish your task.]"
+msgstr ""
+
+#: dat/quest.lua:2538
+#. text field
+msgid ""
+"\"Stand back and let me look at you, %p.\n"
+"Now that you have recovered the Amulet of Yendor, I'm afraid living\n"
+"out your days in %H would seem pretty tame.\n"
+"\n"
+"\"You have come too far to stop now, for there are still more tasks that\n"
+"our oral history foretells for you.  Forever more, though, your name shall\n"
+"be spoken by the %gP with awe.  You are truly an inspiration to your\n"
+"%sp!\""
+msgstr ""
+
+#: dat/quest.lua:2548
+#. synopsis field
+msgid "[%nC curses at you as %nh dies.]"
+msgstr ""
+
+#: dat/quest.lua:2550
+#. text field
+msgid ""
+"You turn in the direction of %n.  As his earthly body begins\n"
+"to vanish before your eyes, you hear him curse:\n"
+"\n"
+"    \"You shall never be rid of me, %p!\n"
+"    I will find you where ever you go and regain what is rightly mine.\""
+msgstr ""
+
+#: dat/quest.lua:2557
+#. synopsis field
+msgid "[Someone must defeat %n.  Are your ready?]"
+msgstr ""
+
+#: dat/quest.lua:2559
+#. text field
+msgid ""
+"\"Is it really you, %p!  I had given up hope for your return.\n"
+"As you can %x, we are desperately in need of your talents.  Someone must\n"
+"defeat %n if our town is to become what it once was.\n"
+"\n"
+"\"Let me see if you are ready to be that someone.\""
+msgstr ""
+
+#: dat/quest.lua:2566
+#. synopsis field
+msgid "[Leave %H and never return.]"
+msgstr ""
+
+#: dat/quest.lua:2568
+#. text field
+msgid ""
+"\"It is too late, %p.  You are not even worthy to die amongst us.\n"
+"Leave %H and never return.\""
+msgstr ""
+
+#: dat/quest.lua:2578
+#. synopsis field
+msgid "[You %x the handiwork of %ns henchlings.]"
+msgstr ""
+
+#: dat/quest.lua:2580
+#. text field
+msgid ""
+"Only your faith in %d keeps you from trembling.  You %x\n"
+"the handiwork of %ns henchlings everywhere."
+msgstr ""
+
+#: dat/quest.lua:2584
+#. text field
+msgid "You know that this time you must find and destroy %n."
+msgstr ""
+
+#: dat/quest.lua:2587
+#. synopsis field
+msgid "[%rA will not defeat me.]"
+msgstr ""
+
+#: dat/quest.lua:2589
+#. text field
+msgid ""
+"\"So, %p, %l thinks that you can wrest\n"
+"%o from me!\n"
+"\n"
+"\"It only proves how desperate he has become that he sends %ra to\n"
+"try to defeat me.  When this day is over, I will have you enslaved\n"
+"in the mines where you will rue the day that you ever entered\n"
+"%i.\""
+msgstr ""
+
+#: dat/quest.lua:2598
+#. text field
+msgid ""
+"\"I let you live the last time because it gave me pleasure.\n"
+"This time I will destroy you, %p.\""
+msgstr ""
+
+#: dat/quest.lua:2602
+#. synopsis field
+msgid "[Run away or you will suffer severely.]"
+msgstr ""
+
+#: dat/quest.lua:2604
+#. text field
+msgid ""
+"\"These meetings come to bore me.  You disturb my workings with\n"
+"%o.\n"
+"\n"
+"\"If you do not run away now, I will inflict so much suffering on you that\n"
+"%l will feel guilty for ever having sent his %S to me!\""
+msgstr ""
+
+#: dat/quest.lua:2613
+#. text field
+msgid ""
+"\"You fool.  You do not know how to call upon the powers of\n"
+"%o.\n"
+"\n"
+"\"Return it to me and I will teach you how to use it, and together we\n"
+"will rule %H.  But do so now, as my patience grows thin.\""
+msgstr ""
+
+#: dat/quest.lua:2623
+#. synopsis field
+msgid "[Take %o and with %ds guidance, recover the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:2625
+#. text field
+msgid ""
+"As %l detects the presence of %o,\n"
+"he almost smiles for the first time in many a full moon.\n"
+"\n"
+"As he looks up from %o he says:\n"
+"\n"
+"    \"You have recovered %o.  You are its\n"
+"    owner now, but not its master.  Let it work with you as you continue\n"
+"    your journey.  With its help, and %d to guide you on the\n"
+"    %a path, you may yet recover the Amulet of Yendor.\""
+msgstr ""
+
+#: dat/quest.lua:2636
+#. synopsis field
+msgid "[Keep %o and return to %Z through the portal.]"
+msgstr ""
+
+#: dat/quest.lua:2638
+#. text field
+msgid ""
+"\"%oC is yours now.  %Z\n"
+"await your return through the magic portal that brought you here.\""
+msgstr ""
+
+#: dat/quest.lua:2642
+#. text field
+msgid ""
+"You are back at %H.\n"
+"Things appear to have become so bad that you fear that soon\n"
+"%H will not be here to return to."
+msgstr ""
+
+#: dat/quest.lua:2647
+#. text field
+msgid ""
+"\"I could not be more proud than if you were my own %S, %p!\n"
+"Tell me of your adventures in quest of the Amulet of Yendor.\""
+msgstr ""
+
+#: dat/quest.lua:2653
+#. synopsis field
+msgid "[Find %i; defeat %n; return with %o.]"
+msgstr ""
+
+#: dat/quest.lua:2655
+#. text field
+msgid ""
+"\"It is not clear, %p, for my sight is limited without our relic.\n"
+"But it is now likely that you can defeat %n, and recover\n"
+"%o.\n"
+"\n"
+"\"A short time ago, %n and his minions attacked this place.  They\n"
+"opened the huge volcanic vents you %x about the hill, and attacked.  I knew\n"
+"that this was to come to pass, and had asked %d for a group of %gP\n"
+"to help defend this place.  The few you %x here are the mightiest of\n"
+"Valhalla's own, and are all that are left of one hundred %d sent.\n"
+"\n"
+"\"Despite the great and glorious battle we fought, %n managed at\n"
+"last to steal %o.  This has upset the balance of the universe,\n"
+"and unless %oh is returned into my care, %n may start Ragnarok.\n"
+"\n"
+"\"You must find the entrance to %i.  Travel downward\n"
+"from there and you will find %ns lair.  Defeat him and\n"
+"return %o to me.\""
+msgstr ""
+
+#: dat/quest.lua:2674
+#. synopsis field
+msgid "[You have strayed from the %a path.  Return after you purify yourself.]"
+msgstr ""
+
+#: dat/quest.lua:2676
+#. text field
+msgid ""
+"\"NO!  This is terrible.  I see you becoming an ally of %n, and\n"
+"leading his armies in the final great battles.  This must not come to\n"
+"pass!  You have strayed from the %a path.  You must purge yourself,\n"
+"and return here only when you have regained a state of purity.\""
+msgstr ""
+
+#: dat/quest.lua:2682
+#. synopsis field
+msgid "[Come back when you are %Ra.]"
+msgstr ""
+
+#: dat/quest.lua:2684
+#. text field
+msgid ""
+"\"I see you and %n fighting, %p.  But you are not prepared and\n"
+"shall die at %ns hand if you proceed.  No.  This will not do.\n"
+"Go back out into the world, and grow more experienced at the ways of war.\n"
+"Only when you have returned %Ra will you be able to defeat %n.\""
+msgstr ""
+
+#: dat/quest.lua:2714
+#. synopsis field
+msgid "[You arrive below %H.  Something is wrong; there is lava present.]"
+msgstr ""
+
+#: dat/quest.lua:2716
+#. text field
+msgid ""
+"You materialize at the base of a snowy hill.  Atop the hill sits\n"
+"a place you know well, %H.  You immediately realize\n"
+"that something here is very wrong!\n"
+"\n"
+"In places, the snow and ice have been melted into steaming pools of\n"
+"water.  Fumaroles and pools of bubbling lava surround the hill.\n"
+"The stench of sulphur is carried through the air, and you %x creatures\n"
+"that should not be able to live in this environment moving towards you."
+msgstr ""
+
+#: dat/quest.lua:2726
+#. synopsis field
+msgid "[This is the lair of %n.]"
+msgstr ""
+
+#: dat/quest.lua:2728
+#. text field
+msgid ""
+"Through clouds of sulphurous gasses, you %x a rock palisade\n"
+"surrounded with a moat of bubbling lava.  You remember the description\n"
+"from something that %l said.  This is the lair of %n."
+msgstr ""
+
+#: dat/quest.lua:2733
+#. text field
+msgid "Once again, you stand in sight of %ns lair."
+msgstr ""
+
+#: dat/quest.lua:2736
+#. synopsis field
+msgid "[You must return %o to %l.]"
+msgstr ""
+
+#: dat/quest.lua:2738
+#. text field
+msgid ""
+"As you pick up %o, your mind is suddenly filled with images,\n"
+"and you perceive all of the possibilities of each potential choice you\n"
+"could make.  As you begin to control and channel your thoughts, you\n"
+"realize that you must return %o to %l immediately."
+msgstr ""
+
+#: dat/quest.lua:2758
+#. synopsis field
+msgid "[Take the Amulet to %ds temple on the Astral Plane and offer it.]"
+msgstr ""
+
+#: dat/quest.lua:2760
+#. text field
+msgid ""
+"\"Excellent, %p.  I see you have recovered the Amulet!\n"
+"\n"
+"\"You must take the Amulet to the Great Temple of %d, on the Astral\n"
+"Plane.  There you must offer the Amulet to %d.\n"
+"\n"
+"\"Go now, my %S.  I cannot tell you your fate, as the power of the\n"
+"Amulet interferes with mine.  I hope for your success.\""
+msgstr ""
+
+#: dat/quest.lua:2769
+#. synopsis field
+msgid "[%nC dies.]"
+msgstr ""
+
+#: dat/quest.lua:2771
+#. text field
+msgid ""
+"A look of surprise and horror appears on %ns face.\n"
+"\n"
+"    \"No!!!  %o has lied to me!  I have been misled!\"\n"
+"\n"
+"Suddenly, %n grasps his head and screams in agony, then dies."
+msgstr ""
+
+#: dat/quest.lua:2778
+#. synopsis field
+msgid "[We need your aid.  Are you ready?]"
+msgstr ""
+
+#: dat/quest.lua:2780
+#. text field
+msgid ""
+"\"Ah, %p, my %S.  You have returned to %H\n"
+"at last.  We are in dire need of your aid, but I must determine if you\n"
+"are yet ready for such an undertaking.\n"
+"\n"
+"\"Let me read your fate...\""
+msgstr ""
+
+#: dat/quest.lua:2789
+#. text field
+msgid ""
+"\"No, %p.  Your fate is sealed.  I must cast about for another\n"
+"champion.  Begone from my presence, and never return.  Know this, that\n"
+"you shall never succeed in this life, and Valhalla is denied to you.\""
+msgstr ""
+
+#: dat/quest.lua:2794
+#. text field
+msgid ""
+"\"Let me read the future for you now, %p, perhaps you have managed to\n"
+"change it enough...\""
+msgstr ""
+
+#: dat/quest.lua:2798
+#. text field
+msgid ""
+"\"Again, I shall read your fate, my %S.  Let us both hope that you have\n"
+"made changes to become ready for this task...\""
+msgstr ""
+
+#: dat/quest.lua:2802
+#. synopsis field
+msgid "[This is the entrance to %i.]"
+msgstr ""
+
+#: dat/quest.lua:2804
+#. text field
+msgid ""
+"The ice and snow gives way to a valley floor.  You %x ahead of you\n"
+"a huge round hill surrounded by pools of lava.  This then is the entrance\n"
+"to %i.  It looks like you're not going to get in without\n"
+"a fight though."
+msgstr ""
+
+#: dat/quest.lua:2810
+#. text field
+msgid "Once again, you stand before the entrance to %i."
+msgstr ""
+
+#: dat/quest.lua:2815
+#. text field
+msgid ""
+"\"So!  %lC has finally sent %ca to challenge me!\n"
+"\n"
+"\"I thought that mastering %o would enable me to challenge\n"
+"%d, but it has shown me that first I must kill you!  So come, little\n"
+"%s.  Once I defeat you, I can at last begin the final battle with %d.\""
+msgstr ""
+
+#: dat/quest.lua:2831
+#. text field
+msgid "Once again, you are near the abode of %l."
+msgstr ""
+
+#: dat/quest.lua:2834
+#. synopsis field
+msgid "[Take %o.  Search for the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:2836
+#. text field
+msgid ""
+"As you approach, %l rises and touches %o.\n"
+"\n"
+"\"You may take %o with you, %p.  I have removed from\n"
+"it the power to foretell the future, for that power no mortal should\n"
+"have.  Its other abilities, however, you have at your disposal.\n"
+"\n"
+"\"You must now begin in %ds name to search for the Amulet of Yendor.\n"
+"May your steps be guided by %d, my %S.\""
+msgstr ""
+
+#: dat/quest.lua:2846
+#. synopsis field
+msgid "[You are %os keeper now.  Return through the portal and find the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:2854
+#. text field
+msgid ""
+"Again you materialize near %ls abode.  You have a nagging feeling\n"
+"that this may be the last time you come here."
+msgstr ""
+
+#: dat/quest.lua:2858
+#. text field
+msgid ""
+"\"Greetings, %p.  I have not been able to pay as much attention to\n"
+"your search for the Amulet as I have wished.  How do you fare?\""
+msgstr ""
+
+#: dat/quest.lua:2864
+#. synopsis field
+msgid "[Travel to %i; overcome %n; return with %o.]"
+msgstr ""
+
+#: dat/quest.lua:2866
+#. text field
+msgid ""
+"\"Yes, %p, you truly are ready for this dire task.  Listen,\n"
+"carefully, for what I tell you now will be of vital importance.\n"
+"\n"
+"\"Since you left us to hone your skills in the world, we unexpectedly came\n"
+"under attack by the forces of %n.  As you know, we thought\n"
+"%n had perished at the end of the last age, but, alas, this was\n"
+"not the case.\n"
+"\n"
+"\"%nC sent an army of abominations against us.  Among them was a\n"
+"minion, mindless and ensorcelled, and thus, in the confusion, it was\n"
+"able to penetrate our defenses.  Alas, this creature has stolen\n"
+"%o and I fear has delivered %oh to %n.\n"
+"\n"
+"\"Over the years, I had woven most of my power into this amulet, and thus,\n"
+"without it, I have but a shadow of my former power, and I fear that I\n"
+"shall soon perish.\n"
+"\n"
+"\"You must travel to %i, and within its dungeons,\n"
+"find and overcome %n, and return %o to me.\n"
+"\n"
+"\"Go now, with %d, and complete this quest before it is too late.\""
+msgstr ""
+
+#: dat/quest.lua:2889
+#. synopsis field
+msgid "[Go; come back when you are worthy of %d.]"
+msgstr ""
+
+#: dat/quest.lua:2891
+#. text field
+msgid ""
+"\"You amaze me, %p!  How many times did I tell you that the way of a mage\n"
+"is an exacting one.  One must use the world with care, lest one leave it\n"
+"in ruins and simplify the task of %n.\n"
+"\n"
+"\"You must go back and show your worthiness.  Do not return until you are\n"
+"truly ready for this quest.  May %d guide you in this task.\""
+msgstr ""
+
+#: dat/quest.lua:2899
+#. synopsis field
+msgid "[Go; return when you are %Ra.]"
+msgstr ""
+
+#: dat/quest.lua:2901
+#. text field
+msgid ""
+"\"Alas, %p, you have not yet shown your proficiency as a worthy\n"
+"spellcaster.  As %ra, you would surely be overcome in the challenge\n"
+"ahead.  Go, now, expand your horizons, and return when you have attained\n"
+"renown as %Ra.\""
+msgstr ""
+
+#: dat/quest.lua:2931
+#. synopsis field
+msgid "[You have arrived at %ls tower but something is very wrong.]"
+msgstr ""
+
+#: dat/quest.lua:2933
+#. text field
+msgid ""
+"You are suddenly in familiar surroundings.  You notice what appears to\n"
+"be a large, squat stone structure nearby.  Wait!  That looks like the\n"
+"tower of your former teacher, %l.\n"
+"\n"
+"However, things are not the same as when you were last here.  Mists and\n"
+"areas of unexplained darkness surround the tower.  There is movement in\n"
+"the shadows.\n"
+"\n"
+"Your teacher would never allow such unaesthetic forms to surround the\n"
+"tower...  unless something were dreadfully wrong!"
+msgstr ""
+
+#: dat/quest.lua:2948
+#. text field
+msgid "You feel your mentor's presence; perhaps %o is nearby."
+msgstr ""
+
+#: dat/quest.lua:2951
+#. text field
+msgid "The aura of %o tingles at the edge of your perception."
+msgstr ""
+
+#: dat/quest.lua:2954
+#. synopsis field
+msgid "[You feel %os power and know you should return %oh to %l.]"
+msgstr ""
+
+#: dat/quest.lua:2956
+#. text field
+msgid ""
+"As you touch %o, its comforting power infuses you\n"
+"with new energy.  You feel as if you can detect others' thoughts flowing\n"
+"through it.  Although you yearn to wear %o and\n"
+"attack the Wizard of Yendor, you know you must return it to its rightful\n"
+"owner, %l."
+msgstr ""
+
+#: dat/quest.lua:2977
+#. synopsis field
+msgid "[Take the Amulet to %ds altar on the Astral Plane.]"
+msgstr ""
+
+#: dat/quest.lua:2979
+#. text field
+msgid ""
+"\"Congratulations, %p.  I always knew that if anyone could succeed\n"
+"in defeating the Wizard of Yendor and his minions, it would be you.\n"
+"\n"
+"\"Go now, and take the Amulet to the Astral Plane.  Once there, present\n"
+"the Amulet on the altar of %d.  Along the way you shall pass through\n"
+"the four Elemental Planes.  These planes are like nothing you have ever\n"
+"experienced before, so be prepared!\n"
+"\n"
+"\"For this you were born, %s!  I am very proud of you.\""
+msgstr ""
+
+#: dat/quest.lua:2992
+#. text field
+msgid ""
+"%nC, whose body begins to shrivel up, croaks out:\n"
+"\n"
+"    \"I shall haunt your progress until the end of time.  A thousand\n"
+"    curses on you and %l.\"\n"
+"\n"
+"Then, the body bursts into a cloud of choking dust, and blows away."
+msgstr ""
+
+#: dat/quest.lua:3000
+#. synopsis field
+msgid "[You have come a long way, but are you ready for the task I require?]"
+msgstr ""
+
+#: dat/quest.lua:3002
+#. text field
+msgid ""
+"\"Come closer, %p, for my voice falters in my old age.\n"
+"Yes, I see that you have come a long way since you went out into the\n"
+"world, leaving the safe confines of this tower.  However, I must first\n"
+"determine if you have all of the skills required to take on the task\n"
+"I require of you.\""
+msgstr ""
+
+#: dat/quest.lua:3011
+#. text field
+msgid ""
+"\"You fool, %p!  Why did I waste all of those years teaching you\n"
+"the esoteric arts?  Get out of here!  I shall find another.\""
+msgstr ""
+
+#: dat/quest.lua:3018
+#. text field
+msgid ""
+"\"This is getting tedious, %p, but perseverance is a sign of a true mage.\n"
+"I certainly hope that you are truly ready this time!\""
+msgstr ""
+
+#: dat/quest.lua:3022
+#. text field
+msgid "Wisps of fog swirl nearby.  You feel that %ns lair is close."
+msgstr ""
+
+#: dat/quest.lua:3025
+#. text field
+msgid "You believe that you may once again invade %i."
+msgstr ""
+
+#: dat/quest.lua:3030
+#. text field
+msgid ""
+"\"Ah, I recognize you, %p.  So, %l has sent you to steal\n"
+"%o from me, hmmm?  Well, %lh is a fool to send such\n"
+"a mental weakling against me.\n"
+"\n"
+"\"Your destruction, however, should make for good sport.  In the end, you\n"
+"shall beg me to kill you!\""
+msgstr ""
+
+#: dat/quest.lua:3040
+#. text field
+msgid ""
+"\"How nice of you to return, %p!  I enjoyed our last meeting.  Are you\n"
+"still hungry for more pain?\n"
+"\n"
+"\"Come!  Your soul, like %o, shall soon be mine to command.\""
+msgstr ""
+
+#: dat/quest.lua:3046
+#. text field
+msgid ""
+"\"I'm sure that your perseverance shall be the subject of innumerable\n"
+"ballads, but you shall not be around to hear them, I fear!\""
+msgstr ""
+
+#: dat/quest.lua:3050
+#. text field
+msgid ""
+"\"Thief!  %oC belongs to me, now.  I shall feed\n"
+"your living flesh to my minions.\""
+msgstr ""
+
+#: dat/quest.lua:3057
+#. synopsis field
+msgid "[Take %o with you in your quest for the Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:3059
+#. text field
+msgid ""
+"%lC notices %o in your possession,\n"
+"beams at you and says:\n"
+"\n"
+"    \"I knew you could defeat %n and retrieve\n"
+"    %o.  We shall never forget this\n"
+"    brave service.\n"
+"\n"
+"    \"Take %oh with you in your quest for the Amulet of Yendor.\n"
+"    I can sense that it has attuned %oiself to you already.\n"
+"\n"
+"    \"May %d guide you in your quest, and keep you from harm.\""
+msgstr ""
+
+#: dat/quest.lua:3072
+#. synopsis field
+msgid "[Keep %o, return through the portal to %Z; find the other Amulet.]"
+msgstr ""
+
+#: dat/quest.lua:3074
+#. text field
+msgid ""
+"\"You are the keeper of %o now.  It is time to\n"
+"recover the /other/ Amulet.  %Z await your return through\n"
+"the magic portal which brought you here.\""
+msgstr ""
+
+#: dat/quest.lua:3083
+#. text field
+msgid ""
+"\"Come near, my %S, and share your adventures with me.\n"
+"So, have you succeeded in your quest for the Amulet of Yendor?\""
+msgstr ""
+
+#: dat/themerms.lua:1068
+#. text field (partial, has concatenation)
+msgid "Dig"
+msgstr ""
+
+#: dat/tut-1.lua:24
+#. text field (partial, has concatenation)
+msgid "Note: Outside the tutorial, Ctrl-key combinations are shown prefixed with a caret, like '^"
+msgstr ""
+
+#: dat/tut-1.lua:80
+#. text field (partial, has concatenation)
+msgid "Move around with "
+msgstr ""
+
+#: dat/tut-1.lua:81
+#. text field (partial, has concatenation)
+msgid "Move diagonally with "
+msgstr ""
+
+#: dat/tut-1.lua:84
+#. text field (partial, has concatenation)
+msgid "Knights can jump with '"
+msgstr ""
+
+#: dat/tut-1.lua:89
+#. text field
+msgid "Some actions may require multiple tries before succeeding"
+msgstr ""
+
+#: dat/tut-1.lua:90
+#. text field
+msgid "Open the door by moving into it"
+msgstr ""
+
+#: dat/tut-1.lua:93
+#. text field (partial, has concatenation)
+msgid "Close the door with '"
+msgstr ""
+
+#: dat/tut-1.lua:98
+#. text field
+msgid "You can leave the tutorial via the magic portal."
+msgstr ""
+
+#: dat/tut-1.lua:103
+#. text field (partial, has concatenation)
+msgid "This door is locked. Kick it with '"
+msgstr ""
+
+#: dat/tut-1.lua:110
+#. text field (partial, has concatenation)
+msgid "Look around the map with '"
+msgstr ""
+
+#: dat/tut-1.lua:114
+#: dat/tut-1.lua:219
+#: dat/tut-1.lua:256
+#: dat/tut-1.lua:267
+#: dat/tut-1.lua:288
+#: dat/tut-1.lua:324
+#: dat/tut-2.lua:22
+#. text field (partial, has concatenation)
+msgid "Use '"
+msgstr ""
+
+#: dat/tut-1.lua:116
+#. text field
+msgid "Wrong secret"
+msgstr ""
+
+#: dat/tut-1.lua:120
+#. text field
+msgid "Behind this door is a dark corridor"
+msgstr ""
+
+#: dat/tut-1.lua:128
+#. text field
+msgid "There are four traps next to you! Search for them."
+msgstr ""
+
+#: dat/tut-1.lua:136
+#. text field (partial, has concatenation)
+msgid "Some traps can be disabled with '"
+msgstr ""
+
+#: dat/tut-1.lua:143
+#. text field (partial, has concatenation)
+msgid "Pick up items with '"
+msgstr ""
+
+#: dat/tut-1.lua:149
+#. text field (partial, has concatenation)
+msgid "Wear armor with '"
+msgstr ""
+
+#: dat/tut-1.lua:153
+#. text field (partial, has concatenation)
+msgid "Wield weapons with '"
+msgstr ""
+
+#: dat/tut-1.lua:156
+#. text field
+msgid "Hit monsters by walking into them."
+msgstr ""
+
+#: dat/tut-1.lua:162
+#. text field
+msgid "Now you know the very basics. You can leave the tutorial via the magic portal."
+msgstr ""
+
+#: dat/tut-1.lua:164
+#. text field
+msgid "Step into this portal to leave the tutorial"
+msgstr ""
+
+#: dat/tut-1.lua:169
+#. text field
+msgid "Push boulders by moving into them"
+msgstr ""
+
+#: dat/tut-1.lua:174
+#. text field (partial, has concatenation)
+msgid "Take off armor with '"
+msgstr ""
+
+#: dat/tut-1.lua:179
+#. text field
+msgid "Some items have shuffled descriptions, different each game"
+msgstr ""
+
+#: dat/tut-1.lua:180
+#. text field (partial, has concatenation)
+msgid "Pick up this scroll, read it with '"
+msgstr ""
+
+#: dat/tut-1.lua:184
+#. text field
+msgid "Another magic portal, a way to leave this tutorial"
+msgstr ""
+
+#: dat/tut-1.lua:199
+#. text field
+msgid "Avoid being burdened, it slows you down"
+msgstr ""
+
+#: dat/tut-1.lua:200
+#. text field (partial, has concatenation)
+msgid "Drop items with '"
+msgstr ""
+
+#: dat/tut-1.lua:201
+#. text field
+msgid "You can drop partial stacks by prefixing the item slot letter with a number"
+msgstr ""
+
+#: dat/tut-1.lua:207
+#. text field (partial, has concatenation)
+msgid "Throw items with '"
+msgstr ""
+
+#: dat/tut-1.lua:215
+#. text field
+msgid "Missiles, such as rocks, work better when fired from appropriate launcher"
+msgstr ""
+
+#: dat/tut-1.lua:218
+#. text field
+msgid "Wield the sling"
+msgstr ""
+
+#: dat/tut-1.lua:221
+#. text field (partial, has concatenation)
+msgid "Firing launches items from your quiver; Use '"
+msgstr ""
+
+#: dat/tut-1.lua:223
+#. text field (partial, has concatenation)
+msgid "You can wait a turn with '"
+msgstr ""
+
+#: dat/tut-1.lua:230
+#. text field (partial, has concatenation)
+msgid "You loot containers with '"
+msgstr ""
+
+#: dat/tut-1.lua:236
+#. text field (partial, has concatenation)
+msgid "Containers can also be emptied with '"
+msgstr ""
+
+#: dat/tut-1.lua:238
+#. text field (partial, has concatenation)
+msgid "Magic wands are used with '"
+msgstr ""
+
+#: dat/tut-1.lua:243
+#. text field (partial, has concatenation)
+msgid "You can run by prefixing a movement key with '"
+msgstr ""
+
+#: dat/tut-1.lua:248
+#. text field (partial, has concatenation)
+msgid "Travel across the level with '"
+msgstr ""
+
+#: dat/tut-1.lua:271
+#. text field (partial, has concatenation)
+msgid "Swap weapons quickly with '"
+msgstr ""
+
+#: dat/tut-1.lua:279
+#. text field (partial, has concatenation)
+msgid "Put on accessories with '"
+msgstr ""
+
+#: dat/tut-1.lua:281
+#. text field (partial, has concatenation)
+msgid "Remove accessories with '"
+msgstr ""
+
+#: dat/tut-1.lua:296
+#. text field
+msgid "UNDER CONSTRUCTION"
+msgstr ""
+
+#: dat/tut-1.lua:304
+#. text field
+msgid "Can't get through?  You're carrying too much."
+msgstr ""
+
+#: dat/tut-1.lua:315
+#. text field
+msgid "Spellcasting"
+msgstr ""
+
+#: dat/tut-1.lua:319
+#. text field
+msgid "Unfortunately you don't have enough energy to cast spells."
+msgstr ""
+
+#: dat/tut-1.lua:321
+#. text field (partial, has concatenation)
+msgid "Pick up the spellbook with '"
+msgstr ""
+
+#: dat/tut-1.lua:323
+#. text field (partial, has concatenation)
+msgid "Read the spellbook with '"
+msgstr ""
+
+#: dat/tut-1.lua:329
+#. text field (partial, has concatenation)
+msgid "You \\"
+msgstr ""
+

@@ -355,7 +355,7 @@ doread(void)
     if (check_capacity((char *) 0))
         return ECMD_OK;
 
-    scroll = getobj("read", read_ok, GETOBJ_PROMPT);
+    scroll = getobj(_("read"), read_ok, GETOBJ_PROMPT);
     if (!scroll)
         return ECMD_CANCEL;
     otyp = scroll->otyp;
@@ -564,11 +564,11 @@ doread(void)
         if (otyp == SPE_NOVEL)
             /* unseen novels are already distinguishable from unseen
                spellbooks so this isn't revealing any extra information */
-            what = "words";
+            what = _("words");
         else if (scroll->oclass == SPBOOK_CLASS)
-            what = "mystic runes";
+            what = _("mystic runes");
         else if (!scroll->dknown)
-            what = "formula on the scroll";
+            what = _("formula on the scroll");
         if (what) {
             pline(_("Being blind, you cannot read the %s."), what);
             return ECMD_OK;
@@ -1321,7 +1321,7 @@ seffect_destroy_armor(struct obj **sobjp)
             if (!objects[sobj->otyp].oc_name_known)
                 pline(_("This is %s!"), an(actualoname(sobj)));
             gk.known = TRUE;
-            atmp = getobj("destroy", any_worn_armor_ok, GETOBJ_PROMPT);
+            atmp = getobj(_("destroy"), any_worn_armor_ok, GETOBJ_PROMPT);
             /* check the return value, if user picked non-valid obj */
             if (any_worn_armor_ok(atmp) == GETOBJ_SUGGEST)
                 otmp = atmp;
@@ -1769,7 +1769,7 @@ seffect_charging(struct obj **sobjp)
        was already delivered */
     useup(sobj);
     *sobjp = 0; /* it's gone */
-    otmp = getobj("charge", charge_ok, GETOBJ_PROMPT | GETOBJ_ALLOWCNT);
+    otmp = getobj(_("charge"), charge_ok, GETOBJ_PROMPT | GETOBJ_ALLOWCNT);
     if (otmp)
         recharge(otmp, scursed ? -1 : sblessed ? 1 : 0);
 }
@@ -1845,7 +1845,7 @@ seffect_fire(struct obj **sobjp)
             pline(_("Where do you want to center the explosion?"));
             getpos_sethilite(display_stinking_cloud_positions,
                              can_center_cloud);
-            (void) getpos(&cc, TRUE, "the desired position");
+            (void) getpos(&cc, TRUE, _("the desired position"));
             if (!can_center_cloud(cc.x, cc.y)) {
                 /* try to reach too far, get burned */
                 cc.x = u.ux;
@@ -1886,10 +1886,10 @@ seffect_earth(struct obj **sobjp)
                           sblessed ? _("around") : _("above"));
             } else {
                 char matbuf[BUFSZ];
-                const char *const avalanche = "avalanche";
+                const char *const avalanche = N_("avalanche");
 
                 Sprintf(matbuf, "%s",
-                        sblessed ? makeplural(avalanche) : an(avalanche));
+                        sblessed ? makeplural(_(avalanche)) : an(_(avalanche)));
                 pline(_("%s of boulders %s %s you!"),
                       upstart(matbuf), vtense(matbuf, _("materialize")),
                       sblessed ? _("around") : _("above"));
@@ -2276,7 +2276,7 @@ drop_boulder_on_player(
         dmg = 0;
     wake_nearto(u.ux, u.uy, 4 * 4);
     /* Must be before the losehp(), for bones files */
-    if (!flooreffects(otmp2, u.ux, u.uy, "fall")) {
+    if (!flooreffects(otmp2, u.ux, u.uy, _("fall"))) {
         place_object(otmp2, u.ux, u.uy);
         stackobj(otmp2);
         newsym(u.ux, u.uy);
@@ -2349,7 +2349,7 @@ drop_boulder_on_monster(coordxy x, coordxy y, boolean confused, boolean byu)
         return 1;
     }
     /* Drop the rock/boulder to the floor */
-    if (!flooreffects(otmp2, x, y, "fall")) {
+    if (!flooreffects(otmp2, x, y, _("fall"))) {
         place_object(otmp2, x, y);
         stackobj(otmp2);
         newsym(x, y); /* map the rock */

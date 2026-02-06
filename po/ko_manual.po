@@ -10477,3 +10477,63 @@ msgstr "소코반에 들어갔다"
 #    (suffix가 다르므로: " without food" vs " without any armor")
 #
 # ============================================================
+
+# ============================================================
+# Endgame Lua 레벨 메시지 (dat/*.lua)
+# ============================================================
+
+# air.lua - 공기 원소 레벨
+#: ../dat/air.lua:12
+msgid "What a strange feeling!"
+msgstr "이상한 느낌이다!"
+
+#: ../dat/air.lua:13
+msgid "You notice that there is no gravity here."
+msgstr "여기에는 중력이 없다는 것을 알아챘다."
+
+# astral.lua - 아스트랄 계
+#: ../dat/astral.lua:10
+msgid "You arrive on the Astral Plane!"
+msgstr "아스트랄 계에 도착했다!"
+
+#: ../dat/astral.lua:11
+#, c-format
+msgid "Here the High Temple of %d is located."
+msgstr "여기에 %d의 고등 사원이 있다."
+
+#: ../dat/astral.lua:12
+msgid "You sense alarm, hostility, and excitement in the air!"
+msgstr "공기 중에서 경보, 적의, 흥분을 느낀다!"
+
+# earth.lua - 대지 원소 레벨
+#: ../dat/earth.lua:17
+msgid "Well done, mortal!"
+msgstr "잘했다, 필멸자여!"
+
+#: ../dat/earth.lua:18
+msgid "But now thou must face the final Test..."
+msgstr "하지만 이제 최후의 시험을 마주해야 한다..."
+
+#: ../dat/earth.lua:19
+msgid "Prove thyself worthy or perish!"
+msgstr "자격을 증명하라, 아니면 죽어라!"
+
+# water.lua - 물 원소 레벨
+#: ../dat/water.lua:10
+msgid "You find yourself suspended in an air bubble surrounded by water."
+msgstr "물에 둘러싸인 공기 방울 안에 떠 있다는 것을 알아챘다."
+
+# ============================================================
+# 신 분노 컨텍스트 (insight.c)
+# C_() 컨텍스트로 candle 메시지의 " is"와 분리
+# ============================================================
+
+#: ../src/insight.c:1970
+msgctxt "god_anger"
+msgid " is"
+msgstr "​"
+
+#: ../src/insight.c:1970
+msgctxt "god_anger"
+msgid " was"
+msgstr "​"

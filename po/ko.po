@@ -7476,143 +7476,143 @@ msgstr "%s %s{에는} 유형 이름을 할당할 수 없다."
 msgid "don't know %s %s well enough to name %s."
 msgstr "%s %s{을/를} 이름을 지을 만큼 잘 모른다 %s."
 
+# 유령 이름 (Ghost names) - NetHack 개발자/기여자 이름
 #: ../src/do_name.c:762
 msgid "Adri"
-msgstr ""
+msgstr "아드리"
 
 #: ../src/do_name.c:762
 msgid "Andries"
-msgstr ""
+msgstr "안드리스"
 
 #: ../src/do_name.c:762
 msgid "Andreas"
-msgstr ""
+msgstr "안드레아스"
 
 #: ../src/do_name.c:762
 msgid "Bert"
-msgstr ""
+msgstr "버트"
 
 #: ../src/do_name.c:763
 msgid "David"
-msgstr ""
+msgstr "데이비드"
 
 #: ../src/do_name.c:763
 msgid "Dirk"
-msgstr ""
+msgstr "디르크"
 
 #: ../src/do_name.c:763
 msgid "Emile"
-msgstr ""
+msgstr "에밀"
 
 #: ../src/do_name.c:763
 msgid "Frans"
-msgstr ""
+msgstr "프란스"
 
 #: ../src/do_name.c:764
 msgid "Fred"
-msgstr ""
+msgstr "프레드"
 
 #: ../src/do_name.c:764
 msgid "Greg"
-msgstr ""
+msgstr "그렉"
 
 #
 #: ../src/do_name.c:764
 msgid "Hether"
-msgstr ""
+msgstr "헤더"
 
 #: ../src/do_name.c:764
 msgid "Jay"
-msgstr ""
+msgstr "제이"
 
 #: ../src/do_name.c:765
 msgid "John"
-msgstr ""
+msgstr "존"
 
 #: ../src/do_name.c:765
 msgid "Jon"
-msgstr ""
+msgstr "존"
 
 #: ../src/do_name.c:765
 msgid "Karnov"
-msgstr ""
+msgstr "카르노프"
 
 #: ../src/do_name.c:765
 msgid "Kay"
-msgstr ""
+msgstr "케이"
 
 #: ../src/do_name.c:766
 msgid "Kenny"
-msgstr ""
+msgstr "케니"
 
 #: ../src/do_name.c:766
 msgid "Kevin"
-msgstr ""
+msgstr "케빈"
 
 #: ../src/do_name.c:766
 msgid "Maud"
-msgstr ""
+msgstr "모드"
 
-# 방어구 - 방패
 #: ../src/do_name.c:766
 msgid "Michiel"
-msgstr ""
+msgstr "미힐"
 
 #: ../src/do_name.c:767
 msgid "Mike"
-msgstr ""
+msgstr "마이크"
 
 #: ../src/do_name.c:767
 msgid "Peter"
-msgstr ""
+msgstr "피터"
 
 #: ../src/do_name.c:767
 msgid "Robert"
-msgstr ""
+msgstr "로버트"
 
 #: ../src/do_name.c:767
 msgid "Ron"
-msgstr ""
+msgstr "론"
 
 #: ../src/do_name.c:768
 msgid "Tom"
-msgstr ""
+msgstr "톰"
 
 #: ../src/do_name.c:768
 msgid "Wilmar"
-msgstr ""
+msgstr "빌마르"
 
 #: ../src/do_name.c:768
 msgid "Nick Danger"
-msgstr ""
+msgstr "닉 데인저"
 
 #: ../src/do_name.c:768
 msgid "Phoenix"
-msgstr ""
+msgstr "피닉스"
 
 #: ../src/do_name.c:769
 msgid "Jiro"
-msgstr ""
+msgstr "지로"
 
 #: ../src/do_name.c:769
 msgid "Mizue"
-msgstr ""
+msgstr "미즈에"
 
 #: ../src/do_name.c:769
 msgid "Stephan"
-msgstr ""
+msgstr "스테판"
 
 #: ../src/do_name.c:769
 msgid "Lance Braccus"
-msgstr ""
+msgstr "랜스 브라커스"
 
 #: ../src/do_name.c:770
 msgid "Shadowhawk"
-msgstr ""
+msgstr "쉐도우호크"
 
 #: ../src/do_name.c:770
 msgid "Murphy"
-msgstr ""
+msgstr "머피"
 
 #: ../src/do_name.c:884 ../src/pray.c:2547
 msgid "someone"
@@ -8161,41 +8161,42 @@ msgstr "로드러너루스 디게스투스"
 msgid "Eatibus Anythingus"
 msgstr "이티부스 애니싱구스"
 
+# Looney Tunes 가짜 라틴어 코요테 이름 (환각 효과)
 #: ../src/do_name.c:1558
 msgid "Famishus-Famishus"
-msgstr ""
+msgstr "파미수스-파미수스"
 
 #: ../src/do_name.c:1558
 msgid "Eatibus Almost Anythingus"
-msgstr ""
+msgstr "에아티부스 올모스트 애니싱구스"
 
 #: ../src/do_name.c:1559
 msgid "Eatius Birdius"
-msgstr ""
+msgstr "에아티우스 버디우스"
 
 #: ../src/do_name.c:1560
 msgid "Famishius Fantasticus"
-msgstr ""
+msgstr "파미시우스 판타스티쿠스"
 
 #: ../src/do_name.c:1560
 msgid "Eternalii Famishiis"
-msgstr ""
+msgstr "에테르날리 파미시이스"
 
 #: ../src/do_name.c:1561
 msgid "Famishus Vulgarus"
-msgstr ""
+msgstr "파미수스 불가루스"
 
 #: ../src/do_name.c:1562
 msgid "Famishius Vulgaris Ingeniusi"
-msgstr ""
+msgstr "파미시우스 불가리스 인게니우시"
 
 #: ../src/do_name.c:1562
 msgid "Eatius-Slobbius"
-msgstr ""
+msgstr "에아티우스-슬로비우스"
 
 #: ../src/do_name.c:1563
 msgid "Hardheadipus Oedipus"
-msgstr ""
+msgstr "하드헤아디푸스 오이디푸스"
 
 # ============================================================
 # Looney Tunes 가짜 라틴어 코요테 이름 (환각 효과)
@@ -8207,35 +8208,35 @@ msgstr "카르니보루스 슬로비우스"
 
 #: ../src/do_name.c:1564
 msgid "Hard-Headipus Ravenus"
-msgstr ""
+msgstr "하드-헤아디푸스 레이버누스"
 
 #: ../src/do_name.c:1565
 msgid "Evereadii Eatibus"
-msgstr ""
+msgstr "에버레이디 에아티부스"
 
 #: ../src/do_name.c:1566
 msgid "Apetitius Giganticus"
-msgstr ""
+msgstr "아페티티우스 기간티쿠스"
 
 #: ../src/do_name.c:1566
 msgid "Hungrii Flea-Bagius"
-msgstr ""
+msgstr "헝그리 플리-바기우스"
 
 #: ../src/do_name.c:1567
 msgid "Overconfidentii Vulgaris"
-msgstr ""
+msgstr "오버콘피덴티 불가리스"
 
 #: ../src/do_name.c:1568
 msgid "Caninus Nervous Rex"
-msgstr ""
+msgstr "카니누스 네르보수스 렉스"
 
 #: ../src/do_name.c:1568
 msgid "Grotesques Appetitus"
-msgstr ""
+msgstr "그로테스케스 아페티투스"
 
 #: ../src/do_name.c:1569
 msgid "Nemesis Ridiculii"
-msgstr ""
+msgstr "네메시스 리디쿨리"
 
 # Canis latrans = 코요테의 학명 (환각 효과)
 #: ../src/do_name.c:1570
@@ -12628,10 +12629,21 @@ msgstr "%8ld개의 %s (%ld %s 가치),"
 msgid "%8ld worthless piece%s of colored glass,"
 msgstr "%8ld개의 쓸모없는 색유리 조각%s,"
 
+# ============================================================
+# 게임 종료 메시지 (Death/Ascension Messages)
+# ============================================================
+# %1$s = 동사 (died, escaped, ascended 등)
+# %2$s = 장소명
+# %3$d = 던전 레벨
+# %4$ld = 점수
+# %5$s = 복수형 's' (한국어에서 불필요 → %.0s로 숨김)
+# ============================================================
 #: ../src/end.c:1528
 msgid "passed away"
 msgstr "세상을 떠났다"
 
+# 예: "You escaped beyond the confines of the dungeon with 1000 points,"
+# 한국어: "당신은 던전의 경계를 넘어 탈출했다. 1000점,"
 #: ../src/end.c:1530
 #, c-format
 msgid "You %1$s beyond the confines of the dungeon with %2$ld point%3$s,"
@@ -12641,21 +12653,30 @@ msgstr "당신은 던전의 경계를 넘어 %1$s. %2$ld점%3$.0s,"
 msgid "The Astral Plane"
 msgstr "아스트랄 차원"
 
+# 예: "You died in The Dungeons of Doom on dungeon level 5 with 1000 points,"
+# 한국어: "파멸의 던전 5층에서 죽었다. 1000점,"
+# 어순 변경: 장소(%2$s) + 층수(%3$d) + 동사(%1$s)
 #: ../src/end.c:1543
 #, c-format
 msgid "You %1$s in %2$s on dungeon level %3$d with %4$ld point%5$s,"
 msgstr "%2$s %3$d층에서 %1$s. %4$ld점%5$.0s,"
 
+# 예: "You died in The Astral Plane with 50000 points,"
+# 한국어: "아스트랄 차원에서 죽었다. 50000점,"
 #: ../src/end.c:1547
 #, c-format
 msgid "You %1$s in %2$s with %3$ld point%4$s,"
 msgstr "%2$s에서 %1$s. %3$ld점%4$.0s,"
 
+# 예: "and 500 pieces of gold, after 10000 moves."
+# 한국어: "500골드, 10000턴 후."
 #: ../src/end.c:1558
 #, c-format
 msgid "and %1$ld piece%2$s of gold, after %3$ld move%4$s."
 msgstr "%1$ld골드%2$.0s, %3$ld턴%4$.0s 후."
 
+# 예: "You were level 14 with a maximum of 100 hit points when you died."
+# 한국어: "14레벨, 최대 100HP로, 죽었다."
 #: ../src/end.c:1563
 #, c-format
 msgid "You were level %1$d with a maximum of %2$d hit point%3$s when you %4$s."
@@ -15855,8 +15876,23 @@ msgstr "큰 방에 들어갔다"
 msgid "learned castle drawbridge's tune"
 msgstr "성 도개교의 선율을 배웠다"
 
-# enlght_line 포맷: 한국어 어순 (주어+목적어+동사)
-# %1$s=주어(You), %2$s=동사(went), %3$s=목적어( without food), %4$s=추가
+# ============================================================
+# enl_msg() 핵심 조합 포맷 - 한국어 SOV 어순 변환
+# ============================================================
+# 영어(SVO): subject(You) + verb(went) + object(without food) + extra
+# 한국어(SOV): 주어(%1$s) + 목적어(%3$s) + 동사(%2$s) + 추가(%4$s)
+#
+# 조합 예시:
+# 영어: " You went without food from starvation."
+#       %1$s="You " %2$s="went" %3$s=" without food" %4$s=" from starvation"
+# 한국어: " 당신은 음식 없이 지냈다 굶주림으로."
+#         %1$s="당신은 " %3$s="음식 없이 " %2$s="지냈다" %4$s=" 굶주림으로"
+#
+# 영어: " You are invisible."
+#       %1$s="You " %2$s="are " %3$s="invisible" %4$s=""
+# 한국어: " 당신은 투명 상태이다."
+#         %1$s="당신은 " %3$s="투명 상태" %2$s="이다" %4$s=""
+# ============================================================
 #: ../src/insight.c:163
 #, c-format
 msgid " %s%s%s%s."
@@ -16992,7 +17028,20 @@ msgstr "%s을 들고"
 # ============================================================
 # ============================================================
 # 기술 메시지 조합 패턴 (Skill Messages)
-# 예: "You have expert skill with long sword"
+# ============================================================
+# 조합 방식: Sprintf(buf, C_("skill_have/are", "%s %s %s"), 숙련도, "기술", 무기명)
+#
+# 예시 1 (have 동사):
+#   영어: "You have expert skill with long sword"
+#   조합: you_have("expert skill with long sword", "")
+#   한국어: "당신은 장검 숙련 기술을 가지고 있다"
+#
+# 예시 2 (are 동사):
+#   영어: "You are unskilled in bare-handed combat"
+#   조합: you_are("unskilled in bare-handed combat", "")
+#   한국어: "당신은 맨손 전투 기술이 미숙하다"
+#
+# msgctxt로 have/are 동사 맥락 구분
 # ============================================================
 #: ../src/insight.c:1338 ../src/insight.c:1433
 #, c-format
@@ -18966,21 +19015,23 @@ msgstr "%s의 라벨을 해독했다."
 msgid "Altarian Dollar"
 msgstr "알타이어 달러"
 
+# Discworld 참조
 #: ../src/invent.c:1524
 msgid "Ankh-Morpork Dollar"
-msgstr ""
+msgstr "앙크-모르포크 달러"
 
 #: ../src/invent.c:1525
 msgid "auric"
-msgstr ""
+msgstr "아우릭"
 
+# Space Quest 게임 참조
 #: ../src/invent.c:1526
 msgid "buckazoid"
-msgstr ""
+msgstr "버카조이드"
 
 #: ../src/invent.c:1527
 msgid "cirbozoid"
-msgstr ""
+msgstr "서보조이드"
 
 #: ../src/invent.c:1528
 msgid "credit chit"
@@ -18990,26 +19041,29 @@ msgstr "크레딧 칩"
 msgid "cubit"
 msgstr "큐빗"
 
+# 은하수를 여행하는 히치하이커 참조
 #: ../src/invent.c:1530
 msgid "Flanian Pobble Bead"
-msgstr ""
+msgstr "플라니안 포블 비드"
 
 #: ../src/invent.c:1531
 msgid "fretzer"
-msgstr ""
+msgstr "프레처"
 
 # 스타워즈
 #: ../src/invent.c:1532
 msgid "imperial credit"
 msgstr "제국 크레딧"
 
+# The Moon is a Harsh Mistress 참조
 #: ../src/invent.c:1533
 msgid "Hong Kong Luna Dollar"
-msgstr ""
+msgstr "홍콩 루나 달러"
 
+# Snow Crash 참조
 #: ../src/invent.c:1534
 msgid "kongbuck"
-msgstr ""
+msgstr "콩벅"
 
 #: ../src/invent.c:1535
 msgid "nanite"
@@ -19020,17 +19074,19 @@ msgstr "나나이트"
 msgid "quatloo"
 msgstr "콰틀루"
 
+# The Sims 게임 참조
 #: ../src/invent.c:1537
 msgid "simoleon"
-msgstr ""
+msgstr "시몰레온"
 
 #: ../src/invent.c:1538
 msgid "solari"
-msgstr ""
+msgstr "솔라리"
 
+# Spaceballs 영화 참조
 #: ../src/invent.c:1539
 msgid "spacebuck"
-msgstr ""
+msgstr "스페이스벅"
 
 # 스포어 게임
 #: ../src/invent.c:1540
@@ -30675,18 +30731,19 @@ msgstr "%s보거나 기억한 새김글%s:"
 msgid "No engravings seen or remembered%s."
 msgstr "각인이 보이거나 기억되지 않는다%s."
 
+# 오크 수배 포스터 설명 (Orc wanted poster)
 #: ../src/pager.c:2228
 #, c-format
 msgid "%s is a member of a marauding horde of orcs"
-msgstr ""
+msgstr "%s{은/는} 약탈하는 오크 무리의 일원으로"
 
 #: ../src/pager.c:2229
 msgid "rumored to have brutally attacked and plundered"
-msgstr ""
+msgstr "잔인하게 공격하고 약탈했다고 알려진"
 
 #: ../src/pager.c:2230
 msgid "the ordinarily sheltered town that is located "
-msgstr ""
+msgstr "평소에는 보호받던 마을을 공격했다."
 
 # 오크 지명수배 포스터 설명
 #: ../src/pager.c:2231
@@ -30695,33 +30752,34 @@ msgstr "노움 광산 깊은 곳에서."
 
 #: ../src/pager.c:2233
 msgid "The members of that vicious horde proudly and "
-msgstr ""
+msgstr "그 사악한 무리의 구성원들은 자랑스럽게"
 
 #: ../src/pager.c:2234
 msgid "defiantly acclaim their allegiance to their"
-msgstr ""
+msgstr "그리고 대담하게 충성을 선언하며"
 
 #: ../src/pager.c:2235
 #, c-format
 msgid "leader %s in their names."
 msgstr "리더 %s{을/를} 이름에 새기고 있다."
 
+# 오크 장물아비 설명
 #: ../src/pager.c:2240
 #, c-format
 msgid "\"%s\" is the common dungeon name of"
-msgstr ""
+msgstr "\"%s\"은(는) 던전에서 알려진 이름으로"
 
 #: ../src/pager.c:2241
 msgid "a nefarious orc who is known to acquire property"
-msgstr ""
+msgstr "도둑들에게서 물건을 사서"
 
 #: ../src/pager.c:2242
 msgid "from thieves and sell it off for profit."
-msgstr ""
+msgstr "이익을 위해 되팔아 먹는 사악한 오크이다."
 
 #: ../src/pager.c:2244
 msgid "The perpetrator was last seen hanging around the"
-msgstr ""
+msgstr "범인은 마지막으로"
 
 #: ../src/pager.c:2245
 msgid "stairs leading to the Gnomish Mines."
@@ -35296,57 +35354,63 @@ msgstr "웃음소리."
 msgid "son"
 msgstr "위"
 
+# 관광지 티셔츠 클리셰 ("I went to X and all I got was this lousy T-shirt!")
 #: ../src/read.c:104
 msgid "I explored the Dungeons of Doom and all I got was this lousy T-shirt!"
-msgstr ""
+msgstr "죽음의 던전 탐험했는데 얻은 건 이 구린 티셔츠뿐!"
 
+# Mae West 유명 대사 패러디 ("Is that a pistol in your pocket...")
 #: ../src/read.c:105
 msgid "Is that Mjollnir in your pocket or are you just happy to see me?"
-msgstr ""
+msgstr "주머니에 묠니르가 있는 건가요, 아니면 날 보고 기쁜 건가요?"
 
+# 성적 농담 + NetHack #enhance 커맨드 참조
 #: ../src/read.c:106
 msgid "It's not the size of your sword, it's how #enhance'd you are with it."
-msgstr ""
+msgstr "검 크기가 중요한 게 아니라, 얼마나 #향상되었느냐가 중요해."
 
 #: ../src/read.c:107
 msgid "Madame Elvira's House O' Succubi Lifetime Customer"
-msgstr ""
+msgstr "마담 엘비라의 서큐버스 클럽 평생 회원"
 
 #: ../src/read.c:108
 msgid "Madame Elvira's House O' Succubi Employee of the Month"
-msgstr ""
+msgstr "마담 엘비라의 서큐버스 클럽 이달의 직원"
 
+# "X do it Y" 슬로건 패러디
 #: ../src/read.c:109
 msgid "Ludios Vault Guards Do It In Small, Dark Rooms"
-msgstr ""
+msgstr "루디오스 금고 경비원들은 좁고 어두운 방에서 한다"
 
 #: ../src/read.c:110
 msgid "Yendor Military Soldiers Do It In Large Groups"
-msgstr ""
+msgstr "옌더 군인들은 대규모 집단으로 한다"
 
 #: ../src/read.c:111
 msgid "I survived Yendor Military Boot Camp"
-msgstr ""
+msgstr "나는 옌더 군사 훈련소에서 살아남았다"
 
 #: ../src/read.c:112
 msgid "Ludios Accounting School Intra-Mural Lacrosse Team"
-msgstr ""
+msgstr "루디오스 회계학교 교내 라크로스 팀"
 
 #: ../src/read.c:113
 msgid "Oracle(TM) Fountains 10th Annual Wet T-Shirt Contest"
-msgstr ""
+msgstr "오라클(TM) 분수 제10회 젖은 티셔츠 대회"
 
 #: ../src/read.c:114
 msgid "Hey, black dragon!  Disintegrate THIS!"
-msgstr ""
+msgstr "이봐, 검은 용! 이거나 분해해봐!"
 
+# 유명한 티셔츠 문구
 #: ../src/read.c:115
 msgid "I'm With Stupid -->"
-msgstr ""
+msgstr "바보랑 같이 있음 -->"
 
+# 정치 슬로건 패러디 (Izchak Miller = NetHack 개발자)
 #: ../src/read.c:116
 msgid "Don't blame me, I voted for Izchak!"
-msgstr ""
+msgstr "날 탓하지 마, 난 이즈착에게 투표했어!"
 
 # ============================================================
 # 티셔츠 메시지 (T-shirt Messages)
@@ -35356,30 +35420,36 @@ msgstr ""
 msgid "Don't Panic"
 msgstr "당황하지 마"
 
+# 란마 1/2 애니메이션 참조
 #: ../src/read.c:118
 msgid "Furinkan High School Athletic Dept."
-msgstr ""
+msgstr "풍림관 고등학교 체육부"
 
+# Animaniacs 만화 대사
 #: ../src/read.c:119
 msgid "Hel-LOOO, Nurse!"
-msgstr ""
+msgstr "안-녕, 간호사!"
 
+# 고양이 이모티콘
 #: ../src/read.c:120
 msgid "=^.^="
-msgstr ""
+msgstr "=^.^="
 
+# 의류 태그 패러디
 #: ../src/read.c:121
 #, c-format
 msgid "100% goblin hair - do not wash"
-msgstr ""
+msgstr "100% 고블린 털 - 세탁 금지"
 
+# Abercrombie & Fitch 의류 브랜드 패러디
 #: ../src/read.c:122
 msgid "Aberzombie and Fitch"
-msgstr ""
+msgstr "아버좀비 앤 피치"
 
+# Calvin Klein (cK) 광고 패러디
 #: ../src/read.c:123
 msgid "cK -- Cockatrice touches the Kop"
-msgstr ""
+msgstr "cK -- 코카트리스가 경관을 만지다"
 
 #: ../src/read.c:124
 msgid "Don't ask me, I only adventure here"
@@ -35389,54 +35459,60 @@ msgstr "나한테 묻지 마, 난 여기서 모험할 뿐이야"
 msgid "Down with pants!"
 msgstr "바지 타도!"
 
+# NetHack에서 'd'는 개 심볼
 #: ../src/read.c:126
 msgid "d, your dog or a killer?"
-msgstr ""
+msgstr "d, 네 개야 아니면 살인마야?"
 
 #: ../src/read.c:127
 msgid "FREE PUG AND NEWT!"
-msgstr ""
+msgstr "퍼그와 도롱뇽을 석방하라!"
 
 #: ../src/read.c:128
 msgid "Go team ant!"
-msgstr ""
+msgstr "개미 팀 파이팅!"
 
-# "Got milk?" 패러디
+# "Got milk?" 패러디 -> 한국 우유 광고 "야호 나는 대관령이 좋아" 패러디
 #: ../src/read.c:129
 msgid "Got newt?"
-msgstr "도롱뇽 있어?"
+msgstr "야호 나는 도롱뇽이 좋아"
 
+# Charlie Drake 코미디언 유행어
 #: ../src/read.c:130
 msgid "Hello, my darlings!"
-msgstr ""
+msgstr "안녕, 내 사랑들!"
 
+# "Steal This Book" (Abbie Hoffman) 패러디
 #: ../src/read.c:131
 msgid "Hey!  Nymphs!  Steal This T-Shirt!"
-msgstr ""
+msgstr "이봐! 님프들! 이 티셔츠를 훔쳐봐!"
 
 #: ../src/read.c:132
 msgid "I <3 Dungeon of Doom"
 msgstr "I ♥ 파멸의 던전"
 
+# Maud = NetHack NPC 이름
 #: ../src/read.c:133
 msgid "I <3 Maud"
-msgstr ""
+msgstr "I ♥ 모드"
 
+# 폭탄 처리반 슬로건 패러디 ("If you see me running, try to keep up")
 #: ../src/read.c:135
 msgid "I am a Valkyrie.  If you see me running, try to keep up."
-msgstr ""
+msgstr "나는 발키리다. 내가 뛰는 걸 보면, 따라잡아 봐."
 
 #: ../src/read.c:136
 msgid "I am not a pack rat - I am a collector"
-msgstr ""
+msgstr "난 수집광이 아니야 - 난 수집가야"
 
 #: ../src/read.c:137
 msgid "I bounced off a rubber tree"
 msgstr "고무나무에서 튕겨 나왔어"
 
+# Monkey Island 게임 참조
 #: ../src/read.c:138
 msgid "Plunder Island Brimstone Beach Club"
-msgstr ""
+msgstr "약탈 섬 유황 해변 클럽"
 
 #: ../src/read.c:139
 msgid "If you can read this, I can hit you with my polearm"
@@ -35448,48 +35524,54 @@ msgstr "나 혼란스러워!"
 
 #: ../src/read.c:141
 msgid "I scored with the princess"
-msgstr ""
+msgstr "나 공주랑 잤어"
 
+# 명언
 #: ../src/read.c:142
 msgid "I want to live forever or die in the attempt."
-msgstr ""
+msgstr "영원히 살거나, 시도하다 죽거나."
 
+# Linkin Park 밴드 이름 패러디 (Lichen = 이끼)
 #: ../src/read.c:143
 msgid "Lichen Park"
-msgstr ""
+msgstr "인낀 파크"
 
 #: ../src/read.c:144
 msgid "LOST IN THOUGHT - please send search party"
-msgstr ""
+msgstr "생각에 빠져 길을 잃음 - 수색대를 보내주세요"
 
+# "Meat is Murder" (The Smiths 앨범) + 반지의 제왕 패러디
 #: ../src/read.c:145
 msgid "Meat is Mordor"
-msgstr ""
+msgstr "고기는 모르도르다"
 
 #: ../src/read.c:146
 msgid "Minetown Better Business Bureau"
-msgstr ""
+msgstr "광산마을 상공회의소"
 
 #: ../src/read.c:147
 msgid "Minetown Watch"
-msgstr ""
+msgstr "광산마을 자경단"
 
+# Discworld (Terry Pratchett) 참조
 #: ../src/read.c:149
 msgid ""
 "Ms. Palm's House of Negotiable Affection--A Very Reputable House Of Disrepute"
-msgstr ""
+msgstr "팜 여사의 협상 가능한 애정의 집--매우 평판 좋은 불명예의 집"
 
 #: ../src/read.c:151
 msgid "Protection Racketeer"
-msgstr ""
+msgstr "보호세 갈취자"
 
+# Conan the Barbarian 참조 (Crom = 코난의 신)
 #: ../src/read.c:152
 msgid "Real men love Crom"
-msgstr ""
+msgstr "진짜 사나이는 크롬을 사랑한다"
 
+# Austin Powers 영화 참조
 #: ../src/read.c:153
 msgid "Somebody stole my Mojo!"
-msgstr ""
+msgstr "누가 내 모조를 훔쳤어!"
 
 #: ../src/read.c:154
 msgid "The Hellhound Gang"
@@ -35497,15 +35579,17 @@ msgstr "헬하운드 갱"
 
 #: ../src/read.c:155
 msgid "The Werewolves"
-msgstr ""
+msgstr "늑대인간들"
 
+# "They Might Be Giants" 밴드 이름 패러디
 #: ../src/read.c:156
 msgid "They Might Be Storm Giants"
-msgstr ""
+msgstr "폭풍 거인들일지도 몰라"
 
+# 총기 슬로건 "Guns don't kill people, people kill people" 패러디
 #: ../src/read.c:157
 msgid "Weapons don't kill people, I kill people"
-msgstr ""
+msgstr "무기가 사람을 죽이는 게 아니라, 내가 죽인다"
 
 # 밴드 이름 참조
 #: ../src/read.c:158
@@ -35516,13 +35600,15 @@ msgstr "화이트 좀비"
 msgid "You're killing me!"
 msgstr "죽겠다!"
 
+# 대학 스포츠 팀 슬로건 (Anhur = NetHack 신)
 #: ../src/read.c:160
 msgid "Anhur State University - Home of the Fighting Fire Ants!"
-msgstr ""
+msgstr "안후르 주립대학교 - 투지 넘치는 불개미들의 본거지!"
 
+# 유명한 캠페인
 #: ../src/read.c:161
 msgid "FREE HUGS"
-msgstr ""
+msgstr "무료 포옹"
 
 # 연속 승천자 (NetHack 플레이어 유형)
 #: ../src/read.c:162
@@ -35531,11 +35617,12 @@ msgstr "연속 승천자"
 
 #: ../src/read.c:163
 msgid "Real men are valkyries"
-msgstr ""
+msgstr "진짜 사나이는 발키리다"
 
+# YMCA 패러디
 #: ../src/read.c:164
 msgid "Young Men's Cavedigging Association"
-msgstr ""
+msgstr "청년 동굴파기 협회"
 
 # "월스트리트를 점령하라" 패러디
 #: ../src/read.c:165
@@ -35544,7 +35631,7 @@ msgstr "루디오스 요새를 점령하라"
 
 #: ../src/read.c:166
 msgid "I couldn't afford this T-shirt so I stole it!"
-msgstr ""
+msgstr "이 티셔츠 살 돈이 없어서 훔쳤어!"
 
 #: ../src/read.c:167
 msgid "Mind flayers suck"
@@ -35572,21 +35659,25 @@ msgstr "채식주의자"
 msgid "Hello, I'm War!"
 msgstr "안녕, 난 전쟁이야!"
 
+# 유명한 격언
 #: ../src/read.c:173
 msgid "It is better to light a candle than to curse the darkness"
-msgstr ""
+msgstr "어둠을 저주하느니 촛불 하나 켜는 게 낫다"
 
+# 위 격언의 반전
 #: ../src/read.c:174
 msgid "It is easier to curse the darkness than to light a candle"
-msgstr ""
+msgstr "촛불 켜는 것보다 어둠을 저주하는 게 더 쉽다"
 
+# Big Bang Theory 참조
 #: ../src/read.c:178
 msgid "rock--paper--scissors--lizard--Spock!"
-msgstr ""
+msgstr "가위바위보도마뱀스팍"
 
+# Game of Thrones 참조 ("모든 사람은 죽는다" -- "모든 사람은 섬긴다")
 #: ../src/read.c:182
 msgid "/Valar morghulis/ -- /Valar dohaeris/"
-msgstr ""
+msgstr "/발라르 모르굴리스/ -- /발라르 도하에리스/"
 
 # ============================================================
 # 하와이안 셔츠 모티프 (Hawaiian Shirt Motifs)
@@ -35605,7 +35696,7 @@ msgstr "큰부리새"
 
 #: ../src/read.c:197
 msgid "bird of paradise"
-msgstr ""
+msgstr "극락조"
 
 #: ../src/read.c:199
 msgid "sea turtle"
@@ -35613,19 +35704,19 @@ msgstr "바다거북"
 
 #: ../src/read.c:200
 msgid "tropical fish"
-msgstr ""
+msgstr "열대어"
 
 #: ../src/read.c:205
 msgid "plumeria"
-msgstr ""
+msgstr "플루메리아"
 
 #: ../src/read.c:206
 msgid "orchid"
-msgstr ""
+msgstr "난초"
 
 #: ../src/read.c:207
 msgid "hibiscus flower"
-msgstr ""
+msgstr "무궁화"
 
 #: ../src/read.c:208
 msgid "palm tree"
@@ -35637,11 +35728,11 @@ msgstr "훌라 댄서"
 
 #: ../src/read.c:211
 msgid "sailboat"
-msgstr ""
+msgstr "요트"
 
 #: ../src/read.c:212
 msgid "ukulele"
-msgstr ""
+msgstr "우쿨렐레"
 
 # 하와이안 셔츠 배경 패턴
 #: ../src/read.c:236
@@ -35650,7 +35741,7 @@ msgstr "추상적"
 
 #: ../src/read.c:237
 msgid "geometric"
-msgstr ""
+msgstr "기하학적"
 
 # 하와이안 셔츠 배경 패턴
 #: ../src/read.c:238
@@ -35659,7 +35750,7 @@ msgstr "패턴"
 
 #: ../src/read.c:239
 msgid "naturalistic"
-msgstr ""
+msgstr "자연주의적"
 
 # 하와이안 셔츠 패턴 설명
 # 예: "flamingos on blue background"
@@ -35675,25 +35766,27 @@ msgstr "%2$s 배경에 %1$s"
 msgid "Kiss the cook"
 msgstr "요리사에게 키스를"
 
+# 연금술 유머
 #: ../src/read.c:258
 msgid "I'm making SCIENCE!"
-msgstr ""
+msgstr "나는 과학을 만들고 있어!"
 
 #: ../src/read.c:259
 msgid "Don't mess with the chef"
-msgstr ""
+msgstr "요리사한테 까불지 마"
 
 #: ../src/read.c:260
 msgid "Don't make me poison you"
-msgstr ""
+msgstr "독 타게 만들지 마"
 
 #: ../src/read.c:261
 msgid "Gehennom's Kitchen"
 msgstr "게헨놈 주방"
 
+# "Pork: The other white meat" 광고 패러디
 #: ../src/read.c:262
 msgid "Rat: The other white meat"
-msgstr ""
+msgstr "쥐고기: 또 다른 흰살 고기"
 
 # "열기를 참을 수 없으면 부엌에서 나가라" 속담 패러디
 #: ../src/read.c:263
@@ -35702,63 +35795,67 @@ msgstr "열기를 참을 수 없으면 게헨놈에서 나가라!"
 
 #: ../src/read.c:264
 msgid "If we weren't meant to eat animals, why are they made out of meat?"
-msgstr ""
+msgstr "동물을 먹으면 안 됐으면 왜 고기로 만들어졌겠어?"
 
 #: ../src/read.c:265
 msgid "If you don't like the food, I'll stab you"
-msgstr ""
+msgstr "음식이 맘에 안 들면 찔러버릴 거야"
 
+# 폭탄 처리반 슬로건 패러디 (연금술사 버전)
 #: ../src/read.c:276
 msgid "I am an alchemist; if you see me running, try to catch up..."
-msgstr ""
+msgstr "나는 연금술사야. 내가 뛰는 걸 보면, 따라잡아 봐..."
 
+# 사탕 포장지 브랜드명 (가상)
 #: ../src/read.c:285
 msgid "Apollo"
-msgstr ""
+msgstr "아폴로"
 
 #: ../src/read.c:286
 msgid "Moon Crunchy"
-msgstr ""
+msgstr "문 크런치"
 
 #: ../src/read.c:287
 msgid "Snacky Cake"
-msgstr ""
+msgstr "스낵 케이크"
 
 #: ../src/read.c:287
 msgid "Chocolate Nuggie"
-msgstr ""
+msgstr "초코 너기"
 
 #: ../src/read.c:287
 msgid "The Small Bar"
-msgstr ""
+msgstr "더 스몰 바"
 
 #: ../src/read.c:288
 msgid "Crispy Yum Yum"
-msgstr ""
+msgstr "크리스피 얌얌"
 
 #: ../src/read.c:288
 msgid "Nilla Crunchie"
-msgstr ""
+msgstr "바닐라 크런치"
 
 #: ../src/read.c:288
 msgid "Berry Bar"
-msgstr ""
+msgstr "베리 바"
 
 #: ../src/read.c:289
 msgid "Choco Nummer"
-msgstr ""
+msgstr "초코 넘머"
 
 #: ../src/read.c:289
 msgid "Om-nom"
-msgstr ""
+msgstr "옴놈"
 
+# Serenity (Firefly) 영화 참조
 #: ../src/read.c:290
 msgid "Fruity Oaty"
-msgstr ""
+msgstr "프루티 오티"
 
+# 찰리와 초콜릿 공장 참조
 #: ../src/read.c:291
 msgid "Wonka Bar"
-msgstr ""
+msgstr "웡카 바"
 
 #: ../src/read.c:332
 msgid "feel any Braille writing."
@@ -35813,62 +35910,67 @@ msgstr "여기에 %2$s{이/가} 있다.%1$.0s"
 msgid "You feel lettering"
 msgstr "열이 나는 것 같다."
 
+# 신용카드 이름 (Credit card parodies)
 #: ../src/read.c:451
 msgid "Leprechaun Gold Tru$t - Shamrock Card"
-msgstr ""
+msgstr "레프리콘 골드 트러$트 - 샴록 카드"
 
 #: ../src/read.c:452
 msgid "Magic Memory Vault Charge Card"
-msgstr ""
+msgstr "매직 메모리 볼트 충전 카드"
 
 # 가상의 신용카드 발급사 (Larn = 로그라이크 게임)
 #: ../src/read.c:453
 msgid "Larn National Bank"
 msgstr "란 국립은행"
 
+# Omega 로그라이크 게임 참조
 #: ../src/read.c:454
 msgid "First Bank of Omega"
-msgstr ""
+msgstr "오메가 제일은행"
 
+# Zork 게임 참조
 #: ../src/read.c:455
 msgid "Bank of Zork - Frobozz Magic Card"
-msgstr ""
+msgstr "조크 은행 - 프로보즈 매직 카드"
 
+# Discworld 참조
 #: ../src/read.c:456
 msgid "Ankh-Morpork Merchant's Guild Barter Card"
-msgstr ""
+msgstr "앙크-모르포크 상인 길드 물물교환 카드"
 
 #: ../src/read.c:457
 msgid "Ankh-Morpork Thieves' Guild Unlimited Transaction Card"
-msgstr ""
+msgstr "앙크-모르포크 도둑 길드 무제한 거래 카드"
 
 #: ../src/read.c:458
 msgid "Ransmannsby Moneylenders Association"
-msgstr ""
+msgstr "랜스만스비 대금업자 협회"
 
 #: ../src/read.c:459
 msgid "Bank of Gehennom - 99% Interest Card"
-msgstr ""
+msgstr "게헨놈 은행 - 99% 이자 카드"
 
+# American Express 패러디
 #: ../src/read.c:460
 msgid "Yendorian Express - Copper Card"
-msgstr ""
+msgstr "옌도리안 익스프레스 - 구리 카드"
 
 #: ../src/read.c:461
 msgid "Yendorian Express - Silver Card"
-msgstr ""
+msgstr "옌도리안 익스프레스 - 은 카드"
 
 #: ../src/read.c:462
 msgid "Yendorian Express - Gold Card"
-msgstr ""
+msgstr "옌도리안 익스프레스 - 금 카드"
 
 #: ../src/read.c:463
 msgid "Yendorian Express - Mithril Card"
-msgstr ""
+msgstr "옌도리안 익스프레스 - 미스릴 카드"
 
 #: ../src/read.c:464
 msgid "Yendorian Express - Platinum Card"
-msgstr ""
+msgstr "옌도리안 익스프레스 - 플래티넘 카드"
 
 #: ../src/read.c:468
 msgid "feel the embossed numbers:"
@@ -43557,6 +43659,15 @@ msgstr "%1$s %2$d층에서"
 msgid " [max %d]"
 msgstr " [최대 %d]"
 
+# ============================================================
+# 순위표 사망 원인 + 장소 조합
+# ============================================================
+# 영어: "died" + "in The Dungeons of Doom on level 5"
+#       → "died in The Dungeons of Doom on level 5"
+# 한국어: "파멸의 던전 5층에서" + "죽었다"
+#         → "파멸의 던전 5층에서 죽었다"
+# 어순 반전: %1$s=동사 %2$s=장소 → %2$s(장소) %1$s(동사)
+# ============================================================
 #: ../src/topten.c:1059
 #, c-format
 msgid "%1$s %2$s"

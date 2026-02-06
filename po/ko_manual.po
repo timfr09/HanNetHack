@@ -10589,3 +10589,35 @@ msgstr "산사태"
 #: ../src/read.c:2279 ../src/read.c:2352
 msgid "fall"
 msgstr "떨어지다"
+
+# ============================================================
+# insight.c 조합 패턴 검토 요약 (enl_msg)
+# ============================================================
+#
+# 포맷: enl_msg(prefix, present, past, suffix, ps)
+# 영어:  " %s%s%s%s." = " [prefix][present/past][suffix][ps]."
+# 한국어: " %1$s%3$s%2$s%4$s." = " [prefix][suffix][present/past][ps]."
+#
+# 번역 전략:
+# 1. 동사(present/past)가 suffix에 포함된 경우: 동사를 "​"(제로폭 공백)로
+# 2. suffix에 목적어만 있는 경우: 동사를 문장 끝에 오도록 suffix 뒤 공백 추가
+# 3. prefix가 완전한 문장인 경우: 나머지를 "​"(제로폭 공백)로
+#
+# 주요 매크로 번역:
+# - You_ = "당신은 "
+# - are/were = "​" (suffix에 동사 포함 전략)
+# - have/had = "​"
+# - can/could = "​"
+# - have_been/have_never/never = "​" 또는 ""
+#
+# 조합 예시:
+# enl_msg(You_, "have gone", "went", " without food", "")
+# → " 당신은 음식 없이 지냈다."
+#
+# enl_msg(You_, "could be", "could have been", " clairvoyant", buf)
+# → " 당신은 천리안 능력자가 될 수 있었다 (원인)."
+#
+# enl_msg("You aggravate", "", "d", " monsters", from_what())
+# → " 당신은 몬스터들을 자극한다 (원인)."
+#
+# ============================================================

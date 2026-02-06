@@ -35296,57 +35296,63 @@ msgstr "웃음소리."
 msgid "son"
 msgstr "위"
 
+# 관광지 티셔츠 클리셰 ("I went to X and all I got was this lousy T-shirt!")
 #: ../src/read.c:104
 msgid "I explored the Dungeons of Doom and all I got was this lousy T-shirt!"
-msgstr ""
+msgstr "죽음의 던전 탐험했는데 얻은 건 이 구린 티셔츠뿐!"
 
+# Mae West 유명 대사 패러디 ("Is that a pistol in your pocket...")
 #: ../src/read.c:105
 msgid "Is that Mjollnir in your pocket or are you just happy to see me?"
-msgstr ""
+msgstr "주머니에 묠니르가 있는 건가요, 아니면 날 보고 기쁜 건가요?"
 
+# 성적 농담 + NetHack #enhance 커맨드 참조
 #: ../src/read.c:106
 msgid "It's not the size of your sword, it's how #enhance'd you are with it."
-msgstr ""
+msgstr "검 크기가 중요한 게 아니라, 얼마나 #향상되었느냐가 중요해."
 
 #: ../src/read.c:107
 msgid "Madame Elvira's House O' Succubi Lifetime Customer"
-msgstr ""
+msgstr "마담 엘비라의 서큐버스 클럽 평생 회원"
 
 #: ../src/read.c:108
 msgid "Madame Elvira's House O' Succubi Employee of the Month"
-msgstr ""
+msgstr "마담 엘비라의 서큐버스 클럽 이달의 직원"
 
+# "X do it Y" 슬로건 패러디
 #: ../src/read.c:109
 msgid "Ludios Vault Guards Do It In Small, Dark Rooms"
-msgstr ""
+msgstr "루디오스 금고 경비원들은 좁고 어두운 방에서 한다"
 
 #: ../src/read.c:110
 msgid "Yendor Military Soldiers Do It In Large Groups"
-msgstr ""
+msgstr "옌더 군인들은 대규모 집단으로 한다"
 
 #: ../src/read.c:111
 msgid "I survived Yendor Military Boot Camp"
-msgstr ""
+msgstr "나는 옌더 군사 훈련소에서 살아남았다"
 
 #: ../src/read.c:112
 msgid "Ludios Accounting School Intra-Mural Lacrosse Team"
-msgstr ""
+msgstr "루디오스 회계학교 교내 라크로스 팀"
 
 #: ../src/read.c:113
 msgid "Oracle(TM) Fountains 10th Annual Wet T-Shirt Contest"
-msgstr ""
+msgstr "오라클(TM) 분수 제10회 젖은 티셔츠 대회"
 
 #: ../src/read.c:114
 msgid "Hey, black dragon!  Disintegrate THIS!"
-msgstr ""
+msgstr "이봐, 검은 용! 이거나 분해해봐!"
 
+# 유명한 티셔츠 문구
 #: ../src/read.c:115
 msgid "I'm With Stupid -->"
-msgstr ""
+msgstr "바보랑 같이 있음 -->"
 
+# 정치 슬로건 패러디 (Izchak Miller = NetHack 개발자)
 #: ../src/read.c:116
 msgid "Don't blame me, I voted for Izchak!"
-msgstr ""
+msgstr "날 탓하지 마, 난 이즈착에게 투표했어!"
 
 # ============================================================
 # 티셔츠 메시지 (T-shirt Messages)
@@ -35356,26 +35362,31 @@ msgstr ""
 msgid "Don't Panic"
 msgstr "당황하지 마"
 
+# 란마 1/2 애니메이션 참조
 #: ../src/read.c:118
 msgid "Furinkan High School Athletic Dept."
-msgstr ""
+msgstr "풍림관 고등학교 체육부"
 
+# Animaniacs 만화 대사
 #: ../src/read.c:119
 msgid "Hel-LOOO, Nurse!"
-msgstr ""
+msgstr "안-녕, 간호사!"
 
+# 고양이 이모티콘
 #: ../src/read.c:120
 msgid "=^.^="
-msgstr ""
+msgstr "=^.^="
 
+# 의류 태그 패러디
 #: ../src/read.c:121
 #, c-format
 msgid "100% goblin hair - do not wash"
-msgstr ""
+msgstr "100% 고블린 털 - 세탁 금지"
 
+# Abercrombie & Fitch 의류 브랜드 패러디
 #: ../src/read.c:122
 msgid "Aberzombie and Fitch"
-msgstr ""
+msgstr "아버좀비 앤 피치"
 
 #: ../src/read.c:123
 msgid "cK -- Cockatrice touches the Kop"
@@ -35389,54 +35400,60 @@ msgstr "나한테 묻지 마, 난 여기서 모험할 뿐이야"
 msgid "Down with pants!"
 msgstr "바지 타도!"
 
+# NetHack에서 'd'는 개 심볼
 #: ../src/read.c:126
 msgid "d, your dog or a killer?"
-msgstr ""
+msgstr "d, 네 개야 아니면 살인마야?"
 
 #: ../src/read.c:127
 msgid "FREE PUG AND NEWT!"
-msgstr ""
+msgstr "퍼그와 도롱뇽을 석방하라!"
 
 #: ../src/read.c:128
 msgid "Go team ant!"
-msgstr ""
+msgstr "개미 팀 파이팅!"
 
-# "Got milk?" 패러디
+# "Got milk?" 패러디 -> 한국 우유 광고 "야호 나는 대관령이 좋아" 패러디
 #: ../src/read.c:129
 msgid "Got newt?"
-msgstr "도롱뇽 있어?"
+msgstr "야호 나는 도롱뇽이 좋아"
 
+# Charlie Drake 코미디언 유행어
 #: ../src/read.c:130
 msgid "Hello, my darlings!"
-msgstr ""
+msgstr "안녕, 내 사랑들!"
 
+# "Steal This Book" (Abbie Hoffman) 패러디
 #: ../src/read.c:131
 msgid "Hey!  Nymphs!  Steal This T-Shirt!"
-msgstr ""
+msgstr "이봐! 님프들! 이 티셔츠를 훔쳐봐!"
 
 #: ../src/read.c:132
 msgid "I <3 Dungeon of Doom"
 msgstr "I ♥ 파멸의 던전"
 
+# Maud = NetHack NPC 이름
 #: ../src/read.c:133
 msgid "I <3 Maud"
-msgstr ""
+msgstr "I ♥ 모드"
 
+# 폭탄 처리반 슬로건 패러디 ("If you see me running, try to keep up")
 #: ../src/read.c:135
 msgid "I am a Valkyrie.  If you see me running, try to keep up."
-msgstr ""
+msgstr "나는 발키리다. 내가 뛰는 걸 보면, 따라잡아 봐."
 
 #: ../src/read.c:136
 msgid "I am not a pack rat - I am a collector"
-msgstr ""
+msgstr "난 수집광이 아니야 - 난 수집가야"
 
 #: ../src/read.c:137
 msgid "I bounced off a rubber tree"
 msgstr "고무나무에서 튕겨 나왔어"
 
+# Monkey Island 게임 참조
 #: ../src/read.c:138
 msgid "Plunder Island Brimstone Beach Club"
-msgstr ""
+msgstr "약탈 섬 유황 해변 클럽"
 
 #: ../src/read.c:139
 msgid "If you can read this, I can hit you with my polearm"
@@ -35448,48 +35465,54 @@ msgstr "나 혼란스러워!"
 
 #: ../src/read.c:141
 msgid "I scored with the princess"
-msgstr ""
+msgstr "나 공주랑 잤어"
 
+# 명언
 #: ../src/read.c:142
 msgid "I want to live forever or die in the attempt."
-msgstr ""
+msgstr "영원히 살거나, 시도하다 죽거나."
 
+# Linkin Park 밴드 이름 패러디 (Lichen = 이끼)
 #: ../src/read.c:143
 msgid "Lichen Park"
-msgstr ""
+msgstr "인낀 파크"
 
 #: ../src/read.c:144
 msgid "LOST IN THOUGHT - please send search party"
-msgstr ""
+msgstr "생각에 빠져 길을 잃음 - 수색대를 보내주세요"
 
+# "Meat is Murder" (The Smiths 앨범) + 반지의 제왕 패러디
 #: ../src/read.c:145
 msgid "Meat is Mordor"
-msgstr ""
+msgstr "고기는 모르도르다"
 
 #: ../src/read.c:146
 msgid "Minetown Better Business Bureau"
-msgstr ""
+msgstr "광산마을 상공회의소"
 
 #: ../src/read.c:147
 msgid "Minetown Watch"
-msgstr ""
+msgstr "광산마을 자경단"
 
+# Discworld (Terry Pratchett) 참조
 #: ../src/read.c:149
 msgid ""
 "Ms. Palm's House of Negotiable Affection--A Very Reputable House Of Disrepute"
-msgstr ""
+msgstr "팜 여사의 협상 가능한 애정의 집--매우 평판 좋은 불명예의 집"
 
 #: ../src/read.c:151
 msgid "Protection Racketeer"
-msgstr ""
+msgstr "보호세 갈취자"
 
+# Conan the Barbarian 참조 (Crom = 코난의 신)
 #: ../src/read.c:152
 msgid "Real men love Crom"
-msgstr ""
+msgstr "진짜 사나이는 크롬을 사랑한다"
 
+# Austin Powers 영화 참조
 #: ../src/read.c:153
 msgid "Somebody stole my Mojo!"
-msgstr ""
+msgstr "누가 내 모조를 훔쳤어!"
 
 #: ../src/read.c:154
 msgid "The Hellhound Gang"
@@ -35497,15 +35520,17 @@ msgstr "헬하운드 갱"
 
 #: ../src/read.c:155
 msgid "The Werewolves"
-msgstr ""
+msgstr "늑대인간들"
 
+# "They Might Be Giants" 밴드 이름 패러디
 #: ../src/read.c:156
 msgid "They Might Be Storm Giants"
-msgstr ""
+msgstr "폭풍 거인들일지도 몰라"
 
+# 총기 슬로건 "Guns don't kill people, people kill people" 패러디
 #: ../src/read.c:157
 msgid "Weapons don't kill people, I kill people"
-msgstr ""
+msgstr "무기가 사람을 죽이는 게 아니라, 내가 죽인다"
 
 # 밴드 이름 참조
 #: ../src/read.c:158
@@ -35516,13 +35541,15 @@ msgstr "화이트 좀비"
 msgid "You're killing me!"
 msgstr "죽겠다!"
 
+# 대학 스포츠 팀 슬로건 (Anhur = NetHack 신)
 #: ../src/read.c:160
 msgid "Anhur State University - Home of the Fighting Fire Ants!"
-msgstr ""
+msgstr "안후르 주립대학교 - 투지 넘치는 불개미들의 본거지!"
 
+# 유명한 캠페인
 #: ../src/read.c:161
 msgid "FREE HUGS"
-msgstr ""
+msgstr "무료 포옹"
 
 # 연속 승천자 (NetHack 플레이어 유형)
 #: ../src/read.c:162
@@ -35531,11 +35558,12 @@ msgstr "연속 승천자"
 
 #: ../src/read.c:163
 msgid "Real men are valkyries"
-msgstr ""
+msgstr "진짜 사나이는 발키리다"
 
+# YMCA 패러디
 #: ../src/read.c:164
 msgid "Young Men's Cavedigging Association"
-msgstr ""
+msgstr "청년 동굴파기 협회"
 
 # "월스트리트를 점령하라" 패러디
 #: ../src/read.c:165
@@ -35544,7 +35572,7 @@ msgstr "루디오스 요새를 점령하라"
 
 #: ../src/read.c:166
 msgid "I couldn't afford this T-shirt so I stole it!"
-msgstr ""
+msgstr "이 티셔츠 살 돈이 없어서 훔쳤어!"
 
 #: ../src/read.c:167
 msgid "Mind flayers suck"
@@ -35572,21 +35600,25 @@ msgstr "채식주의자"
 msgid "Hello, I'm War!"
 msgstr "안녕, 난 전쟁이야!"
 
+# 유명한 격언
 #: ../src/read.c:173
 msgid "It is better to light a candle than to curse the darkness"
-msgstr ""
+msgstr "어둠을 저주하느니 촛불 하나 켜는 게 낫다"
 
+# 위 격언의 반전
 #: ../src/read.c:174
 msgid "It is easier to curse the darkness than to light a candle"
-msgstr ""
+msgstr "촛불 켜는 것보다 어둠을 저주하는 게 더 쉽다"
 
+# Big Bang Theory 참조
 #: ../src/read.c:178
 msgid "rock--paper--scissors--lizard--Spock!"
-msgstr ""
+msgstr "가위바위보도마뱀스팍"
 
+# Game of Thrones 참조 ("모든 사람은 죽는다" -- "모든 사람은 섬긴다")
 #: ../src/read.c:182
 msgid "/Valar morghulis/ -- /Valar dohaeris/"
-msgstr ""
+msgstr "/발라르 모르굴리스/ -- /발라르 도하에리스/"
 
 # ============================================================
 # 하와이안 셔츠 모티프 (Hawaiian Shirt Motifs)
@@ -35675,25 +35707,27 @@ msgstr "%2$s 배경에 %1$s"
 msgid "Kiss the cook"
 msgstr "요리사에게 키스를"
 
+# 연금술 유머
 #: ../src/read.c:258
 msgid "I'm making SCIENCE!"
-msgstr ""
+msgstr "나는 과학을 만들고 있어!"
 
 #: ../src/read.c:259
 msgid "Don't mess with the chef"
-msgstr ""
+msgstr "요리사한테 까불지 마"
 
 #: ../src/read.c:260
 msgid "Don't make me poison you"
-msgstr ""
+msgstr "독 타게 만들지 마"
 
 #: ../src/read.c:261
 msgid "Gehennom's Kitchen"
 msgstr "게헨놈 주방"
 
+# "Pork: The other white meat" 광고 패러디
 #: ../src/read.c:262
 msgid "Rat: The other white meat"
-msgstr ""
+msgstr "쥐고기: 또 다른 흰살 고기"
 
 # "열기를 참을 수 없으면 부엌에서 나가라" 속담 패러디
 #: ../src/read.c:263
@@ -35702,63 +35736,67 @@ msgstr "열기를 참을 수 없으면 게헨놈에서 나가라!"
 
 #: ../src/read.c:264
 msgid "If we weren't meant to eat animals, why are they made out of meat?"
-msgstr ""
+msgstr "동물을 먹으면 안 됐으면 왜 고기로 만들어졌겠어?"
 
 #: ../src/read.c:265
 msgid "If you don't like the food, I'll stab you"
-msgstr ""
+msgstr "음식이 맘에 안 들면 찔러버릴 거야"
 
+# 폭탄 처리반 슬로건 패러디 (연금술사 버전)
 #: ../src/read.c:276
 msgid "I am an alchemist; if you see me running, try to catch up..."
-msgstr ""
+msgstr "나는 연금술사야. 내가 뛰는 걸 보면, 따라잡아 봐..."
 
+# 사탕 포장지 브랜드명 (가상)
 #: ../src/read.c:285
 msgid "Apollo"
-msgstr ""
+msgstr "아폴로"
 
 #: ../src/read.c:286
 msgid "Moon Crunchy"
-msgstr ""
+msgstr "문 크런치"
 
 #: ../src/read.c:287
 msgid "Snacky Cake"
-msgstr ""
+msgstr "스낵 케이크"
 
 #: ../src/read.c:287
 msgid "Chocolate Nuggie"
-msgstr ""
+msgstr "초코 너기"
 
 #: ../src/read.c:287
 msgid "The Small Bar"
-msgstr ""
+msgstr "더 스몰 바"
 
 #: ../src/read.c:288
 msgid "Crispy Yum Yum"
-msgstr ""
+msgstr "크리스피 얌얌"
 
 #: ../src/read.c:288
 msgid "Nilla Crunchie"
-msgstr ""
+msgstr "바닐라 크런치"
 
 #: ../src/read.c:288
 msgid "Berry Bar"
-msgstr ""
+msgstr "베리 바"
 
 #: ../src/read.c:289
 msgid "Choco Nummer"
-msgstr ""
+msgstr "초코 넘머"
 
 #: ../src/read.c:289
 msgid "Om-nom"
-msgstr ""
+msgstr "옴놈"
 
+# Serenity (Firefly) 영화 참조
 #: ../src/read.c:290
 msgid "Fruity Oaty"
-msgstr ""
+msgstr "프루티 오티"
 
+# 찰리와 초콜릿 공장 참조
 #: ../src/read.c:291
 msgid "Wonka Bar"
-msgstr ""
+msgstr "웡카 바"
 
 #: ../src/read.c:332
 msgid "feel any Braille writing."

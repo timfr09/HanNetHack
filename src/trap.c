@@ -75,8 +75,8 @@ staticfn boolean thitm(int, struct monst *, struct obj *, int,
                                                          boolean) NONNULLARG2;
 staticfn void maybe_finish_sokoban(void);
 
-static const char *const a_your[2] = { "a", "your" };
-static const char *const A_Your[2] = { "A", "Your" };
+static const char *const a_your[2] = { N_("a"), N_("your") };
+static const char *const A_Your[2] = { N_("A"), N_("Your") };
 
 /*
  * Korean i18n notes (HanNetHack):
@@ -193,6 +193,7 @@ erode_obj(
     int type,
     int ef_flags)
 {
+    /* N.B. erosion strings need context for i18n; use C_() at runtime */
     static NEARDATA const char
         *const action[] = { "smoulder", "rust", "rot", "corrode", "crack" },
         *const msg[] = { "burnt", "rusted", "rotten", "corroded", "cracked" },
@@ -271,7 +272,7 @@ erode_obj(
         if (flags.verbose && print && (uvictim || vismon))
             pline(_("%s %s %s not affected by %s."),
                   uvictim ? _("Your") : s_suffix(Monnam(victim)),
-                  ostr, vtense(ostr, _("are")), bythe[type]);
+                  ostr, vtense(ostr, _("are")), C_("erosion_cause", bythe[type]));
         return ER_NOTHING;
     } else if (otmp->oerodeproof || (otmp->blessed && !rnl(4))) {
         if (flags.verbose && (print || otmp->oerodeproof)
@@ -280,7 +281,7 @@ erode_obj(
                   uvictim ? _("your")
                   : !vismon ? _("the") /* visobj */
                     : s_suffix(mon_nam(victim)),
-                  ostr, vtense(ostr, _("are")), bythe[type]);
+                  ostr, vtense(ostr, _("are")), C_("erosion_cause", bythe[type]));
         /* We assume here that if the object is protected because it
          * is blessed, it still shows some minor signs of wear, and
          * the hero can distinguish this from an object that is
@@ -303,7 +304,7 @@ erode_obj(
                   uvictim ? _("Your")
                   : !vismon ? _("The") /* visobj */
                     : s_suffix(Monnam(victim)),
-                  ostr, vtense(ostr, action[type]), adverb);
+                  ostr, vtense(ostr, C_("erosion_action", action[type])), adverb);
 
         if (ef_flags & EF_PAY)
             costly_alteration(otmp, cost_type);
@@ -323,7 +324,7 @@ erode_obj(
             char actbuf[BUFSZ];
 
             if (!crackers)
-                Sprintf(actbuf, _("%s away"), vtense(ostr, action[type]));
+                Sprintf(actbuf, _("%s away"), vtense(ostr, C_("erosion_action", action[type])));
             else
                 Sprintf(actbuf, _("shatters"));
             pline(_("%s %s %s!"),
@@ -362,11 +363,11 @@ erode_obj(
         if (flags.verbose && print) {
             if (uvictim)
                 Your(_("%s %s completely %s."),
-                     ostr, vtense(ostr, Blind ? _("feel") : _("look")), msg[type]);
+                     ostr, vtense(ostr, Blind ? _("feel") : _("look")), C_("erosion_state", msg[type]));
             else if (vismon || visobj)
                 pline(_("%s %s %s completely %s."),
                       !vismon ? _("The") : s_suffix(Monnam(victim)),
-                      ostr, vtense(ostr, _("look")), msg[type]);
+                      ostr, vtense(ostr, _("look")), C_("erosion_state", msg[type]));
         }
         return ER_NOTHING;
     }
@@ -1006,12 +1007,12 @@ mu_maybe_destroy_web(
                 if (isyou)
                     You(_("%s %s spider web!"),
                         (flaming(mptr)) ? _("burn") : _("dissolve"),
-                        a_your[trap->madeby_u]);
+                        _(a_your[trap->madeby_u]));
                 else
                     pline_mon(mtmp,
                           _("%s %s %s spider web!"), Monnam(mtmp),
                           (flaming(mptr)) ? _("burns") : _("dissolves"),
-                          a_your[trap->madeby_u]);
+                          _(a_your[trap->madeby_u]));
             }
             deltrap(trap);
             newsym(x, y);
@@ -1019,11 +1020,11 @@ mu_maybe_destroy_web(
         }
         if (domsg) {
             if (isyou) {
-                You(_("flow through %s spider web."), a_your[trap->madeby_u]);
+                You(_("flow through %s spider web."), _(a_your[trap->madeby_u]));
             } else {
                 pline_mon(mtmp,
                       _("%s flows through %s spider web."), Monnam(mtmp),
-                      a_your[trap->madeby_u]);
+                      _(a_your[trap->madeby_u]));
                 seetrap(trap);
             }
         }
@@ -1503,22 +1504,22 @@ trapeffect_bear_trap(
         if (amorphous(gy.youmonst.data) || is_whirly(gy.youmonst.data)
             || unsolid(gy.youmonst.data)) {
             pline(_("%s bear trap closes harmlessly through you."),
-                  A_Your[trap->madeby_u]);
+                  _(A_Your[trap->madeby_u]));
             return Trap_Effect_Finished;
         }
         if (!u.usteed && gy.youmonst.data->msize <= MZ_SMALL) {
             pline(_("%s bear trap closes harmlessly over you."),
-                  A_Your[trap->madeby_u]);
+                  _(A_Your[trap->madeby_u]));
             return Trap_Effect_Finished;
         }
         set_utrap((unsigned) rn1(4, 4), TT_BEARTRAP);
         if (u.usteed) {
-            pline(_("%s bear trap closes on %s %s!"), A_Your[trap->madeby_u],
+            pline(_("%s bear trap closes on %s %s!"), _(A_Your[trap->madeby_u]),
                   s_suffix(mon_nam(u.usteed)), mbodypart(u.usteed, FOOT));
             if (thitm(0, u.usteed, (struct obj *) 0, dmg, FALSE))
                 reset_utrap(TRUE); /* steed died, hero not trapped */
         } else {
-            pline(_("%s bear trap closes on your %s!"), A_Your[trap->madeby_u],
+            pline(_("%s bear trap closes on your %s!"), _(A_Your[trap->madeby_u]),
                   body_part(FOOT));
             set_wounded_legs(rn2(2) ? RIGHT_SIDE : LEFT_SIDE, rn1(10, 10));
             if (u.umonnum == PM_OWLBEAR || u.umonnum == PM_BUGBEAR)
@@ -1537,7 +1538,7 @@ trapeffect_bear_trap(
             if (in_sight) {
                 pline_mon(mtmp,
                       _("%s is caught in %s bear trap!"), Monnam(mtmp),
-                      a_your[trap->madeby_u]);
+                      _(a_your[trap->madeby_u]));
                 seetrap(trap);
             } else {
                 if (mptr == &mons[PM_OWLBEAR]
@@ -1550,7 +1551,7 @@ trapeffect_bear_trap(
             if (in_sight) {
                 pline_mon(mtmp,
                       _("%s evades %s bear trap!"), Monnam(mtmp),
-                      a_your[trap->madeby_u]);
+                      _(a_your[trap->madeby_u]));
                 seetrap(trap);
             }
         }
@@ -1853,10 +1854,10 @@ trapeffect_pit(
         feeltrap(trap);
         if (!Sokoban && is_clinger(gy.youmonst.data) && !plunged) {
             if (already_known) {
-                You_see(_("%s %spit below you."), a_your[trap->madeby_u],
+                You_see(_("%s %spit below you."), _(a_your[trap->madeby_u]),
                         ttype == SPIKED_PIT ? _("spiked ") : "");
             } else {
-                pline(_("%s pit %sopens up under you!"), A_Your[trap->madeby_u],
+                pline(_("%s pit %sopens up under you!"), _(A_Your[trap->madeby_u]),
                       ttype == SPIKED_PIT ? _("full of spikes ") : "");
                 You(_("don't fall in!"));
             }
@@ -1889,7 +1890,7 @@ trapeffect_pit(
                        !plunged ? _("fall") : (Flying ? _("dive") : _("plunge")));
             }
             if (*verbbuf)
-                You(_("%s into %s pit!"), verbbuf, a_your[trap->madeby_u]);
+                You(_("%s into %s pit!"), verbbuf, _(a_your[trap->madeby_u]));
         }
         /* wumpus reference */
         if (Role_if(PM_RANGER) && !trap->madeby_u && !trap->once
@@ -1989,7 +1990,7 @@ trapeffect_pit(
         if (in_sight) {
             pline_mon(mtmp,
                      _("%s %s into %s pit!"), Monnam(mtmp), fallverb,
-                     a_your[trap->madeby_u]);
+                     _(a_your[trap->madeby_u]));
             if (mptr == &mons[PM_PIT_VIPER]
                 || mptr == &mons[PM_PIT_FIEND])
                 pline(_("How pitiful.  Isn't that the pits?"));
@@ -2138,7 +2139,7 @@ trapeffect_web(
             } else {
                 Sprintf(verbbuf, _("%s into"), u_locomotion(_("stumble")));
             }
-            You(_("%s %s spider web!"), verbbuf, a_your[trap->madeby_u]);
+            You(_("%s %s spider web!"), verbbuf, _(a_your[trap->madeby_u]));
         }
 
         /* time will be adjusted below */
@@ -2192,7 +2193,7 @@ trapeffect_web(
             else {
                 tim = 0;
                 if (webmsgok)
-                    You(_("tear through %s web!"), a_your[trap->madeby_u]);
+                    You(_("tear through %s web!"), _(a_your[trap->madeby_u]));
                 deltrap(trap);
                 newsym(u.ux, u.uy); /* get rid of trap symbol */
             }
@@ -2230,7 +2231,7 @@ trapeffect_web(
             } else if (in_sight) {
                 pline_mon(mtmp,
                       _("%s is caught in %s spider web."), Monnam(mtmp),
-                      a_your[trap->madeby_u]);
+                      _(a_your[trap->madeby_u]));
                 seetrap(trap);
             }
             mtmp->mtrapped = tear_web ? 0 : 1;
@@ -2256,14 +2257,14 @@ trapeffect_web(
             if (in_sight)
                 pline_mon(mtmp,
                      _("%s tears through %s spider web!"), Monnam(mtmp),
-                      a_your[trap->madeby_u]);
+                      _(a_your[trap->madeby_u]));
             deltrap(trap);
             newsym(mtmp->mx, mtmp->my);
         } else if (forcetrap && !mtmp->mtrapped) {
             if (in_sight) {
                 pline_mon(mtmp,
                       _("%s avoids %s spider web!"), Monnam(mtmp),
-                      a_your[trap->madeby_u]);
+                      _(a_your[trap->madeby_u]));
                 seetrap(trap);
             }
         }
@@ -2506,7 +2507,7 @@ trapeffect_landmine(
             pline(_("KAABLAMM!!!  %s %s%s off!"),
                   forcebungle ? _("Your inept attempt sets")
                   : _("The air currents set"),
-                  already_seen ? a_your[trap->madeby_u] : "",
+                  already_seen ? _(a_your[trap->madeby_u]) : "",
                   already_seen ? _(" land mine") : _("it"));
         } else {
             /* prevent landmine from killing steed, throwing you to
@@ -2519,7 +2520,7 @@ trapeffect_landmine(
                 return Trap_Effect_Finished;
             feeltrap(trap);
             pline(_("KAABLAMM!!!  You triggered %s land mine!"),
-                  a_your[trap->madeby_u]);
+                  _(a_your[trap->madeby_u]));
             if (u.usteed)
                 steed_mid = u.usteed->m_id;
             recursive_mine = TRUE;
@@ -2574,7 +2575,7 @@ trapeffect_landmine(
             pline_mon(mtmp,
                   _("%s%s triggers %s land mine!"),
                   !Deaf ? _("KAABLAMM!!!  ") : "", Monnam(mtmp),
-                  a_your[trap->madeby_u]);
+                  _(a_your[trap->madeby_u]));
         }
         if (!in_sight && !Deaf)
             pline(_("Kaablamm!  %s an explosion in the distance!"),
@@ -2964,7 +2965,7 @@ dotrap(struct trap *trap, unsigned trflags)
          * check, clinging to the ceiling, etc.
          */
         pline(_("Air currents pull you down into %s %s!"),
-              a_your[trap->madeby_u],
+              _(a_your[trap->madeby_u]),
               trapname(ttype, TRUE)); /* do force "pit" while hallucinating */
         /* then proceed to normal trap effect */
     } else if (!forcetrap) {
@@ -2972,7 +2973,7 @@ dotrap(struct trap *trap, unsigned trflags)
             if (already_seen) {
                 You(_("%s over %s %s."), u_locomotion(_("step")),
                     (ttype == ARROW_TRAP && !trap->madeby_u)
-                    ? "an" : a_your[trap->madeby_u],
+                    ? "an" : _(a_your[trap->madeby_u]),
                     trapname(ttype, FALSE));
             }
             return;
@@ -2983,7 +2984,7 @@ dotrap(struct trap *trap, unsigned trflags)
             && (!rn2(5) || (is_pit(ttype) && is_clinger(gy.youmonst.data)))) {
                 You(_("escape %s %s."), (ttype == ARROW_TRAP && !trap->madeby_u)
                                      ? "an"
-                                     : a_your[trap->madeby_u],
+                                     : _(a_your[trap->madeby_u]),
                 trapname(ttype, FALSE));
             return;
         }

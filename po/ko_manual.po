@@ -1390,9 +1390,29 @@ msgstr "%s{이/가} 때려"
 msgid "Cannot open %s.  Sorry."
 msgstr "%s{을/를} 열 수 없다. 미안."
 
+# [조합 메시지] src/do_wear.c:3285 - 외피 갑옷 벗기 요청
+# 조합 요소:
+#   %1$s = 외피 갑옷 이름 (예: "your cloak")
+#   %2$s = 동사 "dip" 또는 "grease"
+#   %3$s = 대상 물건 이름 (예: "your shirt")
+# 영어 조합: "You need to take off your cloak to dip your shirt."
+# 한국어 조합: "망토를 벗어야 셔츠를 담글 수 있다."
+# 주의: 어순 변경 필요 - %2$s(동사)와 %3$s(대상) 순서 바꿈
 #, c-format
 msgid "need to take off %s to %s %s."
-msgstr "%s{을/를} 벗어야 %s{을/를} %s 수 있다."
+msgstr "%1$s{을/를} 벗어야 %3$s{을/를} %2$s 수 있다."
+
+# [조합 메시지] src/potion.c:2266 - 담그기 동사
+# "need to take off %s to %s %s." 조합에서 사용
+# 조합결과: "망토를 벗어야 셔츠를 담글 수 있다."
+msgid "dip"
+msgstr "담글"
+
+# [조합 메시지] src/apply.c:2626 - 기름칠 동사
+# "need to take off %s to %s %s." 조합에서 사용
+# 조합결과: "망토를 벗어야 셔츠를 기름칠할 수 있다."
+msgid "grease"
+msgstr "기름칠할"
 
 #, c-format
 msgid "haven't discovered any %s yet."
@@ -2195,14 +2215,31 @@ msgstr "여성"
 # ============================================================
 
 #: src/mon.c:3382 - monkilled message
+# 조합 요소:
+#   %1$s = Monnam(mdef) - 몬스터 이름 (예: "The orc")
+#   %2$s = "killed" 또는 "destroyed" - 사망 동사
+#   %3$s = " by the " 또는 "" - 원인 연결사
+#   %4$s = fltxt - 사망 원인 (예: "fire")
+# 영어 조합: "The orc is killed by the fire!"
+# 한국어 조합: "오크가 불에 의해 죽었다!"
 #, c-format
 msgid "%s is %s%s%s!"
 msgstr "%1$s{이/가} %4$s%3$s%2$s!"
 
 # [조합 메시지] src/mon.c:3384 - "by the" 연결사 (사망 원인)
-# 예: "killed by the grid bug" → "격자 벌레에 의해 죽었다"
+# 영어: " by the fire" → 한국어: "불에 의해 " (어순 변경으로 앞에 옴)
 msgid " by the "
 msgstr "에 의해 "
+
+# [조합 메시지] src/mon.c:3383 - 생물 사망 동사
+# 조합결과: "오크가 불에 의해 죽었다!"
+msgid "killed"
+msgstr "죽었다"
+
+# [조합 메시지] src/mon.c:3383 - 비생물 파괴 동사
+# 조합결과: "골렘이 불에 의해 파괴되었다!"
+msgid "destroyed"
+msgstr "파괴되었다"
 
 # ============================================================
 # 지형/가구 설명 (Terrain/Furniture from defsym.h)
@@ -2359,11 +2396,18 @@ msgstr "뭐라고 쓸까? \"요나가 여기 있었다\"?"
 msgid "iron ball drags you downstairs!"
 msgstr "철구가 당신을 아래층으로 끌어내린다!"
 
-# ball.c - 계단 아래로
+# [조합 메시지] ball.c:973 - 계단 아래로 물건 떨어뜨림
+# 조합 요소:
+#   %1$s = yname(otmp) - 물건 이름 (예: "a sword")
+#   %2$s = "it" 또는 "they" - 단수/복수 대명사
+#   %3$s = "fall" 또는 "falls" - 동사 (otense)
+# 영어 조합: "You drop a sword and it falls down the stairs with you."
+# 한국어: 대명사와 동사 불필요, %.0s로 억제
+# 한국어 조합: "검을 떨어뜨려 함께 아래층으로 굴러간다."
 #: ../src/ball.c:997
 #, c-format
 msgid "drop %s and %s %s down the stairs with you."
-msgstr "%s{을/를} 떨어뜨리고 %s{과/와} 함께 아래층으로 %s."
+msgstr "%1$s{을/를} 떨어뜨려 함께 아래층으로 굴러간다.%2$.0s%3$.0s"
 
 # teleport.c:1411 - 순간이동 대상
 #: ../src/teleport.c:1411
@@ -2389,6 +2433,13 @@ msgstr "여기에 아래로 가는 사다리가 있다."
 msgid "There is %s here."
 msgstr "여기에 %s{이/가} 있다."
 
+# [조합 메시지] src/pickup.c 등 - 여러 개 물건 존재 표시
+# 조합 요소:
+#   %1$s = "is" 또는 "are" (단수/복수)
+#   %2$s = 물건 이름 (예: "some gold pieces")
+# 영어 조합: "There are some gold pieces here."
+# 한국어: 동사 is/are가 불필요하므로 %.0s로 억제
+# 한국어 조합: "여기에 금화 몇 개가 있다."
 #, c-format
 msgid "There %s %s here."
 msgstr "여기에 %2$s{이/가} 있다.%1$.0s"
@@ -2552,8 +2603,9 @@ msgstr "​"
 # [조합] "have never " - 현재완료 부정
 # 조합 예: "have never genocided any monsters" = "[행동 안 함] 몬스터 학살"
 # 결과: "한 적 없다" 형태
+# 주의: 빈 문자열이 아닌 제로폭 공백 사용 (포맷 구조 유지)
 msgid "have never "
-msgstr ""
+msgstr "​"
 
 # [조합] "never " + 동사 조합
 # 결과: "[안 함] X" 형태
@@ -2592,9 +2644,10 @@ msgstr " 저장 중"
 
 # enl_msg("You ", "fall asleep", "fell asleep", " uncontrollably", buf)
 # 포맷: " %1$s%3$s%2$s%4$s."
-# 조합: " 당신은 통제 불가능하게 잠들었다 (원인)."
+# 현재: " 당신은 통제 불가능하게 잠든다 (원인)."
+# 과거: " 당신은 통제 불가능하게 잠들었다 (원인)."
 msgid "fall asleep"
-msgstr "잠들다"
+msgstr "잠든다"
 
 msgid "fell asleep"
 msgstr "잠들었다"
@@ -2814,9 +2867,11 @@ msgstr "소유물 없이 "
 msgid "without possessions"
 msgstr "소유물이 없다"
 
+# [조합 메시지] insight.c - 캐릭터 재굴림 횟수
+# %2$s = plur() 복수형 억제
 #, c-format
 msgid "rerolled your character %ld time%s"
-msgstr "캐릭터를 %ld회%.0s 재굴림했다"
+msgstr "캐릭터를 %1$ld회 재굴림했다%2$.0s"
 
 # ============================================================
 # [조합 메시지] insight.c - "You have gone/went without food"
@@ -2846,9 +2901,11 @@ msgstr "무신론자였다"
 msgid "hit with a wielded weapon"
 msgstr "휘두른 무기로 때린 적이 없다"
 
+# [조합 메시지] insight.c - 무기 공격 횟수
+# %2$s = plur() 복수형 억제
 #, c-format
 msgid "hit with a wielded weapon %ld time%s"
-msgstr "휘두른 무기로 %ld회%.0s 때렸다"
+msgstr "휘두른 무기로 %1$ld회 때렸다%2$.0s"
 
 msgid "illiterate"
 msgstr "문맹이었다"
@@ -2859,16 +2916,26 @@ msgstr "펫을 가진 적이 없다"
 msgid "genocided any monsters"
 msgstr "몬스터를 학살한 적이 없다"
 
+# [조합 메시지] insight.c:2224 - 학살한 몬스터 종류 수
+# 조합 요소:
+#   %1$d = ngenocided - 학살한 종류 수
+#   %2$s = plur(ngenocided) - "types"용 복수형 (한국어 불필요)
+#   %3$s = plur(ngenocided) - "monsters"용 복수형 (한국어 불필요)
+# 영어 조합: "genocided 3 types of monsters"
+# 한국어: 두 복수형 모두 억제
+# 한국어 조합: "3종의 몬스터를 학살했다"
 #, c-format
 msgid "genocided %d type%s of monster%s"
-msgstr "%d종%.0s%.0s의 몬스터를 학살했다"
+msgstr "%1$d종의 몬스터를 학살했다%2$.0s%3$.0s"
 
 msgid "polymorphed an object"
 msgstr "물건을 변이시킨 적이 없다"
 
+# [조합 메시지] insight.c - 변이시킨 물건 수
+# %2$s = plur() 복수형 억제
 #, c-format
 msgid "polymorphed %ld item%s"
-msgstr "%ld개%.0s의 물건을 변이시켰다"
+msgstr "%1$ld개의 물건을 변이시켰다%2$.0s"
 
 msgid "changed form"
 msgstr "형태를 바꾼 적이 없다"
@@ -2932,9 +2999,11 @@ msgid "Use '%s', '%s', '%s', '%s' to move the cursor to %s."
 msgstr "'%s', '%s', '%s', '%s'{을/를} 눌러 커서를 %s(으)로 이동하세요."
 
 # 더 많은 conduct 관련
+# [조합 메시지] insight.c - 소원 사용 횟수
+# %2$s = plur() 복수형 억제
 #, c-format
 msgid "used %ld wish%s"
-msgstr "%ld회%.0s 소원을 사용했다"
+msgstr "%1$ld회 소원을 사용했다%2$.0s"
 
 # ============================================================
 # [조합 메시지] 복수형 접미사 "es"
@@ -3208,9 +3277,17 @@ msgstr "%s{이/가} %s 시체로 당신을 때렸다."
 msgid "%s nuzzles against your %s %s!"
 msgstr "%s{이/가} 당신의 %s %s에 코를 비볐다!"
 
+# [조합 메시지] uhitm.c:4661 - 몬스터가 물건 들고 도주
+# 조합 요소:
+#   %1$s = Monnam(magr) - 몬스터 이름 (예: "The goblin")
+#   %2$s = locomotion() - 이동 동사 (예: "run", "fly", "slither")
+#   %3$s = buf - 훔친 물건 (예: "your gold")
+# 영어 조합: "The goblin tries to run away with your gold."
+# 한국어: 이동 동사는 "달아나다"로 통일, %2$s 억제
+# 한국어 조합: "고블린이 금화를 들고 달아나려 한다."
 #, c-format
 msgid "%s tries to %s away with %s."
-msgstr "%s{이/가} %s{과/와} 함께 %s하려 한다."
+msgstr "%1$s{이/가} %3$s{을/를} 들고 달아나려 한다.%2$.0s"
 
 #, c-format
 msgid "Do you want to change into %s?"
@@ -3445,9 +3522,11 @@ msgstr "S"
 msgid "disabled loading%s of bones levels"
 msgstr "뼈 레벨 불러오기%s를 비활성화했다"
 
+# [조합 메시지] insight.c - 뼈 레벨 조우 횟수
+# %2$s = plur() 복수형 억제
 #, c-format
 msgid "encountered %ld bones level%s"
-msgstr "뼈 레벨 %ld개%.0s를 만났다"
+msgstr "뼈 레벨 %1$ld개를 만났다%2$.0s"
 
 #, c-format
 msgid "all %d hit points"
@@ -3528,13 +3607,17 @@ msgstr "엄격한 비건 식단을 따랐다"
 msgid "a pacifist"
 msgstr "평화주의자였다"
 
+# [조합 메시지] insight.c - 읽기/새기기 횟수
+# %2$s = plur() 복수형 억제
 #, c-format
 msgid "read items or engraved %ld time%s"
-msgstr "읽거나 새긴 횟수 %ld회%.0s"
+msgstr "읽거나 새긴 횟수 %1$ld회%2$.0s"
 
+# [조합 메시지] insight.c - 형태 변경 횟수
+# %2$s = plur() 복수형 억제
 #, c-format
 msgid "changed form %ld time%s"
-msgstr "형태를 %ld회%.0s 바꿨다"
+msgstr "형태를 %1$ld회 바꿨다%2$.0s"
 
 # insight.c:2214 - 소원 수량 (모두/둘 다/없음 + 아티팩트)
 # 조합: "used 3 wishes (all for artifacts)" etc.
@@ -3794,6 +3877,19 @@ msgstr "카운터"
 # insight.c - you_have() 매크로에서 사용
 # 한국어에서는 동사가 문장 끝에 오므로 제로 폭 공백 사용
 # ============================================================
+
+# ============================================================
+# [조합 메시지] 주어 접두어 - insight.c You_ 매크로
+# enl_msg() 패턴의 첫 번째 인자로 사용됨
+# 예: enl_msg(You_, "are ", "were ", "levitating", from_what(...))
+# 조합결과 (영어): " You are levitating because of X."
+# 조합결과 (한국어): " 당신은 공중부양 중이다 (X 때문에)."
+# ============================================================
+
+# [조합] "You " - insight.c의 You_ 매크로 (#define You_ _("You "))
+# 주의: 뒤 공백 포함, 한국어 주제격 조사 "은" 포함
+msgid "You "
+msgstr "당신은 "
 
 # [조합] "have " - 현재완료/소유
 msgid "have "
@@ -8289,25 +8385,30 @@ msgid "belatedly "
 msgstr "뒤늦게 "
 
 # insight.c - 반대하는 신들 목록 접두사
-# 원문: " who is/was opposed by" + "Godname (alignment) and" + ...
-# %s = "is" 또는 "was" (한국어에서는 무시)
+# [조합 메시지] insight.c:566 - 반대 신 목록 접두어
+# 영어: " who is opposed by [God1] and [God2]"
+# %1$s = "is" 또는 "was" (한국어에서 불필요)
+# 한국어: "의 반대자: [신1] 그리고 [신2]"
 #, c-format
 msgid " who %s opposed by"
-msgstr "%.0s의 반대자:"
+msgstr "%1$.0s의 반대자:"
 
-# insight.c - 던전 진입 시간
-# %s는 복수형 접미사로 한국어에서는 불필요
+# [조합 메시지] insight.c:648 - 던전 진입 시간
+# enlght_line(You_, "entered ", buf, "")와 조합됨
+# 결과: "당신은 100턴 전에 던전에 들어갔다."
+# %2$s = plur() 복수형 억제
 #, c-format
 msgid "the dungeon %ld turn%s ago"
-msgstr "%ld턴%.0s 전에 던전에 "
+msgstr "%1$ld턴 전에 던전에 %2$.0s"
 
 # insight.c - 경험치
 # %s는 복수형 접미사로 한국어에서는 불필요
+# [조합 메시지] insight.c:695 - 경험치
+# you_have() 패턴: "당신은 12345 경험치가 있다."
+# %2$s = plur() 복수형 억제
 #, c-format
-# insight.c:695 - you_have() 패턴: "당신은 12345 경험치가 있다."
-# %.0s로 plur() 결과 억제
 msgid "%-1ld experience point%s"
-msgstr "%ld 경험치%.0s가 있다"
+msgstr "%1$ld 경험치가 있다%2$.0s"
 
 msgid " before end-of-game adjustments"
 msgstr " (게임 종료 보정 전)"
@@ -8476,21 +8577,36 @@ msgstr "녹지만"
 # apply.c - 떨림 관련
 # ============================================================
 
-# apply.c - 떨림 패턴 (quiver 동사는 패턴에 포함)
+# [조합 메시지] apply.c:3651 - 저주받은 알 떨림
+# 조합 요소:
+#   %1$s = xname(eobj) - 물건 이름
+#   %2$s = otense("quiver") - "quiver/quivers" 동사 (한국어 불필요)
+# 영어 조합: "The egg quivers feebly."
+# 한국어: 고정 동사 "떨린다" 사용, 영어 동사 억제
+# 한국어 조합: "알이 약하게 떨린다."
 #, c-format
 msgid "The %s %s feebly."
-msgstr "%s{이/가} 약하게 떨린다%.0s."
+msgstr "%1$s{이/가} 약하게 떨린다.%2$.0s"
 
+# [조합 메시지] apply.c - 잠깐 떨림
+# %2$s = 동사 (한국어에서 고정 동사 사용, 억제)
 #, c-format
 msgid "The %s %s briefly."
-msgstr "%s{이/가} 잠깐 떨린다%.0s."
+msgstr "%1$s{이/가} 잠깐 떨린다.%2$.0s"
 
 # ============================================================
 # do_wear.c - 방어구 파괴 관련
 # ============================================================
 
-# do_wear.c:3222 - 갑옷이 먼지로 변해 떨어짐
-# suit(%1$s), turn(%2$s), fall(%3$s), surface(%4$s)
+# [조합 메시지] do_wear.c:3222 - 갑옷이 먼지로 변해 떨어짐
+# 조합 요소:
+#   %1$s = suit - 갑옷 이름 (예: "mail")
+#   %2$s = otense(suit, "turn") - "turns" (동사, 한국어 불필요)
+#   %3$s = otense(suit, "fall") - "falls" (동사, 한국어 불필요)
+#   %4$s = surface(u.ux, u.uy) - 표면 (예: "floor")
+# 영어 조합: "Your mail turns to dust and falls to the floor!"
+# 한국어: 영어 동사 억제, 고정 동사 사용
+# 한국어 조합: "사슬갑옷이 먼지로 변해 바닥에 떨어졌다!"
 #, c-format
 msgid "Your %s %s to dust and %s to the %s!"
 msgstr "%1$s{이/가} 먼지로 변해 %4$s에 떨어졌다!%2$.0s%3$.0s"
@@ -8760,13 +8876,28 @@ msgstr "%1$s%2$s{이/가}%3$s %4$s{으로/로} 변했다."
 # music.c - 자물쇠 소리
 # ============================================================
 
+# [조합 메시지] music.c:873 - 자물쇠 텀블러/기어 소리
+# 조합 요소:
+#   %1$d = tumblers 개수
+#   %2$s = plur(tumblers) - 복수형 "s" (한국어에서 불필요)
+#   %3$d = gears 개수
+#   %4$s = plur(gears) - 복수형 "s" (한국어에서 불필요)
+# 영어 조합: "3 tumblers click and 2 gears turn."
+# 한국어: 복수형 접미사 불필요, %.0s로 억제
+# 한국어 조합: "3개의 텀블러가 딸깍거리고 2개의 기어가 돌아간다."
 #, c-format
 msgid "%d tumbler%s click and %d gear%s turn."
-msgstr "%d개의 텀블러%s 딸깍거리고 %d개의 기어%s 돌아간다."
+msgstr "%1$d개의 텀블러가 딸깍거리고 %3$d개의 기어가 돌아간다.%2$.0s%4$.0s"
 
+# [조합 메시지] music.c:878 - 텀블러만 딸깍거리는 소리
+#, c-format
+msgid "%d tumbler%s click."
+msgstr "%1$d개의 텀블러가 딸깍거린다.%2$.0s"
+
+# [조합 메시지] music.c:882 - 기어만 돌아가는 소리
 #, c-format
 msgid "%d gear%s turn."
-msgstr "%d개의 기어%s 돌아간다."
+msgstr "%1$d개의 기어가 돌아간다.%2$.0s"
 
 # ============================================================
 # shk.c - 상점 관련
@@ -9056,22 +9187,57 @@ msgstr "%s{이/가} 더 %s."
 msgid "disappear"
 msgstr "사라졌다"
 
-# polyself.c:1282 - 떨어짐
+# [조합 메시지] polyself.c:1282 - 안경류가 떨어짐
+# 조합 요소:
+#   %1$s = eyewear - 안경류 (예: "lenses", "blindfold")
+#   %2$s = vtense(eyewear, "fall") - "falls/fall" (동사, 한국어 불필요)
+# 영어 조합: "Your lenses fall off!"
+# 한국어: 고정 동사 "떨어진다" 사용
+# 한국어 조합: "렌즈가 떨어진다!"
 #, c-format
 msgid "%s %s off!"
-msgstr "%s{이/가} %s!"
+msgstr "%1$s{이/가} 떨어진다!%2$.0s"
 
-# sit.c:173 - 눈이 찌릿
+# [조합 메시지] sit.c:173 - 눈이 찌릿 (투명 감지 획득)
+# 조합 요소:
+#   %1$s = eye - 눈 (단수/복수)
+#   %2$s = vtense(eye, "tingle") - "tingles/tingle" (동사)
+# 영어 조합: "Your eyes tingle..."
+# 한국어: "tingle" = "찌릿하다" 사용
+# 한국어 조합: "눈이 찌릿하다..."
 #, c-format
 msgid "%s %s..."
-msgstr "%s{이/가} %s..."
+msgstr "%1$s{이/가} 찌릿하다...%2$.0s"
 
 # "tingle"은 이미 정의됨 (line 4993)
 
-# apply.c:1344-1345 - 깜빡이다 죽음
+# [조합 메시지] apply.c:1344-1345 - 광원 깜빡이다 꺼짐
+# 조합 요소:
+#   %1$s = 광원 이름 (예: "candle", "lamp")
+#   %2$s = vtense("flicker") - "깜빡인다"
+#   %3$s = vtense("die") - "꺼진다"
+# 영어 조합: "The candle flickers for a moment, then dies."
+# 한국어 조합: "촛불이 잠시 깜빡이다가 꺼졌다."
 #, c-format
 msgid "%s %s for a moment, then %s."
-msgstr "%s{이/가} 잠시 %s, 그리고 %s."
+msgstr "%1$s{이/가} 잠시 %2$s다가 %3$s."
+
+# [조합 메시지] apply.c:1672 - 광원 깜빡이다 꺼짐 (2인수)
+# 조합 요소:
+#   %1$s = Tobjnam(obj, "flicker") - "The candle flickers"
+#   %2$s = otense(obj, "die") - "dies"
+# 영어 조합: "The lamp flickers for a moment, then dies."
+# 한국어 조합: "램프가 잠시 깜빡이다가 꺼졌다."
+#, c-format
+msgid "%s for a moment, then %s."
+msgstr "%1$s다가 %2$s."
+
+# apply.c:1345, 1673 - 광원이 꺼지다
+# C_("light", "die") 컨텍스트 사용
+# 일반 "die"는 ko.po의 "죽음/죽다" 번역 유지
+msgctxt "light"
+msgid "die"
+msgstr "꺼졌다"
 
 # "flicker"는 이미 정의됨 (line 5692)
 
@@ -9080,15 +9246,29 @@ msgstr "%s{이/가} 잠시 %s, 그리고 %s."
 msgid "%s %s being rapidly consumed!"
 msgstr "%s{이/가} 빠르게 소모되고 %s!"
 
-# mkobj.c:2883 - 쏟아짐
+# [조합 메시지] mkobj.c:2883 - 뿔피리에서 음식 쏟아짐
+# 조합 요소:
+#   %1$s = what - 음식 이름 (예: "Some food")
+#   %2$s = vtense(what, "spill") - "spills" (동사, 한국어 불필요)
+# 영어 조합: "Some food spills out."
+# 한국어: 고정 동사 "쏟아진다" 사용
+# 한국어 조합: "음식이 쏟아진다."
 #, c-format
 msgid "%s %s out."
-msgstr "%s{이/가} %s."
+msgstr "%1$s{이/가} 쏟아진다.%2$.0s"
 
-# pray.c:795 - 떨어짐
+# [조합 메시지] pray.c:795 - 선물이 몬스터 위장으로 떨어짐
+# 조합 요소:
+#   %1$s = str - 무언가/선물 이름 (예: "Something", "an amulet")
+#   %2$s = vtense(str, "drop") - "drops" (동사, 한국어 불필요)
+#   %3$s = s_suffix(mon_nam) - "the dragon's" (소유격)
+#   %4$s = mbodypart(STOMACH) - "stomach" (위장)
+# 영어 조합: "Something drops into the dragon's stomach."
+# 한국어: 어순 변경, 동사 억제
+# 한국어 조합: "무언가가 용의 위장 속으로 떨어진다."
 #, c-format
 msgid "%s %s into %s %s."
-msgstr "%s{이/가} %s %s 속으로 %s."
+msgstr "%1$s{이/가} %3$s %4$s 속으로 떨어진다.%2$.0s"
 
 # trap.c:4622 - 폭발
 msgid "explode"
@@ -12003,3 +12183,124 @@ msgstr "고독의 탑"
 
 msgid "the Tower of Darkness"
 msgstr "어둠의 탑"
+
+#
+# == Crystal Ball Level Detection (수정구 레벨 탐지) ==
+# From src/detect.c - level_detects[] array
+#
+
+msgid "Delphi"
+msgstr "델피"
+
+msgid "Medusa's lair"
+msgstr "메두사의 소굴"
+
+msgid "a castle"
+msgstr "성"
+
+msgid "the Wizard of Yendor's tower"
+msgstr "옌더의 마법사의 탑"
+
+#
+# == Menu Control Help (메뉴 조작 도움말) ==
+# From src/options.c - hardcoded menu control descriptions
+#
+
+msgid "Accept current choice(s) and dismiss menu"
+msgstr "현재 선택을 확정하고 메뉴 닫기"
+
+msgid "Same as Return"
+msgstr "Return과 동일"
+
+msgid "If not on last page, advance one page;"
+msgstr "마지막 페이지가 아니면 다음 페이지로;"
+
+msgid "when on last page, treat like Return"
+msgstr "마지막 페이지면 Return처럼 동작"
+
+msgid "Cancel menu without making any choice(s)"
+msgstr "선택 없이 메뉴 취소"
+
+#
+# == Trap Grammar Articles (함정 문법 조사) ==
+# Capitalized versions for sentence-initial position
+# Note: "a"/"your" already defined above at line ~9004
+#
+
+msgid "A"
+msgstr ""
+
+msgid "Your"
+msgstr "당신의"
+
+#
+# == Erosion Strings (부식/손상 문자열) ==
+# From src/trap.c - erode_obj() function
+# action[] - 동사 (현재형)
+# msg[] - 상태 형용사
+# bythe[] - 원인 명사
+#
+
+# action[] 배열 - 침식 동사
+# 주의: "corrode"는 다른 컨텍스트에서도 사용되므로 C_() 컨텍스트 사용
+msgctxt "erosion_action"
+msgid "smoulder"
+msgstr "그을린다"
+
+msgctxt "erosion_action"
+msgid "rust"
+msgstr "녹슨다"
+
+msgctxt "erosion_action"
+msgid "rot"
+msgstr "썩는다"
+
+msgctxt "erosion_action"
+msgid "corrode"
+msgstr "부식된다"
+
+msgctxt "erosion_action"
+msgid "crack"
+msgstr "금 간다"
+
+# msg[] 배열 - 완전히 침식된 상태 형용사
+msgctxt "erosion_state"
+msgid "burnt"
+msgstr "타버린"
+
+msgctxt "erosion_state"
+msgid "rusted"
+msgstr "녹슨"
+
+msgctxt "erosion_state"
+msgid "rotten"
+msgstr "썩은"
+
+msgctxt "erosion_state"
+msgid "corroded"
+msgstr "부식된"
+
+msgctxt "erosion_state"
+msgid "cracked"
+msgstr "금 간"
+
+# bythe[] 배열 - 침식 원인 명사
+msgctxt "erosion_cause"
+msgid "heat"
+msgstr "열"
+
+msgctxt "erosion_cause"
+msgid "oxidation"
+msgstr "산화"
+
+msgctxt "erosion_cause"
+msgid "decay"
+msgstr "부패"
+
+msgctxt "erosion_cause"
+msgid "corrosion"
+msgstr "부식"
+
+msgctxt "erosion_cause"
+msgid "impact"
+msgstr "충격"

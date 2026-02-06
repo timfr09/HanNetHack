@@ -2263,7 +2263,7 @@ dodip(void)
     obj = getobj("dip", at_here ? dip_hands_ok : dip_ok, GETOBJ_PROMPT);
     if (!obj)
         return ECMD_CANCEL;
-    if (inaccessible_equipment(obj, "dip", FALSE))
+    if (inaccessible_equipment(obj, _("dip"), FALSE))
         return ECMD_OK;
 
     is_hands = (obj == &hands_obj);
@@ -2383,7 +2383,7 @@ dip_into(void)
     obj = getobj(qbuf, dip_ok, GETOBJ_PROMPT);
     if (!obj)
         return ECMD_CANCEL;
-    if (inaccessible_equipment(obj, "dip", FALSE))
+    if (inaccessible_equipment(obj, _("dip"), FALSE))
         return ECMD_OK;
     return potion_dip(obj, potion);
 }

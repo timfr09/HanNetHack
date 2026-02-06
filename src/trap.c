@@ -1909,7 +1909,7 @@ trapeffect_pit(
                                        SUPPRESS_SADDLE, FALSE)),
                       conj_pit ? _("steps") : _("lands"), predicament);
             } else
-                You(_("%s %s!"), conj_pit ? _("step") : _("land"), predicament);
+                You(C_("you_trap", "%s %s!"), conj_pit ? _("step") : _("land"), predicament);
         }
         /* FIXME:
          * if hero gets killed here, setting u.utrap in advance will

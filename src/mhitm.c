@@ -948,9 +948,9 @@ gulpmm(
     } else {                           /* both alive, put them back */
         if (cansee(dx, dy)) {
             pline(_("%s is %s!"), Monnam(mdef),
-                  digests(magr->data) ? "regurgitated"
-                    : enfolds(magr->data) ? "released"
-                      : "expelled");
+                  digests(magr->data) ? _("regurgitated")
+                    : enfolds(magr->data) ? _("released")
+                      : _("expelled"));
         }
 
         remove_monster(dx,dy);

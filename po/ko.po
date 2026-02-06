@@ -35435,9 +35435,9 @@ msgstr "안-녕, 간호사!"
 msgid "=^.^="
 msgstr "=^.^="
 
-# 의류 태그 패러디
+# 의류 태그 패러디 (100%는 포맷 지정자가 아님)
 #: ../src/read.c:121
-#, c-format
+#, no-c-format
 msgid "100% goblin hair - do not wash"
 msgstr "100% 고블린 털 - 세탁 금지"
 

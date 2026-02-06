@@ -9187,15 +9187,27 @@ msgstr "%s{이/가} 더 %s."
 msgid "disappear"
 msgstr "사라졌다"
 
-# polyself.c:1282 - 떨어짐
+# [조합 메시지] polyself.c:1282 - 안경류가 떨어짐
+# 조합 요소:
+#   %1$s = eyewear - 안경류 (예: "lenses", "blindfold")
+#   %2$s = vtense(eyewear, "fall") - "falls/fall" (동사, 한국어 불필요)
+# 영어 조합: "Your lenses fall off!"
+# 한국어: 고정 동사 "떨어진다" 사용
+# 한국어 조합: "렌즈가 떨어진다!"
 #, c-format
 msgid "%s %s off!"
-msgstr "%s{이/가} %s!"
+msgstr "%1$s{이/가} 떨어진다!%2$.0s"
 
-# sit.c:173 - 눈이 찌릿
+# [조합 메시지] sit.c:173 - 눈이 찌릿 (투명 감지 획득)
+# 조합 요소:
+#   %1$s = eye - 눈 (단수/복수)
+#   %2$s = vtense(eye, "tingle") - "tingles/tingle" (동사)
+# 영어 조합: "Your eyes tingle..."
+# 한국어: "tingle" = "찌릿하다" 사용
+# 한국어 조합: "눈이 찌릿하다..."
 #, c-format
 msgid "%s %s..."
-msgstr "%s{이/가} %s..."
+msgstr "%1$s{이/가} 찌릿하다...%2$.0s"
 
 # "tingle"은 이미 정의됨 (line 4993)
 

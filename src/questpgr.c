@@ -61,7 +61,7 @@ ldrname(void)
 staticfn const char *
 intermed(void)
 {
-    return gu.urole.intermed;
+    return _(gu.urole.intermed);
 }
 
 boolean
@@ -142,7 +142,7 @@ guardname(void) /* return your role leader's guard monster name */
 staticfn const char *
 homebase(void) /* return your role leader's location */
 {
-    return gu.urole.homebase;
+    return _(gu.urole.homebase);
 }
 
 /* returns 1 if nemesis death message mentions noxious fumes, otherwise 0;

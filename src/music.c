@@ -492,8 +492,8 @@ generic_lvl_desc(void)
 }
 
 static const char *beats[] = {
-    "stepper", "one drop", "slow two", "triple stroke roll",
-    "double shuffle", "half-time shuffle", "second line", "train"
+    N_("stepper"), N_("one drop"), N_("slow two"), N_("triple stroke roll"),
+    N_("double shuffle"), N_("half-time shuffle"), N_("second line"), N_("train")
 };
 
 /*
@@ -715,7 +715,7 @@ do_improvisation(struct obj *instr)
             /* TODO maybe: sound effects for these riffs */
             You(_("%s %s."),
                 rn2(2) ? _("butcher") : rn2(2) ? _("manage") : _("pull off"),
-                an(ROLL_FROM(beats)));
+                an(_(ROLL_FROM(beats))));
             Hero_playnotes(obj_to_instr(&itmp), improvisation, 50);
         }
         awaken_monsters(u.ulevel * (mundane ? 5 : 40));

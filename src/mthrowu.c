@@ -22,9 +22,9 @@ staticfn void return_from_mtoss(struct monst *, struct obj *, boolean);
  * Keep consistent with breath weapons in zap.c, and AD_* in monattk.h.
  */
 static NEARDATA const char *breathwep[] = {
-    "fragments", "fire", "frost", "sleep gas", "a disintegration blast",
-    "lightning", "poison gas", "acid", "strange breath #8",
-    "strange breath #9"
+    N_("fragments"), N_("fire"), N_("frost"), N_("sleep gas"), N_("a disintegration blast"),
+    N_("lightning"), N_("poison gas"), N_("acid"), N_("strange breath #8"),
+    N_("strange breath #9")
 };
 
 /* hallucinatory ray types */
@@ -1075,7 +1075,7 @@ breathwep_name(int typ)
     if (Hallucination)
         return rnd_hallublast();
 
-    return breathwep[BZ_OFS_AD(typ)];
+    return _(breathwep[BZ_OFS_AD(typ)]);
 }
 
 /* monster breathes at monster (ranged) */

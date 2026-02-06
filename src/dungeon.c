@@ -3673,7 +3673,7 @@ print_mapseen(
     /* print out branches */
     if (mptr->br) {
         Sprintf(buf, "%s%s to %s", PREFIX, br_string2(mptr->br),
-                svd.dungeons[mptr->br->end2.dnum].dname);
+                _(svd.dungeons[mptr->br->end2.dnum].dname));
 
         /* Since mapseen objects are printed out in increasing order
          * of dlevel, clarify which level this branch is going to

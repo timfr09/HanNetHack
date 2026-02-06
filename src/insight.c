@@ -619,13 +619,13 @@ background_enlightenment(int unused_mode UNUSED, int final)
                  !strncmp(tmpbuf, "Plane", 5) ? _("Elemental ") : "", tmpbuf);
     } else if (Is_knox(&u.uz)) {
         /* this gives away the fact that the knox branch is only 1 level */
-        Sprintf(buf, _("on the %s level"), svd.dungeons[u.uz.dnum].dname);
+        Sprintf(buf, _("on the %s level"), _(svd.dungeons[u.uz.dnum].dname));
         /* TODO? maybe phrase it differently when actually inside the fort,
            if we're able to determine that (not trivial) */
     } else {
         char dgnbuf[QBUFSZ];
 
-        Strcpy(dgnbuf, svd.dungeons[u.uz.dnum].dname);
+        Strcpy(dgnbuf, _(svd.dungeons[u.uz.dnum].dname));
         if (!strncmpi(dgnbuf, "The ", 4))
             *dgnbuf = lowc(*dgnbuf);
         Sprintf(tmpbuf, _("level %d"),

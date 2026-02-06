@@ -1884,7 +1884,7 @@ invoke_create_portal(struct obj *obj)
         any.a_int = i + 1;
         add_menu(tmpwin, &nul_glyphinfo, &any, 0, 0,
                  ATR_NONE, clr,
-                 svd.dungeons[i].dname, MENU_ITEMFLAGS_NONE);
+                 _(svd.dungeons[i].dname), MENU_ITEMFLAGS_NONE);
         num_ok_dungeons++;
         last_ok_dungeon = i;
     }

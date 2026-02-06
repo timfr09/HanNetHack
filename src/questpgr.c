@@ -61,7 +61,7 @@ ldrname(void)
 staticfn const char *
 intermed(void)
 {
-    return gu.urole.intermed;
+    return _(gu.urole.intermed);
 }
 
 boolean
@@ -142,7 +142,7 @@ guardname(void) /* return your role leader's guard monster name */
 staticfn const char *
 homebase(void) /* return your role leader's location */
 {
-    return gu.urole.homebase;
+    return _(gu.urole.homebase);
 }
 
 /* returns 1 if nemesis death message mentions noxious fumes, otherwise 0;
@@ -313,7 +313,7 @@ convert_arg(char c)
         str = Blind ? _("sense") : _("see");
         break;
     case 'Z':
-        str = svd.dungeons[0].dname;
+        str = _(svd.dungeons[0].dname);
         break;
     case '%':
         str = "%";

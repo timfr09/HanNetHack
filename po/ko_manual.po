@@ -10737,6 +10737,32 @@ msgstr "X가 그 자리를 표시한다."
 #     shklight[], shkgeneral[], shkhealthfoods[]
 #     → 실제 지명 기반 고유명사
 #
+# ★ 퀘스트 장소 (role.c) - 래핑 필요! (21개):
+#   - "the College of Archeology", "the Tomb of the Toltec Kings"
+#   - "the Camp of the Duali Tribe", "the Duali Oasis"
+#   - "the Caves of the Ancestors", "the Dragon's Lair"
+#   - "the Temple of Epidaurus", "the Temple of Coeus"
+#   - "Camelot Castle", "the Isle of Glass"
+#   - "the Monastery of Chan-Sune", "the Monastery of the Earth-Lord"
+#   - "the Great Temple", "the Temple of Nalzok"
+#   - "the Thieves' Guild Hall", "the Assassins' Guild Hall"
+#   - "Orion's camp", "the cave of the wumpus"
+#   - "the Castle of the Taro Clan", "the Shogun's Castle"
+#   - "Ankh-Morpork", "the Shrine of Destiny", "the cave of Surtur"
+#   - "the Lonely Tower", "the Tower of Darkness"
+#   → 게임 내 look 명령이나 퀘스트 메시지에서 표시됨
+#
+# ★ 던전 이름 (dungeon.lua) - Lua 래핑 필요:
+#   - "The Dungeons of Doom", "The Gnomish Mines", "Sokoban"
+#   - "The Quest", "Fort Ludios", "Gehennom"
+#   - "The Elemental Planes", "Vlad's Tower"
+#   → Lua 문자열 추출 파이프라인 확장 필요
+#
+# ★ 상태 하이라이팅 (botl.c:2571-2576) - 내부 비교용:
+#   - aligntxt[] = { "chaotic", "neutral", "lawful" }
+#   - hutxt[] = { "Satiated", "Hungry", "Weak", "Fainting", "Fainted", "Starved" }
+#   → 옵션 파싱용, 래핑 시 호환성 문제 가능
+#
 # ============================================================
 #
 # [몬스터 이름] - include/monsters.h
@@ -11884,3 +11910,96 @@ msgstr "예티"
 
 msgid "zruty"
 msgstr "즈루티"
+
+#
+# == Quest Location Strings (역할별 퀘스트 위치) ==
+# From src/role.c - homebase and intermed locations for each role
+#
+
+# Archeologist quest locations
+msgid "the College of Archeology"
+msgstr "고고학 대학"
+
+msgid "the Tomb of the Toltec Kings"
+msgstr "톨텍 왕들의 무덤"
+
+# Barbarian quest locations
+msgid "the Camp of the Duali Tribe"
+msgstr "두알리 부족의 야영지"
+
+msgid "the Duali Oasis"
+msgstr "두알리 오아시스"
+
+# Caveman quest locations
+msgid "the Caves of the Ancestors"
+msgstr "조상들의 동굴"
+
+msgid "the Dragon's Lair"
+msgstr "용의 둥지"
+
+# Healer quest locations
+msgid "the Temple of Epidaurus"
+msgstr "에피다우로스 신전"
+
+msgid "the Temple of Coeus"
+msgstr "코이오스 신전"
+
+# Knight quest locations
+msgid "Camelot Castle"
+msgstr "카멜롯 성"
+
+msgid "the Isle of Glass"
+msgstr "유리 섬"
+
+# Monk quest locations
+msgid "the Monastery of Chan-Sune"
+msgstr "찬순 수도원"
+
+msgid "the Monastery of the Earth-Lord"
+msgstr "대지의 군주 수도원"
+
+# Priest quest locations
+msgid "the Great Temple"
+msgstr "대신전"
+
+msgid "the Temple of Nalzok"
+msgstr "날족 신전"
+
+# Rogue quest locations
+msgid "the Thieves' Guild Hall"
+msgstr "도적 길드 회관"
+
+msgid "the Assassins' Guild Hall"
+msgstr "암살자 길드 회관"
+
+# Ranger quest locations
+msgid "Orion's camp"
+msgstr "오리온의 야영지"
+
+msgid "the cave of the wumpus"
+msgstr "웜퍼스의 동굴"
+
+# Samurai quest locations
+msgid "the Castle of the Taro Clan"
+msgstr "타로 가문의 성"
+
+msgid "the Shogun's Castle"
+msgstr "쇼군의 성"
+
+# Tourist quest locations
+msgid "Ankh-Morpork"
+msgstr "앙크-모르포크"
+
+# Valkyrie quest locations
+msgid "the Shrine of Destiny"
+msgstr "운명의 성소"
+
+msgid "the cave of Surtur"
+msgstr "수르트의 동굴"
+
+# Wizard quest locations
+msgid "the Lonely Tower"
+msgstr "고독의 탑"
+
+msgid "the Tower of Darkness"
+msgstr "어둠의 탑"

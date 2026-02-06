@@ -9138,11 +9138,11 @@ show_menu_controls(winid win, boolean dolist)
         const char *key, *desc;
     };
     static const struct xtra_cntrls hardcoded[] = {
-        { "Return", "Accept current choice(s) and dismiss menu" },
-        { "Enter",  "Same as Return" },
-        { "Space",  "If not on last page, advance one page;" },
-        { "     ",  "when on last page, treat like Return" },
-        { "Escape", "Cancel menu without making any choice(s)" },
+        { "Return", N_("Accept current choice(s) and dismiss menu") },
+        { "Enter",  N_("Same as Return") },
+        { "Space",  N_("If not on last page, advance one page;") },
+        { "     ",  N_("when on last page, treat like Return") },
+        { "Escape", N_("Cancel menu without making any choice(s)") },
         { (char *) 0, (char *) 0}
     };
     static const char mc_fmt[] = "%8s     %-6s %s",
@@ -9232,7 +9232,7 @@ show_menu_controls(winid win, boolean dolist)
         arg = "Other "; /* prefix for first hardcoded[] entry, then reset */
     }
     for (xcp = hardcoded; xcp->key; ++xcp) {
-        Sprintf(buf, fmt, arg, xcp->key, xcp->desc);
+        Sprintf(buf, fmt, arg, xcp->key, _(xcp->desc));
         putstr(win, 0, buf);
         arg = "";
     }

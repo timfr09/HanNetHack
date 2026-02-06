@@ -1197,10 +1197,10 @@ static const struct crystalballlevels {
     const char *what;
     d_level *where;
 } level_detects[] = {
-    { "Delphi", &oracle_level },
-    { "Medusa's lair", &medusa_level },
-    { "a castle", &stronghold_level },
-    { "the Wizard of Yendor's tower", &wiz1_level },
+    { N_("Delphi"), &oracle_level },
+    { N_("Medusa's lair"), &medusa_level },
+    { N_("a castle"), &stronghold_level },
+    { N_("the Wizard of Yendor's tower"), &wiz1_level },
 };
 
 void
@@ -1353,7 +1353,7 @@ use_crystal_ball(struct obj **optr)
             ret = trap_detect((struct obj *) 0);
         } else {
             i = rn2(SIZE(level_detects));
-            You_see(_("%s, %s."), level_detects[i].what,
+            You_see(_("%s, %s."), _(level_detects[i].what),
                     level_distance(level_detects[i].where));
             ret = 0;
         }

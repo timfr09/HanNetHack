@@ -12003,3 +12003,52 @@ msgstr "고독의 탑"
 
 msgid "the Tower of Darkness"
 msgstr "어둠의 탑"
+
+#
+# == Crystal Ball Level Detection (수정구 레벨 탐지) ==
+# From src/detect.c - level_detects[] array
+#
+
+msgid "Delphi"
+msgstr "델피"
+
+msgid "Medusa's lair"
+msgstr "메두사의 소굴"
+
+msgid "a castle"
+msgstr "성"
+
+msgid "the Wizard of Yendor's tower"
+msgstr "옌더의 마법사의 탑"
+
+#
+# == Menu Control Help (메뉴 조작 도움말) ==
+# From src/options.c - hardcoded menu control descriptions
+#
+
+msgid "Accept current choice(s) and dismiss menu"
+msgstr "현재 선택을 확정하고 메뉴 닫기"
+
+msgid "Same as Return"
+msgstr "Return과 동일"
+
+msgid "If not on last page, advance one page;"
+msgstr "마지막 페이지가 아니면 다음 페이지로;"
+
+msgid "when on last page, treat like Return"
+msgstr "마지막 페이지면 Return처럼 동작"
+
+msgid "Cancel menu without making any choice(s)"
+msgstr "선택 없이 메뉴 취소"
+
+#
+# == Trap Grammar Articles (함정 문법 조사) ==
+# Capitalized versions for sentence-initial position
+# Note: "a"/"your" already defined above at line ~9004
+#
+
+msgid "A"
+msgstr ""
+
+msgid "Your"
+msgstr "당신의"

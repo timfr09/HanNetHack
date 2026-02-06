@@ -10785,5 +10785,60 @@ msgstr "X가 그 자리를 표시한다."
 #   - sounds.c: temple_msg[], h_sounds[] ✓
 #   - pager.c: icetyp[] ✓
 #   - options.c: burdentype[], runmodes[], sortltype[] 등 ✓
+#   - mthrowu.c: breathwep[] ✓ (2026-02-06 래핑 완료)
+#   - music.c: beats[] ✓ (2026-02-06 래핑 완료)
 #
 # ============================================================
+
+# ============================================================
+# breathwep[] - 드래곤 브레스 유형 (mthrowu.c)
+# ============================================================
+
+msgid "fragments"
+msgstr "파편"
+
+msgid "sleep gas"
+msgstr "수면 가스"
+
+msgid "a disintegration blast"
+msgstr "분해 폭발"
+
+# "lightning"은 이미 번역됨 (line 1074)
+# "poison gas"는 이미 번역됨 (line 7759)
+
+msgid "acid"
+msgstr "산"
+
+msgid "strange breath #8"
+msgstr "이상한 브레스 #8"
+
+msgid "strange breath #9"
+msgstr "이상한 브레스 #9"
+
+# ============================================================
+# beats[] - 드럼 박자 유형 (music.c)
+# ============================================================
+
+msgid "stepper"
+msgstr "스테퍼"
+
+msgid "one drop"
+msgstr "원 드롭"
+
+msgid "slow two"
+msgstr "슬로우 투"
+
+msgid "triple stroke roll"
+msgstr "트리플 스트로크 롤"
+
+msgid "double shuffle"
+msgstr "더블 셔플"
+
+msgid "half-time shuffle"
+msgstr "하프타임 셔플"
+
+msgid "second line"
+msgstr "세컨드 라인"
+
+msgid "train"
+msgstr "트레인"

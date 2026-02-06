@@ -7983,202 +7983,178 @@ msgstr ""
 msgid "fulvous"
 msgstr ""
 
+# 히브리어 파란색 염료
 #: ../src/do_name.c:1490
-#, fuzzy
 msgid "tekhelet"
-msgstr "해골"
+msgstr "테켈렛"
 
 #: ../src/do_name.c:1491
-#, fuzzy
 msgid "selective yellow"
-msgstr "전기 뱀장어"
+msgstr "선택적 노랑"
 
-# 조합: 공중 이동 동사 (aerial movement verbs)
-# 예: "You hurtle in the opposite direction."
+# ============================================================
+# 환각 액체 (Hallucination Liquids) - hliquids[]
+# ============================================================
 #: ../src/do_name.c:1514
-#, fuzzy
 msgid "yoghurt"
-msgstr "돌진한다"
+msgstr "요거트"
 
+# 닥터 수스의 점액 물질
 #: ../src/do_name.c:1514
 msgid "oobleck"
-msgstr ""
+msgstr "우블렉"
 
 #: ../src/do_name.c:1514
-#, fuzzy
 msgid "clotted blood"
-msgstr "썩은 "
+msgstr "응고된 피"
 
 #: ../src/do_name.c:1515
-#, fuzzy
 msgid "diluted water"
-msgstr "희석된 "
+msgstr "희석된 물"
 
 #: ../src/do_name.c:1515
-#, fuzzy
 msgid "purified water"
-msgstr "정화되었다."
+msgstr "정제수"
 
 #: ../src/do_name.c:1516
-#, fuzzy
 msgid "instant coffee"
-msgstr "거대 뱀장어"
+msgstr "인스턴트 커피"
 
 #: ../src/do_name.c:1516
-#, fuzzy
 msgid "tea"
-msgstr "증기"
+msgstr "차"
 
-# ============================================================
-# 학살 사망 원인 (Genocide death reasons)
-# 이 문자열들은 killer.name에 사용되는 사망 원인
-# ============================================================
 #: ../src/do_name.c:1516
-#, fuzzy
 msgid "herbal infusion"
-msgstr "학살적 혼란"
+msgstr "허브 우려낸 것"
 
 #: ../src/do_name.c:1517
-#, fuzzy
 msgid "liquid rainbow"
 msgstr "액체 무지개"
 
 #: ../src/do_name.c:1518
-#, fuzzy
 msgid "creamy foam"
-msgstr "크림 파이"
+msgstr "크리미 거품"
 
 #: ../src/do_name.c:1518
 msgid "mulled wine"
-msgstr ""
+msgstr "뱅쇼"
 
 #: ../src/do_name.c:1518
 msgid "bouillon"
-msgstr ""
+msgstr "부용"
 
 #: ../src/do_name.c:1519
 msgid "nectar"
-msgstr ""
+msgstr "넥타"
 
 #: ../src/do_name.c:1519
 msgid "grog"
-msgstr ""
+msgstr "그로그"
 
+# 영화 참조 - 탄성 점액질
 #: ../src/do_name.c:1519
-#, fuzzy
 msgid "flubber"
-msgstr "강도"
+msgstr "플러버"
 
-# 마법사 모욕어: 가련한 자
 #: ../src/do_name.c:1520
-#, fuzzy
 msgid "ketchup"
-msgstr "불쌍한 놈"
+msgstr "케첩"
 
 #: ../src/do_name.c:1520
-#, fuzzy
 msgid "slow light"
-msgstr "노란 빛"
+msgstr "느린 빛"
 
 #: ../src/do_name.c:1520 ../src/mthrowu.c:50
-#, fuzzy
 msgid "oil"
-msgstr "똬리"
+msgstr "기름"
 
 #: ../src/do_name.c:1520
 msgid "vinaigrette"
-msgstr ""
+msgstr "비네그레트"
 
 #: ../src/do_name.c:1521
-#, fuzzy
 msgid "liquid crystal"
-msgstr "다이리튬 결정"
+msgstr "액정"
 
 #: ../src/do_name.c:1521
-#, fuzzy
 msgid "honey"
-msgstr "돈"
+msgstr "꿀"
 
 #: ../src/do_name.c:1522
 msgid "caramel sauce"
 msgstr ""
 
 #: ../src/do_name.c:1522
-#, fuzzy
 msgid "ink"
-msgstr "분홍색"
+msgstr "잉크"
 
+# 안방수 (눈의 체액)
 #: ../src/do_name.c:1522
 msgid "aqueous humour"
-msgstr ""
+msgstr "방수"
 
 #: ../src/do_name.c:1523
 msgid "milk substitute"
-msgstr ""
+msgstr "대용유"
 
 #: ../src/do_name.c:1524
-#, fuzzy
 msgid "fruit juice"
-msgstr "과일"
+msgstr "과일 주스"
 
 #: ../src/do_name.c:1524
-#, fuzzy
 msgid "glowing lava"
-msgstr "용암 속에서"
+msgstr "빛나는 용암"
 
 #: ../src/do_name.c:1524
-#, fuzzy
 msgid "gastric acid"
-msgstr "산성 폭발"
+msgstr "위산"
 
 #: ../src/do_name.c:1525
-#, fuzzy
 msgid "mineral water"
-msgstr "물 속에서"
+msgstr "미네랄 워터"
 
 #: ../src/do_name.c:1526
-#, fuzzy
 msgid "cough syrup"
-msgstr "기침%s"
+msgstr "기침약"
 
 #: ../src/do_name.c:1526
-#, fuzzy
 msgid "quicksilver"
-msgstr "은"
+msgstr "수은"
 
-# 유혹 대사 - 여성 칭호
+# 에테르의 옛 이름
 #: ../src/do_name.c:1526
-#, fuzzy
 msgid "sweet vitriol"
-msgstr "사랑스러운 여인"
+msgstr "달콤한 황산"
 
+# 나노기술 종말 시나리오
 #: ../src/do_name.c:1527
-#, fuzzy
 msgid "grey goo"
-msgstr "그들이 간다"
+msgstr "회색 슬라임"
 
 #: ../src/do_name.c:1527
-#, fuzzy
 msgid "pink slime"
-msgstr "녹색 슬라임"
+msgstr "분홍 슬라임"
 
+# 우주의 평균 색상
 #: ../src/do_name.c:1528
-#, fuzzy
 msgid "cosmic latte"
-msgstr "덜그럭거리는"
+msgstr "코스믹 라테"
 
+# ============================================================
+# 루니 툰 코요테 학명 (Looney Tunes Coyote pseudo-Latin names)
+# ============================================================
 #: ../src/do_name.c:1556
-#, fuzzy
 msgid "Carnivorous Vulgaris"
-msgstr "육식 유인원"
+msgstr "카르니보루스 불가리스"
 
 #: ../src/do_name.c:1556
 msgid "Road-Runnerus Digestus"
-msgstr ""
+msgstr "로드러너루스 디게스투스"
 
 #: ../src/do_name.c:1557
 msgid "Eatibus Anythingus"
-msgstr ""
+msgstr "이티부스 애니싱구스"
 
 #: ../src/do_name.c:1558
 msgid "Famishus-Famishus"
@@ -8216,10 +8192,13 @@ msgstr ""
 msgid "Hardheadipus Oedipus"
 msgstr ""
 
+# ============================================================
+# Looney Tunes 가짜 라틴어 코요테 이름 (환각 효과)
+# 의도적으로 우스꽝스러운 유사 라틴어
+# ============================================================
 #: ../src/do_name.c:1564
-#, fuzzy
 msgid "Carnivorous Slobbius"
-msgstr "육식 가방"
+msgstr "카르니보루스 슬로비우스"
 
 #: ../src/do_name.c:1564
 msgid "Hard-Headipus Ravenus"
@@ -8253,15 +8232,17 @@ msgstr ""
 msgid "Nemesis Ridiculii"
 msgstr ""
 
+# Canis latrans = 코요테의 학명 (환각 효과)
 #: ../src/do_name.c:1570
-#, fuzzy
 msgid "Canis latrans"
-msgstr "놋쇠 랜턴"
+msgstr "카니스 라트란스"
 
+# ============================================================
+# Terry Pratchett Discworld 소설 제목 (환각 효과)
+# ============================================================
 #: ../src/do_name.c:1640
-#, fuzzy
 msgid "The Colour of Magic"
-msgstr "아리오크의 영광"
+msgstr "마법의 색"
 
 #: ../src/do_name.c:1640
 msgid "The Light Fantastic"
@@ -8276,19 +8257,16 @@ msgid "Mort"
 msgstr ""
 
 #: ../src/do_name.c:1642
-#, fuzzy
 msgid "Sourcery"
-msgstr "마법사"
+msgstr "마법원"
 
 #: ../src/do_name.c:1642
-#, fuzzy
 msgid "Wyrd Sisters"
-msgstr "자매"
+msgstr "운명의 자매들"
 
 #: ../src/do_name.c:1642
-#, fuzzy
 msgid "Pyramids"
-msgstr "피라미드형"
+msgstr "피라미드"
 
 #: ../src/do_name.c:1643
 msgid "Guards! Guards!"
@@ -8303,28 +8281,20 @@ msgid "Moving Pictures"
 msgstr ""
 
 #: ../src/do_name.c:1644
-#, fuzzy
 msgid "Reaper Man"
-msgstr "종이"
+msgstr "사신"
 
 #: ../src/do_name.c:1644
 msgid "Witches Abroad"
 msgstr ""
 
-# ============================================================
-# 에너지 표시 - 전체 (Energy full)
-# C_("energy_all", ...) 컨텍스트 사용
-# %1$d = 최대 에너지, %2$s = "energy points (spell power)"
-# ============================================================
 #: ../src/do_name.c:1645
-#, fuzzy
 msgid "Small Gods"
-msgstr "%2$s %1$d점 전부"
+msgstr "작은 신들"
 
 #: ../src/do_name.c:1646
-#, fuzzy
 msgid "Lords and Ladies"
-msgstr "%s{이/가} 빛났다가 사라진다."
+msgstr "군주와 귀부인"
 
 #: ../src/do_name.c:1646
 msgid "Men at Arms"
@@ -8335,30 +8305,24 @@ msgid "Soul Music"
 msgstr ""
 
 #: ../src/do_name.c:1647
-#, fuzzy
 msgid "Interesting Times"
-msgstr "흥미롭다..."
+msgstr "흥미로운 시대"
 
 #: ../src/do_name.c:1648
-#, fuzzy
 msgid "Maskerade"
-msgstr "품질을 떨어뜨리다"
+msgstr "가면무도회"
 
-# 유혹 대사 - 여성 칭호
 #: ../src/do_name.c:1648
-#, fuzzy
 msgid "Feet of Clay"
-msgstr "사랑스러운 여인"
+msgstr "흙으로 빚은 발"
 
 #: ../src/do_name.c:1648
-#, fuzzy
 msgid "Hogfather"
-msgstr "다른"
+msgstr "호그파더"
 
 #: ../src/do_name.c:1648
-#, fuzzy
 msgid "Jingo"
-msgstr "딩고"
+msgstr "징고"
 
 #: ../src/do_name.c:1649
 msgid "The Last Continent"
@@ -8373,9 +8337,8 @@ msgid "The Fifth Elephant"
 msgstr ""
 
 #: ../src/do_name.c:1650
-#, fuzzy
 msgid "The Truth"
-msgstr "튜토리얼"
+msgstr "진실"
 
 #: ../src/do_name.c:1651
 msgid "Thief of Time"
@@ -8398,32 +8361,28 @@ msgid "The Wee Free Men"
 msgstr ""
 
 #: ../src/do_name.c:1654
-#, fuzzy
 msgid "Monstrous Regiment"
-msgstr "후방 체절"
+msgstr "괴물 연대"
 
 #: ../src/do_name.c:1655
 msgid "A Hat Full of Sky"
 msgstr ""
 
 #: ../src/do_name.c:1655
-#, fuzzy
 msgid "Going Postal"
-msgstr "모닝스타"
+msgstr "우편배달부"
 
 #: ../src/do_name.c:1655
 msgid "Thud!"
 msgstr ""
 
 #: ../src/do_name.c:1656
-#, fuzzy
 msgid "Wintersmith"
-msgstr "내부"
+msgstr "겨울대장장이"
 
 #: ../src/do_name.c:1657
-#, fuzzy
 msgid "Making Money"
-msgstr "%s 위를 걷는 중"
+msgstr "돈 만들기"
 
 #: ../src/do_name.c:1657
 msgid "Unseen Academicals"
@@ -10852,14 +10811,12 @@ msgid "unknown plane #%d"
 msgstr "알 수 없는 차원 #%d"
 
 #: ../src/dungeon.c:3437
-#, fuzzy
 msgid "shop?"
-msgstr "상점"
+msgstr "상점?"
 
 #: ../src/dungeon.c:3440
-#, fuzzy
 msgid "untended shop"
-msgstr "무인"
+msgstr "무인 상점"
 
 #: ../src/dungeon.c:3462
 #, c-format
@@ -10876,17 +10833,19 @@ msgid " (play %s to open or close drawbridge)"
 msgstr " (%s{을/를} 연주하면 도개교를 열거나 닫음)"
 
 # ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+# 던전 개요 표시 형식 (Dungeon Overview Format)
+# 층 정보 + 특징 표시
 # ============================================================
 #: ../src/dungeon.c:3489
-#, fuzzy, c-format
+#, c-format
 msgid "%s%s %s%s"
-msgstr "%s%s{이/가} %s %s!"
+msgstr "%s%s %s%s"
 
 #: ../src/dungeon.c:3498
-#, fuzzy, c-format
+#, c-format
 msgid "%s%s %s%s and %s %s%s"
-msgstr "%s%s %s%s (으)로 다시 일어났다"
+msgstr "%s%s %s%s 및 %s %s%s"
 
 #: ../src/dungeon.c:3537
 #, c-format
@@ -10904,9 +10863,8 @@ msgid "shop"
 msgstr "상점"
 
 #: ../src/dungeon.c:3604
-#, fuzzy
 msgid "temple"
-msgstr "강화된 "
+msgstr "신전"
 
 #: ../src/dungeon.c:3611
 #, c-format
@@ -10914,9 +10872,8 @@ msgid " to %s"
 msgstr " %s{으로/로}"
 
 #: ../src/dungeon.c:3615
-#, fuzzy
 msgid "sink"
-msgstr "싱크대."
+msgstr "싱크대"
 
 #: ../src/dungeon.c:3616 ../src/pager.c:2167
 msgid "grave"
@@ -10944,7 +10901,7 @@ msgstr "미해결"
 #: ../src/dungeon.c:3639
 #, c-format
 msgid "%sA very big room."
-msgstr "%s 매우 따뜻하다."
+msgstr "%s매우 큰 방."
 
 #: ../src/dungeon.c:3641
 #, c-format
@@ -11004,34 +10961,33 @@ msgstr "%s%s에 의해 소환됨."
 msgid "Final resting place for"
 msgstr "최종 안식처:"
 
+# ============================================================
+# 배고픔 상태 표시 (Hunger Status)
+# 8자 고정폭으로 UI 표시용
+# ============================================================
 #: ../src/eat.c:72
-#, fuzzy
 msgid "Satiated"
-msgstr "발산하다"
+msgstr "포만    "
 
 #: ../src/eat.c:72
-#, fuzzy
 msgid "Hungry  "
-msgstr "화난"
+msgstr "배고픔  "
 
 #: ../src/eat.c:72
 msgid "Weak    "
-msgstr ""
+msgstr "허약    "
 
 #: ../src/eat.c:73
-#, fuzzy
 msgid "Fainting"
-msgstr "대기 중"
+msgstr "기절 중 "
 
 #: ../src/eat.c:73
-#, fuzzy
 msgid "Fainted "
-msgstr "희석된 "
+msgstr "기절    "
 
 #: ../src/eat.c:73
-#, fuzzy
 msgid "Starved "
-msgstr "굶어 죽었다"
+msgstr "굶주림  "
 
 #: ../src/eat.c:192
 msgid "You now prefer mimicking yourself."
@@ -16034,13 +15990,11 @@ msgstr "감소된"
 # 2. steal.c - "tries to take your armor" → 문장 패턴에서 무시됨
 # 두 맥락 모두 해결: 제로너비공백 사용
 #: ../src/insight.c:250 ../src/insight.c:1848
-#, fuzzy
 msgctxt "damage"
 msgid "take"
 msgstr "​"
 
 #: ../src/insight.c:250 ../src/insight.c:1848
-#, fuzzy
 msgctxt "damage"
 msgid "took"
 msgstr "​"
@@ -16087,17 +16041,12 @@ msgstr " %1$ld분%2$s"
 msgid " %ld second%s"
 msgstr " %1$ld초%2$s"
 
-# 조합 패턴: "%s the %s with %s%s."
-#   %1$s = 동사 (engrave, burn 등)
-#   %2$s = 표면 (floor, ground 등)
-#   %3$s = "1 of " 또는 ""
-#   %4$s = 도구 이름
-# 예: "You engrave the floor with 1 of your daggers."
-# → "1개의 단검으로 바닥을 새긴다."
+# 몬스터 속성 보기 메뉴 헤더
+# 예: "Viewing the orc's attributes:"
 #: ../src/insight.c:408
-#, fuzzy, c-format
+#, c-format
 msgid "%s the %s's attributes:"
-msgstr "%3$s%4$s{으로/로} %2$s{을/를} %1$s"
+msgstr "%s %s의 속성:"
 
 #: ../src/insight.c:436
 msgid "Miscellaneous:"
@@ -16432,9 +16381,8 @@ msgstr "당신의 점수는 "
 
 # 스탯 관련 용어
 #: ../src/insight.c:736
-#, fuzzy
 msgid "energy points (spell power)"
-msgstr "에너지"
+msgstr "에너지 (주문 파워)"
 
 #: ../src/insight.c:742
 msgid "Basics:"
@@ -16446,7 +16394,7 @@ msgstr "기본 정보:"
 # 예: "You have all 50 hit points" → "당신은 체력 50점 전부를 가지고 있다"
 # ============================================================
 #: ../src/insight.c:749
-#, fuzzy, c-format
+#, c-format
 msgctxt "hp_all"
 msgid "all %d hit points"
 msgstr "체력 %d점 전부"
@@ -16457,22 +16405,22 @@ msgstr "체력 %d점 전부"
 # 예: "You have 30 out of 50 hit points" → "당신은 체력 30/50점을 가지고 있다"
 # ============================================================
 #: ../src/insight.c:751
-#, fuzzy, c-format
+#, c-format
 msgctxt "hp_partial"
 msgid "%d out of %d hit point%s"
 msgstr "체력 %1$d/%2$d점%3$s"
 
 #: ../src/insight.c:759
-#, fuzzy, c-format
+#, c-format
 msgctxt "energy_none"
 msgid "no %s"
-msgstr " %s{으로/로}"
+msgstr "%s 없음"
 
 #: ../src/insight.c:761
-#, fuzzy, c-format
+#, c-format
 msgctxt "energy_both"
 msgid "both %s"
-msgstr "둘 다 "
+msgstr "%s 둘 다"
 
 # ============================================================
 # 에너지 표시 - 전체 (Energy full)
@@ -16480,7 +16428,7 @@ msgstr "둘 다 "
 # %1$d = 최대 에너지, %2$s = "energy points (spell power)"
 # ============================================================
 #: ../src/insight.c:763
-#, fuzzy, c-format
+#, c-format
 msgctxt "energy_all"
 msgid "all %d %s"
 msgstr "%2$s %1$d점 전부"
@@ -16491,7 +16439,7 @@ msgstr "%2$s %1$d점 전부"
 # %1$d = 현재, %2$d = 최대, %3$s = "energy points (spell power)"
 # ============================================================
 #: ../src/insight.c:765
-#, fuzzy, c-format
+#, c-format
 msgctxt "energy_partial"
 msgid "%d out of %d %s"
 msgstr "%3$s %1$d/%2$d점"
@@ -16712,9 +16660,8 @@ msgid "walking on %s"
 msgstr "%s 위를 걷는 중"
 
 #: ../src/insight.c:1021
-#, fuzzy
 msgid " You turned into stone."
-msgstr "돌로 변했다..."
+msgstr " 돌로 변했다."
 
 #
 #: ../src/insight.c:1023
@@ -16722,9 +16669,8 @@ msgid "turning to stone"
 msgstr "돌로 변하는 중"
 
 #: ../src/insight.c:1027
-#, fuzzy
 msgid " You turned into slime."
-msgstr "슬라임으로 변했다"
+msgstr " 슬라임으로 변했다."
 
 #: ../src/insight.c:1029
 msgid "turning into slime"
@@ -16735,9 +16681,8 @@ msgid "buried"
 msgstr "매장됨"
 
 #: ../src/insight.c:1036
-#, fuzzy
 msgid " You died from strangulation."
-msgstr "굶주림으로 죽었다."
+msgstr " 교살당해 죽었다."
 
 #: ../src/insight.c:1038 ../src/obj_descr_i18n.c:915
 msgid "being strangled"
@@ -17040,21 +16985,22 @@ msgstr "%s을 들고"
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
+# ============================================================
+# 기술 메시지 조합 패턴 (Skill Messages)
+# 예: "You have expert skill with long sword"
+# ============================================================
 #: ../src/insight.c:1338 ../src/insight.c:1433
-#, fuzzy, c-format
+#, c-format
 msgctxt "skill_have"
 msgid "%s %s %s"
 msgstr "%s %s %s"
 
 #: ../src/insight.c:1339 ../src/insight.c:1434
 msgid "skill with"
-msgstr "쓸"
+msgstr "기술"
 
-# ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
-# ============================================================
 #: ../src/insight.c:1341 ../src/insight.c:1436
-#, fuzzy, c-format
+#, c-format
 msgctxt "skill_are"
 msgid "%s %s %s"
 msgstr "%s %s %s"
@@ -17064,10 +17010,10 @@ msgstr "%s %s %s"
 # 조합: "skill with long sword and can enhance that"
 # ============================================================
 #: ../src/insight.c:1346
-#, fuzzy, c-format
+#, c-format
 msgctxt "skill_enhance"
 msgid " and %s that"
-msgstr " 그리고 %s"
+msgstr " 그리고 %s 가능"
 
 #: ../src/insight.c:1347 ../src/insight.c:1483
 msgid "can enhance"
@@ -17118,7 +17064,6 @@ msgstr " %s(으)로"
 
 # 쌍수 무기 관련 추가 정보
 #: ../src/insight.c:1396 ../src/insight.c:1438
-#, fuzzy
 msgctxt "skill_twowep"
 msgid " and two weapons"
 msgstr " 및 쌍수 무기"
@@ -17904,21 +17849,21 @@ msgstr "구원받게 "
 
 # ============================================================
 # 행운 관련 메시지 (Luck)
-# 조합: "You are extremely lucky"
+# 조합: "You are extremely unlucky"
 # ============================================================
 #: ../src/insight.c:1945
-#, fuzzy, c-format
+#, c-format
 msgid "%sunlucky"
-msgstr "%s%s행운"
+msgstr "%s불운하다"
 
 # ============================================================
 # 행운 관련 메시지 (Luck)
 # 조합: "You are extremely lucky"
 # ============================================================
 #: ../src/insight.c:1945
-#, fuzzy, c-format
+#, c-format
 msgid "%slucky"
-msgstr "%s%s행운"
+msgstr "%s행운이 좋다"
 
 #: ../src/insight.c:1946 ../src/insight.c:1966
 msgid "extremely "
@@ -18031,15 +17976,15 @@ msgstr "%s%s안전하게 기도할 수 있다%s"
 msgid "not "
 msgstr "(할 수 없음) "
 
+# 조합: "You can safely pray"
 #: ../src/insight.c:1983
-#, fuzzy
 msgid "safely pray"
-msgstr "%s안전하게 기도할 수 있다"
+msgstr "안전하게 기도할 수 있다"
 
+# 조합: "You could not safely pray"
 #: ../src/insight.c:1984
-#, fuzzy
 msgid "not safely pray"
-msgstr "%s안전하게 기도할 수 있다"
+msgstr "안전하게 기도할 수 없다"
 
 #: ../src/insight.c:2003
 #, c-format
@@ -18988,16 +18933,14 @@ msgid "Miscellaneous"
 msgstr "기타 키:"
 
 #: ../src/invent.c:64
-#, fuzzy
 msgid "Worn Armor"
-msgstr "방어구"
+msgstr "착용 중인 방어구"
 
 #: ../src/invent.c:65
 msgid "Wielded/Readied Weapons"
 msgstr ""
 
 #: ../src/invent.c:65
-#, fuzzy
 msgid "Accessories"
 msgstr "액세서리"
 
@@ -19005,18 +18948,18 @@ msgstr "액세서리"
 msgid "You learn more about your items by comparing them."
 msgstr "물건을 비교하면 더 많이 알게 된다."
 
-# ============================================================
-# 던전 메시지 (Dungeon Messages)
-# ============================================================
 #: ../src/invent.c:1041
 #, c-format
 msgid "You decipher the label on %s."
 msgstr "%s의 라벨을 해독했다."
 
+# ============================================================
+# 허구의 화폐 이름 (환각 효과)
+# SF/판타지 작품에서 가져온 화폐 단위들
+# ============================================================
 #: ../src/invent.c:1523
-#, fuzzy
 msgid "Altarian Dollar"
-msgstr "삼각형"
+msgstr "알타이어 달러"
 
 #: ../src/invent.c:1524
 msgid "Ankh-Morpork Dollar"
@@ -19035,14 +18978,12 @@ msgid "cirbozoid"
 msgstr ""
 
 #: ../src/invent.c:1528
-#, fuzzy
 msgid "credit chit"
-msgstr "신용카드"
+msgstr "크레딧 칩"
 
 #: ../src/invent.c:1529
-#, fuzzy
 msgid "cubit"
-msgstr "정육면체"
+msgstr "큐빗"
 
 #: ../src/invent.c:1530
 msgid "Flanian Pobble Bead"
@@ -19052,10 +18993,10 @@ msgstr ""
 msgid "fretzer"
 msgstr ""
 
+# 스타워즈
 #: ../src/invent.c:1532
-#, fuzzy
 msgid "imperial credit"
-msgstr "제국 함대"
+msgstr "제국 크레딧"
 
 #: ../src/invent.c:1533
 msgid "Hong Kong Luna Dollar"
@@ -19066,14 +19007,13 @@ msgid "kongbuck"
 msgstr ""
 
 #: ../src/invent.c:1535
-#, fuzzy
 msgid "nanite"
-msgstr "화강암"
+msgstr "나나이트"
 
+# 스타트렉
 #: ../src/invent.c:1536
-#, fuzzy
 msgid "quatloo"
-msgstr "적도"
+msgstr "콰틀루"
 
 #: ../src/invent.c:1537
 msgid "simoleon"
@@ -19087,20 +19027,20 @@ msgstr ""
 msgid "spacebuck"
 msgstr ""
 
+# 스포어 게임
 #: ../src/invent.c:1540
-#, fuzzy
 msgid "sporebuck"
-msgstr "포자"
+msgstr "스포어벅"
 
+# 은하수를 여행하는 히치하이커
 #: ../src/invent.c:1541
-#, fuzzy
 msgid "Triganic Pu"
-msgstr "패닉"
+msgstr "트라이가닉 푸"
 
+# 카우보이 비밥
 #: ../src/invent.c:1542
-#, fuzzy
 msgid "woolong"
-msgstr "긴"
+msgstr "우롱"
 
 #: ../src/invent.c:1543 ../src/invent.c:1551 ../src/minion.c:354
 msgid "zorkmid"
@@ -19672,10 +19612,10 @@ msgstr "도구를 사용하고 있지 않다."
 msgid "are not wearing or wielding anything."
 msgstr "아무것도 입거나 장비하고 있지 않다."
 
+# 디버그/위저드 모드용
 #: ../src/invent.c:4794
-#, fuzzy
 msgid "Illegal objects"
-msgstr "불법 이동!"
+msgstr "불법 오브젝트"
 
 #: ../src/invent.c:4794 ../src/obj_descr_i18n.c:1087
 msgid "Weapons"
@@ -19717,30 +19657,28 @@ msgstr "완드"
 msgid "Coins"
 msgstr "금화"
 
+# ============================================================
+# 인벤토리 카테고리 이름 (Inventory Categories)
+# ============================================================
 #: ../src/invent.c:4798
-#, fuzzy
 msgid "Gems/Stones"
-msgstr "돌%s"
+msgstr "보석/돌"
 
 #: ../src/invent.c:4798
-#, fuzzy
 msgid "Boulders/Statues"
-msgstr "부양할 것이다"
+msgstr "바위/조각상"
 
 #: ../src/invent.c:4798
-#, fuzzy
 msgid "Iron balls"
-msgstr "철창."
+msgstr "쇠공"
 
 #: ../src/invent.c:4799
-#, fuzzy
 msgid "Chains"
-msgstr "사슬 갑옷"
+msgstr "쇠사슬"
 
 #: ../src/invent.c:4799
-#, fuzzy
 msgid "Venoms"
-msgstr "산성 독"
+msgstr "독"
 
 #: ../src/invent.c:4802
 msgid "Bagged/Boxed items"
@@ -22543,15 +22481,14 @@ msgstr "주변의 벽이 휘어지고 무너지기 시작했다!"
 msgid "are standing at the top of a stairwell leading down!"
 msgstr "아래로 이어지는 계단 꼭대기에 서 있다!"
 
+# 게헨놈 식물 이름
 #: ../src/mkmaze.c:714
-#, fuzzy
 msgid "paddle cactus"
-msgstr "그런 생물에게 안장을 씌운다."
+msgstr "패들 선인장"
 
 #: ../src/mkmaze.c:714
-#, fuzzy
 msgid "dwarven root"
-msgstr "드워프의"
+msgstr "드워프 뿌리"
 
 #: ../src/mkmaze.c:1507
 #, c-format
@@ -23731,25 +23668,25 @@ msgstr "내가 할 말은 이거다!"
 msgid "Talk? -- %s"
 msgstr "대화? -- %s"
 
+# ============================================================
+# 환각 시 브레스 종류 (Hallucination Breath Types)
+# 환각 상태에서 몬스터의 브레스가 이것들로 보임
+# ============================================================
 #: ../src/mthrowu.c:32
-#, fuzzy
 msgid "asteroids"
-msgstr "스승"
+msgstr "소행성"
 
 #: ../src/mthrowu.c:32
-#, fuzzy
 msgid "beads"
-msgstr "앞면"
+msgstr "구슬"
 
 #: ../src/mthrowu.c:32
-#, fuzzy
 msgid "bubbles"
-msgstr "졸졸 소리를 낸다."
+msgstr "거품"
 
 #: ../src/mthrowu.c:32
-#, fuzzy
 msgid "butterflies"
-msgstr " 완전히"
+msgstr "나비"
 
 #: ../src/mthrowu.c:33
 msgid "champagne"
@@ -23763,140 +23700,116 @@ msgid "chaos"
 msgstr "혼돈"
 
 #: ../src/mthrowu.c:34
-#, fuzzy
 msgid "coins"
-msgstr "금화"
+msgstr "동전"
 
 #: ../src/mthrowu.c:34
 msgid "cotton candy"
 msgstr ""
 
 #: ../src/mthrowu.c:34
-#, fuzzy
 msgid "crumbs"
-msgstr "비틀거린다."
+msgstr "빵부스러기"
 
 #: ../src/mthrowu.c:34
-#, fuzzy
 msgid "dark matter"
-msgstr "물질"
+msgstr "암흑 물질"
 
 #: ../src/mthrowu.c:35
-#, fuzzy
 msgid "darkness"
-msgstr "귀머거리"
+msgstr "어둠"
 
 #: ../src/mthrowu.c:35
 msgid "data"
 msgstr ""
 
 #: ../src/mthrowu.c:36
-#, fuzzy
 msgid "dust specks"
-msgstr "%s{이/가} 말한다."
+msgstr "먼지"
 
-# Item type names (note: "potion" is already defined elsewhere)
 #: ../src/mthrowu.c:36
-#, fuzzy
 msgid "emoticons"
-msgstr " 물약"
+msgstr "이모티콘"
 
 #: ../src/mthrowu.c:36
-#, fuzzy
 msgid "emotions"
-msgstr "물약"
+msgstr "감정"
 
 #: ../src/mthrowu.c:36
-#, fuzzy
 msgid "entropy"
-msgstr "함정에 걸렸다"
+msgstr "엔트로피"
 
-# 조합: 액체 몬스터의 이동 동사 (슬라임 등)
 #: ../src/mthrowu.c:37
-#, fuzzy
 msgid "flowers"
-msgstr "흐른다"
+msgstr "꽃"
 
 #: ../src/mthrowu.c:37
 msgid "foam"
 msgstr ""
 
 #: ../src/mthrowu.c:38
-#, fuzzy
 msgid "fog"
-msgstr "개"
+msgstr "안개"
 
 #: ../src/mthrowu.c:38
 msgid "gamma rays"
 msgstr ""
 
 #: ../src/mthrowu.c:38
-#, fuzzy
 msgid "gelatin"
-msgstr "먹는 중"
+msgstr "젤라틴"
 
 #: ../src/mthrowu.c:38
-#, fuzzy
 msgid "gemstones"
-msgstr "돌%s"
+msgstr "보석"
 
 #: ../src/mthrowu.c:39
-#, fuzzy
 msgid "ghosts"
 msgstr "유령"
 
 #: ../src/mthrowu.c:39
-#, fuzzy
 msgid "glass shards"
-msgstr "유리"
+msgstr "유리 파편"
 
 #: ../src/mthrowu.c:40
-#, fuzzy
 msgid "glitter"
-msgstr "반짝이는"
+msgstr "글리터"
 
 #: ../src/mthrowu.c:40
 msgid "good vibes"
 msgstr ""
 
 #: ../src/mthrowu.c:40
-#, fuzzy
 msgid "gravel"
-msgstr "무덤"
+msgstr "자갈"
 
 #: ../src/mthrowu.c:40
-#, fuzzy
 msgid "gravity"
-msgstr "무덤"
+msgstr "중력"
 
 #: ../src/mthrowu.c:41
-#, fuzzy
 msgid "gravy"
-msgstr "무덤"
+msgstr "그레이비 소스"
 
 #: ../src/mthrowu.c:41
 msgid "grawlixes"
 msgstr ""
 
 #: ../src/mthrowu.c:42
-#, fuzzy
 msgid "holy light"
-msgstr "검은 빛"
+msgstr "성스러운 빛"
 
 #: ../src/mthrowu.c:42
-#, fuzzy
 msgid "hornets"
-msgstr "뿔%s"
+msgstr "말벌"
 
 #: ../src/mthrowu.c:42
-#, fuzzy
 msgid "hot air"
-msgstr "허공"
+msgstr "뜨거운 공기"
 
 #: ../src/mthrowu.c:42
-#, fuzzy
 msgid "hyphens"
-msgstr "균사"
+msgstr "하이픈"
 
 #: ../src/mthrowu.c:43
 msgid "hypnosis"
@@ -23907,34 +23820,29 @@ msgid "jargon"
 msgstr ""
 
 #: ../src/mthrowu.c:44
-#, fuzzy
 msgid "laser beams"
-msgstr "디스플레이서 비스트"
+msgstr "레이저 빔"
 
-# 조합 패턴: "%s angrily waves %s %s" (monster waves his hand)
 #: ../src/mthrowu.c:44
-#, fuzzy
 msgid "leaves"
-msgstr "흔든다"
+msgstr "나뭇잎"
 
+# lightening = 밝아짐 (lightning = 번개와 다름)
 #: ../src/mthrowu.c:45
-#, fuzzy
 msgid "lightening"
-msgstr "번개 광선"
+msgstr "빛남"
 
 #: ../src/mthrowu.c:45
-#, fuzzy
 msgid "logic gates"
-msgstr "남색 연두"
+msgstr "논리 게이트"
 
 #: ../src/mthrowu.c:46
 msgid "magma"
 msgstr ""
 
 #: ../src/mthrowu.c:46
-#, fuzzy
 msgid "marbles"
-msgstr "대리석"
+msgstr "구슬"
 
 #: ../src/mthrowu.c:46
 msgid "mathematics"
@@ -23945,14 +23853,12 @@ msgid "megabytes"
 msgstr ""
 
 #: ../src/mthrowu.c:47
-#, fuzzy
 msgid "metal shavings"
-msgstr "금속"
+msgstr "금속 부스러기"
 
 #: ../src/mthrowu.c:48
-#, fuzzy
 msgid "metapatterns"
-msgstr "물질"
+msgstr "메타패턴"
 
 #: ../src/mthrowu.c:48
 msgid "meteors"
@@ -23963,33 +23869,28 @@ msgid "mist"
 msgstr "안개"
 
 #: ../src/mthrowu.c:48
-#, fuzzy
 msgid "mud"
-msgstr "진흙투성이"
+msgstr "진흙"
 
 #: ../src/mthrowu.c:49
 msgid "music"
 msgstr ""
 
 #: ../src/mthrowu.c:49
-#, fuzzy
 msgid "nanites"
-msgstr "화강암"
+msgstr "나노머신"
 
 #: ../src/mthrowu.c:49
-#, fuzzy
 msgid "needles"
-msgstr "양초들"
+msgstr "바늘"
 
 #: ../src/mthrowu.c:50
-#, fuzzy
 msgid "noise"
-msgstr "어떤 소음"
+msgstr "소음"
 
 #: ../src/mthrowu.c:50
-#, fuzzy
 msgid "nostalgia"
-msgstr "콧구멍"
+msgstr "향수"
 
 #: ../src/mthrowu.c:50
 msgid "paint"
@@ -24004,28 +23905,24 @@ msgid "pixels"
 msgstr ""
 
 #: ../src/mthrowu.c:51
-#, fuzzy
 msgid "plasma"
-msgstr "첨벙."
+msgstr "플라스마"
 
 #: ../src/mthrowu.c:52
-#, fuzzy
 msgid "polarity"
-msgstr "삼각형"
+msgstr "극성"
 
 #: ../src/mthrowu.c:52
 msgid "powder"
 msgstr ""
 
 #: ../src/mthrowu.c:52
-#, fuzzy
 msgid "powerups"
-msgstr "강한"
+msgstr "파워업"
 
 #: ../src/mthrowu.c:53
-#, fuzzy
 msgid "prismatic light"
-msgstr "밝은 빛!"
+msgstr "프리즘 빛"
 
 #: ../src/mthrowu.c:53
 msgid "pure logic"
@@ -24036,49 +23933,38 @@ msgid "purple"
 msgstr "보라색"
 
 #: ../src/mthrowu.c:54
-#, fuzzy
 msgid "radio waves"
-msgstr "발산하다"
+msgstr "전파"
 
-# 아이템 상태 변경 동사들 (Item status change verbs)
 #: ../src/mthrowu.c:54
-#, fuzzy
 msgid "rainbows"
-msgstr "고갈"
+msgstr "무지개"
 
 #: ../src/mthrowu.c:55
-#, fuzzy
 msgid "rock music"
-msgstr "돌"
+msgstr "록 음악"
 
 #: ../src/mthrowu.c:55
-#, fuzzy
 msgid "rocket fuel"
-msgstr "바위 두더지"
+msgstr "로켓 연료"
 
 #: ../src/mthrowu.c:55
 msgid "rope"
 msgstr ""
 
 #: ../src/mthrowu.c:56
-#, fuzzy
 msgid "sadness"
-msgstr "여참사회원"
+msgstr "슬픔"
 
 #: ../src/mthrowu.c:56
 msgid "salt"
 msgstr ""
 
-# 운명 (환상 속 신 이름)
 #: ../src/mthrowu.c:56
-#, fuzzy
 msgid "sand"
-msgstr "산데스틴"
+msgstr "모래"
 
-# 두루마리
-# --- 스크롤 (Scrolls) ---
 #: ../src/mthrowu.c:56
-#, fuzzy
 msgid "scrolls"
 msgstr "두루마리"
 
@@ -24086,35 +23972,29 @@ msgstr "두루마리"
 msgid "sludge"
 msgstr ""
 
-# 조합 패턴: "%s smiles at you %s" (monster smiles at you seductively)
 #: ../src/mthrowu.c:57
-#, fuzzy
 msgid "smileys"
-msgstr "미소짓는다"
+msgstr "스마일"
 
 #: ../src/mthrowu.c:57
-#, fuzzy
 msgid "snowflakes"
-msgstr "화난 뱀 소리!"
+msgstr "눈송이"
 
 #: ../src/mthrowu.c:58
-#, fuzzy
 msgid "sparkles"
-msgstr "불꽃"
+msgstr "반짝임"
 
 #: ../src/mthrowu.c:58
-#, fuzzy
 msgid "specularity"
-msgstr "묘하게 슬픈"
+msgstr "반사광"
 
 #: ../src/mthrowu.c:58 ../src/polyself.c:2000
 msgid "spores"
 msgstr "포자"
 
 #: ../src/mthrowu.c:58
-#, fuzzy
 msgid "stars"
-msgstr "시작"
+msgstr "별"
 
 #: ../src/mthrowu.c:59
 msgid "tetrahedrons"
@@ -24125,34 +24005,31 @@ msgid "text"
 msgstr ""
 
 #: ../src/mthrowu.c:60
-#, fuzzy
 msgid "the past"
-msgstr "나머지"
+msgstr "과거"
 
 #: ../src/mthrowu.c:60
-#, fuzzy
 msgid "tornadoes"
-msgstr "​"
+msgstr "토네이도"
 
 #: ../src/mthrowu.c:60
 msgid "toxic waste"
 msgstr ""
 
+# ============================================================
+# 환각 시 브레스 종류 (Hallucination Breath Types)
+# ============================================================
 #: ../src/mthrowu.c:61
-#, fuzzy
 msgid "ultraviolet light"
-msgstr "밝은 빛!"
+msgstr "자외선"
 
 #: ../src/mthrowu.c:62
-#, fuzzy
 msgid "viruses"
-msgstr "거부한다"
+msgstr "바이러스"
 
-# 조합 패턴: "%s angrily waves %s %s" (monster waves his hand)
 #: ../src/mthrowu.c:62
-#, fuzzy
 msgid "waveforms"
-msgstr "흔든다"
+msgstr "파형"
 
 #: ../src/mthrowu.c:62
 msgid "wind"
@@ -29704,25 +29581,24 @@ msgstr "(상자만)"
 msgid "burdened"
 msgstr ""
 
+# ============================================================
+# 무게 상태 표시 (Encumbrance Status) - 소문자 버전
+# ============================================================
 #: ../src/options.c:232
-#, fuzzy
 msgid "stressed"
-msgstr "크게 죄를 지었다"
+msgstr "무리"
 
 #: ../src/options.c:233
-#, fuzzy
 msgid "strained"
-msgstr "얼룩진"
+msgstr "긴장"
 
 #: ../src/options.c:233
-#, fuzzy
 msgid "overtaxed"
-msgstr "넘어서"
+msgstr "과부하"
 
 #: ../src/options.c:233
-#, fuzzy
 msgid "overloaded"
-msgstr "많이 바랬다"
+msgstr "과적"
 
 #: ../src/options.c:236
 msgid "walk"
@@ -29963,35 +29839,32 @@ msgstr "'%.20s' 동작 선택:"
 msgid "'%s' %s '%s'."
 msgstr "'%s' %s '%s'."
 
+# ============================================================
+# 게임 종료 시 공개 옵션 카테고리 (Disclosure Options)
+# ============================================================
 #: ../src/options.c:5702
-#, fuzzy
 msgid "inventory"
 msgstr "소지품"
 
 #: ../src/options.c:5702
-#, fuzzy
 msgid "attributes"
-msgstr "속성:"
+msgstr "속성"
 
 #: ../src/options.c:5702
-#, fuzzy
 msgid "vanquished"
-msgstr "사라진다"
+msgstr "처치한 적"
 
 #: ../src/options.c:5703
-#, fuzzy
 msgid "genocides"
-msgstr "멸종됨"
+msgstr "멸종"
 
 #: ../src/options.c:5703
-#, fuzzy
 msgid "conduct"
-msgstr "유혹적인 목소리."
+msgstr "행동 수칙"
 
 #: ../src/options.c:5703
-#, fuzzy
 msgid "overview"
-msgstr "넘어서"
+msgstr "개요"
 
 #: ../src/options.c:5722
 msgid "Change which disclosure options categories:"
@@ -30809,10 +30682,10 @@ msgstr ""
 msgid "the ordinarily sheltered town that is located "
 msgstr ""
 
+# 오크 지명수배 포스터 설명
 #: ../src/pager.c:2231
-#, fuzzy
 msgid "deep within The Gnomish Mines."
-msgstr "노움 광산에 들어갔다"
+msgstr "노움 광산 깊은 곳에서."
 
 #: ../src/pager.c:2233
 msgid "The members of that vicious horde proudly and "
@@ -30823,9 +30696,9 @@ msgid "defiantly acclaim their allegiance to their"
 msgstr ""
 
 #: ../src/pager.c:2235
-#, fuzzy, c-format
+#, c-format
 msgid "leader %s in their names."
-msgstr "%s{을/를} %s 안으로 피했다."
+msgstr "리더 %s{을/를} 이름에 새기고 있다."
 
 #: ../src/pager.c:2240
 #, c-format
@@ -30845,9 +30718,8 @@ msgid "The perpetrator was last seen hanging around the"
 msgstr ""
 
 #: ../src/pager.c:2245
-#, fuzzy
 msgid "stairs leading to the Gnomish Mines."
-msgstr "노움 광산에 들어갔다"
+msgstr "노움 광산으로 내려가는 계단 근처에서."
 
 #: ../src/pager.c:2355
 #, c-format
@@ -35470,10 +35342,13 @@ msgstr ""
 msgid "Don't blame me, I voted for Izchak!"
 msgstr ""
 
+# ============================================================
+# 티셔츠 메시지 (T-shirt Messages)
+# 유머/문화 참조 문구들 (은하수를 여행하는 히치하이커...)
+# ============================================================
 #: ../src/read.c:117
-#, fuzzy
 msgid "Don't Panic"
-msgstr "원하지 않는다"
+msgstr "당황하지 마"
 
 #: ../src/read.c:118
 msgid "Furinkan High School Athletic Dept."
@@ -35501,14 +35376,12 @@ msgid "cK -- Cockatrice touches the Kop"
 msgstr ""
 
 #: ../src/read.c:124
-#, fuzzy
 msgid "Don't ask me, I only adventure here"
-msgstr "거기서 괴물 냄새가 나지 않는다."
+msgstr "나한테 묻지 마, 난 여기서 모험할 뿐이야"
 
 #: ../src/read.c:125
-#, fuzzy
 msgid "Down with pants!"
-msgstr "%s{으로/로} 그것을 할 수 없다."
+msgstr "바지 타도!"
 
 #: ../src/read.c:126
 msgid "d, your dog or a killer?"
@@ -35522,10 +35395,10 @@ msgstr ""
 msgid "Go team ant!"
 msgstr ""
 
+# "Got milk?" 패러디
 #: ../src/read.c:129
-#, fuzzy
 msgid "Got newt?"
-msgstr "도롱뇽"
+msgstr "도롱뇽 있어?"
 
 #: ../src/read.c:130
 msgid "Hello, my darlings!"
@@ -35535,13 +35408,9 @@ msgstr ""
 msgid "Hey!  Nymphs!  Steal This T-Shirt!"
 msgstr ""
 
-# ============================================================
-# 던전 이름 (Dungeon Names)
-# ============================================================
 #: ../src/read.c:132
-#, fuzzy
 msgid "I <3 Dungeon of Doom"
-msgstr "파멸의 던전"
+msgstr "I ♥ 파멸의 던전"
 
 #: ../src/read.c:133
 msgid "I <3 Maud"
@@ -35556,24 +35425,20 @@ msgid "I am not a pack rat - I am a collector"
 msgstr ""
 
 #: ../src/read.c:137
-#, fuzzy
 msgid "I bounced off a rubber tree"
-msgstr "그것이 당신의 %s%s에서 튕겨졌다."
+msgstr "고무나무에서 튕겨 나왔어"
 
 #: ../src/read.c:138
 msgid "Plunder Island Brimstone Beach Club"
 msgstr ""
 
 #: ../src/read.c:139
-#, fuzzy
 msgid "If you can read this, I can hit you with my polearm"
-msgstr "공기를 호흡할 수 없다면, 어떻게 고체를 소비할 수 있어?"
+msgstr "이걸 읽을 수 있다면, 내 장창으로 때릴 수 있다는 뜻이야"
 
-#
 #: ../src/read.c:140
-#, fuzzy
 msgid "I'm confused!"
-msgstr "혼란스러운"
+msgstr "나 혼란스러워!"
 
 #: ../src/read.c:141
 msgid "I scored with the princess"
@@ -35621,9 +35486,8 @@ msgid "Somebody stole my Mojo!"
 msgstr ""
 
 #: ../src/read.c:154
-#, fuzzy
 msgid "The Hellhound Gang"
-msgstr "지옥 사냥개"
+msgstr "헬하운드 갱"
 
 #: ../src/read.c:155
 msgid "The Werewolves"
@@ -35637,15 +35501,14 @@ msgstr ""
 msgid "Weapons don't kill people, I kill people"
 msgstr ""
 
+# 밴드 이름 참조
 #: ../src/read.c:158
-#, fuzzy
 msgid "White Zombie"
-msgstr "거대 좀비"
+msgstr "화이트 좀비"
 
 #: ../src/read.c:159
-#, fuzzy
 msgid "You're killing me!"
-msgstr "넌 개밥이다!"
+msgstr "죽겠다!"
 
 #: ../src/read.c:160
 msgid "Anhur State University - Home of the Fighting Fire Ants!"
@@ -35655,10 +35518,10 @@ msgstr ""
 msgid "FREE HUGS"
 msgstr ""
 
+# 연속 승천자 (NetHack 플레이어 유형)
 #: ../src/read.c:162
-#, fuzzy
 msgid "Serial Ascender"
-msgstr "승천했다"
+msgstr "연속 승천자"
 
 #: ../src/read.c:163
 msgid "Real men are valkyries"
@@ -35668,49 +35531,40 @@ msgstr ""
 msgid "Young Men's Cavedigging Association"
 msgstr ""
 
+# "월스트리트를 점령하라" 패러디
 #: ../src/read.c:165
-#, fuzzy
 msgid "Occupy Fort Ludios"
-msgstr "루디오스 요새"
+msgstr "루디오스 요새를 점령하라"
 
 #: ../src/read.c:166
 msgid "I couldn't afford this T-shirt so I stole it!"
 msgstr ""
 
-# ============================================================
-# 상태 표시줄 (Status Line)
-# ============================================================
 #: ../src/read.c:167
-#, fuzzy
 msgid "Mind flayers suck"
-msgstr "마인드 플레이어"
+msgstr "마인드 플레이어는 최악이야"
 
-#
 #: ../src/read.c:168
-#, fuzzy
 msgid "I'm not wearing any pants"
-msgstr "반지를 끼고 있지 않다."
+msgstr "나 바지 안 입었어"
 
 #: ../src/read.c:169
-#, fuzzy
 msgid "Down with the living!"
-msgstr "천장과 충돌"
+msgstr "산 자들을 타도하라!"
 
-# 사망 원인 표시
+# 푸딩 농사 = 푸딩 분열로 무한 아이템 파밍
 #: ../src/read.c:170
-#, fuzzy
 msgid "Pudding farmer"
-msgstr ", 죽어가는 중:"
+msgstr "푸딩 농부"
 
 #: ../src/read.c:171
-#, fuzzy
 msgid "Vegetarian"
 msgstr "채식주의자"
 
 #: ../src/read.c:172
-#, fuzzy
+# 묵시록의 네 기수 중 하나
 msgid "Hello, I'm War!"
-msgstr "안녕, 뱃사람."
+msgstr "안녕, 난 전쟁이야!"
 
 #: ../src/read.c:173
 msgid "It is better to light a candle than to curse the darkness"
@@ -35728,34 +35582,28 @@ msgstr ""
 msgid "/Valar morghulis/ -- /Valar dohaeris/"
 msgstr ""
 
+# ============================================================
+# 하와이안 셔츠 모티프 (Hawaiian Shirt Motifs)
+# ============================================================
 #: ../src/read.c:194
-#, fuzzy
 msgid "flamingo"
-msgstr "화염구"
+msgstr "플라밍고"
 
 #: ../src/read.c:195
-#, fuzzy
 msgid "parrot"
-msgstr "당근"
+msgstr "앵무새"
 
-# ============================================================
-# 전투 메시지 (Combat Messages)
-# ============================================================
 #: ../src/read.c:196
-#, fuzzy
 msgid "toucan"
-msgstr "만지다"
+msgstr "큰부리새"
 
 #: ../src/read.c:197
 msgid "bird of paradise"
 msgstr ""
 
-# 조합: 공중 이동 동사 (aerial movement verbs)
-# 예: "You hurtle in the opposite direction."
 #: ../src/read.c:199
-#, fuzzy
 msgid "sea turtle"
-msgstr "돌진한다"
+msgstr "바다거북"
 
 #: ../src/read.c:200
 msgid "tropical fish"
@@ -35774,14 +35622,12 @@ msgid "hibiscus flower"
 msgstr ""
 
 #: ../src/read.c:208
-#, fuzzy
 msgid "palm tree"
-msgstr "나무"
+msgstr "야자나무"
 
 #: ../src/read.c:210
-#, fuzzy
 msgid "hula dancer"
-msgstr "랜스"
+msgstr "훌라 댄서"
 
 #: ../src/read.c:211
 msgid "sailboat"
@@ -35791,34 +35637,37 @@ msgstr ""
 msgid "ukulele"
 msgstr ""
 
+# 하와이안 셔츠 배경 패턴
 #: ../src/read.c:236
-#, fuzzy
 msgid "abstract"
-msgstr "%s{을/를} 끌어들인다!"
+msgstr "추상적"
 
 #: ../src/read.c:237
 msgid "geometric"
 msgstr ""
 
-# 아이템 상태 변경 동사 - 흩뿌리다/튀기다
+# 하와이안 셔츠 배경 패턴
 #: ../src/read.c:238
-#, fuzzy
 msgid "patterned"
-msgstr "흩뿌리다"
+msgstr "패턴"
 
 #: ../src/read.c:239
 msgid "naturalistic"
 msgstr ""
 
+# 하와이안 셔츠 패턴 설명
+# 예: "flamingos on blue background"
 #: ../src/read.c:247
-#, fuzzy, c-format
+#, c-format
 msgid "%s on %s background"
-msgstr "%s{이/가} %s{을/를} %s 당신에게 돌려보냈다."
+msgstr "%2$s 배경에 %1$s"
 
+# ============================================================
+# 앞치마 메시지 (Apron Messages)
+# ============================================================
 #: ../src/read.c:257
-#, fuzzy
 msgid "Kiss the cook"
-msgstr "문 차기"
+msgstr "요리사에게 키스를"
 
 #: ../src/read.c:258
 msgid "I'm making SCIENCE!"
@@ -35833,18 +35682,17 @@ msgid "Don't make me poison you"
 msgstr ""
 
 #: ../src/read.c:261
-#, fuzzy
 msgid "Gehennom's Kitchen"
-msgstr "게헨놈"
+msgstr "게헨놈 주방"
 
 #: ../src/read.c:262
 msgid "Rat: The other white meat"
 msgstr ""
 
+# "열기를 참을 수 없으면 부엌에서 나가라" 속담 패러디
 #: ../src/read.c:263
-#, fuzzy
 msgid "If you can't stand the heat, get out of Gehennom!"
-msgstr "게헨놈의 문 앞에 서 있다."
+msgstr "열기를 참을 수 없으면 게헨놈에서 나가라!"
 
 #: ../src/read.c:264
 msgid "If we weren't meant to eat animals, why are they made out of meat?"
@@ -35967,10 +35815,10 @@ msgstr ""
 msgid "Magic Memory Vault Charge Card"
 msgstr ""
 
+# 가상의 신용카드 발급사 (Larn = 로그라이크 게임)
 #: ../src/read.c:453
-#, fuzzy
 msgid "Larn National Bank"
-msgstr " 추가로"
+msgstr "란 국립은행"
 
 #: ../src/read.c:454
 msgid "First Bank of Omega"
@@ -44603,65 +44451,57 @@ msgstr "%s{이/가} %s %s 위로."
 msgid "escape %s %s."
 msgstr "%s %s{을/를} 피했다."
 
+# ============================================================
+# 음계 이름 (Musical Notes)
+# 트랩 소리, 악기 연주에 사용
+# ============================================================
 #: ../src/trap.c:3011
-#, fuzzy
 msgid "C note"
-msgstr "아니다"
+msgstr "다 음"
 
 #: ../src/trap.c:3011
-#, fuzzy
 msgid "D flat"
-msgstr "평평해진다"
+msgstr "레♭"
 
 #: ../src/trap.c:3011
-#, fuzzy
 msgid "D note"
-msgstr "아니다"
+msgstr "레 음"
 
 #: ../src/trap.c:3011
-#, fuzzy
 msgid "E flat"
-msgstr "평평해진다"
+msgstr "미♭"
 
 #: ../src/trap.c:3012
-#, fuzzy
 msgid "E note"
-msgstr "아니다"
+msgstr "미 음"
 
 #: ../src/trap.c:3012
-#, fuzzy
 msgid "F note"
-msgstr "아니다"
+msgstr "파 음"
 
 #: ../src/trap.c:3012
-#, fuzzy
 msgid "F sharp"
-msgstr "하프"
+msgstr "파♯"
 
 #: ../src/trap.c:3012
-#, fuzzy
 msgid "G note"
-msgstr "아니다"
+msgstr "솔 음"
 
 #: ../src/trap.c:3013
-#, fuzzy
 msgid "G sharp"
-msgstr "하프"
+msgstr "솔♯"
 
 #: ../src/trap.c:3013
-#, fuzzy
 msgid "A note"
-msgstr "아니다"
+msgstr "라 음"
 
 #: ../src/trap.c:3013
-#, fuzzy
 msgid "B flat"
-msgstr "평평해진다"
+msgstr "시♭"
 
 #: ../src/trap.c:3013
-#, fuzzy
 msgid "B note"
-msgstr "아니다"
+msgstr "시 음"
 
 #: ../src/trap.c:3063
 msgid "steed hit by non-existent arrow?"

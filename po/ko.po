@@ -29583,13 +29583,12 @@ msgstr "(문만)"
 msgid "(chests/boxes only)"
 msgstr "(상자만)"
 
-#: ../src/options.c:232
-msgid "burdened"
-msgstr ""
-
 # ============================================================
 # 무게 상태 표시 (Encumbrance Status) - 소문자 버전
 # ============================================================
+#: ../src/options.c:232
+msgid "burdened"
+msgstr "짐"
 #: ../src/options.c:232
 msgid "stressed"
 msgstr "무리"
@@ -29606,9 +29605,10 @@ msgstr "과부하"
 msgid "overloaded"
 msgstr "과적"
 
+# 이동 모드 옵션
 #: ../src/options.c:236
 msgid "walk"
-msgstr ""
+msgstr "걷기"
 
 # 옵션 값 - 없음
 #: ../src/options.c:239 ../src/options.c:1161

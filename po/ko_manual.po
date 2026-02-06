@@ -10723,10 +10723,67 @@ msgstr "X가 그 자리를 표시한다."
 # [C 소스 파일]
 #
 # 대부분 래핑 완료, 아래는 미래핑:
-#   - src/nhlua.c: 디버그 메시지 (번역 불필요)
-#   - src/wizcmds.c: 위저드 모드 메시지 (번역 불필요)
-#   - src/coloratt.c:577 "Menucolor regex error" (오류 메시지)
-#   - src/options.c:7783 "MSGTYPE regex error" (오류 메시지)
-#   - src/options.c:7923 "NHregex error" (오류 메시지)
+#
+# ★ 사용자 대면 (래핑 권장):
+#   - src/mthrowu.c:24-28 breathwep[] - 브레스 무기 유형
+#     "fragments", "fire", "frost", "sleep gas", "disintegration blast",
+#     "lightning", "poison gas", "acid"
+#     → 드래곤 브레스 메시지에서 표시됨
+#
+#   - src/music.c:494-497 beats[] - 드럼 박자 유형
+#     "stepper", "one drop", "slow two", "triple stroke roll",
+#     "double shuffle", "half-time shuffle", "second line", "train"
+#     → 드럼 연주 시 표시됨
+#
+# ★ 개발자/디버그용 (래핑 불필요):
+#   - src/glyphs.c:1014 altar_text[] - "unaligned", "chaotic", "neutral"
+#   - src/glyphs.c:1032 zap_texts[] - "missile", "fire", "frost", "sleep"
+#   - src/glyphs.c:1049 swallow_texts[] - "top left", "top center", etc.
+#   - src/glyphs.c:1065 expl_type_texts[] - "dark", "noxious", "muddy"
+#   - src/rip.c:26-42 rip_txt[] - ASCII art 묘비 (구조상 번역 불가)
+#   - src/mplayer.c:18-41 developers[] - 개발자 이름
+#   - src/write.c:400-408 compositions[] - 내부 비교용
+#   - src/nhlua.c: 디버그 메시지
+#   - src/wizcmds.c: 위저드 모드 메시지
+#   - src/coloratt.c:577 "Menucolor regex error"
+#   - src/options.c:7783 "MSGTYPE regex error"
+#   - src/options.c:7923 "NHregex error"
+#
+# ★ 상점 주인 이름 (고유명사, 래핑 불필요):
+#   - src/shknam.c:32-181 shkliquors[], shkbooks[], shkarmors[],
+#     shkwands[], shkrings[], shkfoods[], shkweapons[], shktools[],
+#     shklight[], shkgeneral[], shkhealthfoods[]
+#     → 실제 지명 기반 고유명사
+#
+# ============================================================
+#
+# [몬스터 이름] - include/monsters.h
+#   - NAM("giant ant") 형태로 정의, N_() 래핑 없음
+#   - ko_manual.po에 수동 번역 추가됨 (이 파일 상단 참조)
+#   - 별도 monster_i18n.c 파일 필요 (obj_descr_i18n.c 참조)
+#
+# [아이템 설명] - src/obj_descr_i18n.c (1023개 N_() 호출)
+#   - 포션/반지/지팡이/책/갑옷/무기 설명어 추출용 파일 존재
+#   - xgettext 전용 (런타임에는 포함 안 됨)
+#
+# ============================================================
+#
+# 검토 완료 (2026-02-06): 대부분 래핑됨
+#
+# 래핑이 이미 잘 되어 있는 배열:
+#   - end.c: deaths[], ends[] ✓
+#   - timeout.c: stoned_texts[], vomiting_texts[], choke_texts[],
+#     sickness_texts[], levi_texts[], slime_texts[], phaze_texts[] ✓
+#   - wizard.c: random_insult[], random_malediction[] ✓
+#   - pray.c: godvoices[], hallu_gods[] ✓
+#   - trap.c: tnnames[], halu_trapnames[] ✓
+#   - hack.c: icewarnings[] ✓
+#   - topten.c: killed_by_prefix[] ✓
+#   - do_name.c: ghostnames[], hcolors[], hliquids[] ✓
+#   - mthrowu.c: hallublasts[] ✓
+#   - mkobj.c: alteration_verbs[] ✓
+#   - sounds.c: temple_msg[], h_sounds[] ✓
+#   - pager.c: icetyp[] ✓
+#   - options.c: burdentype[], runmodes[], sortltype[] 등 ✓
 #
 # ============================================================

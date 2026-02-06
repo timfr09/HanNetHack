@@ -227,7 +227,7 @@ stairs_description(
     } else {
         /* known branch stairs; tacking on destination level is too verbose */
         Sprintf(outbuf, _("branch %s %s to %s"),
-                stairs, updown, svd.dungeons[tolev.dnum].dname);
+                stairs, updown, _(svd.dungeons[tolev.dnum].dname));
         /* dungeons[].dname is capitalized; undo that for "The <Branch>" */
         (void) strsubst(outbuf, "The ", "the ");
     }

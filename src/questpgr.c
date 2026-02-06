@@ -313,7 +313,7 @@ convert_arg(char c)
         str = Blind ? _("sense") : _("see");
         break;
     case 'Z':
-        str = svd.dungeons[0].dname;
+        str = _(svd.dungeons[0].dname);
         break;
     case '%':
         str = "%";

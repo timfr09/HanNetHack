@@ -815,10 +815,10 @@ wiz_map_levltyp(void)
             Strcat(dsc, " endgame");
         else {
             /* somebody's added a dungeon branch we're not expecting */
-            const char *brname = svd.dungeons[u.uz.dnum].dname;
+            const char *brname = _(svd.dungeons[u.uz.dnum].dname);
 
             if (!brname || !*brname)
-                brname = "unknown";
+                brname = _("unknown");
             if (!strncmpi(brname, "the ", 4))
                 brname += 4;
             Sprintf(eos(dsc), " %s", brname);

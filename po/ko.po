@@ -3461,22 +3461,25 @@ msgstr "이것은 유골 레벨 '%s'이지, '%s'이 아니다!"
 msgid "make adjustments to %s to suit your %s hand."
 msgstr "%s{을/를} 당신의 %s손에 맞게 조정한다."
 
+# ============================================================
+# 짐 상태 (Encumbrance Status) - 상태 표시줄에 표시
+# 무게 순서: Burdened < Stressed < Strained < Overtaxed < Overloaded
+# ============================================================
 #: ../src/botl.c:15
 msgid "Burdened"
-msgstr ""
+msgstr "짐"
 
-# 짐 상태 (Encumbrance Status) - 상태 표시줄에 표시
 #: ../src/botl.c:15
 msgid "Stressed"
 msgstr "무리"
 
 #: ../src/botl.c:16
 msgid "Strained"
-msgstr "과부하"
+msgstr "긴장"
 
 #: ../src/botl.c:16
 msgid "Overtaxed"
-msgstr "초과부하"
+msgstr "과부하"
 
 #: ../src/botl.c:16
 msgid "Overloaded"
@@ -7761,21 +7764,22 @@ msgstr "체크무늬"
 msgid "checkered"
 msgstr "바둑판 무늬"
 
+# 환각 시 무늬 설명 (Hallucination Patterns)
 #: ../src/do_name.c:1470
 msgid "argyle"
-msgstr ""
+msgstr "아가일 무늬"
 
 #: ../src/do_name.c:1470
 msgid "paisley"
-msgstr ""
+msgstr "페이즐리 무늬"
 
 #: ../src/do_name.c:1471
 msgid "blotchy"
-msgstr ""
+msgstr "얼룩덜룩한"
 
 #: ../src/do_name.c:1471
 msgid "guernsey-spotted"
-msgstr ""
+msgstr "건지 소 무늬"
 
 #: ../src/do_name.c:1471
 msgid "polka-dotted"
@@ -7975,13 +7979,14 @@ msgstr "꼭두서니"
 msgid "bistre"
 msgstr "비스터"
 
+# 환각 색상 (Hallucination Colors)
 #: ../src/do_name.c:1490
 msgid "ecru"
-msgstr ""
+msgstr "연한 베이지"
 
 #: ../src/do_name.c:1490
 msgid "fulvous"
-msgstr ""
+msgstr "황갈색"
 
 # 히브리어 파란색 염료
 #: ../src/do_name.c:1490
@@ -8083,7 +8088,7 @@ msgstr "꿀"
 
 #: ../src/do_name.c:1522
 msgid "caramel sauce"
-msgstr ""
+msgstr "카라멜 소스"
 
 #: ../src/do_name.c:1522
 msgid "ink"
@@ -8246,15 +8251,15 @@ msgstr "마법의 색"
 
 #: ../src/do_name.c:1640
 msgid "The Light Fantastic"
-msgstr ""
+msgstr "환상의 빛"
 
 #: ../src/do_name.c:1641
 msgid "Equal Rites"
-msgstr ""
+msgstr "평등한 의식"
 
 #: ../src/do_name.c:1641
 msgid "Mort"
-msgstr ""
+msgstr "모트"
 
 #: ../src/do_name.c:1642
 msgid "Sourcery"
@@ -8270,15 +8275,15 @@ msgstr "피라미드"
 
 #: ../src/do_name.c:1643
 msgid "Guards! Guards!"
-msgstr ""
+msgstr "경비! 경비!"
 
 #: ../src/do_name.c:1643
 msgid "Eric"
-msgstr ""
+msgstr "에릭"
 
 #: ../src/do_name.c:1644
 msgid "Moving Pictures"
-msgstr ""
+msgstr "움직이는 사진"
 
 #: ../src/do_name.c:1644
 msgid "Reaper Man"
@@ -8286,7 +8291,7 @@ msgstr "사신"
 
 #: ../src/do_name.c:1644
 msgid "Witches Abroad"
-msgstr ""
+msgstr "해외의 마녀들"
 
 #: ../src/do_name.c:1645
 msgid "Small Gods"
@@ -8298,11 +8303,11 @@ msgstr "군주와 귀부인"
 
 #: ../src/do_name.c:1646
 msgid "Men at Arms"
-msgstr ""
+msgstr "무장한 남자들"
 
 #: ../src/do_name.c:1646
 msgid "Soul Music"
-msgstr ""
+msgstr "소울 뮤직"
 
 #: ../src/do_name.c:1647
 msgid "Interesting Times"
@@ -8326,15 +8331,15 @@ msgstr "징고"
 
 #: ../src/do_name.c:1649
 msgid "The Last Continent"
-msgstr ""
+msgstr "마지막 대륙"
 
 #: ../src/do_name.c:1650
 msgid "Carpe Jugulum"
-msgstr ""
+msgstr "카르페 유굴룸"
 
 #: ../src/do_name.c:1650
 msgid "The Fifth Elephant"
-msgstr ""
+msgstr "다섯 번째 코끼리"
 
 #: ../src/do_name.c:1650
 msgid "The Truth"
@@ -8342,23 +8347,23 @@ msgstr "진실"
 
 #: ../src/do_name.c:1651
 msgid "Thief of Time"
-msgstr ""
+msgstr "시간의 도둑"
 
 #: ../src/do_name.c:1652
 msgid "The Last Hero"
-msgstr ""
+msgstr "마지막 영웅"
 
 #: ../src/do_name.c:1653
 msgid "The Amazing Maurice and His Educated Rodents"
-msgstr ""
+msgstr "놀라운 모리스와 그의 교양 있는 설치류들"
 
 #: ../src/do_name.c:1654
 msgid "Night Watch"
-msgstr ""
+msgstr "야경대"
 
 #: ../src/do_name.c:1654
 msgid "The Wee Free Men"
-msgstr ""
+msgstr "작은 자유인들"
 
 #: ../src/do_name.c:1654
 msgid "Monstrous Regiment"
@@ -8366,7 +8371,7 @@ msgstr "괴물 연대"
 
 #: ../src/do_name.c:1655
 msgid "A Hat Full of Sky"
-msgstr ""
+msgstr "하늘이 가득한 모자"
 
 #: ../src/do_name.c:1655
 msgid "Going Postal"
@@ -8374,7 +8379,7 @@ msgstr "우편배달부"
 
 #: ../src/do_name.c:1655
 msgid "Thud!"
-msgstr ""
+msgstr "쿵!"
 
 #: ../src/do_name.c:1656
 msgid "Wintersmith"
@@ -8386,23 +8391,23 @@ msgstr "돈 만들기"
 
 #: ../src/do_name.c:1657
 msgid "Unseen Academicals"
-msgstr ""
+msgstr "보이지 않는 학자들"
 
 #: ../src/do_name.c:1658
 msgid "I Shall Wear Midnight"
-msgstr ""
+msgstr "나는 자정을 입으리"
 
 #: ../src/do_name.c:1658
 msgid "Snuff"
-msgstr ""
+msgstr "스너프"
 
 #: ../src/do_name.c:1659
 msgid "Raising Steam"
-msgstr ""
+msgstr "증기를 올려라"
 
 #: ../src/do_name.c:1659
 msgid "The Shepherd's Crown"
-msgstr ""
+msgstr "양치기의 왕관"
 
 #: ../src/do_wear.c:9
 msgid "see yourself"
@@ -18938,7 +18943,7 @@ msgstr "착용 중인 방어구"
 
 #: ../src/invent.c:65
 msgid "Wielded/Readied Weapons"
-msgstr ""
+msgstr "장비/준비된 무기"
 
 #: ../src/invent.c:65
 msgid "Accessories"
@@ -19682,7 +19687,7 @@ msgstr "독"
 
 #: ../src/invent.c:4802
 msgid "Bagged/Boxed items"
-msgstr ""
+msgstr "가방/상자 안의 물건"
 
 #: ../src/invent.c:4832
 msgid "Unpaid "
@@ -23690,7 +23695,7 @@ msgstr "나비"
 
 #: ../src/mthrowu.c:33
 msgid "champagne"
-msgstr ""
+msgstr "샴페인"
 
 # ============================================================
 # 정렬 형용사 - 소문자 (Alignment Adjectives - lowercase)
@@ -23705,7 +23710,7 @@ msgstr "동전"
 
 #: ../src/mthrowu.c:34
 msgid "cotton candy"
-msgstr ""
+msgstr "솜사탕"
 
 #: ../src/mthrowu.c:34
 msgid "crumbs"
@@ -23721,7 +23726,7 @@ msgstr "어둠"
 
 #: ../src/mthrowu.c:35
 msgid "data"
-msgstr ""
+msgstr "데이터"
 
 #: ../src/mthrowu.c:36
 msgid "dust specks"
@@ -23745,7 +23750,7 @@ msgstr "꽃"
 
 #: ../src/mthrowu.c:37
 msgid "foam"
-msgstr ""
+msgstr "거품"
 
 #: ../src/mthrowu.c:38
 msgid "fog"
@@ -23753,7 +23758,7 @@ msgstr "안개"
 
 #: ../src/mthrowu.c:38
 msgid "gamma rays"
-msgstr ""
+msgstr "감마선"
 
 #: ../src/mthrowu.c:38
 msgid "gelatin"
@@ -23777,7 +23782,7 @@ msgstr "글리터"
 
 #: ../src/mthrowu.c:40
 msgid "good vibes"
-msgstr ""
+msgstr "좋은 기운"
 
 #: ../src/mthrowu.c:40
 msgid "gravel"
@@ -23791,9 +23796,10 @@ msgstr "중력"
 msgid "gravy"
 msgstr "그레이비 소스"
 
+# 만화에서 욕설을 표현하는 기호들 (!@#$%&*)
 #: ../src/mthrowu.c:41
 msgid "grawlixes"
-msgstr ""
+msgstr "욕설 기호"
 
 #: ../src/mthrowu.c:42
 msgid "holy light"
@@ -23813,11 +23819,11 @@ msgstr "하이픈"
 
 #: ../src/mthrowu.c:43
 msgid "hypnosis"
-msgstr ""
+msgstr "최면"
 
 #: ../src/mthrowu.c:44
 msgid "jargon"
-msgstr ""
+msgstr "전문 용어"
 
 #: ../src/mthrowu.c:44
 msgid "laser beams"
@@ -23838,7 +23844,7 @@ msgstr "논리 게이트"
 
 #: ../src/mthrowu.c:46
 msgid "magma"
-msgstr ""
+msgstr "마그마"
 
 #: ../src/mthrowu.c:46
 msgid "marbles"
@@ -23846,11 +23852,11 @@ msgstr "구슬"
 
 #: ../src/mthrowu.c:46
 msgid "mathematics"
-msgstr ""
+msgstr "수학"
 
 #: ../src/mthrowu.c:46
 msgid "megabytes"
-msgstr ""
+msgstr "메가바이트"
 
 #: ../src/mthrowu.c:47
 msgid "metal shavings"
@@ -23862,7 +23868,7 @@ msgstr "메타패턴"
 
 #: ../src/mthrowu.c:48
 msgid "meteors"
-msgstr ""
+msgstr "유성"
 
 #: ../src/mthrowu.c:48 ../src/spell.c:1154
 msgid "mist"
@@ -23874,7 +23880,7 @@ msgstr "진흙"
 
 #: ../src/mthrowu.c:49
 msgid "music"
-msgstr ""
+msgstr "음악"
 
 #: ../src/mthrowu.c:49
 msgid "nanites"
@@ -23894,15 +23900,15 @@ msgstr "향수"
 
 #: ../src/mthrowu.c:50
 msgid "paint"
-msgstr ""
+msgstr "페인트"
 
 #: ../src/mthrowu.c:51
 msgid "photons"
-msgstr ""
+msgstr "광자"
 
 #: ../src/mthrowu.c:51
 msgid "pixels"
-msgstr ""
+msgstr "픽셀"
 
 #: ../src/mthrowu.c:51
 msgid "plasma"
@@ -23914,7 +23920,7 @@ msgstr "극성"
 
 #: ../src/mthrowu.c:52
 msgid "powder"
-msgstr ""
+msgstr "가루"
 
 #: ../src/mthrowu.c:52
 msgid "powerups"
@@ -23926,7 +23932,7 @@ msgstr "프리즘 빛"
 
 #: ../src/mthrowu.c:53
 msgid "pure logic"
-msgstr ""
+msgstr "순수 논리"
 
 #: ../src/mthrowu.c:54 ../src/obj_descr_i18n.c:983 ../src/read.c:228
 msgid "purple"
@@ -23950,7 +23956,7 @@ msgstr "로켓 연료"
 
 #: ../src/mthrowu.c:55
 msgid "rope"
-msgstr ""
+msgstr "밧줄"
 
 #: ../src/mthrowu.c:56
 msgid "sadness"
@@ -23958,7 +23964,7 @@ msgstr "슬픔"
 
 #: ../src/mthrowu.c:56
 msgid "salt"
-msgstr ""
+msgstr "소금"
 
 #: ../src/mthrowu.c:56
 msgid "sand"
@@ -23970,7 +23976,7 @@ msgstr "두루마리"
 
 #: ../src/mthrowu.c:57
 msgid "sludge"
-msgstr ""
+msgstr "슬러지"
 
 #: ../src/mthrowu.c:57
 msgid "smileys"
@@ -23998,11 +24004,11 @@ msgstr "별"
 
 #: ../src/mthrowu.c:59
 msgid "tetrahedrons"
-msgstr ""
+msgstr "사면체"
 
 #: ../src/mthrowu.c:60
 msgid "text"
-msgstr ""
+msgstr "텍스트"
 
 #: ../src/mthrowu.c:60
 msgid "the past"
@@ -24014,7 +24020,7 @@ msgstr "토네이도"
 
 #: ../src/mthrowu.c:60
 msgid "toxic waste"
-msgstr ""
+msgstr "독성 폐기물"
 
 # ============================================================
 # 환각 시 브레스 종류 (Hallucination Breath Types)
@@ -24033,11 +24039,11 @@ msgstr "파형"
 
 #: ../src/mthrowu.c:62
 msgid "wind"
-msgstr ""
+msgstr "바람"
 
 #: ../src/mthrowu.c:63
 msgid "X-rays"
-msgstr ""
+msgstr "X선"
 
 #
 #: ../src/mthrowu.c:125

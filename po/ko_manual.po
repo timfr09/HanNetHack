@@ -2396,11 +2396,18 @@ msgstr "뭐라고 쓸까? \"요나가 여기 있었다\"?"
 msgid "iron ball drags you downstairs!"
 msgstr "철구가 당신을 아래층으로 끌어내린다!"
 
-# ball.c - 계단 아래로
+# [조합 메시지] ball.c:973 - 계단 아래로 물건 떨어뜨림
+# 조합 요소:
+#   %1$s = yname(otmp) - 물건 이름 (예: "a sword")
+#   %2$s = "it" 또는 "they" - 단수/복수 대명사
+#   %3$s = "fall" 또는 "falls" - 동사 (otense)
+# 영어 조합: "You drop a sword and it falls down the stairs with you."
+# 한국어: 대명사와 동사 불필요, %.0s로 억제
+# 한국어 조합: "검을 떨어뜨려 함께 아래층으로 굴러간다."
 #: ../src/ball.c:997
 #, c-format
 msgid "drop %s and %s %s down the stairs with you."
-msgstr "%s{을/를} 떨어뜨리고 %s{과/와} 함께 아래층으로 %s."
+msgstr "%1$s{을/를} 떨어뜨려 함께 아래층으로 굴러간다.%2$.0s%3$.0s"
 
 # teleport.c:1411 - 순간이동 대상
 #: ../src/teleport.c:1411
@@ -3254,9 +3261,17 @@ msgstr "%s{이/가} %s 시체로 당신을 때렸다."
 msgid "%s nuzzles against your %s %s!"
 msgstr "%s{이/가} 당신의 %s %s에 코를 비볐다!"
 
+# [조합 메시지] uhitm.c:4661 - 몬스터가 물건 들고 도주
+# 조합 요소:
+#   %1$s = Monnam(magr) - 몬스터 이름 (예: "The goblin")
+#   %2$s = locomotion() - 이동 동사 (예: "run", "fly", "slither")
+#   %3$s = buf - 훔친 물건 (예: "your gold")
+# 영어 조합: "The goblin tries to run away with your gold."
+# 한국어: 이동 동사는 "달아나다"로 통일, %2$s 억제
+# 한국어 조합: "고블린이 금화를 들고 달아나려 한다."
 #, c-format
 msgid "%s tries to %s away with %s."
-msgstr "%s{이/가} %s{과/와} 함께 %s하려 한다."
+msgstr "%1$s{이/가} %3$s{을/를} 들고 달아나려 한다.%2$.0s"
 
 #, c-format
 msgid "Do you want to change into %s?"
@@ -9127,10 +9142,33 @@ msgstr "%s{이/가} %s..."
 
 # "tingle"은 이미 정의됨 (line 4993)
 
-# apply.c:1344-1345 - 깜빡이다 죽음
+# [조합 메시지] apply.c:1344-1345 - 광원 깜빡이다 꺼짐
+# 조합 요소:
+#   %1$s = 광원 이름 (예: "candle", "lamp")
+#   %2$s = vtense("flicker") - "깜빡인다"
+#   %3$s = vtense("die") - "꺼진다"
+# 영어 조합: "The candle flickers for a moment, then dies."
+# 한국어 조합: "촛불이 잠시 깜빡이다가 꺼졌다."
 #, c-format
 msgid "%s %s for a moment, then %s."
-msgstr "%s{이/가} 잠시 %s, 그리고 %s."
+msgstr "%1$s{이/가} 잠시 %2$s다가 %3$s."
+
+# [조합 메시지] apply.c:1672 - 광원 깜빡이다 꺼짐 (2인수)
+# 조합 요소:
+#   %1$s = Tobjnam(obj, "flicker") - "The candle flickers"
+#   %2$s = otense(obj, "die") - "dies"
+# 영어 조합: "The lamp flickers for a moment, then dies."
+# 한국어 조합: "램프가 잠시 깜빡이다가 꺼졌다."
+#, c-format
+msgid "%s for a moment, then %s."
+msgstr "%1$s다가 %2$s."
+
+# apply.c:1345, 1673 - 광원이 꺼지다
+# C_("light", "die") 컨텍스트 사용
+# 일반 "die"는 ko.po의 "죽음/죽다" 번역 유지
+msgctxt "light"
+msgid "die"
+msgstr "꺼졌다"
 
 # "flicker"는 이미 정의됨 (line 5692)
 

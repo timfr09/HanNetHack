@@ -1342,7 +1342,7 @@ use_candelabrum(struct obj *obj)
     if (u.uswallow || obj->cursed) {
         if (!Blind)
             pline_The(_("%s %s for a moment, then %s."), s, vtense(s, _("flicker")),
-                      vtense(s, _("die")));
+                      vtense(s, C_("light", "die")));
         return;
     }
     if (obj->spe < 7) {
@@ -1670,7 +1670,7 @@ use_lamp(struct obj *obj)
             make_glib((int) (Glib & TIMEOUT) + d(2, 10));
         } else if (!Blind) {
             pline(_("%s for a moment, then %s."), Tobjnam(obj, _("flicker")),
-                  otense(obj, _("die")));
+                  otense(obj, C_("light", "die")));
         } else {
             pline(_("%s"), nothing_seems_to_happen);
         }

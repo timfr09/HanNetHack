@@ -10537,3 +10537,55 @@ msgstr "​"
 msgctxt "god_anger"
 msgid " was"
 msgstr "​"
+
+# ============================================================
+# read.c i18n 번역
+# ============================================================
+
+# read.c - getobj() 프롬프트
+# "What do you want to read?"
+#: ../src/read.c:358
+msgid "read"
+msgstr "읽을"
+
+# read.c - getobj() 프롬프트 (destroy armor scroll)
+# "What do you want to destroy?"
+#: ../src/read.c:1324
+msgid "destroy"
+msgstr "파괴할"
+
+# read.c - 맹인일 때 읽기 불가 메시지
+# "Being blind, you cannot read the words."
+#: ../src/read.c:567
+msgid "words"
+msgstr "글자"
+
+# read.c - 맹인일 때 읽기 불가 메시지
+# "Being blind, you cannot read the mystic runes."
+#: ../src/read.c:569
+msgid "mystic runes"
+msgstr "신비한 룬 문자"
+
+# read.c - 맹인일 때 읽기 불가 메시지
+# "Being blind, you cannot read the formula on the scroll."
+#: ../src/read.c:571
+msgid "formula on the scroll"
+msgstr "두루마리의 주문"
+
+# read.c - getpos() 프롬프트 (scroll of fire)
+# "Move cursor to the desired position"
+#: ../src/read.c:1848
+msgid "the desired position"
+msgstr "원하는 위치"
+
+# read.c - scroll of earth (boulder avalanche)
+# "Avalanche/Avalanches of boulders materialize around/above you!"
+#: ../src/read.c:1889
+msgid "avalanche"
+msgstr "산사태"
+
+# read.c - flooreffects() 동사
+# "The boulder falls into the water/lava."
+#: ../src/read.c:2279 ../src/read.c:2352
+msgid "fall"
+msgstr "떨어지다"

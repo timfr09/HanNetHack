@@ -7476,143 +7476,143 @@ msgstr "%s %s{에는} 유형 이름을 할당할 수 없다."
 msgid "don't know %s %s well enough to name %s."
 msgstr "%s %s{을/를} 이름을 지을 만큼 잘 모른다 %s."
 
+# 유령 이름 (Ghost names) - NetHack 개발자/기여자 이름
 #: ../src/do_name.c:762
 msgid "Adri"
-msgstr ""
+msgstr "아드리"
 
 #: ../src/do_name.c:762
 msgid "Andries"
-msgstr ""
+msgstr "안드리스"
 
 #: ../src/do_name.c:762
 msgid "Andreas"
-msgstr ""
+msgstr "안드레아스"
 
 #: ../src/do_name.c:762
 msgid "Bert"
-msgstr ""
+msgstr "버트"
 
 #: ../src/do_name.c:763
 msgid "David"
-msgstr ""
+msgstr "데이비드"
 
 #: ../src/do_name.c:763
 msgid "Dirk"
-msgstr ""
+msgstr "디르크"
 
 #: ../src/do_name.c:763
 msgid "Emile"
-msgstr ""
+msgstr "에밀"
 
 #: ../src/do_name.c:763
 msgid "Frans"
-msgstr ""
+msgstr "프란스"
 
 #: ../src/do_name.c:764
 msgid "Fred"
-msgstr ""
+msgstr "프레드"
 
 #: ../src/do_name.c:764
 msgid "Greg"
-msgstr ""
+msgstr "그렉"
 
 #
 #: ../src/do_name.c:764
 msgid "Hether"
-msgstr ""
+msgstr "헤더"
 
 #: ../src/do_name.c:764
 msgid "Jay"
-msgstr ""
+msgstr "제이"
 
 #: ../src/do_name.c:765
 msgid "John"
-msgstr ""
+msgstr "존"
 
 #: ../src/do_name.c:765
 msgid "Jon"
-msgstr ""
+msgstr "존"
 
 #: ../src/do_name.c:765
 msgid "Karnov"
-msgstr ""
+msgstr "카르노프"
 
 #: ../src/do_name.c:765
 msgid "Kay"
-msgstr ""
+msgstr "케이"
 
 #: ../src/do_name.c:766
 msgid "Kenny"
-msgstr ""
+msgstr "케니"
 
 #: ../src/do_name.c:766
 msgid "Kevin"
-msgstr ""
+msgstr "케빈"
 
 #: ../src/do_name.c:766
 msgid "Maud"
-msgstr ""
+msgstr "모드"
 
-# 방어구 - 방패
 #: ../src/do_name.c:766
 msgid "Michiel"
-msgstr ""
+msgstr "미힐"
 
 #: ../src/do_name.c:767
 msgid "Mike"
-msgstr ""
+msgstr "마이크"
 
 #: ../src/do_name.c:767
 msgid "Peter"
-msgstr ""
+msgstr "피터"
 
 #: ../src/do_name.c:767
 msgid "Robert"
-msgstr ""
+msgstr "로버트"
 
 #: ../src/do_name.c:767
 msgid "Ron"
-msgstr ""
+msgstr "론"
 
 #: ../src/do_name.c:768
 msgid "Tom"
-msgstr ""
+msgstr "톰"
 
 #: ../src/do_name.c:768
 msgid "Wilmar"
-msgstr ""
+msgstr "빌마르"
 
 #: ../src/do_name.c:768
 msgid "Nick Danger"
-msgstr ""
+msgstr "닉 데인저"
 
 #: ../src/do_name.c:768
 msgid "Phoenix"
-msgstr ""
+msgstr "피닉스"
 
 #: ../src/do_name.c:769
 msgid "Jiro"
-msgstr ""
+msgstr "지로"
 
 #: ../src/do_name.c:769
 msgid "Mizue"
-msgstr ""
+msgstr "미즈에"
 
 #: ../src/do_name.c:769
 msgid "Stephan"
-msgstr ""
+msgstr "스테판"
 
 #: ../src/do_name.c:769
 msgid "Lance Braccus"
-msgstr ""
+msgstr "랜스 브라커스"
 
 #: ../src/do_name.c:770
 msgid "Shadowhawk"
-msgstr ""
+msgstr "쉐도우호크"
 
 #: ../src/do_name.c:770
 msgid "Murphy"
-msgstr ""
+msgstr "머피"
 
 #: ../src/do_name.c:884 ../src/pray.c:2547
 msgid "someone"
@@ -8161,41 +8161,42 @@ msgstr "로드러너루스 디게스투스"
 msgid "Eatibus Anythingus"
 msgstr "이티부스 애니싱구스"
 
+# Looney Tunes 가짜 라틴어 코요테 이름 (환각 효과)
 #: ../src/do_name.c:1558
 msgid "Famishus-Famishus"
-msgstr ""
+msgstr "파미수스-파미수스"
 
 #: ../src/do_name.c:1558
 msgid "Eatibus Almost Anythingus"
-msgstr ""
+msgstr "에아티부스 올모스트 애니싱구스"
 
 #: ../src/do_name.c:1559
 msgid "Eatius Birdius"
-msgstr ""
+msgstr "에아티우스 버디우스"
 
 #: ../src/do_name.c:1560
 msgid "Famishius Fantasticus"
-msgstr ""
+msgstr "파미시우스 판타스티쿠스"
 
 #: ../src/do_name.c:1560
 msgid "Eternalii Famishiis"
-msgstr ""
+msgstr "에테르날리 파미시이스"
 
 #: ../src/do_name.c:1561
 msgid "Famishus Vulgarus"
-msgstr ""
+msgstr "파미수스 불가루스"
 
 #: ../src/do_name.c:1562
 msgid "Famishius Vulgaris Ingeniusi"
-msgstr ""
+msgstr "파미시우스 불가리스 인게니우시"
 
 #: ../src/do_name.c:1562
 msgid "Eatius-Slobbius"
-msgstr ""
+msgstr "에아티우스-슬로비우스"
 
 #: ../src/do_name.c:1563
 msgid "Hardheadipus Oedipus"
-msgstr ""
+msgstr "하드헤아디푸스 오이디푸스"
 
 # ============================================================
 # Looney Tunes 가짜 라틴어 코요테 이름 (환각 효과)
@@ -8207,35 +8208,35 @@ msgstr "카르니보루스 슬로비우스"
 
 #: ../src/do_name.c:1564
 msgid "Hard-Headipus Ravenus"
-msgstr ""
+msgstr "하드-헤아디푸스 레이버누스"
 
 #: ../src/do_name.c:1565
 msgid "Evereadii Eatibus"
-msgstr ""
+msgstr "에버레이디 에아티부스"
 
 #: ../src/do_name.c:1566
 msgid "Apetitius Giganticus"
-msgstr ""
+msgstr "아페티티우스 기간티쿠스"
 
 #: ../src/do_name.c:1566
 msgid "Hungrii Flea-Bagius"
-msgstr ""
+msgstr "헝그리 플리-바기우스"
 
 #: ../src/do_name.c:1567
 msgid "Overconfidentii Vulgaris"
-msgstr ""
+msgstr "오버콘피덴티 불가리스"
 
 #: ../src/do_name.c:1568
 msgid "Caninus Nervous Rex"
-msgstr ""
+msgstr "카니누스 네르보수스 렉스"
 
 #: ../src/do_name.c:1568
 msgid "Grotesques Appetitus"
-msgstr ""
+msgstr "그로테스케스 아페티투스"
 
 #: ../src/do_name.c:1569
 msgid "Nemesis Ridiculii"
-msgstr ""
+msgstr "네메시스 리디쿨리"
 
 # Canis latrans = 코요테의 학명 (환각 효과)
 #: ../src/do_name.c:1570
@@ -18966,21 +18967,23 @@ msgstr "%s의 라벨을 해독했다."
 msgid "Altarian Dollar"
 msgstr "알타이어 달러"
 
+# Discworld 참조
 #: ../src/invent.c:1524
 msgid "Ankh-Morpork Dollar"
-msgstr ""
+msgstr "앙크-모르포크 달러"
 
 #: ../src/invent.c:1525
 msgid "auric"
-msgstr ""
+msgstr "아우릭"
 
+# Space Quest 게임 참조
 #: ../src/invent.c:1526
 msgid "buckazoid"
-msgstr ""
+msgstr "버카조이드"
 
 #: ../src/invent.c:1527
 msgid "cirbozoid"
-msgstr ""
+msgstr "서보조이드"
 
 #: ../src/invent.c:1528
 msgid "credit chit"
@@ -18990,26 +18993,29 @@ msgstr "크레딧 칩"
 msgid "cubit"
 msgstr "큐빗"
 
+# 은하수를 여행하는 히치하이커 참조
 #: ../src/invent.c:1530
 msgid "Flanian Pobble Bead"
-msgstr ""
+msgstr "플라니안 포블 비드"
 
 #: ../src/invent.c:1531
 msgid "fretzer"
-msgstr ""
+msgstr "프레처"
 
 # 스타워즈
 #: ../src/invent.c:1532
 msgid "imperial credit"
 msgstr "제국 크레딧"
 
+# The Moon is a Harsh Mistress 참조
 #: ../src/invent.c:1533
 msgid "Hong Kong Luna Dollar"
-msgstr ""
+msgstr "홍콩 루나 달러"
 
+# Snow Crash 참조
 #: ../src/invent.c:1534
 msgid "kongbuck"
-msgstr ""
+msgstr "콩벅"
 
 #: ../src/invent.c:1535
 msgid "nanite"
@@ -19020,17 +19026,19 @@ msgstr "나나이트"
 msgid "quatloo"
 msgstr "콰틀루"
 
+# The Sims 게임 참조
 #: ../src/invent.c:1537
 msgid "simoleon"
-msgstr ""
+msgstr "시몰레온"
 
 #: ../src/invent.c:1538
 msgid "solari"
-msgstr ""
+msgstr "솔라리"
 
+# Spaceballs 영화 참조
 #: ../src/invent.c:1539
 msgid "spacebuck"
-msgstr ""
+msgstr "스페이스벅"
 
 # 스포어 게임
 #: ../src/invent.c:1540
@@ -30675,18 +30683,19 @@ msgstr "%s보거나 기억한 새김글%s:"
 msgid "No engravings seen or remembered%s."
 msgstr "각인이 보이거나 기억되지 않는다%s."
 
+# 오크 수배 포스터 설명 (Orc wanted poster)
 #: ../src/pager.c:2228
 #, c-format
 msgid "%s is a member of a marauding horde of orcs"
-msgstr ""
+msgstr "%s{은/는} 약탈하는 오크 무리의 일원으로"
 
 #: ../src/pager.c:2229
 msgid "rumored to have brutally attacked and plundered"
-msgstr ""
+msgstr "잔인하게 공격하고 약탈했다고 알려진"
 
 #: ../src/pager.c:2230
 msgid "the ordinarily sheltered town that is located "
-msgstr ""
+msgstr "평소에는 보호받던 마을을 공격했다."
 
 # 오크 지명수배 포스터 설명
 #: ../src/pager.c:2231
@@ -30695,33 +30704,34 @@ msgstr "노움 광산 깊은 곳에서."
 
 #: ../src/pager.c:2233
 msgid "The members of that vicious horde proudly and "
-msgstr ""
+msgstr "그 사악한 무리의 구성원들은 자랑스럽게"
 
 #: ../src/pager.c:2234
 msgid "defiantly acclaim their allegiance to their"
-msgstr ""
+msgstr "그리고 대담하게 충성을 선언하며"
 
 #: ../src/pager.c:2235
 #, c-format
 msgid "leader %s in their names."
 msgstr "리더 %s{을/를} 이름에 새기고 있다."
 
+# 오크 장물아비 설명
 #: ../src/pager.c:2240
 #, c-format
 msgid "\"%s\" is the common dungeon name of"
-msgstr ""
+msgstr "\"%s\"은(는) 던전에서 알려진 이름으로"
 
 #: ../src/pager.c:2241
 msgid "a nefarious orc who is known to acquire property"
-msgstr ""
+msgstr "도둑들에게서 물건을 사서"
 
 #: ../src/pager.c:2242
 msgid "from thieves and sell it off for profit."
-msgstr ""
+msgstr "이익을 위해 되팔아 먹는 사악한 오크이다."
 
 #: ../src/pager.c:2244
 msgid "The perpetrator was last seen hanging around the"
-msgstr ""
+msgstr "범인은 마지막으로"
 
 #: ../src/pager.c:2245
 msgid "stairs leading to the Gnomish Mines."
@@ -35388,9 +35398,10 @@ msgstr "100% 고블린 털 - 세탁 금지"
 msgid "Aberzombie and Fitch"
 msgstr "아버좀비 앤 피치"
 
+# Calvin Klein (cK) 광고 패러디
 #: ../src/read.c:123
 msgid "cK -- Cockatrice touches the Kop"
-msgstr ""
+msgstr "cK -- 코카트리스가 경관을 만지다"
 
 #: ../src/read.c:124
 msgid "Don't ask me, I only adventure here"
@@ -35637,7 +35648,7 @@ msgstr "큰부리새"
 
 #: ../src/read.c:197
 msgid "bird of paradise"
-msgstr ""
+msgstr "극락조"
 
 #: ../src/read.c:199
 msgid "sea turtle"
@@ -35645,19 +35656,19 @@ msgstr "바다거북"
 
 #: ../src/read.c:200
 msgid "tropical fish"
-msgstr ""
+msgstr "열대어"
 
 #: ../src/read.c:205
 msgid "plumeria"
-msgstr ""
+msgstr "플루메리아"
 
 #: ../src/read.c:206
 msgid "orchid"
-msgstr ""
+msgstr "난초"
 
 #: ../src/read.c:207
 msgid "hibiscus flower"
-msgstr ""
+msgstr "무궁화"
 
 #: ../src/read.c:208
 msgid "palm tree"
@@ -35669,11 +35680,11 @@ msgstr "훌라 댄서"
 
 #: ../src/read.c:211
 msgid "sailboat"
-msgstr ""
+msgstr "요트"
 
 #: ../src/read.c:212
 msgid "ukulele"
-msgstr ""
+msgstr "우쿨렐레"
 
 # 하와이안 셔츠 배경 패턴
 #: ../src/read.c:236
@@ -35682,7 +35693,7 @@ msgstr "추상적"
 
 #: ../src/read.c:237
 msgid "geometric"
-msgstr ""
+msgstr "기하학적"
 
 # 하와이안 셔츠 배경 패턴
 #: ../src/read.c:238
@@ -35691,7 +35702,7 @@ msgstr "패턴"
 
 #: ../src/read.c:239
 msgid "naturalistic"
-msgstr ""
+msgstr "자연주의적"
 
 # 하와이안 셔츠 패턴 설명
 # 예: "flamingos on blue background"
@@ -35851,62 +35862,67 @@ msgstr "여기에 %2$s{이/가} 있다.%1$.0s"
 msgid "You feel lettering"
 msgstr "열이 나는 것 같다."
 
+# 신용카드 이름 (Credit card parodies)
 #: ../src/read.c:451
 msgid "Leprechaun Gold Tru$t - Shamrock Card"
-msgstr ""
+msgstr "레프리콘 골드 트러$트 - 샴록 카드"
 
 #: ../src/read.c:452
 msgid "Magic Memory Vault Charge Card"
-msgstr ""
+msgstr "매직 메모리 볼트 충전 카드"
 
 # 가상의 신용카드 발급사 (Larn = 로그라이크 게임)
 #: ../src/read.c:453
 msgid "Larn National Bank"
 msgstr "란 국립은행"
 
+# Omega 로그라이크 게임 참조
 #: ../src/read.c:454
 msgid "First Bank of Omega"
-msgstr ""
+msgstr "오메가 제일은행"
 
+# Zork 게임 참조
 #: ../src/read.c:455
 msgid "Bank of Zork - Frobozz Magic Card"
-msgstr ""
+msgstr "조크 은행 - 프로보즈 매직 카드"
 
+# Discworld 참조
 #: ../src/read.c:456
 msgid "Ankh-Morpork Merchant's Guild Barter Card"
-msgstr ""
+msgstr "앙크-모르포크 상인 길드 물물교환 카드"
 
 #: ../src/read.c:457
 msgid "Ankh-Morpork Thieves' Guild Unlimited Transaction Card"
-msgstr ""
+msgstr "앙크-모르포크 도둑 길드 무제한 거래 카드"
 
 #: ../src/read.c:458
 msgid "Ransmannsby Moneylenders Association"
-msgstr ""
+msgstr "랜스만스비 대금업자 협회"
 
 #: ../src/read.c:459
 msgid "Bank of Gehennom - 99% Interest Card"
-msgstr ""
+msgstr "게헨놈 은행 - 99% 이자 카드"
 
+# American Express 패러디
 #: ../src/read.c:460
 msgid "Yendorian Express - Copper Card"
-msgstr ""
+msgstr "옌도리안 익스프레스 - 구리 카드"
 
 #: ../src/read.c:461
 msgid "Yendorian Express - Silver Card"
-msgstr ""
+msgstr "옌도리안 익스프레스 - 은 카드"
 
 #: ../src/read.c:462
 msgid "Yendorian Express - Gold Card"
-msgstr ""
+msgstr "옌도리안 익스프레스 - 금 카드"
 
 #: ../src/read.c:463
 msgid "Yendorian Express - Mithril Card"
-msgstr ""
+msgstr "옌도리안 익스프레스 - 미스릴 카드"
 
 #: ../src/read.c:464
 msgid "Yendorian Express - Platinum Card"
-msgstr ""
+msgstr "옌도리안 익스프레스 - 플래티넘 카드"
 
 #: ../src/read.c:468
 msgid "feel the embossed numbers:"

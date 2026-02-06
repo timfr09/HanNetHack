@@ -1947,11 +1947,7 @@ msgstr "무엇을 주우겠습니까?"
 msgid "Really quit?"
 msgstr "정말 종료하겠습니까?"
 
-msgid "lich"
-msgstr "리치"
 
-msgid "vampire"
-msgstr "뱀파이어"
 
 # ============================================================
 # 아이템 이름 (Item Names) - 샘플
@@ -7875,11 +7871,7 @@ msgstr "보곤"
 msgid "rat"
 msgstr "쥐"
 
-msgid "jackal"
-msgstr "자칼"
 
-msgid "wolf"
-msgstr "늑대"
 
 # ===============================================
 # 추가 번역 - priest.c, pray.c, dungeon.c
@@ -9264,8 +9256,6 @@ msgstr "마법사"
 # Note: humanity, elven, elvenkind, dwarven, dwarvenkind,
 # gnomish, gnomehood, orcish, orcdom are already defined earlier
 
-msgid "human"
-msgstr "인간"
 
 msgid "man"
 msgstr "남자"
@@ -9273,17 +9263,9 @@ msgstr "남자"
 msgid "woman"
 msgstr "여자"
 
-msgid "elf"
-msgstr "엘프"
 
-msgid "dwarf"
-msgstr "드워프"
 
-msgid "gnome"
-msgstr "노움"
 
-msgid "orc"
-msgstr "오크"
 
 # ============================================================
 # role.c - 성별 (Genders)
@@ -10842,3 +10824,1063 @@ msgstr "세컨드 라인"
 
 msgid "train"
 msgstr "트레인"
+
+# ============================================================
+# 몬스터 이름 번역 (monster_i18n.c에서 추출)
+# ============================================================
+
+# === 고유명사 (음차 또는 원문 유지) ===
+msgid "Aleax"
+msgstr "알렉스"
+
+msgid "Angel"
+msgstr "천사"
+
+msgid "Arch Priest"
+msgstr "대사제"
+
+msgid "Ashikaga Takauji"
+msgstr "아시카가 타카우지"
+
+msgid "Asmodeus"
+msgstr "아스모데우스"
+
+msgid "Baalzebub"
+msgstr "바알제붑"
+
+msgid "Cerberus"
+msgstr "케르베로스"
+
+msgid "Charon"
+msgstr "카론"
+
+msgid "Chromatic Dragon"
+msgstr "오색 드래곤"
+
+msgid "Croesus"
+msgstr "크로이소스"
+
+msgid "Cyclops"
+msgstr "사이클롭스"
+
+msgid "Dark One"
+msgstr "어둠의 자"
+
+msgid "Death"
+msgstr "죽음"
+
+msgid "Demogorgon"
+msgstr "데모고르곤"
+
+msgid "Dispater"
+msgstr "디스파테르"
+
+msgid "Earendil"
+msgstr "에아렌딜"
+
+msgid "Elvenking"
+msgstr "엘프 왕"
+
+msgid "Elvenqueen"
+msgstr "엘프 여왕"
+
+msgid "Elwing"
+msgstr "엘윙"
+
+msgid "Famine"
+msgstr "기근"
+
+msgid "Geryon"
+msgstr "게리온"
+
+msgid "Goblin King"
+msgstr "고블린 왕"
+
+msgid "Grand Master"
+msgstr "대종사"
+
+msgid "Green-elf"
+msgstr "녹색 엘프"
+
+msgid "Grey-elf"
+msgstr "회색 엘프"
+
+msgid "High-elf"
+msgstr "상위 엘프"
+
+msgid "Hippocrates"
+msgstr "히포크라테스"
+
+msgid "Ixoth"
+msgstr "익소스"
+
+msgid "Juiblex"
+msgstr "주이블렉스"
+
+msgid "Keystone Kop"
+msgstr "키스톤 경찰"
+
+msgid "King Arthur"
+msgstr "아서 왕"
+
+msgid "Kop Kaptain"
+msgstr "경찰 대위"
+
+msgid "Kop Lieutenant"
+msgstr "경찰 중위"
+
+msgid "Kop Sergeant"
+msgstr "경찰 하사"
+
+msgid "Lord Carnarvon"
+msgstr "카나본 경"
+
+msgid "Lord Sato"
+msgstr "사토 경"
+
+msgid "Lord Surtur"
+msgstr "수르트 경"
+
+msgid "Master Assassin"
+msgstr "암살자 수장"
+
+msgid "Master Kaen"
+msgstr "켄 사부"
+
+msgid "Master of Thieves"
+msgstr "도둑 수장"
+
+msgid "Medusa"
+msgstr "메두사"
+
+msgid "Minion of Huhetotl"
+msgstr "후헤토틀의 하수인"
+
+msgid "Mordor orc"
+msgstr "모르도르 오크"
+
+msgid "Nalzok"
+msgstr "날조크"
+
+msgid "Nazgul"
+msgstr "나즈굴"
+
+msgid "Neferet the Green"
+msgstr "푸른 네페렛"
+
+msgid "Norn"
+msgstr "노른"
+
+msgid "Oracle"
+msgstr "신탁"
+
+msgid "Orcus"
+msgstr "오르쿠스"
+
+msgid "Orion"
+msgstr "오리온"
+
+msgid "Pelias"
+msgstr "펠리아스"
+
+msgid "Pestilence"
+msgstr "역병"
+
+msgid "Scorpius"
+msgstr "스콜피우스"
+
+msgid "Shaman Karnov"
+msgstr "주술사 카르노프"
+
+msgid "Thoth Amon"
+msgstr "토트 아몬"
+
+msgid "Twoflower"
+msgstr "투플라워"
+
+msgid "Uruk-hai"
+msgstr "우루크하이"
+
+msgid "Vlad the Impaler"
+msgstr "꼬챙이 블라드"
+
+msgid "Wizard of Yendor"
+msgstr "옌도르의 마법사"
+
+msgid "Woodland-elf"
+msgstr "숲 엘프"
+
+msgid "Yeenoghu"
+msgstr "예노구"
+
+# === 일반 몬스터 (가나다순) ===
+
+msgid "abbot"
+msgstr "수도원장"
+
+msgid "acolyte"
+msgstr "수련사제"
+
+msgid "air elemental"
+msgstr "공기 정령"
+
+msgid "aligned cleric"
+msgstr "성향 성직자"
+
+msgid "amorous demon"
+msgstr "호색 악마"
+
+msgid "arch-lich"
+msgstr "대리치"
+
+msgid "archeologist"
+msgstr "고고학자"
+
+msgid "attendant"
+msgstr "수행원"
+
+msgid "baby black dragon"
+msgstr "아기 검은 드래곤"
+
+msgid "baby blue dragon"
+msgstr "아기 푸른 드래곤"
+
+msgid "baby crocodile"
+msgstr "아기 악어"
+
+msgid "baby gold dragon"
+msgstr "아기 황금 드래곤"
+
+msgid "baby gray dragon"
+msgstr "아기 회색 드래곤"
+
+msgid "baby green dragon"
+msgstr "아기 녹색 드래곤"
+
+msgid "baby long worm"
+msgstr "아기 긴 벌레"
+
+msgid "baby orange dragon"
+msgstr "아기 주황 드래곤"
+
+msgid "baby purple worm"
+msgstr "아기 보라 벌레"
+
+msgid "baby red dragon"
+msgstr "아기 붉은 드래곤"
+
+msgid "baby shimmering dragon"
+msgstr "아기 빛나는 드래곤"
+
+msgid "baby silver dragon"
+msgstr "아기 은빛 드래곤"
+
+msgid "baby white dragon"
+msgstr "아기 흰 드래곤"
+
+msgid "baby yellow dragon"
+msgstr "아기 노란 드래곤"
+
+msgid "balrog"
+msgstr "발로그"
+
+msgid "baluchitherium"
+msgstr "발루키테리움"
+
+msgid "barbarian"
+msgstr "야만인"
+
+msgid "barbed devil"
+msgstr "가시 악마"
+
+msgid "barrow wight"
+msgstr "고분 망령"
+
+msgid "bat"
+msgstr "박쥐"
+
+msgid "beholder"
+msgstr "비홀더"
+
+msgid "black light"
+msgstr "검은 빛"
+
+msgid "black naga"
+msgstr "검은 나가"
+
+msgid "black naga hatchling"
+msgstr "아기 검은 나가"
+
+msgid "black pudding"
+msgstr "검은 푸딩"
+
+msgid "black unicorn"
+msgstr "검은 유니콘"
+
+msgid "blue jelly"
+msgstr "푸른 젤리"
+
+msgid "bone devil"
+msgstr "뼈 악마"
+
+msgid "brown mold"
+msgstr "갈색 곰팡이"
+
+msgid "brown pudding"
+msgstr "갈색 푸딩"
+
+msgid "bugbear"
+msgstr "버그베어"
+
+msgid "captain"
+msgstr "대위"
+
+msgid "carnivorous ape"
+msgstr "식인 유인원"
+
+msgid "cave dweller"
+msgstr "동굴인"
+
+msgid "cave spider"
+msgstr "동굴 거미"
+
+msgid "caveman"
+msgstr "동굴 남자"
+
+msgid "cavewoman"
+msgstr "동굴 여자"
+
+msgid "centipede"
+msgstr "지네"
+
+msgid "chameleon"
+msgstr "카멜레온"
+
+msgid "chickatrice"
+msgstr "치카트리스"
+
+msgid "chieftain"
+msgstr "족장"
+
+msgid "clay golem"
+msgstr "점토 골렘"
+
+msgid "cleric"
+msgstr "성직자"
+
+msgid "couatl"
+msgstr "코아틀"
+
+msgid "coyote"
+msgstr "코요테"
+
+msgid "demilich"
+msgstr "데미리치"
+
+msgid "dingo"
+msgstr "딩고"
+
+msgid "disenchanter"
+msgstr "해주술사"
+
+msgid "displacer beast"
+msgstr "전이수"
+
+msgid "djinni"
+msgstr "지니"
+
+msgid "dog"
+msgstr "개"
+
+msgid "doppelganger"
+msgstr "도플갱어"
+
+msgid "dust vortex"
+msgstr "먼지 소용돌이"
+
+
+msgid "dwarf king"
+msgstr "드워프 왕"
+
+msgid "dwarf lady"
+msgstr "드워프 귀부인"
+
+msgid "dwarf leader"
+msgstr "드워프 지도자"
+
+msgid "dwarf lord"
+msgstr "드워프 군주"
+
+msgid "dwarf mummy"
+msgstr "드워프 미라"
+
+msgid "dwarf queen"
+msgstr "드워프 여왕"
+
+msgid "dwarf ruler"
+msgstr "드워프 통치자"
+
+msgid "dwarf zombie"
+msgstr "드워프 좀비"
+
+msgid "earth elemental"
+msgstr "대지 정령"
+
+msgid "electric eel"
+msgstr "전기 뱀장어"
+
+
+msgid "elf mummy"
+msgstr "엘프 미라"
+
+msgid "elf zombie"
+msgstr "엘프 좀비"
+
+msgid "elf-lady"
+msgstr "엘프 귀부인"
+
+msgid "elf-lord"
+msgstr "엘프 군주"
+
+msgid "elf-noble"
+msgstr "엘프 귀족"
+
+msgid "elven monarch"
+msgstr "엘프 군주"
+
+msgid "energy vortex"
+msgstr "에너지 소용돌이"
+
+msgid "erinys"
+msgstr "에리니스"
+
+msgid "ettin"
+msgstr "에틴"
+
+msgid "ettin mummy"
+msgstr "에틴 미라"
+
+msgid "ettin zombie"
+msgstr "에틴 좀비"
+
+msgid "fire elemental"
+msgstr "불 정령"
+
+msgid "fire vortex"
+msgstr "불 소용돌이"
+
+msgid "flaming sphere"
+msgstr "불꽃 구체"
+
+msgid "flesh golem"
+msgstr "살 골렘"
+
+msgid "fog cloud"
+msgstr "안개 구름"
+
+msgid "forest centaur"
+msgstr "숲 켄타우로스"
+
+msgid "fox"
+msgstr "여우"
+
+msgid "freezing sphere"
+msgstr "냉동 구체"
+
+msgid "gargoyle"
+msgstr "가고일"
+
+msgid "garter snake"
+msgstr "가터뱀"
+
+msgid "gas spore"
+msgstr "가스 포자"
+
+msgid "gecko"
+msgstr "게코"
+
+msgid "genetic engineer"
+msgstr "유전 공학자"
+
+msgid "ghost"
+msgstr "유령"
+
+msgid "giant bat"
+msgstr "거대 박쥐"
+
+msgid "giant beetle"
+msgstr "거대 딱정벌레"
+
+msgid "giant eel"
+msgstr "거대 뱀장어"
+
+msgid "giant mimic"
+msgstr "거대 미믹"
+
+msgid "giant mummy"
+msgstr "거대 미라"
+
+msgid "giant rat"
+msgstr "거대 쥐"
+
+msgid "giant zombie"
+msgstr "거대 좀비"
+
+msgid "glass golem"
+msgstr "유리 골렘"
+
+msgid "glass piercer"
+msgstr "유리 피어서"
+
+
+msgid "gnome king"
+msgstr "노움 왕"
+
+msgid "gnome lady"
+msgstr "노움 귀부인"
+
+msgid "gnome leader"
+msgstr "노움 지도자"
+
+msgid "gnome lord"
+msgstr "노움 군주"
+
+msgid "gnome mummy"
+msgstr "노움 미라"
+
+msgid "gnome queen"
+msgstr "노움 여왕"
+
+msgid "gnome ruler"
+msgstr "노움 통치자"
+
+msgid "gnome zombie"
+msgstr "노움 좀비"
+
+msgid "gnomish wizard"
+msgstr "노움 마법사"
+
+msgid "goblin"
+msgstr "고블린"
+
+msgid "gold golem"
+msgstr "금 골렘"
+
+msgid "golden naga"
+msgstr "황금 나가"
+
+msgid "golden naga hatchling"
+msgstr "아기 황금 나가"
+
+msgid "gray ooze"
+msgstr "회색 점액"
+
+msgid "gray unicorn"
+msgstr "회색 유니콘"
+
+msgid "green mold"
+msgstr "녹색 곰팡이"
+
+msgid "green slime"
+msgstr "녹색 슬라임"
+
+msgid "gremlin"
+msgstr "그렘린"
+
+msgid "guardian naga"
+msgstr "수호 나가"
+
+msgid "guardian naga hatchling"
+msgstr "아기 수호 나가"
+
+msgid "guide"
+msgstr "안내자"
+
+msgid "healer"
+msgstr "치료사"
+
+msgid "hell hound"
+msgstr "지옥 사냥개"
+
+msgid "hell hound pup"
+msgstr "지옥 강아지"
+
+msgid "hezrou"
+msgstr "헤즈루"
+
+msgid "high cleric"
+msgstr "고위 성직자"
+
+msgid "high priest"
+msgstr "대사제"
+
+msgid "high priestess"
+msgstr "대여사제"
+
+msgid "hill orc"
+msgstr "언덕 오크"
+
+msgid "hobbit"
+msgstr "호빗"
+
+msgid "hobgoblin"
+msgstr "홉고블린"
+
+msgid "homunculus"
+msgstr "호문쿨루스"
+
+msgid "horned devil"
+msgstr "뿔 악마"
+
+msgid "horse"
+msgstr "말"
+
+msgid "housecat"
+msgstr "집고양이"
+
+
+msgid "human mummy"
+msgstr "인간 미라"
+
+msgid "human zombie"
+msgstr "인간 좀비"
+
+msgid "hunter"
+msgstr "사냥꾼"
+
+msgid "ice devil"
+msgstr "얼음 악마"
+
+msgid "ice vortex"
+msgstr "얼음 소용돌이"
+
+msgid "iguana"
+msgstr "이구아나"
+
+msgid "iron golem"
+msgstr "철 골렘"
+
+msgid "iron piercer"
+msgstr "철 피어서"
+
+
+msgid "jaguar"
+msgstr "재규어"
+
+msgid "jellyfish"
+msgstr "해파리"
+
+msgid "ki-rin"
+msgstr "기린"
+
+msgid "kitten"
+msgstr "새끼 고양이"
+
+msgid "knight"
+msgstr "기사"
+
+msgid "kobold"
+msgstr "코볼트"
+
+msgid "kobold lady"
+msgstr "코볼트 귀부인"
+
+msgid "kobold leader"
+msgstr "코볼트 지도자"
+
+msgid "kobold lord"
+msgstr "코볼트 군주"
+
+msgid "kobold mummy"
+msgstr "코볼트 미라"
+
+msgid "kobold shaman"
+msgstr "코볼트 주술사"
+
+msgid "kobold zombie"
+msgstr "코볼트 좀비"
+
+msgid "kraken"
+msgstr "크라켄"
+
+msgid "large cat"
+msgstr "큰 고양이"
+
+msgid "large dog"
+msgstr "큰 개"
+
+msgid "large kobold"
+msgstr "큰 코볼트"
+
+msgid "large mimic"
+msgstr "큰 미믹"
+
+msgid "leather golem"
+msgstr "가죽 골렘"
+
+msgid "lemure"
+msgstr "레무르"
+
+msgid "leocrotta"
+msgstr "레오크로타"
+
+
+msgid "lieutenant"
+msgstr "중위"
+
+msgid "little dog"
+msgstr "작은 개"
+
+msgid "lizard"
+msgstr "도마뱀"
+
+msgid "long worm"
+msgstr "긴 벌레"
+
+msgid "long worm tail"
+msgstr "긴 벌레 꼬리"
+
+msgid "lurker above"
+msgstr "천장 잠복자"
+
+msgid "lynx"
+msgstr "스라소니"
+
+msgid "mail daemon"
+msgstr "우편 데몬"
+
+msgid "manes"
+msgstr "마네스"
+
+msgid "marilith"
+msgstr "마릴리스"
+
+msgid "master lich"
+msgstr "마스터 리치"
+
+msgid "master mind flayer"
+msgstr "마스터 마인드 플레이어"
+
+msgid "mastodon"
+msgstr "마스토돈"
+
+msgid "mind flayer"
+msgstr "마인드 플레이어"
+
+msgid "monk"
+msgstr "수도승"
+
+msgid "mountain centaur"
+msgstr "산 켄타우로스"
+
+msgid "mountain nymph"
+msgstr "산 님프"
+
+msgid "mumak"
+msgstr "무마크"
+
+msgid "nalfeshnee"
+msgstr "날페슈니"
+
+msgid "neanderthal"
+msgstr "네안데르탈인"
+
+msgid "newt"
+msgstr "도롱뇽"
+
+msgid "ninja"
+msgstr "닌자"
+
+msgid "nurse"
+msgstr "간호사"
+
+msgid "ochre jelly"
+msgstr "황토색 젤리"
+
+msgid "ogre lady"
+msgstr "오거 귀부인"
+
+msgid "ogre leader"
+msgstr "오거 지도자"
+
+msgid "ogre queen"
+msgstr "오거 여왕"
+
+msgid "ogre tyrant"
+msgstr "오거 폭군"
+
+
+msgid "orc mummy"
+msgstr "오크 미라"
+
+msgid "orc shaman"
+msgstr "오크 주술사"
+
+msgid "orc zombie"
+msgstr "오크 좀비"
+
+msgid "orc-captain"
+msgstr "오크 대장"
+
+msgid "owlbear"
+msgstr "올빼미곰"
+
+msgid "page"
+msgstr "시동"
+
+msgid "panther"
+msgstr "표범"
+
+msgid "paper golem"
+msgstr "종이 골렘"
+
+msgid "piranha"
+msgstr "피라냐"
+
+msgid "pit fiend"
+msgstr "구덩이 악귀"
+
+msgid "plains centaur"
+msgstr "평원 켄타우로스"
+
+msgid "pony"
+msgstr "조랑말"
+
+msgid "priest"
+msgstr "사제"
+
+msgid "priestess"
+msgstr "여사제"
+
+msgid "prisoner"
+msgstr "죄수"
+
+msgid "purple worm"
+msgstr "보라 벌레"
+
+msgid "pyrolisk"
+msgstr "파이롤리스크"
+
+msgid "quantum mechanic"
+msgstr "양자 역학자"
+
+msgid "quasit"
+msgstr "콰짓"
+
+msgid "rabid rat"
+msgstr "광견 쥐"
+
+msgid "ranger"
+msgstr "레인저"
+
+msgid "raven"
+msgstr "까마귀"
+
+msgid "red mold"
+msgstr "붉은 곰팡이"
+
+msgid "red naga"
+msgstr "붉은 나가"
+
+msgid "red naga hatchling"
+msgstr "아기 붉은 나가"
+
+msgid "rock mole"
+msgstr "바위 두더지"
+
+msgid "rock piercer"
+msgstr "바위 피어서"
+
+msgid "rogue"
+msgstr "도적"
+
+msgid "rope golem"
+msgstr "밧줄 골렘"
+
+msgid "roshi"
+msgstr "노사"
+
+msgid "rust monster"
+msgstr "녹 괴물"
+
+msgid "salamander"
+msgstr "샐러맨더"
+
+msgid "samurai"
+msgstr "사무라이"
+
+msgid "sandestin"
+msgstr "산데스틴"
+
+msgid "sasquatch"
+msgstr "사스콰치"
+
+msgid "sergeant"
+msgstr "하사"
+
+msgid "sewer rat"
+msgstr "하수구 쥐"
+
+msgid "shade"
+msgstr "그림자"
+
+msgid "shark"
+msgstr "상어"
+
+msgid "shimmering dragon"
+msgstr "빛나는 드래곤"
+
+msgid "shocking sphere"
+msgstr "전격 구체"
+
+msgid "shrieker"
+msgstr "비명자"
+
+msgid "small mimic"
+msgstr "작은 미믹"
+
+msgid "spotted jelly"
+msgstr "점박이 젤리"
+
+msgid "stalker"
+msgstr "스토커"
+
+msgid "steam vortex"
+msgstr "증기 소용돌이"
+
+msgid "stone golem"
+msgstr "돌 골렘"
+
+msgid "straw golem"
+msgstr "짚 골렘"
+
+msgid "student"
+msgstr "학생"
+
+msgid "tengu"
+msgstr "텐구"
+
+msgid "thug"
+msgstr "깡패"
+
+msgid "tiger"
+msgstr "호랑이"
+
+msgid "titanothere"
+msgstr "티타노테리움"
+
+msgid "tourist"
+msgstr "관광객"
+
+msgid "trapper"
+msgstr "덫사냥꾼"
+
+msgid "umber hulk"
+msgstr "엄버 헐크"
+
+msgid "valkyrie"
+msgstr "발키리"
+
+
+msgid "vampire bat"
+msgstr "흡혈 박쥐"
+
+msgid "vampire lady"
+msgstr "뱀파이어 귀부인"
+
+msgid "vampire leader"
+msgstr "뱀파이어 지도자"
+
+msgid "vampire mage"
+msgstr "뱀파이어 마법사"
+
+msgid "violet fungus"
+msgstr "보라 버섯"
+
+msgid "vorpal jabberwock"
+msgstr "보르팔 재버워크"
+
+msgid "vrock"
+msgstr "브록"
+
+msgid "warg"
+msgstr "와르그"
+
+msgid "warhorse"
+msgstr "군마"
+
+msgid "warrior"
+msgstr "전사"
+
+msgid "watch captain"
+msgstr "경비대장"
+
+msgid "watchman"
+msgstr "경비병"
+
+msgid "water demon"
+msgstr "물 악마"
+
+msgid "water elemental"
+msgstr "물 정령"
+
+msgid "water moccasin"
+msgstr "워터 모카신"
+
+msgid "water nymph"
+msgstr "물 님프"
+
+msgid "werejackal"
+msgstr "늑대자칼"
+
+msgid "wererat"
+msgstr "늑대쥐"
+
+msgid "werewolf"
+msgstr "늑대인간"
+
+msgid "white unicorn"
+msgstr "흰 유니콘"
+
+msgid "winged gargoyle"
+msgstr "날개 가고일"
+
+msgid "winter wolf"
+msgstr "겨울 늑대"
+
+msgid "winter wolf cub"
+msgstr "겨울 늑대 새끼"
+
+msgid "wizard"
+msgstr "마법사"
+
+
+msgid "wood golem"
+msgstr "나무 골렘"
+
+msgid "wood nymph"
+msgstr "나무 님프"
+
+msgid "woodchuck"
+msgstr "마못"
+
+msgid "wumpus"
+msgstr "웜퍼스"
+
+msgid "xan"
+msgstr "잔"
+
+msgid "xorn"
+msgstr "존"
+
+msgid "yellow light"
+msgstr "노란 빛"
+
+msgid "yellow mold"
+msgstr "노란 곰팡이"
+
+msgid "yeti"
+msgstr "예티"
+
+msgid "zruty"
+msgstr "즈루티"

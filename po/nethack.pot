@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-06 13:58+0900\n"
+"POT-Creation-Date: 2026-02-06 14:56+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-06 13:58\n"
+"POT-Creation-Date: 2026-02-06 14:56\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -7307,11 +7307,11 @@ msgstr ""
 msgid "%s called %s"
 msgstr ""
 
-#: ../src/do_name.c:1202
+#: ../src/do_name.c:1202 ../src/monster_i18n.c:433
 msgid "high priestess"
 msgstr ""
 
-#: ../src/do_name.c:1202
+#: ../src/do_name.c:1202 ../src/monster_i18n.c:432
 msgid "high priest"
 msgstr ""
 
@@ -11766,7 +11766,7 @@ msgstr ""
 msgid "hallucinogen-distorted "
 msgstr ""
 
-#: ../src/end.c:242 ../src/obj_descr_i18n.c:576
+#: ../src/end.c:242 ../src/monster_i18n.c:144 ../src/obj_descr_i18n.c:576
 msgid "bat"
 msgstr ""
 
@@ -11785,7 +11785,8 @@ msgstr ""
 msgid "%s imitating %s"
 msgstr ""
 
-#: ../src/end.c:265 ../src/muse.c:89 ../src/obj_descr_i18n.c:725
+#: ../src/end.c:265 ../src/monster_i18n.c:301 ../src/muse.c:89
+#: ../src/obj_descr_i18n.c:725
 msgid "ghost"
 msgstr ""
 
@@ -12094,7 +12095,7 @@ msgid "%s is written here in the %s."
 msgstr ""
 
 #: ../src/engrave.c:333 ../src/engrave.c:904 ../src/engrave.c:1092
-#: ../src/zap.c:3333
+#: ../src/mthrowu.c:25 ../src/zap.c:3333
 msgid "frost"
 msgstr ""
 
@@ -14109,7 +14110,7 @@ msgid "%s into that %s cloud?"
 msgstr ""
 
 #: ../src/hack.c:2543 ../src/insight.c:3571 ../src/invent.c:4171
-#: ../src/pager.c:278
+#: ../src/mthrowu.c:26 ../src/pager.c:278
 msgid "poison gas"
 msgstr ""
 
@@ -20748,7 +20749,7 @@ msgstr ""
 msgid "%s is splashed by %s%s!"
 msgstr ""
 
-#: ../src/mhitu.c:2460
+#: ../src/mhitu.c:2460 ../src/mthrowu.c:26
 msgid "acid"
 msgstr ""
 
@@ -22044,6 +22045,1671 @@ msgstr ""
 msgid "I'm late!"
 msgstr ""
 
+#: ../src/monster_i18n.c:19 ../src/obj_descr_i18n.c:728
+msgid "giant ant"
+msgstr ""
+
+#: ../src/monster_i18n.c:20 ../src/obj_descr_i18n.c:774
+msgid "killer bee"
+msgstr ""
+
+#: ../src/monster_i18n.c:21 ../src/obj_descr_i18n.c:859
+msgid "soldier ant"
+msgstr ""
+
+#: ../src/monster_i18n.c:22 ../src/obj_descr_i18n.c:709
+msgid "fire ant"
+msgstr ""
+
+#: ../src/monster_i18n.c:23 ../src/obj_descr_i18n.c:729
+msgid "giant beetle"
+msgstr ""
+
+#: ../src/monster_i18n.c:24 ../src/obj_descr_i18n.c:825
+msgid "queen bee"
+msgstr ""
+
+#: ../src/monster_i18n.c:25 ../src/obj_descr_i18n.c:640
+msgid "acid blob"
+msgstr ""
+
+#: ../src/monster_i18n.c:26 ../src/obj_descr_i18n.c:826
+msgid "quivering blob"
+msgstr ""
+
+#: ../src/monster_i18n.c:27 ../src/obj_descr_i18n.c:723
+msgid "gelatinous cube"
+msgstr ""
+
+#: ../src/monster_i18n.c:28 ../src/obj_descr_i18n.c:685
+msgid "chickatrice"
+msgstr ""
+
+#: ../src/monster_i18n.c:29 ../src/obj_descr_i18n.c:689
+msgid "cockatrice"
+msgstr ""
+
+#: ../src/monster_i18n.c:30 ../src/obj_descr_i18n.c:821
+msgid "pyrolisk"
+msgstr ""
+
+#: ../src/monster_i18n.c:31 ../src/obj_descr_i18n.c:535 ../src/were.c:169
+msgid "jackal"
+msgstr ""
+
+#: ../src/monster_i18n.c:32 ../src/obj_descr_i18n.c:536
+msgid "fox"
+msgstr ""
+
+#: ../src/monster_i18n.c:33 ../src/obj_descr_i18n.c:537
+msgid "coyote"
+msgstr ""
+
+#: ../src/monster_i18n.c:34 ../src/monster_i18n.c:279
+#: ../src/obj_descr_i18n.c:891
+msgid "werejackal"
+msgstr ""
+
+#: ../src/monster_i18n.c:35 ../src/obj_descr_i18n.c:523
+msgid "little dog"
+msgstr ""
+
+#: ../src/monster_i18n.c:36 ../src/obj_descr_i18n.c:693
+msgid "dingo"
+msgstr ""
+
+#: ../src/monster_i18n.c:37 ../src/obj_descr_i18n.c:526
+msgid "dog"
+msgstr ""
+
+#: ../src/monster_i18n.c:38 ../src/obj_descr_i18n.c:529
+msgid "large dog"
+msgstr ""
+
+#: ../src/monster_i18n.c:39 ../src/obj_descr_i18n.c:538 ../src/were.c:175
+msgid "wolf"
+msgstr ""
+
+#: ../src/monster_i18n.c:40 ../src/monster_i18n.c:280
+#: ../src/obj_descr_i18n.c:893
+msgid "werewolf"
+msgstr ""
+
+#: ../src/monster_i18n.c:41 ../src/obj_descr_i18n.c:897
+msgid "winter wolf cub"
+msgstr ""
+
+#: ../src/monster_i18n.c:42 ../src/obj_descr_i18n.c:539
+msgid "warg"
+msgstr ""
+
+#: ../src/monster_i18n.c:43 ../src/obj_descr_i18n.c:540
+msgid "winter wolf"
+msgstr ""
+
+#: ../src/monster_i18n.c:44 ../src/obj_descr_i18n.c:755
+msgid "hell hound pup"
+msgstr ""
+
+#: ../src/monster_i18n.c:45 ../src/obj_descr_i18n.c:541
+msgid "hell hound"
+msgstr ""
+
+#: ../src/monster_i18n.c:46 ../src/obj_descr_i18n.c:590
+msgid "Cerberus"
+msgstr ""
+
+#: ../src/monster_i18n.c:47 ../src/obj_descr_i18n.c:722
+msgid "gas spore"
+msgstr ""
+
+#: ../src/monster_i18n.c:48 ../src/obj_descr_i18n.c:715
+msgid "floating eye"
+msgstr ""
+
+#: ../src/monster_i18n.c:49 ../src/obj_descr_i18n.c:718
+msgid "freezing sphere"
+msgstr ""
+
+#: ../src/monster_i18n.c:50 ../src/obj_descr_i18n.c:713
+msgid "flaming sphere"
+msgstr ""
+
+#: ../src/monster_i18n.c:51 ../src/obj_descr_i18n.c:851
+msgid "shocking sphere"
+msgstr ""
+
+#: ../src/monster_i18n.c:52 ../src/obj_descr_i18n.c:667
+msgid "beholder"
+msgstr ""
+
+#: ../src/monster_i18n.c:53 ../src/obj_descr_i18n.c:522
+msgid "kitten"
+msgstr ""
+
+#: ../src/monster_i18n.c:54 ../src/obj_descr_i18n.c:761 ../src/pickup.c:2873
+msgid "housecat"
+msgstr ""
+
+#: ../src/monster_i18n.c:55 ../src/obj_descr_i18n.c:771
+msgid "jaguar"
+msgstr ""
+
+#: ../src/monster_i18n.c:56 ../src/obj_descr_i18n.c:789
+msgid "lynx"
+msgstr ""
+
+#: ../src/monster_i18n.c:57 ../src/obj_descr_i18n.c:813
+msgid "panther"
+msgstr ""
+
+#: ../src/monster_i18n.c:58 ../src/obj_descr_i18n.c:528
+msgid "large cat"
+msgstr ""
+
+#: ../src/monster_i18n.c:59 ../src/obj_descr_i18n.c:870
+msgid "tiger"
+msgstr ""
+
+#: ../src/monster_i18n.c:60 ../src/obj_descr_i18n.c:695
+msgid "displacer beast"
+msgstr ""
+
+#: ../src/monster_i18n.c:61 ../src/obj_descr_i18n.c:748
+msgid "gremlin"
+msgstr ""
+
+#: ../src/monster_i18n.c:62 ../src/obj_descr_i18n.c:720
+msgid "gargoyle"
+msgstr ""
+
+#: ../src/monster_i18n.c:63 ../src/obj_descr_i18n.c:896
+msgid "winged gargoyle"
+msgstr ""
+
+#: ../src/monster_i18n.c:64 ../src/obj_descr_i18n.c:758
+msgid "hobbit"
+msgstr ""
+
+#: ../src/monster_i18n.c:65 ../src/obj_descr_i18n.c:556
+#: ../src/obj_descr_i18n.c:1023 ../src/role.c:625
+msgid "dwarf"
+msgstr ""
+
+#: ../src/monster_i18n.c:66 ../src/obj_descr_i18n.c:679
+msgid "bugbear"
+msgstr ""
+
+#: ../src/monster_i18n.c:67 ../src/obj_descr_i18n.c:796
+msgid "mind flayer"
+msgstr ""
+
+#: ../src/monster_i18n.c:68 ../src/obj_descr_i18n.c:794
+msgid "master mind flayer"
+msgstr ""
+
+#: ../src/monster_i18n.c:69 ../src/obj_descr_i18n.c:791
+msgid "manes"
+msgstr ""
+
+#: ../src/monster_i18n.c:70 ../src/obj_descr_i18n.c:759
+msgid "homunculus"
+msgstr ""
+
+#: ../src/monster_i18n.c:71 ../src/obj_descr_i18n.c:767
+msgid "imp"
+msgstr ""
+
+#: ../src/monster_i18n.c:72 ../src/obj_descr_i18n.c:780
+msgid "lemure"
+msgstr ""
+
+#: ../src/monster_i18n.c:73 ../src/obj_descr_i18n.c:824
+msgid "quasit"
+msgstr ""
+
+#: ../src/monster_i18n.c:74 ../src/obj_descr_i18n.c:868
+msgid "tengu"
+msgstr ""
+
+#: ../src/monster_i18n.c:75 ../src/obj_descr_i18n.c:675
+msgid "blue jelly"
+msgstr ""
+
+#: ../src/monster_i18n.c:76 ../src/obj_descr_i18n.c:860
+msgid "spotted jelly"
+msgstr ""
+
+#: ../src/monster_i18n.c:77 ../src/obj_descr_i18n.c:807
+msgid "ochre jelly"
+msgstr ""
+
+#: ../src/monster_i18n.c:78 ../src/obj_descr_i18n.c:563
+msgid "kobold"
+msgstr ""
+
+#: ../src/monster_i18n.c:79 ../src/obj_descr_i18n.c:564
+msgid "large kobold"
+msgstr ""
+
+#: ../src/monster_i18n.c:80 ../src/obj_descr_i18n.c:566
+msgid "kobold shaman"
+msgstr ""
+
+#: ../src/monster_i18n.c:81 ../src/obj_descr_i18n.c:782
+msgid "leprechaun"
+msgstr ""
+
+#: ../src/monster_i18n.c:82 ../src/obj_descr_i18n.c:856
+msgid "small mimic"
+msgstr ""
+
+#: ../src/monster_i18n.c:83 ../src/obj_descr_i18n.c:778
+msgid "large mimic"
+msgstr ""
+
+#: ../src/monster_i18n.c:84 ../src/obj_descr_i18n.c:731
+msgid "giant mimic"
+msgstr ""
+
+#: ../src/monster_i18n.c:85 ../src/obj_descr_i18n.c:900
+msgid "wood nymph"
+msgstr ""
+
+#: ../src/monster_i18n.c:86 ../src/obj_descr_i18n.c:889 ../src/read.c:203
+msgid "water nymph"
+msgstr ""
+
+#: ../src/monster_i18n.c:87 ../src/obj_descr_i18n.c:801
+msgid "mountain nymph"
+msgstr ""
+
+#: ../src/monster_i18n.c:88 ../src/obj_descr_i18n.c:542
+msgid "goblin"
+msgstr ""
+
+#: ../src/monster_i18n.c:89 ../src/obj_descr_i18n.c:543
+msgid "hobgoblin"
+msgstr ""
+
+#: ../src/monster_i18n.c:90 ../src/obj_descr_i18n.c:544
+#: ../src/obj_descr_i18n.c:1027 ../src/pager.c:538 ../src/role.c:665
+msgid "orc"
+msgstr ""
+
+#: ../src/monster_i18n.c:91 ../src/obj_descr_i18n.c:545
+msgid "hill orc"
+msgstr ""
+
+#: ../src/monster_i18n.c:92 ../src/obj_descr_i18n.c:546
+msgid "Mordor orc"
+msgstr ""
+
+#: ../src/monster_i18n.c:93 ../src/obj_descr_i18n.c:547
+msgid "Uruk-hai"
+msgstr ""
+
+#: ../src/monster_i18n.c:94 ../src/obj_descr_i18n.c:548
+msgid "orc shaman"
+msgstr ""
+
+#: ../src/monster_i18n.c:95 ../src/obj_descr_i18n.c:549
+msgid "orc-captain"
+msgstr ""
+
+#: ../src/monster_i18n.c:96 ../src/obj_descr_i18n.c:835
+msgid "rock piercer"
+msgstr ""
+
+#: ../src/monster_i18n.c:97 ../src/obj_descr_i18n.c:769
+msgid "iron piercer"
+msgstr ""
+
+#: ../src/monster_i18n.c:98 ../src/obj_descr_i18n.c:736
+msgid "glass piercer"
+msgstr ""
+
+#: ../src/monster_i18n.c:99 ../src/obj_descr_i18n.c:840
+msgid "rothe"
+msgstr ""
+
+#: ../src/monster_i18n.c:100 ../src/obj_descr_i18n.c:802
+msgid "mumak"
+msgstr ""
+
+#: ../src/monster_i18n.c:101 ../src/obj_descr_i18n.c:781
+msgid "leocrotta"
+msgstr ""
+
+#: ../src/monster_i18n.c:102 ../src/obj_descr_i18n.c:903
+msgid "wumpus"
+msgstr ""
+
+#: ../src/monster_i18n.c:103 ../src/obj_descr_i18n.c:872
+msgid "titanothere"
+msgstr ""
+
+#: ../src/monster_i18n.c:104 ../src/obj_descr_i18n.c:663
+msgid "baluchitherium"
+msgstr ""
+
+#: ../src/monster_i18n.c:105 ../src/obj_descr_i18n.c:795
+msgid "mastodon"
+msgstr ""
+
+#: ../src/monster_i18n.c:106 ../src/obj_descr_i18n.c:574
+msgid "sewer rat"
+msgstr ""
+
+#: ../src/monster_i18n.c:107 ../src/obj_descr_i18n.c:575
+msgid "giant rat"
+msgstr ""
+
+#: ../src/monster_i18n.c:108 ../src/obj_descr_i18n.c:827
+msgid "rabid rat"
+msgstr ""
+
+#: ../src/monster_i18n.c:109 ../src/monster_i18n.c:278
+#: ../src/obj_descr_i18n.c:892
+msgid "wererat"
+msgstr ""
+
+#: ../src/monster_i18n.c:110 ../src/obj_descr_i18n.c:834
+msgid "rock mole"
+msgstr ""
+
+#: ../src/monster_i18n.c:111 ../src/obj_descr_i18n.c:901
+msgid "woodchuck"
+msgstr ""
+
+#: ../src/monster_i18n.c:112 ../src/obj_descr_i18n.c:682
+msgid "cave spider"
+msgstr ""
+
+#: ../src/monster_i18n.c:113 ../src/obj_descr_i18n.c:683
+msgid "centipede"
+msgstr ""
+
+#: ../src/monster_i18n.c:114 ../src/obj_descr_i18n.c:733
+msgid "giant spider"
+msgstr ""
+
+#: ../src/monster_i18n.c:115 ../src/obj_descr_i18n.c:846
+msgid "scorpion"
+msgstr ""
+
+#: ../src/monster_i18n.c:116 ../src/obj_descr_i18n.c:788
+msgid "lurker above"
+msgstr ""
+
+#: ../src/monster_i18n.c:117 ../src/obj_descr_i18n.c:874
+msgid "trapper"
+msgstr ""
+
+#: ../src/monster_i18n.c:118 ../src/obj_descr_i18n.c:524
+msgid "pony"
+msgstr ""
+
+#: ../src/monster_i18n.c:119 ../src/obj_descr_i18n.c:895
+msgid "white unicorn"
+msgstr ""
+
+#: ../src/monster_i18n.c:120 ../src/obj_descr_i18n.c:744
+msgid "gray unicorn"
+msgstr ""
+
+#: ../src/monster_i18n.c:121 ../src/obj_descr_i18n.c:673
+msgid "black unicorn"
+msgstr ""
+
+#: ../src/monster_i18n.c:122 ../src/obj_descr_i18n.c:527
+msgid "horse"
+msgstr ""
+
+#: ../src/monster_i18n.c:123 ../src/obj_descr_i18n.c:530
+msgid "warhorse"
+msgstr ""
+
+#: ../src/monster_i18n.c:124 ../src/obj_descr_i18n.c:716
+msgid "fog cloud"
+msgstr ""
+
+#: ../src/monster_i18n.c:125 ../src/obj_descr_i18n.c:698
+msgid "dust vortex"
+msgstr ""
+
+#: ../src/monster_i18n.c:126 ../src/obj_descr_i18n.c:766
+msgid "ice vortex"
+msgstr ""
+
+#: ../src/monster_i18n.c:127 ../src/obj_descr_i18n.c:704
+msgid "energy vortex"
+msgstr ""
+
+#: ../src/monster_i18n.c:128 ../src/obj_descr_i18n.c:862
+msgid "steam vortex"
+msgstr ""
+
+#: ../src/monster_i18n.c:129 ../src/obj_descr_i18n.c:712
+msgid "fire vortex"
+msgstr ""
+
+#: ../src/monster_i18n.c:130 ../src/obj_descr_i18n.c:654
+msgid "baby long worm"
+msgstr ""
+
+#: ../src/monster_i18n.c:131 ../src/obj_descr_i18n.c:656
+msgid "baby purple worm"
+msgstr ""
+
+#: ../src/monster_i18n.c:132 ../src/obj_descr_i18n.c:786
+msgid "long worm"
+msgstr ""
+
+#: ../src/monster_i18n.c:133 ../src/obj_descr_i18n.c:820
+msgid "purple worm"
+msgstr ""
+
+#: ../src/monster_i18n.c:134 ../src/obj_descr_i18n.c:749
+msgid "grid bug"
+msgstr ""
+
+#: ../src/monster_i18n.c:135 ../src/obj_descr_i18n.c:904
+msgid "xan"
+msgstr ""
+
+#: ../src/monster_i18n.c:136 ../src/obj_descr_i18n.c:907
+msgid "yellow light"
+msgstr ""
+
+#: ../src/monster_i18n.c:137 ../src/obj_descr_i18n.c:669
+msgid "black light"
+msgstr ""
+
+#: ../src/monster_i18n.c:138 ../src/obj_descr_i18n.c:910
+msgid "zruty"
+msgstr ""
+
+#: ../src/monster_i18n.c:139 ../src/obj_descr_i18n.c:690
+msgid "couatl"
+msgstr ""
+
+#: ../src/monster_i18n.c:140 ../src/obj_descr_i18n.c:583
+msgid "Aleax"
+msgstr ""
+
+#: ../src/monster_i18n.c:141 ../src/obj_descr_i18n.c:584
+msgid "Angel"
+msgstr ""
+
+#: ../src/monster_i18n.c:142 ../src/obj_descr_i18n.c:773
+msgid "ki-rin"
+msgstr ""
+
+#: ../src/monster_i18n.c:143 ../src/obj_descr_i18n.c:586
+msgid "Archon"
+msgstr ""
+
+#: ../src/monster_i18n.c:145 ../src/obj_descr_i18n.c:577
+msgid "giant bat"
+msgstr ""
+
+#: ../src/monster_i18n.c:146 ../src/obj_descr_i18n.c:829
+msgid "raven"
+msgstr ""
+
+#: ../src/monster_i18n.c:147 ../src/obj_descr_i18n.c:578
+msgid "vampire bat"
+msgstr ""
+
+#: ../src/monster_i18n.c:148 ../src/obj_descr_i18n.c:818
+msgid "plains centaur"
+msgstr ""
+
+#: ../src/monster_i18n.c:149 ../src/obj_descr_i18n.c:717
+msgid "forest centaur"
+msgstr ""
+
+#: ../src/monster_i18n.c:150 ../src/obj_descr_i18n.c:800
+msgid "mountain centaur"
+msgstr ""
+
+#: ../src/monster_i18n.c:151 ../src/obj_descr_i18n.c:652
+msgid "baby gray dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:152 ../src/obj_descr_i18n.c:651
+msgid "baby gold dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:153 ../src/obj_descr_i18n.c:659
+msgid "baby silver dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:154 ../src/obj_descr_i18n.c:658
+msgid "baby shimmering dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:155 ../src/obj_descr_i18n.c:657
+msgid "baby red dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:156 ../src/obj_descr_i18n.c:660
+msgid "baby white dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:157 ../src/obj_descr_i18n.c:655
+msgid "baby orange dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:158 ../src/obj_descr_i18n.c:648
+msgid "baby black dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:159 ../src/obj_descr_i18n.c:649
+msgid "baby blue dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:160 ../src/obj_descr_i18n.c:653
+msgid "baby green dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:161 ../src/obj_descr_i18n.c:661
+msgid "baby yellow dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:162 ../src/obj_descr_i18n.c:742
+msgid "gray dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:163 ../src/obj_descr_i18n.c:738
+msgid "gold dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:164 ../src/obj_descr_i18n.c:854
+msgid "silver dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:165 ../src/obj_descr_i18n.c:850
+msgid "shimmering dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:166 ../src/obj_descr_i18n.c:830
+msgid "red dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:167 ../src/obj_descr_i18n.c:894
+msgid "white dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:168 ../src/obj_descr_i18n.c:809
+msgid "orange dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:169 ../src/obj_descr_i18n.c:668
+msgid "black dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:170 ../src/obj_descr_i18n.c:674
+msgid "blue dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:171 ../src/obj_descr_i18n.c:745
+msgid "green dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:172 ../src/obj_descr_i18n.c:906
+msgid "yellow dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:173 ../src/obj_descr_i18n.c:861
+msgid "stalker"
+msgstr ""
+
+#: ../src/monster_i18n.c:174 ../src/obj_descr_i18n.c:642
+msgid "air elemental"
+msgstr ""
+
+#: ../src/monster_i18n.c:175 ../src/obj_descr_i18n.c:710
+msgid "fire elemental"
+msgstr ""
+
+#: ../src/monster_i18n.c:176 ../src/obj_descr_i18n.c:701
+msgid "earth elemental"
+msgstr ""
+
+#: ../src/monster_i18n.c:177 ../src/obj_descr_i18n.c:887
+msgid "water elemental"
+msgstr ""
+
+#: ../src/monster_i18n.c:178 ../src/obj_descr_i18n.c:784
+msgid "lichen"
+msgstr ""
+
+#: ../src/monster_i18n.c:179 ../src/obj_descr_i18n.c:677
+msgid "brown mold"
+msgstr ""
+
+#: ../src/monster_i18n.c:180 ../src/obj_descr_i18n.c:908
+msgid "yellow mold"
+msgstr ""
+
+#: ../src/monster_i18n.c:181 ../src/obj_descr_i18n.c:746
+msgid "green mold"
+msgstr ""
+
+#: ../src/monster_i18n.c:182 ../src/obj_descr_i18n.c:831
+msgid "red mold"
+msgstr ""
+
+#: ../src/monster_i18n.c:183 ../src/obj_descr_i18n.c:853
+msgid "shrieker"
+msgstr ""
+
+#: ../src/monster_i18n.c:184 ../src/obj_descr_i18n.c:880
+msgid "violet fungus"
+msgstr ""
+
+#: ../src/monster_i18n.c:185 ../src/obj_descr_i18n.c:559
+#: ../src/obj_descr_i18n.c:1025 ../src/role.c:645
+msgid "gnome"
+msgstr ""
+
+#: ../src/monster_i18n.c:186 ../src/obj_descr_i18n.c:562
+msgid "gnomish wizard"
+msgstr ""
+
+#: ../src/monster_i18n.c:187 ../src/obj_descr_i18n.c:727
+msgid "giant"
+msgstr ""
+
+#: ../src/monster_i18n.c:188 ../src/obj_descr_i18n.c:863
+msgid "stone giant"
+msgstr ""
+
+#: ../src/monster_i18n.c:189 ../src/obj_descr_i18n.c:757
+msgid "hill giant"
+msgstr ""
+
+#: ../src/monster_i18n.c:190 ../src/obj_descr_i18n.c:711
+msgid "fire giant"
+msgstr ""
+
+#: ../src/monster_i18n.c:191 ../src/obj_descr_i18n.c:719
+msgid "frost giant"
+msgstr ""
+
+#: ../src/monster_i18n.c:192 ../src/obj_descr_i18n.c:706
+msgid "ettin"
+msgstr ""
+
+#: ../src/monster_i18n.c:193 ../src/obj_descr_i18n.c:865
+msgid "storm giant"
+msgstr ""
+
+#: ../src/monster_i18n.c:194 ../src/obj_descr_i18n.c:871
+msgid "titan"
+msgstr ""
+
+#: ../src/monster_i18n.c:195 ../src/obj_descr_i18n.c:797
+msgid "minotaur"
+msgstr ""
+
+#: ../src/monster_i18n.c:196 ../src/obj_descr_i18n.c:770
+msgid "jabberwock"
+msgstr ""
+
+#: ../src/monster_i18n.c:197 ../src/obj_descr_i18n.c:881
+msgid "vorpal jabberwock"
+msgstr ""
+
+#: ../src/monster_i18n.c:198 ../src/obj_descr_i18n.c:609
+msgid "Keystone Kop"
+msgstr ""
+
+#: ../src/monster_i18n.c:199 ../src/obj_descr_i18n.c:613
+msgid "Kop Sergeant"
+msgstr ""
+
+#: ../src/monster_i18n.c:200 ../src/obj_descr_i18n.c:612
+msgid "Kop Lieutenant"
+msgstr ""
+
+#: ../src/monster_i18n.c:201 ../src/obj_descr_i18n.c:611
+msgid "Kop Kaptain"
+msgstr ""
+
+#: ../src/monster_i18n.c:202 ../src/obj_descr_i18n.c:783
+msgid "lich"
+msgstr ""
+
+#: ../src/monster_i18n.c:203 ../src/obj_descr_i18n.c:692
+msgid "demilich"
+msgstr ""
+
+#: ../src/monster_i18n.c:204 ../src/obj_descr_i18n.c:793
+msgid "master lich"
+msgstr ""
+
+#: ../src/monster_i18n.c:205 ../src/obj_descr_i18n.c:645
+msgid "arch-lich"
+msgstr ""
+
+#: ../src/monster_i18n.c:206 ../src/obj_descr_i18n.c:776
+msgid "kobold mummy"
+msgstr ""
+
+#: ../src/monster_i18n.c:207 ../src/obj_descr_i18n.c:737
+msgid "gnome mummy"
+msgstr ""
+
+#: ../src/monster_i18n.c:208 ../src/obj_descr_i18n.c:810
+msgid "orc mummy"
+msgstr ""
+
+#: ../src/monster_i18n.c:209 ../src/obj_descr_i18n.c:699
+msgid "dwarf mummy"
+msgstr ""
+
+#: ../src/monster_i18n.c:210 ../src/obj_descr_i18n.c:703
+msgid "elf mummy"
+msgstr ""
+
+#: ../src/monster_i18n.c:211 ../src/obj_descr_i18n.c:762
+msgid "human mummy"
+msgstr ""
+
+#: ../src/monster_i18n.c:212 ../src/obj_descr_i18n.c:707
+msgid "ettin mummy"
+msgstr ""
+
+#: ../src/monster_i18n.c:213 ../src/obj_descr_i18n.c:732
+msgid "giant mummy"
+msgstr ""
+
+#: ../src/monster_i18n.c:214 ../src/obj_descr_i18n.c:833
+msgid "red naga hatchling"
+msgstr ""
+
+#: ../src/monster_i18n.c:215 ../src/obj_descr_i18n.c:671
+msgid "black naga hatchling"
+msgstr ""
+
+#: ../src/monster_i18n.c:216 ../src/obj_descr_i18n.c:741
+msgid "golden naga hatchling"
+msgstr ""
+
+#: ../src/monster_i18n.c:217 ../src/obj_descr_i18n.c:752
+msgid "guardian naga hatchling"
+msgstr ""
+
+#: ../src/monster_i18n.c:218 ../src/obj_descr_i18n.c:832
+msgid "red naga"
+msgstr ""
+
+#: ../src/monster_i18n.c:219 ../src/obj_descr_i18n.c:670
+msgid "black naga"
+msgstr ""
+
+#: ../src/monster_i18n.c:220 ../src/obj_descr_i18n.c:740
+msgid "golden naga"
+msgstr ""
+
+#: ../src/monster_i18n.c:221 ../src/obj_descr_i18n.c:751
+msgid "guardian naga"
+msgstr ""
+
+#: ../src/monster_i18n.c:222 ../src/obj_descr_i18n.c:808
+msgid "ogre"
+msgstr ""
+
+#: ../src/monster_i18n.c:223 ../src/obj_descr_i18n.c:743
+msgid "gray ooze"
+msgstr ""
+
+#: ../src/monster_i18n.c:224 ../src/obj_descr_i18n.c:678
+msgid "brown pudding"
+msgstr ""
+
+#: ../src/monster_i18n.c:225 ../src/obj_descr_i18n.c:747 ../src/timeout.c:418
+msgid "green slime"
+msgstr ""
+
+#: ../src/monster_i18n.c:226 ../src/obj_descr_i18n.c:672
+msgid "black pudding"
+msgstr ""
+
+#: ../src/monster_i18n.c:227 ../src/obj_descr_i18n.c:823
+msgid "quantum mechanic"
+msgstr ""
+
+#: ../src/monster_i18n.c:228 ../src/obj_descr_i18n.c:724
+msgid "genetic engineer"
+msgstr ""
+
+#: ../src/monster_i18n.c:229 ../src/obj_descr_i18n.c:841
+msgid "rust monster"
+msgstr ""
+
+#: ../src/monster_i18n.c:230 ../src/obj_descr_i18n.c:694
+msgid "disenchanter"
+msgstr ""
+
+#: ../src/monster_i18n.c:231 ../src/obj_descr_i18n.c:721
+msgid "garter snake"
+msgstr ""
+
+#: ../src/monster_i18n.c:232 ../src/obj_descr_i18n.c:857
+msgid "snake"
+msgstr ""
+
+#: ../src/monster_i18n.c:233 ../src/obj_descr_i18n.c:888
+msgid "water moccasin"
+msgstr ""
+
+#: ../src/monster_i18n.c:234 ../src/obj_descr_i18n.c:822
+msgid "python"
+msgstr ""
+
+#: ../src/monster_i18n.c:235 ../src/obj_descr_i18n.c:817
+msgid "pit viper"
+msgstr ""
+
+#: ../src/monster_i18n.c:236 ../src/obj_descr_i18n.c:688
+msgid "cobra"
+msgstr ""
+
+#: ../src/monster_i18n.c:237 ../src/obj_descr_i18n.c:875
+msgid "troll"
+msgstr ""
+
+#: ../src/monster_i18n.c:238 ../src/obj_descr_i18n.c:765
+msgid "ice troll"
+msgstr ""
+
+#: ../src/monster_i18n.c:239 ../src/obj_descr_i18n.c:836
+msgid "rock troll"
+msgstr ""
+
+#: ../src/monster_i18n.c:240 ../src/obj_descr_i18n.c:890
+msgid "water troll"
+msgstr ""
+
+#: ../src/monster_i18n.c:241 ../src/obj_descr_i18n.c:626
+msgid "Olog-hai"
+msgstr ""
+
+#: ../src/monster_i18n.c:242 ../src/obj_descr_i18n.c:876
+msgid "umber hulk"
+msgstr ""
+
+#: ../src/monster_i18n.c:243 ../src/obj_descr_i18n.c:878
+msgid "vampire"
+msgstr ""
+
+#: ../src/monster_i18n.c:244 ../src/obj_descr_i18n.c:879
+msgid "vampire mage"
+msgstr ""
+
+#: ../src/monster_i18n.c:245 ../src/obj_descr_i18n.c:636
+msgid "Vlad the Impaler"
+msgstr ""
+
+#: ../src/monster_i18n.c:246 ../src/obj_descr_i18n.c:666
+msgid "barrow wight"
+msgstr ""
+
+#: ../src/monster_i18n.c:247 ../src/obj_descr_i18n.c:902
+msgid "wraith"
+msgstr ""
+
+#: ../src/monster_i18n.c:248 ../src/obj_descr_i18n.c:623
+msgid "Nazgul"
+msgstr ""
+
+#: ../src/monster_i18n.c:249 ../src/obj_descr_i18n.c:905
+msgid "xorn"
+msgstr ""
+
+#: ../src/monster_i18n.c:250 ../src/obj_descr_i18n.c:799
+msgid "monkey"
+msgstr ""
+
+#: ../src/monster_i18n.c:251 ../src/obj_descr_i18n.c:643
+msgid "ape"
+msgstr ""
+
+#: ../src/monster_i18n.c:252 ../src/obj_descr_i18n.c:811
+msgid "owlbear"
+msgstr ""
+
+#: ../src/monster_i18n.c:253 ../src/obj_descr_i18n.c:909
+msgid "yeti"
+msgstr ""
+
+#: ../src/monster_i18n.c:254 ../src/obj_descr_i18n.c:681
+msgid "carnivorous ape"
+msgstr ""
+
+#: ../src/monster_i18n.c:255 ../src/obj_descr_i18n.c:845
+msgid "sasquatch"
+msgstr ""
+
+#: ../src/monster_i18n.c:256 ../src/obj_descr_i18n.c:567
+msgid "kobold zombie"
+msgstr ""
+
+#: ../src/monster_i18n.c:257 ../src/obj_descr_i18n.c:569
+msgid "gnome zombie"
+msgstr ""
+
+#: ../src/monster_i18n.c:258 ../src/obj_descr_i18n.c:570
+msgid "orc zombie"
+msgstr ""
+
+#: ../src/monster_i18n.c:259 ../src/obj_descr_i18n.c:700
+msgid "dwarf zombie"
+msgstr ""
+
+#: ../src/monster_i18n.c:260 ../src/obj_descr_i18n.c:571
+msgid "elf zombie"
+msgstr ""
+
+#: ../src/monster_i18n.c:261 ../src/obj_descr_i18n.c:572
+msgid "human zombie"
+msgstr ""
+
+#: ../src/monster_i18n.c:262 ../src/obj_descr_i18n.c:708
+msgid "ettin zombie"
+msgstr ""
+
+#: ../src/monster_i18n.c:263 ../src/obj_descr_i18n.c:726
+msgid "ghoul"
+msgstr ""
+
+#: ../src/monster_i18n.c:264 ../src/obj_descr_i18n.c:734
+msgid "giant zombie"
+msgstr ""
+
+#: ../src/monster_i18n.c:265 ../src/obj_descr_i18n.c:855
+msgid "skeleton"
+msgstr ""
+
+#: ../src/monster_i18n.c:266 ../src/obj_descr_i18n.c:866
+msgid "straw golem"
+msgstr ""
+
+#: ../src/monster_i18n.c:267 ../src/obj_descr_i18n.c:814
+msgid "paper golem"
+msgstr ""
+
+#: ../src/monster_i18n.c:268 ../src/obj_descr_i18n.c:838
+msgid "rope golem"
+msgstr ""
+
+#: ../src/monster_i18n.c:269 ../src/obj_descr_i18n.c:739
+msgid "gold golem"
+msgstr ""
+
+#: ../src/monster_i18n.c:270 ../src/obj_descr_i18n.c:779
+msgid "leather golem"
+msgstr ""
+
+#: ../src/monster_i18n.c:271 ../src/obj_descr_i18n.c:899
+msgid "wood golem"
+msgstr ""
+
+#: ../src/monster_i18n.c:272 ../src/obj_descr_i18n.c:714
+msgid "flesh golem"
+msgstr ""
+
+#: ../src/monster_i18n.c:273 ../src/obj_descr_i18n.c:687
+msgid "clay golem"
+msgstr ""
+
+#: ../src/monster_i18n.c:274 ../src/obj_descr_i18n.c:864
+msgid "stone golem"
+msgstr ""
+
+#: ../src/monster_i18n.c:275 ../src/obj_descr_i18n.c:735
+msgid "glass golem"
+msgstr ""
+
+#: ../src/monster_i18n.c:276 ../src/obj_descr_i18n.c:768
+msgid "iron golem"
+msgstr ""
+
+#: ../src/monster_i18n.c:277 ../src/obj_descr_i18n.c:579
+#: ../src/obj_descr_i18n.c:1020 ../src/pager.c:536 ../src/role.c:584
+#: ../src/role.c:585
+msgid "human"
+msgstr ""
+
+#: ../src/monster_i18n.c:281 ../src/obj_descr_i18n.c:550
+#: ../src/obj_descr_i18n.c:1021 ../src/pager.c:537 ../src/role.c:605
+msgid "elf"
+msgstr ""
+
+#: ../src/monster_i18n.c:282 ../src/obj_descr_i18n.c:551
+msgid "Woodland-elf"
+msgstr ""
+
+#: ../src/monster_i18n.c:283 ../src/obj_descr_i18n.c:552
+msgid "Green-elf"
+msgstr ""
+
+#: ../src/monster_i18n.c:284 ../src/obj_descr_i18n.c:553
+msgid "Grey-elf"
+msgstr ""
+
+#: ../src/monster_i18n.c:285 ../src/obj_descr_i18n.c:697
+msgid "doppelganger"
+msgstr ""
+
+#: ../src/monster_i18n.c:286 ../src/obj_descr_i18n.c:852
+msgid "shopkeeper"
+msgstr ""
+
+#: ../src/monster_i18n.c:287 ../src/obj_descr_i18n.c:750
+msgid "guard"
+msgstr ""
+
+#: ../src/monster_i18n.c:288 ../src/obj_descr_i18n.c:819
+msgid "prisoner"
+msgstr ""
+
+#: ../src/monster_i18n.c:289 ../src/obj_descr_i18n.c:627
+msgid "Oracle"
+msgstr ""
+
+#: ../src/monster_i18n.c:290 ../src/obj_descr_i18n.c:858
+msgid "soldier"
+msgstr ""
+
+#: ../src/monster_i18n.c:291 ../src/obj_descr_i18n.c:847
+msgid "sergeant"
+msgstr ""
+
+#: ../src/monster_i18n.c:292 ../src/obj_descr_i18n.c:806
+msgid "nurse"
+msgstr ""
+
+#: ../src/monster_i18n.c:293 ../src/obj_descr_i18n.c:785
+msgid "lieutenant"
+msgstr ""
+
+#: ../src/monster_i18n.c:294 ../src/obj_descr_i18n.c:680
+msgid "captain"
+msgstr ""
+
+#: ../src/monster_i18n.c:295 ../src/obj_descr_i18n.c:885
+msgid "watchman"
+msgstr ""
+
+#: ../src/monster_i18n.c:296 ../src/obj_descr_i18n.c:884
+msgid "watch captain"
+msgstr ""
+
+#: ../src/monster_i18n.c:297 ../src/obj_descr_i18n.c:620
+msgid "Medusa"
+msgstr ""
+
+#: ../src/monster_i18n.c:298 ../src/obj_descr_i18n.c:637
+msgid "Wizard of Yendor"
+msgstr ""
+
+#: ../src/monster_i18n.c:299 ../src/obj_descr_i18n.c:593
+msgid "Croesus"
+msgstr ""
+
+#: ../src/monster_i18n.c:300 ../src/obj_descr_i18n.c:591
+msgid "Charon"
+msgstr ""
+
+#: ../src/monster_i18n.c:302 ../src/obj_descr_i18n.c:848
+msgid "shade"
+msgstr ""
+
+#: ../src/monster_i18n.c:303 ../src/obj_descr_i18n.c:886
+msgid "water demon"
+msgstr ""
+
+#: ../src/monster_i18n.c:304 ../src/obj_descr_i18n.c:760
+msgid "horned devil"
+msgstr ""
+
+#: ../src/monster_i18n.c:305 ../src/obj_descr_i18n.c:705
+msgid "erinys"
+msgstr ""
+
+#: ../src/monster_i18n.c:306 ../src/obj_descr_i18n.c:665
+msgid "barbed devil"
+msgstr ""
+
+#: ../src/monster_i18n.c:307 ../src/obj_descr_i18n.c:792
+msgid "marilith"
+msgstr ""
+
+#: ../src/monster_i18n.c:308 ../src/obj_descr_i18n.c:882
+msgid "vrock"
+msgstr ""
+
+#: ../src/monster_i18n.c:309 ../src/obj_descr_i18n.c:756
+msgid "hezrou"
+msgstr ""
+
+#: ../src/monster_i18n.c:310 ../src/obj_descr_i18n.c:676
+msgid "bone devil"
+msgstr ""
+
+#: ../src/monster_i18n.c:311 ../src/obj_descr_i18n.c:764
+msgid "ice devil"
+msgstr ""
+
+#: ../src/monster_i18n.c:312 ../src/obj_descr_i18n.c:803
+msgid "nalfeshnee"
+msgstr ""
+
+#: ../src/monster_i18n.c:313 ../src/obj_descr_i18n.c:816
+msgid "pit fiend"
+msgstr ""
+
+#: ../src/monster_i18n.c:314 ../src/obj_descr_i18n.c:844
+msgid "sandestin"
+msgstr ""
+
+#: ../src/monster_i18n.c:315 ../src/obj_descr_i18n.c:662
+msgid "balrog"
+msgstr ""
+
+#: ../src/monster_i18n.c:316 ../src/obj_descr_i18n.c:608
+msgid "Juiblex"
+msgstr ""
+
+#: ../src/monster_i18n.c:317 ../src/obj_descr_i18n.c:638
+msgid "Yeenoghu"
+msgstr ""
+
+#: ../src/monster_i18n.c:318 ../src/obj_descr_i18n.c:628
+msgid "Orcus"
+msgstr ""
+
+#: ../src/monster_i18n.c:319 ../src/obj_descr_i18n.c:602
+msgid "Geryon"
+msgstr ""
+
+#: ../src/monster_i18n.c:320 ../src/obj_descr_i18n.c:598
+msgid "Dispater"
+msgstr ""
+
+#: ../src/monster_i18n.c:321 ../src/obj_descr_i18n.c:589
+msgid "Baalzebub"
+msgstr ""
+
+#: ../src/monster_i18n.c:322 ../src/obj_descr_i18n.c:588
+msgid "Asmodeus"
+msgstr ""
+
+#: ../src/monster_i18n.c:323 ../src/obj_descr_i18n.c:597
+msgid "Demogorgon"
+msgstr ""
+
+#: ../src/monster_i18n.c:324 ../src/obj_descr_i18n.c:596
+msgid "Death"
+msgstr ""
+
+#: ../src/monster_i18n.c:325 ../src/obj_descr_i18n.c:631
+msgid "Pestilence"
+msgstr ""
+
+#: ../src/monster_i18n.c:326 ../src/obj_descr_i18n.c:601
+msgid "Famine"
+msgstr ""
+
+#: ../src/monster_i18n.c:327 ../src/obj_descr_i18n.c:790
+msgid "mail daemon"
+msgstr ""
+
+#: ../src/monster_i18n.c:328 ../src/obj_descr_i18n.c:696
+msgid "djinni"
+msgstr ""
+
+#: ../src/monster_i18n.c:329 ../src/obj_descr_i18n.c:772 ../src/read.c:201
+msgid "jellyfish"
+msgstr ""
+
+#: ../src/monster_i18n.c:330 ../src/obj_descr_i18n.c:815
+msgid "piranha"
+msgstr ""
+
+#: ../src/monster_i18n.c:331 ../src/obj_descr_i18n.c:849
+msgid "shark"
+msgstr ""
+
+#: ../src/monster_i18n.c:332 ../src/obj_descr_i18n.c:730 ../src/read.c:202
+msgid "giant eel"
+msgstr ""
+
+#: ../src/monster_i18n.c:333 ../src/obj_descr_i18n.c:702
+msgid "electric eel"
+msgstr ""
+
+#: ../src/monster_i18n.c:334 ../src/obj_descr_i18n.c:777
+msgid "kraken"
+msgstr ""
+
+#: ../src/monster_i18n.c:335 ../src/obj_descr_i18n.c:531
+msgid "newt"
+msgstr ""
+
+#: ../src/monster_i18n.c:336 ../src/obj_descr_i18n.c:532
+msgid "gecko"
+msgstr ""
+
+#: ../src/monster_i18n.c:337 ../src/obj_descr_i18n.c:533
+msgid "iguana"
+msgstr ""
+
+#: ../src/monster_i18n.c:338 ../src/obj_descr_i18n.c:650
+msgid "baby crocodile"
+msgstr ""
+
+#: ../src/monster_i18n.c:339 ../src/obj_descr_i18n.c:534
+msgid "lizard"
+msgstr ""
+
+#: ../src/monster_i18n.c:340 ../src/obj_descr_i18n.c:684
+msgid "chameleon"
+msgstr ""
+
+#: ../src/monster_i18n.c:341 ../src/obj_descr_i18n.c:691
+msgid "crocodile"
+msgstr ""
+
+#: ../src/monster_i18n.c:342 ../src/obj_descr_i18n.c:842
+msgid "salamander"
+msgstr ""
+
+#: ../src/monster_i18n.c:343 ../src/obj_descr_i18n.c:787
+msgid "long worm tail"
+msgstr ""
+
+#: ../src/monster_i18n.c:344 ../src/obj_descr_i18n.c:646
+msgid "archeologist"
+msgstr ""
+
+#: ../src/monster_i18n.c:345 ../src/obj_descr_i18n.c:664
+msgid "barbarian"
+msgstr ""
+
+#: ../src/monster_i18n.c:346 ../src/obj_descr_i18n.c:754
+msgid "healer"
+msgstr ""
+
+#: ../src/monster_i18n.c:347 ../src/obj_descr_i18n.c:775
+msgid "knight"
+msgstr ""
+
+#: ../src/monster_i18n.c:348 ../src/obj_descr_i18n.c:798
+msgid "monk"
+msgstr ""
+
+#: ../src/monster_i18n.c:349 ../src/obj_descr_i18n.c:828
+msgid "ranger"
+msgstr ""
+
+#: ../src/monster_i18n.c:350 ../src/obj_descr_i18n.c:837
+msgid "rogue"
+msgstr ""
+
+#: ../src/monster_i18n.c:351 ../src/obj_descr_i18n.c:843
+msgid "samurai"
+msgstr ""
+
+#: ../src/monster_i18n.c:352 ../src/obj_descr_i18n.c:873
+msgid "tourist"
+msgstr ""
+
+#: ../src/monster_i18n.c:353 ../src/obj_descr_i18n.c:877
+msgid "valkyrie"
+msgstr ""
+
+#: ../src/monster_i18n.c:354 ../src/obj_descr_i18n.c:898 ../src/topten.c:733
+msgid "wizard"
+msgstr ""
+
+#: ../src/monster_i18n.c:355 ../src/obj_descr_i18n.c:614
+msgid "Lord Carnarvon"
+msgstr ""
+
+#: ../src/monster_i18n.c:356 ../src/obj_descr_i18n.c:630
+msgid "Pelias"
+msgstr ""
+
+#: ../src/monster_i18n.c:357 ../src/obj_descr_i18n.c:633
+msgid "Shaman Karnov"
+msgstr ""
+
+#: ../src/monster_i18n.c:358 ../src/obj_descr_i18n.c:599
+msgid "Earendil"
+msgstr ""
+
+#: ../src/monster_i18n.c:359 ../src/obj_descr_i18n.c:600
+msgid "Elwing"
+msgstr ""
+
+#: ../src/monster_i18n.c:360 ../src/obj_descr_i18n.c:606
+msgid "Hippocrates"
+msgstr ""
+
+#: ../src/monster_i18n.c:361 ../src/obj_descr_i18n.c:610
+msgid "King Arthur"
+msgstr ""
+
+#: ../src/monster_i18n.c:362 ../src/obj_descr_i18n.c:604 ../src/weapon.c:1110
+msgid "Grand Master"
+msgstr ""
+
+#: ../src/monster_i18n.c:363 ../src/obj_descr_i18n.c:585
+msgid "Arch Priest"
+msgstr ""
+
+#: ../src/monster_i18n.c:364 ../src/obj_descr_i18n.c:629
+msgid "Orion"
+msgstr ""
+
+#: ../src/monster_i18n.c:365 ../src/obj_descr_i18n.c:619
+msgid "Master of Thieves"
+msgstr ""
+
+#: ../src/monster_i18n.c:366 ../src/obj_descr_i18n.c:615
+msgid "Lord Sato"
+msgstr ""
+
+#: ../src/monster_i18n.c:367 ../src/obj_descr_i18n.c:635
+msgid "Twoflower"
+msgstr ""
+
+#: ../src/monster_i18n.c:368 ../src/obj_descr_i18n.c:625
+msgid "Norn"
+msgstr ""
+
+#: ../src/monster_i18n.c:369 ../src/obj_descr_i18n.c:624
+msgid "Neferet the Green"
+msgstr ""
+
+#: ../src/monster_i18n.c:370 ../src/obj_descr_i18n.c:621
+msgid "Minion of Huhetotl"
+msgstr ""
+
+#: ../src/monster_i18n.c:371 ../src/obj_descr_i18n.c:634
+msgid "Thoth Amon"
+msgstr ""
+
+#: ../src/monster_i18n.c:372 ../src/obj_descr_i18n.c:592
+msgid "Chromatic Dragon"
+msgstr ""
+
+#: ../src/monster_i18n.c:373 ../src/obj_descr_i18n.c:603
+msgid "Goblin King"
+msgstr ""
+
+#: ../src/monster_i18n.c:374 ../src/obj_descr_i18n.c:594
+msgid "Cyclops"
+msgstr ""
+
+#: ../src/monster_i18n.c:375 ../src/obj_descr_i18n.c:607
+msgid "Ixoth"
+msgstr ""
+
+#: ../src/monster_i18n.c:376 ../src/obj_descr_i18n.c:618
+msgid "Master Kaen"
+msgstr ""
+
+#: ../src/monster_i18n.c:377 ../src/obj_descr_i18n.c:622
+msgid "Nalzok"
+msgstr ""
+
+#: ../src/monster_i18n.c:378 ../src/obj_descr_i18n.c:632
+msgid "Scorpius"
+msgstr ""
+
+#: ../src/monster_i18n.c:379 ../src/obj_descr_i18n.c:617
+msgid "Master Assassin"
+msgstr ""
+
+#: ../src/monster_i18n.c:380 ../src/obj_descr_i18n.c:587
+msgid "Ashikaga Takauji"
+msgstr ""
+
+#: ../src/monster_i18n.c:381 ../src/obj_descr_i18n.c:616
+msgid "Lord Surtur"
+msgstr ""
+
+#: ../src/monster_i18n.c:382 ../src/obj_descr_i18n.c:595
+msgid "Dark One"
+msgstr ""
+
+#: ../src/monster_i18n.c:383 ../src/obj_descr_i18n.c:867
+msgid "student"
+msgstr ""
+
+#: ../src/monster_i18n.c:384 ../src/obj_descr_i18n.c:686
+msgid "chieftain"
+msgstr ""
+
+#: ../src/monster_i18n.c:385 ../src/obj_descr_i18n.c:804
+msgid "neanderthal"
+msgstr ""
+
+#: ../src/monster_i18n.c:386 ../src/obj_descr_i18n.c:605
+msgid "High-elf"
+msgstr ""
+
+#: ../src/monster_i18n.c:387 ../src/obj_descr_i18n.c:647
+msgid "attendant"
+msgstr ""
+
+#: ../src/monster_i18n.c:388 ../src/obj_descr_i18n.c:812
+msgid "page"
+msgstr ""
+
+#: ../src/monster_i18n.c:389 ../src/obj_descr_i18n.c:639
+msgid "abbot"
+msgstr ""
+
+#: ../src/monster_i18n.c:390 ../src/obj_descr_i18n.c:641
+msgid "acolyte"
+msgstr ""
+
+#: ../src/monster_i18n.c:391 ../src/obj_descr_i18n.c:763
+msgid "hunter"
+msgstr ""
+
+#: ../src/monster_i18n.c:392 ../src/obj_descr_i18n.c:869
+msgid "thug"
+msgstr ""
+
+#: ../src/monster_i18n.c:393 ../src/obj_descr_i18n.c:805
+msgid "ninja"
+msgstr ""
+
+#: ../src/monster_i18n.c:394 ../src/obj_descr_i18n.c:839
+msgid "roshi"
+msgstr ""
+
+#: ../src/monster_i18n.c:395 ../src/obj_descr_i18n.c:753
+msgid "guide"
+msgstr ""
+
+#: ../src/monster_i18n.c:396 ../src/obj_descr_i18n.c:883
+msgid "warrior"
+msgstr ""
+
+#: ../src/monster_i18n.c:399 ../src/obj_descr_i18n.c:557
+msgid "dwarf lord"
+msgstr ""
+
+#: ../src/monster_i18n.c:400
+msgid "dwarf lady"
+msgstr ""
+
+#: ../src/monster_i18n.c:401
+msgid "dwarf leader"
+msgstr ""
+
+#: ../src/monster_i18n.c:402 ../src/obj_descr_i18n.c:558
+msgid "dwarf king"
+msgstr ""
+
+#: ../src/monster_i18n.c:403
+msgid "dwarf queen"
+msgstr ""
+
+#: ../src/monster_i18n.c:404
+msgid "dwarf ruler"
+msgstr ""
+
+#: ../src/monster_i18n.c:405 ../src/obj_descr_i18n.c:565
+msgid "kobold lord"
+msgstr ""
+
+#: ../src/monster_i18n.c:406
+msgid "kobold lady"
+msgstr ""
+
+#: ../src/monster_i18n.c:407
+msgid "kobold leader"
+msgstr ""
+
+#: ../src/monster_i18n.c:408 ../src/obj_descr_i18n.c:560
+msgid "gnome lord"
+msgstr ""
+
+#: ../src/monster_i18n.c:409
+msgid "gnome lady"
+msgstr ""
+
+#: ../src/monster_i18n.c:410
+msgid "gnome leader"
+msgstr ""
+
+#: ../src/monster_i18n.c:411 ../src/obj_descr_i18n.c:561
+msgid "gnome king"
+msgstr ""
+
+#: ../src/monster_i18n.c:412
+msgid "gnome queen"
+msgstr ""
+
+#: ../src/monster_i18n.c:413
+msgid "gnome ruler"
+msgstr ""
+
+#: ../src/monster_i18n.c:414
+msgid "ogre lord"
+msgstr ""
+
+#: ../src/monster_i18n.c:415
+msgid "ogre lady"
+msgstr ""
+
+#: ../src/monster_i18n.c:416
+msgid "ogre leader"
+msgstr ""
+
+#: ../src/monster_i18n.c:417
+msgid "ogre king"
+msgstr ""
+
+#: ../src/monster_i18n.c:418
+msgid "ogre queen"
+msgstr ""
+
+#: ../src/monster_i18n.c:419
+msgid "ogre tyrant"
+msgstr ""
+
+#: ../src/monster_i18n.c:420
+msgid "vampire lord"
+msgstr ""
+
+#: ../src/monster_i18n.c:421
+msgid "vampire lady"
+msgstr ""
+
+#: ../src/monster_i18n.c:422
+msgid "vampire leader"
+msgstr ""
+
+#: ../src/monster_i18n.c:423 ../src/obj_descr_i18n.c:554
+msgid "elf-lord"
+msgstr ""
+
+#: ../src/monster_i18n.c:424
+msgid "elf-lady"
+msgstr ""
+
+#: ../src/monster_i18n.c:425
+msgid "elf-noble"
+msgstr ""
+
+#: ../src/monster_i18n.c:426 ../src/obj_descr_i18n.c:555
+msgid "Elvenking"
+msgstr ""
+
+#: ../src/monster_i18n.c:427
+msgid "Elvenqueen"
+msgstr ""
+
+#: ../src/monster_i18n.c:428
+msgid "elven monarch"
+msgstr ""
+
+#: ../src/monster_i18n.c:429 ../src/monster_i18n.c:441 ../src/priest.c:321
+msgid "priest"
+msgstr ""
+
+#: ../src/monster_i18n.c:430 ../src/monster_i18n.c:442 ../src/priest.c:321
+msgid "priestess"
+msgstr ""
+
+#: ../src/monster_i18n.c:431
+msgid "aligned cleric"
+msgstr ""
+
+#: ../src/monster_i18n.c:434
+msgid "high cleric"
+msgstr ""
+
+#: ../src/monster_i18n.c:435
+msgid "incubus"
+msgstr ""
+
+#: ../src/monster_i18n.c:436
+msgid "succubus"
+msgstr ""
+
+#: ../src/monster_i18n.c:437
+msgid "amorous demon"
+msgstr ""
+
+#: ../src/monster_i18n.c:438
+msgid "caveman"
+msgstr ""
+
+#: ../src/monster_i18n.c:439
+msgid "cavewoman"
+msgstr ""
+
+#: ../src/monster_i18n.c:440
+msgid "cave dweller"
+msgstr ""
+
+#: ../src/monster_i18n.c:443
+msgid "cleric"
+msgstr ""
+
 #: ../src/mplayer.c:361
 msgid "I can't win, and neither will you!"
 msgstr ""
@@ -22071,6 +23737,34 @@ msgstr ""
 #: ../src/mplayer.c:375
 #, c-format
 msgid "Talk? -- %s"
+msgstr ""
+
+#: ../src/mthrowu.c:25
+msgid "fragments"
+msgstr ""
+
+#: ../src/mthrowu.c:25 ../src/obj_descr_i18n.c:405
+msgid "fire"
+msgstr ""
+
+#: ../src/mthrowu.c:25
+msgid "sleep gas"
+msgstr ""
+
+#: ../src/mthrowu.c:25
+msgid "a disintegration blast"
+msgstr ""
+
+#: ../src/mthrowu.c:26
+msgid "lightning"
+msgstr ""
+
+#: ../src/mthrowu.c:26
+msgid "strange breath #8"
+msgstr ""
+
+#: ../src/mthrowu.c:27
+msgid "strange breath #9"
 msgstr ""
 
 #: ../src/mthrowu.c:32
@@ -23380,6 +25074,38 @@ msgstr ""
 
 #: ../src/music.c:491
 msgid "dungeon"
+msgstr ""
+
+#: ../src/music.c:495
+msgid "stepper"
+msgstr ""
+
+#: ../src/music.c:495
+msgid "one drop"
+msgstr ""
+
+#: ../src/music.c:495
+msgid "slow two"
+msgstr ""
+
+#: ../src/music.c:495
+msgid "triple stroke roll"
+msgstr ""
+
+#: ../src/music.c:496
+msgid "double shuffle"
+msgstr ""
+
+#: ../src/music.c:496
+msgid "half-time shuffle"
+msgstr ""
+
+#: ../src/music.c:496
+msgid "second line"
+msgstr ""
+
+#: ../src/music.c:496
+msgid "train"
 msgstr ""
 
 #: ../src/music.c:554
@@ -24914,10 +26640,6 @@ msgstr ""
 msgid "dip"
 msgstr ""
 
-#: ../src/obj_descr_i18n.c:405
-msgid "fire"
-msgstr ""
-
 #: ../src/obj_descr_i18n.c:406
 msgid "offer"
 msgstr ""
@@ -25231,1543 +26953,20 @@ msgstr ""
 msgid " stone"
 msgstr ""
 
-#: ../src/obj_descr_i18n.c:522
-msgid "kitten"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:523
-msgid "little dog"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:524
-msgid "pony"
-msgstr ""
-
 #: ../src/obj_descr_i18n.c:525
 msgid "cat"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:526
-msgid "dog"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:527
-msgid "horse"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:528
-msgid "large cat"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:529
-msgid "large dog"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:530
-msgid "warhorse"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:531
-msgid "newt"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:532
-msgid "gecko"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:533
-msgid "iguana"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:534
-msgid "lizard"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:535 ../src/were.c:169
-msgid "jackal"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:536
-msgid "fox"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:537
-msgid "coyote"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:538 ../src/were.c:175
-msgid "wolf"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:539
-msgid "warg"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:540
-msgid "winter wolf"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:541
-msgid "hell hound"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:542
-msgid "goblin"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:543
-msgid "hobgoblin"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:544 ../src/obj_descr_i18n.c:1027 ../src/pager.c:538
-#: ../src/role.c:665
-msgid "orc"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:545
-msgid "hill orc"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:546
-msgid "Mordor orc"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:547
-msgid "Uruk-hai"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:548
-msgid "orc shaman"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:549
-msgid "orc-captain"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:550 ../src/obj_descr_i18n.c:1021 ../src/pager.c:537
-#: ../src/role.c:605
-msgid "elf"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:551
-msgid "Woodland-elf"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:552
-msgid "Green-elf"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:553
-msgid "Grey-elf"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:554
-msgid "elf-lord"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:555
-msgid "Elvenking"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:556 ../src/obj_descr_i18n.c:1023 ../src/role.c:625
-msgid "dwarf"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:557
-msgid "dwarf lord"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:558
-msgid "dwarf king"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:559 ../src/obj_descr_i18n.c:1025 ../src/role.c:645
-msgid "gnome"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:560
-msgid "gnome lord"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:561
-msgid "gnome king"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:562
-msgid "gnomish wizard"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:563
-msgid "kobold"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:564
-msgid "large kobold"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:565
-msgid "kobold lord"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:566
-msgid "kobold shaman"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:567
-msgid "kobold zombie"
 msgstr ""
 
 #: ../src/obj_descr_i18n.c:568
 msgid "zombie"
 msgstr ""
 
-#: ../src/obj_descr_i18n.c:569
-msgid "gnome zombie"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:570
-msgid "orc zombie"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:571
-msgid "elf zombie"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:572
-msgid "human zombie"
-msgstr ""
-
 #: ../src/obj_descr_i18n.c:573 ../src/were.c:163
 msgid "rat"
 msgstr ""
 
-#: ../src/obj_descr_i18n.c:574
-msgid "sewer rat"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:575
-msgid "giant rat"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:577
-msgid "giant bat"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:578
-msgid "vampire bat"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:579 ../src/obj_descr_i18n.c:1020 ../src/pager.c:536
-#: ../src/role.c:584 ../src/role.c:585
-msgid "human"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:583
-msgid "Aleax"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:584
-msgid "Angel"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:585
-msgid "Arch Priest"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:586
-msgid "Archon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:587
-msgid "Ashikaga Takauji"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:588
-msgid "Asmodeus"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:589
-msgid "Baalzebub"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:590
-msgid "Cerberus"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:591
-msgid "Charon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:592
-msgid "Chromatic Dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:593
-msgid "Croesus"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:594
-msgid "Cyclops"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:595
-msgid "Dark One"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:596
-msgid "Death"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:597
-msgid "Demogorgon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:598
-msgid "Dispater"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:599
-msgid "Earendil"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:600
-msgid "Elwing"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:601
-msgid "Famine"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:602
-msgid "Geryon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:603
-msgid "Goblin King"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:604 ../src/weapon.c:1110
-msgid "Grand Master"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:605
-msgid "High-elf"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:606
-msgid "Hippocrates"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:607
-msgid "Ixoth"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:608
-msgid "Juiblex"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:609
-msgid "Keystone Kop"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:610
-msgid "King Arthur"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:611
-msgid "Kop Kaptain"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:612
-msgid "Kop Lieutenant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:613
-msgid "Kop Sergeant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:614
-msgid "Lord Carnarvon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:615
-msgid "Lord Sato"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:616
-msgid "Lord Surtur"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:617
-msgid "Master Assassin"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:618
-msgid "Master Kaen"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:619
-msgid "Master of Thieves"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:620
-msgid "Medusa"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:621
-msgid "Minion of Huhetotl"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:622
-msgid "Nalzok"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:623
-msgid "Nazgul"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:624
-msgid "Neferet the Green"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:625
-msgid "Norn"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:626
-msgid "Olog-hai"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:627
-msgid "Oracle"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:628
-msgid "Orcus"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:629
-msgid "Orion"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:630
-msgid "Pelias"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:631
-msgid "Pestilence"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:632
-msgid "Scorpius"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:633
-msgid "Shaman Karnov"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:634
-msgid "Thoth Amon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:635
-msgid "Twoflower"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:636
-msgid "Vlad the Impaler"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:637
-msgid "Wizard of Yendor"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:638
-msgid "Yeenoghu"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:639
-msgid "abbot"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:640
-msgid "acid blob"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:641
-msgid "acolyte"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:642
-msgid "air elemental"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:643
-msgid "ape"
-msgstr ""
-
 #: ../src/obj_descr_i18n.c:644
 msgid "apprentice"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:645
-msgid "arch-lich"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:646
-msgid "archeologist"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:647
-msgid "attendant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:648
-msgid "baby black dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:649
-msgid "baby blue dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:650
-msgid "baby crocodile"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:651
-msgid "baby gold dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:652
-msgid "baby gray dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:653
-msgid "baby green dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:654
-msgid "baby long worm"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:655
-msgid "baby orange dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:656
-msgid "baby purple worm"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:657
-msgid "baby red dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:658
-msgid "baby shimmering dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:659
-msgid "baby silver dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:660
-msgid "baby white dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:661
-msgid "baby yellow dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:662
-msgid "balrog"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:663
-msgid "baluchitherium"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:664
-msgid "barbarian"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:665
-msgid "barbed devil"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:666
-msgid "barrow wight"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:667
-msgid "beholder"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:668
-msgid "black dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:669
-msgid "black light"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:670
-msgid "black naga"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:671
-msgid "black naga hatchling"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:672
-msgid "black pudding"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:673
-msgid "black unicorn"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:674
-msgid "blue dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:675
-msgid "blue jelly"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:676
-msgid "bone devil"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:677
-msgid "brown mold"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:678
-msgid "brown pudding"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:679
-msgid "bugbear"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:680
-msgid "captain"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:681
-msgid "carnivorous ape"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:682
-msgid "cave spider"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:683
-msgid "centipede"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:684
-msgid "chameleon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:685
-msgid "chickatrice"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:686
-msgid "chieftain"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:687
-msgid "clay golem"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:688
-msgid "cobra"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:689
-msgid "cockatrice"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:690
-msgid "couatl"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:691
-msgid "crocodile"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:692
-msgid "demilich"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:693
-msgid "dingo"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:694
-msgid "disenchanter"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:695
-msgid "displacer beast"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:696
-msgid "djinni"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:697
-msgid "doppelganger"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:698
-msgid "dust vortex"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:699
-msgid "dwarf mummy"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:700
-msgid "dwarf zombie"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:701
-msgid "earth elemental"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:702
-msgid "electric eel"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:703
-msgid "elf mummy"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:704
-msgid "energy vortex"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:705
-msgid "erinys"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:706
-msgid "ettin"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:707
-msgid "ettin mummy"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:708
-msgid "ettin zombie"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:709
-msgid "fire ant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:710
-msgid "fire elemental"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:711
-msgid "fire giant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:712
-msgid "fire vortex"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:713
-msgid "flaming sphere"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:714
-msgid "flesh golem"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:715
-msgid "floating eye"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:716
-msgid "fog cloud"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:717
-msgid "forest centaur"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:718
-msgid "freezing sphere"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:719
-msgid "frost giant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:720
-msgid "gargoyle"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:721
-msgid "garter snake"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:722
-msgid "gas spore"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:723
-msgid "gelatinous cube"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:724
-msgid "genetic engineer"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:726
-msgid "ghoul"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:727
-msgid "giant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:728
-msgid "giant ant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:729
-msgid "giant beetle"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:730 ../src/read.c:202
-msgid "giant eel"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:731
-msgid "giant mimic"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:732
-msgid "giant mummy"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:733
-msgid "giant spider"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:734
-msgid "giant zombie"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:735
-msgid "glass golem"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:736
-msgid "glass piercer"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:737
-msgid "gnome mummy"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:738
-msgid "gold dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:739
-msgid "gold golem"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:740
-msgid "golden naga"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:741
-msgid "golden naga hatchling"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:742
-msgid "gray dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:743
-msgid "gray ooze"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:744
-msgid "gray unicorn"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:745
-msgid "green dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:746
-msgid "green mold"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:747 ../src/timeout.c:418
-msgid "green slime"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:748
-msgid "gremlin"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:749
-msgid "grid bug"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:750
-msgid "guard"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:751
-msgid "guardian naga"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:752
-msgid "guardian naga hatchling"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:753
-msgid "guide"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:754
-msgid "healer"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:755
-msgid "hell hound pup"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:756
-msgid "hezrou"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:757
-msgid "hill giant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:758
-msgid "hobbit"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:759
-msgid "homunculus"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:760
-msgid "horned devil"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:761 ../src/pickup.c:2873
-msgid "housecat"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:762
-msgid "human mummy"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:763
-msgid "hunter"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:764
-msgid "ice devil"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:765
-msgid "ice troll"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:766
-msgid "ice vortex"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:767
-msgid "imp"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:768
-msgid "iron golem"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:769
-msgid "iron piercer"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:770
-msgid "jabberwock"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:771
-msgid "jaguar"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:772 ../src/read.c:201
-msgid "jellyfish"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:773
-msgid "ki-rin"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:774
-msgid "killer bee"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:775
-msgid "knight"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:776
-msgid "kobold mummy"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:777
-msgid "kraken"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:778
-msgid "large mimic"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:779
-msgid "leather golem"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:780
-msgid "lemure"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:781
-msgid "leocrotta"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:782
-msgid "leprechaun"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:783
-msgid "lich"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:784
-msgid "lichen"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:785
-msgid "lieutenant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:786
-msgid "long worm"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:787
-msgid "long worm tail"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:788
-msgid "lurker above"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:789
-msgid "lynx"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:790
-msgid "mail daemon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:791
-msgid "manes"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:792
-msgid "marilith"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:793
-msgid "master lich"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:794
-msgid "master mind flayer"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:795
-msgid "mastodon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:796
-msgid "mind flayer"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:797
-msgid "minotaur"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:798
-msgid "monk"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:799
-msgid "monkey"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:800
-msgid "mountain centaur"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:801
-msgid "mountain nymph"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:802
-msgid "mumak"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:803
-msgid "nalfeshnee"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:804
-msgid "neanderthal"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:805
-msgid "ninja"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:806
-msgid "nurse"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:807
-msgid "ochre jelly"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:808
-msgid "ogre"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:809
-msgid "orange dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:810
-msgid "orc mummy"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:811
-msgid "owlbear"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:812
-msgid "page"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:813
-msgid "panther"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:814
-msgid "paper golem"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:815
-msgid "piranha"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:816
-msgid "pit fiend"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:817
-msgid "pit viper"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:818
-msgid "plains centaur"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:819
-msgid "prisoner"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:820
-msgid "purple worm"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:821
-msgid "pyrolisk"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:822
-msgid "python"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:823
-msgid "quantum mechanic"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:824
-msgid "quasit"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:825
-msgid "queen bee"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:826
-msgid "quivering blob"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:827
-msgid "rabid rat"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:828
-msgid "ranger"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:829
-msgid "raven"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:830
-msgid "red dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:831
-msgid "red mold"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:832
-msgid "red naga"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:833
-msgid "red naga hatchling"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:834
-msgid "rock mole"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:835
-msgid "rock piercer"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:836
-msgid "rock troll"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:837
-msgid "rogue"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:838
-msgid "rope golem"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:839
-msgid "roshi"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:840
-msgid "rothe"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:841
-msgid "rust monster"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:842
-msgid "salamander"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:843
-msgid "samurai"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:844
-msgid "sandestin"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:845
-msgid "sasquatch"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:846
-msgid "scorpion"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:847
-msgid "sergeant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:848
-msgid "shade"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:849
-msgid "shark"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:850
-msgid "shimmering dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:851
-msgid "shocking sphere"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:852
-msgid "shopkeeper"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:853
-msgid "shrieker"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:854
-msgid "silver dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:855
-msgid "skeleton"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:856
-msgid "small mimic"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:857
-msgid "snake"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:858
-msgid "soldier"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:859
-msgid "soldier ant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:860
-msgid "spotted jelly"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:861
-msgid "stalker"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:862
-msgid "steam vortex"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:863
-msgid "stone giant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:864
-msgid "stone golem"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:865
-msgid "storm giant"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:866
-msgid "straw golem"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:867
-msgid "student"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:868
-msgid "tengu"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:869
-msgid "thug"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:870
-msgid "tiger"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:871
-msgid "titan"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:872
-msgid "titanothere"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:873
-msgid "tourist"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:874
-msgid "trapper"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:875
-msgid "troll"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:876
-msgid "umber hulk"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:877
-msgid "valkyrie"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:878
-msgid "vampire"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:879
-msgid "vampire mage"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:880
-msgid "violet fungus"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:881
-msgid "vorpal jabberwock"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:882
-msgid "vrock"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:883
-msgid "warrior"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:884
-msgid "watch captain"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:885
-msgid "watchman"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:886
-msgid "water demon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:887
-msgid "water elemental"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:888
-msgid "water moccasin"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:889 ../src/read.c:203
-msgid "water nymph"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:890
-msgid "water troll"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:891
-msgid "werejackal"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:892
-msgid "wererat"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:893
-msgid "werewolf"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:894
-msgid "white dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:895
-msgid "white unicorn"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:896
-msgid "winged gargoyle"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:897
-msgid "winter wolf cub"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:898 ../src/topten.c:733
-msgid "wizard"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:899
-msgid "wood golem"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:900
-msgid "wood nymph"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:901
-msgid "woodchuck"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:902
-msgid "wraith"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:903
-msgid "wumpus"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:904
-msgid "xan"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:905
-msgid "xorn"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:906
-msgid "yellow dragon"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:907
-msgid "yellow light"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:908
-msgid "yellow mold"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:909
-msgid "yeti"
-msgstr ""
-
-#: ../src/obj_descr_i18n.c:910
-msgid "zruty"
 msgstr ""
 
 #: ../src/obj_descr_i18n.c:935 ../src/pager.c:176
@@ -32876,14 +33075,6 @@ msgstr ""
 
 #: ../src/priest.c:321
 msgid "poohbah"
-msgstr ""
-
-#: ../src/priest.c:321
-msgid "priestess"
-msgstr ""
-
-#: ../src/priest.c:321
-msgid "priest"
 msgstr ""
 
 #: ../src/priest.c:348
@@ -47167,7 +47358,7 @@ msgstr ""
 msgid "Elbereth"
 msgstr ""
 
-#. text field (partial, has concatenation), text field, demon_cuss array, angel_cuss array
+#. text field, angel_cuss array, text field (partial, has concatenation), demon_cuss array
 #: dat/quest.lua:77 dat/quest.lua:78 dat/quest.lua:79 dat/quest.lua:80
 #: dat/quest.lua:81 dat/quest.lua:82 dat/quest.lua:83 dat/quest.lua:84
 #: dat/quest.lua:85 dat/quest.lua:86 dat/quest.lua:87 dat/quest.lua:88

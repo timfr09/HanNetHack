@@ -2225,24 +2225,24 @@ look_engrs(boolean nearby)
 }
 
 static const char *suptext1[] = {
-    "%s is a member of a marauding horde of orcs",
-    "rumored to have brutally attacked and plundered",
-    "the ordinarily sheltered town that is located ",
-    "deep within The Gnomish Mines.",
+    N_("%s is a member of a marauding horde of orcs"),
+    N_("rumored to have brutally attacked and plundered"),
+    N_("the ordinarily sheltered town that is located "),
+    N_("deep within The Gnomish Mines."),
     "",
-    "The members of that vicious horde proudly and ",
-    "defiantly acclaim their allegiance to their",
-    "leader %s in their names.",
+    N_("The members of that vicious horde proudly and "),
+    N_("defiantly acclaim their allegiance to their"),
+    N_("leader %s in their names."),
     (char *) 0,
 };
 
 static const char *suptext2[] = {
-    "\"%s\" is the common dungeon name of",
-    "a nefarious orc who is known to acquire property",
-    "from thieves and sell it off for profit.",
+    N_("\"%s\" is the common dungeon name of"),
+    N_("a nefarious orc who is known to acquire property"),
+    N_("from thieves and sell it off for profit."),
     "",
-    "The perpetrator was last seen hanging around the",
-    "stairs leading to the Gnomish Mines.",
+    N_("The perpetrator was last seen hanging around the"),
+    N_("stairs leading to the Gnomish Mines."),
     (char *) 0,
 };
 
@@ -2299,10 +2299,10 @@ do_supplemental_info(
                     const char *txt;
 
                     if (strstri(textp[i], "%s") != 0) {
-                        Sprintf(buf, textp[i], subs++ ? gang : fullname);
+                        Sprintf(buf, _(textp[i]), subs++ ? gang : fullname);
                         txt = buf;
                     } else
-                        txt = textp[i];
+                        txt = _(textp[i]);
                     putstr(datawin, 0, txt);
                 }
                 display_nhwindow(datawin, FALSE);

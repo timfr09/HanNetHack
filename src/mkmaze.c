@@ -711,7 +711,7 @@ check_ransacked(const char *s)
 }
 
 #define ORC_LEADER 1
-static const char *const orcfruit[] = { "paddle cactus", "dwarven root" };
+static const char *const orcfruit[] = { N_("paddle cactus"), N_("dwarven root") };
 
 staticfn void
 migrate_orc(struct monst *mtmp, unsigned long mflags)

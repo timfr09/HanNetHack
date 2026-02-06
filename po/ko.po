@@ -5756,18 +5756,19 @@ msgstr "인접한 %s{을/를} 판다."
 #   %2$s = 방향 (through, in) - 한국어에서 생략
 #   %3$s = 표면 유형 (floor, ground)
 # 예: "dig a hole through the floor." → "바닥에 구멍을 팠다."
+# %1$s=구멍/함정, %2$s=through/into(방향), %3$s=floor/ceiling(표면)
 #: ../src/dig.c:708
 #, c-format
 msgid "dig %s %s the %s."
-msgstr "%3$s에 %1$s{을/를} 팠다."
+msgstr "%3$s에 %2$s %1$s{을/를} 팠다."
 
 # 조합 패턴: "%s digs %s %s the %s."
-#   %1$s = 몬스터 이름, %2$s = 함정 이름, %3$s = 방향, %4$s = 표면
+#   %1$s = 몬스터 이름, %2$s = 함정 이름, %3$s = 방향(through/into), %4$s = 표면
 # 예: "The goblin digs a hole through the floor." → "고블린이 바닥에 구멍을 팠다."
 #: ../src/dig.c:710
 #, c-format
 msgid "%s digs %s %s the %s."
-msgstr "%1$s{이/가} %4$s에 %2$s{을/를} 팠다."
+msgstr "%1$s{이/가} %4$s에 %3$s %2$s{을/를} 팠다."
 
 #: ../src/dig.c:714
 #, c-format
@@ -7223,11 +7224,12 @@ msgstr "%s{은/는} %s할 상태가 아니다."
 #   %3$s = "is"/"are" (한국어에서 생략)
 #   %4$s = 동작 (jumping, kicking)
 # 예: "Your left leg is in no shape for jumping."
+# %1$s=left/right, %2$s=leg/arm, %3$s=is/are, %4$s=동작(jumping)
 # → "왼 다리는 점프할 상태가 아니다."
 #: ../src/do.c:2409
 #, c-format
 msgid "%s%s %s in no shape for %s."
-msgstr "%1$s%2$s{은/는} %4$s할 상태가 아니다."
+msgstr "%1$s%2$s{은/는} %4$s할 상태가 아니%3$s"
 
 #: ../src/do.c:2410 ../src/do_wear.c:2575 ../src/do_wear.c:2610
 #: ../src/insight.c:1136 ../src/weapon.c:463 ../src/wield.c:762
@@ -14998,26 +15000,26 @@ msgstr "%s에 걸림"
 msgid " in %s"
 msgstr " %s에"
 
-# 시간 표시
+# 시간 표시 (한국어에는 영어 복수형 불필요, %2$s는 빈 문자열로 소비)
 #: ../src/insight.c:346
 #, c-format
 msgid " %ld day%s"
-msgstr " %ld일%s"
+msgstr " %1$ld일%2$s"
 
 #: ../src/insight.c:352
 #, c-format
 msgid " %ld hour%s"
-msgstr " %ld시간%s"
+msgstr " %1$ld시간%2$s"
 
 #: ../src/insight.c:358
 #, c-format
 msgid " %ld minute%s"
-msgstr " %ld분%s"
+msgstr " %1$ld분%2$s"
 
 #: ../src/insight.c:364
 #, c-format
 msgid " %ld second%s"
-msgstr " %ld초%s"
+msgstr " %1$ld초%2$s"
 
 #: ../src/insight.c:412
 msgid "Miscellaneous:"
@@ -15112,10 +15114,16 @@ msgstr "%s, 레벨 %d %s%s"
 msgid "%s, a level %d %s%s %s"
 msgstr "%s, 레벨 %d %s%s %s"
 
+# ============================================================
+# 캐릭터 성향 + 임무 표시
+# 인자: %1$s=You, %2$s=are/were, %3$s=성향(neutral/lawful/chaotic),
+#       %4$s=부사(temporarily 등), %5$s=신 이름
+# 예: "You are neutral, on a mission for Crom"
+# ============================================================
 #: ../src/insight.c:518
 #, c-format
 msgid " %s%s%s, %son a mission for %s"
-msgstr " %s%s%s, %s%s{을/를} 위한 임무 중"
+msgstr " %1$s%2$s%4$s%3$s 성향이며, %5$s{을/를} 위한 임무 중"
 
 #: ../src/insight.c:525 ../src/insight.c:1533 ../src/insight.c:1544
 msgid "temporarily "
@@ -15348,30 +15356,50 @@ msgstr "당신의 점수는 "
 msgid "Basics:"
 msgstr "기본 정보:"
 
+# ============================================================
+# 체력 표시 - 전체 체력 (HP full)
+# C_("hp_all", ...) 컨텍스트 사용
+# 예: "You have all 50 hit points" → "당신은 체력 50점 전부를 가지고 있다"
+# ============================================================
 #: ../src/insight.c:724
 #, c-format
 msgid "all %d hit points"
-msgstr "모든 %d 체력"
+msgstr "체력 %d점 전부"
 
+# ============================================================
+# 체력 표시 - 부분 체력 (HP partial)
+# C_("hp_partial", ...) 컨텍스트 사용, %3$s=plur() 결과(무시)
+# 예: "You have 30 out of 50 hit points" → "당신은 체력 30/50점을 가지고 있다"
+# ============================================================
 #: ../src/insight.c:726
 #, c-format
 msgid "%d out of %d hit point%s"
-msgstr "%d/%d 체력%s"
+msgstr "체력 %1$d/%2$d점%3$s"
 
 # 양쪽 (예: 양 눈, 양쪽 다리 등)
 #: ../src/insight.c:731
 msgid "both"
 msgstr "둘 다"
 
+# ============================================================
+# 에너지 표시 - 전체 (Energy full)
+# C_("energy_all", ...) 컨텍스트 사용
+# %1$d = 최대 에너지, %2$s = "energy points (spell power)"
+# ============================================================
 #: ../src/insight.c:733
 #, c-format
 msgid "all %d %s"
-msgstr "모든 %d %s"
+msgstr "%2$s %1$d점 전부"
 
+# ============================================================
+# 에너지 표시 - 부분 (Energy partial)
+# C_("energy_partial", ...) 컨텍스트 사용
+# %1$d = 현재, %2$d = 최대, %3$s = "energy points (spell power)"
+# ============================================================
 #: ../src/insight.c:735
 #, c-format
 msgid "%d out of %d %s"
-msgstr "%d/%d %s"
+msgstr "%3$s %1$d/%2$d점"
 
 #: ../src/insight.c:742
 msgid "0 hit dice (actually 1/2)"
@@ -15410,21 +15438,21 @@ msgstr "당신의 방어도는 "
 
 # ============================================================
 # 지갑 상태 - 빔 (Wallet status - empty)
-# %s = "is"/"are" (영어 문법)
+# %s = "is"/"was" (영어 시제) - 한국어에선 무시
 # ============================================================
 #: ../src/insight.c:767
 #, c-format
 msgid " Your wallet %s empty"
-msgstr " 지갑이 %s비어 있다"
+msgstr " 지갑이 비어 있%s다"
 
 # ============================================================
 # 지갑 상태 - 금화 있음 (Wallet status - has gold)
-# %s = 동사 어미 ("s"/"ed"), %ld = 금화 수량, %s = 금화 이름
+# %1$s = 동사 어미 ("s"/"ed") - 문장 끝에 소비, %2$ld = 금화 수량, %3$s = 금화 이름
 # ============================================================
 #: ../src/insight.c:769
 #, c-format
 msgid " Your wallet contain%s %ld %s"
-msgstr " 지갑에%s %ld %s이(가) 있다"
+msgstr " 지갑에 %2$ld %3$s{이/가} 있다%1$s"
 
 #: ../src/insight.c:769
 msgid "ed"

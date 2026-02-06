@@ -759,19 +759,22 @@ namefloorobj(void)
 static const char *const ghostnames[] = {
     /* these names should have length < PL_NSIZ */
     /* Capitalize the names for aesthetics -dgk */
-    "Adri",    "Andries",       "Andreas",     "Bert",    "David",  "Dirk",
-    "Emile",   "Frans",         "Fred",        "Greg",    "Hether", "Jay",
-    "John",    "Jon",           "Karnov",      "Kay",     "Kenny",  "Kevin",
-    "Maud",    "Michiel",       "Mike",        "Peter",   "Robert", "Ron",
-    "Tom",     "Wilmar",        "Nick Danger", "Phoenix", "Jiro",   "Mizue",
-    "Stephan", "Lance Braccus", "Shadowhawk",  "Murphy"
+    N_("Adri"),    N_("Andries"),       N_("Andreas"),     N_("Bert"),
+    N_("David"),   N_("Dirk"),          N_("Emile"),       N_("Frans"),
+    N_("Fred"),    N_("Greg"),          N_("Hether"),      N_("Jay"),
+    N_("John"),    N_("Jon"),           N_("Karnov"),      N_("Kay"),
+    N_("Kenny"),   N_("Kevin"),         N_("Maud"),        N_("Michiel"),
+    N_("Mike"),    N_("Peter"),         N_("Robert"),      N_("Ron"),
+    N_("Tom"),     N_("Wilmar"),        N_("Nick Danger"), N_("Phoenix"),
+    N_("Jiro"),    N_("Mizue"),         N_("Stephan"),     N_("Lance Braccus"),
+    N_("Shadowhawk"), N_("Murphy")
 };
 
 /* ghost names formerly set by x_monnam(), now by makemon() instead */
 const char *
 rndghostname(void)
 {
-    return rn2(7) ? ROLL_FROM(ghostnames)
+    return rn2(7) ? _(ROLL_FROM(ghostnames))
                   : (const char *) svp.plname;
 }
 
@@ -1457,22 +1460,35 @@ roguename(void)
 }
 
 static NEARDATA const char *const hcolors[] = {
-    "ultraviolet", "infrared", "bluish-orange", "reddish-green", "dark white",
-    "light black", "sky blue-pink", "pinkish-cyan", "indigo-chartreuse",
-    "salty", "sweet", "sour", "bitter", "umami", /* basic tastes */
-    "striped", "spiral", "swirly", "plaid", "checkered", "argyle", "paisley",
-    "blotchy", "guernsey-spotted", "polka-dotted", "square", "round",
-    "triangular", "cabernet", "sangria", "fuchsia", "wisteria", "lemon-lime",
-    "strawberry-banana", "peppermint", "romantic", "incandescent",
-    "octarine", /* Discworld: the Colour of Magic */
-    "excitingly dull", "mauve", "electric",
-    "neon", "fluorescent", "phosphorescent", "translucent", "opaque",
-    "psychedelic", "iridescent", "rainbow-colored", "polychromatic",
-    "colorless", "colorless green",
-    "dancing", "singing", "loving", "loudy", "noisy", "clattery", "silent",
-    "apocyan", "infra-pink", "opalescent", "violant", "tuneless",
-    "viridian", "aureolin", "cinnabar", "purpurin", "gamboge", "madder",
-    "bistre", "ecru", "fulvous", "tekhelet", "selective yellow",
+    N_("ultraviolet"), N_("infrared"), N_("bluish-orange"),
+    N_("reddish-green"), N_("dark white"),
+    N_("light black"), N_("sky blue-pink"), N_("pinkish-cyan"),
+    N_("indigo-chartreuse"),
+    N_("salty"), N_("sweet"), N_("sour"), N_("bitter"),
+    N_("umami"), /* basic tastes */
+    N_("striped"), N_("spiral"), N_("swirly"), N_("plaid"),
+    N_("checkered"), N_("argyle"), N_("paisley"),
+    N_("blotchy"), N_("guernsey-spotted"), N_("polka-dotted"),
+    N_("square"), N_("round"),
+    N_("triangular"), N_("cabernet"), N_("sangria"), N_("fuchsia"),
+    N_("wisteria"), N_("lemon-lime"),
+    N_("strawberry-banana"), N_("peppermint"), N_("romantic"),
+    N_("incandescent"),
+    N_("octarine"), /* Discworld: the Colour of Magic */
+    N_("excitingly dull"), N_("mauve"), N_("electric"),
+    N_("neon"), N_("fluorescent"), N_("phosphorescent"),
+    N_("translucent"), N_("opaque"),
+    N_("psychedelic"), N_("iridescent"), N_("rainbow-colored"),
+    N_("polychromatic"),
+    N_("colorless"), N_("colorless green"),
+    N_("dancing"), N_("singing"), N_("loving"), N_("loudy"),
+    N_("noisy"), N_("clattery"), N_("silent"),
+    N_("apocyan"), N_("infra-pink"), N_("opalescent"),
+    N_("violant"), N_("tuneless"),
+    N_("viridian"), N_("aureolin"), N_("cinnabar"), N_("purpurin"),
+    N_("gamboge"), N_("madder"),
+    N_("bistre"), N_("ecru"), N_("fulvous"), N_("tekhelet"),
+    N_("selective yellow"),
 };
 
 const char *
@@ -1495,14 +1511,21 @@ rndcolor(void)
 }
 
 static NEARDATA const char *const hliquids[] = {
-    "yoghurt", "oobleck", "clotted blood", "diluted water", "purified water",
-    "instant coffee", "tea", "herbal infusion", "liquid rainbow",
-    "creamy foam", "mulled wine", "bouillon", "nectar", "grog", "flubber",
-    "ketchup", "slow light", "oil", "vinaigrette", "liquid crystal", "honey",
-    "caramel sauce", "ink", "aqueous humour", "milk substitute",
-    "fruit juice", "glowing lava", "gastric acid", "mineral water",
-    "cough syrup", "quicksilver", "sweet vitriol", "grey goo", "pink slime",
-    "cosmic latte",
+    N_("yoghurt"), N_("oobleck"), N_("clotted blood"),
+    N_("diluted water"), N_("purified water"),
+    N_("instant coffee"), N_("tea"), N_("herbal infusion"),
+    N_("liquid rainbow"),
+    N_("creamy foam"), N_("mulled wine"), N_("bouillon"),
+    N_("nectar"), N_("grog"), N_("flubber"),
+    N_("ketchup"), N_("slow light"), N_("oil"), N_("vinaigrette"),
+    N_("liquid crystal"), N_("honey"),
+    N_("caramel sauce"), N_("ink"), N_("aqueous humour"),
+    N_("milk substitute"),
+    N_("fruit juice"), N_("glowing lava"), N_("gastric acid"),
+    N_("mineral water"),
+    N_("cough syrup"), N_("quicksilver"), N_("sweet vitriol"),
+    N_("grey goo"), N_("pink slime"),
+    N_("cosmic latte"),
     /* "new coke (tm)", --better not */
 };
 
@@ -1530,14 +1553,21 @@ hliquid(
 /* Aliases for road-runner nemesis
  */
 static const char *const coynames[] = {
-    "Carnivorous Vulgaris", "Road-Runnerus Digestus", "Eatibus Anythingus",
-    "Famishus-Famishus", "Eatibus Almost Anythingus", "Eatius Birdius",
-    "Famishius Fantasticus", "Eternalii Famishiis", "Famishus Vulgarus",
-    "Famishius Vulgaris Ingeniusi", "Eatius-Slobbius", "Hardheadipus Oedipus",
-    "Carnivorous Slobbius", "Hard-Headipus Ravenus", "Evereadii Eatibus",
-    "Apetitius Giganticus", "Hungrii Flea-Bagius", "Overconfidentii Vulgaris",
-    "Caninus Nervous Rex", "Grotesques Appetitus", "Nemesis Ridiculii",
-    "Canis latrans"
+    N_("Carnivorous Vulgaris"), N_("Road-Runnerus Digestus"),
+    N_("Eatibus Anythingus"),
+    N_("Famishus-Famishus"), N_("Eatibus Almost Anythingus"),
+    N_("Eatius Birdius"),
+    N_("Famishius Fantasticus"), N_("Eternalii Famishiis"),
+    N_("Famishus Vulgarus"),
+    N_("Famishius Vulgaris Ingeniusi"), N_("Eatius-Slobbius"),
+    N_("Hardheadipus Oedipus"),
+    N_("Carnivorous Slobbius"), N_("Hard-Headipus Ravenus"),
+    N_("Evereadii Eatibus"),
+    N_("Apetitius Giganticus"), N_("Hungrii Flea-Bagius"),
+    N_("Overconfidentii Vulgaris"),
+    N_("Caninus Nervous Rex"), N_("Grotesques Appetitus"),
+    N_("Nemesis Ridiculii"),
+    N_("Canis latrans")
 };
 
 char *
@@ -1546,8 +1576,8 @@ coyotename(struct monst *mtmp, char *buf)
     if (mtmp && buf) {
         Sprintf(buf, "%s - %s",
                 x_monnam(mtmp, ARTICLE_NONE, (char *) 0, 0, TRUE),
-                mtmp->mcan ? coynames[SIZE(coynames) - 1]
-                           : coynames[mtmp->m_id % (SIZE(coynames) - 1)]);
+                mtmp->mcan ? _(coynames[SIZE(coynames) - 1])
+                           : _(coynames[mtmp->m_id % (SIZE(coynames) - 1)]));
     }
     return buf;
 }
@@ -1607,17 +1637,26 @@ christen_orc(struct monst *mtmp, const char *gang, const char *other)
    of them have index macros used for variant spellings; if the titles are
    reordered for some reason, make sure that those get renumbered to match */
 static const char *const sir_Terry_novels[] = {
-    "The Colour of Magic", "The Light Fantastic", "Equal Rites", "Mort",
-    "Sourcery", "Wyrd Sisters", "Pyramids", "Guards! Guards!", "Eric",
-    "Moving Pictures", "Reaper Man", "Witches Abroad", "Small Gods",
-    "Lords and Ladies", "Men at Arms", "Soul Music", "Interesting Times",
-    "Maskerade", "Feet of Clay", "Hogfather", "Jingo", "The Last Continent",
-    "Carpe Jugulum", "The Fifth Elephant", "The Truth", "Thief of Time",
-    "The Last Hero", "The Amazing Maurice and His Educated Rodents",
-    "Night Watch", "The Wee Free Men", "Monstrous Regiment",
-    "A Hat Full of Sky", "Going Postal", "Thud!", "Wintersmith",
-    "Making Money", "Unseen Academicals", "I Shall Wear Midnight", "Snuff",
-    "Raising Steam", "The Shepherd's Crown"
+    N_("The Colour of Magic"), N_("The Light Fantastic"),
+    N_("Equal Rites"), N_("Mort"),
+    N_("Sourcery"), N_("Wyrd Sisters"), N_("Pyramids"),
+    N_("Guards! Guards!"), N_("Eric"),
+    N_("Moving Pictures"), N_("Reaper Man"), N_("Witches Abroad"),
+    N_("Small Gods"),
+    N_("Lords and Ladies"), N_("Men at Arms"), N_("Soul Music"),
+    N_("Interesting Times"),
+    N_("Maskerade"), N_("Feet of Clay"), N_("Hogfather"), N_("Jingo"),
+    N_("The Last Continent"),
+    N_("Carpe Jugulum"), N_("The Fifth Elephant"), N_("The Truth"),
+    N_("Thief of Time"),
+    N_("The Last Hero"),
+    N_("The Amazing Maurice and His Educated Rodents"),
+    N_("Night Watch"), N_("The Wee Free Men"), N_("Monstrous Regiment"),
+    N_("A Hat Full of Sky"), N_("Going Postal"), N_("Thud!"),
+    N_("Wintersmith"),
+    N_("Making Money"), N_("Unseen Academicals"),
+    N_("I Shall Wear Midnight"), N_("Snuff"),
+    N_("Raising Steam"), N_("The Shepherd's Crown")
 };
 #define NVL_COLOUR_OF_MAGIC 0
 #define NVL_SOURCERY 4

@@ -3362,17 +3362,17 @@ seen_string(xint16 x, const char *obj)
     /* players are computer scientists: 0, 1, 2, n */
     switch (x) {
     case 0:
-        return "no";
+        return _("no");
     /* an() returns too much.  index/strchr is ok in this case */
     case 1:
-        return strchr(vowels, *obj) ? "an" : "a";
+        return strchr(vowels, *obj) ? _("an") : _("a");
     case 2:
-        return "some";
+        return _("some");
     case 3:
-        return "many";
+        return _("many");
     }
 
-    return "(unknown)";
+    return _("(unknown)");
 }
 
 /* better br_string */
@@ -3434,10 +3434,10 @@ shop_string(int rtype)
 {
     extern const struct shclass shtypes[]; /* defined in shknam.c */
     int shoptype = rtype - SHOPBASE; /* convert room type to shop type */
-    const char *str = "shop?"; /* catchall */
+    const char *str = _("shop?"); /* catchall */
 
     if (shoptype < 0) {
-        str = "untended shop";
+        str = _("untended shop");
     } else if (shtypes[shoptype].annotation) {
         str = shtypes[shoptype].annotation;
     } else if (shtypes[shoptype].name) {
@@ -3486,7 +3486,8 @@ tunesuffix(
 #define ADDNTOBUF(nam, var) \
     do {                                                                     \
         if (var)                                                             \
-            Sprintf(eos(buf), "%s%s %s%s", COMMA, seen_string((var), (nam)), \
+            Sprintf(eos(buf), _("%s%s %s%s"), COMMA,                         \
+                    seen_string((var), (nam)),                               \
                     (nam), plur(var));                                       \
     } while (0)
 /* ADD2NTOBUF: for "M temples and N altars"; seen_string() is safe to use
@@ -3494,7 +3495,7 @@ tunesuffix(
 #define ADD2NTOBUF(nam, var, nam2, var2) \
     do {                                                                \
         if (var && var2) {                                              \
-            Sprintf(eos(buf), "%s%s %s%s and %s %s%s", COMMA,           \
+            Sprintf(eos(buf), _("%s%s %s%s and %s %s%s"), COMMA,        \
                     seen_string((var), (nam)), (nam), plur(var),        \
                     seen_string((var2), (nam2)), (nam2), plur(var2));   \
         } else if (var) {                                               \
@@ -3587,7 +3588,7 @@ print_mapseen(
          */
         if (mptr->feat.nshop > 0) {
             if (mptr->feat.nshop > 1)
-                ADDNTOBUF("shop", mptr->feat.nshop);
+                ADDNTOBUF(_("shop"), mptr->feat.nshop);
             else
                 Sprintf(eos(buf), "%s%s", COMMA,
                         an(shop_string(mptr->feat.shoptype)));
@@ -3600,8 +3601,8 @@ print_mapseen(
                possibly it being out of view in an irregularly shaped room);
                FIXME: if all temples present have been desecrated, we ought
                to say so */
-            ADD2NTOBUF("temple", mptr->feat.ntemple,
-                       "altar", mptr->feat.naltar);
+            ADD2NTOBUF(_("temple"), mptr->feat.ntemple,
+                       _("altar"), mptr->feat.naltar);
 
             /* only print out altar's god if they are all to your god */
             atmp = mptr->feat.msalign;              /*    0,  1,  2,  3 */
@@ -3609,15 +3610,15 @@ print_mapseen(
             if (Amask2align(atmp) == u.ualign.type) /* -128, -1,  0, +1 */
                 Sprintf(eos(buf), _(" to %s"), align_gname(u.ualign.type));
         }
-        ADDNTOBUF("throne", mptr->feat.nthrone);
-        ADDNTOBUF("fountain", mptr->feat.nfount);
-        ADDNTOBUF("sink", mptr->feat.nsink);
-        ADDNTOBUF("grave", mptr->feat.ngrave);
-        ADDNTOBUF("tree", mptr->feat.ntree);
+        ADDNTOBUF(_("throne"), mptr->feat.nthrone);
+        ADDNTOBUF(_("fountain"), mptr->feat.nfount);
+        ADDNTOBUF(_("sink"), mptr->feat.nsink);
+        ADDNTOBUF(_("grave"), mptr->feat.ngrave);
+        ADDNTOBUF(_("tree"), mptr->feat.ntree);
 #if 0
-        ADDTOBUF("water", mptr->feat.water);
-        ADDTOBUF("lava", mptr->feat.lava);
-        ADDTOBUF("ice", mptr->feat.ice);
+        ADDTOBUF(_("water"), mptr->feat.water);
+        ADDTOBUF(_("lava"), mptr->feat.lava);
+        ADDTOBUF(_("ice"), mptr->feat.ice);
 #endif
         /* capitalize afterwards */
         i = strlen(PREFIX);

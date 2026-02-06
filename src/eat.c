@@ -69,8 +69,8 @@ staticfn int tin_ok(struct obj *);
 /* see hunger states in hack.h - texts used on bottom line
    Also used in botl.c and insight.c  */
 const char *const hu_stat[] = {
-    "Satiated", "        ", "Hungry  ", "Weak    ",
-    "Fainting", "Fainted ", "Starved "
+    N_("Satiated"), "        ", N_("Hungry  "), N_("Weak    "),
+    N_("Fainting"), N_("Fainted "), N_("Starved ")
 };
 
 static const struct victual_info zero_victual = { 0 };

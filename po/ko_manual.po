@@ -10684,21 +10684,49 @@ msgid "X marks the spot."
 msgstr "X가 그 자리를 표시한다."
 
 # ============================================================
-# Lua 파일 미래핑 문자열 현황
+# 래핑 안 된 문자열 전체 현황 (2026-02-06 검토)
 # ============================================================
 #
-# quest.lua: 188개 synopsis= 문자열 (미래핑)
-#   - 퀘스트 대화 텍스트
-#   - 포맷 플레이스홀더 사용 (%l, %p, %n, %o, %H, %d)
-#   - extract_lua_strings.py로 추출 가능
+# [Lua 파일] - 총 330개+
 #
-# tut-1.lua: 54개 text= 문자열 (미래핑)
+# quest.lua: 274개 (text= 86개 + synopsis= 188개)
+#   - 퀘스트 대화/설명 텍스트
+#   - 포맷 플레이스홀더: %l(leader), %p(player), %n(nemesis), %o(artifact)
+#   - extract_lua_strings.py로 POT에 추출됨
+#   - 예: "You again sense %l pleading for help."
+#
+# tut-1.lua: 47개 text= 문자열
 #   - 튜토리얼 각인 메시지
-#   - 동적 문자열 연결 사용 (.. tut_key())
-#   - 런타임 키 바인딩 포함
+#   - 동적 키 연결: .. tut_key("jump") 형태
+#   - 런타임 변수 포함으로 래핑 복잡
+#   - 예: "Move around with " .. movekeys
 #
-# 기타: soko1-1.lua, castle.lua, Mon-loca.lua
-#   - "Elbereth" 각인 (번역 불필요)
-#   - "X marks the spot." (번역 가능)
+# tut-2.lua: 1개
+#   - "Use '" .. nh.eckey("up") .. "' to go up the stairs"
+#
+# 기타 Lua: soko*.lua, castle.lua, Mon-loca.lua, Arc-loca.lua
+#   - "Elbereth" (고유명사, 번역 불필요)
+#   - "X marks the spot." (번역 완료)
+#
+# [헤더 파일] - 총 150개+
+#
+# include/defsym.h: 115개 PCHAR/PCHAR2 매크로
+#   - 지형/심볼 설명 ("vertical wall", "iron bars", "tree" 등)
+#   - 매크로 구조상 N_() 래핑 필요
+#   - 게임 내 look 명령(;)에서 표시됨
+#   - 예: PCHAR(17, '#', S_bars, "iron bars", HI_METAL)
+#
+# include/artilist.h: 36개 아티팩트명
+#   - "Excalibur", "Mjollnir", "Stormbringer" 등
+#   - 고유명사로 번역 불필요 (음차 가능)
+#
+# [C 소스 파일]
+#
+# 대부분 래핑 완료, 아래는 미래핑:
+#   - src/nhlua.c: 디버그 메시지 (번역 불필요)
+#   - src/wizcmds.c: 위저드 모드 메시지 (번역 불필요)
+#   - src/coloratt.c:577 "Menucolor regex error" (오류 메시지)
+#   - src/options.c:7783 "MSGTYPE regex error" (오류 메시지)
+#   - src/options.c:7923 "NHregex error" (오류 메시지)
 #
 # ============================================================

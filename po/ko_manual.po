@@ -1390,9 +1390,29 @@ msgstr "%s{이/가} 때려"
 msgid "Cannot open %s.  Sorry."
 msgstr "%s{을/를} 열 수 없다. 미안."
 
+# [조합 메시지] src/do_wear.c:3285 - 외피 갑옷 벗기 요청
+# 조합 요소:
+#   %1$s = 외피 갑옷 이름 (예: "your cloak")
+#   %2$s = 동사 "dip" 또는 "grease"
+#   %3$s = 대상 물건 이름 (예: "your shirt")
+# 영어 조합: "You need to take off your cloak to dip your shirt."
+# 한국어 조합: "망토를 벗어야 셔츠를 담글 수 있다."
+# 주의: 어순 변경 필요 - %2$s(동사)와 %3$s(대상) 순서 바꿈
 #, c-format
 msgid "need to take off %s to %s %s."
-msgstr "%s{을/를} 벗어야 %s{을/를} %s 수 있다."
+msgstr "%1$s{을/를} 벗어야 %3$s{을/를} %2$s 수 있다."
+
+# [조합 메시지] src/potion.c:2266 - 담그기 동사
+# "need to take off %s to %s %s." 조합에서 사용
+# 조합결과: "망토를 벗어야 셔츠를 담글 수 있다."
+msgid "dip"
+msgstr "담글"
+
+# [조합 메시지] src/apply.c:2626 - 기름칠 동사
+# "need to take off %s to %s %s." 조합에서 사용
+# 조합결과: "망토를 벗어야 셔츠를 기름칠할 수 있다."
+msgid "grease"
+msgstr "기름칠할"
 
 #, c-format
 msgid "haven't discovered any %s yet."
@@ -2195,14 +2215,31 @@ msgstr "여성"
 # ============================================================
 
 #: src/mon.c:3382 - monkilled message
+# 조합 요소:
+#   %1$s = Monnam(mdef) - 몬스터 이름 (예: "The orc")
+#   %2$s = "killed" 또는 "destroyed" - 사망 동사
+#   %3$s = " by the " 또는 "" - 원인 연결사
+#   %4$s = fltxt - 사망 원인 (예: "fire")
+# 영어 조합: "The orc is killed by the fire!"
+# 한국어 조합: "오크가 불에 의해 죽었다!"
 #, c-format
 msgid "%s is %s%s%s!"
 msgstr "%1$s{이/가} %4$s%3$s%2$s!"
 
 # [조합 메시지] src/mon.c:3384 - "by the" 연결사 (사망 원인)
-# 예: "killed by the grid bug" → "격자 벌레에 의해 죽었다"
+# 영어: " by the fire" → 한국어: "불에 의해 " (어순 변경으로 앞에 옴)
 msgid " by the "
 msgstr "에 의해 "
+
+# [조합 메시지] src/mon.c:3383 - 생물 사망 동사
+# 조합결과: "오크가 불에 의해 죽었다!"
+msgid "killed"
+msgstr "죽었다"
+
+# [조합 메시지] src/mon.c:3383 - 비생물 파괴 동사
+# 조합결과: "골렘이 불에 의해 파괴되었다!"
+msgid "destroyed"
+msgstr "파괴되었다"
 
 # ============================================================
 # 지형/가구 설명 (Terrain/Furniture from defsym.h)
@@ -2389,6 +2426,13 @@ msgstr "여기에 아래로 가는 사다리가 있다."
 msgid "There is %s here."
 msgstr "여기에 %s{이/가} 있다."
 
+# [조합 메시지] src/pickup.c 등 - 여러 개 물건 존재 표시
+# 조합 요소:
+#   %1$s = "is" 또는 "are" (단수/복수)
+#   %2$s = 물건 이름 (예: "some gold pieces")
+# 영어 조합: "There are some gold pieces here."
+# 한국어: 동사 is/are가 불필요하므로 %.0s로 억제
+# 한국어 조합: "여기에 금화 몇 개가 있다."
 #, c-format
 msgid "There %s %s here."
 msgstr "여기에 %2$s{이/가} 있다.%1$.0s"
@@ -2552,8 +2596,9 @@ msgstr "​"
 # [조합] "have never " - 현재완료 부정
 # 조합 예: "have never genocided any monsters" = "[행동 안 함] 몬스터 학살"
 # 결과: "한 적 없다" 형태
+# 주의: 빈 문자열이 아닌 제로폭 공백 사용 (포맷 구조 유지)
 msgid "have never "
-msgstr ""
+msgstr "​"
 
 # [조합] "never " + 동사 조합
 # 결과: "[안 함] X" 형태
@@ -2592,9 +2637,10 @@ msgstr " 저장 중"
 
 # enl_msg("You ", "fall asleep", "fell asleep", " uncontrollably", buf)
 # 포맷: " %1$s%3$s%2$s%4$s."
-# 조합: " 당신은 통제 불가능하게 잠들었다 (원인)."
+# 현재: " 당신은 통제 불가능하게 잠든다 (원인)."
+# 과거: " 당신은 통제 불가능하게 잠들었다 (원인)."
 msgid "fall asleep"
-msgstr "잠들다"
+msgstr "잠든다"
 
 msgid "fell asleep"
 msgstr "잠들었다"
@@ -3794,6 +3840,19 @@ msgstr "카운터"
 # insight.c - you_have() 매크로에서 사용
 # 한국어에서는 동사가 문장 끝에 오므로 제로 폭 공백 사용
 # ============================================================
+
+# ============================================================
+# [조합 메시지] 주어 접두어 - insight.c You_ 매크로
+# enl_msg() 패턴의 첫 번째 인자로 사용됨
+# 예: enl_msg(You_, "are ", "were ", "levitating", from_what(...))
+# 조합결과 (영어): " You are levitating because of X."
+# 조합결과 (한국어): " 당신은 공중부양 중이다 (X 때문에)."
+# ============================================================
+
+# [조합] "You " - insight.c의 You_ 매크로 (#define You_ _("You "))
+# 주의: 뒤 공백 포함, 한국어 주제격 조사 "은" 포함
+msgid "You "
+msgstr "당신은 "
 
 # [조합] "have " - 현재완료/소유
 msgid "have "
@@ -12052,3 +12111,75 @@ msgstr ""
 
 msgid "Your"
 msgstr "당신의"
+
+#
+# == Erosion Strings (부식/손상 문자열) ==
+# From src/trap.c - erode_obj() function
+# action[] - 동사 (현재형)
+# msg[] - 상태 형용사
+# bythe[] - 원인 명사
+#
+
+# action[] 배열 - 침식 동사
+# 주의: "corrode"는 다른 컨텍스트에서도 사용되므로 C_() 컨텍스트 사용
+msgctxt "erosion_action"
+msgid "smoulder"
+msgstr "그을린다"
+
+msgctxt "erosion_action"
+msgid "rust"
+msgstr "녹슨다"
+
+msgctxt "erosion_action"
+msgid "rot"
+msgstr "썩는다"
+
+msgctxt "erosion_action"
+msgid "corrode"
+msgstr "부식된다"
+
+msgctxt "erosion_action"
+msgid "crack"
+msgstr "금 간다"
+
+# msg[] 배열 - 완전히 침식된 상태 형용사
+msgctxt "erosion_state"
+msgid "burnt"
+msgstr "타버린"
+
+msgctxt "erosion_state"
+msgid "rusted"
+msgstr "녹슨"
+
+msgctxt "erosion_state"
+msgid "rotten"
+msgstr "썩은"
+
+msgctxt "erosion_state"
+msgid "corroded"
+msgstr "부식된"
+
+msgctxt "erosion_state"
+msgid "cracked"
+msgstr "금 간"
+
+# bythe[] 배열 - 침식 원인 명사
+msgctxt "erosion_cause"
+msgid "heat"
+msgstr "열"
+
+msgctxt "erosion_cause"
+msgid "oxidation"
+msgstr "산화"
+
+msgctxt "erosion_cause"
+msgid "decay"
+msgstr "부패"
+
+msgctxt "erosion_cause"
+msgid "corrosion"
+msgstr "부식"
+
+msgctxt "erosion_cause"
+msgid "impact"
+msgstr "충격"

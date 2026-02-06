@@ -2623,7 +2623,7 @@ use_grease(struct obj *obj)
         otmp = getobj("grease", grease_ok, GETOBJ_PROMPT);
         if (!otmp)
             return ECMD_CANCEL;
-        if (inaccessible_equipment(otmp, "grease", FALSE))
+        if (inaccessible_equipment(otmp, _("grease"), FALSE))
             return ECMD_OK;
         consume_obj_charge(obj, TRUE);
 

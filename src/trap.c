@@ -193,6 +193,7 @@ erode_obj(
     int type,
     int ef_flags)
 {
+    /* N.B. erosion strings need context for i18n; use C_() at runtime */
     static NEARDATA const char
         *const action[] = { "smoulder", "rust", "rot", "corrode", "crack" },
         *const msg[] = { "burnt", "rusted", "rotten", "corroded", "cracked" },
@@ -271,7 +272,7 @@ erode_obj(
         if (flags.verbose && print && (uvictim || vismon))
             pline(_("%s %s %s not affected by %s."),
                   uvictim ? _("Your") : s_suffix(Monnam(victim)),
-                  ostr, vtense(ostr, _("are")), bythe[type]);
+                  ostr, vtense(ostr, _("are")), C_("erosion_cause", bythe[type]));
         return ER_NOTHING;
     } else if (otmp->oerodeproof || (otmp->blessed && !rnl(4))) {
         if (flags.verbose && (print || otmp->oerodeproof)
@@ -280,7 +281,7 @@ erode_obj(
                   uvictim ? _("your")
                   : !vismon ? _("the") /* visobj */
                     : s_suffix(mon_nam(victim)),
-                  ostr, vtense(ostr, _("are")), bythe[type]);
+                  ostr, vtense(ostr, _("are")), C_("erosion_cause", bythe[type]));
         /* We assume here that if the object is protected because it
          * is blessed, it still shows some minor signs of wear, and
          * the hero can distinguish this from an object that is
@@ -303,7 +304,7 @@ erode_obj(
                   uvictim ? _("Your")
                   : !vismon ? _("The") /* visobj */
                     : s_suffix(Monnam(victim)),
-                  ostr, vtense(ostr, action[type]), adverb);
+                  ostr, vtense(ostr, C_("erosion_action", action[type])), adverb);
 
         if (ef_flags & EF_PAY)
             costly_alteration(otmp, cost_type);
@@ -323,7 +324,7 @@ erode_obj(
             char actbuf[BUFSZ];
 
             if (!crackers)
-                Sprintf(actbuf, _("%s away"), vtense(ostr, action[type]));
+                Sprintf(actbuf, _("%s away"), vtense(ostr, C_("erosion_action", action[type])));
             else
                 Sprintf(actbuf, _("shatters"));
             pline(_("%s %s %s!"),
@@ -362,11 +363,11 @@ erode_obj(
         if (flags.verbose && print) {
             if (uvictim)
                 Your(_("%s %s completely %s."),
-                     ostr, vtense(ostr, Blind ? _("feel") : _("look")), msg[type]);
+                     ostr, vtense(ostr, Blind ? _("feel") : _("look")), C_("erosion_state", msg[type]));
             else if (vismon || visobj)
                 pline(_("%s %s %s completely %s."),
                       !vismon ? _("The") : s_suffix(Monnam(victim)),
-                      ostr, vtense(ostr, _("look")), msg[type]);
+                      ostr, vtense(ostr, _("look")), C_("erosion_state", msg[type]));
         }
         return ER_NOTHING;
     }

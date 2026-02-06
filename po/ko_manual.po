@@ -2967,9 +2967,16 @@ msgstr "소원을 사용하지 않았다"
 msgid " Your wallet %s empty"
 msgstr " 당신의 지갑은 %s 비어 있다"
 
+# [조합 메시지] insight.c:800 - 지갑 소지금
+# 조합 요소:
+#   %1$s = "s" 또는 "ed" - 영어 동사 접미사 (한국어 불필요)
+#   %2$ld = 소지금 액수
+#   %3$s = currency() - "gold piece(s)" (화폐 단위)
+# 영어 조합: " Your wallet contains 100 gold pieces"
+# 한국어 조합: " 당신의 지갑에는 100 금화가 들어 있다"
 #, c-format
 msgid " Your wallet contain%s %ld %s"
-msgstr " 당신의 지갑에는 %2$ld %3$s%1$s 들어 있다"
+msgstr " 당신의 지갑에는 %2$ld %3$s{이/가} 들어 있다%1$.0s"
 
 #, c-format
 msgid "%ld %s stashed away in your pack"
@@ -3436,10 +3443,16 @@ msgstr "%s 안장이 떨어졌다."
 msgid "falling off %s"
 msgstr "%s에서 떨어지는"
 
-# 마지막 fuzzy 항목들
+# [조합 메시지] end.c:1530 - 게임 종료 메시지 (승리/탈출)
+# 조합 요소:
+#   %1$s = death_verb - "passed away" 등 (동사)
+#   %2$ld = u.urexp - 경험치 점수
+#   %3$s = plur(u.urexp) - 영어 복수형 "s"/"" (한국어 불필요)
+# 영어 조합: "You passed away beyond the confines of the dungeon with 12345 points,"
+# 한국어 조합: "당신은 12345점을 가지고 던전의 경계를 넘어 세상을 떠났다,"
 #, c-format
 msgid "You %1$s beyond the confines of the dungeon with %2$ld point%3$s,"
-msgstr "당신은 %2$ld점%3$s을 가지고 던전의 경계를 넘어 %1$s,"
+msgstr "당신은 %2$ld점을 가지고 던전의 경계를 넘어 %1$s,%3$.0s"
 
 #, c-format
 msgid "Use '%s'/'%s' to %s%s%s."
@@ -4679,9 +4692,11 @@ msgstr "당신을 들어올리려 한다"
 msgid "disturbs you"
 msgstr "당신을 방해한다"
 
-# do_wear.c - 장비 해제. "The ring slips off of your finger"
+# do_wear.c, mhitu.c - 미끄러짐. "The ring slips off of your finger"
+# 주의: "%s %s your %s %s!" 패턴에서 "%4$s에서 %2$s"로 사용됨
+# "에서"는 패턴 포맷에서 이미 제공하므로 번역에 포함하지 않음
 msgid "slips off of"
-msgstr "에서 미끄러져 빠졌다"
+msgstr "미끄러져 빠졌다"
 
 # ============================================================
 # 추가 fuzzy 오류 수정 - Part 7
@@ -5180,10 +5195,11 @@ msgstr "에 걸렸다"
 msgid "KAABLAMM!!!  "
 msgstr "쾅!!! "
 
-# do_wear.c, uhitm.c - 미끄러짐. "The ring slips off of your finger"
-# uhitm.c에서 "%s %s %s %s!" 패턴과 함께 사용됨
+# do_wear.c, uhitm.c - 미끄러짐. "You slip off of the orc's greased cloak"
+# 주의: "You %s %s %s %s!" 패턴에서 "%4$s에서 %1$s"로 사용됨
+# "에서"는 패턴 포맷에서 이미 제공하므로 번역에 포함하지 않음
 msgid "slip off of"
-msgstr "에서 미끄러졌다"
+msgstr "미끄러졌다"
 
 # mon.c - 무관심. "The shopkeeper looks uninterested"
 msgid "uninterested"
@@ -8896,11 +8912,33 @@ msgstr "%s{이/가} 부서져 %s{이/가} 되었다."
 msgid "%s turns into %s!"
 msgstr "%s{이/가} %s{으로/로} 변했다!"
 
-# mhitm.c:1177 - 몬스터가 변신 (복잡한 패턴)
-# Before(%1$s), freaky/""(%2$s), verbosely?" and":"(%3$s), after(%4$s)
+# [조합 메시지] mhitm.c - 몬스터가 기괴한 변신 후 다른 몬스터가 됨 (상세)
+# 영어 조합: "The orc undergoes a freakish metamorphosis and turns into a kobold."
+# 한국어 조합: "오크가 기괴한 변이를 겪고 코볼드로 변했다."
 #, c-format
-msgid "%s%s%s turns into %s."
-msgstr "%1$s%2$s{이/가}%3$s %4$s{으로/로} 변했다."
+msgid "%s undergoes a freakish metamorphosis and turns into %s."
+msgstr "%s{이/가} 기괴한 변이를 겪고 %s{으로/로} 변했다."
+
+# [조합 메시지] mhitm.c - 몬스터가 변신 (간결)
+# 영어 조합: "The orc turns into a kobold."
+# 한국어 조합: "오크가 코볼드로 변했다."
+#, c-format
+msgid "%s turns into %s."
+msgstr "%s{이/가} %s{으로/로} 변했다."
+
+# [조합 메시지] mhitm.c - 몬스터가 기괴한 변신 후 사라짐
+# 영어 조합: "The orc undergoes a freakish metamorphosis and disappears."
+# 한국어 조합: "오크가 기괴한 변이를 겪고 사라졌다."
+#, c-format
+msgid "%s undergoes a freakish metamorphosis and disappears."
+msgstr "%s{이/가} 기괴한 변이를 겪고 사라졌다."
+
+# [조합 메시지] mhitm.c - 몬스터가 기괴한 변이를 겪음 (보이지 않음)
+# 영어 조합: "It undergoes a freakish metamorphosis."
+# 한국어 조합: "그것이 기괴한 변이를 겪었다."
+#, c-format
+msgid "%s undergoes a freakish metamorphosis."
+msgstr "%s{이/가} 기괴한 변이를 겪었다."
 
 # ============================================================
 # music.c - 자물쇠 소리
@@ -9617,14 +9655,19 @@ msgstr "%2$s{을/를} %1$s!"
 
 # [조합 메시지] polyself.c:802 - 당신이 변신함
 # 조합 요소:
-#   %1$s = "turn into"→"변했다" / "feel like"→"된 것 같다" (동사구)
+#   %1$s = "turn into"→"변했다" / "feel like"→"된 기분이다" (동사구)
 #   %2$s = "a wolf"→"늑대" 등 (변신 대상)
 # 영어 조합: "You turn into a wolf!" / "You feel like a new wolf!"
-# 한국어 조합: "당신은 늑대(으)로 변했다!" / "당신은 새 늑대가 된 것 같다!"
+# 한국어 조합: "당신은 늑대로 변했다!" / "당신은 새로운 늑대로 된 기분이다!"
 #, c-format
 msgctxt "you_poly"
 msgid "%s %s!"
-msgstr "%2$s %1$s!"
+msgstr "%2$s{으로/로} %1$s!"
+
+# polyself.c:802 - "feel like" 동사구
+# you_poly 패턴에서 %1$s로 사용됨: "새 늑대{으로/로} 된 기분이다!"
+msgid "feel like"
+msgstr "된 기분이다"
 
 # [조합 메시지] trap.c:1912 - 당신이 함정에 빠짐
 # 조합 요소:

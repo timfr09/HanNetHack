@@ -1118,7 +1118,6 @@ mdamagem(
 int
 mon_poly(struct monst *magr, struct monst *mdef, int dmg)
 {
-    static const char freaky[] = " undergoes a freakish metamorphosis";
     struct permonst *oldform = mdef->data;
 
     if (mdef == &gy.youmonst) {
@@ -1173,15 +1172,23 @@ mon_poly(struct monst *magr, struct monst *mdef, int dmg)
                 boolean was_seen = !!strcmpi("It", Before),
                         verbosely = flags.verbose || !was_seen;
 
-                if (canspotmon(mdef))
-                    pline(_("%s%s%s turns into %s."), Before,
-                          verbosely ? freaky : "", verbosely ? " and" : "",
-                          x_monnam(mdef, ARTICLE_A, (char *) 0,
-                                   (SUPPRESS_NAME | SUPPRESS_IT
-                                    | SUPPRESS_INVISIBLE), FALSE));
-                else if (was_seen || magr == &gy.youmonst)
-                    pline(_("%s%s%s."), Before, freaky,
-                          !was_seen ? "" : " and disappears");
+                if (canspotmon(mdef)) {
+                    char *after = x_monnam(mdef, ARTICLE_A, (char *) 0,
+                                           (SUPPRESS_NAME | SUPPRESS_IT
+                                            | SUPPRESS_INVISIBLE), FALSE);
+                    if (verbosely)
+                        pline(_("%s undergoes a freakish metamorphosis and turns into %s."),
+                              Before, after);
+                    else
+                        pline(_("%s turns into %s."), Before, after);
+                } else if (was_seen || magr == &gy.youmonst) {
+                    if (was_seen)
+                        pline(_("%s undergoes a freakish metamorphosis and disappears."),
+                              Before);
+                    else
+                        pline(_("%s undergoes a freakish metamorphosis."),
+                              Before);
+                }
             }
             dmg = 0;
             if (can_teleport(magr->data)) {

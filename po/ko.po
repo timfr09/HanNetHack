@@ -3465,24 +3465,22 @@ msgstr "%s{을/를} 당신의 %s손에 맞게 조정한다."
 msgid "Burdened"
 msgstr ""
 
+# 짐 상태 (Encumbrance Status) - 상태 표시줄에 표시
 #: ../src/botl.c:15
-#, fuzzy
 msgid "Stressed"
-msgstr "크게 죄를 지었다"
+msgstr "무리"
 
 #: ../src/botl.c:16
-#, fuzzy
 msgid "Strained"
-msgstr "얼룩진"
+msgstr "과부하"
 
 #: ../src/botl.c:16
 msgid "Overtaxed"
-msgstr ""
+msgstr "초과부하"
 
 #: ../src/botl.c:16
-#, fuzzy
 msgid "Overloaded"
-msgstr "많이 바랬다"
+msgstr "과적"
 
 # ============================================================
 # 상태 표시줄 약어 (Status Line Abbreviations)
@@ -7480,14 +7478,12 @@ msgid "Adri"
 msgstr ""
 
 #: ../src/do_name.c:762
-#, fuzzy
 msgid "Andries"
-msgstr "사제"
+msgstr ""
 
 #: ../src/do_name.c:762
-#, fuzzy
 msgid "Andreas"
-msgstr "감소"
+msgstr ""
 
 #: ../src/do_name.c:762
 msgid "Bert"
@@ -7502,14 +7498,12 @@ msgid "Dirk"
 msgstr ""
 
 #: ../src/do_name.c:763
-#, fuzzy
 msgid "Emile"
-msgstr "미소 짓다"
+msgstr ""
 
 #: ../src/do_name.c:763
-#, fuzzy
 msgid "Frans"
-msgstr "랑쇠르"
+msgstr ""
 
 #: ../src/do_name.c:764
 msgid "Fred"
@@ -7521,33 +7515,28 @@ msgstr ""
 
 #
 #: ../src/do_name.c:764
-#, fuzzy
 msgid "Hether"
-msgstr "가죽"
+msgstr ""
 
 #: ../src/do_name.c:764
-#, fuzzy
 msgid "Jay"
-msgstr "광선"
+msgstr ""
 
 #: ../src/do_name.c:765
 msgid "John"
 msgstr ""
 
 #: ../src/do_name.c:765
-#, fuzzy
 msgid "Jon"
-msgstr "위"
+msgstr ""
 
 #: ../src/do_name.c:765
-#, fuzzy
 msgid "Karnov"
-msgstr "주술사 카르노프"
+msgstr ""
 
 #: ../src/do_name.c:765
-#, fuzzy
 msgid "Kay"
-msgstr "광선"
+msgstr ""
 
 #: ../src/do_name.c:766
 msgid "Kenny"
@@ -7563,9 +7552,8 @@ msgstr ""
 
 # 방어구 - 방패
 #: ../src/do_name.c:766
-#, fuzzy
 msgid "Michiel"
-msgstr "방패"
+msgstr ""
 
 #: ../src/do_name.c:767
 msgid "Mike"
@@ -7580,14 +7568,12 @@ msgid "Robert"
 msgstr ""
 
 #: ../src/do_name.c:767
-#, fuzzy
 msgid "Ron"
-msgstr "위"
+msgstr ""
 
 #: ../src/do_name.c:768
-#, fuzzy
 msgid "Tom"
-msgstr "좀"
+msgstr ""
 
 #: ../src/do_name.c:768
 msgid "Wilmar"
@@ -7689,86 +7675,79 @@ msgstr "그녀 자신"
 msgid "bogon"
 msgstr "알 수 없는 괴물"
 
+# ============================================================
+# 환각 색상 (Hallucination Colors) - hcolors[]
+# 불가능한/터무니없는 색상 조합
+# ============================================================
 #: ../src/do_name.c:1463
-#, fuzzy
 msgid "ultraviolet"
-msgstr "제비꽃색"
+msgstr "자외선"
 
 #: ../src/do_name.c:1463 ../src/mthrowu.c:43
 msgid "infrared"
-msgstr ""
+msgstr "적외선"
 
 #: ../src/do_name.c:1463
-#, fuzzy
 msgid "bluish-orange"
-msgstr "오렌지"
+msgstr "푸르스름한 주황"
 
 #: ../src/do_name.c:1464
 msgid "reddish-green"
-msgstr ""
+msgstr "붉으스름한 초록"
 
 #: ../src/do_name.c:1464
-#, fuzzy
 msgid "dark white"
-msgstr "흰색"
+msgstr "어두운 흰색"
 
 #: ../src/do_name.c:1465
-#, fuzzy
 msgid "light black"
-msgstr "하늘색"
+msgstr "밝은 검정"
 
 #: ../src/do_name.c:1465
-#, fuzzy
 msgid "sky blue-pink"
-msgstr "하늘색"
+msgstr "하늘색-분홍"
 
 #: ../src/do_name.c:1465
 msgid "pinkish-cyan"
-msgstr ""
+msgstr "분홍빛 청록"
 
 #: ../src/do_name.c:1466
-#, fuzzy
 msgid "indigo-chartreuse"
-msgstr "남색 연두"
+msgstr "남색-연두"
 
-# 조합: "a large damage penalty" → "큰 피해 페널티"
+# ============================================================
+# 환각 맛 (Hallucination Tastes) - hliquids[]
+# ============================================================
 #: ../src/do_name.c:1467
-#, fuzzy
 msgid "salty"
-msgstr "페널티"
+msgstr "짠"
 
-# 유혹 대사 - 여성 칭호
 #: ../src/do_name.c:1467
-#, fuzzy
 msgid "sweet"
-msgstr "사랑스러운 여인"
+msgstr "달콤한"
 
 #: ../src/do_name.c:1467 ../src/potion.c:1295
 msgid "sour"
 msgstr "신"
 
-#
 #: ../src/do_name.c:1467
-#, fuzzy
 msgid "bitter"
-msgstr "더 좋은"
+msgstr "쓴"
 
 #: ../src/do_name.c:1468
 msgid "umami"
-msgstr ""
+msgstr "감칠맛"
 
+# ============================================================
+# 환각 무늬 (Hallucination Patterns)
+# ============================================================
 #: ../src/do_name.c:1469
-#, fuzzy
 msgid "striped"
-msgstr "수리검"
+msgstr "줄무늬"
 
-# ============================================================
-# 사제 계급 (Priest Ranks)
-# ============================================================
 #: ../src/do_name.c:1469
-#, fuzzy
 msgid "spiral"
-msgstr "지망생"
+msgstr "나선형"
 
 #: ../src/do_name.c:1469 ../src/obj_descr_i18n.c:33
 msgid "swirly"
@@ -7800,222 +7779,201 @@ msgstr ""
 
 #: ../src/do_name.c:1471
 msgid "polka-dotted"
-msgstr ""
+msgstr "물방울 무늬"
 
 #: ../src/do_name.c:1472 ../src/obj_descr_i18n.c:102
 msgid "square"
 msgstr "네모난"
 
 #: ../src/do_name.c:1472
-#, fuzzy
 msgid "round"
-msgstr "땅"
+msgstr "둥근"
 
 #: ../src/do_name.c:1473 ../src/obj_descr_i18n.c:97
 msgid "triangular"
 msgstr "삼각형"
 
+# 와인/음료 색상
 #: ../src/do_name.c:1473
-#, fuzzy
 msgid "cabernet"
-msgstr "세이버"
+msgstr "카베르네"
 
 #: ../src/do_name.c:1473
-#, fuzzy
 msgid "sangria"
 msgstr "상그리아"
 
 #: ../src/do_name.c:1473
 msgid "fuchsia"
-msgstr ""
+msgstr "자홍색"
 
 #: ../src/do_name.c:1474
-#, fuzzy
 msgid "wisteria"
-msgstr "자매"
+msgstr "등나무색"
 
 #: ../src/do_name.c:1474
 msgid "lemon-lime"
-msgstr ""
+msgstr "레몬-라임"
 
 #: ../src/do_name.c:1475
 msgid "strawberry-banana"
-msgstr ""
+msgstr "딸기-바나나"
 
 #: ../src/do_name.c:1475
 msgid "peppermint"
-msgstr ""
+msgstr "페퍼민트"
 
 #: ../src/do_name.c:1475
-#, fuzzy
 msgid "romantic"
-msgstr "어릿광대"
+msgstr "로맨틱한"
 
 #: ../src/do_name.c:1476
-#, fuzzy
 msgid "incandescent"
-msgstr "주문을 외우다"
+msgstr "백열의"
 
+# 디스크월드 참조 - 마법의 여덟 번째 색
 #: ../src/do_name.c:1477
 msgid "octarine"
-msgstr ""
+msgstr "옥타린"
 
 #: ../src/do_name.c:1478
 msgid "excitingly dull"
-msgstr ""
+msgstr "흥미진진하게 칙칙한"
 
 #: ../src/do_name.c:1478
 msgid "mauve"
-msgstr ""
+msgstr "연보라"
 
 #: ../src/do_name.c:1478
-#, fuzzy
 msgid "electric"
-msgstr "전기 뱀장어"
+msgstr "전기빛"
 
 #: ../src/do_name.c:1479
 msgid "neon"
-msgstr ""
+msgstr "네온"
 
 #: ../src/do_name.c:1479
-#, fuzzy
 msgid "fluorescent"
-msgstr "숲 켄타우로스"
+msgstr "형광"
 
 #: ../src/do_name.c:1479
-#, fuzzy
 msgid "phosphorescent"
-msgstr "포자"
+msgstr "인광"
 
 #: ../src/do_name.c:1480
 msgid "translucent"
-msgstr ""
+msgstr "반투명"
 
 #: ../src/do_name.c:1480
 msgid "opaque"
-msgstr ""
+msgstr "불투명"
 
 #: ../src/do_name.c:1481
 msgid "psychedelic"
-msgstr ""
+msgstr "사이키델릭"
 
 #: ../src/do_name.c:1481
-#, fuzzy
 msgid "iridescent"
-msgstr "삼지창"
+msgstr "무지개빛"
 
 #: ../src/do_name.c:1481
 msgid "rainbow-colored"
-msgstr ""
+msgstr "무지개색"
 
 #: ../src/do_name.c:1482
-#, fuzzy
 msgid "polychromatic"
-msgstr "매력적인"
+msgstr "다색의"
 
 #: ../src/do_name.c:1483 ../src/do_name.c:1509
 msgid "colorless"
 msgstr "무색의"
 
+# 촘스키 언어학 참조: "Colorless green ideas sleep furiously"
 #: ../src/do_name.c:1483
-#, fuzzy
 msgid "colorless green"
-msgstr "무색의"
+msgstr "무색의 초록"
 
+# ============================================================
+# 환각 형용사 (Hallucination Adjectives) - 소리/느낌
+# ============================================================
 #: ../src/do_name.c:1484
 msgid "dancing"
-msgstr ""
+msgstr "춤추는"
 
-# bird_parts
 #: ../src/do_name.c:1484
-#, fuzzy
 msgid "singing"
-msgstr "휘두르는 중"
+msgstr "노래하는"
 
 #: ../src/do_name.c:1484
-#, fuzzy
 msgid "loving"
 msgstr "사랑하는"
 
 #: ../src/do_name.c:1484
-#, fuzzy
 msgid "loudy"
-msgstr "흐린"
+msgstr "시끄러운"
 
 #: ../src/do_name.c:1485
 msgid "noisy"
-msgstr ""
+msgstr "떠들썩한"
 
 #: ../src/do_name.c:1485
-#, fuzzy
 msgid "clattery"
 msgstr "덜그럭거리는"
 
-# 묵시록의 네 기사
 #: ../src/do_name.c:1485
-#, fuzzy
 msgid "silent"
-msgstr "역병"
+msgstr "조용한"
 
+# ============================================================
+# 환각 색상 (Hallucination Colors) - 만들어진 색상
+# ============================================================
 #: ../src/do_name.c:1486
-#, fuzzy
 msgid "apocyan"
-msgstr "청록색"
+msgstr "아포시안"
 
-# 적외선 시야 - 어둠 속에서 열기로 생물을 볼 수 있음
 #: ../src/do_name.c:1486
-#, fuzzy
 msgid "infra-pink"
-msgstr "적외선 시야"
+msgstr "적외분홍"
 
-# 조합 패턴: 트롤/몬스터 재생 메시지 (troll/monster regeneration)
 #: ../src/do_name.c:1486
-#, fuzzy
 msgid "opalescent"
-msgstr "합쳐지다"
+msgstr "오팔빛"
 
 #: ../src/do_name.c:1487
-#, fuzzy
 msgid "violant"
-msgstr "위반했다"
+msgstr "바이올란트"
 
 #: ../src/do_name.c:1487
-#, fuzzy
 msgid "tuneless"
-msgstr "축복 제거"
+msgstr "음조 없는"
 
+# 안료/물감 색상명
 #: ../src/do_name.c:1488
-#, fuzzy
 msgid "viridian"
-msgstr "숨어 있음"
+msgstr "비리디안"
 
 #: ../src/do_name.c:1488
 msgid "aureolin"
-msgstr ""
+msgstr "아우레올린"
 
 #: ../src/do_name.c:1488
 msgid "cinnabar"
-msgstr ""
+msgstr "진사"
 
 #: ../src/do_name.c:1488
 msgid "purpurin"
-msgstr ""
+msgstr "퍼퓨린"
 
 #: ../src/do_name.c:1489
 msgid "gamboge"
-msgstr ""
+msgstr "감보지"
 
-# stairs.c translations
 #: ../src/do_name.c:1489
-#, fuzzy
 msgid "madder"
-msgstr "사다리"
+msgstr "꼭두서니"
 
-# 마법사 모욕어: 비열한 하인
 #: ../src/do_name.c:1490
-#, fuzzy
 msgid "bistre"
-msgstr "비열한 놈"
+msgstr "비스터"
 
 #: ../src/do_name.c:1490
 msgid "ecru"
@@ -16730,20 +16688,20 @@ msgid "levitating, at will"
 msgstr "의지에 따라 부유 중"
 
 #: ../src/insight.c:999
-#, fuzzy
+
 msgctxt "insight"
 msgid "levitating"
 msgstr "부유 중"
 
 #
 #: ../src/insight.c:1001
-#, fuzzy
+
 msgctxt "insight"
 msgid "flying"
 msgstr "비행 중"
 
 #: ../src/insight.c:1006
-#, fuzzy
+
 msgctxt "insight"
 msgid "swimming"
 msgstr "수영 중"
@@ -16812,20 +16770,20 @@ msgid "nauseated"
 msgstr "메스꺼움"
 
 #: ../src/insight.c:1067
-#, fuzzy
+
 msgctxt "insight"
 msgid "stunned"
 msgstr "기절한"
 
 #
 #: ../src/insight.c:1069
-#, fuzzy
+
 msgctxt "insight"
 msgid "confused"
 msgstr "혼란스러운"
 
 #: ../src/insight.c:1071
-#, fuzzy
+
 msgctxt "insight"
 msgid "hallucinating"
 msgstr "환각 중"
@@ -17259,7 +17217,7 @@ msgstr "당신의 성향은 "
 
 # invulnerable = 무적/불사 상태 (데미지를 받지 않음)
 #: ../src/insight.c:1551
-#, fuzzy
+
 msgctxt "insight"
 msgid "invulnerable"
 msgstr "무적"
@@ -17404,7 +17362,7 @@ msgid " invisible if not blind"
 msgstr "눈이 멀지 않으면 투명한 것을 "
 
 #: ../src/insight.c:1612
-#, fuzzy
+
 msgctxt "insight"
 msgid "telepathic"
 msgstr "텔레파시"
@@ -17461,7 +17419,7 @@ msgid "automatic searching"
 msgstr "자동 탐색"
 
 #: ../src/insight.c:1645
-#, fuzzy
+
 msgctxt "insight"
 msgid "clairvoyant"
 msgstr "천리안"
@@ -17490,7 +17448,7 @@ msgstr "천리안이 "
 
 # 적외선 시야 - 어둠 속에서 열기로 생물을 볼 수 있음
 #: ../src/insight.c:1655
-#, fuzzy
+
 msgctxt "insight"
 msgid "infravision"
 msgstr "적외선 시야"
@@ -17530,7 +17488,7 @@ msgid "%scharismatic"
 msgstr "%s매력적"
 
 #: ../src/insight.c:1693
-#, fuzzy
+
 msgctxt "insight"
 msgid "invisible"
 msgstr "보이지 않는"
@@ -17544,13 +17502,13 @@ msgid "visible"
 msgstr "보이는"
 
 #: ../src/insight.c:1701
-#, fuzzy
+
 msgctxt "insight"
 msgid "displaced"
 msgstr "변위"
 
 #: ../src/insight.c:1703
-#, fuzzy
+
 msgctxt "insight"
 msgid "stealthy"
 msgstr "은밀한"
@@ -17896,13 +17854,13 @@ msgid "harmed by silver"
 msgstr "은에 피해받음"
 
 #: ../src/insight.c:1932
-#, fuzzy
+
 msgctxt "insight"
 msgid "very fast"
 msgstr "매우 빠름"
 
 #: ../src/insight.c:1932
-#, fuzzy
+
 msgctxt "insight"
 msgid "fast"
 msgstr "빠름"

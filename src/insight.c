@@ -1966,7 +1966,8 @@ attributes_enlightenment(
                 u.ugangr > 6 ? _("extremely ") : u.ugangr > 3 ? _("very ") : "");
         if (wizard)
             Sprintf(eos(buf), " (%d)", u.ugangr);
-        enl_msg(u_gname(), _(" is"), _(" was"), buf, "");
+        /* C_() context separates from candle " is" which needs subject marker */
+        enl_msg(u_gname(), C_("god_anger", " is"), C_("god_anger", " was"), buf, "");
     } else {
         /*
          * We need to suppress this when the game is over, because death

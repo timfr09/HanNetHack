@@ -16355,25 +16355,24 @@ msgstr "변위"
 
 # ============================================================
 # 은신 능력 (Stealth)
-# 조합: enl_msg(You_, "would be", "would have been", " stealthy if not mounted", "")
+# 조합: enl_msg(You_, "would be", "would have been", " stealthy%s", "")
+#       where %s = "" or " if not mounted"
 # 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
 #
-# 영어 (현재): "You would be stealthy if not mounted."
-# 영어 (과거): "You would have been stealthy if not mounted."
-# 한국어 (현재): "당신은 은밀하게 (탑승 중이 아닐 때) 될 것이다."
-# 한국어 (과거): "당신은 은밀하게 (탑승 중이 아닐 때) 되었을 것이다."
+# 영어: "You would be stealthy if not mounted."
+# 한국어: "당신은 탑승 중이 아니라면 은밀하게 될 것이다."
 #
-# 참고: suffix 앞 공백 제거, %s 뒤 공백 추가 (verb와 분리)
+# 참고: 조건문을 suffix 앞쪽으로 이동하여 자연스러운 어순
 #       "would be"/"would have been"은 life saved 패턴과 공유됨
 # ============================================================
 #: ../src/insight.c:1661
 #, c-format
 msgid " stealthy%s"
-msgstr "은밀하게%s "
+msgstr "%s은밀하게 "
 
 #: ../src/insight.c:1662
 msgid " if not mounted"
-msgstr " (탑승 중이 아닐 때)"
+msgstr "탑승 중이 아니라면 "
 
 #: ../src/insight.c:1663
 msgid "would be"
@@ -16434,19 +16433,20 @@ msgstr "순간이동 제어"
 
 # ============================================================
 # 공중 부양 (Levitation)
-# 조합: enl_msg(You_, "would levitate", ..., " if not trapped", "")
+# 조합: Sprintf(buf, "%s%s%s", trapped?, and?, terrain?)
+#       enl_msg(You_, "would levitate", ..., buf, "")
 # 영어: "You would levitate if not trapped."
-# 한국어: "당신은 (함정에 안 걸렸으면) 부양할 것이다."
-# suffix 앞 공백 제거, 뒤 공백 추가
+# 한국어: "당신은 함정에 안 걸렸다면 부양할 것이다."
+# suffix에 조건 포함, 자연스러운 어순
 # ============================================================
 #: ../src/insight.c:1691
 msgid " if not trapped"
-msgstr "(함정에 안 걸렸으면) "
+msgstr "함정에 안 걸렸다면 "
 
 # 주변 환경이 허락할 경우 (예: 천장이 낮지 않을 때)
 #: ../src/insight.c:1693 ../src/insight.c:1718
 msgid " if surroundings permitted"
-msgstr " (주변 환경이 허락하면)"
+msgstr "주변 환경이 허락한다면 "
 
 #: ../src/insight.c:1694
 msgid "would levitate"
@@ -16810,22 +16810,26 @@ msgstr "행운은"
 
 # ============================================================
 # 신의 분노 상태 (God's Anger)
-# 조합: enl_msg(u_gname(), " is", " was", " %sangry with you", "")
-# 포맷: " %1$s%3$s%2$s%4$s." → prefix + suffix + verb + ps
+# 조합: enl_msg(u_gname(), C_("god_anger", " is"), C_("god_anger", " was"), buf, "")
+# 포맷: " %1$s%3$s%2$s%4$s." → prefix(신이름) + suffix + verb(​) + ps
 #
 # 영어: "Anu is extremely angry with you."
-# 한국어 (이상적): "아누는 당신에게 극도로 화가 나 있다."
-# 한국어 (현재): "아누 당신에게 극도로 화가 나 있다 이다."
+# 한국어: "아누{은/는} 당신에게 극도로 화가 나 있다."
 #
-# 문제: " is"가 candle 메시지("촛불이 짧아지고 있다")에서 주격조사로 사용되어
-#       제로너비공백이나 "이다"로 변경 불가. suffix에 서술어를 포함하여 처리.
+# C_() 컨텍스트로 candle 메시지의 " is"(주격조사)와 분리됨
+# suffix 앞에 {은/는} 추가하여 신 이름에 조사 적용
 # ============================================================
 #: ../src/insight.c:1921
 #, c-format
 msgid " %sangry with you"
-msgstr " 당신에게 %s화가 나 있다"
+msgstr "{은/는} 당신에게 %s화가 나 있다"
 
-#: ../src/insight.c:1925
+# god_anger 컨텍스트: suffix에 서술어 포함되므로 제로너비공백
+msgctxt "god_anger"
+msgid " is"
+msgstr "​"
+
+msgctxt "god_anger"
 msgid " was"
 msgstr "​"
 

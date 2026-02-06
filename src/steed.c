@@ -427,7 +427,7 @@ kick_steed(void)
             else
                 /* if hallucinating, might yield "He rouses herself" or
                    "She rouses himself" */
-                pline(_("%s!"), monverbself(u.usteed, He, "rouse", (char *) 0));
+                pline(_("%s!"), monverbself(u.usteed, He, _("rouse"), (char *) 0));
         } else
             pline(_("%s does not respond."), He);
         return;
@@ -594,7 +594,7 @@ dismount_steed(
                    * also affects u_locomotion() */
     ufly = Flying ? TRUE : FALSE;
     ulev = Levitation ? TRUE : FALSE;
-    verb = u_locomotion("fall"); /* only used for _FELL and _KNOCKED */
+    verb = u_locomotion(_("fall")); /* only used for _FELL and _KNOCKED */
     u.usteed = mtmp;
 
     /* Check the reason for dismounting */

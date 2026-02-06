@@ -4660,7 +4660,7 @@ mhitm_ad_sedu(
                 if (canseemon(magr))
                     pline_mon(magr, _("%s tries to %s away with %s."),
                               Monnam(magr),
-                              locomotion(magr->data, "run"), buf);
+                              locomotion(magr->data, _("run")), buf);
             }
             monflee(magr, 0, FALSE, FALSE);
             mhm->hitflags = M_ATTK_AGR_DONE; /* return 3??? */

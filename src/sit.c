@@ -514,9 +514,9 @@ dosit(void)
             /* splitting--or failing to do so--protects gear from the water */
         } else {
             if (!rn2(10) && uarm)
-                (void) water_damage(uarm, "armor", TRUE);
+                (void) water_damage(uarm, _("armor"), TRUE);
             if (!rn2(10) && uarmf && uarmf->otyp != WATER_WALKING_BOOTS)
-                (void) water_damage(uarm, "armor", TRUE);
+                (void) water_damage(uarm, _("armor"), TRUE);
         }
     } else if (IS_SINK(typ)) {
         You(_("sit on the %s."), _(defsyms[S_sink].explanation));

@@ -5100,7 +5100,7 @@ dotravel(void)
         iflags.getloc_filter = gfilt;
     } else {
         pline(_("Where do you want to travel to?"));
-        if (getpos(&cc, TRUE, "the desired destination") < 0) {
+        if (getpos(&cc, TRUE, _("the desired destination")) < 0) {
             /* user pressed ESC */
             iflags.getloc_travelmode = FALSE;
             return ECMD_CANCEL;

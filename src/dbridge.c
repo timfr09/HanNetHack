@@ -903,7 +903,7 @@ destroy_drawbridge(coordxy x, coordxy y)
         lev1->drawbridgemask = 0;
         if ((otmp2 = sobj_at(BOULDER, x, y)) != 0) {
             obj_extract_self(otmp2);
-            (void) flooreffects(otmp2, x, y, "fall");
+            (void) flooreffects(otmp2, x, y, _("fall"));
         }
     } else {
         /* no moat beneath */

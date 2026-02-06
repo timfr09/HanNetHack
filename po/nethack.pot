@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-06 20:51+0900\n"
+"POT-Creation-Date: 2026-02-06 22:52+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-06 20:51\n"
+"POT-Creation-Date: 2026-02-06 22:52\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -256,16 +256,16 @@ msgstr ""
 msgid "is"
 msgstr ""
 
-#: ../src/apply.c:279 ../src/apply.c:438 ../src/apply.c:1349
-#: ../src/apply.c:1359 ../src/apply.c:2645 ../src/apply.c:2768
-#: ../src/artifact.c:969 ../src/artifact.c:1429 ../src/artifact.c:2115
-#: ../src/artifact.c:2188 ../src/detect.c:1224 ../src/do.c:871 ../src/do.c:2411
-#: ../src/eat.c:3692 ../src/engrave.c:829 ../src/insight.c:1442
-#: ../src/insight.c:1507 ../src/invent.c:3766 ../src/invent.c:4240
-#: ../src/invent.c:5516 ../src/mon.c:5743 ../src/pickup.c:1696
-#: ../src/pickup.c:2586 ../src/pickup.c:2977 ../src/pickup.c:3649
-#: ../src/potion.c:2655 ../src/potion.c:2689 ../src/pray.c:1179
-#: ../src/read.c:1145 ../src/read.c:1598 ../src/steal.c:799
+#: ../src/apply.c:279 ../src/apply.c:438 ../src/apply.c:1123
+#: ../src/apply.c:1349 ../src/apply.c:1359 ../src/apply.c:2645
+#: ../src/apply.c:2768 ../src/artifact.c:969 ../src/artifact.c:1429
+#: ../src/artifact.c:2115 ../src/artifact.c:2188 ../src/detect.c:1224
+#: ../src/do.c:871 ../src/do.c:2411 ../src/eat.c:3692 ../src/engrave.c:829
+#: ../src/insight.c:1442 ../src/insight.c:1507 ../src/invent.c:3766
+#: ../src/invent.c:4240 ../src/invent.c:5516 ../src/mon.c:5743
+#: ../src/pickup.c:1696 ../src/pickup.c:2586 ../src/pickup.c:2977
+#: ../src/pickup.c:3649 ../src/potion.c:2655 ../src/potion.c:2689
+#: ../src/pray.c:1179 ../src/read.c:1145 ../src/read.c:1598 ../src/steal.c:799
 #: ../src/timeout.c:341 ../src/timeout.c:1614 ../src/trap.c:275
 #: ../src/trap.c:284 ../src/trap.c:390 ../src/trap.c:393 ../src/trap.c:395
 #: ../src/trap.c:5847 ../src/uhitm.c:1897 ../src/uhitm.c:6214
@@ -378,10 +378,11 @@ msgid "invisible monster must have moved."
 msgstr ""
 
 #: ../src/apply.c:455 ../src/detect.c:1754 ../src/dig.c:537 ../src/dig.c:549
-#: ../src/dig.c:555 ../src/dig.c:1397 ../src/hack.c:685 ../src/hack.c:700
-#: ../src/lock.c:123 ../src/objnam.c:3851 ../src/objnam.c:3856
+#: ../src/dig.c:555 ../src/dig.c:1397 ../src/dokick.c:945 ../src/dokick.c:994
+#: ../src/hack.c:685 ../src/hack.c:700 ../src/lock.c:123 ../src/lock.c:144
+#: ../src/lock.c:907 ../src/objnam.c:3851 ../src/objnam.c:3856
 #: ../src/pager.c:2355 ../src/shk.c:5087 ../src/shk.c:5091 ../src/shk.c:5098
-#: ../src/shk.c:5102
+#: ../src/shk.c:5102 ../src/trap.c:6004
 msgid "door"
 msgstr ""
 
@@ -870,6 +871,10 @@ msgstr ""
 #: ../src/apply.c:1154
 #, c-format
 msgid "%s in your %s."
+msgstr ""
+
+#: ../src/apply.c:1155
+msgid "admire"
 msgstr ""
 
 #: ../src/apply.c:1157
@@ -1455,6 +1460,11 @@ msgstr ""
 msgid "Where do you want to jump?"
 msgstr ""
 
+#: ../src/apply.c:2060 ../src/read.c:1848 ../src/read.c:3039
+#: ../src/spell.c:1663 ../src/teleport.c:882
+msgid "the desired position"
+msgstr ""
+
 #: ../src/apply.c:2065
 #, c-format
 msgid "%s isn't capable of jumping in place."
@@ -1600,10 +1610,11 @@ msgid "%s %s from your pack!"
 msgstr ""
 
 #: ../src/apply.c:2449 ../src/apply.c:2452 ../src/apply.c:2481 ../src/do.c:828
-#: ../src/mkobj.c:2925 ../src/mthrowu.c:797 ../src/obj_descr_i18n.c:384
-#: ../src/pickup.c:3796 ../src/polyself.c:1305 ../src/pray.c:795
-#: ../src/timeout.c:1115 ../src/timeout.c:1118 ../src/timeout.c:1154
-#: ../src/weapon.c:772 ../src/wield.c:809 ../src/zap.c:6282
+#: ../src/mkobj.c:2925 ../src/mthrowu.c:797 ../src/mthrowu.c:934
+#: ../src/obj_descr_i18n.c:384 ../src/pickup.c:3796 ../src/polyself.c:1305
+#: ../src/pray.c:795 ../src/timeout.c:1115 ../src/timeout.c:1118
+#: ../src/timeout.c:1154 ../src/weapon.c:772 ../src/wield.c:809
+#: ../src/zap.c:6282
 msgid "drop"
 msgstr ""
 
@@ -2058,6 +2069,10 @@ msgstr ""
 msgid "Thump!  Your blow bounces harmlessly off the %s."
 msgstr ""
 
+#: ../src/apply.c:3463 ../src/apply.c:3755
+msgid "the spot to hit"
+msgstr ""
+
 #: ../src/apply.c:3474
 msgid "Don't know what to hit."
 msgstr ""
@@ -2072,6 +2087,16 @@ msgstr ""
 
 #: ../src/apply.c:3514
 msgid "Shkinng!"
+msgstr ""
+
+#: ../src/apply.c:3532 ../src/dig.c:548 ../src/dig.c:1238 ../src/sounds.c:1340
+#: ../src/trap.c:853
+msgid "statue"
+msgstr ""
+
+#: ../src/apply.c:3541 ../src/dig.c:549 ../src/dig.c:1238 ../src/hack.c:678
+#: ../src/hack.c:693
+msgid "boulder"
 msgstr ""
 
 #: ../src/apply.c:3547
@@ -2143,6 +2168,7 @@ msgid "an object on the %s"
 msgstr ""
 
 #: ../src/apply.c:3790 ../src/do_name.c:525 ../src/uhitm.c:6181
+#: ../src/wizcmds.c:261 ../src/wizcmds.c:505 ../src/wizcmds.c:903
 msgid "a monster"
 msgstr ""
 
@@ -2696,6 +2722,11 @@ msgstr ""
 msgid "weightless for a moment."
 msgstr ""
 
+#: ../src/artifact.c:1957
+#, c-format
+msgid "Suddenly %s out."
+msgstr ""
+
 #: ../src/artifact.c:2012
 #, c-format
 msgid "%s %s %s in a cloud of brimstone!"
@@ -2806,11 +2837,12 @@ msgstr ""
 msgid "%s to the %s."
 msgstr ""
 
-#: ../src/artifact.c:2585 ../src/ball.c:975 ../src/do_wear.c:3224
-#: ../src/dokick.c:644 ../src/dokick.c:775 ../src/dokick.c:1941
-#: ../src/dokick.c:1944 ../src/dothrow.c:1805 ../src/dothrow.c:2722
-#: ../src/hack.c:543 ../src/hack.c:559 ../src/mon.c:3607 ../src/polyself.c:1282
-#: ../src/read.c:2279 ../src/read.c:2352 ../src/steal.c:837
+#: ../src/artifact.c:2585 ../src/ball.c:975 ../src/dbridge.c:906
+#: ../src/do_wear.c:3224 ../src/dokick.c:644 ../src/dokick.c:775
+#: ../src/dokick.c:1941 ../src/dokick.c:1944 ../src/dothrow.c:1805
+#: ../src/dothrow.c:2722 ../src/hack.c:543 ../src/hack.c:559 ../src/mon.c:3320
+#: ../src/mon.c:3607 ../src/mthrowu.c:200 ../src/polyself.c:1282
+#: ../src/read.c:2279 ../src/read.c:2352 ../src/steal.c:837 ../src/steed.c:597
 #: ../src/teleport.c:2128 ../src/trap.c:706 ../src/trap.c:1890
 #: ../src/trap.c:3423 ../src/trap.c:3436 ../src/trap.c:5007
 msgid "fall"
@@ -4135,7 +4167,7 @@ msgstr ""
 msgid "rush"
 msgstr ""
 
-#: ../src/cmd.c:2401 ../src/cmd.c:2408 ../src/options.c:236
+#: ../src/cmd.c:2401 ../src/cmd.c:2408 ../src/options.c:236 ../src/uhitm.c:4663
 msgid "run"
 msgstr ""
 
@@ -4526,6 +4558,10 @@ msgstr ""
 
 #: ../src/cmd.c:5102
 msgid "Where do you want to travel to?"
+msgstr ""
+
+#: ../src/cmd.c:5103
+msgid "the desired destination"
 msgstr ""
 
 #: ../src/cmd.c:5121
@@ -5028,7 +5064,7 @@ msgstr ""
 msgid "%s your mind!"
 msgstr ""
 
-#: ../src/detect.c:1242 ../src/obj_descr_i18n.c:403
+#: ../src/detect.c:1242 ../src/muse.c:184 ../src/obj_descr_i18n.c:403
 msgid "zap"
 msgstr ""
 
@@ -5497,14 +5533,6 @@ msgstr ""
 #: ../src/dig.c:548 ../src/hack.c:682 ../src/hack.c:697 ../src/hack.c:712
 #: ../src/obj_descr_i18n.c:361 ../src/obj_descr_i18n.c:413
 msgid "rock"
-msgstr ""
-
-#: ../src/dig.c:548 ../src/dig.c:1238 ../src/sounds.c:1340 ../src/trap.c:853
-msgid "statue"
-msgstr ""
-
-#: ../src/dig.c:549 ../src/dig.c:1238 ../src/hack.c:678 ../src/hack.c:693
-msgid "boulder"
 msgstr ""
 
 #: ../src/dig.c:549 ../src/dig.c:1399 ../src/dungeon.c:3617 ../src/hack.c:650
@@ -6264,9 +6292,9 @@ msgstr ""
 msgid "%s %s on the altar."
 msgstr ""
 
-#: ../src/do.c:387 ../src/do_wear.c:1166 ../src/obj_descr_i18n.c:938
-#: ../src/pager.c:735 ../src/pager.c:787 ../src/pager.c:1435 ../src/pray.c:799
-#: ../src/trap.c:1912
+#: ../src/do.c:387 ../src/do_wear.c:1166 ../src/explode.c:909
+#: ../src/obj_descr_i18n.c:938 ../src/pager.c:735 ../src/pager.c:787
+#: ../src/pager.c:1435 ../src/pray.c:799 ../src/trap.c:1912
 msgid "land"
 msgstr ""
 
@@ -6577,8 +6605,8 @@ msgstr ""
 msgid "are held back by your pet!"
 msgstr ""
 
-#: ../src/do.c:1259 ../src/insight.c:1717 ../src/muse.c:1048 ../src/muse.c:1145
-#: ../src/muse.c:2494
+#: ../src/do.c:1259 ../src/insight.c:1717 ../src/mon.c:3366 ../src/muse.c:1048
+#: ../src/muse.c:1145 ../src/muse.c:2494 ../src/teleport.c:1056
 msgid "jump"
 msgstr ""
 
@@ -6694,6 +6722,10 @@ msgstr ""
 #: ../src/engrave.c:224 ../src/pray.c:573 ../src/timeout.c:1270
 #: ../src/trap.c:2935 ../src/uhitm.c:5338
 msgid "You"
+msgstr ""
+
+#: ../src/do.c:1763 ../src/trap.c:4132
+msgid "climb"
 msgstr ""
 
 #: ../src/do.c:1764
@@ -8038,7 +8070,8 @@ msgstr ""
 msgid "see yourself"
 msgstr ""
 
-#: ../src/do_wear.c:11 ../src/muse.c:2789 ../src/muse.c:2824
+#: ../src/do_wear.c:11 ../src/muse.c:2789 ../src/muse.c:2824 ../src/sit.c:517
+#: ../src/sit.c:519
 msgid "armor"
 msgstr ""
 
@@ -8046,7 +8079,8 @@ msgstr ""
 msgid "suit"
 msgstr ""
 
-#: ../src/do_wear.c:12 ../src/mhitu.c:2122
+#: ../src/do_wear.c:12 ../src/mhitu.c:2122 ../src/trap.c:156 ../src/trap.c:1648
+#: ../src/trap.c:1714
 msgid "shirt"
 msgstr ""
 
@@ -8055,11 +8089,12 @@ msgid "cloak"
 msgstr ""
 
 #: ../src/do_wear.c:13 ../src/mhitu.c:2021 ../src/mhitu.c:2052
-#: ../src/mhitu.c:2118 ../src/obj_descr_i18n.c:192
+#: ../src/mhitu.c:2118 ../src/obj_descr_i18n.c:192 ../src/trap.c:165
 msgid "gloves"
 msgstr ""
 
 #: ../src/do_wear.c:13 ../src/mhitu.c:2116 ../src/obj_descr_i18n.c:193
+#: ../src/trap.c:170
 msgid "boots"
 msgstr ""
 
@@ -8069,7 +8104,7 @@ msgstr ""
 
 #: ../src/do_wear.c:14 ../src/mhitu.c:2119 ../src/muse.c:2769
 #: ../src/muse.c:2807 ../src/obj_descr_i18n.c:190 ../src/objnam.c:730
-#: ../src/read.c:1149 ../src/read.c:1601
+#: ../src/read.c:1149 ../src/read.c:1601 ../src/trap.c:1622 ../src/trap.c:1683
 msgid "shield"
 msgstr ""
 
@@ -8997,9 +9032,9 @@ msgstr ""
 msgid "%s %s reluctantly %s %s."
 msgstr ""
 
-#: ../src/dogmove.c:1302 ../src/hack.c:2542 ../src/hack.c:2568
-#: ../src/teleport.c:1537 ../src/trap.c:1912 ../src/trap.c:2456
-#: ../src/trap.c:2974
+#: ../src/dogmove.c:1302 ../src/hack.c:397 ../src/hack.c:1898
+#: ../src/hack.c:2542 ../src/hack.c:2568 ../src/teleport.c:1537
+#: ../src/trap.c:1912 ../src/trap.c:2456 ../src/trap.c:2974
 msgid "step"
 msgstr ""
 
@@ -9386,6 +9421,14 @@ msgstr ""
 msgid "kick loose some ornamental coins and gems!"
 msgstr ""
 
+#: ../src/dokick.c:1076
+msgid "the altar"
+msgstr ""
+
+#: ../src/dokick.c:1090
+msgid "the fountain"
+msgstr ""
+
 #: ../src/dokick.c:1097
 msgid "metal boots"
 msgstr ""
@@ -9450,6 +9493,10 @@ msgstr ""
 #: ../src/dokick.c:1233
 #, c-format
 msgid "%s returns!"
+msgstr ""
+
+#: ../src/dokick.c:1233
+msgid "The dish washer"
 msgstr ""
 
 #: ../src/dokick.c:1272
@@ -10815,6 +10862,11 @@ msgstr ""
 #: ../src/eat.c:1457
 #, c-format
 msgid "%s meat"
+msgstr ""
+
+#: ../src/eat.c:1539 ../src/obj_descr_i18n.c:86 ../src/obj_descr_i18n.c:341
+#: ../src/potion.c:1475
+msgid "tin"
 msgstr ""
 
 #: ../src/eat.c:1550 ../src/potion.c:2805
@@ -12562,6 +12614,11 @@ msgstr ""
 msgid "%s gets dull."
 msgstr ""
 
+#: ../src/engrave.c:1384
+#, c-format
+msgid "You drop one %s!"
+msgstr ""
+
 #: ../src/engrave.c:1405
 msgid "marker dries out."
 msgstr ""
@@ -12623,6 +12680,10 @@ msgstr ""
 #: ../src/exper.c:350
 #, c-format
 msgid "Welcome %sto experience level %d."
+msgstr ""
+
+#: ../src/exper.c:351
+msgid "back "
 msgstr ""
 
 #: ../src/explode.c:149
@@ -14318,6 +14379,10 @@ msgstr ""
 
 #: ../src/hack.c:3586
 msgid "enter a leprechaun hall!"
+msgstr ""
+
+#: ../src/hack.c:3590
+msgid "Run"
 msgstr ""
 
 #: ../src/hack.c:3592
@@ -19079,6 +19144,10 @@ msgstr ""
 msgid "Catch!"
 msgstr ""
 
+#: ../src/mail.c:441
+msgid "Oops!"
+msgstr ""
+
 #: ../src/mail.c:455
 #, c-format
 msgid "Hark!  \"%s.\""
@@ -21162,6 +21231,21 @@ msgstr ""
 msgid "spill"
 msgstr ""
 
+#: ../src/mkobj.c:2897 ../src/zap.c:6284
+#, c-format
+msgid "Oops!  %s out of your reach!"
+msgstr ""
+
+#: ../src/mkobj.c:2902 ../src/zap.c:6288
+#, c-format
+msgid "Oops!  %s away from you!"
+msgstr ""
+
+#: ../src/mkobj.c:2903 ../src/zap.c:6290
+#, c-format
+msgid "Oops!  %s to the floor!"
+msgstr ""
+
 #: ../src/mkobj.c:2924 ../src/pickup.c:3795
 #, c-format
 msgid "%s %s to the %s."
@@ -21590,6 +21674,10 @@ msgstr ""
 #: ../src/mon.c:4775
 #, c-format
 msgid "hide under %s."
+msgstr ""
+
+#: ../src/mon.c:4787
+msgid "hide"
 msgstr ""
 
 #: ../src/mon.c:4789
@@ -24312,6 +24400,15 @@ msgstr ""
 msgid "accept %s gift in the spirit in which it was intended."
 msgstr ""
 
+#: ../src/mthrowu.c:539
+#, c-format
+msgid "You catch, but drop, %s."
+msgstr ""
+
+#: ../src/mthrowu.c:540
+msgid "You catch:"
+msgstr ""
+
 #: ../src/mthrowu.c:620
 #, c-format
 msgid "%s misfires!"
@@ -24487,6 +24584,10 @@ msgstr ""
 #: ../src/muse.c:216
 #, c-format
 msgid "a %s directed at"
+msgstr ""
+
+#: ../src/muse.c:218
+msgid "play"
 msgstr ""
 
 #: ../src/muse.c:225
@@ -24918,6 +25019,14 @@ msgstr ""
 #: ../src/muse.c:3101
 #, c-format
 msgid "%s %s %s %s fire trap!"
+msgstr ""
+
+#: ../src/muse.c:3111
+msgid "breath"
+msgstr ""
+
+#: ../src/muse.c:3111
+msgid "fire on"
 msgstr ""
 
 #: ../src/muse.c:3152
@@ -25648,10 +25757,6 @@ msgstr ""
 msgid "marble"
 msgstr ""
 
-#: ../src/obj_descr_i18n.c:86 ../src/obj_descr_i18n.c:341 ../src/potion.c:1475
-msgid "tin"
-msgstr ""
-
 #: ../src/obj_descr_i18n.c:87
 msgid "maple"
 msgstr ""
@@ -26315,7 +26420,7 @@ msgstr ""
 msgid "bow"
 msgstr ""
 
-#: ../src/obj_descr_i18n.c:284 ../src/obj_descr_i18n.c:415
+#: ../src/obj_descr_i18n.c:284 ../src/obj_descr_i18n.c:415 ../src/trap.c:1223
 msgid "arrow"
 msgstr ""
 
@@ -29082,6 +29187,10 @@ msgstr ""
 #: ../src/pager.c:2663
 #, c-format
 msgid "Ask about '&' or '?' to get more info.%s"
+msgstr ""
+
+#: ../src/pager.c:2665
+msgid "  (For ESC, type it twice.)"
 msgstr ""
 
 #: ../src/pager.c:2673
@@ -34372,10 +34481,6 @@ msgstr ""
 msgid "Where do you want to center the explosion?"
 msgstr ""
 
-#: ../src/read.c:1848 ../src/read.c:3039 ../src/teleport.c:882
-msgid "the desired position"
-msgstr ""
-
 #: ../src/read.c:1882
 msgid "rumbling."
 msgstr ""
@@ -36376,6 +36481,10 @@ msgstr ""
 msgid "Pay whom?"
 msgstr ""
 
+#: ../src/shk.c:1761
+msgid "the creature you want to pay"
+msgstr ""
+
 #: ../src/shk.c:1766
 msgid "Try again..."
 msgstr ""
@@ -37107,6 +37216,10 @@ msgstr ""
 #: ../src/shk.c:5026
 #, c-format
 msgid "%s %s, and %s your backpack!"
+msgstr ""
+
+#: ../src/shk.c:5027
+msgid "leap"
 msgstr ""
 
 #: ../src/shk.c:5029
@@ -39767,6 +39880,10 @@ msgstr ""
 msgid "%s stirs."
 msgstr ""
 
+#: ../src/steed.c:430
+msgid "rouse"
+msgstr ""
+
 #: ../src/steed.c:432
 #, c-format
 msgid "%s does not respond."
@@ -41258,6 +41375,10 @@ msgstr ""
 msgid "biting"
 msgstr ""
 
+#: ../src/trap.c:160
+msgid "wooden shield"
+msgstr ""
+
 #: ../src/trap.c:255
 msgid "Invalid erosion type in erode_obj"
 msgstr ""
@@ -42358,10 +42479,6 @@ msgstr ""
 #: ../src/trap.c:4132
 #, c-format
 msgid "%s from the %s."
-msgstr ""
-
-#: ../src/trap.c:4132
-msgid "climb"
 msgstr ""
 
 #: ../src/trap.c:4138
@@ -47469,21 +47586,6 @@ msgstr ""
 msgid "Nothing fitting that description exists in the game."
 msgstr ""
 
-#: ../src/zap.c:6284
-#, c-format
-msgid "Oops!  %s out of your reach!"
-msgstr ""
-
-#: ../src/zap.c:6288
-#, c-format
-msgid "Oops!  %s away from you!"
-msgstr ""
-
-#: ../src/zap.c:6290
-#, c-format
-msgid "Oops!  %s to the floor!"
-msgstr ""
-
 #: ../src/zap.c:6291
 #, c-format
 msgid "Careful! %s on the floor!"
@@ -47531,7 +47633,7 @@ msgstr ""
 msgid "Elbereth"
 msgstr ""
 
-#. text field (partial, has concatenation), angel_cuss array, demon_cuss array, text field
+#. angel_cuss array, text field, demon_cuss array, text field (partial, has concatenation)
 #: dat/quest.lua:77 dat/quest.lua:78 dat/quest.lua:79 dat/quest.lua:80
 #: dat/quest.lua:81 dat/quest.lua:82 dat/quest.lua:83 dat/quest.lua:84
 #: dat/quest.lua:85 dat/quest.lua:86 dat/quest.lua:87 dat/quest.lua:88

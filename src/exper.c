@@ -348,7 +348,7 @@ pluslvl(
         }
         ++u.ulevel;
         pline(_("Welcome %sto experience level %d."),
-              (u.ulevelmax < u.ulevel) ? "" : "back ",
+              (u.ulevelmax < u.ulevel) ? "" : _("back "),
               u.ulevel);
         if (u.ulevelmax < u.ulevel)
             u.ulevelmax = u.ulevel;

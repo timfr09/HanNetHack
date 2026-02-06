@@ -12421,3 +12421,181 @@ msgstr "부식"
 msgctxt "erosion_cause"
 msgid "impact"
 msgstr "충격"
+
+# ============================================================
+# Phase 1-2: u_locomotion()/locomotion()/stagger() 동사 래핑
+# ============================================================
+
+# u_locomotion() 기본값 - hack.c, do.c, steed.c, teleport.c, mon.c
+msgid "step"
+msgstr "걷다"
+
+msgid "Run"
+msgstr "달리다"
+
+msgid "climb"
+msgstr "오르다"
+
+# "fall" - 이미 존재 (10869줄), flooreffects 및 u_locomotion 공유
+
+# "jump" - 이미 존재하지만 insight 컨텍스트 ("점프할 수 있다")
+# locomotion 용으로도 사용됨 - msgmerge가 기존 항목 재사용
+
+# locomotion() 기본값 - shk.c, uhitm.c, mon.c
+msgid "leap"
+msgstr "뛰다"
+
+msgid "run"
+msgstr "달리다"
+
+msgid "hide"
+msgstr "숨다"
+
+# ============================================================
+# Phase 3: 직접 pline 인자 래핑
+# ============================================================
+
+# dokick.c - 제단/분수 차기
+msgid "the altar"
+msgstr "제단"
+
+msgid "the fountain"
+msgstr "분수"
+
+# dokick.c - 접시 세척기 (악마)
+msgid "The dish washer"
+msgstr "접시 세척기"
+
+# exper.c - 경험 레벨 복귀
+msgid "back "
+msgstr "다시 "
+
+# apply.c - 석상/바위 치기
+msgid "statue"
+msgstr "석상"
+
+msgid "boulder"
+msgstr "바위"
+
+# pager.c - ESC 안내 메시지
+msgid "  (For ESC, type it twice.)"
+msgstr "  (ESC를 입력하려면 두 번 누르세요.)"
+
+# ============================================================
+# Phase 4: hold_another_object() 포맷 문자열 래핑
+# ============================================================
+
+# engrave.c - 조각도구 떨어뜨림
+msgid "You drop one %s!"
+msgstr "%s 하나를 떨어뜨렸다!"
+
+# artifact.c - 아이템 갑자기 나타남
+msgid "Suddenly %s out."
+msgstr "갑자기 %s 나왔다."
+
+# mthrowu.c - 보석 잡기
+msgid "You catch, but drop, %s."
+msgstr "%s{을/를} 잡았지만 떨어뜨렸다."
+
+msgid "You catch:"
+msgstr "잡았다:"
+
+# mail.c - 우편 아이템 떨어뜨림
+msgid "Oops!"
+msgstr "이런!"
+
+# mkobj.c - 아이템 미끄러짐
+msgid "Oops!  %s out of your reach!"
+msgstr "이런! %s 손이 닿지 않는 곳으로 갔다!"
+
+msgid "Oops!  %s away from you!"
+msgstr "이런! %s 당신에게서 멀어졌다!"
+
+msgid "Oops!  %s to the floor!"
+msgstr "이런! %s 바닥으로 미끄러졌다!"
+
+# ============================================================
+# Phase 5: b_trapped(), flooreffects() 인자 일관성
+# ============================================================
+
+# b_trapped() - "door" 이미 존재 (8138줄)
+# b_trapped() - "tin" (eat.c)
+msgid "tin"
+msgstr "통조림"
+
+# flooreffects() - "land" (explode.c)
+msgid "land"
+msgstr "떨어지다"
+
+# flooreffects() - "drop" (mthrowu.c) - 이미 존재 (9705줄)
+
+# ============================================================
+# Phase 6: burn_dmg()/water_damage()/thitu() 인자 일관성
+# ============================================================
+
+# burn_dmg() - "shirt" (trap.c)
+msgid "shirt"
+msgstr "셔츠"
+
+# burn_dmg() - "wooden shield" (trap.c)
+msgid "wooden shield"
+msgstr "나무 방패"
+
+# "gloves" - 이미 존재 (9991줄)
+# "boots" - 이미 존재 (9994줄)
+# "shield" - 이미 존재 (7914줄)
+# "armor" - 이미 존재 (9983줄)
+
+# thitu() - "arrow" (trap.c)
+msgid "arrow"
+msgstr "화살"
+
+# ============================================================
+# Phase 7: monverbself() 동사 래핑
+# ============================================================
+
+# steed.c - 깨우기
+msgid "rouse"
+msgstr "정신을 차리다"
+
+# muse.c - 마법봉 사용
+msgid "zap"
+msgstr "쏘다"
+
+# muse.c - 악기 사용
+msgid "play"
+msgstr "연주하다"
+
+# muse.c - 브레스 공격
+msgid "breath"
+msgstr "숨을 내쉬다"
+
+msgid "fire on"
+msgstr "불을 뿜다"
+
+# apply.c - 거울 반사: "are" 이미 존재 (9829줄)
+
+msgid "admire"
+msgstr "감상하다"
+
+# ============================================================
+# Phase 8: getpos() 목표 문자열 래핑
+# ============================================================
+
+# wizcmds.c - 몬스터 선택
+msgid "a monster"
+msgstr "몬스터"
+
+# apply.c, spell.c - 위치 선택: "the desired position" 이미 존재 (10857줄)
+
+# cmd.c - 이동 목적지
+msgid "the desired destination"
+msgstr "원하는 목적지"
+
+# apply.c - 공격 지점
+msgid "the spot to hit"
+msgstr "공격할 지점"
+
+# shk.c - 지불 대상
+msgid "the creature you want to pay"
+msgstr "지불하고 싶은 대상"

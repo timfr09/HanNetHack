@@ -1053,7 +1053,7 @@ dotele(
                 }
             }
             if (trap)
-                You(_("%s onto the teleportation trap."), u_locomotion("jump"));
+                You(_("%s onto the teleportation trap."), u_locomotion(_("jump")));
         } else
             trap = 0;
     }

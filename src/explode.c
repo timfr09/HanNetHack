@@ -906,7 +906,7 @@ scatter(coordxy sx, coordxy sy,  /* location of objects to scatter */
                 total += stmp->obj->quan;
                 obj_left_shop = (shop_origin && !costly_spot(x, y));
             }
-            if (!flooreffects(stmp->obj, x, y, "land")) {
+            if (!flooreffects(stmp->obj, x, y, _("land"))) {
                 if (obj_left_shop
                     && strchr(u.urooms, *in_rooms(u.ux, u.uy, SHOPBASE))) {
                     /* At the moment this only takes on gold. While it is

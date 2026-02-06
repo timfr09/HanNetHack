@@ -181,7 +181,7 @@ mzapwand(
         unknow_object(otmp); /* hero loses info when unseen obj is used */
     } else if (self) {
         pline(_("%s with %s!"),
-              monverbself(mtmp, Monnam(mtmp), "zap", (char *) 0),
+              monverbself(mtmp, Monnam(mtmp), _("zap"), (char *) 0),
               doname(otmp));
     } else {
         pline_mon(mtmp, _("%s zaps %s!"), Monnam(mtmp), an(xname(otmp)));
@@ -215,7 +215,7 @@ mplayhorn(
             objnamp = simpleonames(otmp);
         Sprintf(objbuf, _("a %s directed at"), objnamp);
         /* "<mon> plays a <horn> directed at himself!" */
-        pline(_("%s!"), monverbself(mtmp, Monnam(mtmp), "play", objbuf));
+        pline(_("%s!"), monverbself(mtmp, Monnam(mtmp), _("play"), objbuf));
         makeknown(otmp->otyp); /* (wands handle this slightly differently) */
     } else {
         observe_object(otmp);
@@ -3108,7 +3108,7 @@ muse_unslime(
         /* monster is using fire breath on self */
         if (vis)
             pline_mon(mon, _("%s."),
-                      monverbself(mon, Monnam(mon), "breath", "fire on"));
+                      monverbself(mon, Monnam(mon), _("breath"), _("fire on")));
         if (!rn2(3))
             mon->mspec_used = rn1(10, 5);
         /* -21 => monster's fire breath; 1 => # of damage dice */

@@ -2662,7 +2662,7 @@ dowhatdoes(void)
     if (!once) {
         pline(_("Ask about '&' or '?' to get more info.%s"),
 #ifdef ALTMETA
-              iflags.altmeta ? "  (For ESC, type it twice.)" :
+              iflags.altmeta ? _("  (For ESC, type it twice.)") :
 #endif
               "");
         once = TRUE;

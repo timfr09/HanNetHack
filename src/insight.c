@@ -407,8 +407,8 @@ enlightenment(
        gender in u.mfemale rather than the current you-as-monster gender */
     Snprintf(buf, sizeof(buf), _("%s the %s's attributes:"), tmpbuf,
              ((Upolyd ? u.mfemale : flags.female) && gu.urole.name.f)
-                ? gu.urole.name.f
-                : gu.urole.name.m);
+                ? _(gu.urole.name.f)
+                : _(gu.urole.name.m));
 
     /* title */
     enlght_out(buf); /* "Conan the Archeologist's attributes:" */
@@ -484,8 +484,8 @@ background_enlightenment(int unused_mode UNUSED, int final)
     /* note that if poly'd, we need to use u.mfemale instead of flags.female
        to access hero's saved gender-as-human/elf/&c rather than current */
     innategend = (Upolyd ? u.mfemale : flags.female) ? 1 : 0;
-    role_titl = (innategend && gu.urole.name.f) ? gu.urole.name.f
-                                                : gu.urole.name.m;
+    role_titl = (innategend && gu.urole.name.f) ? _(gu.urole.name.f)
+                                                : _(gu.urole.name.m);
     rank_titl = rank_of(u.ulevel, Role_switch, innategend);
 
     enlght_out(""); /* separator after title */
@@ -529,10 +529,10 @@ background_enlightenment(int unused_mode UNUSED, int final)
     if (!strcmpi(rank_titl, role_titl)) {
         /* omit role when rank title matches it */
         Sprintf(eos(buf), _("%s, level %d %s%s"), an(rank_titl), u.ulevel,
-                tmpbuf, gu.urace.noun);
+                tmpbuf, _(gu.urace.noun));
     } else {
         Sprintf(eos(buf), _("%s, a level %d %s%s %s"), an(rank_titl), u.ulevel,
-                tmpbuf, gu.urace.adj, role_titl);
+                tmpbuf, _(gu.urace.adj), role_titl);
     }
     you_are(buf, "");
 

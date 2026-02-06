@@ -2031,10 +2031,13 @@ msgstr "%s 위의 %s{을/를} 채찍으로 감았다."
 msgid "hit your %s with your bullwhip."
 msgstr "채찍으로 %s{을/를} 때렸다."
 
+# %1$s = uhim() (him/her/your), %2$s = uhis() (his/her/your)
+# 예: "killed yourself with your bullwhip"
+# 한국어에서는 성별 구분 없이 "자신의 채찍으로"로 번역
 #: ../src/apply.c:3058
 #, c-format
 msgid "killed %sself with %s bullwhip"
-msgstr "%s 채찍으로 %s 죽었다"
+msgstr "자신의 채찍으로 스스로를 죽였다%1$.0s%2$.0s"
 
 #: ../src/apply.c:3063
 #, c-format
@@ -4931,10 +4934,12 @@ msgstr "%s{이/가} 날아가는 잔해에 산산이 부서졌다."
 msgid "exploding drawbridge"
 msgstr "폭발하는 도개교"
 
+# %s = 주어 (캐릭터/몬스터 이름 + crashes/crash/...)
+# 도개교 충돌 메시지
 #: ../src/dbridge.c:972
 #, c-format
 msgid "%s into some heavy metal!"
-msgstr "%s 무거운 금속에!"
+msgstr "%s 무거운 금속에 부딪혔다!"
 
 #: ../src/dbridge.c:975
 #, c-format
@@ -8662,10 +8667,12 @@ msgstr "%s{이/가} 금화를 %s 잡았다."
 msgid "awakens and "
 msgstr "깨어나서 "
 
+# %1$s = ""/"partially ", %2$s = "your"/"the customer's"
+# 예: "amount partially covers your recent losses"
 #: ../src/dokick.c:336
 #, c-format
 msgid "amount %scovers %s recent losses."
-msgstr "금액이 %s 최근 손실을 %s 커버한다."
+msgstr "금액이 %2$s 최근 손실을 %1$s보전한다."
 
 # === insight.c status descriptions ===
 #: ../src/dokick.c:337 ../src/shk.c:1859 ../src/shk.c:3829 ../src/shk.c:5985
@@ -9505,16 +9512,16 @@ msgstr "%s{이/가} 당신의 손으로!"
 msgid "return"
 msgstr "돌아오다"
 
-# dothrow.c translations
+# dothrow.c translations - 투척 물체 착지
 #: ../src/dothrow.c:1721
 #, c-format
 msgid "%s lands %s your %s."
-msgstr "%s{이} %s 당신의 %s 근처에 떨어진다."
+msgstr "%s{이/가} %s 당신의 %s 근처에 떨어진다."
 
 #: ../src/dothrow.c:1722
 #, c-format
 msgid "%s back to you, landing %s your %s."
-msgstr "%s{이} 당신에게 돌아와 %s 당신의 %s 근처에 착지한다."
+msgstr "%s{이/가} 당신에게 돌아와 %s 당신의 %s 근처에 착지한다."
 
 #: ../src/dothrow.c:1724 ../src/mthrowu.c:881 ../src/pray.c:800
 #: ../src/steal.c:93 ../src/zap.c:3362
@@ -9526,15 +9533,16 @@ msgstr "아래에"
 msgid "at"
 msgstr "근처에"
 
+# 투척 물체가 플레이어에게 맞음
 #: ../src/dothrow.c:1728
 #, c-format
 msgid "%s your %s!"
-msgstr "%s{이} 당신의 %s{을} 맞혔다!"
+msgstr "%s{이/가} 당신의 %s{을/를} 맞혔다!"
 
 #: ../src/dothrow.c:1729
 #, c-format
 msgid "%s back toward you, hitting your %s!"
-msgstr "%s{이} 당신 쪽으로 돌아와 %s{을} 맞혔다!"
+msgstr "%s{이/가} 당신 쪽으로 돌아와 %s{을/를} 맞혔다!"
 
 #: ../src/dothrow.c:1758
 #, c-format
@@ -11568,10 +11576,11 @@ msgstr "좋아, 그래서 %s하지 않는다."
 msgid "choke"
 msgstr "질식"
 
+# 모노폴리 보드게임 패러디 - "Go"는 출발 지점
 #: ../src/end.c:1188
 #, c-format
 msgid "Do not pass Go.  Do not collect 200 %s."
-msgstr "Go를 지나가지 마라. 200 %s{을/를} 받지 마라."
+msgstr "출발 지점을 지나지 마라. 200 %s{을/를} 받지 마라."
 
 #: ../src/end.c:1227
 msgid "quit while already on Charon's boat"
@@ -15710,14 +15719,12 @@ msgid " and got totally digested"
 msgstr " 그리고 완전히 소화됐다"
 
 #: ../src/insight.c:1100
-#, fuzzy
 msgid " and were being digested"
-msgstr " 그리고 소화 %s"
+msgstr " 그리고 소화되고 있었다"
 
 #: ../src/insight.c:1101
-#, fuzzy
 msgid " and are being digested"
-msgstr " 그리고 소화 %s"
+msgstr " 그리고 소화되고 있다"
 
 # 상태 메시지
 #: ../src/insight.c:1110
@@ -16017,10 +16024,11 @@ msgid "two weapons"
 msgstr "쌍수 무기"
 
 # 조합: 시선 효과 정도 - 다소
+# %s = 추가 설명 (빈 문자열 또는 다른 내용)
 #: ../src/insight.c:1463
-#, fuzzy, c-format
+#, c-format
 msgid " somewhat%s"
-msgstr "다소 "
+msgstr " 다소%s"
 
 # 아이템 상태 메시지 - 조합: "Your items are somewhat damaged"
 #: ../src/insight.c:1466
@@ -16077,21 +16085,19 @@ msgstr "마법 방어됨"
 msgid "fire resistant"
 msgstr "화염 저항"
 
-# 산성으로부터 보호 (장비에 의한 효과)
+# 화염으로부터 보호 (장비에 의한 효과)
 #: ../src/insight.c:1515
-#, fuzzy
 msgid " protected from fire"
-msgstr " 산성으로부터 보호"
+msgstr " 화염으로부터 보호"
 
 #: ../src/insight.c:1517
 msgid "cold resistant"
 msgstr "냉기 저항"
 
-# 산성으로부터 보호 (장비에 의한 효과)
+# 냉기로부터 보호 (장비에 의한 효과)
 #: ../src/insight.c:1518
-#, fuzzy
 msgid " protected from cold"
-msgstr " 산성으로부터 보호"
+msgstr " 냉기로부터 보호"
 
 #: ../src/insight.c:1520
 msgid "sleep resistant"
@@ -16101,21 +16107,19 @@ msgstr "수면 저항"
 msgid "disintegration resistant"
 msgstr "분해 저항"
 
-# 산성으로부터 보호 (장비에 의한 효과)
+# 분해로부터 보호 (장비에 의한 효과)
 #: ../src/insight.c:1524
-#, fuzzy
 msgid " protected from disintegration"
-msgstr " 산성으로부터 보호"
+msgstr " 분해로부터 보호"
 
 #: ../src/insight.c:1526
 msgid "shock resistant"
 msgstr "전기 저항"
 
-# 산성으로부터 보호 (장비에 의한 효과)
+# 전기 충격으로부터 보호 (장비에 의한 효과)
 #: ../src/insight.c:1528
-#, fuzzy
 msgid " protected from electric shocks"
-msgstr " 산성으로부터 보호"
+msgstr " 전기 충격으로부터 보호"
 
 #: ../src/insight.c:1530
 msgid "poison resistant"
@@ -16439,10 +16443,10 @@ msgstr "순간이동 제어"
 msgid " if not trapped"
 msgstr "(함정에 안 걸렸으면) "
 
+# 주변 환경이 허락할 경우 (예: 천장이 낮지 않을 때)
 #: ../src/insight.c:1693 ../src/insight.c:1718
-#, fuzzy
 msgid " if surroundings permitted"
-msgstr "(상황이 허락하면) "
+msgstr " (주변 환경이 허락하면)"
 
 #: ../src/insight.c:1694
 msgid "would levitate"
@@ -17029,11 +17033,10 @@ msgstr "처음부터 시작했다"
 msgid " without possessions"
 msgstr "소유물 없이 "
 
-# suffix 앞 공백 제거, 뒤 공백 추가
+# 시작 조건: 소지품 없이
 #: ../src/insight.c:2128
-#, fuzzy
 msgid "without possessions"
-msgstr "소유물 없이 "
+msgstr "소유물 없이"
 
 #: ../src/insight.c:2131
 #, c-format

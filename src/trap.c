@@ -3008,15 +3008,15 @@ staticfn char *
 trapnote(struct trap *trap, boolean noprefix)
 {
     static const char *const tnnames[] = {
-        "C note",  "D flat", "D note",  "E flat",
-        "E note",  "F note", "F sharp", "G note",
-        "G sharp", "A note", "B flat",  "B note",
+        N_("C note"),  N_("D flat"), N_("D note"),  N_("E flat"),
+        N_("E note"),  N_("F note"), N_("F sharp"), N_("G note"),
+        N_("G sharp"), N_("A note"), N_("B flat"),  N_("B note"),
     };
-    static char tnbuf[12]; /* result buffer */
+    static char tnbuf[BUFSZ]; /* result buffer */
     const char *tn;
 
     tnbuf[0] = '\0';
-    tn = tnnames[trap->tnote];
+    tn = _(tnnames[trap->tnote]);
     if (!noprefix)
         (void) just_an(tnbuf, tn);
     return strcat(tnbuf, tn);

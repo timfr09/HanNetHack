@@ -121,6 +121,13 @@ static struct ll_achieve_msg achieve_msg [] = {
 staticfn void
 enlght_out(const char *buf)
 {
+#ifdef ENABLE_NLS
+    char processed[BUFSZ];
+    if (is_korean_locale() && strchr(buf, KO_PP_START)) {
+        ko_process_string(processed, sizeof processed, buf);
+        buf = processed;
+    }
+#endif
     if (ge.en_via_menu) {
         add_menu_str(ge.en_win, buf);
     } else
@@ -1198,7 +1205,7 @@ status_enlightenment(int mode, int final)
             enl_msg(You_, _("hunger"), _("hungered"), _(" rapidly"),
                     from_what(HUNGER));
     }
-    Strcpy(buf, hu_stat[u.uhs]); /* hunger status; omitted if "normal" */
+    Strcpy(buf, _(hu_stat[u.uhs])); /* hunger status; omitted if "normal" */
     mungspaces(buf);             /* strip trailing spaces */
     /* status line doesn't show hunger when state is "not hungry", we do;
        needed for wizard mode's reveal of u.uhunger but add it for everyone */
@@ -1206,9 +1213,9 @@ status_enlightenment(int mode, int final)
         Strcpy(buf, _("not hungry"));
     if (*buf) { /* (since "not hungry" was added, this will always be True) */
         *buf = lowc(*buf); /* override capitalization */
-        if (!strcmp(buf, "weak"))
+        if (u.uhs == WEAK)
             Strcat(buf, _(" from severe hunger"));
-        else if (!strncmp(buf, "faint", 5)) /* fainting, fainted */
+        else if (u.uhs == FAINTING || u.uhs == FAINTED)
             Strcat(buf, _(" due to starvation"));
         if (wizard)
             Sprintf(eos(buf), " <%d>", u.uhunger);
@@ -1218,7 +1225,7 @@ status_enlightenment(int mode, int final)
     if ((cap = near_capacity()) > UNENCUMBERED) {
         const char *adj = "?_?"; /* (should always get overridden) */
 
-        Strcpy(buf, enc_stat[cap]);
+        Strcpy(buf, _(enc_stat[cap]));
         *buf = lowc(*buf);
         switch (cap) {
         case SLT_ENCUMBER:
@@ -3157,7 +3164,7 @@ list_genocided(char defquery, boolean ask)
                 mndx = mindx[i];
                 mlet = mons[mndx].mlet;
                 if (class_header && mlet != prev_mlet) {
-                    Strcpy(buf, def_monsyms[(int) mlet].explain);
+                    Strcpy(buf, _(def_monsyms[(int) mlet].explain));
                     /* 'ask' implies final disclosure, where highlighting
                        of various header lines is suppressed */
                     putstr(klwin, ask ? ATR_NONE : iflags.menu_headings.attr,

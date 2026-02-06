@@ -29,29 +29,45 @@ static NEARDATA const char *breathwep[] = {
 
 /* hallucinatory ray types */
 static const char *const hallublasts[] = {
-    "asteroids", "beads", "bubbles", "butterflies", "champagne", "chaos",
-    "coins", "cotton candy", "crumbs", "dark matter", "darkness", "data",
-    "dust specks", "emoticons", "emotions", "entropy", "flowers", "foam",
-    "fog", "gamma rays", "gelatin", "gemstones", "ghosts", "glass shards",
-    "glitter", "good vibes", "gravel", "gravity", "gravy", "grawlixes",
-    "holy light", "hornets", "hot air", "hyphens", "hypnosis", "infrared",
-    "insects", "jargon", "laser beams", "leaves", "lightening", "logic gates",
-    "magma", "marbles", "mathematics", "megabytes", "metal shavings",
-    "metapatterns", "meteors", "mist", "mud", "music", "nanites", "needles",
-    "noise", "nostalgia", "oil", "paint", "photons", "pixels", "plasma",
-    "polarity", "powder", "powerups", "prismatic light", "pure logic",
-    "purple", "radio waves", "rainbows", "rock music", "rocket fuel", "rope",
-    "sadness", "salt", "sand", "scrolls", "sludge", "smileys", "snowflakes",
-    "sparkles", "specularity", "spores", "stars", "steam", "tetrahedrons",
-    "text", "the past", "tornadoes", "toxic waste", "ultraviolet light",
-    "viruses", "water", "waveforms", "wind", "X-rays", "zorkmids"
+    N_("asteroids"), N_("beads"), N_("bubbles"), N_("butterflies"),
+    N_("champagne"), N_("chaos"),
+    N_("coins"), N_("cotton candy"), N_("crumbs"), N_("dark matter"),
+    N_("darkness"), N_("data"),
+    N_("dust specks"), N_("emoticons"), N_("emotions"), N_("entropy"),
+    N_("flowers"), N_("foam"),
+    N_("fog"), N_("gamma rays"), N_("gelatin"), N_("gemstones"),
+    N_("ghosts"), N_("glass shards"),
+    N_("glitter"), N_("good vibes"), N_("gravel"), N_("gravity"),
+    N_("gravy"), N_("grawlixes"),
+    N_("holy light"), N_("hornets"), N_("hot air"), N_("hyphens"),
+    N_("hypnosis"), N_("infrared"),
+    N_("insects"), N_("jargon"), N_("laser beams"), N_("leaves"),
+    N_("lightening"), N_("logic gates"),
+    N_("magma"), N_("marbles"), N_("mathematics"), N_("megabytes"),
+    N_("metal shavings"),
+    N_("metapatterns"), N_("meteors"), N_("mist"), N_("mud"),
+    N_("music"), N_("nanites"), N_("needles"),
+    N_("noise"), N_("nostalgia"), N_("oil"), N_("paint"),
+    N_("photons"), N_("pixels"), N_("plasma"),
+    N_("polarity"), N_("powder"), N_("powerups"),
+    N_("prismatic light"), N_("pure logic"),
+    N_("purple"), N_("radio waves"), N_("rainbows"),
+    N_("rock music"), N_("rocket fuel"), N_("rope"),
+    N_("sadness"), N_("salt"), N_("sand"), N_("scrolls"),
+    N_("sludge"), N_("smileys"), N_("snowflakes"),
+    N_("sparkles"), N_("specularity"), N_("spores"), N_("stars"),
+    N_("steam"), N_("tetrahedrons"),
+    N_("text"), N_("the past"), N_("tornadoes"), N_("toxic waste"),
+    N_("ultraviolet light"),
+    N_("viruses"), N_("water"), N_("waveforms"), N_("wind"),
+    N_("X-rays"), N_("zorkmids")
 };
 
 /* Return a random hallucinatory blast. */
 const char *
 rnd_hallublast(void)
 {
-    return ROLL_FROM(hallublasts);
+    return _(ROLL_FROM(hallublasts));
 }
 
 boolean

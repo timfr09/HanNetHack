@@ -2031,10 +2031,13 @@ msgstr "%s 위의 %s{을/를} 채찍으로 감았다."
 msgid "hit your %s with your bullwhip."
 msgstr "채찍으로 %s{을/를} 때렸다."
 
+# %1$s = uhim() (him/her/your), %2$s = uhis() (his/her/your)
+# 예: "killed yourself with your bullwhip"
+# 한국어에서는 성별 구분 없이 "자신의 채찍으로"로 번역
 #: ../src/apply.c:3058
 #, c-format
 msgid "killed %sself with %s bullwhip"
-msgstr "%s 채찍으로 %s 죽었다"
+msgstr "자신의 채찍으로 스스로를 죽였다%1$.0s%2$.0s"
 
 #: ../src/apply.c:3063
 #, c-format
@@ -4931,10 +4934,12 @@ msgstr "%s{이/가} 날아가는 잔해에 산산이 부서졌다."
 msgid "exploding drawbridge"
 msgstr "폭발하는 도개교"
 
+# %s = 주어 (캐릭터/몬스터 이름 + crashes/crash/...)
+# 도개교 충돌 메시지
 #: ../src/dbridge.c:972
 #, c-format
 msgid "%s into some heavy metal!"
-msgstr "%s 무거운 금속에!"
+msgstr "%s 무거운 금속에 부딪혔다!"
 
 #: ../src/dbridge.c:975
 #, c-format
@@ -5756,18 +5761,19 @@ msgstr "인접한 %s{을/를} 판다."
 #   %2$s = 방향 (through, in) - 한국어에서 생략
 #   %3$s = 표면 유형 (floor, ground)
 # 예: "dig a hole through the floor." → "바닥에 구멍을 팠다."
+# %1$s=구멍/함정, %2$s=through/into(방향), %3$s=floor/ceiling(표면)
 #: ../src/dig.c:708
 #, c-format
 msgid "dig %s %s the %s."
-msgstr "%3$s에 %1$s{을/를} 팠다."
+msgstr "%3$s에 %2$s %1$s{을/를} 팠다."
 
 # 조합 패턴: "%s digs %s %s the %s."
-#   %1$s = 몬스터 이름, %2$s = 함정 이름, %3$s = 방향, %4$s = 표면
+#   %1$s = 몬스터 이름, %2$s = 함정 이름, %3$s = 방향(through/into), %4$s = 표면
 # 예: "The goblin digs a hole through the floor." → "고블린이 바닥에 구멍을 팠다."
 #: ../src/dig.c:710
 #, c-format
 msgid "%s digs %s %s the %s."
-msgstr "%1$s{이/가} %4$s에 %2$s{을/를} 팠다."
+msgstr "%1$s{이/가} %4$s에 %3$s %2$s{을/를} 팠다."
 
 #: ../src/dig.c:714
 #, c-format
@@ -7223,11 +7229,12 @@ msgstr "%s{은/는} %s할 상태가 아니다."
 #   %3$s = "is"/"are" (한국어에서 생략)
 #   %4$s = 동작 (jumping, kicking)
 # 예: "Your left leg is in no shape for jumping."
+# %1$s=left/right, %2$s=leg/arm, %3$s=is/are, %4$s=동작(jumping)
 # → "왼 다리는 점프할 상태가 아니다."
 #: ../src/do.c:2409
 #, c-format
 msgid "%s%s %s in no shape for %s."
-msgstr "%1$s%2$s{은/는} %4$s할 상태가 아니다."
+msgstr "%1$s%2$s{은/는} %4$s할 상태가 아니%3$s"
 
 #: ../src/do.c:2410 ../src/do_wear.c:2575 ../src/do_wear.c:2610
 #: ../src/insight.c:1136 ../src/weapon.c:463 ../src/wield.c:762
@@ -8660,10 +8667,12 @@ msgstr "%s{이/가} 금화를 %s 잡았다."
 msgid "awakens and "
 msgstr "깨어나서 "
 
+# %1$s = ""/"partially ", %2$s = "your"/"the customer's"
+# 예: "amount partially covers your recent losses"
 #: ../src/dokick.c:336
 #, c-format
 msgid "amount %scovers %s recent losses."
-msgstr "금액이 %s 최근 손실을 %s 커버한다."
+msgstr "금액이 %2$s 최근 손실을 %1$s보전한다."
 
 # === insight.c status descriptions ===
 #: ../src/dokick.c:337 ../src/shk.c:1859 ../src/shk.c:3829 ../src/shk.c:5985
@@ -9503,16 +9512,16 @@ msgstr "%s{이/가} 당신의 손으로!"
 msgid "return"
 msgstr "돌아오다"
 
-# dothrow.c translations
+# dothrow.c translations - 투척 물체 착지
 #: ../src/dothrow.c:1721
 #, c-format
 msgid "%s lands %s your %s."
-msgstr "%s{이} %s 당신의 %s 근처에 떨어진다."
+msgstr "%s{이/가} %s 당신의 %s 근처에 떨어진다."
 
 #: ../src/dothrow.c:1722
 #, c-format
 msgid "%s back to you, landing %s your %s."
-msgstr "%s{이} 당신에게 돌아와 %s 당신의 %s 근처에 착지한다."
+msgstr "%s{이/가} 당신에게 돌아와 %s 당신의 %s 근처에 착지한다."
 
 #: ../src/dothrow.c:1724 ../src/mthrowu.c:881 ../src/pray.c:800
 #: ../src/steal.c:93 ../src/zap.c:3362
@@ -9524,15 +9533,16 @@ msgstr "아래에"
 msgid "at"
 msgstr "근처에"
 
+# 투척 물체가 플레이어에게 맞음
 #: ../src/dothrow.c:1728
 #, c-format
 msgid "%s your %s!"
-msgstr "%s{이} 당신의 %s{을} 맞혔다!"
+msgstr "%s{이/가} 당신의 %s{을/를} 맞혔다!"
 
 #: ../src/dothrow.c:1729
 #, c-format
 msgid "%s back toward you, hitting your %s!"
-msgstr "%s{이} 당신 쪽으로 돌아와 %s{을} 맞혔다!"
+msgstr "%s{이/가} 당신 쪽으로 돌아와 %s{을/를} 맞혔다!"
 
 #: ../src/dothrow.c:1758
 #, c-format
@@ -11566,10 +11576,11 @@ msgstr "좋아, 그래서 %s하지 않는다."
 msgid "choke"
 msgstr "질식"
 
+# 모노폴리 보드게임 패러디 - "Go"는 출발 지점
 #: ../src/end.c:1188
 #, c-format
 msgid "Do not pass Go.  Do not collect 200 %s."
-msgstr "Go를 지나가지 마라. 200 %s{을/를} 받지 마라."
+msgstr "출발 지점을 지나지 마라. 200 %s{을/를} 받지 마라."
 
 #: ../src/end.c:1227
 msgid "quit while already on Charon's boat"
@@ -14998,26 +15009,26 @@ msgstr "%s에 걸림"
 msgid " in %s"
 msgstr " %s에"
 
-# 시간 표시
+# 시간 표시 (한국어에는 영어 복수형 불필요, %2$s는 빈 문자열로 소비)
 #: ../src/insight.c:346
 #, c-format
 msgid " %ld day%s"
-msgstr " %ld일%s"
+msgstr " %1$ld일%2$s"
 
 #: ../src/insight.c:352
 #, c-format
 msgid " %ld hour%s"
-msgstr " %ld시간%s"
+msgstr " %1$ld시간%2$s"
 
 #: ../src/insight.c:358
 #, c-format
 msgid " %ld minute%s"
-msgstr " %ld분%s"
+msgstr " %1$ld분%2$s"
 
 #: ../src/insight.c:364
 #, c-format
 msgid " %ld second%s"
-msgstr " %ld초%s"
+msgstr " %1$ld초%2$s"
 
 #: ../src/insight.c:412
 msgid "Miscellaneous:"
@@ -15112,10 +15123,16 @@ msgstr "%s, 레벨 %d %s%s"
 msgid "%s, a level %d %s%s %s"
 msgstr "%s, 레벨 %d %s%s %s"
 
+# ============================================================
+# 캐릭터 성향 + 임무 표시
+# 인자: %1$s=You, %2$s=are/were, %3$s=성향(neutral/lawful/chaotic),
+#       %4$s=부사(temporarily 등), %5$s=신 이름
+# 예: "You are neutral, on a mission for Crom"
+# ============================================================
 #: ../src/insight.c:518
 #, c-format
 msgid " %s%s%s, %son a mission for %s"
-msgstr " %s%s%s, %s%s{을/를} 위한 임무 중"
+msgstr " %1$s%2$s%4$s%3$s 성향이며, %5$s{을/를} 위한 임무 중"
 
 #: ../src/insight.c:525 ../src/insight.c:1533 ../src/insight.c:1544
 msgid "temporarily "
@@ -15348,30 +15365,50 @@ msgstr "당신의 점수는 "
 msgid "Basics:"
 msgstr "기본 정보:"
 
+# ============================================================
+# 체력 표시 - 전체 체력 (HP full)
+# C_("hp_all", ...) 컨텍스트 사용
+# 예: "You have all 50 hit points" → "당신은 체력 50점 전부를 가지고 있다"
+# ============================================================
 #: ../src/insight.c:724
 #, c-format
 msgid "all %d hit points"
-msgstr "모든 %d 체력"
+msgstr "체력 %d점 전부"
 
+# ============================================================
+# 체력 표시 - 부분 체력 (HP partial)
+# C_("hp_partial", ...) 컨텍스트 사용, %3$s=plur() 결과(무시)
+# 예: "You have 30 out of 50 hit points" → "당신은 체력 30/50점을 가지고 있다"
+# ============================================================
 #: ../src/insight.c:726
 #, c-format
 msgid "%d out of %d hit point%s"
-msgstr "%d/%d 체력%s"
+msgstr "체력 %1$d/%2$d점%3$s"
 
 # 양쪽 (예: 양 눈, 양쪽 다리 등)
 #: ../src/insight.c:731
 msgid "both"
 msgstr "둘 다"
 
+# ============================================================
+# 에너지 표시 - 전체 (Energy full)
+# C_("energy_all", ...) 컨텍스트 사용
+# %1$d = 최대 에너지, %2$s = "energy points (spell power)"
+# ============================================================
 #: ../src/insight.c:733
 #, c-format
 msgid "all %d %s"
-msgstr "모든 %d %s"
+msgstr "%2$s %1$d점 전부"
 
+# ============================================================
+# 에너지 표시 - 부분 (Energy partial)
+# C_("energy_partial", ...) 컨텍스트 사용
+# %1$d = 현재, %2$d = 최대, %3$s = "energy points (spell power)"
+# ============================================================
 #: ../src/insight.c:735
 #, c-format
 msgid "%d out of %d %s"
-msgstr "%d/%d %s"
+msgstr "%3$s %1$d/%2$d점"
 
 #: ../src/insight.c:742
 msgid "0 hit dice (actually 1/2)"
@@ -15410,21 +15447,21 @@ msgstr "당신의 방어도는 "
 
 # ============================================================
 # 지갑 상태 - 빔 (Wallet status - empty)
-# %s = "is"/"are" (영어 문법)
+# %s = "is"/"was" (영어 시제) - 한국어에선 무시
 # ============================================================
 #: ../src/insight.c:767
 #, c-format
 msgid " Your wallet %s empty"
-msgstr " 지갑이 %s비어 있다"
+msgstr " 지갑이 비어 있%s다"
 
 # ============================================================
 # 지갑 상태 - 금화 있음 (Wallet status - has gold)
-# %s = 동사 어미 ("s"/"ed"), %ld = 금화 수량, %s = 금화 이름
+# %1$s = 동사 어미 ("s"/"ed") - 문장 끝에 소비, %2$ld = 금화 수량, %3$s = 금화 이름
 # ============================================================
 #: ../src/insight.c:769
 #, c-format
 msgid " Your wallet contain%s %ld %s"
-msgstr " 지갑에%s %ld %s이(가) 있다"
+msgstr " 지갑에 %2$ld %3$s{이/가} 있다%1$s"
 
 #: ../src/insight.c:769
 msgid "ed"
@@ -15682,14 +15719,12 @@ msgid " and got totally digested"
 msgstr " 그리고 완전히 소화됐다"
 
 #: ../src/insight.c:1100
-#, fuzzy
 msgid " and were being digested"
-msgstr " 그리고 소화 %s"
+msgstr " 그리고 소화되고 있었다"
 
 #: ../src/insight.c:1101
-#, fuzzy
 msgid " and are being digested"
-msgstr " 그리고 소화 %s"
+msgstr " 그리고 소화되고 있다"
 
 # 상태 메시지
 #: ../src/insight.c:1110
@@ -15989,10 +16024,11 @@ msgid "two weapons"
 msgstr "쌍수 무기"
 
 # 조합: 시선 효과 정도 - 다소
+# %s = 추가 설명 (빈 문자열 또는 다른 내용)
 #: ../src/insight.c:1463
-#, fuzzy, c-format
+#, c-format
 msgid " somewhat%s"
-msgstr "다소 "
+msgstr " 다소%s"
 
 # 아이템 상태 메시지 - 조합: "Your items are somewhat damaged"
 #: ../src/insight.c:1466
@@ -16049,21 +16085,19 @@ msgstr "마법 방어됨"
 msgid "fire resistant"
 msgstr "화염 저항"
 
-# 산성으로부터 보호 (장비에 의한 효과)
+# 화염으로부터 보호 (장비에 의한 효과)
 #: ../src/insight.c:1515
-#, fuzzy
 msgid " protected from fire"
-msgstr " 산성으로부터 보호"
+msgstr " 화염으로부터 보호"
 
 #: ../src/insight.c:1517
 msgid "cold resistant"
 msgstr "냉기 저항"
 
-# 산성으로부터 보호 (장비에 의한 효과)
+# 냉기로부터 보호 (장비에 의한 효과)
 #: ../src/insight.c:1518
-#, fuzzy
 msgid " protected from cold"
-msgstr " 산성으로부터 보호"
+msgstr " 냉기로부터 보호"
 
 #: ../src/insight.c:1520
 msgid "sleep resistant"
@@ -16073,21 +16107,19 @@ msgstr "수면 저항"
 msgid "disintegration resistant"
 msgstr "분해 저항"
 
-# 산성으로부터 보호 (장비에 의한 효과)
+# 분해로부터 보호 (장비에 의한 효과)
 #: ../src/insight.c:1524
-#, fuzzy
 msgid " protected from disintegration"
-msgstr " 산성으로부터 보호"
+msgstr " 분해로부터 보호"
 
 #: ../src/insight.c:1526
 msgid "shock resistant"
 msgstr "전기 저항"
 
-# 산성으로부터 보호 (장비에 의한 효과)
+# 전기 충격으로부터 보호 (장비에 의한 효과)
 #: ../src/insight.c:1528
-#, fuzzy
 msgid " protected from electric shocks"
-msgstr " 산성으로부터 보호"
+msgstr " 전기 충격으로부터 보호"
 
 #: ../src/insight.c:1530
 msgid "poison resistant"
@@ -16411,10 +16443,10 @@ msgstr "순간이동 제어"
 msgid " if not trapped"
 msgstr "(함정에 안 걸렸으면) "
 
+# 주변 환경이 허락할 경우 (예: 천장이 낮지 않을 때)
 #: ../src/insight.c:1693 ../src/insight.c:1718
-#, fuzzy
 msgid " if surroundings permitted"
-msgstr "(상황이 허락하면) "
+msgstr " (주변 환경이 허락하면)"
 
 #: ../src/insight.c:1694
 msgid "would levitate"
@@ -17001,11 +17033,10 @@ msgstr "처음부터 시작했다"
 msgid " without possessions"
 msgstr "소유물 없이 "
 
-# suffix 앞 공백 제거, 뒤 공백 추가
+# 시작 조건: 소지품 없이
 #: ../src/insight.c:2128
-#, fuzzy
 msgid "without possessions"
-msgstr "소유물 없이 "
+msgstr "소유물 없이"
 
 #: ../src/insight.c:2131
 #, c-format

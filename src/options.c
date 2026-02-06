@@ -229,14 +229,14 @@ static NEARDATA const char *unlocktypes[][2] = {
     { "force",     N_("(chests/boxes only)") },
 };
 static NEARDATA const char *burdentype[] = {
-    "unencumbered", "burdened",     "stressed",
-    "strained",     "overtaxed",    "overloaded"
+    N_("unencumbered"), N_("burdened"),     N_("stressed"),
+    N_("strained"),     N_("overtaxed"),    N_("overloaded")
 };
 static NEARDATA const char *runmodes[] = {
-    "teleport",     "run",          "walk",     "crawl"
+    N_("teleport"),     N_("run"),          N_("walk"),     N_("crawl")
 };
 static NEARDATA const char *sortltype[] = {
-    "none",         "loot",         "full"
+    N_("none"),         N_("loot"),         N_("full")
 };
 /* second column is an alias for the first; third is brief explanation;
    entries 5 and 6 are 1|4 and 2|4 (tty only) */
@@ -5699,8 +5699,8 @@ handler_disclose(void)
     /* order of disclose_names[] must correspond to
        disclosure_options in decl.c */
     static const char *const disclosure_names[] = {
-        "inventory", "attributes", "vanquished",
-        "genocides", "conduct",    "overview",
+        N_("inventory"), N_("attributes"), N_("vanquished"),
+        N_("genocides"), N_("conduct"),    N_("overview"),
     };
     int disc_cat[NUM_DISCLOSURE_OPTIONS];
     int pick_cnt, pick_idx, opt_idx;
@@ -5712,7 +5712,7 @@ handler_disclose(void)
     start_menu(tmpwin, MENU_BEHAVE_STANDARD);
     any = cg.zeroany;
     for (i = 0; i < NUM_DISCLOSURE_OPTIONS; i++) {
-        Sprintf(buf, "%-12s[%c%c]", disclosure_names[i],
+        Sprintf(buf, "%-12s[%c%c]", _(disclosure_names[i]),
                 flags.end_disclose[i], disclosure_options[i]);
         any.a_int = i + 1;
         add_menu(tmpwin, &nul_glyphinfo, &any, disclosure_options[i],
@@ -6114,7 +6114,7 @@ handler_pickup_burden(void)
     start_menu(tmpwin, MENU_BEHAVE_STANDARD);
     any = cg.zeroany;
     for (i = 0; i < SIZE(burdentype); i++) {
-        burden_name = burdentype[i];
+        burden_name = _(burdentype[i]);
         any.a_int = i + 1;
         add_menu(tmpwin, &nul_glyphinfo, &any, burden_letters[i],
                  0, ATR_NONE, clr, burden_name, MENU_ITEMFLAGS_NONE);
@@ -6152,9 +6152,9 @@ handler_runmode(void)
     start_menu(tmpwin, MENU_BEHAVE_STANDARD);
     any = cg.zeroany;
     for (i = 0; i < SIZE(runmodes); i++) {
-        mode_name = runmodes[i];
+        mode_name = _(runmodes[i]);
         any.a_int = i + 1;
-        add_menu(tmpwin, &nul_glyphinfo, &any, *mode_name,
+        add_menu(tmpwin, &nul_glyphinfo, &any, *runmodes[i],
                  0, ATR_NONE, clr, mode_name, MENU_ITEMFLAGS_NONE);
     }
     end_menu(tmpwin, _("Select run/travel display mode:"));
@@ -6199,7 +6199,7 @@ handler_sortloot(void)
         any.a_char = *sortl_name;
         add_menu(tmpwin, &nul_glyphinfo, &any, *sortl_name,
                  0, ATR_NONE, clr,
-                 sortl_name, (flags.sortloot == *sortl_name)
+                 _(sortl_name), (flags.sortloot == *sortl_name)
                                 ? MENU_ITEMFLAGS_SELECTED
                                 : MENU_ITEMFLAGS_NONE);
     }

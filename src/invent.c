@@ -61,8 +61,8 @@ static const char venom_inv[] = { VENOM_CLASS, 0 }; /* (constant) */
    pointers aren't const because dispinv_with_action() might temporarily
    change "Accessories" to "Rings" or "Amulet", then back again */
 static const char *inuse_headers[] = { /* [4] shown first, [1] last */
-    "", "Miscellaneous", "Worn Armor",
-    "Wielded/Readied Weapons", "Accessories",
+    "", N_("Miscellaneous"), N_("Worn Armor"),
+    N_("Wielded/Readied Weapons"), N_("Accessories"),
 };
 
 /* sortloot() classification for in-use sort;
@@ -1520,27 +1520,27 @@ carrying_stoning_corpse(void)
  * http://concord.wikia.com/wiki/List_of_Fictional_Currencies
  */
 static const char *const currencies[] = {
-    "Altarian Dollar",       /* The Hitchhiker's Guide to the Galaxy */
-    "Ankh-Morpork Dollar",   /* Discworld */
-    "auric",                 /* The Domination of Draka */
-    "buckazoid",             /* Space Quest */
-    "cirbozoid",             /* Starslip */
-    "credit chit",           /* Deus Ex */
-    "cubit",                 /* Battlestar Galactica */
-    "Flanian Pobble Bead",   /* The Hitchhiker's Guide to the Galaxy */
-    "fretzer",               /* Jules Verne */
-    "imperial credit",       /* Star Wars */
-    "Hong Kong Luna Dollar", /* The Moon is a Harsh Mistress */
-    "kongbuck",              /* Snow Crash */
-    "nanite",                /* System Shock 2 */
-    "quatloo",               /* Star Trek, Sim City */
-    "simoleon",              /* Sim City */
-    "solari",                /* Spaceballs */
-    "spacebuck",             /* Spaceballs */
-    "sporebuck",             /* Spore */
-    "Triganic Pu",           /* The Hitchhiker's Guide to the Galaxy */
-    "woolong",               /* Cowboy Bebop */
-    "zorkmid",               /* Zork, NetHack */
+    N_("Altarian Dollar"),       /* The Hitchhiker's Guide to the Galaxy */
+    N_("Ankh-Morpork Dollar"),   /* Discworld */
+    N_("auric"),                 /* The Domination of Draka */
+    N_("buckazoid"),             /* Space Quest */
+    N_("cirbozoid"),             /* Starslip */
+    N_("credit chit"),           /* Deus Ex */
+    N_("cubit"),                 /* Battlestar Galactica */
+    N_("Flanian Pobble Bead"),   /* The Hitchhiker's Guide to the Galaxy */
+    N_("fretzer"),               /* Jules Verne */
+    N_("imperial credit"),       /* Star Wars */
+    N_("Hong Kong Luna Dollar"), /* The Moon is a Harsh Mistress */
+    N_("kongbuck"),              /* Snow Crash */
+    N_("nanite"),                /* System Shock 2 */
+    N_("quatloo"),               /* Star Trek, Sim City */
+    N_("simoleon"),              /* Sim City */
+    N_("solari"),                /* Spaceballs */
+    N_("spacebuck"),             /* Spaceballs */
+    N_("sporebuck"),             /* Spore */
+    N_("Triganic Pu"),           /* The Hitchhiker's Guide to the Galaxy */
+    N_("woolong"),               /* Cowboy Bebop */
+    N_("zorkmid"),               /* Zork, NetHack */
 };
 
 const char *
@@ -1548,7 +1548,7 @@ currency(long amount)
 {
     const char *res;
 
-    res = Hallucination ? ROLL_FROM(currencies) : _("zorkmid");
+    res = Hallucination ? _(ROLL_FROM(currencies)) : _("zorkmid");
     if (amount != 1L)
         res = makeplural(res);
     return res;
@@ -3292,7 +3292,7 @@ display_pickinv(
                            : (flags.sortpack && !classcount)) {
                 boolean withsym = (want_reply && iflags.menu_head_objsym);
                 const char *class_header = inuse_only
-                        ? inuse_headers[(int) srtinv->orderclass]
+                        ? _(inuse_headers[(int) srtinv->orderclass])
                         : (const char *) let_to_name(*invlet, FALSE, withsym);
 
                 add_menu_heading(win, class_header);
@@ -4791,12 +4791,15 @@ useupf(struct obj *obj, long numused)
  * This must match the object class order.
  */
 static NEARDATA const char *names[] = {
-    0, "Illegal objects", "Weapons", "Armor", "Rings", "Amulets", "Tools",
-    "Comestibles", "Potions", "Scrolls", "Spellbooks", "Wands", "Coins",
-    "Gems/Stones", "Boulders/Statues", "Iron balls", "Chains", "Venoms"
+    0, N_("Illegal objects"), N_("Weapons"), N_("Armor"), N_("Rings"),
+    N_("Amulets"), N_("Tools"),
+    N_("Comestibles"), N_("Potions"), N_("Scrolls"), N_("Spellbooks"),
+    N_("Wands"), N_("Coins"),
+    N_("Gems/Stones"), N_("Boulders/Statues"), N_("Iron balls"),
+    N_("Chains"), N_("Venoms")
 };
 static NEARDATA const char oth_symbols[] = { CONTAINED_SYM, '\0' };
-static NEARDATA const char *oth_names[] = { "Bagged/Boxed items" };
+static NEARDATA const char *oth_names[] = { N_("Bagged/Boxed items") };
 
 DISABLE_WARNING_FORMAT_NONLITERAL
 
@@ -4811,11 +4814,11 @@ let_to_name(char let, boolean unpaid, boolean showsym)
     unsigned len;
 
     if (oclass)
-        class_name = names[oclass];
+        class_name = _(names[oclass]);
     else if ((pos = strchr(oth_symbols, let)) != 0)
-        class_name = oth_names[pos - oth_symbols];
+        class_name = _(oth_names[pos - oth_symbols]);
     else
-        class_name = names[ILLOBJ_CLASS];
+        class_name = _(names[ILLOBJ_CLASS]);
 
     len = Strlen(class_name) + (unpaid ? sizeof "unpaid_" : sizeof "")
           + (oclass ? (Strlen(ocsymfmt) + invbuf_sympadding) : 0);

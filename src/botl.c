@@ -12,8 +12,8 @@ extern const char *const hu_stat[]; /* defined in eat.c */
 
 /* also used in insight.c */
 const char *const enc_stat[] = {
-    "",         "Burdened",  "Stressed",
-    "Strained", "Overtaxed", "Overloaded"
+    "",         N_("Burdened"),  N_("Stressed"),
+    N_("Strained"), N_("Overtaxed"), N_("Overloaded")
 };
 
 staticfn const char *rank(void);

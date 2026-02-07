@@ -12905,3 +12905,59 @@ msgstr "%4$s{을/를} %3$s 때 두루마리{이/가} 먼지로 %2$s.%1$.0s"
 msgid "stone%s won't leave your person."
 msgstr "돌{이/가} 몸에서 떨어지지 않는다.%.0s"
 
+# --- 촛불 관련 영어 문법(소유격/동사 일치) 한국어 노출 수정 ---
+# 영어 소유격("s'"/"'s"), 동사 일치("s are"/" is"), 복수 접미사("s"/"")가
+# 한국어 텍스트에 노출되는 문제를 %.0s로 억제.
+
+# ===== apply.c =====
+
+# 양초 불꽃 소멸
+# %s=Shk_Your, %s="candelabrum's "/"", %s="s'"/"'s", %s="s are"/" is"
+# %3$s(소유격)와 %4$s(동사 일치) 억제
+#, c-format
+msgid "%s%scandle%s flame%s extinguished."
+msgstr "%1$s%2$s양초 불꽃{이/가} 꺼졌다.%3$.0s%4$.0s"
+
+# ===== timeout.c =====
+
+# 양초 짧아짐 (인벤토리/몬스터)
+# %s=whose, %s="candelabrum's "/"", %s="s are"/" is"
+# %3$s(동사 일치) 억제
+#, c-format
+msgid "%s%scandle%s getting short."
+msgstr "%1$s%2$s양초{이/가} 짧아지고 있다.%3$.0s"
+
+# 양초 짧아짐 (바닥)
+# %s="a candelabrum's "/"some "/"a ", %s="s"/"" (raw)
+# %2$s(복수 접미사) 억제
+#, c-format
+msgid "%scandle%s getting short."
+msgstr "%1$s양초{이/가} 짧아지고 있다.%2$.0s"
+
+# 양초 불꽃 깜빡임 (인벤토리/몬스터)
+# %s=whose, %s="candelabrum's "/"", %s="s'"/"'s", %s="s"/"", %s=""/"s"
+# %3$s(소유격), %4$s(복수), %5$s(동사 일치) 억제
+#, c-format
+msgid "%s%scandle%s flame%s flicker%s low!"
+msgstr "%1$s%2$s양초 불꽃{이/가} 약하게 깜빡인다!%3$.0s%4$.0s%5$.0s"
+
+# 양초 불꽃 깜빡임 (바닥)
+# %s="a candelabrum's "/"some "/"a ", %s="s'"/"'s", %s="s"/""
+# %2$s(소유격)와 %3$s(복수) 억제
+#, c-format
+msgid "%scandle%s flame%s flicker low!"
+msgstr "%1$s양초 불꽃{이/가} 약하게 깜빡인다!%2$.0s%3$.0s"
+
+# 촛대 불꽃 소멸 (바닥)
+# %s="s" (many) / "" (single) - raw 복수 접미사
+#, c-format
+msgid "a candelabrum's flame%s die."
+msgstr "촛대의 불꽃{이/가} 꺼지는 것을.%.0s"
+
+# 양초 소모됨 (인벤토리/몬스터)
+# %s=Yname2(obj), %s="are"/"is"
+# %2$s(동사) 억제 - 한국어 "{이/가} 소모되었다"로 대체
+#, c-format
+msgid "%s %s consumed!"
+msgstr "%1$s{이/가} 소모되었다!%2$.0s"
+

@@ -12961,3 +12961,60 @@ msgstr "촛대의 불꽃{이/가} 꺼지는 것을.%.0s"
 msgid "%s %s consumed!"
 msgstr "%1$s{이/가} 소모되었다!%2$.0s"
 
+# ============================================================
+# 독립 단어 번역 품질 수정 (standalone word translation fixes)
+# ============================================================
+# NOTE: msgcat --use-first ignores empty msgstr, so we use " " (space) for
+# words that should be invisible in Korean. Parent format strings are
+# adjusted to accommodate the extra space.
+
+# mon.c: You("detect a%s odor reminiscent of a stable.")
+# 포맷 문자열 재정의: %s 뒤 공백 제거 (공백은 단어 번역에 포함)
+#, c-format
+msgid "detect a%s odor reminiscent of a stable."
+msgstr "마구간을 연상시키는%s냄새를 감지했다."
+
+# mon.c: pony일 때 "n" → "an odor", 한국어에서는 관사 불필요
+# 공백 하나로 번역 (포맷 "는%s냄새"에서 간격 역할)
+msgid "n"
+msgstr " "
+
+# mon.c: unicorn일 때 " strong" → "a strong odor"
+# 양쪽 공백 포함: "는 강한 냄새"
+msgid " strong"
+msgstr " 강한 "
+
+# lock.c: pline("%sour %s broke!", (quan>1) ? "One of y" : "Y", xname)
+# 단수일 때 "Y"+"our"="Your" → 한국어에서는 소유격 생략
+# 공백 하나로 번역 (msgcat이 빈 문자열을 무시하므로)
+msgid "Y"
+msgstr " "
+
+# lock.c: 위와 같은 컨텍스트
+# 복수일 때 "One of y"+"our"="One of your"
+msgid "One of y"
+msgstr "하나의 "
+
+# zap.c: cardinals[] 배열 - wish 도움말 "...%s번%s 지정하면"
+# "zero" → 현재 " 0이다"(is 0)는 오역. "0번" 형태로 사용됨
+msgid "zero"
+msgstr "0"
+
+# zap.c: 같은 배열에서 일관성 - 숫자로 표기
+msgid "five"
+msgstr "다섯"
+
+# zap.c: too_many[] - wish 도움말
+# 현재 "너무 무겁다."(too heavy)는 오역. "너무 많은번" = "too many times"
+msgid "too many"
+msgstr "너무 많은"
+
+# trap.c: "%s item%s in your inventory %s been destroyed."
+# burncount > burnmesgcount일 때: "Another"(추가 1개) vs "Other"(추가 여러개)
+# 현재 둘 다 " 다른"(선행 공백)으로 동일 → 구분 + 공백 수정
+msgid "Another"
+msgstr "또 다른"
+
+msgid "Other"
+msgstr "다른"
+

@@ -12687,3 +12687,7 @@ msgstr "장갑 낀 "
 
 msgid "one of "
 msgstr ""
+
+# potion.c - 사망 메시지
+msgid "alchemic blast"
+msgstr "연금술 폭발"

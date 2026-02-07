@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-07 12:58+0900\n"
+"POT-Creation-Date: 2026-02-07 13:22+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-07 12:58\n"
+"POT-Creation-Date: 2026-02-07 13:22\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -6219,6 +6219,10 @@ msgstr ""
 #: ../src/do.c:136
 #, c-format
 msgid "are hit by molten %s%c"
+msgstr ""
+
+#: ../src/do.c:141 ../src/trap.c:4969 ../src/trap.c:6939
+msgid "molten lava"
 msgstr ""
 
 #: ../src/do.c:144
@@ -32129,6 +32133,10 @@ msgstr ""
 msgid "BOOM!  "
 msgstr ""
 
+#: ../src/potion.c:2418
+msgid "alchemic blast"
+msgstr ""
+
 #: ../src/potion.c:2433
 msgid "That is a potion bottle, not a Klein bottle!"
 msgstr ""
@@ -42814,10 +42822,6 @@ msgstr ""
 msgid "%s on top of %s."
 msgstr ""
 
-#: ../src/trap.c:4969 ../src/trap.c:6939
-msgid "molten lava"
-msgstr ""
-
 #: ../src/trap.c:5007
 #, c-format
 msgid "%s into the %s%c"
@@ -47696,7 +47700,7 @@ msgstr ""
 msgid "Elbereth"
 msgstr ""
 
-#. angel_cuss array, text field, text field (partial, has concatenation), demon_cuss array
+#. text field, angel_cuss array, demon_cuss array, text field (partial, has concatenation)
 #: dat/quest.lua:77 dat/quest.lua:78 dat/quest.lua:79 dat/quest.lua:80
 #: dat/quest.lua:81 dat/quest.lua:82 dat/quest.lua:83 dat/quest.lua:84
 #: dat/quest.lua:85 dat/quest.lua:86 dat/quest.lua:87 dat/quest.lua:88

@@ -2415,7 +2415,7 @@ dip_potion_explosion(struct obj *obj, int dmg)
             potionbreathe(obj);
         useupall(obj);
         losehp(dmg, /* not physical damage */
-               "alchemic blast", KILLED_BY_AN);
+               _("alchemic blast"), KILLED_BY_AN);
         return TRUE;
     }
     return FALSE;

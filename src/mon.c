@@ -3317,7 +3317,7 @@ monstone(struct monst *mdef)
 #endif
                 /* invocation tools resist even with 0% resistance */
                 || obj_resists(obj, 0, 0)) {
-                if (flooreffects(obj, x, y, "fall"))
+                if (flooreffects(obj, x, y, _("fall")))
                     continue;
                 place_object(obj, x, y);
             } else {
@@ -3363,7 +3363,7 @@ monstone(struct monst *mdef)
     if (wasinside) {
         if (digests(mdef->data))
             You(_("%s through an opening in the new %s."),
-                u_locomotion("jump"), xname(otmp));
+                u_locomotion(_("jump")), xname(otmp));
     }
     return;
 }
@@ -3498,7 +3498,7 @@ xkilled(
     if (!nomsg) {
         boolean namedpet = has_mgivenname(mtmp) && !Hallucination;
 
-        You(_("%s %s!"),
+        You(C_("you_kill", "%s %s!"),
             nonliving(mtmp->data) ? _("destroy") : _("kill"),
             !(wasinside || canspotmon(mtmp)) ? _("it")
               : !mtmp->mtame ? mon_nam(mtmp)
@@ -4784,7 +4784,7 @@ hideunder(struct monst *mtmp)
            will be Null */
         if (undetected && seenmon && seenobj) {
             if (!locomo)
-                locomo = locomotion(mtmp->data, "hide");
+                locomo = locomotion(mtmp->data, _("hide"));
             set_msg_xy(mtmp->mx, mtmp->my); /* pline() will reset this */
             You_see(_("%s %s under %s."), seenmon, locomo, seenobj);
             iflags.last_msg = PLNMSG_HIDE_UNDER;

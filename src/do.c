@@ -1760,7 +1760,7 @@ goto_level(
             if (flags.verbose || great_effort)
                 pline(_("%s %s up%s the %s."),
                       great_effort ? _("With great effort, you") : _("You"),
-                      u_locomotion("climb"),
+                      u_locomotion(_("climb")),
                       (Flying && ga.at_ladder) ? _(" along") : "",
                       ga.at_ladder ? _("ladder") : _("stairs"));
         } else { /* down */

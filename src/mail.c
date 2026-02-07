@@ -438,7 +438,7 @@ newmail(struct mail_info *info)
             }
         }
         display_nhwindow(WIN_MESSAGE, FALSE);
-        obj = hold_another_object(obj, "Oops!", (const char *) 0,
+        obj = hold_another_object(obj, _("Oops!"), (const char *) 0,
                                   (const char *) 0);
         nhUse(obj);
     }

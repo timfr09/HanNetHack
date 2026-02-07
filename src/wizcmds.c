@@ -258,7 +258,7 @@ wiz_kill(void)
 
         flags.verbose = FALSE;
         iflags.autodescribe = TRUE;
-        ans = getpos(&cc, TRUE, "a monster");
+        ans = getpos(&cc, TRUE, _("a monster"));
         flags.verbose = save_verbose;
         iflags.autodescribe = save_autodescribe;
         if (ans < 0 || cc.x < 1)
@@ -311,7 +311,7 @@ wiz_kill(void)
 
             if (!iflags.menu_requested) {
                 /* normal case: hero is credited/blamed */
-                You(_("%s %s!"), nonliving(mtmp->data) ? _("destroy") : _("kill"), Mn);
+                You(C_("you_kill", "%s %s!"), nonliving(mtmp->data) ? _("destroy") : _("kill"), Mn);
                 xkilled(mtmp, XKILL_NOMSG);
             } else { /* 'm'-prefix */
                 /* we know that monsters aren't moving because player has
@@ -502,7 +502,7 @@ wiz_telekinesis(void)
 
     pline(_("Pick a monster to hurtle."));
     do {
-        ans = getpos(&cc, TRUE, "a monster");
+        ans = getpos(&cc, TRUE, _("a monster"));
         if (ans < 0 || cc.x < 1)
             return ECMD_CANCEL;
 
@@ -900,7 +900,7 @@ wiz_smell(void)
     You(_("can move the cursor to a monster that you want to smell."));
     do {
         pline(_("Pick a monster to smell."));
-        ans = getpos(&cc, TRUE, "a monster");
+        ans = getpos(&cc, TRUE, _("a monster"));
         if (ans < 0 || cc.x < 0) {
             return ECMD_CANCEL; /* done */
         }

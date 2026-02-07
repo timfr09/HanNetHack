@@ -942,7 +942,7 @@ kick_door(coordxy x, coordxy y, int avrg_attrib)
                 You(_("kick the door."));
             exercise(A_STR, FALSE);
             gm.maploc->doormask = D_NODOOR;
-            b_trapped("door", FOOT);
+            b_trapped(_("door"), FOOT);
         } else if (ACURR(A_STR) > 18 && !rn2(5) && !shopdoor) {
             Soundeffect(se_kick_door_it_shatters, 50);
             pline(_("As you kick the door, it shatters to pieces!"));
@@ -991,7 +991,7 @@ kick_nondoor(coordxy x, coordxy y, int avrg_attrib)
             exercise(A_DEX, TRUE);
             if (gm.maploc->doormask & D_TRAPPED) {
                 gm.maploc->doormask = D_NODOOR;
-                b_trapped("door", FOOT);
+                b_trapped(_("door"), FOOT);
             } else if (gm.maploc->doormask != D_NODOOR
                        && !(gm.maploc->doormask & D_LOCKED))
                 gm.maploc->doormask = D_ISOPEN;
@@ -1073,7 +1073,7 @@ kick_nondoor(coordxy x, coordxy y, int avrg_attrib)
             kick_dumb(x, y);
             return ECMD_TIME;
         }
-        You(_("kick %s."), (Blind ? something : "the altar"));
+        You(_("kick %s."), (Blind ? something : _("the altar")));
         altar_wrath(x, y);
         if (!rn2(3)) {
             kick_ouch(x, y, "");
@@ -1087,7 +1087,7 @@ kick_nondoor(coordxy x, coordxy y, int avrg_attrib)
             kick_dumb(x, y);
             return ECMD_TIME;
         }
-        You(_("kick %s."), (Blind ? something : "the fountain"));
+        You(_("kick %s."), (Blind ? something : _("the fountain")));
         if (!rn2(3)) {
             kick_ouch(x, y, "");
             return ECMD_TIME;
@@ -1230,7 +1230,7 @@ kick_nondoor(coordxy x, coordxy y, int avrg_attrib)
         } else if (!(gm.maploc->looted & S_LDWASHER) && !rn2(3)
                    && !(svm.mvitals[PM_AMOROUS_DEMON].mvflags & G_GONE)) {
             /* can't resist... */
-            pline(_("%s returns!"), (Blind ? Something : "The dish washer"));
+            pline(_("%s returns!"), (Blind ? Something : _("The dish washer")));
             if (makemon(&mons[PM_AMOROUS_DEMON], x, y,
                         MM_NOMSG | ((gend == 1 || (gend == 2 && rn2(2)))
                                     ? MM_MALE : MM_FEMALE)))

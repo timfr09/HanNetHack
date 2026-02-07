@@ -197,7 +197,7 @@ drop_throw(
             broken = ship_object(obj, x, y, FALSE);
         if (!broken) {
             struct monst *mtmp = m_at(x, y);
-            if (!(broken = flooreffects(obj, x, y, "fall"))) {
+            if (!(broken = flooreffects(obj, x, y, _("fall")))) {
                 place_object(obj, x, y);
                 if (!mtmp && u_at(x, y))
                     mtmp = &gy.youmonst;
@@ -536,8 +536,8 @@ ucatchgem(
         } else {
             You(_("accept %s gift in the spirit in which it was intended."),
                 mon_s_name);
-            (void) hold_another_object(gem, "You catch, but drop, %s.",
-                                       gem_xname, "You catch:");
+            (void) hold_another_object(gem, _("You catch, but drop, %s."),
+                                       gem_xname, _("You catch:"));
         }
         return TRUE;
     }
@@ -931,7 +931,7 @@ return_from_mtoss(
         if (notcaught) {
             (void) snuff_candle(otmp);
             if (!ship_object(otmp, x, y, FALSE)) {
-                if (flooreffects(otmp, x, y, "drop")) {
+                if (flooreffects(otmp, x, y, _("drop"))) {
                     if (cansee(x, y))
                         newsym(x, y);
                     return;

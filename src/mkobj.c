@@ -2894,13 +2894,13 @@ hornoplenty(
         if (!tipping) {
             obj = hold_another_object(obj,
                                       u.uswallow
-                                        ? "Oops!  %s out of your reach!"
+                                        ? _("Oops!  %s out of your reach!")
                                         : (Is_airlevel(&u.uz)
                                            || Is_waterlevel(&u.uz)
                                            || levl[u.ux][u.uy].typ < IRONBARS
                                            || levl[u.ux][u.uy].typ >= ICE)
-                                          ? "Oops!  %s away from you!"
-                                          : "Oops!  %s to the floor!",
+                                          ? _("Oops!  %s away from you!")
+                                          : _("Oops!  %s to the floor!"),
                                       The(aobjnam(obj, "slip")), (char *) 0);
             nhUse(obj);
         } else if (targetbox) {

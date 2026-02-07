@@ -1954,7 +1954,7 @@ invoke_create_ammo(struct obj *obj)
     } else
         otmp->quan += rnd(5);
     otmp->owt = weight(otmp);
-    otmp = hold_another_object(otmp, "Suddenly %s out.",
+    otmp = hold_another_object(otmp, _("Suddenly %s out."),
                                aobjnam(otmp, "fall"), (char *) 0);
     nhUse(otmp);
     return ECMD_TIME;

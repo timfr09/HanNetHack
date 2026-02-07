@@ -799,7 +799,7 @@ polymon(int mntmp)
                        ? "" : flags.female ? _("female ") : _("male "));
     }
     Strcat(buf, pmname(&mons[mntmp], flags.female ? FEMALE : MALE));
-    You(_("%s %s!"), (u.umonnum != mntmp) ? _("turn into") : _("feel like"), an(buf));
+    You(C_("you_poly", "%s %s!"), (u.umonnum != mntmp) ? _("turn into") : _("feel like"), an(buf));
 
     if (Stoned && poly_when_stoned(&mons[mntmp])) {
         /* poly_when_stoned already checked stone golem genocide */

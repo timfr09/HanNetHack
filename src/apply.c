@@ -1120,7 +1120,7 @@ use_mirror(struct obj *obj)
     } else if ((how_seen & SEENMON) == MONSEEN_INFRAVIS) {
         if (vis) /* (redundant) */
             pline(_("%s in the dark."),
-                  monverbself(mtmp, Monnam(mtmp), "are",
+                  monverbself(mtmp, Monnam(mtmp), _("are"),
                               "too far away to see"));
         /* some monsters do special things */
     } else if (mlet == S_VAMPIRE || mlet == S_GHOST || is_vampshifter(mtmp)) {
@@ -1152,7 +1152,7 @@ use_mirror(struct obj *obj)
             char buf[BUFSZ]; /* "She" or "He" */
 
             pline(_("%s in your %s."), /* "<mon> admires self in your mirror " */
-                  monverbself(mtmp, Monnam(mtmp), "admire", (char *) 0),
+                  monverbself(mtmp, Monnam(mtmp), _("admire"), (char *) 0),
                   mirror);
             pline(_("%s takes it!"), upstart(strcpy(buf, mhe(mtmp))));
         } else
@@ -2057,7 +2057,7 @@ jump(int magic) /* 0=Physical, otherwise skill level */
     cc.y = u.uy;
     gj.jumping_is_magic = magic;
     getpos_sethilite(display_jump_positions, get_valid_jump_position);
-    if (getpos(&cc, TRUE, "the desired position") < 0)
+    if (getpos(&cc, TRUE, _("the desired position")) < 0)
         return ECMD_CANCEL; /* user pressed ESC */
     if (!is_valid_jump_pos(cc.x, cc.y, magic, TRUE)) {
         return ECMD_FAIL;
@@ -3460,7 +3460,7 @@ use_pole(struct obj *obj, boolean autohit)
     if (!autohit) {
         getpos_sethilite(display_polearm_positions,
                          get_valid_polearm_position);
-        if (getpos(&cc, TRUE, "the spot to hit") < 0)
+        if (getpos(&cc, TRUE, _("the spot to hit")) < 0)
             /* ESC; uses turn iff polearm became wielded */
             return (res | ECMD_CANCEL);
     }
@@ -3529,7 +3529,7 @@ use_pole(struct obj *obj, boolean autohit)
                Note:  we only do this when a statue is displayed here,
                because the player is probably attempting to attack it;
                other statues obscured by anything are just ignored. */
-            pline(_(thump), "statue");
+            pline(_(thump), _("statue"));
             wake_nearto(gb.bhitpos.x, gb.bhitpos.y, 25);
         }
     } else {
@@ -3538,7 +3538,7 @@ use_pole(struct obj *obj, boolean autohit)
 
         if (glyph_to_obj(glyph) == BOULDER
             && sobj_at(BOULDER, gb.bhitpos.x, gb.bhitpos.y)) {
-            pline(_(thump), "boulder");
+            pline(_(thump), _("boulder"));
             wake_nearto(gb.bhitpos.x, gb.bhitpos.y, 25);
         } else if (!accessible(gb.bhitpos.x, gb.bhitpos.y)
                    || IS_FURNITURE(levl[gb.bhitpos.x][gb.bhitpos.y].typ)) {
@@ -3752,7 +3752,7 @@ use_grapple(struct obj *obj)
     cc.x = u.ux;
     cc.y = u.uy;
     getpos_sethilite(display_grapple_positions, can_grapple_location);
-    if (getpos(&cc, TRUE, "the spot to hit") < 0)
+    if (getpos(&cc, TRUE, _("the spot to hit")) < 0)
         /* ESC; uses turn iff grapnel became wielded */
         return (res | ECMD_CANCEL);
 

@@ -1758,7 +1758,7 @@ dopay(void)
         pline(_("Pay whom?"));
         cc.x = u.ux;
         cc.y = u.uy;
-        if (getpos(&cc, TRUE, "the creature you want to pay") < 0)
+        if (getpos(&cc, TRUE, _("the creature you want to pay")) < 0)
             return ECMD_CANCEL; /* player pressed ESC */
         cx = cc.x;
         cy = cc.y;
@@ -5024,7 +5024,7 @@ shopdig(int fall)
                 return;
             } else
                 pline(_("%s %s, and %s your backpack!"), Shknam(shkp),
-                      makeplural(locomotion(shkp->data, "leap")), grabs);
+                      makeplural(locomotion(shkp->data, _("leap"))), grabs);
         } else
             pline(_("%s %s your backpack!"), Shknam(shkp), grabs);
 

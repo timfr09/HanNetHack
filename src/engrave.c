@@ -1381,7 +1381,7 @@ engrave(void)
         }
         if (splitstack) {
             obj_extract_self(stylus);
-            stylus = hold_another_object(stylus, "You drop one %s!",
+            stylus = hold_another_object(stylus, _("You drop one %s!"),
                                          doname(stylus), (char *) NULL);
             nhUse(stylus);
         } else if (dulled && stylus->known) {

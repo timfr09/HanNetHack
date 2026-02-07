@@ -4660,7 +4660,7 @@ mhitm_ad_sedu(
                 if (canseemon(magr))
                     pline_mon(magr, _("%s tries to %s away with %s."),
                               Monnam(magr),
-                              locomotion(magr->data, "run"), buf);
+                              locomotion(magr->data, _("run")), buf);
             }
             monflee(magr, 0, FALSE, FALSE);
             mhm->hitflags = M_ATTK_AGR_DONE; /* return 3??? */
@@ -5160,7 +5160,7 @@ gulpum(struct monst *mdef, struct attack *mattk)
                 if (DEADMONSTER(mdef)) /* not lifesaved */
                     return M_ATTK_DEF_DIED;
             }
-            You(_("%s %s!"), expel_verb, mon_nam(mdef));
+            You(C_("you_expel", "%s %s!"), expel_verb, mon_nam(mdef));
             if ((Slow_digestion || is_animal(gy.youmonst.data)) && u_digest) {
                 pline(_("Obviously, you didn't like %s taste."),
                       s_suffix(mon_nam(mdef)));

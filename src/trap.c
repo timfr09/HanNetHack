@@ -153,21 +153,21 @@ burnarmor(struct monst *victim)
             }
             item = hitting_u ? uarmu : which_armor(victim, W_ARMU);
             if (item)
-                (void) burn_dmg(item, "shirt");
+                (void) burn_dmg(item, _("shirt"));
             return TRUE;
         case 2:
             item = hitting_u ? uarms : which_armor(victim, W_ARMS);
-            if (!burn_dmg(item, "wooden shield"))
+            if (!burn_dmg(item, _("wooden shield")))
                 continue;
             break;
         case 3:
             item = hitting_u ? uarmg : which_armor(victim, W_ARMG);
-            if (!burn_dmg(item, "gloves"))
+            if (!burn_dmg(item, _("gloves")))
                 continue;
             break;
         case 4:
             item = hitting_u ? uarmf : which_armor(victim, W_ARMF);
-            if (!burn_dmg(item, "boots"))
+            if (!burn_dmg(item, _("boots")))
                 continue;
             break;
         }
@@ -1220,7 +1220,7 @@ trapeffect_arrow_trap(
         otmp = t_missile(ARROW, trap);
         if (u.usteed && !rn2(2) && steedintrap(trap, otmp)) {
             ; /* nothing */
-        } else if (thitu(8, dmgval(otmp, &gy.youmonst), &otmp, "arrow")) {
+        } else if (thitu(8, dmgval(otmp, &gy.youmonst), &otmp, _("arrow"))) {
             if (otmp)
                 obfree(otmp, (struct obj *) 0);
         } else {
@@ -1619,7 +1619,7 @@ trapeffect_rust_trap(
             break;
         case 1:
             pline(_("%s your left %s!"), _("A gush of water hits"), body_part(ARM));
-            if (water_damage(uarms, "shield", TRUE) != ER_NOTHING)
+            if (water_damage(uarms, _("shield"), TRUE) != ER_NOTHING)
                 break;
             if (u.twoweap || (uwep && bimanual(uwep)))
                 (void) water_damage(u.twoweap ? uswapwep : uwep, 0, TRUE);
@@ -1645,7 +1645,7 @@ trapeffect_rust_trap(
             else if (uarm)
                 (void) water_damage(uarm, suit_simple_name(uarm), TRUE);
             else if (uarmu)
-                (void) water_damage(uarmu, "shirt", TRUE);
+                (void) water_damage(uarmu, _("shirt"), TRUE);
         }
         update_inventory();
 
@@ -1680,7 +1680,7 @@ trapeffect_rust_trap(
                       _("%s %s's left %s!"), _("A gush of water hits"),
                       mon_nam(mtmp), mbodypart(mtmp, ARM));
             target = which_armor(mtmp, W_ARMS);
-            if (water_damage(target, "shield", TRUE) != ER_NOTHING)
+            if (water_damage(target, _("shield"), TRUE) != ER_NOTHING)
                 break;
             target = MON_WEP(mtmp);
             if (target && bimanual(target))
@@ -1711,7 +1711,7 @@ trapeffect_rust_trap(
                 (void) water_damage(target, suit_simple_name(target),
                                     TRUE);
             else if ((target = which_armor(mtmp, W_ARMU)) != 0)
-                (void) water_damage(target, "shirt", TRUE);
+                (void) water_damage(target, _("shirt"), TRUE);
         }
 
         if (completelyrusts(mptr)) {
@@ -1909,7 +1909,7 @@ trapeffect_pit(
                                        SUPPRESS_SADDLE, FALSE)),
                       conj_pit ? _("steps") : _("lands"), predicament);
             } else
-                You(_("%s %s!"), conj_pit ? _("step") : _("land"), predicament);
+                You(C_("you_trap", "%s %s!"), conj_pit ? _("step") : _("land"), predicament);
         }
         /* FIXME:
          * if hero gets killed here, setting u.utrap in advance will
@@ -6001,7 +6001,7 @@ untrap(
             if (!force && (confused || Fumbling
                            || rnd(75 + level_difficulty() / 2) > ch)) {
                 You(_("set it off!"));
-                b_trapped("door", FINGER);
+                b_trapped(_("door"), FINGER);
                 levl[x][y].doormask = D_NODOOR;
                 unblock_point(x, y);
                 newsym(x, y);

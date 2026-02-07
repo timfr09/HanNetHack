@@ -394,7 +394,7 @@ moverock_core(coordxy sx, coordxy sy)
                    spot without pushing it; hero is poly'd into a giant,
                    so exotic forms of locomotion are out, but might be
                    levitating (ring, potion, spell) or flying (amulet) */
-                You(_("%s over a boulder here."), u_locomotion("step"));
+                You(_("%s over a boulder here."), u_locomotion(_("step")));
                 /* ["over" seems weird on air level but what else to say?] */
                 sokoban_guilt();
                 res = 0; /* move to <sx,sy> */
@@ -1895,7 +1895,7 @@ swim_move_danger(coordxy x, coordxy y)
                 return FALSE;
             } else if (ParanoidSwim || liquid_wall) {
                 You(_("avoid %s into the %s."),
-                    ing_suffix(u_locomotion("step")),
+                    ing_suffix(u_locomotion(_("step"))),
                     waterbody_name(x, y));
                 (void) handle_tip(TIP_SWIM);
                 return TRUE;
@@ -3587,7 +3587,7 @@ check_special_room(boolean newlev)
             break;
         case MORGUE:
             if (midnight()) {
-                const char *run = u_locomotion("Run");
+                const char *run = u_locomotion(_("Run"));
 
                 pline(_("%s away!  %s away!"), run, run);
             } else

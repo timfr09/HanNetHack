@@ -141,7 +141,7 @@ picklock(void)
     You(_("succeed in %s."), lock_action());
     if (gx.xlock.door) {
         if (gx.xlock.door->doormask & D_TRAPPED) {
-            b_trapped("door", FINGER);
+            b_trapped(_("door"), FINGER);
             gx.xlock.door->doormask = D_NODOOR;
             unblock_point(u.ux + u.dx, u.uy + u.dy);
             if (*in_rooms(u.ux + u.dx, u.uy + u.dy, SHOPBASE))
@@ -904,7 +904,7 @@ doopen_indir(coordxy x, coordxy y)
         set_msg_xy(cc.x, cc.y);
         pline_The(_("door opens."));
         if (door->doormask & D_TRAPPED) {
-            b_trapped("door", FINGER);
+            b_trapped(_("door"), FINGER);
             door->doormask = D_NODOOR;
             if (*in_rooms(cc.x, cc.y, SHOPBASE))
                 add_damage(cc.x, cc.y, SHOP_DOOR_COST);

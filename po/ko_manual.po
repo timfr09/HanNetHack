@@ -12623,3 +12623,53 @@ msgstr "빛나다"
 
 msgid "fade"
 msgstr "바래다"
+
+# --- 정적 배열 N_() 래핑 ---
+
+# artifact.c - Magicbane 공격 동사
+msgid "probe"
+msgstr "탐지하다"
+
+msgid "stun"
+msgstr "기절시키다"
+
+msgid "scare"
+msgstr "겁먹이다"
+
+msgid "cancel"
+msgstr "해제하다"
+
+msgid "prod"
+msgstr "찌르다"
+
+msgid "amaze"
+msgstr "놀래키다"
+
+msgid "tickle"
+msgstr "간지럽히다"
+
+msgid "purge"
+msgstr "정화하다"
+
+# artifact.c - Master Key 온도 설명
+msgid "cool"
+msgstr "차갑다"
+
+msgid "slightly warm"
+msgstr "약간 따뜻하다"
+
+# "warm" - 이미 존재할 수 있으므로 컨텍스트 확인 필요
+msgid "warm"
+msgstr "따뜻하다"
+
+msgid "very warm"
+msgstr "매우 따뜻하다"
+
+msgid "hot"
+msgstr "뜨겁다"
+
+msgid "very hot"
+msgstr "매우 뜨겁다"
+
+msgid "like fire"
+msgstr "불처럼 뜨겁다"

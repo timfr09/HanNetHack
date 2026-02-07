@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-07 11:53+0900\n"
+"POT-Creation-Date: 2026-02-07 12:53+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-07 11:53\n"
+"POT-Creation-Date: 2026-02-07 12:53\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -2490,6 +2490,38 @@ msgstr ""
 msgid "  %s [%s %s]"
 msgstr ""
 
+#: ../src/artifact.c:1244
+msgid "probe"
+msgstr ""
+
+#: ../src/artifact.c:1244
+msgid "stun"
+msgstr ""
+
+#: ../src/artifact.c:1244
+msgid "scare"
+msgstr ""
+
+#: ../src/artifact.c:1244 ../src/mkobj.c:746
+msgid "cancel"
+msgstr ""
+
+#: ../src/artifact.c:1245
+msgid "prod"
+msgstr ""
+
+#: ../src/artifact.c:1245
+msgid "amaze"
+msgstr ""
+
+#: ../src/artifact.c:1245
+msgid "tickle"
+msgstr ""
+
+#: ../src/artifact.c:1245
+msgid "purge"
+msgstr ""
+
 #: ../src/artifact.c:1306
 #, c-format
 msgid "magic-absorbing blade %s %s!"
@@ -2858,6 +2890,34 @@ msgstr ""
 msgid "After losing your gloves, you"
 msgstr ""
 
+#: ../src/artifact.c:2757 ../src/attrib.c:54 ../src/attrib.c:61
+msgid "cool"
+msgstr ""
+
+#: ../src/artifact.c:2757
+msgid "slightly warm"
+msgstr ""
+
+#: ../src/artifact.c:2757 ../src/attrib.c:55 ../src/fountain.c:709
+msgid "warm"
+msgstr ""
+
+#: ../src/artifact.c:2757
+msgid "very warm"
+msgstr ""
+
+#: ../src/artifact.c:2758 ../src/do.c:1998 ../src/fountain.c:709
+msgid "hot"
+msgstr ""
+
+#: ../src/artifact.c:2758
+msgid "very hot"
+msgstr ""
+
+#: ../src/artifact.c:2758
+msgid "like fire"
+msgstr ""
+
 #: ../src/artifact.c:2766
 #, c-format
 msgid "Key feels %s%c"
@@ -2968,15 +3028,7 @@ msgid "unaware"
 msgstr ""
 
 #: ../src/attrib.c:54 ../src/attrib.c:61
-msgid "cool"
-msgstr ""
-
-#: ../src/attrib.c:54 ../src/attrib.c:61
 msgid "warmer"
-msgstr ""
-
-#: ../src/attrib.c:55 ../src/fountain.c:709
-msgid "warm"
 msgstr ""
 
 #: ../src/attrib.c:55
@@ -6808,10 +6860,6 @@ msgstr ""
 #: ../src/do.c:1997
 #, c-format
 msgid "It is %s here."
-msgstr ""
-
-#: ../src/do.c:1998 ../src/fountain.c:709
-msgid "hot"
 msgstr ""
 
 #: ../src/do.c:1998 ../src/fountain.c:709
@@ -21106,10 +21154,6 @@ msgstr ""
 #: ../src/mkmaze.c:1988
 #, c-format
 msgid "bubble ymax: y = %d, ymax = %d"
-msgstr ""
-
-#: ../src/mkobj.c:746
-msgid "cancel"
 msgstr ""
 
 #: ../src/mkobj.c:746
@@ -47644,7 +47688,7 @@ msgstr ""
 msgid "Elbereth"
 msgstr ""
 
-#. text field (partial, has concatenation), text field, demon_cuss array, angel_cuss array
+#. angel_cuss array, demon_cuss array, text field, text field (partial, has concatenation)
 #: dat/quest.lua:77 dat/quest.lua:78 dat/quest.lua:79 dat/quest.lua:80
 #: dat/quest.lua:81 dat/quest.lua:82 dat/quest.lua:83 dat/quest.lua:84
 #: dat/quest.lua:85 dat/quest.lua:86 dat/quest.lua:87 dat/quest.lua:88

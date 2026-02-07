@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-07 13:22+0900\n"
+"POT-Creation-Date: 2026-02-07 14:00+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-07 13:22\n"
+"POT-Creation-Date: 2026-02-07 14:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -5307,7 +5307,8 @@ msgid "another"
 msgstr ""
 
 #: ../src/detect.c:1874 ../src/dokick.c:1606 ../src/dungeon.c:3368
-#: ../src/invent.c:4259 ../src/uhitm.c:1203
+#: ../src/invent.c:4259 ../src/trap.c:2976 ../src/trap.c:2986
+#: ../src/uhitm.c:1203
 msgid "an"
 msgstr ""
 
@@ -47700,7 +47701,7 @@ msgstr ""
 msgid "Elbereth"
 msgstr ""
 
-#. text field, angel_cuss array, demon_cuss array, text field (partial, has concatenation)
+#. angel_cuss array, text field (partial, has concatenation), text field, demon_cuss array
 #: dat/quest.lua:77 dat/quest.lua:78 dat/quest.lua:79 dat/quest.lua:80
 #: dat/quest.lua:81 dat/quest.lua:82 dat/quest.lua:83 dat/quest.lua:84
 #: dat/quest.lua:85 dat/quest.lua:86 dat/quest.lua:87 dat/quest.lua:88

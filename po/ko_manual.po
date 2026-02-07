@@ -2995,7 +2995,7 @@ msgstr "%d/%d %s"
 
 #, c-format
 msgid "%d out of %d hit point%s"
-msgstr "%d/%d 체력%s"
+msgstr "%1$d/%2$d 체력%3$.0s"
 
 #, c-format
 msgid "in the endgame, on the %s%s"
@@ -3344,7 +3344,7 @@ msgstr "무엇을 목록으로 볼까요?"
 
 #, c-format
 msgid "Monster%s migrating to %s:"
-msgstr "%s(으)로 이동 중인 몬스터%s:"
+msgstr "%2$s(으)로 이동 중인 몬스터:%1$.0s"
 
 msgid "current level"
 msgstr "현재 층"
@@ -5679,9 +5679,9 @@ msgstr "바위에 부딪힘"
 msgid "add to the scrawl on"
 msgstr "낙서에 추가"
 
-# shk.c:2018 - 상점 청구서. "items on your bill"
+# shk.c:2018 - 상점 청구서. "items on your bill" (수식어 형태로 수정)
 msgid "on your bill"
-msgstr "청구서에"
+msgstr "청구서의"
 
 # trap.c:5936 - 상자 함정 확인. "There's a box here. Check it for traps?"
 msgid " here.  Check it for traps?"
@@ -7436,19 +7436,19 @@ msgstr "안전하게 기도할 수 없다 "
 # 조합: " %ld day%s", " %ld hour%s", " %ld minute%s", " %ld second%s"
 #, c-format
 msgid " %ld day%s"
-msgstr " %ld일%s"
+msgstr " %1$ld일%2$.0s"
 
 #, c-format
 msgid " %ld hour%s"
-msgstr " %ld시간%s"
+msgstr " %1$ld시간%2$.0s"
 
 #, c-format
 msgid " %ld minute%s"
-msgstr " %ld분%s"
+msgstr " %1$ld분%2$.0s"
 
 #, c-format
 msgid " %ld second%s"
-msgstr " %ld초%s"
+msgstr " %1$ld초%2$.0s"
 
 # insight.c:344,350,356,1692 - 연결어
 # 시간 연결, 조건 연결 등 범용 접속사
@@ -7708,7 +7708,7 @@ msgstr "가시 "
 # insight.c:2279 - 업적
 #, c-format
 msgid "Achievement%s:"
-msgstr "업적%s:"
+msgstr "업적:%.0s"
 
 # insight.c:2906-2912 - 처치 횟수
 msgid " (twice)"
@@ -8151,7 +8151,7 @@ msgstr ", 아래층에서 진입"
 
 #, c-format
 msgid "horn%s"
-msgstr "뿔%s"
+msgstr "뿔%.0s"
 
 # pager.c - 정보
 #, c-format
@@ -12701,3 +12701,207 @@ msgstr ""
 # trap.c - leash 복수형 (영어 접미사 억제)
 msgid "leash%s slip%s loose."
 msgstr "줄이 풀렸다.%.0s%.0s"
+
+# --- 영어 복수형 접미사(plur()) 한국어 노출 일괄 수정 ---
+# plur() 함수는 영어에서 "s" 또는 ""를 반환하여 복수형을 만듦.
+# 한국어에는 이러한 접미사가 불필요하므로 %.0s로 억제함.
+
+# ===== apply.c =====
+
+# 청진기 사망 확인
+# %s=this/that/these/those, %s=""/"s", %s=is/are, %s=" mostly"/""
+# %2$s(영어 복수 "s")와 %3$s(is/are) 억제
+#, c-format
+msgid "determine that %s unfortunate being%s %s%s dead."
+msgstr "%1$s 불행한 존재{이/가}%4$s 죽었다고 판단한다.%2$.0s%3$.0s"
+
+# 양초 불꽃
+# %s=소유격이름, %s=plur(), %s=burn/burns, %s="."/brightly"
+#, c-format
+msgid "%s flame%s %s%s"
+msgstr "%1$s 불꽃{이/가} %3$s%4$s%2$.0s"
+
+# 시금석 사용 프롬프트
+# %s=plur()
+#, c-format
+msgid "rub on the stone%s"
+msgstr "시금석에 문지르다%.0s"
+
+# 시금석 이름 (buf로 사용)
+# %s=plur()
+#, c-format
+msgid "stone%s"
+msgstr "돌%.0s"
+
+# ===== end.c =====
+
+# 게임 종료 점수
+# %s=상태텍스트, %ld=점수, %s=plur(점수)
+#, c-format
+msgid "%s with %ld point%s,"
+msgstr "%1$s, %2$ld점으로,%3$.0s"
+
+# ===== invent.c =====
+
+# 미확인 물품 접미사
+# %s=plur(unid_cnt)
+#, c-format
+msgid " -- unidentified or partially identified item%s"
+msgstr " -- 미확인 또는 부분 확인 물품%.0s"
+
+# ===== mcastu.c =====
+
+# Kops 소환 대사
+# %s=plur(count)
+#, c-format
+msgid "Destroy the thief, my pet%s!"
+msgstr "도둑을 처치해라, 내 애완동물이여!%.0s"
+
+# ===== objnam.c =====
+
+# 용기 내용물 표시
+# %ld=개수, %s=plur(개수)
+#, c-format
+msgid " containing %ld item%s"
+msgstr " %1$ld개 아이템 포함%2$.0s"
+
+# ===== shk.c =====
+
+# 소모 물품 헤더 (기존 "빨라졌다" 오역 수정)
+# %s="s"/""
+#, c-format
+msgid "Used up item%s:"
+msgstr "소모한 물품:%.0s"
+
+# 미지불 물품 헤더
+# %s="s"/""
+#, c-format
+msgid "Unpaid item%s:"
+msgstr "미지불 아이템:%.0s"
+
+# 금화 부족
+# %s=" any of"/"", %s=plur(), %s="you've picked"/"on your bill"
+#, c-format
+msgid "don't have enough gold to buy%s the item%s %s."
+msgstr "%3$s%1$s 물건{을/를} 살 금화가 충분하지 않다.%2$.0s"
+
+# 금화 부족 - 보조 번역 수정
+msgid " any of"
+msgstr " 어떤"
+
+msgid "you've picked"
+msgstr "선택한"
+
+# 촛불 안내 (이자크)
+# %d=개수, %s=" more"/"", %s=plur()
+#, c-format
+msgid "You'll need %d%s candle%s to go along with it."
+msgstr "이것과 함께 %1$d개%2$s의 양초가 필요하다.%3$.0s"
+
+# ===== trap.c =====
+
+# 물약 폭발
+# %s=plur(), %s=explode/explodes
+#, c-format
+msgid "potion%s %s!"
+msgstr "물약{이/가} %2$s!%1$.0s"
+
+# 인벤토리 아이템 파괴
+# %s=An/Some/Another/Other, %s=plur(), %s=has/have
+# %2$s와 %3$s 억제 (한국어 문법에 불필요)
+#, c-format
+msgid "%s item%s in your inventory %s been destroyed."
+msgstr "인벤토리의 %1$s 항목{이/가} 파괴되었다.%2$.0s%3$.0s"
+
+# ===== zap.c =====
+
+# 소원 재시도 안내
+# %s=기수(two/three등), %s=" more"/"", %s=plur()
+#, c-format
+msgid "If you specify an unrecognized object name %s%s time%s,"
+msgstr "인식되지 않는 물건 이름을 %1$s번%2$s 지정하면,%3$.0s"
+
+# " more" 번역 수정 (기존 "개 더" → " 더")
+msgid " more"
+msgstr " 더"
+
+# ===== read.c =====
+
+# 몬스터 제거
+# %d=개수, %s=plur(개수)
+#, c-format
+msgid "Eliminated %d monster%s."
+msgstr "%1$d마리의 괴물{을/를} 제거했다.%2$.0s"
+
+# ===== dig.c (DEBUG) =====
+
+# 매장된 물체 (디버그 모드 - 낮은 우선순위지만 수정)
+# %d=개수, %s=plur()
+#, c-format
+msgid "%d object%s buried."
+msgstr "%1$d개의 물체{이/가} 묻혔다.%2$.0s"
+
+# ===== mon.c =====
+
+# 경비병 (buf로 사용 - vtense에 전달됨)
+# %s=plur()
+#, c-format
+msgid "guard%s"
+msgstr "경비병%.0s"
+
+# 호루라기 소리
+# %s="a guard's"/"guards'", %s=plur()
+#, c-format
+msgid "the shrill sound of %s whistle%s."
+msgstr "%1$s 호루라기의 날카로운 소리.%2$.0s"
+
+# ===== polyself.c =====
+
+# 석화 사망 원인
+# %s=시체이름, %s=plur()
+#, c-format
+msgid "hiding under %s%s"
+msgstr "%1$s 아래에 숨다%2$.0s"
+
+# 석화 경고 메시지
+# %s=시체이름, %s=plur()
+#, c-format
+msgid "Hiding under %s%s is a fatal mistake..."
+msgstr "%1$s 아래에 숨는 것은 치명적인 실수다...%2$.0s"
+
+# ===== uhitm.c =====
+
+# 알 상태 메시지
+# %s=plur(), %s=isn't/aren't
+#, c-format
+msgid "egg%s %s alive any more..."
+msgstr "알{은/는} 더 이상 살아있지 않다...%.0s%.0s"
+
+# 무기 부서짐
+# %s=몬스터소유격, %s=plur(), %s=shatter/shatters
+#, c-format
+msgid "%s weapon%s %s"
+msgstr "%1$s 무기{이/가} %3$s%2$.0s"
+
+# ===== weapon.c =====
+
+# 무기 용접됨
+# %s=몬스터소유격, %s=plur(), %s=용접상태buf
+#, c-format
+msgid "Since %s weapon%s %s,"
+msgstr "%1$s 무기{이/가} %3$s,%2$.0s"
+
+# ===== pickup.c =====
+
+# 두루마리 먼지로 변함
+# %s=plur(), %s=turn/turns, %s=raise/pick, %s=it/them
+#, c-format
+msgid "scroll%s %s to dust as you %s %s up."
+msgstr "%4$s{을/를} %3$s 때 두루마리{이/가} 먼지로 %2$s.%1$.0s"
+
+# 저주받은 돌 (loadstone)
+# %s=plur()
+#, c-format
+msgid "stone%s won't leave your person."
+msgstr "돌{이/가} 몸에서 떨어지지 않는다.%.0s"
+

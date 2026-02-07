@@ -955,7 +955,7 @@ msgid "elven broadsword"
 msgstr "엘프 브로드소드"
 
 msgid "elven dagger"
-msgstr "엘프 소검"
+msgstr "엘프 단검"
 
 msgid "elven mithril-coat"
 msgstr "엘프 미스릴 갑옷"
@@ -1135,7 +1135,7 @@ msgid "orcish chain mail"
 msgstr "오크 사슬 갑옷"
 
 msgid "orcish dagger"
-msgstr "오크 소검"
+msgstr "오크 단검"
 
 msgid "orcish ring mail"
 msgstr "오크 링 메일"
@@ -1187,7 +1187,7 @@ msgid "runed broadsword"
 msgstr "룬 브로드소드"
 
 msgid "runed dagger"
-msgstr "룬 소검"
+msgstr "룬 단검"
 
 msgid "runed short sword"
 msgstr "룬 소검"
@@ -13017,4 +13017,41 @@ msgstr "또 다른"
 
 msgid "Other"
 msgstr "다른"
+
+# ============================================================
+# 자동번역(ko.po) 오역 수정 (auto-translation quality fixes)
+# ============================================================
+
+# potion.c: bottlenames[] 배열 - 포션 용기 이름
+# "이다"(to be)는 완전 오역. 포션 용기의 일종
+msgid "jar"
+msgstr "항아리"
+
+# explode.c: Tobjnam(otmp, "crumble") - 석상이 부서짐
+# "비틀거린다."(to stagger)는 오역. "crumble" = 부서지다
+msgid "crumble"
+msgstr "부서지다"
+
+# zap.c: 브레스 공격 동사 - "exhaled a fireball" 등
+# "지쳤다."(exhausted/tired)는 오역. "exhaled" = 내뿜다
+msgid "exhaled"
+msgstr "내뿜었다"
+
+# lock.c: 부서진 상자를 수리하는 동작
+# "그것"(it/that)은 완전 오역. "fix" = 고치다
+msgid "fix"
+msgstr "고치다"
+
+# dothrow.c/objnam.c: 지형 이름 "a pool of water/lava"
+# "고인다"(to pool, 동사)는 오역. 명사 "웅덩이"가 주된 용도
+msgid "pool"
+msgstr "웅덩이"
+
+# zap.c: "Blood %ss %s your %s." - 피가 고이는 메시지
+# %s1="boil"/"pool", %s2="beneath"/"at", %s3=body_part(FOOT)
+# "pool"→"웅덩이"(명사)로 변경했으므로 포맷 문자열 재정의 필요
+# "피가 %3$s에 고인다." (boil) / "피가 %3$s에 웅덩이를 이룬다." 둘 다 처리
+#, c-format
+msgid "Blood %ss %s your %s."
+msgstr "피가 %3$s에%1$.0s%2$.0s 고인다."
 

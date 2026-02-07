@@ -1709,7 +1709,7 @@ potionhit(struct monst *mon, struct obj *obj, int how)
         switch (obj->otyp) {
         case POT_WATER:
             Snprintf(saddle_glows, sizeof(saddle_glows), "%s %s",
-                     buf, aobjnam(saddle, "glow"));
+                     buf, aobjnam(saddle, _("glow")));
             affected = H2Opotion_dip(obj, saddle, useeit, saddle_glows);
             break;
         case POT_POLYMORPH:

@@ -1284,7 +1284,7 @@ trapeffect_dart_trap(
         if (u.usteed && !rn2(2) && steedintrap(trap, otmp)) {
             ; /* nothing */
         } else if (thitu(7, dmgval(otmp, &gy.youmonst),
-                         &otmp, "little dart")) {
+                         &otmp, _("little dart"))) {
             if (otmp) {
                 if (otmp->opoisoned)
                     poisoned("dart", A_CON, "little dart",
@@ -4568,10 +4568,10 @@ acid_damage(struct obj *obj)
             ) {
             if (!Blind) {
                 if (victim == &gy.youmonst)
-                    Your(_("%s."), aobjnam(obj, "fade"));
+                    Your(_("%s."), aobjnam(obj, _("fade")));
                 else if (vismon)
                     pline(_("%s %s."), s_suffix(Monnam(victim)),
-                          aobjnam(obj, "fade"));
+                          aobjnam(obj, _("fade")));
             }
         }
         obj->otyp = SCR_BLANK_PAPER;

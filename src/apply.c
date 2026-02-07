@@ -1121,7 +1121,7 @@ use_mirror(struct obj *obj)
         if (vis) /* (redundant) */
             pline(_("%s in the dark."),
                   monverbself(mtmp, Monnam(mtmp), _("are"),
-                              "too far away to see"));
+                              _("too far away to see")));
         /* some monsters do special things */
     } else if (mlet == S_VAMPIRE || mlet == S_GHOST || is_vampshifter(mtmp)) {
         if (vis)

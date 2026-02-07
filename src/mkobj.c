@@ -2901,7 +2901,7 @@ hornoplenty(
                                            || levl[u.ux][u.uy].typ >= ICE)
                                           ? _("Oops!  %s away from you!")
                                           : _("Oops!  %s to the floor!"),
-                                      The(aobjnam(obj, "slip")), (char *) 0);
+                                      The(aobjnam(obj, _("slip"))), (char *) 0);
             nhUse(obj);
         } else if (targetbox) {
             add_to_container(targetbox, obj);

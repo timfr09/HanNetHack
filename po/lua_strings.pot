@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-07 14:00\n"
+"POT-Creation-Date: 2026-02-07 20:16\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -115,7 +115,7 @@ msgstr ""
 #: dat/quest.lua:2825
 #: dat/quest.lua:2828
 #: dat/quest.lua:3015
-#. angel_cuss array, text field (partial, has concatenation), text field, demon_cuss array
+#. text field, text field (partial, has concatenation), demon_cuss array, angel_cuss array
 msgid "\\"
 msgstr ""
 

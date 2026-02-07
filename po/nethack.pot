@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-07 12:53+0900\n"
+"POT-Creation-Date: 2026-02-07 13:22+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-07 12:53\n"
+"POT-Creation-Date: 2026-02-07 13:22\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -1782,8 +1782,8 @@ msgstr ""
 msgid "A sharp crack shatters %s%s."
 msgstr ""
 
-#: ../src/apply.c:2713 ../src/apply.c:3579 ../src/mhitu.c:139
-#: ../src/potion.c:2519 ../src/uhitm.c:903
+#: ../src/apply.c:2713 ../src/apply.c:3579 ../src/fountain.c:740
+#: ../src/mhitu.c:139 ../src/potion.c:2519 ../src/uhitm.c:903
 msgid "one of "
 msgstr ""
 
@@ -5947,7 +5947,7 @@ msgid "Halt, vandal!  You're under arrest!"
 msgstr ""
 
 #: ../src/dig.c:1403 ../src/dig.c:1820 ../src/dungeon.c:1772
-#: ../src/dungeon.c:3614
+#: ../src/dungeon.c:3614 ../src/fountain.c:250 ../src/fountain.c:400
 msgid "fountain"
 msgstr ""
 
@@ -6219,6 +6219,10 @@ msgstr ""
 #: ../src/do.c:136
 #, c-format
 msgid "are hit by molten %s%c"
+msgstr ""
+
+#: ../src/do.c:141 ../src/trap.c:4969 ../src/trap.c:6939
+msgid "molten lava"
 msgstr ""
 
 #: ../src/do.c:144
@@ -10471,7 +10475,7 @@ msgstr ""
 msgid " to %s"
 msgstr ""
 
-#: ../src/dungeon.c:3615
+#: ../src/dungeon.c:3615 ../src/fountain.c:601
 msgid "sink"
 msgstr ""
 
@@ -13005,6 +13009,10 @@ msgstr ""
 msgid "An endless stream of %s pours forth!"
 msgstr ""
 
+#: ../src/fountain.c:46 ../src/mcastu.c:747
+msgid "snakes"
+msgstr ""
+
 #: ../src/fountain.c:49 ../src/uhitm.c:4202
 #, c-format
 msgid "%s hissing!"
@@ -13132,6 +13140,10 @@ msgstr ""
 msgid "unrefrigerated sip of juice"
 msgstr ""
 
+#: ../src/fountain.c:307
+msgid "contaminated water"
+msgstr ""
+
 #: ../src/fountain.c:321
 msgid "This water's no good!"
 msgstr ""
@@ -13236,6 +13248,10 @@ msgstr ""
 #: ../src/fountain.c:564
 #, c-format
 msgid "wash your %s%s in the %s."
+msgstr ""
+
+#: ../src/fountain.c:564
+msgid "gloved "
 msgstr ""
 
 #: ../src/fountain.c:568 ../src/pray.c:358
@@ -19579,10 +19595,6 @@ msgstr ""
 #: ../src/mcastu.c:686
 #, c-format
 msgid "It bounces off your %s%s."
-msgstr ""
-
-#: ../src/mcastu.c:747
-msgid "snakes"
 msgstr ""
 
 #: ../src/mcastu.c:747 ../src/mthrowu.c:44
@@ -32121,6 +32133,10 @@ msgstr ""
 msgid "BOOM!  "
 msgstr ""
 
+#: ../src/potion.c:2418
+msgid "alchemic blast"
+msgstr ""
+
 #: ../src/potion.c:2433
 msgid "That is a potion bottle, not a Klein bottle!"
 msgstr ""
@@ -42806,10 +42822,6 @@ msgstr ""
 msgid "%s on top of %s."
 msgstr ""
 
-#: ../src/trap.c:4969 ../src/trap.c:6939
-msgid "molten lava"
-msgstr ""
-
 #: ../src/trap.c:5007
 #, c-format
 msgid "%s into the %s%c"
@@ -47688,7 +47700,7 @@ msgstr ""
 msgid "Elbereth"
 msgstr ""
 
-#. angel_cuss array, demon_cuss array, text field, text field (partial, has concatenation)
+#. text field, angel_cuss array, demon_cuss array, text field (partial, has concatenation)
 #: dat/quest.lua:77 dat/quest.lua:78 dat/quest.lua:79 dat/quest.lua:80
 #: dat/quest.lua:81 dat/quest.lua:82 dat/quest.lua:83 dat/quest.lua:84
 #: dat/quest.lua:85 dat/quest.lua:86 dat/quest.lua:87 dat/quest.lua:88

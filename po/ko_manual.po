@@ -12673,3 +12673,21 @@ msgstr "매우 뜨겁다"
 
 msgid "like fire"
 msgstr "불처럼 뜨겁다"
+
+# --- fountain.c 미래핑 문자열 ---
+
+msgid "snakes"
+msgstr "뱀"
+
+msgid "contaminated water"
+msgstr "오염된 물"
+
+msgid "gloved "
+msgstr "장갑 낀 "
+
+msgid "one of "
+msgstr ""
+
+# potion.c - 사망 메시지
+msgid "alchemic blast"
+msgstr "연금술 폭발"

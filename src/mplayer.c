@@ -3,6 +3,7 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+#include "i18n.h"
 
 staticfn const char *dev_name(void);
 staticfn void get_mplname(struct monst *, char *);
@@ -86,7 +87,7 @@ get_mplname(struct monst *mtmp, char *nam)
         mtmp->female = 1;
     else
         mtmp->female = 0;
-    Strcat(nam, " the ");
+    Strcat(nam, _(" the "));
     Strcat(nam, rank_of((int) mtmp->m_lev, monsndx(mtmp->data),
                         (boolean) mtmp->female));
 }
@@ -357,23 +358,23 @@ mplayer_talk(struct monst *mtmp)
 {
     static const char
         *same_class_msg[3] = {
-            "I can't win, and neither will you!",
-            "You don't deserve to win!",
-            "Mine should be the honor, not yours!",
+            N_("I can't win, and neither will you!"),
+            N_("You don't deserve to win!"),
+            N_("Mine should be the honor, not yours!"),
         },
         *other_class_msg[3] = {
-            "The low-life wants to talk, eh?",
-            "Fight, scum!",
-            "Here is what I have to say!",
+            N_("The low-life wants to talk, eh?"),
+            N_("Fight, scum!"),
+            N_("Here is what I have to say!"),
         };
 
     if (mtmp->mpeaceful)
         return; /* will drop to humanoid talk */
 
     SetVoice(mtmp, 0, 80, 0);
-    verbalize("Talk? -- %s", mtmp->data == &mons[gu.urole.mnum]
-                                ? same_class_msg[rn2(3)]
-                                : other_class_msg[rn2(3)]);
+    verbalize(_("Talk? -- %s"), mtmp->data == &mons[gu.urole.mnum]
+                                ? _(same_class_msg[rn2(3)])
+                                : _(other_class_msg[rn2(3)]));
 }
 
 /*mplayer.c*/

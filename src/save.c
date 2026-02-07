@@ -43,13 +43,13 @@ int
 dosave(void)
 {
     clear_nhwindow(WIN_MESSAGE);
-    if (y_n("Really save?") == 'n') {
+    if (y_n(_("Really save?")) == 'n') {
         clear_nhwindow(WIN_MESSAGE);
         if (gm.multi > 0)
             nomul(0);
     } else {
         clear_nhwindow(WIN_MESSAGE);
-        pline("Saving...");
+        pline(_("Saving..."));
 #if defined(HANGUPHANDLING)
         program_state.done_hup = 0;
 #endif
@@ -61,7 +61,7 @@ dosave(void)
 
             /* make sure they see the Saving message */
             display_nhwindow(WIN_MESSAGE, TRUE);
-            exit_nhwindows("Be seeing you...");
+            exit_nhwindows(_("Be seeing you..."));
             nh_terminate(EXIT_SUCCESS);
         } else
             docrt();
@@ -114,8 +114,8 @@ dosave0(void)
         if (nhfp) {
             close_nhfile(nhfp);
             clear_nhwindow(WIN_MESSAGE);
-            There("seems to be an old save file.");
-            if (y_n("Overwrite the old file?") == 'n') {
+            There(_("seems to be an old save file."));
+            if (y_n(_("Overwrite the old file?")) == 'n') {
                 nh_sfconvert(fq_save);
                 nh_compress(fq_save);
                 goto done;
@@ -127,7 +127,7 @@ dosave0(void)
 
     nhfp = create_savefile();
     if (!nhfp) {
-        HUP pline("Cannot open save file.");
+        HUP pline(_("Cannot open save file."));
         (void) delete_savefile(); /* ab@unido */
         goto done;
     }
@@ -151,7 +151,7 @@ dosave0(void)
     dotrow = 2;
     curs(WIN_MAP, 1, 1);
     if (!WINDOWPORT(X11))
-        putstr(WIN_MAP, 0, "Saving:");
+        putstr(WIN_MAP, 0, _("Saving:"));
 #endif
     nhfp->mode = WRITING | FREEING;
     store_version(nhfp);
@@ -330,7 +330,7 @@ tricked_fileremoved(NHFILE *nhfp, char *whynot)
 {
     if (!nhfp) {
         pline1(whynot);
-        pline("Probably someone removed it.");
+        pline(_("Probably someone removed it."));
         Strcpy(svk.killer.name, whynot);
         done(TRICKED);
         return TRUE;

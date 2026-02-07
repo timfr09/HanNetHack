@@ -628,15 +628,15 @@ nhl_impossible(lua_State *L)
     return 0;
 }
 
-/* pline("It hits!") */
-/* pline("It hits!", true) */
+/* pline(_("It hits!")) */
+/* pline(_("It hits!"), true) */
 staticfn int
 nhl_pline(lua_State *L)
 {
     int argc = lua_gettop(L);
 
     if (argc == 1 || argc == 2) {
-        pline("%s", luaL_checkstring(L, 1));
+        pline(_("%s"), luaL_checkstring(L, 1));
         if (lua_toboolean(L, 2))
             display_nhwindow(WIN_MESSAGE, TRUE); /* --more-- */
     } else
@@ -645,14 +645,14 @@ nhl_pline(lua_State *L)
     return 0;
 }
 
-/* verbalize("Fool!") */
+/* verbalize(_("Fool!")) */
 staticfn int
 nhl_verbalize(lua_State *L)
 {
     int argc = lua_gettop(L);
 
     if (argc == 1)
-        verbalize("%s", luaL_checkstring(L, 1));
+        verbalize(_("%s"), luaL_checkstring(L, 1));
     else
         nhl_error(L, "Wrong args");
 

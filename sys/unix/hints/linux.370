@@ -164,6 +164,8 @@ NHCFLAGS+=-DSYSCF -DSYSCF_FILE=\"$(HACKDIR)/sysconf\" -DSECURE
 NHCFLAGS+=-DTIMED_DELAY
 NHCFLAGS+=-DDUMPLOG
 NHCFLAGS+=-DCONFIG_ERROR_SECURE=FALSE
+# i18n (internationalization) support - Korean localization
+NHCFLAGS+=-DLOCALEDIR=\"$(HACKDIR)/locale\"
 #NHCFLAGS+=-DGREPPATH=\"/usr/bin/grep\"
 NHCFLAGS+=-DCOMPRESS=\"/bin/gzip\" -DCOMPRESS_EXTENSION=\".gz\"
 #NHCFLAGS+=-DNOMAIL
@@ -398,6 +400,10 @@ POSTINSTALL+= test -f $(TESTGDBPATH) || \
 POSTUPDATE+= test -f $(TESTGDBPATH) || \
 		sed -i -e 's;^GDBPATH=/usr/bin/gdb;\#GDBPATH=/usr/bin/gdb;' \
 		-e 's;PANICTRACE_GDB=1;PANICTRACE_GDB=0;' $(INSTDIR)/sysconf;
+# Install Korean translation mo file
+POSTINSTALL+= mkdir -p $(INSTDIR)/locale/ko/LC_MESSAGES; \
+		( cd po && $(MAKE) compile 2>/dev/null ); \
+		test -f po/ko.mo && cp po/ko.mo $(INSTDIR)/locale/ko/LC_MESSAGES/nethack.mo;
 endif  #MAKEFILE_TOP
 
 ifeq '$(USE_NONOSTATICFN)' '1'
@@ -427,6 +433,11 @@ DLLIB = -ldl
 
 # Only needed for GLIBC stack trace:
 LFLAGS+=-rdynamic
+
+# i18n (internationalization) support - link with libintl if available
+# On most Linux systems, gettext is part of glibc and doesn't need -lintl
+# Uncomment the following line if your system requires explicit linking:
+#LFLAGS+=-lintl
 
 # if TTY_TILES_ESCCODES
 #WINSRC += tile.c

@@ -4,6 +4,7 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+#include "i18n.h"
 
 #ifndef SFCTOOL
 staticfn void setgemprobs(d_level *);
@@ -451,9 +452,6 @@ discover_object(
     boolean mark_as_encountered,
     boolean credit_hero)
 {
-    if (oindx < FIRST_OBJECT) /* don't discover generic objects */
-        return;
-
     if ((!objects[oindx].oc_name_known && mark_as_known)
         || (!objects[oindx].oc_encountered && mark_as_encountered)
         || (Role_if(PM_SAMURAI)
@@ -589,10 +587,10 @@ sortloot_descr(int otyp, char *outbuf)
 /* also used in options.c (optfn_sortdiscoveries) */
 static const char disco_order_let[] = "osca";
 static const char *const disco_orders_descr[] = {
-    "by order of discovery within each class",
-    "sortloot order (by class with some sub-class groupings)",
-    "alphabetical within each class",
-    "alphabetical across all classes",
+    N_("by order of discovery within each class"),
+    N_("sortloot order (by class with some sub-class groupings)"),
+    N_("alphabetical within each class"),
+    N_("alphabetical across all classes"),
     (char *) 0
 };
 
@@ -615,7 +613,7 @@ choose_disco_sort(
         any.a_int = disco_order_let[i];
         add_menu(tmpwin, &nul_glyphinfo, &any, (char) any.a_int,
                  0, ATR_NONE, clr,
-                 disco_orders_descr[i],
+                 _(disco_orders_descr[i]),
                  (disco_order_let[i] == flags.discosort)
                     ? MENU_ITEMFLAGS_SELECTED
                     : MENU_ITEMFLAGS_NONE);
@@ -632,7 +630,7 @@ choose_disco_sort(
         add_menu_str(tmpwin,
                     "      will matter for future use of total discoveries.");
     }
-    end_menu(tmpwin, "Ordering of discoveries");
+    end_menu(tmpwin, _("Ordering of discoveries"));
 
     n = select_menu(tmpwin, PICK_ONE, &selected);
     destroy_nhwindow(tmpwin);
@@ -751,7 +749,7 @@ dodiscovered(void) /* free after Robert Viduya */
     sortindx = strchr(disco_order_let, flags.discosort) - disco_order_let;
 
     tmpwin = create_nhwindow(NHW_TEXT);
-    Sprintf(buf, "Discoveries, %s", disco_orders_descr[sortindx]);
+    Sprintf(buf, _("Discoveries, %s"), disco_orders_descr[sortindx]);
     putstr(tmpwin, 0, buf);
     putstr(tmpwin, 0, "");
 
@@ -761,7 +759,7 @@ dodiscovered(void) /* free after Robert Viduya */
     for (i = dis = 0; i < SIZE(uniq_objs); i++)
         if (objects[uniq_objs[i]].oc_name_known) {
             if (!dis++)
-                putstr(tmpwin, iflags.menu_headings.attr, "Unique items");
+                putstr(tmpwin, iflags.menu_headings.attr, _("Unique items"));
             ++uniq_ct;
             Sprintf(buf, "  %s", OBJ_NAME(objects[uniq_objs[i]]));
             putstr(tmpwin, 0, buf);
@@ -810,7 +808,7 @@ dodiscovered(void) /* free after Robert Viduya */
         }
     }
     if (ct == 0) {
-        You("haven't discovered anything yet...");
+        You(_("haven't discovered anything yet..."));
     } else {
         if (sorted_ct) {
             /* if we're alphabetizing by class, we've already shown the
@@ -818,7 +816,7 @@ dodiscovered(void) /* free after Robert Viduya */
                classes, we normally don't need a header; but it we showed
                any unique items or any artifacts then we do need one */
             if ((uniq_ct || arti_ct) && alphabetized && !alphabyclass)
-                putstr(tmpwin, iflags.menu_headings.attr, "Discovered items");
+                putstr(tmpwin, iflags.menu_headings.attr, _("Discovered items"));
             disco_output_sorted(tmpwin, sorted_lines, sorted_ct, lootsort);
         }
         display_nhwindow(tmpwin, TRUE);
@@ -928,7 +926,7 @@ doclassdisco(void)
 
     /* there might not be anything for us to do... */
     if (!discosyms[0]) {
-        You(havent_discovered_any, "items");
+        You(_(havent_discovered_any), _("items"));
         if (tmpwin != WIN_ERR)
             destroy_nhwindow(tmpwin);
         return ECMD_OK;
@@ -992,7 +990,7 @@ doclassdisco(void)
                 putstr(tmpwin, 0, buf);
             }
         if (!ct)
-            You(havent_discovered_any, unique_items);
+            You(_(havent_discovered_any), unique_items);
         break;
     case 'a':
         /* note: this will work all the time for menustyle traditional
@@ -1007,17 +1005,17 @@ doclassdisco(void)
         /* disp_artifact_discoveries() includes a header */
         ct = disp_artifact_discoveries(tmpwin);
         if (!ct)
-            You(havent_discovered_any, artifact_items);
+            You(_(havent_discovered_any), artifact_items);
         break;
     default:
         oclass = def_char_to_objclass(c);
         /* this should never happen but has been observed via the fuzzer */
         if (oclass == MAXOCLASSES)
             impossible("doclassdisco: invalid object class '%s'", visctrl(c));
-        Sprintf(buf, "Discovered %s in %s", let_to_name(oclass, FALSE, FALSE),
-                (flags.discosort == 'o') ? "order of discovery"
-                : (flags.discosort == 's') ? "'sortloot' order"
-                  : "alphabetical order");
+        Sprintf(buf, _("Discovered %s in %s"), let_to_name(oclass, FALSE, FALSE),
+                (flags.discosort == 'o') ? _("order of discovery")
+                : (flags.discosort == 's') ? _("'sortloot' order")
+                  : _("alphabetical order"));
         putstr(tmpwin, 0, buf); /* skip iflags.menu_headings */
         sorted_ct = 0;
         for (i = svb.bases[(int) oclass]; i <= svb.bases[oclass + 1] - 1;
@@ -1036,7 +1034,7 @@ doclassdisco(void)
             }
         }
         if (!ct) {
-            You(havent_discovered_any, oclass_to_name(oclass, buf));
+            You(_(havent_discovered_any), oclass_to_name(oclass, buf));
         } else if (sorted_ct) {
             qsort(sorted_lines, sorted_ct, sizeof (char *), discovered_cmp);
             for (i = 0; i < sorted_ct; ++i) {
@@ -1107,11 +1105,11 @@ rename_disco(void)
         }
     }
     if (ct == 0) {
-        You("haven't discovered anything yet...");
+        You(_("haven't discovered anything yet..."));
     } else if (mn == 0) {
-        pline("None of your discoveries can be assigned names...");
+        pline(_("None of your discoveries can be assigned names..."));
     } else {
-        end_menu(tmpwin, "Pick an object type to name");
+        end_menu(tmpwin, _("Pick an object type to name"));
         dis = STRANGE_OBJECT;
         sl = select_menu(tmpwin, PICK_ONE, &selected);
         if (sl > 0) {

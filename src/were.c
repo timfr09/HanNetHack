@@ -4,6 +4,7 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+#include "i18n.h"
 
 void
 were_change(struct monst *mon)
@@ -33,7 +34,7 @@ were_change(struct monst *mon)
                 }
                 if (howler) {
                     Soundeffect(se_canine_howl, 50);
-                    You_hear("a %s howling at the moon.", howler);
+                    You_hear(_("a %s howling at the moon."), howler);
                     wake_nearto(mon->mx, mon->my, 4 * 4);
                 }
             }
@@ -111,7 +112,7 @@ new_were(struct monst *mon)
     }
 
     if (canseemon(mon) && !Hallucination)
-        pline("%s changes into a %s.", Monnam(mon),
+        pline(_("%s changes into a %s."), Monnam(mon),
               is_human(&mons[pm]) ? "human"
                                   /* pmname()+4: skip past "were" prefix */
                                   : pmname(&mons[pm], Mgender(mon)) + 4);
@@ -159,19 +160,19 @@ were_summon(
             typ = rn2(3) ? PM_SEWER_RAT
                          : rn2(3) ? PM_GIANT_RAT : PM_RABID_RAT;
             if (genbuf)
-                Strcpy(genbuf, "rat");
+                Strcpy(genbuf, _("rat"));
             break;
         case PM_WEREJACKAL:
         case PM_HUMAN_WEREJACKAL:
             typ = rn2(7) ? PM_JACKAL : rn2(3) ? PM_COYOTE : PM_FOX;
             if (genbuf)
-                Strcpy(genbuf, "jackal");
+                Strcpy(genbuf, _("jackal"));
             break;
         case PM_WEREWOLF:
         case PM_HUMAN_WEREWOLF:
             typ = rn2(5) ? PM_WOLF : rn2(2) ? PM_WARG : PM_WINTER_WOLF;
             if (genbuf)
-                Strcpy(genbuf, "wolf");
+                Strcpy(genbuf, _("wolf"));
             break;
         default:
             continue;
@@ -198,7 +199,7 @@ you_were(void)
         return;
     if (controllable_poly) {
         /* `+4' => skip "were" prefix to get name of beast */
-        Sprintf(qbuf, "Do you want to change into %s?",
+        Sprintf(qbuf, _("Do you want to change into %s?"),
                 an(mons[u.ulycn].pmnames[NEUTRAL] + 4));
         if (!paranoid_query(ParanoidWerechange, qbuf))
             return;
@@ -215,13 +216,13 @@ you_unwere(boolean purify)
     boolean controllable_poly = Polymorph_control && !(Stunned || Unaware);
 
     if (purify) {
-        You_feel("purified.");
+        You_feel(_("purified."));
         set_ulycn(NON_PM); /* cure lycanthropy */
     }
     if (!Unchanging && is_were(gy.youmonst.data)
         && !monster_nearby()
         && (!controllable_poly
-            || !paranoid_query(ParanoidWerechange, "Remain in beast form?")))
+            || !paranoid_query(ParanoidWerechange, _("Remain in beast form?"))))
         rehumanize();
     else if (is_were(gy.youmonst.data) && !u.mtimedone)
         u.mtimedone = rn1(200, 200); /* 40% of initial were change */

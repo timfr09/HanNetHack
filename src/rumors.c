@@ -139,7 +139,7 @@ getrumor(
             if (gt.true_rumor_size == 0L) { /* if this is 1st outrumor() */
                 init_rumors(rumors);
                 if (gt.true_rumor_size < 0L) { /* init failed */
-                    Sprintf(rumor_buf, "Error reading \"%.80s\".", RUMORFILE);
+                    Sprintf(rumor_buf, _("Error reading \"%.80s\"."), RUMORFILE);
                     return rumor_buf;
                 }
             }
@@ -161,7 +161,7 @@ getrumor(
                 break;
             default:
                 impossible("strange truth value for rumor");
-                return strcpy(rumor_buf, "Oops...");
+                return strcpy(rumor_buf, _("Oops..."));
             }
             Strcpy(rumor_buf,
                    get_rnd_line(rumors, line, (unsigned) sizeof line, rn2,
@@ -278,7 +278,7 @@ rumor_check(void)
        we didn't bother trying again this time */
     } else if (gt.true_rumor_size < 0L) {
  no_rumors: /* file could be opened but init_rumors() didn't like it */
-        pline("rumors not accessible.");
+        pline(_("rumors not accessible."));
         /* engravings, epitaphs, and bogus monsters will still be shown,
            and in tmpwin rather than via additional pline() calls */
         display_nhwindow(WIN_MESSAGE, TRUE); /* --more-- */
@@ -531,7 +531,7 @@ outrumor(
     int mechanism)
 {
     static const char fortune_msg[] =
-        "This cookie has a scrap of paper inside.";
+        N_("This cookie has a scrap of paper inside.");
     const char *line;
     char buf[BUFSZ];
     boolean reading = (mechanism == BY_COOKIE || mechanism == BY_PAPER);
@@ -542,19 +542,19 @@ outrumor(
             return;
         } else if (Blind) {
             if (mechanism == BY_COOKIE)
-                pline(fortune_msg);
-            pline("What a pity that you cannot read it!");
+                pline("%s", _(fortune_msg));
+            pline(_("What a pity that you cannot read it!"));
             return;
         }
     }
 
     line = getrumor(truth, buf, reading ? FALSE : TRUE);
     if (!*line)
-        line = "NetHack rumors file closed for renovation.";
+        line = _("NetHack rumors file closed for renovation.");
     switch (mechanism) {
     case BY_ORACLE:
         /* Oracle delivers the rumor */
-        pline("True to her word, the Oracle %ssays: ",
+        pline(_("True to her word, the Oracle %ssays: "),
               (!rn2(4) ? "offhandedly "
                        : (!rn2(3) ? "casually "
                                   : (rn2(2) ? "nonchalantly " : ""))));
@@ -563,11 +563,11 @@ outrumor(
         /* [WIS exercised by getrumor()] */
         return;
     case BY_COOKIE:
-        pline(fortune_msg);
+        pline("%s", _(fortune_msg));
         FALLTHROUGH;
     /* FALLTHRU */
     case BY_PAPER:
-        pline("It reads:");
+        pline(_("It reads:"));
         break;
     }
     pline1(line);
@@ -671,10 +671,10 @@ outoracle(boolean special, boolean delphi)
         if (delphi)
             putstr(tmpwin, 0,
                    special
-                     ? "The Oracle scornfully takes all your gold and says:"
-                     : "The Oracle meditates for a moment and then intones:");
+                     ? _("The Oracle scornfully takes all your gold and says:")
+                     : _("The Oracle meditates for a moment and then intones:"));
         else
-            putstr(tmpwin, 0, "The message reads:");
+            putstr(tmpwin, 0, _("The message reads:"));
         putstr(tmpwin, 0, "");
 
         while (dlb_fgets(line, COLNO, oracles) && strcmp(line, "---\n")) {
@@ -704,17 +704,17 @@ doconsult(struct monst *oracl)
     umoney = money_cnt(gi.invent);
 
     if (!oracl) {
-        There("is no one here to consult.");
+        There(_("is no one here to consult."));
         return ECMD_OK;
     } else if (!oracl->mpeaceful) {
-        pline("%s is in no mood for consultations.", Monnam(oracl));
+        pline(_("%s is in no mood for consultations."), Monnam(oracl));
         return ECMD_OK;
     } else if (!umoney) {
-        You("have no gold.");
+        You(_("have no gold."));
         return ECMD_OK;
     }
 
-    Sprintf(qbuf, "\"Wilt thou settle for a minor consultation?\" (%d %s)",
+    Sprintf(qbuf, _("\"Wilt thou settle for a minor consultation?\" (%d %s)"),
             minor_cost, currency((long) minor_cost));
     switch (ynq(qbuf)) {
     default:
@@ -722,7 +722,7 @@ doconsult(struct monst *oracl)
         return ECMD_OK;
     case 'y':
         if (umoney < (long) minor_cost) {
-            You("don't even have enough gold for that!");
+            You(_("don't even have enough gold for that!"));
             return ECMD_OK;
         }
         u_pay = minor_cost;
@@ -731,7 +731,7 @@ doconsult(struct monst *oracl)
         if (umoney <= (long) minor_cost /* don't even ask */
             || (svo.oracle_cnt == 1 || go.oracle_flg < 0))
             return ECMD_OK;
-        Sprintf(qbuf, "\"Then dost thou desire a major one?\" (%d %s)",
+        Sprintf(qbuf, _("\"Then dost thou desire a major one?\" (%d %s)"),
                 major_cost, currency((long) major_cost));
         if (y_n(qbuf) != 'y')
             return ECMD_OK;

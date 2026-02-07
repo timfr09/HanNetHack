@@ -41,6 +41,7 @@
 #include "wintype.h"
 #include "vision.h"
 #include "you.h"
+#include "i18n.h"
 
 #define TELL 1
 #define NOTELL 0
@@ -1564,6 +1565,9 @@ typedef uint32_t mmflags_nht;     /* makemon MM_ flags */
 #if !defined(CROSSCOMPILE) || defined(CROSSCOMPILE_TARGET)
 #include "nhlua.h"
 #endif
+
+/* Internationalization support */
+#include "i18n.h"
 
 #if !defined(RECOVER_C)
 

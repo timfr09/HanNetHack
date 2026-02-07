@@ -345,8 +345,19 @@ char *
 s_suffix(const char *s)
 {
     static char buf[BUFSZ];
+    const unsigned char *p;
 
     Strcpy(buf, s);
+
+    /* For non-ASCII text (e.g., Korean), append Korean possessive marker
+     * instead of English "'s". Korean uses "의" for possession. */
+    for (p = (const unsigned char *) s; *p; p++) {
+        if (*p >= 0x80) { /* non-ASCII byte (UTF-8) */
+            Strcat(buf, "의");
+            return buf;
+        }
+    }
+
     if (!strcmpi(buf, "it")) /* it -> its */
         Strcat(buf, "s");
     else if (!strcmpi(buf, "you")) /* you -> your */
@@ -366,8 +377,16 @@ ing_suffix(const char *s)
     static char buf[BUFSZ];
     char onoff[10];
     char *p;
+    const unsigned char *cp;
 
     Strcpy(buf, s);
+
+    /* For non-ASCII text (e.g., Korean), skip English gerund formation
+     * and return the verb unchanged. */
+    for (cp = (const unsigned char *) s; *cp; cp++) {
+        if (*cp >= 0x80) /* non-ASCII byte (UTF-8) */
+            return buf;
+    }
     p = eos(buf);
     onoff[0] = *p = *(p + 1) = '\0';
     if ((p >= &buf[3] && !strcmpi(p - 3, " on"))

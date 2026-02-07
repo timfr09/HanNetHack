@@ -4,6 +4,7 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+#include "i18n.h"
 
 #include "mfndpos.h"
 
@@ -284,13 +285,13 @@ dog_eat(struct monst *mtmp,
                result won't be printed */
             obj_name = distant_name(obj, doname);
             if (tunnels(mtmp->data))
-                pline_mon(mtmp, "%s digs in.", noit_Monnam(mtmp));
+                pline_mon(mtmp, _("%s digs in."), noit_Monnam(mtmp));
             else
-                pline_mon(mtmp, "%s %s %s.", noit_Monnam(mtmp),
-                      devour ? "devours" : "eats", obj_name);
+                pline_mon(mtmp, _("%s %s %s."), noit_Monnam(mtmp),
+                      devour ? _("devours") : _("eats"), obj_name);
         } else if (seeobj) {
             obj_name = distant_name(obj, doname);
-            pline("It %s %s.", devour ? "devours" : "eats", obj_name);
+            pline(_("It %s %s."), devour ? _("devours") : _("eats"), obj_name);
         }
     }
     if (obj->unpaid) {
@@ -306,7 +307,7 @@ dog_eat(struct monst *mtmp,
         if (canseemon(mtmp)) {
             obj_name = distant_name(obj, doname); /* (see above) */
             if (flags.verbose)
-                pline("%s spits %s out in disgust!",
+                pline(_("%s spits %s out in disgust!"),
                       Monnam(mtmp), obj_name);
         }
     } else {
@@ -326,7 +327,7 @@ dog_eat(struct monst *mtmp,
             /* edible item owned by shop has been thrown or kicked
                by hero and caught by tame or food-tameable monst */
             oprice = unpaid_cost(obj, COST_CONTENTS);
-            pline("That %s will cost you %ld %s.", objnambuf, oprice,
+            pline(_("That %s will cost you %ld %s."), objnambuf, oprice,
                   currency(oprice));
             /* m_consume_obj() -> delobj() -> obfree() will handle the shop
                billing update */
@@ -341,12 +342,12 @@ staticfn void
 dog_starve(struct monst *mtmp)
 {
     if (mtmp->mleashed && mtmp != u.usteed)
-        Your("leash goes slack.");
+        Your(_("leash goes slack."));
     else if (cansee(mtmp->mx, mtmp->my))
-        pline_mon(mtmp, "%s starves.", Monnam(mtmp));
+        pline_mon(mtmp, _("%s starves."), Monnam(mtmp));
     else
-        You_feel("%s for a moment.",
-                    Hallucination ? "bummed" : "sad");
+        You_feel(_("%s for a moment."),
+                    Hallucination ? _("bummed") : _("sad"));
     mondied(mtmp);
 }
 
@@ -371,11 +372,11 @@ dog_hunger(struct monst *mtmp, struct edog *edog)
                 return TRUE;
             }
             if (cansee(mtmp->mx, mtmp->my))
-                pline_mon(mtmp, "%s is confused from hunger.", Monnam(mtmp));
+                pline_mon(mtmp, _("%s is confused from hunger."), Monnam(mtmp));
             else if (couldsee(mtmp->mx, mtmp->my))
                 beg(mtmp);
             else
-                You_feel("worried about %s.", y_monnam(mtmp));
+                You_feel(_("worried about %s."), y_monnam(mtmp));
             stop_occupation();
         } else if (svm.moves > edog->hungrytime + DOG_STARVE
                    || DEADMONSTER(mtmp)) {
@@ -450,7 +451,7 @@ dog_invent(struct monst *mtmp, struct edog *edog, int udist)
                             char *otmpname = distant_name(otmp, doname);
 
                             if (flags.verbose)
-                                pline_xy(omx, omy, "%s picks up %s.",
+                                pline_xy(omx, omy, _("%s picks up %s."),
                                       Monnam(mtmp), otmpname);
                         }
                         obj_extract_self(otmp);
@@ -1049,7 +1050,7 @@ dog_move(
     if (!Conflict && !mtmp->mconf
         && mtmp == u.ustuck && !sticks(gy.youmonst.data)) {
         unstuck(mtmp); /* swallowed case handled above */
-        You("get released!");
+        You(_("get released!"));
     }
 #endif
     allowflags = mon_allowflags(mtmp);
@@ -1272,7 +1273,7 @@ dog_move(
 
         if (mfp.info[chi] & ALLOW_U) {
             if (mtmp->mleashed) { /* play it safe */
-                pline_mon(mtmp, "%s breaks loose of %s leash!",
+                pline_mon(mtmp, _("%s breaks loose of %s leash!"),
                          Monnam(mtmp), mhis(mtmp));
                 m_unleash(mtmp, FALSE);
             }
@@ -1297,10 +1298,10 @@ dog_move(
                                ? vobj_at(nix, niy) : 0;
             const char *what = o ? distant_name(o, doname) : something;
 
-            pline_mon(mtmp, "%s %s reluctantly %s %s.", noit_Monnam(mtmp),
-                  vtense((char *) 0, locomotion(mtmp->data, "step")),
-                  (is_flyer(mtmp->data) || is_floater(mtmp->data)) ? "over"
-                                                                   : "onto",
+            pline_mon(mtmp, _("%s %s reluctantly %s %s."), noit_Monnam(mtmp),
+                  vtense((char *) 0, locomotion(mtmp->data, _("step"))),
+                  (is_flyer(mtmp->data) || is_floater(mtmp->data)) ? _("over")
+                                                                   : _("onto"),
                   what);
         }
         mon_track_add(mtmp, omx, omy);
@@ -1518,16 +1519,16 @@ quickmimic(struct monst *mtmp)
         if (was_leashed
             && (M_AP_TYPE(mtmp) != M_AP_MONSTER
                 || !mnum_leashable(mtmp->mappearance))) {
-            Your("leash goes slack.");
+            Your(_("leash goes slack."));
             m_unleash(mtmp, FALSE);
         }
         if (glyph_at(mtmp->mx, mtmp->my) != prev_glyph)
-            You("%s %s %s where %s was!",
-                seeloc ? "see" : "sense that",
+            You(_("%s %s %s where %s was!"),
+                seeloc ? _("see") : _("sense that"),
                 (what != something) ? an(what) : what,
-                seeloc ? "appear" : "has appeared", buf);
+                seeloc ? _("appear") : _("has appeared"), buf);
         else
-            You("sense that %s feels rather %s-ish.", buf, what);
+            You(_("sense that %s feels rather %s-ish."), buf, what);
 
         display_nhwindow(WIN_MAP, TRUE);
     }

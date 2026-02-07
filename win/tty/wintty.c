@@ -13,6 +13,8 @@
 #define H2344_BROKEN
 
 #include "hack.h"
+#include "i18n.h"
+#include "ko_postpos.h"  /* for utf8_char_len */
 
 #ifdef TTY_GRAPHICS
 #include "dlb.h"
@@ -241,6 +243,9 @@ static void status_sanity_check(void);
 #endif
 #ifdef ENHANCED_SYMBOLS
 void g_pututf8(uint8 *utf8str);
+#if defined(UNIX) || defined(VMS)
+void g_put_fullwidth_ascii(int ch);
+#endif
 #endif
 
 static boolean calling_from_update_inventory = FALSE;
@@ -1335,6 +1340,10 @@ process_menu_window(winid window, struct WinDesc *cw)
     char *cp, *rp, resp[QBUFSZ], gacc[QBUFSZ], *msave, *morestr, really_morc;
 #define MENU_EXPLICIT_CHOICE 0x7f /* pseudo menu manipulation char */
 
+    /* Ensure graphics mode is off before displaying menu - important for
+     * UTF-8 text which could be corrupted if graphics mode is on */
+    end_glyphout();
+
     curr_page = page_lines = 0;
     page_start = page_end = 0;
     msave = cw->morestr; /* save the morestr */
@@ -1773,6 +1782,10 @@ process_text_window(winid window, struct WinDesc *cw)
     boolean linestart;
     char *cp;
 
+    /* Ensure graphics mode is off before displaying text - important for
+     * UTF-8 text which could be corrupted if graphics mode is on */
+    end_glyphout();
+
     for (n = 0, i = 0; i < cw->maxrow; i++) {
         HUPSKIP();
         if (!cw->offx && (n + cw->offy == ttyDisplay->rows - 1)) {
@@ -1804,31 +1817,20 @@ process_text_window(winid window, struct WinDesc *cw)
                 ++ttyDisplay->curx;
             }
             term_start_attr(attr);
-            for (cp = &cw->data[i][1], linestart = TRUE;
-#ifndef WIN32CON
-                 *cp && (int) ++ttyDisplay->curx < (int) ttyDisplay->cols;
-                 cp++
-#else
-                 *cp && (int) ttyDisplay->curx < (int) ttyDisplay->cols;
-                 cp++, ttyDisplay->curx++
-#endif
-                 ) {
-                /* message recall for msg_window:full/combination/reverse
-                   might have output from '/' in it (see redotoplin()) */
-                if (linestart) {
-                    if (SYMHANDLING(H_UTF8)) {
-                        /* FIXME: what is actually in that line? is it the \GNNNNNNNN or UTF-8? */
-                        g_putch(*cp);
-                    } else if ((*cp & 0x80) != 0) {
-                        g_putch(*cp);
-                        end_glyphout();
-                    } else {
-                        (void) putchar(*cp);
-                    }
-                    linestart = FALSE;
-                } else {
-                    (void) putchar(*cp);
+            for (cp = &cw->data[i][1]; *cp; cp++) {
+                /* For UTF-8 continuation bytes (0x80-0xBF), don't check
+                 * column limit - we must output the complete character */
+                if (((unsigned char) *cp & 0xC0) != 0x80) {
+                    /* This is a new character (ASCII or UTF-8 start byte) */
+                    int charwidth = utf8_char_width(cp);
+                    if ((int) ttyDisplay->curx + charwidth > (int) ttyDisplay->cols)
+                        break;  /* stop before starting a new character */
+                    ttyDisplay->curx += charwidth;
                 }
+                /* Use putchar() directly for text windows - we've already
+                 * called end_glyphout() so graphics mode is off, and using
+                 * g_putch() would corrupt UTF-8 bytes when symset is not UTF-8 */
+                (void) putchar(*cp);
             }
             term_end_attr(attr);
         }
@@ -2112,15 +2114,21 @@ tty_curs(
     cw->curx = --x; /* column 0 is not used */
     cw->cury = y;
 
-    x += cw->offx;
-    y += cw->offy;
-
 #ifdef CLIPPING
     if (clipping && window == WIN_MAP) {
         x -= clipx;
         y -= clipy;
     }
 #endif
+
+    /* For fullwidth symbol sets (CJK), each map tile occupies 2 columns.
+     * Must multiply BEFORE adding offx, otherwise offx gets doubled too. */
+    if (window == WIN_MAP && gs.symset[gc.currentgraphics].fullwidth) {
+        x = x * 2;
+    }
+
+    x += cw->offx;
+    y += cw->offy;
 
     if (y == cy && x == cx)
         return;
@@ -2406,10 +2414,34 @@ tty_putstr(winid window, int attr, const char *str)
             cw->maxcol = n0;
         if (++cw->cury > cw->maxrow)
             cw->maxrow = cw->cury;
-        if (n0 > CO) {
-            /* attempt to break the line */
-            for (i = CO - 1; i && str[i] != ' ' && str[i] != '\n';)
-                i--;
+        /* Use display width instead of byte count for UTF-8 support */
+        if (utf8_display_width(str) >= CO) {
+            /* UTF-8 aware line breaking: find break point by display columns */
+            const char *p;
+            const char *last_space = NULL;
+            int col = 0;
+            int charlen;
+
+            for (p = str; *p && col < CO - 1; ) {
+                charlen = utf8_char_len((unsigned char)*p);
+                if (*p == ' ')
+                    last_space = p;
+                col += utf8_char_width(p);
+                p += charlen;
+            }
+
+            if (last_space && last_space > str) {
+                /* Break at last space before column limit */
+                i = (int)(last_space - str);
+            } else {
+                /* No space found before limit, find next space */
+                const char *next_space = strchr(str, ' ');
+                if (next_space)
+                    i = (int)(next_space - str);
+                else
+                    i = 0;  /* No break possible */
+            }
+
             if (i) {
                 cw->data[cw->cury - 1][++i] = '\0';
                 tty_putstr(window, attr, &str[i]);
@@ -2429,11 +2461,19 @@ tty_display_file(
     /* FIXME:  this won't work if fname is inside a dlb container */
     {
         /* use external pager; this may give security problems */
-        int fd = open(fname, O_RDONLY);
+        const char *localized_fname;
+        int fd;
 
+        /* Try localized filename first (e.g., hh.ko for Korean) */
+        localized_fname = get_localized_filename(fname);
+        fd = open(localized_fname, O_RDONLY);
+        if (fd < 0 && localized_fname != fname) {
+            /* Fall back to original filename */
+            fd = open(fname, O_RDONLY);
+        }
         if (fd < 0) {
             if (complain)
-                pline("Cannot open %s.", fname);
+                pline(_("Cannot open %s."), fname);
             else /* [is this refresh actually necessary?] */
                 docrt();
             return;
@@ -2462,9 +2502,17 @@ tty_display_file(
         dlb *f;
         char buf[BUFSZ];
         char *cr;
+        const char *localized_fname;
 
         tty_clear_nhwindow(WIN_MESSAGE);
-        f = dlb_fopen(fname, "r");
+
+        /* Try localized filename first (e.g., hh.ko for Korean) */
+        localized_fname = get_localized_filename(fname);
+        f = dlb_fopen(localized_fname, "r");
+        if (!f && localized_fname != fname) {
+            /* Fall back to original filename */
+            f = dlb_fopen(fname, "r");
+        }
         if (!f) {
             if (complain) {
                 home();
@@ -2474,7 +2522,7 @@ tty_display_file(
                 tty_wait_synch(); /* "Hit <space> to continue: " */
                 if (u.ux) /* if hero is on map, refresh the screen */
                     docrt();
-                pline("Cannot open \"%s\".", fname);
+                pline(_("Cannot open \"%s\"."), fname);
             }
         } else {
             winid datawin = tty_create_nhwindow(NHW_TEXT);
@@ -2954,9 +3002,9 @@ ttyinv_create_window(int newid, struct WinDesc *newwin)
                    &newwin->maxrow)) {
         tty_destroy_nhwindow(newid);
         WIN_INVEN = WIN_ERR;
-        pline("%s.", "tty perm_invent could not be enabled");
-        pline("tty perm_invent needs a terminal that is at least %dx%d, "
-              "yours is %dx%d.",
+        pline(_("tty perm_invent could not be enabled."));
+        pline(_("tty perm_invent needs a terminal that is at least %dx%d, "
+              "yours is %dx%d."),
               (int) (minrow + 1 + ROWNO + StatusRows()), tty_perminv_mincol,
               ttyDisplay->rows, ttyDisplay->cols);
         tty_wait_synch();
@@ -3744,7 +3792,14 @@ g_putch(int in_ch)
 
 #if defined(ASCIIGRAPH)
     if (SYMHANDLING(H_UTF8)) {
-        (void) putchar(ch);
+#if defined(UNIX) || defined(VMS)
+        /* For fullwidth symsets, convert all ASCII to fullwidth */
+        if (gs.symset[gc.currentgraphics].fullwidth
+            && ch >= 0x20 && ch <= 0x7E) {
+            g_put_fullwidth_ascii(ch);
+        } else
+#endif
+            (void) putchar(ch);
     } else if (SYMHANDLING(H_IBM)
         /* for DECgraphics, lower-case letters with high bit set mean
            switch character set and render with high bit clear;
@@ -3800,6 +3855,42 @@ g_pututf8(uint8 *utf8str)
     return;
 }
 #endif /* ENHANCED_SYMBOLS */
+
+/*
+ * Convert ASCII character to fullwidth and output as UTF-8.
+ * Used when fullwidth symset is active to maintain consistent 2-column width.
+ * ASCII 0x21-0x7E -> Fullwidth ASCII U+FF01-U+FF5E (add 0xFEE0)
+ * Space 0x20 -> Ideographic Space U+3000
+ */
+void
+g_put_fullwidth_ascii(int ch)
+{
+    uint8 utf8buf[4];
+    uint32 codepoint;
+
+    HUPSKIP();
+
+    if (ch == ' ' || ch == 0x20) {
+        codepoint = 0x3000;  /* Ideographic space */
+    } else if (ch >= 0x21 && ch <= 0x7E) {
+        codepoint = ch + 0xFEE0;  /* Fullwidth ASCII */
+    } else {
+        /* Non-printable ASCII, output as-is */
+        (void) putchar(ch);
+        return;
+    }
+
+    /* Encode as UTF-8 (U+3000 and U+FF00-FF5E are all 3-byte sequences) */
+    utf8buf[0] = 0xE0 | (codepoint >> 12);
+    utf8buf[1] = 0x80 | ((codepoint >> 6) & 0x3F);
+    utf8buf[2] = 0x80 | (codepoint & 0x3F);
+    utf8buf[3] = '\0';
+
+    /* Output 3-byte UTF-8 sequence */
+    (void) putchar(utf8buf[0]);
+    (void) putchar(utf8buf[1]);
+    (void) putchar(utf8buf[2]);
+}
 #endif /* UNIX || VMS */
 
 #ifdef CLIPPING
@@ -3861,6 +3952,7 @@ tty_print_glyph(
     int ch;
     uint32 color;
     unsigned special;
+    int char_width = 1;  /* display width of the glyph (1 or 2 for CJK) */
 
     HUPSKIP();
 #ifdef CLIPPING
@@ -3946,11 +4038,22 @@ tty_print_glyph(
             && glyphinfo->gm.u && glyphinfo->gm.u->utf8str) {
         /* we have a sequence to do */
         g_pututf8(glyphinfo->gm.u->utf8str);
+        /* Calculate actual display width for CJK/wide characters */
+        char_width = utf8_char_width((const char *)glyphinfo->gm.u->utf8str);
         glyphdone = TRUE;
     }
 #endif
-    if (!glyphdone)
-        g_putch(ch); /* print the character */
+    if (!glyphdone) {
+#if (defined(UNIX) || defined(VMS)) && defined(ENHANCED_SYMBOLS)
+        /* For fullwidth symsets (Korean, Emoji, etc.), convert ASCII to
+           fullwidth ASCII to maintain consistent 2-column character width */
+        if (gs.symset[gc.currentgraphics].fullwidth && SYMHANDLING(H_UTF8)) {
+            g_put_fullwidth_ascii(ch);
+            char_width = 2;
+        } else
+#endif
+            g_putch(ch); /* print the character */
+    }
 
     if (inverse_on)
         term_end_attr(ATR_INVERSE);
@@ -3970,8 +4073,12 @@ tty_print_glyph(
     }
     print_vt_code1(AVTC_GLYPH_END);
 
-    wins[window]->curx++; /* one character over */
-    ttyDisplay->curx++;   /* the real cursor moved too */
+    /* Move cursor by the actual display width of the character.
+     * CJK/wide characters occupy 2 columns in the terminal.
+     * wins[window]->curx is the logical tile position (always +1),
+     * while ttyDisplay->curx is the terminal column position (+char_width). */
+    wins[window]->curx += 1;
+    ttyDisplay->curx += char_width;
 }
 
 #ifdef NO_TERMS  /* termcap.o isn't linked in */

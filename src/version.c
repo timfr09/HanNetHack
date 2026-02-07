@@ -157,7 +157,7 @@ doversion(void)
 {
     char buf[BUFSZ];
 
-    pline("%s", getversionstring(buf, sizeof buf));
+    pline(_("%s"), getversionstring(buf, sizeof buf));
     return ECMD_OK;
 }
 
@@ -380,7 +380,7 @@ check_version(
             impossible("check_version() called with"
                        " 'complain'=True but 'filename'=Null");
 #endif
-        complain = FALSE; /* 'complain' requires 'filename' for pline("%s") */
+        complain = FALSE; /* 'complain' requires 'filename' for pline(_("%s")) */
     }
     if ((version_data->feature_set & SFCTOOL_BIT) != 0) {
         gc.converted_savefile_loaded = TRUE;
@@ -396,7 +396,7 @@ check_version(
         ) {
 #ifndef SFCTOOL
         if (complain) {
-            pline("Version mismatch for file \"%s\".", filename);
+            pline(_("Version mismatch for file \"%s\"."), filename);
             if (WIN_MESSAGE != WIN_ERR)
                  display_nhwindow(WIN_MESSAGE, TRUE);
         }
@@ -410,7 +410,7 @@ check_version(
         ) {
 #ifndef SFCTOOL
         if (complain) {
-            pline("Configuration incompatibility for file \"%s\".", filename);
+            pline(_("Configuration incompatibility for file \"%s\"."), filename);
             display_nhwindow(WIN_MESSAGE, TRUE);
         }
 #endif
@@ -469,19 +469,19 @@ copyright_banner_line(int indx)
 {
 #ifdef COPYRIGHT_BANNER_A
     if (indx == 1)
-        return COPYRIGHT_BANNER_A;
+        return _(COPYRIGHT_BANNER_A);
 #endif
 #ifdef COPYRIGHT_BANNER_B
     if (indx == 2)
-        return COPYRIGHT_BANNER_B;
+        return _(COPYRIGHT_BANNER_B);
 #endif
 
     if (indx == 3)
-        return nomakedefs.copyright_banner_c;
+        return nomakedefs.copyright_banner_c;  /* runtime generated, not translated */
 
 #ifdef COPYRIGHT_BANNER_D
     if (indx == 4)
-        return COPYRIGHT_BANNER_D;
+        return _(COPYRIGHT_BANNER_D);
 #endif
     return "";
 }

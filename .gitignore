@@ -96,3 +96,20 @@ bundle/*
 util/*.lib
 util/*.exp
 submodules/CHKSUMS.tmp
+
+# PO backup files
+po/*.backup.*
+po/*_base.po
+po/*_merged.po
+
+# Compiled translation files (generated from .po during build)
+*.mo
+
+# Game save/lock files (accidentally added during development)
+dat/alock.*
+dat/block.*
+dat/save/
+
+# Claude Code local settings
+.claude/
+CLAUDE.local.md

@@ -642,12 +642,12 @@ shkinit(const struct shclass *shp, struct mkroom *sroom)
             int j = sroom->doorct;
 
             impossible("Where is shopdoor?");
-            pline("Room at (%d,%d),(%d,%d).", sroom->lx, sroom->ly, sroom->hx,
+            pline(_("Room at (%d,%d),(%d,%d)."), sroom->lx, sroom->ly, sroom->hx,
                   sroom->hy);
-            pline("doormax=%d doorct=%d fdoor=%d", gd.doorindex, sroom->doorct,
+            pline(_("doormax=%d doorct=%d fdoor=%d"), gd.doorindex, sroom->doorct,
                   sh);
             while (j--) {
-                pline("door [%d,%d]", svd.doors[sh].x, svd.doors[sh].y);
+                pline(_("door [%d,%d]"), svd.doors[sh].x, svd.doors[sh].y);
                 sh++;
             }
             display_nhwindow(WIN_MESSAGE, FALSE);
@@ -758,7 +758,7 @@ stock_room(int shp_indx, struct mkroom *sroom)
             n--;
         else if (inside_shop(sx, sy - 1))
             n++;
-        Sprintf(buf, "Closed for inventory");
+        Sprintf(buf, _("Closed for inventory"));
         make_engr_at(m, n, buf, NULL, 0L, DUST);
         if (levl[m][n].typ != CORR && levl[m][n].typ != ROOM)
             levl[m][n].typ = (Is_special(&u.uz)

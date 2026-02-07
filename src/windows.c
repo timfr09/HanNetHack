@@ -4,6 +4,7 @@
 
 #include "hack.h"
 #include "dlb.h"
+#include "i18n.h"
 #ifdef TTY_GRAPHICS
 #include "wintty.h"
 #endif
@@ -452,7 +453,7 @@ genl_message_menu(char let UNUSED,
                   int how UNUSED,
                   const char *mesg)
 {
-    pline("%s", mesg);
+    pline(_("%s"), mesg);
     return 0;
 }
 
@@ -510,7 +511,7 @@ genl_putmsghistory(const char *msg, boolean is_restoring)
        previous session's messages upon restore, but it does put the quest
        message summary lines there by treating them as ordinary messages */
     if (!is_restoring)
-        pline("%s", msg);
+        pline(_("%s"), msg);
     return;
 }
 
@@ -990,31 +991,31 @@ genl_status_update(
             nb = status_vals[idx];
             *nb = '\0';
             if (cond & BL_MASK_STONE)
-                Strcpy(nb = eos(nb), " Stone");
+                Strcpy(nb = eos(nb), _(" Stone"));
             if (cond & BL_MASK_SLIME)
-                Strcpy(nb = eos(nb), " Slime");
+                Strcpy(nb = eos(nb), _(" Slime"));
             if (cond & BL_MASK_STRNGL)
-                Strcpy(nb = eos(nb), " Strngl");
+                Strcpy(nb = eos(nb), _(" Strngl"));
             if (cond & BL_MASK_FOODPOIS)
-                Strcpy(nb = eos(nb), " FoodPois");
+                Strcpy(nb = eos(nb), _(" FoodPois"));
             if (cond & BL_MASK_TERMILL)
-                Strcpy(nb = eos(nb), " TermIll");
+                Strcpy(nb = eos(nb), _(" TermIll"));
             if (cond & BL_MASK_BLIND)
-                Strcpy(nb = eos(nb), " Blind");
+                Strcpy(nb = eos(nb), _(" Blind"));
             if (cond & BL_MASK_DEAF)
-                Strcpy(nb = eos(nb), " Deaf");
+                Strcpy(nb = eos(nb), _(" Deaf"));
             if (cond & BL_MASK_STUN)
-                Strcpy(nb = eos(nb), " Stun");
+                Strcpy(nb = eos(nb), _(" Stun"));
             if (cond & BL_MASK_CONF)
-                Strcpy(nb = eos(nb), " Conf");
+                Strcpy(nb = eos(nb), _(" Conf"));
             if (cond & BL_MASK_HALLU)
-                Strcpy(nb = eos(nb), " Hallu");
+                Strcpy(nb = eos(nb), _(" Hallu"));
             if (cond & BL_MASK_LEV)
-                Strcpy(nb = eos(nb), " Lev");
+                Strcpy(nb = eos(nb), _(" Lev"));
             if (cond & BL_MASK_FLY)
-                Strcpy(nb = eos(nb), " Fly");
+                Strcpy(nb = eos(nb), _(" Fly"));
             if (cond & BL_MASK_RIDE)
-                Strcpy(nb = eos(nb), " Ride");
+                Strcpy(nb = eos(nb), _(" Ride"));
             break;
         default:
             Sprintf(status_vals[idx],
@@ -1165,26 +1166,26 @@ dump_fmtstr(
                 if (fullsubs)
                     Sprintf(tmpbuf, "%lu", (unsigned long) ubirthday);
                 else
-                    Strcpy(tmpbuf, "{game start cookie}");
+                    Strcpy(tmpbuf, _("{game start cookie}"));
                 break;
             case 'T': /* current time, timestamp */
                 if (fullsubs)
                     Sprintf(tmpbuf, "%lu", (unsigned long) now);
                 else
-                    Strcpy(tmpbuf, "{current time cookie}");
+                    Strcpy(tmpbuf, _("{current time cookie}"));
                 break;
             case 'd': /* game start, YYYYMMDDhhmmss */
                 if (fullsubs)
                     Sprintf(tmpbuf, "%08ld%06ld",
                             yyyymmdd(ubirthday), hhmmss(ubirthday));
                 else
-                    Strcpy(tmpbuf, "{game start date+time}");
+                    Strcpy(tmpbuf, _("{game start date+time}"));
                 break;
             case 'D': /* current time, YYYYMMDDhhmmss */
                 if (fullsubs)
                     Sprintf(tmpbuf, "%08ld%06ld", yyyymmdd(now), hhmmss(now));
                 else
-                    Strcpy(tmpbuf, "{current date+time}");
+                    Strcpy(tmpbuf, _("{current date+time}"));
                 break;
             case 'v': /* version, eg. "3.7.0-0" */
                 Sprintf(tmpbuf, "%s", version_string(verbuf, sizeof verbuf));
@@ -1197,13 +1198,13 @@ dump_fmtstr(
                     Sprintf(tmpbuf, "%s",
                             *svp.plname ? svp.plname : "unknown");
                 else
-                    Strcpy(tmpbuf, "{hero name}");
+                    Strcpy(tmpbuf, _("{hero name}"));
                 break;
             case 'N': /* first character of player name */
                 if (fullsubs)
                     Sprintf(tmpbuf, "%c", *svp.plname ? *svp.plname : 'u');
                 else
-                    Strcpy(tmpbuf, "{hero initial}");
+                    Strcpy(tmpbuf, _("{hero initial}"));
                 break;
             }
             if (fullsubs) {
@@ -1717,7 +1718,7 @@ choose_classes_menu(const char *prompt,
         add_menu_str(win, "");
         any = cg.zeroany;
         any.a_int = (int) ' ';
-        Sprintf(buf, "%c  %s", (char) any.a_int, "All classes of objects");
+        Sprintf(buf, "%c  %s", (char) any.a_int, _("All classes of objects"));
         /* we won't preselect this even if the incoming list is empty;
            having it selected means that it would have to be explicitly
            de-selected in order to select anything else */
@@ -1725,12 +1726,12 @@ choose_classes_menu(const char *prompt,
                  ATR_NONE, clr, buf, MENU_ITEMFLAGS_SKIPINVERT);
         if (!strcmp(prompt, "Autopickup what?")) {
             add_menu_str(win,
-                   "Note: when no choices are selected, \"all\" is implied.");
+                   _("Note: when no choices are selected, \"all\" is implied."));
             /* for 'O', "toggle" should be intuitive; for 'm O', it would
                probably be better to say "Set 'autopickup' to true|false" */
             add_menu_str(win, flags.pickup
-                        ? "Toggle off 'autopickup' to not pick up anything."
-           : "Toggle on 'autopickup' to automatically pick these things up.");
+                        ? _("Toggle off 'autopickup' to not pick up anything.")
+           : _("Toggle on 'autopickup' to automatically pick these things up."));
         }
     }
     end_menu(win, prompt);
@@ -1868,31 +1869,6 @@ void
 getlin(const char *query, char *bufp)
 {
     boolean old_bot_disabled = gb.bot_disabled;
-    char *obufp = bufp;
-    boolean got_cmdq = FALSE;
-    struct _cmd_queue *cmdq = NULL;
-
-    while ((cmdq = cmdq_pop()) != 0) {
-        if (cmdq->typ == CMDQ_KEY) {
-            got_cmdq = TRUE;
-            *bufp = (cmdq->key != '\n') ? cmdq->key : '\0';
-            bufp++;
-            if (cmdq->key == '\n')
-                break;
-        } else {
-            break;
-        }
-        free(cmdq);
-        cmdq = NULL;
-    }
-    if (cmdq)
-        free(cmdq);
-
-    if (got_cmdq) {
-        *bufp = '\0';
-        pline("%s %s", query, obufp);
-        return;
-    }
 
     program_state.in_getlin = 1;
     gb.bot_disabled = TRUE;

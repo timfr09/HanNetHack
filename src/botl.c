@@ -12,8 +12,8 @@ extern const char *const hu_stat[]; /* defined in eat.c */
 
 /* also used in insight.c */
 const char *const enc_stat[] = {
-    "",         "Burdened",  "Stressed",
-    "Strained", "Overtaxed", "Overloaded"
+    "",         N_("Burdened"),  N_("Stressed"),
+    N_("Strained"), N_("Overtaxed"), N_("Overloaded")
 };
 
 staticfn const char *rank(void);
@@ -85,17 +85,15 @@ do_statusline1(void)
     if ((i - j) > 0)
         Sprintf(nb = eos(nb), "%*s", i - j, " "); /* pad with spaces */
 
-    Sprintf(nb = eos(nb), "St:%s Dx:%-1d Co:%-1d In:%-1d Wi:%-1d Ch:%-1d",
+    /* Korean i18n: status line attribute abbreviations */
+    Sprintf(nb = eos(nb), _("St:%s Dx:%-1d Co:%-1d In:%-1d Wi:%-1d Ch:%-1d"),
             get_strength_str(),
             ACURR(A_DEX), ACURR(A_CON), ACURR(A_INT), ACURR(A_WIS),
             ACURR(A_CHA));
-    Sprintf(nb = eos(nb), "%s",
-            (u.ualign.type == A_CHAOTIC) ? "  Chaotic"
-              : (u.ualign.type == A_NEUTRAL) ? "  Neutral"
-                : "  Lawful");
+    Sprintf(nb = eos(nb), "  %s", align_str(u.ualign.type));
 #ifdef SCORE_ON_BOTL
     if (flags.showscore)
-        Sprintf(nb = eos(nb), " S:%ld", botl_score());
+        Sprintf(nb = eos(nb), _(" S:%ld"), botl_score());
 #endif
     return newbot1;
 }
@@ -138,28 +136,29 @@ do_statusline2(void)
     /* '$' encoded as \GXXXXNNNN is 9 chars longer than display will need */
     dx = strstri(dloc, "\\G") ? 9 : 0;
 
-    /* health and armor class (has trailing space for AC 0..9) */
+    /* health and armor class (has trailing space for AC 0..9)
+     * Korean i18n: status abbreviations HP, Pw, AC, Xp, HD, T */
     hp = Upolyd ? u.mh : u.uhp;
     hpmax = Upolyd ? u.mhmax : u.uhpmax;
     if (hp < 0)
         hp = 0;
-    Sprintf(hlth, "HP:%d(%d) Pw:%d(%d) AC:%-2d",
+    Sprintf(hlth, _("HP:%d(%d) Pw:%d(%d) AC:%-2d"),
             min(hp, 9999), min(hpmax, 9999),
             min(u.uen, 9999), min(u.uenmax, 9999), u.uac);
     hln = strlen(hlth);
 
     /* experience */
     if (Upolyd)
-        Sprintf(expr, "HD:%d", mons[u.umonnum].mlevel);
+        Sprintf(expr, _("HD:%d"), mons[u.umonnum].mlevel);
     else if (flags.showexp)
-        Sprintf(expr, "Xp:%d/%-1ld", u.ulevel, u.uexp);
+        Sprintf(expr, _("Xp:%d/%-1ld"), u.ulevel, u.uexp);
     else
-        Sprintf(expr, "Xp:%d", u.ulevel);
+        Sprintf(expr, _("Xp:%d"), u.ulevel);
     xln = strlen(expr);
 
     /* time/move counter */
     if (flags.time)
-        Sprintf(tmmv, "T:%ld", svm.moves);
+        Sprintf(tmmv, _("T:%ld"), svm.moves);
     else
         tmmv[0] = '\0';
     tln = strlen(tmmv);
@@ -174,38 +173,38 @@ do_statusline2(void)
      * unusual for more than one of them to apply at a time.]
      */
     if (Stoned)
-        Strcpy(nb = eos(nb), " Stone");
+        Strcpy(nb = eos(nb), _(" Stone"));
     if (Slimed)
-        Strcpy(nb = eos(nb), " Slime");
+        Strcpy(nb = eos(nb), _(" Slime"));
     if (Strangled)
-        Strcpy(nb = eos(nb), " Strngl");
+        Strcpy(nb = eos(nb), _(" Strngl"));
     if (Sick) {
         if (u.usick_type & SICK_VOMITABLE)
-            Strcpy(nb = eos(nb), " FoodPois");
+            Strcpy(nb = eos(nb), _(" FoodPois"));
         if (u.usick_type & SICK_NONVOMITABLE)
-            Strcpy(nb = eos(nb), " TermIll");
+            Strcpy(nb = eos(nb), _(" TermIll"));
     }
     if (u.uhs != NOT_HUNGRY)
         Sprintf(nb = eos(nb), " %s", hu_stat[u.uhs]);
     if ((cap = near_capacity()) > UNENCUMBERED)
         Sprintf(nb = eos(nb), " %s", enc_stat[cap]);
     if (Blind)
-        Strcpy(nb = eos(nb), " Blind");
+        Strcpy(nb = eos(nb), _(" Blind"));
     if (Deaf)
-        Strcpy(nb = eos(nb), " Deaf");
+        Strcpy(nb = eos(nb), _(" Deaf"));
     if (Stunned)
-        Strcpy(nb = eos(nb), " Stun");
+        Strcpy(nb = eos(nb), _(" Stun"));
     if (Confusion)
-        Strcpy(nb = eos(nb), " Conf");
+        Strcpy(nb = eos(nb), _(" Conf"));
     if (Hallucination)
-        Strcpy(nb = eos(nb), " Hallu");
+        Strcpy(nb = eos(nb), _(" Hallu"));
     /* levitation and flying are mutually exclusive; riding is not */
     if (Levitation)
-        Strcpy(nb = eos(nb), " Lev");
+        Strcpy(nb = eos(nb), _(" Lev"));
     if (Flying)
-        Strcpy(nb = eos(nb), " Fly");
+        Strcpy(nb = eos(nb), _(" Fly"));
     if (u.usteed)
-        Strcpy(nb = eos(nb), " Ride");
+        Strcpy(nb = eos(nb), _(" Ride"));
     cln = strlen(cond);
 
     /* version on status line, with leading space */
@@ -331,6 +330,11 @@ rank_to_xlev(int rank)
            : (rank < 8) ? ((rank * 4) - 2) : 30;
 }
 
+/*
+ * Korean i18n note: rank_of() returns translated rank names using _()
+ * for display in status line and other UI elements.
+ * Original English strings are preserved in roles[] for game logic.
+ */
 const char *
 rank_of(int lev, short monnum, boolean female)
 {
@@ -347,17 +351,17 @@ rank_of(int lev, short monnum, boolean female)
     /* Find the rank */
     for (i = xlev_to_rank((int) lev); i >= 0; i--) {
         if (female && role->rank[i].f)
-            return role->rank[i].f;
+            return _(role->rank[i].f);
         if (role->rank[i].m)
-            return role->rank[i].m;
+            return _(role->rank[i].m);
     }
 
     /* Try the role name, instead */
     if (female && role->name.f)
-        return role->name.f;
+        return _(role->name.f);
     else if (role->name.m)
-        return role->name.m;
-    return "Player";
+        return _(role->name.m);
+    return _("Player");
 }
 
 staticfn const char *
@@ -450,10 +454,10 @@ describe_level(
     int ret = 1;
 
     if (Is_knox(&u.uz)) {
-        Sprintf(buf, "%s", svd.dungeons[u.uz.dnum].dname);
+        Sprintf(buf, "%s", _(svd.dungeons[u.uz.dnum].dname));
         addbranch = FALSE;
     } else if (In_quest(&u.uz)) {
-        Sprintf(buf, "Home %d", dunlev(&u.uz));
+        Sprintf(buf, _("Home %d"), dunlev(&u.uz));
     } else if (In_endgame(&u.uz)) {
         /* [3.6.2: this used to be "Astral Plane" or generic "End Game"] */
         (void) endgamelevelname(buf, depth(&u.uz));
@@ -463,14 +467,14 @@ describe_level(
     } else {
         /* ports with more room may expand this one */
         if (!addbranch)
-            Sprintf(buf, "%s:%-2d", /* "Dlvl:n" (grep fodder) */
-                    In_tutorial(&u.uz) ? "Tutorial" : "Dlvl", depth(&u.uz));
+            Sprintf(buf, _("%s:%-2d"), /* "Dlvl:n" (grep fodder) */
+                    In_tutorial(&u.uz) ? _("Tutorial") : _("Dlvl"), depth(&u.uz));
         else
-            Sprintf(buf, "level %d", depth(&u.uz));
+            Sprintf(buf, _("level %d"), depth(&u.uz));
         ret = 0;
     }
     if (addbranch) {
-        Sprintf(eos(buf), ", %s", svd.dungeons[u.uz.dnum].dname);
+        Sprintf(eos(buf), ", %s", _(svd.dungeons[u.uz.dnum].dname));
         (void) strsubst(buf, "The ", "the ");
     }
     if (addspace)
@@ -767,26 +771,33 @@ bot_via_windowport(void)
 
     /*
      *  Player name and title.
+     *  Korean i18n note: Uses translateable format string for "Name the Rank"
+     *  pattern, allowing different word order in translations.
      */
     Strcpy(nb = buf, svp.plname);
     nb[0] = highc(nb[0]);
     titl = !Upolyd ? rank() : pmname(&mons[u.umonnum], Ugender);
-    i = (int) (strlen(buf) + sizeof " the " + strlen(titl) - sizeof "");
-    /* if "Name the Rank/monster" is too long, we truncate the name
-       but always keep at least 10 characters of it; when hitpointbar is
-       enabled, anything beyond 30 (long monster name) will be truncated */
-    if (i > 30) {
-        i = 30 - (int) (sizeof " the " + strlen(titl) - sizeof "");
-        nb[max(i, 10)] = '\0';
+    {
+        /* TRANSLATORS: %s the %s -> player name, rank/monster name
+           Korean example: "%s (%s)" for "Name (Rank)" format */
+        const char *title_fmt = _("%s the %s");
+        char titlebuf[MAXVALWIDTH];
+
+        if (Upolyd) {
+            /* capitalize monster name for poly'd form */
+            char mtitl[BUFSZ];
+            Strcpy(mtitl, titl);
+            for (i = 0; mtitl[i]; i++)
+                if (i == 0 || mtitl[i - 1] == ' ')
+                    mtitl[i] = highc(mtitl[i]);
+            Snprintf(titlebuf, sizeof titlebuf, title_fmt, buf, mtitl);
+        } else {
+            Snprintf(titlebuf, sizeof titlebuf, title_fmt, buf, titl);
+        }
+        /* truncate if too long (hitpointbar limit is 30) */
+        titlebuf[30] = '\0';
+        Sprintf(gb.blstats[idx][BL_TITLE].val, "%-30s", titlebuf);
     }
-    Strcpy(nb = eos(nb), " the ");
-    Strcpy(nb = eos(nb), titl);
-    if (Upolyd) { /* when poly'd, capitalize monster name */
-        for (i = 0; nb[i]; i++)
-            if (i == 0 || nb[i - 1] == ' ')
-                nb[i] = highc(nb[i]);
-    }
-    Sprintf(gb.blstats[idx][BL_TITLE].val, "%-30s", buf);
     gv.valset[BL_TITLE] = TRUE; /* indicate val already set */
 
     /* Strength */
@@ -803,10 +814,10 @@ bot_via_windowport(void)
 
     /* Alignment */
     Strcpy(gb.blstats[idx][BL_ALIGN].val, (u.ualign.type == A_CHAOTIC)
-                                          ? "Chaotic"
+                                          ? _("Chaotic")
                                           : (u.ualign.type == A_NEUTRAL)
-                                               ? "Neutral"
-                                               : "Lawful");
+                                               ? _("Neutral")
+                                               : _("Lawful"));
 
     /* Score */
     gb.blstats[idx][BL_SCORE].a.a_long =
@@ -1154,13 +1165,13 @@ cond_menu(void)
 
         any = cg.zeroany;
         any.a_int = 1;
-        Sprintf(mbuf, "change sort order from \"%s\" to \"%s\"",
+        Sprintf(mbuf, _("change sort order from \"%s\" to \"%s\""),
                 menutitle[gc.condmenu_sortorder],
                 menutitle[1 - gc.condmenu_sortorder]);
         add_menu(tmpwin, &nul_glyphinfo, &any, 'S', 0, ATR_NONE,
                  clr, mbuf, MENU_ITEMFLAGS_SKIPINVERT);
         any = cg.zeroany;
-        Sprintf(mbuf, "sorted %s", menutitle[gc.condmenu_sortorder]);
+        Sprintf(mbuf, _("sorted %s"), menutitle[gc.condmenu_sortorder]);
         add_menu_heading(tmpwin, mbuf);
         for (i = 0; i < SIZE(condtests); i++) {
             idx = sequence[i];
@@ -1173,7 +1184,7 @@ cond_menu(void)
                         ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
         }
 
-        end_menu(tmpwin, "Choose status conditions to toggle");
+        end_menu(tmpwin, _("Choose status conditions to toggle"));
 
         res = select_menu(tmpwin, PICK_ANY, &picks);
         destroy_nhwindow(tmpwin);
@@ -1458,8 +1469,9 @@ status_initialize(
                              : TRUE;
 
         fieldname = initblstats[i].fldname;
+        /* Korean i18n: translate status format strings like " St:%s" */
         fieldfmt = (fld == BL_TITLE && iflags.wc2_hitpointbar) ? "%-30.30s"
-                   : initblstats[i].fldfmt;
+                   : _(initblstats[i].fldfmt);
         status_enablefield(fld, fieldname, fieldfmt, fldenabl);
     }
     gu.update_all = TRUE;
@@ -2868,7 +2880,7 @@ query_conditions(void)
                  clr, conditions[i].text[0], MENU_ITEMFLAGS_NONE);
     }
 
-    end_menu(tmpwin, "Choose status conditions");
+    end_menu(tmpwin, _("Choose status conditions"));
 
     res = select_menu(tmpwin, PICK_ANY, &picks);
     destroy_nhwindow(tmpwin);
@@ -3361,11 +3373,11 @@ status_hilite2str(struct hilite_s *hl)
         break;
     case BL_TH_UPDOWN:
         if (hl->rel == LT_VALUE)
-            Sprintf(behavebuf, "down");
+            Sprintf(behavebuf, _("down"));
         else if (hl->rel == GT_VALUE)
-            Sprintf(behavebuf, "up");
+            Sprintf(behavebuf, _("up"));
         else if (hl->rel == EQ_VALUE)
-            Sprintf(behavebuf, "changed");
+            Sprintf(behavebuf, _("changed"));
         else
             impossible("hl->behavior=updown, rel error");
         break;
@@ -3388,10 +3400,10 @@ status_hilite2str(struct hilite_s *hl)
             impossible("hl->behavior=condition, rel error");
         break;
     case BL_TH_ALWAYS_HILITE:
-        Sprintf(behavebuf, "always");
+        Sprintf(behavebuf, _("always"));
         break;
     case BL_TH_CRITICALHP:
-        Sprintf(behavebuf, "criticalhp");
+        Sprintf(behavebuf, _("criticalhp"));
         break;
     case BL_TH_NONE:
         break;
@@ -3435,7 +3447,7 @@ status_hilite_menu_choose_field(void)
                  clr, initblstats[i].fldname, MENU_ITEMFLAGS_NONE);
     }
 
-    end_menu(tmpwin, "Select a hilite field:");
+    end_menu(tmpwin, _("Select a hilite field:"));
 
     res = select_menu(tmpwin, PICK_ONE, &picks);
     destroy_nhwindow(tmpwin);
@@ -3469,7 +3481,7 @@ status_hilite_menu_choose_behavior(int fld)
     if (fld != BL_CONDITION) {
         any = cg.zeroany;
         any.a_int = onlybeh = BL_TH_ALWAYS_HILITE;
-        Sprintf(buf, "Always highlight %s", initblstats[fld].fldname);
+        Sprintf(buf, _("Always highlight %s"), initblstats[fld].fldname);
         add_menu(tmpwin, &nul_glyphinfo, &any, 'a', 0, ATR_NONE,
                  clr, buf, MENU_ITEMFLAGS_NONE);
         nopts++;
@@ -3479,14 +3491,14 @@ status_hilite_menu_choose_behavior(int fld)
         any = cg.zeroany;
         any.a_int = onlybeh = BL_TH_CONDITION;
         add_menu(tmpwin, &nul_glyphinfo, &any, 'b', 0, ATR_NONE,
-                 clr, "Bitmask of conditions", MENU_ITEMFLAGS_NONE);
+                 clr, _("Bitmask of conditions"), MENU_ITEMFLAGS_NONE);
         nopts++;
     }
 
     if (fld != BL_CONDITION && fld != BL_VERS) {
         any = cg.zeroany;
         any.a_int = onlybeh = BL_TH_UPDOWN;
-        Sprintf(buf, "%s value changes", initblstats[fld].fldname);
+        Sprintf(buf, _("%s value changes"), initblstats[fld].fldname);
         add_menu(tmpwin, &nul_glyphinfo, &any, 'c', 0, ATR_NONE,
                  clr, buf, MENU_ITEMFLAGS_NONE);
         nopts++;
@@ -3497,7 +3509,7 @@ status_hilite_menu_choose_behavior(int fld)
         any = cg.zeroany;
         any.a_int = onlybeh = BL_TH_VAL_ABSOLUTE;
         add_menu(tmpwin, &nul_glyphinfo, &any, 'n', 0, ATR_NONE,
-                 clr, "Number threshold", MENU_ITEMFLAGS_NONE);
+                 clr, _("Number threshold"), MENU_ITEMFLAGS_NONE);
         nopts++;
     }
 
@@ -3505,14 +3517,14 @@ status_hilite_menu_choose_behavior(int fld)
         any = cg.zeroany;
         any.a_int = onlybeh = BL_TH_VAL_PERCENTAGE;
         add_menu(tmpwin, &nul_glyphinfo, &any, 'p', 0, ATR_NONE,
-                 clr, "Percentage threshold", MENU_ITEMFLAGS_NONE);
+                 clr, _("Percentage threshold"), MENU_ITEMFLAGS_NONE);
         nopts++;
     }
 
     if (fld == BL_HP) {
         any = cg.zeroany;
         any.a_int = onlybeh = BL_TH_CRITICALHP;
-        Sprintf(buf,  "Highlight critically low %s",
+        Sprintf(buf,  _("Highlight critically low %s"),
                 initblstats[fld].fldname);
         add_menu(tmpwin, &nul_glyphinfo, &any, 'C', 0, ATR_NONE,
                  clr, buf, MENU_ITEMFLAGS_NONE);
@@ -3523,13 +3535,13 @@ status_hilite_menu_choose_behavior(int fld)
         || fld == BL_CAP || fld == BL_HUNGER) {
         any = cg.zeroany;
         any.a_int = onlybeh = BL_TH_TEXTMATCH;
-        Sprintf(buf, "%s text match", initblstats[fld].fldname);
+        Sprintf(buf, _("%s text match"), initblstats[fld].fldname);
         add_menu(tmpwin, &nul_glyphinfo, &any, 't', 0, ATR_NONE,
                  clr, buf, MENU_ITEMFLAGS_NONE);
         nopts++;
     }
 
-    Sprintf(buf, "Select %s field hilite behavior:",
+    Sprintf(buf, _("Select %s field hilite behavior:"),
             initblstats[fld].fldname);
     end_menu(tmpwin, buf);
 
@@ -3568,18 +3580,18 @@ status_hilite_menu_choose_updownboth(
 
     if (ltok) {
         if (str)
-            Sprintf(buf, "%s than %s",
-                    (fld == BL_AC) ? "Better (lower)" : "Less", str);
+            Sprintf(buf, _("%s than %s"),
+                    (fld == BL_AC) ? _("Better (lower)") : _("Less"), str);
         else
-            Sprintf(buf, "Value goes down");
+            Sprintf(buf, _("Value goes down"));
         any = cg.zeroany;
         any.a_int = 10 + LT_VALUE;
         add_menu(tmpwin, &nul_glyphinfo, &any, 0, 0, ATR_NONE,
                  clr, buf, MENU_ITEMFLAGS_NONE);
 
         if (str) {
-            Sprintf(buf, "%s or %s",
-                    str, (fld == BL_AC) ? "better (lower)" : "less");
+            Sprintf(buf, _("%s or %s"),
+                    str, (fld == BL_AC) ? _("better (lower)") : _("less"));
             any = cg.zeroany;
             any.a_int = 10 + LE_VALUE;
             add_menu(tmpwin, &nul_glyphinfo, &any, 0, 0, ATR_NONE,
@@ -3588,9 +3600,9 @@ status_hilite_menu_choose_updownboth(
     }
 
     if (str)
-        Sprintf(buf, "Exactly %s", str);
+        Sprintf(buf, _("Exactly %s"), str);
     else
-        Sprintf(buf, "Value changes");
+        Sprintf(buf, _("Value changes"));
     any = cg.zeroany;
     any.a_int = 10 + EQ_VALUE;
     add_menu(tmpwin, &nul_glyphinfo, &any, 0, 0, ATR_NONE,
@@ -3598,8 +3610,8 @@ status_hilite_menu_choose_updownboth(
 
     if (gtok) {
         if (str) {
-            Sprintf(buf, "%s or %s",
-                    str, (fld == BL_AC) ? "worse (higher)" : "more");
+            Sprintf(buf, _("%s or %s"),
+                    str, (fld == BL_AC) ? _("worse (higher)") : _("more"));
             any = cg.zeroany;
             any.a_int = 10 + GE_VALUE;
             add_menu(tmpwin, &nul_glyphinfo, &any, 0, 0, ATR_NONE,
@@ -3607,16 +3619,16 @@ status_hilite_menu_choose_updownboth(
         }
 
         if (str)
-            Sprintf(buf, "%s than %s",
-                    (fld == BL_AC) ? "Worse (higher)" : "More", str);
+            Sprintf(buf, _("%s than %s"),
+                    (fld == BL_AC) ? _("Worse (higher)") : _("More"), str);
         else
-            Sprintf(buf, "Value goes up");
+            Sprintf(buf, _("Value goes up"));
         any = cg.zeroany;
         any.a_int = 10 + GT_VALUE;
         add_menu(tmpwin, &nul_glyphinfo, &any, 0, 0, ATR_NONE, clr,
                  buf, MENU_ITEMFLAGS_NONE);
     }
-    Sprintf(buf, "Select field %s value:", initblstats[fld].fldname);
+    Sprintf(buf, _("Select field %s value:"), initblstats[fld].fldname);
     end_menu(tmpwin, buf);
 
     res = select_menu(tmpwin, PICK_ONE, &picks);
@@ -3686,8 +3698,8 @@ status_hilite_menu_add(int origfld)
 
         lt_gt_eq = NO_LTEQGT; /* not set up yet */
         inbuf[0] = '\0';
-        Sprintf(buf, "Enter %svalue for %s threshold:",
-                percent ? "percentage " : "",
+        Sprintf(buf, _("Enter %svalue for %s threshold:"),
+                percent ? _("percentage ") : "",
                 initblstats[fld].fldname);
         getlin(buf, inbuf);
         if (inbuf[0] == '\0' || inbuf[0] == '\033')
@@ -3722,17 +3734,17 @@ status_hilite_menu_add(int origfld)
         }
         if (*inp == '%') {
             if (!percent) {
-                pline("Not expecting a percentage.");
+                pline(_("Not expecting a percentage."));
                 goto choose_behavior;
             }
             *inp = '\0'; /* strip '%' [this accepts trailing junk!] */
         } else if (*inp) {
             /* some random characters */
-            pline("\"%s\" is not a recognized number.", inp);
+            pline(_("\"%s\" is not a recognized number."), inp);
             goto choose_value;
         }
         if (!gotnum) {
-            pline("Is that an invisible number?");
+            pline(_("Is that an invisible number?"));
             goto choose_value;
         }
         op = (lt_gt_eq == LT_VALUE) ? "<"
@@ -3749,7 +3761,7 @@ status_hilite_menu_add(int origfld)
         if (percent) {
             val = aval.a_int;
             if (initblstats[fld].idxmax == -1) {
-                pline("Field '%s' does not support percentage values.",
+                pline(_("Field '%s' does not support percentage values."),
                       initblstats[fld].fldname);
                 behavior = BL_TH_VAL_ABSOLUTE;
                 goto choose_value;
@@ -3763,7 +3775,7 @@ status_hilite_menu_add(int origfld)
                 || (val == 0 && lt_gt_eq == LT_VALUE)
                 || (val == 100 && lt_gt_eq == GT_VALUE)
                 || (val > 100 && (val != 101 || lt_gt_eq != LT_VALUE))) {
-                pline("'%s%d%%' is not a valid percent value.", op, val);
+                pline(_("'%s%d%%' is not a valid percent value."), op, val);
                 goto choose_value;
             }
             /* restore suffix for use in color and attribute prompts */
@@ -3775,13 +3787,13 @@ status_hilite_menu_add(int origfld)
                    && (aval.a_int < ((fld == BL_AC) ? -128
                                      : (lt_gt_eq == GT_VALUE) ? -1
                                        : (lt_gt_eq == LT_VALUE) ? 1 : 0))) {
-            pline("%s'%s%d'%s", threshold_value,
+            pline(_("%s'%s%d'%s"), threshold_value,
                   op, aval.a_int, is_out_of_range);
             goto choose_value;
         } else if (dt == ANY_LONG
                    && (aval.a_long < ((lt_gt_eq == GT_VALUE) ? -1L
                                       : (lt_gt_eq == LT_VALUE) ? 1L : 0L))) {
-            pline("%s'%s%ld'%s", threshold_value,
+            pline(_("%s'%s%ld'%s"), threshold_value,
                   op, aval.a_long, is_out_of_range);
             goto choose_value;
         }
@@ -3798,23 +3810,23 @@ status_hilite_menu_add(int origfld)
                 goto choose_value;
         }
 
-        Sprintf(colorqry, "Choose a color for when %s is %s%s%s:",
+        Sprintf(colorqry, _("Choose a color for when %s is %s%s%s:"),
                 initblstats[fld].fldname,
-                (lt_gt_eq == LT_VALUE) ? "less than "
-                  : (lt_gt_eq == GT_VALUE) ? "more than "
+                (lt_gt_eq == LT_VALUE) ? _("less than ")
+                  : (lt_gt_eq == GT_VALUE) ? _("more than ")
                     : "",
                 numstart,
-                (lt_gt_eq == LE_VALUE) ? " or less"
-                  : (lt_gt_eq == GE_VALUE) ? " or more"
+                (lt_gt_eq == LE_VALUE) ? _(" or less")
+                  : (lt_gt_eq == GE_VALUE) ? _(" or more")
                     : "");
-        Sprintf(attrqry, "Choose attribute for when %s is %s%s%s:",
+        Sprintf(attrqry, _("Choose attribute for when %s is %s%s%s:"),
                 initblstats[fld].fldname,
-                (lt_gt_eq == LT_VALUE) ? "less than "
-                  : (lt_gt_eq == GT_VALUE) ? "more than "
+                (lt_gt_eq == LT_VALUE) ? _("less than ")
+                  : (lt_gt_eq == GT_VALUE) ? _("more than ")
                     : "",
                 numstart,
-                (lt_gt_eq == LE_VALUE) ? " or less"
-                  : (lt_gt_eq == GE_VALUE) ? " or more"
+                (lt_gt_eq == LE_VALUE) ? _(" or less")
+                  : (lt_gt_eq == GE_VALUE) ? _(" or more")
                     : "");
 
         hilite.rel = lt_gt_eq;
@@ -3836,16 +3848,16 @@ status_hilite_menu_add(int origfld)
                single choice, skip it altogether and just use 'changed' */
             lt_gt_eq = EQ_VALUE;
         }
-        Sprintf(colorqry, "Choose a color for when %s %s:",
+        Sprintf(colorqry, _("Choose a color for when %s %s:"),
                 initblstats[fld].fldname,
-                (lt_gt_eq == EQ_VALUE) ? "changes"
-                  : (lt_gt_eq == LT_VALUE) ? "decreases"
-                    : "increases");
-        Sprintf(attrqry, "Choose attribute for when %s %s:",
+                (lt_gt_eq == EQ_VALUE) ? _("changes")
+                  : (lt_gt_eq == LT_VALUE) ? _("decreases")
+                    : _("increases"));
+        Sprintf(attrqry, _("Choose attribute for when %s %s:"),
                 initblstats[fld].fldname,
-                (lt_gt_eq == EQ_VALUE) ? "changes"
-                  : (lt_gt_eq == LT_VALUE) ? "decreases"
-                    : "increases");
+                (lt_gt_eq == EQ_VALUE) ? _("changes")
+                  : (lt_gt_eq == LT_VALUE) ? _("decreases")
+                    : _("increases"));
         hilite.rel = lt_gt_eq;
     } else if (behavior == BL_TH_CONDITION) {
         cond = query_conditions();
@@ -3855,19 +3867,19 @@ status_hilite_menu_add(int origfld)
             return FALSE;
         }
         Snprintf(colorqry, sizeof(colorqry),
-                "Choose a color for conditions %s:",
+                _("Choose a color for conditions %s:"),
                 conditionbitmask2str(cond));
         Snprintf(attrqry, sizeof(attrqry),
-                "Choose attribute for conditions %s:",
+                _("Choose attribute for conditions %s:"),
                 conditionbitmask2str(cond));
     } else if (behavior == BL_TH_TEXTMATCH) {
         char qry_buf[BUFSZ];
 
-        Sprintf(qry_buf, "%s %s text value to match:",
+        Sprintf(qry_buf, _("%s %s text value to match:"),
                 (fld == BL_CAP
                  || fld == BL_ALIGN
                  || fld == BL_HUNGER
-                 || fld == BL_TITLE) ? "Choose" : "Enter",
+                 || fld == BL_TITLE) ? _("Choose") : _("Enter"),
                 initblstats[fld].fldname);
         if (fld == BL_CAP) {
             int rv = query_arrayvalue(qry_buf,
@@ -3957,14 +3969,14 @@ status_hilite_menu_add(int origfld)
             else
                 return FALSE;
         }
-        Sprintf(colorqry, "Choose a color for when %s is '%s':",
+        Sprintf(colorqry, _("Choose a color for when %s is '%s':"),
                 initblstats[fld].fldname, hilite.textmatch);
-        Sprintf(attrqry, "Choose attribute for when %s is '%s':",
+        Sprintf(attrqry, _("Choose attribute for when %s is '%s':"),
                 initblstats[fld].fldname, hilite.textmatch);
     } else if (behavior == BL_TH_ALWAYS_HILITE) {
-        Sprintf(colorqry, "Choose a color to always hilite %s:",
+        Sprintf(colorqry, _("Choose a color to always hilite %s:"),
                 initblstats[fld].fldname);
-        Sprintf(attrqry, "Choose attribute to always hilite %s:",
+        Sprintf(attrqry, _("Choose attribute to always hilite %s:"),
                 initblstats[fld].fldname);
     }
 
@@ -4010,7 +4022,7 @@ status_hilite_menu_add(int origfld)
         tmpattr = hlattr2attrname(atr, attrbuf, BUFSZ);
         if (tmpattr)
             Sprintf(eos(clrbuf), "&%s", tmpattr);
-        pline("Added hilite condition/%s/%s",
+        pline(_("Added hilite condition/%s/%s"),
               conditionbitmask2str(cond), clrbuf);
     } else {
         char *p, *q;
@@ -4024,7 +4036,7 @@ status_hilite_menu_add(int origfld)
             *p = '\0'; /* chop off " or female-rank" */
             /* new rule for male-rank */
             status_hilite_add_threshold(fld, &hilite);
-            pline("Added hilite %s", status_hilite2str(&hilite));
+            pline(_("Added hilite %s"), status_hilite2str(&hilite));
             /* transfer female-rank to start of hilite.textmatch buffer */
             p += sizeof " or " - sizeof "";
             q = hilite.textmatch;
@@ -4033,7 +4045,7 @@ status_hilite_menu_add(int origfld)
             /* proceed with normal addition of new rule */
         }
         status_hilite_add_threshold(fld, &hilite);
-        pline("Added hilite %s", status_hilite2str(&hilite));
+        pline(_("Added hilite %s"), status_hilite2str(&hilite));
     }
     reset_status_hilites();
     return TRUE;
@@ -4128,7 +4140,7 @@ status_hilite_menu_fld(int fld)
             hlstr = hlstr->next;
         }
     } else {
-        Sprintf(buf, "No current hilites for %s", initblstats[fld].fldname);
+        Sprintf(buf, _("No current hilites for %s"), initblstats[fld].fldname);
         add_menu_str(tmpwin, buf);
     }
 
@@ -4139,7 +4151,7 @@ status_hilite_menu_fld(int fld)
         any = cg.zeroany;
         any.a_int = -1;
         add_menu(tmpwin, &nul_glyphinfo, &any, 'X', 0, ATR_NONE, clr,
-                 "Remove selected hilites", MENU_ITEMFLAGS_NONE);
+                 _("Remove selected hilites"), MENU_ITEMFLAGS_NONE);
     }
 
 #ifndef SCORE_ON_BOTL
@@ -4155,10 +4167,10 @@ status_hilite_menu_fld(int fld)
         any = cg.zeroany;
         any.a_int = -2;
         add_menu(tmpwin, &nul_glyphinfo, &any, 'Z', 0, ATR_NONE,
-                 clr, "Add new hilites", MENU_ITEMFLAGS_NONE);
+                 clr, _("Add new hilites"), MENU_ITEMFLAGS_NONE);
     }
 
-    Sprintf(buf, "Current %s hilites:", initblstats[fld].fldname);
+    Sprintf(buf, _("Current %s hilites:"), initblstats[fld].fldname);
     end_menu(tmpwin, buf);
 
     acted = FALSE;
@@ -4284,7 +4296,7 @@ status_hilite_menu(void)
                  clr, buf, MENU_ITEMFLAGS_NONE);
     }
 
-    end_menu(tmpwin, "Status hilites:");
+    end_menu(tmpwin, _("Status hilites:"));
     if ((res = select_menu(tmpwin, PICK_ONE, &picks)) > 0) {
         fld = picks->item.a_int - 1;
         if (fld < 0) {

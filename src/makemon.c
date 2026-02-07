@@ -4,6 +4,7 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+#include "i18n.h"
 
 /* this assumes that a human quest leader or nemesis is an archetype
    of the corresponding role; that isn't so for some roles (tourist
@@ -107,7 +108,7 @@ m_initgrp(
     cnt /= (u.ulevel < 3) ? 4 : (u.ulevel < 5) ? 2 : 1;
 #if defined(__GNUC__) && (defined(HPUX) || defined(DGUX))
     if (cnt != (cnttmp / cntdiv)) {
-        pline("cnt=%d using %d, cnttmp=%d, cntdiv=%d", cnt,
+        pline(_("cnt=%d using %d, cnttmp=%d, cntdiv=%d"), cnt,
               (u.ulevel < 3) ? 4 : (u.ulevel < 5) ? 2 : 1, cnttmp, cntdiv);
     }
 #endif
@@ -1485,12 +1486,12 @@ makemon(
             }
             if (what) {
                 set_msg_xy(mtmp->mx, mtmp->my);
-                Norep("%s%s %s%s%c", what,
-                      exclaim ? " suddenly" : "",
+                Norep(_("%s%s %s%s%c"), what,
+                      exclaim ? _(" suddenly") : "",
                       /* 'what' might be "gold pieces" so need plural verb */
-                      vtense(what, "appear"),
-                      next2u(x, y) ? " next to you"
-                      : (distu(x, y) <= (BOLT_LIM * BOLT_LIM)) ? " close by"
+                      vtense(what, _("appear")),
+                      next2u(x, y) ? _(" next to you")
+                      : (distu(x, y) <= (BOLT_LIM * BOLT_LIM)) ? _(" close by")
                         : "",
                       exclaim ? '!' : '.');
             }
@@ -2117,9 +2118,9 @@ grow_up(struct monst *mtmp, struct monst *victim)
 
         if (svm.mvitals[newtype].mvflags & G_GENOD) { /* allow G_EXTINCT */
             if (canspotmon(mtmp))
-                pline("As %s grows up into %s, %s %s!", mon_nam(mtmp),
+                pline(_("As %s grows up into %s, %s %s!"), mon_nam(mtmp),
                       an(pmname(ptr, Mgender(mtmp))), mhe(mtmp),
-                      nonliving(ptr) ? "expires" : "dies");
+                      nonliving(ptr) ? _("expires") : _("dies"));
             set_mon_data(mtmp, ptr); /* keep svm.mvitals[] accurate */
             mondied(mtmp);
             return (struct permonst *) 0;
@@ -2137,10 +2138,10 @@ grow_up(struct monst *mtmp, struct monst *victim)
                            slightly less sexist if prepared for it...) */
                       : (fem && !mtmp->female) ? "female " : "",
                     pmname(ptr, fem));
-            pline_mon(mtmp, "%s %s %s.", YMonnam(mtmp),
-                      (fem != mtmp->female) ? "changes into"
-                                            : humanoid(ptr) ? "becomes"
-                                                            : "grows up into",
+            pline_mon(mtmp, _("%s %s %s."), YMonnam(mtmp),
+                      (fem != mtmp->female) ? _("changes into")
+                                            : humanoid(ptr) ? _("becomes")
+                                                            : _("grows up into"),
                       an(buf));
         }
         set_mon_data(mtmp, ptr);
@@ -2555,7 +2556,7 @@ bagotricks(
         impossible("bad bag o' tricks");
     } else if (bag->spe < 1) {
         /* if tipping known empty bag, give normal empty container message */
-        pline1((tipping && bag->cknown) ? "It's empty." : nothing_happens);
+        pline1((tipping && bag->cknown) ? _("It's empty.") : nothing_happens);
         /* now known to be empty if sufficiently discovered */
         if (bag->dknown && objects[bag->otyp].oc_name_known) {
             bag->cknown = 1;

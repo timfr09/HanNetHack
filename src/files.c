@@ -923,7 +923,7 @@ commit_bonesfile(d_level *lev)
     ret = rename(tempname, fq_bones);
 #endif
     if (wizard && ret != 0)
-        pline("couldn't rename %s to %s.", tempname, fq_bones);
+        pline(_("couldn't rename %s to %s."), tempname, fq_bones);
 }
 
 NHFILE *
@@ -1679,7 +1679,7 @@ docompress_file(const char *filename, boolean uncomp)
         nh_terminate(EXIT_FAILURE);
     } else if (f == -1) {
         perror((char *) 0);
-        pline("Fork to %scompress %s failed.", uncomp ? "un" : "", filename);
+        pline(_("Fork to %scompress %s failed."), uncomp ? _("un") : "", filename);
         free((genericptr_t) cfn);
         return;
     }
@@ -1836,13 +1836,13 @@ docompress_file(const char *filename, boolean uncomp)
 
         uncompressedfile = fopen(filename, RDBMODE);
         if (!uncompressedfile) {
-            pline("Error in zlib docompress_file %s", filename);
+            pline(_("Error in zlib docompress_file %s"), filename);
             return;
         }
         compressedfile = gzopen(cfn, "wb");
         if (compressedfile == NULL) {
             if (errno == 0) {
-                pline("zlib failed to allocate memory");
+                pline(_("zlib failed to allocate memory"));
             } else {
                 panic("Error in docompress_file %d", errno);
             }
@@ -1858,8 +1858,8 @@ docompress_file(const char *filename, boolean uncomp)
         while (1) {
             len = fread(buf, 1, sizeof(buf), uncompressedfile);
             if (ferror(uncompressedfile)) {
-                pline("Failure reading uncompressed file");
-                pline("Can't compress %s.", filename);
+                pline(_("Failure reading uncompressed file"));
+                pline(_("Can't compress %s."), filename);
                 fclose(uncompressedfile);
                 gzclose(compressedfile);
                 (void) unlink(cfn);
@@ -1873,8 +1873,8 @@ docompress_file(const char *filename, boolean uncomp)
 
             len2 = gzwrite(compressedfile, buf, len);
             if (len2 == 0) {
-                pline("Failure writing compressed file");
-                pline("Can't compress %s.", filename);
+                pline(_("Failure writing compressed file"));
+                pline(_("Can't compress %s."), filename);
                 fclose(uncompressedfile);
                 gzclose(compressedfile);
                 (void) unlink(cfn);
@@ -1901,7 +1901,7 @@ docompress_file(const char *filename, boolean uncomp)
         compressedfile = gzopen(cfn, "rb");
         if (compressedfile == NULL) {
             if (errno == 0) {
-                pline("zlib failed to allocate memory");
+                pline(_("zlib failed to allocate memory"));
             } else if (errno != ENOENT) {
                 panic("Error in zlib docompress_file %s, %d", filename,
                       errno);
@@ -1913,7 +1913,7 @@ docompress_file(const char *filename, boolean uncomp)
         }
         uncompressedfile = fopen(filename, WRBMODE);
         if (!uncompressedfile) {
-            pline("Error in zlib docompress file uncompress %s", filename);
+            pline(_("Error in zlib docompress file uncompress %s"), filename);
             gzclose(compressedfile);
 #ifdef SFCTOOL
             free(cfn);
@@ -1926,8 +1926,8 @@ docompress_file(const char *filename, boolean uncomp)
         while (1) {
             len = gzread(compressedfile, buf, sizeof(buf));
             if (len == (unsigned) -1) {
-                pline("Failure reading compressed file");
-                pline("Can't uncompress %s.", filename);
+                pline(_("Failure reading compressed file"));
+                pline(_("Can't uncompress %s."), filename);
                 fclose(uncompressedfile);
                 gzclose(compressedfile);
                 (void) unlink(filename);
@@ -1941,8 +1941,8 @@ docompress_file(const char *filename, boolean uncomp)
 
             fwrite(buf, 1, len, uncompressedfile);
             if (ferror(uncompressedfile)) {
-                pline("Failure writing uncompressed file");
-                pline("Can't uncompress %s.", filename);
+                pline(_("Failure writing uncompressed file"));
+                pline(_("Can't uncompress %s."), filename);
                 fclose(uncompressedfile);
                 gzclose(compressedfile);
                 (void) unlink(filename);
@@ -2281,8 +2281,8 @@ lock_file(const char *filename, int whichprefix,
                            filename, retryct);
             sleep(1);
         } else {
-            HUP raw_print("I give up.  Sorry.");
-            HUP raw_printf("Some other process has an unnatural grip on %s.",
+            HUP raw_print(_("I give up.  Sorry."));
+            HUP raw_printf(_("Some other process has an unnatural grip on %s."),
                            filename);
             gn.nesting--;
             return FALSE;
@@ -2301,8 +2301,8 @@ lock_file(const char *filename, int whichprefix,
 #endif
                     sleep(1);
             } else {
-                HUP raw_print("I give up.  Sorry.");
-                HUP raw_printf("Perhaps there is an old %s around?",
+                HUP raw_print(_("I give up.  Sorry."));
+                HUP raw_printf(_("Perhaps there is an old %s around?"),
                                lockname);
                 gn.nesting--;
                 return FALSE;
@@ -2371,7 +2371,7 @@ lock_file(const char *filename, int whichprefix,
         }
     }
     if (!retryct) {
-        raw_printf("I give up.  Sorry.");
+        raw_printf(_("I give up.  Sorry."));
         gn.nesting--;
         return FALSE;
     }
@@ -2890,9 +2890,9 @@ recover_savefile(void)
     }
     if (read(gnhfp->fd, (genericptr_t) &hpid, sizeof hpid) != sizeof hpid) {
         raw_printf("\n%s\n%s\n",
-                   "Checkpoint data incompletely written"
-                   " or subsequently clobbered.",
-                   "Recovery impossible.");
+                   _("Checkpoint data incompletely written"
+                   " or subsequently clobbered."),
+                   _("Recovery impossible."));
         close_nhfile(gnhfp);
         return FALSE;
     }
@@ -3168,10 +3168,10 @@ reveal_paths(int code)
 #ifdef PREFIXES_IN_USE
     int i, maxlen = 0;
 
-    raw_print("Variable playground locations:");
+    raw_print(_("Variable playground locations:"));
     for (i = 0; i < PREFIX_COUNT; i++)
         raw_printf("    [%-10s]=\"%s\"", fqn_prefix_names[i],
-                   gf.fqn_prefix[i] ? gf.fqn_prefix[i] : "not set");
+                   gf.fqn_prefix[i] ? gf.fqn_prefix[i] : _("not set"));
 #endif
 
     /* sysconf file */
@@ -3204,7 +3204,7 @@ reveal_paths(int code)
         skip_sysopt = TRUE;
     }
 #else /* !SYSCF */
-    raw_printf("No system configuration file.");
+    raw_printf(_("No system configuration file."));
 #endif /* ?SYSCF */
 
     /* symbols file */
@@ -3221,13 +3221,13 @@ reveal_paths(int code)
     if (cstrp && (int) strlen(cstrp) < maxlen)
         Sprintf(buf, " (in %s)", cstrp);
 #endif /* PREFIXES_IN_USE */
-    raw_printf("The loadable symbols file%s:", buf);
+    raw_printf(_("The loadable symbols file%s:"), buf);
 #endif /* UNIX */
 
 #ifdef UNIX
     envp = getcwd(cwdbuf, PATH_MAX);
     if (envp) {
-        raw_print("The loadable symbols file:");
+        raw_print(_("The loadable symbols file:"));
         raw_printf("    \"%s/%s\"", envp, SYMBOLS);
     }
 #else /* UNIX */
@@ -3294,12 +3294,12 @@ reveal_paths(int code)
 #endif
 #endif /* ?SYSCF */
     if (fqn && *fqn) {
-        raw_print("Your end-of-game disclosure file:");
+        raw_print(_("Your end-of-game disclosure file:"));
         (void) dump_fmtstr(fqn, buf, FALSE);
         buf[sizeof buf - sizeof "    \"\""] = '\0';
         raw_printf("    \"%s\"", buf);
     } else {
-        raw_printf("No end-of-game disclosure file (%s).", nodumpreason);
+        raw_printf(_("No end-of-game disclosure file (%s)."), nodumpreason);
     }
 #endif /* ?DUMPLOG */
 
@@ -3465,7 +3465,7 @@ read_tribute(const char *tribsection, const char *tribtitle,
     /* check for mandatories */
     if (!tribsection || !tribtitle) {
         if (!nowin_buf)
-            pline("It's %s of \"%s\"!", badtranslation, tribtitle);
+            pline(_("It's %s of \"%s\"!"), badtranslation, tribtitle);
         return grasped;
     }
 
@@ -3476,7 +3476,7 @@ read_tribute(const char *tribsection, const char *tribtitle,
     if (!fp) {
         /* this is actually an error - cannot open tribute file! */
         if (!nowin_buf)
-            You_feel("too overwhelmed to continue!");
+            You_feel(_("too overwhelmed to continue!"));
         return grasped;
     }
 
@@ -3612,7 +3612,7 @@ read_tribute(const char *tribsection, const char *tribtitle,
         }
         if (!grasped)
             /* multi-line window, problem */
-            pline("It seems to be %s of \"%s\"!", badtranslation, tribtitle);
+            pline(_("It seems to be %s of \"%s\"!"), badtranslation, tribtitle);
     }
     return grasped;
 }
@@ -3648,7 +3648,7 @@ livelog_add(long ll_type, const char *str)
 
     if (lock_file(LIVELOGFILE, SCOREPREFIX, 10)) {
         if (!(livelogfile = fopen_datafile(LIVELOGFILE, "a", SCOREPREFIX))) {
-            pline("Cannot open live log file!");
+            pline(_("Cannot open live log file!"));
             unlock_file(LIVELOGFILE);
             return;
         }

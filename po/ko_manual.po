@@ -12691,3 +12691,13 @@ msgstr ""
 # potion.c - 사망 메시지
 msgid "alchemic blast"
 msgstr "연금술 폭발"
+
+# --- trap.c 복수형/관사 구조 수정 ---
+
+# trap.c - 영어 관사 "an" (한국어에서 불필요)
+msgid "an"
+msgstr ""
+
+# trap.c - leash 복수형 (영어 접미사 억제)
+msgid "leash%s slip%s loose."
+msgstr "줄이 풀렸다.%.0s%.0s"

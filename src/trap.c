@@ -2973,7 +2973,7 @@ dotrap(struct trap *trap, unsigned trflags)
             if (already_seen) {
                 You(_("%s over %s %s."), u_locomotion(_("step")),
                     (ttype == ARROW_TRAP && !trap->madeby_u)
-                    ? "an" : _(a_your[trap->madeby_u]),
+                    ? _("an") : _(a_your[trap->madeby_u]),
                     trapname(ttype, FALSE));
             }
             return;
@@ -2983,7 +2983,7 @@ dotrap(struct trap *trap, unsigned trflags)
             && !conj_pit && !adj_pit
             && (!rn2(5) || (is_pit(ttype) && is_clinger(gy.youmonst.data)))) {
                 You(_("escape %s %s."), (ttype == ARROW_TRAP && !trap->madeby_u)
-                                     ? "an"
+                                     ? _("an")
                                      : _(a_your[trap->madeby_u]),
                 trapname(ttype, FALSE));
             return;

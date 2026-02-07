@@ -784,7 +784,7 @@ still_chewing(coordxy x, coordxy y)
         }
         if (lev->doormask & D_TRAPPED) {
             lev->doormask = D_NODOOR;
-            b_trapped("door", NO_PART);
+            b_trapped(_("door"), NO_PART);
         } else {
             digtxt = "chew through the door.";
             lev->doormask = D_BROKEN;

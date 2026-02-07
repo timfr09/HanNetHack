@@ -1241,8 +1241,8 @@ enum mb_effect_indices {
 
 #define MB_MAX_DIEROLL 8 /* rolls above this aren't magical */
 static const char *const mb_verb[2][NUM_MB_INDICES] = {
-    { "probe", "stun", "scare", "cancel" },
-    { "prod", "amaze", "tickle", "purge" },
+    { N_("probe"), N_("stun"), N_("scare"), N_("cancel") },
+    { N_("prod"), N_("amaze"), N_("tickle"), N_("purge") },
 };
 
 /* called when someone is being hit by Magicbane */
@@ -1304,7 +1304,7 @@ Mb_hit(struct monst *magr, /* attacker */
     if (youattack || youdefend || vis) {
         result = TRUE;
         pline_The(_("magic-absorbing blade %s %s!"),
-                  vtense((const char *) 0, verb), hittee);
+                  vtense((const char *) 0, _(verb)), hittee);
         /* assume probing has some sort of noticeable feedback
            even if it is being done by one monster to another */
         if (attack_indx == MB_INDEX_PROBE && !canspotmon(mdef))
@@ -1955,7 +1955,7 @@ invoke_create_ammo(struct obj *obj)
         otmp->quan += rnd(5);
     otmp->owt = weight(otmp);
     otmp = hold_another_object(otmp, _("Suddenly %s out."),
-                               aobjnam(otmp, "fall"), (char *) 0);
+                               aobjnam(otmp, _("fall")), (char *) 0);
     nhUse(otmp);
     return ECMD_TIME;
 }
@@ -2754,8 +2754,8 @@ void
 mkot_trap_warn(void)
 {
     static const char *const heat[7] = {
-        "cool", "slightly warm", "warm", "very warm",
-        "hot", "very hot", "like fire"
+        N_("cool"), N_("slightly warm"), N_("warm"), N_("very warm"),
+        N_("hot"), N_("very hot"), N_("like fire")
     };
 
     if (!uarmg && u_wield_art(ART_MASTER_KEY_OF_THIEVERY)) {
@@ -2763,7 +2763,7 @@ mkot_trap_warn(void)
 
         if (ntraps != gm.mkot_trap_warn_count) {
             idx = min(ntraps, SIZE(heat) - 1);
-            pline_The(_("Key feels %s%c"), heat[idx], (ntraps > 3) ? '!' : '.');
+            pline_The(_("Key feels %s%c"), _(heat[idx]), (ntraps > 3) ? '!' : '.');
         }
         gm.mkot_trap_warn_count = ntraps;
     } else

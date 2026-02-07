@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-06 22:52+0900\n"
+"POT-Creation-Date: 2026-02-07 12:53+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-06 22:52\n"
+"POT-Creation-Date: 2026-02-07 12:53\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -379,10 +379,10 @@ msgstr ""
 
 #: ../src/apply.c:455 ../src/detect.c:1754 ../src/dig.c:537 ../src/dig.c:549
 #: ../src/dig.c:555 ../src/dig.c:1397 ../src/dokick.c:945 ../src/dokick.c:994
-#: ../src/hack.c:685 ../src/hack.c:700 ../src/lock.c:123 ../src/lock.c:144
-#: ../src/lock.c:907 ../src/objnam.c:3851 ../src/objnam.c:3856
-#: ../src/pager.c:2355 ../src/shk.c:5087 ../src/shk.c:5091 ../src/shk.c:5098
-#: ../src/shk.c:5102 ../src/trap.c:6004
+#: ../src/hack.c:685 ../src/hack.c:700 ../src/hack.c:787 ../src/lock.c:123
+#: ../src/lock.c:144 ../src/lock.c:907 ../src/objnam.c:3851
+#: ../src/objnam.c:3856 ../src/pager.c:2355 ../src/shk.c:5087 ../src/shk.c:5091
+#: ../src/shk.c:5098 ../src/shk.c:5102 ../src/trap.c:6004
 msgid "door"
 msgstr ""
 
@@ -838,6 +838,10 @@ msgstr ""
 msgid "%s in the dark."
 msgstr ""
 
+#: ../src/apply.c:1124
+msgid "too far away to see"
+msgstr ""
+
 #: ../src/apply.c:1128
 #, c-format
 msgid "%s doesn't have a reflection."
@@ -1058,10 +1062,11 @@ msgid "%s with a strange light!"
 msgstr ""
 
 #: ../src/apply.c:1376 ../src/apply.c:4314 ../src/do_wear.c:480
-#: ../src/engrave.c:1201 ../src/potion.c:1607 ../src/potion.c:2446
-#: ../src/read.c:669 ../src/read.c:675 ../src/read.c:683 ../src/read.c:1148
-#: ../src/read.c:1182 ../src/read.c:1248 ../src/read.c:1539 ../src/read.c:1601
-#: ../src/sit.c:625 ../src/wield.c:911 ../src/wield.c:994 ../src/worn.c:947
+#: ../src/engrave.c:1201 ../src/potion.c:1607 ../src/potion.c:1712
+#: ../src/potion.c:2446 ../src/read.c:669 ../src/read.c:675 ../src/read.c:683
+#: ../src/read.c:1148 ../src/read.c:1182 ../src/read.c:1248 ../src/read.c:1539
+#: ../src/read.c:1601 ../src/sit.c:625 ../src/wield.c:911 ../src/wield.c:994
+#: ../src/worn.c:947
 msgid "glow"
 msgstr ""
 
@@ -1710,9 +1715,9 @@ msgid "%s from your %s."
 msgstr ""
 
 #: ../src/apply.c:2606 ../src/apply.c:2618 ../src/do_wear.c:2577
-#: ../src/do_wear.c:2615 ../src/dothrow.c:1537 ../src/mthrowu.c:622
-#: ../src/timeout.c:1274 ../src/wield.c:805 ../src/write.c:92
-#: ../src/write.c:382 ../src/zap.c:6280
+#: ../src/do_wear.c:2615 ../src/dothrow.c:1537 ../src/mkobj.c:2904
+#: ../src/mthrowu.c:622 ../src/timeout.c:1274 ../src/wield.c:805
+#: ../src/write.c:92 ../src/write.c:382 ../src/zap.c:6280
 msgid "slip"
 msgstr ""
 
@@ -2485,6 +2490,38 @@ msgstr ""
 msgid "  %s [%s %s]"
 msgstr ""
 
+#: ../src/artifact.c:1244
+msgid "probe"
+msgstr ""
+
+#: ../src/artifact.c:1244
+msgid "stun"
+msgstr ""
+
+#: ../src/artifact.c:1244
+msgid "scare"
+msgstr ""
+
+#: ../src/artifact.c:1244 ../src/mkobj.c:746
+msgid "cancel"
+msgstr ""
+
+#: ../src/artifact.c:1245
+msgid "prod"
+msgstr ""
+
+#: ../src/artifact.c:1245
+msgid "amaze"
+msgstr ""
+
+#: ../src/artifact.c:1245
+msgid "tickle"
+msgstr ""
+
+#: ../src/artifact.c:1245
+msgid "purge"
+msgstr ""
+
 #: ../src/artifact.c:1306
 #, c-format
 msgid "magic-absorbing blade %s %s!"
@@ -2727,6 +2764,18 @@ msgstr ""
 msgid "Suddenly %s out."
 msgstr ""
 
+#: ../src/artifact.c:1958 ../src/artifact.c:2585 ../src/ball.c:975
+#: ../src/dbridge.c:906 ../src/do_wear.c:3224 ../src/dokick.c:644
+#: ../src/dokick.c:775 ../src/dokick.c:1941 ../src/dokick.c:1944
+#: ../src/dothrow.c:1805 ../src/dothrow.c:2722 ../src/hack.c:543
+#: ../src/hack.c:559 ../src/mon.c:3320 ../src/mon.c:3607 ../src/mthrowu.c:200
+#: ../src/polyself.c:1282 ../src/read.c:2279 ../src/read.c:2352
+#: ../src/steal.c:837 ../src/steed.c:597 ../src/teleport.c:2128
+#: ../src/trap.c:706 ../src/trap.c:1890 ../src/trap.c:3423 ../src/trap.c:3436
+#: ../src/trap.c:5007
+msgid "fall"
+msgstr ""
+
 #: ../src/artifact.c:2012
 #, c-format
 msgid "%s %s %s in a cloud of brimstone!"
@@ -2837,19 +2886,36 @@ msgstr ""
 msgid "%s to the %s."
 msgstr ""
 
-#: ../src/artifact.c:2585 ../src/ball.c:975 ../src/dbridge.c:906
-#: ../src/do_wear.c:3224 ../src/dokick.c:644 ../src/dokick.c:775
-#: ../src/dokick.c:1941 ../src/dokick.c:1944 ../src/dothrow.c:1805
-#: ../src/dothrow.c:2722 ../src/hack.c:543 ../src/hack.c:559 ../src/mon.c:3320
-#: ../src/mon.c:3607 ../src/mthrowu.c:200 ../src/polyself.c:1282
-#: ../src/read.c:2279 ../src/read.c:2352 ../src/steal.c:837 ../src/steed.c:597
-#: ../src/teleport.c:2128 ../src/trap.c:706 ../src/trap.c:1890
-#: ../src/trap.c:3423 ../src/trap.c:3436 ../src/trap.c:5007
-msgid "fall"
-msgstr ""
-
 #: ../src/artifact.c:2702
 msgid "After losing your gloves, you"
+msgstr ""
+
+#: ../src/artifact.c:2757 ../src/attrib.c:54 ../src/attrib.c:61
+msgid "cool"
+msgstr ""
+
+#: ../src/artifact.c:2757
+msgid "slightly warm"
+msgstr ""
+
+#: ../src/artifact.c:2757 ../src/attrib.c:55 ../src/fountain.c:709
+msgid "warm"
+msgstr ""
+
+#: ../src/artifact.c:2757
+msgid "very warm"
+msgstr ""
+
+#: ../src/artifact.c:2758 ../src/do.c:1998 ../src/fountain.c:709
+msgid "hot"
+msgstr ""
+
+#: ../src/artifact.c:2758
+msgid "very hot"
+msgstr ""
+
+#: ../src/artifact.c:2758
+msgid "like fire"
 msgstr ""
 
 #: ../src/artifact.c:2766
@@ -2962,15 +3028,7 @@ msgid "unaware"
 msgstr ""
 
 #: ../src/attrib.c:54 ../src/attrib.c:61
-msgid "cool"
-msgstr ""
-
-#: ../src/attrib.c:54 ../src/attrib.c:61
 msgid "warmer"
-msgstr ""
-
-#: ../src/attrib.c:55 ../src/fountain.c:709
-msgid "warm"
 msgstr ""
 
 #: ../src/attrib.c:55
@@ -6805,10 +6863,6 @@ msgid "It is %s here."
 msgstr ""
 
 #: ../src/do.c:1998 ../src/fountain.c:709
-msgid "hot"
-msgstr ""
-
-#: ../src/do.c:1998 ../src/fountain.c:709
 msgid "cold"
 msgstr ""
 
@@ -6892,6 +6946,10 @@ msgstr ""
 #: ../src/do.c:2199
 #, c-format
 msgid "%s %s out of %s in your pack!"
+msgstr ""
+
+#: ../src/do.c:2200 ../src/potion.c:1820 ../src/potion.c:1857
+msgid "writhes"
 msgstr ""
 
 #: ../src/do.c:2204
@@ -12587,7 +12645,8 @@ msgstr ""
 msgid "%s, then %s."
 msgstr ""
 
-#: ../src/engrave.c:1202 ../src/trap.c:4713 ../src/trap.c:4737
+#: ../src/engrave.c:1202 ../src/trap.c:4571 ../src/trap.c:4574
+#: ../src/trap.c:4713 ../src/trap.c:4737
 msgid "fade"
 msgstr ""
 
@@ -21095,10 +21154,6 @@ msgstr ""
 #: ../src/mkmaze.c:1988
 #, c-format
 msgid "bubble ymax: y = %d, ymax = %d"
-msgstr ""
-
-#: ../src/mkobj.c:746
-msgid "cancel"
 msgstr ""
 
 #: ../src/mkobj.c:746
@@ -31980,10 +32035,6 @@ msgid "%s %s in pain!"
 msgstr ""
 
 #: ../src/potion.c:1820 ../src/potion.c:1857
-msgid "writhes"
-msgstr ""
-
-#: ../src/potion.c:1820 ../src/potion.c:1857
 msgid "shrieks"
 msgstr ""
 
@@ -41598,6 +41649,10 @@ msgstr ""
 msgid "A little dart shoots out at you!"
 msgstr ""
 
+#: ../src/trap.c:1287
+msgid "little dart"
+msgstr ""
+
 #: ../src/trap.c:1343
 #, c-format
 msgid "A trap door in %s opens, but nothing falls out!"
@@ -47633,7 +47688,7 @@ msgstr ""
 msgid "Elbereth"
 msgstr ""
 
-#. angel_cuss array, text field, demon_cuss array, text field (partial, has concatenation)
+#. angel_cuss array, demon_cuss array, text field, text field (partial, has concatenation)
 #: dat/quest.lua:77 dat/quest.lua:78 dat/quest.lua:79 dat/quest.lua:80
 #: dat/quest.lua:81 dat/quest.lua:82 dat/quest.lua:83 dat/quest.lua:84
 #: dat/quest.lua:85 dat/quest.lua:86 dat/quest.lua:87 dat/quest.lua:88

@@ -43,7 +43,7 @@ dowatersnakes(void)
     if (!(svm.mvitals[PM_WATER_MOCCASIN].mvflags & G_GONE)) {
         if (!Blind) {
             pline(_("An endless stream of %s pours forth!"),
-                  Hallucination ? makeplural(rndmonnam(NULL)) : "snakes");
+                  Hallucination ? makeplural(rndmonnam(NULL)) : _("snakes"));
         } else {
             Soundeffect(se_snakes_hissing, 75);
             You_hear(_("%s hissing!"), something);
@@ -247,7 +247,7 @@ drinkfountain(void)
     int fate = rnd(30);
 
     if (Levitation) {
-        floating_above("fountain");
+        floating_above(_("fountain"));
         return;
     }
 
@@ -304,7 +304,7 @@ drinkfountain(void)
                 losehp(rnd(4), _("unrefrigerated sip of juice"), KILLED_BY_AN);
                 break;
             }
-            poison_strdmg(rn1(4, 3), rnd(10), "contaminated water",
+            poison_strdmg(rn1(4, 3), rnd(10), _("contaminated water"),
                           KILLED_BY);
             exercise(A_CON, FALSE);
             break;
@@ -397,7 +397,7 @@ dipfountain(struct obj *obj)
     boolean is_hands = (obj == &hands_obj);
 
     if (Levitation) {
-        floating_above("fountain");
+        floating_above(_("fountain"));
         return;
     }
 
@@ -561,7 +561,7 @@ wash_hands(void)
     int res = ER_NOTHING;
     boolean was_glib = !!Glib;
 
-    You(_("wash your %s%s in the %s."), uarmg ? "gloved " : "", hands,
+    You(_("wash your %s%s in the %s."), uarmg ? _("gloved ") : "", hands,
         hliquid("water"));
     if (Glib) {
         make_glib(0);
@@ -598,7 +598,7 @@ drinksink(void)
     struct monst *mtmp;
 
     if (Levitation) {
-        floating_above("sink");
+        floating_above(_("sink"));
         return;
     }
     switch (rn2(20)) {
@@ -737,7 +737,7 @@ dipsink(struct obj *obj)
     }
 
     /* at this point the object must be a potion */
-    You(_("pour %s%s down the drain."), (obj->quan > 1L ? "one of " : ""),
+    You(_("pour %s%s down the drain."), (obj->quan > 1L ? _("one of ") : ""),
         the(xname(obj)));
     switch (obj->otyp) {
     case POT_POLYMORPH:

@@ -2628,9 +2628,9 @@ msgid "have never "
 msgstr "​"
 
 # [조합] "never " + 동사 조합
-# 결과: "[안 함] X" 형태
+# 결과: "[안 함] X" 형태 (다른 enlightenment 동사와 동일하게 zero-width space)
 msgid "never "
-msgstr ""
+msgstr "​"
 
 msgid "debug"
 msgstr "디버그"
@@ -8489,14 +8489,15 @@ msgid "yourself"
 msgstr "자제력을 잃는다"
 
 msgid "you slap against the"
-msgstr ""
+msgstr "에 부딪힌다"
 
-# surface()가 반환하는 값에 조사를 붙여야 함 - 해당 번역은 별도로 처리
-
-# 이미 있는 번역이지만 조합에 맞게 수정
+# 포맷 순서를 %2$s%1$s로 뒤집어서 한국어 어순 대응
+# case 1: goes="" + dark="어두워진다" → "세상이 빙글빙글 돌고 어두워진다"
+# case 2: you lose control of="" + yourself="자제력을 잃는다" → "세상이 빙글빙글 돌고 자제력을 잃는다"
+# case 3: you slap against the="에 부딪힌다" + saddle/surface → "세상이 빙글빙글 돌고 안장에 부딪힌다"
 #, c-format
 msgid "world spins and %s %s."
-msgstr "세상이 빙글빙글 돌고 %s%s"
+msgstr "세상이 빙글빙글 돌고 %2$s%1$s"
 
 # ============================================================
 # read.c - "neighborhood %s %sfriendlier" 패턴

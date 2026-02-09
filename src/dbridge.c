@@ -18,6 +18,7 @@
  */
 
 #include "hack.h"
+#include "i18n.h"
 
 staticfn void get_wall_for_db(coordxy *, coordxy *);
 staticfn struct entity *e_at(coordxy, coordxy);
@@ -364,6 +365,9 @@ E_phrase(struct entity *etmp, const char *verb)
 
     Strcpy(wholebuf, is_u(etmp) ? _("You") : Monnam(etmp->emon));
     if (!verb || !*verb)
+        return wholebuf;
+    /* Korean format strings embed their own verbs; skip English verb */
+    if (is_korean_locale())
         return wholebuf;
     Strcat(wholebuf, " ");
     if (is_u(etmp))

@@ -4,6 +4,7 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+#include "i18n.h"
 
 staticfn void m_lose_armor(struct monst *, struct obj *, boolean) NONNULLPTRS;
 staticfn void clear_bypass(struct obj *) NO_NNARGS;
@@ -930,7 +931,13 @@ m_dowear_type(
             if (!strcmpi(newarm, oldarm)) {
                 /* size of newarm[] has been overallocated to guarantee
                    enough room to insert "another " */
-                if (!strncmpi(newarm, "a ", 2))
+                if (is_korean_locale()) {
+                    /* Korean item names have no articles to replace;
+                       prepend "another" directly */
+                    char tmp[BUFSZ + 20];
+                    Sprintf(tmp, "%s %s", _("another"), newarm);
+                    Strcpy(newarm, tmp);
+                } else if (!strncmpi(newarm, "a ", 2))
                     (void) strsubst(newarm, "a ", "another ");
                 else if (!strncmpi(newarm, "an ", 3))
                     (void) strsubst(newarm, "an ", "another ");

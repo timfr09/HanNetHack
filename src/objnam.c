@@ -562,14 +562,15 @@ xcalled(
     const char *pfx, /* usually class string, sometimes more specific */
     const char *sfx) /* user assigned type name */
 {
+    const char *called_str = _(" called ");
     int bufsiz = siz - 1 - (int) strlen(buf),
-        pfxlen = (int) (strlen(pfx) + sizeof " called " - sizeof "");
+        pfxlen = (int) (strlen(pfx) + strlen(called_str));
 
     if (pfxlen > bufsiz)
         panic("xcalled: not enough room for prefix (%d > %d)",
               pfxlen, bufsiz);
 
-    Sprintf(eos(buf), "%s called %.*s", pfx, bufsiz - pfxlen, sfx);
+    Sprintf(eos(buf), "%s%s%.*s", pfx, called_str, bufsiz - pfxlen, sfx);
 }
 
 char *

@@ -1553,7 +1553,7 @@ hmon_hitmon_stagger(
         && !thick_skinned(hmd->mdat)) {
         if (canspotmon(mon))
             pline(_("%s %s from your powerful strike!"), Monnam(mon),
-                  makeplural(stagger(mon->data, "stagger")));
+                  makeplural(stagger(mon->data, _("stagger"))));
         if (mhurtle_to_doom(mon, hmd->dmg, &hmd->mdat))
             hmd->already_killed = TRUE;
         hmd->hittxt = TRUE;
@@ -4371,7 +4371,7 @@ mhitm_ad_stun(
         /* uhitm */
         if (!Blind)
             pline(_("%s %s for a moment."), Monnam(mdef),
-                  makeplural(stagger(pd, "stagger")));
+                  makeplural(stagger(pd, _("stagger"))));
         mdef->mstun = 1;
         mhitm_ad_phys(magr, mattk, mdef, mhm);
         if (mhm->done)
@@ -4389,7 +4389,7 @@ mhitm_ad_stun(
             return;
         if (canseemon(mdef))
             pline_mon(mdef, _("%s %s for a moment."), Monnam(mdef),
-                  makeplural(stagger(pd, "stagger")));
+                  makeplural(stagger(pd, _("stagger"))));
         mdef->mstun = 1;
         mhitm_ad_phys(magr, mattk, mdef, mhm);
         if (mhm->done)
@@ -4633,7 +4633,7 @@ mhitm_ad_sedu(
         } else if (magr->mcan) {
             if (!Blind)
                 pline(_("%s tries to %s you, but you seem %s."),
-                      Adjmonnam(magr, "plain"),
+                      Adjmonnam(magr, _("plain")),
                       flags.female ? _("charm") : _("seduce"),
                       flags.female ? _("unaffected") : _("uninterested"));
             if (rn2(3)) {
@@ -5554,7 +5554,7 @@ hmonas(struct monst *mon)
                 if (!u.uswallow
                     && (compat = could_seduce(&gy.youmonst, mon, mattk))
                        != 0) {
-                    You(_("%s %s %s."),
+                    You(C_("you_seduce", "%s %s %s."),
                         (mon->mcansee && haseyes(mon->data)) ? _("smile at")
                                                              : _("talk to"),
                         mon_nam(mon),
@@ -6023,7 +6023,7 @@ passive(
                     }
                 } else {
                     pline(_("%s cannot defend itself."),
-                          Adjmonnam(mon, "blind"));
+                          Adjmonnam(mon, _("blind")));
                     if (!rn2(500))
                         change_luck(-1);
                 }

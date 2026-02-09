@@ -350,7 +350,7 @@ set_entity(
 staticfn const char *
 e_nam(struct entity *etmp)
 {
-    return is_u(etmp) ? "you" : mon_nam(etmp->emon);
+    return is_u(etmp) ? _("you") : mon_nam(etmp->emon);
 }
 
 /*
@@ -362,7 +362,7 @@ E_phrase(struct entity *etmp, const char *verb)
 {
     static char wholebuf[80];
 
-    Strcpy(wholebuf, is_u(etmp) ? "You" : Monnam(etmp->emon));
+    Strcpy(wholebuf, is_u(etmp) ? _("You") : Monnam(etmp->emon));
     if (!verb || !*verb)
         return wholebuf;
     Strcat(wholebuf, " ");

@@ -122,56 +122,56 @@ engulfer_explosion_msg(uchar adtyp, char olet)
     if (digests(u.ustuck->data)) {
         switch (adtyp) {
         case AD_FIRE:
-            adj = "heartburn";
+            adj = _("heartburn");
             break;
         case AD_COLD:
-            adj = "chilly";
+            adj = _("chilly");
             break;
         case AD_DISN:
             if (olet == WAND_CLASS)
-                adj = "irradiated by pure energy";
+                adj = _("irradiated by pure energy");
             else
-                adj = "perforated";
+                adj = _("perforated");
             break;
         case AD_ELEC:
-            adj = "shocked";
+            adj = _("shocked");
             break;
         case AD_DRST:
-            adj = "poisoned";
+            adj = _("poisoned");
             break;
         case AD_ACID:
-            adj = "an upset stomach";
+            adj = _("an upset stomach");
             break;
         default:
-            adj = "fried";
+            adj = _("fried");
             break;
         }
         pline(_("%s gets %s!"), Monnam(u.ustuck), adj);
     } else {
         switch (adtyp) {
         case AD_FIRE:
-            adj = "toasted";
+            adj = _("toasted");
             break;
         case AD_COLD:
-            adj = "chilly";
+            adj = _("chilly");
             break;
         case AD_DISN:
             if (olet == WAND_CLASS)
-                adj = "overwhelmed by pure energy";
+                adj = _("overwhelmed by pure energy");
             else
-                adj = "perforated";
+                adj = _("perforated");
             break;
         case AD_ELEC:
-            adj = "shocked";
+            adj = _("shocked");
             break;
         case AD_DRST:
-            adj = "intoxicated";
+            adj = _("intoxicated");
             break;
         case AD_ACID:
-            adj = "burned";
+            adj = _("burned");
             break;
         default:
-            adj = "fried";
+            adj = _("fried");
             break;
         }
         pline(_("%s gets slightly %s!"), Monnam(u.ustuck), adj);

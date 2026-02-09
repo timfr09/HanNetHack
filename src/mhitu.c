@@ -2567,7 +2567,7 @@ passiveum(
             if (!mtmp->mstun) {
                 mtmp->mstun = 1;
                 pline_mon(mtmp, _("%s %s."), Monnam(mtmp),
-                      makeplural(stagger(mtmp->data, "stagger")));
+                      makeplural(stagger(mtmp->data, _("stagger"))));
             }
             tmp = 0;
             break;

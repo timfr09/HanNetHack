@@ -779,7 +779,7 @@ xname_flags(
                appropriate and omitted by xname(); shrink_glob() wants
                it but uses Yname2() -> yname() -> xname() rather than
                doname() so we've added an external flag to request it */
-            Concat(buf, 0, "partly eaten ");
+            Concat(buf, 0, _("partly eaten "));
         }
         if (obj->globby) { /* 3.7 added "medium" to replace no-prefix */
             ConcatF2(buf, 0, "%s %s", (obj->owt <= 100) ? _("small")
@@ -995,7 +995,7 @@ xname_flags(
     }
 
     if (has_oname(obj) && dknown) {
-        Concat(buf, 0, " named ");
+        Concat(buf, 0, _(" named "));
 
         /* jump directly here if obj passes the has-personal-name test */
  nameit:

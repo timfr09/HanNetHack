@@ -1285,7 +1285,7 @@ lookaround_known_room(coordxy x, coordxy y)
     if (u_have_seen_whole_selection(sel)) {
         boolean u_in = (boolean) selection_getpoint(x, y, sel);
 
-        You(_("%s %s %s."),
+        You(C_("location", "%s %s %s."),
             u_at(x, y) && u_in && u_can_see_whole_selection(sel) ? _("are in")
             : (u_at(x, y)) ? _("remember this as") : _("remember that as"),
             an(selection_size_description(sel, qbuf)),

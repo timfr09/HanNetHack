@@ -61,7 +61,7 @@ do_statusline1(void)
     if ('a' <= newbot1[0] && newbot1[0] <= 'z')
         newbot1[0] += 'A' - 'a';
     newbot1[10] = 0;
-    Sprintf(nb = eos(newbot1), " the ");
+    Sprintf(nb = eos(newbot1), _(" the "));
 
     if (Upolyd) {
         char mbot[BUFSZ];
@@ -185,9 +185,9 @@ do_statusline2(void)
             Strcpy(nb = eos(nb), _(" TermIll"));
     }
     if (u.uhs != NOT_HUNGRY)
-        Sprintf(nb = eos(nb), " %s", hu_stat[u.uhs]);
+        Sprintf(nb = eos(nb), " %s", _(hu_stat[u.uhs]));
     if ((cap = near_capacity()) > UNENCUMBERED)
-        Sprintf(nb = eos(nb), " %s", enc_stat[cap]);
+        Sprintf(nb = eos(nb), " %s", _(enc_stat[cap]));
     if (Blind)
         Strcpy(nb = eos(nb), _(" Blind"));
     if (Deaf)
@@ -892,14 +892,14 @@ bot_via_windowport(void)
        not need ANY_UINT handling at all */
     gb.blstats[idx][BL_HUNGER].a.a_int = (int) u.uhs;
     Strcpy(gb.blstats[idx][BL_HUNGER].val,
-           (u.uhs != NOT_HUNGRY) ? hu_stat[u.uhs] : "");
+           (u.uhs != NOT_HUNGRY) ? _(hu_stat[u.uhs]) : "");
     gv.valset[BL_HUNGER] = TRUE;
 
     /* Carrying capacity */
     cap = near_capacity();
     gb.blstats[idx][BL_CAP].a.a_int = cap;
     Strcpy(gb.blstats[idx][BL_CAP].val,
-           (cap > UNENCUMBERED) ? enc_stat[cap] : "");
+           (cap > UNENCUMBERED) ? _(enc_stat[cap]) : "");
     gv.valset[BL_CAP] = TRUE;
 
     /* Version; unchanging unless player toggles 'showvers' option or

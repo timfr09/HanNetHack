@@ -2891,7 +2891,7 @@ mon_consume_unstone(
         long save_quan = obj->quan;
 
         obj->quan = 1L;
-        pline_mon(mon, _("%s %s %s."), Monnam(mon),
+        pline_mon(mon, C_("mon_eat", "%s %s %s."), Monnam(mon),
               ((obj->oclass == POTION_CLASS) ? _("quaffs")
                : (obj->otyp == TIN) ? _("opens and eats the contents of")
                  : _("eats")),

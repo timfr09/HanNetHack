@@ -1941,7 +1941,8 @@ otransit_msg(struct obj *otmp, boolean nodrop, boolean chainthere, long num)
                     otense(otmp, _("fall")), gg.gate_str);
         pline(_("%s%s"), obuf, xbuf);
     } else if (!nodrop)
-        pline(_("%s %s %s."), obuf, otense(otmp, _("fall")), gg.gate_str);
+        pline(C_("obj_fall", "%s %s %s."), obuf, otense(otmp, _("fall")),
+              gg.gate_str);
 }
 
 /* migration destination for objects which fall down to next level */

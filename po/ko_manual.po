@@ -2628,9 +2628,9 @@ msgid "have never "
 msgstr "​"
 
 # [조합] "never " + 동사 조합
-# 결과: "[안 함] X" 형태
+# 결과: "[안 함] X" 형태 (다른 enlightenment 동사와 동일하게 zero-width space)
 msgid "never "
-msgstr ""
+msgstr "​"
 
 msgid "debug"
 msgstr "디버그"
@@ -8489,20 +8489,32 @@ msgid "yourself"
 msgstr "자제력을 잃는다"
 
 msgid "you slap against the"
-msgstr ""
+msgstr "에 부딪힌다"
 
-# surface()가 반환하는 값에 조사를 붙여야 함 - 해당 번역은 별도로 처리
-
-# 이미 있는 번역이지만 조합에 맞게 수정
+# 포맷 순서를 %2$s%1$s로 뒤집어서 한국어 어순 대응
+# case 1: goes="" + dark="어두워진다" → "세상이 빙글빙글 돌고 어두워진다"
+# case 2: you lose control of="" + yourself="자제력을 잃는다" → "세상이 빙글빙글 돌고 자제력을 잃는다"
+# case 3: you slap against the="에 부딪힌다" + saddle/surface → "세상이 빙글빙글 돌고 안장에 부딪힌다"
 #, c-format
 msgid "world spins and %s %s."
-msgstr "세상이 빙글빙글 돌고 %s%s"
+msgstr "세상이 빙글빙글 돌고 %2$s%1$s"
 
 # ============================================================
 # read.c - "neighborhood %s %sfriendlier" 패턴
-# 이 패턴은 소스 코드 수정이 필요함 (is/seems/un이 다른 곳에서도 사용됨)
-# TODO: 소스 코드에서 더 나은 번역 구조로 변경 필요
+# C_("neighborhood", ...) 컨텍스트로 is/seems/un을 독립 번역
 # ============================================================
+
+msgctxt "neighborhood"
+msgid "is"
+msgstr "졌다"
+
+msgctxt "neighborhood"
+msgid "seems"
+msgstr "진 것 같다"
+
+msgctxt "neighborhood"
+msgid "un"
+msgstr "덜 "
 
 # ============================================================
 # worn.c - 장비 관련 메시지
@@ -8783,15 +8795,13 @@ msgid "seems to happen"
 msgstr "일어나지 않은 것 같다"
 
 # read.c:1661-1663 - 주변이 친근해짐/비친근해짐
-# is/seems(%1$s), un/""(%2$s)
-# 이 패턴은 영어에서 un-접두사를 사용하지만 한국어에서는 문장 구조가 다름
-# 소스 코드 수정이 필요한 패턴이므로 임시로 처리
+# C_("neighborhood", ...) 컨텍스트로 해결됨
+# is→"졌다", seems→"진 것 같다", un→"덜 "
+# 결과: "주변이 친근해졌다." / "주변이 친근해진 것 같다."
+#       "주변이 덜 친근해졌다." / "주변이 덜 친근해진 것 같다."
 #, c-format
 msgid "neighborhood %s %sfriendlier."
 msgstr "주변이 %2$s친근해%1$s."
-
-# "is"와 "seems"는 다른 곳에서도 사용되므로 별도 항목 대신 C_() 컨텍스트 필요
-# "un"도 다른 곳에서 "불-" 접두사로 사용됨
 
 # ============================================================
 # 석화/소멸 관련 패턴

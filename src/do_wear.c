@@ -3314,7 +3314,7 @@ inaccessible_equipment(
             if (uarmc)
                 Strcat(buf, yname(uarmc));
             if (uarm && uarmc)
-                Strcat(buf, " and ");
+                Strcat(buf, _(" and "));
             if (uarm)
                 Strcat(buf, sameprefix ? xname(uarm) : yname(uarm));
             You(_(need_to_take_off_outer_armor), buf, verb, yname(obj));

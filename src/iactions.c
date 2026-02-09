@@ -356,7 +356,7 @@ itemactions(struct obj *otmp)
 
         if (o && o->spe < 7)
             Sprintf(buf, _("Attach %s to your candelabrum, or %s %s"), s,
-                    !otmp->lamplit ? _("light") : _("extinguish"), /* [lowercase] */
+                    !otmp->lamplit ? C_("candle", "light") : _("extinguish"), /* [lowercase] */
                     multiple ? _("them") : _("it"));
         else
             Sprintf(buf, _("%s %s %s"), light, s, simpleonames(otmp));

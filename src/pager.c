@@ -732,7 +732,7 @@ lookat(coordxy x, coordxy y, char *buf, char *monbuf)
         if (Underwater && !Is_waterlevel(&u.uz)) {
             /* "unknown" == previously mapped but not visible when
                submerged; better terminology appreciated... */
-            Strcpy(buf, (next2u(x, y)) ? _("land") : _("unknown"));
+            Strcpy(buf, (next2u(x, y)) ? C_("terrain", "land") : _("unknown"));
         } else {
             Strcpy(buf, _("unexplored area"));
         }
@@ -784,7 +784,7 @@ lookat(coordxy x, coordxy y, char *buf, char *monbuf)
             } else if (Underwater && !Is_waterlevel(&u.uz)) {
                 /* "unknown" == previously mapped but not visible when
                    submerged; better terminology appreciated... */
-                Strcpy(buf, (next2u(x, y)) ? _("land") : _("unknown"));
+                Strcpy(buf, (next2u(x, y)) ? C_("terrain", "land") : _("unknown"));
                 break;
             } else if (levl[x][y].typ == STONE || levl[x][y].typ == SCORR) {
                 Strcpy(buf, _("stone"));
@@ -1432,7 +1432,7 @@ do_screen_description(
         || (looked && sym == gs.showsyms[SYM_UNEXPLORED + SYM_OFF_X])) {
         x_str = _("unexplored");
         if (submerged)
-            x_str = _("land"); /* replace "unexplored" */
+            x_str = C_("terrain", "land"); /* replace "unexplored" */
         if (!found) {
             Sprintf(out_str, "%s%s", prefix, x_str);
             *firstmatch = x_str;
@@ -1492,7 +1492,7 @@ do_screen_description(
                    it a second time for moat but pass an alternate symbol;
                    skip incrementing 'found' to avoid "can be many things" */
                 (void) add_cmap_descr(found, -S_pool, glyph, 1,
-                                      cc, "moat", prefix,
+                                      cc, _("moat"), prefix,
                                       &hit_trap, firstmatch, out_str);
                 need_to_look = TRUE;
             }

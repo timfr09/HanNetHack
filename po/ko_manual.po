@@ -9392,7 +9392,7 @@ msgstr "관통했다"
 # You_(%1$s), are/were(%2$s), alignment(%3$s), currently/now/etc(%4$s), god(%5$s)
 #, c-format
 msgid " %s%s%s, %son a mission for %s"
-msgstr " %1$s%2$s %4$s%3$s, %5$s을(를) 위한 임무 중"
+msgstr " %1$s%2$s %4$s%3$s, %5$s{을/를} 위한 임무 중"
 
 # "currently ", "temporarily ", "now ", "belatedly ", "nominally "는 이미 정의됨
 # " who %s opposed by"는 이미 정의됨
@@ -13499,5 +13499,46 @@ msgstr " 이름: "
 msgid "another"
 msgstr "다른"
 
+# ============================================================
+# mon.c - 몬스터 속성 획득 메시지 (mon_give_prop)
+# ============================================================
+
+# mon.c:1718 - 화염 저항 획득
+#, c-format
+msgid "%s shivers slightly."
+msgstr "%s{이/가} 살짝 몸을 떨었다."
+
+# mon.c:1721 - 냉기 저항 획득
+#, c-format
+msgid "%s looks quite warm."
+msgstr "%s{이/가} 꽤 따뜻해 보인다."
+
+# mon.c:1724 - 수면 저항 획득
+#, c-format
+msgid "%s looks wide awake."
+msgstr "%s{이/가} 완전히 깨어 있어 보인다."
+
+# mon.c:1727 - 분해 저항 획득
+#, c-format
+msgid "%s looks very firm."
+msgstr "%s{이/가} 매우 단단해 보인다."
+
+# mon.c:1730 - 전기 저항 획득
+#, c-format
+msgid "%s crackles with static electricity."
+msgstr "%s{이/가} 정전기로 지직거렸다."
+
+# mon.c:1733 - 독 저항 획득
+#, c-format
+msgid "%s looks healthy."
+msgstr "%s{이/가} 건강해 보인다."
+
+# ============================================================
+# dothrow.c - 자동 화살통 장전 메시지
+# ============================================================
+
+# dothrow.c:536 - 자동 장전 시 표시
+msgid "You ready:"
+msgstr "준비했다:"
 
 

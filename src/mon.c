@@ -1715,22 +1715,22 @@ mon_give_prop(struct monst *mtmp, int prop)
        teleport control or whatever, ignore it. */
     switch (prop) {
     case FIRE_RES:
-        msg = "%s shivers slightly.";
+        msg = _("%s shivers slightly.");
         break;
     case COLD_RES:
-        msg = "%s looks quite warm.";
+        msg = _("%s looks quite warm.");
         break;
     case SLEEP_RES:
-        msg = "%s looks wide awake.";
+        msg = _("%s looks wide awake.");
         break;
     case DISINT_RES:
-        msg = "%s looks very firm.";
+        msg = _("%s looks very firm.");
         break;
     case SHOCK_RES:
-        msg = "%s crackles with static electricity.";
+        msg = _("%s crackles with static electricity.");
         break;
     case POISON_RES:
-        msg = "%s looks healthy.";
+        msg = _("%s looks healthy.");
         break;
     default:
         return; /* can't give it */

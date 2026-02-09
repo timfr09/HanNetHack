@@ -1601,7 +1601,7 @@ hmon_hitmon_splitmon(
         if ((mclone = clone_mon(mon, 0, 0)) != 0) {
             withwhat[0] = '\0';
             if (u.twoweap && flags.verbose)
-                Sprintf(withwhat, _(" with %s"), yname(obj));
+                Sprintf(withwhat, C_("using_weapon", " with %s"), yname(obj));
             pline(_("%s divides as you hit it%s!"), Monnam(mon), withwhat);
             hmd->hittxt = TRUE;
             (void) mintrap(mclone, NO_TRAP_FLAGS);

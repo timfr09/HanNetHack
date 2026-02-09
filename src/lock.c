@@ -463,11 +463,11 @@ pick_lock(
                 if (otmp->obroken)
                     verb = _("fix");
                 else if (!otmp->olocked)
-                    verb = _("lock"), it = 1;
+                    verb = C_("lock_verb", "lock"), it = 1;
                 else if (picktyp != LOCK_PICK)
                     verb = _("unlock"), it = 1;
                 else
-                    verb = _("pick");
+                    verb = C_("pick_lock", "pick");
 
                 if (autounlock && (flags.autounlock & AUTOUNLOCK_UNTRAP) != 0
                     && could_untrap(FALSE, TRUE)

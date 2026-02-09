@@ -832,10 +832,10 @@ extcmd_via_menu(void)
             }
             prevaccelerator = accelerator;
             if (!acount || one_per_line) {
-                Sprintf(prompt, "%s%s [%s]", wastoolong ? "or " : "",
+                Sprintf(prompt, "%s%s [%s]", wastoolong ? _("or ") : "",
                         choices[i]->ef_txt, choices[i]->ef_desc);
             } else if (acount == 1) {
-                Sprintf(prompt, "%s%s or %s", wastoolong ? "or " : "",
+                Sprintf(prompt, "%s%s or %s", wastoolong ? _("or ") : "",
                         choices[i - 1]->ef_txt, choices[i]->ef_txt);
             } else {
                 Strcat(prompt, _(" or "));

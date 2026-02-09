@@ -556,7 +556,7 @@ doread(void)
         return ECMD_TIME;
     } else if (scroll->oclass != SCROLL_CLASS
                && scroll->oclass != SPBOOK_CLASS) {
-        pline(_(silly_thing_to), "read");
+        pline(_(silly_thing_to), _("read"));
         return ECMD_OK;
     } else if (Blind && otyp != SPE_BOOK_OF_THE_DEAD) {
         const char *what = 0;

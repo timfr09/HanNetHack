@@ -1750,6 +1750,17 @@ getobj_hands_txt(const char *action, char *qbuf)
  * won't call it with &hands_obj, so its behavior can be undefined in that
  * case.
  */
+/* translate getobj action verb with context to avoid collision with
+   homonymous non-getobj translations (e.g. "drop" as getobj prompt
+   "버릴" vs intransitive fall "떨어진다"); falls back to plain _()
+   when no getobj-specific entry exists */
+staticfn const char *
+getobj_word(const char *word)
+{
+    const char *trans = C_("getobj", word);
+    return strcmp(trans, word) ? trans : _(word);
+}
+
 struct obj *
 getobj(
     const char *word,       /* usually a direct verb such as "drop" */
@@ -1912,13 +1923,13 @@ getobj(
     *ap = '\0';
 
     if (suggested == 0 && !forceprompt && !allownone) {
-        You(_("don't have anything %sto %s."), inaccess ? _("else ") : "", _(word));
+        You(_("don't have anything %sto %s."), inaccess ? _("else ") : "", getobj_word(word));
         return (struct obj *) 0;
     }
     for (;;) {
         cnt = 0L;
         cntgiven = FALSE;
-        Sprintf(qbuf, _("What do you want to %s?"), _(word));
+        Sprintf(qbuf, _("What do you want to %s?"), getobj_word(word));
         if (gi.in_doagain) {
             ilet = readchar();
         } else if (iflags.force_invmenu) {
@@ -1974,7 +1985,7 @@ getobj(
             menuquery[0] = qbuf[0] = '\0';
             if (iflags.force_invmenu)
                 Snprintf(menuquery, sizeof menuquery,
-                         _("What do you want to %s?"), _(word));
+                         _("What do you want to %s?"), getobj_word(word));
             if (!allowed_choices || *allowed_choices == HANDS_SYM
                 || *buf == HANDS_SYM)
                 handsbuf = getobj_hands_txt(word, qbuf);
@@ -2011,7 +2022,7 @@ getobj(
                than one invent slot of gold and picking the non-'$' one */
             || (otmp && otmp->oclass == COIN_CLASS)) {
             if (otmp && obj_ok(otmp) <= GETOBJ_EXCLUDE) {
-                You(_("cannot %s gold."), _(word));
+                You(_("cannot %s gold."), getobj_word(word));
                 return (struct obj *) 0;
             }
             /*
@@ -2129,7 +2140,7 @@ silly_thing(const char *word,
             || (otmp->otyp == FAKE_AMULET_OF_YENDOR && !otmp->known)))
         pline_The(_("Amulet doesn't like being called names."));
     else
-        pline(_(silly_thing_to), _(word));
+        pline(_(silly_thing_to), getobj_word(word));
 }
 
 RESTORE_WARNING_FORMAT_NONLITERAL
@@ -2215,7 +2226,7 @@ ggetobj(const char *word, int (*fn)(OBJ_P), int mx,
     char buf[BUFSZ] = DUMMY, qbuf[QBUFSZ];
 
     if (!gi.invent) {
-        You(_("have nothing to %s."), _(word));
+        You(_("have nothing to %s."), getobj_word(word));
         if (resultflags)
             *resultflags = ALL_FINISHED;
         return 0;
@@ -2261,7 +2272,7 @@ ggetobj(const char *word, int (*fn)(OBJ_P), int mx,
 
     for (;;) {
         Sprintf(qbuf, _("What kinds of thing do you want to %s? [%s]"),
-                _(word), ilets);
+                getobj_word(word), ilets);
         getlin(qbuf, buf);
         if (buf[0] == '\033')
             return 0;
@@ -2458,7 +2469,7 @@ askchain(
                    class of objects is involved, so prefix the first
                    object being queried here with an explanation why */
                 if (take_out || put_in)
-                    Sprintf(qpfx, "%s: ", _(word)), *qpfx = highc(*qpfx);
+                    Sprintf(qpfx, "%s: ", getobj_word(word)), *qpfx = highc(*qpfx);
                 first = FALSE;
             }
             (void) safe_qbuf(qbuf, qpfx, "?", otmp,
@@ -5497,7 +5508,7 @@ display_binventory(coordxy x, coordxy y, boolean as_if_seen)
 {
     struct obj *obj;
     char qbuf[QBUFSZ];
-    const char *underwhat = "here";
+    const char *underwhat = _("here");
     menu_item *selected = 0;
     int n, n2 = 0;
 
@@ -5527,7 +5538,7 @@ display_binventory(coordxy x, coordxy y, boolean as_if_seen)
                 free((genericptr_t) selected), selected = 0;
             for (n2 = 0; obj; obj = obj->nexthere)
                 ++n2;
-            underwhat = "beneath them";
+            underwhat = _("beneath them");
         }
     }
 

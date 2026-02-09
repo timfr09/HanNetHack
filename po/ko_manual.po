@@ -9898,6 +9898,79 @@ msgid "engagingly"
 msgstr "매력적으로"
 
 # ============================================================
+# C_() 문맥 구분 - 동음이의어 충돌 해결
+# ============================================================
+
+# wizard.c:717 - 옌더의 마법사 도발 대사
+# "So thou thought thou couldst kill me, fool."
+# 기존 "kill"→"죽였다"(과거형)는 you_kill 패턴용이므로, 도발 대사에는 기본형
+msgctxt "wiz_taunt"
+msgid "kill"
+msgstr "죽이다"
+
+# wizard.c:725 - 마법사가 회피했을 때 도발
+# "So thou thought thou couldst elude me, fool."
+msgctxt "wiz_taunt"
+msgid "elude"
+msgstr "피하다"
+
+# engrave.c:396 - 각인 읽기 동작
+# "You read: \"Elbereth\"." → "읽었다: \"엘베레스\"."
+# 기존 "read"→"읽을"(관형형)은 getobj 프롬프트용
+msgctxt "engrave_read"
+msgid "read"
+msgstr "읽었다"
+
+# uhitm.c:1604 - 무기 사용 맥락
+# "divides as you hit it with Excalibur!" → "엑스칼리버로"
+# 기존 " with %s"→" %s에 대해"(~에 관해)는 skill 설명용
+#, c-format
+msgctxt "using_weapon"
+msgid " with %s"
+msgstr " %s{으로/로}"
+
+# lock.c:466 - 상자 잠그기 동사
+# "lock it?" → "잠글까?"
+# 기존 "lock"→"자물쇠"(명사, ko.po)와 충돌
+msgctxt "lock_verb"
+msgid "lock"
+msgstr "잠글"
+
+# lock.c:470 - 자물쇠 따기 동사
+# "pick its lock?" → "자물쇠를 딸까?"
+# 기존 "pick"→"자물쇠 따개"(명사, ko.po)와 충돌
+msgctxt "pick_lock"
+msgid "pick"
+msgstr "따다"
+
+# do_name.c:168 - 이름(명사)
+# "would rather keep its existing name." → "기존 이름을 유지한다"
+# 기존 "name"→"이름 지을"(관형형 동사, ko.po)은 getobj용
+msgctxt "noun"
+msgid "name"
+msgstr "이름"
+
+# trap.c:5450 - 거미줄 제거 맥락
+# "Your web is difficult to remove." → "제거하기 어렵다"
+# 기존 "remove"→"벗다"(의복 벗기, ko.po)와 충돌
+msgctxt "trap_action"
+msgid "remove"
+msgstr "제거하다"
+
+# invent.c getobj - "drop" 프롬프트용
+# "What do you want to drop?" → "버릴 것이 무엇입니까?"
+# 기존 "drop"→"떨어진다"(자동사, vtense용)와 충돌
+msgctxt "getobj"
+msgid "drop"
+msgstr "버릴"
+
+# invent.c getobj - "remove" 프롬프트용
+# "What do you want to remove?" → "벗을 것이 무엇입니까?"
+msgctxt "getobj"
+msgid "remove"
+msgstr "벗을"
+
+# ============================================================
 # 동사 (Verbs) - vtense()에서 사용되는 동사들
 # ============================================================
 
@@ -13281,4 +13354,48 @@ msgstr "웅덩이"
 #, c-format
 msgid "Blood %ss %s your %s."
 msgstr "피가 %3$s에%1$.0s%2$.0s 고인다."
+
+# ============================================================
+# 새로 _() 래핑한 문자열 번역
+# ============================================================
+
+# hack.c:2129 - 함정을 가리키는 지시대명사
+msgid "that "
+msgstr "저 "
+
+# invent.c:5511 - 장소 부사
+msgid "here"
+msgstr "여기"
+
+# invent.c:5541 - 복수 물건 아래
+msgid "beneath them"
+msgstr "그 아래"
+
+# insight.c:2652 - 연대기 컬럼 헤더
+msgid " Turn"
+msgstr " 턴"
+
+# insight.c:368,2659 - 항목 없음 표시
+msgid " none"
+msgstr " 없음"
+
+# objnam.c:714 - 피규어 설명 (" of a fox" 등)
+#, c-format
+msgid " of %s%s"
+msgstr " %2$s%1$.0s"
+
+# objnam.c:979 - 티셔츠/스모크 텍스트
+#, c-format
+msgid " with text \"%s\""
+msgstr " \"%s\" 글자가 적힌"
+
+# objnam.c:986 - 캔디바 라벨
+#, c-format
+msgid " labeled \"%s\""
+msgstr " \"%s\" 라벨이 붙은"
+
+# objnam.c:989 - 하와이안셔츠 모티프
+#, c-format
+msgid " with %s motif"
+msgstr " %s 무늬의"
 

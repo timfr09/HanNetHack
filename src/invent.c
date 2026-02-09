@@ -5420,18 +5420,29 @@ cinv_doname(struct obj *obj)
        rather than the beginning and we don't have access to that;
        assume that there is at least QBUFSZ available when reusing it */
     if (obj->otrapped && strlen(result) + sizeof "trapped " <= QBUFSZ) {
-        /* obj->lknown has been set before calling us so either "locked" or
-           "unlocked" should always be present (for a trapped container) */
-        char *p = strstri(result, " locked"),
-             *q = strstri(result, " unlocked");
+        if (is_korean_locale()) {
+            /* Korean item names have no English articles or keywords;
+               prepend translated "trapped " directly */
+            const char *trapped_str = _("trapped ");
+            if (strlen(result) + strlen(trapped_str) + 1 <= QBUFSZ) {
+                char tmp[QBUFSZ];
+                Sprintf(tmp, "%s%s", trapped_str, result);
+                Strcpy(result, tmp);
+            }
+        } else {
+            /* obj->lknown has been set before calling us so either "locked"
+               or "unlocked" should always be present (trapped container) */
+            char *p = strstri(result, " locked"),
+                 *q = strstri(result, " unlocked");
 
-        if (p && (!q || p < q))
-            (void) strsubst(p, " locked ", " trapped locked ");
-        else if (q)
-            (void) strsubst(q, " unlocked ", " trapped unlocked ");
-        /* might need to change "an" to "a"; when no BUC is present,
-           "an unlocked" yielded "an trapped unlocked" above */
-        (void) strsubst(result, "an trapped ", "a trapped ");
+            if (p && (!q || p < q))
+                (void) strsubst(p, " locked ", " trapped locked ");
+            else if (q)
+                (void) strsubst(q, " unlocked ", " trapped unlocked ");
+            /* might need to change "an" to "a"; when no BUC is present,
+               "an unlocked" yielded "an trapped unlocked" above */
+            (void) strsubst(result, "an trapped ", "a trapped ");
+        }
     }
     return result;
 }
@@ -5444,7 +5455,12 @@ cinv_ansimpleoname(struct obj *obj)
 
     /* result is an obuf[] so we know this will always fit */
     if (obj->otrapped) {
-        if (strncmp(result, "a ", 2))
+        if (is_korean_locale()) {
+            /* Korean: prepend translated "trapped " directly */
+            char tmp[BUFSZ];
+            Sprintf(tmp, "%s%s", _("trapped "), result);
+            Strcpy(result, tmp);
+        } else if (strncmp(result, "a ", 2))
             (void) strsubst(result, "a ", "a trapped ");
         else if (strncmp(result, "an ", 3))
             (void) strsubst(result, "an ", "an trapped ");

@@ -1424,9 +1424,10 @@ msgstr "아무 일도 일어나지 않았다."
 msgid "That's enough tries!"
 msgstr "시도는 충분히 했다!"
 
+# %s 관형형("읽을", "버릴" 등)과 호환되도록 수정
 #, c-format
 msgid "That is a silly thing to %s."
-msgstr "%s하기엔 바보 같은 것이다."
+msgstr "그것을 %s 것은 어리석은 짓이다."
 
 msgid "Never mind."
 msgstr "신경 쓰지 마라."
@@ -13431,4 +13432,72 @@ msgstr " \"%s\" 라벨이 붙은"
 #, c-format
 msgid " with %s motif"
 msgstr " %s 무늬의"
+
+# ============================================================
+# E_phrase() 한국어 지원 (dbridge.c)
+# 한국어에서는 E_phrase가 주어만 반환하므로 동사를 포맷 문자열에 포함
+# ============================================================
+
+# dbridge.c:579 - 도개교에 짓눌림
+#, c-format
+msgid "%s crushed underneath the drawbridge."
+msgstr "%s{이/가} 도개교 아래에서 짓눌렸다."
+
+# dbridge.c:595 - 성문에 짓눌림
+#, c-format
+msgid "%s crushed by the falling portcullis!"
+msgstr "%s{이/가} 떨어지는 성문에 짓눌렸다!"
+
+# dbridge.c:691 - 도개교 뒤로 사라짐
+#, c-format
+msgid "%s behind the drawbridge."
+msgstr "%s{이/가} 도개교 뒤로 사라졌다."
+
+# dbridge.c:711 - 다리에서 떨어짐
+#, c-format
+msgid "%s from the bridge."
+msgstr "%s{이/가} 다리에서 떨어졌다."
+
+# dbridge.c:722 - 환각 상태: 용암/해자를 마심
+#, c-format
+msgid "%s the %s and disappears."
+msgstr "%s{이/가} %s{을/를} 마시고 사라졌다."
+
+# dbridge.c:725 - 용암/해자에 빠짐
+#, c-format
+msgid "%s into the %s."
+msgstr "%s{이/가} %s 안으로 떨어졌다."
+
+# dbridge.c:950 - 잔해에 산산이 부서짐
+#, c-format
+msgid "%s blown apart by flying debris."
+msgstr "%s{이/가} 날아가는 잔해에 산산이 부서졌다."
+
+# dbridge.c:972 - 환각 상태: 무거운 금속에
+#, c-format
+msgid "%s into some heavy metal!"
+msgstr "%s{이/가} 무거운 금속에 빠졌다!"
+
+# dbridge.c:975 - 금속 덩어리에 맞음
+#, c-format
+msgid "%s hit by a huge chunk of metal!"
+msgstr "%s{이/가} 거대한 금속 덩어리에 맞았다!"
+
+# ============================================================
+# xcalled() - 아이템 별명 표시 (objnam.c)
+# ============================================================
+
+# objnam.c:572 - "item called name" 패턴
+msgid " called "
+msgstr " 이름: "
+
+# ============================================================
+# strsubst 한국어 지원 (worn.c, invent.c)
+# ============================================================
+
+# worn.c:937 - 동일 방어구 교체 시 "another"
+msgid "another"
+msgstr "다른"
+
+
 

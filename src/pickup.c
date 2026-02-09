@@ -1983,7 +1983,7 @@ encumber_msg(void)
             break;
         case 3:
             You(_("%s under your heavy load.  Movement is very hard."),
-                stagger(gy.youmonst.data, "stagger"));
+                stagger(gy.youmonst.data, _("stagger")));
             break;
         default:
             You(_("%s move a handspan with this load!"),
@@ -2004,7 +2004,7 @@ encumber_msg(void)
             break;
         case 3:
             You(_("%s under your load.  Movement is still very hard."),
-                stagger(gy.youmonst.data, "stagger"));
+                stagger(gy.youmonst.data, _("stagger")));
             break;
         }
         disp.botl = TRUE;

@@ -229,7 +229,7 @@ mdisplacem(
             if (!quietly && canspotmon(magr)) {
                 if (gv.vis) {
                     pline(_("%s tries to move %s out of %s way."), Monnam(magr),
-                          mon_nam(mdef), is_rider(pa) ? "the" : mhis(magr));
+                          mon_nam(mdef), is_rider(pa) ? _("the") : mhis(magr));
                 }
                 pline_mon(magr, _("%s turns to stone!"), Monnam(magr));
             }
@@ -666,7 +666,7 @@ hitmm(
         if (compat) {
             Snprintf(buf, sizeof buf, _("%s %s"), magr_name,
                     mdef->mcansee ? _("smiles at") : _("talks to"));
-            pline(_("%s %s %s."), buf, mon_nam(mdef),
+            pline(C_("mon_seduce", "%s %s %s."), buf, mon_nam(mdef),
                   (compat == 2) ? _("engagingly") : _("seductively"));
         } else {
             /* Combat messages - use complete sentences for proper i18n */
@@ -746,7 +746,7 @@ gazemm(struct monst *magr, struct monst *mdef, struct attack *mattk)
 
     if (gv.vis) {
         Sprintf(buf, _("%s gazes %s"),
-                altmesg ? Adjmonnam(magr, "blinded") : Monnam(magr),
+                altmesg ? Adjmonnam(magr, _("blinded")) : Monnam(magr),
                 altmesg ? _("toward") : _("at"));
         pline(_("%s %s..."), buf,
               canspotmon(mdef) ? mon_nam(mdef) : _("something"));
@@ -856,7 +856,7 @@ gulpmm(
         return M_ATTK_MISS;
 
     if (gv.vis) {
-        pline(_("%s %s %s."), Monnam(magr),
+        pline(C_("mon_engulf", "%s %s %s."), Monnam(magr),
               digests(magr->data) ? _("swallows")
               : enfolds(magr->data) ? _("encloses")
                 : _("engulfs"),
@@ -1416,7 +1416,7 @@ passivemm(
                 magr->mstun = 1;
                 if (canseemon(magr))
                     pline_mon(magr, _("%s %s..."), Monnam(magr),
-                          makeplural(stagger(magr->data, "stagger")));
+                          makeplural(stagger(magr->data, _("stagger"))));
             }
             tmp = 0;
             break;

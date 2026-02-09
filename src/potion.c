@@ -122,7 +122,7 @@ make_stunned(long xtime, boolean talk)
             if (u.usteed)
                 You(_("wobble in the saddle."));
             else
-                You(_("%s..."), stagger(gy.youmonst.data, "stagger"));
+                You(_("%s..."), stagger(gy.youmonst.data, _("stagger")));
         }
     }
     if ((!xtime && old) || (xtime && !old))

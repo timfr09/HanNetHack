@@ -4931,7 +4931,7 @@ back_on_ground(boolean rescued)
     } else {
         you_are_back = flags.verbose ? _("You are back") : _("Back");
     }
-    pline(_("%s %s %s."), you_are_back, preposit, surf);
+    pline(C_("location", "%s %s %s."), you_are_back, preposit, surf);
     iflags.last_msg = PLNMSG_BACK_ON_GROUND;
 }
 
@@ -4962,7 +4962,7 @@ rescued_from_terrain(int how)
     case BURNING: /* moved onto lava without fire resistance */
     case DISSOLVED: /* sunk into lava while fire resistant */
         if (is_pool(u.ux, u.uy)) {
-            You(_("%s %s %s."), _(find_yourself),
+            You(C_("location", "%s %s %s."), _(find_yourself),
                 u.uinwater ? _("in") : _("on"), hliquid(_("water")));
             mesggiven = TRUE;
         } else if (is_lava(u.ux, u.uy)) {
@@ -6406,7 +6406,7 @@ chest_trap(
                 if (Hallucination)
                     pline(_("What a groovy feeling!"));
                 else
-                    You(_("%s%s..."), stagger(gy.youmonst.data, "stagger"),
+                    You(_("%s%s..."), stagger(gy.youmonst.data, _("stagger")),
                         Halluc_resistance ? ""
                                           : Blind ? _(" and get dizzy")
                                                   : _(" and your vision blurs"));

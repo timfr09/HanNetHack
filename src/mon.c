@@ -3499,7 +3499,7 @@ xkilled(
         boolean namedpet = has_mgivenname(mtmp) && !Hallucination;
 
         You(C_("you_kill", "%s %s!"),
-            nonliving(mtmp->data) ? _("destroy") : _("kill"),
+            nonliving(mtmp->data) ? C_("you_kill", "destroy") : _("kill"),
             !(wasinside || canspotmon(mtmp)) ? _("it")
               : !mtmp->mtame ? mon_nam(mtmp)
                 : x_monnam(mtmp, namedpet ? ARTICLE_NONE : ARTICLE_THE,

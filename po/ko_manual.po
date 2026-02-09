@@ -2849,10 +2849,12 @@ msgid "are dead"
 msgstr "사망했다"
 
 # insight.c:2014 - 사망 횟수 (dead case)
-# %d = 횟수, %s = 영어 서수 접미사 (st/nd/rd/th) → %.0s로 억제
+# %1$d = 횟수, %2$s = 영어 서수 접미사 (st/nd/rd/th) → %.0s로 억제
+# 영어 조합: " (3rd time!)"
+# 한국어 조합: " (3번째!)"
 #, c-format
 msgid " (%d%s time!)"
-msgstr " (%d%s번째!)"
+msgstr " (%1$d%2$.0s번째!)"
 
 # insight.c:2020 - enl_msg(You_, "have been killed ", p, buf, "")
 # 한국어에서 동사가 끝에 오므로 뒷 공백 불필요
@@ -2982,8 +2984,12 @@ msgstr " 당신의 지갑에는 %2$ld %3$s{이/가} 들어 있다%1$.0s"
 msgid "%ld %s stashed away in your pack"
 msgstr "%ld %s{이/가} 가방에 숨겨져 있다"
 
+# insight.c:983 - 변신 상태에서 내면 느낌
+# %1$s = felt/feel → "느꼈다"/"느낀다", %2$s = dead/condemned/empty → "죽은"/"선고받은"/"빈"
+# 영어 조합: " and feel dead inside"
+# 한국어 조합: ", 안에서 죽은 것 같다고 느낀다"
 msgid " and %s %s inside"
-msgstr ", 안에서 뭔가 죽은 것을 %s%s"
+msgstr ", 안에서 %2$s 것 같다고 %1$s"
 
 #, c-format
 msgid "all %d %s"
@@ -4316,13 +4322,12 @@ msgstr "모든 종류"
 msgid "all "
 msgstr "모두 "
 
-# hack.c - engulfs (잘못된 번역: "삼킨")
-# 사용 맥락: 몬스터가 플레이어를 삼킬 때 동사
+# hack.c, mhitm.c - engulfs
+# mon_engulf 패턴에서 사용: "보라색 벌레가 노움을 삼켰다."
 msgid "engulfs"
-msgstr "삼키다"
+msgstr "삼켰다"
 
-# hack.c - engulf (잘못된 번역: "삼킨")
-# 사용 맥락: 삼키기 동작 동사 원형
+# hack.c - engulf (동사 원형)
 msgid "engulf"
 msgstr "삼키다"
 
@@ -4656,9 +4661,11 @@ msgstr "파괴되었다"
 # 추가 fuzzy 오류 수정 - Part 6
 # ============================================================
 
-# mon.c - "The kitten grows up into a cat". 성장 메시지
+# makemon.c - "The kitten grows up into a cat". 성장 메시지
+# mon_grow 패턴: "%1$s{이/가} %3$s{으로/로} %2$s." → "새끼 고양이가 집고양이로 성장했다."
+# "으로" 제거 (패턴의 {으로/로}와 중복 방지)
 msgid "grows up into"
-msgstr "으로 성장했다"
+msgstr "성장했다"
 
 # invent.c - 용기 확인. "The box. It's empty."
 msgid "It's empty."
@@ -5135,9 +5142,12 @@ msgstr "예상치 못하게"
 msgid "materialize"
 msgstr "구체화되었다"
 
-# pager.c - 지적. "The guide points out"
+# pager.c:3844, shk.c:558,2388 - 지적/알림
+# pager.c: 안내자가 물리적으로 가리킴
+# shk.c: 상인이 구두로 알림 ("points out that you need to pay")
+# 두 용례 모두에 적합한 중립적 번역 사용
 msgid "points out"
-msgstr "가리킨다"
+msgstr "알린다"
 
 # various - ~인 것 같다. "It seems to be locked"
 msgid "seems to be"
@@ -5377,9 +5387,10 @@ msgstr " 더 멀리"
 msgid " in it"
 msgstr " 안에"
 
-# cmd.c - 대화. "talk to someone"
+# uhitm.c:5559 - 유혹 동작 (눈이 안 보이는 몬스터에게 대화)
+# you_seduce 패턴: "오크에게 유혹적으로 말을 걸었다."
 msgid "talk to"
-msgstr "대화하다"
+msgstr "말을 걸었다"
 
 # various - 다소. "rather difficult"
 msgid "rather "
@@ -7625,20 +7636,24 @@ msgstr "쌍수"
 msgid " somewhat%s"
 msgstr "어느 정도 %s"
 
+# insight.c:1564-1574 - 아이템 보호 메시지
+# enl_msg("Your items ", "are"→"​", "were"→"​", suffix, from)
+# 영어 조합: " Your items are protected from fire."
+# 한국어 조합: " 당신의 아이템은 ​화염에 대해 보호 상태이다​."
 msgid " protected from fire"
-msgstr "화염에 대해 보호 상태"
+msgstr "화염에 대해 보호 상태이다"
 
 msgid " protected from cold"
-msgstr "냉기에 대해 보호 상태"
+msgstr "냉기에 대해 보호 상태이다"
 
 msgid " protected from disintegration"
-msgstr "분해에 대해 보호 상태"
+msgstr "분해에 대해 보호 상태이다"
 
 msgid " protected from electric shocks"
-msgstr "전기 충격에 대해 보호 상태"
+msgstr "전기 충격에 대해 보호 상태이다"
 
 msgid " protected from acid"
-msgstr "산성에 대해 보호 상태"
+msgstr "산성에 대해 보호 상태이다"
 
 # "petrification resistant"는 이미 line 6521에 존재 (동일 번역)
 
@@ -8577,15 +8592,16 @@ msgstr "싱크대가 잠시 %s으로 빛났다."
 
 # uhitm.c:2052 - 기름칠된/미끄러운 장비에서 미끄러지는 메시지
 # %1=slip off of / grab but cannot hold onto
-# %2=s_suffix(mon_nam) = "오크의"
-# %3=greased/slippery = "기름칠된"/"미끄러운"
-# %4=xname(obj) = "망토"
-# 영어: "You slip off of the orc's greased cloak!"
-# 한국어: "오크의 기름칠된 망토에서 미끄러졌다!"
-# 주의: slip off of = "에서 미끄러졌다" 이므로 패턴에서 {에서} 불필요
+# uhitm.c:2052 - 기름칠된 장비에서 미끄러짐
+# %1$s=vtense("slip off of") = "미끄러졌다"
+# %2$s=s_suffix(mon_nam) = "오크의"
+# %3$s=greased/slippery = "기름칠된"/"미끄러운"
+# %4$s=xname(obj) = "망토"
+# 영어 조합: "You slip off of the orc's greased cloak!"
+# 한국어 조합: "오크의 기름칠된 망토에서 미끄러졌다!"
 #, c-format
 msgid "%s %s %s %s!"
-msgstr "%2$s %3$s %4$s %1$s!"
+msgstr "%2$s %3$s %4$s에서 %1$s!"
 
 msgid "greased"
 msgstr "기름칠된"
@@ -9123,9 +9139,13 @@ msgid "%s attacks you by surprise!"
 msgstr "%s{이/가} 기습 공격했다!"
 
 # uhitm.c:3265 - 투구가 공격 막음
+# %1$s=s_suffix(Monnam(mdef)) = "오크의", %2$s=s_suffix(mon_nam(magr)) = "고블린의"
+# %3$s=mhis(mdef) = "그것의"/"그의"/"그녀의" (억제 - s_suffix가 이미 "의" 포함)
+# 영어 조합: "The orc's helmet blocks the goblin's attack to its head."
+# 한국어 조합: "오크의 투구가 고블린의 머리 공격을 막았다."
 #, c-format
 msgid "%s helmet blocks %s attack to %s head."
-msgstr "%s 투구가 %s의 %s 머리 공격을 막았다."
+msgstr "%1$s 투구가 %2$s %3$.0s머리 공격을 막았다."
 
 # "%s grabs you!", "%s hits you with the %s corpse."는 이미 정의됨 (line 3097, 3101)
 
@@ -9352,10 +9372,13 @@ msgstr "%1$s{이/가} %3$s %4$s 속으로 떨어진다.%2$.0s"
 msgid "explode"
 msgstr "폭발했다"
 
-# polyself.c:1221 - 뚫음
+# polyself.c:1221 - 뿔이 투구를 관통
+# %1$s=Your("horn") = "뿔", %2$s=vtense("pierce") = "관통했다", %3$s=yname(helmet)
+# 영어 조합: "Your horn pierces through the iron skull cap."
+# 한국어 조합: "뿔이 철 투구를 관통했다."
 #, c-format
 msgid "%s %s through %s."
-msgstr "%s{이/가} %s{을/를} %s."
+msgstr "%1$s{이/가} %3$s{을/를} %2$s."
 
 msgid "pierce"
 msgstr "관통했다"
@@ -9624,11 +9647,92 @@ msgstr "크게 빗나가며 앞으로 비틀거렸다."
 msgid "%s %s %s%s"
 msgstr "%1$s{이/가} %3$s{을/를} 맞혔다%4$s%2$.0s"
 
-# "The bolt misses X." → "번개가 X를 빗나갔다."
-# 패턴: "%s %s %s." (The str, vtense miss, target)
+# zap.c:3562 - "The bolt misses X." → "번개가 X를 빗나갔다."
+# 이 무컨텍스트 패턴은 zap.c 빗나감 전용. 다른 소스 위치는 C_() 컨텍스트로 분리됨.
 #, c-format
 msgid "%s %s %s."
 msgstr "%1$s{이/가} %3$s{을/를} 빗나갔다%2$.0s."
+
+# steal.c:329 - 몬스터가 장비를 벗김/해제
+# %1$s=Some_Monnam(mon), %2$s=disarms/removes/takes off, %3$s=objbuf
+# 영어 조합: "Something disarms you of your long sword."
+# 한국어 조합: "무언가가 장검을 벗겼다."
+#, c-format
+msgctxt "steal_disarm"
+msgid "%s %s %s."
+msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+
+# mhitm.c:669 - 몬스터가 유혹적으로 미소/대화
+# %1$s="X smiles at" 조합, %2$s=mon_nam(mdef), %3$s=seductively/engagingly
+# 영어 조합: "The succubus smiles at the gnome seductively."
+# 한국어 조합: "서큐버스가 노움에게 유혹적으로 미소짓는다."
+#, c-format
+msgctxt "mon_seduce"
+msgid "%s %s %s."
+msgstr "%1$s %2$s에게 %3$s."
+
+# mhitm.c:859 - 몬스터가 다른 몬스터를 삼킴
+# %1$s=Monnam(magr), %2$s=swallows/encloses/engulfs, %3$s=mon_nam(mdef)
+# 영어 조합: "The purple worm swallows the gnome."
+# 한국어 조합: "보라색 벌레가 노움을 삼켰다."
+#, c-format
+msgctxt "mon_engulf"
+msgid "%s %s %s."
+msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+
+# dogmove.c:290, muse.c:2894 - 몬스터/펫이 먹음/마심
+# %1$s=Monnam, %2$s=devours/eats/quaffs, %3$s=obj_name
+# 영어 조합: "Fido devours a corpse." / "The orc quaffs a potion of healing."
+# 한국어 조합: "피도가 시체를 먹어치웠다." / "오크가 치료의 물약을 마셨다."
+#, c-format
+msgctxt "mon_eat"
+msgid "%s %s %s."
+msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+
+# makemon.c:2141 - 몬스터가 성장/변화
+# %1$s=YMonnam, %2$s=changes into/becomes/grows up into, %3$s=an(buf)
+# 영어 조합: "The kitten grows up into a housecat."
+# 한국어 조합: "새끼 고양이가 집고양이로 성장했다."
+#, c-format
+msgctxt "mon_grow"
+msgid "%s %s %s."
+msgstr "%1$s{이/가} %3$s{으로/로} %2$s."
+
+# mthrowu.c:1211 - 몬스터가 무기 휘두름
+# %1$s=Monnam, %2$s=thrusts/swings/bashes with, %3$s=weapon name
+# 영어 조합: "The orc swings a battle-axe."
+# 한국어 조합: "오크가 전투도끼를 휘둘렀다."
+#, c-format
+msgctxt "mon_swing"
+msgid "%s %s %s."
+msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+
+# uhitm.c:5557 - 플레이어가 유혹적으로 미소/대화
+# %1$s=smile at/talk to, %2$s=mon_nam, %3$s=seductively/engagingly
+# 영어 조합: "You smile at the orc seductively."
+# 한국어 조합: "오크에게 유혹적으로 미소지었다."
+#, c-format
+msgctxt "you_seduce"
+msgid "%s %s %s."
+msgstr "%2$s에게 %3$s %1$s."
+
+# trap.c:4934,4965 / cmd.c:1288 - 위치 메시지
+# %1$s=You are back/You find yourself/are in, %2$s=on/in, %3$s=surface/water/room
+# 영어 조합: "You are back on the floor." / "You find yourself in water."
+# 한국어 조합: "바닥 위로 돌아왔다." / "물 속에 있다."
+#, c-format
+msgctxt "location"
+msgid "%s %s %s."
+msgstr "%1$s %3$s %2$s."
+
+# dokick.c:1944 - 물체 낙하
+# %1$s=obuf(물체), %2$s=fall/falls, %3$s=gate_str(장소)
+# 영어 조합: "The rock falls through the trap door."
+# 한국어 조합: "바위가 함정문을 통해 떨어졌다."
+#, c-format
+msgctxt "obj_fall"
+msgid "%s %s %s."
+msgstr "%1$s{이/가} %3$s %2$s."
 
 # ============================================================
 # 몬스터 소리 (Monster Sounds)
@@ -9651,6 +9755,13 @@ msgstr "%1$s{이/가} %2$s!"
 msgctxt "you_kill"
 msgid "%s %s!"
 msgstr "%2$s{을/를} %1$s!"
+
+# mon.c:3502 - you_kill 패턴용 "destroy" (전투 과거형)
+# read.c의 "destroy"→"파괴할"(관형사)과 구별하기 위해 you_kill 컨텍스트 사용
+# you_kill 조합: "좀비를 파괴했다!"
+msgctxt "you_kill"
+msgid "destroy"
+msgstr "파괴했다"
 
 # [조합 메시지] uhitm.c:5163 - 당신이 몬스터를 토해냄
 # 조합 요소:
@@ -9689,6 +9800,102 @@ msgstr "된 기분이다"
 msgctxt "you_trap"
 msgid "%s %s!"
 msgstr "%2$s %1$s!"
+
+# ============================================================
+# 조합 패턴용 누락 동사 번역
+# ============================================================
+
+# mon.c:3502 - you_kill 패턴용 "kill" (ko.po "죽였다"와 동일하지만 명시적 정의)
+# you_kill 조합: "여우{을/를} 죽였다!"
+msgid "kill"
+msgstr "죽였다"
+
+# polyself.c:802 - you_poly 패턴용 "turn into"
+# you_poly 조합: "늑대{으로/로} 변했다!"
+msgid "turn into"
+msgstr "변했다"
+
+# uhitm.c:4944 - you_expel 패턴용 "regurgitate"
+# you_expel 조합: "노움{을/를} 토해냈다!"
+msgid "regurgitate"
+msgstr "토해냈다"
+
+# uhitm.c:4945 - you_expel 패턴용 "release"
+# you_expel 조합: "노움{을/를} 풀어줬다!"
+msgid "release"
+msgstr "풀어줬다"
+
+# uhitm.c:4946 - you_expel 패턴용 "expel"
+# you_expel 조합: "노움{을/를} 내뱉었다!"
+msgid "expel"
+msgstr "내뱉었다"
+
+# trap.c:1912 - you_trap 패턴용 함정 상황
+# you_trap 조합: "날카로운 쇠못 위에 발을 내딛었다!"
+msgid "on a set of sharp iron spikes"
+msgstr "날카로운 쇠못 위에"
+
+# trap.c:1907-1910 - 기마 함정 패턴 "%s %s %s!"
+# %1$s = steed name, %2$s = steps/lands, %3$s = predicament
+# 영어 조합: "Poor horse steps on a set of sharp iron spikes!"
+# 한국어 조합: "불쌍한 말이 날카로운 쇠못 위에 밟았다!"
+#, c-format
+msgid "%s %s %s!"
+msgstr "%1$s{이/가} %3$s %2$s!"
+
+# trap.c:1910 - 기마 함정 "steps" (걷다의 3인칭, 동사 전용)
+msgid "steps"
+msgstr "밟았다"
+
+# trap.c:1910 - 기마 함정 "lands" (착지, 동사 전용)
+# ko.po "땅"(명사) 오역 교정
+msgid "lands"
+msgstr "떨어졌다"
+
+# ============================================================
+# 조합 패턴용 동사 교정 (ko.po 오역 덮어쓰기)
+# ============================================================
+
+# mhitm.c:860 - mon_engulf 패턴용 (ko.po "삼킨다"→과거형)
+msgid "swallows"
+msgstr "삼켰다"
+
+# mhitm.c:861 - mon_engulf 패턴용 (ko.po "감싸다"→과거형)
+msgid "encloses"
+msgstr "감쌌다"
+
+# steal.c:326 - steal_disarm 패턴용 (ko.po "해제했다!"→느낌표 제거)
+msgid "disarms"
+msgstr "해제했다"
+
+# steal.c:328 - steal_disarm 패턴용 (ko.po "벗을"→과거형)
+msgid "takes off"
+msgstr "벗었다"
+
+# muse.c:2895 - mon_eat 패턴용 (ko.po "마실"→과거형)
+msgid "quaffs"
+msgstr "마셨다"
+
+# muse.c:2896 - mon_eat 패턴용 (통조림 열어 먹기)
+msgid "opens and eats the contents of"
+msgstr "열어서 내용물을 먹었다"
+
+# uhitm.c:5558, mhitm.c:668 - 유혹 동사
+msgid "smile at"
+msgstr "미소지었다"
+
+msgid "smiles at"
+msgstr "미소짓는다"
+
+msgid "talks to"
+msgstr "말을 건다"
+
+# uhitm.c:5561, mhitm.c:670 - 유혹 부사
+msgid "seductively"
+msgstr "유혹적으로"
+
+msgid "engagingly"
+msgstr "매력적으로"
 
 # ============================================================
 # 동사 (Verbs) - vtense()에서 사용되는 동사들
@@ -10667,23 +10874,27 @@ msgstr "다른 이에게 투명한 상태이다"
 # " enhanced by wearing a robe" ✓
 # "warded"/"guarded"/"protected" ✓
 
-# [조합] insight.c:1801-1806 - suit penalty offset messages
+# [조합] insight.c:1805-1813 - suit penalty offset messages
+# you_have(buf, "") 형태로 출력 → 종결어미 필요
+# 영어 조합: " You have a modest bonus to hit, partly offsetting your suit's penalty."
+# 한국어 조합: " 당신은 ​명중에 약간의 보너스가 있다 (당신의 갑옷 페널티를 부분적으로 상쇄한다)​."
 msgid "increasing"
-msgstr "증가시키는"
+msgstr "증가시킨다"
 
 msgid "partly offsetting"
-msgstr "부분적으로 상쇄하는"
+msgstr "부분적으로 상쇄한다"
 
 msgid "nearly offsetting"
-msgstr "거의 상쇄하는"
+msgstr "거의 상쇄한다"
 
 msgid "overcoming"
-msgstr "극복하는"
+msgstr "극복한다"
 
-# [조합] insight.c:1801 - " %s your suit's penalty"
+# [조합] insight.c:1808 - " %s your suit's penalty"
+# 전투 보너스 문자열 뒤에 괄호로 추가됨
 #, c-format
 msgid " %s your suit's penalty"
-msgstr " 당신의 갑옷 페널티를 %s"
+msgstr " (당신의 갑옷 페널티를 %s)"
 
 # ============================================================
 # [조합 검토] Section K: Shape (insight.c:1860-1933)
@@ -12718,12 +12929,15 @@ msgstr "줄이 풀렸다.%.0s%.0s"
 
 # ===== apply.c =====
 
-# 청진기 사망 확인
-# %s=this/that/these/those, %s=""/"s", %s=is/are, %s=" mostly"/""
-# %2$s(영어 복수 "s")와 %3$s(is/are) 억제
+# apply.c:277 - 청진기 사망 확인
+# %1$s=this/that/these/those → "이것"/"그것" (대명사 형태, 관형사로 부적합 → 억제)
+# %2$s=""/"s" (복수 접미사 → 억제), %3$s=is/are (be동사 → 억제)
+# %4$s=" mostly"/""→" 대부분"/""
+# 영어 조합: "You determine that this unfortunate being is mostly dead."
+# 한국어 조합: "그 불행한 존재가 대부분 죽었다고 판단한다."
 #, c-format
 msgid "determine that %s unfortunate being%s %s%s dead."
-msgstr "%1$s 불행한 존재{이/가}%4$s 죽었다고 판단한다.%2$.0s%3$.0s"
+msgstr "그 불행한 존재{이/가}%4$s 죽었다고 판단한다.%1$.0s%2$.0s%3$.0s"
 
 # 양초 불꽃
 # %s=소유격이름, %s=plur(), %s=burn/burns, %s="."/brightly"
@@ -12903,11 +13117,14 @@ msgstr "%1$s 무기{이/가} %3$s,%2$.0s"
 
 # ===== pickup.c =====
 
-# 두루마리 먼지로 변함
-# %s=plur(), %s=turn/turns, %s=raise/pick, %s=it/them
+# pickup.c:1854 - 두루마리 먼지로 변함
+# %1$s=plur(), %2$s=turn(회전-오역)/turns, %3$s=raise(들어올리다)/pick(자물쇠따개-오역), %4$s=it/them
+# "turn"→"회전", "pick"→"자물쇠 따개" 오역 때문에 %2$s, %3$s 억제 후 하드코딩
+# 영어 조합: "The scrolls turn to dust as you pick them up."
+# 한국어 조합: "줍자 두루마리가 먼지로 변했다."
 #, c-format
 msgid "scroll%s %s to dust as you %s %s up."
-msgstr "%4$s{을/를} %3$s 때 두루마리{이/가} 먼지로 %2$s.%1$.0s"
+msgstr "줍자 두루마리{이/가} 먼지로 변했다.%1$.0s%2$.0s%3$.0s%4$.0s"
 
 # 저주받은 돌 (loadstone)
 # %s=plur()

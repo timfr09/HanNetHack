@@ -1781,10 +1781,10 @@ armor_or_accessory_off(struct obj *obj)
                 Strcat(what, cloak_simple_name(uarmc));
             if ((obj == uarmu) && uarm) {
                 if (uarmc)
-                    Strcat(what, " and ");
+                    Strcat(what, _(" and "));
                 Strcat(what, suit_simple_name(uarm));
             }
-            Snprintf(why, sizeof why, " without taking off your %s first",
+            Snprintf(why, sizeof why, _(" without taking off your %s first"),
                      what);
         } else {
             Strcpy(why, _("; it's embedded"));

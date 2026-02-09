@@ -326,7 +326,7 @@ worn_item_removal(
     verb = ((obj->owornmask & W_WEAPONS) != 0L) ? _("disarms")
            : ((obj->owornmask & W_ACCESSORY) != 0L) ? _("removes")
              : _("takes off");
-    pline(_("%s %s %s."), Some_Monnam(mon), verb, objbuf);
+    pline(C_("steal_disarm", "%s %s %s."), Some_Monnam(mon), verb, objbuf);
     iflags.last_msg = PLNMSG_MON_TAKES_OFF_ITEM;
     /* removal might trigger more messages (due to loss of Lev|Fly;
        descending happens before the theft in progress finishes) */

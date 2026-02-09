@@ -31,8 +31,21 @@
 .lt 70n
 .\}
 .
-.so tmac.nh \" extra macros which aren't in tmac.n
-.if !\n(nH .so doc/tmac.nh
+.\" Load extra macros that "tmac.n" doesn't define.
+.de So
+.ie \n(.g&(\n(.x=1)&(\n(.y>22) .soquiet \\$1
+.el                            .so      \\$1
+..
+.
+.So tmac.nh
+.if !\n(nH So doc/tmac.nh
+.
+.if !\n(nH \{\
+.tm fatal error: cannot locate "tmac.nh" macro package
+.ab
+.\}
+.
+.rm So
 .
 .\" building Guidebook.txt doesn't have CR font available; groff 1.23 issues
 .\" a warning each time any font can't be loaded; earlier versions silently

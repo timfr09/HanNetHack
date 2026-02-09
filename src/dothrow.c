@@ -533,7 +533,7 @@ dofire(void)
             if (obj) {
                 /* give feedback if quiver has now been filled */
                 uquiver->owornmask &= ~W_QUIVER; /* less verbose */
-                prinv("You ready:", obj, 0L);
+                prinv(_("You ready:"), obj, 0L);
                 uquiver->owornmask |= W_QUIVER;
             } else {
                 You(_("have nothing appropriate for your quiver."));

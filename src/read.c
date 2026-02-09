@@ -1659,8 +1659,9 @@ seffect_taming(struct obj **sobjp)
               !candidates ? _("happens") : _("seems to happen"));
     } else {
         pline_The(_("neighborhood %s %sfriendlier."),
-                  vis_results ? _("is") : _("seems"),
-                  (results < 0) ? _("un") : "");
+                  vis_results ? C_("neighborhood", "is")
+                              : C_("neighborhood", "seems"),
+                  (results < 0) ? C_("neighborhood", "un") : "");
         if (vis_results > 0)
             gk.known = TRUE;
     }

@@ -723,7 +723,7 @@ do_entity(struct entity *etmp)
                           E_phrase(etmp, "drink"), lava ? _("lava") : _("moat"));
                 else
                     pline(_("%s into the %s."), E_phrase(etmp, "fall"),
-                          lava ? hliquid("lava") : "moat");
+                          lava ? hliquid("lava") : _("moat"));
             }
         svk.killer.format = NO_KILLER_PREFIX;
         Strcpy(svk.killer.name, _("fell from a drawbridge"));
@@ -889,13 +889,13 @@ destroy_drawbridge(coordxy x, coordxy y)
         if (lev1->typ == DRAWBRIDGE_UP) {
             if (cansee(x2, y2) || u_at(x2, y2))
                 pline_The(_("portcullis of the drawbridge falls into the %s!"),
-                          lava ? hliquid("lava") : "moat");
+                          lava ? hliquid("lava") : _("moat"));
             else
                 You_hear(_("a loud *SPLASH*!"));  /* Deaf-aware */
         } else {
             if (cansee(x, y) || u_at(x, y))
                 pline_The(_("drawbridge collapses into the %s!"),
-                          lava ? hliquid("lava") : "moat");
+                          lava ? hliquid("lava") : _("moat"));
             else
                 You_hear(_("a loud *SPLASH*!"));  /* Deaf-aware */
         }

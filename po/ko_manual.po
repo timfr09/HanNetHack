@@ -9970,6 +9970,39 @@ msgctxt "getobj"
 msgid "remove"
 msgstr "벗을"
 
+# pager.c:735,787,1435 - 수중에서 보이는 지형 "land"
+# 기존 "land"→"떨어지다"(동사, ko_manual.po)와 충돌
+# ko.po "땅"도 있지만 수중 맥락에서는 "육지"가 적절
+msgctxt "terrain"
+msgid "land"
+msgstr "육지"
+
+# iactions.c:359 - 초에 불 붙이기
+# "Attach candles, or light them" → "초를 붙이거나 켜다"
+# 기존 "light"→"가벼운"(형용사, ko.po)와 충돌
+msgctxt "candle"
+msgid "light"
+msgstr "켜다"
+
+# mondata.c:1488 - 빛(방사)
+# "flash of light" → "빛의 섬광"
+# 기존 "light"→"가벼운"(형용사)과 충돌
+msgctxt "radiance"
+msgid "light"
+msgstr "빛"
+
+# dothrow.c:2515 - 눈에 물이 고이다
+# "Your eyes water." → "당신의 눈이 촉촉해졌다."
+# 기존 "water"→"물"(명사)과 충돌
+msgctxt "eyes_water"
+msgid "water"
+msgstr "촉촉해졌다"
+
+# pager.c, dbridge.c - 해자 (성 주변 물)
+# 기존에 _("moat")가 누락된 곳이 있어서 추가
+msgid "moat"
+msgstr "해자"
+
 # ============================================================
 # 동사 (Verbs) - vtense()에서 사용되는 동사들
 # ============================================================

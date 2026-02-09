@@ -1485,7 +1485,7 @@ msummon_environ(struct permonst *mptr, const char **cloud)
     case PM_ANGEL: /* actually any 'A'-class */
     case PM_YELLOW_LIGHT: /* any 'y'-class */
         *cloud = _("flash"); /* "flash of light" instead of "cloud of..." */
-        what = _("light");
+        what = C_("radiance", "light");
         break;
     default:
         what = _("smoke");

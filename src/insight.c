@@ -365,7 +365,7 @@ fmt_elapsed_time(char *outbuf, int final)
     edays = etim / 24L;
     fieldcnt = !!edays + !!ehours + !!eminutes + !!eseconds;
 
-    Strcpy(outbuf, fieldcnt ? "" : " none"); /* 'none' should never happen */
+    Strcpy(outbuf, fieldcnt ? "" : _(" none")); /* 'none' should never happen */
     if (edays) {
         Sprintf(eos(outbuf), _(" %ld day%s"), edays, plur(edays));
         if (fieldcnt > 1) /* hours and/or minutes and/or seconds to follow */
@@ -2649,14 +2649,14 @@ show_gamelog(int final)
         if (!final && !wizard && spoilerevent(llmsg))
             continue;
         if (!eventcnt++)
-            putstr(win, 0, " Turn");
+            putstr(win, 0, _(" Turn"));
         Snprintf(buf, sizeof buf, "%5ld: %s", llmsg->turn, llmsg->text);
         putstr(win, 0, buf);
     }
     /* since start of game is logged as a major event, 'eventcnt' should
        never end up as 0; for 'final', end of game is a major event too */
     if (!eventcnt)
-        putstr(win, 0, " none");
+        putstr(win, 0, _(" none"));
 
     display_nhwindow(win, TRUE);
     destroy_nhwindow(win);

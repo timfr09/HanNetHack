@@ -165,7 +165,7 @@ alreadynamed(struct monst *mtmp, char *monnambuf, char *usrbuf)
                                   || mtmp->isshk);
         pline(_("%s would rather keep %s existing %s."), upstart(monnambuf),
               is_rider(mtmp->data) ? _("its") : mhis(mtmp),
-              name_not_title ? _("name") : _("title"));
+              name_not_title ? C_("noun", "name") : _("title"));
         return TRUE;
     } else if (fuzzymatch(usrbuf, monnambuf, " -_", TRUE)
                /* catch trying to name "the Oracle" as "Oracle" */

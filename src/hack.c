@@ -2126,7 +2126,7 @@ domove_swap_with_pet(
     } else if (mtmp->mpeaceful && mtmp->mtrapped) {
         /* all mtame are also mpeaceful, so this affects pets too */
         assert(trap != NULL); /* implied by mtrapped */
-        const char *what = trapname(trap->ttyp, FALSE), *which = "that ";
+        const char *what = trapname(trap->ttyp, FALSE), *which = _("that ");
         char anbuf[10];
 
         if (!trap->tseen) {

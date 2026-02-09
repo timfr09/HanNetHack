@@ -714,7 +714,7 @@ resurrect(void)
 
     if (!svc.context.no_of_wizards) {
         /* make a new Wizard */
-        verb = _("kill");
+        verb = C_("wiz_taunt", "kill");
         mtmp = makemon(&mons[PM_WIZARD_OF_YENDOR], u.ux, u.uy, MM_NOWAIT);
         /* affects experience; he's not coming back from a corpse
            but is subject to repeated killing like a revived corpse */
@@ -722,7 +722,7 @@ resurrect(void)
             mtmp->mrevived = 1;
     } else {
         /* look for a migrating Wizard */
-        verb = _("elude");
+        verb = C_("wiz_taunt", "elude");
         mmtmp = &gm.migrating_mons;
         while ((mtmp = *mmtmp) != 0) {
             if (mtmp->iswiz

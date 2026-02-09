@@ -711,7 +711,7 @@ xname_flags(
             char anbuf[10]; /* [4] would be enough: 'a','n',' ','\0' */
             const char *pm_name = obj_pmname(obj);
 
-            ConcatF2(buf, 0, " of %s%s", just_an(anbuf, pm_name), pm_name);
+            ConcatF2(buf, 0, _(" of %s%s"), just_an(anbuf, pm_name), pm_name);
         } else if (is_wet_towel(obj)) {
             if (wizard)
                 ConcatF1(buf, 0, " (%d)", obj->spe);
@@ -976,17 +976,17 @@ xname_flags(
         switch (obj->otyp) {
         case T_SHIRT:
         case ALCHEMY_SMOCK:
-            ConcatF1(buf, 0, " with text \"%s\"",
+            ConcatF1(buf, 0, _(" with text \"%s\""),
                      (obj->otyp == T_SHIRT) ? tshirt_text(obj, tmpbuf)
                                             : apron_text(obj, tmpbuf));
             break;
         case CANDY_BAR:
             lbl = candy_wrapper_text(obj);
             if (*lbl)
-                ConcatF1(buf, 0, " labeled \"%s\"", lbl);
+                ConcatF1(buf, 0, _(" labeled \"%s\""), lbl);
             break;
         case HAWAIIAN_SHIRT:
-            ConcatF1(buf, 0, " with %s motif",
+            ConcatF1(buf, 0, _(" with %s motif"),
                      an(hawaiian_motif(obj, tmpbuf)));
             break;
         default:

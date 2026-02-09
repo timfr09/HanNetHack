@@ -5447,7 +5447,7 @@ try_disarm(
             pline(_("%s %s is difficult to %s."),
                   ttmp->madeby_u ? _("Your") : under_u ? _("This") : _("That"),
                   trapname(ttype, FALSE),
-                  (ttype == WEB) ? _("remove") : _("disarm"));
+                  (ttype == WEB) ? C_("trap_action", "remove") : _("disarm"));
         }
         return 1;
     }

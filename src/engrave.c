@@ -393,7 +393,7 @@ read_engr_at(coordxy x, coordxy y)
                      && strchr(".!?", et[elen - 1]))) {
                 endpunct = ".";
             }
-            You(_("%s: \"%s\"%s"), (Blind) ? _("feel the words") : _("read"), et,
+            You(_("%s: \"%s\"%s"), (Blind) ? _("feel the words") : C_("engrave_read", "read"), et,
                 endpunct);
             Strcpy(ep->engr_txt[remembered_text], ep->engr_txt[actual_text]);
             ep->eread = 1;

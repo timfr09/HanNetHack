@@ -1577,6 +1577,8 @@ the "totally digested" instadeath timer is much faster
 slow monster effects are more effective against faster enemies
 light-spell is clerical, if playing a priest
 boomerang can hit multiple monsters
+the "bustling town" minetown has more peacefuls
+healers may get tiny damage increase when attacking with knives
 
 
 Fixes to 3.7.0-x General Problems Exposed Via git Repository

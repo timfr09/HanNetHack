@@ -161,7 +161,7 @@ make_familiar(struct obj *otmp, coordxy x, coordxy y, boolean quietly)
                 /* monster has been genocided or target spot is occupied */
                 if (!quietly)
                     pline_The(
-                           "figurine writhes and then shatters into pieces!");
+                        _("figurine writhes and then shatters into pieces!"));
                 break;
             } else if (mtmp->isminion) {
                 /* Fixup for figurine of an Angel:  makemon() is willing to

@@ -1231,7 +1231,7 @@ level_tele(void)
                            for something like this, but we don't want
                            fumbling or already full pack to interfere */
                         amu = addinv(amu);
-                        prinv("Endgame prerequisite:", amu, 0L);
+                        prinv(_("Endgame prerequisite:"), amu, 0L);
                     }
                 }
                 force_dest = TRUE;
@@ -1299,7 +1299,7 @@ level_tele(void)
         int llimit = dunlevs_in_dungeon(&u.uz);
 
         if (newlev >= 0 || newlev <= -llimit) {
-            You_cant(get_there_from, "here");
+            You_cant(get_there_from, _("here"));
             return;
         }
         newlevel.dnum = u.uz.dnum;

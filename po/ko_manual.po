@@ -3030,7 +3030,7 @@ msgstr "'%s'{을/를} 눌러 커서를 자신에게 이동하세요."
 
 #, c-format
 msgid "Use '%s', '%s', '%s', '%s' to move the cursor to %s."
-msgstr "'%s', '%s', '%s', '%s'{을/를} 눌러 커서를 %s(으)로 이동하세요."
+msgstr "'%s', '%s', '%s', '%s'{을/를} 눌러 커서를 %s{으로/로} 이동하세요."
 
 # 더 많은 conduct 관련
 # [조합 메시지] insight.c - 소원 사용 횟수
@@ -3325,7 +3325,7 @@ msgstr "%1$s{이/가} %3$s{을/를} 들고 달아나려 한다.%2$.0s"
 
 #, c-format
 msgid "Do you want to change into %s?"
-msgstr "%s(으)로 변신하겠습니까?"
+msgstr "%s{으로/로} 변신하겠습니까?"
 
 # 위자드 모드
 msgid "Pick first monster to slay"
@@ -3351,7 +3351,7 @@ msgstr "무엇을 목록으로 볼까요?"
 
 #, c-format
 msgid "Monster%s migrating to %s:"
-msgstr "%2$s(으)로 이동 중인 몬스터:%1$.0s"
+msgstr "%2$s{으로/로} 이동 중인 몬스터:%1$.0s"
 
 msgid "current level"
 msgstr "현재 층"
@@ -3436,7 +3436,7 @@ msgstr "%s{이/가} 더 이상 %s 방패를 들 수 없다!"
 
 #, c-format
 msgid "%s helmet falls to the %s!"
-msgstr "%s 투구가 %s(으)로 떨어졌다!"
+msgstr "%s 투구가 %s{으로/로} 떨어졌다!"
 
 #, c-format
 msgid "%s boots fall away!"
@@ -3508,7 +3508,7 @@ msgstr "('%s' 또는 '%s'{을/를} 일반 이동 앞에 붙여 빠르게 이동)
 
 #, c-format
 msgid "Use '%s' to change fast-move mode to %s."
-msgstr "'%s'{을/를} 눌러 빠른 이동 모드를 %s(으)로 변경."
+msgstr "'%s'{을/를} 눌러 빠른 이동 모드를 %s{으로/로} 변경."
 
 #, c-format
 msgid "Use '%s' to change the mode of limiting possible targets."
@@ -3715,7 +3715,7 @@ msgstr "역사적 "
 
 #, c-format
 msgid "see the 'Contact' form on our website or email <%s>."
-msgstr "웹사이트의 '문의' 양식을 보거나 <%s>(으)로 이메일하세요."
+msgstr "웹사이트의 '문의' 양식을 보거나 <%s>{으로/로} 이메일하세요."
 
 msgid "Report now?"
 msgstr "지금 보고하겠습니까?"
@@ -6518,8 +6518,10 @@ msgstr "여기에 "
 
 # pickup.c:3587 - 컨테이너 기울이기 질문
 # 기존: 완전 오역 → 올바른 번역
+# 조합: "There is " + [아이템 이름] + " here, tip it?"
+# {이/가}는 아이템 이름의 마지막 글자에 따라 자동 선택됨
 msgid " here, tip it?"
-msgstr "이(가) 여기 있다. 기울일까?"
+msgstr "{이/가} 여기 있다. 기울일까?"
 
 # read.c:438 - 글씨가 있다
 # 기존: 잘못된 형식 지정자 → 올바른 번역
@@ -7221,14 +7223,19 @@ msgstr "물에 있지 않았다면"
 
 # insight.c:1910-1914 - "[god] is/was angry with you"
 # 조합: u_gname() + " is"/" was" + " [very/extremely] angry with you"
+# 조합: enl_msg(u_gname(), " is"/" was", " angry with you", "")
+# 형식: " %1$s%3$s%2$s%4$s." → " [신 이름]{이/가} 당신에게 분노하고 있다..."
+# {이/가}는 신 이름의 마지막 글자에 따라 자동 선택됨
 msgid " angry with you"
-msgstr "이(가) 당신에게 분노하고 있다"
+msgstr "{이/가} 당신에게 분노하고 있다"
 
+# 조합: 위와 동일한 enl_msg 패턴
 msgid " very angry with you"
-msgstr "이(가) 당신에게 매우 분노하고 있다"
+msgstr "{이/가} 당신에게 매우 분노하고 있다"
 
+# 조합: 위와 동일한 enl_msg 패턴
 msgid " extremely angry with you"
-msgstr "이(가) 당신에게 극도로 분노하고 있다"
+msgstr "{이/가} 당신에게 극도로 분노하고 있다"
 
 # ============================================================
 # [조합 메시지] conduct 관련 참고
@@ -7427,8 +7434,9 @@ msgstr "매우"
 # insight.c:1910 - " %sangry with you"
 # 조합: enl_msg(u_gname(), " is", " was", buf, "")
 #, c-format
+# 조합: 위 angry 계열과 동일 패턴, %s는 "extremely "/"very "/"" 중 하나
 msgid " %sangry with you"
-msgstr "이(가) 당신에게 %s분노하고 있다"
+msgstr "{이/가} 당신에게 %s분노하고 있다"
 
 # insight.c:1939 - 기도 안전 여부
 # 소스 변경: "%ssafely pray"를 "safely pray"/"not safely pray"로 분리
@@ -8295,7 +8303,7 @@ msgstr "%s에 대한 현재 하이라이트 없음"
 
 #, c-format
 msgid "change sort order from \"%s\" to \"%s\""
-msgstr "정렬 순서를 \"%s\"에서 \"%s\"(으)로 변경"
+msgstr "정렬 순서를 \"%s\"에서 \"%s\"{으로/로} 변경"
 
 #, c-format
 msgid "Select %s field hilite behavior:"
@@ -13541,4 +13549,24 @@ msgstr "%s{이/가} 건강해 보인다."
 msgid "You ready:"
 msgstr "준비했다:"
 
+# ============================================================
+# dog.c - 조각상 관련 메시지
+# ============================================================
+
+# dog.c:164 - 학살된 몬스터 조각상이 부서질 때
+msgid "figurine writhes and then shatters into pieces!"
+msgstr "조각상이 몸부림치더니 산산조각으로 부서졌다!"
+
+# ============================================================
+# teleport.c - 순간이동 관련 메시지
+# ============================================================
+
+# teleport.c:1234 - 위저드 모드에서 종말 전제조건 아이템 획득 시
+msgid "Endgame prerequisite:"
+msgstr "종말 전제조건:"
+
+# teleport.c:1157 - "여기/어디서든 거기에 갈 수 없다" 패턴
+#, c-format
+msgid "get there from %s."
+msgstr "%s에서 거기에 갈 수 없다."
 

@@ -402,7 +402,7 @@ describe_decor(void)
         } else {
             if (dfeature != fbuf)
                 Strcpy(fbuf, dfeature);
-            Sprintf(outbuf, "%s.", upstart(fbuf));
+            Sprintf(outbuf, _("%s."), upstart(fbuf));
         }
         if (ltyp == ICE && flags.mention_decor)
             Norep("%s", outbuf);

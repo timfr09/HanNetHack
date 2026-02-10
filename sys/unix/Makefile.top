@@ -92,6 +92,8 @@ LUA_VERSION = 5.4.8
 #
 
 DATHELP = help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp
+# Korean message catalog
+LOCALE_KO_MO = dat/locale/ko/LC_MESSAGES/nethack.mo
 # Korean localized files (in locale/ko/ directory)
 LOCALE_KO = locale/ko/help locale/ko/hh locale/ko/cmdhelp locale/ko/keyhelp \
 	locale/ko/history locale/ko/opthelp locale/ko/optmenu locale/ko/usagehlp locale/ko/wizhelp \
@@ -137,12 +139,16 @@ LUA2NHTOP = ../../..
 LUABASELIB = liblua-$(LUA_VERSION).a
 TOPLUALIB = lib/lua/$(LUABASELIB)
 
-ALLDEP = $(PRECHECK) $(GAME) recover Guidebook $(VARDAT) spec_levs check-dlb
+ALLDEP = $(PRECHECK) $(GAME) recover Guidebook $(VARDAT) spec_levs check-dlb $(LOCALE_KO_MO)
 
 # first target is also the default target for 'make' without any arguments
 all:    $(ALLDEP)
 	true; $(MOREALL)
 	@echo "Done."
+
+# Korean message catalog (merge ko_manual.po + ko.po, then compile)
+$(LOCALE_KO_MO): po/ko.po po/ko_manual.po
+	( cd po && $(MAKE) compile )
 
 $(GAME): lua_support
 	( cd src ; $(MAKE) LUA_VERSION=$(LUA_VERSION) $(GAME) )

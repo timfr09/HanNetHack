@@ -572,7 +572,7 @@ itemactions(struct obj *otmp)
          *  volley count and that could randomly yield 1 here and 2..N
          *  while throwing or vice versa.
          */
-        Sprintf(buf, _("%s %s%s"), shoot ? _("Shoot") : _("Throw"),
+        Sprintf(buf, C_("menu_action", "%s %s%s"), shoot ? _("Shoot") : _("Throw"),
                 (otmp->quan == 1L) ? _("this item")
                 : (otmp->otyp == GOLD_PIECE) ? _("them")
                   : _("one of these"),

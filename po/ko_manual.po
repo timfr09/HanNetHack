@@ -13570,3 +13570,30 @@ msgstr "종말 전제조건:"
 msgid "get there from %s."
 msgstr "%s에서 거기에 갈 수 없다."
 
+# ============================================================
+# uhitm.c / iactions.c - "%s %s%s" 어순 재배열 (SVO→SOV)
+# ============================================================
+
+# uhitm.c:1627, 5700 - 근접 전투/유령 잡기
+# "You hit the fox." → "여우를 때렸다."
+# %1$s=verb, %2$s=mon_nam, %3$s=exclam
+#, c-format
+msgctxt "you_hit"
+msgid "%s %s%s"
+msgstr "%2$s{을/를} %1$s%3$s"
+
+# uhitm.c:5002 - 사인(death reason) 버퍼
+# "swallowing a cockatrice whole" → "코카트리스를 통째로 삼키다가"
+# %1$s=gerund, %2$s=mnam, %3$s=modifier
+#, c-format
+msgctxt "you_hit_death"
+msgid "%s %s%s"
+msgstr "%2$s{을/를}%3$s %1$s"
+
+# iactions.c:575 - 메뉴: Shoot/Throw + item + suffix
+# "Throw this item" → "이것을 던지기"
+#, c-format
+msgctxt "menu_action"
+msgid "%s %s%s"
+msgstr "%2$s{을/를} %1$s%3$s"
+

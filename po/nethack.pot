@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-10 22:07+0900\n"
+"POT-Creation-Date: 2026-02-11 00:07+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-10 22:07\n"
+"POT-Creation-Date: 2026-02-11 00:07\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -279,10 +279,10 @@ msgid " mostly"
 msgstr ""
 
 #: ../src/apply.c:287 ../src/cmd.c:4376 ../src/cmd.c:5227 ../src/do_wear.c:630
-#: ../src/iactions.c:453 ../src/mhitm.c:667 ../src/obj_descr_i18n.c:519
-#: ../src/objnam.c:923 ../src/objnam.c:1588 ../src/potion.c:1660
-#: ../src/sounds.c:1224 ../src/trap.c:137 ../src/trap.c:395 ../src/uhitm.c:3131
-#: ../src/uhitm.c:4089 ../src/zap.c:505
+#: ../src/mhitm.c:667 ../src/obj_descr_i18n.c:519 ../src/objnam.c:923
+#: ../src/objnam.c:1588 ../src/potion.c:1660 ../src/sounds.c:1224
+#: ../src/trap.c:137 ../src/trap.c:395 ../src/uhitm.c:3131 ../src/uhitm.c:4089
+#: ../src/zap.c:505
 #, c-format
 msgid "%s %s"
 msgstr ""
@@ -1125,10 +1125,10 @@ msgid "use"
 msgstr ""
 
 #: ../src/apply.c:1449 ../src/apply.c:1450 ../src/apply.c:1686
-#: ../src/do_name.c:749 ../src/iactions.c:360 ../src/iactions.c:577
-#: ../src/pickup.c:1856 ../src/role.c:694 ../src/shk.c:3380 ../src/shk.c:3790
-#: ../src/shk.c:4088 ../src/steal.c:792 ../src/timeout.c:1243
-#: ../src/trap.c:5848 ../src/wield.c:684 ../src/wield.c:704
+#: ../src/do_name.c:749 ../src/iactions.c:360 ../src/pickup.c:1856
+#: ../src/role.c:694 ../src/shk.c:3380 ../src/shk.c:3790 ../src/shk.c:4088
+#: ../src/steal.c:792 ../src/timeout.c:1243 ../src/trap.c:5848
+#: ../src/wield.c:684 ../src/wield.c:704
 msgid "them"
 msgstr ""
 
@@ -15037,6 +15037,12 @@ msgstr ""
 msgid "this item"
 msgstr ""
 
+#: ../src/iactions.c:453
+#, c-format
+msgctxt "menu_action"
+msgid "%s %s"
+msgstr ""
+
 #: ../src/iactions.c:453 ../src/iactions.c:575
 msgid "Shoot"
 msgstr ""
@@ -15157,6 +15163,11 @@ msgstr ""
 #, c-format
 msgctxt "menu_action"
 msgid "%s %s%s"
+msgstr ""
+
+#: ../src/iactions.c:577
+msgctxt "menu_action"
+msgid "them"
 msgstr ""
 
 #: ../src/iactions.c:585
@@ -31085,7 +31096,7 @@ msgstr ""
 msgid "pseudopod root"
 msgstr ""
 
-#: ../src/polyself.c:1966 ../src/uhitm.c:5694
+#: ../src/polyself.c:1966
 msgid "grasp"
 msgstr ""
 
@@ -43971,7 +43982,7 @@ msgstr ""
 msgid "begin %s monsters with your %s %s."
 msgstr ""
 
-#: ../src/uhitm.c:543 ../src/uhitm.c:1629
+#: ../src/uhitm.c:543
 msgid "bash"
 msgstr ""
 
@@ -44115,6 +44126,11 @@ msgstr ""
 #, c-format
 msgctxt "you_hit"
 msgid "%s %s%s"
+msgstr ""
+
+#: ../src/uhitm.c:1629
+msgctxt "you_hit"
+msgid "bash"
 msgstr ""
 
 #: ../src/uhitm.c:1631
@@ -45052,6 +45068,11 @@ msgstr ""
 #: ../src/uhitm.c:5632
 #, c-format
 msgid "tentacles suck %s."
+msgstr ""
+
+#: ../src/uhitm.c:5694
+msgctxt "you_hit"
+msgid "grasp"
 msgstr ""
 
 #: ../src/uhitm.c:5694
@@ -47980,7 +48001,7 @@ msgstr ""
 msgid "Elbereth"
 msgstr ""
 
-#. demon_cuss array, text field (partial, has concatenation), angel_cuss array, text field
+#. text field (partial, has concatenation), angel_cuss array, demon_cuss array, text field
 #: dat/quest.lua:77 dat/quest.lua:78 dat/quest.lua:79 dat/quest.lua:80
 #: dat/quest.lua:81 dat/quest.lua:82 dat/quest.lua:83 dat/quest.lua:84
 #: dat/quest.lua:85 dat/quest.lua:86 dat/quest.lua:87 dat/quest.lua:88

@@ -13591,9 +13591,87 @@ msgid "%s %s%s"
 msgstr "%2$s{을/를}%3$s %1$s"
 
 # iactions.c:575 - 메뉴: Shoot/Throw + item + suffix
-# "Throw this item" → "이것을 던지기"
+# "Throw this item (same as 'f')" → "이것을 던지기 ('f'와 동일)"
 #, c-format
 msgctxt "menu_action"
 msgid "%s %s%s"
 msgstr "%2$s{을/를} %1$s%3$s"
+
+# iactions.c:453 - 메뉴: f키 (fire) Shoot/Throw + item
+# "Shoot one of these" → "이것 중 하나를 쏘기"
+#, c-format
+msgctxt "menu_action"
+msgid "%s %s"
+msgstr "%2$s{을/를} %1$s"
+
+# ------------------------------------------------------------
+# 전투 동사 — you_hit 컨텍스트 (과거형 필수)
+# "bash"는 uhitm.c:543 ing_suffix()에서도 사전형으로 쓰이므로
+# 전역 "강타하다" 유지, you_hit 컨텍스트만 과거형
+# "grasp"는 polyself.c body part 명사("움켜쥠")와 충돌하므로 C_() 분리
+# ------------------------------------------------------------
+
+# uhitm.c:1629 - 방패/철구로 강타
+msgctxt "you_hit"
+msgid "bash"
+msgstr "강타했다"
+
+# uhitm.c:5694 - 그림자를 움켜쥠 (byhand)
+msgctxt "you_hit"
+msgid "grasp"
+msgstr "움켜쥐었다"
+
+# uhitm.c:1631 - 채찍/젖은 수건으로 후려침 (단일 컨텍스트)
+msgid "lash"
+msgstr "후려쳤다"
+
+# uhitm.c:1632 - 야만인 전용 공격 동사 (단일 컨텍스트)
+msgid "smite"
+msgstr "내리쳤다"
+
+# uhitm.c:5694 - 그림자를 껴안음 (!byhand) (단일 컨텍스트)
+msgid "hug"
+msgstr "껴안았다"
+
+# ------------------------------------------------------------
+# 사인(death reason) 동사 — 플레이어가 몬스터를 삼킬 때
+# 기존 ko.po 번역은 몬스터→플레이어 맥락의 오역이었음
+# "swallowing"=", 당신을 삼키는 중", " whole"="구멍"(hole과 혼동)
+# ------------------------------------------------------------
+
+# uhitm.c:5003 - 소화(digest) 석화 사인
+msgid "swallowing"
+msgstr "삼키다가"
+
+# uhitm.c:5004 - 감싸기(enfold) 석화 사인
+msgid "enclosing"
+msgstr "감싸다가"
+
+# uhitm.c:5005 - 삼키기(engulf) 석화 사인
+msgid "engulfing"
+msgstr "집어삼키다가"
+
+# uhitm.c:5006 - "swallowing X whole" → "X를 통째로 삼키다가"
+msgid " whole"
+msgstr " 통째로"
+
+# ------------------------------------------------------------
+# 메뉴 동사/대상 — iactions.c 메뉴 레이블
+# "Throw"="던질"(관형형)은 메뉴 명사형 "던지기"로 수정
+# "them"="그들을"(인칭 + 조사 포함)은 {을/를}와 중복되므로 C_() 분리
+# "one of these"="하나의 "(소유격)은 의미 오류, "이것 중 하나"로 수정
+# ------------------------------------------------------------
+
+# iactions.c:575 - "Throw" 메뉴 레이블 (전역: 메뉴 전용이므로 OK)
+msgid "Throw"
+msgstr "던지기"
+
+# iactions.c:577 - 금화 복수 대상 (전역 "그들을"은 인칭대명사 세트 유지)
+msgctxt "menu_action"
+msgid "them"
+msgstr "그것들"
+
+# iactions.c:578 - 복수 아이템 중 하나 (메뉴 전용이므로 전역 수정 OK)
+msgid "one of these"
+msgstr "이것 중 하나"
 

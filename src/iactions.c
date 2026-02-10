@@ -450,7 +450,7 @@ itemactions(struct obj *otmp)
         boolean shoot = ammo_and_launcher(otmp, uwep);
 
         /* FIXME: see the multi-shot FIXME about "one of" for 't: throw' */
-        Sprintf(buf, _("%s %s"), shoot ? _("Shoot") : _("Throw"),
+        Sprintf(buf, C_("menu_action", "%s %s"), shoot ? _("Shoot") : _("Throw"),
                 (otmp->quan > 1L) ? _("one of these") : _("this"));
         if (shoot) {
             assert(uwep != NULL);
@@ -574,7 +574,7 @@ itemactions(struct obj *otmp)
          */
         Sprintf(buf, C_("menu_action", "%s %s%s"), shoot ? _("Shoot") : _("Throw"),
                 (otmp->quan == 1L) ? _("this item")
-                : (otmp->otyp == GOLD_PIECE) ? _("them")
+                : (otmp->otyp == GOLD_PIECE) ? C_("menu_action", "them")
                   : _("one of these"),
                 /* if otmp is quivered, we've already listed
                    'f - shoot|throw this item' as a choice;

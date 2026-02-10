@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-10 22:07+0900\n"
+"POT-Creation-Date: 2026-02-11 00:07+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -305,10 +305,10 @@ msgstr " 대부분"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/apply.c:287 ../src/cmd.c:4376 ../src/cmd.c:5227 ../src/do_wear.c:630
-#: ../src/iactions.c:453 ../src/mhitm.c:667 ../src/obj_descr_i18n.c:519
-#: ../src/objnam.c:923 ../src/objnam.c:1588 ../src/potion.c:1660
-#: ../src/sounds.c:1224 ../src/trap.c:137 ../src/trap.c:395 ../src/uhitm.c:3131
-#: ../src/uhitm.c:4089 ../src/zap.c:505
+#: ../src/mhitm.c:667 ../src/obj_descr_i18n.c:519 ../src/objnam.c:923
+#: ../src/objnam.c:1588 ../src/potion.c:1660 ../src/sounds.c:1224
+#: ../src/trap.c:137 ../src/trap.c:395 ../src/uhitm.c:3131 ../src/uhitm.c:4089
+#: ../src/zap.c:505
 #, c-format
 msgid "%s %s"
 msgstr "%s %s"
@@ -1174,10 +1174,10 @@ msgid "use"
 msgstr "사용하다"
 
 #: ../src/apply.c:1449 ../src/apply.c:1450 ../src/apply.c:1686
-#: ../src/do_name.c:749 ../src/iactions.c:360 ../src/iactions.c:577
-#: ../src/pickup.c:1856 ../src/role.c:694 ../src/shk.c:3380 ../src/shk.c:3790
-#: ../src/shk.c:4088 ../src/steal.c:792 ../src/timeout.c:1243
-#: ../src/trap.c:5848 ../src/wield.c:684 ../src/wield.c:704
+#: ../src/do_name.c:749 ../src/iactions.c:360 ../src/pickup.c:1856
+#: ../src/role.c:694 ../src/shk.c:3380 ../src/shk.c:3790 ../src/shk.c:4088
+#: ../src/steal.c:792 ../src/timeout.c:1243 ../src/trap.c:5848
+#: ../src/wield.c:684 ../src/wield.c:704
 msgid "them"
 msgstr "그것들"
 
@@ -15833,6 +15833,15 @@ msgstr "이것들 중 하나"
 msgid "this item"
 msgstr "이것"
 
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/iactions.c:453
+#, fuzzy, c-format
+msgctxt "menu_action"
+msgid "%s %s"
+msgstr "%s %s"
+
 #: ../src/iactions.c:453 ../src/iactions.c:575
 msgid "Shoot"
 msgstr "쏘기"
@@ -15962,6 +15971,12 @@ msgstr "분수에서 마겠습니까?"
 msgctxt "menu_action"
 msgid "%s %s%s"
 msgstr "%s %s%s"
+
+#: ../src/iactions.c:577
+#, fuzzy
+msgctxt "menu_action"
+msgid "them"
+msgstr "그것들"
 
 #: ../src/iactions.c:585
 msgid " (same as 'f')"
@@ -33314,7 +33329,7 @@ msgstr "위족 끝"
 msgid "pseudopod root"
 msgstr "위족 뿌리"
 
-#: ../src/polyself.c:1966 ../src/uhitm.c:5694
+#: ../src/polyself.c:1966
 msgid "grasp"
 msgstr "움켜쥠"
 
@@ -47122,7 +47137,7 @@ msgstr "%s{으로/로} 몬스터를 때리기 시작했다."
 msgid "begin %s monsters with your %s %s."
 msgstr "%3$s %2$s{으로/로} 몬스터를 %1$s 시작했다."
 
-#: ../src/uhitm.c:543 ../src/uhitm.c:1629
+#: ../src/uhitm.c:543
 msgid "bash"
 msgstr "강타하다"
 
@@ -47274,6 +47289,12 @@ msgstr "그것을 때렸다."
 msgctxt "you_hit"
 msgid "%s %s%s"
 msgstr "%s %s%s"
+
+#: ../src/uhitm.c:1629
+#, fuzzy
+msgctxt "you_hit"
+msgid "bash"
+msgstr "강타하다"
 
 # 조합: 채찍이나 젖은 수건으로 때릴 때
 #: ../src/uhitm.c:1631
@@ -48271,6 +48292,12 @@ msgstr "%s{이/가} %s{을/를} 해를 끼치지 않고 %s 통과했다."
 #, c-format
 msgid "tentacles suck %s."
 msgstr "촉수가 %s{을/를} 빨아들인다."
+
+#: ../src/uhitm.c:5694
+#, fuzzy
+msgctxt "you_hit"
+msgid "grasp"
+msgstr "움켜쥠"
 
 # 조합: 그림자에 대한 포옹 공격 동사
 # 예: "You hug the shade"
@@ -51426,7 +51453,7 @@ msgstr "어두운"
 msgid "Elbereth"
 msgstr ""
 
-#. demon_cuss array, text field (partial, has concatenation), angel_cuss array, text field
+#. text field (partial, has concatenation), angel_cuss array, demon_cuss array, text field
 #: dat/quest.lua:77 dat/quest.lua:78 dat/quest.lua:79 dat/quest.lua:80
 #: dat/quest.lua:81 dat/quest.lua:82 dat/quest.lua:83 dat/quest.lua:84
 #: dat/quest.lua:85 dat/quest.lua:86 dat/quest.lua:87 dat/quest.lua:88

@@ -1626,7 +1626,7 @@ hmon_hitmon_msg_hit(
         else /* hand_to_hand */
             You(C_("you_hit", "%s %s%s"),
                 (obj && (is_shield(obj)
-                         || obj->otyp == HEAVY_IRON_BALL)) ? _("bash")
+                         || obj->otyp == HEAVY_IRON_BALL)) ? C_("you_hit", "bash")
                 : (obj && (objects[obj->otyp].oc_skill == P_WHIP
                            || is_wet_towel(obj))) ? _("lash")
                   : Role_if(PM_BARBARIAN) ? _("smite")
@@ -5691,7 +5691,7 @@ hmonas(struct monst *mon)
                     unconcerned = FALSE;
             }
             if (mon->data == &mons[PM_SHADE]) {
-                const char *verb = byhand ? _("grasp") : _("hug");
+                const char *verb = byhand ? C_("you_hit", "grasp") : _("hug");
 
                 /* hugging a shade; successful if blessed outermost armor
                    for normal hug, or blessed gloves or silver ring(s) for

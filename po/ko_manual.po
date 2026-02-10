@@ -8764,7 +8764,7 @@ msgstr " 그리고 당신은"
 # face(%1$s), has more/now has(%2$s)
 #, c-format
 msgid "Yecch!  Your %s %s gunk on it!"
-msgstr "으웩! %s에 끈적거리는 것{이/가} %s!"
+msgstr "으웩! %s에 끈적거리는 것이 %s!"
 
 msgid "has more"
 msgstr "더 많이 묻었다"
@@ -13052,13 +13052,13 @@ msgstr "줄이 풀렸다.%.0s%.0s"
 # 한국어 조합: "그 불행한 존재가 대부분 죽었다고 판단한다."
 #, c-format
 msgid "determine that %s unfortunate being%s %s%s dead."
-msgstr "그 불행한 존재{이/가}%4$s 죽었다고 판단한다.%1$.0s%2$.0s%3$.0s"
+msgstr "그 불행한 존재가%4$s 죽었다고 판단한다.%1$.0s%2$.0s%3$.0s"
 
 # 양초 불꽃
 # %s=소유격이름, %s=plur(), %s=burn/burns, %s="."/brightly"
 #, c-format
 msgid "%s flame%s %s%s"
-msgstr "%1$s 불꽃{이/가} %3$s%4$s%2$.0s"
+msgstr "%1$s 불꽃이 %3$s%4$s%2$.0s"
 
 # 시금석 사용 프롬프트
 # %s=plur()
@@ -13122,7 +13122,7 @@ msgstr "미지불 아이템:%.0s"
 # %s=" any of"/"", %s=plur(), %s="you've picked"/"on your bill"
 #, c-format
 msgid "don't have enough gold to buy%s the item%s %s."
-msgstr "%3$s%1$s 물건{을/를} 살 금화가 충분하지 않다.%2$.0s"
+msgstr "%3$s%1$s 물건을 살 금화가 충분하지 않다.%2$.0s"
 
 # 금화 부족 - 보조 번역 수정
 msgid " any of"
@@ -13143,14 +13143,14 @@ msgstr "이것과 함께 %1$d개%2$s의 양초가 필요하다.%3$.0s"
 # %s=plur(), %s=explode/explodes
 #, c-format
 msgid "potion%s %s!"
-msgstr "물약{이/가} %2$s!%1$.0s"
+msgstr "물약이 %2$s!%1$.0s"
 
 # 인벤토리 아이템 파괴
 # %s=An/Some/Another/Other, %s=plur(), %s=has/have
 # %2$s와 %3$s 억제 (한국어 문법에 불필요)
 #, c-format
 msgid "%s item%s in your inventory %s been destroyed."
-msgstr "인벤토리의 %1$s 항목{이/가} 파괴되었다.%2$.0s%3$.0s"
+msgstr "인벤토리의 %1$s 항목이 파괴되었다.%2$.0s%3$.0s"
 
 # ===== zap.c =====
 
@@ -13170,7 +13170,7 @@ msgstr " 더"
 # %d=개수, %s=plur(개수)
 #, c-format
 msgid "Eliminated %d monster%s."
-msgstr "%1$d마리의 괴물{을/를} 제거했다.%2$.0s"
+msgstr "%1$d마리의 괴물을 제거했다.%2$.0s"
 
 # ===== dig.c (DEBUG) =====
 
@@ -13178,7 +13178,7 @@ msgstr "%1$d마리의 괴물{을/를} 제거했다.%2$.0s"
 # %d=개수, %s=plur()
 #, c-format
 msgid "%d object%s buried."
-msgstr "%1$d개의 물체{이/가} 묻혔다.%2$.0s"
+msgstr "%1$d개의 물체가 묻혔다.%2$.0s"
 
 # ===== mon.c =====
 
@@ -13214,13 +13214,13 @@ msgstr "%1$s 아래에 숨는 것은 치명적인 실수다...%2$.0s"
 # %s=plur(), %s=isn't/aren't
 #, c-format
 msgid "egg%s %s alive any more..."
-msgstr "알{은/는} 더 이상 살아있지 않다...%.0s%.0s"
+msgstr "알은 더 이상 살아있지 않다...%.0s%.0s"
 
 # 무기 부서짐
 # %s=몬스터소유격, %s=plur(), %s=shatter/shatters
 #, c-format
 msgid "%s weapon%s %s"
-msgstr "%1$s 무기{이/가} %3$s%2$.0s"
+msgstr "%1$s 무기가 %3$s%2$.0s"
 
 # ===== weapon.c =====
 
@@ -13228,7 +13228,7 @@ msgstr "%1$s 무기{이/가} %3$s%2$.0s"
 # %s=몬스터소유격, %s=plur(), %s=용접상태buf
 #, c-format
 msgid "Since %s weapon%s %s,"
-msgstr "%1$s 무기{이/가} %3$s,%2$.0s"
+msgstr "%1$s 무기가 %3$s,%2$.0s"
 
 # ===== pickup.c =====
 
@@ -13239,13 +13239,13 @@ msgstr "%1$s 무기{이/가} %3$s,%2$.0s"
 # 한국어 조합: "줍자 두루마리가 먼지로 변했다."
 #, c-format
 msgid "scroll%s %s to dust as you %s %s up."
-msgstr "줍자 두루마리{이/가} 먼지로 변했다.%1$.0s%2$.0s%3$.0s%4$.0s"
+msgstr "줍자 두루마리가 먼지로 변했다.%1$.0s%2$.0s%3$.0s%4$.0s"
 
 # 저주받은 돌 (loadstone)
 # %s=plur()
 #, c-format
 msgid "stone%s won't leave your person."
-msgstr "돌{이/가} 몸에서 떨어지지 않는다.%.0s"
+msgstr "돌이 몸에서 떨어지지 않는다.%.0s"
 
 # --- 촛불 관련 영어 문법(소유격/동사 일치) 한국어 노출 수정 ---
 # 영어 소유격("s'"/"'s"), 동사 일치("s are"/" is"), 복수 접미사("s"/"")가
@@ -13258,7 +13258,7 @@ msgstr "돌{이/가} 몸에서 떨어지지 않는다.%.0s"
 # %3$s(소유격)와 %4$s(동사 일치) 억제
 #, c-format
 msgid "%s%scandle%s flame%s extinguished."
-msgstr "%1$s%2$s양초 불꽃{이/가} 꺼졌다.%3$.0s%4$.0s"
+msgstr "%1$s%2$s양초 불꽃이 꺼졌다.%3$.0s%4$.0s"
 
 # ===== timeout.c =====
 
@@ -13267,34 +13267,34 @@ msgstr "%1$s%2$s양초 불꽃{이/가} 꺼졌다.%3$.0s%4$.0s"
 # %3$s(동사 일치) 억제
 #, c-format
 msgid "%s%scandle%s getting short."
-msgstr "%1$s%2$s양초{이/가} 짧아지고 있다.%3$.0s"
+msgstr "%1$s%2$s양초가 짧아지고 있다.%3$.0s"
 
 # 양초 짧아짐 (바닥)
 # %s="a candelabrum's "/"some "/"a ", %s="s"/"" (raw)
 # %2$s(복수 접미사) 억제
 #, c-format
 msgid "%scandle%s getting short."
-msgstr "%1$s양초{이/가} 짧아지고 있다.%2$.0s"
+msgstr "%1$s양초가 짧아지고 있다.%2$.0s"
 
 # 양초 불꽃 깜빡임 (인벤토리/몬스터)
 # %s=whose, %s="candelabrum's "/"", %s="s'"/"'s", %s="s"/"", %s=""/"s"
 # %3$s(소유격), %4$s(복수), %5$s(동사 일치) 억제
 #, c-format
 msgid "%s%scandle%s flame%s flicker%s low!"
-msgstr "%1$s%2$s양초 불꽃{이/가} 약하게 깜빡인다!%3$.0s%4$.0s%5$.0s"
+msgstr "%1$s%2$s양초 불꽃이 약하게 깜빡인다!%3$.0s%4$.0s%5$.0s"
 
 # 양초 불꽃 깜빡임 (바닥)
 # %s="a candelabrum's "/"some "/"a ", %s="s'"/"'s", %s="s"/""
 # %2$s(소유격)와 %3$s(복수) 억제
 #, c-format
 msgid "%scandle%s flame%s flicker low!"
-msgstr "%1$s양초 불꽃{이/가} 약하게 깜빡인다!%2$.0s%3$.0s"
+msgstr "%1$s양초 불꽃이 약하게 깜빡인다!%2$.0s%3$.0s"
 
 # 촛대 불꽃 소멸 (바닥)
 # %s="s" (many) / "" (single) - raw 복수 접미사
 #, c-format
 msgid "a candelabrum's flame%s die."
-msgstr "촛대의 불꽃{이/가} 꺼지는 것을.%.0s"
+msgstr "촛대의 불꽃이 꺼지는 것을.%.0s"
 
 # 양초 소모됨 (인벤토리/몬스터)
 # %s=Yname2(obj), %s="are"/"is"
@@ -13674,4 +13674,73 @@ msgstr "그것들"
 # iactions.c:578 - 복수 아이템 중 하나 (메뉴 전용이므로 전역 수정 OK)
 msgid "one of these"
 msgstr "이것 중 하나"
+
+# ============================================================
+# ko.po 고정문자열+조사 오버라이드
+# 고정 한국어 텍스트 뒤의 {이/가} 등은 이미 받침을 알 수 있으므로
+# ko_manual.po에서 직접 해소한 버전으로 오버라이드
+# ============================================================
+
+# dokick.c:63,212 - 발길질(ㄹ받침→이)
+msgid "kick passes harmlessly through"
+msgstr "발길질이 해를 끼치지 않고 통과한다"
+
+# trap.c:1617+ - 물줄기(기=no받침→가)
+msgid "A gush of water hits"
+msgstr "물줄기가"
+
+# ============================================================
+# trap.c - 침식(erosion) 메시지 어순 수정
+# 영어 SVO: "[Your] [sword] [is] not affected by [heat]."
+# 한국어 SOV: "당신의 검이 열에 영향받지 않았다."
+# ============================================================
+
+# trap.c:273 - 침식 방어
+# %1$s=소유격(Your/몬스터's), %2$s=물건, %3$s=are/is, %4$s=erosion_cause
+#, c-format
+msgid "%s %s %s not affected by %s."
+msgstr "%1$s %2$s{이/가} %4$s에 영향받지 않았다.%3$.0s"
+
+# trap.c:280 - 침식 방어 (Somehow)
+# 같은 인자 구조 + "Somehow" 접두사
+#, c-format
+msgid "Somehow, %s %s %s not affected by the %s."
+msgstr "어찌된 일인지, %1$s %2$s{이/가} %4$s에 영향받지 않았다.%3$.0s"
+
+# trap.c:368 - 침식 상태 (pline 4인자)
+# %1$s=소유격/관사, %2$s=물건, %3$s=look/looks, %4$s=erosion_state(타버린/녹슨/썩은/부식된/금 간)
+# erosion_state가 관형형이므로 "것 같다" 연결
+#, c-format
+msgid "%s %s %s completely %s."
+msgstr "%1$s %2$s{이/가} 완전히 %4$s 것 같다.%3$.0s"
+
+# trap.c:365 - 침식 상태 (Your 3인자)
+# Your() 한국어에서 접두사 없음. %1$s=물건, %2$s=look/feel, %3$s=erosion_state
+#, c-format
+msgid "%s %s completely %s."
+msgstr "%1$s{이/가} 완전히 %3$s 것 같다.%2$.0s"
+
+# artifact.c:2012 - 악마 유황 구름 속 소멸
+# %1$s=관사(The/Most of the/Some of the), %2$s=demon(s) (미번역), %3$s=disappear
+# %1$s 억제 (한국어에서 관사 불필요), %3$s 억제 (vtense 한국어 미동작)
+# NOTE: %2$s는 영어 "demon"/"demons" 원문 — 몬스터명 번역 시스템 별도
+#, c-format
+msgid "%s %s %s in a cloud of brimstone!"
+msgstr "%1$.0s%2$s{이/가} 유황 구름 속에서 사라졌다!%3$.0s"
+
+# dothrow.c:2140 - 퀘스트 아이템 반환
+# %1$s=몬스터이름, %2$s=hands/tosses(동사), %3$s=물건(the xname)
+# %2$s 유지 (hands=건네주다/tosses=던져주다 구분 필요)
+# TODO: "hands"는 명사("손")와 동음이의어 → C_() 검토 필요
+#, c-format
+msgid "%s %s %s back to you."
+msgstr "%1$s{이/가} %3$s{을/를} 당신에게 %2$s."
+
+# dothrow.c:2141 - 동사 번역 (건네주기/던져주기)
+# "hands" verb는 body_part "hand"와 별도 (단수 vs 3인칭 단수 현재)
+msgid "hands"
+msgstr "건네주었다"
+
+msgid "tosses"
+msgstr "던져주었다"
 

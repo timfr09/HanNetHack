@@ -1624,9 +1624,9 @@ hmon_hitmon_msg_hit(
         else if (!flags.verbose)
             You(_("hit it."));
         else /* hand_to_hand */
-            You(_("%s %s%s"),
+            You(C_("you_hit", "%s %s%s"),
                 (obj && (is_shield(obj)
-                         || obj->otyp == HEAVY_IRON_BALL)) ? _("bash")
+                         || obj->otyp == HEAVY_IRON_BALL)) ? C_("you_hit", "bash")
                 : (obj && (objects[obj->otyp].oc_skill == P_WHIP
                            || is_wet_towel(obj))) ? _("lash")
                   : Role_if(PM_BARBARIAN) ? _("smite")
@@ -4999,7 +4999,7 @@ gulpum(struct monst *mdef, struct attack *mattk)
             if (!type_is_pname(pd))
                 mnam = an(mnam);
             You(_("%s %s."), u_digest ? _("englut") : _("engulf"), mon_nam(mdef));
-            Sprintf(kbuf, _("%s %s%s"),
+            Sprintf(kbuf, C_("you_hit_death", "%s %s%s"),
                     u_digest ? _("swallowing")
                     : u_enfold ? _("enclosing")
                       : _("engulfing"),
@@ -5691,13 +5691,13 @@ hmonas(struct monst *mon)
                     unconcerned = FALSE;
             }
             if (mon->data == &mons[PM_SHADE]) {
-                const char *verb = byhand ? _("grasp") : _("hug");
+                const char *verb = byhand ? C_("you_hit", "grasp") : _("hug");
 
                 /* hugging a shade; successful if blessed outermost armor
                    for normal hug, or blessed gloves or silver ring(s) for
                    choking hug; deals damage but never grabs hold */
                 if (specialdmg) {
-                    You(_("%s %s%s"), verb, mon_nam(mon), exclam(specialdmg));
+                    You(C_("you_hit", "%s %s%s"), verb, mon_nam(mon), exclam(specialdmg));
                     if (silverhit && flags.verbose)
                         silver_sears(&gy.youmonst, mon, silverhit);
                     sum[i] = damageum(mon, mattk, specialdmg);

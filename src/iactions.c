@@ -58,7 +58,7 @@ item_naming_classification(
 
     onamebuf[0] = ocallbuf[0] = '\0';
     if (name_ok(obj) == GETOBJ_SUGGEST) {
-        Sprintf(onamebuf, _("%s %s %s"),
+        Sprintf(onamebuf, C_("action_item", "%s %s %s"),
                 (!has_oname(obj) || !*ONAME(obj)) ? _(Name) : _(Rename),
                 the_unique_obj(obj) ? _("the")
                 : !is_plural(obj) ? _("this specific")
@@ -359,7 +359,7 @@ itemactions(struct obj *otmp)
                     !otmp->lamplit ? C_("candle", "light") : _("extinguish"), /* [lowercase] */
                     multiple ? _("them") : _("it"));
         else
-            Sprintf(buf, _("%s %s %s"), light, s, simpleonames(otmp));
+            Sprintf(buf, C_("action_item", "%s %s %s"), light, s, simpleonames(otmp));
         ia_addmenu(win, IA_APPLY_OBJ, 'a', buf);
     } else if (otmp->otyp == OIL_LAMP || otmp->otyp == MAGIC_LAMP
                || otmp->otyp == BRASS_LANTERN) {
@@ -450,7 +450,7 @@ itemactions(struct obj *otmp)
         boolean shoot = ammo_and_launcher(otmp, uwep);
 
         /* FIXME: see the multi-shot FIXME about "one of" for 't: throw' */
-        Sprintf(buf, _("%s %s"), shoot ? _("Shoot") : _("Throw"),
+        Sprintf(buf, C_("menu_action", "%s %s"), shoot ? _("Shoot") : _("Throw"),
                 (otmp->quan > 1L) ? _("one of these") : _("this"));
         if (shoot) {
             assert(uwep != NULL);
@@ -572,9 +572,9 @@ itemactions(struct obj *otmp)
          *  volley count and that could randomly yield 1 here and 2..N
          *  while throwing or vice versa.
          */
-        Sprintf(buf, _("%s %s%s"), shoot ? _("Shoot") : _("Throw"),
+        Sprintf(buf, C_("menu_action", "%s %s%s"), shoot ? _("Shoot") : _("Throw"),
                 (otmp->quan == 1L) ? _("this item")
-                : (otmp->otyp == GOLD_PIECE) ? _("them")
+                : (otmp->otyp == GOLD_PIECE) ? C_("menu_action", "them")
                   : _("one of these"),
                 /* if otmp is quivered, we've already listed
                    'f - shoot|throw this item' as a choice;

@@ -327,7 +327,7 @@ erode_obj(
                 Sprintf(actbuf, _("%s away"), vtense(ostr, C_("erosion_action", action[type])));
             else
                 Sprintf(actbuf, _("shatters"));
-            pline(_("%s %s %s!"),
+            pline(C_("erosion_destroy", "%s %s %s!"),
                   uvictim ? _("Your")
                   : !vismon ? _("The") /* visobj */
                     : s_suffix(Monnam(victim)),
@@ -387,7 +387,7 @@ grease_protect(
 
     if (ostr) {
         if (victim == &gy.youmonst)
-            Your(_("%s %s %s"), ostr, vtense(ostr, _("are")), _(txt));
+            Your(C_("subj_is_pred", "%s %s %s"), ostr, vtense(ostr, _("are")), _(txt));
         else if (vismon)
             pline(_("%s's %s %s %s"), Monnam(victim),
                   ostr, vtense(ostr, _("are")), _(txt));
@@ -1698,7 +1698,7 @@ trapeffect_rust_trap(
             goto mglovecheck;
         default:
             if (in_sight)
-                pline(_("%s %s!"), _("A gush of water hits"), mon_nam(mtmp));
+                pline(C_("water_hit", "%s %s!"), _("A gush of water hits"), mon_nam(mtmp));
             for (otmp = mtmp->minvent; otmp; otmp = otmp->nobj)
                 if (otmp->lamplit
                     /* exclude weapon(s) because cases 1 and 2 do them */
@@ -1904,7 +1904,7 @@ trapeffect_pit(
             const char *predicament = _("on a set of sharp iron spikes");
 
             if (u.usteed) {
-                pline(_("%s %s %s!"),
+                pline(C_("trap_fall", "%s %s %s!"),
                       upstart(x_monnam(u.usteed, steed_article, _("poor"),
                                        SUPPRESS_SADDLE, FALSE)),
                       conj_pit ? _("steps") : _("lands"), predicament);

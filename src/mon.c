@@ -2912,7 +2912,7 @@ vamprises(struct monst *mtmp)
                           spec_mon ? (char *) 0 : _("seemingly dead"),
                           (SUPPRESS_INVISIBLE | AUGMENT_IT), FALSE),
                  Unaware ? "" : _("suddenly "),
-                 spec_death ? _("reconstitutes") : _("transforms"));
+                 spec_death ? C_("vamp_rise", "reconstitutes") : C_("vamp_rise", "transforms"));
         mtmp->mcanmove = 1;
         mtmp->mfrozen = 0;
         set_mon_min_mhpmax(mtmp, 10); /* mtmp->mhpmax=max(m_lev+1,10) */
@@ -2934,7 +2934,7 @@ vamprises(struct monst *mtmp)
             /* 3.6.0 used a_monnam(mtmp); that was weird if mtmp was
                named: "Dracula suddenly transforms and rises as Dracula";
                3.6.1 used mtmp->data->mname; that ignored hallucination */
-            pline_mon(mtmp, _("%s %s!"), upstart(action),
+            pline_mon(mtmp, C_("vamp_rise", "%s %s!"), upstart(action),
                       x_monnam(mtmp, ARTICLE_A, (char *) 0,
                            (SUPPRESS_NAME | SUPPRESS_IT | SUPPRESS_INVISIBLE),
                                FALSE));

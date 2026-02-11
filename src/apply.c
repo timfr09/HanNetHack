@@ -1595,7 +1595,7 @@ catch_lit(struct obj *obj)
         if (obj->where == OBJ_INVENT || cansee(x, y)) {
             if (obj->where == OBJ_FLOOR && cansee(x, y))
                 set_msg_xy(x, y);
-            pline(_("%s %s %s"), Yname2(obj),
+            pline(C_("subj_is_pred", "%s %s %s"), Yname2(obj),
                   /* "catches light!" or "feels warm." */
                   otense(obj, Blind ? _("feel") : _("catch")),
                   Blind ? _("warm.") : _("light!"));

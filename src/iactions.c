@@ -58,7 +58,7 @@ item_naming_classification(
 
     onamebuf[0] = ocallbuf[0] = '\0';
     if (name_ok(obj) == GETOBJ_SUGGEST) {
-        Sprintf(onamebuf, _("%s %s %s"),
+        Sprintf(onamebuf, C_("action_item", "%s %s %s"),
                 (!has_oname(obj) || !*ONAME(obj)) ? _(Name) : _(Rename),
                 the_unique_obj(obj) ? _("the")
                 : !is_plural(obj) ? _("this specific")
@@ -359,7 +359,7 @@ itemactions(struct obj *otmp)
                     !otmp->lamplit ? C_("candle", "light") : _("extinguish"), /* [lowercase] */
                     multiple ? _("them") : _("it"));
         else
-            Sprintf(buf, _("%s %s %s"), light, s, simpleonames(otmp));
+            Sprintf(buf, C_("action_item", "%s %s %s"), light, s, simpleonames(otmp));
         ia_addmenu(win, IA_APPLY_OBJ, 'a', buf);
     } else if (otmp->otyp == OIL_LAMP || otmp->otyp == MAGIC_LAMP
                || otmp->otyp == BRASS_LANTERN) {

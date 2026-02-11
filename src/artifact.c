@@ -1426,7 +1426,7 @@ Mb_hit(struct monst *magr, /* attacker */
                 Strcat(buf, _(" and "));
             if (do_confuse)
                 Strcat(buf, _("confused"));
-            pline(_("%s %s %s%c"), hittee, vtense(fakename[fakeidx], _("are")), buf,
+            pline(C_("artifact_status", "%s %s %s%c"), hittee, vtense(fakename[fakeidx], _("are")), buf,
                   (do_stun && do_confuse) ? '!' : '.');
         }
     }
@@ -2487,7 +2487,7 @@ Sting_effects(
 
             /* 'start' message */
             if (!Blind)
-                pline(_("%s %s %s%c"), bare_artifactname(uwep),
+                pline(C_("artifact_glow", "%s %s %s%c"), bare_artifactname(uwep),
                       otense(uwep, glow_verb(orc_count, FALSE)),
                       glow_color(uwep->oartifact),
                       (newstr > oldstr) ? '!' : '.');

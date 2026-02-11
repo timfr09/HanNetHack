@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-11 00:07+0900\n"
+"POT-Creation-Date: 2026-02-11 00:44+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-11 00:07\n"
+"POT-Creation-Date: 2026-02-11 00:44\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -119,11 +119,11 @@ msgstr ""
 
 #: ../src/apply.c:130 ../src/artifact.c:1415 ../src/hack.c:3081
 #: ../src/lock.c:1316 ../src/mhitu.c:686 ../src/mhitu.c:1006
-#: ../src/mhitu.c:1331 ../src/mon.c:2937 ../src/polyself.c:1367
-#: ../src/potion.c:1944 ../src/shk.c:1429 ../src/sounds.c:417
-#: ../src/sounds.c:468 ../src/trap.c:854 ../src/trap.c:1701 ../src/uhitm.c:2445
-#: ../src/uhitm.c:2516 ../src/uhitm.c:2575 ../src/uhitm.c:4489
-#: ../src/uhitm.c:6410 ../src/weapon.c:883 ../src/wizard.c:861
+#: ../src/mhitu.c:1331 ../src/polyself.c:1367 ../src/potion.c:1944
+#: ../src/shk.c:1429 ../src/sounds.c:417 ../src/sounds.c:468 ../src/trap.c:854
+#: ../src/uhitm.c:2445 ../src/uhitm.c:2516 ../src/uhitm.c:2575
+#: ../src/uhitm.c:4489 ../src/uhitm.c:6410 ../src/weapon.c:883
+#: ../src/wizard.c:861
 #, c-format
 msgid "%s %s!"
 msgstr ""
@@ -1209,9 +1209,9 @@ msgstr ""
 msgid "flickers"
 msgstr ""
 
-#: ../src/apply.c:1598 ../src/iactions.c:61 ../src/iactions.c:362
-#: ../src/trap.c:390
+#: ../src/apply.c:1598 ../src/trap.c:390
 #, c-format
+msgctxt "subj_is_pred"
 msgid "%s %s %s"
 msgstr ""
 
@@ -2561,8 +2561,9 @@ msgstr ""
 msgid "stunned"
 msgstr ""
 
-#: ../src/artifact.c:1429 ../src/artifact.c:2490
+#: ../src/artifact.c:1429
 #, c-format
+msgctxt "artifact_status"
 msgid "%s %s %s%c"
 msgstr ""
 
@@ -2862,6 +2863,12 @@ msgstr ""
 #: ../src/hack.c:1598 ../src/wizcmds.c:323
 #, c-format
 msgid "%s is %s."
+msgstr ""
+
+#: ../src/artifact.c:2490
+#, c-format
+msgctxt "artifact_glow"
+msgid "%s %s %s%c"
 msgstr ""
 
 #: ../src/artifact.c:2495
@@ -14735,6 +14742,12 @@ msgstr ""
 msgid "Re-call or un-call"
 msgstr ""
 
+#: ../src/iactions.c:61 ../src/iactions.c:362
+#, c-format
+msgctxt "action_item"
+msgid "%s %s %s"
+msgstr ""
+
 #: ../src/iactions.c:64
 msgid "this specific"
 msgstr ""
@@ -21663,11 +21676,19 @@ msgid "suddenly "
 msgstr ""
 
 #: ../src/mon.c:2915
+msgctxt "vamp_rise"
 msgid "reconstitutes"
 msgstr ""
 
 #: ../src/mon.c:2915
+msgctxt "vamp_rise"
 msgid "transforms"
+msgstr ""
+
+#: ../src/mon.c:2937
+#, c-format
+msgctxt "vamp_rise"
+msgid "%s %s!"
 msgstr ""
 
 #: ../src/mon.c:2947
@@ -41725,8 +41746,9 @@ msgstr ""
 msgid "%s away"
 msgstr ""
 
-#: ../src/trap.c:330 ../src/trap.c:1907
+#: ../src/trap.c:330
 #, c-format
+msgctxt "erosion_destroy"
 msgid "%s %s %s!"
 msgstr ""
 
@@ -42069,6 +42091,12 @@ msgstr ""
 msgid "%s %s's right %s!"
 msgstr ""
 
+#: ../src/trap.c:1701
+#, c-format
+msgctxt "water_hit"
+msgid "%s %s!"
+msgstr ""
+
 #: ../src/trap.c:1719 ../src/uhitm.c:2268 ../src/uhitm.c:2294
 #: ../src/uhitm.c:2348 ../src/uhitm.c:2374
 #, c-format
@@ -42167,6 +42195,12 @@ msgstr ""
 
 #: ../src/trap.c:1904
 msgid "on a set of sharp iron spikes"
+msgstr ""
+
+#: ../src/trap.c:1907
+#, c-format
+msgctxt "trap_fall"
+msgid "%s %s %s!"
 msgstr ""
 
 #: ../src/trap.c:1910
@@ -48001,7 +48035,7 @@ msgstr ""
 msgid "Elbereth"
 msgstr ""
 
-#. text field (partial, has concatenation), angel_cuss array, demon_cuss array, text field
+#. angel_cuss array, text field (partial, has concatenation), demon_cuss array, text field
 #: dat/quest.lua:77 dat/quest.lua:78 dat/quest.lua:79 dat/quest.lua:80
 #: dat/quest.lua:81 dat/quest.lua:82 dat/quest.lua:83 dat/quest.lua:84
 #: dat/quest.lua:85 dat/quest.lua:86 dat/quest.lua:87 dat/quest.lua:88

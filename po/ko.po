@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-11 00:07+0900\n"
+"POT-Creation-Date: 2026-02-11 00:44+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -142,11 +142,11 @@ msgstr "착용 중에는 사용할 수 없다!"
 # ============================================================
 #: ../src/apply.c:130 ../src/artifact.c:1415 ../src/hack.c:3081
 #: ../src/lock.c:1316 ../src/mhitu.c:686 ../src/mhitu.c:1006
-#: ../src/mhitu.c:1331 ../src/mon.c:2937 ../src/polyself.c:1367
-#: ../src/potion.c:1944 ../src/shk.c:1429 ../src/sounds.c:417
-#: ../src/sounds.c:468 ../src/trap.c:854 ../src/trap.c:1701 ../src/uhitm.c:2445
-#: ../src/uhitm.c:2516 ../src/uhitm.c:2575 ../src/uhitm.c:4489
-#: ../src/uhitm.c:6410 ../src/weapon.c:883 ../src/wizard.c:861
+#: ../src/mhitu.c:1331 ../src/polyself.c:1367 ../src/potion.c:1944
+#: ../src/shk.c:1429 ../src/sounds.c:417 ../src/sounds.c:468 ../src/trap.c:854
+#: ../src/uhitm.c:2445 ../src/uhitm.c:2516 ../src/uhitm.c:2575
+#: ../src/uhitm.c:4489 ../src/uhitm.c:6410 ../src/weapon.c:883
+#: ../src/wizard.c:861
 #, c-format
 msgid "%s %s!"
 msgstr "%2$s{을/를} %1$s!"
@@ -1267,9 +1267,9 @@ msgstr "깜빡이다"
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
-#: ../src/apply.c:1598 ../src/iactions.c:61 ../src/iactions.c:362
-#: ../src/trap.c:390
-#, c-format
+#: ../src/apply.c:1598 ../src/trap.c:390
+#, fuzzy, c-format
+msgctxt "subj_is_pred"
 msgid "%s %s %s"
 msgstr "%s %s %s"
 
@@ -2669,8 +2669,9 @@ msgstr "기절한"
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
-#: ../src/artifact.c:1429 ../src/artifact.c:2490
-#, c-format
+#: ../src/artifact.c:1429
+#, fuzzy, c-format
+msgctxt "artifact_status"
 msgid "%s %s %s%c"
 msgstr "%s %s %s%c"
 
@@ -2980,6 +2981,15 @@ msgstr "반지"
 #, c-format
 msgid "%s is %s."
 msgstr "%s{이/가} %s."
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/artifact.c:2490
+#, fuzzy, c-format
+msgctxt "artifact_glow"
+msgid "%s %s %s%c"
+msgstr "%s %s %s%c"
 
 #: ../src/artifact.c:2495
 #, c-format
@@ -15517,6 +15527,15 @@ msgstr "별명 부르기"
 msgid "Re-call or un-call"
 msgstr "별명 바꾸기 또는 별명 지우기"
 
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/iactions.c:61 ../src/iactions.c:362
+#, fuzzy, c-format
+msgctxt "action_item"
+msgid "%s %s %s"
+msgstr "%s %s %s"
+
 #: ../src/iactions.c:64
 msgid "this specific"
 msgstr "이 특정"
@@ -23327,12 +23346,25 @@ msgid "suddenly "
 msgstr "갑자기 "
 
 #: ../src/mon.c:2915
+#, fuzzy
+msgctxt "vamp_rise"
 msgid "reconstitutes"
 msgstr "재구성됐다"
 
 #: ../src/mon.c:2915
+#, fuzzy
+msgctxt "vamp_rise"
 msgid "transforms"
 msgstr "변신했다"
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/mon.c:2937
+#, fuzzy, c-format
+msgctxt "vamp_rise"
+msgid "%s %s!"
+msgstr "%2$s{을/를} %1$s!"
 
 # 소리 메시지 (sound messages)
 #: ../src/mon.c:2947
@@ -44702,8 +44734,9 @@ msgstr "%s 떨어져"
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
-#: ../src/trap.c:330 ../src/trap.c:1907
-#, c-format
+#: ../src/trap.c:330
+#, fuzzy, c-format
+msgctxt "erosion_destroy"
 msgid "%s %s %s!"
 msgstr "%s{이/가} %s %s!"
 
@@ -45057,6 +45090,15 @@ msgstr "%s %s의 왼쪽 %s에!"
 msgid "%s %s's right %s!"
 msgstr "%s %s의 오른쪽 %s에!"
 
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/trap.c:1701
+#, fuzzy, c-format
+msgctxt "water_hit"
+msgid "%s %s!"
+msgstr "%2$s{을/를} %1$s!"
+
 #: ../src/trap.c:1719 ../src/uhitm.c:2268 ../src/uhitm.c:2294
 #: ../src/uhitm.c:2348 ../src/uhitm.c:2374
 #, c-format
@@ -45164,6 +45206,15 @@ msgstr "얼마나 불쌍한가. 그게 함정이 아닌가?"
 #: ../src/trap.c:1904
 msgid "on a set of sharp iron spikes"
 msgstr "철 가시 구덩이에 빠졌다"
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#: ../src/trap.c:1907
+#, fuzzy, c-format
+msgctxt "trap_fall"
+msgid "%s %s %s!"
+msgstr "%s{이/가} %s %s!"
 
 #: ../src/trap.c:1910
 msgid "steps"
@@ -51453,7 +51504,7 @@ msgstr "어두운"
 msgid "Elbereth"
 msgstr ""
 
-#. text field (partial, has concatenation), angel_cuss array, demon_cuss array, text field
+#. angel_cuss array, text field (partial, has concatenation), demon_cuss array, text field
 #: dat/quest.lua:77 dat/quest.lua:78 dat/quest.lua:79 dat/quest.lua:80
 #: dat/quest.lua:81 dat/quest.lua:82 dat/quest.lua:83 dat/quest.lua:84
 #: dat/quest.lua:85 dat/quest.lua:86 dat/quest.lua:87 dat/quest.lua:88

@@ -5663,10 +5663,11 @@ msgstr "이 돌에 무언가를 문지르기"
 msgid "An angry"
 msgstr "화난"
 
-# various - enl_msg 조합용. "You feel [stronger/weaker/etc]"
-# potion.c, pray.c, read.c, trap.c, wizard.c 등에서 사용
+# various - Tobjnam/Yobjnam2 조합용 피동 자동사. "feel" → "느껴진다"
+# wizard.c (부적 근접), read.c (인챈트), eat.c, lock.c, hack.c 등에서 사용
+# 기존 "느낀다"(능동 타동사)는 주어가 물건인 Tobjnam 패턴에 부적합
 msgid "feel"
-msgstr "느낀다"
+msgstr "느껴진다"
 
 # detect.c:856 - 탐지 결과 표시. "monster of interest"
 msgid "monster of interest"
@@ -13995,4 +13996,82 @@ msgstr "%1$s{이/가} %3$s%2$.0s"
 msgctxt "action_item"
 msgid "%s %s %s"
 msgstr "%2$s %3$s{을/를} %1$s"
+
+# ============================================================
+# _("feel") 관련 포맷 문자열 재정렬
+# "feel" → "느껴진다" (피동 자동사) 변경에 맞춰
+# Tobjnam/Yobjnam2 패턴은 부사를 %s 앞으로 이동,
+# You() 지각 패턴은 %.0s로 동사를 억제하고 한국어 직접 서술
+# ============================================================
+
+# wizard.c:78 - 부적 근접 탐지 (뜨거움). Tobjnam(amu, "feel")
+# 영어: "The Amulet feels hot!" → 한국어: "뜨겁게 부적이 느껴진다!"
+#, c-format
+msgid "%s hot!"
+msgstr "뜨겁게 %s!"
+
+# wizard.c:80 - 부적 근접 탐지 (매우 따뜻함). Tobjnam(amu, "feel")
+#, c-format
+msgid "%s very warm."
+msgstr "매우 따뜻하게 %s."
+
+# wizard.c:82 - 부적 근접 탐지 (따뜻함). Tobjnam(amu, "feel")
+#, c-format
+msgid "%s warm."
+msgstr "따뜻하게 %s."
+
+# read.c:1142 - 무기/방어구 인챈트 효과. Yobjnam2(otmp, "feel")
+# 영어: "Your sword feels warm for a moment."
+#, c-format
+msgid "%s warm for a moment."
+msgstr "잠시 따뜻하게 %s."
+
+# read.c:1154, pray.c:1213, read.c:1605 - 수리 효과. Yobjnam2 + feel/look
+# "느껴진다" → "새것처럼 좋게 [검이 느껴진다]!" ✓
+# "보인다" → "새것처럼 좋게 [검이 보인다]!" ✓
+#, c-format
+msgid "%s as good as new!"
+msgstr "새것처럼 좋게 %s!"
+
+# eat.c:3489 - 배고픔으로 약해짐. You("%s weak.", feel/are still/are beginning to feel)
+# 세 동사의 뉘앙스 차이를 한국어 단일 표현으로 통합, %s 억제
+#, c-format
+msgid "%s weak."
+msgstr "약해진 느낌이다%.0s."
+
+# eat.c:3491 - 점진적 배고픔 표현
+# 기존 "배고파지기 시작한다"는 오역 (원문은 약해짐이지 배고픔이 아님)
+msgid "are beginning to feel"
+msgstr "점점"
+
+# lock.c:592, lock.c:852, lock.c:1014, trap.c:5981 - 문 없음 탐지
+# You("%s no door there.", feel/see) — %s 억제
+#, c-format
+msgid "%s no door there."
+msgstr "거기에 문이 없는 것 같다%.0s."
+
+# lock.c:590 - 도개교 자물쇠 없음 탐지
+# You("%s no lock on the drawbridge.", feel/see) — %s 억제
+#, c-format
+msgid "%s no lock on the drawbridge."
+msgstr "도개교에 자물쇠가 없는 것 같다%.0s."
+
+# hack.c:3702 - 구덩이 내 아이템 검색
+# You("don't %s anything in here to pick up.", feel/see) — %s 억제
+#, c-format
+msgid "don't %s anything in here to pick up."
+msgstr "여기에 주울 만한 것이 없는 것 같다%.0s."
+
+# lock.c:849 - 약탈 가능한 것 탐지
+# pline("%s like something lootable over there.", Feels/Seems) — %s 억제
+#, c-format
+msgid "%s like something lootable over there."
+msgstr "저기에 약탈할 만한 것이 있는 것 같다%.0s."
+
+# invent.c:4156 - 삼킨 몬스터 내부 탐색
+# You("%s to %s what is lying in %s.", try/look around, feel/see, stomach)
+# %1=try/look around (억제), %2=feel/see (억제), %3=stomach
+#, c-format
+msgid "%s to %s what is lying in %s."
+msgstr "%3$s 안에 뭐가 있는지 살핀다%1$.0s%2$.0s."
 

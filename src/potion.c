@@ -1717,7 +1717,7 @@ potionhit(struct monst *mon, struct obj *obj, int how)
             break;
         }
         if (useeit && !affected)
-            pline(_("%s %s wet."), buf, aobjnam(saddle, "get"));
+            pline(_("%s %s wet."), buf, aobjnam(saddle, _("get")));
     } else {
         boolean angermon = your_fault, cureblind = FALSE;
 
@@ -2587,9 +2587,10 @@ potion_dip(struct obj *obj, struct obj *potion)
     if (potion->otyp == POT_ACID && obj->otyp == CORPSE
         && obj->corpsenm == PM_LICHEN) {
         pline(_("%s %s %s around the edges."), The(cxname(obj)),
-              otense(obj, _("turn")), Blind ? _("wrinkled")
-                                   : potion->odiluted ? hcolor(NH_ORANGE)
-                                     : hcolor(NH_RED));
+              otense(obj, _("turn")),
+              Blind ? C_("condition", "wrinkled")
+                    : potion->odiluted ? hcolor(NH_ORANGE)
+                                       : hcolor(NH_RED));
         potion->in_use = FALSE; /* didn't go poof */
         if (potion->dknown)
             trycall(potion);

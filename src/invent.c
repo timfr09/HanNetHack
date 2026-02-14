@@ -4150,11 +4150,19 @@ look_here(
          *  something along the lines of "because it's worn on the outside
          *  so is unreachable from in here...").
          */
-        Sprintf(fbuf, _("Contents of %s %s"), s_suffix(mon_nam(mtmp)),
-                mbodypart(mtmp, STOMACH));
-        /* Skip "Contents of " by using fbuf index 12 */
-        You(_("%s to %s what is lying in %s."), Blind ? _("try") : _("look around"),
-            verb, &fbuf[12]);
+        {
+            const char *whose = s_suffix(mon_nam(mtmp));
+            const char *stomach = mbodypart(mtmp, STOMACH);
+            char mon_stomach[BUFSZ];
+
+            Sprintf(mon_stomach, "%s %s", whose, stomach);
+            Sprintf(fbuf, _("Contents of %s"), mon_stomach);
+            /* i18n: old code used &fbuf[12] assuming English
+               "Contents of " prefix is always 12 bytes */
+            You(_("%s to %s what is lying in %s."),
+                Blind ? _("try") : _("look around"),
+                verb, mon_stomach);
+        }
         otmp = mtmp->minvent;
         if (otmp) {
             for (; otmp; otmp = otmp->nobj) {

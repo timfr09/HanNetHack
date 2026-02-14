@@ -4251,6 +4251,7 @@ look_here(
             /* thawing ice ("solid ice", "thin ice", &c) */
             || ((p = strchr(dfeature, ' ')) != 0 && !strcmpi(p, " ice")))
             article = 0;
+        dfeature = _(dfeature); /* i18n: translate terrain name */
         if (article == 1)
             dfeature = an(dfeature);
 

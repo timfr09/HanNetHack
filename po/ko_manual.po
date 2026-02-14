@@ -11507,7 +11507,7 @@ msgstr "산사태"
 # "The boulder falls into the water/lava."
 #: ../src/read.c:2279 ../src/read.c:2352
 msgid "fall"
-msgstr "떨어지다"
+msgstr "떨어졌다"
 
 # ============================================================
 # insight.c 조합 패턴 검토 요약 (enl_msg)
@@ -13068,7 +13068,7 @@ msgstr "충격"
 
 # u_locomotion() 기본값 - hack.c, do.c, steed.c, teleport.c, mon.c
 msgid "step"
-msgstr "걷다"
+msgstr "걸었다"
 
 msgid "Run"
 msgstr "달리다"
@@ -13221,7 +13221,7 @@ msgstr "통조림"
 
 # flooreffects() - "land" (explode.c)
 msgid "land"
-msgstr "떨어지다"
+msgstr "착지했다"
 
 # flooreffects() - "drop" (mthrowu.c) - 이미 존재 (9705줄)
 
@@ -15180,4 +15180,157 @@ msgstr "%6$s %1$s{이/가} %2$s%5$s%4$s%3$s."
 #   (활용형 전환으로 동사는 있으나 공유 포맷이라 별도 오버라이드 불가)
 # - bare "glow" 사전형 "빛나다": 명사/동사 이중 사용으로 활용형 전환 불가
 # - "%s with %s aura." 2건 공유 (potion.c:1549+wield.c:910): 동사 누락
+
+# ============================================================
+# 사전형(DICT-FORM) 동사 활용형 전환 (verify_ko_verbs.py 검출)
+# ============================================================
+
+# dig.c:345/348 — Yobjnam2(uwep, "bounce") 계사 억제
+# Yobjnam2가 계사("이다") 감지 시 동사 생략 → %s = "name{이/가}"
+# 포맷 오버라이드에서 "튕겨" 동사 직접 제공
+msgid "bounce"
+msgstr "이다"
+
+# uhitm.c:1678, weapon.c:460 — vtense(name, "sear") 은무기 화상
+msgid "sear"
+msgstr "지졌다"
+
+# dokick.c:1935 — otense(otmp, "rattle") 사슬 소리
+msgid "rattle"
+msgstr "덜그럭거렸다"
+
+# uhitm.c:995/1001 — Yobjnam2/otense(monwep, "shatter") 무기 파괴
+# 자동사 "산산조각나다" 과거형 (ko.po "산산조각내다"는 타동사)
+msgid "shatter"
+msgstr "산산조각났다"
+
+# do.c:565 — otense(otmp, "vanish") 개수대 소멸
+msgid "vanish"
+msgstr "사라졌다"
+
+# dokick.c:722, polyself.c:1267, timeout.c:1274 — otense(obj, "slide")
+msgid "slide"
+msgstr "미끄러졌다"
+
+# ============================================================
+# 포맷 문자열 오버라이드 (사전형 동사 조합 수정)
+# ============================================================
+
+# [리뷰 완료] apply.c:1504 — Yname2+otense(go), 등불/초 꺼짐
+# %1$s = Yname2(obj), %2$s = otense(go) (억제)
+# 영어: "Your lamp goes out!"
+# 한국어: "당신의 등불이 꺼졌다!"
+#, c-format
+msgid "%s %s out!"
+msgstr "%1$s{이/가} 꺼졌다!%2$.0s"
+
+# [리뷰 완료] dig.c:345 — Yobjnam2(bounce)+otense(hit)+mon_nam, 채굴 삽질 실패
+# %1$s = Yobjnam2(uwep, "bounce") = "곡괭이{이/가}" (계사 억제)
+# %2$s = otense(uwep, "hit") = "맞혔다", %3$s = mon_nam(steed)
+# 영어: "Your pick-axe bounces and hits the horse!"
+# 한국어: "곡괭이가 튕겨 말을 맞혔다!"
+#, c-format
+msgid "%s and %s %s!"
+msgstr "%1$s 튕겨 %3$s{을/를} %2$s!"
+
+# [리뷰 완료] dig.c:348 — Yobjnam2(bounce)+otense(hit), 채굴 삽질 자해
+# %1$s = Yobjnam2(uwep, "bounce") = "곡괭이{이/가}" (계사 억제)
+# %2$s = otense(uwep, "hit") = "맞혔다"
+# 영어: "Ouch!  Your pick-axe bounces and hits you!"
+# 한국어: "아야! 곡괭이가 튕겨서 당신을 맞혔다!"
+#, c-format
+msgid "Ouch!  %s and %s you!"
+msgstr "아야! %1$s 튕겨서 당신을 %2$s!"
+
+# [리뷰 완료] dig.c:2161 — Your()+otense(rot)+cname, 시체 부패
+# %1$s = "wielded " 또는 "" (장비 여부), %2$s = cname (시체 이름)
+# %3$s = otense(rot) (억제), %4$c = '!' 또는 '.'
+# 영어: "Your wielded corpse rots away!"
+# 한국어: "당신의 휘두르고 있는 시체가 썩어 사라졌다!"
+#, c-format
+msgid "%s%s %s away%c"
+msgstr "%1$s%2$s{이/가} 썩어 사라졌다%4$c%3$.0s"
+
+# [리뷰 완료] do.c:388 — Doname2+otense(land), 제단에 물건 떨어짐
+# %1$s = Doname2(obj), %2$s = otense(land) (억제)
+# 영어: "The ring lands on the altar."
+# 한국어: "반지가 제단 위에 놓였다."
+#, c-format
+msgid "%s %s on the altar."
+msgstr "%1$s{이/가} 제단 위에 놓였다.%2$.0s"
+
+# [리뷰 완료] do.c:565 — doname+otense(vanish), 개수대에서 물건 소멸
+# %1$s = doname(otmp), %2$s = otense(vanish) = "사라졌다"
+# 영어: "Suddenly, the ring vanishes from the sink!"
+# 한국어: "갑자기, 반지가 개수대에서 사라졌다!"
+#, c-format
+msgid "Suddenly, %s %s from the sink!"
+msgstr "갑자기, %1$s{이/가} 개수대에서 %2$s!"
+
+# [리뷰 완료] dokick.c:633+mhitu.c:1349 — otense(come)/vtense(snap), 풀림
+# dokick: %1$s = The(distant_name), %2$s = otense(come) (억제)
+# mhitu: %1$s = leash/leashes, %2$s = vtense(snap) (억제)
+# 영어: "The boulder comes loose." / "The leash snaps loose."
+# 한국어: "바위가 풀렸다." / "목줄이 풀렸다."
+#, c-format
+msgid "%s %s loose."
+msgstr "%1$s{이/가} 풀렸다.%2$.0s"
+
+# [리뷰 완료] dokick.c:722 — Doname2+otense(slide)+surface, 차기 미끄러짐
+# %1$s = Doname2(obj), %2$s = otense(slide) = "미끄러졌다"
+# %3$s = surface(x,y) = "바닥"/"얼음" 등
+# 영어: "Whee!  The ball slides across the floor."
+# 한국어: "휘! 공이 바닥을 가로질러 미끄러졌다."
+#, c-format
+msgid "Whee!  %s %s across the %s."
+msgstr "휘! %1$s{이/가} %3$s{을/를} 가로질러 %2$s."
+
+# [리뷰 완료] mkobj.c:1728 — buf+otense(shine)+much+brighter, 빛 세기 변화
+# %1$s = buf (광원 이름), %2$s = otense(shine) (억제)
+# %3$s = "much"/"" (정도), %4$s = "brighter"/"less brightly"
+# 영어: "The lamp shines much brighter."
+# 한국어: "등불이 훨씬 더 밝게 빛났다."
+#, c-format
+msgid "%s %s %s%s."
+msgstr "%1$s{이/가} %3$s%4$s 빛났다.%2$.0s"
+
+# [리뷰 완료] pickup.c:3762 — doname+otense(tumble), 가방 폭발
+# %1$s = doname(otmp), %2$s = otense(tumble) (억제)
+# 영어: "As the bag tumbles inside, you are blasted by a magical explosion!"
+# 한국어: "가방이 안으로 굴러 들어가자, 마법 폭발에 휩싸였다!"
+#, c-format
+msgid "As %s %s inside, you are blasted by a magical explosion!"
+msgstr "%1$s{이/가} 안으로 굴러 들어가자, 마법 폭발에 휩싸였다!%2$.0s"
+
+# [리뷰 완료] uhitm.c:5371 — vtense(knock) 밀쳐내기
+# %1$s = magrbuf (공격자), %2$s = vtense(knock) (억제)
+# %3$s = mdefbuf (방어자), %4$s = knockedhow (뒤로)
+# %5$s = "forceful"/"powerful", %6$s = "blow"/"strike"
+# 영어: "You knock the gnome back with a powerful blow!"
+# 한국어: "당신이 강력한 일격으로 노움을 뒤로 밀쳐냈다!"
+#, c-format
+msgid "%s %s %s %s with a %s %s!"
+msgstr "%1$s{이/가} %5$s %6$s{으로/로} %3$s{을/를} %4$s 밀쳐냈다!%2$.0s"
+
+# [리뷰 완료] weapon.c:460 — Your()+vtense(sear)+mon_nam, 은반지 화상
+# %1$s = "silver "/"left "/"right "/"", %2$s = rings = "반지/반지들"
+# %3$s = vtense(sear) = "지졌다", %4$s = mon_nam(mdef)
+# 영어: "Your silver rings sear the orc!"
+# 한국어: "당신의 은 반지가 오크를 지졌다!"
+#, c-format
+msgid "%s%s %s %s!"
+msgstr "%1$s%2$s{이/가} %4$s{을/를} %3$s!"
+
+# ============================================================
+# 사전형 동사 수정 — 보류/잔여 사항
+# ============================================================
+#
+# [보류] dokick.c:1932 " %s %s object%s" — Sprintf 조각 (hit는 이미 과거형)
+# [보류] dokick.c:1935 " %s your chain" — Sprintf 조각 (rattle 활용형 전환 완료)
+# [보류] dokick.c:1940 " and %s %s." — Sprintf 조각 (fall 활용형 전환 완료)
+# [보류] uhitm.c:1678 "Your %s%s %s" — strNsubst+" %s!" 리터럴 추가로 어순 재배치 불가
+# [보류] monmove.c:41 vtense(move) — "%s %s%s." 46파일 공유, 포맷 오버라이드 불가
+# [보류] muse.c:3106 vtense(move) — locomotion() 변동 동사 (float/fly/slither 등)
+# [보류] dogmove.c:1301 vtense(step) — step 활용형 전환 완료, locomotion 변종은 잔여
+# [보류] timeout.c:1266 vtense(slide) — slide 활용형 전환 완료, locomotion 변종은 잔여
 

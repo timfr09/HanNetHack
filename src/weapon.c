@@ -320,10 +320,6 @@ dmgval(struct obj *otmp, struct monst *mon)
         }
     }
 
-    /* Healer with anatomy knowledge */
-    if (Role_if(PM_HEALER) && objects[otmp->otyp].oc_skill == P_KNIFE)
-        tmp += min(3, svm.mvitals[monsndx(ptr)].died / 6);
-
     /* Put weapon vs. monster type damage bonuses in below: */
     if (Is_weapon || otmp->oclass == GEM_CLASS || otmp->oclass == BALL_CLASS
         || otmp->oclass == CHAIN_CLASS) {

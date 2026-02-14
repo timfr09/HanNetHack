@@ -6070,14 +6070,17 @@ msgstr "%1$s{이/가} 진정되었다.%2$.0s"
 
 # potion.c:1549, wield.c:910 - 성수/저수 담그기 또는 주문 효과로 아이템 빛남(아우라)
 # %1$s=Yobjnam2(obj, "glow")="[당신의 물건] 빛나다", %2$s=an(hcolor)="[색상]"
-# 한국어 an()은 관사 없이 색상만 반환
-# 영어 조합: "Your long sword glows with a light blue aura."
-# 한국어 조합: "밝은 파란색 아우라와 함께 당신의 장검 빛나다."
-# 주의: Yobjnam2는 "물건이름 + 동사"를 합쳐서 반환하므로 분리 불가
-# 아우라 설명을 동사 앞으로 배치하기 위해 %2$s를 앞으로 이동
+# [리뷰 완료] potion.c:1549+wield.c:910 — Yobjnam2(glow)/aobjnam(glow)+hcolor
+# %1$s = objphrase (Yobjnam2 또는 aobjnam 결과), %2$s = an(glowcolor) = 색상
+# Yobjnam2 경우: %1$s = "검{이/가} 빛나다" (glow 사전형 — Known Issue)
+# 안장 경우: %1$s = "안장{이/가}" (C_("Tobjnam","glow") 계사 억제)
+# 안장 경우 동사 누락 해결: 포맷에 "빛났다" 제공
+# 영어: "Your sword glows with an amber aura."
+# 한국어: "검이 빛나다 호박색 아우라를 내뿜었다." (Yobjnam2, glow 사전형 잔여)
+# 한국어: "안장이 호박색 아우라를 내뿜었다." (안장, 계사 억제 + 포맷 동사)
 #, c-format
 msgid "%s with %s aura."
-msgstr "%2$s 아우라와 함께 %1$s."
+msgstr "%1$s %2$s 아우라를 내뿜었다."
 
 # pray.c:1194 - 기도 응답으로 무기 축복 + 수리
 # %1$s=Yobjnam2(uwep, "softly glow"), %2$s=an(hcolor), %3$s=repair_buf
@@ -15161,17 +15164,20 @@ msgstr "%6$s %1$s{이/가} %2$s%5$s%4$s%3$s."
 # [OK] 부메랑 귀환/타격: return/hit/fly 계사 억제 + 포맷에서 동사 제공
 #
 # [Known Issues — low priority]
-# - invent.c fbuf[12] 하드코딩 (별도 PR 필요)
 # - _("burn") transitive/intransitive 충돌
-# - potion.c:2582 lichen acid wrinkled/hcolor 불일치
 # - mhitu.c:2570 "%s %s." 공유 msgid → C_() 필요하나 사용처 다수
 # - stagger 동사 사전형/과거형 불일치 (load/potion 문맥과 tense 충돌)
-# - light.c ConcatF1 ", %s lit)" 미번역 (item description 문맥)
 # - potion.c:1712 aobjnam+glow saddle: 동적 Snprintf 결합 (동사 누락)
-# - potion.c:1720 aobjnam(saddle, "get"): "get"에 _() 미래핑 (소스 수정 필요)
 # - "resist" sit.c 이중 사용 (Tobjnam+vtense, 단일 사용)
 # - "shatter" 이중 사용 (Yobjnam2+otense, 해당 포맷에 고정 동사)
 # - "flicker" 이중 사용 (Tobjnam+vtense, 해당 포맷에 ko_manual 조합)
+#
+# [해결됨] invent.c fbuf[12] → mon_stomach 분리로 UTF-8 안전하게 수정
+# [해결됨] potion.c:1720 aobjnam(saddle, "get") → _("get") 래핑
+# [해결됨] potion.c:2590 wrinkled/hcolor → C_("condition") 분리
+# [해결됨] "%s with %s aura." 동사 누락 → "아우라를 내뿜었다" 제공
+# [해결됨] steal.c "your" / steed.c "new" / do_wear.c "dust+falls" → 실제 이슈 아님
+# [해결됨] light.c ConcatF1 → 현재 코드에서 찾을 수 없음
 #
 # [Known Issues — Yobjnam2 glow 사전형 (3차)]
 # - "%s %s." 46건 공유: Yobjnam2+glow 사전형 잔여
@@ -15333,4 +15339,33 @@ msgstr "%1$s%2$s{이/가} %4$s{을/를} %3$s!"
 # [보류] muse.c:3106 vtense(move) — locomotion() 변동 동사 (float/fly/slither 등)
 # [보류] dogmove.c:1301 vtense(step) — step 활용형 전환 완료, locomotion 변종은 잔여
 # [보류] timeout.c:1266 vtense(slide) — slide 활용형 전환 완료, locomotion 변종은 잔여
+
+# ============================================================
+# Known Issues 수정 (invent.c fbuf, potion.c get/wrinkled)
+# ============================================================
+
+# [리뷰 완료] invent.c:4153 — 삼킨 몬스터 소지품 목록 헤더
+# 기존 "Contents of %s %s" 에서 %s %s 분리 → 단일 %s로 변경
+# (fbuf[12] 하드코딩 제거를 위한 소스 수정 동반)
+#, c-format
+msgid "Contents of %s"
+msgstr "%s의 내용물"
+
+# [리뷰 완료] potion.c:2590 — 이끼 시체 산성 포션 담그기
+# %1$s = The(cxname(obj)), %2$s = otense(turn) = "변했다"
+# %3$s = C_("condition","wrinkled") = "주름진 상태" 또는 hcolor = "주황색"/"빨간색"
+# 영어: "The lichen corpse turns wrinkled around the edges."
+# 한국어 (blind): "이끼 시체가 가장자리부터 주름진 상태로 변했다."
+# 한국어 (seeing): "이끼 시체가 가장자리부터 주황색으로 변했다."
+#, c-format
+msgid "%s %s %s around the edges."
+msgstr "%1$s{이/가} 가장자리부터 %3$s{으로/로} %2$s."
+
+# C_("condition") 컨텍스트 — 상태 명사
+# potion.c:2590 Blind 시 "wrinkled" → "주름진 상태" (명사형)
+# {으로/로}와 결합: "주름진 상태로 변했다" ✓
+# N_("wrinkled")은 아이템 외형 설명용 (별도 번역 유지)
+msgctxt "condition"
+msgid "wrinkled"
+msgstr "주름진 상태"
 

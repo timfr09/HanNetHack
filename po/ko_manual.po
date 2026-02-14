@@ -8942,6 +8942,14 @@ msgstr "경련했다"
 msgid "itch"
 msgstr "가려웠다"
 
+# wield.c:776 — 아티팩트 이중쌍수 거부
+# %s = Yobjnam2(uswapwep, C_("Yobjnam2","resist")) = "당신의 검{이/가}" (계사 억제)
+# 영어: "Your sword resists being held second to another weapon!"
+# 한국어: "당신의 검이 다른 무기 다음으로 잡히는 것에 저항한다!"
+#, c-format
+msgid "%s being held second to another weapon!"
+msgstr "%s 다른 무기 다음으로 잡히는 것에 저항한다!"
+
 # ============================================================
 # pray.c - 기도 관련
 # ============================================================
@@ -10239,6 +10247,43 @@ msgstr "촉촉해졌다"
 # 기존에 _("moat")가 누락된 곳이 있어서 추가
 msgid "moat"
 msgstr "해자"
+
+# ============================================================
+# C_("transitive") — 타동사/자동사 충돌 해결
+# ============================================================
+
+# trap.c:1009 — You burn spider web (타동사)
+# _("burn")="타다"(자동사)는 otense/vtense용, 거미줄 태우기는 "태웠다"
+msgctxt "transitive"
+msgid "burn"
+msgstr "태웠다"
+
+# ============================================================
+# C_("shopkeeper") — 상점 주인 대사용 동사 어간
+# ============================================================
+
+# apply.c:1449 — "You burn them, you bought them!" (촛대 상점)
+# 포맷 "~면 산 것이다!"에 결합하기 위해 어간 형태
+msgctxt "shopkeeper"
+msgid "burn"
+msgstr "태우"
+
+# apply.c:1449 — "You use them, you bought them!" (촛대 상점)
+# ko.po "사용하다"(사전형)→"사용하"(어간)
+msgctxt "shopkeeper"
+msgid "use"
+msgstr "사용하"
+
+# ============================================================
+# C_("Yobjnam2") — Yobjnam2 전용 계사 억제
+# ============================================================
+
+# wield.c:777 — Yobjnam2(uswapwep, "resist") 이중쌍수 장비
+# Yobjnam2가 {이/가}+동사 삽입하면 포맷의 {이/가}와 충돌
+# → 계사 억제로 "당신의 검{이/가}" (동사 없음) 출력
+msgctxt "Yobjnam2"
+msgid "resist"
+msgstr "이다"
 
 # ============================================================
 # 동사 (Verbs) - vtense()에서 사용되는 동사들
@@ -13443,6 +13488,15 @@ msgstr "줄이 풀렸다.%.0s%.0s"
 
 # ===== apply.c =====
 
+# apply.c:1447 — 상점 주인 대사 "You burn/use them, you bought them!"
+# %1$s = C_("shopkeeper","burn")="태우" / C_("shopkeeper","use")="사용하"
+# %2$s = "them"/"it" (대명사 → 억제), %3$s = "them"/"it" (대명사 → 억제)
+# 영어: "You burn them, you bought them!"
+# 한국어: "태우면 산 것이다!" / "사용하면 산 것이다!"
+#, c-format
+msgid "You %s %s, you bought %s!"
+msgstr "%2$.0s%3$.0s%1$s면 산 것이다!"
+
 # apply.c:277 - 청진기 사망 확인
 # %1$s=this/that/these/those → "이것"/"그것" (대명사 형태, 관형사로 부적합 → 억제)
 # %2$s=""/"s" (복수 접미사 → 억제), %3$s=is/are (be동사 → 억제)
@@ -13537,6 +13591,58 @@ msgid "You'll need %d%s candle%s to go along with it."
 msgstr "이것과 함께 %1$d개%2$s의 양초가 필요하다.%3$.0s"
 
 # ===== trap.c =====
+
+# trap.c:1008 — You burn/dissolve spider web (플레이어)
+# %1$s = C_("transitive","burn")="태웠다" / _("dissolve")="녹였다"
+# %2$s = "the"/"a" (관사 → 억제)
+# 영어: "You burn the spider web!"
+# 한국어: "당신은 거미줄을 태웠다!" / "당신은 거미줄을 녹였다!"
+#, c-format
+msgid "%s %s spider web!"
+msgstr "%2$.0s거미줄을 %1$s!"
+
+# trap.c:1013 — Monster burns/dissolves spider web (몬스터)
+# %1$s = Monnam, %2$s = "burns"/"dissolves", %3$s = "the"/"a" (관사 → 억제)
+# 영어: "The fire elemental burns the spider web!"
+# 한국어: "불의 정령이 거미줄을 태웠다!"
+#, c-format
+msgid "%s %s %s spider web!"
+msgstr "%1$s{이/가} %3$.0s거미줄을 %2$s!"
+
+# trap.c:1009 — "dissolve" 자동사 과거형 (ko.po "녹이다" 사전형 교정)
+# 거미줄 용해 (acidic 몬스터)
+msgid "dissolve"
+msgstr "녹였다"
+
+# trap.c:1014 — "dissolves" 과거형
+msgid "dissolves"
+msgstr "녹였다"
+
+# trap.c:1014, 5510, hack.c:2023, artifact.c:1490 — "burns" 타동사 과거형
+# 모든 사용처가 타동사 (거미줄 태우기, 관통, 불의 칼날)
+msgid "burns"
+msgstr "태웠다"
+
+# trap.c:5509 — artifact burns/cuts through web
+# %1$s = bare_artifactname, %2$s = "cuts"/"burns", %3$s = which (web 소유)
+# 영어: "Sting cuts through the spider web!" / "Sunsword burns through the spider web!"
+# 한국어: "스팅이 그 거미줄을 베었다!" / "태양검이 그 거미줄을 태웠다!"
+#, c-format
+msgid "%s %s through %s web!"
+msgstr "%1$s{이/가} %3$s 거미줄을 %2$s!"
+
+# hack.c:2022 — artifact burns/cuts through the web
+# %1$s = bare_artifactname, %2$s = "cuts"/"burns"
+# 영어: "Sting cuts through the web!" / "Sunsword burns through the web!"
+# 한국어: "스팅이 거미줄을 베었다!" / "태양검이 거미줄을 태웠다!"
+#, c-format
+msgid "%s %s through the web!"
+msgstr "%1$s{이/가} 거미줄을 %2$s!"
+
+# hack.c:2023, trap.c:5510 — "cuts" 과거형 (거미줄 베기)
+# ko.po "베다"(사전형) 교정
+msgid "cuts"
+msgstr "베었다"
 
 # 물약 폭발
 # %s=plur(), %s=explode/explodes

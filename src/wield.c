@@ -774,7 +774,7 @@ can_twoweapon(void)
         You_cant(_("use two weapons while wearing a shield."));
     } else if (uswapwep->oartifact) {
         pline(_("%s being held second to another weapon!"),
-              Yobjnam2(uswapwep, _("resist")));
+              Yobjnam2(uswapwep, C_("Yobjnam2", "resist")));
     } else if (uswapwep->otyp == CORPSE && cant_wield_corpse(uswapwep)) {
         /* [Note: !TWOWEAPOK() check prevents ever getting here...] */
         ; /* must be life-saved to reach here; return FALSE */

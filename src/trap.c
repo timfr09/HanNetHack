@@ -1006,7 +1006,8 @@ mu_maybe_destroy_web(
             if (domsg) {
                 if (isyou)
                     You(_("%s %s spider web!"),
-                        (flaming(mptr)) ? _("burn") : _("dissolve"),
+                        (flaming(mptr)) ? C_("transitive", "burn")
+                                        : _("dissolve"),
                         _(a_your[trap->madeby_u]));
                 else
                     pline_mon(mtmp,

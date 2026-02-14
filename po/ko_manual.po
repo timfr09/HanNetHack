@@ -13323,8 +13323,38 @@ msgstr "이다"
 msgid "glow"
 msgstr "빛나다"
 
+# 계사 억제 아닌 활용형: trap.c:4713/4737 vtense + engrave.c otense에서도 사용
 msgid "fade"
-msgstr "바래다"
+msgstr "바랬다"
+
+# bare _("vibrate"): read.c Yobjnam2 + read.c otense에서 사용
+# ko.po "진동하다" 사전형 → 활용형 전환 (Yobjnam2 출력에 동사 포함)
+msgid "vibrate"
+msgstr "진동했다"
+
+# bare _("evaporate"): wield.c:986 Yobjnam2 + wield.c:984/read.c:1186 otense
+# ko.po "증발하다" 사전형 → 활용형 전환
+msgid "evaporate"
+msgstr "증발했다"
+
+# bare _("pulsate"): read.c:808 Yobjnam2 (반지 과충전 폭발)
+# ko.po "맥동하다" 사전형 → 활용형 전환
+msgid "pulsate"
+msgstr "맥동했다"
+
+# --- 복합 동사 활용형 수정 (ko.po 오역/사전형 교정) ---
+
+# wield.c:983/994 Yobjnam2 — ko.po "격렬하게 빛나다" 사전형
+msgid "violently glow"
+msgstr "격렬하게 빛났다"
+
+# wield.c:975 Yobjnam2 — ko.po "빛나기 시작한다" 오역 (원의: "희미하게 빛나다")
+msgid "faintly glow"
+msgstr "희미하게 빛났다"
+
+# wield.c:1025, read.c:1281 Yobjnam2 — ko.po "떨리는 진동." 명사형 오역
+msgid "suddenly vibrate"
+msgstr "갑자기 진동했다"
 
 # --- 정적 배열 N_() 래핑 ---
 
@@ -14587,17 +14617,18 @@ msgctxt "Tobjnam"
 msgid "fly"
 msgstr "이다"
 
-# [리뷰 완료] do_wear.c:478, music.c:616 — "vibrate" Tobjnam 계사 억제
-# 이중 사용: read.c에서 otense(_("vibrate"))로도 사용 → C_() 필수
+# [리뷰 완료] do_wear.c:478, music.c:616 — "vibrate" Tobjnam 활용형
+# 계사 "이다" → 활용형 "진동했다" 전환: "%s." 공유 포맷에서 동사 누락 해결
+# do_wear.c:478 "%s for a moment." 오버라이드 → "잠시 %s." 로 함께 갱신
 msgctxt "Tobjnam"
 msgid "vibrate"
-msgstr "이다"
+msgstr "진동했다"
 
-# [리뷰 완료] potion.c:1675 — "evaporate" Tobjnam 계사 억제
-# 이중 사용: wield.c/read.c에서 otense(_("evaporate"))로도 사용 → C_() 필수
+# [리뷰 완료] potion.c:1675 — "evaporate" Tobjnam 활용형
+# 계사 "이다" → 활용형 "증발했다" 전환: "%s." 공유 포맷에서 동사 누락 해결
 msgctxt "Tobjnam"
 msgid "evaporate"
-msgstr "이다"
+msgstr "증발했다"
 
 # [리뷰 완료] music.c:602 — "trill" Tobjnam 계사 억제
 # 이중 사용: music.c:605 You_feel에서 bare _("trill")로도 사용 → C_() 필수
@@ -14630,11 +14661,11 @@ msgctxt "Tobjnam"
 msgid "trigger"
 msgstr "이다"
 
-# [리뷰 완료] trap.c:4571/4574 — "fade" Tobjnam 계사 억제
-# 이중 사용: engrave.c/trap.c에서 otense/vtense(_("fade"))로도 사용 → C_() 필수
+# [리뷰 완료] trap.c:4571/4574 — "fade" Tobjnam 활용형
+# 계사 "이다" → 활용형 "바랬다" 전환: "%s."/"%s %s." 공유 포맷에서 동사 누락 해결
 msgctxt "Tobjnam"
 msgid "fade"
-msgstr "이다"
+msgstr "바랬다"
 
 # [리뷰 완료] engrave.c:1201, apply.c:1377, potion.c:1712 — "glow" Tobjnam 계사 억제
 # 이중 사용: read.c/worn.c에서 otense(_("glow"))로도 사용 → C_() 필수
@@ -14831,39 +14862,35 @@ msgstr "매우 매력적인 음악을 %1$s 연주했다.%2$.0s"
 # ============================================================
 
 # [리뷰 완료] do_wear.c:478 — Tobjnam+vibrate, 던바스캡 진동
-# %s = Tobjnam(uarmh, C_("Tobjnam","vibrate")) = "투구{이/가}" (계사 억제)
+# %s = Tobjnam(uarmh, C_("Tobjnam","vibrate")) = "투구{이/가} 진동했다"
 # 영어: "Your helmet vibrates for a moment."
 # 한국어: "잠시 투구가 진동했다."
 #, c-format
 msgid "%s for a moment."
-msgstr "잠시 %s 진동했다."
+msgstr "잠시 %s."
 
 # [리뷰 완료] music.c:602 — Tobjnam+trill/toot, 피리 연주
+# C_("music") 컨텍스트로 포맷 분리 → "%s%s." 공유 msgid 문제 해결
 # %1$s = Tobjnam(instr, C_("Tobjnam","trill"/"toot")) = "피리{이/가}" (계사 억제)
-# %2$s = " a familiar tune" 또는 ""
+# %2$s = C_("music"," a familiar tune") = " 친숙한 곡조를" 또는 ""
 # 영어: "The wooden flute trills a familiar tune."  /  "The wooden flute toots."
-# 한국어: "나무 피리가 친숙한 곡조를 연주했다."  /  "나무 피리가 소리를 냈다."
-# trill/toot 동일 포맷 → 공통 "소리를 냈다" 사용 (tune 있으면 %2$s에 포함)
-# 주의: "%s%s." 공유 msgid — dungeon.c/fountain.c/mhitm.c/objnam.c에서도 사용
-# → C_("music") 컨텍스트로 분리하지 않음 (영향 범위 과대)
-# → Known Issue로 유지 (trill/toot 구별 불가)
+# 한국어: "나무 피리가 친숙한 곡조를 연주했다."  /  "나무 피리가 연주했다."
+#, c-format
+msgctxt "music"
+msgid "%s%s."
+msgstr "%1$s%2$s 연주했다."
+
+msgctxt "music"
+msgid " a familiar tune"
+msgstr " 친숙한 곡조를"
 
 # [리뷰 완료] music.c:616 — Tobjnam+vibrate, 뿔피리 진동
-# %s = Tobjnam(instr, C_("Tobjnam","vibrate")) = "뿔피리{이/가}" (계사 억제)
-# 영어: "The frost horn vibrates."
-# 한국어: "서리 뿔피리가 진동했다."
-# 주의: "%s." 공유 msgid — 다수 파일에서 사용
-# → Tobjnam이 이미 계사 억제하여 "뿔피리{이/가}" 출력
-# → "%s." 포맷 결과: "뿔피리가." (동사 누락)
-# → 별도 C_("music") 컨텍스트 필요하나 "%s." 영향 범위 과대
-# → Known Issue로 유지
+# C_("Tobjnam","vibrate") = "진동했다" (활용형) → Tobjnam = "뿔피리{이/가} 진동했다"
+# "%s." 공유 포맷 → "뿔피리가 진동했다." ✓ (활용형 전환으로 해결)
 
 # [리뷰 완료] potion.c:1675 — Tobjnam+evaporate, 물약 증발
-# %s = Tobjnam(obj, C_("Tobjnam","evaporate")) = "물약{이/가}" (계사 억제)
-# 영어: "The potion evaporates."
-# 한국어: "물약이 증발했다."
-# 주의: "%s." 공유 msgid — 동사 누락 문제 동일
-# → Known Issue로 유지
+# C_("Tobjnam","evaporate") = "증발했다" (활용형) → Tobjnam = "물약{이/가} 증발했다"
+# "%s." 공유 포맷 → "물약이 증발했다." ✓ (활용형 전환으로 해결)
 
 # [리뷰 완료] read.c:901 — Tobjnam+go, 램프 소등
 # %s = Tobjnam(obj, C_("Tobjnam","go")) = "램프{이/가}" (계사 억제)
@@ -14910,24 +14937,15 @@ msgid "%s%s and %s a %s in the %s!"
 msgstr "%1$s %5$s의 %4$s{을/를} 막았다!%2$.0s%3$.0s"
 
 # [리뷰 완료] trap.c:4571 — Your+aobjnam+fade, 두루마리 바래짐 (플레이어)
-# %s = aobjnam(obj, C_("Tobjnam","fade")) = "두루마리{이/가}" (계사 억제)
-# 영어: "Your scroll of light fades."
-# 한국어: "당신의 빛의 두루마리가 바랬다."
-# 주의: Your() 매크로가 "당신의 " 접두사 추가
-# → Your("%s.") → "당신의 두루마리가 바랬다." (동사 필요)
-# 주의: Your(_("%s.")) — "%s." 공유 msgid
-# → Known Issue로 유지 (Your 매크로 + "%s." 분리 불가)
+# C_("Tobjnam","fade") = "바랬다" (활용형) → aobjnam = "두루마리{이/가} 바랬다"
+# Your("%s.") → "당신의 두루마리가 바랬다." ✓ (활용형 전환으로 해결)
 
 # [리뷰 완료] trap.c:4574 — pline+s_suffix+aobjnam+fade, 두루마리 바래짐 (몬스터)
-# %1$s = s_suffix(Monnam(victim)), %2$s = aobjnam(obj, C_("Tobjnam","fade"))
-# 영어: "The orc's scroll of light fades."
-# 한국어: "오크의 빛의 두루마리가 바랬다."
-# 주의: "%s %s." 공유 msgid — 다수 파일에서 사용
-# → Known Issue로 유지
+# "%s %s." → "오크의 두루마리가 바랬다." ✓ (활용형 전환으로 해결)
 
 # [리뷰 완료] engrave.c:1201 — Tobjnam+glow + otense+fade, 조각 빛남→바래짐
 # %1$s = Tobjnam(de->otmp, C_("Tobjnam","glow")) = "지팡이{이/가}" (계사 억제)
-# %2$s = otense(de->otmp, _("fade")) = "바래다" (사전형, %.0s 억제)
+# %2$s = otense(de->otmp, _("fade")) = "바랬다" (활용형, %.0s 억제)
 # 영어: "The wand of fire glows, then fades."
 # 한국어: "불의 지팡이가 빛을 발했다가 바랬다."
 #, c-format
@@ -14951,6 +14969,99 @@ msgstr "%s 이상한 빛으로 빛났다!"
 #, c-format
 msgid "%s your %s!"
 msgstr "%s 당신의 %s{을/를} 맞혔다!"
+
+# ============================================================
+# Yobjnam2 포맷 오버라이드 — 고유 포맷 문자열 (3차 수정)
+# ============================================================
+
+# [리뷰 완료] read.c:658/669/927 — Yobjnam2+vibrate/glow, 충전/축복 효과
+# %s = Yobjnam2(obj, "vibrate"/"glow") = "당신의 X{이/가} 진동했다"/"빛나다"
+# 고유 포맷 (3건 모두 read.c) — PO 오버라이드 안전
+# 영어: "Your wand vibrates briefly."
+# 한국어: "잠깐 당신의 지팡이가 진동했다."
+#, c-format
+msgid "%s briefly."
+msgstr "잠깐 %s."
+
+# [리뷰 완료] read.c:675 — Yobjnam2+vibrate/glow + hcolor, 충전 효과
+# %1$s = Yobjnam2, %2$s = " " 또는 "", %3$s = hcolor 또는 ""
+# 고유 포맷 (1건) — PO 오버라이드 안전
+# 영어: "Your sword glows blue for a moment."
+# 한국어: "잠깐 당신의 검이 빛나다 파란." (glow 사전형은 Known Issue)
+#, c-format
+msgid "%s%s%s for a moment."
+msgstr "잠깐 %1$s%2$s%3$s."
+
+# [리뷰 완료] read.c:682 — Yobjnam2+vibrate/glow + "feebly" + hcolor
+# 고유 포맷 (1건) — PO 오버라이드 안전
+# 영어: "Your sword feebly glows blue for a moment."
+# 한국어: "잠깐 희미하게 당신의 검이 빛나다 파란."
+#, c-format
+msgid "%s feebly%s%s for a moment."
+msgstr "잠깐 희미하게 %1$s%2$s%3$s."
+
+# [리뷰 완료] read.c:808 — Yobjnam2+pulsate + otense+explode, 반지 과충전
+# %1$s = Yobjnam2(obj, "pulsate") = "당신의 반지{이/가} 맥동했다"
+# %2$s = otense(obj, "explode") = "폭발하다" (억제 — 고정 번역 사용)
+# 고유 포맷 (1건) — PO 오버라이드 안전
+# 영어: "Your ring pulsates momentarily, then explodes!"
+# 한국어: "잠시 당신의 반지가 맥동했다, 그러더니 폭발했다!"
+#, c-format
+msgid "%s momentarily, then %s!"
+msgstr "잠시 %1$s, 그러더니 폭발했다!%2$.0s"
+
+# [리뷰 완료] wield.c:1025, read.c:1281 — Yobjnam2+suddenly vibrate
+# %s = Yobjnam2(uwep, "suddenly vibrate") = "당신의 검{이/가} 갑자기 진동했다"
+# 고유 포맷 (1건) — PO 오버라이드 안전
+# 영어: "Your sword suddenly vibrates unexpectedly."
+# 한국어: "예기치 않게 당신의 검이 갑자기 진동했다."
+#, c-format
+msgid "%s unexpectedly."
+msgstr "예기치 않게 %s."
+
+# [리뷰 완료] wield.c:993 — Yobjnam2+glow/violently glow + color + time
+# %1$s = Yobjnam2(uwep, "glow"/"violently glow") = "당신의 검{이/가} 빛나다/격렬하게 빛났다"
+# %2$s = color, %3$s = "잠깐"/"한동안"
+# 고유 포맷 (1건) — PO 오버라이드 안전
+# 영어: "Your sword glows red for a moment."
+# 한국어: "당신의 검이 빛나다 빨간 잠깐." → "잠깐 빨간 빛으로 당신의 검이 빛났다."
+# 주의: %1$s에 동사 포함 → %2$s(색상)의 위치 조정만 가능
+#, c-format
+msgid "%s %s for a %s."
+msgstr "%3$s %2$s %1$s."
+
+# [리뷰 완료] wield.c:982 — Yobjnam2+violently glow + color + otense+evaporate
+# %1$s = Yobjnam2(uwep, "violently glow") = "당신의 검{이/가} 격렬하게 빛났다"
+# %2$s = color, %3$s = otense(uwep, "evaporate") = "증발했다"
+# 고유 포맷 (1건) — PO 오버라이드 안전
+# 영어: "Your sword violently glows red for a while and then evaporates."
+# 한국어: "한동안 빨간 빛으로 당신의 검이 격렬하게 빛났다, 그러더니 증발했다."
+#, c-format
+msgid "%s %s for a while and then %s."
+msgstr "한동안 %2$s %1$s, 그러더니 %3$s."
+
+# [리뷰 완료] read.c:1181 — Yname2 + otense+vibrate/glow + hcolor + otense+evaporate
+# %1$s = Yname2(otmp), %2$s = otense("vibrate"/"glow") = "진동했다"/"빛나다"
+# %3$s = " " 또는 "", %4$s = hcolor 또는 "", %5$s = otense("evaporate") = "증발했다"
+# 고유 포맷 (1건) — PO 오버라이드 안전
+# 영어: "Your armor violently glows silver for a while, then evaporates."
+# 한국어: "당신의 갑옷이 격렬하게 은색으로 진동하다가 증발했다."
+#, c-format
+msgid "%s violently %s%s%s for a while, then %s."
+msgstr "%1$s{이/가} 격렬하게 %4$s%3$s%2$s 한동안, 그러더니 %5$s."
+
+# [리뷰 완료] read.c:1246 — Yname2 + violently + otense+vibrate/glow + hcolor + time
+# %1$s = Yname2(otmp), %2$s = "violently " 또는 ""
+# %3$s = otense("vibrate"/"glow"), %4$s = " " 또는 ""
+# %5$s = hcolor 또는 "", %6$s = "잠깐"/"한동안"
+# 고유 포맷 (1건) — PO 오버라이드 안전
+# 영어: "Your armor violently glows silver for a while."
+# 한국어 (Blind): "한동안 당신의 갑옷이 격렬하게 진동했다."
+# 한국어 (Sighted): "한동안 당신의 갑옷이 격렬하게 은색으로 빛나다."
+# 주의: glow 사전형("빛나다") 잔여 — Known Issue
+#, c-format
+msgid "%s %s%s%s%s for a %s."
+msgstr "%6$s %1$s{이/가} %2$s%5$s%4$s%3$s."
 
 # ============================================================
 # 조합 패턴 전수 검토 결과 (2026-02-14)
@@ -14986,15 +15097,15 @@ msgstr "%s 당신의 %s{을/를} 맞혔다!"
 # [OK] C_("Tobjnam", fly): 날다 (dothrow.c/mthrowu.c 부메랑)
 # [OK] C_("crystal_ball", "%s you!"): 수정구 혼란 포맷 분리
 #
-# === C_("Tobjnam") 계사 억제 — 이중 사용 동사 (2차 수정) ===
-# [OK] C_("Tobjnam", vibrate): 진동 (do_wear.c/music.c) — 포맷에서 "진동했다" 제공
-# [OK] C_("Tobjnam", evaporate): 증발 (potion.c) — "%s." 공유 msgid (Known Issue)
-# [OK] C_("Tobjnam", trill/toot): 피리 연주 (music.c) — "%s%s." 공유 msgid (Known Issue)
-# [OK] C_("Tobjnam", go): 소등 (read.c/steal.c) — 포맷에서 "꺼졌다" 제공
-# [OK] C_("Tobjnam", break): 바위 부서짐 (explode.c) — 포맷에서 "부서졌다" 제공
-# [OK] C_("Tobjnam", trigger): 지뢰 작동 (hack.c) — 포맷에서 "작동시켰다" 제공
-# [OK] C_("Tobjnam", fade): 두루마리 바래짐 (trap.c) — "%s."/"%s %s." 공유 (Known Issue)
-# [OK] C_("Tobjnam", glow): 빛남 (engrave.c/apply.c/potion.c) — 포맷에서 동사 제공
+# === C_("Tobjnam") 이중 사용 동사 (2차 → 3차 수정) ===
+# [OK] C_("Tobjnam", vibrate): "이다"→"진동했다" 활용형 전환 (3차)
+# [OK] C_("Tobjnam", evaporate): "이다"→"증발했다" 활용형 전환 (3차)
+# [OK] C_("Tobjnam", trill/toot): C_("music") 포맷 컨텍스트로 분리 (3차)
+# [OK] C_("Tobjnam", go): 계사 억제 → 포맷에서 "꺼졌다" 제공
+# [OK] C_("Tobjnam", break): 계사 억제 → 포맷에서 "부서졌다" 제공
+# [OK] C_("Tobjnam", trigger): 계사 억제 → 포맷에서 "작동시켰다" 제공
+# [OK] C_("Tobjnam", fade): "이다"→"바랬다" 활용형 전환 (3차)
+# [OK] C_("Tobjnam", glow): 계사 억제 유지 → 포맷에서 동사 제공
 #
 # === PO-only 활용형 수정 — Tobjnam 전용 동사 (2차 수정) ===
 # [OK] implode: "내파하다"→"내파했다" (detect.c 수정구)
@@ -15005,12 +15116,32 @@ msgstr "%s 당신의 %s{을/를} 맞혔다!"
 # [OK] heat: 계사 억제 + 포맷에서 "뜨거워졌다" 제공 (do.c 뜨거운 땅)
 # [OK] produce: 계사 억제 + 포맷에서 "연주했다" 제공 (music.c 하프)
 #
-# === 포맷 수정 ===
+# === 포맷 수정 (2차) ===
 # [OK] "%s your %s!": 이중 {이/가} 제거 (dothrow.c Blind 부메랑)
 # [OK] "%s apart.": "떨어졌다"→"산산이 부서졌다" (explode.c 바위)
 # [OK] "%s out!"/"out.": "가다 나갔다"→"꺼졌다" (read.c/steal.c 소등)
 # [OK] "%s, then %s.": 빛남+바래짐 통합 번역 (engrave.c)
 # [OK] "%s with a strange light!": "빛나다 함께"→"빛으로 빛났다" (apply.c)
+#
+# === Yobjnam2 고유 포맷 오버라이드 (3차 수정) ===
+# [OK] "%s briefly.": 어순 교정 "잠깐 %s." (read.c 충전)
+# [OK] "%s%s%s for a moment.": 어순 교정 (read.c p_glow2)
+# [OK] "%s feebly%s%s for a moment.": 어순 교정 (read.c p_glow3)
+# [OK] "%s momentarily, then %s!": 폭발 고정 번역 (read.c 반지)
+# [OK] "%s unexpectedly.": 어순 교정 (wield.c 엘프무기)
+# [OK] "%s %s for a %s.": 어순 교정 (wield.c 인챈트)
+# [OK] "%s %s for a while and then %s.": 어순 교정 (wield.c 과인챈트)
+# [OK] "%s violently %s%s%s for a while, then %s.": 어순 교정 (read.c 과인챈트)
+# [OK] "%s %s%s%s%s for a %s.": 어순 교정 (read.c 갑옷 인챈트)
+#
+# === 사전형→활용형 전환 (3차 수정) ===
+# [OK] bare "vibrate": "진동하다"→"진동했다" (read.c Yobjnam2/otense)
+# [OK] bare "evaporate": "증발하다"→"증발했다" (wield.c Yobjnam2/otense)
+# [OK] bare "fade": "바래다"→"바랬다" (trap.c vtense)
+# [OK] bare "pulsate": "맥동하다"→"맥동했다" (read.c Yobjnam2)
+# [OK] "violently glow": "격렬하게 빛나다"→"격렬하게 빛났다"
+# [OK] "faintly glow": "빛나기 시작한다"→"희미하게 빛났다" (오역 수정)
+# [OK] "suddenly vibrate": "떨리는 진동."→"갑자기 진동했다" (오역 수정)
 #
 # === 기존 패턴 확인 ===
 # [OK] feel 피동: {이/가} 삽입으로 주격조사 누락 해결
@@ -15036,13 +15167,17 @@ msgstr "%s 당신의 %s{을/를} 맞혔다!"
 # - mhitu.c:2570 "%s %s." 공유 msgid → C_() 필요하나 사용처 다수
 # - stagger 동사 사전형/과거형 불일치 (load/potion 문맥과 tense 충돌)
 # - light.c ConcatF1 ", %s lit)" 미번역 (item description 문맥)
-# - "%s." 공유 msgid: evaporate/vibrate(music) 동사 누락 (C_("music") 영향 범위 과대)
-# - "%s%s." 공유 msgid: trill/toot 동사 누락 (dungeon/fountain/mhitm/objnam 공유)
-# - "%s." + Your() 매크로: fade 동사 누락 (trap.c, 분리 불가)
-# - "%s %s." 공유 msgid: fade 동사 누락 (trap.c+s_suffix, 분리 불가)
 # - potion.c:1712 aobjnam+glow saddle: 동적 Snprintf 결합 (동사 누락)
+# - potion.c:1720 aobjnam(saddle, "get"): "get"에 _() 미래핑 (소스 수정 필요)
 # - "resist" sit.c 이중 사용 (Tobjnam+vtense, 단일 사용)
 # - "shatter" 이중 사용 (Yobjnam2+otense, 해당 포맷에 고정 동사)
 # - "flicker" 이중 사용 (Tobjnam+vtense, 해당 포맷에 ko_manual 조합)
-# - potion.c:1720 aobjnam(saddle, "get"): "get"에 _() 미래핑 (소스 수정 필요)
+#
+# [Known Issues — Yobjnam2 glow 사전형 (3차)]
+# - "%s %s." 46건 공유: Yobjnam2+glow 사전형 잔여
+#   (sit.c:625, apply.c:4317, read.c:1539, wield.c:975, pray.c:595/1298)
+# - "%s." 49건 공유: Yobjnam2+vibrate at read.c:1339, Yobjnam2+evaporate at wield.c:986
+#   (활용형 전환으로 동사는 있으나 공유 포맷이라 별도 오버라이드 불가)
+# - bare "glow" 사전형 "빛나다": 명사/동사 이중 사용으로 활용형 전환 불가
+# - "%s with %s aura." 2건 공유 (potion.c:1549+wield.c:910): 동사 누락
 

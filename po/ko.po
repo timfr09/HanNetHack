@@ -1039,10 +1039,9 @@ msgid "flicker"
 msgstr "깜빡이다"
 
 #: ../src/apply.c:1345 ../src/apply.c:1673
-#, fuzzy
 msgctxt "light"
 msgid "die"
-msgstr "죽음"
+msgstr ""
 
 #: ../src/apply.c:1349
 #, c-format
@@ -1268,10 +1267,10 @@ msgstr "깜빡이다"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/apply.c:1598 ../src/trap.c:390
-#, fuzzy, c-format
+#, c-format
 msgctxt "subj_is_pred"
 msgid "%s %s %s"
-msgstr "%s %s %s"
+msgstr ""
 
 #: ../src/apply.c:1600 ../src/do.c:2458 ../src/eat.c:3490 ../src/hack.c:3703
 #: ../src/insight.c:984 ../src/invent.c:4123 ../src/lock.c:590
@@ -2163,9 +2162,8 @@ msgid "Thump!  Your blow bounces harmlessly off the %s."
 msgstr "쿵! 당신의 공격이 %s에 튕겨나갔다."
 
 #: ../src/apply.c:3463 ../src/apply.c:3755
-#, fuzzy
 msgid "the spot to hit"
-msgstr "그것들이 부딪히자"
+msgstr ""
 
 #: ../src/apply.c:3474
 msgid "Don't know what to hit."
@@ -2588,42 +2586,36 @@ msgid "  %s [%s %s]"
 msgstr "  %s [%s %s]"
 
 #: ../src/artifact.c:1244
-#, fuzzy
 msgid "probe"
-msgstr "로브"
+msgstr ""
 
 #: ../src/artifact.c:1244
-#, fuzzy
 msgid "stun"
-msgstr "기절한"
+msgstr ""
 
 #: ../src/artifact.c:1244
-#, fuzzy
 msgid "scare"
-msgstr ", 겁먹음"
+msgstr ""
 
 #: ../src/artifact.c:1244 ../src/mkobj.c:746
 msgid "cancel"
 msgstr "취소"
 
 #: ../src/artifact.c:1245
-#, fuzzy
 msgid "prod"
-msgstr "연주하다"
+msgstr ""
 
 #: ../src/artifact.c:1245
 msgid "amaze"
 msgstr ""
 
 #: ../src/artifact.c:1245
-#, fuzzy
 msgid "tickle"
-msgstr "간지러움"
+msgstr ""
 
 #: ../src/artifact.c:1245
-#, fuzzy
 msgid "purge"
-msgstr "밀려온다"
+msgstr ""
 
 #: ../src/artifact.c:1306
 #, c-format
@@ -2670,10 +2662,10 @@ msgstr "기절한"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/artifact.c:1429
-#, fuzzy, c-format
+#, c-format
 msgctxt "artifact_status"
 msgid "%s %s %s%c"
-msgstr "%s %s %s%c"
+msgstr ""
 
 #: ../src/artifact.c:1485
 #, c-format
@@ -2878,9 +2870,9 @@ msgid "weightless for a moment."
 msgstr "잠시 무중력 상태."
 
 #: ../src/artifact.c:1957
-#, fuzzy, c-format
+#, c-format
 msgid "Suddenly %s out."
-msgstr "갑자기 %s{이/가} %s."
+msgstr ""
 
 #: ../src/artifact.c:1958 ../src/artifact.c:2585 ../src/ball.c:975
 #: ../src/dbridge.c:910 ../src/do_wear.c:3224 ../src/dokick.c:644
@@ -2986,10 +2978,10 @@ msgstr "%s{이/가} %s."
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/artifact.c:2490
-#, fuzzy, c-format
+#, c-format
 msgctxt "artifact_glow"
 msgid "%s %s %s%c"
-msgstr "%s %s %s%c"
+msgstr ""
 
 #: ../src/artifact.c:2495
 #, c-format
@@ -3025,32 +3017,28 @@ msgid "cool"
 msgstr "더 시원하다."
 
 #: ../src/artifact.c:2757
-#, fuzzy
 msgid "slightly warm"
-msgstr "약간 "
+msgstr ""
 
 #: ../src/artifact.c:2757 ../src/attrib.c:55 ../src/fountain.c:709
 msgid "warm"
 msgstr "따뜻한"
 
 #: ../src/artifact.c:2757
-#, fuzzy
 msgid "very warm"
-msgstr "%s 매우 따뜻하다."
+msgstr ""
 
 #: ../src/artifact.c:2758 ../src/do.c:1998 ../src/fountain.c:709
 msgid "hot"
 msgstr "덥다"
 
 #: ../src/artifact.c:2758
-#, fuzzy
 msgid "very hot"
-msgstr "매우 "
+msgstr ""
 
 #: ../src/artifact.c:2758
-#, fuzzy
 msgid "like fire"
-msgstr "액체 무지개"
+msgstr ""
 
 #: ../src/artifact.c:2766
 #, c-format
@@ -4334,10 +4322,10 @@ msgstr "무엇을 보시겠습니까?"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/cmd.c:1288 ../src/trap.c:4934 ../src/trap.c:4965
-#, fuzzy, c-format
+#, c-format
 msgctxt "location"
 msgid "%s %s %s."
-msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+msgstr ""
 
 #: ../src/cmd.c:1289
 msgid "are in"
@@ -4882,9 +4870,8 @@ msgstr "어디로 이동하시겠습니까?"
 
 # Item type names (note: "potion" is already defined elsewhere)
 #: ../src/cmd.c:5103
-#, fuzzy
 msgid "the desired destination"
-msgstr " 물약"
+msgstr ""
 
 #: ../src/cmd.c:5121
 msgid "No travel destination set."
@@ -5345,19 +5332,16 @@ msgid "Delphi"
 msgstr ""
 
 #: ../src/detect.c:1201
-#, fuzzy
 msgid "Medusa's lair"
-msgstr "메두사"
+msgstr ""
 
 #: ../src/detect.c:1202
-#, fuzzy
 msgid "a castle"
-msgstr "시전하다"
+msgstr ""
 
 #: ../src/detect.c:1203
-#, fuzzy
 msgid "the Wizard of Yendor's tower"
-msgstr "옌더의 마법사"
+msgstr ""
 
 #: ../src/detect.c:1215
 #, c-format
@@ -7448,10 +7432,9 @@ msgid "its"
 msgstr "그것의"
 
 #: ../src/do_name.c:168
-#, fuzzy
 msgctxt "noun"
 msgid "name"
-msgstr "이름 지을"
+msgstr ""
 
 #: ../src/do_name.c:168
 msgid "title"
@@ -8934,9 +8917,9 @@ msgid "are not wearing that."
 msgstr "그것을 입고 있지 않다."
 
 #: ../src/do_wear.c:1787
-#, fuzzy, c-format
+#, c-format
 msgid " without taking off your %s first"
-msgstr "%s{을/를} 벗기를 마쳤다."
+msgstr ""
 
 # 아이템이 피부에 박힌 경우
 #: ../src/do_wear.c:1790
@@ -9393,9 +9376,8 @@ msgid "seems to be nothing available for a familiar."
 msgstr "사역마에게 사용할 수 있는 것이 없는 것 같다."
 
 #: ../src/dog.c:164
-#, fuzzy
 msgid "figurine writhes and then shatters into pieces!"
-msgstr "문을 차자, 산산조각이 났다!"
+msgstr ""
 
 #: ../src/dog.c:195
 msgid "get a bad feeling about this."
@@ -9527,10 +9509,10 @@ msgstr "%s{이/가} 파고들었다."
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/dogmove.c:290 ../src/muse.c:2896
-#, fuzzy, c-format
+#, c-format
 msgctxt "mon_eat"
 msgid "%s %s %s."
-msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+msgstr ""
 
 #: ../src/dogmove.c:292 ../src/dogmove.c:295
 msgid "devours"
@@ -10033,14 +10015,12 @@ msgid "kick loose some ornamental coins and gems!"
 msgstr "장식용 동전과 보석을 차서 떨어뜨렸다!"
 
 #: ../src/dokick.c:1076
-#, fuzzy
 msgid "the altar"
-msgstr "물"
+msgstr ""
 
 #: ../src/dokick.c:1090
-#, fuzzy
 msgid "the fountain"
-msgstr "분수"
+msgstr ""
 
 #: ../src/dokick.c:1097
 msgid "metal boots"
@@ -10109,9 +10089,8 @@ msgid "%s returns!"
 msgstr "%s{이/가} 돌아왔다!"
 
 #: ../src/dokick.c:1233
-#, fuzzy
 msgid "The dish washer"
-msgstr "%s{이/가} 사라졌다."
+msgstr ""
 
 #: ../src/dokick.c:1272
 msgid "have no legs to kick with."
@@ -10260,10 +10239,10 @@ msgstr " 그리고 %s %s."
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/dokick.c:1944
-#, fuzzy, c-format
+#, c-format
 msgctxt "obj_fall"
 msgid "%s %s %s."
-msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+msgstr ""
 
 #: ../src/dokick.c:1971 ../src/trap.c:683
 msgid "through the trap door"
@@ -10324,9 +10303,8 @@ msgstr "준비된 탄약이 없다."
 # 예: "You are released from the pit."
 # ============================================================
 #: ../src/dothrow.c:536
-#, fuzzy
 msgid "You ready:"
-msgstr "당신은"
+msgstr ""
 
 #: ../src/dothrow.c:539
 msgid "have nothing appropriate for your quiver."
@@ -10750,10 +10728,9 @@ msgstr "이상한 냄새를 맡았다..."
 
 # 액체
 #: ../src/dothrow.c:2515
-#, fuzzy
 msgctxt "eyes_water"
 msgid "water"
-msgstr "물"
+msgstr ""
 
 #: ../src/dothrow.c:2631
 msgid " into a thousand pieces"
@@ -12988,10 +12965,9 @@ msgid "feel the words"
 msgstr "돋을새김된 단어를 느꼈다:"
 
 #: ../src/engrave.c:396
-#, fuzzy
 msgctxt "engrave_read"
 msgid "read"
-msgstr "읽다"
+msgstr ""
 
 #: ../src/engrave.c:509
 msgid "What would you write?  \"Jonah was here\"?"
@@ -13415,9 +13391,9 @@ msgid "%s gets dull."
 msgstr "%s{이/가} 무뎌졌다."
 
 #: ../src/engrave.c:1384
-#, fuzzy, c-format
+#, c-format
 msgid "You drop one %s!"
-msgstr "%s{을/를} 떨어뜨렸다!"
+msgstr ""
 
 #: ../src/engrave.c:1405
 msgid "marker dries out."
@@ -13484,43 +13460,36 @@ msgid "Welcome %sto experience level %d."
 msgstr "%s경험 레벨 %d에 온 것을 환영한다."
 
 #: ../src/exper.c:351
-#, fuzzy
 msgid "back "
-msgstr "뒤"
+msgstr ""
 
 #: ../src/explode.c:125
-#, fuzzy
 msgid "heartburn"
-msgstr "타다"
+msgstr ""
 
 #: ../src/explode.c:128 ../src/explode.c:156
-#, fuzzy
 msgid "chilly"
-msgstr "차가운"
+msgstr ""
 
 #: ../src/explode.c:132
-#, fuzzy
 msgid "irradiated by pure energy"
-msgstr "순수한 에너지로 스스로를 조사했다!"
+msgstr ""
 
 #: ../src/explode.c:134 ../src/explode.c:162 ../src/obj_descr_i18n.c:105
 msgid "perforated"
 msgstr "구멍 뚫린"
 
 #: ../src/explode.c:137 ../src/explode.c:165
-#, fuzzy
 msgid "shocked"
-msgstr "잠긴 "
+msgstr ""
 
 #: ../src/explode.c:143
-#, fuzzy
 msgid "an upset stomach"
-msgstr "위"
+msgstr ""
 
 #: ../src/explode.c:146 ../src/explode.c:174
-#, fuzzy
 msgid "fried"
-msgstr "친절한"
+msgstr ""
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -13531,18 +13500,16 @@ msgid "%s gets %s!"
 msgstr "%s{이/가} %s{을/를} 얻었다!"
 
 #: ../src/explode.c:153
-#, fuzzy
 msgid "toasted"
-msgstr "스승"
+msgstr ""
 
 #: ../src/explode.c:160
 msgid "overwhelmed by pure energy"
 msgstr ""
 
 #: ../src/explode.c:168
-#, fuzzy
 msgid "intoxicated"
-msgstr "독성 폐기물"
+msgstr ""
 
 #: ../src/explode.c:177
 #, c-format
@@ -13945,9 +13912,8 @@ msgid "unrefrigerated sip of juice"
 msgstr "냉장하지 않은 주스 한 모금"
 
 #: ../src/fountain.c:307
-#, fuzzy
 msgid "contaminated water"
-msgstr "오염된 수돗물"
+msgstr ""
 
 #: ../src/fountain.c:321
 msgid "This water's no good!"
@@ -14058,9 +14024,8 @@ msgid "wash your %s%s in the %s."
 msgstr "%s{을/를}%s %s에서 씻었다."
 
 #: ../src/fountain.c:564
-#, fuzzy
 msgid "gloved "
-msgstr "장갑 낀"
+msgstr ""
 
 #: ../src/fountain.c:568 ../src/pray.c:358
 #, c-format
@@ -15026,9 +14991,8 @@ msgid "stop.  %s won't fit through."
 msgstr "멈춰. %s{은/는} 통과하지 못한다."
 
 #: ../src/hack.c:2129
-#, fuzzy
 msgid "that "
-msgstr "그것"
+msgstr ""
 
 #: ../src/hack.c:2136
 #, c-format
@@ -15315,9 +15279,8 @@ msgid "enter a leprechaun hall!"
 msgstr "레프리콘 홀에 들어갔다!"
 
 #: ../src/hack.c:3590
-#, fuzzy
 msgid "Run"
-msgstr "풀"
+msgstr ""
 
 #: ../src/hack.c:3592
 #, c-format
@@ -15531,10 +15494,10 @@ msgstr "별명 바꾸기 또는 별명 지우기"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/iactions.c:61 ../src/iactions.c:362
-#, fuzzy, c-format
+#, c-format
 msgctxt "action_item"
 msgid "%s %s %s"
-msgstr "%s %s %s"
+msgstr ""
 
 #: ../src/iactions.c:64
 msgid "this specific"
@@ -15721,10 +15684,9 @@ msgid "Attach %s to your candelabrum, or %s %s"
 msgstr "%s{을/를} 촛대에 붙이거나, %s %s"
 
 #: ../src/iactions.c:359
-#, fuzzy
 msgctxt "candle"
 msgid "light"
-msgstr "가벼운"
+msgstr ""
 
 #: ../src/iactions.c:359
 msgid "extinguish"
@@ -15856,10 +15818,10 @@ msgstr "이것"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/iactions.c:453
-#, fuzzy, c-format
+#, c-format
 msgctxt "menu_action"
 msgid "%s %s"
-msgstr "%s %s"
+msgstr ""
 
 #: ../src/iactions.c:453 ../src/iactions.c:575
 msgid "Shoot"
@@ -15986,16 +15948,15 @@ msgstr "분수에서 마겠습니까?"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/iactions.c:575
-#, fuzzy, c-format
+#, c-format
 msgctxt "menu_action"
 msgid "%s %s%s"
-msgstr "%s %s%s"
+msgstr ""
 
 #: ../src/iactions.c:577
-#, fuzzy
 msgctxt "menu_action"
 msgid "them"
-msgstr "그것들"
+msgstr ""
 
 #: ../src/iactions.c:585
 msgid " (same as 'f')"
@@ -16399,9 +16360,8 @@ msgstr " %s에"
 
 # 옵션 값 - 없음
 #: ../src/insight.c:368 ../src/insight.c:2659
-#, fuzzy
 msgid " none"
-msgstr "없음"
+msgstr ""
 
 # 시간 표시 (한국어에는 영어 복수형 불필요, %2$s는 빈 문자열로 소비)
 #: ../src/insight.c:370
@@ -20212,9 +20172,8 @@ msgid "Things that are under the %s here:"
 msgstr "여기 %s 아래에 있는 것들:"
 
 #: ../src/invent.c:5557
-#, fuzzy
 msgid "beneath them"
-msgstr "아래에"
+msgstr ""
 
 # %s = "here", "under them", "beneath it"
 #: ../src/invent.c:5573 ../src/obj_descr_i18n.c:454
@@ -20410,20 +20369,18 @@ msgid "fix"
 msgstr "그것"
 
 #: ../src/lock.c:466
-#, fuzzy
 msgctxt "lock_verb"
 msgid "lock"
-msgstr "자물쇠"
+msgstr ""
 
 #: ../src/lock.c:468
 msgid "unlock"
 msgstr "잠금을 풀다"
 
 #: ../src/lock.c:470
-#, fuzzy
 msgctxt "pick_lock"
 msgid "pick"
-msgstr "자물쇠 따개"
+msgstr ""
 
 #: ../src/lock.c:475
 msgid "Check "
@@ -20871,9 +20828,8 @@ msgid "Catch!"
 msgstr "받아라!"
 
 #: ../src/mail.c:441
-#, fuzzy
 msgid "Oops!"
-msgstr "이런..."
+msgstr ""
 
 #: ../src/mail.c:455
 #, c-format
@@ -21026,10 +20982,10 @@ msgstr "죽는다"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/makemon.c:2141
-#, fuzzy, c-format
+#, c-format
 msgctxt "mon_grow"
 msgid "%s %s %s."
-msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+msgstr ""
 
 # 조합 패턴: 몬스터 변화 동사 (monster transformation verbs)
 #: ../src/makemon.c:2142
@@ -21503,10 +21459,10 @@ msgstr "말을 건다"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/mhitm.c:669
-#, fuzzy, c-format
+#, c-format
 msgctxt "mon_seduce"
 msgid "%s %s %s."
-msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+msgstr ""
 
 # 조합 패턴: 유혹 관련 부사
 #: ../src/mhitm.c:670 ../src/mhitu.c:42 ../src/mhitu.c:239 ../src/uhitm.c:5561
@@ -21599,10 +21555,10 @@ msgstr "%s{은/는} %s 시선이 반사된 것을 알아채지 못한 것 같다
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/mhitm.c:859
-#, fuzzy, c-format
+#, c-format
 msgctxt "mon_engulf"
 msgid "%s %s %s."
-msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+msgstr ""
 
 # 조합: "%s swallows %s" - 몬스터가 다른 몬스터를 삼키다
 #: ../src/mhitm.c:860
@@ -21669,24 +21625,24 @@ msgid "%s shudders!"
 msgstr "%s{이/가} 떨린다!"
 
 #: ../src/mhitm.c:1180
-#, fuzzy, c-format
+#, c-format
 msgid "%s undergoes a freakish metamorphosis and turns into %s."
-msgstr "기괴한 변태를 겪는다!"
+msgstr ""
 
 #: ../src/mhitm.c:1183
-#, fuzzy, c-format
+#, c-format
 msgid "%s turns into %s."
-msgstr "%s{이/가} %s{으로/로} 변했다!"
+msgstr ""
 
 #: ../src/mhitm.c:1186
-#, fuzzy, c-format
+#, c-format
 msgid "%s undergoes a freakish metamorphosis and disappears."
-msgstr "기괴한 변태를 겪는다!"
+msgstr ""
 
 #: ../src/mhitm.c:1189
-#, fuzzy, c-format
+#, c-format
 msgid "%s undergoes a freakish metamorphosis."
-msgstr "기괴한 변태를 겪는다!"
+msgstr ""
 
 #: ../src/mhitm.c:1258
 #, c-format
@@ -23256,34 +23212,34 @@ msgid "a masticating sound."
 msgstr "씹는 소리."
 
 #: ../src/mon.c:1718
-#, fuzzy, c-format
+#, c-format
 msgid "%s shivers slightly."
-msgstr "%s{이/가} 약간 %s."
+msgstr ""
 
 #: ../src/mon.c:1721
-#, fuzzy, c-format
+#, c-format
 msgid "%s looks quite warm."
-msgstr "%s{이/가} 다치지 않아 보인다."
+msgstr ""
 
 #: ../src/mon.c:1724
-#, fuzzy, c-format
+#, c-format
 msgid "%s looks wide awake."
-msgstr "완전히 깨어있다."
+msgstr ""
 
 #: ../src/mon.c:1727
-#, fuzzy, c-format
+#, c-format
 msgid "%s looks very firm."
-msgstr "%s{이/가} 매우 화나 보인다."
+msgstr ""
 
 #: ../src/mon.c:1730
-#, fuzzy, c-format
+#, c-format
 msgid "%s crackles with static electricity."
-msgstr "%s 주변 공기가 전기로 탁탁거린다."
+msgstr ""
 
 #: ../src/mon.c:1733
-#, fuzzy, c-format
+#, c-format
 msgid "%s looks healthy."
-msgstr "%s{이/가} 더 건강해 보인다."
+msgstr ""
 
 #: ../src/mon.c:1791 ../src/steal.c:887
 msgid "vanishes"
@@ -23346,25 +23302,23 @@ msgid "suddenly "
 msgstr "갑자기 "
 
 #: ../src/mon.c:2915
-#, fuzzy
 msgctxt "vamp_rise"
 msgid "reconstitutes"
-msgstr "재구성됐다"
+msgstr ""
 
 #: ../src/mon.c:2915
-#, fuzzy
 msgctxt "vamp_rise"
 msgid "transforms"
-msgstr "변신했다"
+msgstr ""
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/mon.c:2937
-#, fuzzy, c-format
+#, c-format
 msgctxt "vamp_rise"
 msgid "%s %s!"
-msgstr "%2$s{을/를} %1$s!"
+msgstr ""
 
 # 소리 메시지 (sound messages)
 #: ../src/mon.c:2947
@@ -23475,16 +23429,15 @@ msgstr "%s{이/가} 평화롭게 %s하기를."
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/mon.c:3501 ../src/wizcmds.c:314
-#, fuzzy, c-format
+#, c-format
 msgctxt "you_kill"
 msgid "%s %s!"
-msgstr "%2$s{을/를} %1$s!"
+msgstr ""
 
 #: ../src/mon.c:3502
-#, fuzzy
 msgctxt "you_kill"
 msgid "destroy"
-msgstr "파괴했다"
+msgstr ""
 
 #: ../src/mon.c:3502 ../src/wizcmds.c:314
 msgid "kill"
@@ -23644,9 +23597,8 @@ msgid "hide under %s."
 msgstr "%s 아래에 숨었다."
 
 #: ../src/mon.c:4787
-#, fuzzy
 msgid "hide"
-msgstr "흉측한"
+msgstr ""
 
 #: ../src/mon.c:4789
 #, c-format
@@ -23976,10 +23928,9 @@ msgid "flash"
 msgstr "쨍!"
 
 #: ../src/mondata.c:1488
-#, fuzzy
 msgctxt "radiance"
 msgid "light"
-msgstr "가벼운"
+msgstr ""
 
 #: ../src/mondata.c:1491
 msgid "smoke"
@@ -25747,143 +25698,121 @@ msgid "dwarf lord"
 msgstr "드워프 군주"
 
 #: ../src/monster_i18n.c:400
-#, fuzzy
 msgid "dwarf lady"
-msgstr "드워프 군주"
+msgstr ""
 
 #: ../src/monster_i18n.c:401
-#, fuzzy
 msgid "dwarf leader"
-msgstr "드워프 군주"
+msgstr ""
 
 #: ../src/monster_i18n.c:402 ../src/obj_descr_i18n.c:558
 msgid "dwarf king"
 msgstr "드워프 왕"
 
 #: ../src/monster_i18n.c:403
-#, fuzzy
 msgid "dwarf queen"
-msgstr "드워프 왕"
+msgstr ""
 
 #: ../src/monster_i18n.c:404
-#, fuzzy
 msgid "dwarf ruler"
-msgstr "드워프 군주"
+msgstr ""
 
 #: ../src/monster_i18n.c:405 ../src/obj_descr_i18n.c:565
 msgid "kobold lord"
 msgstr "코볼트 군주"
 
 #: ../src/monster_i18n.c:406
-#, fuzzy
 msgid "kobold lady"
-msgstr "코볼트 군주"
+msgstr ""
 
 #: ../src/monster_i18n.c:407
-#, fuzzy
 msgid "kobold leader"
-msgstr "코볼트 군주"
+msgstr ""
 
 #: ../src/monster_i18n.c:408 ../src/obj_descr_i18n.c:560
 msgid "gnome lord"
 msgstr "노움 군주"
 
 #: ../src/monster_i18n.c:409
-#, fuzzy
 msgid "gnome lady"
-msgstr "노움 군주"
+msgstr ""
 
 #: ../src/monster_i18n.c:410
-#, fuzzy
 msgid "gnome leader"
-msgstr "노움 군주"
+msgstr ""
 
 #: ../src/monster_i18n.c:411 ../src/obj_descr_i18n.c:561
 msgid "gnome king"
 msgstr "노움 왕"
 
 #: ../src/monster_i18n.c:412
-#, fuzzy
 msgid "gnome queen"
-msgstr "노움 왕"
+msgstr ""
 
 #: ../src/monster_i18n.c:413
-#, fuzzy
 msgid "gnome ruler"
-msgstr "노움 군주"
+msgstr ""
 
 #: ../src/monster_i18n.c:414
-#, fuzzy
 msgid "ogre lord"
-msgstr "노움 군주"
+msgstr ""
 
 #: ../src/monster_i18n.c:415
-#, fuzzy
 msgid "ogre lady"
-msgstr "아가씨"
+msgstr ""
 
 #: ../src/monster_i18n.c:416
-#, fuzzy
 msgid "ogre leader"
-msgstr "로그 레벨 "
+msgstr ""
 
 #: ../src/monster_i18n.c:417
-#, fuzzy
 msgid "ogre king"
-msgstr "노움 왕"
+msgstr ""
 
 #: ../src/monster_i18n.c:418
 msgid "ogre queen"
 msgstr ""
 
 #: ../src/monster_i18n.c:419
-#, fuzzy
 msgid "ogre tyrant"
-msgstr "보다 큼 "
+msgstr ""
 
 #: ../src/monster_i18n.c:420
-#, fuzzy
 msgid "vampire lord"
-msgstr "뱀파이어"
+msgstr ""
 
 #: ../src/monster_i18n.c:421
-#, fuzzy
 msgid "vampire lady"
-msgstr "흡혈 박쥐"
+msgstr ""
 
 #: ../src/monster_i18n.c:422
-#, fuzzy
 msgid "vampire leader"
-msgstr "뱀파이어 마법사"
+msgstr ""
 
 #: ../src/monster_i18n.c:423 ../src/obj_descr_i18n.c:554
 msgid "elf-lord"
 msgstr "엘프 군주"
 
 #: ../src/monster_i18n.c:424
-#, fuzzy
 msgid "elf-lady"
-msgstr "엘프 군주"
+msgstr ""
 
 # 자기 학살 (자신의 종을 학살)
 #: ../src/monster_i18n.c:425
-#, fuzzy
 msgid "elf-noble"
-msgstr "자기 학살"
+msgstr ""
 
 #: ../src/monster_i18n.c:426 ../src/obj_descr_i18n.c:555
 msgid "Elvenking"
 msgstr "엘프왕"
 
 #: ../src/monster_i18n.c:427
-#, fuzzy
 msgid "Elvenqueen"
-msgstr "엘프왕"
+msgstr ""
 
 #: ../src/monster_i18n.c:428
-#, fuzzy
 msgid "elven monarch"
-msgstr "다시는 안 돼!"
+msgstr ""
 
 #: ../src/monster_i18n.c:429 ../src/monster_i18n.c:441 ../src/priest.c:321
 msgid "priest"
@@ -25894,14 +25823,12 @@ msgid "priestess"
 msgstr "여사제"
 
 #: ../src/monster_i18n.c:431
-#, fuzzy
 msgid "aligned cleric"
-msgstr "정렬된"
+msgstr ""
 
 #: ../src/monster_i18n.c:434
-#, fuzzy
 msgid "high cleric"
-msgstr "대사제"
+msgstr ""
 
 #: ../src/monster_i18n.c:435
 msgid "incubus"
@@ -25912,30 +25839,25 @@ msgid "succubus"
 msgstr ""
 
 #: ../src/monster_i18n.c:437
-#, fuzzy
 msgid "amorous demon"
-msgstr "물 악마"
+msgstr ""
 
 #: ../src/monster_i18n.c:438
-#, fuzzy
 msgid "caveman"
-msgstr "혈거인"
+msgstr ""
 
 #: ../src/monster_i18n.c:439
-#, fuzzy
 msgid "cavewoman"
-msgstr "혈거인"
+msgstr ""
 
 # 영어 have never - 한국어에서 불필요 (제로너비공백)
 #: ../src/monster_i18n.c:440
-#, fuzzy
 msgid "cave dweller"
-msgstr "동굴 거주자"
+msgstr ""
 
 #: ../src/monster_i18n.c:443
-#, fuzzy
 msgid "cleric"
-msgstr "성직"
+msgstr ""
 
 #: ../src/mplayer.c:361
 msgid "I can't win, and neither will you!"
@@ -25967,39 +25889,33 @@ msgid "Talk? -- %s"
 msgstr "대화? -- %s"
 
 #: ../src/mthrowu.c:25
-#, fuzzy
 msgid "fragments"
-msgstr "복부"
+msgstr ""
 
 #: ../src/mthrowu.c:25 ../src/obj_descr_i18n.c:405
 msgid "fire"
 msgstr "발사할"
 
 #: ../src/mthrowu.c:25
-#, fuzzy
 msgid "sleep gas"
-msgstr "수면 광선"
+msgstr ""
 
 #: ../src/mthrowu.c:25
-#, fuzzy
 msgid "a disintegration blast"
-msgstr "분해 함정"
+msgstr ""
 
 # lightening = 밝아짐 (lightning = 번개와 다름)
 #: ../src/mthrowu.c:26
-#, fuzzy
 msgid "lightning"
-msgstr "빛남"
+msgstr ""
 
 #: ../src/mthrowu.c:26
-#, fuzzy
 msgid "strange breath #8"
-msgstr "이상한"
+msgstr ""
 
 #: ../src/mthrowu.c:27
-#, fuzzy
 msgid "strange breath #9"
-msgstr "이상한"
+msgstr ""
 
 # ============================================================
 # 환각 시 브레스 종류 (Hallucination Breath Types)
@@ -26535,14 +26451,13 @@ msgid "accept %s gift in the spirit in which it was intended."
 msgstr "%s 선물을 그 의도대로 받아들인다."
 
 #: ../src/mthrowu.c:539
-#, fuzzy, c-format
+#, c-format
 msgid "You catch, but drop, %s."
-msgstr "당신은 %s{을/를} 낚아챘지만 떨어뜨렸다."
+msgstr ""
 
 #: ../src/mthrowu.c:540
-#, fuzzy
 msgid "You catch:"
-msgstr "잡다"
+msgstr ""
 
 #: ../src/mthrowu.c:620
 #, c-format
@@ -26646,10 +26561,10 @@ msgstr "%s{이/가} %s{을/를} 내뿜었다!"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/mthrowu.c:1211
-#, fuzzy, c-format
+#, c-format
 msgctxt "mon_swing"
 msgid "%s %s %s."
-msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+msgstr ""
 
 #: ../src/mthrowu.c:1426
 msgid "iron bars are dissolved!"
@@ -26740,9 +26655,8 @@ msgstr "%s(이)가 향하는"
 
 # 조합: 몬스터가 악기를 연주하다
 #: ../src/muse.c:218
-#, fuzzy
 msgid "play"
-msgstr "연주한다"
+msgstr ""
 
 #: ../src/muse.c:225
 #, c-format
@@ -27212,14 +27126,12 @@ msgid "%s %s %s %s fire trap!"
 msgstr "%s %s %s %s 화염 함정!"
 
 #: ../src/muse.c:3113
-#, fuzzy
 msgid "breath"
-msgstr "아래에"
+msgstr ""
 
 #: ../src/muse.c:3113
-#, fuzzy
 msgid "fire on"
-msgstr "화염의 뿔"
+msgstr ""
 
 # 몬스터가 물약 등을 점화함
 #: ../src/muse.c:3154
@@ -27428,19 +27340,16 @@ msgid "dungeon"
 msgstr "던전"
 
 #: ../src/music.c:495
-#, fuzzy
 msgid "stepper"
-msgstr "들어가"
+msgstr ""
 
 #: ../src/music.c:495
-#, fuzzy
 msgid "one drop"
-msgstr "버릴"
+msgstr ""
 
 #: ../src/music.c:495
-#, fuzzy
 msgid "slow two"
-msgstr "느린 빛"
+msgstr ""
 
 #: ../src/music.c:495
 msgid "triple stroke roll"
@@ -27455,15 +27364,13 @@ msgid "half-time shuffle"
 msgstr ""
 
 #: ../src/music.c:496
-#, fuzzy
 msgid "second line"
-msgstr "보조"
+msgstr ""
 
 # 아이템 상태 변경 동사들 (Item status change verbs)
 #: ../src/music.c:496
-#, fuzzy
 msgid "train"
-msgstr "고갈"
+msgstr ""
 
 #: ../src/music.c:554
 #, c-format
@@ -29904,14 +29811,13 @@ msgid "Strenth:"
 msgstr "힘:"
 
 #: ../src/objnam.c:565
-#, fuzzy
 msgid " called "
-msgstr "라고 불리는"
+msgstr ""
 
 #: ../src/objnam.c:715
-#, fuzzy, c-format
+#, c-format
 msgid " of %s%s"
-msgstr " %s의"
+msgstr ""
 
 # 아이템 세트
 #: ../src/objnam.c:724
@@ -29947,24 +29853,23 @@ msgid "next "
 msgstr "다음 "
 
 #: ../src/objnam.c:980
-#, fuzzy, c-format
+#, c-format
 msgid " with text \"%s\""
-msgstr " %s: \"%s\""
+msgstr ""
 
 #: ../src/objnam.c:987
-#, fuzzy, c-format
+#, c-format
 msgid " labeled \"%s\""
-msgstr " "
+msgstr ""
 
 #: ../src/objnam.c:990
-#, fuzzy, c-format
+#, c-format
 msgid " with %s motif"
-msgstr " %s{으로/로}"
+msgstr ""
 
 #: ../src/objnam.c:999
-#, fuzzy
 msgid " named "
-msgstr " %s(이)라는 이름의"
+msgstr ""
 
 #: ../src/objnam.c:1287 ../src/read.c:2960 ../src/timeout.c:1101
 #: ../src/timeout.c:1562 ../src/timeout.c:1580 ../src/timeout.c:1621
@@ -31299,10 +31204,9 @@ msgid "interior of %s"
 msgstr "%s 내부"
 
 #: ../src/pager.c:735 ../src/pager.c:787 ../src/pager.c:1435
-#, fuzzy
 msgctxt "terrain"
 msgid "land"
-msgstr "땅"
+msgstr ""
 
 #: ../src/pager.c:748
 #, c-format
@@ -32716,10 +32620,10 @@ msgstr "남성 "
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/polyself.c:802
-#, fuzzy, c-format
+#, c-format
 msgctxt "you_poly"
 msgid "%s %s!"
-msgstr "%2$s{을/를} %1$s!"
+msgstr ""
 
 #: ../src/polyself.c:802
 msgid "turn into"
@@ -34675,9 +34579,8 @@ msgid "BOOM!  "
 msgstr "펑!  "
 
 #: ../src/potion.c:2418
-#, fuzzy
 msgid "alchemic blast"
-msgstr "정신 파열"
+msgstr ""
 
 #: ../src/potion.c:2433
 msgid "That is a potion bottle, not a Klein bottle!"
@@ -36251,9 +36154,9 @@ msgstr "=^.^="
 
 # 의류 태그 패러디 (100%는 포맷 지정자가 아님)
 #: ../src/read.c:121
-#, fuzzy, c-format
+#, c-format
 msgid "100% goblin hair - do not wash"
-msgstr "100% 고블린 털 - 세탁 금지"
+msgstr ""
 
 # Abercrombie & Fitch 의류 브랜드 패러디
 #: ../src/read.c:122
@@ -36844,18 +36747,16 @@ msgid "The wrapper reads: \"%s\"."
 msgstr "포장지에 적혀 있다: \"%s\"."
 
 #: ../src/read.c:567
-#, fuzzy
 msgid "words"
-msgstr "검"
+msgstr ""
 
 #: ../src/read.c:569
 msgid "mystic runes"
 msgstr ""
 
 #: ../src/read.c:571
-#, fuzzy
 msgid "formula on the scroll"
-msgstr "두루마리의 공식을 %s."
+msgstr ""
 
 #: ../src/read.c:573
 #, c-format
@@ -37189,22 +37090,19 @@ msgid "neighborhood %s %sfriendlier."
 msgstr "주변이 %s %s친근해졌다."
 
 #: ../src/read.c:1662
-#, fuzzy
 msgctxt "neighborhood"
 msgid "is"
-msgstr "이다"
+msgstr ""
 
 #: ../src/read.c:1663
-#, fuzzy
 msgctxt "neighborhood"
 msgid "seems"
-msgstr "같다"
+msgstr ""
 
 #: ../src/read.c:1664
-#, fuzzy
 msgctxt "neighborhood"
 msgid "un"
-msgstr "풀"
+msgstr ""
 
 #: ../src/read.c:1681
 msgid "have found a scroll of genocide!"
@@ -37290,9 +37188,8 @@ msgid "%s rumbles %s you!"
 msgstr "%s{이/가} 당신%s{을/를} 향해 우르렁거렸다!"
 
 #: ../src/read.c:1890
-#, fuzzy
 msgid "avalanche"
-msgstr "랜스"
+msgstr ""
 
 #: ../src/read.c:1894
 #, c-format
@@ -37896,9 +37793,8 @@ msgid "the College of Archeology"
 msgstr ""
 
 #: ../src/role.c:45
-#, fuzzy
 msgid "the Tomb of the Toltec Kings"
-msgstr "고삐를 놓쳤다."
+msgstr ""
 
 # Barbarian ranks
 #: ../src/role.c:74
@@ -38091,9 +37987,8 @@ msgid "the Temple of Epidaurus"
 msgstr ""
 
 #: ../src/role.c:168
-#, fuzzy
 msgid "the Temple of Coeus"
-msgstr "%s의 힘."
+msgstr ""
 
 # Knight ranks
 #: ../src/role.c:196
@@ -38154,9 +38049,8 @@ msgid "Camelot Castle"
 msgstr ""
 
 #: ../src/role.c:208
-#, fuzzy
 msgid "the Isle of Glass"
-msgstr "%s의 평면에서"
+msgstr ""
 
 # Monk ranks
 #: ../src/role.c:236
@@ -38209,9 +38103,8 @@ msgid "Huan Ti"
 msgstr "환제"
 
 #: ../src/role.c:247
-#, fuzzy
 msgid "the Monastery of Chan-Sune"
-msgstr "무엇에 이름을 붙이겠습니까?"
+msgstr ""
 
 #: ../src/role.c:248
 msgid "the Monastery of the Earth-Lord"
@@ -38265,9 +38158,8 @@ msgid "High Priestess"
 msgstr "대여사제"
 
 #: ../src/role.c:288
-#, fuzzy
 msgid "the Great Temple"
-msgstr "사원에 들어갔다"
+msgstr ""
 
 #: ../src/role.c:289
 msgid "the Temple of Nalzok"
@@ -38399,9 +38291,8 @@ msgid "Orion's camp"
 msgstr ""
 
 #: ../src/role.c:386
-#, fuzzy
 msgid "the cave of the wumpus"
-msgstr "법의 이름으로 멈춰라!"
+msgstr ""
 
 # Samurai ranks
 #: ../src/role.c:415
@@ -38457,9 +38348,8 @@ msgid "Susanowo"
 msgstr "스사노오"
 
 #: ../src/role.c:426
-#, fuzzy
 msgid "the Castle of the Taro Clan"
-msgstr "앞치마의 슬로건을 읽는다"
+msgstr ""
 
 #: ../src/role.c:427
 msgid "the Shogun's Castle"
@@ -38520,9 +38410,8 @@ msgstr "오플러"
 
 # Discworld 참조
 #: ../src/role.c:466
-#, fuzzy
 msgid "Ankh-Morpork"
-msgstr "앙크-모르포크 달러"
+msgstr ""
 
 # ============================================================
 # 전사 계급 (Warrior Ranks)
@@ -38588,9 +38477,8 @@ msgid "Loki"
 msgstr "로키"
 
 #: ../src/role.c:506
-#, fuzzy
 msgid "the Shrine of Destiny"
-msgstr "악의 존재를 느낀다."
+msgstr ""
 
 #: ../src/role.c:507
 msgid "the cave of Surtur"
@@ -38656,9 +38544,8 @@ msgid "the Lonely Tower"
 msgstr ""
 
 #: ../src/role.c:547
-#, fuzzy
 msgid "the Tower of Darkness"
-msgstr "%s의 힘."
+msgstr ""
 
 # ============================================================
 # 종족 형용사 (Race Adjectives)
@@ -39439,9 +39326,8 @@ msgid "Pay whom?"
 msgstr "누구에게 지불?"
 
 #: ../src/shk.c:1761
-#, fuzzy
 msgid "the creature you want to pay"
-msgstr "무엇에 이름을 붙이겠습니까?"
+msgstr ""
 
 #: ../src/shk.c:1766
 msgid "Try again..."
@@ -42699,10 +42585,10 @@ msgstr "벗을"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/steal.c:329
-#, fuzzy, c-format
+#, c-format
 msgctxt "steal_disarm"
 msgid "%s %s %s."
-msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+msgstr ""
 
 #: ../src/steal.c:389
 #, c-format
@@ -43072,9 +42958,8 @@ msgid "%s stirs."
 msgstr "%s{이/가} 움직였다."
 
 #: ../src/steed.c:430
-#, fuzzy
 msgid "rouse"
-msgstr "집고양이"
+msgstr ""
 
 #: ../src/steed.c:432
 #, c-format
@@ -44687,9 +44572,8 @@ msgstr "쏘는 듯한"
 
 # 방어구 - 방패
 #: ../src/trap.c:160
-#, fuzzy
 msgid "wooden shield"
-msgstr "엘프 방패"
+msgstr ""
 
 #: ../src/trap.c:255
 msgid "Invalid erosion type in erode_obj"
@@ -44735,10 +44619,10 @@ msgstr "%s 떨어져"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/trap.c:330
-#, fuzzy, c-format
+#, c-format
 msgctxt "erosion_destroy"
 msgid "%s %s %s!"
-msgstr "%s{이/가} %s %s!"
+msgstr ""
 
 #: ../src/trap.c:365
 #, c-format
@@ -44930,9 +44814,8 @@ msgid "A little dart shoots out at you!"
 msgstr "작은 다트가 당신에게 날아왔다!"
 
 #: ../src/trap.c:1287
-#, fuzzy
 msgid "little dart"
-msgstr "강아지"
+msgstr ""
 
 #: ../src/trap.c:1343
 #, c-format
@@ -45094,10 +44977,10 @@ msgstr "%s %s의 오른쪽 %s에!"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/trap.c:1701
-#, fuzzy, c-format
+#, c-format
 msgctxt "water_hit"
 msgid "%s %s!"
-msgstr "%2$s{을/를} %1$s!"
+msgstr ""
 
 #: ../src/trap.c:1719 ../src/uhitm.c:2268 ../src/uhitm.c:2294
 #: ../src/uhitm.c:2348 ../src/uhitm.c:2374
@@ -45211,10 +45094,10 @@ msgstr "철 가시 구덩이에 빠졌다"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/trap.c:1907
-#, fuzzy, c-format
+#, c-format
 msgctxt "trap_fall"
 msgid "%s %s %s!"
-msgstr "%s{이/가} %s %s!"
+msgstr ""
 
 #: ../src/trap.c:1910
 msgid "steps"
@@ -45228,10 +45111,10 @@ msgstr "땅"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/trap.c:1912
-#, fuzzy, c-format
+#, c-format
 msgctxt "you_trap"
 msgid "%s %s!"
-msgstr "%2$s{을/를} %1$s!"
+msgstr ""
 
 #: ../src/trap.c:1930
 msgid "deliberately plunged into a pit of iron spikes"
@@ -46350,10 +46233,9 @@ msgid "%s %s is difficult to %s."
 msgstr "%s %s{을/를} %s 어렵다."
 
 #: ../src/trap.c:5450
-#, fuzzy
 msgctxt "trap_action"
 msgid "remove"
-msgstr "벗다"
+msgstr ""
 
 #: ../src/trap.c:5467
 #, c-format
@@ -47317,10 +47199,10 @@ msgid "%s %s from your powerful strike!"
 msgstr "%s{이/가} 강력한 공격으로 %s!"
 
 #: ../src/uhitm.c:1604
-#, fuzzy, c-format
+#, c-format
 msgctxt "using_weapon"
 msgid " with %s"
-msgstr " %s{으로/로}"
+msgstr ""
 
 #: ../src/uhitm.c:1605
 #, c-format
@@ -47336,16 +47218,15 @@ msgstr "그것을 때렸다."
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/uhitm.c:1627 ../src/uhitm.c:5700
-#, fuzzy, c-format
+#, c-format
 msgctxt "you_hit"
 msgid "%s %s%s"
-msgstr "%s %s%s"
+msgstr ""
 
 #: ../src/uhitm.c:1629
-#, fuzzy
 msgctxt "you_hit"
 msgid "bash"
-msgstr "강타하다"
+msgstr ""
 
 # 조합: 채찍이나 젖은 수건으로 때릴 때
 #: ../src/uhitm.c:1631
@@ -48114,10 +47995,10 @@ msgstr "삼키다"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/uhitm.c:5002
-#, fuzzy, c-format
+#, c-format
 msgctxt "you_hit_death"
 msgid "%s %s%s"
-msgstr "%s %s%s"
+msgstr ""
 
 #: ../src/uhitm.c:5003
 msgid "swallowing"
@@ -48228,10 +48109,10 @@ msgstr "%s{이/가} 바삭하게 타고 있다!"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/uhitm.c:5163
-#, fuzzy, c-format
+#, c-format
 msgctxt "you_expel"
 msgid "%s %s!"
-msgstr "%2$s{을/를} %1$s!"
+msgstr ""
 
 #: ../src/uhitm.c:5165
 #, c-format
@@ -48316,10 +48197,10 @@ msgstr "%s{이/가} %s 밀려났다!"
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
 #: ../src/uhitm.c:5557
-#, fuzzy, c-format
+#, c-format
 msgctxt "you_seduce"
 msgid "%s %s %s."
-msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+msgstr ""
 
 #: ../src/uhitm.c:5558
 msgid "smile at"
@@ -48345,10 +48226,9 @@ msgid "tentacles suck %s."
 msgstr "촉수가 %s{을/를} 빨아들인다."
 
 #: ../src/uhitm.c:5694
-#, fuzzy
 msgctxt "you_hit"
 msgid "grasp"
-msgstr "움켜쥠"
+msgstr ""
 
 # 조합: 그림자에 대한 포옹 공격 동사
 # 예: "You hug the shade"
@@ -48450,9 +48330,8 @@ msgid "%s cannot defend itself."
 msgstr "%s{은/는} 자신을 방어할 수 없다."
 
 #: ../src/uhitm.c:6026
-#, fuzzy
 msgid "blind"
-msgstr ", 실명"
+msgstr ""
 
 #: ../src/uhitm.c:6046
 msgid "a mild chill."
@@ -49614,16 +49493,14 @@ msgid "get the creepy feeling that somebody noticed your taking the Amulet."
 msgstr "누군가 당신이 아뮬렛을 가져간 것을 알아챘다는 섬뜩한 느낌이 든다."
 
 #: ../src/wizard.c:717
-#, fuzzy
 msgctxt "wiz_taunt"
 msgid "kill"
-msgstr "죽였다"
+msgstr ""
 
 #: ../src/wizard.c:725
-#, fuzzy
 msgctxt "wiz_taunt"
 msgid "elude"
-msgstr "피하다"
+msgstr ""
 
 #: ../src/wizard.c:769
 msgid "A voice booms out..."
@@ -51494,9 +51371,8 @@ msgstr "\"%s\"{을/를} 읽기용으로 열 수 없다!"
 #. text field
 #: dat/Arc-loca.lua:90 dat/Arc-loca.lua:91 dat/Arc-loca.lua:92
 #: dat/Arc-loca.lua:93
-#, fuzzy
 msgid "X marks the spot."
-msgstr "어두운"
+msgstr ""
 
 #. text field
 #: dat/Mon-loca.lua:67 dat/castle.lua:151 dat/soko1-1.lua:109
@@ -51551,9 +51427,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:136 dat/quest.lua:158
-#, fuzzy
 msgid "[%dC has chosen you to recover the Amulet of Yendor for %dI.]"
-msgstr "%s에게 옌더의 부적을 바친다..."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:138
@@ -51673,9 +51548,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:225
-#, fuzzy
 msgid "[%pC, a mere %r is too inexperienced.]"
-msgstr "%s{이/가} 더 숙련된 것 같다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:227
@@ -51707,15 +51581,13 @@ msgstr ""
 
 #. text field
 #: dat/quest.lua:270 dat/quest.lua:2505 dat/quest.lua:2945
-#, fuzzy
 msgid "You have returned to %ns lair."
-msgstr "돌로 변했다."
+msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:273
-#, fuzzy
 msgid "[This strange feeling must be the presence of %o.]"
-msgstr "괴물들이 당신의 존재를 감지했다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:275
@@ -51746,10 +51618,9 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:305
-#, fuzzy
 msgid ""
 "[Take the Amulet to the Astral Plane and sacrifice it at the altar of %d.]"
-msgstr "이 부적을 이 제단에 제물로 바치기"
+msgstr ""
 
 #. text field
 #: dat/quest.lua:307
@@ -51964,9 +51835,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:499
-#, fuzzy
 msgid "[This is surely the lair of %n.]"
-msgstr "이 %s{은/는} %s에 너무 단단해 보인다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:501
@@ -52057,9 +51927,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:587
-#, fuzzy
 msgid "[You have located %i.]"
-msgstr "%s 위로 이동한다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:589
@@ -52313,9 +52182,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:825
-#, fuzzy
 msgid "[%nC threatens to eat you.]"
-msgstr "당신을 위협한다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:827
@@ -52538,9 +52406,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:1024
-#, fuzzy
 msgid "[You are a failure as a healer.]"
-msgstr "완전히 건강하다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:1026
@@ -52765,9 +52632,8 @@ msgstr ""
 # You_see and interrupt_multi messages
 #. synopsis field
 #: dat/quest.lua:1201
-#, fuzzy
 msgid "[You feel the magic of %o.]"
-msgstr "무언가가 부족한 느낌이 든다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:1203
@@ -52823,9 +52689,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:1253
-#, fuzzy
 msgid "[You are a disgrace as %ca.]"
-msgstr "당신은 석상이다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:1255
@@ -52993,9 +52858,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:1398
-#, fuzzy
 msgid "[You are surrounded by brimstone, lava, and elementals.]"
-msgstr "꼬불꼬불한 작은 통로들로 둘러싸여 있다, 모두 비슷해 보인다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:1400
@@ -53008,9 +52872,8 @@ msgstr ""
 
 #. text field
 #: dat/quest.lua:1406 dat/quest.lua:1620
-#, fuzzy
 msgid "Again, you have invaded %ns domain."
-msgstr "%s{을/를} 저질렀다는 것을 깨달았다."
+msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:1409
@@ -53704,9 +53567,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2052
-#, fuzzy
 msgid "[You sense %o.]"
-msgstr "%s{을/를} 감지했다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2054
@@ -53717,9 +53579,8 @@ msgstr ""
 
 #. text field
 #: dat/quest.lua:2058
-#, fuzzy
 msgid "The hairs on the back of your neck whisper -- it's fear."
-msgstr "%s 뒤의 %s{이/가} %s 일어섰다."
+msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2061
@@ -53832,9 +53693,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2144
-#, fuzzy
 msgid "[You cannot trust %l.]"
-msgstr "%s %s 할 수 없다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2146
@@ -53846,9 +53706,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2151
-#, fuzzy
 msgid "[%lC should not have %o.]"
-msgstr "끈이 벗겨지지 않는다!"
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2153
@@ -53867,9 +53726,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2162
-#, fuzzy
 msgid "[Take %o with you and go.]"
-msgstr "맨 %s{으로/로} %s{을/를} 찼다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2164
@@ -54023,9 +53881,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2290
-#, fuzzy
 msgid "[You feel the power of %o and are humbled.]"
-msgstr "지팡이가 뜨거워지는 것을 느낀다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2292
@@ -54198,9 +54055,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2418
-#, fuzzy
 msgid "[%HC is threatened by %n.]"
-msgstr "%s{이/가} 거기에 있어서 당신이 %s."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2420
@@ -54219,9 +54075,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2432
-#, fuzzy
 msgid "[Enter %i and recover %o from %n.]"
-msgstr "%s{이/가} %s에서 %s{을/를} 꺼냈다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2434
@@ -54260,9 +54115,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2460
-#, fuzzy
 msgid "[Return when you are %Ra.]"
-msgstr "맨 %s{으로/로} %s{을/를} 던졌다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2462
@@ -54294,9 +54148,8 @@ msgstr ""
 
 #. text field
 #: dat/quest.lua:2508
-#, fuzzy
 msgid "You sense the presence of %o."
-msgstr "괴물들이 당신의 존재를 감지했다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2511
@@ -54339,9 +54192,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2548
-#, fuzzy
 msgid "[%nC curses at you as %nh dies.]"
-msgstr "네 허상을 향해 저주한다"
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2550
@@ -54399,9 +54251,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2587
-#, fuzzy
 msgid "[%rA will not defeat me.]"
-msgstr "%s{이/가} %s라는 이름을 받아들이지 않는다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2589
@@ -54568,9 +54419,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2726
-#, fuzzy
 msgid "[This is the lair of %n.]"
-msgstr "이 %s{은/는} %s에 너무 단단하다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2728
@@ -54590,9 +54440,8 @@ msgstr ""
 # ============================================================
 #. synopsis field
 #: dat/quest.lua:2736
-#, fuzzy
 msgid "[You must return %o to %l.]"
-msgstr "%s 안으로 곧장 들어갔다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2738
@@ -54622,9 +54471,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2769
-#, fuzzy
 msgid "[%nC dies.]"
-msgstr "%s{이/가} 죽었다!"
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2771
@@ -54675,9 +54523,8 @@ msgstr ""
 
 #. synopsis field
 #: dat/quest.lua:2802
-#, fuzzy
 msgid "[This is the entrance to %i.]"
-msgstr "이 %s{은/는} %s에 너무 단단하다."
+msgstr ""
 
 #. text field
 #: dat/quest.lua:2804
@@ -54998,9 +54845,8 @@ msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/themerms.lua:1068
-#, fuzzy
 msgid "Dig"
-msgstr "반지"
+msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:24
@@ -55011,15 +54857,13 @@ msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:80
-#, fuzzy
 msgid "Move around with "
-msgstr "함정 위로 이동하기"
+msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:81
-#, fuzzy
 msgid "Move diagonally with "
-msgstr "대각선으로 이동할 수 없다."
+msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:84
@@ -55038,9 +54882,8 @@ msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:93
-#, fuzzy
 msgid "Close the door with '"
-msgstr "문 닫기"
+msgstr ""
 
 #. text field
 #: dat/tut-1.lua:98
@@ -55049,15 +54892,13 @@ msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:103
-#, fuzzy
 msgid "This door is locked. Kick it with '"
-msgstr "이 문은 잠겨있다."
+msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:110
-#, fuzzy
 msgid "Look around the map with '"
-msgstr "%3$s{으로/로} %2$s에 %1$s"
+msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:114 dat/tut-1.lua:219 dat/tut-1.lua:256 dat/tut-1.lua:267
@@ -55067,9 +54908,8 @@ msgstr ""
 
 #. text field
 #: dat/tut-1.lua:116
-#, fuzzy
 msgid "Wrong secret"
-msgstr "투척용 창"
+msgstr ""
 
 #. text field
 #: dat/tut-1.lua:120
@@ -55089,22 +54929,19 @@ msgstr ""
 # 물건 줍기 메뉴 제목 (Pickup menu title)
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:143
-#, fuzzy
 msgid "Pick up items with '"
-msgstr "무엇을 주울까요?"
+msgstr ""
 
 # 방어구 - 갑옷
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:149
-#, fuzzy
 msgid "Wear armor with '"
-msgstr "가죽 갑옷"
+msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:153
-#, fuzzy
 msgid "Wield weapons with '"
-msgstr "한 번에 두 무기를 휘두르기"
+msgstr ""
 
 # ============================================================
 # 혼란 공격 능력 (Confusing Touch)
@@ -55112,9 +54949,8 @@ msgstr "한 번에 두 무기를 휘두르기"
 # ============================================================
 #. text field
 #: dat/tut-1.lua:156
-#, fuzzy
 msgid "Hit monsters by walking into them."
-msgstr " 공격 시 괴물을"
+msgstr ""
 
 #. text field
 #: dat/tut-1.lua:162
@@ -55130,15 +54966,13 @@ msgstr ""
 
 #. text field
 #: dat/tut-1.lua:169
-#, fuzzy
 msgid "Push boulders by moving into them"
-msgstr "%s 바위가 구덩이에 %s%s."
+msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:174
-#, fuzzy
 msgid "Take off armor with '"
-msgstr "이 갑옷 벗기"
+msgstr ""
 
 #. text field
 #: dat/tut-1.lua:179
@@ -55162,9 +54996,8 @@ msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:200
-#, fuzzy
 msgid "Drop items with '"
-msgstr "물품 버리기"
+msgstr ""
 
 #. text field
 #: dat/tut-1.lua:201
@@ -55174,9 +55007,8 @@ msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:207
-#, fuzzy
 msgid "Throw items with '"
-msgstr "쓸"
+msgstr ""
 
 #. text field
 #: dat/tut-1.lua:215
@@ -55186,9 +55018,8 @@ msgstr ""
 
 #. text field
 #: dat/tut-1.lua:218
-#, fuzzy
 msgid "Wield the sling"
-msgstr "장착 위치"
+msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:221
@@ -55202,9 +55033,8 @@ msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:230
-#, fuzzy
 msgid "You loot containers with '"
-msgstr "지갑에 %ld %s{이/가} 있다"
+msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:236
@@ -55219,9 +55049,8 @@ msgstr ""
 # 한국어에서는 쉼표 구분자 사용: "장검, 단검 스킬"
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:238
-#, fuzzy
 msgid "Magic wands are used with '"
-msgstr ", "
+msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:243
@@ -55246,9 +55075,8 @@ msgstr ""
 # 한국어에서는 쉼표 구분자 사용: "장검, 단검 스킬"
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:279
-#, fuzzy
 msgid "Put on accessories with '"
-msgstr ", "
+msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:281
@@ -55262,33 +55090,28 @@ msgstr ""
 
 #. text field
 #: dat/tut-1.lua:304
-#, fuzzy
 msgid "Can't get through?  You're carrying too much."
-msgstr "너무 많이 들고 있어서 %s{을/를} 기울일 수 없다."
+msgstr ""
 
 #. text field
 #: dat/tut-1.lua:315
-#, fuzzy
 msgid "Spellcasting"
-msgstr "주문시전 기술"
+msgstr ""
 
 #. text field
 #: dat/tut-1.lua:319
-#, fuzzy
 msgid "Unfortunately you don't have enough energy to cast spells."
-msgstr "그 주문을 시전할 에너지가 부족하다%s."
+msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:321
-#, fuzzy
 msgid "Pick up the spellbook with '"
-msgstr "이 마법서의%s 잉크는 %s"
+msgstr ""
 
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:323
-#, fuzzy
 msgid "Read the spellbook with '"
-msgstr "셔츠의 슬로건을 읽다"
+msgstr ""
 
 # ============================================================
 # ============================================================
@@ -55303,9 +55126,8 @@ msgstr "셔츠의 슬로건을 읽다"
 # ============================================================
 #. text field (partial, has concatenation)
 #: dat/tut-1.lua:329
-#, fuzzy
 msgid "You \\"
-msgstr "당신은 "
+msgstr ""
 
 #, c-format
 #~ msgid "%s%s%s turns into %s."

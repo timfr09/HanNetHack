@@ -477,7 +477,8 @@ Helmet_on(void)
             if (Blind)
                 pline(_("%s for a moment."), Tobjnam(uarmh, _("vibrate")));
             else
-                pline(_("%s %s for a moment."), Tobjnam(uarmh, _("glow")),
+                pline(C_("autocurse", "%s %s for a moment."),
+                      Tobjnam(uarmh, C_("autocurse", "glow")),
                       hcolor(NH_BLACK));
             curse(uarmh);
             /* curse() doesn't touch bknown so doesn't update persistent
@@ -895,7 +896,7 @@ Armor_on(void)
         begin_burn(uarm, FALSE);
         if (!Blind)
             pline(_("%s %s to shine %s!"),
-                  Yname2(uarm), otense(uarm, _("begin")),
+                  Yname2(uarm), otense(uarm, C_("light", "begin")),
                   arti_light_description(uarm));
     }
     return 0;
@@ -918,7 +919,7 @@ Armor_off(void)
     if (was_arti_light && !artifact_light(otmp)) {
         end_burn(otmp, FALSE);
         if (!Blind)
-            pline(_("%s shining."), Tobjnam(otmp, _("stop")));
+            pline(_("%s shining."), Tobjnam(otmp, C_("light", "stop")));
     }
     dragon_armor_handling(otmp, FALSE, TRUE);
 
@@ -948,7 +949,7 @@ Armor_gone(void)
     if (was_arti_light && !artifact_light(otmp)) {
         end_burn(otmp, FALSE);
         if (!Blind)
-            pline(_("%s shining."), Tobjnam(otmp, _("stop")));
+            pline(_("%s shining."), Tobjnam(otmp, C_("light", "stop")));
     }
     dragon_armor_handling(otmp, FALSE, FALSE);
 

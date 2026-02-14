@@ -2255,8 +2255,25 @@ aobjnam(struct obj *otmp, const char *verb)
         bp = strprepend(bp, prefix);
     }
     if (verb) {
-        Strcat(bp, " ");
-        Strcat(bp, otense(otmp, verb));
+        const char *translated_verb = otense(otmp, verb);
+
+        if (is_korean_locale()) {
+            /* Insert subject particle; resolved by vpline's
+               ko_process_string */
+            Strcat(bp, "{이/가}");
+            /* Skip copula — format strings provide the real predicate */
+            if (strcmp(translated_verb,
+                       "\xec\x9d\xb4\xeb\x8b\xa4") != 0       /* 이다 */
+                && strcmp(translated_verb,
+                          "\xec\x9d\xb4\xec\x97\x88"
+                          "\xeb\x8b\xa4") != 0) {               /* 이었다 */
+                Strcat(bp, " ");
+                Strcat(bp, translated_verb);
+            }
+        } else {
+            Strcat(bp, " ");
+            Strcat(bp, translated_verb);
+        }
     }
     return bp;
 }
@@ -2296,8 +2313,22 @@ Tobjnam(struct obj *otmp, const char *verb)
     char *bp = The(xname(otmp));
 
     if (verb) {
-        Strcat(bp, " ");
-        Strcat(bp, otense(otmp, verb));
+        const char *translated_verb = otense(otmp, verb);
+
+        if (is_korean_locale()) {
+            Strcat(bp, "{이/가}");
+            if (strcmp(translated_verb,
+                       "\xec\x9d\xb4\xeb\x8b\xa4") != 0       /* 이다 */
+                && strcmp(translated_verb,
+                          "\xec\x9d\xb4\xec\x97\x88"
+                          "\xeb\x8b\xa4") != 0) {               /* 이었다 */
+                Strcat(bp, " ");
+                Strcat(bp, translated_verb);
+            }
+        } else {
+            Strcat(bp, " ");
+            Strcat(bp, translated_verb);
+        }
     }
     return bp;
 }

@@ -903,7 +903,8 @@ return_from_mtoss(
                 dmg += rnd(3);
                 if (canseemon(magr)) {
                     pline(_("%s back toward %s, hitting %s %s!"),
-                          Tobjnam(otmp, _("fly")), mon_nam(magr),
+                          Tobjnam(otmp, C_("Tobjnam", "fly")),
+                          mon_nam(magr),
                           mhis(magr), body_part(ARM));
                 } else if (!Deaf) {
                     You_hear(_("%s hit %s with a thud!"), something,

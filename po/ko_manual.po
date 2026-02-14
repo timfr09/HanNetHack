@@ -2989,6 +2989,8 @@ msgstr "%ld %s{이/가} 가방에 숨겨져 있다"
 # %1$s = felt/feel → "느꼈다"/"느낀다", %2$s = dead/condemned/empty → "죽은"/"선고받은"/"빈"
 # 영어 조합: " and feel dead inside"
 # 한국어 조합: ", 안에서 죽은 것 같다고 느낀다"
+# [검증] "느낀다"(능동) vs "느껴진다"(피동) — 1인칭 보고이므로 능동이 더 적합.
+#   여기는 _("feel")이 아닌 _("felt")/_("feel")이 별도 번역("느꼈다"/"느낀다")되어 충돌 없음.
 msgid " and %s %s inside"
 msgstr ", 안에서 %2$s 것 같다고 %1$s"
 
@@ -5666,6 +5668,11 @@ msgstr "화난"
 # various - Tobjnam/Yobjnam2 조합용 피동 자동사. "feel" → "느껴진다"
 # wizard.c (부적 근접), read.c (인챈트), eat.c, lock.c, hack.c 등에서 사용
 # 기존 "느낀다"(능동 타동사)는 주어가 물건인 Tobjnam 패턴에 부적합
+# [검증] 전체 23개 _("feel") 사용처 추적 결과 C_() 불필요:
+#   - 12개: 포맷 문자열 오버라이드 (아래 섹션)
+#   - 10개: 기존 ko_manual.po 오버라이드 (%.0s 억제)
+#   - 1개: ko.po 자체 처리 ("%s no objects here.")
+#   Tobjnam/Yobjnam2는 "느껴진다"(피동), You() 패턴은 %.0s 억제 → 충돌 없음
 msgid "feel"
 msgstr "느껴진다"
 
@@ -6292,12 +6299,13 @@ msgstr " 멀리서"
 msgid " next to you"
 msgstr " 당신 옆에"
 
-# detect.c:1242 - 정신 공격/영향
-# 결과: "[object] zaps your mind!" - %s는 동사
-# "공격한다"가 아니라 동사 그대로 유지
+# [리뷰 완료] detect.c:1243 — Tobjnam+C_("Tobjnam","zap") 계사 억제
+# %s = Tobjnam(obj, "zap") = "수정구{이/가}" (계사 억제)
+# 영어: "The crystal ball zaps your mind!"
+# 한국어: "수정구가 당신의 정신을 공격했다!"
 #, c-format
 msgid "%s your mind!"
-msgstr "당신의 정신을 %s!"
+msgstr "%s 당신의 정신을 공격했다!"
 
 # ============================================================
 # 심각한 fuzzy 오류 수정 - 완전히 잘못된 번역
@@ -8610,6 +8618,144 @@ msgstr "덜 "
 msgid "%s %s %s %s for a moment."
 msgstr "%1$s %2$s{이/가} 잠시 %4$s 빛을 발했다%3$.0s."
 
+# [리뷰 완료] do_wear.c:480 — Tobjnam+glow+hcolor, 던바스캡 자동 저주
+# C_("autocurse") 컨텍스트로 분리 (uhitm.c Monnam+stagger와 msgid 충돌 방지)
+# %1$s = Tobjnam(obj, C_("autocurse","glow")) = "투구{이/가}" (계사 억제)
+# %2$s = hcolor(NH_BLACK) = "검은"
+# 영어: "Your helmet glows black for a moment."
+# 한국어: "투구가 잠시 검은 빛을 발했다."
+msgctxt "autocurse"
+msgid "glow"
+msgstr "이다"
+
+#, c-format
+msgctxt "autocurse"
+msgid "%s %s for a moment."
+msgstr "%1$s 잠시 %2$s 빛을 발했다."
+
+# [리뷰 완료] uhitm.c:1555 — Monnam+stagger, 맨손 스턴
+# %1$s = Monnam(mon), %2$s = makeplural(stagger()) = "비틀거리다"(사전형)
+# %2$s 억제 후 고정 과거형 사용
+# 런타임: "오크가 강력한 공격으로 비틀거렸다!"
+#, c-format
+msgid "%s %s from your powerful strike!"
+msgstr "%1$s{이/가} 강력한 공격으로 비틀거렸다!%2$.0s"
+
+# [리뷰 완료] uhitm.c:4373/4391, mhitm.c:1419 — Monnam+stagger, 기절 공격
+# %1$s = Monnam(mdef), %2$s = makeplural(stagger()) = "비틀거리다"(사전형)
+# stagger 동사는 load/potion 문맥에서도 쓰이므로 과거형 변경 불가 →
+# 포맷에서 %2$s 억제하고 고정 술어 "비틀거렸다" 사용
+# 런타임: "오크가 잠시 비틀거렸다."
+#, c-format
+msgid "%s %s for a moment."
+msgstr "%1$s{이/가} 잠시 비틀거렸다.%2$.0s"
+
+# ============================================================
+# C_("light") 컨텍스트 — 아티팩트 빛 시작/멈춤 동사
+# Tobjnam/otense에서 계사 억제하여 포맷에서 직접 술어 제공
+# ============================================================
+
+# [리뷰 완료] apply.c:1352-1353 — 촛대 촛불 부족, Tobjnam+shine
+# %1$s = "It is"/"They are" = "그것은"/"그것들은" (억제)
+# %2$s = Tobjnam(obj, "shine") = "촛대{이/가} 빛나다"
+# Tobjnam+verb 이중 술어 불가피 → %1$s, %2$s 모두 억제하고 고정 문장 사용
+# 영어: "They are lit.  The candelabrum shines dimly."
+# 한국어: "불이 켜졌다. 희미하게 빛나고 있다."
+# NOTE: 촛대 이름을 %2$s에서 추출 불가 → 주어 생략 (문맥상 자명)
+#, c-format
+msgid "%s lit.  %s dimly."
+msgstr "%1$.0s불이 켜졌다. 희미하게 빛나고 있다.%2$.0s"
+
+# arti_light_description() 반환값 — 빛 강도 부사
+msgid "radiantly"
+msgstr "찬란하게"
+
+msgid "brilliantly"
+msgstr "눈부시게"
+
+msgid "brightly"
+msgstr "밝게"
+
+msgid "dimly"
+msgstr "희미하게"
+
+msgid "strangely"
+msgstr "이상하게"
+
+msgctxt "light"
+msgid "stop"
+msgstr "이다"
+
+msgctxt "light"
+msgid "begin"
+msgstr "이다"
+
+msgctxt "light"
+msgid "shine"
+msgstr "이다"
+
+# [리뷰 완료] wield.c:113/859, do_wear.c:921/951 — 빛 멈춤
+# %s = Tobjnam(obj, C_("light","stop")) = "검{이/가}" (계사 억제)
+# 영어: "The Sunsword stops shining."
+# 한국어: "태양검이 빛나는 것을 멈췄다."
+#, c-format
+msgid "%s shining."
+msgstr "%s 빛나는 것을 멈췄다."
+
+# [리뷰 완료] wield.c:243 — Tobjnam+begin, 빛 시작
+# %1$s = Tobjnam(wep, C_("light","begin")) = "검{이/가}" (계사 억제)
+# %2$s = arti_light_description = "밝게"
+# 영어: "The Sunsword begins to shine brilliantly!"
+# 한국어: "태양검이 밝게 빛나기 시작했다!"
+#, c-format
+msgid "%s to shine %s!"
+msgstr "%1$s %2$s 빛나기 시작했다!"
+
+# [리뷰 완료] do_wear.c:897 — Yname2 + otense(begin) + adesc, 갑옷 빛 시작
+# %1$s = Yname2(uarm) = "당신의 갑옷", %2$s = otense(begin) = "이다" (억제)
+# %3$s = arti_light_description = "밝게"
+# 영어: "Your armor begins to shine brilliantly!"
+# 한국어: "당신의 갑옷이 밝게 빛나기 시작했다!"
+#, c-format
+msgid "%s %s to shine %s!"
+msgstr "%1$s{이/가} %3$s 빛나기 시작했다!%2$.0s"
+
+# [리뷰 완료] worn.c:982 — Yname2 + otense(begin) + adesc, 몬스터 갑옷 빛 시작
+# %1$s = Yname2(best), %2$s = otense(begin)="이다" (억제), %3$s = adesc
+# 영어: "An iron skull cap begins to shine brilliantly."
+# 한국어: "철 투구가 밝게 빛나기 시작했다."
+#, c-format
+msgid "%s %s to shine %s."
+msgstr "%1$s{이/가} %3$s 빛나기 시작했다.%2$.0s"
+
+# [리뷰 완료] worn.c:985 — Yname2 + otense(are) + adesc, 몬스터 갑옷 빛나는 중
+# %1$s = Yname2(best), %2$s = otense(are)="이다", %3$s = adesc
+# ko.po "%s %s{이/가} %s 빛나고 있다."는 %2$s="이다" + {이/가}="이다가" → 비문
+# %2$s 억제 후 %1$s에 조사 삽입
+# 런타임: "금 용 비늘 갑옷이 눈부시게 빛나고 있다."
+#, c-format
+msgid "%s %s shining %s."
+msgstr "%1$s{이/가} %3$s 빛나고 있다.%2$.0s"
+
+# [리뷰 완료] weapon.c:926 — Tobjnam+C_("light","shine") + adesc + s_suffix + hand
+# %1$s = Tobjnam(obj, C_("light","shine")) = "검{이/가}" (계사 억제)
+# %2$s = arti_light_description = "눈부시게"
+# %3$s = s_suffix(mon_nam) = "오크의", %4$s = hand = "손"
+# 영어: "The Sunsword shines brilliantly in the orc's hand!"
+# 한국어: "태양검이 오크의 손에서 눈부시게 빛났다!"
+#, c-format
+msgid "%s %s in %s %s!"
+msgstr "%3$s %4$s에서 %2$s %1$s 빛났다!"
+
+# [리뷰 완료] weapon.c:1821-1823 — 몬스터 무기 빛 멈춤
+# %1$s = The(xname(obj)) = "검", %2$s = s_suffix(mon_nam) = "오크의"
+# %3$s = mbodypart = "손", %4$s = otense(stop) = "이다" (억제)
+# 영어: "The sword in the orc's hand stops shining."
+# 한국어: "오크의 손에 있는 검이 빛나는 것을 멈췄다."
+#, c-format
+msgid "%s in %s %s %s shining."
+msgstr "%2$s %3$s에 있는 %1$s{이/가} 빛나는 것을 멈췄다.%4$.0s"
+
 # ============================================================
 # 색상 관련 (hcolor 함수 반환값)
 # ============================================================
@@ -10293,18 +10439,15 @@ msgid "%s %s with an oily sheen."
 msgstr "%1$s{이/가} 기름기 있는 광택을 띤다.%2$.0s"
 
 # potion.c:2652 - 기름 물약에 무기 담그기 (장님 효과)
-# %1$s=Yname2(obj) 아이템이름, %2$s="feel"→"느껴지지 않다" (억제)
-# 영어 조합: "Your long sword feels oily."
-# 한국어 조합: "당신의 장검이 기름진 느낌이다."
+# %1$s=Yname2(obj) 아이템이름, %2$s="feel"→"느껴진다" (억제)
+# 런타임: "당신의 장검이 기름진 느낌이다." (feel/are 양쪽 %.0s로 억제)
 #, c-format
 msgid "%s %s oily."
 msgstr "%1$s{이/가} 기름진 느낌이다.%2$.0s"
 
 # potion.c:2654 - 기름으로 녹/부식 제거 결과
 # %1$s=Yname2(obj), %2$s="are"/"feel"→억제, %3$s="녹슨"/"부식된"/"부식되고 녹슨"
-# 영어 조합: "Your long sword feels less rusty."
-# 한국어 조합: "당신의 장검이 덜 녹슨 것 같다."
-# 주의: "are"/"feel" 번역이 한국어 어순에 안 맞으므로 억제
+# 런타임: "당신의 장검이 덜 녹슨 것 같다." (feel/are 양쪽 %.0s로 억제)
 #, c-format
 msgid "%s %s less %s."
 msgstr "%1$s{이/가} 덜 %3$s 것 같다.%2$.0s"
@@ -13001,15 +13144,71 @@ msgstr "잡았다:"
 msgid "Oops!"
 msgstr "이런!"
 
-# mkobj.c - 아이템 미끄러짐
+# [리뷰 완료] mkobj.c:2903 — The(aobjnam)+slip, 손닿지 않음
+# %s = The(aobjnam(obj, "slip")) = "name{이/가}" (계사 억제)
 msgid "Oops!  %s out of your reach!"
 msgstr "이런! %s 손이 닿지 않는 곳으로 갔다!"
 
+# [리뷰 완료] mkobj.c:2903 — The(aobjnam)+slip, 멀어짐
+# %s = The(aobjnam(obj, "slip")) = "name{이/가}" (계사 억제)
 msgid "Oops!  %s away from you!"
 msgstr "이런! %s 당신에게서 멀어졌다!"
 
+# [리뷰 완료] mkobj.c:2903 — The(aobjnam)+slip, 바닥 미끄러짐
+# %s = The(aobjnam(obj, "slip")) = "name{이/가}" (계사 억제)
 msgid "Oops!  %s to the floor!"
 msgstr "이런! %s 바닥으로 미끄러졌다!"
+
+# [리뷰 완료] write.c:381, zap.c:6300 — The(aobjnam)+slip, 손아귀 미끄러짐
+# %s = The(aobjnam(obj, "slip")) = "name{이/가}" (계사 억제)
+#, c-format
+msgid "Oops!  %s out of your grasp!"
+msgstr "이런! %s 손아귀에서 미끄러졌다!"
+
+# [리뷰 완료] dothrow.c:1537 — Tobjnam+slip, 던지다가 미끄러짐
+# %s = Tobjnam(obj, "slip") = "name{이/가}" (계사 억제)
+#, c-format
+msgid "%s as you throw it!"
+msgstr "던지려니 %s 미끄러졌다!"
+
+# [리뷰 완료] mthrowu.c:622 — Tobjnam+slip + mon_nam, 몬스터 던지기 미끄러짐
+# %1$s = Tobjnam(obj, "slip") = "name{이/가}", %2$s = mon_nam
+#, c-format
+msgid "%s as %s throws it!"
+msgstr "%2$s{이/가} 던지려니 %1$s 미끄러졌다!"
+
+# [리뷰 완료] wield.c:805 — Yobjnam2+slip, 왼손에서 미끄러짐
+# %1$s = Yobjnam2(obj, "slip") = "당신의 검{이/가}", %2$s = "왼 손"
+#, c-format
+msgid "%s from your %s!"
+msgstr "%2$s에서 %1$s 미끄러졌다!"
+
+# wield.c:198 — "dominant right/left " = 주로 쓰는 오른/왼
+# ko.po "오른손잡이 "/"왼손잡이 "는 부정확 (사람 속성이 아니라 손 쪽)
+# %4$s + %5$s = "오른 " + "손" = "오른 손"
+msgid "dominant right "
+msgstr "오른 "
+
+msgid "dominant left "
+msgstr "왼 "
+
+# [리뷰 완료] wield.c:198 — aobjnam+weld 복합 다인수 패턴 (플레이어)
+# %1$s=tmp(The/""), %2$s=aobjnam(wep,"weld")="검{이/가}",
+# %3$s=itself/themselves (불필요), %4$s=dominant hand side, %5$s=hand
+# 영어: "The longsword welds itself to your dominant right hand!"
+# 한국어: "장검이 당신의 오른손에 녹아붙었다!"
+#, c-format
+msgid "%s%s %s to your %s%s!"
+msgstr "%1$.0s당신의 %4$s%5$s에 %2$s 녹아붙었다!%3$.0s"
+
+# [리뷰 완료] weapon.c:917 — Tobjnam+weld + s_suffix(mon_nam) + hand (몬스터)
+# %1$s=Tobjnam(obj,"weld")="검{이/가}", %2$s=itself (불필요),
+# %3$s=s_suffix(mon_nam)="오크의", %4$s=hand
+# 영어: "The longsword welds itself to the orc's hand!"
+# 한국어: "장검이 오크의 손에 녹아붙었다!"
+#, c-format
+msgid "%s %s to %s %s!"
+msgstr "%3$s %4$s에 %1$s 녹아붙었다!%2$.0s"
 
 # ============================================================
 # Phase 5: b_trapped(), flooreffects() 인자 일관성
@@ -13111,9 +13310,15 @@ msgstr "작은 다트"
 msgid "too far away to see"
 msgstr "너무 멀어서 볼 수 없다"
 
-# artifact.c, mkobj.c 등 - aobjnam 동사
+# [리뷰 완료] 계사 전환 — Tobjnam/aobjnam+slip에서 동사 억제
+# 각 포맷 문자열이 "미끄러졌다" 동사를 직접 제공
 msgid "slip"
-msgstr "미끄러지다"
+msgstr "이다"
+
+# [리뷰 완료] 계사 전환 — Tobjnam/aobjnam+weld에서 동사 억제
+# 각 포맷 문자열이 "녹아붙었다" 동사를 직접 제공
+msgid "weld"
+msgstr "이다"
 
 msgid "glow"
 msgstr "빛나다"
@@ -13877,6 +14082,7 @@ msgstr "%1$s %2$s{이/가} 완전히 %4$s 것 같다.%3$.0s"
 
 # trap.c:365 - 침식 상태 (Your 3인자)
 # Your() 한국어에서 접두사 없음. %1$s=물건, %2$s=look/feel, %3$s=erosion_state
+# 런타임: "장검이 완전히 녹슨 것 같다." (look/feel 양쪽 %.0s로 억제)
 #, c-format
 msgid "%s %s completely %s."
 msgstr "%1$s{이/가} 완전히 %3$s 것 같다.%2$.0s"
@@ -14002,68 +14208,82 @@ msgstr "%2$s %3$s{을/를} %1$s"
 # "feel" → "느껴진다" (피동 자동사) 변경에 맞춰
 # Tobjnam/Yobjnam2 패턴은 부사를 %s 앞으로 이동,
 # You() 지각 패턴은 %.0s로 동사를 억제하고 한국어 직접 서술
+#
+# [런타임 검증 갱신 — 2026-02-14]
+# A. Tobjnam 패턴: "뜨겁게 부적이 느껴진다!" — {이/가} 삽입으로 해결됨 ✓
+# B. Yobjnam2 패턴: "따뜻하게 당신의 검이 느껴진다." — {이/가} 삽입으로 해결됨 ✓
+# C. You() 억제: 변경 없음 (기존대로 자연스러움) ✓
+# D. invent.c fbuf[12]: 별도 PR 필요 (기존 Known Issue 유지)
 # ============================================================
 
-# wizard.c:78 - 부적 근접 탐지 (뜨거움). Tobjnam(amu, "feel")
-# 영어: "The Amulet feels hot!" → 한국어: "뜨겁게 부적이 느껴진다!"
+# [리뷰 완료] wizard.c:78 — Tobjnam(amu, "feel"), 부적 근접 탐지
+# 런타임: "뜨겁게 부적이 느껴진다!" — {이/가} 삽입으로 해결됨 ✓
 #, c-format
 msgid "%s hot!"
 msgstr "뜨겁게 %s!"
 
 # wizard.c:80 - 부적 근접 탐지 (매우 따뜻함). Tobjnam(amu, "feel")
+# 런타임: "매우 따뜻하게 부적 느껴진다."
 #, c-format
 msgid "%s very warm."
 msgstr "매우 따뜻하게 %s."
 
 # wizard.c:82 - 부적 근접 탐지 (따뜻함). Tobjnam(amu, "feel")
+# 런타임: "따뜻하게 부적 느껴진다."
 #, c-format
 msgid "%s warm."
 msgstr "따뜻하게 %s."
 
-# read.c:1142 - 무기/방어구 인챈트 효과. Yobjnam2(otmp, "feel")
-# 영어: "Your sword feels warm for a moment."
+# [리뷰 완료] read.c:1142 — Yobjnam2(otmp, "feel"), 인챈트 효과
+# 런타임: "잠시 따뜻하게 당신의 검이 느껴진다." — {이/가} 삽입으로 해결됨 ✓
 #, c-format
 msgid "%s warm for a moment."
 msgstr "잠시 따뜻하게 %s."
 
 # read.c:1154, pray.c:1213, read.c:1605 - 수리 효과. Yobjnam2 + feel/look
-# "느껴진다" → "새것처럼 좋게 [검이 느껴진다]!" ✓
-# "보인다" → "새것처럼 좋게 [검이 보인다]!" ✓
+# 런타임 (Blind): "새것처럼 좋게 당신의 검 느껴진다!" (조사 누락 — 구조적 한계)
+# 런타임 (sighted): "새것처럼 좋게 당신의 검 보인다!" (feel/look 양쪽 작동)
 #, c-format
 msgid "%s as good as new!"
 msgstr "새것처럼 좋게 %s!"
 
 # eat.c:3489 - 배고픔으로 약해짐. You("%s weak.", feel/are still/are beginning to feel)
 # 세 동사의 뉘앙스 차이를 한국어 단일 표현으로 통합, %s 억제
+# 런타임: "약해진 느낌이다." (feel/are still/are beginning to feel 모두 동일)
 #, c-format
 msgid "%s weak."
 msgstr "약해진 느낌이다%.0s."
 
 # eat.c:3491 - 점진적 배고픔 표현
 # 기존 "배고파지기 시작한다"는 오역 (원문은 약해짐이지 배고픔이 아님)
+# "%s weak." 포맷에서 %.0s로 억제되지만, ko.po 폴백 대비용으로 번역 유지
 msgid "are beginning to feel"
 msgstr "점점"
 
 # lock.c:592, lock.c:852, lock.c:1014, trap.c:5981 - 문 없음 탐지
 # You("%s no door there.", feel/see) — %s 억제
+# 런타임: "거기에 문이 없는 것 같다." (feel/see 양쪽 동일)
 #, c-format
 msgid "%s no door there."
 msgstr "거기에 문이 없는 것 같다%.0s."
 
 # lock.c:590 - 도개교 자물쇠 없음 탐지
 # You("%s no lock on the drawbridge.", feel/see) — %s 억제
+# 런타임: "도개교에 자물쇠가 없는 것 같다."
 #, c-format
 msgid "%s no lock on the drawbridge."
 msgstr "도개교에 자물쇠가 없는 것 같다%.0s."
 
 # hack.c:3702 - 구덩이 내 아이템 검색
 # You("don't %s anything in here to pick up.", feel/see) — %s 억제
+# 런타임: "여기에 주울 만한 것이 없는 것 같다."
 #, c-format
 msgid "don't %s anything in here to pick up."
 msgstr "여기에 주울 만한 것이 없는 것 같다%.0s."
 
 # lock.c:849 - 약탈 가능한 것 탐지
 # pline("%s like something lootable over there.", Feels/Seems) — %s 억제
+# 런타임: "저기에 약탈할 만한 것이 있는 것 같다."
 #, c-format
 msgid "%s like something lootable over there."
 msgstr "저기에 약탈할 만한 것이 있는 것 같다%.0s."
@@ -14071,7 +14291,470 @@ msgstr "저기에 약탈할 만한 것이 있는 것 같다%.0s."
 # invent.c:4156 - 삼킨 몬스터 내부 탐색
 # You("%s to %s what is lying in %s.", try/look around, feel/see, stomach)
 # %1=try/look around (억제), %2=feel/see (억제), %3=stomach
+# 런타임: "[stomach] 안에 뭐가 있는지 살핀다."
+# [주의] invent.c:4180 &fbuf[12] 하드코딩 — 영어 "Contents of " (12바이트) 기준.
+#   한국어 "%s %s의 내용물" 번역 시 접두사 길이가 가변적이어서 UTF-8 절단 가능.
+#   이번 변경과 무관한 기존 버그. C 소스 수정 필요 (별도 PR).
 #, c-format
 msgid "%s to %s what is lying in %s."
 msgstr "%3$s 안에 뭐가 있는지 살핀다%1$.0s%2$.0s."
+
+# ============================================================
+# Tobjnam/aobjnam {이/가} 삽입에 따른 이중 조사 방지 오버라이드
+# ============================================================
+# C 소스 변경: Tobjnam()/aobjnam()가 한국어 로캘에서 "name{이/가}"를
+# 자동 삽입하므로, ko.po의 "%s{이/가}" 패턴은 이중 조사가 된다.
+# 또한 계사("이다"/"이었다")는 Tobjnam 내부에서 생략되므로
+# %s = "name{이/가}" (계사 패턴) 또는 "name{이/가} verb" (실동사 패턴).
+# ============================================================
+
+# ------------------------------------------------------------
+# A. 계사 패턴: Tobjnam/Yobjnam2 + are/is (계사 생략, %s = "name{이/가}")
+# ------------------------------------------------------------
+
+# zap.c:2233 — Tobjnam(obj, "are")
+# 런타임: "상자가 갇혔다!"
+#, c-format
+msgid "%s trapped!"
+msgstr "%s 갇혔다!"
+
+# pickup.c:2977 — Tobjnam(obj, "are")
+# 런타임: "상자가 잠겨있다."
+#, c-format
+msgid "%s locked."
+msgstr "%s 잠겨있다."
+
+# apply.c:2645, zap.c:2238 — Tobjnam(obj, "are")
+# 런타임: "상자가 비었다."
+#, c-format
+msgid "%s empty."
+msgstr "%s 비었다."
+
+# pickup.c:2586 — Tobjnam(obj, "are")
+# 런타임: "상자가 당신의 애완동물에 붙어 있다."
+#, c-format
+msgid "%s attached to your pet."
+msgstr "%s 당신의 애완동물에 붙어 있다."
+
+# do.c:871 — Tobjnam(obj, "are")
+# 런타임: "음식이 즉시 소화됐다!"
+#, c-format
+msgid "%s instantly digested!"
+msgstr "%s 즉시 소화됐다!"
+
+# detect.c:1224 — Tobjnam(obj, "are")
+# 런타임: "이해하기에 지도가 너무 많다!"
+#, c-format
+msgid "%s too much to comprehend!"
+msgstr "이해하기에 %s 너무 많다!"
+
+# wield.c:1052 — Yobjnam2(obj, "are")
+# 런타임: "당신의 검이 손에 융합되었다!"
+#, c-format
+msgid "%s welded to your %s!"
+msgstr "%s %s에 융합되었다!"
+
+# artifact.c:969 — Tobjnam(obj, "are")
+# 런타임: "검이 통제 불능이다!"
+#, c-format
+msgid "%s beyond your control!"
+msgstr "%s 통제 불능이다!"
+
+# apply.c:2768 — Tobjnam(tstone, "are")
+# 런타임: "시험석이 이제 조금 더 젖었다."
+#, c-format
+msgid "%s a little wetter now."
+msgstr "%s 이제 조금 더 젖었다."
+
+# engrave.c:829 — Yobjnam2(otmp, "are")
+# 런타임: "당신의 검이 새기기에 너무 무디다."
+# ko.po는 {은/는}이지만 Tobjnam이 {이/가}를 삽입하므로 이중 조사
+#, c-format
+msgid "%s too dull for engraving."
+msgstr "%s 새기기에 너무 무디다."
+
+# read.c:1145, read.c:1598 — Yobjnam2(otmp, "are")
+# 런타임: "당신의 검이 밝은 금색 빛으로 덮였다!"
+#, c-format
+msgid "%s covered by a %s %s %s!"
+msgstr "%s %s %s %s{으로/로} 덮였다!"
+
+# ------------------------------------------------------------
+# B. 실동사 패턴: Tobjnam + verb (%s = "name{이/가} verb")
+# ------------------------------------------------------------
+
+# [리뷰 완료] detect.c:1232 — Tobjnam(obj, C_("Tobjnam","damage")), 시야 피해
+# "damage"는 dig.c/zap.c에서 명사로도 쓰이므로 C_("Tobjnam") 컨텍스트 분리
+msgctxt "Tobjnam"
+msgid "damage"
+msgstr "이다"
+
+# 런타임: "당신의 시야를 부적이 피해를 주었다!" ✓
+#, c-format
+msgid "%s your vision!"
+msgstr "당신의 시야를 %s 피해를 주었다!"
+
+# [리뷰 완료] detect.c:1237 — Tobjnam(obj, "assault")
+# "assault" 단일 사용처 → 계사 전환 안전
+# 런타임: "당신의 시야를 부적이 공격했다." ✓
+msgid "assault"
+msgstr "이다"
+
+#, c-format
+msgid "%s your vision."
+msgstr "당신의 시야를 %s 공격했다."
+
+# [리뷰 완료] write.c:92, apply.c:2606/2618 — Tobjnam(obj, "slip")
+# "slip"="이다"(계사 억제) → %1$s = "펜{이/가}", %2$s = "손가락"
+# 런타임: "손가락에서 펜이 미끄러졌다." ✓
+#, c-format
+msgid "%s from your %s."
+msgstr "%2$s에서 %1$s 미끄러졌다."
+
+# zap.c:2668 — Tobjnam(obj, "turn")
+# 런타임: "먼지로 검이 변했다."
+#, c-format
+msgid "%s to dust."
+msgstr "먼지로 %s."
+
+# [리뷰 완료] apply.c:1230 — Tobjnam(obj, C_("auxiliary","have")), 인형 파괴
+# C_("auxiliary") 컨텍스트로 have=조동사와 have=소유 분리
+# "이다"(계사) → Tobjnam이 동사 억제 → %s = "인형{이/가}"
+# 런타임: "인형이 산산조각 났다!" ✓
+msgctxt "auxiliary"
+msgid "have"
+msgstr "이다"
+
+#, c-format
+msgid "%s shattered!"
+msgstr "%s 산산조각 났다!"
+
+# [리뷰 완료] dig.c:1216 — Yobjnam2(obj, "become"), 거미줄 얽힘
+# "become"="이다"(계사 억제) → %s = "당신의 도구{이/가}"
+# 런타임: "당신의 도구가 거미줄에 얽혔다." ✓
+msgid "become"
+msgstr "이다"
+
+#, c-format
+msgid "%s entangled in the web."
+msgstr "%s 거미줄에 얽혔다."
+
+# [리뷰 완료] Tobjnam/Yobjnam2+seem 계사 전환
+# sounds.c vtense(hair, "seem")는 별도이므로 C_("Tobjnam") 컨텍스트 사용
+msgctxt "Tobjnam"
+msgid "seem"
+msgstr "이다"
+
+# [리뷰 완료] apply.c:2648 — Tobjnam(obj, C_("Tobjnam","seem")), 빈 상자
+# 런타임: "상자가 비어있는 것 같다." ✓
+#, c-format
+msgid "%s to be empty."
+msgstr "%s 비어있는 것 같다."
+
+# [리뷰 완료] uhitm.c:3618/6159 — Yobjnam2(obj, C_("Tobjnam","seem")), 인챈트 드레인
+# 런타임: "당신의 검이 덜 효과적인 것 같다." ✓
+#, c-format
+msgid "%s less effective."
+msgstr "%s 덜 효과적인 것 같다."
+
+# [리뷰 완료] wield.c:808 — Yobjnam2+evade+drop, 저주된 보조무기 탈출
+# %1$s = Yobjnam2(obj, "evade") = "당신의 검{이/가}" (계사 억제)
+# %2$s = otense(obj, "drop") = "떨어지다", %3$s = left_hand = "왼 손"
+# 영어: "Your sword evades your grasp and drops from your left hand!"
+# 한국어: "당신의 검이 왼 손에서 벗어나 떨어졌다!"
+#, c-format
+msgid "%s your grasp and %s from your %s!"
+msgstr "%1$s %3$s에서 벗어나 떨어졌다!%2$.0s"
+
+# [리뷰 완료] artifact.c:967 — Tobjnam(obj, "evade"), 손아귀 탈출
+# "evade" 2사용처 모두 Tobjnam/Yobjnam2 → 계사 전환 안전
+# 런타임: "검이 손아귀에서 벗어났다!" ✓
+msgid "evade"
+msgstr "이다"
+
+#, c-format
+msgid "%s your grasp!"
+msgstr "%s 손아귀에서 벗어났다!"
+
+# [리뷰 완료] do_wear.c:366 — Tobjnam(uarmc, "fit"), 망토 크기
+# "fit" 단일 사용처 → 계사 전환 안전
+# 런타임: "망토가 매우 단단하다." ✓
+msgid "fit"
+msgstr "이다"
+
+#, c-format
+msgid "%s very tightly."
+msgstr "%s 매우 단단하다."
+
+# [리뷰 완료] do.c:296 — Tobjnam(obj, "tumble"), 구덩이 추락
+# "tumble"은 pickup.c에서 otense로도 쓰이므로 전역 계사 변경 불가
+# → C_("Tobjnam") 컨텍스트 분리 필요
+msgctxt "Tobjnam"
+msgid "tumble"
+msgstr "이다"
+
+# 런타임: "검이 구덩이 속으로 굴러 떨어졌다." ✓
+#, c-format
+msgid "%s into %s pit."
+msgstr "%s %s 구덩이 속으로 굴러 떨어졌다."
+
+# [리뷰 완료] trap.c:6789/6832 — Yobjnam2(obj, "burst"), 불꽃 발화
+# "burst" 2사용처 모두 Yobjnam2 → 계사 전환 안전
+# 런타임: "당신의 두루마리가 불길 속으로 타올랐다!" ✓
+msgid "burst"
+msgstr "이다"
+
+#, c-format
+msgid "%s into flame!"
+msgstr "%s 불길 속으로 타올랐다!"
+
+# [리뷰 완료] Tobjnam+look 계사 전환 (apply.c:2764 시험석 전용)
+# read.c/pray.c의 "look"="보인다"는 유지 (문맥상 자연스러움)
+msgctxt "Tobjnam"
+msgid "look"
+msgstr "이다"
+
+# [리뷰 완료] apply.c:2764 — Tobjnam(tstone, C_("Tobjnam","look")), 시험석 광택
+# 런타임: "시험석이 이제 조금 더 광택이 난다." ✓
+#, c-format
+msgid "%s a little more polished now."
+msgstr "%s 이제 조금 더 광택이 난다."
+
+# [리뷰 완료] spell.c:348 — Tobjnam(book, "slam"), 마법서 세게 닫힘
+# "slam" 단일 사용처 → 계사 전환 안전
+# 런타임: "마법서가 닫혔다!" ✓
+msgid "slam"
+msgstr "이다"
+
+#, c-format
+msgid "%s shut!"
+msgstr "%s 닫혔다!"
+
+# [리뷰 완료] artifact.c:2585 — Tobjnam+C_("Tobjnam","fall") 계사 억제
+# %1$s = Tobjnam(obj, "fall") = "검{이/가}" (계사 억제), %2$s = surface
+# 영어: "The sword falls to the floor."
+# 한국어: "검이 바닥으로 떨어졌다."
+#, c-format
+msgid "%s to the %s."
+msgstr "%1$s %2$s{으로/로} 떨어졌다."
+
+# [리뷰 완료] dothrow.c:1771 — Tobjnam(obj, C_("Tobjnam","fail")), 부메랑 귀환
+# "fail"은 write.c/polyself.c에서 otense로도 쓰이므로 C_("Tobjnam") 분리
+msgctxt "Tobjnam"
+msgid "fail"
+msgstr "이다"
+
+# 런타임: "부메랑이 돌아오지 못한다!" ✓
+#, c-format
+msgid "%s to return!"
+msgstr "%s 돌아오지 못한다!"
+
+# ============================================================
+# C_("Tobjnam") 계사 억제 추가 — fall/confuse/zap/vanish/hit/fly
+# otense/vtense/다른 문맥에서도 쓰이므로 C_("Tobjnam") 분리 필요
+# ============================================================
+
+# [리뷰 완료] artifact.c:1958/2586 — "fall" Tobjnam/aobjnam 계사 억제
+msgctxt "Tobjnam"
+msgid "fall"
+msgstr "이다"
+
+# [리뷰 완료] detect.c:1228 — "confuse" Tobjnam 계사 억제
+msgctxt "Tobjnam"
+msgid "confuse"
+msgstr "이다"
+
+# [리뷰 완료] detect.c:1244 — "zap" Tobjnam 계사 억제
+msgctxt "Tobjnam"
+msgid "zap"
+msgstr "이다"
+
+# [리뷰 완료] dothrow.c:2301 — "vanish" Tobjnam 계사 억제
+msgctxt "Tobjnam"
+msgid "vanish"
+msgstr "이다"
+
+# [리뷰 완료] dothrow.c:1587/1745 — "hit" Tobjnam 계사 억제
+msgctxt "Tobjnam"
+msgid "hit"
+msgstr "이다"
+
+# [리뷰 완료] dothrow.c:1745, mthrowu.c:907 — "fly" Tobjnam 계사 억제
+msgctxt "Tobjnam"
+msgid "fly"
+msgstr "이다"
+
+# ============================================================
+# PO-only 계사 억제 — issue/radiate/return (Tobjnam 전용 동사)
+# ============================================================
+
+# [리뷰 완료] apply.c:1269 — "issue" 계사 억제 (Tobjnam 전용)
+msgid "issue"
+msgstr "이다"
+
+# [리뷰 완료] apply.c:1375 — "radiate" 계사 억제 (Tobjnam 전용)
+msgid "radiate"
+msgstr "이다"
+
+# [리뷰 완료] dothrow.c:1719/1736, mthrowu.c:876/896 — "return" 계사 억제
+msgid "return"
+msgstr "이다"
+
+# ============================================================
+# 포맷 문자열 오버라이드 — 계사 억제 후 직접 동사 제공
+# ============================================================
+
+# [리뷰 완료] detect.c:1228 — C_("crystal_ball") Tobjnam+confuse
+# %s = "수정구{이/가}" (계사 억제)
+# 영어: "The crystal ball confuses you!"
+# 한국어: "수정구가 당신을 혼란시켰다!"
+#, c-format
+msgctxt "crystal_ball"
+msgid "%s you!"
+msgstr "%s 당신을 혼란시켰다!"
+
+# [리뷰 완료] trap.c:1634 — 물줄기 맞힘
+# %s = _("A gush of water hits") = "물줄기가"
+# 한국어: "물줄기가 당신을 맞혔다!"
+#, c-format
+msgid "%s you!"
+msgstr "%s 당신을 맞혔다!"
+
+# [리뷰 완료] apply.c:1269 — Tobjnam+issue, 뿔피리 불안한 소리
+# %s = "뿔피리{이/가}" (계사 억제)
+# 한국어: "뿔피리가 불안한 날카로운 소리를 냈다..."
+#, c-format
+msgid "%s an unsettling shrill sound..."
+msgstr "%s 불안한 날카로운 소리를 냈다..."
+
+# [리뷰 완료] apply.c:1375 — Tobjnam+radiate, 촛대 따뜻함
+# %s = "촛대{이/가}" (계사 억제)
+# 한국어: "촛대가 이상한 따뜻함을 발산한다!"
+#, c-format
+msgid "%s a strange warmth!"
+msgstr "%s 이상한 따뜻함을 발산한다!"
+
+# [리뷰 완료] dothrow.c:2301 — Tobjnam+vanish, 삼킨 몬스터 속으로
+# %1$s = "검{이/가}" (계사 억제), %2$s = mon_name, %3$s = trail
+# 영어: "The dagger vanishes into the purple worm's body."
+# 한국어: "단검이 보라색 벌레의 몸속으로 사라졌다."
+#, c-format
+msgid "%s into %s%s."
+msgstr "%1$s %2$s%3$s 속으로 사라졌다."
+
+# [리뷰 완료] dothrow.c:1587 — Tobjnam+hit, 부메랑 천장 맞추고 귀환
+# %1$s = "부메랑{이/가}" (계사 억제), %2$s = ceiling
+# 한국어: "부메랑이 천장을 맞추고 당신의 손으로 돌아왔다!"
+#, c-format
+msgid "%s the %s and returns to your hand!"
+msgstr "%1$s %2$s{을/를} 맞추고 당신의 손으로 돌아왔다!"
+
+# [리뷰 완료] dothrow.c:1719 — Tobjnam+return, 부메랑 손 귀환
+# %s = "부메랑{이/가}" (계사 억제)
+# 한국어: "부메랑이 당신의 손으로 돌아왔다!"
+#, c-format
+msgid "%s to your hand!"
+msgstr "%s 당신의 손으로 돌아왔다!"
+
+# [리뷰 완료] dothrow.c:1735 — Tobjnam+return, 부메랑 발 근처 착지
+# %1$s = "부메랑{이/가}" (계사 억제), %2$s = beneath/at (불필요), %3$s = feet
+# 한국어: "부메랑이 당신에게 돌아와 발 근처에 착지했다."
+#, c-format
+msgid "%s back to you, landing %s your %s."
+msgstr "%1$s 당신에게 돌아와 %3$s 근처에 착지했다.%2$.0s"
+
+# [리뷰 완료] dothrow.c:1742 — Tobjnam+hit/fly, 부메랑 팔 맞힘
+# %1$s = "부메랑{이/가}" (계사 억제), %2$s = body_part(ARM)
+# 한국어: "부메랑이 당신 쪽으로 날아와 팔을 맞혔다!"
+#, c-format
+msgid "%s back toward you, hitting your %s!"
+msgstr "%1$s 당신 쪽으로 날아와 %2$s{을/를} 맞혔다!"
+
+# [리뷰 완료] mthrowu.c:876 — Tobjnam+return, 몬스터 부메랑 손 귀환
+# %1$s = "부메랑{이/가}" (계사 억제), %2$s = s_suffix(mon), %3$s = hand
+# 한국어: "부메랑이 오크의 손으로 돌아왔다!"
+#, c-format
+msgid "%s to %s %s!"
+msgstr "%1$s %2$s %3$s{으로/로} 돌아왔다!"
+
+# [리뷰 완료] mthrowu.c:895 — Tobjnam+return, 몬스터 부메랑 발 착지
+# %1$s = "부메랑{이/가}" (계사 억제), %2$s = mon_nam
+# %3$s = beneath/at (불필요), %4$s = mhis (불필요), %5$s = feet
+# 한국어: "부메랑이 오크에게 돌아와 발 근처에 착지했다."
+#, c-format
+msgid "%s back to %s, landing %s %s %s."
+msgstr "%1$s %2$s에게 돌아와 %5$s 근처에 착지했다.%3$.0s%4$.0s"
+
+# [리뷰 완료] mthrowu.c:905 — Tobjnam+fly, 몬스터 부메랑 팔 맞힘
+# %1$s = "부메랑{이/가}" (계사 억제), %2$s = mon_nam
+# %3$s = mhis (불필요), %4$s = body_part(ARM)
+# 한국어: "부메랑이 오크 쪽으로 날아와 팔을 맞혔다!"
+#, c-format
+msgid "%s back toward %s, hitting %s %s!"
+msgstr "%1$s %2$s 쪽으로 날아와 %4$s{을/를} 맞혔다!%3$.0s"
+
+# ============================================================
+# 조합 패턴 전수 검토 결과 (2026-02-14)
+# ============================================================
+#
+# === 계사 억제 ("이다") — PO-only (Tobjnam 전용 동사) ===
+# [OK] slip: 계사 억제 → Oops/throw/wield 포맷에서 직접 동사 제공
+# [OK] weld: 계사 억제 → wield.c/weapon.c 포맷에서 "녹아붙었다" 제공
+# [OK] evade: 계사 억제 → artifact.c/wield.c 포맷에서 "벗어났다" 제공
+# [OK] burst: 계사 억제 → trap.c 포맷에서 "타올랐다" 제공
+# [OK] slam: 계사 억제 → spell.c 포맷에서 "닫혔다" 제공
+# [OK] fit: 계사 억제 → do_wear.c 포맷에서 "단단하다" 제공
+# [OK] become: 계사 억제 → dig.c 포맷에서 "얽혔다" 제공
+# [OK] assault: 계사 억제 → detect.c 포맷에서 "공격했다" 제공
+# [OK] issue: 계사 억제 → apply.c 포맷에서 "소리를 냈다" 제공
+# [OK] radiate: 계사 억제 → apply.c 포맷에서 "발산한다" 제공
+# [OK] return: 계사 억제 → dothrow/mthrowu 포맷에서 "돌아왔다" 제공
+#
+# === C_() 컨텍스트 분리 패턴 ===
+# [OK] C_("light", stop/begin/shine): 빛 시작/멈춤 동사 (wield/do_wear/worn/weapon)
+# [OK] C_("autocurse", glow): 던바스캡 자동저주 (do_wear.c)
+# [OK] C_("auxiliary", have): 조동사 have (apply.c 인형 파괴)
+# [OK] C_("Tobjnam", seem): 보이다/같다 (apply.c/uhitm.c)
+# [OK] C_("Tobjnam", look): 보이다/광택 (apply.c 시험석)
+# [OK] C_("Tobjnam", damage): 피해를 주다 (detect.c)
+# [OK] C_("Tobjnam", fail): 실패 (dothrow.c 부메랑)
+# [OK] C_("Tobjnam", tumble): 굴러 떨어지다 (do.c 구덩이)
+# [OK] C_("Tobjnam", fall): 떨어지다 (artifact.c 아이템 낙하)
+# [OK] C_("Tobjnam", confuse): 혼란시키다 (detect.c 수정구)
+# [OK] C_("Tobjnam", zap): 공격하다 (detect.c 수정구)
+# [OK] C_("Tobjnam", vanish): 사라지다 (dothrow.c 삼킨 몬스터)
+# [OK] C_("Tobjnam", hit): 맞히다 (dothrow.c 부메랑)
+# [OK] C_("Tobjnam", fly): 날다 (dothrow.c/mthrowu.c 부메랑)
+# [OK] C_("crystal_ball", "%s you!"): 수정구 혼란 포맷 분리
+#
+# === 기존 패턴 확인 ===
+# [OK] feel 피동: {이/가} 삽입으로 주격조사 누락 해결
+# [OK] 색상+glow: 기존 %.0s 억제 패턴 유지
+# [OK] "%s %s for a moment." 공유 msgid: C_("autocurse")로 분리
+# [OK] world spins: %2$s%1$s 역순으로 정상
+# [OK] neighborhood: C_("neighborhood") 컨텍스트 정상
+# [OK] 석화/소멸/변신: {이/가} 조사 정상
+# [OK] music tumblers/gears: %.0s 복수형 억제 정상
+# [OK] grease slip off: 어순 재배치 정상
+# [OK] stagger for a moment: 고정 과거형 "비틀거렸다" 사용 (%2$s 억제)
+# [OK] candelabrum dimly: 고정 문장 "%1$s/%2$s 모두 억제"
+# [OK] arti_light_description: _() 래핑 + 5개 부사 번역 추가
+# [OK] dominant right/left: "오른손잡이"→"오른 ", "왼손잡이"→"왼 " 수정
+# [OK] worn.c:985 "%s %s shining %s.": %2$s(are="이다") 억제, {이/가} 포맷 삽입
+# [OK] trap.c:1634 "%s you!": 물줄기 맞힘 동사 제공
+# [OK] 부메랑 귀환/타격: return/hit/fly 계사 억제 + 포맷에서 동사 제공
+#
+# [Known Issues — low priority]
+# - invent.c fbuf[12] 하드코딩 (별도 PR 필요)
+# - _("burn") transitive/intransitive 충돌
+# - potion.c:2582 lichen acid wrinkled/hcolor 불일치
+# - mhitu.c:2570 "%s %s." 공유 msgid → C_() 필요하나 사용처 다수
+# - stagger 동사 사전형/과거형 불일치 (load/potion 문맥과 tense 충돌)
+# - light.c ConcatF1 ", %s lit)" 미번역 (item description 문맥)
+# - apply.c:1377 "%s with a strange light!" glow 이중동사 (glow 다중 사용처)
+# - "whisper" 사전형 "속삭이다:" 미활용형 (단일 사용, 낮은 우선순위)
+# - "misfire" "오발!" 명사형 (단일 사용, 낮은 우선순위)
+# - "resist" sit.c 이중 사용 (Tobjnam+vtense, 단일 사용)
+# - "shatter" 이중 사용 (Yobjnam2+otense, 해당 포맷에 고정 동사)
+# - "flicker" 이중 사용 (Tobjnam+vtense, 해당 포맷에 ko_manual 조합)
 

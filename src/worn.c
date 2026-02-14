@@ -982,7 +982,7 @@ m_dowear_type(
 
             if (sawmon) /* could already see monster */
                 pline(_("%s %s to shine %s."), Yname2(best),
-                      otense(best, _("begin")), adesc);
+                      otense(best, C_("light", "begin")), adesc);
             else if (canseemon(mon)) /* didn't see it until new light */
                 pline(_("%s %s shining %s."), Yname2(best),
                       otense(best, _("are")), adesc);

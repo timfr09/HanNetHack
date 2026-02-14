@@ -3637,7 +3637,8 @@ mhitm_ad_ench(
                 }
             }
             if (obj && drain_item(obj, FALSE)) {
-                pline(_("%s less effective."), Yobjnam2(obj, _("seem")));
+                pline(_("%s less effective."),
+                      Yobjnam2(obj, C_("Tobjnam", "seem")));
             }
         }
     } else {
@@ -6178,7 +6179,8 @@ passive_obj(
         if (!mon->mcan) {
             if (drain_item(obj, TRUE) && carried(obj)
                 && (obj->known || obj->oclass == ARMOR_CLASS)) {
-                pline(_("%s less effective."), Yobjnam2(obj, _("seem")));
+                pline(_("%s less effective."),
+                      Yobjnam2(obj, C_("Tobjnam", "seem")));
             }
             break;
         }

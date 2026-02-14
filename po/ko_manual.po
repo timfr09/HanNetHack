@@ -15044,4 +15044,5 @@ msgstr "%s 당신의 %s{을/를} 맞혔다!"
 # - "resist" sit.c 이중 사용 (Tobjnam+vtense, 단일 사용)
 # - "shatter" 이중 사용 (Yobjnam2+otense, 해당 포맷에 고정 동사)
 # - "flicker" 이중 사용 (Tobjnam+vtense, 해당 포맷에 ko_manual 조합)
+# - potion.c:1720 aobjnam(saddle, "get"): "get"에 _() 미래핑 (소스 수정 필요)
 

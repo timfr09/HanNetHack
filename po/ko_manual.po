@@ -7437,11 +7437,11 @@ msgstr "운이 나쁘다"
 
 #, c-format
 msgid "%slucky"
-msgstr "%s운이 좋다 "
+msgstr "%s운이 좋다"
 
 #, c-format
 msgid "%sunlucky"
-msgstr "%s운이 나쁘다 "
+msgstr "%s운이 나쁘다"
 
 # insight.c:1901 - "very " (lucky/anger 수식어, 후행 공백)
 msgid "very "
@@ -7452,7 +7452,7 @@ msgstr "매우 "
 # "more charismatic" / "less charismatic" / "charismatic"
 #, c-format
 msgid "%scharismatic"
-msgstr "%s매력적이다 "
+msgstr "%s매력적이다"
 
 msgid "more "
 msgstr "더 "
@@ -7514,10 +7514,10 @@ msgstr "{이/가} 당신에게 %s분노하고 있다"
 # 한국어에서 "not " 접두사로 부정 불가능하므로 별도 msgid 사용
 # 조합: you_can("safely pray"/"not safely pray", "")
 msgid "safely pray"
-msgstr "안전하게 기도할 수 있다 "
+msgstr "안전하게 기도할 수 있다"
 
 msgid "not safely pray"
-msgstr "안전하게 기도할 수 없다 "
+msgstr "안전하게 기도할 수 없다"
 
 # ===============================================
 # insight.c 추가 번역 - 상태 메시지 및 조합 패턴
@@ -7979,11 +7979,25 @@ msgid ", engulfed by "
 msgstr ", 에게 감싸여 있다 "
 
 # insight.c - 몬스터와의 관계 (몬스터 이름 뒤에 붙음)
+# 프로빙/farlook용 (단순 문자열 연결, 몬스터 이름이 뒤에 옴)
 msgid ", held by "
 msgstr ", 에게 붙잡혀 있다 "
 
 msgid ", holding "
 msgstr ", {을/를} 붙잡고 있다 "
+
+# insight.c:1141 - 종료 화면 붙잡힘 상태 (포맷 문자열 어순 수정)
+# 영어: "holding orc (south)" / "held by orc (south)"
+# 한국어: "오크{을/를} 붙잡고 있다 (남쪽)" / "오크에게 붙잡혀 있다 (남쪽)"
+#, c-format
+msgid "%s %s (%s)"
+msgstr "%2$s%1$s (%3$s)"
+
+msgid "holding"
+msgstr "{을/를} 붙잡고 있다"
+
+msgid "held by"
+msgstr "에게 붙잡혀 있다"
 
 #, c-format
 msgid ", in a cloud of %s"
@@ -8519,7 +8533,7 @@ msgid "character"
 msgstr "캐릭터"
 
 msgid "entered "
-msgstr "들어갔다 "
+msgstr "들어갔다"
 
 # 미번역 항목 번역
 msgid "belatedly "
@@ -8529,10 +8543,10 @@ msgstr "뒤늦게 "
 # [조합 메시지] insight.c:566 - 반대 신 목록 접두어
 # 영어: " who is opposed by [God1] and [God2]"
 # %1$s = "is" 또는 "was" (한국어에서 불필요)
-# 한국어: "의 반대자: [신1] 그리고 [신2]"
+# 한국어: "반대 세력: [신1] 그리고 [신2]"
 #, c-format
 msgid " who %s opposed by"
-msgstr "%1$.0s의 반대자:"
+msgstr "%1$.0s반대 세력:"
 
 # [조합 메시지] insight.c:648 - 던전 진입 시간
 # enlght_line(You_, "entered ", buf, "")와 조합됨
@@ -9617,7 +9631,7 @@ msgstr "관통했다"
 # You_(%1$s), are/were(%2$s), alignment(%3$s), currently/now/etc(%4$s), god(%5$s)
 #, c-format
 msgid " %s%s%s, %son a mission for %s"
-msgstr " %1$s%2$s %4$s%3$s, %5$s{을/를} 위한 임무 중"
+msgstr " %1$s%2$.0s%4$s%3$s, %5$s{을/를} 위한 임무 중"
 
 # "currently ", "temporarily ", "now ", "belatedly ", "nominally "는 이미 정의됨
 # " who %s opposed by"는 이미 정의됨
@@ -11253,10 +11267,10 @@ msgstr " 모험이 끝났을 때"
 
 # [조합] insight.c:707 - " (%ld %smore experience needed for level %d)"
 # 영어: " (1234 more experience needed for level 5)"
-# 한국어: " (%ld 경험치 %s더 필요, %d레벨까지)"
+# 한국어: " (%d레벨까지 %ld 경험치 더 필요)" — %2$s(more/less) 억제
 #, c-format
 msgid " (%ld %smore experience needed for level %d)"
-msgstr " (%3$d레벨까지 %1$ld 경험치 %2$s더 필요)"
+msgstr " (%3$d레벨까지 %1$ld%2$.0s 경험치 더 필요)"
 
 # [조합] insight.c:717 - enl_msg("Your score ", "is ", "was ", buf, "")
 # 영어: " Your score is 1234 before end-of-game adjustments."
@@ -15640,4 +15654,34 @@ msgstr "순수한 에너지에 압도되었다"
 # 예: "The immobile orc seems to flinch."
 msgid "immobile"
 msgstr "움직이지 않는"
+
+# ============================================================
+# dfeature 지형 이름 번역 (defsyms[].explanation)
+# pickup.c describe_decor, invent.c look_here에서 _() 적용
+# ============================================================
+msgid "opulent throne"
+msgstr "화려한 왕좌"
+
+msgid "set of iron bars"
+msgstr "철창"
+
+# ============================================================
+# 종료 화면 어색한 번역 수정
+# ============================================================
+
+# [조합] insight.c:452 - enl_msg("Total elapsed playing time ", "is", "was", buf, "")
+# ko.po "총 경과 플레이 시간은 " trailing space → buf leading space와 이중 공백
+# 수정: trailing space 제거
+msgid "Total elapsed playing time "
+msgstr "총 경과 플레이 시간은"
+
+# wield.c:155 — You("are %s.", "empty handed")
+# insight.c you_are("empty handed") — 종료 화면 장비 상태
+msgid "empty handed"
+msgstr "빈손이다"
+
+# wield.c:158 — You("are %s.", "bare handed")
+# insight.c you_are("bare handed") — 종료 화면 장비 상태
+msgid "bare handed"
+msgstr "맨손이다"
 

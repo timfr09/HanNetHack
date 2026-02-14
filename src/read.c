@@ -898,7 +898,7 @@ recharge(struct obj *obj, int curse_bless)
                 stripspe(obj);
                 if (obj->lamplit) {
                     if (!Blind)
-                        pline(_("%s out!"), Tobjnam(obj, _("go")));
+                        pline(_("%s out!"), Tobjnam(obj, C_("Tobjnam", "go")));
                     end_burn(obj, TRUE);
                 }
             } else if (is_blessed) {

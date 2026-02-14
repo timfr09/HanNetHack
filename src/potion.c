@@ -1672,7 +1672,7 @@ potionhit(struct monst *mon, struct obj *obj, int how)
 
     /* oil doesn't instantly evaporate; Neither does a saddle hit */
     if (obj->otyp != POT_OIL && !hit_saddle && cansee(tx, ty))
-        pline(_("%s."), Tobjnam(obj, _("evaporate")));
+        pline(_("%s."), Tobjnam(obj, C_("Tobjnam", "evaporate")));
 
     if (isyou) {
         switch (obj->otyp) {
@@ -1709,7 +1709,7 @@ potionhit(struct monst *mon, struct obj *obj, int how)
         switch (obj->otyp) {
         case POT_WATER:
             Snprintf(saddle_glows, sizeof(saddle_glows), "%s %s",
-                     buf, aobjnam(saddle, _("glow")));
+                     buf, aobjnam(saddle, C_("Tobjnam", "glow")));
             affected = H2Opotion_dip(obj, saddle, useeit, saddle_glows);
             break;
         case POT_POLYMORPH:

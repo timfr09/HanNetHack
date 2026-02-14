@@ -522,7 +522,7 @@ moverock_core(coordxy sx, coordxy sy)
                                  the floor/ground/whatever shake (or maybe
                                  a weak shockwave if levitating or flying) */
                                                 : _("Gadzooks"),
-                              Tobjnam(otmp, _("trigger")),
+                              Tobjnam(otmp, C_("Tobjnam", "trigger")),
                               ttmp->madeby_u ? _("your") : _("a"));
                         blow_up_landmine(ttmp);
                         /* if the boulder remains, it should fill the pit */
@@ -555,8 +555,8 @@ moverock_core(coordxy sx, coordxy sy)
                     else
                         pline(_("%s%s and %s a %s in the %s!"),
                               Tobjnam(otmp, (ttmp->ttyp == TRAPDOOR)
-                                                ? _("trigger")
-                                                : _("fall")),
+                                                ? C_("Tobjnam", "trigger")
+                                                : C_("Tobjnam", "fall")),
                               (ttmp->ttyp == TRAPDOOR) ? "" : _(" into"),
                               otense(otmp, _("plug")),
                               (ttmp->ttyp == TRAPDOOR) ? _("trap door") : _("hole"),

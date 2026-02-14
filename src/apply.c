@@ -1374,7 +1374,7 @@ use_candelabrum(struct obj *obj)
             if (Blind)
                 pline(_("%s a strange warmth!"), Tobjnam(obj, _("radiate")));
             else
-                pline(_("%s with a strange light!"), Tobjnam(obj, _("glow")));
+                pline(_("%s with a strange light!"), Tobjnam(obj, C_("Tobjnam", "glow")));
         }
         obj->known = 1;
     }

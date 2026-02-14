@@ -320,10 +320,6 @@ dmgval(struct obj *otmp, struct monst *mon)
         }
     }
 
-    /* Healer with anatomy knowledge */
-    if (Role_if(PM_HEALER) && objects[otmp->otyp].oc_skill == P_KNIFE)
-        tmp += min(3, svm.mvitals[monsndx(ptr)].died / 6);
-
     /* Put weapon vs. monster type damage bonuses in below: */
     if (Is_weapon || otmp->oclass == GEM_CLASS || otmp->oclass == BALL_CLASS
         || otmp->oclass == CHAIN_CLASS) {
@@ -923,7 +919,8 @@ mon_wield_item(struct monst *mon)
         if (artifact_light(obj) && !obj->lamplit) {
             begin_burn(obj, FALSE);
             if (canseemon(mon))
-                pline(_("%s %s in %s %s!"), Tobjnam(obj, _("shine")),
+                pline(_("%s %s in %s %s!"),
+                      Tobjnam(obj, C_("light", "shine")),
                       arti_light_description(obj), s_suffix(mon_nam(mon)),
                       mbodypart(mon, HAND));
             /* 3.6.3: artifact might be getting wielded by invisible monst */
@@ -1820,7 +1817,7 @@ setmnotwielded(struct monst *mon, struct obj *obj)
         if (canseemon(mon))
             pline(_("%s in %s %s %s shining."), The(xname(obj)),
                   s_suffix(mon_nam(mon)), mbodypart(mon, HAND),
-                  otense(obj, _("stop")));
+                  otense(obj, C_("light", "stop")));
     }
     if (MON_WEP(mon) == obj)
         MON_NOWEP(mon);

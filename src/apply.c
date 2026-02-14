@@ -1227,7 +1227,8 @@ use_bell(struct obj **optr)
                                NO_MINVENT | MM_NOMSG)) != 0) {
             You(_("summon %s!"), a_monnam(mtmp));
             if (!obj_resists(obj, 93, 100)) {
-                pline(_("%s shattered!"), Tobjnam(obj, _("have")));
+                pline(_("%s shattered!"),
+                      Tobjnam(obj, C_("auxiliary", "have")));
                 useup(obj);
                 *optr = 0;
             } else
@@ -2644,7 +2645,8 @@ use_grease(struct obj *obj)
         if (obj->known)
             pline(_("%s empty."), Tobjnam(obj, _("are")));
         else
-            pline(_("%s to be empty."), Tobjnam(obj, _("seem")));
+            pline(_("%s to be empty."),
+                  Tobjnam(obj, C_("Tobjnam", "seem")));
     }
     update_inventory();
     return ECMD_TIME;
@@ -2759,7 +2761,8 @@ use_stone(struct obj *tstone)
     default:
         switch (objects[obj->otyp].oc_material) {
         case CLOTH:
-            pline(_("%s a little more polished now."), Tobjnam(tstone, _("look")));
+            pline(_("%s a little more polished now."),
+                  Tobjnam(tstone, C_("Tobjnam", "look")));
             return ECMD_TIME;
         case LIQUID:
             if (!obj->known) /* note: not "whetstone" */

@@ -293,7 +293,8 @@ flooreffects(
                 Soundeffect(se_item_tumble_downwards, 50);
                 You_hear(_("%s tumble downwards."), the(xname(obj)));
             } else {
-                pline(_("%s into %s pit."), Tobjnam(obj, _("tumble")),
+                pline(_("%s into %s pit."),
+                      Tobjnam(obj, C_("Tobjnam", "tumble")),
                       the_your[t->madeby_u]);
             }
         } else if (ship_object(obj, x, y, FALSE)) {

@@ -1583,7 +1583,8 @@ throwit(
                aklys must we wielded as primary to return when thrown */
             && iflags.returning_missile
             && !impaired) {
-            pline(_("%s the %s and returns to your hand!"), Tobjnam(obj, _("hit")),
+            pline(_("%s the %s and returns to your hand!"),
+                  Tobjnam(obj, C_("Tobjnam", "hit")),
                   ceiling(u.ux, u.uy));
             obj = return_throw_to_inv(obj, wep_mask, twoweap, oldslot);
         } else if (u.dz < 0) {
@@ -1740,7 +1741,9 @@ throwit(
                         dmg += rnd(3);
                         pline(Blind ? _("%s your %s!")
                                     : _("%s back toward you, hitting your %s!"),
-                              Tobjnam(obj, Blind ? _("hit") : _("fly")),
+                              Tobjnam(obj, Blind
+                                        ? C_("Tobjnam", "hit")
+                                        : C_("Tobjnam", "fly")),
                               body_part(ARM));
                         if (obj->oartifact)
                             (void) artifact_hit((struct monst *) 0,
@@ -1768,7 +1771,8 @@ throwit(
                    that slot is empty at the time; since hero will need to
                    explicitly rewield the weapon to get throw-and-return
                    capability back anyway, quivered or not shouldn't matter */
-                pline(_("%s to return!"), Tobjnam(obj, _("fail")));
+                pline(_("%s to return!"),
+                      Tobjnam(obj, C_("Tobjnam", "fail")));
 
                 if (u.uswallow) {
                     swallowit(obj);
@@ -2296,7 +2300,8 @@ thitmonst(
         monname = mon_nam(mon);
         if (*trail)
             monname = s_suffix(monname);
-        pline(_("%s into %s%s."), Tobjnam(obj, _("vanish")), monname, trail);
+        pline(_("%s into %s%s."),
+              Tobjnam(obj, C_("Tobjnam", "vanish")), monname, trail);
     } else {
         tmiss(obj, mon, TRUE);
     }

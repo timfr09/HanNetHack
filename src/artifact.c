@@ -1955,7 +1955,8 @@ invoke_create_ammo(struct obj *obj)
         otmp->quan += rnd(5);
     otmp->owt = weight(otmp);
     otmp = hold_another_object(otmp, _("Suddenly %s out."),
-                               aobjnam(otmp, _("fall")), (char *) 0);
+                               aobjnam(otmp, C_("Tobjnam", "fall")),
+                               (char *) 0);
     nhUse(otmp);
     return ECMD_TIME;
 }
@@ -2582,7 +2583,8 @@ retouch_object(
             /* dropx gives a message if a dropped item lands on an altar;
                we provide one for other terrain */
             if (!IS_ALTAR(levl[u.ux][u.uy].typ))
-                pline(_("%s to the %s."), Tobjnam(obj, _("fall")),
+                pline(_("%s to the %s."),
+                      Tobjnam(obj, C_("Tobjnam", "fall")),
                       surface(u.ux, u.uy));
             dropx(obj);
         }

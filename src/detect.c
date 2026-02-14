@@ -1224,12 +1224,14 @@ use_crystal_ball(struct obj **optr)
             pline(_("%s too much to comprehend!"), Tobjnam(obj, _("are")));
             break;
         case 2:
-            pline(_("%s you!"), Tobjnam(obj, _("confuse")));
+            pline(C_("crystal_ball", "%s you!"),
+                  Tobjnam(obj, C_("Tobjnam", "confuse")));
             make_confused((HConfusion & TIMEOUT) + impair, FALSE);
             break;
         case 3:
             if (!resists_blnd(&gy.youmonst)) {
-                pline(_("%s your vision!"), Tobjnam(obj, _("damage")));
+                pline(_("%s your vision!"),
+                      Tobjnam(obj, C_("Tobjnam", "damage")));
                 make_blinded(BlindedTimeout + impair, FALSE);
                 if (!Blind)
                     Your1(vision_clears);
@@ -1239,7 +1241,8 @@ use_crystal_ball(struct obj **optr)
             }
             break;
         case 4:
-            pline(_("%s your mind!"), Tobjnam(obj, _("zap")));
+            pline(_("%s your mind!"),
+                  Tobjnam(obj, C_("Tobjnam", "zap")));
             (void) make_hallucinated((HHallucination & TIMEOUT) + impair,
                                      FALSE, 0L);
             break;

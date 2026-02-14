@@ -1786,7 +1786,7 @@ potionhit(struct monst *mon, struct obj *obj, int how)
             } else if (!sawit && canspotmon(mon)) {
                 /* if an invisible mon glyph was present, mon_set_minvis()'s
                    newsym() has gotten rid of it */
-                pline("%s appears!", Monnam(mon));
+                pline(_("%s appears!"), Monnam(mon));
             }
             break;
         }

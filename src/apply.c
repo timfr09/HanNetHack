@@ -4315,7 +4315,9 @@ doapply(void)
             /* sometimes the blessing will be worn off */
             if (!rn2(49)) {
                 if (!Blind) {
-                    pline(_("%s %s."), Yobjnam2(obj, _("glow")), hcolor("brown"));
+                    pline(C_("glow_color", "%s %s."),
+                          Yobjnam2(obj, C_("glow_color", "glow")),
+                          hcolor("brown"));
                     set_bknown(obj, 1);
                 }
                 unbless(obj);

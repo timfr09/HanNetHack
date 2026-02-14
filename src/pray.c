@@ -360,8 +360,10 @@ fix_curse_trouble(struct obj *otmp, const char *what)
             return;
     }
     if (!Blind || (otmp == ublindf && Blindfolded_only)) {
-        pline(_("%s %s."),
-                what ? what : (const char *) Yobjnam2(otmp, _("softly glow")),
+        pline(C_("softglow_color", "%s %s."),
+                what ? what
+                     : (const char *) Yobjnam2(otmp,
+                                               C_("glow_color", "softly glow")),
                 hcolor(NH_AMBER));
         iflags.last_msg = PLNMSG_OBJ_GLOWS;
         otmp->bknown = !Hallucination; /* ok to skip set_bknown() */
@@ -592,7 +594,9 @@ fix_worst_trouble(int trouble)
     case TROUBLE_SADDLE:
         otmp = which_armor(u.usteed, W_SADDLE);
         if (!Blind) {
-            pline(_("%s %s."), Yobjnam2(otmp, _("softly glow")), hcolor(NH_AMBER));
+            pline(C_("softglow_color", "%s %s."),
+                  Yobjnam2(otmp, C_("glow_color", "softly glow")),
+                  hcolor(NH_AMBER));
             set_bknown(otmp, 1);
         }
         uncurse(otmp);
@@ -1295,7 +1299,9 @@ pleased(aligntyp g_align)
                     && (otmp != uarmh /* [see worst_cursed_item()] */
                         || uarmh->otyp != HELM_OF_OPPOSITE_ALIGNMENT)) {
                     if (!Blind) {
-                        pline(_("%s %s."), Yobjnam2(otmp, _("softly glow")),
+                        pline(C_("softglow_color", "%s %s."),
+                              Yobjnam2(otmp,
+                                       C_("glow_color", "softly glow")),
                               hcolor(NH_AMBER));
                         iflags.last_msg = PLNMSG_OBJ_GLOWS;
                         otmp->bknown = 1; /* ok to bypass set_bknown() */

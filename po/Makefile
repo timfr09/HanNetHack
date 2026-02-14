@@ -27,8 +27,12 @@ SOURCES = $(wildcard $(SRCDIR)/*.c) \
           $(wildcard $(WINDIR)/tty/*.c) \
           $(wildcard $(WINDIR)/curses/*.c)
 
-# Lua files to extract strings from
-LUA_SOURCES = $(wildcard $(DATDIR)/*.lua)
+# Lua files that have Korean locale versions (dat/locale/ko/*.lua)
+# These are translated directly in the locale files, not via PO
+KO_LOCALE_LUA = $(addprefix $(DATDIR)/, $(notdir $(wildcard $(DATDIR)/locale/ko/*.lua)))
+
+# Lua files to extract strings from (exclude Korean locale files)
+LUA_SOURCES = $(filter-out $(KO_LOCALE_LUA), $(wildcard $(DATDIR)/*.lua))
 
 # xgettext options for C files
 XGETTEXT_OPTS = --keyword=_ --keyword=N_ --keyword=P_:1,2 \

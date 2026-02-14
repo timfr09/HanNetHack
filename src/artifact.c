@@ -1482,12 +1482,12 @@ artifact_hit(
     /* the four basic attacks: fire, cold, shock and missiles */
     if (attacks(AD_FIRE, otmp)) {
         if (realizes_damage)
-            pline_The(_("fiery blade %s %s%c"),
+            pline_The(C_("artifact_fire", "fiery blade %s %s%c"),
                       !gs.spec_dbon_applies
-                          ? _("hits")
+                          ? C_("artifact_fire", "hits")
                           : (mdef->data == &mons[PM_WATER_ELEMENTAL])
-                                ? _("vaporizes part of")
-                                : _("burns"),
+                                ? C_("artifact_fire", "vaporizes part of")
+                                : C_("artifact_fire", "burns"),
                       hittee, !gs.spec_dbon_applies ? '.' : '!');
         if (!rn2(4)) {
             int itemdmg = destroy_items(mdef, AD_FIRE, *dmgptr);
@@ -1501,9 +1501,11 @@ artifact_hit(
     }
     if (attacks(AD_COLD, otmp)) {
         if (realizes_damage)
-            pline_The(_("ice-cold blade %s %s%c"),
-                      !gs.spec_dbon_applies ? _("hits") : _("freezes"), hittee,
-                      !gs.spec_dbon_applies ? '.' : '!');
+            pline_The(C_("artifact_cold", "ice-cold blade %s %s%c"),
+                      !gs.spec_dbon_applies
+                          ? C_("artifact_cold", "hits")
+                          : C_("artifact_cold", "freezes"),
+                      hittee, !gs.spec_dbon_applies ? '.' : '!');
         if (!rn2(4)) {
             int itemdmg = destroy_items(mdef, AD_COLD, *dmgptr);
             if (!youdefend)

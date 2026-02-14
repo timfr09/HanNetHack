@@ -972,7 +972,8 @@ chwepon(struct obj *otmp, int amount)
         wepname = ONAME(uwep);
     if (amount < 0 && uwep->oartifact && restrict_name(uwep, wepname)) {
         if (!Blind)
-            pline(_("%s %s."), Yobjnam2(uwep, _("faintly glow")), color);
+            pline(C_("faintglow_color", "%s %s."),
+                  Yobjnam2(uwep, C_("glow_color", "faintly glow")), color);
         return 1;
     }
     /* there is a (soft) upper and lower limit to uwep->spe */

@@ -4796,9 +4796,10 @@ msgstr "유효하지 않은 전리품 위치"
 msgid "couldn't see yourself"
 msgstr "자신을 볼 수 없다"
 
-# invent.c - 반지 효과. "Your right ring softly glows red"
+# pray.c:380 — 오른손 반지 (softglow_color 포맷에서 what 매개변수로 사용)
+# 계사 억제와 일치하도록 동사 제거 → 포맷이 동사 제공
 msgid "Your right ring softly glows"
-msgstr "당신의 오른쪽 반지가 부드럽게 빛난다"
+msgstr "당신의 오른쪽 반지{이/가}"
 
 # mon.c - 슬라임 소멸. 단독 문장
 msgid "The slime disappears."
@@ -6329,9 +6330,10 @@ msgstr "당신의 지갑이 비었다"
 msgid " close by"
 msgstr " 가까이에"
 
-# pray.c:379 - 왼손 반지가 빛남. "떠 있다"가 아님!
+# pray.c:379 — 왼손 반지 (softglow_color 포맷에서 what 매개변수로 사용)
+# 계사 억제와 일치하도록 동사 제거 → 포맷이 동사 제공
 msgid "Your left ring softly glows"
-msgstr "왼손 반지가 은은하게 빛난다"
+msgstr "당신의 왼쪽 반지{이/가}"
 
 # ============================================================
 # 어순 조정이 필요한 문장 패턴
@@ -10284,6 +10286,80 @@ msgstr "사용하"
 msgctxt "Yobjnam2"
 msgid "resist"
 msgstr "이다"
+
+# ============================================================
+# C_("glow_color") — Yobjnam2+glow+hcolor 조합 패턴
+# ============================================================
+# Yobjnam2가 "name{이/가} 빛나다"(사전형) 삽입 → 포맷과 이중 술어 발생
+# 계사 억제로 "name{이/가}" (동사 없음) 출력, 포맷에서 동사 직접 제공
+
+# 계사 억제 — 모든 glow 변형
+msgctxt "glow_color"
+msgid "glow"
+msgstr "이다"
+
+msgctxt "glow_color"
+msgid "softly glow"
+msgstr "이다"
+
+msgctxt "glow_color"
+msgid "faintly glow"
+msgstr "이다"
+
+# 포맷 오버라이드 — "name{이/가} color 빛을 발했다"
+# sit.c:625, apply.c:4318, read.c:1539 — bare glow
+#, c-format
+msgctxt "glow_color"
+msgid "%s %s."
+msgstr "%1$s %2$s 빛을 발했다."
+
+# pray.c:363/595/1298 — softly glow (은은하게)
+#, c-format
+msgctxt "softglow_color"
+msgid "%s %s."
+msgstr "%1$s 은은하게 %2$s 빛을 발했다."
+
+# wield.c:975 — faintly glow (희미하게)
+#, c-format
+msgctxt "faintglow_color"
+msgid "%s %s."
+msgstr "%1$s 희미하게 %2$s 빛을 발했다."
+
+# ============================================================
+# C_("artifact_fire"/"artifact_cold") — 아티팩트 무기 공격
+# ============================================================
+# 동사에 {을/를}를 포함하여 hittee 바로 뒤에 자연스럽게 배치
+# "vaporizes part of"는 "의 일부{을/를}" 구조로 소유격 연결
+
+#, c-format
+msgctxt "artifact_fire"
+msgid "fiery blade %s %s%c"
+msgstr "불타는 검이 %2$s%1$s%3$c"
+
+msgctxt "artifact_fire"
+msgid "hits"
+msgstr "{을/를} 때렸다"
+
+msgctxt "artifact_fire"
+msgid "burns"
+msgstr "{을/를} 태웠다"
+
+msgctxt "artifact_fire"
+msgid "vaporizes part of"
+msgstr "의 일부{을/를} 증발시켰다"
+
+#, c-format
+msgctxt "artifact_cold"
+msgid "ice-cold blade %s %s%c"
+msgstr "얼음장 같은 검이 %2$s%1$s%3$c"
+
+msgctxt "artifact_cold"
+msgid "hits"
+msgstr "{을/를} 때렸다"
+
+msgctxt "artifact_cold"
+msgid "freezes"
+msgstr "{을/를} 얼렸다"
 
 # ============================================================
 # 동사 (Verbs) - vtense()에서 사용되는 동사들

@@ -1536,8 +1536,9 @@ seffect_remove_curse(struct obj **sobjp)
                 /* like rndcurse(sit.c), effect on regular inventory
                    doesn't show things glowing but saddle does */
                 if (!Blind) {
-                    pline(_("%s %s."), Yobjnam2(obj, _("glow")),
-                              hcolor("amber"));
+                    pline(C_("glow_color", "%s %s."),
+                          Yobjnam2(obj, C_("glow_color", "glow")),
+                          hcolor("amber"));
                     obj->bknown = Hallucination ? 0 : 1;
                 } else {
                     obj->bknown = 0; /* skip set_bknown() */

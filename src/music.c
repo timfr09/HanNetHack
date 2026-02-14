@@ -599,8 +599,8 @@ do_improvisation(struct obj *instr)
     case WOODEN_FLUTE: /* May charm snakes */
         do_spec &= (rn2(ACURR(A_DEX)) + u.ulevel > 25);
         if (!Deaf)
-            pline(_("%s%s."), Tobjnam(instr, do_spec ? C_("Tobjnam", "trill") : C_("Tobjnam", "toot")),
-                  same_old_song ? _(" a familiar tune") : "");
+            pline(C_("music", "%s%s."), Tobjnam(instr, do_spec ? C_("Tobjnam", "trill") : C_("Tobjnam", "toot")),
+                  same_old_song ? C_("music", " a familiar tune") : "");
         else
             You_feel(_("%s %s."), yname(instr), do_spec ? _("trill") : _("toot"));
         Hero_playnotes(obj_to_instr(&itmp), improvisation, 50);

@@ -80,7 +80,7 @@ update-po: $(POTFILE)
 	@for lang in $(LANGUAGES); do \
 		if [ -f $$lang.po ]; then \
 			echo "Updating $$lang.po (auto-extracted strings only)..."; \
-			$(MSGMERGE) -U $$lang.po $(POTFILE); \
+			$(MSGMERGE) --no-fuzzy-matching -U $$lang.po $(POTFILE); \
 			echo "Note: Manual entries in $${lang}_manual.po are preserved."; \
 		else \
 			echo "Creating $$lang.po..."; \
@@ -96,7 +96,7 @@ safe-update: $(POTFILE)
 			backup="$$lang.po.backup.$$(date +%Y%m%d_%H%M%S)"; \
 			cp $$lang.po $$backup; \
 			echo "Backed up to $$backup"; \
-			$(MSGMERGE) -U $$lang.po $(POTFILE); \
+			$(MSGMERGE) --no-fuzzy-matching -U $$lang.po $(POTFILE); \
 			changed=$$(diff -q $$lang.po $$backup 2>/dev/null || echo "changed"); \
 			if [ -n "$$changed" ]; then \
 				echo "WARNING: $$lang.po was modified. Review changes with:"; \

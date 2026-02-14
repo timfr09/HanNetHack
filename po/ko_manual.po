@@ -15551,3 +15551,84 @@ msgctxt "condition"
 msgid "wrinkled"
 msgstr "주름진 상태"
 
+# ============================================================
+# Fuzzy 정리 — 올바른 번역 (2026-02-14)
+# ko.po에서 제거된 fuzzy 항목 중 C 소스에서 사용되는 것만 번역
+# (Lua 파일 항목은 dat/locale/ko/ 에서 직접 처리하므로 제외)
+# ============================================================
+
+# ============================================================
+# 폭발 효과 형용사 (explode.c:117-179)
+# 포맷: "%s gets %s!" (소화) / "%s gets slightly %s!" (외부)
+# %1$s = Monnam(u.ustuck), %2$s = adj (완전 서술절)
+# ============================================================
+
+# explode.c:149 — 소화 폭발 포맷 (기존 ko.po "얻었다" 오역 수정)
+#, c-format
+msgid "%s gets %s!"
+msgstr "%1$s{이/가} %2$s!"
+
+# explode.c:177 — 외부 폭발 포맷
+#, c-format
+msgid "%s gets slightly %s!"
+msgstr "%1$s{이/가} 약간 %2$s!"
+
+# 소화 맥락 (digests)
+msgid "heartburn"
+msgstr "속이 쓰렸다"
+
+# 소화+외부 공통
+msgid "chilly"
+msgstr "추워했다"
+
+msgid "irradiated by pure energy"
+msgstr "순수한 에너지에 피폭되었다"
+
+# 소화+외부 공통
+msgid "shocked"
+msgstr "감전되었다"
+
+# 소화 맥락
+msgid "an upset stomach"
+msgstr "배탈이 났다"
+
+# 소화+외부 공통 (default)
+msgid "fried"
+msgstr "바삭하게 구워졌다"
+
+# 외부 맥락 (non-digest, fire)
+msgid "toasted"
+msgstr "노릇하게 구워졌다"
+
+# 외부 맥락 (non-digest, poison)
+msgid "intoxicated"
+msgstr "중독되었다"
+
+# ============================================================
+# 아이템 이름 표시 (objnam.c:999)
+# 패턴: [아이템 설명] + " named " + [이름]
+# 예: "a long sword named Sting" → "장검 - Sting"
+# ============================================================
+msgid " named "
+msgstr " - "
+
+# ============================================================
+# 장비 해제 (do_wear.c:1788)
+# You_cant(_("take that off%s."), why) — 한국어는 직접 출력
+# why = _(" without taking off your %s first")
+# %s = 갑옷 이름 (cloak, armor 등)
+# ============================================================
+#, c-format
+msgid "take that off%s."
+msgstr "그것을 벗을 수 없다%s."
+
+#, c-format
+msgid " without taking off your %s first"
+msgstr " (먼저 %s{을/를} 벗어야 한다)"
+
+# ============================================================
+# 하와이안 셔츠 무늬 (read.c:121)
+# ============================================================
+msgid "100% goblin hair - do not wash"
+msgstr "100% 고블린 털 - 세탁 금지"
+

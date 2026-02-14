@@ -1446,7 +1446,8 @@ use_candle(struct obj **optr)
 
             SetVoice(shkp, 0, 80, 0);
             verbalize(_("You %s %s, you bought %s!"),
-                      otmp->lamplit ? _("burn") : _("use"),
+                      otmp->lamplit ? C_("shopkeeper", "burn")
+                                    : C_("shopkeeper", "use"),
                       (obj->quan > 1L) ? _("them") : _("it"),
                       (obj->quan > 1L) ? _("them") : _("it"));
         }

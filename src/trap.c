@@ -4568,10 +4568,10 @@ acid_damage(struct obj *obj)
             ) {
             if (!Blind) {
                 if (victim == &gy.youmonst)
-                    Your(_("%s."), aobjnam(obj, _("fade")));
+                    Your(_("%s."), aobjnam(obj, C_("Tobjnam", "fade")));
                 else if (vismon)
                     pline(_("%s %s."), s_suffix(Monnam(victim)),
-                          aobjnam(obj, _("fade")));
+                          aobjnam(obj, C_("Tobjnam", "fade")));
             }
         }
         obj->otyp = SCR_BLANK_PAPER;

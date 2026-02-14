@@ -475,7 +475,7 @@ Helmet_on(void)
     case DUNCE_CAP:
         if (uarmh && !uarmh->cursed) {
             if (Blind)
-                pline(_("%s for a moment."), Tobjnam(uarmh, _("vibrate")));
+                pline(_("%s for a moment."), Tobjnam(uarmh, C_("Tobjnam", "vibrate")));
             else
                 pline(C_("autocurse", "%s %s for a moment."),
                       Tobjnam(uarmh, C_("autocurse", "glow")),

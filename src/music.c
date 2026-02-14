@@ -599,7 +599,7 @@ do_improvisation(struct obj *instr)
     case WOODEN_FLUTE: /* May charm snakes */
         do_spec &= (rn2(ACURR(A_DEX)) + u.ulevel > 25);
         if (!Deaf)
-            pline(_("%s%s."), Tobjnam(instr, do_spec ? _("trill") : _("toot")),
+            pline(_("%s%s."), Tobjnam(instr, do_spec ? C_("Tobjnam", "trill") : C_("Tobjnam", "toot")),
                   same_old_song ? _(" a familiar tune") : "");
         else
             You_feel(_("%s %s."), yname(instr), do_spec ? _("trill") : _("toot"));
@@ -613,7 +613,7 @@ do_improvisation(struct obj *instr)
         consume_obj_charge(instr, TRUE);
 
         if (!getdir((char *) 0)) {
-            pline(_("%s."), Tobjnam(instr, _("vibrate")));
+            pline(_("%s."), Tobjnam(instr, C_("Tobjnam", "vibrate")));
             break;
         } else if (!u.dx && !u.dy && !u.dz) {
             if ((damage = zapyourself(instr, TRUE)) != 0) {

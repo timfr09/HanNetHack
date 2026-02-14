@@ -13735,10 +13735,13 @@ msgstr "다른"
 msgid "jar"
 msgstr "항아리"
 
-# explode.c: Tobjnam(otmp, "crumble") - 석상이 부서짐
+# [리뷰 완료] explode.c:795 — Tobjnam+crumble, 석상 부서짐
 # "비틀거린다."(to stagger)는 오역. "crumble" = 부서지다
+# Tobjnam 전용 동사 → 활용형으로 직접 수정
+# Tobjnam(otmp, "crumble") = "석상{이/가} 부서졌다"
+# fmt: "%s." → "석상이 부서졌다."
 msgid "crumble"
-msgstr "부서지다"
+msgstr "부서졌다"
 
 # zap.c: 브레스 공격 동사 - "exhaled a fireball" 등
 # "지쳤다."(exhausted/tired)는 오역. "exhaled" = 내뿜다
@@ -14584,6 +14587,62 @@ msgctxt "Tobjnam"
 msgid "fly"
 msgstr "이다"
 
+# [리뷰 완료] do_wear.c:478, music.c:616 — "vibrate" Tobjnam 계사 억제
+# 이중 사용: read.c에서 otense(_("vibrate"))로도 사용 → C_() 필수
+msgctxt "Tobjnam"
+msgid "vibrate"
+msgstr "이다"
+
+# [리뷰 완료] potion.c:1675 — "evaporate" Tobjnam 계사 억제
+# 이중 사용: wield.c/read.c에서 otense(_("evaporate"))로도 사용 → C_() 필수
+msgctxt "Tobjnam"
+msgid "evaporate"
+msgstr "이다"
+
+# [리뷰 완료] music.c:602 — "trill" Tobjnam 계사 억제
+# 이중 사용: music.c:605 You_feel에서 bare _("trill")로도 사용 → C_() 필수
+msgctxt "Tobjnam"
+msgid "trill"
+msgstr "이다"
+
+# [리뷰 완료] music.c:602 — "toot" Tobjnam 계사 억제
+# 이중 사용: music.c:605/sounds.c에서 bare _("toot")로도 사용 → C_() 필수
+msgctxt "Tobjnam"
+msgid "toot"
+msgstr "이다"
+
+# [리뷰 완료] read.c:901, steal.c:650 — "go" Tobjnam 계사 억제
+# 이중 사용: apply.c에서 otense(_("go"))로도 사용 → C_() 필수
+msgctxt "Tobjnam"
+msgid "go"
+msgstr "이다"
+
+# [리뷰 완료] explode.c:777 — "break" Tobjnam 계사 억제
+# 이중 사용: dokick.c/dig.c/apply.c에서 bare _("break")로도 사용 → C_() 필수
+msgctxt "Tobjnam"
+msgid "break"
+msgstr "이다"
+
+# [리뷰 완료] hack.c:525/558 — "trigger" Tobjnam 계사 억제
+# 이중 사용: teleport.c/trap.c에서 bare _("trigger")로도 사용 → C_() 필수
+# 주의: ko.po의 bare "trigger" → "발굴자"(Archeologist 랭크)는 그대로 유지
+msgctxt "Tobjnam"
+msgid "trigger"
+msgstr "이다"
+
+# [리뷰 완료] trap.c:4571/4574 — "fade" Tobjnam 계사 억제
+# 이중 사용: engrave.c/trap.c에서 otense/vtense(_("fade"))로도 사용 → C_() 필수
+msgctxt "Tobjnam"
+msgid "fade"
+msgstr "이다"
+
+# [리뷰 완료] engrave.c:1201, apply.c:1377, potion.c:1712 — "glow" Tobjnam 계사 억제
+# 이중 사용: read.c/worn.c에서 otense(_("glow"))로도 사용 → C_() 필수
+# (C_("autocurse","glow")은 별도 컨텍스트로 이미 분리됨)
+msgctxt "Tobjnam"
+msgid "glow"
+msgstr "이다"
+
 # ============================================================
 # PO-only 계사 억제 — issue/radiate/return (Tobjnam 전용 동사)
 # ============================================================
@@ -14598,6 +14657,58 @@ msgstr "이다"
 
 # [리뷰 완료] dothrow.c:1719/1736, mthrowu.c:876/896 — "return" 계사 억제
 msgid "return"
+msgstr "이다"
+
+# ============================================================
+# PO-only 활용형 수정 — Tobjnam 전용 동사 (사전형→활용형)
+# ============================================================
+
+# [리뷰 완료] detect.c:1326 — Tobjnam+implode, 수정구 내파
+# Tobjnam 전용 동사 → 과거형으로 직접 수정
+# Tobjnam(obj, "implode") = "수정구{이/가} 내파했다"
+# fmt: "%s!" → "수정구가 내파했다!"
+msgid "implode"
+msgstr "내파했다"
+
+# [리뷰 완료] dog.c:1206 — Tobjnam+stop, 조각상 멈춤
+# bare _("stop")는 dog.c에서만 Tobjnam으로 사용
+# (C_("light","stop")은 별도 컨텍스트로 분리됨)
+# Tobjnam(obj, "stop") = "조각상{이/가} 멈췄다"
+# fmt: "%s." → "조각상이 멈췄다."
+msgid "stop"
+msgstr "멈췄다"
+
+# [리뷰 완료] artifact.c:2294 — Tobjnam+whisper, 아티팩트 속삭임
+# Tobjnam 전용 동사 → 현재형으로 직접 수정
+# Tobjnam(obj, "whisper") = "검{이/가} 속삭인다"
+# fmt: "%s:" → "검이 속삭인다:"
+msgid "whisper"
+msgstr "속삭인다"
+
+# [리뷰 완료] dothrow.c:1531 — Tobjnam+misfire, 발사 오류
+# Tobjnam 전용 동사 → "오발" 명사에서 "오발했다" 과거형으로 수정
+# Tobjnam(obj, "misfire") = "화살{이/가} 오발했다"
+# fmt: "%s!" → "화살이 오발했다!"
+msgid "misfire"
+msgstr "오발했다"
+
+# ============================================================
+# PO-only 계사 억제 — heat/produce (Tobjnam 전용 동사)
+# ============================================================
+
+# [리뷰 완료] do.c:337 — Tobjnam+heat, 뜨거운 땅에서 가열
+# bare _("heat")는 do.c에서만 Tobjnam으로 사용
+# (C_("erosion_cause","heat")은 별도 컨텍스트)
+# Tobjnam(obj, "heat") = "오일{이/가}" (계사 억제)
+# 포맷에서 "뜨거워졌다" 동사 직접 제공
+msgid "heat"
+msgstr "이다"
+
+# [리뷰 완료] music.c:664 — Tobjnam+produce, 마법 하프 연주
+# Tobjnam 전용 동사 → 계사 억제
+# Tobjnam(instr, "produce") = "하프{이/가}" (계사 억제)
+# 포맷에서 "연주했다" 동사 직접 제공
+msgid "produce"
 msgstr "이다"
 
 # ============================================================
@@ -14694,6 +14805,154 @@ msgid "%s back toward %s, hitting %s %s!"
 msgstr "%1$s %2$s 쪽으로 날아와 %4$s{을/를} 맞혔다!%3$.0s"
 
 # ============================================================
+# 포맷 문자열 오버라이드 — PO-only 계사/활용형 수정 (2차)
+# ============================================================
+
+# [리뷰 완료] do.c:337 — Tobjnam+heat + it hits, 뜨거운 땅
+# %1$s = Tobjnam(obj, "heat") = "오일{이/가}" (계사 억제)
+# %2$s = "it hits"/"they hit" (불필요, %.0s 억제)
+# 영어: "The oil heats up as it hits the hot ground."
+# 한국어: "뜨거운 땅에서 오일이 뜨거워졌다."
+#, c-format
+msgid "%s up as %s the hot ground."
+msgstr "뜨거운 땅에서 %1$s 뜨거워졌다.%2$.0s"
+
+# [리뷰 완료] music.c:663 — Tobjnam+produce, 매력적 음악
+# %1$s = Tobjnam(instr, "produce") = "하프{이/가}" (계사 억제)
+# %2$s = " and familiar" 또는 "" (%.0s 억제)
+# 영어: "The magic harp produces very attractive and familiar music."
+# 한국어: "매우 매력적인 음악을 하프가 연주했다."
+#, c-format
+msgid "%s very attractive%s music."
+msgstr "매우 매력적인 음악을 %1$s 연주했다.%2$.0s"
+
+# ============================================================
+# 포맷 문자열 오버라이드 — C_("Tobjnam") 계사 억제 후 동사 제공 (2차)
+# ============================================================
+
+# [리뷰 완료] do_wear.c:478 — Tobjnam+vibrate, 던바스캡 진동
+# %s = Tobjnam(uarmh, C_("Tobjnam","vibrate")) = "투구{이/가}" (계사 억제)
+# 영어: "Your helmet vibrates for a moment."
+# 한국어: "잠시 투구가 진동했다."
+#, c-format
+msgid "%s for a moment."
+msgstr "잠시 %s 진동했다."
+
+# [리뷰 완료] music.c:602 — Tobjnam+trill/toot, 피리 연주
+# %1$s = Tobjnam(instr, C_("Tobjnam","trill"/"toot")) = "피리{이/가}" (계사 억제)
+# %2$s = " a familiar tune" 또는 ""
+# 영어: "The wooden flute trills a familiar tune."  /  "The wooden flute toots."
+# 한국어: "나무 피리가 친숙한 곡조를 연주했다."  /  "나무 피리가 소리를 냈다."
+# trill/toot 동일 포맷 → 공통 "소리를 냈다" 사용 (tune 있으면 %2$s에 포함)
+# 주의: "%s%s." 공유 msgid — dungeon.c/fountain.c/mhitm.c/objnam.c에서도 사용
+# → C_("music") 컨텍스트로 분리하지 않음 (영향 범위 과대)
+# → Known Issue로 유지 (trill/toot 구별 불가)
+
+# [리뷰 완료] music.c:616 — Tobjnam+vibrate, 뿔피리 진동
+# %s = Tobjnam(instr, C_("Tobjnam","vibrate")) = "뿔피리{이/가}" (계사 억제)
+# 영어: "The frost horn vibrates."
+# 한국어: "서리 뿔피리가 진동했다."
+# 주의: "%s." 공유 msgid — 다수 파일에서 사용
+# → Tobjnam이 이미 계사 억제하여 "뿔피리{이/가}" 출력
+# → "%s." 포맷 결과: "뿔피리가." (동사 누락)
+# → 별도 C_("music") 컨텍스트 필요하나 "%s." 영향 범위 과대
+# → Known Issue로 유지
+
+# [리뷰 완료] potion.c:1675 — Tobjnam+evaporate, 물약 증발
+# %s = Tobjnam(obj, C_("Tobjnam","evaporate")) = "물약{이/가}" (계사 억제)
+# 영어: "The potion evaporates."
+# 한국어: "물약이 증발했다."
+# 주의: "%s." 공유 msgid — 동사 누락 문제 동일
+# → Known Issue로 유지
+
+# [리뷰 완료] read.c:901 — Tobjnam+go, 램프 소등
+# %s = Tobjnam(obj, C_("Tobjnam","go")) = "램프{이/가}" (계사 억제)
+# 영어: "The lamp goes out!"
+# 한국어: "램프가 꺼졌다!"
+#, c-format
+msgid "%s out!"
+msgstr "%s 꺼졌다!"
+
+# [리뷰 완료] steal.c:650 — Tobjnam+go, 불빛 소등
+# %s = Tobjnam(otmp, C_("Tobjnam","go")) = "램프{이/가}" (계사 억제)
+# 영어: "The lamp goes out."
+# 한국어: "램프가 꺼졌다."
+#, c-format
+msgid "%s out."
+msgstr "%s 꺼졌다."
+
+# [리뷰 완료] explode.c:777 — Tobjnam+break, 바위 부서짐
+# %s = Tobjnam(otmp, C_("Tobjnam","break")) = "바위{이/가}" (계사 억제)
+# 영어: "The boulder breaks apart."
+# 한국어: "바위가 산산이 부서졌다."
+#, c-format
+msgid "%s apart."
+msgstr "%s 산산이 부서졌다."
+
+# [리뷰 완료] hack.c:515 — Tobjnam+trigger, 바위→지뢰 작동
+# %1$s = exclamation ("쾅!!" 등), %2$s = Tobjnam(otmp, C_("Tobjnam","trigger"))
+# %3$s = "your"/"a"
+# 영어: "KAABLAMM!!  The boulder triggers your land mine."
+# 한국어: "쾅!! 바위가 당신의 지뢰를 작동시켰다."
+#, c-format
+msgid "%s!  %s %s land mine."
+msgstr "%1$s! %2$s %3$s 지뢰{을/를} 작동시켰다."
+
+# [리뷰 완료] hack.c:556 — Tobjnam+trigger/fall, 바위→함정문/구멍 막기
+# %1$s = Tobjnam(otmp, C_("Tobjnam","trigger"/"fall")) = "바위{이/가}" (계사 억제)
+# %2$s = ""/" into" (불필요), %3$s = otense("plug"), %4$s = "trap door"/"hole"
+# %5$s = surface
+# 영어: "The boulder triggers and plugs a trap door in the floor!"
+#   또는 "The boulder falls into and plugs a hole in the floor!"
+# 한국어: "바위가 바닥의 함정문을 막았다!" / "바위가 바닥의 구멍을 막았다!"
+#, c-format
+msgid "%s%s and %s a %s in the %s!"
+msgstr "%1$s %5$s의 %4$s{을/를} 막았다!%2$.0s%3$.0s"
+
+# [리뷰 완료] trap.c:4571 — Your+aobjnam+fade, 두루마리 바래짐 (플레이어)
+# %s = aobjnam(obj, C_("Tobjnam","fade")) = "두루마리{이/가}" (계사 억제)
+# 영어: "Your scroll of light fades."
+# 한국어: "당신의 빛의 두루마리가 바랬다."
+# 주의: Your() 매크로가 "당신의 " 접두사 추가
+# → Your("%s.") → "당신의 두루마리가 바랬다." (동사 필요)
+# 주의: Your(_("%s.")) — "%s." 공유 msgid
+# → Known Issue로 유지 (Your 매크로 + "%s." 분리 불가)
+
+# [리뷰 완료] trap.c:4574 — pline+s_suffix+aobjnam+fade, 두루마리 바래짐 (몬스터)
+# %1$s = s_suffix(Monnam(victim)), %2$s = aobjnam(obj, C_("Tobjnam","fade"))
+# 영어: "The orc's scroll of light fades."
+# 한국어: "오크의 빛의 두루마리가 바랬다."
+# 주의: "%s %s." 공유 msgid — 다수 파일에서 사용
+# → Known Issue로 유지
+
+# [리뷰 완료] engrave.c:1201 — Tobjnam+glow + otense+fade, 조각 빛남→바래짐
+# %1$s = Tobjnam(de->otmp, C_("Tobjnam","glow")) = "지팡이{이/가}" (계사 억제)
+# %2$s = otense(de->otmp, _("fade")) = "바래다" (사전형, %.0s 억제)
+# 영어: "The wand of fire glows, then fades."
+# 한국어: "불의 지팡이가 빛을 발했다가 바랬다."
+#, c-format
+msgid "%s, then %s."
+msgstr "%1$s 빛을 발했다가 바랬다.%2$.0s"
+
+# [리뷰 완료] apply.c:1377 — Tobjnam+glow, 촛대 이상한 빛
+# %s = Tobjnam(obj, C_("Tobjnam","glow")) = "촛대{이/가}" (계사 억제)
+# 영어: "The candelabrum glows with a strange light!"
+# 한국어: "촛대가 이상한 빛으로 빛났다!"
+#, c-format
+msgid "%s with a strange light!"
+msgstr "%s 이상한 빛으로 빛났다!"
+
+# [리뷰 완료] dothrow.c:1742 — Tobjnam+hit, 부메랑 팔 맞힘 (Blind)
+# %1$s = Tobjnam(obj, C_("Tobjnam","hit")) = "무언가{이/가}" (계사 억제)
+# %2$s = body_part(ARM)
+# 영어: "Something hits your arm!"
+# 한국어: "무언가가 당신의 팔을 맞혔다!"
+# 주의: Tobjnam이 이미 {이/가} 포함 → 포맷에서 {이/가} 제거
+#, c-format
+msgid "%s your %s!"
+msgstr "%s 당신의 %s{을/를} 맞혔다!"
+
+# ============================================================
 # 조합 패턴 전수 검토 결과 (2026-02-14)
 # ============================================================
 #
@@ -14727,6 +14986,32 @@ msgstr "%1$s %2$s 쪽으로 날아와 %4$s{을/를} 맞혔다!%3$.0s"
 # [OK] C_("Tobjnam", fly): 날다 (dothrow.c/mthrowu.c 부메랑)
 # [OK] C_("crystal_ball", "%s you!"): 수정구 혼란 포맷 분리
 #
+# === C_("Tobjnam") 계사 억제 — 이중 사용 동사 (2차 수정) ===
+# [OK] C_("Tobjnam", vibrate): 진동 (do_wear.c/music.c) — 포맷에서 "진동했다" 제공
+# [OK] C_("Tobjnam", evaporate): 증발 (potion.c) — "%s." 공유 msgid (Known Issue)
+# [OK] C_("Tobjnam", trill/toot): 피리 연주 (music.c) — "%s%s." 공유 msgid (Known Issue)
+# [OK] C_("Tobjnam", go): 소등 (read.c/steal.c) — 포맷에서 "꺼졌다" 제공
+# [OK] C_("Tobjnam", break): 바위 부서짐 (explode.c) — 포맷에서 "부서졌다" 제공
+# [OK] C_("Tobjnam", trigger): 지뢰 작동 (hack.c) — 포맷에서 "작동시켰다" 제공
+# [OK] C_("Tobjnam", fade): 두루마리 바래짐 (trap.c) — "%s."/"%s %s." 공유 (Known Issue)
+# [OK] C_("Tobjnam", glow): 빛남 (engrave.c/apply.c/potion.c) — 포맷에서 동사 제공
+#
+# === PO-only 활용형 수정 — Tobjnam 전용 동사 (2차 수정) ===
+# [OK] implode: "내파하다"→"내파했다" (detect.c 수정구)
+# [OK] stop(bare): "멈추다"→"멈췄다" (dog.c 조각상)
+# [OK] whisper: "속삭이다"→"속삭인다" (artifact.c 아티팩트)
+# [OK] crumble: "부서지다"→"부서졌다" (explode.c 석상)
+# [OK] misfire: "오발"→"오발했다" (dothrow.c 발사 오류)
+# [OK] heat: 계사 억제 + 포맷에서 "뜨거워졌다" 제공 (do.c 뜨거운 땅)
+# [OK] produce: 계사 억제 + 포맷에서 "연주했다" 제공 (music.c 하프)
+#
+# === 포맷 수정 ===
+# [OK] "%s your %s!": 이중 {이/가} 제거 (dothrow.c Blind 부메랑)
+# [OK] "%s apart.": "떨어졌다"→"산산이 부서졌다" (explode.c 바위)
+# [OK] "%s out!"/"out.": "가다 나갔다"→"꺼졌다" (read.c/steal.c 소등)
+# [OK] "%s, then %s.": 빛남+바래짐 통합 번역 (engrave.c)
+# [OK] "%s with a strange light!": "빛나다 함께"→"빛으로 빛났다" (apply.c)
+#
 # === 기존 패턴 확인 ===
 # [OK] feel 피동: {이/가} 삽입으로 주격조사 누락 해결
 # [OK] 색상+glow: 기존 %.0s 억제 패턴 유지
@@ -14751,10 +15036,13 @@ msgstr "%1$s %2$s 쪽으로 날아와 %4$s{을/를} 맞혔다!%3$.0s"
 # - mhitu.c:2570 "%s %s." 공유 msgid → C_() 필요하나 사용처 다수
 # - stagger 동사 사전형/과거형 불일치 (load/potion 문맥과 tense 충돌)
 # - light.c ConcatF1 ", %s lit)" 미번역 (item description 문맥)
-# - apply.c:1377 "%s with a strange light!" glow 이중동사 (glow 다중 사용처)
-# - "whisper" 사전형 "속삭이다:" 미활용형 (단일 사용, 낮은 우선순위)
-# - "misfire" "오발!" 명사형 (단일 사용, 낮은 우선순위)
+# - "%s." 공유 msgid: evaporate/vibrate(music) 동사 누락 (C_("music") 영향 범위 과대)
+# - "%s%s." 공유 msgid: trill/toot 동사 누락 (dungeon/fountain/mhitm/objnam 공유)
+# - "%s." + Your() 매크로: fade 동사 누락 (trap.c, 분리 불가)
+# - "%s %s." 공유 msgid: fade 동사 누락 (trap.c+s_suffix, 분리 불가)
+# - potion.c:1712 aobjnam+glow saddle: 동적 Snprintf 결합 (동사 누락)
 # - "resist" sit.c 이중 사용 (Tobjnam+vtense, 단일 사용)
 # - "shatter" 이중 사용 (Yobjnam2+otense, 해당 포맷에 고정 동사)
 # - "flicker" 이중 사용 (Tobjnam+vtense, 해당 포맷에 ko_manual 조합)
+# - potion.c:1720 aobjnam(saddle, "get"): "get"에 _() 미래핑 (소스 수정 필요)
 

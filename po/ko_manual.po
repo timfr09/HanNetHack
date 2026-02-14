@@ -15632,3 +15632,12 @@ msgstr " (먼저 %s{을/를} 벗어야 한다)"
 msgid "100% goblin hair - do not wash"
 msgstr "100% 고블린 털 - 세탁 금지"
 
+# explode.c:160 — 외부 폭발, 순수 에너지 (non-digest, disintegration wand)
+msgid "overwhelmed by pure energy"
+msgstr "순수한 에너지에 압도되었다"
+
+# monmove.c:495 — Adjmonnam(mtmp, "immobile") 형용사
+# 예: "The immobile orc seems to flinch."
+msgid "immobile"
+msgstr "움직이지 않는"
+

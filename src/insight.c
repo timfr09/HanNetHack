@@ -1309,11 +1309,11 @@ weapon_insight(int final)
 
         if (!strcmpi(what, "armor") || !strcmpi(what, "food")
             || !strcmpi(what, "venom"))
-            Sprintf(buf, _("wielding some %s"), what);
+            Sprintf(buf, _("wielding some %s"), _(what));
         else
             /* [maybe include known blessed?] */
             Sprintf(buf, _("wielding %s"),
-                    (uwep->quan == 1L) ? an(what) : makeplural(what));
+                    (uwep->quan == 1L) ? an(_(what)) : makeplural(_(what)));
         you_are(buf, "");
     }
 

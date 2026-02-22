@@ -3705,8 +3705,8 @@ print_mapseen(
                 (void) strsubst(tmpbuf, " herself", " yourself");
                 (void) strsubst(tmpbuf, " his ", " your ");
                 (void) strsubst(tmpbuf, " her ", " your ");
-                Snprintf(buf, sizeof(buf), "%s%syou, %s%c", PREFIX, TAB,
-                         tmpbuf, --kncnt ? ',' : '.');
+                Snprintf(buf, sizeof(buf), "%s%s%s, %s%c", PREFIX, TAB,
+                         _("you"), tmpbuf, --kncnt ? ',' : '.');
                 add_menu_str(win, buf);
             }
             for (bp = mptr->final_resting_place; bp; bp = bp->next) {

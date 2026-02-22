@@ -2442,7 +2442,7 @@ use_misc(struct monst *mtmp)
                 makeknown(otmp->otyp);
         } else if (vismon && !mtmp->minvis) {
             /* cursed potion; mon tried to make itself invisible but failed */
-            pline("%s briefly seems to be transparent.", Monnam(mtmp));
+            pline(_("%s briefly seems to be transparent."), Monnam(mtmp));
             /* we could call map_invisible() before the pline(), then
                newsym() after; unseen monster glyph would be visible during
                the pline, but hero would forget any remembered object under

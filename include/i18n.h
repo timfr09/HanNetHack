@@ -78,6 +78,7 @@ extern char *apply_korean_postpositions(char *str);
  */
 extern int utf8_display_width(const char *utf8str);
 extern int utf8_char_width(const char *utf8str);
+extern int utf8_char_len(unsigned char first_byte);
 
 /*
  * Object name translation function (defined in i18n.c)
@@ -85,6 +86,9 @@ extern int utf8_char_width(const char *utf8str);
  * Returns the translated name, or the original if NLS is disabled.
  */
 extern const char *tr_obj_name(const char *name);
+extern const char *tr_spell_name(const char *name);
+extern const char *tr_effect_name(const char *name);
+extern const char *tr_food_name(const char *name);
 
 /*
  * Get localized filename for help/data files

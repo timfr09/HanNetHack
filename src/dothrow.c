@@ -637,7 +637,8 @@ hitfloor(
                 break;
             }
         }
-        pline(_("%s %s the %s."), Doname2(obj), otense(obj, verb), surf);
+        pline(C_("hitfloor", "%s %s the %s."), Doname2(obj),
+              otense(obj, verb), surf);
     }
 
     if (hero_breaks(obj, u.ux, u.uy, BRK_FROM_INV))

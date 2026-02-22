@@ -244,13 +244,13 @@ obj_typename(int otyp)
         break;
     case AMULET_CLASS:
         if (nn)
-            Strcpy(buf, actualn);
+            Strcpy(buf, _(actualn));
         else
             Strcpy(buf, _("amulet"));
         if (un)
             xcalled(buf, BUFSZ - (dn ? (int) strlen(dn) + 3 : 0), "", un);
         if (dn)
-            Sprintf(eos(buf), " (%s)", dn);
+            Sprintf(eos(buf), " (%s)", _(dn));
         return buf;
     case ARMOR_CLASS:
         if (objects[otyp].oc_armcat == ARM_GLOVES
@@ -262,18 +262,18 @@ obj_typename(int otyp)
         /*FALLTHRU*/
     default:
         if (nn) {
-            Strcat(buf, actualn);
+            Strcat(buf, _(actualn));
             if (GemStone(otyp))
                 Strcat(buf, _(" stone"));
             if (un) /* 3: length of " (" + ")" which will enclose 'dn' */
                 xcalled(buf, BUFSZ - (dn ? (int) strlen(dn) + 3 : 0), "", un);
             if (dn)
-                Sprintf(eos(buf), " (%s)", dn);
+                Sprintf(eos(buf), " (%s)", _(dn));
         } else {
-            Strcat(buf, dn ? dn : actualn);
+            Strcat(buf, dn ? _(dn) : _(actualn));
             if (ocl->oc_class == GEM_CLASS)
                 Strcat(buf,
-                       (ocl->oc_material == MINERAL) ? " stone" : " gem");
+                       (ocl->oc_material == MINERAL) ? _(" stone") : _(" gem"));
             if (un)
                 xcalled(buf, BUFSZ, "", un);
         }
@@ -282,14 +282,14 @@ obj_typename(int otyp)
     /* here for ring/scroll/potion/wand */
     if (nn) {
         if (ocl->oc_unique)
-            Strcpy(buf, actualn); /* avoid spellbook of Book of the Dead */
+            Strcpy(buf, _(actualn)); /* avoid spellbook of Book of the Dead */
         else
-            Sprintf(eos(buf), _(" of %s"), actualn);
+            Sprintf(eos(buf), _(" of %s"), tr_effect_name(actualn));
     }
     if (un) /* 3: length of " (" + ")" which will enclose 'dn' */
         xcalled(buf, BUFSZ - (dn ? (int) strlen(dn) + 3 : 0), "", un);
     if (dn)
-        Sprintf(eos(buf), " (%s)", dn);
+        Sprintf(eos(buf), " (%s)", _(dn));
     return buf;
 }
 
@@ -676,13 +676,13 @@ xname_flags(
             Strcpy(buf, _("amulet"));
         else if (typ == AMULET_OF_YENDOR || typ == FAKE_AMULET_OF_YENDOR)
             /* each must be identified individually */
-            Strcpy(buf, known ? actualn : dn);
+            Strcpy(buf, known ? _(actualn) : _(dn));
         else if (nn)
-            Strcpy(buf, actualn);
+            Strcpy(buf, _(actualn));
         else if (un)
-            xcalled(buf, BUFSZ - PREFIX, "amulet", un);
+            xcalled(buf, BUFSZ - PREFIX, _("amulet"), un);
         else
-            Sprintf(buf, "%s amulet", dn);
+            Sprintf(buf, _("%s amulet"), _(dn));
         break;
     case WEAPON_CLASS:
         if (is_poisonable(obj) && obj->opoisoned)
@@ -699,13 +699,13 @@ xname_flags(
             Strcpy(buf, (obj->spe < 3) ? _("moist ") : _("wet "));
 
         if (!dknown)
-            Strcat(buf, dn);
+            Strcat(buf, _(dn));
         else if (nn)
-            Strcat(buf, actualn);
+            Strcat(buf, _(actualn));
         else if (un)
-            xcalled(buf, BUFSZ - PREFIX, dn, un);
+            xcalled(buf, BUFSZ - PREFIX, _(dn), un);
         else
-            Strcat(buf, dn);
+            Strcat(buf, _(dn));
         ConcUpdate(buf);
 
         if (typ == FIGURINE && omndx != NON_PM) {
@@ -721,7 +721,7 @@ xname_flags(
     case ARMOR_CLASS:
         /* depends on order of the dragon scales objects */
         if (typ >= GRAY_DRAGON_SCALES && typ <= YELLOW_DRAGON_SCALES) {
-            Sprintf(buf, _("set of %s"), actualn);
+            Sprintf(buf, _("set of %s"), _(actualn));
             break;
         } else if (is_boots(obj) || is_gloves(obj)) {
             Strcpy(buf, _("pair of "));
@@ -738,11 +738,11 @@ xname_flags(
         ConcUpdate(buf);
 
         if (nn)
-            Concat(buf, 0, actualn);
+            Concat(buf, 0, _(actualn));
         else if (un)
-            xcalled(buf, BUFSZ - PREFIX, armor_simple_name(obj), un);
+            xcalled(buf, BUFSZ - PREFIX, _(armor_simple_name(obj)), un);
         else
-            Concat(buf, 0, dn);
+            Concat(buf, 0, _(dn));
         break;
     case FOOD_CLASS:
         /* we could include partly-eaten-hack on fruit but don't need to */
@@ -787,17 +787,17 @@ xname_flags(
                                       : (obj->owt <= 300) ? _("medium")
                                         : (obj->owt <= 500) ? _("large")
                                           : _("very large"),
-                     actualn);
+                     _(actualn));
             break;
         }
 
-        Concat(buf, 0, actualn);
+        Concat(buf, 0, tr_food_name(actualn));
         if (typ == TIN && known)
             tin_details(obj, omndx, buf);
         break;
     case COIN_CLASS:
     case CHAIN_CLASS:
-        Strcpy(buf, actualn);
+        Strcpy(buf, _(actualn));
         break;
     case ROCK_CLASS:
         if (typ == STATUE && omndx != NON_PM) {
@@ -817,12 +817,12 @@ xname_flags(
                originally we just tested for non-0 but checking for 1 is
                more robust because the default value for that overloaded
                field (obj->corpsenm) is NON_PM (-1) rather than 0 */
-            Strcat(strcpy(buf, _("next ")), actualn); /* "next boulder" */
+            Strcat(strcpy(buf, _("next ")), _(actualn)); /* "next boulder" */
             /* once "next boulder" occurs, subsequent messages should just
                use ordinary "boulder" */
             obj->next_boulder = 0;
         } else {
-            Strcpy(buf, actualn); /* "boulder" or "statue" */
+            Strcpy(buf, _(actualn)); /* "boulder" or "statue" */
         }
         break;
     case BALL_CLASS:
@@ -833,38 +833,44 @@ xname_flags(
         if (dknown && obj->odiluted)
             Strcpy(buf, _("diluted "));
         if (nn || un || !dknown) {
-            Strcat(buf, _("potion"));
-            if (!dknown)
-                break;
             if (nn) {
-                Strcat(buf, _(" of "));
+                /* i18n: use Sprintf for Korean word order reordering */
                 if (typ == POT_WATER && bknown
                     && (obj->blessed || obj->cursed)) {
-                    Strcat(buf, obj->blessed ? _("holy ") : _("unholy "));
+                    Sprintf(eos(buf), _("potion of %s"),
+                            obj->blessed ? _("holy water")
+                                         : _("unholy water"));
+                } else {
+                    Sprintf(eos(buf), _("potion of %s"),
+                            tr_effect_name(actualn));
                 }
-                Strcat(buf, actualn);
             } else {
+                Strcat(buf, _("potion"));
+                if (!dknown)
+                    break;
                 xcalled(buf, BUFSZ - PREFIX, "", un);
             }
         } else {
-            Strcat(buf, dn);
+            Strcat(buf, _(dn));
             Strcat(buf, _(" potion"));
         }
         break;
     case SCROLL_CLASS:
-        Strcpy(buf, _("scroll"));
-        if (!dknown)
+        if (!dknown) {
+            Strcpy(buf, _("scroll"));
             break;
+        }
         if (nn) {
-            Strcat(buf, _(" of "));
-            Strcat(buf, actualn);
+            Sprintf(buf, _("scroll of %s"), tr_effect_name(actualn));
         } else if (un) {
+            Strcpy(buf, _("scroll"));
             xcalled(buf, BUFSZ - PREFIX, "", un);
         } else if (ocl->oc_magic) {
+            Strcpy(buf, _("scroll"));
             Strcat(buf, _(" labeled "));
-            Strcat(buf, dn);
+            Strcat(buf, _(dn));
         } else {
-            Strcpy(buf, dn);
+            Strcpy(buf, _(dn));
             Strcat(buf, _(" scroll"));
         }
         break;
@@ -872,44 +878,46 @@ xname_flags(
         if (!dknown)
             Strcpy(buf, _("wand"));
         else if (nn)
-            Sprintf(buf, _("wand of %s"), actualn);
+            Sprintf(buf, _("wand of %s"), tr_effect_name(actualn));
         else if (un)
             xcalled(buf, BUFSZ - PREFIX, _("wand"), un);
         else
-            Sprintf(buf, _("%s wand"), dn);
+            Sprintf(buf, _("%s wand"), tr_effect_name(dn));
         break;
     case SPBOOK_CLASS:
         if (typ == SPE_NOVEL) { /* 3.6 tribute */
             if (!dknown)
                 Strcpy(buf, _("book"));
             else if (nn)
-                Strcpy(buf, actualn);
+                Strcpy(buf, _(actualn));
             else if (un)
                 xcalled(buf, BUFSZ - PREFIX, _("novel"), un);
             else
-                Sprintf(buf, _("%s book"), dn);
+                Sprintf(buf, _("%s book"), _(dn));
             break;
             /* end of tribute */
         } else if (!dknown) {
             Strcpy(buf, _("spellbook"));
         } else if (nn) {
             if (typ != SPE_BOOK_OF_THE_DEAD)
-                Strcpy(buf, _("spellbook of "));
-            Strcat(buf, actualn);
+                Sprintf(buf, _("spellbook of %s"),
+                        tr_spell_name(OBJ_NAME(*ocl)));
+            else
+                Strcpy(buf, _(actualn));
         } else if (un) {
             xcalled(buf, BUFSZ - PREFIX, _("spellbook"), un);
         } else
-            Sprintf(buf, _("%s spellbook"), dn);
+            Sprintf(buf, _("%s spellbook"), _(dn));
         break;
     case RING_CLASS:
         if (!dknown)
             Strcpy(buf, _("ring"));
         else if (nn)
-            Sprintf(buf, _("ring of %s"), actualn);
+            Sprintf(buf, _("ring of %s"), tr_effect_name(actualn));
         else if (un)
             xcalled(buf, BUFSZ - PREFIX, _("ring"), un);
         else
-            Sprintf(buf, _("%s ring"), dn);
+            Sprintf(buf, _("%s ring"), _(dn));
         break;
     case GEM_CLASS: {
         const char *rock = (ocl->oc_material == MINERAL) ? _("stone") : _("gem");
@@ -920,9 +928,9 @@ xname_flags(
             if (un)
                 xcalled(buf, BUFSZ - PREFIX, rock, un);
             else
-                Sprintf(buf, _("%s %s"), dn, rock);
+                Sprintf(buf, _("%s %s"), _(dn), rock);
         } else {
-            Strcpy(buf, actualn);
+            Strcpy(buf, _(actualn));
             if (GemStone(typ))
                 Strcat(buf, _(" stone"));
         }
@@ -1981,7 +1989,7 @@ killer_xname(struct obj *obj)
            devnull tournament, suppress player supplied fruit names because
            those can be used to fake other objects and dungeon features */
         buf = nextobuf();
-        Sprintf(buf, "deadly slime mold%s", plur(obj->quan));
+        Sprintf(buf, _("deadly slime mold%s"), plur(obj->quan));
     } else {
         buf = xname(obj);
     }

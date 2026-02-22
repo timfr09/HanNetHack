@@ -448,7 +448,7 @@ moveloop_core(void)
     if (u.uhave.amulet && !u.uevent.amulet_wish) {
         u.uevent.amulet_wish = 1;
         display_nhwindow(WIN_MESSAGE, TRUE);
-        urgent_pline("The Amulet is bestowing a wish upon you!");
+        urgent_pline(_("The Amulet is bestowing a wish upon you!"));
         makewish();
     }
 

@@ -1787,7 +1787,7 @@ potionhit(struct monst *mon, struct obj *obj, int how)
                 if (cansee(mon->mx, mon->my))
                     map_invisible(mon->mx, mon->my);
             } else if (sawit && cursed_potion) {
-                pline("%s briefly seems to be transparent.", Monnam(mon));
+                pline(_("%s briefly seems to be transparent."), Monnam(mon));
                 /* see use_misc(muse.c) for comment about map_invisible() */
             } else if (!sawit && canspotmon(mon)) {
                 /* if an invisible mon glyph was present, mon_set_minvis()'s

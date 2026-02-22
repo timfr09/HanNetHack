@@ -23,7 +23,7 @@
 #define incrnknow(spell, x) (svs.spl_book[spell].sp_know = KEEN + (x))
 
 #define spellev(spell) svs.spl_book[spell].sp_lev
-#define spellname(spell) OBJ_NAME(objects[spellid(spell)])
+#define spellname(spell) tr_spell_name(OBJ_NAME(objects[spellid(spell)]))
 #define spellet(spell) \
     ((char) ((spell < 26) ? ('a' + spell) : ('A' + spell - 26)))
 

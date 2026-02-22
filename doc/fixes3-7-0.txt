@@ -2207,6 +2207,8 @@ when reading a T-shirt or apron, add trailing period to the slogan unless
 	 already present in the quoted text
 when reading an engraving, suppress the addition of a trailing period if the
 	text already has one
+cursed magic whistle could teleport hero on no-teleport levels
+give a brief explanation when receving a wish for acquiring the Amulet
 
 
 Fixes to 3.7.0-x Platform and/or Interface Problems Exposed Via git Repository
@@ -3094,6 +3096,9 @@ add silver maces (pr #1405 by disperse)
 applied several source comment spelling or grammar fixes that were linked
 	to an old rec.games.roguelike.nethack post from May 2006
 	by Arthur J. O'Dwyer
+modernize code of LaTeX Guidebook (pr #1473 by Daniel Clow)
+restore ability for a characteristic also resets exercise/abuse for that
+	characteristic (pr #1403 by greg-kennedy)
 
 
 Code Cleanup and Reorganization

@@ -1547,7 +1547,12 @@ consume_tin(const char *mesg)
     if (r != SPINACH_TIN) {
         mnum = tin->corpsenm;
         if (mnum == NON_PM) {
-            pline(_("It turns out to be empty."));
+            if (Hallucination)
+                pline(_("It's full of %s."),
+                      rn2(2) ? _("air elemental souffle")
+                             : _("dehydrated water"));
+            else
+                pline(_("It turns out to be empty."));
             observe_object(tin);
             tin->known = 1;
             tin = costly_tin(COST_OPEN);

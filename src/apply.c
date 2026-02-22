@@ -1551,11 +1551,12 @@ splash_lit(struct obj *obj)
                 set_msg_xy(x, y);
         }
 
-        if (useeit || uhearit)
-            pline(_("%s %s%s%s."), Yname2(obj),
-                  uhearit ? _("crackles") : "",
-                  (uhearit && useeit) ? _(" and ") : "",
-                  useeit ? _("flickers") : "");
+        if (uhearit && useeit)
+            pline(C_("lantern", "%s crackles and flickers."), Yname2(obj));
+        else if (uhearit)
+            pline(C_("lantern", "%s crackles."), Yname2(obj));
+        else if (useeit)
+            pline(C_("lantern", "%s flickers."), Yname2(obj));
         if (!dunk && !snuff)
             return FALSE;
     }
@@ -1681,8 +1682,14 @@ use_lamp(struct obj *obj)
             check_unpaid(obj);
             pline(_("%s%s is now on."), Shk_Your(buf, obj), lamp);
         } else { /* candle(s) */
-            pline(_("%s flame%s %s%s"), s_suffix(Yname2(obj)), plur(obj->quan),
-                  otense(obj, _("burn")), Blind ? _(".") : _(" brightly!"));
+            if (Blind)
+                pline(C_("candle", "%s flame%s %s."),
+                      s_suffix(Yname2(obj)), plur(obj->quan),
+                      otense(obj, _("burn")));
+            else
+                pline(C_("candle", "%s flame%s %s brightly!"),
+                      s_suffix(Yname2(obj)), plur(obj->quan),
+                      otense(obj, _("burn")));
             if (obj->unpaid && costly_spot(u.ux, u.uy)
                 && obj->age == 20L * (long) objects[obj->otyp].oc_cost) {
                 const char *ithem = (obj->quan > 1L) ? _("them") : _("it");

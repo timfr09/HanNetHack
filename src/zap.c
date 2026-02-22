@@ -3553,14 +3553,14 @@ hit(
                              && (cansee(gb.bhitpos.x, gb.bhitpos.y)
                                  || canspotmon(mtmp) || engulfing_u(mtmp))));
 
-    pline(_("%s %s %s%s"), The(str), vtense(str, _("hit")),
+    pline(C_("hit", "%s %s %s%s"), The(str), vtense(str, _("hit")),
           verbosely ? mon_nam(mtmp) : _("it"), force);
 }
 
 void
 miss(const char *str, struct monst *mtmp)
 {
-    pline(_("%s %s %s."), The(str), vtense(str, _("miss")),
+    pline(C_("miss", "%s %s %s."), The(str), vtense(str, _("miss")),
           ((cansee(gb.bhitpos.x, gb.bhitpos.y) || canspotmon(mtmp))
            && flags.verbose) ? mon_nam(mtmp) : _("it"));
 }

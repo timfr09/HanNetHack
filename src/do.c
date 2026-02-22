@@ -1277,7 +1277,7 @@ dodown(void)
                 return ECMD_OK;
             }
         }
-        You(_("%s %s the %s."), actn, down_or_thru,
+        You(C_("dodown", "%s %s the %s."), actn, down_or_thru,
             trap->ttyp == HOLE ? _("hole") : _("trap door"));
     }
     if (trap && Is_stronghold(&u.uz)) {

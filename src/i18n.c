@@ -88,6 +88,79 @@ tr_obj_name(const char *name)
 }
 
 /*
+ * Translate a spell name with disambiguation.
+ *
+ * Tries msgctxt "spell" first (for names like "light" and "knock" that
+ * conflict with other meanings), then falls back to bare gettext.
+ */
+const char *
+tr_spell_name(const char *name)
+{
+    if (!name || !*name)
+        return name;
+#ifdef ENABLE_NLS
+    {
+        const char *result = pgettext("spell", name);
+
+        if (result != name)
+            return result; /* found spell-specific translation */
+        return gettext(name); /* fall back to bare translation */
+    }
+#else
+    return name;
+#endif
+}
+
+/*
+ * Translate an effect name (wand/ring/scroll/potion) with disambiguation.
+ *
+ * Tries msgctxt "effect" first (for names like "light", "cold", "free action"
+ * that conflict with other meanings or have context-contaminated translations),
+ * then falls back to bare gettext.
+ */
+const char *
+tr_effect_name(const char *name)
+{
+    if (!name || !*name)
+        return name;
+#ifdef ENABLE_NLS
+    {
+        const char *result = pgettext("effect", name);
+
+        if (result != name)
+            return result; /* found effect-specific translation */
+        return gettext(name); /* fall back to bare translation */
+    }
+#else
+    return name;
+#endif
+}
+
+/*
+ * Translate a food name with disambiguation.
+ *
+ * Tries msgctxt "food" first (for names like "orange" that conflict
+ * with color adjectives), then falls back to bare gettext.
+ */
+const char *
+tr_food_name(const char *name)
+{
+    if (!name || !*name)
+        return name;
+#ifdef ENABLE_NLS
+    {
+        const char *result = pgettext("food", name);
+
+        if (result != name)
+            return result; /* found food-specific translation */
+        return gettext(name); /* fall back to bare translation */
+    }
+#else
+    return name;
+#endif
+}
+
+/*
  * Get localized filename for help/data files
  *
  * If a non-English locale is active, returns "locale/<lang>/<filename>".

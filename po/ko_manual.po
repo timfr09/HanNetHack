@@ -754,7 +754,7 @@ msgid "ZELGO MER"
 msgstr "젤고 메르"
 
 msgid "adornment"
-msgstr "성향"
+msgstr "장식"
 
 msgid "aggravate monster"
 msgstr "몬스터 자극의 반지"
@@ -832,10 +832,10 @@ msgid "bill-guisarme"
 msgstr "빌 기사름"
 
 msgid "black opal"
-msgstr "검은 오닉스"
+msgstr "검은 오팔"
 
 msgid "blank paper"
-msgstr "종이"
+msgstr "빈 종이"
 
 msgid "blindness"
 msgstr "실명"
@@ -873,7 +873,7 @@ msgid "can of grease"
 msgstr "윤활유 통"
 
 msgid "cancellation"
-msgstr "해제"
+msgstr "마법 해제"
 
 msgid "chrysoberyl"
 msgstr "금록석"
@@ -889,7 +889,7 @@ msgid "confusion"
 msgstr "혼란스러워졌다."
 
 msgid "create monster"
-msgstr "괴물 소환"
+msgstr "몬스터 소환"
 
 msgid "credit card"
 msgstr "신용카드"
@@ -1205,7 +1205,7 @@ msgid "scalpel"
 msgstr "메스"
 
 msgid "scare monster"
-msgstr "괴물 공포"
+msgstr "몬스터 공포"
 
 msgid "scimitar"
 msgstr "시미터"
@@ -1238,7 +1238,7 @@ msgid "skeleton key"
 msgstr "만능 열쇠"
 
 msgid "slow monster"
-msgstr "괴물 둔화"
+msgstr "몬스터 감속"
 
 msgid "speed"
 msgstr "속도"
@@ -1277,10 +1277,10 @@ msgid "studded leather armor"
 msgstr "징박이 가죽 갑옷"
 
 msgid "sustain ability"
-msgstr "능력 유지의 반지"
+msgstr "능력 유지"
 
 msgid "tallow candle"
-msgstr "수지 양초"
+msgstr "우지 양초"
 
 msgid "taming"
 msgstr "길들이기"
@@ -2762,7 +2762,7 @@ msgid "Elemental "
 msgstr "원소의 "
 
 msgid "on the %s level"
-msgstr "%s 레벨에서"
+msgstr "%s 레벨에 있다"
 
 # insight.c:769 - you_have() 패턴: "당신은 1 히트 다이스가 있다."
 msgid "1 hit die"
@@ -2967,8 +2967,10 @@ msgid "used no wishes"
 msgstr "소원을 사용하지 않았다"
 
 # 지갑/골드 관련
+# %s = "is"/"was" — 한국어에선 %.0s로 억제
+#, c-format
 msgid " Your wallet %s empty"
-msgstr " 당신의 지갑은 %s 비어 있다"
+msgstr " 지갑이 비어 있%.0s다"
 
 # [조합 메시지] insight.c:800 - 지갑 소지금
 # 조합 요소:
@@ -3008,7 +3010,7 @@ msgstr "%1$d/%2$d 체력%3$.0s"
 
 #, c-format
 msgid "in the endgame, on the %s%s"
-msgstr "엔드게임 중, %s%s에서"
+msgstr "엔드게임, %s%s에 있다"
 
 #, c-format
 msgid " You started out %s%s%s."
@@ -6406,9 +6408,9 @@ msgstr "방어받고 있다"
 msgid "stoning"
 msgstr "석화"
 
-# 부유 (단독)
+# 부유/공중 부양 (주문 이름 겸용)
 msgid "levitation"
-msgstr "부유"
+msgstr "공중 부양"
 
 # 충전 (단독)
 msgid "charging"
@@ -6485,10 +6487,11 @@ msgid "Your alignment "
 msgstr "당신의 성향은 "
 
 # insight.c - 위치 표시 (한국어 어순에 맞게)
-# "in the dungeons of doom, on level 5" → "파멸의 던전 5층에"
+# "in the dungeons of doom, on level 5" → "파멸의 던전 레벨 5에 있다"
+# you_are() → verb "are" 억제이므로 "있다"를 여기에 포함
 #, c-format
 msgid "in %s, on %s"
-msgstr "%s %s에"
+msgstr "%s %s에 있다"
 
 # ============================================================
 # insight.c - 손잡이 표시 수정 (조합 메시지)
@@ -8589,7 +8592,7 @@ msgid "goes"
 msgstr ""
 
 msgid "dark"
-msgstr "어두워진다"
+msgstr "어두운"
 
 msgid "you lose control of"
 msgstr ""
@@ -8804,7 +8807,7 @@ msgid "gray"
 msgstr "회색"
 
 msgid "silver"
-msgstr "은색"
+msgstr "은"
 
 msgid "golden"
 msgstr "금색"
@@ -9880,16 +9883,18 @@ msgstr "빗나갔다."
 msgid "miss wildly and stumble forwards."
 msgstr "크게 빗나가며 앞으로 비틀거렸다."
 
-# zap.c - 원거리 공격 (볼트, 광선 등)
+# zap.c:3556 - 원거리 공격 명중 (볼트, 광선 등)
 # "The bolt hits X" → "번개가 X를 맞혔다"
 # 패턴: "%s %s %s%s" (The str, vtense hit, target, force)
 #, c-format
+msgctxt "hit"
 msgid "%s %s %s%s"
 msgstr "%1$s{이/가} %3$s{을/를} 맞혔다%4$s%2$.0s"
 
-# zap.c:3562 - "The bolt misses X." → "번개가 X를 빗나갔다."
-# 이 무컨텍스트 패턴은 zap.c 빗나감 전용. 다른 소스 위치는 C_() 컨텍스트로 분리됨.
+# zap.c:3563 - 원거리 공격 빗나감
+# "The bolt misses X." → "번개가 X를 빗나갔다."
 #, c-format
+msgctxt "miss"
 msgid "%s %s %s."
 msgstr "%1$s{이/가} %3$s{을/를} 빗나갔다%2$.0s."
 
@@ -10793,7 +10798,7 @@ msgid "corpse"
 msgstr "시체"
 
 msgid "gold"
-msgstr "금화"
+msgstr "금"
 
 msgid "gem"
 msgstr "보석"
@@ -13597,11 +13602,21 @@ msgstr "%2$.0s%3$.0s%1$s면 산 것이다!"
 msgid "determine that %s unfortunate being%s %s%s dead."
 msgstr "그 불행한 존재가%4$s 죽었다고 판단한다.%1$.0s%2$.0s%3$.0s"
 
-# 양초 불꽃
-# %s=소유격이름, %s=plur(), %s=burn/burns, %s="."/brightly"
+# apply.c:1684 — 양초 불꽃 (Blind)
+# %s=소유격이름, %s=plur(), %s=burn/burns
+# "Your candle's flame burns." → "당신의 양초의 불꽃이 탔다."
 #, c-format
-msgid "%s flame%s %s%s"
-msgstr "%1$s 불꽃이 %3$s%4$s%2$.0s"
+msgctxt "candle"
+msgid "%s flame%s %s."
+msgstr "%1$s 불꽃이 탔다.%2$.0s%3$.0s"
+
+# apply.c:1684 — 양초 불꽃 (not Blind)
+# %s=소유격이름, %s=plur(), %s=burn/burns
+# "Your candle's flame burns brightly!" → "당신의 양초의 불꽃이 밝게 탔다!"
+#, c-format
+msgctxt "candle"
+msgid "%s flame%s %s brightly!"
+msgstr "%1$s 불꽃이 밝게 탔다!%2$.0s%3$.0s"
 
 # 시금석 사용 프롬프트
 # %s=plur()
@@ -15684,4 +15699,549 @@ msgstr "빈손이다"
 # insight.c you_are("bare handed") — 종료 화면 장비 상태
 msgid "bare handed"
 msgstr "맨손이다"
+
+# ============================================================
+# hack.c:2567 - 함정 확인 대화
+# %1$s = locomotion verb (e.g., "step") — %.0s로 억제
+# %2$s = "into"/"onto" — 방향
+# %3$s = trap name — 함정 이름
+# 결과: "정말 저 순간이동 함정 안으로 가시겠습니까?"
+# ============================================================
+#, c-format
+msgid "Really %s %s that %s?"
+msgstr "정말 저 %3$s %2$s%1$.0s 가시겠습니까?"
+
+# ============================================================
+# topten.c — killed_by_prefix[] 사인(死因) 접미사
+# formatkiller()에서 한국어 SOV 어순: kname + suffix
+# ============================================================
+
+# DIED — "killed by a jackal" → "자칼에게 죽음"
+msgid "killed by "
+msgstr "에게 죽음"
+
+# CHOKING — "choked on a tin" → "통조림에 질식"
+msgid "choked on "
+msgstr "에 질식"
+
+# POISONING — "poisoned by a snake" → "뱀에 중독"
+msgid "poisoned by "
+msgstr "에 중독"
+
+# STARVING — "died of starvation" → "굶주림으로 죽음"
+msgid "died of "
+msgstr "으로 죽음"
+
+# DROWNING — "drowned in a pool" → "웅덩이에 익사"
+msgid "drowned in "
+msgstr "에 익사"
+
+# BURNING — "burned by lava" → "용암에 화상 사망"
+msgid "burned by "
+msgstr "에 화상 사망"
+
+# DISSOLVED — "dissolved in acid" → "산에 녹아 죽음"
+msgid "dissolved in "
+msgstr "에 녹아 죽음"
+
+# CRUSHING — "crushed to death by a boulder" → "바위에게 압사"
+msgid "crushed to death by "
+msgstr "에게 압사"
+
+# STONING — "petrified by a cockatrice" → "코카트리스에게 석화"
+msgid "petrified by "
+msgstr "에게 석화"
+
+# TURNED_SLIME — "turned to slime by a green slime" → "초록 슬라임에 의해 슬라임화"
+msgid "turned to slime by "
+msgstr "에 의해 슬라임화"
+
+# ============================================================
+# apply.c:4520 — 마법서 잉크 상태 (마침표 누락 수정)
+# %1$s = " magical" 또는 "" — 마법 여부
+# %2$s = "fresh"/"slightly faded"/... — 잉크 상태
+# ============================================================
+#, c-format
+msgid "The%s ink in this spellbook is %s."
+msgstr "이 마법서의%s 잉크는 %s."
+
+# ============================================================
+# objnam.c:897 — 마법서 이름 조합
+# %s = 주문 이름 (예: "protection" → "보호")
+# 결과: "보호 마법서"
+# ============================================================
+#, c-format
+msgid "spellbook of %s"
+msgstr "%s 마법서"
+
+# ============================================================
+# 주문 이름 (objects.h SPELL definitions)
+# tr_spell_name()을 통해 마법서/주문 메뉴에서 사용
+# "spell" 컨텍스트: 동음이의어 충돌 해소 (light, knock)
+# ============================================================
+
+# "light" — 색상 형용사(가벼운)와 충돌 → spell 컨텍스트로 분리
+msgctxt "spell"
+msgid "light"
+msgstr "빛"
+
+# "knock" — 전투 동사(두드리다)와 충돌 → spell 컨텍스트로 분리
+msgctxt "spell"
+msgid "knock"
+msgstr "개방"
+
+msgid "magic missile"
+msgstr "마법 화살"
+
+msgid "fireball"
+msgstr "화염구"
+
+msgid "cone of cold"
+msgstr "냉기 원뿔"
+
+msgid "sleep"
+msgstr "수면"
+
+msgid "finger of death"
+msgstr "죽음의 손가락"
+
+# "light" — 색상 형용사(가벼운)와 충돌, msgctxt 필요 (미해결)
+
+msgid "detect monsters"
+msgstr "몬스터 탐지"
+
+msgid "healing"
+msgstr "치료"
+
+# "knock" — 전투 동사(두드리다)와 충돌, msgctxt 필요 (미해결)
+
+# 이하 주문 이름: 기존 ko_manual.po 항목과 중복되지 않는 것만 추가
+# (기존 항목은 해당 위치에서 번역 업데이트)
+
+msgid "cure blindness"
+msgstr "실명 치료"
+
+msgid "drain life"
+msgstr "생명력 흡수"
+
+msgid "wizard lock"
+msgstr "마법 잠금"
+
+msgid "cause fear"
+msgstr "공포 유발"
+
+msgid "clairvoyance"
+msgstr "투시"
+
+msgid "cure sickness"
+msgstr "질병 치료"
+
+msgid "charm monster"
+msgstr "몬스터 매혹"
+
+msgid "haste self"
+msgstr "가속"
+
+msgid "detect unseen"
+msgstr "투명 탐지"
+
+msgid "detect treasure"
+msgstr "보물 탐지"
+
+msgid "turn undead"
+msgstr "언데드 퇴치"
+
+msgid "teleport away"
+msgstr "순간이동"
+
+msgid "create familiar"
+msgstr "사역마 소환"
+
+msgid "protection"
+msgstr "보호"
+
+msgid "jumping"
+msgstr "도약"
+
+msgid "stone to flesh"
+msgstr "석화 해제"
+
+msgid "chain lightning"
+msgstr "연쇄 번개"
+
+msgid "flame sphere"
+msgstr "화염 구체"
+
+msgid "freeze sphere"
+msgstr "냉기 구체"
+
+msgid "Book of the Dead"
+msgstr "사자의 서"
+
+# scroll/potion format strings (Korean: effect name first, then type)
+#, c-format
+msgid "scroll of %s"
+msgstr "%s 두루마리"
+
+#, c-format
+msgid "potion of %s"
+msgstr "%s 물약"
+
+# standalone scroll/potion effect names (for format composition)
+msgid "genocide"
+msgstr "학살"
+
+msgid "enchant weapon"
+msgstr "무기 강화"
+
+msgid "monster detection"
+msgstr "몬스터 탐지"
+
+msgid "sleeping"
+msgstr "수면"
+
+msgid "sickness"
+msgstr "질병"
+
+msgid "fire"
+msgstr "화염"
+
+# === Wand/Ring/Potion standalone effect names ===
+
+msgid "holy water"
+msgstr "성수"
+
+msgid "unholy water"
+msgstr "사수"
+
+msgid "locking"
+msgstr "잠금"
+
+msgid "regeneration"
+msgstr "재생"
+
+msgid "increase damage"
+msgstr "공격력 증가"
+
+# === Effect name context disambiguation (for tr_effect_name) ===
+# Bare gettext() returns wrong translation for object naming context;
+# these C_("effect", ...) entries provide correct standalone names.
+
+# wand/scroll of light: 빛 (bare "light" → "가벼운" adjective)
+msgctxt "effect"
+msgid "light"
+msgstr "빛"
+
+# wand of cold: 냉기 (bare "cold" → "춥다" adjective)
+msgctxt "effect"
+msgid "cold"
+msgstr "냉기"
+
+# ring of hunger: 허기 (bare → "배고파진다" verb form)
+msgctxt "effect"
+msgid "hunger"
+msgstr "허기"
+
+# ring of sustain ability: 능력 유지 (bare → "능력 유지의 반지" with 의 반지 suffix)
+msgctxt "effect"
+msgid "sustain ability"
+msgstr "능력 유지"
+
+# ring of aggravate monster: 몬스터 자극 (bare → "몬스터 자극의 반지")
+msgctxt "effect"
+msgid "aggravate monster"
+msgstr "몬스터 자극"
+
+# ring of free action: 자유 행동 (bare → "자유 행동 능력이 있다" verb form)
+msgctxt "effect"
+msgid "free action"
+msgstr "자유 행동"
+
+# ring of teleport control: 순간이동 제어 (bare → "순간이동 제어 능력이 있다")
+msgctxt "effect"
+msgid "teleport control"
+msgstr "순간이동 제어"
+
+# ring of polymorph control: 변신 제어 (bare → "변신 제어 능력이 있다")
+msgctxt "effect"
+msgid "polymorph control"
+msgstr "변신 제어"
+
+# ring of protection from shape changers: 변신 방지 (bare → "변신자로부터의 보호" too long + 의 collision)
+msgctxt "effect"
+msgid "protection from shape changers"
+msgstr "변신 방지"
+
+# ring of increase accuracy: 명중 증가 (bare → "명중 증가의 반지")
+msgctxt "effect"
+msgid "increase accuracy"
+msgstr "명중 증가"
+
+# === Wand material context disambiguation ===
+# wand: "tin" = 주석 (metal), vs food "tin" = 통조림
+msgctxt "effect"
+msgid "tin"
+msgstr "주석"
+
+# === Food name context disambiguation ===
+# food: "orange" = 오렌지 (fruit), vs color "orange" = 주황
+msgctxt "food"
+msgid "orange"
+msgstr "오렌지"
+
+# === Missing dragon scale armor translations ===
+msgid "gold dragon scales"
+msgstr "금 용 비늘"
+
+msgid "gold dragon scale mail"
+msgstr "금 용 비늘 갑옷"
+
+msgid "shimmering dragon scales"
+msgstr "빛나는 용 비늘"
+
+msgid "shimmering dragon scale mail"
+msgstr "빛나는 용 비늘 갑옷"
+
+msgid "red dragon scales"
+msgstr "붉은 용 비늘"
+
+msgid "red dragon scale mail"
+msgstr "붉은 용 비늘 갑옷"
+
+# === Missing item translations ===
+# spellbook appearance: "dusty" = 먼지 낀 (ko.po has "먼지" which is noun only)
+msgid "dusty"
+msgstr "먼지 낀"
+
+msgid "towel"
+msgstr "수건"
+
+msgid "meat ring"
+msgstr "고기 반지"
+
+msgid "slime mold"
+msgstr "점액질 곰팡이"
+
+# === Missing wand appearance translations ===
+msgid "forked"
+msgstr "갈래진"
+
+msgid "spiked"
+msgstr "가시 달린"
+
+msgid "jeweled"
+msgstr "보석 박힌"
+
+# objnam.c: 보석 접미사 (GEM_CLASS)
+msgid " gem"
+msgstr " 보석"
+
+# objnam.c: 부적 포맷 ("%s 부적")
+#, c-format
+msgid "%s amulet"
+msgstr "%s 부적"
+
+# objnam.c: 사인 슬라임 몰드 (killer name용, %s는 복수형 접미사)
+#, c-format
+msgid "deadly slime mold%s"
+msgstr "치명적인 슬라임 몰드%.0s"
+
+# 업스트림 머지: o_init.c "Unique items" → "Unique items or Relics"
+msgid "Unique items or Relics"
+msgstr "고유 물품"
+
+# 업스트림 머지: allmain.c 아뮬렛 소원
+msgid "The Amulet is bestowing a wish upon you!"
+msgstr "아뮬렛이 당신에게 소원을 내리고 있다!"
+
+# 업스트림 머지: muse.c/potion.c 투명 실패
+#, c-format
+msgid "%s briefly seems to be transparent."
+msgstr "%s 잠시 투명해지는 듯했다."
+
+# 업스트림 머지: eat.c 환각 빈 통조림
+#, c-format
+msgid "It's full of %s."
+msgstr "%s{이/가} 가득 들어 있다."
+
+msgid "air elemental souffle"
+msgstr "공기 정령 수플레"
+
+msgid "dehydrated water"
+msgstr "탈수된 물"
+
+# ============================================================
+# 조합 패턴 전수 리뷰 (2026-02-22)
+# ============================================================
+#
+# === 수정 완료 (이번 리뷰에서 발견/수정) ===
+# [FIX] muse.c:297 "%s drinks %s!" — 동사 "마셨다" 누락
+# [FIX] dokick.c:309 "%s harmlessly %s %s." — SVO 어순
+# [FIX] zap.c:4798 "%s rips into %s%s" — {을/를} 느낌표에 붙음
+# [FIX] read.c:1895 "%s of boulders %s %s you!" — 문장 부서짐
+# [FIX] pray.c:1409 "%s potion%s...glow%s %s..." — 동사접미 미억제
+# [FIX] wield.c:766 "%s %s suitable %s weapon%s." — aren't/plur 미처리
+# [FIX] pray.c:802 "%s %s %s your %s!" — 어순 재배열
+# [FIX] dothrow.c:1285 "%s %s the %s, then falls..." — 동사 위치
+# [FIX] dothrow.c:2643 "%s shatter%s%s!" — 산산조각 이중 + 복수접미 미억제
+# [FIX] zap.c:3956 "%s %s over %s." — SVO 어순
+# [FIX] uhitm.c:1288 "%s %s over %s!" — SVO 어순
+#
+# === 확인 완료 (기존 번역 정상) ===
+# [OK] steal.c:192 "%s steals %s!" → SOV 어순 정상
+# [OK] steal.c:806 "%s absorbs %s!" → SOV 어순 정상
+# [OK] dothrow.c:2098 "%s catches %s." → SOV 어순 정상
+# [OK] dothrow.c:1816 "%s snatches up %s." → SOV 어순 정상
+# [OK] muse.c:187 "%s zaps %s!" → SOV 어순 정상
+# [OK] muse.c:842 "%s plays %s!" → SOV 어순 정상
+# [OK] steal.c:798 "%s %s pulled from..." → SOV 정상
+# [OK] wield.c:813 "%s spasms and drops %s!" → SOV 정상
+# [OK] trap.c:6107 "%s released from %s%s." → SOV 정상
+# [OK] trap.c:1518 "%s bear trap closes on %s %s!" → 정상
+# [OK] potion.c:2621 "%s forms a coating on %s." → 정상
+#
+# === Known Issues (구조적 한계, 이번 리뷰에서 확인) ===
+# - pray.c:1409 %1 = "The"/"Some of the"/"One of the": 한국어 관사 매핑 어색
+#   ("그"/"일부의"/"중 하나의" → "제단의 그 물약" 등)
+#   → 소스에서 분리하거나 C_() 컨텍스트 필요, 현재는 수용 가능 수준
+# [해결됨] dothrow.c:640 → C_("hitfloor") 컨텍스트 추가
+# [해결됨] zap.c:3556/3563 → C_("hit")/C_("miss") 컨텍스트 추가
+# [해결됨] apply.c:1555 → 3 pline 분기 + C_("lantern") 컨텍스트
+# [해결됨] apply.c:1684 → Blind 분기 + C_("candle") 컨텍스트
+#
+# ============================================================
+
+# dothrow.c:640 — 물체가 바닥/표면을 맞힘
+# %1$s=Doname2(obj), %2$s=verb(land/step/fall/hit 등), %3$s=surface
+# 영어: "The potion hits the floor." → "물약이 바닥을 맞혔다."
+#, c-format
+msgctxt "hitfloor"
+msgid "%s %s the %s."
+msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+
+# do.c:1280 — 플레이어가 구멍/함정문으로 내려감
+# %1$s=actn(jump/crawl 등), %2$s=down/through, %3$s=hole/trap door
+# 영어: "You jump through the trap door." → "함정문을 통해 뛰어내렸다."
+#, c-format
+msgctxt "dodown"
+msgid "%s %s the %s."
+msgstr "%3$s %2$s %1$s."
+
+# apply.c:1555 — 랜턴이 탁탁거리며 깜빡임 (둘 다)
+# %s=Yname2(obj)
+# "Your lamp crackles and flickers." → "당신의 랜턴이 탁탁거리며 깜빡였다."
+#, c-format
+msgctxt "lantern"
+msgid "%s crackles and flickers."
+msgstr "%s{이/가} 탁탁거리며 깜빡였다."
+
+# apply.c:1555 — 랜턴이 탁탁거림 (소리만)
+# %s=Yname2(obj)
+# "Your lamp crackles." → "당신의 랜턴이 탁탁거렸다."
+#, c-format
+msgctxt "lantern"
+msgid "%s crackles."
+msgstr "%s{이/가} 탁탁거렸다."
+
+# apply.c:1555 — 랜턴이 깜빡임 (시각만)
+# %s=Yname2(obj)
+# "Your lamp flickers." → "당신의 랜턴이 깜빡였다."
+#, c-format
+msgctxt "lantern"
+msgid "%s flickers."
+msgstr "%s{이/가} 깜빡였다."
+
+# [FIX] muse.c:297 — 몬스터 물약 음용
+# %1$s = Monnam(mtmp), %2$s = singular(otmp, doname) (물약 이름)
+# 영어: "The orc drinks a potion of healing!"
+# 기존 오역: "%s{이/가} %s!" (동사 누락)
+#, c-format
+msgid "%s drinks %s!"
+msgstr "%s{이/가} %s{을/를} 마셨다!"
+
+# [FIX] dokick.c:309 — 금화 던지기 빗맞힘
+# %1$s = xname(gold), %2$s = otense("hit") (맞혔다), %3$s = mon_nam
+# 영어: "The gold piece harmlessly hits the orc."
+# 기존 오역: "%s{이/가} 해를 끼치지 않고 %s %s." (SVO 어순)
+#, c-format
+msgid "%s harmlessly %s %s."
+msgstr "%1$s{이/가} %3$s{을/를} 해를 끼치지 않고 맞혔다.%2$.0s"
+
+# [FIX] zap.c:4798 — 삼켜진 상태에서 빔 공격
+# %1$s = The(flash_str), %2$s = mon_nam, %3$s = exclam ("!"/".")
+# 영어: "The bolt of fire rips into the purple worm!"
+# 기존 오역: "%s{이/가} %s%s{을/를} 찢는다" ({을/를}이 느낌표에 붙음)
+#, c-format
+msgid "%s rips into %s%s"
+msgstr "%1$s{이/가} %2$s{을/를} 찢었다%3$s"
+
+# [FIX] read.c:1895 — 바위 눈사태 (지구의 두루마리)
+# %1$s = avalanche/avalanches 이름, %2$s = vtense("materialize"), %3$s = "around"/"above"
+# 영어: "An avalanche of boulders materializes above you!"
+# 기존 오역: "바위들의 %s{이/가} %s %s{을/를}!" (문장 부서짐)
+#, c-format
+msgid "%s of boulders %s %s you!"
+msgstr "바위들의 %1$s{이/가} 당신 %3$s %2$s!"
+
+# [FIX] pray.c:1409 — 제단에서 물약 축복/저주
+# %1$s = "The"/"Some of the"/"One of the", %2$s = "s"/"" (복수형)
+# %3$s = "s"/"" (동사접미), %4$s = hcolor (색상)
+# 영어: "The potion on the altar glows blue for a moment."
+# 기존 오역: "제단의 %s 물약%s{이/가} 잠시 %s %s 빛난다." (%3 동사접미 미억제)
+# 주의: %1$s "그"/"일부의"/"중 하나의" 매핑이 어색 (Known Issue)
+#, c-format
+msgid "%s potion%s on the altar glow%s %s for a moment."
+msgstr "제단의 %1$s 물약%2$.0s{이/가} 잠시 %4$s 빛을 발했다.%3$.0s"
+
+# [FIX] wield.c:766 — 이중무기 부적합 무기
+# %1$s = Yname2(otmp), %2$s = "aren't"/"isn't a", %3$s = "primary"/"secondary"
+# %4$s = plur (복수접미 "s"/"")
+# 영어: "Your sword isn't a suitable primary weapon."
+# 기존 오역: "%s{이/가} 적합한 %s 무기%s %s." (aren't/plur 미처리)
+#, c-format
+msgid "%s %s suitable %s weapon%s."
+msgstr "%1$s{은/는} 적합한 %3$s 무기가 아니다.%2$.0s%4$.0s"
+
+# [FIX] pray.c:802 — 발 앞에 나타남 (신의 선물)
+# %1$s = item/Something, %2$s = "land"/"appear" (착지했다/나타난다)
+# %3$s = "beneath"/"at" (아래에/근처에), %4$s = feet (발)
+# 영어: "A long sword appears at your feet!"
+# 기존 오역: "%s{이/가} 당신의 %s{을/를} %s %s!" (인수 매핑 잘못)
+#, c-format
+msgid "%s %s %s your %s!"
+msgstr "%1$s{이/가} 당신의 %4$s %3$s %2$s!"
+
+# [FIX] dothrow.c:1285 — 천장에 맞고 떨어짐
+# %1$s = Doname2(obj), %2$s = "hits"/"almost hits" (맞혔다/거의 맞을 뻔했다)
+# %3$s = ceiling (천장), %4$s = body_part(HEAD) (머리)
+# 영어: "The rock hits the ceiling, then falls back on top of your head."
+# 기존 오역: "%s{이/가} %s %s{을/를} 맞고 %s 위로 떨어졌다." (동사 위치 혼란)
+#, c-format
+msgid "%s %s the %s, then falls back on top of your %s."
+msgstr "%1$s{이/가} %3$s{을/를} %2$s, 그리고 %4$s 위로 떨어졌다."
+
+# [FIX] dothrow.c:2643 — 물약/유리 파손
+# %1$s = Doname2(obj), %2$s = "s"/"" (복수접미), %3$s = ""/" into a thousand pieces"
+# 영어: "The potion shatters into a thousand pieces!"
+# 기존 오역: "%s{이/가} 산산조각%s%s!" (산산조각 이중, 복수접미 미억제)
+# "산산조각났다"가 이미 "into a thousand pieces" 의미 포함 → %2,%3 억제
+#, c-format
+msgid "%s shatter%s%s!"
+msgstr "%1$s{이/가} 산산조각났다!%2$.0s%3$.0s"
+
+# [FIX] zap.c:3956 — 물 위의 몬스터 통과
+# %1$s = Yname2(obj), %2$s = otense("pass") (지나갔다), %3$s = mon_nam
+# 영어: "The dart passes over the water moccasin."
+# 기존 오역: "%s{이/가} %s 위로 %s." (SVO 어순)
+#, c-format
+msgid "%s %s over %s."
+msgstr "%1$s{이/가} %3$s 위로 %2$s."
+
+# [FIX] uhitm.c:1288 — 물 튀기기 공격
+# %1$s = what (액체), %2$s = vtense("splash") (튀다), %3$s = whom (대상 부위)
+# 영어: "The water splashes over the orc's face!"
+# 기존 오역: "%s{이/가} %s 위로 %s!" (SVO 어순)
+#, c-format
+msgid "%s %s over %s!"
+msgstr "%1$s{이/가} %3$s 위로 %2$s!"
 

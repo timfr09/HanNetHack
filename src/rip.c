@@ -76,7 +76,7 @@ center(int line, char *text)
 {
     char *ip, *op;
     ip = text;
-    op = &gr.rip[line][STONE_LINE_CENT - ((strlen(text) + 1) >> 1)];
+    op = &gr.rip[line][STONE_LINE_CENT - ((utf8_display_width(text) + 1) >> 1)];
     while (*ip)
         *op++ = *ip++;
 }
@@ -114,14 +114,36 @@ genl_outrip(winid tmpwin, int how, time_t when)
     /* Put death type on stone */
     for (line = DEATH_LINE, dpx = buf; line < YEAR_LINE; line++) {
         char tmpchar;
-        int i, i0 = (int) strlen(dpx);
+        int i, i0;
+        int dw = utf8_display_width(dpx);
 
-        if (i0 > STONE_LINE_LEN) {
-            for (i = STONE_LINE_LEN; (i > 0) && (i0 > STONE_LINE_LEN); --i)
-                if (dpx[i] == ' ')
+        if (dw > STONE_LINE_LEN) {
+            /* Find byte offset where display width reaches STONE_LINE_LEN */
+            int cols = 0;
+            int byte_limit = 0;
+            const char *p = dpx;
+
+            while (*p) {
+                int clen = utf8_char_len((unsigned char) *p);
+                int cw = utf8_char_width(p);
+
+                if (cols + cw > STONE_LINE_LEN)
+                    break;
+                cols += cw;
+                byte_limit += clen;
+                p += clen;
+            }
+            /* Try to find a space break within the display limit */
+            i0 = byte_limit;
+            for (i = byte_limit; i > 0; --i)
+                if (dpx[i] == ' ') {
                     i0 = i;
-            if (!i)
-                i0 = STONE_LINE_LEN;
+                    break;
+                }
+            if (i == 0)
+                i0 = byte_limit; /* hard break at display width limit */
+        } else {
+            i0 = (int) strlen(dpx);
         }
         tmpchar = dpx[i0];
         dpx[i0] = 0;

@@ -91,6 +91,9 @@ obj_descr_strings_for_extraction(void)
     (void) N_("iridium");
     (void) N_("crystal");
     (void) N_("hexagonal");
+    (void) N_("forked");
+    (void) N_("spiked");
+    (void) N_("jeweled");
 
     /* === Amulet descriptions === */
     (void) N_("circular");
@@ -124,6 +127,29 @@ obj_descr_strings_for_extraction(void)
     (void) N_("ring mail");
     (void) N_("orcish ring mail");
     (void) N_("scale mail");
+    /* Dragon scale armor */
+    (void) N_("gray dragon scales");
+    (void) N_("silver dragon scales");
+    (void) N_("shimmering dragon scales");
+    (void) N_("red dragon scales");
+    (void) N_("white dragon scales");
+    (void) N_("orange dragon scales");
+    (void) N_("black dragon scales");
+    (void) N_("blue dragon scales");
+    (void) N_("green dragon scales");
+    (void) N_("yellow dragon scales");
+    (void) N_("gold dragon scales");
+    (void) N_("gray dragon scale mail");
+    (void) N_("silver dragon scale mail");
+    (void) N_("shimmering dragon scale mail");
+    (void) N_("red dragon scale mail");
+    (void) N_("white dragon scale mail");
+    (void) N_("orange dragon scale mail");
+    (void) N_("black dragon scale mail");
+    (void) N_("blue dragon scale mail");
+    (void) N_("green dragon scale mail");
+    (void) N_("yellow dragon scale mail");
+    (void) N_("gold dragon scale mail");
     (void) N_("chain mail");
     (void) N_("orcish chain mail");
     (void) N_("banded mail");
@@ -347,6 +373,8 @@ obj_descr_strings_for_extraction(void)
     (void) N_("huge chunk of meat");
     (void) N_("kelp frond");
     (void) N_("eucalyptus leaf");
+    (void) N_("meat ring");
+    (void) N_("slime mold");
 
     /* === Gem descriptions === */
     (void) N_("dilithium crystal");
@@ -506,10 +534,186 @@ obj_descr_strings_for_extraction(void)
     (void) N_("%s book");
     (void) N_("spellbook");
     (void) N_("spellbook of ");
+    (void) N_("spellbook of %s");
     (void) N_("%s spellbook");
-    (void) N_("ring");
+
+    /* === Spell names (from objects.h SPELL definitions) === */
+    /* Context-specific spell names (disambiguate from other meanings) */
+    (void) C_("spell", "light");  /* vs color adj "light" (가벼운) */
+    (void) C_("spell", "knock");  /* vs combat verb "knock" (두드리다) */
+    (void) N_("dig");
+    (void) N_("magic missile");
+    (void) N_("fireball");
+    (void) N_("cone of cold");
+    (void) N_("sleep");
+    (void) N_("finger of death");
+    /* "light" - already extracted (obj_descr_i18n.c:375, conflicts with
+       color adjective; needs msgctxt for proper spell name translation) */
+    (void) N_("detect monsters");
+    (void) N_("healing");
+    /* "knock" - already extracted (uhitm.c:5372, conflicts with combat
+       verb; needs msgctxt for proper spell name translation) */
+    (void) N_("force bolt");
+    (void) N_("confuse monster");
+    (void) N_("cure blindness");
+    (void) N_("drain life");
+    (void) N_("slow monster");
+    (void) N_("wizard lock");
+    (void) N_("create monster");
+    (void) N_("detect food");
+    (void) N_("cause fear");
+    (void) N_("clairvoyance");
+    (void) N_("cure sickness");
+    (void) N_("charm monster");
+    (void) N_("haste self");
+    (void) N_("detect unseen");
+    (void) N_("levitation");
+    (void) N_("extra healing");
+    (void) N_("restore ability");
+    (void) N_("invisibility");
+    (void) N_("detect treasure");
+    (void) N_("remove curse");
+    (void) N_("magic mapping");
+    /* "identify" - already extracted (multiple contexts) */
+    (void) N_("turn undead");
+    (void) N_("polymorph");
+    (void) N_("teleport away");
+    (void) N_("create familiar");
+    (void) N_("cancellation");
+    (void) N_("protection");
+    (void) N_("jumping");
+    (void) N_("stone to flesh");
+    (void) N_("chain lightning");
+    (void) N_("flame sphere");
+    (void) N_("freeze sphere");
+    (void) N_("blank paper");
+
+    /* === Scroll effect names (from objects.h SCROLL definitions) === */
+    (void) N_("scroll of %s");
+    (void) N_("enchant armor");
+    (void) N_("destroy armor");
+    /* "confuse monster" - already above (spell) */
+    (void) N_("scare monster");
+    /* "remove curse" - already above (spell) */
+    (void) N_("enchant weapon");
+    /* "create monster" - already above (spell) */
+    (void) N_("taming");
+    (void) N_("genocide");
+    /* "light" - already above (spell context) */
+    (void) N_("teleportation");
+    (void) N_("gold detection");
+    (void) N_("food detection");
+    /* "identify" - already extracted */
+    /* "magic mapping" - already above (spell) */
+    (void) N_("amnesia");
+    (void) N_("fire");
+    (void) N_("earth");
+    (void) N_("punishment");
+    /* "charging" - already extracted */
+    (void) N_("stinking cloud");
+    /* "blank paper" - already above (spell) */
+
+    /* === Potion effect names (from objects.h POTION definitions) === */
+    (void) N_("potion of %s");
+    (void) N_("gain ability");
+    /* "restore ability" - already above (spell) */
+    /* "confusion" - already extracted */
+    /* "blindness" - already extracted */
+    (void) N_("paralysis");
+    /* "speed" - already extracted */
+    /* "levitation" - already above (spell) */
+    /* "hallucination" - already extracted */
+    /* "invisibility" - already above (spell) */
+    (void) N_("see invisible");
+    /* "healing" - already above (spell) */
+    /* "extra healing" - already above (spell) */
+    (void) N_("gain level");
+    (void) N_("enlightenment");
+    (void) N_("monster detection");
+    (void) N_("object detection");
+    (void) N_("gain energy");
+    (void) N_("sleeping");
+    (void) N_("full healing");
+    /* "polymorph" - already above (spell) */
+    /* "booze" - already extracted */
+    (void) N_("sickness");
+    /* "fruit juice" - already extracted */
+    /* "acid" - already extracted */
+    /* "oil" - already extracted */
+    /* "water" - already extracted */
+    (void) N_("holy water");
+    (void) N_("unholy water");
+
+    /* === Wand effect names (from objects.h WAND definitions) === */
+    (void) N_("wand of %s");
+    (void) N_("%s wand");
+    /* "light" - see C_("effect") below */
+    (void) N_("nothing");
+    (void) N_("death");
+    (void) N_("wishing");
+    /* "cancellation" - already above (spell) */
+    /* "polymorph" - already above (spell) */
+    /* "teleportation" - already above (scroll) */
+    /* "digging" - already extracted */
+    /* "probing" - already extracted */
+    (void) N_("undead turning");
+    /* "opening" - already extracted */
+    (void) N_("locking");
+    /* "speed" - already extracted */
+    /* "lightning" - already extracted */
+    /* "fire" - already above (scroll) */
+    /* "cold" - see C_("effect") below */
+    /* "sleep" - already above (spell) */
+    /* "magic missile" - already above (spell) */
+    /* "striking" - already extracted */
+    (void) N_("secret door detection");
+
+    /* === Ring effect names (from objects.h RING definitions) === */
     (void) N_("ring of %s");
     (void) N_("%s ring");
+    (void) N_("adornment");
+    /* "hunger" - see C_("effect") below */
+    /* "protection" - already above (spell) */
+    (void) N_("regeneration");
+    /* "searching" - already extracted */
+    /* "stealth" - already extracted */
+    /* "sustain ability" - see C_("effect") below */
+    /* "levitation" - already above (spell) */
+    /* "aggravate monster" - see C_("effect") below */
+    /* "conflict" - already extracted */
+    /* "warning" - already extracted */
+    /* "poison resistance" - already extracted */
+    /* "fire resistance" - already extracted */
+    /* "cold resistance" - already extracted */
+    /* "shock resistance" - already extracted */
+    /* "free action" - see C_("effect") below */
+    /* "slow digestion" - already extracted */
+    /* "teleport control" - see C_("effect") below */
+    /* "polymorph control" - see C_("effect") below */
+    /* "invisibility" - already above (spell) */
+    /* "see invisible" - already above (potion) */
+    /* "protection from shape changers" - see C_("effect") below */
+    /* "increase accuracy" - see C_("effect") below */
+    (void) N_("increase damage");
+
+    /* === Effect name context disambiguation === */
+    /* Used by tr_effect_name() for names whose bare gettext()
+       translations are wrong for object naming context */
+    (void) C_("effect", "light");       /* wand/scroll: 빛 (vs adj 가벼운) */
+    (void) C_("effect", "cold");        /* wand: 냉기 (vs adj 춥다) */
+    (void) C_("effect", "hunger");      /* ring: 허기 (vs verb 배고파진다) */
+    (void) C_("effect", "sustain ability");    /* ring: 능력 유지 */
+    (void) C_("effect", "aggravate monster");  /* ring: 몬스터 자극 */
+    (void) C_("effect", "free action");        /* ring: 자유 행동 */
+    (void) C_("effect", "teleport control");   /* ring: 순간이동 제어 */
+    (void) C_("effect", "polymorph control");  /* ring: 변신 제어 */
+    (void) C_("effect", "protection from shape changers"); /* ring: 변신 방지 */
+    (void) C_("effect", "increase accuracy");  /* ring: 명중 증가 */
+    (void) C_("effect", "tin");               /* wand: 주석 (vs food 통조림) */
+
+    /* === Food name context disambiguation === */
+    (void) C_("food", "orange");              /* food: 오렌지 (vs color 주황) */
+
     (void) N_("amulet");
     (void) N_("pair of ");
     (void) N_("set of ");
@@ -1036,6 +1240,7 @@ obj_descr_strings_for_extraction(void)
     (void) N_("charisma");
 
     /* === Tool names (full names from objects.h) === */
+    (void) N_("towel");
     (void) N_("brass lantern");
     (void) N_("oil lamp");
     (void) N_("magic lamp");

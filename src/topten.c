@@ -105,6 +105,7 @@ formatkiller(
     };
     unsigned l;
     char c, *kname = svk.killer.name;
+    const char *ko_suffix = NULL; /* i18n: Korean SOV word order suffix */
 
     buf[0] = '\0'; /* lint suppression */
     switch (svk.killer.format) {
@@ -119,9 +120,14 @@ formatkiller(
         FALLTHROUGH;
         /*FALLTHRU*/
     case KILLED_BY:
-        (void) strncat(buf, _(killed_by_prefix[how]), siz - 1);
-        l = Strlen(buf);
-        buf += l, siz -= l;
+        if (is_korean_locale()) {
+            /* i18n: Korean SOV - save prefix as suffix, append after kname */
+            ko_suffix = _(killed_by_prefix[how]);
+        } else {
+            (void) strncat(buf, _(killed_by_prefix[how]), siz - 1);
+            l = Strlen(buf);
+            buf += l, siz -= l;
+        }
         break;
     }
     /* Copy kname into buf[].
@@ -148,6 +154,15 @@ formatkiller(
         *buf++ = c;
     }
     *buf = '\0';
+    /* i18n: Korean SOV word order - append death cause suffix after kname */
+    if (ko_suffix) {
+        l = Strlen(ko_suffix);
+        if (l < siz) {
+            Strcpy(buf, ko_suffix);
+            buf += l;
+            siz -= l;
+        }
+    }
 
     if (incl_helpless && gm.multi < 0) {
         /* X <= siz: 'sizeof "string"' includes 1 for '\0' terminator */

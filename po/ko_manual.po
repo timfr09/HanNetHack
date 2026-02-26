@@ -6211,13 +6211,15 @@ msgstr "전화 부스"
 msgid "strike"
 msgstr "치다"
 
-# mondata.c:1369 - 이동 방식 "비틀거리다". "단검"(dagger)이 아님!
+# mondata.c:1369 - 이동 방식 "비틀거린다". "단검"(dagger)이 아님!
+# 사전형 "비틀거리다" → 현재형 "비틀거린다" (potion.c, pickup.c, trap.c 직접 사용)
+# 몬스터 문맥은 포맷 오버라이드로 과거형 "비틀거렸다" 적용
 msgid "stagger"
-msgstr "비틀거리다"
+msgstr "비틀거린다"
 
 # mondata.c:1369 - 대문자 버전
 msgid "Stagger"
-msgstr "비틀거리다"
+msgstr "비틀거린다"
 
 # dungeon.c:2241 - 던전 분기 유형. "물약"이 아님!
 msgid "Connection"
@@ -9546,6 +9548,7 @@ msgstr "%1$s{이/가} 떨어진다!%2$.0s"
 # 영어 조합: "Your eyes tingle..."
 # 한국어: "tingle" = "찌릿하다" 사용
 # 한국어 조합: "눈이 찌릿하다..."
+# 주의: sit.c:173 전용 (mhitm.c:751 gaze, mhitm.c:1418 stun은 C_()로 분리)
 #, c-format
 msgid "%s %s..."
 msgstr "%1$s{이/가} 찌릿하다...%2$.0s"
@@ -9979,6 +9982,32 @@ msgctxt "obj_fall"
 msgid "%s %s %s."
 msgstr "%1$s{이/가} %3$s %2$s."
 
+# mhitu.c:2570 — Yellow mold 기절 공격 (AD_STUN)
+# %1$s=Monnam(mtmp), %2$s=makeplural(stagger()) (사전형 동사)
+# 영어: "The yellow mold staggers." → "노란 곰팡이가 비틀거렸다."
+# stagger() 반환값(사전형)을 억제하고 과거형으로 대체
+#, c-format
+msgctxt "stun"
+msgid "%s %s."
+msgstr "%1$s{이/가} 비틀거렸다.%2$.0s"
+
+# mhitm.c:1418 — AD_STUN 수동 방어 (Yellow mold 등)
+# %1$s=Monnam(magr), %2$s=makeplural(stagger()) (현재형 동사)
+# 영어: "The yellow mold staggers..." → "노란 곰팡이가 비틀거렸다..."
+# stagger() 반환값(현재형)을 억제하고 과거형으로 대체
+#, c-format
+msgctxt "stun"
+msgid "%s %s..."
+msgstr "%1$s{이/가} 비틀거렸다...%2$.0s"
+
+# mhitm.c:751 — 몬스터 응시 공격 (gaze)
+# %1$s=buf ("X gazes at" 번역문), %2$s=mon_nam(mdef) 또는 "something"
+# buf는 이미 번역된 문장이므로 그대로 통과
+#, c-format
+msgctxt "gaze"
+msgid "%s %s..."
+msgstr "%1$s %2$s..."
+
 # ============================================================
 # 몬스터 소리 (Monster Sounds)
 # ============================================================
@@ -10294,6 +10323,17 @@ msgstr "태우"
 msgctxt "shopkeeper"
 msgid "use"
 msgstr "사용하"
+
+# ============================================================
+# C_("Tobjnam") — Tobjnam 전용 동사 분리
+# ============================================================
+
+# sit.c:605 — Tobjnam(otmp, "resist") 아티팩트 저주 저항
+# 포맷 "%s!" 에 동사가 없으므로 Tobjnam이 직접 동사 제공
+# bare "resist"="저항한다"(현재형) → "저항했다"(과거형)로 교정
+msgctxt "Tobjnam"
+msgid "resist"
+msgstr "저항했다"
 
 # ============================================================
 # C_("Yobjnam2") — Yobjnam2 전용 계사 억제
@@ -15376,10 +15416,10 @@ msgstr "%6$s %1$s{이/가} %2$s%5$s%4$s%3$s."
 #
 # [Known Issues — low priority]
 # - _("burn") transitive/intransitive 충돌
-# - mhitu.c:2570 "%s %s." 공유 msgid → C_() 필요하나 사용처 다수
-# - stagger 동사 사전형/과거형 불일치 (load/potion 문맥과 tense 충돌)
+# [해결됨] mhitu.c:2570 → C_("stun") 컨텍스트 추가
+# [해결됨] stagger 사전형→현재형 + "%s %s..." 충돌 → C_("stun")/C_("gaze") 분리
 # - potion.c:1712 aobjnam+glow saddle: 동적 Snprintf 결합 (동사 누락)
-# - "resist" sit.c 이중 사용 (Tobjnam+vtense, 단일 사용)
+# [해결됨] "resist" sit.c → C_("Tobjnam", "resist") 컨텍스트 추가
 # - "shatter" 이중 사용 (Yobjnam2+otense, 해당 포맷에 고정 동사)
 # - "flicker" 이중 사용 (Tobjnam+vtense, 해당 포맷에 ko_manual 조합)
 #

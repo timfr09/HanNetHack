@@ -748,7 +748,7 @@ gazemm(struct monst *magr, struct monst *mdef, struct attack *mattk)
         Sprintf(buf, _("%s gazes %s"),
                 altmesg ? Adjmonnam(magr, _("blinded")) : Monnam(magr),
                 altmesg ? _("toward") : _("at"));
-        pline(_("%s %s..."), buf,
+        pline(C_("gaze", "%s %s..."), buf,
               canspotmon(mdef) ? mon_nam(mdef) : _("something"));
     }
 
@@ -1415,7 +1415,7 @@ passivemm(
             if (!magr->mstun) {
                 magr->mstun = 1;
                 if (canseemon(magr))
-                    pline_mon(magr, _("%s %s..."), Monnam(magr),
+                    pline_mon(magr, C_("stun", "%s %s..."), Monnam(magr),
                           makeplural(stagger(magr->data, _("stagger"))));
             }
             tmp = 0;

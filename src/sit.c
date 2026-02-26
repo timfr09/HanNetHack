@@ -602,7 +602,7 @@ rndcurse(void)
 
             if (otmp->oartifact && spec_ability(otmp, SPFX_INTEL)
                 && rn2(10) < 8) {
-                pline(_("%s!"), Tobjnam(otmp, _("resist")));
+                pline(_("%s!"), Tobjnam(otmp, C_("Tobjnam", "resist")));
                 continue;
             }
 

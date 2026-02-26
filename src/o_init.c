@@ -723,7 +723,7 @@ disco_fmt_uniq(int uidx, char *outbuf)
        in the unique/relics section we want "papyrus spellbook" instead */
     if (!objects[uidx].oc_name_known
         && objects[uidx].oc_class == SPBOOK_CLASS)
-        Strcat(outbuf, " spellbook");
+        Strcat(outbuf, _(" spellbook"));
 }
 
 /* sort and output sorted_lines to window and free the lines */
@@ -880,10 +880,10 @@ int
 doclassdisco(void)
 {
     static NEARDATA const char
-        prompt[] = "View discoveries for which sort of objects?",
-        havent_discovered_any[] = "haven't discovered any %s yet.",
-        unique_items[] = "unique items or relics",
-        artifact_items[] = "artifacts";
+        prompt[] = N_("View discoveries for which sort of objects?"),
+        havent_discovered_any[] = N_("haven't discovered any %s yet."),
+        unique_items[] = N_("unique items or relics"),
+        artifact_items[] = N_("artifacts");
     winid tmpwin = WIN_ERR;
     menu_item *pick_list = 0;
     anything any;
@@ -935,7 +935,7 @@ doclassdisco(void)
                    synonym works but doesn't make much sense since the main
                    selector is 'a' (implicit lootabc) rather than 'u' */
                 add_menu(tmpwin, &nul_glyphinfo, &any, menulet++, 'r',
-                         ATR_NONE, clr, unique_items, MENU_ITEMFLAGS_NONE);
+                         ATR_NONE, clr, _(unique_items), MENU_ITEMFLAGS_NONE);
             }
             break;
         }
@@ -947,7 +947,7 @@ doclassdisco(void)
         if (!traditional) {
             any.a_int = 'a';
             add_menu(tmpwin, &nul_glyphinfo, &any, menulet++, 0,
-                     ATR_NONE, clr, artifact_items, MENU_ITEMFLAGS_NONE);
+                     ATR_NONE, clr, _(artifact_items), MENU_ITEMFLAGS_NONE);
         }
     }
 
@@ -1002,7 +1002,7 @@ doclassdisco(void)
             }
         }
         /* get the class (via its symbol character) */
-        c = yn_function(prompt, discosyms, '\0', TRUE);
+        c = yn_function(_(prompt), discosyms, '\0', TRUE);
         if (!c)
             clear_nhwindow(WIN_MESSAGE);
     } else {
@@ -1014,7 +1014,7 @@ doclassdisco(void)
         } else {
             /* more than one choice, or menustyle:full which normally has
                an intermediate class selection menu before the final menu */
-            end_menu(tmpwin, prompt);
+            end_menu(tmpwin, _(prompt));
             i = select_menu(tmpwin, PICK_ONE, &pick_list);
             if (i > 0) {
                 c = pick_list[0].item.a_int;
@@ -1035,7 +1035,7 @@ doclassdisco(void)
     case 'u':
     case 'r':
         putstr(tmpwin, iflags.menu_headings.attr,
-               upstart(strcpy(buf, unique_items)));
+               upstart(strcpy(buf, _(unique_items))));
         for (i = 0; i < SIZE(uniq_objs); i++) {
             uidx = uniq_objs[i];
             if (objects[uidx].oc_name_known
@@ -1047,7 +1047,7 @@ doclassdisco(void)
             }
         }
         if (!ct)
-            You(_(havent_discovered_any), unique_items);
+            You(_(havent_discovered_any), _(unique_items));
         break;
     case 'a':
         /* note: this will work all the time for menustyle traditional
@@ -1062,7 +1062,7 @@ doclassdisco(void)
         /* disp_artifact_discoveries() includes a header */
         ct = disp_artifact_discoveries(tmpwin);
         if (!ct)
-            You(_(havent_discovered_any), artifact_items);
+            You(_(havent_discovered_any), _(artifact_items));
         break;
     default:
         oclass = def_char_to_objclass(c);

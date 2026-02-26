@@ -16110,6 +16110,16 @@ msgstr "공기 정령 수플레"
 msgid "dehydrated water"
 msgstr "탈수된 물"
 
+# 업스트림 머지: o_init.c discovery 메뉴 문자열
+msgid " spellbook"
+msgstr " 마법서"
+
+msgid "View discoveries for which sort of objects?"
+msgstr "어떤 종류의 물품 발견 목록을 볼까요?"
+
+msgid "unique items or relics"
+msgstr "고유 물품"
+
 # ============================================================
 # 조합 패턴 전수 리뷰 (2026-02-22)
 # ============================================================

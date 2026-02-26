@@ -38,13 +38,13 @@
 #    - experience → 경험치
 #
 #: ../src/dokick.c:268 ../src/dokick.c:285 ../src/dokick.c:326
-#: ../src/dokick.c:337 ../src/dokick.c:1606 ../src/dothrow.c:2299
-#: ../src/dothrow.c:2625 ../src/dothrow.c:2644
+#: ../src/dokick.c:337 ../src/dokick.c:1606 ../src/dothrow.c:2300
+#: ../src/dothrow.c:2626 ../src/dothrow.c:2645
 msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-22 14:29+0900\n"
+"POT-Creation-Date: 2026-02-26 10:30+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -284,8 +284,8 @@ msgid "is"
 msgstr "이다"
 
 #: ../src/apply.c:279 ../src/apply.c:438 ../src/apply.c:1123
-#: ../src/apply.c:1350 ../src/apply.c:1360 ../src/apply.c:2647
-#: ../src/apply.c:2772 ../src/artifact.c:969 ../src/artifact.c:1429
+#: ../src/apply.c:1350 ../src/apply.c:1360 ../src/apply.c:2654
+#: ../src/apply.c:2779 ../src/artifact.c:969 ../src/artifact.c:1429
 #: ../src/artifact.c:2118 ../src/artifact.c:2191 ../src/detect.c:1224
 #: ../src/do.c:872 ../src/do.c:2412 ../src/eat.c:3697 ../src/engrave.c:829
 #: ../src/insight.c:1442 ../src/insight.c:1507 ../src/invent.c:3777
@@ -570,8 +570,8 @@ msgstr " 그리고"
 msgid "%s %s disappear"
 msgstr "%s %s{이/가} 사라진다"
 
-#: ../src/apply.c:682 ../src/apply.c:1082 ../src/apply.c:1650
-#: ../src/apply.c:2130 ../src/detect.c:999 ../src/do.c:1801
+#: ../src/apply.c:682 ../src/apply.c:1082 ../src/apply.c:1651
+#: ../src/apply.c:2137 ../src/detect.c:999 ../src/do.c:1801
 #: ../src/do_wear.c:497 ../src/do_wear.c:1164 ../src/dog.c:1206
 #: ../src/dokick.c:63 ../src/eat.c:1086 ../src/eat.c:1093 ../src/eat.c:1260
 #: ../src/eat.c:3475 ../src/explode.c:795 ../src/getpos.c:986
@@ -1037,11 +1037,11 @@ msgstr "물 속에서 불을 만들 수 없다."
 msgid "%s %s for a moment, then %s."
 msgstr "%s{이/가} 잠시 %s하다가, %s."
 
-#: ../src/apply.c:1345 ../src/apply.c:1674 ../src/artifact.c:2441
+#: ../src/apply.c:1345 ../src/apply.c:1675 ../src/artifact.c:2441
 msgid "flicker"
 msgstr "깜빡이다"
 
-#: ../src/apply.c:1346 ../src/apply.c:1675
+#: ../src/apply.c:1346 ../src/apply.c:1676
 msgctxt "light"
 msgid "die"
 msgstr ""
@@ -1056,12 +1056,12 @@ msgstr "%s에 %d개의 %s만 %s."
 msgid "%s lit.  %s dimly."
 msgstr "%s{이/가} 켜졌다. %s 희미하게."
 
-#: ../src/apply.c:1353 ../src/apply.c:3170 ../src/do_wear.c:1909
+#: ../src/apply.c:1353 ../src/apply.c:3177 ../src/do_wear.c:1909
 #: ../src/muse.c:2561 ../src/pickup.c:2099
 msgid "It is"
 msgstr "그것은"
 
-#: ../src/apply.c:1353 ../src/apply.c:3170 ../src/do_wear.c:1909
+#: ../src/apply.c:1353 ../src/apply.c:3177 ../src/do_wear.c:1909
 #: ../src/muse.c:2561
 msgid "They are"
 msgstr "그것들은"
@@ -1084,12 +1084,12 @@ msgstr "%s의 %s{이/가} 타다%s"
 # 예: hit(flash_str, mon, ".") → "The arrow hits the orc."
 # 힘의 강도에 따라 ".", "!", "?" 중 선택됨
 # ============================================================
-#: ../src/apply.c:1357 ../src/apply.c:1685 ../src/mon.c:2946 ../src/mon.c:4209
-#: ../src/mon.c:4308 ../src/zap.c:3542 ../src/zap.c:4877 ../src/zap.c:4891
+#: ../src/apply.c:1357 ../src/mon.c:2946 ../src/mon.c:4209 ../src/mon.c:4308
+#: ../src/zap.c:3542 ../src/zap.c:4877 ../src/zap.c:4891
 msgid "."
 msgstr "."
 
-#: ../src/apply.c:1357 ../src/apply.c:1685
+#: ../src/apply.c:1357
 msgid " brightly!"
 msgstr " 밝게!"
 
@@ -1171,7 +1171,7 @@ msgctxt "shopkeeper"
 msgid "use"
 msgstr ""
 
-#: ../src/apply.c:1451 ../src/apply.c:1452 ../src/apply.c:1688
+#: ../src/apply.c:1451 ../src/apply.c:1452 ../src/apply.c:1695
 #: ../src/do_name.c:749 ../src/iactions.c:360 ../src/pickup.c:1858
 #: ../src/role.c:694 ../src/shk.c:3380 ../src/shk.c:3790 ../src/shk.c:4088
 #: ../src/steal.c:792 ../src/timeout.c:1243 ../src/trap.c:5849
@@ -1179,7 +1179,7 @@ msgstr ""
 msgid "them"
 msgstr "그것들"
 
-#: ../src/apply.c:1451 ../src/apply.c:1452 ../src/apply.c:1688
+#: ../src/apply.c:1451 ../src/apply.c:1452 ../src/apply.c:1695
 #: ../src/ball.c:974 ../src/do_name.c:749 ../src/do_name.c:883
 #: ../src/eat.c:2642 ../src/eat.c:2728 ../src/eat.c:3698 ../src/iactions.c:360
 #: ../src/invent.c:3253 ../src/lock.c:495 ../src/mhitm.c:876 ../src/mon.c:3490
@@ -1237,41 +1237,34 @@ msgstr "%s{이/가} %s 나갔다!"
 msgid "go"
 msgstr "가다"
 
-# ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
-# ============================================================
-#: ../src/apply.c:1555 ../src/uhitm.c:2040
+#: ../src/apply.c:1555
 #, c-format
-msgid "%s %s%s%s."
-msgstr "%s %s%s%s."
+msgctxt "lantern"
+msgid "%s crackles and flickers."
+msgstr ""
 
-#: ../src/apply.c:1556
-msgid "crackles"
-msgstr "탁탁거리다"
+#: ../src/apply.c:1557
+#, c-format
+msgctxt "lantern"
+msgid "%s crackles."
+msgstr ""
 
-#: ../src/apply.c:1557 ../src/artifact.c:1426 ../src/detect.c:1835
-#: ../src/detect.c:1846 ../src/detect.c:1861 ../src/do_wear.c:1785
-#: ../src/do_wear.c:3318 ../src/insight.c:596 ../src/insight.c:1736
-#: ../src/insight.c:1780 ../src/invent.c:2055 ../src/invent.c:4197
-#: ../src/role.c:1612 ../src/role.c:1617 ../src/role.c:1622
-#: ../src/sounds.c:1526 ../src/trap.c:5841
-msgid " and "
-msgstr ", "
-
-#: ../src/apply.c:1558
-msgid "flickers"
-msgstr "깜빡이다"
+#: ../src/apply.c:1559
+#, c-format
+msgctxt "lantern"
+msgid "%s flickers."
+msgstr ""
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
-#: ../src/apply.c:1600 ../src/trap.c:390
+#: ../src/apply.c:1601 ../src/trap.c:390
 #, c-format
 msgctxt "subj_is_pred"
 msgid "%s %s %s"
 msgstr ""
 
-#: ../src/apply.c:1602 ../src/do.c:2459 ../src/eat.c:3495 ../src/hack.c:3703
+#: ../src/apply.c:1603 ../src/do.c:2459 ../src/eat.c:3495 ../src/hack.c:3703
 #: ../src/insight.c:984 ../src/invent.c:4123 ../src/lock.c:590
 #: ../src/lock.c:592 ../src/lock.c:852 ../src/lock.c:1014 ../src/potion.c:2666
 #: ../src/potion.c:2669 ../src/pray.c:567 ../src/pray.c:1218 ../src/read.c:1142
@@ -1280,65 +1273,65 @@ msgstr ""
 msgid "feel"
 msgstr "느껴지지 않다"
 
-#: ../src/apply.c:1602
+#: ../src/apply.c:1603
 msgid "catch"
 msgstr "잡다"
 
-#: ../src/apply.c:1603
+#: ../src/apply.c:1604
 msgid "warm."
 msgstr "따뜻하다."
 
-#: ../src/apply.c:1603
+#: ../src/apply.c:1604
 msgid "light!"
 msgstr "불이 붙다!"
 
-#: ../src/apply.c:1614
+#: ../src/apply.c:1615
 #, c-format
 msgid "That's in addition to the cost of %s %s, of course."
 msgstr "물론, 그것은 %s %s 비용에 추가된다."
 
-#: ../src/apply.c:1616 ../src/do_name.c:1229 ../src/weapon.c:914
+#: ../src/apply.c:1617 ../src/do_name.c:1229 ../src/weapon.c:914
 #: ../src/wield.c:199
 msgid "itself"
 msgstr "그 자체"
 
-#: ../src/apply.c:1616 ../src/do_name.c:1232 ../src/weapon.c:914
+#: ../src/apply.c:1617 ../src/do_name.c:1232 ../src/weapon.c:914
 #: ../src/wield.c:199
 msgid "themselves"
 msgstr "그들 자체"
 
-#: ../src/apply.c:1631 ../src/obj_descr_i18n.c:331
+#: ../src/apply.c:1632 ../src/obj_descr_i18n.c:331
 msgid "lamp"
 msgstr "램프"
 
-#: ../src/apply.c:1632 ../src/obj_descr_i18n.c:332
+#: ../src/apply.c:1633 ../src/obj_descr_i18n.c:332
 msgid "lantern"
 msgstr "랜턴"
 
-#: ../src/apply.c:1643
+#: ../src/apply.c:1644
 #, c-format
 msgid "%s%s is now off."
 msgstr "%s%s{이/가} 이제 꺼졌다."
 
-#: ../src/apply.c:1645
+#: ../src/apply.c:1646
 #, c-format
 msgid "snuff out %s."
 msgstr "%s{을/를} 껐다."
 
-#: ../src/apply.c:1651
+#: ../src/apply.c:1652
 msgid "This is not a diving lamp"
 msgstr "이것은 잠수용 램프가 아니다"
 
-#: ../src/apply.c:1652
+#: ../src/apply.c:1653
 msgid "Sorry, fire and water don't mix"
 msgstr "미안하지만, 불과 물은 섞이지 않는다"
 
-#: ../src/apply.c:1660
+#: ../src/apply.c:1661
 msgid "lantern is out of power."
 msgstr "랜턴의 전원이 다 됐다."
 
-#: ../src/apply.c:1662 ../src/apply.c:1677 ../src/apply.c:2298
-#: ../src/apply.c:2386 ../src/apply.c:3657 ../src/apply.c:3676
+#: ../src/apply.c:1663 ../src/apply.c:1678 ../src/apply.c:2305
+#: ../src/apply.c:2393 ../src/apply.c:3664 ../src/apply.c:3683
 #: ../src/artifact.c:2068 ../src/do.c:2029 ../src/engrave.c:1246
 #: ../src/hack.c:4079 ../src/nhlua.c:639 ../src/nhlua.c:655 ../src/pager.c:2697
 #: ../src/pline.c:677 ../src/potion.c:208 ../src/potion.c:235
@@ -1349,121 +1342,125 @@ msgstr "랜턴의 전원이 다 됐다."
 msgid "%s"
 msgstr "%s"
 
-#: ../src/apply.c:1664
+#: ../src/apply.c:1665
 #, c-format
 msgid "This %s has no oil."
 msgstr "이 %s{에는} 기름이 없다."
 
-#: ../src/apply.c:1670
+#: ../src/apply.c:1671
 #, c-format
 msgid "lamp spills and covers your %s with oil."
 msgstr "램프가 쏟아져 %s{을/를} 기름으로 덮었다."
 
-#: ../src/apply.c:1674
+#: ../src/apply.c:1675
 #, c-format
 msgid "%s for a moment, then %s."
 msgstr "잠시 %s하다가, %s."
 
-#: ../src/apply.c:1682
+#: ../src/apply.c:1683
 #, c-format
 msgid "%s%s is now on."
 msgstr "%s%s{이/가} 이제 켜졌다."
 
-# ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
-# ============================================================
-#: ../src/apply.c:1684
+#: ../src/apply.c:1686
 #, c-format
-msgid "%s flame%s %s%s"
-msgstr "%s 불꽃%s %s%s"
+msgctxt "candle"
+msgid "%s flame%s %s."
+msgstr ""
 
-#: ../src/apply.c:1685 ../src/mkobj.c:747 ../src/pickup.c:3639
-#: ../src/trap.c:4532
+#: ../src/apply.c:1688 ../src/apply.c:1692 ../src/mkobj.c:747
+#: ../src/pickup.c:3639 ../src/trap.c:4532
 msgid "burn"
 msgstr "타다"
 
-#: ../src/apply.c:1693
+#: ../src/apply.c:1690
+#, c-format
+msgctxt "candle"
+msgid "%s flame%s %s brightly!"
+msgstr ""
+
+#: ../src/apply.c:1700
 #, c-format
 msgid "You burn %s, you bought %s!"
 msgstr "%s{을/를} 태우면, %s{을/를} 산 것이다!"
 
-#: ../src/apply.c:1714
+#: ../src/apply.c:1721
 msgid "snuff the lit potion."
 msgstr "켜진 물약을 끈다."
 
-#: ../src/apply.c:1729
+#: ../src/apply.c:1736
 msgid "is not enough oxygen to sustain a fire."
 msgstr "불을 유지할 산소가 충분하지 않다."
 
-#: ../src/apply.c:1737
+#: ../src/apply.c:1744
 #, c-format
 msgid "light %spotion.%s"
 msgstr "%s물약을 켰다.%s"
 
-#: ../src/apply.c:1738
+#: ../src/apply.c:1745
 msgid "  It gives off a dim light."
 msgstr "  희미한 빛을 낸다."
 
-#: ../src/apply.c:1749
+#: ../src/apply.c:1756
 msgid "That's in addition to the cost of the potion, of course."
 msgstr "물론, 그것은 물약 비용에 추가된다."
 
-#: ../src/apply.c:1758 ../src/apply.c:3230 ../src/pickup.c:2460
+#: ../src/apply.c:1765 ../src/apply.c:3237 ../src/pickup.c:2460
 #: ../src/potion.c:2589
 #, c-format
 msgid "You drop %s!"
 msgstr "%s{을/를} 떨어뜨렸다!"
 
-#: ../src/apply.c:1789
+#: ../src/apply.c:1796
 msgid "aren't able to rub anything without hands."
 msgstr "손 없이는 아무것도 문지를 수 없다."
 
-#: ../src/apply.c:1801 ../src/apply.c:4418
+#: ../src/apply.c:1808 ../src/apply.c:4425
 msgid "Sorry, I don't know how to use that."
 msgstr "미안, 그것을 사용하는 방법을 모르겠다."
 
-#: ../src/apply.c:1832
+#: ../src/apply.c:1839
 #, c-format
 msgid "%s smoke."
 msgstr "%s 연기."
 
-#: ../src/apply.c:1832
+#: ../src/apply.c:1839
 msgid "see a puff of"
 msgstr "연기가 피어오르는 것을 보았다"
 
-#: ../src/apply.c:1832 ../src/detect.c:543 ../src/do.c:2003 ../src/eat.c:2641
+#: ../src/apply.c:1839 ../src/detect.c:543 ../src/do.c:2003 ../src/eat.c:2641
 msgid "smell"
 msgstr "냄새가 난다"
 
-#: ../src/apply.c:1837
+#: ../src/apply.c:1844
 msgid "Rubbing the electric lamp is not particularly rewarding."
 msgstr "전기 램프를 문지르는 것은 특별히 보람이 없다."
 
-#: ../src/apply.c:1838
+#: ../src/apply.c:1845
 msgid "Anyway, nothing exciting happens."
 msgstr "어쨌든, 흥미로운 일이 일어나지 않았다."
 
-#: ../src/apply.c:1899
+#: ../src/apply.c:1906
 msgid "Illegal move!"
 msgstr "불법 이동!"
 
-#: ../src/apply.c:1903 ../src/apply.c:3474 ../src/apply.c:3766
+#: ../src/apply.c:1910 ../src/apply.c:3481 ../src/apply.c:3773
 msgid "Too far!"
 msgstr "너무 멀다!"
 
-#: ../src/apply.c:1907
+#: ../src/apply.c:1914
 msgid "cannot jump there!"
 msgstr "거기로 점프할 수 없다!"
 
-#: ../src/apply.c:1911
+#: ../src/apply.c:1918
 msgid "cannot see where to land!"
 msgstr "착지할 곳을 볼 수 없다!"
 
-#: ../src/apply.c:1943
+#: ../src/apply.c:1950
 msgid "jump diagonally out of a doorway."
 msgstr "문틀에서 대각선으로 점프할 수 없다."
 
-#: ../src/apply.c:1950
+#: ../src/apply.c:1957
 msgid "is an obstacle preventing that jump."
 msgstr "점프를 막는 장애물이 있다."
 
@@ -1471,222 +1468,222 @@ msgstr "점프를 막는 장애물이 있다."
 # 아이템 메시지 (Item Messages)
 # ============================================================
 #
-#: ../src/apply.c:1998
+#: ../src/apply.c:2005
 msgid "jump; you have no legs!"
 msgstr "다리가 없어서 뛸 수 없다!"
 
-#: ../src/apply.c:2001
+#: ../src/apply.c:2008
 msgid "jump very far."
 msgstr "매우 멀리 점프할 수 없다."
 
-#: ../src/apply.c:2010
+#: ../src/apply.c:2017
 msgid "bounce around a little."
 msgstr "약간 튕긴다."
 
-#: ../src/apply.c:2013
+#: ../src/apply.c:2020
 msgid "You've got to be kidding!"
 msgstr "농담이겠지!"
 
-#: ../src/apply.c:2017
+#: ../src/apply.c:2024
 msgid "swish around a little."
 msgstr "약간 휙휙거린다."
 
-#: ../src/apply.c:2020
+#: ../src/apply.c:2027
 msgid "This calls for swimming, not jumping!"
 msgstr "점프가 아니라 수영이 필요하다!"
 
-#: ../src/apply.c:2027 ../src/hack.c:2685
+#: ../src/apply.c:2034 ../src/hack.c:2685
 #, c-format
 msgid "pull free from %s."
 msgstr "%s에서 빠져나왔다."
 
-#: ../src/apply.c:2031
+#: ../src/apply.c:2038
 #, c-format
 msgid "writhe a little in the grasp of %s!"
 msgstr "%s의 손아귀에서 약간 몸부림친다!"
 
-#: ../src/apply.c:2034 ../src/hack.c:2674
+#: ../src/apply.c:2041 ../src/hack.c:2674
 #, c-format
 msgid "cannot escape from %s!"
 msgstr "%s에서 탈출할 수 없다!"
 
-#: ../src/apply.c:2038
+#: ../src/apply.c:2045
 msgid "flail around a little."
 msgstr "약간 휘둘러댄다."
 
-#: ../src/apply.c:2041
+#: ../src/apply.c:2048
 msgid "don't have enough traction to jump."
 msgstr "점프할 충분한 견인력이 없다."
 
-#: ../src/apply.c:2044
+#: ../src/apply.c:2051
 msgid "are carrying too much to jump!"
 msgstr "너무 많이 들고 있어서 점프할 수 없다!"
 
-#: ../src/apply.c:2047
+#: ../src/apply.c:2054
 msgid "lack the strength to jump!"
 msgstr "점프할 힘이 부족하다!"
 
-#: ../src/apply.c:2053
+#: ../src/apply.c:2060
 #, c-format
 msgid "%s is stuck in a trap."
 msgstr "%s{이/가} 함정에 갇혀있다."
 
 #
-#: ../src/apply.c:2057
+#: ../src/apply.c:2064
 msgid "Where do you want to jump?"
 msgstr "어디로 뛰겠습니까?"
 
 # Item type names (note: "potion" is already defined elsewhere)
-#: ../src/apply.c:2062 ../src/read.c:1850 ../src/read.c:3041
+#: ../src/apply.c:2069 ../src/read.c:1850 ../src/read.c:3041
 #: ../src/spell.c:1663 ../src/teleport.c:882
 msgid "the desired position"
 msgstr " 물약"
 
-#: ../src/apply.c:2067
+#: ../src/apply.c:2074
 #, c-format
 msgid "%s isn't capable of jumping in place."
 msgstr "%s{은/는} 제자리 점프를 할 수 없다."
 
-#: ../src/apply.c:2080
+#: ../src/apply.c:2087
 msgid "rip yourself free of the bear trap!  Ouch!"
 msgstr "곰 덫에서 찢어져 나왔다! 아야!"
 
-#: ../src/apply.c:2081
+#: ../src/apply.c:2088
 msgid "jumping out of a bear trap"
 msgstr "곰 덫에서 뛰어나오는 중"
 
-#: ../src/apply.c:2086
+#: ../src/apply.c:2093
 msgid "leap from the pit!"
 msgstr "구덩이에서 뛰어올랐다!"
 
-#: ../src/apply.c:2089
+#: ../src/apply.c:2096
 msgid "tear the web apart as you pull yourself free!"
 msgstr "빠져나오면서 거미줄을 찢었다!"
 
-#: ../src/apply.c:2093
+#: ../src/apply.c:2100
 #, c-format
 msgid "pull yourself above the %s!"
 msgstr "%s 위로 끌어올렸다!"
 
-#: ../src/apply.c:2098
+#: ../src/apply.c:2105
 #, c-format
 msgid "strain your %s, but you're still %s."
 msgstr "%s{을/를} 무리하지만, 여전히 %s."
 
-#: ../src/apply.c:2101
+#: ../src/apply.c:2108
 msgid "stuck in the floor"
 msgstr "바닥에 박혀 있다"
 
-#: ../src/apply.c:2102
+#: ../src/apply.c:2109
 msgid "attached to the buried ball"
 msgstr "묻힌 공에 연결되어 있다"
 
-#: ../src/apply.c:2125
+#: ../src/apply.c:2132
 #, c-format
 msgid "jump up and %s back down."
 msgstr "위로 뛰어올랐다가 %s 다시 내려온다."
 
-#: ../src/apply.c:2125 ../src/dokick.c:634
+#: ../src/apply.c:2132 ../src/dokick.c:634
 msgid "come"
 msgstr "오다"
 
-#: ../src/apply.c:2125 ../src/hack.c:1812 ../src/mondata.c:1368
+#: ../src/apply.c:2132 ../src/hack.c:1812 ../src/mondata.c:1368
 #: ../src/mondata.c:1369 ../src/trap.c:706
 msgid "fly"
 msgstr "날다"
 
-#: ../src/apply.c:2130
+#: ../src/apply.c:2137
 msgid "hop up and down a bit"
 msgstr "조금 껑충껑충 뛰다"
 
-#: ../src/apply.c:2131
+#: ../src/apply.c:2138
 msgid "decide not to jump after all"
 msgstr "결국 점프하지 않기로 결정했다"
 
-#: ../src/apply.c:2158
+#: ../src/apply.c:2165
 msgid "jumping around"
 msgstr "뛰어다니는 중"
 
-#: ../src/apply.c:2185
+#: ../src/apply.c:2192
 msgid "seem to be out of tins."
 msgstr "깡통이 다 떨어진 것 같다."
 
-#: ../src/apply.c:2191
+#: ../src/apply.c:2198
 #, c-format
 msgid "cannot tin %s which is partly eaten."
 msgstr "부분적으로 먹은 %s{을/를} 깡통에 담을 수 없다."
 
-#: ../src/apply.c:2200
+#: ../src/apply.c:2207
 #, c-format
 msgid "tin %s without wearing gloves."
 msgstr "장갑을 끼지 않고 %s{을/를} 깡통에 담는다."
 
-#: ../src/apply.c:2203
+#: ../src/apply.c:2210
 #, c-format
 msgid "Tinning %s without wearing gloves is a fatal mistake..."
 msgstr "장갑 없이 %s{을/를} 깡통에 담는 것은 치명적인 실수다..."
 
-#: ../src/apply.c:2205
+#: ../src/apply.c:2212
 #, c-format
 msgid "trying to tin %s without gloves"
 msgstr "장갑 없이 %s{을/를} 통조림으로 만들려 함"
 
-#: ../src/apply.c:2211
+#: ../src/apply.c:2218
 msgid "Yes...  But War does not preserve its enemies..."
 msgstr "그래... 하지만 전쟁은 적을 보존하지 않는다..."
 
-#: ../src/apply.c:2213
+#: ../src/apply.c:2220
 msgid "corpse evades your grasp."
 msgstr "시체가 손아귀를 피한다."
 
-#: ../src/apply.c:2217
+#: ../src/apply.c:2224
 msgid "That's too insubstantial to tin."
 msgstr "그것은 깡통에 담기에 너무 비실체적이다."
 
-#: ../src/apply.c:2223
+#: ../src/apply.c:2230
 msgid "You tin it, you bought it!"
 msgstr "통조림으로 만들었으니, 산 거야!"
 
-#: ../src/apply.c:2251
+#: ../src/apply.c:2258
 #, c-format
 msgid "You make, but cannot pick up, %s."
 msgstr "당신은 %s{을/를} 만들었지만, 집을 수 없다."
 
-#: ../src/apply.c:2279
+#: ../src/apply.c:2286
 #, c-format
 msgid "suddenly feel %s."
 msgstr "갑자기 %s{을/를} 느낀다."
 
-#: ../src/apply.c:2280 ../src/mcastu.c:846 ../src/potion.c:99
+#: ../src/apply.c:2287 ../src/mcastu.c:846 ../src/potion.c:99
 msgid "trippy"
 msgstr "환각적인"
 
 #
-#: ../src/apply.c:2280 ../src/artifact.c:1428 ../src/mhitu.c:1664
+#: ../src/apply.c:2287 ../src/artifact.c:1428 ../src/mhitu.c:1664
 #: ../src/potion.c:99 ../src/timeout.c:38
 msgid "confused"
 msgstr "혼란스러운"
 
-#: ../src/apply.c:2438
+#: ../src/apply.c:2445
 #, c-format
 msgid " and %s under %s"
 msgstr " 그리고 %s 아래로 %s"
 
-#: ../src/apply.c:2439 ../src/mondata.c:1377 ../src/options.c:236
+#: ../src/apply.c:2446 ../src/mondata.c:1377 ../src/options.c:236
 #: ../src/trap.c:4142
 msgid "crawl"
 msgstr "기어가다"
 
-#: ../src/apply.c:2444
+#: ../src/apply.c:2451
 msgid " and vanish"
 msgstr " 그리고 사라진다"
 
-#: ../src/apply.c:2450 ../src/timeout.c:1114
+#: ../src/apply.c:2457 ../src/timeout.c:1114
 #, c-format
 msgid "%s %s from your pack!"
 msgstr "%s{이/가} 배낭에서 %s!"
 
-#: ../src/apply.c:2451 ../src/apply.c:2454 ../src/apply.c:2483 ../src/do.c:829
+#: ../src/apply.c:2458 ../src/apply.c:2461 ../src/apply.c:2490 ../src/do.c:829
 #: ../src/mkobj.c:2925 ../src/mthrowu.c:797 ../src/mthrowu.c:935
 #: ../src/obj_descr_i18n.c:412 ../src/pickup.c:3798 ../src/polyself.c:1305
 #: ../src/pray.c:799 ../src/timeout.c:1115 ../src/timeout.c:1118
@@ -1695,255 +1692,255 @@ msgstr "%s{이/가} 배낭에서 %s!"
 msgid "drop"
 msgstr "버릴"
 
-#: ../src/apply.c:2453
+#: ../src/apply.c:2460
 #, c-format
 msgid "%s %s out of your pack%s!"
 msgstr "%s{이} 가방에서 %s%s!"
 
-#: ../src/apply.c:2461
+#: ../src/apply.c:2468
 #, c-format
 msgid "%s suddenly vanishes!"
 msgstr "%s{이/가} 갑자기 사라졌다!"
 
-#: ../src/apply.c:2463
+#: ../src/apply.c:2470
 #, c-format
 msgid "a figurine transform into %s%s!"
 msgstr "조각상이 %s%s{으로/로} 변하는 것을!"
 
-#: ../src/apply.c:2477 ../src/timeout.c:1145
+#: ../src/apply.c:2484 ../src/timeout.c:1145
 #, c-format
 msgid "%s pack"
 msgstr "%s 가방"
 
 # Item states
-#: ../src/apply.c:2479 ../src/mcastu.c:252 ../src/mhitu.c:227
+#: ../src/apply.c:2486 ../src/mcastu.c:252 ../src/mhitu.c:227
 #: ../src/mhitu.c:1602 ../src/timeout.c:1149
 msgid "empty water"
 msgstr "빈 물 속"
 
-#: ../src/apply.c:2481 ../src/engrave.c:526 ../src/hack.c:2314
+#: ../src/apply.c:2488 ../src/engrave.c:526 ../src/hack.c:2314
 #: ../src/mcastu.c:253 ../src/mhitu.c:228 ../src/mhitu.c:1603
 #: ../src/timeout.c:1151
 msgid "thin air"
 msgstr "허공"
 
-#: ../src/apply.c:2482
+#: ../src/apply.c:2489
 #, c-format
 msgid "%s %s out of %s%s!"
 msgstr "%s{이} %s에서 %s%s!"
 
-#: ../src/apply.c:2516
+#: ../src/apply.c:2523
 msgid "don't have enough room in here."
 msgstr "여기에 충분한 공간이 없다."
 
-#: ../src/apply.c:2523
+#: ../src/apply.c:2530
 msgid "cannot put the figurine there."
 msgstr "거기에 조각상을 놓을 수 없다."
 
-#: ../src/apply.c:2529
+#: ../src/apply.c:2536
 #, c-format
 msgid "cannot place a figurine in %s!"
 msgstr "%s에 조각상을 놓을 수 없다!"
 
-#: ../src/apply.c:2530 ../src/hack.c:711
+#: ../src/apply.c:2537 ../src/hack.c:711
 msgid "a tree"
 msgstr "나무"
 
-#: ../src/apply.c:2530
+#: ../src/apply.c:2537
 msgid "solid rock"
 msgstr "단단한 바위"
 
 #
-#: ../src/apply.c:2536
+#: ../src/apply.c:2543
 msgid "cannot fit the figurine on the boulder."
 msgstr "바위 위에 조각상을 놓을 수 없다."
 
-#: ../src/apply.c:2565
+#: ../src/apply.c:2572
 #, c-format
 msgid "%s and it %stransforms."
 msgstr "%s하고 %s변신한다."
 
-#: ../src/apply.c:2566
+#: ../src/apply.c:2573
 msgid "set the figurine beside you"
 msgstr "조각상을 옆에 놓았다"
 
-#: ../src/apply.c:2569
+#: ../src/apply.c:2576
 msgid "release the figurine"
 msgstr "조각상을 놓아주다"
 
 #
-#: ../src/apply.c:2570
+#: ../src/apply.c:2577
 msgid "toss the figurine into the air"
 msgstr "조각상을 공중에 던지다"
 
 #
-#: ../src/apply.c:2571
+#: ../src/apply.c:2578
 msgid "set the figurine on the ground"
 msgstr "조각상을 땅에 놓다"
 
-#: ../src/apply.c:2572
+#: ../src/apply.c:2579
 msgid "supposedly "
 msgstr "아마도 "
 
-#: ../src/apply.c:2608 ../src/apply.c:2620 ../src/write.c:92
+#: ../src/apply.c:2615 ../src/apply.c:2627 ../src/write.c:92
 #, c-format
 msgid "%s from your %s."
 msgstr "%s{이/가} %s에서."
 
-#: ../src/apply.c:2608 ../src/apply.c:2620 ../src/do_wear.c:2578
-#: ../src/do_wear.c:2616 ../src/dothrow.c:1537 ../src/mkobj.c:2904
+#: ../src/apply.c:2615 ../src/apply.c:2627 ../src/do_wear.c:2578
+#: ../src/do_wear.c:2616 ../src/dothrow.c:1538 ../src/mkobj.c:2904
 #: ../src/mthrowu.c:622 ../src/timeout.c:1274 ../src/wield.c:805
 #: ../src/write.c:92 ../src/write.c:382 ../src/zap.c:6296
 msgid "slip"
 msgstr "미끄러지다"
 
-#: ../src/apply.c:2628 ../src/obj_descr_i18n.c:414
+#: ../src/apply.c:2635 ../src/obj_descr_i18n.c:414
 msgid "grease"
 msgstr "기름칠할"
 
-#: ../src/apply.c:2634
+#: ../src/apply.c:2641
 #, c-format
 msgid "cover %s with a thick layer of grease."
 msgstr "%s{을/를} 두꺼운 기름 층으로 덮었다."
 
-#: ../src/apply.c:2638
+#: ../src/apply.c:2645
 #, c-format
 msgid "Some of the grease gets all over your %s."
 msgstr "기름 일부가 %s 전체에 묻었다."
 
-#: ../src/apply.c:2643
+#: ../src/apply.c:2650
 #, c-format
 msgid "coat your %s with grease."
 msgstr "%s{을/를} 기름으로 발랐다."
 
-#: ../src/apply.c:2647 ../src/zap.c:2238
+#: ../src/apply.c:2654 ../src/zap.c:2238
 #, c-format
 msgid "%s empty."
 msgstr "%s{이/가} 비었다."
 
-#: ../src/apply.c:2649
+#: ../src/apply.c:2656
 #, c-format
 msgid "%s to be empty."
 msgstr "%s{이/가} 비어있는 것 같다."
 
-#: ../src/apply.c:2650 ../src/uhitm.c:3641 ../src/uhitm.c:6183
+#: ../src/apply.c:2657 ../src/uhitm.c:3641 ../src/uhitm.c:6183
 msgctxt "Tobjnam"
 msgid "seem"
 msgstr ""
 
-#: ../src/apply.c:2682
+#: ../src/apply.c:2689
 msgid "\"scritch, scritch\""
 msgstr "\"삐걱, 삐걱\""
 
-#: ../src/apply.c:2695
+#: ../src/apply.c:2702
 #, c-format
 msgid "rub on the stone%s"
 msgstr "시금석%s에 문지르다"
 
-#: ../src/apply.c:2703
+#: ../src/apply.c:2710
 #, c-format
 msgid "rub %s on itself."
 msgstr "%s{을/를} 자체에 문지른다."
 
-#: ../src/apply.c:2711
+#: ../src/apply.c:2718
 msgid "something shatter."
 msgstr "무언가 부서진다."
 
-#: ../src/apply.c:2713
+#: ../src/apply.c:2720
 msgid "Oh, wow, look at the pretty shards."
 msgstr "오, 와, 예쁜 파편을 봐."
 
-#: ../src/apply.c:2715
+#: ../src/apply.c:2722
 #, c-format
 msgid "A sharp crack shatters %s%s."
 msgstr "날카로운 갈라짐이 %s%s{을/를} 부순다."
 
-#: ../src/apply.c:2716 ../src/apply.c:3583 ../src/fountain.c:740
+#: ../src/apply.c:2723 ../src/apply.c:3590 ../src/fountain.c:740
 #: ../src/mhitu.c:139 ../src/potion.c:2532 ../src/uhitm.c:904 ../src/zap.c:1037
 msgid "one of "
 msgstr "하나의 "
 
 #
-#: ../src/apply.c:2725
+#: ../src/apply.c:2732
 msgid "Oh wow, man: Fractals!"
 msgstr "와, 프랙탈이다!"
 
-#: ../src/apply.c:2765
+#: ../src/apply.c:2772
 #, c-format
 msgid "%s a little more polished now."
 msgstr "%s{이/가} 이제 조금 더 광택이 난다."
 
-#: ../src/apply.c:2766
+#: ../src/apply.c:2773
 msgctxt "Tobjnam"
 msgid "look"
 msgstr ""
 
-#: ../src/apply.c:2770
+#: ../src/apply.c:2777
 msgid "must think this is a wetstone, do you?"
 msgstr "이게 숫돌이라고 생각하는 거야?"
 
-#: ../src/apply.c:2772
+#: ../src/apply.c:2779
 #, c-format
 msgid "%s a little wetter now."
 msgstr "%s{이/가} 이제 조금 더 젖었다."
 
-#: ../src/apply.c:2801
+#: ../src/apply.c:2808
 #, c-format
 msgid "stone%s"
 msgstr "돌%s"
 
-#: ../src/apply.c:2803
+#: ../src/apply.c:2810
 #, c-format
 msgid "make %s%sscratch marks on the %s."
 msgstr "%s에 %s%s긁힌 자국을 냈다."
 
-#: ../src/apply.c:2807
+#: ../src/apply.c:2814
 #, c-format
 msgid "%s streaks on the %s."
 msgstr "%s 줄무늬가 %s에 있는 것을."
 
-#: ../src/apply.c:2828
+#: ../src/apply.c:2835
 msgid "setting the trap"
 msgstr "함정을 설치하는 중"
 
-#: ../src/apply.c:2831
+#: ../src/apply.c:2838
 msgid "without hands"
 msgstr "손이 없이"
 
-#: ../src/apply.c:2833
+#: ../src/apply.c:2840
 msgid "while stunned"
 msgstr "기절한 상태에서"
 
-#: ../src/apply.c:2835
+#: ../src/apply.c:2842
 msgid "while swallowed"
 msgstr "삼킨 상태에서"
 
-#: ../src/apply.c:2835
+#: ../src/apply.c:2842
 msgid "while engulfed"
 msgstr "삼켜진 상태에서"
 
 # Barbarian ranks
-#: ../src/apply.c:2837 ../src/insight.c:1004
+#: ../src/apply.c:2844 ../src/insight.c:1004
 msgid "underwater"
 msgstr "물 속에서"
 
-#: ../src/apply.c:2839
+#: ../src/apply.c:2846
 msgid "while levitating"
 msgstr "부유 중에"
 
-#: ../src/apply.c:2841 ../src/insight.c:1006
+#: ../src/apply.c:2848 ../src/insight.c:1006
 msgid "in water"
 msgstr "물 속에서"
 
-#: ../src/apply.c:2843
+#: ../src/apply.c:2850
 msgid "in lava"
 msgstr "용암 속에서"
 
-#: ../src/apply.c:2846
+#: ../src/apply.c:2853
 msgid "on the ladder"
 msgstr "사다리 위에서"
 
-#: ../src/apply.c:2846
+#: ../src/apply.c:2853
 msgid "on the stairs"
 msgstr "계단 위에서"
 
@@ -1951,109 +1948,109 @@ msgstr "계단 위에서"
 # UI 메시지 (invent.c - "here" 관련)
 # ============================================================
 # %1$s = "is"/"are", %2$s = object name
-#: ../src/apply.c:2849 ../src/getpos.c:563 ../src/invent.c:5536
+#: ../src/apply.c:2856 ../src/getpos.c:563 ../src/invent.c:5536
 #: ../src/lock.c:438 ../src/pickup.c:238 ../src/pickup.c:1688
 #: ../src/pickup.c:2339 ../src/teleport.c:1302 ../src/teleport.c:1411
 #: ../src/trap.c:5848
 msgid "here"
 msgstr "여기"
 
-#: ../src/apply.c:2852
+#: ../src/apply.c:2859
 msgid "in midair"
 msgstr "공중에서"
 
-#: ../src/apply.c:2854
+#: ../src/apply.c:2861
 msgid "in a cloud"
 msgstr "구름 속에서"
 
 # sit.c messages
-#: ../src/apply.c:2855
+#: ../src/apply.c:2862
 msgid "in this place"
 msgstr "이 장소에서"
 
-#: ../src/apply.c:2857
+#: ../src/apply.c:2864
 #, c-format
 msgid "set a trap %s!"
 msgstr "%s 함정을 설치했다!"
 
-#: ../src/apply.c:2863
+#: ../src/apply.c:2870
 #, c-format
 msgid "resume setting %s%s."
 msgstr "%s%s 설치를 재개한다."
 
-#: ../src/apply.c:2887
+#: ../src/apply.c:2894
 #, c-format
 msgid "aren't very skilled at reaching from %s."
 msgstr "%s에서 닿는 것에 능숙하지 않다."
 
-#: ../src/apply.c:2888
+#: ../src/apply.c:2895
 #, c-format
 msgid "Continue your attempt to set %s?"
 msgstr "%s 설치 시도를 계속하시겠습니까?"
 
-#: ../src/apply.c:2899
+#: ../src/apply.c:2906
 #, c-format
 msgid "drop %s!"
 msgstr "%s{을/를} 떨어뜨렸다!"
 
-#: ../src/apply.c:2909
+#: ../src/apply.c:2916
 #, c-format
 msgid "begin setting %s%s."
 msgstr "%s%s{을/를} 설치하기 시작했다."
 
-#: ../src/apply.c:2941
+#: ../src/apply.c:2948
 #, c-format
 msgid "finish arming %s."
 msgstr "%s 설치를 완료했다."
 
-#: ../src/apply.c:2948
+#: ../src/apply.c:2955
 msgid "trap setting attempt fails."
 msgstr "함정 설치 시도가 실패했다."
 
-#: ../src/apply.c:2962
+#: ../src/apply.c:2969
 msgid "The bullwhip slips free."
 msgstr "채찍이 빠졌다."
 
-#: ../src/apply.c:2963
+#: ../src/apply.c:2970
 msgid "Snap!"
 msgstr "찰칵!"
 
-#: ../src/apply.c:2985
+#: ../src/apply.c:2992
 msgid "miss."
 msgstr "빗나갔다."
 
-#: ../src/apply.c:3007
+#: ../src/apply.c:3014
 msgid "is not enough room to flick your bullwhip."
 msgstr "채찍을 휘두를 공간이 충분하지 않다."
 
-#: ../src/apply.c:3010
+#: ../src/apply.c:3017
 msgid "is too much resistance to flick your bullwhip."
 msgstr "채찍을 휘두르기엔 저항이 너무 크다."
 
-#: ../src/apply.c:3013
+#: ../src/apply.c:3020
 #, c-format
 msgid "flick a bug off of the %s."
 msgstr "%s에서 벌레를 털어냈다."
 
-#: ../src/apply.c:3017 ../src/apply.c:3033
+#: ../src/apply.c:3024 ../src/apply.c:3040
 msgid "cause a small splash."
 msgstr "작은 물보라를 일으켰다."
 
-#: ../src/apply.c:3026
+#: ../src/apply.c:3033
 #, c-format
 msgid "whip %s!"
 msgstr "%s{을/를} 채찍질했다!"
 
-#: ../src/apply.c:3047
+#: ../src/apply.c:3054
 msgid "Why beat a dead horse?"
 msgstr "왜 죽은 말을 때리는가?"
 
-#: ../src/apply.c:3051
+#: ../src/apply.c:3058
 #, c-format
 msgid "wrap your bullwhip around %s on the %s."
 msgstr "%s 위의 %s{을/를} 채찍으로 감았다."
 
-#: ../src/apply.c:3061
+#: ../src/apply.c:3068
 #, c-format
 msgid "hit your %s with your bullwhip."
 msgstr "채찍으로 %s{을/를} 때렸다."
@@ -2061,67 +2058,67 @@ msgstr "채찍으로 %s{을/를} 때렸다."
 # %1$s = uhim() (him/her/your), %2$s = uhis() (his/her/your)
 # 예: "killed yourself with your bullwhip"
 # 한국어에서는 성별 구분 없이 "자신의 채찍으로"로 번역
-#: ../src/apply.c:3062
+#: ../src/apply.c:3069
 #, c-format
 msgid "killed %sself with %s bullwhip"
 msgstr "자신의 채찍으로 스스로를 죽였다%1$.0s%2$.0s"
 
-#: ../src/apply.c:3067
+#: ../src/apply.c:3074
 #, c-format
 msgid "bullwhip slips out of your %s."
 msgstr "채찍이 %s에서 미끄러져 나갔다."
 
-#: ../src/apply.c:3090 ../src/hack.c:710
+#: ../src/apply.c:3097 ../src/hack.c:710
 msgid "a boulder"
 msgstr "바위"
 
-#: ../src/apply.c:3110 ../src/apply.c:3167
+#: ../src/apply.c:3117 ../src/apply.c:3174
 #, c-format
 msgid "wrap your bullwhip around %s."
 msgstr "%s{을/를} 채찍으로 감았다."
 
-#: ../src/apply.c:3113
+#: ../src/apply.c:3120
 msgid "yank yourself out of the pit!"
 msgstr "구덩이에서 스스로를 끌어냈다!"
 
-#: ../src/apply.c:3140
+#: ../src/apply.c:3147
 #, c-format
 msgid "%s is there that you %s."
 msgstr "%s{이/가} 거기에 있어서 당신이 %s."
 
-#: ../src/apply.c:3141
+#: ../src/apply.c:3148
 msgid "A monster"
 msgstr "괴물이"
 
-#: ../src/apply.c:3142
+#: ../src/apply.c:3149
 msgid "couldn't see"
 msgstr "볼 수 없었던"
 
-#: ../src/apply.c:3142
+#: ../src/apply.c:3149
 msgid "hadn't noticed"
 msgstr "눈치채지 못했던"
 
-#: ../src/apply.c:3169
+#: ../src/apply.c:3176
 #, c-format
 msgid "%s welded to %s %s%c"
 msgstr "%s{이/가} %s %s에 붙어있다%c"
 
-#: ../src/apply.c:3183
+#: ../src/apply.c:3190
 #, c-format
 msgid "yank %s to the %s!"
 msgstr "%s{을/를} %s{으로/로} 끌어당겼다!"
 
-#: ../src/apply.c:3200
+#: ../src/apply.c:3207
 #, c-format
 msgid "%s hits you as you try to snatch it!"
 msgstr "%s{을/를} 낚아채려다 맞았다!"
 
-#: ../src/apply.c:3209
+#: ../src/apply.c:3216
 #, c-format
 msgid "snatch %s!"
 msgstr "%s{을/를} 낚아챘다!"
 
-#: ../src/apply.c:3219
+#: ../src/apply.c:3226
 #, c-format
 msgid "Snatching %s is a fatal mistake."
 msgstr "%s{을/를} 낚아채는 것은 치명적인 실수다."
@@ -2129,400 +2126,400 @@ msgstr "%s{을/를} 낚아채는 것은 치명적인 실수다."
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
-#: ../src/apply.c:3235
+#: ../src/apply.c:3242
 #, c-format
 msgid "yank %s from %s %s!"
 msgstr "%s{을/를} %s의 %s에서 잡아당겼다!"
 
-#: ../src/apply.c:3253
+#: ../src/apply.c:3260
 #, c-format
 msgid "flick your bullwhip towards %s."
 msgstr "%s{을/를} 향해 채찍을 휘둘렀다."
 
-#: ../src/apply.c:3265
+#: ../src/apply.c:3272
 msgid "snap your whip through thin air."
 msgstr "허공에 채찍을 휘둘렀다."
 
-#: ../src/apply.c:3274
+#: ../src/apply.c:3281
 msgid "There's not enough room here to use that."
 msgstr "여기서 그것을 쓰기에는 공간이 부족하다."
 
-#: ../src/apply.c:3275
+#: ../src/apply.c:3282
 msgid "Where do you want to hit?"
 msgstr "어디를 치겠습니까?"
 
-#: ../src/apply.c:3276
+#: ../src/apply.c:3283
 msgid "won't hit anything if you can't see that spot."
 msgstr "그 지점을 볼 수 없으면 아무것도 칠 수 없다."
 
-#: ../src/apply.c:3277
+#: ../src/apply.c:3284
 msgid "can't reach that spot from here."
 msgstr "여기서 그 지점에 닿을 수 없다."
 
-#: ../src/apply.c:3429
+#: ../src/apply.c:3436
 #, c-format
 msgid "Thump!  Your blow bounces harmlessly off the %s."
 msgstr "쿵! 당신의 공격이 %s에 튕겨나갔다."
 
-#: ../src/apply.c:3467 ../src/apply.c:3759
+#: ../src/apply.c:3474 ../src/apply.c:3766
 msgid "the spot to hit"
 msgstr ""
 
-#: ../src/apply.c:3478
+#: ../src/apply.c:3485
 msgid "Don't know what to hit."
 msgstr "무엇을 때릴지 모르겠다."
 
-#: ../src/apply.c:3480
+#: ../src/apply.c:3487
 msgid "Too close!"
 msgstr "너무 가깝다!"
 
-#: ../src/apply.c:3505
+#: ../src/apply.c:3512
 msgid "blade doesn't reach there!"
 msgstr "칼날이 거기까지 닿지 않는다!"
 
-#: ../src/apply.c:3518
+#: ../src/apply.c:3525
 msgid "Shkinng!"
 msgstr "쉬킹!"
 
-#: ../src/apply.c:3536 ../src/dig.c:548 ../src/dig.c:1238 ../src/sounds.c:1340
+#: ../src/apply.c:3543 ../src/dig.c:548 ../src/dig.c:1238 ../src/sounds.c:1340
 #: ../src/trap.c:853
 msgid "statue"
 msgstr "석상"
 
-#: ../src/apply.c:3545 ../src/dig.c:549 ../src/dig.c:1238 ../src/hack.c:678
+#: ../src/apply.c:3552 ../src/dig.c:549 ../src/dig.c:1238 ../src/hack.c:678
 #: ../src/hack.c:693
 msgid "boulder"
 msgstr "바위"
 
-#: ../src/apply.c:3551
+#: ../src/apply.c:3558
 #, c-format
 msgid "uselessly attack %s."
 msgstr "%s{을/를} 무익하게 공격한다."
 
 #
-#: ../src/apply.c:3554 ../src/eat.c:2495 ../src/obj_descr_i18n.c:118
+#: ../src/apply.c:3561 ../src/eat.c:2495 ../src/obj_descr_i18n.c:118
 #: ../src/obj_descr_i18n.c:720 ../src/objnam.c:923 ../src/pager.c:790
 #: ../src/spell.c:1162
 msgid "stone"
 msgstr "돌"
 
-#: ../src/apply.c:3557 ../src/hack.c:2253 ../src/hack.c:2308
+#: ../src/apply.c:3564 ../src/hack.c:2253 ../src/hack.c:2308
 msgid "an unknown obstacle"
 msgstr "알 수 없는 장애물"
 
-#: ../src/apply.c:3559
+#: ../src/apply.c:3566
 msgid "miss; there is no one there to hit."
 msgstr "빗나갔다; 거기에 때릴 대상이 없다."
 
-#: ../src/apply.c:3580
+#: ../src/apply.c:3587
 msgid "give yourself a facial."
 msgstr "스스로에게 페이셜을 했다."
 
-#: ../src/apply.c:3582
+#: ../src/apply.c:3589
 #, c-format
 msgid "immerse your %s in %s%s."
 msgstr "%s{을/를} %s%s에 담갔다."
 
-#: ../src/apply.c:3591
+#: ../src/apply.c:3598
 #, c-format
 msgid "There's %ssticky goop all over your %s."
 msgstr "%s에 %s끈적이가 묻어있다."
 
-#: ../src/apply.c:3592 ../src/insight.c:1689 ../src/mcastu.c:848
+#: ../src/apply.c:3599 ../src/insight.c:1689 ../src/mcastu.c:848
 #: ../src/uhitm.c:3914
 msgid "more "
 msgstr "더 많은 "
 
-#: ../src/apply.c:3594
+#: ../src/apply.c:3601
 #, c-format
 msgid "see through all the sticky goop on your %s."
 msgstr "%s의 끈적이를 통해 본다."
 
-#: ../src/apply.c:3643
+#: ../src/apply.c:3650
 #, c-format
 msgid "smear royal jelly all over %s."
 msgstr "%s 전체에 로열젤리를 발랐다."
 
-#: ../src/apply.c:3655
+#: ../src/apply.c:3662
 #, c-format
 msgid "The %s %s feebly."
 msgstr "%s{이/가} 힘없이 %s."
 
-#: ../src/apply.c:3655 ../src/apply.c:3674 ../src/artifact.c:2441
+#: ../src/apply.c:3662 ../src/apply.c:3681 ../src/artifact.c:2441
 #: ../src/obj_descr_i18n.c:432 ../src/sounds.c:455
 msgid "quiver"
 msgstr "화살통에 넣을"
 
-#: ../src/apply.c:3674
+#: ../src/apply.c:3681
 #, c-format
 msgid "The %s %s briefly."
 msgstr "%s{이/가} 잠시 %s."
 
-#: ../src/apply.c:3789
+#: ../src/apply.c:3796
 #, c-format
 msgid "an object on the %s"
 msgstr "%s 위의 물체"
 
-#: ../src/apply.c:3794 ../src/do_name.c:525 ../src/uhitm.c:6205
+#: ../src/apply.c:3801 ../src/do_name.c:525 ../src/uhitm.c:6205
 #: ../src/wizcmds.c:261 ../src/wizcmds.c:505 ../src/wizcmds.c:903
 msgid "a monster"
 msgstr "괴물"
 
-#: ../src/apply.c:3796 ../src/end.c:250
+#: ../src/apply.c:3803 ../src/end.c:250
 #, c-format
 msgid "the %s"
 msgstr "%s"
 
-#: ../src/apply.c:3799
+#: ../src/apply.c:3806
 msgid "Aim for what?"
 msgstr "무엇을 겨냥하시겠습니까?"
 
-#: ../src/apply.c:3820
+#: ../src/apply.c:3827
 #, c-format
 msgid "snag an object from the %s!"
 msgstr "%s에서 물체를 낚아챘다!"
 
-#: ../src/apply.c:3839
+#: ../src/apply.c:3846
 #, c-format
 msgid "pull in %s!"
 msgstr "%s{을/를} 끌어당겼다!"
 
-#: ../src/apply.c:3856
+#: ../src/apply.c:3863
 #, c-format
 msgid "hook slices through the %s."
 msgstr "갈고리가 %s{을/를} 베었다."
 
-#: ../src/apply.c:3858
+#: ../src/apply.c:3865
 #, c-format
 msgid "are yanked toward the %s!"
 msgstr "%s{으로/로} 끌려갔다!"
 
-#: ../src/apply.c:3865
+#: ../src/apply.c:3872
 msgid "hook yourself!"
 msgstr "스스로를 갈고리로 걸었다!"
 
-#: ../src/apply.c:3866
+#: ../src/apply.c:3873
 msgid "a grappling hook"
 msgstr "갈고리"
 
-#: ../src/apply.c:3913
+#: ../src/apply.c:3920
 msgid "But nothing else happens..."
 msgstr "그러나 아무 일도 일어나지 않았다..."
 
-#: ../src/apply.c:3926
+#: ../src/apply.c:3933
 #, c-format
 msgid "break %s without hands!"
 msgstr "손 없이 %s{을/를} 부술 수 없다!"
 
-#: ../src/apply.c:3929
+#: ../src/apply.c:3936
 #, c-format
 msgid "%s are occupied!"
 msgstr "%s{이/가} 사용 중이다!"
 
-#: ../src/apply.c:3932
+#: ../src/apply.c:3939
 #, c-format
 msgid "don't have the strength to break %s!"
 msgstr "%s{을/를} 부술 힘이 없다!"
 
-#: ../src/apply.c:3937
+#: ../src/apply.c:3944
 msgid "Are you really sure you want to break "
 msgstr "정말로 들어가겠습니까?"
 
-#: ../src/apply.c:3938
+#: ../src/apply.c:3945
 msgid "the wand"
 msgstr "물"
 
-#: ../src/apply.c:3940
+#: ../src/apply.c:3947
 #, c-format
 msgid "Raising %s high above your %s, you %s it in two!"
 msgstr "%s{을/를} %s 위로 높이 들어 올려, 둘로 %s!"
 
-#: ../src/apply.c:3941 ../src/mhitu.c:1349
+#: ../src/apply.c:3948 ../src/mhitu.c:1349
 msgid "snap"
 msgstr "덥석 물다"
 
-#: ../src/apply.c:3941 ../src/dig.c:514 ../src/dokick.c:961
+#: ../src/apply.c:3948 ../src/dig.c:514 ../src/dokick.c:961
 msgid "break"
 msgstr "부러지다"
 
-#: ../src/apply.c:4011
+#: ../src/apply.c:4018
 msgid "A wall of force smashes down around you!"
 msgstr "힘의 벽이 주변으로 내리쳤다!"
 
-#: ../src/apply.c:4124
+#: ../src/apply.c:4131
 #, c-format
 msgid "killed %sself by breaking a wand"
 msgstr "%s 스스로 마법봉을 부러뜨려 죽었다"
 
-#: ../src/apply.c:4220
+#: ../src/apply.c:4227
 msgid "aren't able to use or apply tools in your current form."
 msgstr "현재 모습으로는 도구를 사용하거나 적용할 수 없다."
 
 # ============================================================
 # 두루마리 (Scrolls)
 # ============================================================
-#: ../src/apply.c:4252 ../src/wield.c:177
+#: ../src/apply.c:4259 ../src/wield.c:177
 #, c-format
 msgid "are already %s."
 msgstr "이미 %s."
 
 # 조합 패턴: "You are already %s." (You are already covered by a towel.)
-#: ../src/apply.c:4253
+#: ../src/apply.c:4260
 msgid "covered by a towel"
 msgstr "수건으로 덮여 있다"
 
 # 조합 패턴: "You are already %s." (You are already wearing a blindfold.)
-#: ../src/apply.c:4254
+#: ../src/apply.c:4261
 msgid "wearing a blindfold"
 msgstr "눈가리개를 하고 있다"
 
 # 조합 패턴: "You are already %s." (You are already wearing lenses.)
-#: ../src/apply.c:4255
+#: ../src/apply.c:4262
 msgid "wearing lenses"
 msgstr "렌즈를 끼고 있다"
 
-#: ../src/apply.c:4318 ../src/read.c:1539 ../src/sit.c:625
+#: ../src/apply.c:4325 ../src/read.c:1539 ../src/sit.c:625
 #, c-format
 msgctxt "glow_color"
 msgid "%s %s."
 msgstr ""
 
-#: ../src/apply.c:4319 ../src/read.c:1540 ../src/sit.c:626
+#: ../src/apply.c:4326 ../src/read.c:1540 ../src/sit.c:626
 msgctxt "glow_color"
 msgid "glow"
 msgstr ""
 
-#: ../src/apply.c:4404
+#: ../src/apply.c:4411
 msgid "It rings! ... But no-one answers."
 msgstr "벨이 울린다! ... 하지만 아무도 대답하지 않는다."
 
-#: ../src/apply.c:4478
+#: ../src/apply.c:4485
 msgid "don't want to get the pages even more soggy, do you?"
 msgstr "페이지를 더 젖게 하고 싶지 않잖아?"
 
-#: ../src/apply.c:4482
+#: ../src/apply.c:4489
 #, c-format
 msgid "flip through the pages of %s."
 msgstr "%s의 페이지를 넘긴다."
 
-#: ../src/apply.c:4489
+#: ../src/apply.c:4496
 #, c-format
 msgid "the pages make an unpleasant %s sound."
 msgstr "페이지가 불쾌한 %s 소리를 낸다."
 
-#: ../src/apply.c:4490
+#: ../src/apply.c:4497
 msgid "chuckling"
 msgstr "킬킬거리는"
 
-#: ../src/apply.c:4491
+#: ../src/apply.c:4498
 msgid "rustling"
 msgstr "바스락거리는"
 
-#: ../src/apply.c:4493
+#: ../src/apply.c:4500
 #, c-format
 msgid "the pages glow faintly %s."
 msgstr "페이지가 희미하게 %s 빛나는 것을."
 
-#: ../src/apply.c:4495
+#: ../src/apply.c:4502
 msgid "the pages tremble."
 msgstr "페이지가 떨린다."
 
-#: ../src/apply.c:4498
+#: ../src/apply.c:4505
 #, c-format
 msgid "The pages feel %s."
 msgstr "페이지가 %s 느낌이다."
 
-#: ../src/apply.c:4499
+#: ../src/apply.c:4506
 msgid "freshly picked"
 msgstr "갓 딴 것처럼"
 
-#: ../src/apply.c:4500
+#: ../src/apply.c:4507
 msgid "rough and dry"
 msgstr "거칠고 건조한"
 
-#: ../src/apply.c:4502
+#: ../src/apply.c:4509
 #, c-format
 msgid "This spellbook %s."
 msgstr "이 마법서는 %s."
 
-#: ../src/apply.c:4503
+#: ../src/apply.c:4510
 msgid "doesn't have much of a plot"
 msgstr "줄거리가 별로 없다"
 
 #
-#: ../src/apply.c:4504
+#: ../src/apply.c:4511
 msgid "has nothing written in it"
 msgstr "아무것도 쓰여 있지 않다"
 
-#: ../src/apply.c:4507
+#: ../src/apply.c:4514
 msgid "enjoy the animated initials."
 msgstr "움직이는 이니셜을 즐긴다."
 
-#: ../src/apply.c:4509
+#: ../src/apply.c:4516
 msgid "This looks like it might be interesting to read."
 msgstr "읽으면 흥미로울 것 같다."
 
-#: ../src/apply.c:4512
+#: ../src/apply.c:4519
 msgid "fresh"
 msgstr "선명하다"
 
-#: ../src/apply.c:4513
+#: ../src/apply.c:4520
 msgid "slightly faded"
 msgstr "약간 바랬다"
 
-#: ../src/apply.c:4514
+#: ../src/apply.c:4521
 msgid "very faded"
 msgstr "많이 바랬다"
 
-#: ../src/apply.c:4515
+#: ../src/apply.c:4522
 msgid "extremely faded"
 msgstr "매우 많이 바랬다"
 
-#: ../src/apply.c:4516
+#: ../src/apply.c:4523
 msgid "barely visible"
 msgstr "거의 보이지 않는다"
 
-#: ../src/apply.c:4520
+#: ../src/apply.c:4527
 #, c-format
 msgid "The%s ink in this spellbook is %s."
 msgstr "이 마법서의%s 잉크는 %s"
 
-#: ../src/apply.c:4521
+#: ../src/apply.c:4528
 msgid " magical"
 msgstr " 마법"
 
-#: ../src/apply.c:4534
+#: ../src/apply.c:4541
 #, c-format
 msgid "flip %s."
 msgstr "%s{을/를} 뒤집는다."
 
-#: ../src/apply.c:4536
+#: ../src/apply.c:4543
 msgid "It tumbles away."
 msgstr "그것이 굴러갔다."
 
-#: ../src/apply.c:4540
+#: ../src/apply.c:4547
 #, c-format
 msgid "It slips between your %s."
 msgstr "%s 사이로 미끄러졌다."
 
-#: ../src/apply.c:4551
+#: ../src/apply.c:4558
 msgid "Wow, a double header!"
 msgstr "와, 더블 헤더!"
 
-#: ../src/apply.c:4553
+#: ../src/apply.c:4560
 msgid "The coin miraculously lands on its edge!"
 msgstr "동전이 기적적으로 모서리에 섰다!"
 
-#: ../src/apply.c:4555
+#: ../src/apply.c:4562
 #, c-format
 msgid "It comes up %s."
 msgstr "%s{이/가} 나왔다."
 
-#: ../src/apply.c:4555
+#: ../src/apply.c:4562
 msgid "heads"
 msgstr "앞면"
 
-#: ../src/apply.c:4555
+#: ../src/apply.c:4562
 msgid "tails"
 msgstr "뒷면"
 
@@ -2644,13 +2641,22 @@ msgstr "%s{이/가} 통찰력이 있다."
 #   조합: "당신은 환각에 저항한다 (반지의 영향)"
 # - artifact.c/sit.c/wield.c: Tobjnam/vtense 함수와 함께 사용
 #   예: "바위가 저항한다!" "악마가 저항한다!"
-#: ../src/artifact.c:1415 ../src/insight.c:1590 ../src/sit.c:605
+#: ../src/artifact.c:1415 ../src/insight.c:1590
 msgid "resist"
 msgstr "저항한다"
 
 #: ../src/artifact.c:1424 ../src/mhitu.c:1665 ../src/timeout.c:37
 msgid "stunned"
 msgstr "기절한"
+
+#: ../src/artifact.c:1426 ../src/detect.c:1835 ../src/detect.c:1846
+#: ../src/detect.c:1861 ../src/do_wear.c:1785 ../src/do_wear.c:3318
+#: ../src/insight.c:596 ../src/insight.c:1736 ../src/insight.c:1780
+#: ../src/invent.c:2055 ../src/invent.c:4197 ../src/role.c:1612
+#: ../src/role.c:1617 ../src/role.c:1622 ../src/sounds.c:1526
+#: ../src/trap.c:5841
+msgid " and "
+msgstr ", "
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -3332,17 +3338,16 @@ msgid "watching your health"
 msgstr "건강을 관리하지 않았다"
 
 #: ../src/attrib.c:664 ../src/dig.c:1308 ../src/dog.c:1332 ../src/dokick.c:212
-#: ../src/dothrow.c:1966 ../src/dothrow.c:2520 ../src/eat.c:3044
+#: ../src/dothrow.c:1967 ../src/dothrow.c:2521 ../src/eat.c:3044
 #: ../src/engrave.c:861 ../src/engrave.c:869 ../src/hack.c:1705
-#: ../src/mcastu.c:770 ../src/mhitu.c:1708 ../src/mhitu.c:2570
-#: ../src/mkobj.c:1603 ../src/mon.c:1010 ../src/mon.c:1790 ../src/mthrowu.c:766
-#: ../src/muse.c:281 ../src/music.c:605 ../src/music.c:675 ../src/music.c:716
-#: ../src/potion.c:471 ../src/potion.c:1554 ../src/read.c:1281
-#: ../src/read.c:1432 ../src/shk.c:1328 ../src/shk.c:1806 ../src/shk.c:5262
-#: ../src/sounds.c:508 ../src/teleport.c:1113 ../src/trap.c:4453
-#: ../src/trap.c:4461 ../src/trap.c:4574 ../src/trap.c:4714 ../src/trap.c:4738
-#: ../src/trap.c:4770 ../src/uhitm.c:4646 ../src/uhitm.c:5024
-#: ../src/uhitm.c:5659
+#: ../src/mcastu.c:770 ../src/mhitu.c:1708 ../src/mkobj.c:1603
+#: ../src/mon.c:1010 ../src/mon.c:1790 ../src/mthrowu.c:766 ../src/muse.c:281
+#: ../src/music.c:605 ../src/music.c:675 ../src/music.c:716 ../src/potion.c:471
+#: ../src/potion.c:1554 ../src/read.c:1281 ../src/read.c:1432 ../src/shk.c:1328
+#: ../src/shk.c:1806 ../src/shk.c:5262 ../src/sounds.c:508
+#: ../src/teleport.c:1113 ../src/trap.c:4453 ../src/trap.c:4461
+#: ../src/trap.c:4574 ../src/trap.c:4714 ../src/trap.c:4738 ../src/trap.c:4770
+#: ../src/uhitm.c:4646 ../src/uhitm.c:5024 ../src/uhitm.c:5659
 #, c-format
 msgid "%s %s."
 msgstr "%s %s."
@@ -3402,7 +3407,7 @@ msgstr "%s{을/를} 덮은 끈적이 때문에"
 
 #: ../src/attrib.c:1052 ../src/attrib.c:1058 ../src/detect.c:1250
 #: ../src/detect.c:1326 ../src/dig.c:1069 ../src/dig.c:1075 ../src/dokick.c:708
-#: ../src/dothrow.c:1531 ../src/eat.c:2123 ../src/mcastu.c:846
+#: ../src/dothrow.c:1532 ../src/eat.c:2123 ../src/mcastu.c:846
 #: ../src/mon.c:3783 ../src/mthrowu.c:1457 ../src/muse.c:218 ../src/pray.c:701
 #: ../src/shk.c:3792 ../src/shk.c:5387 ../src/sit.c:605 ../src/sit.c:709
 #: ../src/spell.c:248 ../src/steed.c:430 ../src/timeout.c:256
@@ -3468,11 +3473,11 @@ msgstr "놀라서 철구를 떨어뜨렸다."
 msgid "iron ball falls on your %s."
 msgstr "철구가 %s 위에 떨어졌다."
 
-#: ../src/ball.c:59 ../src/dothrow.c:1388 ../src/read.c:2270 ../src/trap.c:1366
+#: ../src/ball.c:59 ../src/dothrow.c:1389 ../src/read.c:2270 ../src/trap.c:1366
 msgid "Fortunately, you are wearing a hard helmet."
 msgstr "다행히 단단한 투구를 쓰고 있다."
 
-#: ../src/ball.c:62 ../src/dothrow.c:1397 ../src/read.c:2274 ../src/trap.c:1369
+#: ../src/ball.c:62 ../src/dothrow.c:1398 ../src/read.c:2274 ../src/trap.c:1369
 #, c-format
 msgid "%s does not protect you."
 msgstr "%s{이/가} 당신을 보호하지 않는다."
@@ -3490,7 +3495,7 @@ msgstr "무거운 철구를 %s끌 수 없다."
 msgid "carry all that and also "
 msgstr "그 모든 것을 들고 또 "
 
-#: ../src/ball.c:791 ../src/dothrow.c:1092
+#: ../src/ball.c:791 ../src/dothrow.c:1093
 msgid "a tug from the iron ball."
 msgstr "쇠공에서 당기는 힘."
 
@@ -3547,7 +3552,7 @@ msgstr "그들"
 
 #: ../src/ball.c:975 ../src/dbridge.c:910 ../src/do_wear.c:3225
 #: ../src/dokick.c:644 ../src/dokick.c:775 ../src/dokick.c:1941
-#: ../src/dokick.c:1944 ../src/dothrow.c:1809 ../src/dothrow.c:2727
+#: ../src/dokick.c:1944 ../src/dothrow.c:1810 ../src/dothrow.c:2728
 #: ../src/hack.c:543 ../src/mon.c:3306 ../src/mon.c:3594 ../src/mthrowu.c:200
 #: ../src/polyself.c:1282 ../src/read.c:2281 ../src/read.c:2354
 #: ../src/steal.c:837 ../src/steed.c:597 ../src/teleport.c:2128
@@ -5031,7 +5036,7 @@ msgid "%s the %s and disappears."
 msgstr "%s{이/가} %s{을/를} 하고 사라진다."
 
 #: ../src/dbridge.c:727 ../src/dig.c:866 ../src/dig.c:925 ../src/dokick.c:1453
-#: ../src/dothrow.c:1098 ../src/dungeon.c:3620 ../src/hack.c:2484
+#: ../src/dothrow.c:1099 ../src/dungeon.c:3620 ../src/hack.c:2484
 #: ../src/insight.c:276 ../src/insight.c:1011 ../src/invent.c:5546
 #: ../src/obj_descr_i18n.c:1157 ../src/pager.c:1194 ../src/pickup.c:2054
 #: ../src/trap.c:3977 ../src/zap.c:5236
@@ -5039,7 +5044,7 @@ msgid "lava"
 msgstr "용암"
 
 #: ../src/dbridge.c:727 ../src/dbridge.c:730 ../src/dbridge.c:896
-#: ../src/dbridge.c:902 ../src/dothrow.c:932 ../src/pager.c:599
+#: ../src/dbridge.c:902 ../src/dothrow.c:933 ../src/pager.c:599
 #: ../src/pager.c:1495 ../src/uhitm.c:3397
 msgid "moat"
 msgstr "해자"
@@ -6176,8 +6181,8 @@ msgstr "빠져나왔다."
 msgid "Clang!"
 msgstr "땡그랑!"
 
-#: ../src/dig.c:1226 ../src/dig.c:1228 ../src/do.c:280 ../src/dothrow.c:1806
-#: ../src/dothrow.c:2656 ../src/mthrowu.c:947 ../src/uhitm.c:1273
+#: ../src/dig.c:1226 ../src/dig.c:1228 ../src/do.c:280 ../src/dothrow.c:1807
+#: ../src/dothrow.c:2657 ../src/mthrowu.c:947 ../src/uhitm.c:1273
 #: ../src/uhitm.c:1299
 msgid "Splash!"
 msgstr "첨벙!"
@@ -6652,7 +6657,7 @@ msgstr "구덩이를 메웠다"
 msgid "a boulder %s."
 msgstr "바위가 %s."
 
-#: ../src/do.c:282 ../src/dothrow.c:1806 ../src/mthrowu.c:947
+#: ../src/do.c:282 ../src/dothrow.c:1807 ../src/mthrowu.c:947
 msgid "Plop!"
 msgstr "퐁당!"
 
@@ -6789,7 +6794,7 @@ msgstr "%s 흐름이 배수구를 %s."
 msgid "misses"
 msgstr "빗나간다"
 
-#: ../src/do.c:552 ../src/dothrow.c:1281 ../src/mhitu.c:71
+#: ../src/do.c:552 ../src/dothrow.c:1282 ../src/mhitu.c:71
 msgid "hits"
 msgstr "때렸다"
 
@@ -7070,10 +7075,11 @@ msgstr "좁은 통로에서 생긴 타박상"
 msgid "were unable to fit %s."
 msgstr "%s{을/를} 맞출 수 없었다."
 
-#: ../src/do.c:1280 ../src/dothrow.c:640
+#: ../src/do.c:1280
 #, c-format
+msgctxt "dodown"
 msgid "%s %s the %s."
-msgstr "%s{이/가} %s{을/를} %s."
+msgstr ""
 
 #: ../src/do.c:1281 ../src/hack.c:562 ../src/polyself.c:1563
 #: ../src/teleport.c:2014
@@ -9871,7 +9877,7 @@ msgstr "%s 안에 있는 %s{을/를} 찼다!"
 msgid "tizzy"
 msgstr "흥분 상태"
 
-#: ../src/dokick.c:531 ../src/dothrow.c:1097 ../src/mhitu.c:1341
+#: ../src/dokick.c:531 ../src/dothrow.c:1098 ../src/mhitu.c:1341
 #: ../src/polyself.c:1003 ../src/trap.c:3975 ../src/trap.c:5498
 msgid "web"
 msgstr "거미줄"
@@ -10376,79 +10382,85 @@ msgstr "하나의 "
 msgid "edge of the pit"
 msgstr "바닥"
 
-#: ../src/dothrow.c:786
+#: ../src/dothrow.c:640
+#, c-format
+msgctxt "hitfloor"
+msgid "%s %s the %s."
+msgstr ""
+
+#: ../src/dothrow.c:787
 msgid "the spirits holding you back."
 msgstr "영혼들이 당신을 붙잡고 있다."
 
 # 사망 원인 메시지 (Death cause - used in losehp())
-#: ../src/dothrow.c:806
+#: ../src/dothrow.c:807
 msgid "bumping into a tree"
 msgstr "나무에 부딪힘"
 
 # 사망 원인 메시지 (Death cause - used in losehp())
-#: ../src/dothrow.c:807
+#: ../src/dothrow.c:808
 msgid "bumping into a wall"
 msgstr "벽에 부딪힘"
 
-#: ../src/dothrow.c:808
+#: ../src/dothrow.c:809
 msgid "bumping into a door frame"
 msgstr "문틀에 부딪혔다!"
 
-#: ../src/dothrow.c:809
+#: ../src/dothrow.c:810
 msgid "bumping into a closed door"
 msgstr "닫힌 문에 부딪힘"
 
-#: ../src/dothrow.c:811
+#: ../src/dothrow.c:812
 msgid "hit the door frame!"
 msgstr "문틀에 부딪혔다!"
 
-#: ../src/dothrow.c:812 ../src/region.c:993
+#: ../src/dothrow.c:813 ../src/region.c:993
 msgid "Ouch!"
 msgstr "아야!"
 
 # 사망 원인 메시지 (Death cause - used in losehp())
-#: ../src/dothrow.c:814
+#: ../src/dothrow.c:815
 msgid "crashing into iron bars"
 msgstr "철창에 부딪힘"
 
-#: ../src/dothrow.c:815
+#: ../src/dothrow.c:816
 msgid "crash into some iron bars.  Ouch!"
 msgstr "철창에 부딪혔다. 아야!"
 
 # 사망 원인 메시지 (Death cause - used in losehp())
-#: ../src/dothrow.c:817
+#: ../src/dothrow.c:818
 msgid "bumping into a boulder"
 msgstr "바위에 부딪힘"
 
-#: ../src/dothrow.c:818
+#: ../src/dothrow.c:819
 #, c-format
 msgid "bump into a %s.  Ouch!"
 msgstr "%s에 부딪혔다. 아야!"
 
 # 사망 원인 메시지 (Death cause - used in losehp())
-#: ../src/dothrow.c:821
+#: ../src/dothrow.c:822
 msgid "touching the edge of the universe"
 msgstr "우주의 끝에 닿음"
 
-#: ../src/dothrow.c:822
+#: ../src/dothrow.c:823
 msgid "smack into something!"
 msgstr "무언가에 부딪혔다!"
 
 # 사망 원인 메시지 (Death cause - used in losehp())
-#: ../src/dothrow.c:830
+#: ../src/dothrow.c:831
 msgid "wedging into a narrow crevice"
 msgstr "좁은 틈에 끼임"
 
-#: ../src/dothrow.c:831
+#: ../src/dothrow.c:832
 #, c-format
 msgid "%sget forcefully wedged into a crevice."
 msgstr "%s틈에 강제로 끼었다."
 
-#: ../src/dothrow.c:832
+#: ../src/dothrow.c:833
 msgid "and all your belongings "
 msgstr "와 모든 소지품 "
 
-#: ../src/dothrow.c:864
+#: ../src/dothrow.c:865
 #, c-format
 msgid "find %s by bumping into %s."
 msgstr "%s에 부딪혀 %s{을/를} 발견했다."
@@ -10456,357 +10468,357 @@ msgstr "%s에 부딪혀 %s{을/를} 발견했다."
 # ============================================================
 # 전투 메시지 (Combat Messages)
 # ============================================================
-#: ../src/dothrow.c:866
+#: ../src/dothrow.c:867
 #, c-format
 msgid "bump into %s."
 msgstr "%s에 부딪혔다."
 
-#: ../src/dothrow.c:874
+#: ../src/dothrow.c:875
 #, c-format
 msgid "bumping into %s"
 msgstr "%s에 부딪힘"
 
-#: ../src/dothrow.c:891
+#: ../src/dothrow.c:892
 msgid "come to an abrupt halt!"
 msgstr "갑자기 멈췄다!"
 
-#: ../src/dothrow.c:932
+#: ../src/dothrow.c:933
 #, c-format
 msgid "You move over %s."
 msgstr "%s 위로 이동한다."
 
-#: ../src/dothrow.c:932 ../src/objnam.c:3736 ../src/zap.c:3362
+#: ../src/dothrow.c:933 ../src/objnam.c:3736 ../src/zap.c:3362
 msgid "pool"
 msgstr "고인다"
 
-#: ../src/dothrow.c:935
+#: ../src/dothrow.c:936
 msgid "You move over some lava."
 msgstr "용암 위로 이동한다."
 
-#: ../src/dothrow.c:952
+#: ../src/dothrow.c:953
 msgid "The ground vibrates as you pass it."
 msgstr "지나갈 때 땅이 진동한다."
 
-#: ../src/dothrow.c:965
+#: ../src/dothrow.c:966
 #, c-format
 msgid "pass right over %s."
 msgstr "%s 위를 지나갔다."
 
-#: ../src/dothrow.c:1030
+#: ../src/dothrow.c:1031
 #, c-format
 msgid "%s bumps into %s."
 msgstr "%s{이/가} %s에 부딪혔다."
 
-#: ../src/dothrow.c:1046
+#: ../src/dothrow.c:1047
 #, c-format
 msgid "%s bumps into you."
 msgstr "%s{이/가} 당신에게 부딪혔다."
 
-#: ../src/dothrow.c:1058
+#: ../src/dothrow.c:1059
 #, c-format
 msgid "being hit by %s"
 msgstr "%s에 맞음"
 
-#: ../src/dothrow.c:1096
+#: ../src/dothrow.c:1097
 #, c-format
 msgid "are anchored by the %s."
 msgstr "%s에 의해 고정되어 있다."
 
 # 조합: 발에 묶인 쇠공이 매장됨
-#: ../src/dothrow.c:1100
+#: ../src/dothrow.c:1101
 msgid "buried ball"
 msgstr "매장된 쇠공"
 
-#: ../src/dothrow.c:1101 ../src/mhitu.c:1341 ../src/teleport.c:2014
+#: ../src/dothrow.c:1102 ../src/mhitu.c:1341 ../src/teleport.c:2014
 msgid "trap"
 msgstr "함정"
 
-#: ../src/dothrow.c:1114
+#: ../src/dothrow.c:1115
 msgid "moving through the air"
 msgstr "공중을 이동하는 중"
 
-#: ../src/dothrow.c:1117
+#: ../src/dothrow.c:1118
 #, c-format
 msgid "%s in the opposite direction."
 msgstr "%s{이/가} 반대 방향으로."
 
 # 조합: 공중 이동 동사 (aerial movement verbs)
 # 예: "You hurtle in the opposite direction."
-#: ../src/dothrow.c:1118
+#: ../src/dothrow.c:1119
 msgid "hurtle"
 msgstr "돌진한다"
 
-#: ../src/dothrow.c:1118 ../src/hack.c:1811 ../src/mondata.c:1367
+#: ../src/dothrow.c:1119 ../src/hack.c:1811 ../src/mondata.c:1367
 msgid "float"
 msgstr "떠오른다"
 
-#: ../src/dothrow.c:1145
+#: ../src/dothrow.c:1146
 #, c-format
 msgid "%s doesn't budge!"
 msgstr "%s{은/는} 꿈쩍도 안 한다!"
 
 # 조합 패턴: "%s flies up into the %s" (object flies up into the sky)
-#: ../src/dothrow.c:1267
+#: ../src/dothrow.c:1268
 msgid "flies up into"
 msgstr "날아 올라간다"
 
-#: ../src/dothrow.c:1270
+#: ../src/dothrow.c:1271
 #, c-format
 msgid "%s hits the %s."
 msgstr "%s{이/가} %s{을/를} 맞췄다."
 
 # 조합 패턴: "%s almost hits the %s"
-#: ../src/dothrow.c:1283
+#: ../src/dothrow.c:1284
 msgid "almost hits"
 msgstr "거의 맞을 뻔한다"
 
-#: ../src/dothrow.c:1285
+#: ../src/dothrow.c:1286
 #, c-format
 msgid "%s %s the %s, then falls back on top of your %s."
 msgstr "%s{이/가} %s %s{을/를} 맞고 %s 위로 떨어졌다."
 
-#: ../src/dothrow.c:1313
+#: ../src/dothrow.c:1314
 #, c-format
 msgid "%s fails to protect you."
 msgstr "%s{이/가} 당신을 보호하지 못했다."
 
-#: ../src/dothrow.c:1320
+#: ../src/dothrow.c:1321
 #, c-format
 msgid "You've got it all over your %s!"
 msgstr "온통 %s에 묻었다!"
 
 #
-#: ../src/dothrow.c:1323
+#: ../src/dothrow.c:1324
 msgid "It blinds you!"
 msgstr "그것이 당신의 눈을 멀게 했다!"
 
-#: ../src/dothrow.c:1339
+#: ../src/dothrow.c:1340
 msgid "It doesn't hurt."
 msgstr "아프지 않다."
 
-#: ../src/dothrow.c:1390 ../src/trap.c:1362
+#: ../src/dothrow.c:1391 ../src/trap.c:1362
 #, c-format
 msgid "Unfortunately, you are wearing %s."
 msgstr "안타깝게도, %s{을/를} 입고 있다."
 
-#: ../src/dothrow.c:1408
+#: ../src/dothrow.c:1409
 msgid "elementary physics"
 msgstr "기초 물리학"
 
 #
-#: ../src/dothrow.c:1409 ../src/eat.c:806
+#: ../src/dothrow.c:1410 ../src/eat.c:806
 msgid "turn to stone."
 msgstr "돌로 변했다."
 
 #
-#: ../src/dothrow.c:1417
+#: ../src/dothrow.c:1418
 msgid "silver sears you!"
 msgstr "은이 당신을 태웠다!"
 
-#: ../src/dothrow.c:1419
+#: ../src/dothrow.c:1420
 msgid " but doesn't hurt."
 msgstr "아프지 않다."
 
-#: ../src/dothrow.c:1424
+#: ../src/dothrow.c:1425
 msgid "falling object"
 msgstr "떨어지는 물체"
 
-#: ../src/dothrow.c:1531
+#: ../src/dothrow.c:1532
 msgid "misfire"
 msgstr "오발"
 
-#: ../src/dothrow.c:1537
+#: ../src/dothrow.c:1538
 #, c-format
 msgid "%s as you throw it!"
 msgstr "던지자 %s!"
 
-#: ../src/dothrow.c:1556
+#: ../src/dothrow.c:1557
 #, c-format
 msgid "have so little stamina, %s drops from your grasp."
 msgstr "체력이 너무 없어서 %s{이/가} 손에서 떨어졌다."
 
-#: ../src/dothrow.c:1586
+#: ../src/dothrow.c:1587
 #, c-format
 msgid "%s the %s and returns to your hand!"
 msgstr "%s{이/가} %s{을/를} 맞추고 당신의 손으로 돌아왔다!"
 
-#: ../src/dothrow.c:1587 ../src/dothrow.c:1745
+#: ../src/dothrow.c:1588 ../src/dothrow.c:1746
 msgctxt "Tobjnam"
 msgid "hit"
 msgstr ""
 
-#: ../src/dothrow.c:1645
+#: ../src/dothrow.c:1646
 #, c-format
 msgid "You aren't wielding %s, so you throw your %s by %s."
 msgstr "%s{을/를} 장비하지 않아서 %s{을/를} %s{으로/로} 던졌다."
 
-#: ../src/dothrow.c:1720
+#: ../src/dothrow.c:1721
 #, c-format
 msgid "%s to your hand!"
 msgstr "%s{이/가} 당신의 손으로!"
 
-#: ../src/dothrow.c:1720 ../src/dothrow.c:1737 ../src/mthrowu.c:876
+#: ../src/dothrow.c:1721 ../src/dothrow.c:1738 ../src/mthrowu.c:876
 #: ../src/mthrowu.c:896
 msgid "return"
 msgstr "돌아오다"
 
 # dothrow.c translations - 투척 물체 착지
-#: ../src/dothrow.c:1735
+#: ../src/dothrow.c:1736
 #, c-format
 msgid "%s lands %s your %s."
 msgstr "%s{이/가} %s 당신의 %s 근처에 떨어진다."
 
-#: ../src/dothrow.c:1736
+#: ../src/dothrow.c:1737
 #, c-format
 msgid "%s back to you, landing %s your %s."
 msgstr "%s{이/가} 당신에게 돌아와 %s 당신의 %s 근처에 착지한다."
 
-#: ../src/dothrow.c:1738 ../src/mthrowu.c:897 ../src/pray.c:804
+#: ../src/dothrow.c:1739 ../src/mthrowu.c:897 ../src/pray.c:804
 #: ../src/steal.c:93 ../src/zap.c:3363
 msgid "beneath"
 msgstr "아래에"
 
-#: ../src/dothrow.c:1738 ../src/mcastu.c:509 ../src/mhitm.c:750
+#: ../src/dothrow.c:1739 ../src/mcastu.c:509 ../src/mhitm.c:750
 #: ../src/mthrowu.c:897 ../src/pray.c:804 ../src/zap.c:3363
 msgid "at"
 msgstr "근처에"
 
 # 투척 물체가 플레이어에게 맞음
-#: ../src/dothrow.c:1742
+#: ../src/dothrow.c:1743
 #, c-format
 msgid "%s your %s!"
 msgstr "%s{이/가} 당신의 %s{을/를} 맞혔다!"
 
-#: ../src/dothrow.c:1743
+#: ../src/dothrow.c:1744
 #, c-format
 msgid "%s back toward you, hitting your %s!"
 msgstr "%s{이/가} 당신 쪽으로 돌아와 %s{을/를} 맞혔다!"
 
-#: ../src/dothrow.c:1746 ../src/mthrowu.c:906
+#: ../src/dothrow.c:1747 ../src/mthrowu.c:906
 msgctxt "Tobjnam"
 msgid "fly"
 msgstr ""
 
-#: ../src/dothrow.c:1774
+#: ../src/dothrow.c:1775
 #, c-format
 msgid "%s to return!"
 msgstr "%s{이/가} 돌아온다!"
 
-#: ../src/dothrow.c:1775
+#: ../src/dothrow.c:1776
 msgctxt "Tobjnam"
 msgid "fail"
 msgstr ""
 
-#: ../src/dothrow.c:1816
+#: ../src/dothrow.c:1817
 #, c-format
 msgid "%s snatches up %s."
 msgstr "%s{이/가} %s{을/를} 낚아챘다."
 
-#: ../src/dothrow.c:1966 ../src/mthrowu.c:129 ../src/zap.c:3563
+#: ../src/dothrow.c:1967 ../src/mthrowu.c:129 ../src/zap.c:3563
 msgid "miss"
 msgstr "빗나가다"
 
-#: ../src/dothrow.c:2098
+#: ../src/dothrow.c:2099
 #, c-format
 msgid "%s catches and drops %s."
 msgstr "%s{이/가} %s{을/를} 잡았다가 떨어뜨렸다."
 
-#: ../src/dothrow.c:2101 ../src/dothrow.c:2116
+#: ../src/dothrow.c:2102 ../src/dothrow.c:2117
 #, c-format
 msgid "%s catches %s."
 msgstr "%s{이/가} %s{을/를} 잡았다."
 
-#: ../src/dothrow.c:2129
+#: ../src/dothrow.c:2130
 #, c-format
 msgid "%s part in this is finished."
 msgstr "%s의 역할은 끝났다."
 
-#: ../src/dothrow.c:2132
+#: ../src/dothrow.c:2133
 #, c-format
 msgid "We will guard it in case it is ever needed again, %s forbid."
 msgstr "다시 필요할 경우를 대비해 보관하겠습니다, %s께서 허락하시면."
 
-#: ../src/dothrow.c:2144
+#: ../src/dothrow.c:2145
 #, c-format
 msgid "%s %s %s back to you."
 msgstr "%s{이/가} %s{을/를} %s 당신에게 돌려보냈다."
 
-#: ../src/dothrow.c:2145
+#: ../src/dothrow.c:2146
 msgid "hands"
 msgstr "손"
 
 #
-#: ../src/dothrow.c:2145
+#: ../src/dothrow.c:2146
 msgid "tosses"
 msgstr "빗나갔다."
 
-#: ../src/dothrow.c:2299 ../src/dothrow.c:2682
+#: ../src/dothrow.c:2300 ../src/dothrow.c:2683
 msgid " entrails"
 msgstr "뒷면"
 
-#: ../src/dothrow.c:2299
+#: ../src/dothrow.c:2300
 msgid " currents"
 msgstr "흐름"
 
-#: ../src/dothrow.c:2303
+#: ../src/dothrow.c:2304
 #, c-format
 msgid "%s into %s%s."
 msgstr "%s{이/가} %s%s 안으로."
 
-#: ../src/dothrow.c:2304
+#: ../src/dothrow.c:2305
 msgctxt "Tobjnam"
 msgid "vanish"
 msgstr ""
 
-#: ../src/dothrow.c:2318
+#: ../src/dothrow.c:2319
 msgid " is not interested in your junk."
 msgstr "{은/는} 당신의 쓰레기에 관심이 없다."
 
-#: ../src/dothrow.c:2319
+#: ../src/dothrow.c:2320
 msgid " accepts your gift."
 msgstr "{이/가} 당신의 선물을 받았다."
 
-#: ../src/dothrow.c:2320
+#: ../src/dothrow.c:2321
 msgid " hesitatingly"
 msgstr " 망설이며"
 
-#: ../src/dothrow.c:2321
+#: ../src/dothrow.c:2322
 msgid " graciously"
 msgstr " 공손하게"
 
-#: ../src/dothrow.c:2322
+#: ../src/dothrow.c:2323
 msgid " gratefully"
 msgstr " 감사하게"
 
-#: ../src/dothrow.c:2470
+#: ../src/dothrow.c:2471
 #, c-format
 msgid "%s is released!"
 msgstr "%s{이/가} 풀려났다!"
 
-#: ../src/dothrow.c:2472
+#: ../src/dothrow.c:2473
 msgid "The picture-painting demon"
 msgstr "그림 그리는 악마"
 
-#: ../src/dothrow.c:2514
+#: ../src/dothrow.c:2515
 msgid "smell a peculiar odor..."
 msgstr "이상한 냄새를 맡았다..."
 
 # 액체
-#: ../src/dothrow.c:2520
+#: ../src/dothrow.c:2521
 msgctxt "eyes_water"
 msgid "water"
 msgstr ""
 
-#: ../src/dothrow.c:2636
+#: ../src/dothrow.c:2637
 msgid " into a thousand pieces"
 msgstr "철 가시 구덩이에 빠졌다"
 
-#: ../src/dothrow.c:2641
+#: ../src/dothrow.c:2642
 #, c-format
 msgid "%s shatter!"
 msgstr "%s{이/가} 산산조각났다!"
 
-#: ../src/dothrow.c:2643
+#: ../src/dothrow.c:2644
 #, c-format
 msgid "%s shatter%s%s!"
 msgstr "%s{이/가} 산산조각%s%s!"
@@ -10817,41 +10829,41 @@ msgstr "%s{이/가} 산산조각%s%s!"
 # 한국어는 복수형이 불필요하므로 zero-width space로 처리
 # 예: dothrow.c - "산산조각나다", insight.c - "담고 있다"
 # ============================================================
-#: ../src/dothrow.c:2644 ../src/insight.c:800 ../src/lock.c:700
+#: ../src/dothrow.c:2645 ../src/insight.c:800 ../src/lock.c:700
 #: ../src/objnam.c:1907 ../src/pray.c:1412
 msgid "s"
 msgstr "​"
 
 # 전투 효과음
-#: ../src/dothrow.c:2648 ../src/uhitm.c:1249 ../src/uhitm.c:1272
+#: ../src/dothrow.c:2649 ../src/uhitm.c:1249 ../src/uhitm.c:1272
 #: ../src/uhitm.c:1299
 msgid "Splat!"
 msgstr "철퍽!"
 
-#: ../src/dothrow.c:2652
+#: ../src/dothrow.c:2653
 msgid "What a mess!"
 msgstr "엉망진창이다!"
 
-#: ../src/dothrow.c:2668
+#: ../src/dothrow.c:2669
 msgid "cannot throw gold at yourself."
 msgstr "자신에게 금화를 던질 수 없다."
 
-#: ../src/dothrow.c:2683
+#: ../src/dothrow.c:2684
 #, c-format
 msgid "gold disappears into %s."
 msgstr "금화가 %s 속으로 사라졌다."
 
-#: ../src/dothrow.c:2691
+#: ../src/dothrow.c:2692
 #, c-format
 msgid "gold hits the %s, then falls back on top of your %s."
 msgstr "금화가 %s에 맞고 %s 위로 떨어졌다."
 
-#: ../src/dothrow.c:2695
+#: ../src/dothrow.c:2696
 #, c-format
 msgid "Fortunately, you are wearing %s!"
 msgstr "다행히, %s{을/를} 입고 있다!"
 
-#: ../src/dothrow.c:2730
+#: ../src/dothrow.c:2731
 #, c-format
 msgid "gold hits the %s."
 msgstr "금화가 %s{을/를} 맞췄다."
@@ -18738,7 +18750,7 @@ msgstr "%s을 위해)"
 msgid "an artifact"
 msgstr "아티팩트"
 
-#: ../src/insight.c:2268
+#: ../src/insight.c:2268 ../src/o_init.c:886
 msgid "artifacts"
 msgstr "아티팩트"
 
@@ -21643,10 +21655,11 @@ msgstr "실명"
 msgid "toward"
 msgstr "쪽으로"
 
-#: ../src/mhitm.c:751 ../src/mhitm.c:1418 ../src/sit.c:173
+#: ../src/mhitm.c:751
 #, c-format
+msgctxt "gaze"
 msgid "%s %s..."
-msgstr "%s{이/가} %s..."
+msgstr ""
 
 #: ../src/mhitm.c:759
 msgid "but nothing happens."
@@ -21795,6 +21808,12 @@ msgstr "%s{이/가} 약간 추워하는 것 같다."
 #, c-format
 msgid "%s is suddenly very cold!"
 msgstr "%s{이/가} 갑자기 매우 차가워졌다!"
+
+#: ../src/mhitm.c:1418
+#, c-format
+msgctxt "stun"
+msgid "%s %s..."
+msgstr ""
 
 # 이동 동사 - 비틀거리다 (피해 입은 괴물)
 #: ../src/mhitm.c:1419 ../src/mhitu.c:2571 ../src/mondata.c:1369
@@ -22828,6 +22847,12 @@ msgstr "%s{이/가} 당신의 시선에 얼어붙었다!"
 #, c-format
 msgid "%s is frozen by you."
 msgstr "%s{이/가} 당신에 의해 얼어붙었다!"
+
+#: ../src/mhitu.c:2570
+#, c-format
+msgctxt "stun"
+msgid "%s %s."
+msgstr ""
 
 #: ../src/mhitu.c:2578
 #, c-format
@@ -27754,6 +27779,10 @@ msgstr "알파벳 순"
 msgid "Ordering of discoveries"
 msgstr "발견 정렬"
 
+#: ../src/o_init.c:726
+msgid " spellbook"
+msgstr ""
+
 #: ../src/o_init.c:777
 #, c-format
 msgid "Discoveries, %s"
@@ -27770,6 +27799,19 @@ msgstr "아직 아무것도 발견하지 못했다..."
 #: ../src/o_init.c:854
 msgid "Discovered items"
 msgstr "발견한 물품"
+
+#: ../src/o_init.c:883
+msgid "View discoveries for which sort of objects?"
+msgstr ""
+
+#: ../src/o_init.c:884
+#, c-format
+msgid "haven't discovered any %s yet."
+msgstr ""
+
+#: ../src/o_init.c:885
+msgid "unique items or relics"
+msgstr ""
 
 #: ../src/o_init.c:1072
 #, c-format
@@ -41257,6 +41299,11 @@ msgstr "마음속에 이미지가 형성된다."
 msgid "vision becomes clear."
 msgstr "시야가 맑아진다."
 
+#: ../src/sit.c:173
+#, c-format
+msgid "%s %s..."
+msgstr "%s{이/가} %s..."
+
 #: ../src/sit.c:176
 #, c-format
 msgid "have a very strange feeling in your %s."
@@ -41542,6 +41589,11 @@ msgstr "악의적인 기운이 %s{을/를} 감싸는 것을 느낀다."
 #: ../src/sit.c:571
 msgid "the magic-absorbing blade"
 msgstr "마력 흡수 칼날"
+
+#: ../src/sit.c:605
+msgctxt "Tobjnam"
+msgid "resist"
+msgstr ""
 
 #: ../src/sit.c:647
 msgid "warmer."
@@ -48013,6 +48065,14 @@ msgstr "%s %s %s%s%s."
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
+#: ../src/uhitm.c:2040
+#, c-format
+msgid "%s %s%s%s."
+msgstr "%s %s%s%s."
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
 #: ../src/uhitm.c:2074
 #, c-format
 msgid "%s %s %s %s!"
@@ -51423,21 +51483,17 @@ msgstr "끓는다"
 msgid "shuddering vibrations."
 msgstr "떨리는 진동."
 
-# ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
-# ============================================================
 #: ../src/zap.c:3556
 #, c-format
+msgctxt "hit"
 msgid "%s %s %s%s"
-msgstr "%s %s %s%s"
+msgstr ""
 
-# ============================================================
-# 전투 메시지 추가 (Additional Combat Messages)
-# ============================================================
 #: ../src/zap.c:3563
 #, c-format
+msgctxt "miss"
 msgid "%s %s %s."
-msgstr "%1$s{이/가} %3$s{을/를} %2$s."
+msgstr ""
 
 #: ../src/zap.c:3661
 msgid "floor runs like butter!"
@@ -52076,6 +52132,37 @@ msgstr "\"%s\"{을/를} 읽기용으로 열 수 없다!"
 #: dat/soko1-2.lua:111
 msgid "Elbereth"
 msgstr ""
+
+#~ msgid "crackles"
+#~ msgstr "탁탁거리다"
+
+#~ msgid "flickers"
+#~ msgstr "깜빡이다"
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#, c-format
+#~ msgid "%s flame%s %s%s"
+#~ msgstr "%s 불꽃%s %s%s"
+
+#, c-format
+#~ msgid "%s %s the %s."
+#~ msgstr "%s{이/가} %s{을/를} %s."
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#, c-format
+#~ msgid "%s %s %s%s"
+#~ msgstr "%s %s %s%s"
+
+# ============================================================
+# 전투 메시지 추가 (Additional Combat Messages)
+# ============================================================
+#, c-format
+#~ msgid "%s %s %s."
+#~ msgstr "%1$s{이/가} %3$s{을/를} %2$s."
 
 #~ msgid "Unique items"
 #~ msgstr "고유 물품"

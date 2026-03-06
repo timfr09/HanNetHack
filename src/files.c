@@ -3605,7 +3605,7 @@ read_tribute(const char *tribsection, const char *tribtitle,
                 if (strchr(lastline, '['))
                     mungspaces(lastline); /* to remove leading spaces */
                 else /* construct one if necessary */
-                    Sprintf(lastline, "[%s, by Terry Pratchett]", tribtitle);
+                    Sprintf(lastline, _("[%s, by Terry Pratchett]"), tribtitle);
                 if ((p = strrchr(lastline, ']')) != 0)
                     Sprintf(p, "; passage #%d]", targetpassage);
                 putmsghistory(lastline, FALSE);

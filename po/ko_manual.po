@@ -10033,11 +10033,11 @@ msgstr "%1$s %2$s{을/를} 맞혔다!"
 # %1$s = action(변신 문장 전체), %2$s = x_monnam(새 형태)
 # 영어 조합: "The seemingly dead orc suddenly transforms and rises as a vampire!"
 # 한국어 조합: "죽은 것처럼 보이는 오크가 갑자기 변신하여 뱀파이어로 다시 일어났다!"
-# %1$s는 inner format에서 생성된 문장 조각, %2$s{(으)로}는 목적 형태
+# %1$s는 inner format에서 생성된 문장 조각, %2$s{으로/로}는 변환 형태
 #, c-format
 msgctxt "vamp_rise"
 msgid "%s %s!"
-msgstr "%1$s %2$s{(으)로} 다시 일어났다!"
+msgstr "%1$s %2$s{으로/로} 다시 일어났다!"
 
 # [조합 메시지] mon.c:3501, wizcmds.c:314 - 당신이 몬스터를 죽임/파괴
 # 조합 요소:
@@ -11233,7 +11233,7 @@ msgstr "%3$s에 %1$s 기술이 있다%2$.0s"
 #, c-format
 msgctxt "skill_are"
 msgid "%s %s %s"
-msgstr "%3$s에 %1$s이다%2$.0s"
+msgstr "%3$s에 %1$s{이다/다}%2$.0s"
 
 # skill_enhance: 기술 강화 가능 부가 정보
 # 영어: " and can enhance that" → " (향상할 수 있다)"
@@ -16535,4 +16535,30 @@ msgstr "지팡이가 당신의 쓰기 시도를 막으려 하지만 실패한다
 #, c-format
 msgid "%s offers%s %ld gold piece%s for %s%s "
 msgstr "%1$s{이/가}%2$s %5$s%6$s에 대해 금화 %3$ld개%4$.0s{을/를} 제안한다 "
+
+# === Category 7: 조사/계사 하드코딩 수정 (ko.po 오버라이드) ===
+
+# do_name.c:184 - 이미 이름이 있는 몬스터에 같은 이름 시도
+# %1$s = mhe(mtmp) 대명사, %2$s = monnambuf 이름
+# {(이)라고}는 유효하지 않은 조사 패턴 → 인용부호로 회피
+#, c-format
+msgid "%s is already called %s."
+msgstr "%1$s{은/는} 이미 \"%2$s\"라고 불린다."
+
+# eat.c:1212 - 환각 상태에서 미믹 형태 복귀
+# %s = an(monster_name): 모음/자음 종성 가변 → {을/를}
+#, c-format
+msgid "You suddenly dread being peeled and mimic %s again!"
+msgstr "껍질이 벗겨질까 봐 갑자기 두려워지며 다시 %s{을/를} 흉내낸다!"
+
+# eat.c:1213 - 비환각 상태에서 미믹 형태 복귀
+#, c-format
+msgid "You now prefer mimicking %s again."
+msgstr "다시 %s{을/를} 흉내내고 싶어진다."
+
+# hack.c:1054 - 지형 설명 "It's <description>."
+# %s = defsyms[].explanation 번역: "왕좌"(모음), "철창"(자음) 등 가변
+#, c-format
+msgid "It's %s."
+msgstr "%s{이다/다}."
 

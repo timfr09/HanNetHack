@@ -198,7 +198,7 @@ msgstr "푸른 드래곤"
 
 #: (manual addition for i18n)
 msgid "green dragon"
-msgstr "초록 드래곤"
+msgstr "녹색 드래곤"
 
 #: (manual addition for i18n)
 msgid "yellow dragon"
@@ -214,7 +214,7 @@ msgstr "주황 드래곤"
 
 #: (manual addition for i18n)
 msgid "silver dragon"
-msgstr "은 드래곤"
+msgstr "은빛 드래곤"
 
 #: (manual addition for i18n)
 msgid "gray dragon"
@@ -222,7 +222,7 @@ msgstr "회색 드래곤"
 
 #: (manual addition for i18n)
 msgid "gold dragon"
-msgstr "금 드래곤"
+msgstr "황금 드래곤"
 
 #: (manual addition for i18n)
 msgid "imp"
@@ -2015,7 +2015,7 @@ msgid "gray dragon scales"
 msgstr "회색 용 비늘"
 
 msgid "silver dragon scales"
-msgstr "은색 용 비늘"
+msgstr "은빛 용 비늘"
 
 msgid "white dragon scales"
 msgstr "흰 용 비늘"
@@ -2030,7 +2030,7 @@ msgid "blue dragon scales"
 msgstr "푸른 용 비늘"
 
 msgid "green dragon scales"
-msgstr "초록 용 비늘"
+msgstr "녹색 용 비늘"
 
 msgid "yellow dragon scales"
 msgstr "노란 용 비늘"
@@ -2039,7 +2039,7 @@ msgid "gray dragon scale mail"
 msgstr "회색 용 비늘 갑옷"
 
 msgid "silver dragon scale mail"
-msgstr "은색 용 비늘 갑옷"
+msgstr "은빛 용 비늘 갑옷"
 
 msgid "white dragon scale mail"
 msgstr "흰 용 비늘 갑옷"
@@ -2054,7 +2054,7 @@ msgid "blue dragon scale mail"
 msgstr "푸른 용 비늘 갑옷"
 
 msgid "green dragon scale mail"
-msgstr "초록 용 비늘 갑옷"
+msgstr "녹색 용 비늘 갑옷"
 
 msgid "yellow dragon scale mail"
 msgstr "노란 용 비늘 갑옷"
@@ -3564,7 +3564,7 @@ msgstr "S"
 
 #, c-format
 msgid "disabled loading%s of bones levels"
-msgstr "뼈 레벨 불러오기%s를 비활성화했다"
+msgstr "뼈 레벨 불러오기%.0s를 비활성화했다"
 
 # [조합 메시지] insight.c - 뼈 레벨 조우 횟수
 # %2$s = plur() 복수형 억제
@@ -5488,7 +5488,7 @@ msgstr "*누군가 %s{을/를} 찬양하는 소리."
 # priest.c - 다리 치료 질문. "Heal your legs?" (%s는 복수형 s)
 #, c-format
 msgid "Heal your leg%s?"
-msgstr "다리%s를 치료할까요?"
+msgstr "다리%.0s를 치료할까요?"
 
 # various - 던져짐. "weapons are thrown"
 msgid "are thrown"
@@ -8870,7 +8870,7 @@ msgstr "%s{이/가} 식어서 굳어진다."
 # zap.c:5319 - 철창 부식/녹음
 #, c-format
 msgid "The %s %s somewhat but remain intact."
-msgstr "%s{이/가} 약간 %s 온전히 남아있다."
+msgstr "%s{이/가} 약간 %s지만 그대로 남아있다."
 
 # zap.c:5326 - 철창 파괴
 #, c-format
@@ -16031,10 +16031,10 @@ msgstr "오렌지"
 
 # === Missing dragon scale armor translations ===
 msgid "gold dragon scales"
-msgstr "금 용 비늘"
+msgstr "황금 용 비늘"
 
 msgid "gold dragon scale mail"
-msgstr "금 용 비늘 갑옷"
+msgstr "황금 용 비늘 갑옷"
 
 msgid "shimmering dragon scales"
 msgstr "빛나는 용 비늘"
@@ -16294,4 +16294,245 @@ msgstr "%1$s{이/가} %3$s 위로 %2$s."
 #, c-format
 msgid "%s %s over %s!"
 msgstr "%1$s{이/가} %3$s 위로 %2$s!"
+
+# ============================================================
+# PR#61 — 번역 품질 개선
+# ============================================================
+
+# === Category 1: Fuzzy 잔재 수정 (14건) ===
+# PR#54에서 fuzzy 제거 시 msgstr 교정이 누락된 항목들
+
+# attrib.c — 속성 형용사 (enlightenment/status)
+msgid "perceptive"
+msgstr "지각이 예리한"
+
+msgid "insulated"
+msgstr "절연된"
+
+msgid "conductive"
+msgstr "전기가 잘 통하는"
+
+msgid "controlled"
+msgstr "제어할 수 있는"
+
+msgid "hardy"
+msgstr "강인한"
+
+msgid "awake"
+msgstr "깨어 있는"
+
+msgid "muscles won't obey you"
+msgstr "근육이 말을 듣지 않는다"
+
+msgid "very sick"
+msgstr "매우 아프다"
+
+msgid "sensitive"
+msgstr "예민한"
+
+msgid "declined"
+msgstr "감소했다"
+
+msgid "uncontrolled"
+msgstr "통제되지 않는"
+
+# engrave.c — 각인 동작
+msgid "scrawling"
+msgstr "끄적거리는"
+
+# objnam.c — 내용물
+msgid "contents"
+msgstr "내용물"
+
+# cmd.c — 탐험 모드 진입
+msgid "Do you want to enter explore mode?"
+msgstr "탐험 모드에 들어가겠습니까?"
+
+# === Category 2: {이} → {이/가} 조사 패턴 수정 (22건) ===
+# ko.po에서 {이}로 잘못 입력된 주격 조사를 {이/가}로 교정
+
+# apply.c:2460 — 가방에서 뛰어나옴
+#, c-format
+msgid "%s %s out of your pack%s!"
+msgstr "%s{이/가} 가방에서 %s%s!"
+
+# apply.c:2489 — 다른 곳에서 뛰어나옴
+#, c-format
+msgid "%s %s out of %s%s!"
+msgstr "%s{이/가} %s에서 %s%s!"
+
+# engrave.c:645 — 총알 구멍 (기존 오역: "얼음 다리")
+#, c-format
+msgid "The %s is riddled by bullet holes!"
+msgstr "%s{이/가} 총알 구멍으로 벌집이 되었다!"
+
+# mon.c:4776 — 몬스터가 밑에서
+#, c-format
+msgid "%s %s under %s."
+msgstr "%s{이/가} %s 밑에서 %s."
+
+# monmove.c:1636 — 철창
+#, c-format
+msgid "%s %s %s the iron bars."
+msgstr "%s{이/가} %s 철창을 %s."
+
+# music.c:807 — 진동 감지
+#, c-format
+msgid "can feel %s emitting vibrations."
+msgstr "%s{이/가} 진동을 내는 것을 느낀다."
+
+# timeout.c:1117 — 가방에서 뛰어나옴 (다른 msgid)
+#, c-format
+msgid "%s %s out of your pack!"
+msgstr "%s{이/가} 가방에서 %s!"
+
+# timeout.c:1134 — 부화
+#, c-format
+msgid "%s hatch."
+msgstr "%s{이/가} 부화했다."
+
+# timeout.c:1153 — 밖으로 뛰어나옴
+#, c-format
+msgid "%s %s out of %s!"
+msgstr "%s{이/가} %s에서 %s!"
+
+# timeout.c:1354 — 깜빡임 (복수접미사도 동시 억제)
+#, c-format
+msgid "%s flicker%s."
+msgstr "%1$s{이/가} 깜빡인다.%2$.0s"
+
+# timeout.c:1501 — 곧 꺼질 것 같다
+#, c-format
+msgid "%s about to go out."
+msgstr "%s{이/가} 곧 꺼질 것 같다."
+
+# timeout.c:1526 — 꺼진다
+#, c-format
+msgid "%s go out."
+msgstr "%s{이/가} 꺼진다."
+
+# trap.c:1758 — 분출
+#, c-format
+msgid "a %s erupt from the %s!"
+msgstr "%s{이/가} %s에서 분출하는 것을!"
+
+# trap.c:3269 — 굴러가기 시작
+#, c-format
+msgid "%s start to roll."
+msgstr "%s{이/가} 굴러가기 시작하는 것을."
+
+# trap.c:4152 — 구덩이에 있다
+#, c-format
+msgid "%s is still in a pit."
+msgstr "%s{이/가} 아직 구덩이에 있다."
+
+# zap.c:5273 — 얼음 다리
+#, c-format
+msgid "The %s is bridged with ice!"
+msgstr "%s{이/가} 얼음 다리로 연결되었다!"
+
+# zap.c:5275 — 얼어붙음
+#, c-format
+msgid "The %s freezes."
+msgstr "%s{이/가} 얼어붙는다."
+
+# === Category 3: 복수 접미사 누출 억제 (13건) ===
+# 영어 복수형 %s가 한국어에 불필요하게 노출되는 항목
+
+# do_wear.c:2075 — 뿔 위에 맞지 않음
+#, c-format
+msgid "%s won't fit over your horn%s."
+msgstr "%1$s{이/가} 뿔 위에 맞지 않는다.%2$.0s"
+
+# region.c:469 — 가스 구름 흩어짐
+#, c-format
+msgid "%s gas cloud%s dissipate."
+msgstr "%1$s 가스 구름%2$.0s{이/가} 흩어졌다."
+
+# shk.c:1821 — 상점주인에게 금화 지불
+#, c-format
+msgid "give %s the %ld gold piece%s %s asked for."
+msgstr "%1$s{에게} %4$s{이/가} 요청한 금화 %2$ld개%3$.0s{을/를} 주었다."
+
+# shk.c:2233 — 금화로 지불
+#, c-format
+msgid "paid for %s at a cost of %ld gold piece%s.%s"
+msgstr "%1$s{을/를} 금화 %2$ld개%3$.0s에 지불했다.%4$s"
+
+# shk.c:2234,2346 — 금화로 구매
+#, c-format
+msgid "bought %s for %ld gold piece%s.%s"
+msgstr "%1$s{을/를} 금화 %2$ld개%3$.0s에 샀다.%4$s"
+
+# shk.c:4120 — 내부 물품 판매
+#, c-format
+msgid "sold some items inside %s for %ld gold piece%s.%s"
+msgstr "%1$s 안의 일부 물품을 금화 %2$ld개%3$.0s에 팔았다.%4$s"
+
+# shk.c:4121 — 물품 판매
+#, c-format
+msgid "sold %s for %ld gold piece%s.%s"
+msgstr "%1$s{을/를} 금화 %2$ld개%3$.0s에 팔았다.%4$s"
+
+# shk.c:4122 — 보상으로 금화 수령
+#, c-format
+msgid "relinquish %s and receive %ld gold piece%s in compensation.%s"
+msgstr "%1$s{을/를} 포기하고 보상으로 금화 %2$ld개%3$.0s{을/를} 받았다.%4$s"
+
+# pray.c:1587 — 반신 승천 (%s = "dess" 여성형 접미사)
+#, c-format
+msgid "ascend to the status of Demigod%s..."
+msgstr "반신%.0s의 지위로 승천한다..."
+
+# topten.c:997 — 반신 승천 (점수판)
+#, c-format
+msgid "ascended to demigod%s-hood"
+msgstr "반신%.0s의 지위로 승천했다"
+
+# timeout.c:1252 — 물기 공격 (%s = "s"/"" 동사 일치)
+#, c-format
+msgid "Egads!  %s bite%s your %s!"
+msgstr "이런! %1$s{이/가} 당신의 %3$s{을/를} 물었다!%2$.0s"
+
+# apply.c:1356 — 화상 (%s = "s"/"" 동사 일치)
+#, c-format
+msgid "%s's %s burn%s"
+msgstr "%1$s의 %2$s{이/가} 탔다%3$.0s"
+
+# iactions.c:373 — 물약에 담그기
+#, c-format
+msgid "Dip something into %s potion%s"
+msgstr "%1$s 물약%2$.0s에 무언가를 담그기"
+
+# potion.c:2763 — 물약 동작
+#, c-format
+msgid "%spotion%s %s."
+msgstr "%1$s물약%2$.0s{이/가} %3$s."
+
+# trap.c:4607 — 물약 효과 (이미 ko_manual.po에 있으므로 생략)
+
+# === Category 4: 문체 불일치 수정 (-ㅂ니다 → -다 체) ===
+
+# lock.c:1175 — 문이 닫히며 잠김
+msgid "The door swings shut, and locks!"
+msgstr "문이 닫히면서 잠긴다!"
+
+# lock.c:1178 — 부서진 문 재조립
+msgid "The broken door reassembles and locks!"
+msgstr "부서진 문이 재조립되어 잠긴다!"
+
+# lock.c:1182 — 먼지 구름이 문으로
+msgid "A cloud of dust springs up and assembles itself into a door!"
+msgstr "먼지 구름이 일어나 문으로 모인다!"
+
+# engrave.c:603 — 지팡이 저항
+msgid "The wand unsuccessfully fights your attempt to write!"
+msgstr "지팡이가 당신의 쓰기 시도를 막으려 하지만 실패한다!"
+
+# === Category 6: 골드 → 금화 + 복수접미사 억제 ===
+
+# shk.c:4073 — 상점주인 제안
+#, c-format
+msgid "%s offers%s %ld gold piece%s for %s%s "
+msgstr "%1$s{이/가}%2$s %5$s%6$s에 대해 금화 %3$ld개%4$.0s{을/를} 제안한다 "
 

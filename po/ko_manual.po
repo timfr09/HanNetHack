@@ -16716,4 +16716,10 @@ msgstr "%1$s{이/가}%2$.0s"
 msgid "There %s and %s here.  %s %s?"
 msgstr "여기 %1$s{과/와} %2$s{이/가} 있다.  %3$s %4$s?"
 
+# fountain.c:438 - 엑스칼리버 수여 livelog (리졸버 미적용, 하드코딩 필수)
+# %1$s = artiname(Excalibur)="엑스칼리버"(모음), %2$s = lady="호수의 여인"
+# 영어 어순 %1$s by %2$s → 한국어 %2$s에게서 %1$s를
+#, c-format
+msgid "was given %s by the %s"
+msgstr "%2$s에게서 %1$s를 받았다"
 

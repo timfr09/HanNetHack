@@ -8821,7 +8821,7 @@ msgstr "금색"
 # "sink glows %s for a moment" - %s는 색상
 #, c-format
 msgid "sink glows %s for a moment."
-msgstr "싱크대가 잠시 %s으로 빛났다."
+msgstr "싱크대가 잠시 %s{으로/로} 빛났다."
 
 # ============================================================
 # uhitm.c - 미끄러짐/잡기 실패 메시지
@@ -9314,7 +9314,7 @@ msgstr "%s에서 미지불 물건을 꺼내 따로 구매해야 합니다."
 # detect.c:391 - 백만장자 기분
 #, c-format
 msgid "You feel like a million %s!"
-msgstr "백만 %s를 가진 기분이다!"
+msgstr "백만 %s{을/를} 가진 기분이다!"
 
 # detect.c:394 - 미래 재정 걱정
 msgid "You feel worried about your future financial situation."
@@ -16452,7 +16452,7 @@ msgstr "%1$s 가스 구름%2$.0s{이/가} 흩어졌다."
 # shk.c:1821 — 상점주인에게 금화 지불
 #, c-format
 msgid "give %s the %ld gold piece%s %s asked for."
-msgstr "%1$s{에게} %4$s{이/가} 요청한 금화 %2$ld개%3$.0s{을/를} 주었다."
+msgstr "%1$s에게 %4$s{이/가} 요청한 금화 %2$ld개%3$.0s{을/를} 주었다."
 
 # shk.c:2233 — 금화로 지불
 #, c-format
@@ -16561,4 +16561,143 @@ msgstr "다시 %s{을/를} 흉내내고 싶어진다."
 #, c-format
 msgid "It's %s."
 msgstr "%s{이다/다}."
+
+# === Category 8: 무효 {X} 패턴 수정 (중괄호 리터럴 출력 방지) ===
+
+# apply.c:1012 - 거울 관찰 (환각: 색상, 아픈: 수척함)
+# %s = hcolor()/"peaked"/"undernourished"
+#, c-format
+msgid "look %s."
+msgstr "%s처럼 보인다."
+
+# apply.c:1067 - 변이 형태 관찰
+#, c-format
+msgid "look like %s."
+msgstr "%s처럼 보인다."
+
+# apply.c:1329 - 촛대에 초가 없음
+# %s₁ = xname(obj), %s₂ = "candles"/"charges" 등
+#, c-format
+msgid "This %s has no %s."
+msgstr "이 %1$s에는 %2$s{이/가} 없다."
+
+# apply.c:1665 - 램프에 기름 없음
+#, c-format
+msgid "This %s has no oil."
+msgstr "이 %s에는 기름이 없다."
+
+# do_name.c:302 - 물체 이름 짓기 질문
+#, c-format
+msgid "What do you want to name %s "
+msgstr "%s에게 어떤 이름을 붙이겠습니까? "
+
+# do_name.c:745 - 유형 이름 할당 불가
+#, c-format
+msgid "%s %s can't be assigned a type name."
+msgstr "%s %s에는 유형 이름을 할당할 수 없다."
+
+# dokick.c:485 - 파괴된 물건 빚
+# %1$s = shkname(), %3$s = currency()
+#, c-format
+msgid "owe %s %ld %s for objects destroyed."
+msgstr "파괴된 물건에 대해 %s에게 %ld %s{을/를} 빚졌다."
+
+# mcastu.c:250 - 몬스터 주문 시전
+# %1$s = Monnam(), %2$s = hittee (you/mon_nam)
+#, c-format
+msgid "%s casts a spell at %s!"
+msgstr "%s{이/가} %s에게 주문을 건다!"
+
+# minion.c:382 - 몬스터에게 금화 바침
+#, c-format
+msgid "give %s %ld %s."
+msgstr "%s에게 %ld %s{을/를} 주었다."
+
+# mthrowu.c:422, uhitm.c - 독 효과 없음
+#, c-format
+msgid "poison doesn't seem to affect %s."
+msgstr "독이 %s에게 효과가 없는 것 같다."
+
+# pray.c:2144 - 기도 시작
+# %s = align_gname() (신 이름)
+#, c-format
+msgid "begin praying to %s."
+msgstr "%s에게 기도하기 시작했다."
+
+# read.c:492 - 두루마리에 라벨 없음
+#, c-format
+msgid "This %s has no label."
+msgstr "이 %s에는 라벨이 없다."
+
+# shk.c:973,5715 - 상점주인에게 빚
+#, c-format
+msgid "owe %s %ld %s."
+msgstr "%s에게 %ld %s{을/를} 빚졌다."
+
+# shk.c:1900 - 빚 안내
+#, c-format
+msgid "You owe %s %ld %s "
+msgstr "%s에게 %ld %s{을/를} 빚졌다."
+
+# steed.c:284 - 안장 없는 탈것
+#, c-format
+msgid "%s is not saddled."
+msgstr "%s에게는 안장이 없다."
+
+# steed.c:331 - 탈것에 닿을 수 없음
+#, c-format
+msgid "cannot reach %s."
+msgstr "%s에게 닿을 수 없다."
+
+# steed.c:651 - 하마
+#, c-format
+msgid "dismount %s."
+msgstr "%s에서 내렸다."
+
+# trap.c - 함정에 닿을 수 없음
+#, c-format
+msgid "are unable to reach the %s!"
+msgstr "%s에 닿을 수 없다!"
+
+# uhitm.c:3317 - 가시 박힘
+#, c-format
+msgid "barbs stick to %s!"
+msgstr "가시가 %s에게 박혔다!"
+
+# uhitm.c:5122 - 해롭지 않음
+#, c-format
+msgid "It seems harmless to %s."
+msgstr "%s에게 해롭지 않은 것 같다."
+
+# uhitm.c:5910 - 산성에 튀임
+# %1$s = s_suffix(mon_nam), %2$s = hliquid("acid")
+#, c-format
+msgid "are splashed by %s %s!"
+msgstr "%s %s에 튀었다!"
+
+# === Category 9: 하드코딩 조사 오류 수정 ===
+
+# shk.c:5646 - 옌도리안 연료세
+# %4$s = currency(): "조크미드" 자음종성 → 가→{이/가}
+#, c-format
+msgid "%s%sThat will cost you %ld %s (Yendorian Fuel Tax)."
+msgstr "%s%s그것은 %ld %s{이/가} 들 것입니다 (옌도리안 연료세)."
+
+# mhitu.c:2165 - 로맨틱 만남
+# %s = noit_mon_nam(): 몬스터 이름 가변종성
+#, c-format
+msgid "Time stands still while you and %s lie in each other's arms..."
+msgstr "당신과 %s{이/가} 서로의 품에 안겨 시간이 멈춘다..."
+
+# uhitm.c:6211 - 미믹 발견
+# %s = 몬스터 설명 가변종성
+#, c-format
+msgid "Wait!  That's %s!"
+msgstr "잠깐!  저건 %s{이다/다}!"
+
+# uhitm.c:6250 - 미믹이 실제로 다른 몬스터
+# %%s는 런타임에 %s로 변환 후 몬스터 이름 대입
+#, c-format
+msgid "Wait!  That %s is really %%s!"
+msgstr "잠깐!  저 %s{은/는} 사실 %%s{이다/다}!"
 

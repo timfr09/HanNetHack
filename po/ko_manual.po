@@ -3679,7 +3679,7 @@ msgstr "둘 다 "
 # insight.c:2220 - "for an artifact"/"for artifacts"
 #, c-format
 msgid "for %s)"
-msgstr "%s를 위해)"
+msgstr "%s{을/를} 위해)"
 
 msgid "an artifact"
 msgstr "아티팩트"
@@ -4042,10 +4042,10 @@ msgid "containers"
 msgstr "용기들"
 
 msgid "is a container"
-msgstr "용기이다"
+msgstr "용기"
 
 msgid "are containers"
-msgstr "용기들이다"
+msgstr "용기들"
 
 msgid "stinking "
 msgstr "악취 나는 "
@@ -9662,7 +9662,7 @@ msgstr " %s (%s)"
 # insight.c:561 - 실제로
 #, c-format
 msgid "actually %s"
-msgstr "실제로는 %s이다"
+msgstr "실제로는 %s{이다/다}"
 
 # insight.c:1494 - 점수 표시
 #, c-format
@@ -10001,12 +10001,12 @@ msgid "%s %s..."
 msgstr "%1$s{이/가} 비틀거렸다...%2$.0s"
 
 # mhitm.c:751 — 몬스터 응시 공격 (gaze)
-# %1$s=buf ("X gazes at" 번역문), %2$s=mon_nam(mdef) 또는 "something"
-# buf는 이미 번역된 문장이므로 그대로 통과
+# %1$s=buf (inner에서 주어만 추출), %2$s=mon_nam(mdef) 또는 "something"
+# inner "%s gazes %s"에서 방향 억제 → 여기서 목적어+동사 추가
 #, c-format
 msgctxt "gaze"
 msgid "%s %s..."
-msgstr "%1$s %2$s..."
+msgstr "%1$s %2$s{을/를} 응시한다..."
 
 # ============================================================
 # 몬스터 소리 (Monster Sounds)
@@ -16700,4 +16700,20 @@ msgstr "잠깐!  저건 %s{이다/다}!"
 #, c-format
 msgid "Wait!  That %s is really %%s!"
 msgstr "잠깐!  저 %s{은/는} 사실 %%s{이다/다}!"
+
+# === Category 10: 조합 패턴 수정 ===
+
+# mhitm.c:748 - 응시 공격 내부 포맷 (buf 생성)
+# %1$s = Monnam()/Adjmonnam(), %2$s = "at"/"toward" (방향, 억제)
+# outer C_("gaze")에서 목적어+동사 처리
+#, c-format
+msgid "%s gazes %s"
+msgstr "%1$s{이/가}%2$.0s"
+
+# trap.c:5865 - 용기+함정 동시 존재 질문
+# %1$s=is a container, %2$s=trapdescr, %3$s=Remove/Disarm, %4$s=the_trap
+#, c-format
+msgid "There %s and %s here.  %s %s?"
+msgstr "여기 %1$s{과/와} %2$s{이/가} 있다.  %3$s %4$s?"
+
 

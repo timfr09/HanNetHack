@@ -1964,7 +1964,7 @@ armoroff(struct obj *otmp)
         if (what) {
             /* sizeof offdelaybuf == 60; increase it if this becomes longer */
             Snprintf(offdelaybuf, sizeof offdelaybuf,
-                     "You finish taking off your %s.", what);
+                     _("You finish taking off your %s."), what);
             gn.nomovemsg = offdelaybuf;
         }
     } else {

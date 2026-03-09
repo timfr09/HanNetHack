@@ -478,7 +478,7 @@ msgstr "무기 강화 두루마리"
 
 #: (manual addition for i18n)
 msgid "scroll of enchant armor"
-msgstr "방어구 강화 두루마리"
+msgstr "갑옷 강화 두루마리"
 
 #: (manual addition for i18n)
 msgid "scroll of magic mapping"
@@ -3679,7 +3679,7 @@ msgstr "둘 다 "
 # insight.c:2220 - "for an artifact"/"for artifacts"
 #, c-format
 msgid "for %s)"
-msgstr "%s를 위해)"
+msgstr "%s{을/를} 위해)"
 
 msgid "an artifact"
 msgstr "아티팩트"
@@ -4042,10 +4042,10 @@ msgid "containers"
 msgstr "용기들"
 
 msgid "is a container"
-msgstr "용기이다"
+msgstr "용기"
 
 msgid "are containers"
-msgstr "용기들이다"
+msgstr "용기들"
 
 msgid "stinking "
 msgstr "악취 나는 "
@@ -8821,7 +8821,7 @@ msgstr "금색"
 # "sink glows %s for a moment" - %s는 색상
 #, c-format
 msgid "sink glows %s for a moment."
-msgstr "싱크대가 잠시 %s으로 빛났다."
+msgstr "싱크대가 잠시 %s{으로/로} 빛났다."
 
 # ============================================================
 # uhitm.c - 미끄러짐/잡기 실패 메시지
@@ -9314,7 +9314,7 @@ msgstr "%s에서 미지불 물건을 꺼내 따로 구매해야 합니다."
 # detect.c:391 - 백만장자 기분
 #, c-format
 msgid "You feel like a million %s!"
-msgstr "백만 %s를 가진 기분이다!"
+msgstr "백만 %s{을/를} 가진 기분이다!"
 
 # detect.c:394 - 미래 재정 걱정
 msgid "You feel worried about your future financial situation."
@@ -9662,7 +9662,7 @@ msgstr " %s (%s)"
 # insight.c:561 - 실제로
 #, c-format
 msgid "actually %s"
-msgstr "실제로는 %s이다"
+msgstr "실제로는 %s{이다/다}"
 
 # insight.c:1494 - 점수 표시
 #, c-format
@@ -10001,12 +10001,12 @@ msgid "%s %s..."
 msgstr "%1$s{이/가} 비틀거렸다...%2$.0s"
 
 # mhitm.c:751 — 몬스터 응시 공격 (gaze)
-# %1$s=buf ("X gazes at" 번역문), %2$s=mon_nam(mdef) 또는 "something"
-# buf는 이미 번역된 문장이므로 그대로 통과
+# %1$s=buf (inner에서 주어만 추출), %2$s=mon_nam(mdef) 또는 "something"
+# inner "%s gazes %s"에서 방향 억제 → 여기서 목적어+동사 추가
 #, c-format
 msgctxt "gaze"
 msgid "%s %s..."
-msgstr "%1$s %2$s..."
+msgstr "%1$s %2$s{을/를} 응시한다..."
 
 # ============================================================
 # 몬스터 소리 (Monster Sounds)
@@ -10033,11 +10033,11 @@ msgstr "%1$s %2$s{을/를} 맞혔다!"
 # %1$s = action(변신 문장 전체), %2$s = x_monnam(새 형태)
 # 영어 조합: "The seemingly dead orc suddenly transforms and rises as a vampire!"
 # 한국어 조합: "죽은 것처럼 보이는 오크가 갑자기 변신하여 뱀파이어로 다시 일어났다!"
-# %1$s는 inner format에서 생성된 문장 조각, %2$s{(으)로}는 목적 형태
+# %1$s는 inner format에서 생성된 문장 조각, %2$s{으로/로}는 변환 형태
 #, c-format
 msgctxt "vamp_rise"
 msgid "%s %s!"
-msgstr "%1$s %2$s{(으)로} 다시 일어났다!"
+msgstr "%1$s %2$s{으로/로} 다시 일어났다!"
 
 # [조합 메시지] mon.c:3501, wizcmds.c:314 - 당신이 몬스터를 죽임/파괴
 # 조합 요소:
@@ -11233,7 +11233,7 @@ msgstr "%3$s에 %1$s 기술이 있다%2$.0s"
 #, c-format
 msgctxt "skill_are"
 msgid "%s %s %s"
-msgstr "%3$s에 %1$s이다%2$.0s"
+msgstr "%3$s에 %1$s{이다/다}%2$.0s"
 
 # skill_enhance: 기술 강화 가능 부가 정보
 # 영어: " and can enhance that" → " (향상할 수 있다)"
@@ -16452,7 +16452,7 @@ msgstr "%1$s 가스 구름%2$.0s{이/가} 흩어졌다."
 # shk.c:1821 — 상점주인에게 금화 지불
 #, c-format
 msgid "give %s the %ld gold piece%s %s asked for."
-msgstr "%1$s{에게} %4$s{이/가} 요청한 금화 %2$ld개%3$.0s{을/를} 주었다."
+msgstr "%1$s에게 %4$s{이/가} 요청한 금화 %2$ld개%3$.0s{을/를} 주었다."
 
 # shk.c:2233 — 금화로 지불
 #, c-format
@@ -16536,3 +16536,325 @@ msgstr "지팡이가 당신의 쓰기 시도를 막으려 하지만 실패한다
 msgid "%s offers%s %ld gold piece%s for %s%s "
 msgstr "%1$s{이/가}%2$s %5$s%6$s에 대해 금화 %3$ld개%4$.0s{을/를} 제안한다 "
 
+
+# === Category 7: 조사/계사 하드코딩 수정 (ko.po 오버라이드) ===
+
+# do_name.c:184 - 이미 이름이 있는 몬스터에 같은 이름 시도
+# %1$s = mhe(mtmp) 대명사, %2$s = monnambuf 이름
+# {(이)라고}는 유효하지 않은 조사 패턴 → 인용부호로 회피
+#, c-format
+msgid "%s is already called %s."
+msgstr "%1$s{은/는} 이미 \"%2$s\"라고 불린다."
+
+# eat.c:1212 - 환각 상태에서 미믹 형태 복귀
+# %s = an(monster_name): 모음/자음 종성 가변 → {을/를}
+#, c-format
+msgid "You suddenly dread being peeled and mimic %s again!"
+msgstr "껍질이 벗겨질까 봐 갑자기 두려워지며 다시 %s{을/를} 흉내낸다!"
+
+# eat.c:1213 - 비환각 상태에서 미믹 형태 복귀
+#, c-format
+msgid "You now prefer mimicking %s again."
+msgstr "다시 %s{을/를} 흉내내고 싶어진다."
+
+# hack.c:1054 - 지형 설명 "It's <description>."
+# %s = defsyms[].explanation 번역: "왕좌"(모음), "철창"(자음) 등 가변
+#, c-format
+msgid "It's %s."
+msgstr "%s{이다/다}."
+
+# === Category 8: 무효 {X} 패턴 수정 (중괄호 리터럴 출력 방지) ===
+
+# apply.c:1012 - 거울 관찰 (환각: 색상, 아픈: 수척함)
+# %s = hcolor()/"peaked"/"undernourished"
+#, c-format
+msgid "look %s."
+msgstr "%s처럼 보인다."
+
+# apply.c:1067 - 변이 형태 관찰
+#, c-format
+msgid "look like %s."
+msgstr "%s처럼 보인다."
+
+# apply.c:1329 - 촛대에 초가 없음
+# %s₁ = xname(obj), %s₂ = "candles"/"charges" 등
+#, c-format
+msgid "This %s has no %s."
+msgstr "이 %1$s에는 %2$s{이/가} 없다."
+
+# apply.c:1665 - 램프에 기름 없음
+#, c-format
+msgid "This %s has no oil."
+msgstr "이 %s에는 기름이 없다."
+
+# do_name.c:302 - 물체 이름 짓기 질문
+#, c-format
+msgid "What do you want to name %s "
+msgstr "%s에게 어떤 이름을 붙이겠습니까? "
+
+# do_name.c:745 - 유형 이름 할당 불가
+#, c-format
+msgid "%s %s can't be assigned a type name."
+msgstr "%s %s에는 유형 이름을 할당할 수 없다."
+
+# dokick.c:485 - 파괴된 물건 빚
+# %1$s = shkname(), %3$s = currency()
+#, c-format
+msgid "owe %s %ld %s for objects destroyed."
+msgstr "파괴된 물건에 대해 %s에게 %ld %s{을/를} 빚졌다."
+
+# mcastu.c:250 - 몬스터 주문 시전
+# %1$s = Monnam(), %2$s = hittee (you/mon_nam)
+#, c-format
+msgid "%s casts a spell at %s!"
+msgstr "%s{이/가} %s에게 주문을 건다!"
+
+# minion.c:382 - 몬스터에게 금화 바침
+#, c-format
+msgid "give %s %ld %s."
+msgstr "%s에게 %ld %s{을/를} 주었다."
+
+# mthrowu.c:422, uhitm.c - 독 효과 없음
+#, c-format
+msgid "poison doesn't seem to affect %s."
+msgstr "독이 %s에게 효과가 없는 것 같다."
+
+# pray.c:2144 - 기도 시작
+# %s = align_gname() (신 이름)
+#, c-format
+msgid "begin praying to %s."
+msgstr "%s에게 기도하기 시작했다."
+
+# read.c:492 - 두루마리에 라벨 없음
+#, c-format
+msgid "This %s has no label."
+msgstr "이 %s에는 라벨이 없다."
+
+# shk.c:973,5715 - 상점주인에게 빚
+#, c-format
+msgid "owe %s %ld %s."
+msgstr "%s에게 %ld %s{을/를} 빚졌다."
+
+# shk.c:1900 - 빚 안내
+#, c-format
+msgid "You owe %s %ld %s "
+msgstr "%s에게 %ld %s{을/를} 빚졌다."
+
+# steed.c:284 - 안장 없는 탈것
+#, c-format
+msgid "%s is not saddled."
+msgstr "%s에게는 안장이 없다."
+
+# steed.c:331 - 탈것에 닿을 수 없음
+#, c-format
+msgid "cannot reach %s."
+msgstr "%s에게 닿을 수 없다."
+
+# steed.c:651 - 하마
+#, c-format
+msgid "dismount %s."
+msgstr "%s에서 내렸다."
+
+# trap.c - 함정에 닿을 수 없음
+#, c-format
+msgid "are unable to reach the %s!"
+msgstr "%s에 닿을 수 없다!"
+
+# uhitm.c:3317 - 가시 박힘
+#, c-format
+msgid "barbs stick to %s!"
+msgstr "가시가 %s에게 박혔다!"
+
+# uhitm.c:5122 - 해롭지 않음
+#, c-format
+msgid "It seems harmless to %s."
+msgstr "%s에게 해롭지 않은 것 같다."
+
+# uhitm.c:5910 - 산성에 튀임
+# %1$s = s_suffix(mon_nam), %2$s = hliquid("acid")
+#, c-format
+msgid "are splashed by %s %s!"
+msgstr "%s %s에 튀었다!"
+
+# === Category 9: 하드코딩 조사 오류 수정 ===
+
+# shk.c:5646 - 옌도리안 연료세
+# %4$s = currency(): "조크미드" 자음종성 → 가→{이/가}
+#, c-format
+msgid "%s%sThat will cost you %ld %s (Yendorian Fuel Tax)."
+msgstr "%s%s그것은 %ld %s{이/가} 들 것입니다 (옌도리안 연료세)."
+
+# mhitu.c:2165 - 로맨틱 만남
+# %s = noit_mon_nam(): 몬스터 이름 가변종성
+#, c-format
+msgid "Time stands still while you and %s lie in each other's arms..."
+msgstr "당신과 %s{이/가} 서로의 품에 안겨 시간이 멈춘다..."
+
+# uhitm.c:6211 - 미믹 발견
+# %s = 몬스터 설명 가변종성
+#, c-format
+msgid "Wait!  That's %s!"
+msgstr "잠깐!  저건 %s{이다/다}!"
+
+# uhitm.c:6250 - 미믹이 실제로 다른 몬스터
+# %%s는 런타임에 %s로 변환 후 몬스터 이름 대입
+#, c-format
+msgid "Wait!  That %s is really %%s!"
+msgstr "잠깐!  저 %s{은/는} 사실 %%s{이다/다}!"
+
+# === Category 10: 조합 패턴 수정 ===
+
+# mhitm.c:748 - 응시 공격 내부 포맷 (buf 생성)
+# %1$s = Monnam()/Adjmonnam(), %2$s = "at"/"toward" (방향, 억제)
+# outer C_("gaze")에서 목적어+동사 처리
+#, c-format
+msgid "%s gazes %s"
+msgstr "%1$s{이/가}%2$.0s"
+
+# trap.c:5865 - 용기+함정 동시 존재 질문
+# %1$s=is a container, %2$s=trapdescr, %3$s=Remove/Disarm, %4$s=the_trap
+#, c-format
+msgid "There %s and %s here.  %s %s?"
+msgstr "여기 %1$s{과/와} %2$s{이/가} 있다.  %3$s %4$s?"
+
+# fountain.c:438 - 엑스칼리버 수여 livelog (리졸버 미적용, 하드코딩 필수)
+# %1$s = artiname(Excalibur)="엑스칼리버"(모음), %2$s = lady="호수의 여인"
+# 영어 어순 %1$s by %2$s → 한국어 %2$s에게서 %1$s를
+#, c-format
+msgid "was given %s by the %s"
+msgstr "%2$s에게서 %1$s를 받았다"
+
+
+# ============================================================
+# decl.c c_common_strings - 3개 누락 문자열
+# ============================================================
+# decl.c의 c_common_strings에 N_() 추가로 추출 가능해짐
+msgid "Nothing seems to happen."
+msgstr "아무 일도 일어나지 않은 것 같다."
+
+# shudder_for_moment - "You shudder for a moment." 의 동사부
+msgid "shudder for a moment."
+msgstr "잠시 몸을 떨었다."
+
+msgid "You can move again."
+msgstr "다시 움직일 수 있다."
+
+# ============================================================
+# eat.c edibility_prompts - 음식 위험성 경고 메시지 (PR#61)
+# ============================================================
+# %1$s = foodsmell (Tobjnam 결과, 예: "사과가 냄새가 난다")
+# %2$s = it_or_they ("그것"/"그들") - 한국어에서는 억제
+#, c-format
+msgid "%s like %s could be tainted!"
+msgstr "%1$s - 상했을 수도 있다! %2$.0s"
+
+#, c-format
+msgid "%s like %s could be something very dangerous!"
+msgstr "%1$s - 매우 위험한 것일 수 있다! %2$.0s"
+
+#, c-format
+msgid "%s like %s could be tainted."
+msgstr "%1$s - 상했을 수도 있다. %2$.0s"
+
+#, c-format
+msgid "%s like %s could be rotten!"
+msgstr "%1$s - 썩었을 수도 있다! %2$.0s"
+
+#, c-format
+msgid "%s like %s might be poisonous!"
+msgstr "%1$s - 독이 있을 수도 있다! %2$.0s"
+
+#, c-format
+msgid "%s like %s might have been poisoned."
+msgstr "%1$s - 독이 들어있을 수도 있다. %2$.0s"
+
+#, c-format
+msgid "%s unhealthy."
+msgstr "%s 건강에 해롭다."
+
+#, c-format
+msgid "%s rather acidic."
+msgstr "%s 상당히 산성이다."
+
+#, c-format
+msgid "%s disgusting to you right now."
+msgstr "%s 지금 당신에게 역겹다."
+
+#, c-format
+msgid "%s foul and unfamiliar to you."
+msgstr "%s 당신에게 역하고 낯설다."
+
+#, c-format
+msgid "%s unfamiliar to you."
+msgstr "%s 당신에게 낯설다."
+
+# "  Eat %s anyway?" - %s = "it"/"one" (그것/하나)
+#, c-format
+msgid "  Eat %s anyway?"
+msgstr "  그래도 %s 먹겠는가?"
+
+# ============================================================
+# pickup.c - 빈 컨테이너 메시지 (PR#61)
+# ============================================================
+# %1$s = Ysimple_name2 ("your bag of holding" 등)
+# %2$s = "now " 또는 "" (양자 고양이/저주받은 마법 가방인 경우)
+#, c-format
+msgid "%s is %sempty."
+msgstr "%1$s{이/가} %2$s비어 있다."
+
+# pickup.c에서 "now " 는 "지금 "로 이미 번역됨 (기존 항목)
+
+# ============================================================
+# do_wear.c - 갑옷 탈착 완료 메시지 (PR#61)
+# ============================================================
+# nomovemsg로 사용됨; steal.c의 "finish taking off your %s."와 별도
+#, c-format
+msgid "You finish taking off your %s."
+msgstr "%s{을/를} 벗기를 마쳤다."
+
+# ============================================================
+# mthrowu.c - 철창 타격음 (PR#61)
+# ============================================================
+# 쇠창살에 물체가 부딪힐 때 나는 소리 (의성어)
+msgid "Whang"
+msgstr "쨍"
+
+msgid "Whap"
+msgstr "퍽"
+
+msgid "Flapp"
+msgstr "탁"
+
+msgid "Clink"
+msgstr "쨍그랑"
+
+msgid "Clonk"
+msgstr "쿵"
+
+# ============================================================
+# sounds.c - 할루시네이션 상점주인 대사 (PR#61)
+# ============================================================
+# Hallucination 상태에서 상점주인이 GEICO 광고 패러디를 말함
+#, c-format
+msgid "15 minutes could save you 15 %s."
+msgstr "15분이면 %s 15개를 아낄 수 있을지도 모른다."
+
+# ============================================================
+# files.c - 테리 프래쳇 헌정 도서 귀속 메시지 (PR#61)
+# ============================================================
+# 책을 읽을 때 메시지 기록에 추가되는 귀속 텍스트
+#, c-format
+msgid "[%s, by Terry Pratchett]"
+msgstr "[%s, 테리 프래쳇 작]"
+
+# === Category 11: 용어 통일 ===
+
+# cmd.c:924 - "is no fountain here" → 샘→분수 통일
+msgid "is no fountain here."
+msgstr "여기에 분수가 없다."
+
+# end.c:1558 - 점수 화면 골드→금화 통일
+# %1$ld=금액, %2$s=복수접미사(억제), %3$ld=턴, %4$s=복수접미사(억제)
+#, c-format
+msgid "and %1$ld piece%2$s of gold, after %3$ld move%4$s."
+msgstr "%3$ld턴%4$.0s 후 금화 %1$ld개%2$.0s."

@@ -3022,9 +3022,9 @@ use_container(
     /* might take something out if container isn't empty */
     outokay = Has_contents(gc.current_container);
     if (!outokay) /* preformat the empty-container message */
-        Sprintf(emptymsg, "%s is %sempty.",
+        Sprintf(emptymsg, _("%s is %sempty."),
                 Ysimple_name2(gc.current_container),
-                (quantum_cat || cursed_mbag) ? "now " : "");
+                (quantum_cat || cursed_mbag) ? _("now ") : "");
 
     /*
      * What-to-do prompt's list of possible actions:

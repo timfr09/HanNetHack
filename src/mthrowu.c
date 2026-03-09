@@ -1441,7 +1441,8 @@ hit_bars(
                 se_bars_clink, se_bars_clonk
             };
             static const char *const barsounds[] = {
-                "", "Whang", "Whap", "Flapp", "Clink", "Clonk"
+                "", N_("Whang"), N_("Whap"), N_("Flapp"),
+                N_("Clink"), N_("Clonk")
             };
             int bsindx = (obj_type == BOULDER || obj_type == HEAVY_IRON_BALL)
                          ? 1
@@ -1454,7 +1455,7 @@ hit_bars(
                            : SIZE(barsounds) - 1;
 
             Soundeffect(se[bsindx], 100);
-            pline(_("%s!"), barsounds[bsindx]);
+            pline(_("%s!"), _(barsounds[bsindx]));
             nhUse(se[bsindx]);
         }
         if (!(harmless_missile(otmp) || is_flimsy(otmp)))

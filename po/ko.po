@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-02-26 10:30+0900\n"
+"POT-Creation-Date: 2026-03-06 14:06+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -146,7 +146,7 @@ msgstr "착용 중에는 사용할 수 없다!"
 # ============================================================
 #: ../src/apply.c:130 ../src/artifact.c:1415 ../src/hack.c:3081
 #: ../src/lock.c:1316 ../src/mhitu.c:686 ../src/mhitu.c:1006
-#: ../src/mhitu.c:1331 ../src/polyself.c:1367 ../src/potion.c:1957
+#: ../src/mhitu.c:1331 ../src/polyself.c:1371 ../src/potion.c:1957
 #: ../src/shk.c:1429 ../src/sounds.c:417 ../src/sounds.c:468 ../src/trap.c:854
 #: ../src/uhitm.c:2467 ../src/uhitm.c:2538 ../src/uhitm.c:2597
 #: ../src/uhitm.c:4512 ../src/uhitm.c:6434 ../src/weapon.c:879
@@ -711,7 +711,7 @@ msgstr "하나의"
 
 #: ../src/apply.c:907 ../src/iactions.c:63 ../src/mhitm.c:232
 #: ../src/mhitm.c:260 ../src/muse.c:3105 ../src/muse.c:3117
-#: ../src/polyself.c:1493 ../src/shk.c:4079 ../src/shk.c:5805 ../src/trap.c:282
+#: ../src/polyself.c:1497 ../src/shk.c:4079 ../src/shk.c:5805 ../src/trap.c:282
 #: ../src/uhitm.c:1206 ../src/zap.c:5446
 msgid "the"
 msgstr "그"
@@ -1685,7 +1685,7 @@ msgstr "%s{이/가} 배낭에서 %s!"
 
 #: ../src/apply.c:2458 ../src/apply.c:2461 ../src/apply.c:2490 ../src/do.c:829
 #: ../src/mkobj.c:2925 ../src/mthrowu.c:797 ../src/mthrowu.c:935
-#: ../src/obj_descr_i18n.c:412 ../src/pickup.c:3798 ../src/polyself.c:1305
+#: ../src/obj_descr_i18n.c:412 ../src/pickup.c:3798 ../src/polyself.c:1309
 #: ../src/pray.c:799 ../src/timeout.c:1115 ../src/timeout.c:1118
 #: ../src/timeout.c:1154 ../src/weapon.c:772 ../src/wield.c:809
 #: ../src/zap.c:6298
@@ -3408,7 +3408,7 @@ msgstr "%s{을/를} 덮은 끈적이 때문에"
 #: ../src/attrib.c:1052 ../src/attrib.c:1058 ../src/detect.c:1250
 #: ../src/detect.c:1326 ../src/dig.c:1069 ../src/dig.c:1075 ../src/dokick.c:708
 #: ../src/dothrow.c:1532 ../src/eat.c:2123 ../src/mcastu.c:846
-#: ../src/mon.c:3783 ../src/mthrowu.c:1457 ../src/muse.c:218 ../src/pray.c:701
+#: ../src/mon.c:3783 ../src/mthrowu.c:1458 ../src/muse.c:218 ../src/pray.c:701
 #: ../src/shk.c:3792 ../src/shk.c:5387 ../src/sit.c:605 ../src/sit.c:709
 #: ../src/spell.c:248 ../src/steed.c:430 ../src/timeout.c:256
 #: ../src/trap.c:6293
@@ -3554,7 +3554,7 @@ msgstr "그들"
 #: ../src/dokick.c:644 ../src/dokick.c:775 ../src/dokick.c:1941
 #: ../src/dokick.c:1944 ../src/dothrow.c:1810 ../src/dothrow.c:2728
 #: ../src/hack.c:543 ../src/mon.c:3306 ../src/mon.c:3594 ../src/mthrowu.c:200
-#: ../src/polyself.c:1282 ../src/read.c:2281 ../src/read.c:2354
+#: ../src/polyself.c:1286 ../src/read.c:2281 ../src/read.c:2354
 #: ../src/steal.c:837 ../src/steed.c:597 ../src/teleport.c:2128
 #: ../src/trap.c:706 ../src/trap.c:1891 ../src/trap.c:3424 ../src/trap.c:3437
 #: ../src/trap.c:5008
@@ -4688,14 +4688,14 @@ msgstr "%s{으로/로} 올라가기"
 
 # stairs.c translations
 #: ../src/cmd.c:4231 ../src/cmd.c:4236 ../src/dig.c:1592 ../src/do.c:1201
-#: ../src/do.c:1329 ../src/do.c:1766 ../src/do.c:1784 ../src/polyself.c:1593
+#: ../src/do.c:1329 ../src/do.c:1766 ../src/do.c:1784 ../src/polyself.c:1597
 #: ../src/sit.c:533 ../src/stairs.c:198
 msgid "ladder"
 msgstr "사다리"
 
 #: ../src/cmd.c:4231 ../src/cmd.c:4236 ../src/dig.c:1592 ../src/dig.c:1827
 #: ../src/do.c:1200 ../src/do.c:1329 ../src/do.c:1766 ../src/do.c:1784
-#: ../src/dungeon.c:1774 ../src/polyself.c:1593 ../src/sit.c:531
+#: ../src/dungeon.c:1774 ../src/polyself.c:1597 ../src/sit.c:531
 #: ../src/stairs.c:198
 msgid "stairs"
 msgstr "계단"
@@ -5134,6 +5134,39 @@ msgstr "%s{이/가} 거대한 금속 덩어리에 맞았다!"
 #: ../src/dbridge.c:990
 msgid "collapsing drawbridge"
 msgstr "무너지는 도개교"
+
+#: ../src/decl.c:40
+msgid "Nothing happens."
+msgstr ""
+
+#: ../src/decl.c:41
+msgid "Nothing seems to happen."
+msgstr ""
+
+#: ../src/decl.c:42
+msgid "That's enough tries!"
+msgstr ""
+
+#: ../src/decl.c:43
+#, c-format
+msgid "That is a silly thing to %s."
+msgstr ""
+
+#: ../src/decl.c:44
+msgid "shudder for a moment."
+msgstr ""
+
+#: ../src/decl.c:47
+msgid "You can move again."
+msgstr ""
+
+#: ../src/decl.c:48
+msgid "Never mind."
+msgstr ""
+
+#: ../src/decl.c:49
+msgid "vision quickly clears."
+msgstr ""
 
 #: ../src/detect.c:391
 #, c-format
@@ -6965,16 +6998,16 @@ msgstr "무엇을 버리겠습니까?"
 msgid "are %s, and cannot go %s."
 msgstr "%s 상태라 %s{으로/로} 갈 수 없다."
 
-#: ../src/do.c:1117 ../src/polyself.c:1773
+#: ../src/do.c:1117 ../src/polyself.c:1777
 msgid "being held"
 msgstr "붙잡힌 상태"
 
-#: ../src/do.c:1118 ../src/insight.c:1123 ../src/polyself.c:1771
+#: ../src/do.c:1118 ../src/insight.c:1123 ../src/polyself.c:1775
 #: ../src/trap.c:3996
 msgid "swallowed"
 msgstr "삼켜진"
 
-#: ../src/do.c:1119 ../src/insight.c:1123 ../src/polyself.c:1772
+#: ../src/do.c:1119 ../src/insight.c:1123 ../src/polyself.c:1776
 #: ../src/trap.c:3996
 msgid "engulfed"
 msgstr "휘감긴"
@@ -7081,13 +7114,13 @@ msgctxt "dodown"
 msgid "%s %s the %s."
 msgstr ""
 
-#: ../src/do.c:1281 ../src/hack.c:562 ../src/polyself.c:1563
+#: ../src/do.c:1281 ../src/hack.c:562 ../src/polyself.c:1567
 #: ../src/teleport.c:2014
 msgid "hole"
 msgstr "구멍"
 
 #: ../src/do.c:1281 ../src/dothrow.c:627 ../src/hack.c:562
-#: ../src/polyself.c:1563
+#: ../src/polyself.c:1567
 msgid "trap door"
 msgstr "함정문"
 
@@ -8634,13 +8667,13 @@ msgid "shield"
 msgstr "방패"
 
 #: ../src/do_wear.c:15 ../src/iactions.c:298 ../src/mhitu.c:152
-#: ../src/muse.c:2789 ../src/muse.c:2827 ../src/polyself.c:1311
+#: ../src/muse.c:2789 ../src/muse.c:2827 ../src/polyself.c:1315
 #: ../src/wield.c:184 ../src/wield.c:710
 msgid "weapon"
 msgstr "무기"
 
-#: ../src/do_wear.c:15 ../src/obj_descr_i18n.c:308 ../src/polyself.c:1306
-#: ../src/polyself.c:1309 ../src/wield.c:183
+#: ../src/do_wear.c:15 ../src/obj_descr_i18n.c:308 ../src/polyself.c:1310
+#: ../src/polyself.c:1313 ../src/wield.c:183
 msgid "sword"
 msgstr "검"
 
@@ -9013,6 +9046,11 @@ msgstr "할 수 없다. %s{이/가} 저주받았다."
 #: ../src/do_wear.c:1929
 msgid "disrobing"
 msgstr "옷 벗는 중"
+
+#: ../src/do_wear.c:1967
+#, c-format
+msgid "You finish taking off your %s."
+msgstr ""
 
 #: ../src/do_wear.c:2010
 #, c-format
@@ -9460,7 +9498,7 @@ msgid "eating"
 msgstr "먹는 중"
 
 #: ../src/dog.c:832 ../src/insight.c:282 ../src/obj_descr_i18n.c:1159
-#: ../src/polyself.c:1770
+#: ../src/polyself.c:1774
 msgid "trapped"
 msgstr "함정에 빠짐"
 
@@ -9878,7 +9916,7 @@ msgid "tizzy"
 msgstr "흥분 상태"
 
 #: ../src/dokick.c:531 ../src/dothrow.c:1098 ../src/mhitu.c:1341
-#: ../src/polyself.c:1003 ../src/trap.c:3975 ../src/trap.c:5498
+#: ../src/polyself.c:1007 ../src/trap.c:3975 ../src/trap.c:5498
 msgid "web"
 msgstr "거미줄"
 
@@ -9979,7 +10017,7 @@ msgstr "텽그랑!"
 msgid "Whee!  %s %s across the %s."
 msgstr "휘! %s{이/가} %s{을/를} 가로질러 %s."
 
-#: ../src/dokick.c:723 ../src/polyself.c:1267 ../src/timeout.c:1274
+#: ../src/dokick.c:723 ../src/polyself.c:1271 ../src/timeout.c:1274
 #: ../src/worn.c:1311
 msgid "slide"
 msgstr "미끄러지다"
@@ -12230,6 +12268,66 @@ msgstr "잠들었다."
 msgid "sinister laughter as you fall asleep..."
 msgstr "잠들면서 불길한 웃음소리..."
 
+#: ../src/eat.c:2675
+#, c-format
+msgid "%s like %s could be tainted!"
+msgstr ""
+
+#: ../src/eat.c:2679
+#, c-format
+msgid "%s like %s could be something very dangerous!"
+msgstr ""
+
+#: ../src/eat.c:2686
+#, c-format
+msgid "%s like %s could be tainted."
+msgstr ""
+
+#: ../src/eat.c:2690
+#, c-format
+msgid "%s like %s could be rotten!"
+msgstr ""
+
+#: ../src/eat.c:2694
+#, c-format
+msgid "%s like %s might be poisonous!"
+msgstr ""
+
+#: ../src/eat.c:2698
+#, c-format
+msgid "%s like %s might have been poisoned."
+msgstr ""
+
+#: ../src/eat.c:2702
+#, c-format
+msgid "%s unhealthy."
+msgstr ""
+
+#: ../src/eat.c:2704
+#, c-format
+msgid "%s rather acidic."
+msgstr ""
+
+#: ../src/eat.c:2707
+#, c-format
+msgid "%s disgusting to you right now."
+msgstr ""
+
+#: ../src/eat.c:2717
+#, c-format
+msgid "%s foul and unfamiliar to you."
+msgstr ""
+
+#: ../src/eat.c:2723
+#, c-format
+msgid "%s unfamiliar to you."
+msgstr ""
+
+#: ../src/eat.c:2727
+#, c-format
+msgid "  Eat %s anyway?"
+msgstr ""
+
 #: ../src/eat.c:2728 ../src/eat.c:3698 ../src/pickup.c:1682
 #: ../src/pickup.c:3575 ../src/zap.c:6179
 msgid "one"
@@ -13838,6 +13936,11 @@ msgstr "%s의 \"%s\"{이다/다}!"
 msgid "too overwhelmed to continue!"
 msgstr "너무 압도당해서 계속할 수 없다!"
 
+#: ../src/files.c:3608
+#, c-format
+msgid "[%s, by Terry Pratchett]"
+msgstr ""
+
 #: ../src/files.c:3618
 #, c-format
 msgid "It seems to be %s of \"%s\"!"
@@ -15147,7 +15250,7 @@ msgstr "헛되이 "
 msgid "explode at"
 msgstr "폭발을 시도한다"
 
-#: ../src/hack.c:2320 ../src/mhitu.c:152 ../src/polyself.c:1677
+#: ../src/hack.c:2320 ../src/mhitu.c:152 ../src/polyself.c:1681
 #: ../src/spell.c:836 ../src/uhitm.c:2033
 msgid "attack"
 msgstr "공격한다"
@@ -16596,7 +16699,7 @@ msgstr " %1$s%2$s%4$s%3$s 성향이며, %5$s{을/를} 위한 임무 중"
 msgid "temporarily "
 msgstr "일시적으로 "
 
-#: ../src/insight.c:555
+#: ../src/insight.c:555 ../src/pickup.c:3027
 msgid "now "
 msgstr "이제 "
 
@@ -17047,7 +17150,7 @@ msgstr "최종 상태:"
 msgid "Status:"
 msgstr "상태:"
 
-#: ../src/insight.c:981 ../src/obj_descr_i18n.c:1118 ../src/polyself.c:324
+#: ../src/insight.c:981 ../src/obj_descr_i18n.c:1118 ../src/polyself.c:328
 msgid "transformed"
 msgstr "변신 상태"
 
@@ -17061,7 +17164,7 @@ msgid "felt"
 msgstr "느꼈다"
 
 # 상태 메시지
-#: ../src/insight.c:990 ../src/polyself.c:956
+#: ../src/insight.c:990 ../src/polyself.c:960
 #, c-format
 msgid "riding %s"
 msgstr "%s{을/를} 타고 있음"
@@ -22490,7 +22593,7 @@ msgstr "%s 시선이 당신의 %s에 의해 반사되었다."
 msgid "meet %s gaze."
 msgstr "%s의 시선과 마주쳤다."
 
-#: ../src/mhitu.c:1746 ../src/polyself.c:1745 ../src/trap.c:3778
+#: ../src/mhitu.c:1746 ../src/polyself.c:1749 ../src/trap.c:3778
 msgid "You turn to stone..."
 msgstr "돌로 변했다..."
 
@@ -24177,16 +24280,16 @@ msgid "It locks on to your %s!"
 msgstr "그것이 %s에 달라붙었다!"
 
 #: ../src/monmove.c:617 ../src/pager.c:511 ../src/pager.c:699
-#: ../src/polyself.c:1913
+#: ../src/polyself.c:1917
 msgid "telepathy"
 msgstr "텔레파시"
 
 # 정신 폭발 대상: 잠재적 텔레파시
-#: ../src/monmove.c:618 ../src/polyself.c:1914
+#: ../src/monmove.c:618 ../src/polyself.c:1918
 msgid "latent telepathy"
 msgstr "잠재적 텔레파시"
 
-#: ../src/monmove.c:619 ../src/polyself.c:1915
+#: ../src/monmove.c:619 ../src/polyself.c:1919
 msgid "mind"
 msgstr "정신"
 
@@ -26374,7 +26477,7 @@ msgstr "반짝임"
 msgid "specularity"
 msgstr "반사광"
 
-#: ../src/mthrowu.c:58 ../src/polyself.c:2000
+#: ../src/mthrowu.c:58 ../src/polyself.c:2004
 msgid "spores"
 msgstr "포자"
 
@@ -26714,7 +26817,27 @@ msgstr "화난 뱀 소리!"
 msgid "a hissing noise."
 msgstr "쉬익거리는 소리."
 
-#: ../src/mthrowu.c:1476
+#: ../src/mthrowu.c:1444
+msgid "Whang"
+msgstr ""
+
+#: ../src/mthrowu.c:1444
+msgid "Whap"
+msgstr ""
+
+#: ../src/mthrowu.c:1444
+msgid "Flapp"
+msgstr ""
+
+#: ../src/mthrowu.c:1445
+msgid "Clink"
+msgstr ""
+
+#: ../src/mthrowu.c:1445
+msgid "Clonk"
+msgstr ""
+
+#: ../src/mthrowu.c:1477
 msgid "break the bars apart!"
 msgstr "철창을 부쉈다!"
 
@@ -27190,8 +27313,8 @@ msgstr "%s에게 화났다."
 msgid "Aggravated, you are jolted into full consciousness."
 msgstr "짜증이 나서 완전히 깨어났다."
 
-#: ../src/muse.c:2808 ../src/muse.c:2841 ../src/polyself.c:2014
-#: ../src/polyself.c:2030
+#: ../src/muse.c:2808 ../src/muse.c:2841 ../src/polyself.c:2018
+#: ../src/polyself.c:2034
 msgid "scales"
 msgstr "비늘"
 
@@ -31844,7 +31967,7 @@ msgstr "무한한 물"
 msgid "wall of %s"
 msgstr "%s의 벽"
 
-#: ../src/pager.c:618 ../src/polyself.c:1493
+#: ../src/pager.c:618 ../src/polyself.c:1497
 msgid "solid"
 msgstr "단단한"
 
@@ -32941,6 +33064,11 @@ msgstr "용기를 여는 중"
 msgid "owe %ld %s for lost merchandise."
 msgstr "잃어버린 상품에 대해 %ld %s{을/를} 빚진다."
 
+#: ../src/pickup.c:3025
+#, c-format
+msgid "%s is %sempty."
+msgstr ""
+
 # ============================================================
 # 용기 행동 질문 (Container action question)
 # 조합 패턴: safe_qbuf("Do what with ", "?", container)
@@ -33208,479 +33336,479 @@ msgid "are no longer being strangled."
 msgstr "더 이상 목 졸리지 않는다."
 
 # 자기 학살 (자신의 종을 학살)
-#: ../src/polyself.c:243
+#: ../src/polyself.c:244
 msgid "self-genocide"
 msgstr "자기 학살"
 
-#: ../src/polyself.c:323
+#: ../src/polyself.c:327
 #, c-format
 msgid "%s into %s"
 msgstr "%s{이/가} %s 안으로."
 
-#: ../src/polyself.c:324
+#: ../src/polyself.c:328
 msgid "polymorphed"
 msgstr "변신했다"
 
-#: ../src/polyself.c:423
+#: ../src/polyself.c:427
 msgid "Your new form doesn't seem healthy enough to survive."
 msgstr "새 형태가 생존하기에 충분히 건강하지 않은 것 같다."
 
-#: ../src/polyself.c:425
+#: ../src/polyself.c:429
 msgid "unsuccessful polymorph"
 msgstr "변신 실패"
 
-#: ../src/polyself.c:440
+#: ../src/polyself.c:444
 #, c-format
 msgid "You feel like a new %s!"
 msgstr "새로운 %s가 된 기분이다!"
 
-#: ../src/polyself.c:452
+#: ../src/polyself.c:456
 msgid "body transforms, but there is still slime on you."
 msgstr "몸이 변하지만, 여전히 슬라임이 묻어있다."
 
-#: ../src/polyself.c:481
+#: ../src/polyself.c:485
 msgid "fail to transform!"
 msgstr "변신에 실패했다!"
 
-#: ../src/polyself.c:489
+#: ../src/polyself.c:493
 msgid "system shock"
 msgstr "시스템 쇼크"
 
-#: ../src/polyself.c:516
+#: ../src/polyself.c:520
 msgid "Become what kind of monster? [type the name]"
 msgstr "어떤 종류의 괴물이 되겠습니까? [이름을 입력하세요]"
 
-#: ../src/polyself.c:564 ../src/read.c:3342
+#: ../src/polyself.c:568 ../src/read.c:3342
 msgid "I've never heard of such monsters."
 msgstr "그런 괴물은 들어본 적이 없다."
 
-#: ../src/polyself.c:566
+#: ../src/polyself.c:570
 msgid "polymorph into any of those."
 msgstr "그것들 중 하나로 변신한다."
 
-#: ../src/polyself.c:610
+#: ../src/polyself.c:614
 #, c-format
 msgid "polymorph into %s."
 msgstr "%s{으로/로} 변신한다."
 
-#: ../src/polyself.c:636
+#: ../src/polyself.c:640
 msgid "merge with your scaly armor."
 msgstr "비늘 갑옷과 합쳐진다."
 
-#: ../src/polyself.c:645
+#: ../src/polyself.c:649
 #, c-format
 msgid "%s reverts to scales as you merge with them."
 msgstr "합쳐지면서 %s{이/가} 비늘로 돌아간다."
 
-#: ../src/polyself.c:679
+#: ../src/polyself.c:683
 #, c-format
 msgid "Become %s?"
 msgstr "%s{이/가} 되겠습니까?"
 
-#: ../src/polyself.c:741
+#: ../src/polyself.c:745
 #, c-format
 msgid "rather %s-ish."
 msgstr "다소 %s 같다."
 
-#: ../src/polyself.c:795
+#: ../src/polyself.c:799
 msgid "new "
 msgstr "새로운 "
 
-#: ../src/polyself.c:799
+#: ../src/polyself.c:803
 msgid "female "
 msgstr "여성 "
 
-#: ../src/polyself.c:799
+#: ../src/polyself.c:803
 msgid "male "
 msgstr "남성 "
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
-#: ../src/polyself.c:802
+#: ../src/polyself.c:806
 #, c-format
 msgctxt "you_poly"
 msgid "%s %s!"
 msgstr ""
 
-#: ../src/polyself.c:802
+#: ../src/polyself.c:806
 msgid "turn into"
 msgstr "변했다"
 
 # 조합: "You feel like a new X" - 변신 후 느낌
-#: ../src/polyself.c:802
+#: ../src/polyself.c:806
 msgid "feel like"
 msgstr "느껴진다"
 
-#: ../src/polyself.c:807
+#: ../src/polyself.c:811
 msgid "You turn to stone!"
 msgstr "돌로 변했다..."
 
-#: ../src/polyself.c:832
+#: ../src/polyself.c:836
 msgid "You no longer seem to be petrifying."
 msgstr "더 이상 석화되지 않는 것 같다."
 
 #
-#: ../src/polyself.c:837
+#: ../src/polyself.c:841
 msgid "no longer feel sick."
 msgstr "더 이상 아프지 않다."
 
-#: ../src/polyself.c:841
+#: ../src/polyself.c:845
 msgid "The slime burns away!"
 msgstr "슬라임이 불타 사라졌다!"
 
-#: ../src/polyself.c:923
+#: ../src/polyself.c:927
 #, c-format
 msgid "%s can no longer contain you."
 msgstr "%s{이/가} 더 이상 당신을 담을 수 없다."
 
-#: ../src/polyself.c:946
+#: ../src/polyself.c:950
 #, c-format
 msgid "%s loses its grip on you."
 msgstr "%s{이/가} 당신에게서 놓친다."
 
-#: ../src/polyself.c:954
+#: ../src/polyself.c:958
 #, c-format
 msgid "%s touch %s."
 msgstr "%s{이/가} %s{을/를} 만졌다."
 
-#: ../src/polyself.c:976
+#: ../src/polyself.c:980
 msgid "rock seems to no longer trap you."
 msgstr "바위가 더 이상 가두지 않는 것 같다."
 
-#: ../src/polyself.c:978
+#: ../src/polyself.c:982
 msgid "buried ball is no longer bound to you."
 msgstr "묻힌 공이 더 이상 묶여있지 않다."
 
-#: ../src/polyself.c:984
+#: ../src/polyself.c:988
 #, c-format
 msgid "%s now feels soothing."
 msgstr "%s{이/가} 이제 편안하게 느껴진다."
 
-#: ../src/polyself.c:990
+#: ../src/polyself.c:994
 msgid "slip out of the iron chain."
 msgstr "철 사슬에서 빠져나왔다."
 
-#: ../src/polyself.c:993
+#: ../src/polyself.c:997
 msgid "slip free of the buried ball and chain."
 msgstr "묻힌 공과 사슬에서 빠져나왔다."
 
-#: ../src/polyself.c:1002
+#: ../src/polyself.c:1006
 #, c-format
 msgid "are no longer stuck in the %s."
 msgstr "더 이상 %s에 갇혀있지 않다."
 
-#: ../src/polyself.c:1003 ../src/trap.c:1528 ../src/trap.c:5498
+#: ../src/polyself.c:1007 ../src/trap.c:1528 ../src/trap.c:5498
 msgid "bear trap"
 msgstr "곰덫"
 
 #
-#: ../src/polyself.c:1008
+#: ../src/polyself.c:1012
 msgid "orient yourself on the web."
 msgstr "거미줄 위에서 방향을 잡았다."
 
-#: ../src/polyself.c:1033
+#: ../src/polyself.c:1037
 msgid "Use the command #monster to use your breath weapon."
 msgstr "브레스 공격을 사용하려면 #monster 명령을 사용해라."
 
-#: ../src/polyself.c:1035
+#: ../src/polyself.c:1039
 msgid "Use the command #monster to spit venom."
 msgstr "독을 뱉으려면 #monster 명령을 사용해라."
 
-#: ../src/polyself.c:1037
+#: ../src/polyself.c:1041
 msgid "Use the command #monster to remove an iron ball."
 msgstr "쇠구슬을 제거하려면 #monster 명령을 사용해라."
 
-#: ../src/polyself.c:1039
+#: ../src/polyself.c:1043
 msgid "Use the command #monster to gaze at monsters."
 msgstr "몬스터를 응시하려면 #monster 명령을 사용해라."
 
-#: ../src/polyself.c:1041
+#: ../src/polyself.c:1045
 msgid "Use the command #monster to hide or to spin a web."
 msgstr "숨거나 거미줄을 치려면 #monster 명령을 사용해라."
 
 #
-#: ../src/polyself.c:1043
+#: ../src/polyself.c:1047
 msgid "Use the command #monster to hide."
 msgstr "숨으려면 #monster 명령을 사용해라."
 
-#: ../src/polyself.c:1045
+#: ../src/polyself.c:1049
 msgid "Use the command #monster to spin a web."
 msgstr "거미줄을 치려면 #monster 명령을 사용해라."
 
-#: ../src/polyself.c:1047
+#: ../src/polyself.c:1051
 msgid "Use the command #monster to summon help."
 msgstr "도움을 소환하려면 #monster 명령을 사용해라."
 
-#: ../src/polyself.c:1049
+#: ../src/polyself.c:1053
 msgid "Use the command #monster to multiply in a fountain."
 msgstr "분수에서 번식하려면 #monster 명령을 사용해라."
 
-#: ../src/polyself.c:1051
+#: ../src/polyself.c:1055
 msgid "Use the command #monster to use your horn."
 msgstr "뿔을 사용하려면 #monster 명령을 사용해라."
 
-#: ../src/polyself.c:1053
+#: ../src/polyself.c:1057
 msgid "Use the command #monster to emit a mental blast."
 msgstr "정신 폭발을 방출하려면 #monster 명령을 사용해라."
 
 #
-#: ../src/polyself.c:1055
+#: ../src/polyself.c:1059
 msgid "Use the command #monster to shriek."
 msgstr "비명을 지르려면 #monster 명령을 사용해라."
 
-#: ../src/polyself.c:1057
+#: ../src/polyself.c:1061
 msgid "Use the command #monster to change shape."
 msgstr "변신하려면 #monster 명령을 사용해라."
 
-#: ../src/polyself.c:1063
+#: ../src/polyself.c:1067
 msgid "Use the command #sit to spawn in the water."
 msgstr "물에서 산란하려면 #sit 명령을 사용해라."
 
-#: ../src/polyself.c:1064
+#: ../src/polyself.c:1068
 msgid "Use the command #sit to lay an egg."
 msgstr "알을 낳으려면 #sit 명령을 사용해라."
 
-#: ../src/polyself.c:1167
+#: ../src/polyself.c:1171
 msgid "break out of your armor!"
 msgstr "갑옷을 부수고 나왔다!"
 
-#: ../src/polyself.c:1175
+#: ../src/polyself.c:1179
 #, c-format
 msgid "clasp on your %s breaks open!"
 msgstr "%s의 걸쇠가 부러졌다!"
 
-#: ../src/polyself.c:1180
+#: ../src/polyself.c:1184
 msgid "shirt rips to shreds!"
 msgstr "셔츠가 갈기갈기 찢어졌다!"
 
-#: ../src/polyself.c:1187
+#: ../src/polyself.c:1191
 msgid "armor falls around you!"
 msgstr "갑옷이 당신 주변으로 떨어졌다!"
 
-#: ../src/polyself.c:1199
+#: ../src/polyself.c:1203
 #, c-format
 msgid "%s falls, unsupported!"
 msgstr "%s{이/가} 지지되지 않아 떨어졌다!"
 
-#: ../src/polyself.c:1201
+#: ../src/polyself.c:1205
 #, c-format
 msgid "shrink out of your %s!"
 msgstr "%s에서 줄어들어 빠져나왔다!"
 
-#: ../src/polyself.c:1207
+#: ../src/polyself.c:1211
 msgid "seep right through your shirt!"
 msgstr "셔츠를 뚫고 스며든다!"
 
-#: ../src/polyself.c:1209
+#: ../src/polyself.c:1213
 msgid "become much too small for your shirt!"
 msgstr "셔츠에 비해 너무 작아졌다!"
 
-#: ../src/polyself.c:1220
+#: ../src/polyself.c:1224
 #, c-format
 msgid "horn%s"
 msgstr "뿔%s"
 
-#: ../src/polyself.c:1221
+#: ../src/polyself.c:1225
 #, c-format
 msgid "%s %s through %s."
 msgstr "%s{이/가} %s{을/를} %s 뚫었다."
 
-#: ../src/polyself.c:1221
+#: ../src/polyself.c:1225
 msgid "pierce"
 msgstr "뚫다"
 
-#: ../src/polyself.c:1226 ../src/polyself.c:1252
+#: ../src/polyself.c:1230 ../src/polyself.c:1256
 #, c-format
 msgid "%s falls to the %s!"
 msgstr "%s{이/가} %s{으로/로} 떨어졌다!"
 
-#: ../src/polyself.c:1238
+#: ../src/polyself.c:1242
 #, c-format
 msgid "drop your gloves%s!"
 msgstr "장갑%s{을/를} 떨어뜨렸다!"
 
-#: ../src/polyself.c:1245
+#: ../src/polyself.c:1249
 msgid "can no longer hold your shield!"
 msgstr "더 이상 방패를 들 수 없다!"
 
-#: ../src/polyself.c:1264
+#: ../src/polyself.c:1268
 msgid "boots fall away!"
 msgstr "부츠가 떨어졌다!"
 
-#: ../src/polyself.c:1266
+#: ../src/polyself.c:1270
 #, c-format
 msgid "boots %s off your feet!"
 msgstr "부츠가 발에서 %s 벗겨졌다!"
 
 # 조합: "boots are pushed off your feet" - 부츠가 밀려남
-#: ../src/polyself.c:1267 ../src/worn.c:1311
+#: ../src/polyself.c:1271 ../src/worn.c:1311
 msgid "are pushed"
 msgstr "밀려났다"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
-#: ../src/polyself.c:1282
+#: ../src/polyself.c:1286
 #, c-format
 msgid "%s %s off!"
 msgstr "%s{이/가} %s 벗겨졌다!"
 
-#: ../src/polyself.c:1305 ../src/uhitm.c:4968
+#: ../src/polyself.c:1309 ../src/uhitm.c:4968
 msgid "release"
 msgstr "놓아주다"
 
-#: ../src/polyself.c:1316
+#: ../src/polyself.c:1320
 #, c-format
 msgid "find you must %s %s %s!"
 msgstr "%s %s{을/를} %s해야 한다는 것을 알았다!"
 
 # 사망 원인 - 생물 형태에 갇힌 채 죽음
-#: ../src/polyself.c:1360
+#: ../src/polyself.c:1364
 msgid "killed while stuck in creature form"
 msgstr "생물 형태에 갇힌 채 죽었다"
 
-#: ../src/polyself.c:1367 ../src/write.c:323
+#: ../src/polyself.c:1371 ../src/write.c:323
 msgid "fail"
 msgstr "실패"
 
-#: ../src/polyself.c:1380
+#: ../src/polyself.c:1384
 #, c-format
 msgid "You return to %s form!"
 msgstr "%s 형태로 돌아왔다!"
 
-#: ../src/polyself.c:1385
+#: ../src/polyself.c:1389
 msgid "old form was not healthy enough to survive."
 msgstr "이전 형태가 생존하기에 충분히 건강하지 않았다."
 
-#: ../src/polyself.c:1386
+#: ../src/polyself.c:1390
 #, c-format
 msgid "reverting to unhealthy %s form"
 msgstr "건강하지 않은 %s 형태로 되돌아감"
 
-#: ../src/polyself.c:1397
+#: ../src/polyself.c:1401
 #, c-format
 msgid "and %s return gently to the %s."
 msgstr "%s{과/와} 함께 부드럽게 %s{으로/로} 돌아간다."
 
-#: ../src/polyself.c:1410
+#: ../src/polyself.c:1414
 msgid "breathe.  Sorry."
 msgstr "숨쉬다. 미안."
 
-#: ../src/polyself.c:1414
+#: ../src/polyself.c:1418
 msgid "don't have enough energy to breathe!"
 msgstr "숨쉴 에너지가 충분하지 않다!"
 
-#: ../src/polyself.c:1469
+#: ../src/polyself.c:1473
 #, c-format
 msgid "ball and chain are buried firmly in the %s."
 msgstr "쇠구슬과 사슬이 %s에 단단히 묻혔다."
 
-#: ../src/polyself.c:1473
+#: ../src/polyself.c:1477
 msgid "are not chained to anything!"
 msgstr "아무것에도 묶여있지 않다!"
 
-#: ../src/polyself.c:1492
+#: ../src/polyself.c:1496
 #, c-format
 msgid "must be on %s ground to spin a web."
 msgstr "거미줄을 치려면 %s 땅 위에 있어야 한다."
 
-#: ../src/polyself.c:1497
+#: ../src/polyself.c:1501
 #, c-format
 msgid "release web fluid inside %s."
 msgstr "%s 안에서 거미줄 액을 뿜는다."
 
-#: ../src/polyself.c:1516
+#: ../src/polyself.c:1520
 msgid "ignites and "
 msgstr ", "
 
-#: ../src/polyself.c:1519
+#: ../src/polyself.c:1523
 msgid "fries and "
 msgstr ", "
 
 # 조합: "web freezes, shatters and is swept away"
-#: ../src/polyself.c:1522
+#: ../src/polyself.c:1526
 msgid "freezes, shatters and "
 msgstr "얼어붙어 산산조각 나고 "
 
-#: ../src/polyself.c:1525
+#: ../src/polyself.c:1529
 #, c-format
 msgid "web %sis swept away!"
 msgstr "거미줄이 %s쓸려갔다!"
 
-#: ../src/polyself.c:1529
+#: ../src/polyself.c:1533
 #, c-format
 msgid "web dissolves into %s."
 msgstr "거미줄이 %s{으로/로} 녹는다."
 
-#: ../src/polyself.c:1533
+#: ../src/polyself.c:1537
 msgid "cannot spin webs while stuck in a trap."
 msgstr "함정에 갇혀있는 동안 거미줄을 칠 수 없다."
 
-#: ../src/polyself.c:1541
+#: ../src/polyself.c:1545
 msgid "spin a web, covering up the pit."
 msgstr "거미줄을 쳐서 구덩이를 덮었다."
 
-#: ../src/polyself.c:1547
+#: ../src/polyself.c:1551
 msgid "squeaky board is muffled."
 msgstr "삐걱거리는 판자가 무뎌졌다."
 
-#: ../src/polyself.c:1555
+#: ../src/polyself.c:1559
 msgid "webbing vanishes!"
 msgstr "거미줄이 사라졌다!"
 
-#: ../src/polyself.c:1558
+#: ../src/polyself.c:1562
 msgid "make the web thicker."
 msgstr "거미줄을 더 두껍게 만들었다."
 
-#: ../src/polyself.c:1562
+#: ../src/polyself.c:1566
 #, c-format
 msgid "web over the %s."
 msgstr "%s 위에 거미줄을 쳤다."
 
-#: ../src/polyself.c:1568
+#: ../src/polyself.c:1572
 msgid "spin a web, jamming the trigger."
 msgstr "거미줄을 쳐서 발동 장치를 막았다."
 
-#: ../src/polyself.c:1583
+#: ../src/polyself.c:1587
 msgid "have triggered a trap!"
 msgstr "함정을 작동시켰다!"
 
-#: ../src/polyself.c:1592
+#: ../src/polyself.c:1596
 #, c-format
 msgid "web fails to impede access to the %s."
 msgstr "거미줄이 %s 접근을 막지 못했다."
 
-#: ../src/polyself.c:1598
+#: ../src/polyself.c:1602
 msgid "spin a web."
 msgstr "거미줄을 쳤다."
 
-#: ../src/polyself.c:1612
+#: ../src/polyself.c:1616
 msgid "lack the energy to send forth a call for help!"
 msgstr "도움을 요청할 에너지가 부족하다!"
 
-#: ../src/polyself.c:1618
+#: ../src/polyself.c:1622
 msgid "call upon your brethren for help!"
 msgstr "동족에게 도움을 요청했다!"
 
 #
-#: ../src/polyself.c:1621
+#: ../src/polyself.c:1625
 msgid "But none arrive."
 msgstr "하지만 아무도 오지 않는다."
 
-#: ../src/polyself.c:1646
+#: ../src/polyself.c:1650
 msgid "see anything to gaze at."
 msgstr "응시할 것이 보이지 않는다."
 
-#: ../src/polyself.c:1649
+#: ../src/polyself.c:1653
 msgid "gaze at anything you can see."
 msgstr "보이는 것을 응시했다."
 
-#: ../src/polyself.c:1653
+#: ../src/polyself.c:1657
 msgid "lack the energy to use your special gaze!"
 msgstr "특수 응시를 사용할 에너지가 부족하다!"
 
-#: ../src/polyself.c:1665
+#: ../src/polyself.c:1669
 #, c-format
 msgid "%s seems not to notice your gaze."
 msgstr "%s{이/가} 당신의 응시를 알아차리지 못한 것 같다."
@@ -33688,232 +33816,232 @@ msgstr "%s{이/가} 당신의 응시를 알아차리지 못한 것 같다."
 # ============================================================
 # 던전 메시지 (Dungeon Messages)
 # ============================================================
-#: ../src/polyself.c:1667
+#: ../src/polyself.c:1671
 #, c-format
 msgid "see where to gaze at %s."
 msgstr "%s{을/를} 응시할 곳을 보았다."
 
-#: ../src/polyself.c:1673
+#: ../src/polyself.c:1677
 #, c-format
 msgid "avoid gazing at %s."
 msgstr "%s{을/를} 응시하는 것을 피했다."
 
-#: ../src/polyself.c:1676
+#: ../src/polyself.c:1680
 #, c-format
 msgid "Really %s %s?"
 msgstr "정말 %s{을/를} %s하시겠습니까?"
 
 #
-#: ../src/polyself.c:1677
+#: ../src/polyself.c:1681
 msgid "confuse"
 msgstr "혼란시키다"
 
-#: ../src/polyself.c:1693
+#: ../src/polyself.c:1697
 #, c-format
 msgid "gaze confuses %s!"
 msgstr "응시가 %s{을/를} 혼란시켰다!"
 
-#: ../src/polyself.c:1695
+#: ../src/polyself.c:1699
 #, c-format
 msgid "%s is getting more and more confused."
 msgstr "%s{이/가} 점점 더 혼란스러워진다."
 
-#: ../src/polyself.c:1701
+#: ../src/polyself.c:1705
 #, c-format
 msgid "attack %s with a fiery gaze!"
 msgstr "불꽃 시선으로 %s{을/를} 공격한다!"
 
-#: ../src/polyself.c:1703
+#: ../src/polyself.c:1707
 #, c-format
 msgid "fire doesn't burn %s!"
 msgstr "불이 %s{을/를} 태우지 못한다!"
 
-#: ../src/polyself.c:1723 ../src/uhitm.c:6040
+#: ../src/polyself.c:1727 ../src/uhitm.c:6040
 #, c-format
 msgid "are frozen by %s gaze!"
 msgstr "%s의 시선에 얼어붙었다!"
 
-#: ../src/polyself.c:1729
+#: ../src/polyself.c:1733
 msgid "frozen by a monster's gaze"
 msgstr "몬스터의 시선에 얼어붙음"
 
-#: ../src/polyself.c:1733
+#: ../src/polyself.c:1737
 #, c-format
 msgid "stiffen momentarily under %s gaze."
 msgstr "%s 시선 아래서 잠시 굳었다."
 
-#: ../src/polyself.c:1742
+#: ../src/polyself.c:1746
 #, c-format
 msgid "Gazing at the awake %s is not a very good idea."
 msgstr "깨어있는 %s{을/를} 응시하는 것은 좋은 생각이 아니다."
 
-#: ../src/polyself.c:1755
+#: ../src/polyself.c:1759
 msgid "gaze at no place in particular."
 msgstr "특별한 곳을 응시하지 않았다."
 
-#: ../src/polyself.c:1769
+#: ../src/polyself.c:1773
 #, c-format
 msgid "hide while you're %s."
 msgstr "%s 동안 숨을 수 없다."
 
-#: ../src/polyself.c:1774
+#: ../src/polyself.c:1778
 msgid "holding someone"
 msgstr ", 당신을 붙잡는 중"
 
-#: ../src/polyself.c:1775
+#: ../src/polyself.c:1779
 msgid "holding that creature"
 msgstr "여기에 있는 것들:"
 
-#: ../src/polyself.c:1787
+#: ../src/polyself.c:1791
 msgid "fountain is not deep enough to hide in."
 msgstr "분수는 숨기에 충분히 깊지 않다."
 
-#: ../src/polyself.c:1789
+#: ../src/polyself.c:1793
 #, c-format
 msgid "is no %s to hide in here."
 msgstr "여기에 숨을 %s{이/가} 없다."
 
-#: ../src/polyself.c:1798
+#: ../src/polyself.c:1802
 msgid "is nothing to hide under here."
 msgstr "여기 숨을 것이 없다."
 
-#: ../src/polyself.c:1819
+#: ../src/polyself.c:1823
 #, c-format
 msgid "Hiding under %s%s is a fatal mistake..."
 msgstr "%s%s 아래에 숨는 것은 치명적인 실수다..."
 
-#: ../src/polyself.c:1821
+#: ../src/polyself.c:1825
 #, c-format
 msgid "hiding under %s%s"
 msgstr "%s%s 아래에 숨어있음"
 
-#: ../src/polyself.c:1830
+#: ../src/polyself.c:1834
 msgid "is nowhere to hide above you."
 msgstr "위에 숨을 곳이 없다."
 
-#: ../src/polyself.c:1836
+#: ../src/polyself.c:1840
 msgid "is nowhere to hide beneath you."
 msgstr "위에 숨을 곳이 없다."
 
-#: ../src/polyself.c:1868
+#: ../src/polyself.c:1872
 #, c-format
 msgid "transform into %s."
 msgstr "%s{으로/로} 변신했다."
 
-#: ../src/polyself.c:1884
+#: ../src/polyself.c:1888
 msgid "concentrate but lack the energy to maintain doing so."
 msgstr "집중하지만 유지할 에너지가 부족하다."
 
-#: ../src/polyself.c:1890
+#: ../src/polyself.c:1894
 msgid "concentrate."
 msgstr "집중한다."
 
-#: ../src/polyself.c:1891
+#: ../src/polyself.c:1895
 msgid "A wave of psychic energy pours out."
 msgstr "정신 에너지의 파동이 쏟아져 나온다."
 
-#: ../src/polyself.c:1912
+#: ../src/polyself.c:1916
 #, c-format
 msgid "lock in on %s %s."
 msgstr "%s %s에 고정했다."
 
-#: ../src/polyself.c:1934
+#: ../src/polyself.c:1938
 #, c-format
 msgid "%s is no longer in your clutches."
 msgstr "%s{이/가} 더 이상 손아귀에 없다."
 
-#: ../src/polyself.c:1944
+#: ../src/polyself.c:1948
 msgid "skin returns to its original form."
 msgstr "피부가 원래 형태로 돌아왔다."
 
 # ============================================================
 # 신체 부위 (Body Parts)
 # ============================================================
-#: ../src/polyself.c:1959
+#: ../src/polyself.c:1963
 msgid "arm"
 msgstr "팔"
 
-#: ../src/polyself.c:1959 ../src/polyself.c:1971 ../src/polyself.c:1978
-#: ../src/polyself.c:1983 ../src/polyself.c:2003 ../src/polyself.c:2010
-#: ../src/polyself.c:2022 ../src/polyself.c:2027
+#: ../src/polyself.c:1963 ../src/polyself.c:1975 ../src/polyself.c:1982
+#: ../src/polyself.c:1987 ../src/polyself.c:2007 ../src/polyself.c:2014
+#: ../src/polyself.c:2026 ../src/polyself.c:2031
 msgid "eye"
 msgstr "눈"
 
-#: ../src/polyself.c:1959 ../src/polyself.c:1971 ../src/polyself.c:1978
-#: ../src/polyself.c:1983 ../src/polyself.c:2010 ../src/polyself.c:2022
+#: ../src/polyself.c:1963 ../src/polyself.c:1975 ../src/polyself.c:1982
+#: ../src/polyself.c:1987 ../src/polyself.c:2014 ../src/polyself.c:2026
 msgid "face"
 msgstr "얼굴"
 
-#: ../src/polyself.c:1959
+#: ../src/polyself.c:1963
 msgid "finger"
 msgstr "손가락"
 
-#: ../src/polyself.c:1960
+#: ../src/polyself.c:1964
 msgid "fingertip"
 msgstr "손끝"
 
-#: ../src/polyself.c:1960 ../src/polyself.c:1979
+#: ../src/polyself.c:1964 ../src/polyself.c:1983
 msgid "foot"
 msgstr "발"
 
-#: ../src/polyself.c:1960
+#: ../src/polyself.c:1964
 msgid "hand"
 msgstr "손"
 
-#: ../src/polyself.c:1960
+#: ../src/polyself.c:1964
 msgid "handed"
 msgstr "손"
 
-#: ../src/polyself.c:1961 ../src/polyself.c:1973 ../src/polyself.c:1980
-#: ../src/polyself.c:1985 ../src/polyself.c:2012 ../src/polyself.c:2029
-#: ../src/polyself.c:2103 ../src/potion.c:1664
+#: ../src/polyself.c:1965 ../src/polyself.c:1977 ../src/polyself.c:1984
+#: ../src/polyself.c:1989 ../src/polyself.c:2016 ../src/polyself.c:2033
+#: ../src/polyself.c:2107 ../src/potion.c:1664
 msgid "head"
 msgstr "머리"
 
-#: ../src/polyself.c:1961 ../src/polyself.c:1980 ../src/polyself.c:2024
+#: ../src/polyself.c:1965 ../src/polyself.c:1984 ../src/polyself.c:2028
 msgid "leg"
 msgstr "다리"
 
-#: ../src/polyself.c:1961 ../src/polyself.c:1974 ../src/polyself.c:1980
-#: ../src/polyself.c:1986 ../src/polyself.c:2013
+#: ../src/polyself.c:1965 ../src/polyself.c:1978 ../src/polyself.c:1984
+#: ../src/polyself.c:1990 ../src/polyself.c:2017
 msgid "light headed"
 msgstr "어지러운"
 
-#: ../src/polyself.c:1961 ../src/polyself.c:1974 ../src/polyself.c:1980
-#: ../src/polyself.c:1986 ../src/polyself.c:2013
+#: ../src/polyself.c:1965 ../src/polyself.c:1978 ../src/polyself.c:1984
+#: ../src/polyself.c:1990 ../src/polyself.c:2017
 msgid "neck"
 msgstr "목"
 
-#: ../src/polyself.c:1962 ../src/polyself.c:1975 ../src/polyself.c:1981
+#: ../src/polyself.c:1966 ../src/polyself.c:1979 ../src/polyself.c:1985
 msgid "spine"
 msgstr "소나무"
 
-#: ../src/polyself.c:1962 ../src/polyself.c:1981
+#: ../src/polyself.c:1966 ../src/polyself.c:1985
 msgid "toe"
 msgstr "발가락"
 
-#: ../src/polyself.c:1962 ../src/polyself.c:2025
+#: ../src/polyself.c:1966 ../src/polyself.c:2029
 msgid "hair"
 msgstr "머리카락"
 
-#: ../src/polyself.c:1962 ../src/polyself.c:1976 ../src/polyself.c:1981
-#: ../src/polyself.c:1988 ../src/polyself.c:2014 ../src/polyself.c:2020
-#: ../src/polyself.c:2030
+#: ../src/polyself.c:1966 ../src/polyself.c:1980 ../src/polyself.c:1985
+#: ../src/polyself.c:1992 ../src/polyself.c:2018 ../src/polyself.c:2024
+#: ../src/polyself.c:2034
 msgid "blood"
 msgstr "피"
 
-#: ../src/polyself.c:1963 ../src/polyself.c:1976 ../src/polyself.c:1982
-#: ../src/polyself.c:1988 ../src/polyself.c:2014
+#: ../src/polyself.c:1967 ../src/polyself.c:1980 ../src/polyself.c:1986
+#: ../src/polyself.c:1992 ../src/polyself.c:2018
 msgid "lung"
 msgstr "폐"
 
-#: ../src/polyself.c:1963 ../src/polyself.c:1976 ../src/polyself.c:1988
+#: ../src/polyself.c:1967 ../src/polyself.c:1980 ../src/polyself.c:1992
 msgid "nose"
 msgstr "코"
 
-#: ../src/polyself.c:1963 ../src/polyself.c:1970 ../src/polyself.c:1977
-#: ../src/polyself.c:1982 ../src/polyself.c:1989 ../src/polyself.c:2015
-#: ../src/polyself.c:2021 ../src/polyself.c:2031
+#: ../src/polyself.c:1967 ../src/polyself.c:1974 ../src/polyself.c:1981
+#: ../src/polyself.c:1986 ../src/polyself.c:1993 ../src/polyself.c:2019
+#: ../src/polyself.c:2025 ../src/polyself.c:2035
 msgid "stomach"
 msgstr "위"
 
@@ -33928,558 +34056,558 @@ msgstr "위"
 # 몬스터 신체 부위 (Monster Body Parts)
 # ============================================================
 # 신체 부위
-#: ../src/polyself.c:1964
+#: ../src/polyself.c:1968
 msgid "pseudopod"
 msgstr "위족"
 
-#: ../src/polyself.c:1964
+#: ../src/polyself.c:1968
 msgid "dark spot"
 msgstr "어두운"
 
-#: ../src/polyself.c:1964 ../src/polyself.c:1996 ../src/polyself.c:2003
+#: ../src/polyself.c:1968 ../src/polyself.c:2000 ../src/polyself.c:2007
 msgid "front"
 msgstr "앞쪽"
 
-#: ../src/polyself.c:1965
+#: ../src/polyself.c:1969
 msgid "pseudopod extension"
 msgstr "위족 연장"
 
-#: ../src/polyself.c:1965 ../src/polyself.c:1968
+#: ../src/polyself.c:1969 ../src/polyself.c:1972
 msgid "pseudopod extremity"
 msgstr "위족 끝"
 
-#: ../src/polyself.c:1966
+#: ../src/polyself.c:1970
 msgid "pseudopod root"
 msgstr "위족 뿌리"
 
-#: ../src/polyself.c:1966
+#: ../src/polyself.c:1970
 msgid "grasp"
 msgstr "움켜쥠"
 
-#: ../src/polyself.c:1966
+#: ../src/polyself.c:1970
 msgid "grasped"
 msgstr "움켜쥔"
 
-#: ../src/polyself.c:1967
+#: ../src/polyself.c:1971
 msgid "cerebral area"
 msgstr "뇌 영역"
 
-#: ../src/polyself.c:1967
+#: ../src/polyself.c:1971
 msgid "lower pseudopod"
 msgstr "하부 위족"
 
-#: ../src/polyself.c:1967
+#: ../src/polyself.c:1971
 msgid "viscous"
 msgstr "점성의"
 
-#: ../src/polyself.c:1968
+#: ../src/polyself.c:1972
 msgid "middle"
 msgstr "중간"
 
-#: ../src/polyself.c:1968 ../src/polyself.c:1969
+#: ../src/polyself.c:1972 ../src/polyself.c:1973
 msgid "surface"
 msgstr "표면"
 
-#: ../src/polyself.c:1969
+#: ../src/polyself.c:1973
 msgid "ripples"
 msgstr "파문"
 
-#: ../src/polyself.c:1969 ../src/polyself.c:2001
+#: ../src/polyself.c:1973 ../src/polyself.c:2005
 msgid "juices"
 msgstr "체액"
 
-#: ../src/polyself.c:1969
+#: ../src/polyself.c:1973
 msgid "sensor"
 msgstr "감지하다"
 
-#: ../src/polyself.c:1971
+#: ../src/polyself.c:1975
 msgid "forelimb"
 msgstr "뒷다리"
 
-#: ../src/polyself.c:1972 ../src/polyself.c:1973
+#: ../src/polyself.c:1976 ../src/polyself.c:1977
 msgid "foreclaw"
 msgstr "앞발톱"
 
-#: ../src/polyself.c:1972
+#: ../src/polyself.c:1976
 msgid "claw tip"
 msgstr "발톱 끝"
 
-#: ../src/polyself.c:1972
+#: ../src/polyself.c:1976
 msgid "rear claw"
 msgstr "뒷발톱"
 
-#: ../src/polyself.c:1973 ../src/polyself.c:2070
+#: ../src/polyself.c:1977 ../src/polyself.c:2074
 msgid "clawed"
 msgstr "발톱이 있는"
 
-#: ../src/polyself.c:1974
+#: ../src/polyself.c:1978
 msgid "rear limb"
 msgstr "뒷다리"
 
-#: ../src/polyself.c:1975
+#: ../src/polyself.c:1979
 msgid "rear claw tip"
 msgstr "뒷발톱 끝"
 
-#: ../src/polyself.c:1975
+#: ../src/polyself.c:1979
 msgid "fur"
 msgstr "네"
 
 # bird_parts
-#: ../src/polyself.c:1978 ../src/polyself.c:1979
+#: ../src/polyself.c:1982 ../src/polyself.c:1983
 msgid "wing"
 msgstr "날개"
 
-#: ../src/polyself.c:1979
+#: ../src/polyself.c:1983
 msgid "wing tip"
 msgstr "날개 끝"
 
-#: ../src/polyself.c:1979
+#: ../src/polyself.c:1983
 msgid "winged"
 msgstr "날개 달린"
 
 #
-#: ../src/polyself.c:1981
+#: ../src/polyself.c:1985
 msgid "feathers"
 msgstr "가죽"
 
-#: ../src/polyself.c:1982
+#: ../src/polyself.c:1986
 msgid "bill"
 msgstr "부리"
 
 # horse_parts
-#: ../src/polyself.c:1983
+#: ../src/polyself.c:1987
 msgid "foreleg"
 msgstr "앞다리"
 
-#: ../src/polyself.c:1984 ../src/polyself.c:1985
+#: ../src/polyself.c:1988 ../src/polyself.c:1989
 msgid "forehoof"
 msgstr "앞발굽"
 
-#: ../src/polyself.c:1984
+#: ../src/polyself.c:1988
 msgid "hoof tip"
 msgstr "발굽 끝"
 
-#: ../src/polyself.c:1984
+#: ../src/polyself.c:1988
 msgid "rear hoof"
 msgstr "뒷발굽"
 
-#: ../src/polyself.c:1985
+#: ../src/polyself.c:1989
 msgid "hooved"
 msgstr "발굽이 있는"
 
-#: ../src/polyself.c:1986
+#: ../src/polyself.c:1990
 msgid "rear leg"
 msgstr "뒷다리"
 
-#: ../src/polyself.c:1987
+#: ../src/polyself.c:1991
 msgid "backbone"
 msgstr "등뼈"
 
-#: ../src/polyself.c:1987
+#: ../src/polyself.c:1991
 msgid "rear hoof tip"
 msgstr "뒷발굽 끝"
 
-#: ../src/polyself.c:1987
+#: ../src/polyself.c:1991
 msgid "mane"
 msgstr "갈기"
 
 # sphere_parts
-#: ../src/polyself.c:1990
+#: ../src/polyself.c:1994
 msgid "appendage"
 msgstr "부속물"
 
-#: ../src/polyself.c:1990
+#: ../src/polyself.c:1994
 msgid "optic nerve"
 msgstr "시신경"
 
-#: ../src/polyself.c:1990 ../src/polyself.c:1992 ../src/polyself.c:1993
+#: ../src/polyself.c:1994 ../src/polyself.c:1996 ../src/polyself.c:1997
 #: ../src/potion.c:1664
 msgid "body"
 msgstr "몸통"
 
-#: ../src/polyself.c:1990 ../src/polyself.c:1991 ../src/polyself.c:2079
+#: ../src/polyself.c:1994 ../src/polyself.c:1995 ../src/polyself.c:2083
 msgid "tentacle"
 msgstr "촉수"
 
-#: ../src/polyself.c:1991
+#: ../src/polyself.c:1995
 msgid "tentacle tip"
 msgstr "촉수 끝"
 
-#: ../src/polyself.c:1991
+#: ../src/polyself.c:1995
 msgid "lower appendage"
 msgstr "하부 부속물"
 
-#: ../src/polyself.c:1992
+#: ../src/polyself.c:1996
 msgid "tentacled"
 msgstr "촉수가 있는"
 
-#: ../src/polyself.c:1992
+#: ../src/polyself.c:1996
 msgid "lower tentacle"
 msgstr "하부 촉수"
 
-#: ../src/polyself.c:1993
+#: ../src/polyself.c:1997
 msgid "rotational"
 msgstr "팔각형"
 
-#: ../src/polyself.c:1993
+#: ../src/polyself.c:1997
 msgid "equator"
 msgstr "적도"
 
-#: ../src/polyself.c:1994
+#: ../src/polyself.c:1998
 msgid "lower tentacle tip"
 msgstr "하부 촉수 끝"
 
-#: ../src/polyself.c:1994
+#: ../src/polyself.c:1998
 msgid "cilia"
 msgstr "섬모"
 
-#: ../src/polyself.c:1994 ../src/polyself.c:2008
+#: ../src/polyself.c:1998 ../src/polyself.c:2012
 msgid "life force"
 msgstr "생명력"
 
-#: ../src/polyself.c:1995
+#: ../src/polyself.c:1999
 msgid "retina"
 msgstr "망막"
 
-#: ../src/polyself.c:1995
+#: ../src/polyself.c:1999
 msgid "olfactory nerve"
 msgstr "후각 신경"
 
-#: ../src/polyself.c:1995 ../src/polyself.c:2002 ../src/polyself.c:2009
+#: ../src/polyself.c:1999 ../src/polyself.c:2006 ../src/polyself.c:2013
 msgid "interior"
 msgstr "내부"
 
 # fungus_parts
-#: ../src/polyself.c:1996
+#: ../src/polyself.c:2000
 msgid "mycelium"
 msgstr "균사체"
 
-#: ../src/polyself.c:1996
+#: ../src/polyself.c:2000
 msgid "visual area"
 msgstr "시각 영역"
 
-#: ../src/polyself.c:1997
+#: ../src/polyself.c:2001
 msgid "hypha"
 msgstr "균사"
 
-#: ../src/polyself.c:1997 ../src/polyself.c:2000
+#: ../src/polyself.c:2001 ../src/polyself.c:2004
 msgid "root"
 msgstr "뿌리"
 
-#: ../src/polyself.c:1998
+#: ../src/polyself.c:2002
 msgid "strand"
 msgstr "가닥"
 
-#: ../src/polyself.c:1998
+#: ../src/polyself.c:2002
 msgid "stranded"
 msgstr "가닥이 있는"
 
-#: ../src/polyself.c:1998
+#: ../src/polyself.c:2002
 msgid "cap area"
 msgstr "뇌 영역"
 
-#: ../src/polyself.c:1999
+#: ../src/polyself.c:2003
 msgid "rhizome"
 msgstr "지하경"
 
-#: ../src/polyself.c:1999
+#: ../src/polyself.c:2003
 msgid "sporulated"
 msgstr "구멍 뚫린"
 
 # 버섯/균류의 줄기 (fungus stalk)
-#: ../src/polyself.c:1999
+#: ../src/polyself.c:2003
 msgid "stalk"
 msgstr "자루"
 
-#: ../src/polyself.c:2000
+#: ../src/polyself.c:2004
 msgid "rhizome tip"
 msgstr "지하경 끝"
 
-#: ../src/polyself.c:2001 ../src/polyself.c:2031
+#: ../src/polyself.c:2005 ../src/polyself.c:2035
 msgid "gill"
 msgstr "아가미"
 
 # vortex_parts
-#: ../src/polyself.c:2003
+#: ../src/polyself.c:2007
 msgid "region"
 msgstr "영역"
 
-#: ../src/polyself.c:2004
+#: ../src/polyself.c:2008
 msgid "minor current"
 msgstr "작은 흐름"
 
-#: ../src/polyself.c:2004 ../src/polyself.c:2006
+#: ../src/polyself.c:2008 ../src/polyself.c:2010
 msgid "lower current"
 msgstr "하부 흐름"
 
-#: ../src/polyself.c:2005
+#: ../src/polyself.c:2009
 msgid "swirl"
 msgstr "소용돌이치는"
 
-#: ../src/polyself.c:2005
+#: ../src/polyself.c:2009
 msgid "swirled"
 msgstr "소용돌이치는"
 
-#: ../src/polyself.c:2005
+#: ../src/polyself.c:2009
 msgid "central core"
 msgstr "중심핵"
 
-#: ../src/polyself.c:2006
+#: ../src/polyself.c:2010
 msgid "addled"
 msgstr "혼란스러운"
 
-#: ../src/polyself.c:2006 ../src/polyself.c:2008
+#: ../src/polyself.c:2010 ../src/polyself.c:2012
 msgid "center"
 msgstr "바둑판 무늬"
 
-#: ../src/polyself.c:2007
+#: ../src/polyself.c:2011
 msgid "currents"
 msgstr "흐름"
 
-#: ../src/polyself.c:2007
+#: ../src/polyself.c:2011
 msgid "edge"
 msgstr "가장자리"
 
-#: ../src/polyself.c:2008
+#: ../src/polyself.c:2012
 msgid "leading edge"
 msgstr "선단"
 
 # snake_parts
-#: ../src/polyself.c:2010
+#: ../src/polyself.c:2014
 msgid "vestigial limb"
 msgstr "흔적 다리"
 
-#: ../src/polyself.c:2010
+#: ../src/polyself.c:2014
 msgid "large scale"
 msgstr "큰 비늘"
 
-#: ../src/polyself.c:2011
+#: ../src/polyself.c:2015
 msgid "large scale tip"
 msgstr "큰 비늘 끝"
 
-#: ../src/polyself.c:2011 ../src/polyself.c:2012
+#: ../src/polyself.c:2015 ../src/polyself.c:2016
 msgid "rear region"
 msgstr "후부"
 
-#: ../src/polyself.c:2011
+#: ../src/polyself.c:2015
 msgid "scale gap"
 msgstr "비늘 틈"
 
-#: ../src/polyself.c:2012
+#: ../src/polyself.c:2016
 msgid "scale gapped"
 msgstr "비늘 틈"
 
-#: ../src/polyself.c:2013 ../src/polyself.c:2020
+#: ../src/polyself.c:2017 ../src/polyself.c:2024
 msgid "length"
 msgstr "길이"
 
-#: ../src/polyself.c:2013
+#: ../src/polyself.c:2017
 msgid "rear scale"
 msgstr "뒤쪽 비늘"
 
-#: ../src/polyself.c:2014
+#: ../src/polyself.c:2018
 msgid "forked tongue"
 msgstr "갈라진 혀"
 
 # worm_parts
-#: ../src/polyself.c:2016 ../src/polyself.c:2018
+#: ../src/polyself.c:2020 ../src/polyself.c:2022
 msgid "anterior segment"
 msgstr "전방 체절"
 
-#: ../src/polyself.c:2016
+#: ../src/polyself.c:2020
 msgid "light sensitive cell"
 msgstr "광감각 세포"
 
-#: ../src/polyself.c:2017 ../src/polyself.c:2019
+#: ../src/polyself.c:2021 ../src/polyself.c:2023
 msgid "clitellum"
 msgstr "환대"
 
-#: ../src/polyself.c:2017 ../src/polyself.c:2020
+#: ../src/polyself.c:2021 ../src/polyself.c:2024
 msgid "setae"
 msgstr "강모"
 
-#: ../src/polyself.c:2017
+#: ../src/polyself.c:2021
 msgid "posterior segment"
 msgstr "후방 체절"
 
-#: ../src/polyself.c:2018
+#: ../src/polyself.c:2022
 msgid "segment"
 msgstr "체절이 있는"
 
-#: ../src/polyself.c:2018
+#: ../src/polyself.c:2022
 msgid "segmented"
 msgstr "체절이 있는"
 
-#: ../src/polyself.c:2019
+#: ../src/polyself.c:2023
 msgid "posterior"
 msgstr "후방"
 
-#: ../src/polyself.c:2019
+#: ../src/polyself.c:2023
 msgid "over stretched"
 msgstr "과도하게 늘어난"
 
-#: ../src/polyself.c:2020
+#: ../src/polyself.c:2024
 msgid "posterior setae"
 msgstr "후방 강모"
 
-#: ../src/polyself.c:2021 ../src/polyself.c:2075
+#: ../src/polyself.c:2025 ../src/polyself.c:2079
 msgid "skin"
 msgstr "피부"
 
-#: ../src/polyself.c:2021
+#: ../src/polyself.c:2025
 msgid "prostomium"
 msgstr "구전엽"
 
 # spider_parts
-#: ../src/polyself.c:2022 ../src/polyself.c:2023
+#: ../src/polyself.c:2026 ../src/polyself.c:2027
 msgid "pedipalp"
 msgstr "촉지"
 
-#: ../src/polyself.c:2022
+#: ../src/polyself.c:2026
 msgid "tarsus"
 msgstr "부절"
 
-#: ../src/polyself.c:2023 ../src/polyself.c:2025 ../src/polyself.c:2070
+#: ../src/polyself.c:2027 ../src/polyself.c:2029 ../src/polyself.c:2074
 msgid "claw"
 msgstr "발톱"
 
-#: ../src/polyself.c:2023
+#: ../src/polyself.c:2027
 msgid "palped"
 msgstr "촉지가 있는"
 
-#: ../src/polyself.c:2023 ../src/polyself.c:2024
+#: ../src/polyself.c:2027 ../src/polyself.c:2028
 msgid "cephalothorax"
 msgstr "두흉부"
 
-#: ../src/polyself.c:2024
+#: ../src/polyself.c:2028
 msgid "spun out"
 msgstr "실을 뽑은"
 
-#: ../src/polyself.c:2024
+#: ../src/polyself.c:2028
 msgid "abdomen"
 msgstr "복부"
 
-#: ../src/polyself.c:2025
+#: ../src/polyself.c:2029
 msgid "hemolymph"
 msgstr "혈림프"
 
-#: ../src/polyself.c:2025
+#: ../src/polyself.c:2029
 msgid "book lung"
 msgstr "서폐"
 
-#: ../src/polyself.c:2026
+#: ../src/polyself.c:2030
 msgid "labrum"
 msgstr "상순"
 
-#: ../src/polyself.c:2026
+#: ../src/polyself.c:2030
 msgid "digestive tract"
 msgstr "소화관"
 
 # fish_parts
-#: ../src/polyself.c:2027
+#: ../src/polyself.c:2031
 msgid "fin"
 msgstr "지느러미"
 
-#: ../src/polyself.c:2027
+#: ../src/polyself.c:2031
 msgid "premaxillary"
 msgstr "전상악골"
 
-#: ../src/polyself.c:2027
+#: ../src/polyself.c:2031
 msgid "pelvic axillary"
 msgstr "복지 기부"
 
-#: ../src/polyself.c:2028
+#: ../src/polyself.c:2032
 msgid "pelvic fin"
 msgstr "배지느러미"
 
-#: ../src/polyself.c:2028
+#: ../src/polyself.c:2032
 msgid "anal fin"
 msgstr "뒷지느러미"
 
-#: ../src/polyself.c:2028
+#: ../src/polyself.c:2032
 msgid "pectoral fin"
 msgstr "가슴지느러미"
 
 # 물고기 신체 부위 형용사
-#: ../src/polyself.c:2028
+#: ../src/polyself.c:2032
 msgid "finned"
 msgstr "지느러미가 달린"
 
-#: ../src/polyself.c:2029
+#: ../src/polyself.c:2033
 msgid "peduncle"
 msgstr "미병부"
 
-#: ../src/polyself.c:2029
+#: ../src/polyself.c:2033
 msgid "played out"
 msgstr "지친"
 
-#: ../src/polyself.c:2029
+#: ../src/polyself.c:2033
 msgid "gills"
 msgstr "아가미"
 
-#: ../src/polyself.c:2030
+#: ../src/polyself.c:2034
 msgid "dorsal fin"
 msgstr "등지느러미"
 
-#: ../src/polyself.c:2030
+#: ../src/polyself.c:2034
 msgid "caudal fin"
 msgstr "꼬리지느러미"
 
-#: ../src/polyself.c:2031
+#: ../src/polyself.c:2035
 msgid "nostril"
 msgstr "콧구멍"
 
 # special cases
-#: ../src/polyself.c:2043
+#: ../src/polyself.c:2047
 msgid "mystery part"
 msgstr "정체불명의 부위"
 
-#: ../src/polyself.c:2051
+#: ../src/polyself.c:2055
 msgid "paw"
 msgstr "발"
 
-#: ../src/polyself.c:2053
+#: ../src/polyself.c:2057
 msgid "pawed"
 msgstr "발이 있는"
 
-#: ../src/polyself.c:2055
+#: ../src/polyself.c:2059
 msgid "rear paw"
 msgstr "뒷발"
 
-#: ../src/polyself.c:2073
+#: ../src/polyself.c:2077
 msgid "trunk"
 msgstr "코"
 
-#: ../src/polyself.c:2081
+#: ../src/polyself.c:2085
 msgid "cornea"
 msgstr "각막"
 
-#: ../src/polyself.c:2095
+#: ../src/polyself.c:2099
 msgid "rayed"
 msgstr "광선을 내는"
 
-#: ../src/polyself.c:2098 ../src/zap.c:4894
+#: ../src/polyself.c:2102 ../src/zap.c:4894
 msgid "ray"
 msgstr "광선"
 
-#: ../src/polyself.c:2100
+#: ../src/polyself.c:2104
 msgid "beam"
 msgstr "빛줄기"
 
-#: ../src/polyself.c:2169
+#: ../src/polyself.c:2173
 msgid "Strangely, you feel better than before."
 msgstr "이상하게도 전보다 기분이 좋다."
 
-#: ../src/polyself.c:2264
+#: ../src/polyself.c:2268
 msgid "dead"
 msgstr "죽은"
 
-#: ../src/polyself.c:2266
+#: ../src/polyself.c:2270
 msgid "condemned"
 msgstr "선고받은"
 
 # Item states
-#: ../src/polyself.c:2267
+#: ../src/polyself.c:2271
 msgid "empty"
 msgstr "빈"
 
@@ -42129,6 +42257,11 @@ msgstr "꿀꿀거린다."
 #: ../src/sounds.c:652
 msgid "mumble"
 msgstr "중얼거린다"
+
+#: ../src/sounds.c:740
+#, c-format
+msgid "15 minutes could save you 15 %s."
+msgstr ""
 
 # sounds.c vampire messages
 #: ../src/sounds.c:762

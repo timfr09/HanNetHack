@@ -16858,3 +16858,8 @@ msgstr "여기에 분수가 없다."
 #, c-format
 msgid "and %1$ld piece%2$s of gold, after %3$ld move%4$s."
 msgstr "%3$ld턴%4$.0s 후 금화 %1$ld개%2$.0s."
+
+# dbridge.c:467 - drawbridge life-save 후 재압사
+#, c-format
+msgid "Unfortunately for %s, %s is still crushed."
+msgstr "불행히도 %s{은/는} 여전히 깔려%.0s 죽었다."

@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-03-06 18:32+0900\n"
+"POT-Creation-Date: 2026-03-16 22:20+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-03-06 18:32\n"
+"POT-Creation-Date: 2026-03-16 22:20\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -267,8 +267,8 @@ msgstr ""
 #: ../src/do.c:872 ../src/do.c:2412 ../src/eat.c:3697 ../src/engrave.c:829
 #: ../src/insight.c:1442 ../src/insight.c:1507 ../src/invent.c:3777
 #: ../src/invent.c:4260 ../src/invent.c:5552 ../src/mon.c:5730
-#: ../src/pickup.c:1698 ../src/pickup.c:2588 ../src/pickup.c:2979
-#: ../src/pickup.c:3651 ../src/potion.c:2669 ../src/potion.c:2703
+#: ../src/pickup.c:1698 ../src/pickup.c:2588 ../src/pickup.c:2986
+#: ../src/pickup.c:3658 ../src/potion.c:2669 ../src/potion.c:2703
 #: ../src/pray.c:1183 ../src/read.c:1145 ../src/read.c:1599 ../src/steal.c:799
 #: ../src/timeout.c:341 ../src/timeout.c:1614 ../src/trap.c:275
 #: ../src/trap.c:284 ../src/trap.c:390 ../src/trap.c:393 ../src/trap.c:395
@@ -319,7 +319,7 @@ msgstr ""
 msgid "a hollow sound.  This must be a secret %s!"
 msgstr ""
 
-#: ../src/apply.c:329 ../src/pickup.c:2195 ../src/pickup.c:2928
+#: ../src/apply.c:329 ../src/pickup.c:2195 ../src/pickup.c:2935
 msgid "have no hands!"
 msgstr ""
 
@@ -327,7 +327,7 @@ msgstr ""
 msgid "hear anything!"
 msgstr ""
 
-#: ../src/apply.c:335 ../src/pickup.c:2931
+#: ../src/apply.c:335 ../src/pickup.c:2938
 #, c-format
 msgid "have no free %s."
 msgstr ""
@@ -450,7 +450,7 @@ msgstr ""
 msgid "pitched humming noise"
 msgstr ""
 
-#: ../src/apply.c:509 ../src/artifact.c:2228 ../src/dbridge.c:428
+#: ../src/apply.c:509 ../src/artifact.c:2228 ../src/dbridge.c:430
 #: ../src/eat.c:2308 ../src/muse.c:2435 ../src/potion.c:293 ../src/potion.c:319
 #: ../src/potion.c:407 ../src/potion.c:628 ../src/potion.c:1317
 #: ../src/potion.c:1462 ../src/potion.c:1687 ../src/timeout.c:881
@@ -461,7 +461,7 @@ msgstr ""
 msgid "strange, high-pitched"
 msgstr ""
 
-#: ../src/apply.c:511 ../src/artifact.c:2228 ../src/dbridge.c:428
+#: ../src/apply.c:511 ../src/artifact.c:2228 ../src/dbridge.c:430
 #: ../src/eat.c:2308 ../src/muse.c:2435 ../src/potion.c:1317
 #: ../src/potion.c:1462 ../src/potion.c:1687
 msgid "strange"
@@ -1136,7 +1136,7 @@ msgstr ""
 #: ../src/ball.c:974 ../src/do_name.c:749 ../src/do_name.c:883
 #: ../src/eat.c:2642 ../src/eat.c:2728 ../src/eat.c:3698 ../src/iactions.c:360
 #: ../src/invent.c:3253 ../src/lock.c:495 ../src/mhitm.c:876 ../src/mon.c:3490
-#: ../src/pickup.c:1858 ../src/pickup.c:3064 ../src/pickup.c:3575
+#: ../src/pickup.c:1858 ../src/pickup.c:3071 ../src/pickup.c:3582
 #: ../src/role.c:692 ../src/shk.c:3380 ../src/shk.c:3790 ../src/shk.c:4088
 #: ../src/steal.c:792 ../src/timeout.c:1242 ../src/trap.c:2512
 #: ../src/trap.c:2572 ../src/trap.c:5849 ../src/wield.c:684 ../src/wield.c:704
@@ -1316,7 +1316,7 @@ msgid "%s flame%s %s."
 msgstr ""
 
 #: ../src/apply.c:1688 ../src/apply.c:1692 ../src/mkobj.c:747
-#: ../src/pickup.c:3639 ../src/trap.c:4532
+#: ../src/pickup.c:3646 ../src/trap.c:4532
 msgid "burn"
 msgstr ""
 
@@ -1625,7 +1625,7 @@ msgstr ""
 
 #: ../src/apply.c:2458 ../src/apply.c:2461 ../src/apply.c:2490 ../src/do.c:829
 #: ../src/mkobj.c:2925 ../src/mthrowu.c:797 ../src/mthrowu.c:935
-#: ../src/obj_descr_i18n.c:412 ../src/pickup.c:3798 ../src/polyself.c:1309
+#: ../src/obj_descr_i18n.c:412 ../src/pickup.c:3805 ../src/polyself.c:1309
 #: ../src/pray.c:799 ../src/timeout.c:1115 ../src/timeout.c:1118
 #: ../src/timeout.c:1154 ../src/weapon.c:772 ../src/wield.c:809
 #: ../src/zap.c:6298
@@ -3417,7 +3417,7 @@ msgstr ""
 msgid "they"
 msgstr ""
 
-#: ../src/ball.c:975 ../src/dbridge.c:910 ../src/do_wear.c:3225
+#: ../src/ball.c:975 ../src/dbridge.c:932 ../src/do_wear.c:3225
 #: ../src/dokick.c:644 ../src/dokick.c:775 ../src/dokick.c:1941
 #: ../src/dokick.c:1944 ../src/dothrow.c:1810 ../src/dothrow.c:2728
 #: ../src/hack.c:543 ../src/mon.c:3306 ../src/mon.c:3594 ../src/mthrowu.c:200
@@ -4731,83 +4731,88 @@ msgstr ""
 msgid "You"
 msgstr ""
 
-#: ../src/dbridge.c:421
+#: ../src/dbridge.c:423
 msgid "falling drawbridge"
 msgstr ""
 
-#: ../src/dbridge.c:427
+#: ../src/dbridge.c:429
 #, c-format
 msgid "A %s force teleports you away..."
 msgstr ""
 
-#: ../src/dbridge.c:554
+#: ../src/dbridge.c:467
+#, c-format
+msgid "Unfortunately for %s, %s is still crushed."
+msgstr ""
+
+#: ../src/dbridge.c:576
 #, c-format
 msgid "%s passes through %s!"
 msgstr ""
 
-#: ../src/dbridge.c:555
+#: ../src/dbridge.c:577
 msgid "portcullis"
 msgstr ""
 
-#: ../src/dbridge.c:555 ../src/dig.c:333 ../src/dig.c:1830 ../src/sit.c:550
+#: ../src/dbridge.c:577 ../src/dig.c:333 ../src/dig.c:1830 ../src/sit.c:550
 msgid "drawbridge"
 msgstr ""
 
-#: ../src/dbridge.c:563
+#: ../src/dbridge.c:585
 #, c-format
 msgid "portcullis misses %s!"
 msgstr ""
 
-#: ../src/dbridge.c:583
+#: ../src/dbridge.c:605
 #, c-format
 msgid "%s crushed underneath the drawbridge."
 msgstr ""
 
-#: ../src/dbridge.c:599
+#: ../src/dbridge.c:621
 #, c-format
 msgid "%s crushed by the falling portcullis!"
 msgstr ""
 
-#: ../src/dbridge.c:603 ../src/dbridge.c:984
+#: ../src/dbridge.c:625 ../src/dbridge.c:1006
 msgid "a crushing sound."
 msgstr ""
 
-#: ../src/dbridge.c:689
+#: ../src/dbridge.c:711
 msgid "tumble towards the closed portcullis!"
 msgstr ""
 
-#: ../src/dbridge.c:691
+#: ../src/dbridge.c:713
 msgid "pass through it!"
 msgstr ""
 
-#: ../src/dbridge.c:693
+#: ../src/dbridge.c:715
 msgid "drawbridge closes in..."
 msgstr ""
 
-#: ../src/dbridge.c:695
+#: ../src/dbridge.c:717
 #, c-format
 msgid "%s behind the drawbridge."
 msgstr ""
 
-#: ../src/dbridge.c:700
+#: ../src/dbridge.c:722
 msgid "closing drawbridge"
 msgstr ""
 
-#: ../src/dbridge.c:710
+#: ../src/dbridge.c:732
 msgid "a splash."
 msgstr ""
 
-#: ../src/dbridge.c:715
+#: ../src/dbridge.c:737
 #, c-format
 msgid "%s from the bridge."
 msgstr ""
 
-#: ../src/dbridge.c:726
+#: ../src/dbridge.c:748
 #, c-format
 msgid "%s the %s and disappears."
 msgstr ""
 
-#: ../src/dbridge.c:727 ../src/dig.c:866 ../src/dig.c:925 ../src/dokick.c:1453
+#: ../src/dbridge.c:749 ../src/dig.c:866 ../src/dig.c:925 ../src/dokick.c:1453
 #: ../src/dothrow.c:1099 ../src/dungeon.c:3620 ../src/hack.c:2484
 #: ../src/insight.c:276 ../src/insight.c:1011 ../src/invent.c:5546
 #: ../src/obj_descr_i18n.c:1157 ../src/pager.c:1194 ../src/pickup.c:2054
@@ -4815,93 +4820,93 @@ msgstr ""
 msgid "lava"
 msgstr ""
 
-#: ../src/dbridge.c:727 ../src/dbridge.c:730 ../src/dbridge.c:896
-#: ../src/dbridge.c:902 ../src/dothrow.c:933 ../src/pager.c:599
+#: ../src/dbridge.c:749 ../src/dbridge.c:752 ../src/dbridge.c:918
+#: ../src/dbridge.c:924 ../src/dothrow.c:933 ../src/pager.c:599
 #: ../src/pager.c:1495 ../src/uhitm.c:3397
 msgid "moat"
 msgstr ""
 
-#: ../src/dbridge.c:729
+#: ../src/dbridge.c:751
 #, c-format
 msgid "%s into the %s."
 msgstr ""
 
-#: ../src/dbridge.c:733
+#: ../src/dbridge.c:755
 msgid "fell from a drawbridge"
 msgstr ""
 
-#: ../src/dbridge.c:770
+#: ../src/dbridge.c:792
 #, c-format
 msgid "a drawbridge %s up!"
 msgstr ""
 
-#: ../src/dbridge.c:777
+#: ../src/dbridge.c:799
 msgid "chains rattling and gears turning."
 msgstr ""
 
-#: ../src/dbridge.c:800
+#: ../src/dbridge.c:822
 msgid "smashing and crushing."
 msgstr ""
 
-#: ../src/dbridge.c:835
+#: ../src/dbridge.c:857
 #, c-format
 msgid "a drawbridge %s down!"
 msgstr ""
 
-#: ../src/dbridge.c:836
+#: ../src/dbridge.c:858
 msgid "going"
 msgstr ""
 
-#: ../src/dbridge.c:836
+#: ../src/dbridge.c:858
 msgid "coming"
 msgstr ""
 
-#: ../src/dbridge.c:839
+#: ../src/dbridge.c:861
 msgid "gears turning and chains rattling."
 msgstr ""
 
-#: ../src/dbridge.c:895
+#: ../src/dbridge.c:917
 #, c-format
 msgid "portcullis of the drawbridge falls into the %s!"
 msgstr ""
 
-#: ../src/dbridge.c:898 ../src/dbridge.c:904
+#: ../src/dbridge.c:920 ../src/dbridge.c:926
 msgid "a loud *SPLASH*!"
 msgstr ""
 
-#: ../src/dbridge.c:901
+#: ../src/dbridge.c:923
 #, c-format
 msgid "drawbridge collapses into the %s!"
 msgstr ""
 
-#: ../src/dbridge.c:916
+#: ../src/dbridge.c:938
 msgid "drawbridge disintegrates!"
 msgstr ""
 
-#: ../src/dbridge.c:918
+#: ../src/dbridge.c:940
 msgid "a loud *CRASH*!"
-msgstr ""
-
-#: ../src/dbridge.c:954
-#, c-format
-msgid "%s blown apart by flying debris."
-msgstr ""
-
-#: ../src/dbridge.c:957
-msgid "exploding drawbridge"
 msgstr ""
 
 #: ../src/dbridge.c:976
 #, c-format
-msgid "%s into some heavy metal!"
+msgid "%s blown apart by flying debris."
 msgstr ""
 
 #: ../src/dbridge.c:979
+msgid "exploding drawbridge"
+msgstr ""
+
+#: ../src/dbridge.c:998
+#, c-format
+msgid "%s into some heavy metal!"
+msgstr ""
+
+#: ../src/dbridge.c:1001
 #, c-format
 msgid "%s hit by a huge chunk of metal!"
 msgstr ""
 
-#: ../src/dbridge.c:990
+#: ../src/dbridge.c:1012
 msgid "collapsing drawbridge"
 msgstr ""
 
@@ -11743,7 +11748,7 @@ msgid "  Eat %s anyway?"
 msgstr ""
 
 #: ../src/eat.c:2728 ../src/eat.c:3698 ../src/pickup.c:1682
-#: ../src/pickup.c:3575 ../src/zap.c:6179
+#: ../src/pickup.c:3582 ../src/zap.c:6179
 msgid "one"
 msgstr ""
 
@@ -12445,7 +12450,7 @@ msgstr ""
 msgid "Schroedinger's cat!"
 msgstr ""
 
-#: ../src/end.c:1679 ../src/pickup.c:4031
+#: ../src/end.c:1679 ../src/pickup.c:4038
 #, c-format
 msgid "%s is empty."
 msgstr ""
@@ -15819,7 +15824,7 @@ msgstr ""
 msgid "temporarily "
 msgstr ""
 
-#: ../src/insight.c:555 ../src/pickup.c:3027
+#: ../src/insight.c:555 ../src/pickup.c:3034
 msgid "now "
 msgstr ""
 
@@ -18490,7 +18495,7 @@ msgstr ""
 msgid "%s contents"
 msgstr ""
 
-#: ../src/invent.c:3783 ../src/pickup.c:3887
+#: ../src/invent.c:3783 ../src/pickup.c:3894
 msgid "on the floor"
 msgstr ""
 
@@ -19198,7 +19203,7 @@ msgstr ""
 msgid "its lock"
 msgstr ""
 
-#: ../src/lock.c:496 ../src/lock.c:730 ../src/pickup.c:3589 ../src/trap.c:5937
+#: ../src/lock.c:496 ../src/lock.c:730 ../src/pickup.c:3596 ../src/trap.c:5937
 msgid "There is "
 msgstr ""
 
@@ -21702,7 +21707,7 @@ msgstr ""
 msgid "%s %s out."
 msgstr ""
 
-#: ../src/mkobj.c:2883 ../src/pickup.c:3641
+#: ../src/mkobj.c:2883 ../src/pickup.c:3648
 msgid "spill"
 msgstr ""
 
@@ -21721,7 +21726,7 @@ msgstr ""
 msgid "Oops!  %s to the floor!"
 msgstr ""
 
-#: ../src/mkobj.c:2924 ../src/pickup.c:3797
+#: ../src/mkobj.c:2924 ../src/pickup.c:3804
 #, c-format
 msgid "%s %s to the %s."
 msgstr ""
@@ -22837,7 +22842,7 @@ msgstr ""
 msgid "kitten"
 msgstr ""
 
-#: ../src/monster_i18n.c:54 ../src/obj_descr_i18n.c:965 ../src/pickup.c:2875
+#: ../src/monster_i18n.c:54 ../src/obj_descr_i18n.c:965 ../src/pickup.c:2867
 msgid "housecat"
 msgstr ""
 
@@ -27469,7 +27474,7 @@ msgstr ""
 msgid "split"
 msgstr ""
 
-#: ../src/obj_descr_i18n.c:427 ../src/pickup.c:2571 ../src/pickup.c:3141
+#: ../src/obj_descr_i18n.c:427 ../src/pickup.c:2571 ../src/pickup.c:3148
 msgid "stash"
 msgstr ""
 
@@ -30736,7 +30741,7 @@ msgstr ""
 msgid "Without a free %s, you cannot loot anything."
 msgstr ""
 
-#: ../src/pickup.c:2098 ../src/pickup.c:2979
+#: ../src/pickup.c:2098 ../src/pickup.c:2986
 #, c-format
 msgid "%s locked."
 msgstr ""
@@ -30745,7 +30750,7 @@ msgstr ""
 msgid "Hmmm, it turns out to be"
 msgstr ""
 
-#: ../src/pickup.c:2103 ../src/pickup.c:3961
+#: ../src/pickup.c:2103 ../src/pickup.c:3968
 #, c-format
 msgid "%s is locked."
 msgstr ""
@@ -30888,7 +30893,7 @@ msgstr ""
 msgid "As you put %s inside, you are blasted by a magical explosion!"
 msgstr ""
 
-#: ../src/pickup.c:2688 ../src/pickup.c:3785 ../src/trap.c:2303
+#: ../src/pickup.c:2688 ../src/pickup.c:3792 ../src/trap.c:2303
 msgid "magical explosion"
 msgstr ""
 
@@ -30921,262 +30926,262 @@ msgstr ""
 msgid "%s inside the box is still alive!"
 msgstr ""
 
-#: ../src/pickup.c:2874
+#: ../src/pickup.c:2866
 #, c-format
 msgid "%s inside the box is dead!"
 msgstr ""
 
-#: ../src/pickup.c:2896
+#: ../src/pickup.c:2903
 msgid "Container actions:"
 msgstr ""
 
-#: ../src/pickup.c:2898
+#: ../src/pickup.c:2905
 msgid " : -- Look: examine contents"
 msgstr ""
 
-#: ../src/pickup.c:2899
+#: ../src/pickup.c:2906
 msgid " o -- Out: take things out"
 msgstr ""
 
-#: ../src/pickup.c:2900
+#: ../src/pickup.c:2907
 msgid " i -- In: put things in"
 msgstr ""
 
-#: ../src/pickup.c:2901
+#: ../src/pickup.c:2908
 msgid " b -- Both: first take things out, then put things in"
 msgstr ""
 
-#: ../src/pickup.c:2902
+#: ../src/pickup.c:2909
 msgid " r -- Reversed: put things in, then take things out"
 msgstr ""
 
-#: ../src/pickup.c:2903
+#: ../src/pickup.c:2910
 msgid " s -- Stash: put one item in"
 msgstr ""
 
-#: ../src/pickup.c:2904
+#: ../src/pickup.c:2911
 msgid " n -- Next: loot next selected container"
 msgstr ""
 
-#: ../src/pickup.c:2905
+#: ../src/pickup.c:2912
 msgid " q -- Quit: finished"
 msgstr ""
 
-#: ../src/pickup.c:2906
+#: ../src/pickup.c:2913
 msgid " ? -- Help: display this text."
 msgstr ""
 
-#: ../src/pickup.c:2981
+#: ../src/pickup.c:2988
 msgid "must put it down to unlock."
 msgstr ""
 
-#: ../src/pickup.c:2985
+#: ../src/pickup.c:2992
 #, c-format
 msgid "open %s..."
 msgstr ""
 
-#: ../src/pickup.c:2990
+#: ../src/pickup.c:2997
 msgid "opening a container"
 msgstr ""
 
-#: ../src/pickup.c:3015 ../src/pickup.c:3813
+#: ../src/pickup.c:3022 ../src/pickup.c:3820
 #, c-format
 msgid "owe %ld %s for lost merchandise."
 msgstr ""
 
-#: ../src/pickup.c:3025
+#: ../src/pickup.c:3032
 #, c-format
 msgid "%s is %sempty."
 msgstr ""
 
-#: ../src/pickup.c:3063
+#: ../src/pickup.c:3070
 msgid "Do what with "
 msgstr ""
 
-#: ../src/pickup.c:3140
+#: ../src/pickup.c:3147
 #, c-format
 msgid "don't have anything%s to %s."
 msgstr ""
 
-#: ../src/pickup.c:3140
+#: ../src/pickup.c:3147
 msgid " else"
 msgstr ""
 
-#: ../src/pickup.c:3141
+#: ../src/pickup.c:3148
 msgid "put in"
 msgstr ""
 
-#: ../src/pickup.c:3253
+#: ../src/pickup.c:3260
 msgid "Put in"
 msgstr ""
 
-#: ../src/pickup.c:3253
+#: ../src/pickup.c:3260
 msgid "Take out"
 msgstr ""
 
-#: ../src/pickup.c:3265
+#: ../src/pickup.c:3272
 #, c-format
 msgid "%s what type of objects?"
 msgstr ""
 
-#: ../src/pickup.c:3343
+#: ../src/pickup.c:3350
 #, c-format
 msgid "%s what?"
 msgstr ""
 
-#: ../src/pickup.c:3402
+#: ../src/pickup.c:3409
 #, c-format
 msgid "Look inside %s"
 msgstr ""
 
-#: ../src/pickup.c:3407
+#: ../src/pickup.c:3414
 #, c-format
 msgid "take %s out"
 msgstr ""
 
-#: ../src/pickup.c:3413
+#: ../src/pickup.c:3420
 #, c-format
 msgid "put %s in"
 msgstr ""
 
-#: ../src/pickup.c:3419
+#: ../src/pickup.c:3426
 #, c-format
 msgid "%stake out, then put in"
 msgstr ""
 
-#: ../src/pickup.c:3419
+#: ../src/pickup.c:3426
 msgid "both; "
 msgstr ""
 
-#: ../src/pickup.c:3425
+#: ../src/pickup.c:3432
 #, c-format
 msgid "%sput in, then take out"
 msgstr ""
 
-#: ../src/pickup.c:3426
+#: ../src/pickup.c:3433
 msgid "both reversed; "
 msgstr ""
 
-#: ../src/pickup.c:3430
+#: ../src/pickup.c:3437
 #, c-format
 msgid "stash one item into %s"
 msgstr ""
 
-#: ../src/pickup.c:3438
+#: ../src/pickup.c:3445
 msgid "loot next container"
 msgstr ""
 
-#: ../src/pickup.c:3442
+#: ../src/pickup.c:3449
 msgid "done"
 msgstr ""
 
-#: ../src/pickup.c:3442
+#: ../src/pickup.c:3449
 msgid "do nothing"
 msgstr ""
 
-#: ../src/pickup.c:3518
+#: ../src/pickup.c:3525
 msgid "Tip which container?"
 msgstr ""
 
-#: ../src/pickup.c:3574
+#: ../src/pickup.c:3581
 #, c-format
 msgid "You can't tip %s while carrying so much."
 msgstr ""
 
-#: ../src/pickup.c:3575 ../src/trap.c:5843
+#: ../src/pickup.c:3582 ../src/trap.c:5843
 msgid "a container"
 msgstr ""
 
-#: ../src/pickup.c:3589
+#: ../src/pickup.c:3596
 msgid " here, tip it?"
 msgstr ""
 
-#: ../src/pickup.c:3591
+#: ../src/pickup.c:3598
 msgid "container"
 msgstr ""
 
-#: ../src/pickup.c:3636
+#: ../src/pickup.c:3643
 #, c-format
 msgid " and gradually %s"
 msgstr ""
 
-#: ../src/pickup.c:3636
+#: ../src/pickup.c:3643
 msgid "dissipate"
 msgstr ""
 
-#: ../src/pickup.c:3638
+#: ../src/pickup.c:3645
 #, c-format
 msgid " and immediately %s away"
 msgstr ""
 
-#: ../src/pickup.c:3640
+#: ../src/pickup.c:3647
 #, c-format
 msgid "Some %s %s onto the %s%s."
 msgstr ""
 
-#: ../src/pickup.c:3651
+#: ../src/pickup.c:3658
 #, c-format
 msgid "%s %s securely sealed."
 msgstr ""
 
-#: ../src/pickup.c:3655
+#: ../src/pickup.c:3662
 msgid "Nothing interesting happens."
 msgstr ""
 
-#: ../src/pickup.c:3731
+#: ../src/pickup.c:3738
 #, c-format
 msgid "%s into %s."
 msgstr ""
 
-#: ../src/pickup.c:3732
+#: ../src/pickup.c:3739
 msgid "Objects tumble"
 msgstr ""
 
-#: ../src/pickup.c:3732
+#: ../src/pickup.c:3739
 msgid "An object tumbles"
 msgstr ""
 
-#: ../src/pickup.c:3735
+#: ../src/pickup.c:3742
 #, c-format
 msgid "%s out%c"
 msgstr ""
 
-#: ../src/pickup.c:3736
+#: ../src/pickup.c:3743
 msgid "Objects spill"
 msgstr ""
 
-#: ../src/pickup.c:3736
+#: ../src/pickup.c:3743
 msgid "An object spills"
 msgstr ""
 
-#: ../src/pickup.c:3764
+#: ../src/pickup.c:3771
 #, c-format
 msgid "As %s %s inside, you are blasted by a magical explosion!"
 msgstr ""
 
-#: ../src/pickup.c:3765
+#: ../src/pickup.c:3772
 msgid "tumble"
 msgstr ""
 
-#: ../src/pickup.c:3800 ../src/trap.c:5172
+#: ../src/pickup.c:3807 ../src/trap.c:5172
 #, c-format
 msgid "%s%c"
 msgstr ""
 
-#: ../src/pickup.c:3872
+#: ../src/pickup.c:3879
 msgid "Tipping contents to floor only..."
 msgstr ""
 
-#: ../src/pickup.c:3912
+#: ../src/pickup.c:3919
 #, c-format
 msgid "Where to tip the contents of %s"
 msgstr ""
 
-#: ../src/pickup.c:3970
+#: ../src/pickup.c:3977
 msgid "tipping a container"
 msgstr ""
 
-#: ../src/pickup.c:4023
+#: ../src/pickup.c:4030
 #, c-format
 msgid "%sbox is now empty."
 msgstr ""
@@ -47521,11 +47526,11 @@ msgstr ""
 msgid "No monster difficulty discrepancies were detected."
 msgstr ""
 
-#: ../src/wizcmds.c:1850
+#: ../src/wizcmds.c:1851
 msgid "How many random monsters to migrate to next level? [0]"
 msgstr ""
 
-#: ../src/wizcmds.c:1853
+#: ../src/wizcmds.c:1854
 msgid "Can't get there from here."
 msgstr ""
 

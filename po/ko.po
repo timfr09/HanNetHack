@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-03-06 14:06+0900\n"
+"POT-Creation-Date: 2026-03-16 22:20+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -290,8 +290,8 @@ msgstr "이다"
 #: ../src/do.c:872 ../src/do.c:2412 ../src/eat.c:3697 ../src/engrave.c:829
 #: ../src/insight.c:1442 ../src/insight.c:1507 ../src/invent.c:3777
 #: ../src/invent.c:4260 ../src/invent.c:5552 ../src/mon.c:5730
-#: ../src/pickup.c:1698 ../src/pickup.c:2588 ../src/pickup.c:2979
-#: ../src/pickup.c:3651 ../src/potion.c:2669 ../src/potion.c:2703
+#: ../src/pickup.c:1698 ../src/pickup.c:2588 ../src/pickup.c:2986
+#: ../src/pickup.c:3658 ../src/potion.c:2669 ../src/potion.c:2703
 #: ../src/pray.c:1183 ../src/read.c:1145 ../src/read.c:1599 ../src/steal.c:799
 #: ../src/timeout.c:341 ../src/timeout.c:1614 ../src/trap.c:275
 #: ../src/trap.c:284 ../src/trap.c:390 ../src/trap.c:393 ../src/trap.c:395
@@ -348,7 +348,7 @@ msgstr "%s{은/는} 조각상치고는 %s 건강하다."
 msgid "a hollow sound.  This must be a secret %s!"
 msgstr "텅 빈 소리가 들린다. 비밀 %s일게 틀림없다!"
 
-#: ../src/apply.c:329 ../src/pickup.c:2195 ../src/pickup.c:2928
+#: ../src/apply.c:329 ../src/pickup.c:2195 ../src/pickup.c:2935
 msgid "have no hands!"
 msgstr "손이 없다!"
 
@@ -356,7 +356,7 @@ msgstr "손이 없다!"
 msgid "hear anything!"
 msgstr "아무것도 듣는다!"
 
-#: ../src/apply.c:335 ../src/pickup.c:2931
+#: ../src/apply.c:335 ../src/pickup.c:2938
 #, c-format
 msgid "have no free %s."
 msgstr "자유로운 %s{이/가} 없다."
@@ -479,7 +479,7 @@ msgstr "주파수 진동"
 msgid "pitched humming noise"
 msgstr "윙윙거리는 소리"
 
-#: ../src/apply.c:509 ../src/artifact.c:2228 ../src/dbridge.c:428
+#: ../src/apply.c:509 ../src/artifact.c:2228 ../src/dbridge.c:430
 #: ../src/eat.c:2308 ../src/muse.c:2435 ../src/potion.c:293 ../src/potion.c:319
 #: ../src/potion.c:407 ../src/potion.c:628 ../src/potion.c:1317
 #: ../src/potion.c:1462 ../src/potion.c:1687 ../src/timeout.c:881
@@ -490,7 +490,7 @@ msgstr "정상적인"
 msgid "strange, high-pitched"
 msgstr "이상하고 높은"
 
-#: ../src/apply.c:511 ../src/artifact.c:2228 ../src/dbridge.c:428
+#: ../src/apply.c:511 ../src/artifact.c:2228 ../src/dbridge.c:430
 #: ../src/eat.c:2308 ../src/muse.c:2435 ../src/potion.c:1317
 #: ../src/potion.c:1462 ../src/potion.c:1687
 msgid "strange"
@@ -1183,7 +1183,7 @@ msgstr "그것들"
 #: ../src/ball.c:974 ../src/do_name.c:749 ../src/do_name.c:883
 #: ../src/eat.c:2642 ../src/eat.c:2728 ../src/eat.c:3698 ../src/iactions.c:360
 #: ../src/invent.c:3253 ../src/lock.c:495 ../src/mhitm.c:876 ../src/mon.c:3490
-#: ../src/pickup.c:1858 ../src/pickup.c:3064 ../src/pickup.c:3575
+#: ../src/pickup.c:1858 ../src/pickup.c:3071 ../src/pickup.c:3582
 #: ../src/role.c:692 ../src/shk.c:3380 ../src/shk.c:3790 ../src/shk.c:4088
 #: ../src/steal.c:792 ../src/timeout.c:1242 ../src/trap.c:2512
 #: ../src/trap.c:2572 ../src/trap.c:5849 ../src/wield.c:684 ../src/wield.c:704
@@ -1369,7 +1369,7 @@ msgid "%s flame%s %s."
 msgstr ""
 
 #: ../src/apply.c:1688 ../src/apply.c:1692 ../src/mkobj.c:747
-#: ../src/pickup.c:3639 ../src/trap.c:4532
+#: ../src/pickup.c:3646 ../src/trap.c:4532
 msgid "burn"
 msgstr "타다"
 
@@ -1685,7 +1685,7 @@ msgstr "%s{이/가} 배낭에서 %s!"
 
 #: ../src/apply.c:2458 ../src/apply.c:2461 ../src/apply.c:2490 ../src/do.c:829
 #: ../src/mkobj.c:2925 ../src/mthrowu.c:797 ../src/mthrowu.c:935
-#: ../src/obj_descr_i18n.c:412 ../src/pickup.c:3798 ../src/polyself.c:1309
+#: ../src/obj_descr_i18n.c:412 ../src/pickup.c:3805 ../src/polyself.c:1309
 #: ../src/pray.c:799 ../src/timeout.c:1115 ../src/timeout.c:1118
 #: ../src/timeout.c:1154 ../src/weapon.c:772 ../src/wield.c:809
 #: ../src/zap.c:6298
@@ -3550,7 +3550,7 @@ msgstr "%s{을/를} 떨어뜨리고 %s{과/와} 함께 계단 아래로 %s."
 msgid "they"
 msgstr "그들"
 
-#: ../src/ball.c:975 ../src/dbridge.c:910 ../src/do_wear.c:3225
+#: ../src/ball.c:975 ../src/dbridge.c:932 ../src/do_wear.c:3225
 #: ../src/dokick.c:644 ../src/dokick.c:775 ../src/dokick.c:1941
 #: ../src/dokick.c:1944 ../src/dothrow.c:1810 ../src/dothrow.c:2728
 #: ../src/hack.c:543 ../src/mon.c:3306 ../src/mon.c:3594 ../src/mthrowu.c:200
@@ -4959,83 +4959,88 @@ msgstr "색상 선택"
 msgid "You"
 msgstr "당신"
 
-#: ../src/dbridge.c:421
+#: ../src/dbridge.c:423
 msgid "falling drawbridge"
 msgstr "떨어지는 도개교"
 
-#: ../src/dbridge.c:427
+#: ../src/dbridge.c:429
 #, c-format
 msgid "A %s force teleports you away..."
 msgstr "%s 힘이 순간이동시킨다..."
 
-#: ../src/dbridge.c:554
+#: ../src/dbridge.c:467
+#, c-format
+msgid "Unfortunately for %s, %s is still crushed."
+msgstr ""
+
+#: ../src/dbridge.c:576
 #, c-format
 msgid "%s passes through %s!"
 msgstr "%s{이/가} %s{을/를} 통과한다!"
 
-#: ../src/dbridge.c:555
+#: ../src/dbridge.c:577
 msgid "portcullis"
 msgstr "격자문"
 
-#: ../src/dbridge.c:555 ../src/dig.c:333 ../src/dig.c:1830 ../src/sit.c:550
+#: ../src/dbridge.c:577 ../src/dig.c:333 ../src/dig.c:1830 ../src/sit.c:550
 msgid "drawbridge"
 msgstr "도개교"
 
-#: ../src/dbridge.c:563
+#: ../src/dbridge.c:585
 #, c-format
 msgid "portcullis misses %s!"
 msgstr "격자문이 %s{을/를} 빗맞았다!"
 
-#: ../src/dbridge.c:583
+#: ../src/dbridge.c:605
 #, c-format
 msgid "%s crushed underneath the drawbridge."
 msgstr "%s{이/가} 도개교 아래서 짓눌렸다."
 
-#: ../src/dbridge.c:599
+#: ../src/dbridge.c:621
 #, c-format
 msgid "%s crushed by the falling portcullis!"
 msgstr "%s{이/가} 떨어지는 성문에 짓눌렸다!"
 
-#: ../src/dbridge.c:603 ../src/dbridge.c:984
+#: ../src/dbridge.c:625 ../src/dbridge.c:1006
 msgid "a crushing sound."
 msgstr "짓눌리는 소리."
 
-#: ../src/dbridge.c:689
+#: ../src/dbridge.c:711
 msgid "tumble towards the closed portcullis!"
 msgstr "닫힌 성문을 향해 굴러갔다!"
 
-#: ../src/dbridge.c:691
+#: ../src/dbridge.c:713
 msgid "pass through it!"
 msgstr "통과했다!"
 
-#: ../src/dbridge.c:693
+#: ../src/dbridge.c:715
 msgid "drawbridge closes in..."
 msgstr "도개교가 닫힌다..."
 
-#: ../src/dbridge.c:695
+#: ../src/dbridge.c:717
 #, c-format
 msgid "%s behind the drawbridge."
 msgstr "도개교 뒤에 %s."
 
-#: ../src/dbridge.c:700
+#: ../src/dbridge.c:722
 msgid "closing drawbridge"
 msgstr "닫히는 도개교"
 
-#: ../src/dbridge.c:710
+#: ../src/dbridge.c:732
 msgid "a splash."
 msgstr "첨벙."
 
-#: ../src/dbridge.c:715
+#: ../src/dbridge.c:737
 #, c-format
 msgid "%s from the bridge."
 msgstr "다리에서 %s."
 
-#: ../src/dbridge.c:726
+#: ../src/dbridge.c:748
 #, c-format
 msgid "%s the %s and disappears."
 msgstr "%s{이/가} %s{을/를} 하고 사라진다."
 
-#: ../src/dbridge.c:727 ../src/dig.c:866 ../src/dig.c:925 ../src/dokick.c:1453
+#: ../src/dbridge.c:749 ../src/dig.c:866 ../src/dig.c:925 ../src/dokick.c:1453
 #: ../src/dothrow.c:1099 ../src/dungeon.c:3620 ../src/hack.c:2484
 #: ../src/insight.c:276 ../src/insight.c:1011 ../src/invent.c:5546
 #: ../src/obj_descr_i18n.c:1157 ../src/pager.c:1194 ../src/pickup.c:2054
@@ -5043,95 +5048,95 @@ msgstr "%s{이/가} %s{을/를} 하고 사라진다."
 msgid "lava"
 msgstr "용암"
 
-#: ../src/dbridge.c:727 ../src/dbridge.c:730 ../src/dbridge.c:896
-#: ../src/dbridge.c:902 ../src/dothrow.c:933 ../src/pager.c:599
+#: ../src/dbridge.c:749 ../src/dbridge.c:752 ../src/dbridge.c:918
+#: ../src/dbridge.c:924 ../src/dothrow.c:933 ../src/pager.c:599
 #: ../src/pager.c:1495 ../src/uhitm.c:3397
 msgid "moat"
 msgstr "해자"
 
-#: ../src/dbridge.c:729
+#: ../src/dbridge.c:751
 #, c-format
 msgid "%s into the %s."
 msgstr "%s{이/가} %s 안으로."
 
-#: ../src/dbridge.c:733
+#: ../src/dbridge.c:755
 msgid "fell from a drawbridge"
 msgstr "도개교에서 떨어졌다"
 
-#: ../src/dbridge.c:770
+#: ../src/dbridge.c:792
 #, c-format
 msgid "a drawbridge %s up!"
 msgstr "도개교가 %s 올라가는 것을!"
 
-#: ../src/dbridge.c:777
+#: ../src/dbridge.c:799
 msgid "chains rattling and gears turning."
 msgstr "사슬이 덜컥거리고 기어가 돌아간다."
 
-#: ../src/dbridge.c:800
+#: ../src/dbridge.c:822
 msgid "smashing and crushing."
 msgstr "부서지고 짓눌린다."
 
-#: ../src/dbridge.c:835
+#: ../src/dbridge.c:857
 #, c-format
 msgid "a drawbridge %s down!"
 msgstr "도개교가 %s 내려가는 것을!"
 
-#: ../src/dbridge.c:836
+#: ../src/dbridge.c:858
 msgid "going"
 msgstr "가는"
 
-#: ../src/dbridge.c:836
+#: ../src/dbridge.c:858
 msgid "coming"
 msgstr "다가오는"
 
-#: ../src/dbridge.c:839
+#: ../src/dbridge.c:861
 msgid "gears turning and chains rattling."
 msgstr "기어가 돌아가고 사슬이 덜컥거린다."
 
-#: ../src/dbridge.c:895
+#: ../src/dbridge.c:917
 #, c-format
 msgid "portcullis of the drawbridge falls into the %s!"
 msgstr "도개교의 성문이 %s{으로/로} 떨어졌다!"
 
-#: ../src/dbridge.c:898 ../src/dbridge.c:904
+#: ../src/dbridge.c:920 ../src/dbridge.c:926
 msgid "a loud *SPLASH*!"
 msgstr "큰 *첨벙*!"
 
-#: ../src/dbridge.c:901
+#: ../src/dbridge.c:923
 #, c-format
 msgid "drawbridge collapses into the %s!"
 msgstr "도개교가 %s{으로/로} 무너졌다!"
 
-#: ../src/dbridge.c:916
+#: ../src/dbridge.c:938
 msgid "drawbridge disintegrates!"
 msgstr "도개교가 분해됐다!"
 
-#: ../src/dbridge.c:918
+#: ../src/dbridge.c:940
 msgid "a loud *CRASH*!"
 msgstr "큰 *쾅*!"
 
-#: ../src/dbridge.c:954
+#: ../src/dbridge.c:976
 #, c-format
 msgid "%s blown apart by flying debris."
 msgstr "%s{이/가} 날아가는 잔해에 산산이 부서졌다."
 
-#: ../src/dbridge.c:957
+#: ../src/dbridge.c:979
 msgid "exploding drawbridge"
 msgstr "폭발하는 도개교"
 
 # %s = 주어 (캐릭터/몬스터 이름 + crashes/crash/...)
 # 도개교 충돌 메시지
-#: ../src/dbridge.c:976
+#: ../src/dbridge.c:998
 #, c-format
 msgid "%s into some heavy metal!"
 msgstr "%s 무거운 금속에 부딪혔다!"
 
-#: ../src/dbridge.c:979
+#: ../src/dbridge.c:1001
 #, c-format
 msgid "%s hit by a huge chunk of metal!"
 msgstr "%s{이/가} 거대한 금속 덩어리에 맞았다!"
 
-#: ../src/dbridge.c:990
+#: ../src/dbridge.c:1012
 msgid "collapsing drawbridge"
 msgstr "무너지는 도개교"
 
@@ -12329,7 +12334,7 @@ msgid "  Eat %s anyway?"
 msgstr ""
 
 #: ../src/eat.c:2728 ../src/eat.c:3698 ../src/pickup.c:1682
-#: ../src/pickup.c:3575 ../src/zap.c:6179
+#: ../src/pickup.c:3582 ../src/zap.c:6179
 msgid "one"
 msgstr "하나"
 
@@ -13086,7 +13091,7 @@ msgstr "%s의 내용물:"
 msgid "Schroedinger's cat!"
 msgstr "슈뢰딩거의 고양이!"
 
-#: ../src/end.c:1679 ../src/pickup.c:4031
+#: ../src/end.c:1679 ../src/pickup.c:4038
 #, c-format
 msgid "%s is empty."
 msgstr "%s{이/가} 비어 있다."
@@ -16699,7 +16704,7 @@ msgstr " %1$s%2$s%4$s%3$s 성향이며, %5$s{을/를} 위한 임무 중"
 msgid "temporarily "
 msgstr "일시적으로 "
 
-#: ../src/insight.c:555 ../src/pickup.c:3027
+#: ../src/insight.c:555 ../src/pickup.c:3034
 msgid "now "
 msgstr "이제 "
 
@@ -19873,7 +19878,7 @@ msgstr "소지품:"
 msgid "%s contents"
 msgstr "%s 내용물"
 
-#: ../src/invent.c:3783 ../src/pickup.c:3887
+#: ../src/invent.c:3783 ../src/pickup.c:3894
 msgid "on the floor"
 msgstr "바닥에"
 
@@ -20629,7 +20634,7 @@ msgstr "자물쇠"
 # UI 메시지 (invent.c - "here" 관련)
 # ============================================================
 # %1$s = "is"/"are", %2$s = object name
-#: ../src/lock.c:496 ../src/lock.c:730 ../src/pickup.c:3589 ../src/trap.c:5937
+#: ../src/lock.c:496 ../src/lock.c:730 ../src/pickup.c:3596 ../src/trap.c:5937
 msgid "There is "
 msgstr "여기에 %2$s{이/가} 있다.%1$.0s"
 
@@ -23314,7 +23319,7 @@ msgstr "약간의 음식"
 msgid "%s %s out."
 msgstr "%s{이/가} %s 나갔다."
 
-#: ../src/mkobj.c:2883 ../src/pickup.c:3641
+#: ../src/mkobj.c:2883 ../src/pickup.c:3648
 msgid "spill"
 msgstr "쏟다"
 
@@ -23333,7 +23338,7 @@ msgstr "%s{이/가} 미끄러져 빠져나갔다."
 msgid "Oops!  %s to the floor!"
 msgstr "이런!  %s{이/가} 바닥으로 떨어졌다!"
 
-#: ../src/mkobj.c:2924 ../src/pickup.c:3797
+#: ../src/mkobj.c:2924 ../src/pickup.c:3804
 #, c-format
 msgid "%s %s to the %s."
 msgstr "%s{이/가} %s{을/를} %s."
@@ -24519,7 +24524,7 @@ msgstr "비홀더"
 msgid "kitten"
 msgstr "새끼 고양이"
 
-#: ../src/monster_i18n.c:54 ../src/obj_descr_i18n.c:965 ../src/pickup.c:2875
+#: ../src/monster_i18n.c:54 ../src/obj_descr_i18n.c:965 ../src/pickup.c:2867
 msgid "housecat"
 msgstr "집고양이"
 
@@ -29362,7 +29367,7 @@ msgstr "조정할"
 msgid "split"
 msgstr "나눌"
 
-#: ../src/obj_descr_i18n.c:427 ../src/pickup.c:2571 ../src/pickup.c:3141
+#: ../src/obj_descr_i18n.c:427 ../src/pickup.c:2571 ../src/pickup.c:3148
 msgid "stash"
 msgstr "보관할"
 
@@ -32804,7 +32809,7 @@ msgstr "팔다리 없이는 아무것도 %s할 수 없다."
 msgid "Without a free %s, you cannot loot anything."
 msgstr "자유로운 %s 없이는 아무것도 약탈할 수 없다."
 
-#: ../src/pickup.c:2098 ../src/pickup.c:2979
+#: ../src/pickup.c:2098 ../src/pickup.c:2986
 #, c-format
 msgid "%s locked."
 msgstr "%s{이/가} 잠겨있다."
@@ -32818,7 +32823,7 @@ msgstr "%s{이/가} 잠겨있다."
 msgid "Hmmm, it turns out to be"
 msgstr "흠, 알고 보니"
 
-#: ../src/pickup.c:2103 ../src/pickup.c:3961
+#: ../src/pickup.c:2103 ../src/pickup.c:3968
 #, c-format
 msgid "%s is locked."
 msgstr "%s{이/가} 잠겨 있다."
@@ -32965,7 +32970,7 @@ msgstr "%s{을/를} %s 안에 넣을 수 없다."
 msgid "As you put %s inside, you are blasted by a magical explosion!"
 msgstr "%s{을/를} 안에 넣자, 마법 폭발에 휩싸였다!"
 
-#: ../src/pickup.c:2688 ../src/pickup.c:3785 ../src/trap.c:2303
+#: ../src/pickup.c:2688 ../src/pickup.c:3792 ../src/trap.c:2303
 msgid "magical explosion"
 msgstr "폭발."
 
@@ -33001,70 +33006,70 @@ msgstr "%s{이/가} 당신의 %s{을/를} 스친 것 같다."
 msgid "%s inside the box is still alive!"
 msgstr "상자 안의 %s{이/가} 아직 살아있다!"
 
-#: ../src/pickup.c:2874
+#: ../src/pickup.c:2866
 #, c-format
 msgid "%s inside the box is dead!"
 msgstr "상자 안의 %s{이/가} 죽었다!"
 
-#: ../src/pickup.c:2896
+#: ../src/pickup.c:2903
 msgid "Container actions:"
 msgstr "용기 행동:"
 
-#: ../src/pickup.c:2898
+#: ../src/pickup.c:2905
 msgid " : -- Look: examine contents"
 msgstr " : -- 보기: 내용물 조사"
 
-#: ../src/pickup.c:2899
+#: ../src/pickup.c:2906
 msgid " o -- Out: take things out"
 msgstr " o -- 꺼내기: 물건 꺼내기"
 
-#: ../src/pickup.c:2900
+#: ../src/pickup.c:2907
 msgid " i -- In: put things in"
 msgstr " i -- 넣기: 물건 넣기"
 
-#: ../src/pickup.c:2901
+#: ../src/pickup.c:2908
 msgid " b -- Both: first take things out, then put things in"
 msgstr " b -- 둘 다: 먼저 꺼낸 후 넣기"
 
-#: ../src/pickup.c:2902
+#: ../src/pickup.c:2909
 msgid " r -- Reversed: put things in, then take things out"
 msgstr " r -- 반대로: 먼저 넣은 후 꺼내기"
 
-#: ../src/pickup.c:2903
+#: ../src/pickup.c:2910
 msgid " s -- Stash: put one item in"
 msgstr " s -- 보관: 물건 하나 넣기"
 
-#: ../src/pickup.c:2904
+#: ../src/pickup.c:2911
 msgid " n -- Next: loot next selected container"
 msgstr " n -- 다음: 다음 선택한 용기 약탈"
 
-#: ../src/pickup.c:2905
+#: ../src/pickup.c:2912
 msgid " q -- Quit: finished"
 msgstr " q -- 종료: 완료"
 
-#: ../src/pickup.c:2906
+#: ../src/pickup.c:2913
 msgid " ? -- Help: display this text."
 msgstr " ? -- 도움말: 이 텍스트 표시"
 
-#: ../src/pickup.c:2981
+#: ../src/pickup.c:2988
 msgid "must put it down to unlock."
 msgstr "열려면 내려놓아야 한다."
 
-#: ../src/pickup.c:2985
+#: ../src/pickup.c:2992
 #, c-format
 msgid "open %s..."
 msgstr "%s{을/를} 열었다..."
 
-#: ../src/pickup.c:2990
+#: ../src/pickup.c:2997
 msgid "opening a container"
 msgstr "용기를 여는 중"
 
-#: ../src/pickup.c:3015 ../src/pickup.c:3813
+#: ../src/pickup.c:3022 ../src/pickup.c:3820
 #, c-format
 msgid "owe %ld %s for lost merchandise."
 msgstr "잃어버린 상품에 대해 %ld %s{을/를} 빚진다."
 
-#: ../src/pickup.c:3025
+#: ../src/pickup.c:3032
 #, c-format
 msgid "%s is %sempty."
 msgstr ""
@@ -33075,44 +33080,44 @@ msgstr ""
 # 영어: "Do what with [container]?"
 # 한국어: "[container]{을/를} 어떻게 할까?" - 어순 차이로 zero-width space 사용
 # ============================================================
-#: ../src/pickup.c:3063
+#: ../src/pickup.c:3070
 msgid "Do what with "
 msgstr "​"
 
-#: ../src/pickup.c:3140
+#: ../src/pickup.c:3147
 #, c-format
 msgid "don't have anything%s to %s."
 msgstr "%s할 것이 %s 없다."
 
-#: ../src/pickup.c:3140
+#: ../src/pickup.c:3147
 msgid " else"
 msgstr "다른 "
 
-#: ../src/pickup.c:3141
+#: ../src/pickup.c:3148
 msgid "put in"
 msgstr "착용할"
 
 # 용기 조작 메뉴
-#: ../src/pickup.c:3253
+#: ../src/pickup.c:3260
 msgid "Put in"
 msgstr "넣기"
 
-#: ../src/pickup.c:3253
+#: ../src/pickup.c:3260
 msgid "Take out"
 msgstr "꺼내기"
 
-#: ../src/pickup.c:3265
+#: ../src/pickup.c:3272
 #, c-format
 msgid "%s what type of objects?"
 msgstr "%s 어떤 종류의 물건을?"
 
 # 용기 조작 질문
-#: ../src/pickup.c:3343
+#: ../src/pickup.c:3350
 #, c-format
 msgid "%s what?"
 msgstr "무엇을 %s?"
 
-#: ../src/pickup.c:3402
+#: ../src/pickup.c:3409
 #, c-format
 msgid "Look inside %s"
 msgstr "%s 안을 본다"
@@ -33120,62 +33125,62 @@ msgstr "%s 안을 본다"
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
-#: ../src/pickup.c:3407
+#: ../src/pickup.c:3414
 #, c-format
 msgid "take %s out"
 msgstr "%s 꺼내기"
 
-#: ../src/pickup.c:3413
+#: ../src/pickup.c:3420
 #, c-format
 msgid "put %s in"
 msgstr "%s 넣기"
 
-#: ../src/pickup.c:3419
+#: ../src/pickup.c:3426
 #, c-format
 msgid "%stake out, then put in"
 msgstr "%s꺼낸 후 넣기"
 
-#: ../src/pickup.c:3419
+#: ../src/pickup.c:3426
 msgid "both; "
 msgstr "둘 다; "
 
-#: ../src/pickup.c:3425
+#: ../src/pickup.c:3432
 #, c-format
 msgid "%sput in, then take out"
 msgstr "%s넣은 후 꺼내기"
 
-#: ../src/pickup.c:3426
+#: ../src/pickup.c:3433
 msgid "both reversed; "
 msgstr "반대로 둘 다; "
 
 # 용기 메뉴 옵션
-#: ../src/pickup.c:3430
+#: ../src/pickup.c:3437
 #, c-format
 msgid "stash one item into %s"
 msgstr "%s에 물건 하나 넣기"
 
-#: ../src/pickup.c:3438
+#: ../src/pickup.c:3445
 msgid "loot next container"
 msgstr "다음 용기 열기"
 
-#: ../src/pickup.c:3442
+#: ../src/pickup.c:3449
 msgid "done"
 msgstr "완료"
 
-#: ../src/pickup.c:3442
+#: ../src/pickup.c:3449
 msgid "do nothing"
 msgstr "아무것도 안 함"
 
-#: ../src/pickup.c:3518
+#: ../src/pickup.c:3525
 msgid "Tip which container?"
 msgstr "용기를 기울이는 중"
 
-#: ../src/pickup.c:3574
+#: ../src/pickup.c:3581
 #, c-format
 msgid "You can't tip %s while carrying so much."
 msgstr "너무 많이 들고 있어서 %s{을/를} 기울일 수 없다."
 
-#: ../src/pickup.c:3575 ../src/trap.c:5843
+#: ../src/pickup.c:3582 ../src/trap.c:5843
 msgid "a container"
 msgstr "용기를 여는 중"
 
@@ -33183,43 +33188,43 @@ msgstr "용기를 여는 중"
 # UI 메시지 (invent.c - "here" 관련)
 # ============================================================
 # %1$s = "is"/"are", %2$s = object name
-#: ../src/pickup.c:3589
+#: ../src/pickup.c:3596
 msgid " here, tip it?"
 msgstr "여기에 %2$s{이/가} 있다.%1$.0s"
 
-#: ../src/pickup.c:3591
+#: ../src/pickup.c:3598
 msgid "container"
 msgstr "용기를 여는 중"
 
-#: ../src/pickup.c:3636
+#: ../src/pickup.c:3643
 #, c-format
 msgid " and gradually %s"
 msgstr " 그리고 점차 %s"
 
-#: ../src/pickup.c:3636
+#: ../src/pickup.c:3643
 msgid "dissipate"
 msgstr "빠르게 흩어집니다"
 
-#: ../src/pickup.c:3638
+#: ../src/pickup.c:3645
 #, c-format
 msgid " and immediately %s away"
 msgstr " 그리고 즉시 %s"
 
-#: ../src/pickup.c:3640
+#: ../src/pickup.c:3647
 #, c-format
 msgid "Some %s %s onto the %s%s."
 msgstr "일부 %s{이/가} %s%s 위로 %s."
 
-#: ../src/pickup.c:3651
+#: ../src/pickup.c:3658
 #, c-format
 msgid "%s %s securely sealed."
 msgstr "%s %s{이/가} 단단히 밀봉되어 있다."
 
-#: ../src/pickup.c:3655
+#: ../src/pickup.c:3662
 msgid "Nothing interesting happens."
 msgstr "흥미로운 일이 일어나지 않았다."
 
-#: ../src/pickup.c:3731
+#: ../src/pickup.c:3738
 #, c-format
 msgid "%s into %s."
 msgstr "%s{이/가} %s 안으로."
@@ -33230,55 +33235,55 @@ msgstr "%s{이/가} %s 안으로."
 # 예: "Objects tumble into the chest."
 # 한국어: "물체들이 상자 안으로 굴러들어간다."
 # ============================================================
-#: ../src/pickup.c:3732
+#: ../src/pickup.c:3739
 msgid "Objects tumble"
 msgstr "물체들이 굴러들어간다"
 
-#: ../src/pickup.c:3732
+#: ../src/pickup.c:3739
 msgid "An object tumbles"
 msgstr "물체가 굴러들어간다"
 
-#: ../src/pickup.c:3735
+#: ../src/pickup.c:3742
 #, c-format
 msgid "%s out%c"
 msgstr "%s 나왔다%c"
 
-#: ../src/pickup.c:3736
+#: ../src/pickup.c:3743
 msgid "Objects spill"
 msgstr "물건들이 쏟아졌다"
 
-#: ../src/pickup.c:3736
+#: ../src/pickup.c:3743
 msgid "An object spills"
 msgstr "물건 하나가 쏟아졌다"
 
-#: ../src/pickup.c:3764
+#: ../src/pickup.c:3771
 #, c-format
 msgid "As %s %s inside, you are blasted by a magical explosion!"
 msgstr "%s{이/가} 안에 %s하자, 마법 폭발에 휩싸였다!"
 
-#: ../src/pickup.c:3765
+#: ../src/pickup.c:3772
 msgid "tumble"
 msgstr "굴러 떨어지다"
 
-#: ../src/pickup.c:3800 ../src/trap.c:5172
+#: ../src/pickup.c:3807 ../src/trap.c:5172
 #, c-format
 msgid "%s%c"
 msgstr "%s%c"
 
-#: ../src/pickup.c:3872
+#: ../src/pickup.c:3879
 msgid "Tipping contents to floor only..."
 msgstr "바닥에만 내용물을 쏟는다..."
 
-#: ../src/pickup.c:3912
+#: ../src/pickup.c:3919
 #, c-format
 msgid "Where to tip the contents of %s"
 msgstr "%s의 내용물을 어디에 쏟으시겠습니까"
 
-#: ../src/pickup.c:3970
+#: ../src/pickup.c:3977
 msgid "tipping a container"
 msgstr "용기를 기울이는 중"
 
-#: ../src/pickup.c:4023
+#: ../src/pickup.c:4030
 #, c-format
 msgid "%sbox is now empty."
 msgstr "%s상자가 이제 비었다."
@@ -50775,11 +50780,11 @@ msgstr "디스플레이 매크로 문제가 감지되지 않았다."
 msgid "No monster difficulty discrepancies were detected."
 msgstr "괴물 난이도 불일치가 감지되지 않았다."
 
-#: ../src/wizcmds.c:1850
+#: ../src/wizcmds.c:1851
 msgid "How many random monsters to migrate to next level? [0]"
 msgstr "다음 층으로 이동할 무작위 괴물 수? [0]"
 
-#: ../src/wizcmds.c:1853
+#: ../src/wizcmds.c:1854
 msgid "Can't get there from here."
 msgstr "여기서 거기로 갈 수 없다."
 

@@ -1832,6 +1832,7 @@ wiz_migrate_mons(void)
     struct permonst *ptr;
     struct monst *mtmp;
     boolean use_random_mon = TRUE;
+    boolean mongen_saved = iflags.debug_mongen;
 #endif
     d_level tolevel;
 
@@ -1864,6 +1865,7 @@ wiz_migrate_mons(void)
     else if (mcount > ((COLNO - 1) * ROWNO))
         mcount = (COLNO - 1) * ROWNO;
 
+    iflags.debug_mongen = FALSE;
     while (mcount > 0) {
         if (use_random_mon) {
             ptr = rndmonst();
@@ -1876,6 +1878,7 @@ wiz_migrate_mons(void)
                                  (coord *) 0);
         mcount--;
     }
+    iflags.debug_mongen = mongen_saved;
 #endif /* DEBUG_MIGRATING_MONS */
     return ECMD_OK;
 }

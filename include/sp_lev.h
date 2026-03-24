@@ -204,4 +204,7 @@ struct mapfragment {
     char *data;
 };
 
+extern int get_table_objtype(lua_State *);
+extern int get_table_objclass(lua_State *);
+
 #endif /* SP_LEV_H */

@@ -244,19 +244,19 @@ extern COLORREF message_fg_color;
 #define SYSCLR_TO_BRUSH(x) ((HBRUSH)(((intptr_t) x) + 1))
 
 /* unicode stuff */
+/*
+ * With ENABLE_NLS, the manifest sets activeCodePage to UTF-8,
+ * making GetACP() return 65001. All ANSI Windows APIs (DrawTextA,
+ * etc.) then handle UTF-8 natively. NH_CODEPAGE is used for
+ * explicit MultiByteToWideChar/WideCharToMultiByte calls.
+ */
 #ifdef ENABLE_NLS
-/* Use UTF-8 code page for i18n builds (gettext outputs UTF-8) */
 #define NH_CODEPAGE CP_UTF8
 #else
 #define NH_CODEPAGE (SYMHANDLING(H_IBM) ? GetOEMCP() : GetACP())
 #endif
-#if defined(_UNICODE) || defined(ENABLE_NLS)
-/* For Unicode builds or NLS builds, always do proper conversion */
 #ifdef _UNICODE
 #define nh_stprintf swprintf
-#else
-#define nh_stprintf snprintf
-#endif
 #define NH_W2A(w, a, cb) \
     (WideCharToMultiByte(NH_CODEPAGE, 0, (w), -1, (a), (cb), NULL, NULL), (a))
 

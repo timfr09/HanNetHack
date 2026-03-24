@@ -244,7 +244,12 @@ extern COLORREF message_fg_color;
 #define SYSCLR_TO_BRUSH(x) ((HBRUSH)(((intptr_t) x) + 1))
 
 /* unicode stuff */
+#ifdef ENABLE_NLS
+/* Use UTF-8 code page for i18n builds (gettext outputs UTF-8) */
+#define NH_CODEPAGE CP_UTF8
+#else
 #define NH_CODEPAGE (SYMHANDLING(H_IBM) ? GetOEMCP() : GetACP())
+#endif
 #ifdef _UNICODE
 #define nh_stprintf swprintf
 #define NH_W2A(w, a, cb) \

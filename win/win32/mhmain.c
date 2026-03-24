@@ -1386,7 +1386,7 @@ nh_compose_unicode_screenshot(void)
             SendMessage(mswin_hwnd_from_winid(WIN_MESSAGE), WM_MSNH_COMMAND,
                         (WPARAM) MSNH_MSG_GETTEXT, (LPARAM) text);
             retsize += MultiByteToWideChar(
-                CP_ACP, 0, text->buffer, strlen(text->buffer),
+                NH_CODEPAGE, 0, text->buffer, strlen(text->buffer),
                 retval + retsize, max_size - retsize);
 
             ZeroMemory(wtext->buffer, TEXT_BUFFER_SIZE * sizeof(WCHAR));
@@ -1399,7 +1399,7 @@ nh_compose_unicode_screenshot(void)
             SendMessage(mswin_hwnd_from_winid(WIN_STATUS), WM_MSNH_COMMAND,
                         (WPARAM) MSNH_MSG_GETTEXT, (LPARAM) text);
             retsize += MultiByteToWideChar(
-                CP_ACP, 0, text->buffer, strlen(text->buffer),
+                NH_CODEPAGE, 0, text->buffer, strlen(text->buffer),
                 retval + retsize, max_size - retsize);
             retval[retsize] = L'\0';
             free(wtext);

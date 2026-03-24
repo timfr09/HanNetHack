@@ -33,7 +33,7 @@ mswin_create_splashfont(HWND hWnd)
     lgfnt.lfItalic = FALSE;                    // italic attribute option
     lgfnt.lfUnderline = FALSE;                 // underline attribute option
     lgfnt.lfStrikeOut = FALSE;                 // strikeout attribute option
-    lgfnt.lfCharSet = ANSI_CHARSET;            // character set identifier
+    lgfnt.lfCharSet = DEFAULT_CHARSET;          // character set identifier
     lgfnt.lfOutPrecision = OUT_DEFAULT_PRECIS; // output precision
     lgfnt.lfClipPrecision = CLIP_DEFAULT_PRECIS; // clipping precision
     lgfnt.lfQuality = DEFAULT_QUALITY;           // output quality
@@ -219,6 +219,11 @@ mswin_get_font(int win_type, int attr, HDC hdc, BOOL replace)
 UINT
 mswin_charset(void)
 {
+#ifdef ENABLE_NLS
+    /* For i18n builds, use DEFAULT_CHARSET to let Windows
+       pick the correct charset for the font and language */
+    return DEFAULT_CHARSET;
+#else
     CHARSETINFO cis;
     if (SYMHANDLING(H_IBM))
         if (TranslateCharsetInfo((DWORD *) (uintptr_t) GetOEMCP(), &cis, TCI_SRCCODEPAGE))
@@ -229,6 +234,7 @@ mswin_charset(void)
         return cis.ciCharset;
     else
         return ANSI_CHARSET;
+#endif
 }
 
 void __cdecl font_table_cleanup(void)

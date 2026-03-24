@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
     <LocalDebuggerWorkingDirectory>$(BinDir)</LocalDebuggerWorkingDirectory>
   </PropertyGroup>

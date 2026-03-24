@@ -1034,7 +1034,7 @@ plselDrawItem(HWND hWnd, WPARAM wParam, LPARAM lParam)
     FillRect(lpdis->hDC, &lpdis->rcItem, brush);
     RECT rect = lpdis->rcItem;
     rect.left += 5;
-    DrawTextA(lpdis->hDC, string, strlen(string), &rect,
+    NH_DrawText(lpdis->hDC, string, strlen(string), &rect,
         DT_LEFT | DT_SINGLELINE | DT_VCENTER);
 
     if (data->focus == control) {

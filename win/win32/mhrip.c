@@ -100,7 +100,7 @@ mswin_display_RIP_window(HWND hWnd)
     if (data->window_text) {
         HDC hdc = GetDC(hWnd);
         OldFont = SelectObject(hdc, mswin_get_font(NHW_TEXT, 0, hdc, FALSE)->hFont);
-        DrawText(hdc, data->window_text, strlen(data->window_text), &textrect,
+        NH_DrawText(hdc, data->window_text, strlen(data->window_text), &textrect,
                  DT_LEFT | DT_NOPREFIX | DT_CALCRECT);
         SelectObject(hdc, OldFont);
         ReleaseDC(hWnd, hdc);
@@ -181,9 +181,9 @@ NHRIPWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         textrect.left += data->x;
         textrect.right -= data->x;
         if (data->window_text) {
-            DrawText(hdc, data->window_text, strlen(data->window_text),
+            NH_DrawText(hdc, data->window_text, strlen(data->window_text),
                      &textrect, DT_LEFT | DT_NOPREFIX | DT_CALCRECT);
-            DrawText(hdc, data->window_text, strlen(data->window_text),
+            NH_DrawText(hdc, data->window_text, strlen(data->window_text),
                      &textrect, DT_LEFT | DT_NOPREFIX);
         }
         OldBitmap = SelectObject(hdcBitmap, GetNHApp()->bmpRip);
@@ -198,7 +198,7 @@ NHRIPWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             textrect.top = textrect.bottom + data->graveY;
             textrect.right = textrect.left + data->graveWidth;
             textrect.bottom = textrect.top + data->graveHeight;
-            DrawText(hdc, data->rip_text, strlen(data->rip_text), &textrect,
+            NH_DrawText(hdc, data->rip_text, strlen(data->rip_text), &textrect,
                      DT_CENTER | DT_VCENTER | DT_NOPREFIX | DT_WORDBREAK);
         }
         SelectObject(hdcBitmap, OldBitmap);

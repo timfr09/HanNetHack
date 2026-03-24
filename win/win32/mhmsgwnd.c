@@ -652,7 +652,7 @@ onPaint(HWND hWnd)
             setMsgTextColor(hdc, i < (MSG_LINES - data->lines_last_turn));
 #ifdef MSG_WRAP_TEXT
             /* Find out how large the bounding rectangle of the text is */
-            DrawText(hdc, wbuf, wlen, &draw_rt,
+            NH_DrawText(hdc, tmptext, strlen(tmptext), &draw_rt,
                      DT_NOPREFIX | DT_WORDBREAK | DT_CALCRECT);
             /* move that rectangle up, so that the bottom remains at the same
              * height */
@@ -660,7 +660,7 @@ onPaint(HWND hWnd)
             draw_rt.bottom = y;
 
             /* Now really draw it */
-            DrawText(hdc, wbuf, wlen, &draw_rt, DT_NOPREFIX | DT_WORDBREAK);
+            NH_DrawText(hdc, tmptext, strlen(tmptext), &draw_rt, DT_NOPREFIX | DT_WORDBREAK);
 
             /* Find out the cursor (caret) position */
             if (i == MSG_LINES - 1) {
@@ -702,7 +702,7 @@ onPaint(HWND hWnd)
                             draw_rt.bottom - data->yChar);
             }
 #else
-            DrawText(hdc, wbuf, wlen, &draw_rt, DT_NOPREFIX);
+            NH_DrawText(hdc, tmptext, strlen(tmptext), &draw_rt, DT_NOPREFIX);
             SetCaretPos(draw_rt.left + size.cx, draw_rt.bottom - data->yChar);
 #endif
             SelectObject(hdc, oldFont);
@@ -826,7 +826,7 @@ can_append_text(HWND hWnd, int attr, const char *text)
     draw_rt.left += LINE_PADDING_LEFT(data);
     draw_rt.right -= LINE_PADDING_RIGHT(data);
     draw_rt.bottom = draw_rt.top; /* we only need width for the DrawText */
-    DrawText(hdc, tmptext, strlen(tmptext), &draw_rt,
+    NH_DrawText(hdc, tmptext, strlen(tmptext), &draw_rt,
              DT_NOPREFIX | DT_WORDBREAK | DT_CALCRECT);
 
     /* we will check against 1.5 of the font size in order to determine
@@ -883,7 +883,7 @@ more_prompt_check(HWND hWnd)
             strcat(tmptext, MORE);
 
         remaining_height -=
-            DrawText(hdc, tmptext, strlen(tmptext), &draw_rt,
+            NH_DrawText(hdc, tmptext, strlen(tmptext), &draw_rt,
                      DT_NOPREFIX | DT_WORDBREAK | DT_CALCRECT);
         if (remaining_height <= 0)
             break;

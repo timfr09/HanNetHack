@@ -581,7 +581,7 @@ onMSNHCommand(HWND hWnd, WPARAM wParam, LPARAM lParam)
         cached_font * font = mswin_get_font(NHW_MENU, ATR_NONE, hdc, FALSE);
         saveFont = SelectObject(hdc, font->hFont);
         SetRect(&text_rt, 0, 0, 0, 0);
-        DrawTextA(hdc, msg_data->text, strlen(msg_data->text), &text_rt,
+        NH_DrawText(hdc, msg_data->text, strlen(msg_data->text), &text_rt,
                  DT_CALCRECT | DT_TOP | DT_LEFT | DT_NOPREFIX
                      | DT_SINGLELINE);
         data->menui.text.text_box_size.cx =
@@ -668,7 +668,7 @@ onMSNHCommand(HWND hWnd, WPARAM wParam, LPARAM lParam)
                 SetRect(&drawRect, 0, 0, 1, 1);
                 if (p != NULL)
                     *p = '\0'; /* for time being, view tab field as zstring */
-                DrawText(hDC, NH_A2W(p1, wbuf, BUFSZ), strlen(p1), &drawRect,
+                NH_DrawText(hDC, p1, strlen(p1), &drawRect,
                          DT_CALCRECT | DT_LEFT | DT_VCENTER | DT_EXPANDTABS
                              | DT_SINGLELINE);
                 data->menui.menu.tab_stop_size[column] =
@@ -1097,7 +1097,7 @@ onDrawItem(HWND hWnd, WPARAM wParam, LPARAM lParam)
             buf[1] = '\x0';
             SetRect(&drawRect, x, lpdis->rcItem.top, lpdis->rcItem.right,
                     lpdis->rcItem.bottom);
-            DrawText(lpdis->hDC, NH_A2W(buf, wbuf, 2), 1, &drawRect,
+            NH_DrawText(lpdis->hDC, buf, 1, &drawRect,
                      DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
         }
         x += tm.tmAveCharWidth + tm.tmOverhang + spacing;
@@ -1153,7 +1153,7 @@ onDrawItem(HWND hWnd, WPARAM wParam, LPARAM lParam)
             SetRect(&drawRect, x, lpdis->rcItem.top,
                     min(x + tm.tmAveCharWidth, lpdis->rcItem.right),
                     lpdis->rcItem.bottom);
-            DrawText(lpdis->hDC, NH_A2W(sel_ind, wbuf, BUFSZ), 1, &drawRect,
+            NH_DrawText(lpdis->hDC, sel_ind, 1, &drawRect,
                      DT_CENTER | DT_VCENTER | DT_SINGLELINE);
             x += tm.tmAveCharWidth;
         }
@@ -1175,7 +1175,7 @@ onDrawItem(HWND hWnd, WPARAM wParam, LPARAM lParam)
         TCHAR wbuf2[BUFSZ];
         if (p != NULL)
             *p = '\0'; /* for time being, view tab field as zstring */
-        DrawText(lpdis->hDC, NH_A2W(p1, wbuf2, BUFSZ), strlen(p1), &drawRect,
+        NH_DrawText(lpdis->hDC, p1, strlen(p1), &drawRect,
                  DT_LEFT | DT_VCENTER | DT_SINGLELINE);
         if (p != NULL)
             *p = '\t';

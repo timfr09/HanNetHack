@@ -254,9 +254,9 @@ NHSplashWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         Sprintf(VersionString, "%d.%d.%d", VERSION_MAJOR, VERSION_MINOR,
                 PATCHLEVEL);
         OldFont = SelectObject(hdc, splashData->hFont);
-        DrawText(hdc, VersionString, strlen(VersionString), &rt,
+        NH_DrawText(hdc, VersionString, strlen(VersionString), &rt,
                  DT_LEFT | DT_NOPREFIX | DT_CALCRECT);
-        DrawText(hdc, VersionString, strlen(VersionString), &rt,
+        NH_DrawText(hdc, VersionString, strlen(VersionString), &rt,
                  DT_LEFT | DT_NOPREFIX);
         EndPaint(hWnd, &ps);
         nhUse(OldFont);

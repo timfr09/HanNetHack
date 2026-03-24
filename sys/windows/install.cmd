@@ -90,15 +90,12 @@ if not exist "dat\locale\ko\LC_MESSAGES\nethack.mo" (
         )
     )
 )
-REM Copy .mo translation files
-if exist "dat\locale\ko\LC_MESSAGES\nethack.mo" (
-    if not exist "%DSTDIR%\locale\ko\LC_MESSAGES" mkdir "%DSTDIR%\locale\ko\LC_MESSAGES"
-    copy /y "dat\locale\ko\LC_MESSAGES\nethack.mo" "%DSTDIR%\locale\ko\LC_MESSAGES\nethack.mo" >nul
-) else if exist "po\ko.mo" (
-    if not exist "%DSTDIR%\locale\ko\LC_MESSAGES" mkdir "%DSTDIR%\locale\ko\LC_MESSAGES"
-    copy /y "po\ko.mo" "%DSTDIR%\locale\ko\LC_MESSAGES\nethack.mo" >nul
+REM Copy all Korean locale files (translations, lua, help, data)
+if exist "dat\locale\ko" (
+    xcopy /y /e /i "dat\locale\ko" "%DSTDIR%\locale\ko" >nul
+    echo       Copied Korean locale files.
 ) else (
-    echo WARNING: Korean translation file not found. Run msgfmt or check po/ko.po
+    echo WARNING: Korean locale directory not found at dat\locale\ko
 )
 
 echo.

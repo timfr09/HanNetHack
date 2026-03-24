@@ -13,6 +13,7 @@
  */
 
 #include "hack.h"
+#include "ko_postpos.h"
 
 staticfn void enlght_out(const char *);
 staticfn void enlght_line(const char *, const char *, const char *,

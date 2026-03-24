@@ -49,6 +49,7 @@ wcwidth(wchar_t wc)
  * These are needed for proper TTY rendering of wide characters.
  */
 
+
 /*
  * Calculate display width of a UTF-8 string
  *

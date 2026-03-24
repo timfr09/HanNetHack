@@ -304,24 +304,24 @@ struct Gender {
 
 extern const struct Gender genders[]; /* table of available genders */
 /* pronouns for the hero */
-#define uhe()      (genders[flags.female ? 1 : 0].he)
-#define uhim()     (genders[flags.female ? 1 : 0].him)
-#define uhis()     (genders[flags.female ? 1 : 0].his)
+#define uhe()      _(genders[flags.female ? 1 : 0].he)
+#define uhim()     _(genders[flags.female ? 1 : 0].him)
+#define uhis()     _(genders[flags.female ? 1 : 0].his)
 /* pronoun_gender() flag masks */
 #define PRONOUN_NORMAL 0 /* none of the below */
 #define PRONOUN_NO_IT  1
 #define PRONOUN_HALLU  2
 /* corresponding pronouns for monsters; yields "it" when mtmp can't be seen */
-#define mhe(mtmp)  (genders[pronoun_gender(mtmp, PRONOUN_HALLU)].he)
-#define mhim(mtmp) (genders[pronoun_gender(mtmp, PRONOUN_HALLU)].him)
-#define mhis(mtmp) (genders[pronoun_gender(mtmp, PRONOUN_HALLU)].his)
+#define mhe(mtmp)  _(genders[pronoun_gender(mtmp, PRONOUN_HALLU)].he)
+#define mhim(mtmp) _(genders[pronoun_gender(mtmp, PRONOUN_HALLU)].him)
+#define mhis(mtmp) _(genders[pronoun_gender(mtmp, PRONOUN_HALLU)].his)
 /* override "it" if reason is lack of visibility rather than neuter species */
 #define noit_mhe(mtmp) \
-    (genders[pronoun_gender(mtmp, (PRONOUN_NO_IT | PRONOUN_HALLU))].he)
+    _(genders[pronoun_gender(mtmp, (PRONOUN_NO_IT | PRONOUN_HALLU))].he)
 #define noit_mhim(mtmp) \
-    (genders[pronoun_gender(mtmp, (PRONOUN_NO_IT | PRONOUN_HALLU))].him)
+    _(genders[pronoun_gender(mtmp, (PRONOUN_NO_IT | PRONOUN_HALLU))].him)
 #define noit_mhis(mtmp) \
-    (genders[pronoun_gender(mtmp, (PRONOUN_NO_IT | PRONOUN_HALLU))].his)
+    _(genders[pronoun_gender(mtmp, (PRONOUN_NO_IT | PRONOUN_HALLU))].his)
 
 /*** Unified structure specifying alignment information ***/
 struct Align {

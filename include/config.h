@@ -563,13 +563,29 @@ typedef unsigned char uchar;
 #define ENABLE_NLS
 
 /*
- * On MSVC, vsnprintf does not support positional format specifiers
+ * On MSVC, vsnprintf/sprintf do not support positional format specifiers
  * like %1$s, %2$s (used in gettext translations to reorder arguments).
- * MSVC provides _vsprintf_p which does support them.
+ * MSVC provides _vsprintf_p/_sprintf_p which do support them.
+ *
+ * We redefine sprintf and vsnprintf globally so that all string formatting
+ * in the codebase (including Sprintf macro) supports positional parameters.
  */
 #if defined(ENABLE_NLS) && defined(_MSC_VER)
 #include <stdio.h>
+#include <stdarg.h>
+/* _vsprintf_p supports positional params; use as vsnprintf replacement */
 #define nh_vsnprintf(buf, size, fmt, args) _vsprintf_p((buf), (size), (fmt), (args))
+/* Wrap sprintf to use _sprintf_p with a large buffer size */
+static __inline int nh_sprintf_p(char *buf, const char *fmt, ...)
+{
+    va_list args;
+    int ret;
+    va_start(args, fmt);
+    ret = _vsprintf_p(buf, 4096, fmt, args);
+    va_end(args);
+    return ret;
+}
+#define sprintf nh_sprintf_p
 #else
 #define nh_vsnprintf(buf, size, fmt, args) vsnprintf((buf), (size), (fmt), (args))
 #endif

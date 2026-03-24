@@ -250,8 +250,13 @@ extern COLORREF message_fg_color;
 #else
 #define NH_CODEPAGE (SYMHANDLING(H_IBM) ? GetOEMCP() : GetACP())
 #endif
+#if defined(_UNICODE) || defined(ENABLE_NLS)
+/* For Unicode builds or NLS builds, always do proper conversion */
 #ifdef _UNICODE
 #define nh_stprintf swprintf
+#else
+#define nh_stprintf snprintf
+#endif
 #define NH_W2A(w, a, cb) \
     (WideCharToMultiByte(NH_CODEPAGE, 0, (w), -1, (a), (cb), NULL, NULL), (a))
 

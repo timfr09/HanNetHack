@@ -562,6 +562,18 @@ typedef unsigned char uchar;
  */
 #define ENABLE_NLS
 
+/*
+ * On MSVC, vsnprintf does not support positional format specifiers
+ * like %1$s, %2$s (used in gettext translations to reorder arguments).
+ * MSVC provides _vsprintf_p which does support them.
+ */
+#if defined(ENABLE_NLS) && defined(_MSC_VER)
+#include <stdio.h>
+#define nh_vsnprintf(buf, size, fmt, args) _vsprintf_p((buf), (size), (fmt), (args))
+#else
+#define nh_vsnprintf(buf, size, fmt, args) vsnprintf((buf), (size), (fmt), (args))
+#endif
+
 /* SELECTSAVED: Enable the 'selectsaved' run-time option, allowing it
  * to be set in user's config file or NETHACKOPTIONS.  When set, if
  * player is about to be given the "who are you?" prompt, check for

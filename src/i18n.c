@@ -550,7 +550,7 @@ process_korean_postpositions(char *buf, const char *format, ...)
 
     /* First, do standard formatting */
     va_start(args, format);
-    vsnprintf(temp, sizeof(temp), format, args);
+    nh_vsnprintf(temp, sizeof(temp), format, args);
     va_end(args);
 
     /* If not Korean locale, just copy and return */

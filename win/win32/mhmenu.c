@@ -916,8 +916,21 @@ SetMenuListType(HWND hWnd, int how)
     ZeroMemory(&lvcol, sizeof(lvcol));
     lvcol.mask = LVCF_WIDTH | LVCF_TEXT;
     lvcol.cx = monitorInfo.width;
+#ifdef ENABLE_NLS
+    {
+        WCHAR wprompt[BUFSZ];
+        LVCOLUMNW wlvcol;
+        MultiByteToWideChar(CP_UTF8, 0, data->menui.menu.prompt, -1, wprompt, BUFSZ);
+        ZeroMemory(&wlvcol, sizeof(wlvcol));
+        wlvcol.mask = LVCF_WIDTH | LVCF_TEXT;
+        wlvcol.cx = lvcol.cx;
+        wlvcol.pszText = wprompt;
+        SendMessageW(control, LVM_INSERTCOLUMNW, 0, (LPARAM)&wlvcol);
+    }
+#else
     lvcol.pszText = NH_A2W(data->menui.menu.prompt, wbuf, BUFSZ);
     ListView_InsertColumn(control, 0, &lvcol);
+#endif
 
     /* add items to the list view */
     for (i = 0; i < data->menui.menu.size; i++) {
@@ -932,11 +945,31 @@ SetMenuListType(HWND hWnd, int how)
         lvitem.state = data->menui.menu.items[i].presel ? LVIS_SELECTED : 0;
         lvitem.pszText = NH_A2W(buf, wbuf, BUFSZ);
         lvitem.lParam = (LPARAM) &data->menui.menu.items[i];
+#ifdef ENABLE_NLS
+        {
+            WCHAR wbuf2[BUFSZ];
+            LVITEMW wlvitem;
+            MultiByteToWideChar(CP_UTF8, 0, buf, -1, wbuf2, BUFSZ);
+            nItem = (int) SendMessageW(control, LB_ADDSTRING, (WPARAM) 0,
+                                      (LPARAM) wbuf2);
+            ZeroMemory(&wlvitem, sizeof(wlvitem));
+            wlvitem.mask = lvitem.mask;
+            wlvitem.iItem = lvitem.iItem;
+            wlvitem.iSubItem = lvitem.iSubItem;
+            wlvitem.state = lvitem.state;
+            wlvitem.pszText = wbuf2;
+            wlvitem.lParam = lvitem.lParam;
+            if (SendMessageW(control, LVM_INSERTITEMW, 0, (LPARAM)&wlvitem) == -1) {
+                panic("cannot insert menu item");
+            }
+        }
+#else
         nItem = (int) SendMessage(control, LB_ADDSTRING, (WPARAM) 0,
                                   (LPARAM) buf);
         if (ListView_InsertItem(control, &lvitem) == -1) {
             panic("cannot insert menu item");
         }
+#endif
     }
     if (data->is_active)
         SetFocus(control);

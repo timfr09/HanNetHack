@@ -5,7 +5,41 @@
 #include "hack.h"
 #include <wchar.h>
 #include <wctype.h>
+#ifdef _MSC_VER
+#include <io.h>
+#include <stdlib.h>
+#define access _access
+#ifndef R_OK
+#define R_OK 4
+#endif
+#define setenv(name, value, overwrite) _putenv_s(name, value)
+/*
+ * Minimal wcwidth implementation for Windows.
+ * Returns 2 for CJK wide characters, 0 for control, 1 otherwise.
+ */
+static int
+wcwidth(wchar_t wc)
+{
+    if (wc == 0)
+        return 0;
+    if (wc < 0x20 || (wc >= 0x7f && wc < 0xa0))
+        return -1; /* control characters */
+    /* CJK Unified Ideographs and other wide character ranges */
+    if ((wc >= 0x1100 && wc <= 0x115f) ||  /* Hangul Jamo */
+        wc == 0x2329 || wc == 0x232a ||
+        (wc >= 0x2e80 && wc <= 0xa4cf && wc != 0x303f) || /* CJK */
+        (wc >= 0xac00 && wc <= 0xd7a3) ||  /* Hangul Syllables */
+        (wc >= 0xf900 && wc <= 0xfaff) ||  /* CJK Compatibility */
+        (wc >= 0xfe10 && wc <= 0xfe19) ||
+        (wc >= 0xfe30 && wc <= 0xfe6f) ||
+        (wc >= 0xff00 && wc <= 0xff60) ||
+        (wc >= 0xffe0 && wc <= 0xffe6))
+        return 2;
+    return 1;
+}
+#else
 #include <unistd.h>
+#endif
 
 /*
  * UTF-8 width functions - always available regardless of ENABLE_NLS

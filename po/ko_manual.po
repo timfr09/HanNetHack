@@ -16863,3 +16863,30 @@ msgstr "%3$ld턴%4$.0s 후 금화 %1$ld개%2$.0s."
 #, c-format
 msgid "Unfortunately for %s, %s is still crushed."
 msgstr "불행히도 %s{은/는} 여전히 깔려%.0s 죽었다."
+
+# === Category 12: 업스트림 머지 (2026-03-24) ===
+
+# trap.c:1537 - 철제 신발로 곰 덫 보호
+#, c-format
+msgid "%s protects your leg."
+msgstr "%s{이/가} 다리를 보호했다."
+
+# trap.c:1921 - 철제 신발로 뾰족한 구덩이 보호
+#, c-format
+msgid "%s protects you from the sharp iron spikes."
+msgstr "%s{이/가} 뾰족한 철못으로부터 보호해 주었다."
+
+# trap.c:2503 - 변이 덫 + 철제 신발
+#, c-format
+msgid "%s warps strangely."
+msgstr "%s{이/가} 이상하게 일그러졌다."
+
+# priest.c:646 - 사원 헌금 (제안 금액 포함)
+#, c-format
+msgid "How much will you offer (suggested: %ld or %ld)?"
+msgstr "얼마를 제안하시겠습니까? (추천: %ld 또는 %ld)"
+
+# priest.c:650 - 사원 헌금 (디버그 모드, 기준 금액 포함)
+#, c-format
+msgid "%s asks you for a contribution for the temple (base %ld)."
+msgstr "%s{이/가} 사원 헌금을 요청한다 (기준: %ld)."

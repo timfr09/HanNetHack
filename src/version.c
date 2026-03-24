@@ -157,6 +157,9 @@ doversion(void)
 {
     char buf[BUFSZ];
 
+    if (iflags.menu_requested)
+        return doextversion();
+
     pline(_("%s"), getversionstring(buf, sizeof buf));
     return ECMD_OK;
 }

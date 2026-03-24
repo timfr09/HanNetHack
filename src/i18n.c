@@ -2,6 +2,9 @@
 /* Copyright (c) HanNetHack Project, 2026. */
 /* NetHack may be freely redistributed.  See license for details. */
 
+#ifdef _MSC_VER
+#include "win32api.h"
+#endif
 #include "hack.h"
 #include <wchar.h>
 #include <wctype.h>
@@ -302,7 +305,33 @@ find_locale_dir(const char *lang)
     }
 
     /* 2. Check relative to executable (for development/portable installs) */
-#ifdef __linux__
+#ifdef _WIN32
+    {
+        char exe_path[BUFSZ * 2];
+        DWORD len = GetModuleFileNameA(NULL, exe_path, sizeof(exe_path) - 1);
+        if (len > 0) {
+            char *slash;
+            exe_path[len] = '\0';
+            /* Find last path separator (backslash or forward slash) */
+            slash = strrchr(exe_path, '\\');
+            if (!slash)
+                slash = strrchr(exe_path, '/');
+            if (slash) {
+                *slash = '\0';
+                /* Try locale/ next to exe (installed layout) */
+                snprintf(localedir_buf, sizeof(localedir_buf), "%s\\locale", exe_path);
+                snprintf(testpath, sizeof(testpath), "%s\\%s\\LC_MESSAGES\\nethack.mo", localedir_buf, lang);
+                if (access(testpath, R_OK) == 0)
+                    return localedir_buf;
+                /* Try ..\\dat\\locale (if exe is in binary\\Release\\x64) */
+                snprintf(localedir_buf, sizeof(localedir_buf), "%s\\..\\..\\..\\dat\\locale", exe_path);
+                snprintf(testpath, sizeof(testpath), "%s\\%s\\LC_MESSAGES\\nethack.mo", localedir_buf, lang);
+                if (access(testpath, R_OK) == 0)
+                    return localedir_buf;
+            }
+        }
+    }
+#elif defined(__linux__)
 #if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-truncation"

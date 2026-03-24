@@ -80,10 +80,25 @@ if exist "%GETTEXTBIN%\libintl-8.dll" (
 )
 
 echo [4/4] Copying locale data...
-REM Copy .mo translation files if they exist
-if exist "po\ko.mo" (
+REM Compile .mo from .po if msgfmt is available and .mo doesn't exist
+if not exist "dat\locale\ko\LC_MESSAGES\nethack.mo" (
+    if exist "lib\gettext\bin\msgfmt.exe" (
+        if exist "po\ko.po" (
+            echo       Compiling Korean translation...
+            if not exist "dat\locale\ko\LC_MESSAGES" mkdir "dat\locale\ko\LC_MESSAGES"
+            "lib\gettext\bin\msgfmt.exe" -o "dat\locale\ko\LC_MESSAGES\nethack.mo" "po\ko.po"
+        )
+    )
+)
+REM Copy .mo translation files
+if exist "dat\locale\ko\LC_MESSAGES\nethack.mo" (
+    if not exist "%DSTDIR%\locale\ko\LC_MESSAGES" mkdir "%DSTDIR%\locale\ko\LC_MESSAGES"
+    copy /y "dat\locale\ko\LC_MESSAGES\nethack.mo" "%DSTDIR%\locale\ko\LC_MESSAGES\nethack.mo" >nul
+) else if exist "po\ko.mo" (
     if not exist "%DSTDIR%\locale\ko\LC_MESSAGES" mkdir "%DSTDIR%\locale\ko\LC_MESSAGES"
     copy /y "po\ko.mo" "%DSTDIR%\locale\ko\LC_MESSAGES\nethack.mo" >nul
+) else (
+    echo WARNING: Korean translation file not found. Run msgfmt or check po/ko.po
 )
 
 echo.

@@ -398,6 +398,9 @@
     <Image Include="$(WinWin32Dir)tiles.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Target Name="BeforeBuild" Condition="Exists('$(RootDir)sys\windows\build-translations.cmd')">
+    <Exec Command="call &quot;$(RootDir)sys\windows\build-translations.cmd&quot;" WorkingDirectory="$(RootDir)" IgnoreExitCode="true" />
+  </Target>
   <Target Name="AfterBuild">
     <MSBuild Projects="$(vsDir)NetHack\afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
   </Target>

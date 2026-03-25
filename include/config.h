@@ -578,31 +578,19 @@ typedef unsigned char uchar;
  * Check if a format string contains '$' (positional parameter indicator).
  * Can't use strchr here because string.h may not be included yet.
  */
-static __inline int nh_fmt_has_positional(const char *fmt)
-{
-    const char *p;
-    for (p = fmt; *p; p++)
-        if (*p == '$')
-            return 1;
-    return 0;
-}
-/* Use _vsprintf_p only when format has positional params ($) */
-static __inline int nh_vsnprintf(char *buf, size_t size, const char *fmt, va_list args)
-{
-    if (nh_fmt_has_positional(fmt))
-        return _vsprintf_p(buf, size, fmt, args);
-    else
-        return vsnprintf(buf, size, fmt, args);
-}
+/*
+ * _vsprintf_p handles both standard and positional format specifiers.
+ * We use it for ALL formatting so %1$s/%2$s translations always work.
+ * Note: %-1d is not compatible with _vsprintf_p, so translations
+ * must use %d instead (ko.po has been updated accordingly).
+ */
+#define nh_vsnprintf(buf, size, fmt, args) _vsprintf_p((buf), (size), (fmt), (args))
 static __inline int nh_sprintf_p(char *buf, const char *fmt, ...)
 {
     va_list args;
     int ret;
     va_start(args, fmt);
-    if (nh_fmt_has_positional(fmt))
-        ret = _vsprintf_p(buf, 4096, fmt, args);
-    else
-        ret = vsprintf(buf, fmt, args);
+    ret = _vsprintf_p(buf, 4096, fmt, args);
     va_end(args);
     return ret;
 }

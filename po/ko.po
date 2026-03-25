@@ -3592,8 +3592,8 @@ msgstr " "
 # do_statusline1() - 능력치 표시
 #: src/botl.c:101 src/invent.c:2605
 #, c-format
-msgid "St:%s Dx:%-1d Co:%-1d In:%-1d Wi:%-1d Ch:%-1d"
-msgstr "근력:%s 민첩:%-1d 체력:%-1d 지능:%-1d 지혜:%-1d 매력:%-1d"
+msgid "St:%s Dx:%d Co:%d In:%d Wi:%d Ch:%d"
+msgstr "근력:%s 민첩:%d 체력:%d 지능:%d 지혜:%d 매력:%d"
 
 # 점수
 #: src/botl.c:108
@@ -3615,8 +3615,8 @@ msgstr "HD:%d"
 
 #: src/botl.c:166
 #, c-format
-msgid "Xp:%d/%-1ld"
-msgstr "Lv:%d/%-1ld"
+msgid "Xp:%d/%ld"
+msgstr "Lv:%d/%ld"
 
 #: src/botl.c:168
 #, c-format
@@ -16805,7 +16805,7 @@ msgstr "일어났다"
 
 #: src/insight.c:703
 #, c-format
-msgid "%-1ld experience point%s"
+msgid "%ld experience point%s"
 msgstr "%ld 경험치%s"
 
 #: src/insight.c:715

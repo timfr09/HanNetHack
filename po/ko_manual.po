@@ -16774,7 +16774,7 @@ msgstr "%s{은/는} 조각상치고는 %s 건강하다."
 #: ../src/apply.c:312
 #, c-format
 msgid "a hollow sound.  This must be a secret %s!"
-msgstr "텅 빈 소리가 들린다. 비밀 %s일게 틀림없다!"
+msgstr "텅 빈 소리가 들린다. 비밀 %s임에 틀림없다!"
 
 #: ../src/apply.c:329 ../src/pickup.c:2195 ../src/pickup.c:2935
 msgid "have no hands!"
@@ -16782,7 +16782,7 @@ msgstr "손이 없다!"
 
 #: ../src/apply.c:332
 msgid "hear anything!"
-msgstr "아무것도 듣는다!"
+msgstr "아무것도 듣지 못한다!"
 
 #: ../src/apply.c:335 ../src/pickup.c:2938
 #, c-format
@@ -19095,7 +19095,7 @@ msgstr "공이 당신을 %s에서 끌어냈다!"
 
 #: ../src/ball.c:912
 msgid "The ball pulls you out of the bear trap!"
-msgstr "공이 당신을 곰덫에서 끌어냅니다!"
+msgstr "공이 당신을 곰덫에서 끌어냈다!"
 
 #: ../src/ball.c:915
 #, c-format
@@ -22271,7 +22271,7 @@ msgstr "훨씬 "
 #: ../src/do.c:2335
 #, c-format
 msgid "  Use '%s' prefix to force %s."
-msgstr "  '%s' 접두사를 사용하여 %s{을/를} 강제해."
+msgstr "  '%s' 접두사를 사용하여 %s{을/를} 강제하라."
 
 #: ../src/do.c:2339 ../src/dokick.c:1942 ../src/mon.c:4189 ../src/mon.c:4207
 #: ../src/potion.c:980 ../src/uhitm.c:1004
@@ -25037,7 +25037,7 @@ msgstr "땅"
 #: ../src/dungeon.c:3425
 #, c-format
 msgid "Plane of %s"
-msgstr "%s의 평면"
+msgstr "%s의 차원"
 
 #: ../src/dungeon.c:3427
 #, c-format
@@ -25546,7 +25546,7 @@ msgstr "깡통을 제대로 다루지 못해 열 수 없다."
 
 #: ../src/eat.c:1744
 msgid "The tin opens like magic!"
-msgstr "깡통이 마법처럼 열립니다!"
+msgstr "깡통이 마법처럼 열린다!"
 
 #
 #: ../src/eat.c:1746
@@ -30088,27 +30088,27 @@ msgstr "'%c' 슬롯에는 금화만 넣을 수 있다."
 
 #: ../src/invent.c:5203
 msgid "Select an inventory slot letter."
-msgstr "인벤토리 슬롯 문자를 선택해."
+msgstr "인벤토리 슬롯 문자를 선택하라."
 
 #: ../src/invent.c:5208
 msgid "Collecting:"
-msgstr "수집가"
+msgstr "수집:"
 
 #: ../src/invent.c:5209
 msgid "Moving:"
-msgstr "사랑하는"
+msgstr "이동:"
 
 #: ../src/invent.c:5210
 msgid "Splitting:"
-msgstr "쏘는 듯한"
+msgstr "분리:"
 
 #: ../src/invent.c:5243
 msgid "Merging:"
-msgstr "복원 중:"
+msgstr "병합:"
 
 #: ../src/invent.c:5253
 msgid "Swapping:"
-msgstr "저장 중:"
+msgstr "교체:"
 
 #: ../src/invent.c:5270
 msgid "Splitting and merging:"
@@ -30126,14 +30126,16 @@ msgstr "배낭이 너무 가득 찼다."
 msgid "%s %s:"
 msgstr "%s %s"
 
+# 주의: invent.c:4180 &fbuf[12] 하드코딩 문제 — 이 문자열 길이 변경 시
+# UTF-8 절단 위험. C 소스 수정 필요 (별도 PR).
 #: ../src/invent.c:5496
 msgid "Contents of "
-msgstr "그 내용물이 쏟아졌다."
+msgstr "내용물: "
 
 #: ../src/invent.c:5552
 #, c-format
 msgid "%s %s under the %s here."
-msgstr "%s{이/가} 여기 %s 아래에 %s."
+msgstr "%1$s{이/가} 여기 %3$s 아래에 있다%2$.0s."
 
 # Barbarian ranks
 # 조합: 여러 물체 아래에 있는 것을 설명
@@ -30722,7 +30724,7 @@ msgstr "레벨 상승 물약을 단돈 $19.99에! 축복 보장!"
 #: ../src/mail.c:516
 #, c-format
 msgid "%sInvitation: Visit the NetHack web site at %s%s"
-msgstr "%s초대: %s%s 넷핵 웹사이트 방문해"
+msgstr "%s초대: %s%s 넷핵 웹사이트를 방문하라"
 
 #: ../src/mail.c:518
 msgid "It reads:  \""
@@ -33038,11 +33040,11 @@ msgstr "주춤한다"
 # 이동 동사 - 떨다
 #: ../src/mondata.c:1375
 msgid "tremble"
-msgstr "떤다"
+msgstr "떨다"
 
 #: ../src/mondata.c:1375
 msgid "Tremble"
-msgstr "떤다"
+msgstr "떨다"
 
 #: ../src/mondata.c:1376
 msgid "Pulsate"
@@ -36507,7 +36509,7 @@ msgstr "현재 페이지 왼쪽으로 이동 (perm_invent만)"
 #: ../src/options.c:464
 #, c-format
 msgid "Put \"OPTIONS=!tutorial\" in %s to skip this query."
-msgstr "이 질문을 건너뛰려면 %s에 \"OPTIONS=!tutorial\"을 추가해."
+msgstr "이 질문을 건너뛰려면 %s에 \"OPTIONS=!tutorial\"을 추가하라."
 
 #: ../src/options.c:465
 msgid "your configuration file"
@@ -36523,7 +36525,7 @@ msgstr "아니요, 바로 시작"
 
 #: ../src/options.c:482
 msgid "(Please choose 'y' or 'n'.)"
-msgstr "('y' 또는 'n'을 선택해.)"
+msgstr "('y' 또는 'n'을 선택하라.)"
 
 #: ../src/options.c:484
 msgid "Do you want a tutorial?"
@@ -36785,7 +36787,7 @@ msgstr "메뉴 맵 공간이 부족하다."
 
 #: ../src/options.c:8623
 msgid "Use command '#optionsfull' to get the complete options list."
-msgstr "'#optionsfull' 명령어를 사용하여 전체 옵션 목록을 확인해."
+msgstr "'#optionsfull' 명령어를 사용하여 전체 옵션 목록을 확인하라."
 
 #: ../src/options.c:8630
 msgid "hide help"
@@ -37131,12 +37133,12 @@ msgstr "무엇을 지정하시겠습니까? (단어를 입력하세요)"
 #: ../src/pager.c:1902
 #, c-format
 msgid "Please move the cursor to %s."
-msgstr "커서를 %s{으로/로} 이동해."
+msgstr "커서를 %s{으로/로} 이동하라."
 
 #: ../src/pager.c:1905
 #, c-format
 msgid "Pick %s."
-msgstr "%s{을/를} 선택해."
+msgstr "%s{을/를} 선택하라."
 
 #: ../src/pager.c:1954
 msgid "I've never heard of such things."
@@ -39677,7 +39679,7 @@ msgstr "약간 %s."
 
 #: ../src/potion.c:1475
 msgid "bottle"
-msgstr "얼룩덜룩한"
+msgstr "병"
 
 #: ../src/potion.c:1475
 msgid "phial"
@@ -39685,7 +39687,7 @@ msgstr "약병"
 
 #: ../src/potion.c:1475
 msgid "flagon"
-msgstr "용"
+msgstr "대형 술잔"
 
 #: ../src/potion.c:1475
 msgid "carafe"
@@ -39705,7 +39707,7 @@ msgstr "항아리"
 
 #: ../src/potion.c:1478
 msgid "pitcher"
-msgstr "가렵다"
+msgstr "주전자"
 
 #: ../src/potion.c:1478
 msgid "barrel"
@@ -39713,11 +39715,11 @@ msgstr "통"
 
 #: ../src/potion.c:1478
 msgid "beaker"
-msgstr "창백해"
+msgstr "비커"
 
 #: ../src/potion.c:1479
 msgid "tumbler"
-msgstr "굴러 떨어지다"
+msgstr "텀블러"
 
 #: ../src/potion.c:1479
 msgid "vase"
@@ -39727,7 +39729,7 @@ msgstr "꽃병"
 # --- 지팡이 (Wands) ---
 #: ../src/potion.c:1479
 msgid "pan"
-msgstr "하나의"
+msgstr "냄비"
 
 # ============================================================
 # 공통 문자열 (decl.h macros)
@@ -39746,11 +39748,11 @@ msgstr "찻잔"
 
 #: ../src/potion.c:1480
 msgid "teapot"
-msgstr "무기"
+msgstr "찻주전자"
 
 #: ../src/potion.c:1480
 msgid "thermos"
-msgstr "다른 것들"
+msgstr "보온병"
 
 #: ../src/potion.c:1480
 msgid "amphora"
@@ -39758,7 +39760,7 @@ msgstr "암포라"
 
 #: ../src/potion.c:1480
 msgid "wineskin"
-msgstr "피부"
+msgstr "가죽 물통"
 
 #: ../src/potion.c:1480
 msgid "parcel"
@@ -42227,7 +42229,7 @@ msgstr "%s{이/가} 죽었다."
 
 #: ../src/read.c:2419
 msgid "vibrates violently and"
-msgstr "바닥이 격렬하게 흔들린다!"
+msgstr "격렬하게 진동하며"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -42239,7 +42241,7 @@ msgstr "%s %s{이/가} 폭발했다!"
 
 #: ../src/read.c:2456 ../src/zap.c:2607 ../src/zap.c:5779
 msgid "exploding wand"
-msgstr "폭발했다"
+msgstr "마법봉 폭발"
 
 #: ../src/read.c:2539
 msgid "ambient light seems dimmer."
@@ -42283,7 +42285,7 @@ msgstr "종류를 나타내는 기호나 이름, 또는 '?'"
 #: ../src/read.c:2666
 msgid ""
 "Type letter (or punctuation) or name used for a class of monsters or 'none'"
-msgstr "괴물 종류의 문자(또는 구두점)나 이름을 입력하거나 'none'을 입력해"
+msgstr "괴물 종류의 문자(또는 구두점)나 이름을 입력하거나 'none'을 입력하라"
 
 #: ../src/read.c:2670
 msgid "No class of monsters specified"
@@ -42537,7 +42539,7 @@ msgstr "이 게임은 무효다."
 
 #: ../src/restore.c:1532
 msgid "Select one of your saved games"
-msgstr "저장된 게임 중 하나를 선택해"
+msgstr "저장된 게임 중 하나를 선택하라"
 
 #: ../src/rip.c:165
 msgid "Game over:"
@@ -43235,7 +43237,7 @@ msgstr "해당하는 모든 것을 선택하세요%s"
 
 #: ../src/role.c:2794
 msgid " and/or unpick any that no longer apply"
-msgstr " 그리고/또는 더 이상 해당하지 않는 것을 선택 해제해"
+msgstr " 그리고/또는 더 이상 해당하지 않는 것을 선택 해제하라"
 
 # ============================================================
 # 물약 (Potions)
@@ -45014,15 +45016,15 @@ msgstr "#제물로 바쳐지는 동물 사체."
 
 #: ../src/sounds.c:150
 msgid "*a strident plea for donations."
-msgstr "너무 혼란스러워서 이것을 할 수 없다."
+msgstr "*기부를 간절히 요청하는 소리."
 
 #: ../src/sounds.c:191
 msgid "a strange wind."
-msgstr "이상한 감각."
+msgstr "이상한 바람 소리."
 
 #: ../src/sounds.c:193
 msgid "snoring snakes."
-msgstr "화난 뱀 소리!"
+msgstr "코 고는 뱀 소리."
 
 #: ../src/sounds.c:194
 msgid "someone say \"No more woodchucks!\""
@@ -45120,15 +45122,15 @@ msgstr "삐 소리"
 
 #: ../src/sounds.c:343
 msgid "boing"
-msgstr "가는"
+msgstr "통통 튀는"
 
 #: ../src/sounds.c:343
 msgid "sing"
-msgstr "잃는"
+msgstr "노래하는"
 
 #: ../src/sounds.c:343
 msgid "belche"
-msgstr "절도범"
+msgstr "트림하는"
 
 # ============================================================
 # 환각 소리 동사 (Hallucination sound verbs)
@@ -45145,7 +45147,7 @@ msgstr "울부짖다"
 
 #: ../src/sounds.c:344
 msgid "pop"
-msgstr "철벅"
+msgstr "톡 소리 내다"
 
 #: ../src/sounds.c:344
 msgid "sniffle"
@@ -45153,11 +45155,11 @@ msgstr "훌쩍거리다"
 
 #: ../src/sounds.c:344
 msgid "tinkle"
-msgstr "짜증났다."
+msgstr "딸랑거리다"
 
 #: ../src/sounds.c:345
 msgid "eep"
-msgstr "깊은 "
+msgstr "삑 소리 내다"
 
 #: ../src/sounds.c:345
 msgid "clatter"
@@ -45165,7 +45167,7 @@ msgstr "덜그럭거리는"
 
 #: ../src/sounds.c:345
 msgid "hum"
-msgstr "습한"
+msgstr "윙윙거리다"
 
 #: ../src/sounds.c:345
 msgid "sizzle"
@@ -45174,15 +45176,15 @@ msgstr " 지글지글"
 #
 #: ../src/sounds.c:345
 msgid "twitter"
-msgstr "나아졌다."
+msgstr "지저귀다"
 
 #: ../src/sounds.c:345
 msgid "wheeze"
-msgstr "얼어붙는다"
+msgstr "쌕쌕거리다"
 
 #: ../src/sounds.c:346
 msgid "rustle"
-msgstr "녹슬게 하다"
+msgstr "바스락거리다"
 
 #: ../src/sounds.c:346
 msgid "honk"
@@ -45198,7 +45200,7 @@ msgstr "요들송을 부르다"
 
 #: ../src/sounds.c:346
 msgid "coo"
-msgstr "코요테"
+msgstr "구구거리다"
 
 #: ../src/sounds.c:346
 msgid "burp"
@@ -45206,11 +45208,11 @@ msgstr "트림하다"
 
 #: ../src/sounds.c:347
 msgid "moo"
-msgstr "음메 운다."
+msgstr "음메 울다"
 
 #: ../src/sounds.c:347
 msgid "boom"
-msgstr "울립니다"
+msgstr "쿵 울리다"
 
 #: ../src/sounds.c:347
 msgid "murmur"
@@ -45226,7 +45228,7 @@ msgstr "꽥꽥거리다"
 
 #: ../src/sounds.c:347
 msgid "rumble"
-msgstr "비틀거린다."
+msgstr "우르릉거리다"
 
 #: ../src/sounds.c:348
 msgid "twang"
@@ -45238,11 +45240,11 @@ msgstr "꿀꺽꿀꺽 소리를 낸다."
 
 #: ../src/sounds.c:348
 msgid "hoot"
-msgstr "쏘기"
+msgstr "부엉부엉 울다"
 
 #: ../src/sounds.c:348
 msgid "warble"
-msgstr "대리석"
+msgstr "지저귀다"
 
 #: ../src/sounds.c:369
 msgid "bellow"
@@ -47020,10 +47022,10 @@ msgstr "약간 어지럽다."
 msgid "You feel dizzier."
 msgstr "더 어지럽다."
 
-# Archeologist ranks
+# trap trigger verb
 #: ../src/teleport.c:1539 ../src/trap.c:2493
 msgid "trigger"
-msgstr "발굴자"
+msgstr "작동시켰다"
 
 #: ../src/teleport.c:1542 ../src/trap.c:2499
 #, c-format
@@ -52014,7 +52016,7 @@ msgstr "이미 가능한 한 경험이 많다."
 #
 #: ../src/wizcmds.c:503
 msgid "Pick a monster to hurtle."
-msgstr "내던질 몬스터를 선택해."
+msgstr "내던질 몬스터를 선택하라."
 
 #: ../src/wizcmds.c:552
 msgid "The fuzz tester will make NetHack execute random keypresses."
@@ -52035,7 +52037,7 @@ msgstr "냄새 맡고 싶은 괴물에 커서를 이동할 수 있다."
 #
 #: ../src/wizcmds.c:902
 msgid "Pick a monster to smell."
-msgstr "냄새 맡을 몬스터를 선택해."
+msgstr "냄새 맡을 몬스터를 선택하라."
 
 #: ../src/wizcmds.c:926
 #, c-format
@@ -53113,7 +53115,7 @@ msgstr "무작위로 선택된 아이템이 주어진다."
 
 #: ../src/zap.c:6184
 msgid "(Suppress this assistance with !cmdassist in your config file.)"
-msgstr "(이 도움말을 끄려면 설정 파일에 !cmdassist를 추가해.)"
+msgstr "(이 도움말을 끄려면 설정 파일에 !cmdassist를 추가하라.)"
 
 #: ../src/zap.c:6230
 msgid "may wish for an object."
@@ -53130,7 +53132,7 @@ msgstr "그 설명에 맞는 것이 게임에 존재하지 않는다."
 #: ../src/zap.c:6313
 #, c-format
 msgid "Careful! %s on the floor!"
-msgstr "조심해! %s{이/가} 바닥에 있다!"
+msgstr "조심하라! %s{이/가} 바닥에 있다!"
 
 #: ../src/zap.c:6337
 #, c-format

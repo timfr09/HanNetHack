@@ -574,14 +574,35 @@ typedef unsigned char uchar;
 #include <stdio.h>
 #include <stdarg.h>
 /* _vsprintf_p supports positional params; use as vsnprintf replacement */
-#define nh_vsnprintf(buf, size, fmt, args) _vsprintf_p((buf), (size), (fmt), (args))
-/* Wrap sprintf to use _sprintf_p with a large buffer size */
+/*
+ * Check if a format string contains '$' (positional parameter indicator).
+ * Can't use strchr here because string.h may not be included yet.
+ */
+static __inline int nh_fmt_has_positional(const char *fmt)
+{
+    const char *p;
+    for (p = fmt; *p; p++)
+        if (*p == '$')
+            return 1;
+    return 0;
+}
+/* Use _vsprintf_p only when format has positional params ($) */
+static __inline int nh_vsnprintf(char *buf, size_t size, const char *fmt, va_list args)
+{
+    if (nh_fmt_has_positional(fmt))
+        return _vsprintf_p(buf, size, fmt, args);
+    else
+        return vsnprintf(buf, size, fmt, args);
+}
 static __inline int nh_sprintf_p(char *buf, const char *fmt, ...)
 {
     va_list args;
     int ret;
     va_start(args, fmt);
-    ret = _vsprintf_p(buf, 4096, fmt, args);
+    if (nh_fmt_has_positional(fmt))
+        ret = _vsprintf_p(buf, 4096, fmt, args);
+    else
+        ret = vsprintf(buf, fmt, args);
     va_end(args);
     return ret;
 }

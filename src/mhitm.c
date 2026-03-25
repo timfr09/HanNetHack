@@ -29,9 +29,9 @@ noises(struct monst *magr, struct attack *mattk)
     if (!Deaf && (farq != gf.far_noise || svm.moves - gn.noisetime > 10)) {
         gf.far_noise = farq;
         gn.noisetime = svm.moves;
-        You_hear(_("%s%s."),
+        You_hear(C_("You_hear", "%s%s."),
                  (mattk->aatyp == AT_EXPL) ? _("an explosion") : _("some noises"),
-                 farq ? _(" in the distance") : "");
+                 farq ? C_("You_hear", " in the distance") : "");
     }
 }
 

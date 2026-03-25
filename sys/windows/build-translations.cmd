@@ -61,12 +61,19 @@ if "%1"=="--check-only" (
 )
 
 :compile_mo
-REM Step 4: Compile .mo
-echo [4/4] Compiling message catalog...
+REM Step 4: Merge ko_manual.po (priority) + ko.po, then compile .mo
+echo [4/4] Merging and compiling message catalog...
 if not exist "%LOCALE_DIR%" mkdir "%LOCALE_DIR%"
-"%GETTEXT_DIR%\msgfmt.exe" -o "%LOCALE_DIR%\nethack.mo" "%PO_DIR%\ko.po"
+
+if exist "%PO_DIR%\ko_manual.po" (
+    echo       Merging ko_manual.po + ko.po (manual entries take priority^)...
+    "%GETTEXT_DIR%\msgcat.exe" --use-first -o "%PO_DIR%\ko_merged.po" "%PO_DIR%\ko_manual.po" "%PO_DIR%\ko.po"
+    "%GETTEXT_DIR%\msgfmt.exe" -o "%LOCALE_DIR%\nethack.mo" "%PO_DIR%\ko_merged.po"
+) else (
+    "%GETTEXT_DIR%\msgfmt.exe" -o "%LOCALE_DIR%\nethack.mo" "%PO_DIR%\ko.po"
+)
 if errorlevel 1 (
-    echo ERROR: msgfmt failed to compile ko.po
+    echo ERROR: msgfmt failed to compile translations
     exit /b 1
 )
 

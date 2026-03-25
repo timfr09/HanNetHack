@@ -80,6 +80,8 @@ GetlinDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             WCHAR wq[BUFSZ];
             MultiByteToWideChar(CP_UTF8, 0, data->question, -1, wq, BUFSZ);
             SetWindowTextW(hWnd, wq);
+            /* Also set wbuf for size calculation below */
+            NH_A2W(data->question, wbuf, sizeof(wbuf));
         }
 #else
         SetWindowText(hWnd, NH_A2W(data->question, wbuf, sizeof(wbuf)));
@@ -91,12 +93,21 @@ GetlinDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         GetWindowRect(GetNHApp()->hMainWnd, &main_rt);
         WindowDC = GetWindowDC(hWnd);
 
-        if (!GetWindowExtEx(WindowDC, &WindowExtents)
-            || !GetViewportExtEx(WindowDC, &ViewPortExtents)
-            || !GetTextExtentPoint32(GetWindowDC(hWnd), wbuf, _tcslen(wbuf),
-                                     &dlg_sz)) {
-            dlg_sz.cx = 0;
-        } else {
+        {
+#ifdef ENABLE_NLS
+            WCHAR wq2[BUFSZ];
+            MultiByteToWideChar(CP_UTF8, 0, data->question, -1, wq2, BUFSZ);
+            BOOL szok = GetWindowExtEx(WindowDC, &WindowExtents)
+                && GetViewportExtEx(WindowDC, &ViewPortExtents)
+                && GetTextExtentPoint32W(GetWindowDC(hWnd), wq2, (int)wcslen(wq2), &dlg_sz);
+#else
+            BOOL szok = GetWindowExtEx(WindowDC, &WindowExtents)
+                && GetViewportExtEx(WindowDC, &ViewPortExtents)
+                && GetTextExtentPoint32(GetWindowDC(hWnd), wbuf, _tcslen(wbuf), &dlg_sz);
+#endif
+            if (!szok) {
+                dlg_sz.cx = 0;
+            } else {
             /* I think we need to do the following scaling */
             dlg_sz.cx *= ViewPortExtents.cx;
             dlg_sz.cx /= WindowExtents.cx;
@@ -104,6 +115,7 @@ GetlinDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             dlg_sz.cx += GetSystemMetrics(SM_CXSIZE)
                          + 2 * (GetSystemMetrics(SM_CXBORDER)
                                 + GetSystemMetrics(SM_CXFRAME));
+            }
         }
 
         if (dlg_sz.cx < dlg_rt.right - dlg_rt.left)

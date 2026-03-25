@@ -52328,3 +52328,7 @@ msgstr ""
 
 #~ msgid "Unique items"
 #~ msgstr "고유 물품"
+
+#: ../win/win32/mswproc.c:701
+msgid "Who are you?"
+msgstr "이름이 무엇입니까?"

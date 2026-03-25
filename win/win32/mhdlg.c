@@ -75,7 +75,15 @@ GetlinDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message) {
     case WM_INITDIALOG:
         data = (struct getlin_data *) lParam;
+#ifdef ENABLE_NLS
+        {
+            WCHAR wq[BUFSZ];
+            MultiByteToWideChar(CP_UTF8, 0, data->question, -1, wq, BUFSZ);
+            SetWindowTextW(hWnd, wq);
+        }
+#else
         SetWindowText(hWnd, NH_A2W(data->question, wbuf, sizeof(wbuf)));
+#endif
         SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR) data);
 
         /* center dialog in the main window */
@@ -145,9 +153,21 @@ GetlinDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case IDOK:
             data =
                 (struct getlin_data *) GetWindowLongPtr(hWnd, GWLP_USERDATA);
+#ifdef ENABLE_NLS
+            /* Use Unicode API to get text, then convert to UTF-8 */
+            {
+                WCHAR wtext[BUFSZ];
+                SendDlgItemMessageW(hWnd, IDC_GETLIN_EDIT, WM_GETTEXT,
+                                   (WPARAM) BUFSZ, (LPARAM) wtext);
+                WideCharToMultiByte(CP_UTF8, 0, wtext, -1,
+                                    data->result, (int) data->result_size,
+                                    NULL, NULL);
+            }
+#else
             SendDlgItemMessage(hWnd, IDC_GETLIN_EDIT, WM_GETTEXT,
                                (WPARAM) sizeof(wbuf2), (LPARAM) wbuf2);
             NH_W2A(wbuf2, data->result, data->result_size);
+#endif
 
         FALLTHROUGH;
         /* FALLTHRU */

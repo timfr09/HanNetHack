@@ -57,7 +57,22 @@ do_statusline1(void)
     Strcpy(newbot1, svp.plname);
     if ('a' <= newbot1[0] && newbot1[0] <= 'z')
         newbot1[0] += 'A' - 'a';
-    newbot1[10] = 0;
+    /* Truncate name but don't break UTF-8 multibyte sequences */
+    {
+        int k = 0, last_safe = 0;
+        while (newbot1[k] && k < 10) {
+            last_safe = k;
+            if ((unsigned char)newbot1[k] >= 0xC0) {
+                int clen = ((unsigned char)newbot1[k] < 0xE0) ? 2
+                         : ((unsigned char)newbot1[k] < 0xF0) ? 3 : 4;
+                k += clen;
+            } else {
+                k++;
+            }
+        }
+        if (k > 10) k = last_safe;
+        newbot1[k] = 0;
+    }
     Sprintf(nb = eos(newbot1), _(" the "));
 
     if (Upolyd) {

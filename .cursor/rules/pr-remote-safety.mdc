@@ -1,0 +1,13 @@
+---
+description: Prevent accidental upstream PR creation
+alwaysApply: true
+---
+
+# PR Remote Safety
+
+- Never create pull requests against upstream repositories.
+- Always create pull requests only from this fork branch to this fork's base branch.
+- Before `gh pr create`, verify the target explicitly:
+  - confirm `--base` branch
+  - confirm PR destination repository is not upstream
+- If upstream is the only detected destination, stop and ask the user before proceeding.

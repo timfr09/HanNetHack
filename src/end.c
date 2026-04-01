@@ -454,7 +454,7 @@ panic VA_DECL(const char *, str)
     }
 #endif /* !MICRO */
 
-    (void) vsnprintf(buf, sizeof buf, str, VA_ARGS);
+    (void) nh_vsnprintf(buf, sizeof buf, str, VA_ARGS);
     raw_print(buf);
     paniclog("panic", buf);
 

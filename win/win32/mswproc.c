@@ -427,16 +427,16 @@ prompt_for_player_selection(void)
                     if (flags.initgend != ROLE_NONE
                         && flags.initgend != ROLE_RANDOM) {
                         if (flags.initgend == 1 && roles[i].name.f)
-                            Strcpy(rolenamebuf, roles[i].name.f);
+                            Strcpy(rolenamebuf, _(roles[i].name.f));
                         else
-                            Strcpy(rolenamebuf, roles[i].name.m);
+                            Strcpy(rolenamebuf, _(roles[i].name.m));
                     } else {
                         if (roles[i].name.f) {
-                            Strcpy(rolenamebuf, roles[i].name.m);
+                            Strcpy(rolenamebuf, _(roles[i].name.m));
                             Strcat(rolenamebuf, "/");
-                            Strcat(rolenamebuf, roles[i].name.f);
+                            Strcat(rolenamebuf, _(roles[i].name.f));
                         } else
-                            Strcpy(rolenamebuf, roles[i].name.m);
+                            Strcpy(rolenamebuf, _(roles[i].name.m));
                     }
                     add_menu(win, &nul_glyphinfo, &any, thisch, 0, ATR_NONE,
                              clr, an(rolenamebuf), MENU_ITEMFLAGS_NONE);
@@ -515,7 +515,7 @@ prompt_for_player_selection(void)
                         any.a_int = i + 1; /* must be non-zero */
                         add_menu(win, &nul_glyphinfo, &any,
                                  races[i].noun[0], 0, ATR_NONE, clr,
-                                 races[i].noun, MENU_ITEMFLAGS_NONE);
+                                 _(races[i].noun), MENU_ITEMFLAGS_NONE);
                     }
                 any.a_int = pick_race(flags.initrole, flags.initgend,
                                       flags.initalign, PICK_RANDOM) + 1;
@@ -698,7 +698,7 @@ mswin_askname(void)
 {
     logDebug("mswin_askname()\n");
 
-    if (mswin_getlin_window("Who are you?", svp.plname, PL_NSIZ) == IDCANCEL) {
+    if (mswin_getlin_window(_("Who are you?"), svp.plname, PL_NSIZ) == IDCANCEL) {
         bail("bye-bye");
         /* not reached */
     }

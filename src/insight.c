@@ -700,7 +700,7 @@ background_enlightenment(int unused_mode UNUSED, int final)
         /* [flags.showexp currently does not matter; should it?] */
 
         /* experience level is already shown above */
-        Sprintf(buf, _("%-1ld experience point%s"), u.uexp, plur(u.uexp));
+        Sprintf(buf, _("%ld experience point%s"), u.uexp, plur(u.uexp));
         /* TODO?
          *  Remove wizard-mode restriction since patient players can
          *  determine the numbers needed without resorting to spoilers

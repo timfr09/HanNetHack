@@ -44,7 +44,7 @@ XGETTEXT_OPTS = --keyword=_ --keyword=N_ --keyword=P_:1,2 \
                 --msgid-bugs-address=hannethack@example.com \
                 --copyright-holder="HanNetHack Project"
 
-.PHONY: all pot pot-lua update-po compile clean stats help merge
+.PHONY: all pot pot-lua update-po compile clean stats help merge migrate verify
 
 all: compile
 
@@ -112,18 +112,43 @@ safe-update: $(POTFILE)
 		fi \
 	done
 
-# Migrate important translations from ko.po to ko_manual.po
-# Use this to preserve translations you want to keep permanently
-migrate:
-	@echo "=== Migrating custom translations to ko_manual.po ==="
-	@echo "This extracts non-empty translations from ko.po that aren't in ko_manual.po"
-	@echo ""
-	@echo "To migrate a specific translation, add it manually to ko_manual.po:"
-	@echo "  1. Find the msgid in ko.po"
-	@echo "  2. Copy msgid + msgstr to ko_manual.po"
-	@echo "  3. Run 'make merge && make compile'"
-	@echo ""
-	@echo "Tip: Translations in ko_manual.po are NEVER overwritten by update-po"
+# Migrate ALL translated entries to ko_manual.po for permanent protection
+# This ensures no translations are lost when update-po modifies ko.po
+migrate: merge
+	@for lang in $(LANGUAGES); do \
+		if [ -f $${lang}_merged.po ]; then \
+			echo "=== Migrating all translations to $${lang}_manual.po ==="; \
+			cp $${lang}_manual.po $${lang}_manual.po.pre-migrate; \
+			msgattrib --translated $${lang}_merged.po -o $${lang}_manual_new.po; \
+			new_count=$$($(MSGFMT) --statistics $${lang}_manual_new.po 2>&1 | grep -oP '^\d+'); \
+			old_count=$$($(MSGFMT) --statistics $${lang}_manual.po 2>&1 | grep -oP '^\d+'); \
+			if [ "$$new_count" -ge "$$old_count" ]; then \
+				mv $${lang}_manual_new.po $${lang}_manual.po; \
+				echo "Migrated: $$old_count -> $$new_count translated entries"; \
+				echo "Backup saved: $${lang}_manual.po.pre-migrate"; \
+			else \
+				echo "ERROR: New file has fewer entries ($$new_count < $$old_count). Aborting."; \
+				rm -f $${lang}_manual_new.po; \
+			fi \
+		fi \
+	done
+
+# Verify that merged translations haven't decreased after an operation
+verify: merge
+	@for lang in $(LANGUAGES); do \
+		if [ -f $${lang}_merged.po ]; then \
+			count=$$($(MSGFMT) --statistics $${lang}_merged.po 2>&1 | grep -oP '^\d+'); \
+			manual_count=$$($(MSGFMT) --statistics $${lang}_manual.po 2>&1 | grep -oP '^\d+'); \
+			echo "=== Verification: $$lang ==="; \
+			echo "  ko_manual.po: $$manual_count translated"; \
+			echo "  ko_merged.po: $$count translated"; \
+			if [ "$$count" -lt "$$manual_count" ]; then \
+				echo "  WARNING: Merged has fewer entries than manual! Check for issues."; \
+			else \
+				echo "  OK: All manual translations preserved in merge."; \
+			fi \
+		fi \
+	done
 
 # Merge auto-extracted and manual entries
 # Creates ko_merged.po from ko.po + ko_manual.po
@@ -247,7 +272,8 @@ help:
 	@echo "  check        - Check for translation errors"
 	@echo "  untranslated - List untranslated strings"
 	@echo "  fuzzy        - List fuzzy translations"
-	@echo "  migrate      - Help migrating translations to ko_manual.po"
+	@echo "  migrate      - Auto-migrate ALL translations to ko_manual.po"
+	@echo "  verify       - Check no translations were lost after merge"
 	@echo "  install      - Install MO files"
 	@echo "  clean        - Remove generated files"
 	@echo ""

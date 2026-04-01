@@ -562,6 +562,43 @@ typedef unsigned char uchar;
  */
 #define ENABLE_NLS
 
+/*
+ * On MSVC, vsnprintf/sprintf do not support positional format specifiers
+ * like %1$s, %2$s (used in gettext translations to reorder arguments).
+ * MSVC provides _vsprintf_p/_sprintf_p which do support them.
+ *
+ * We redefine sprintf and vsnprintf globally so that all string formatting
+ * in the codebase (including Sprintf macro) supports positional parameters.
+ */
+#if defined(ENABLE_NLS) && defined(_MSC_VER)
+#include <stdio.h>
+#include <stdarg.h>
+/* _vsprintf_p supports positional params; use as vsnprintf replacement */
+/*
+ * Check if a format string contains '$' (positional parameter indicator).
+ * Can't use strchr here because string.h may not be included yet.
+ */
+/*
+ * _vsprintf_p handles both standard and positional format specifiers.
+ * We use it for ALL formatting so %1$s/%2$s translations always work.
+ * Note: %-1d is not compatible with _vsprintf_p, so translations
+ * must use %d instead (ko.po has been updated accordingly).
+ */
+#define nh_vsnprintf(buf, size, fmt, args) _vsprintf_p((buf), (size), (fmt), (args))
+static __inline int nh_sprintf_p(char *buf, const char *fmt, ...)
+{
+    va_list args;
+    int ret;
+    va_start(args, fmt);
+    ret = _vsprintf_p(buf, 4096, fmt, args);
+    va_end(args);
+    return ret;
+}
+#define sprintf nh_sprintf_p
+#else
+#define nh_vsnprintf(buf, size, fmt, args) vsnprintf((buf), (size), (fmt), (args))
+#endif
+
 /* SELECTSAVED: Enable the 'selectsaved' run-time option, allowing it
  * to be set in user's config file or NETHACKOPTIONS.  When set, if
  * player is about to be given the "who are you?" prompt, check for

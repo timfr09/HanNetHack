@@ -581,7 +581,7 @@ onMSNHCommand(HWND hWnd, WPARAM wParam, LPARAM lParam)
         cached_font * font = mswin_get_font(NHW_MENU, ATR_NONE, hdc, FALSE);
         saveFont = SelectObject(hdc, font->hFont);
         SetRect(&text_rt, 0, 0, 0, 0);
-        DrawTextA(hdc, msg_data->text, strlen(msg_data->text), &text_rt,
+        NH_DrawText(hdc, msg_data->text, strlen(msg_data->text), &text_rt,
                  DT_CALCRECT | DT_TOP | DT_LEFT | DT_NOPREFIX
                      | DT_SINGLELINE);
         data->menui.text.text_box_size.cx =
@@ -668,7 +668,7 @@ onMSNHCommand(HWND hWnd, WPARAM wParam, LPARAM lParam)
                 SetRect(&drawRect, 0, 0, 1, 1);
                 if (p != NULL)
                     *p = '\0'; /* for time being, view tab field as zstring */
-                DrawText(hDC, NH_A2W(p1, wbuf, BUFSZ), strlen(p1), &drawRect,
+                NH_DrawText(hDC, p1, strlen(p1), &drawRect,
                          DT_CALCRECT | DT_LEFT | DT_VCENTER | DT_EXPANDTABS
                              | DT_SINGLELINE);
                 data->menui.menu.tab_stop_size[column] =
@@ -916,8 +916,21 @@ SetMenuListType(HWND hWnd, int how)
     ZeroMemory(&lvcol, sizeof(lvcol));
     lvcol.mask = LVCF_WIDTH | LVCF_TEXT;
     lvcol.cx = monitorInfo.width;
+#ifdef ENABLE_NLS
+    {
+        WCHAR wprompt[BUFSZ];
+        LVCOLUMNW wlvcol;
+        MultiByteToWideChar(CP_UTF8, 0, data->menui.menu.prompt, -1, wprompt, BUFSZ);
+        ZeroMemory(&wlvcol, sizeof(wlvcol));
+        wlvcol.mask = LVCF_WIDTH | LVCF_TEXT;
+        wlvcol.cx = lvcol.cx;
+        wlvcol.pszText = wprompt;
+        SendMessageW(control, LVM_INSERTCOLUMNW, 0, (LPARAM)&wlvcol);
+    }
+#else
     lvcol.pszText = NH_A2W(data->menui.menu.prompt, wbuf, BUFSZ);
     ListView_InsertColumn(control, 0, &lvcol);
+#endif
 
     /* add items to the list view */
     for (i = 0; i < data->menui.menu.size; i++) {
@@ -932,11 +945,31 @@ SetMenuListType(HWND hWnd, int how)
         lvitem.state = data->menui.menu.items[i].presel ? LVIS_SELECTED : 0;
         lvitem.pszText = NH_A2W(buf, wbuf, BUFSZ);
         lvitem.lParam = (LPARAM) &data->menui.menu.items[i];
+#ifdef ENABLE_NLS
+        {
+            WCHAR wbuf2[BUFSZ];
+            LVITEMW wlvitem;
+            MultiByteToWideChar(CP_UTF8, 0, buf, -1, wbuf2, BUFSZ);
+            nItem = (int) SendMessageW(control, LB_ADDSTRING, (WPARAM) 0,
+                                      (LPARAM) wbuf2);
+            ZeroMemory(&wlvitem, sizeof(wlvitem));
+            wlvitem.mask = lvitem.mask;
+            wlvitem.iItem = lvitem.iItem;
+            wlvitem.iSubItem = lvitem.iSubItem;
+            wlvitem.state = lvitem.state;
+            wlvitem.pszText = wbuf2;
+            wlvitem.lParam = lvitem.lParam;
+            if (SendMessageW(control, LVM_INSERTITEMW, 0, (LPARAM)&wlvitem) == -1) {
+                panic("cannot insert menu item");
+            }
+        }
+#else
         nItem = (int) SendMessage(control, LB_ADDSTRING, (WPARAM) 0,
                                   (LPARAM) buf);
         if (ListView_InsertItem(control, &lvitem) == -1) {
             panic("cannot insert menu item");
         }
+#endif
     }
     if (data->is_active)
         SetFocus(control);
@@ -1097,7 +1130,7 @@ onDrawItem(HWND hWnd, WPARAM wParam, LPARAM lParam)
             buf[1] = '\x0';
             SetRect(&drawRect, x, lpdis->rcItem.top, lpdis->rcItem.right,
                     lpdis->rcItem.bottom);
-            DrawText(lpdis->hDC, NH_A2W(buf, wbuf, 2), 1, &drawRect,
+            NH_DrawText(lpdis->hDC, buf, 1, &drawRect,
                      DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOPREFIX);
         }
         x += tm.tmAveCharWidth + tm.tmOverhang + spacing;
@@ -1153,7 +1186,7 @@ onDrawItem(HWND hWnd, WPARAM wParam, LPARAM lParam)
             SetRect(&drawRect, x, lpdis->rcItem.top,
                     min(x + tm.tmAveCharWidth, lpdis->rcItem.right),
                     lpdis->rcItem.bottom);
-            DrawText(lpdis->hDC, NH_A2W(sel_ind, wbuf, BUFSZ), 1, &drawRect,
+            NH_DrawText(lpdis->hDC, sel_ind, 1, &drawRect,
                      DT_CENTER | DT_VCENTER | DT_SINGLELINE);
             x += tm.tmAveCharWidth;
         }
@@ -1175,7 +1208,7 @@ onDrawItem(HWND hWnd, WPARAM wParam, LPARAM lParam)
         TCHAR wbuf2[BUFSZ];
         if (p != NULL)
             *p = '\0'; /* for time being, view tab field as zstring */
-        DrawText(lpdis->hDC, NH_A2W(p1, wbuf2, BUFSZ), strlen(p1), &drawRect,
+        NH_DrawText(lpdis->hDC, p1, strlen(p1), &drawRect,
                  DT_LEFT | DT_VCENTER | DT_SINGLELINE);
         if (p != NULL)
             *p = '\t';

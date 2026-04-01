@@ -124,6 +124,8 @@
     <ClCompile Include="$(SrcDir)getpos.c" />
     <ClCompile Include="$(SrcDir)glyphs.c" />
     <ClCompile Include="$(SrcDir)hack.c" />
+    <ClCompile Include="$(SrcDir)i18n.c" />
+    <ClCompile Include="$(SrcDir)ko_postpos.c" />
     <ClCompile Include="$(SrcDir)insight.c" />
     <ClCompile Include="$(SrcDir)iactions.c" />
     <ClCompile Include="$(SrcDir)invent.c" />
@@ -319,6 +321,9 @@
     <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Target Name="BeforeBuild" Condition="Exists('$(RootDir)sys\windows\build-translations.cmd')">
+    <Exec Command="call &quot;$(RootDir)sys\windows\build-translations.cmd&quot;" WorkingDirectory="$(RootDir)" IgnoreExitCode="true" />
+  </Target>
   <Target Name="AfterBuild">
     <MSBuild Projects="afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
   </Target>

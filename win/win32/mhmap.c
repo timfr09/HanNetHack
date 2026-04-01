@@ -253,8 +253,8 @@ mswin_map_layout(HWND hWnd, LPSIZE map_size)
 
         data->bUnicodeFont = winos_font_support_cp437(data->hMapFont);
 
-        // Same as above, but with ANSI_CHARSET for IBM and Unicode modes
-        lgfnt.lfCharSet = ANSI_CHARSET;
+        // Same as above, but with DEFAULT_CHARSET for IBM and Unicode modes
+        lgfnt.lfCharSet = DEFAULT_CHARSET;
         if (data->hMapFontUnicode)
             DeleteObject(data->hMapFontUnicode);
         data->hMapFontUnicode = CreateFontIndirect(&lgfnt);

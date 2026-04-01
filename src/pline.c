@@ -202,7 +202,7 @@ vpline(const char *line, va_list the_args)
         ln = (int) strlen(line);
     } else {
         /* perform printf() formatting */
-        ln = vsnprintf(pbuf, sizeof pbuf, line, the_args);
+        ln = nh_vsnprintf(pbuf, sizeof pbuf, line, the_args);
         line = pbuf;
         /* note: 'ln' is number of characters attempted, not necessarily
            strlen(line); that matters for the overflow check; if we avoid
@@ -591,7 +591,7 @@ livelog_printf(long ll_type, const char *line, ...)
     va_list the_args;
 
     va_start(the_args, line);
-    (void) vsnprintf(gamelogbuf, sizeof gamelogbuf, line, the_args);
+    (void) nh_vsnprintf(gamelogbuf, sizeof gamelogbuf, line, the_args);
     va_end(the_args);
 
     gamelog_add(ll_type, svm.moves, gamelogbuf);
@@ -639,7 +639,7 @@ vraw_printf(const char *line, va_list the_args)
     char pbuf[BIGBUFSZ]; /* will be chopped down to BUFSZ-1 if longer */
 
     if (strchr(line, '%')) {
-        (void) vsnprintf(pbuf, sizeof(pbuf), line, the_args);
+        (void) nh_vsnprintf(pbuf, sizeof(pbuf), line, the_args);
         line = pbuf;
     }
     if ((int) strlen(line) > BUFSZ - 1) {
@@ -666,7 +666,7 @@ impossible(const char *s, ...)
         panic("impossible called impossible");
 
     program_state.in_impossible = 1;
-    (void) vsnprintf(pbuf, sizeof pbuf, s, the_args);
+    (void) nh_vsnprintf(pbuf, sizeof pbuf, s, the_args);
     va_end(the_args);
     pbuf[BUFSZ - 1] = '\0'; /* sanity */
     paniclog("impossible", pbuf);

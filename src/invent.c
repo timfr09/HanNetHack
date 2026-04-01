@@ -2602,7 +2602,7 @@ reroll_menu(void)
 
     add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE, NO_COLOR, "",
              MENU_ITEMFLAGS_NONE);
-    Sprintf(buf, _("St:%s Dx:%-1d Co:%-1d In:%-1d Wi:%-1d Ch:%-1d"),
+    Sprintf(buf, _("St:%s Dx:%d Co:%d In:%d Wi:%d Ch:%d"),
             get_strength_str(),
             ACURR(A_DEX), ACURR(A_CON), ACURR(A_INT), ACURR(A_WIS),
             ACURR(A_CHA));

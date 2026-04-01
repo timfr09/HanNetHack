@@ -2,15 +2,53 @@
 /* Copyright (c) HanNetHack Project, 2026. */
 /* NetHack may be freely redistributed.  See license for details. */
 
+#ifdef _MSC_VER
+#include "win32api.h"
+#endif
 #include "hack.h"
 #include <wchar.h>
 #include <wctype.h>
+#ifdef _MSC_VER
+#include <io.h>
+#include <stdlib.h>
+#define access _access
+#ifndef R_OK
+#define R_OK 4
+#endif
+#define setenv(name, value, overwrite) _putenv_s(name, value)
+/*
+ * Minimal wcwidth implementation for Windows.
+ * Returns 2 for CJK wide characters, 0 for control, 1 otherwise.
+ */
+static int
+wcwidth(wchar_t wc)
+{
+    if (wc == 0)
+        return 0;
+    if (wc < 0x20 || (wc >= 0x7f && wc < 0xa0))
+        return -1; /* control characters */
+    /* CJK Unified Ideographs and other wide character ranges */
+    if ((wc >= 0x1100 && wc <= 0x115f) ||  /* Hangul Jamo */
+        wc == 0x2329 || wc == 0x232a ||
+        (wc >= 0x2e80 && wc <= 0xa4cf && wc != 0x303f) || /* CJK */
+        (wc >= 0xac00 && wc <= 0xd7a3) ||  /* Hangul Syllables */
+        (wc >= 0xf900 && wc <= 0xfaff) ||  /* CJK Compatibility */
+        (wc >= 0xfe10 && wc <= 0xfe19) ||
+        (wc >= 0xfe30 && wc <= 0xfe6f) ||
+        (wc >= 0xff00 && wc <= 0xff60) ||
+        (wc >= 0xffe0 && wc <= 0xffe6))
+        return 2;
+    return 1;
+}
+#else
 #include <unistd.h>
+#endif
 
 /*
  * UTF-8 width functions - always available regardless of ENABLE_NLS
  * These are needed for proper TTY rendering of wide characters.
  */
+
 
 /*
  * Calculate display width of a UTF-8 string
@@ -232,7 +270,19 @@ static const char *
 get_locale_for_lang(const char *lang)
 {
     if (!lang || !*lang)
-        return "ko_KR.utf8";  /* Default to Korean for HanNetHack */
+        lang = "ko";  /* Default to Korean for HanNetHack */
+#ifdef _WIN32
+    /* Windows uses different locale name formats */
+    if (strcmp(lang, "ko") == 0)
+        return "Korean_Korea.UTF-8";
+    if (strcmp(lang, "en") == 0)
+        return "English_United States.UTF-8";
+    if (strcmp(lang, "ja") == 0)
+        return "Japanese_Japan.UTF-8";
+    if (strcmp(lang, "zh") == 0)
+        return "Chinese_China.UTF-8";
+    return "English_United States.UTF-8";
+#else
     if (strcmp(lang, "ko") == 0)
         return "ko_KR.utf8";
     if (strcmp(lang, "en") == 0)
@@ -243,12 +293,29 @@ get_locale_for_lang(const char *lang)
         return "zh_CN.utf8";
     /* For other codes, try to construct a locale name */
     return "en_US.utf8";  /* Fallback */
+#endif
 }
 
 /*
  * Find locale directory by checking multiple paths
  * The lang parameter specifies which language to look for (e.g., "ko", "ja", "en")
  */
+/*
+ * Convert all backslashes to forward slashes in a path (in-place).
+ * MinGW-compiled libintl requires forward slashes for catalog lookup.
+ */
+#ifdef _WIN32
+static void
+normalize_path_separators(char *path)
+{
+    char *p;
+    for (p = path; *p; p++) {
+        if (*p == '\\')
+            *p = '/';
+    }
+}
+#endif
+
 static const char *
 find_locale_dir(const char *lang)
 {
@@ -268,7 +335,33 @@ find_locale_dir(const char *lang)
     }
 
     /* 2. Check relative to executable (for development/portable installs) */
-#ifdef __linux__
+#ifdef _WIN32
+    {
+        char exe_path[BUFSZ * 2];
+        DWORD len = GetModuleFileNameA(NULL, exe_path, sizeof(exe_path) - 1);
+        if (len > 0) {
+            char *slash;
+            exe_path[len] = '\0';
+            /* Convert to forward slashes for libintl compatibility */
+            normalize_path_separators(exe_path);
+            /* Find last path separator */
+            slash = strrchr(exe_path, '/');
+            if (slash) {
+                *slash = '\0';
+                /* Try locale/ next to exe (installed layout) */
+                snprintf(localedir_buf, sizeof(localedir_buf), "%s/locale", exe_path);
+                snprintf(testpath, sizeof(testpath), "%s/%s/LC_MESSAGES/nethack.mo", localedir_buf, lang);
+                if (access(testpath, R_OK) == 0)
+                    return localedir_buf;
+                /* Try ../../../dat/locale (if exe is in binary/Release/x64) */
+                snprintf(localedir_buf, sizeof(localedir_buf), "%s/../../../dat/locale", exe_path);
+                snprintf(testpath, sizeof(testpath), "%s/%s/LC_MESSAGES/nethack.mo", localedir_buf, lang);
+                if (access(testpath, R_OK) == 0)
+                    return localedir_buf;
+            }
+        }
+    }
+#elif defined(__linux__)
 #if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-truncation"
@@ -458,7 +551,7 @@ process_korean_postpositions(char *buf, const char *format, ...)
 
     /* First, do standard formatting */
     va_start(args, format);
-    vsnprintf(temp, sizeof(temp), format, args);
+    nh_vsnprintf(temp, sizeof(temp), format, args);
     va_end(args);
 
     /* If not Korean locale, just copy and return */

@@ -75,7 +75,17 @@ GetlinDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message) {
     case WM_INITDIALOG:
         data = (struct getlin_data *) lParam;
+#ifdef ENABLE_NLS
+        {
+            WCHAR wq[BUFSZ];
+            MultiByteToWideChar(CP_UTF8, 0, data->question, -1, wq, BUFSZ);
+            SetWindowTextW(hWnd, wq);
+            /* Also set wbuf for size calculation below */
+            NH_A2W(data->question, wbuf, sizeof(wbuf));
+        }
+#else
         SetWindowText(hWnd, NH_A2W(data->question, wbuf, sizeof(wbuf)));
+#endif
         SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR) data);
 
         /* center dialog in the main window */
@@ -83,12 +93,21 @@ GetlinDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         GetWindowRect(GetNHApp()->hMainWnd, &main_rt);
         WindowDC = GetWindowDC(hWnd);
 
-        if (!GetWindowExtEx(WindowDC, &WindowExtents)
-            || !GetViewportExtEx(WindowDC, &ViewPortExtents)
-            || !GetTextExtentPoint32(GetWindowDC(hWnd), wbuf, _tcslen(wbuf),
-                                     &dlg_sz)) {
-            dlg_sz.cx = 0;
-        } else {
+        {
+#ifdef ENABLE_NLS
+            WCHAR wq2[BUFSZ];
+            MultiByteToWideChar(CP_UTF8, 0, data->question, -1, wq2, BUFSZ);
+            BOOL szok = GetWindowExtEx(WindowDC, &WindowExtents)
+                && GetViewportExtEx(WindowDC, &ViewPortExtents)
+                && GetTextExtentPoint32W(GetWindowDC(hWnd), wq2, (int)wcslen(wq2), &dlg_sz);
+#else
+            BOOL szok = GetWindowExtEx(WindowDC, &WindowExtents)
+                && GetViewportExtEx(WindowDC, &ViewPortExtents)
+                && GetTextExtentPoint32(GetWindowDC(hWnd), wbuf, _tcslen(wbuf), &dlg_sz);
+#endif
+            if (!szok) {
+                dlg_sz.cx = 0;
+            } else {
             /* I think we need to do the following scaling */
             dlg_sz.cx *= ViewPortExtents.cx;
             dlg_sz.cx /= WindowExtents.cx;
@@ -96,6 +115,7 @@ GetlinDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             dlg_sz.cx += GetSystemMetrics(SM_CXSIZE)
                          + 2 * (GetSystemMetrics(SM_CXBORDER)
                                 + GetSystemMetrics(SM_CXFRAME));
+            }
         }
 
         if (dlg_sz.cx < dlg_rt.right - dlg_rt.left)
@@ -145,9 +165,21 @@ GetlinDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case IDOK:
             data =
                 (struct getlin_data *) GetWindowLongPtr(hWnd, GWLP_USERDATA);
+#ifdef ENABLE_NLS
+            /* Use Unicode API to get text, then convert to UTF-8 */
+            {
+                WCHAR wtext[BUFSZ];
+                SendDlgItemMessageW(hWnd, IDC_GETLIN_EDIT, WM_GETTEXT,
+                                   (WPARAM) BUFSZ, (LPARAM) wtext);
+                WideCharToMultiByte(CP_UTF8, 0, wtext, -1,
+                                    data->result, (int) data->result_size,
+                                    NULL, NULL);
+            }
+#else
             SendDlgItemMessage(hWnd, IDC_GETLIN_EDIT, WM_GETTEXT,
                                (WPARAM) sizeof(wbuf2), (LPARAM) wbuf2);
             NH_W2A(wbuf2, data->result, data->result_size);
+#endif
 
         FALLTHROUGH;
         /* FALLTHRU */
@@ -1034,7 +1066,7 @@ plselDrawItem(HWND hWnd, WPARAM wParam, LPARAM lParam)
     FillRect(lpdis->hDC, &lpdis->rcItem, brush);
     RECT rect = lpdis->rcItem;
     rect.left += 5;
-    DrawTextA(lpdis->hDC, string, strlen(string), &rect,
+    NH_DrawText(lpdis->hDC, string, strlen(string), &rect,
         DT_LEFT | DT_SINGLELINE | DT_VCENTER);
 
     if (data->focus == control) {

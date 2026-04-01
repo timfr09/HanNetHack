@@ -1,0 +1,132 @@
+Building HanNetHack on Windows (Visual Studio)
+================================================
+
+This guide covers building HanNetHack (Korean NetHack) on Windows
+using Visual Studio. HanNetHack requires an additional dependency
+(gettext/libintl) compared to upstream NetHack for Korean
+localization (i18n) support.
+
+
+Quick Start
+-----------
+
+If you just want to build and play, run these commands from the
+top of the HanNetHack source tree in a Windows Command Prompt:
+
+    sys\windows\fetch.cmd lua
+    sys\windows\fetch.cmd pdcursesmod
+    sys\windows\setup-gettext.cmd
+
+Then open sys\windows\vs\NetHack.sln in Visual Studio, select
+Release | x64, and build the solution (Ctrl+Shift+B).
+
+After building, run the install script to set up the game directory:
+
+    sys\windows\install.cmd
+
+The game will be ready to play in the install\HanNetHack\ directory.
+
+
+Prerequisites
+-------------
+
+  1. Visual Studio 2022 or later (Community edition is free)
+     - "Desktop development with C++" workload must be installed
+     - Install: https://visualstudio.microsoft.com/vs/community/
+
+     If installing from command line:
+         winget install Microsoft.VisualStudio.2022.Community ^
+             --override "--add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended --passive"
+
+  2. Lua 5.4.8 (downloaded automatically)
+     From the top of the source tree:
+         sys\windows\fetch.cmd lua
+
+  3. PDCursesMod 4.4.0 (optional, for curses/graphics support)
+     From the top of the source tree:
+         sys\windows\fetch.cmd pdcursesmod
+
+  4. gettext/libintl (required for Korean localization)
+     From the top of the source tree:
+         sys\windows\setup-gettext.cmd
+
+     This script will:
+       - Download prebuilt gettext binaries
+       - Create a libintl.h header for MSVC
+       - Generate an MSVC-compatible import library (intl.lib)
+
+
+Building from Visual Studio IDE
+-------------------------------
+
+  1. Open sys\windows\vs\NetHack.sln
+  2. Select configuration: Release (or Debug)
+  3. Select platform: x64
+  4. Build Solution (Ctrl+Shift+B)
+
+  Output:
+    binary\Release\x64\NetHack.exe   - Console (TTY) version
+    binary\Release\x64\NetHackW.exe  - GUI (Windows) version
+    binary\Release\x64\recover.exe   - Save file recovery tool
+
+
+Building from Command Line (MSBuild)
+-------------------------------------
+
+Open "Developer Command Prompt for VS 2022" and run:
+
+    cd <HanNetHack source directory>
+    msbuild sys\windows\vs\NetHack.sln /p:Configuration=Release /p:Platform=x64 /m
+
+If you see errors about platform toolset (v145), add:
+    /p:PlatformToolset=v143
+
+
+Post-Build: Installing
+----------------------
+
+Run the install script to copy all necessary files:
+
+    sys\windows\install.cmd
+
+This creates an install\HanNetHack\ directory with:
+  - NetHack.exe / NetHackW.exe
+  - All required DLLs (libintl, libiconv, etc.)
+  - Game data files (nhdat)
+  - Configuration template
+
+You can move the install\HanNetHack\ directory anywhere.
+Double-click NetHackW.exe to play the GUI version,
+or run NetHack.exe from a terminal for the console version.
+
+
+Differences from Upstream NetHack
+---------------------------------
+
+HanNetHack adds the following to the Windows build:
+
+  - i18n.c and ko_postpos.c source files for Korean localization
+  - gettext (libintl) dependency for translation support
+  - /utf-8 compiler flag for Korean string literals in source
+  - DISABLE_WARNING_FORMAT / RESTORE_WARNING_FORMAT macros for MSVC
+  - Windows-compatible wcwidth() implementation for CJK character widths
+
+
+Troubleshooting
+---------------
+
+  Q: Build fails with "v145 build tools not found"
+  A: Add /p:PlatformToolset=v143 to your MSBuild command,
+     or retarget the solution in Visual Studio (right-click solution
+     -> Retarget Solution).
+
+  Q: Build fails with "cannot open include file 'libintl.h'"
+  A: Run sys\windows\setup-gettext.cmd to set up the gettext dependency.
+
+  Q: Build fails with "unresolved external symbol init_i18n / wcwidth"
+  A: Ensure i18n.c and ko_postpos.c are included in the project.
+     These should already be in NetHack.vcxproj and NetHackW.vcxproj.
+
+  Q: Game crashes on startup with missing DLL error
+  A: Copy the required DLLs to the game directory, or run
+     sys\windows\install.cmd which does this automatically.

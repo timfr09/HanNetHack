@@ -9,7 +9,7 @@
 #include <string.h>
 #endif
 
-#ifdef I18N_GETTEXT
+#if defined(ENABLE_NLS) && defined(SAFEPROCS)
 #include "i18n.h"
 #endif
 
@@ -461,7 +461,7 @@ dlb_fopen(const char *name, const char *mode)
 {
     FILE *fp;
     dlb *dp;
-#ifdef I18N_GETTEXT
+#if defined(ENABLE_NLS) && defined(SAFEPROCS)
     char locale_name[BUFSZ];
     const char *lang;
 #endif
@@ -475,7 +475,7 @@ dlb_fopen(const char *name, const char *mode)
 
     dp = (dlb *) alloc(sizeof(dlb));
 
-#ifdef I18N_GETTEXT
+#if defined(ENABLE_NLS) && defined(SAFEPROCS)
     /* Try locale-specific file first (e.g., "locale/ko/help") */
     lang = get_current_language();
     if (lang && *lang && strcmp(lang, "en") != 0) {

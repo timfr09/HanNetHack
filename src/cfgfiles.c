@@ -1869,7 +1869,7 @@ vconfig_error_add(const char *str, va_list the_args)
     int vlen = 0;
     char buf[BIGBUFSZ]; /* will be chopped down to BUFSZ-1 if longer */
 
-    vlen = vsnprintf(buf, sizeof buf, str, the_args);
+    vlen = nh_vsnprintf(buf, sizeof buf, str, the_args);
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED) && defined(DEBUG)
     if (vlen >= (int) sizeof buf)
         panic("%s: truncation of buffer at %zu of %d bytes",

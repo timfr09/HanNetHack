@@ -244,19 +244,46 @@ extern COLORREF message_fg_color;
 #define SYSCLR_TO_BRUSH(x) ((HBRUSH)(((intptr_t) x) + 1))
 
 /* unicode stuff */
+#ifdef ENABLE_NLS
+#define NH_CODEPAGE CP_UTF8
+#else
 #define NH_CODEPAGE (SYMHANDLING(H_IBM) ? GetOEMCP() : GetACP())
+#endif
 #ifdef _UNICODE
 #define nh_stprintf swprintf
 #define NH_W2A(w, a, cb) \
     (WideCharToMultiByte(NH_CODEPAGE, 0, (w), -1, (a), (cb), NULL, NULL), (a))
-
 #define NH_A2W(a, w, cb) \
     (MultiByteToWideChar(NH_CODEPAGE, 0, (a), -1, (w), (cb)), (w))
 #else
 #define nh_stprintf snprintf
 #define NH_W2A(w, a, cb) (strncpy((a), (w), (cb)))
-
 #define NH_A2W(a, w, cb) (strncpy((w), (a), (cb)))
+#endif
+
+/*
+ * For ENABLE_NLS (MultiByte build), provide helpers to draw UTF-8
+ * text using wide-char APIs directly, since DrawTextA may not
+ * handle UTF-8 reliably even with the activeCodePage manifest.
+ */
+#ifdef ENABLE_NLS
+static __inline int NH_DrawText(HDC hdc, const char *str, int len, LPRECT rect, UINT fmt)
+{
+    WCHAR wbuf[4096];
+    int wlen = MultiByteToWideChar(CP_UTF8, 0, str, len, wbuf, 4096);
+    return DrawTextW(hdc, wbuf, wlen, rect, fmt);
+}
+static __inline BOOL NH_GetTextExtentPoint32(HDC hdc, const char *str, int len, LPSIZE size)
+{
+    WCHAR wbuf[4096];
+    int wlen = MultiByteToWideChar(CP_UTF8, 0, str, len, wbuf, 4096);
+    return GetTextExtentPoint32W(hdc, wbuf, wlen, size);
+}
+#else
+#define NH_DrawText(hdc, str, len, rect, fmt) \
+    DrawTextA((hdc), (str), (len), (rect), (fmt))
+#define NH_GetTextExtentPoint32(hdc, str, len, size) \
+    GetTextExtentPoint32A((hdc), (str), (len), (size))
 #endif
 
 /* map mode macros */

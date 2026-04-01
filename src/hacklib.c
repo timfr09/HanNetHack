@@ -879,7 +879,7 @@ nh_snprintf(
     int n;
 
     va_start(ap, fmt);
-    n = vsnprintf(str, size, fmt, ap);
+    n = nh_vsnprintf(str, size, fmt, ap);
     va_end(ap);
     if (n < 0 || (size_t) n >= size) { /* is there a problem? */
 #if 0

@@ -31,7 +31,7 @@ get_strength_str(void)
         else
             Sprintf(buf, "18/**");
     } else
-        Sprintf(buf, "%-1d", st);
+        Sprintf(buf, "%d", st);
 
     return buf;
 }
@@ -57,7 +57,22 @@ do_statusline1(void)
     Strcpy(newbot1, svp.plname);
     if ('a' <= newbot1[0] && newbot1[0] <= 'z')
         newbot1[0] += 'A' - 'a';
-    newbot1[10] = 0;
+    /* Truncate name but don't break UTF-8 multibyte sequences */
+    {
+        int k = 0, last_safe = 0;
+        while (newbot1[k] && k < 10) {
+            last_safe = k;
+            if ((unsigned char)newbot1[k] >= 0xC0) {
+                int clen = ((unsigned char)newbot1[k] < 0xE0) ? 2
+                         : ((unsigned char)newbot1[k] < 0xF0) ? 3 : 4;
+                k += clen;
+            } else {
+                k++;
+            }
+        }
+        if (k > 10) k = last_safe;
+        newbot1[k] = 0;
+    }
     Sprintf(nb = eos(newbot1), _(" the "));
 
     if (Upolyd) {
@@ -83,7 +98,7 @@ do_statusline1(void)
         Sprintf(nb = eos(nb), "%*s", i - j, " "); /* pad with spaces */
 
     /* Korean i18n: status line attribute abbreviations */
-    Sprintf(nb = eos(nb), _("St:%s Dx:%-1d Co:%-1d In:%-1d Wi:%-1d Ch:%-1d"),
+    Sprintf(nb = eos(nb), _("St:%s Dx:%d Co:%d In:%d Wi:%d Ch:%d"),
             get_strength_str(),
             ACURR(A_DEX), ACURR(A_CON), ACURR(A_INT), ACURR(A_WIS),
             ACURR(A_CHA));
@@ -148,7 +163,7 @@ do_statusline2(void)
     if (Upolyd)
         Sprintf(expr, _("HD:%d"), mons[u.umonnum].mlevel);
     else if (flags.showexp)
-        Sprintf(expr, _("Xp:%d/%-1ld"), u.ulevel, u.uexp);
+        Sprintf(expr, _("Xp:%d/%ld"), u.ulevel, u.uexp);
     else
         Sprintf(expr, _("Xp:%d"), u.ulevel);
     xln = strlen(expr);

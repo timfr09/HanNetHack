@@ -31,7 +31,7 @@ staticfn void save_gamelog(NHFILE *);
 staticfn void savegamestate(NHFILE *);
 staticfn void savelev_core(NHFILE *, xint8);
 staticfn void save_msghistory(NHFILE *);
-
+staticfn void save_adjust_levelflags(void);
 #if defined(HANGUPHANDLING)
 #define HUP if (!program_state.done_hup)
 #else
@@ -270,7 +270,12 @@ savegamestate(NHFILE *nhfp)
     program_state.saving++; /* caller should/did already set this... */
     uid = (unsigned long) getuid();
     Sfo_ulong(nhfp, &uid, "gamestate-uid");
+    moves_to_relative_time(&svc.context.seer_turn);
+    moves_to_relative_time(&svc.context.digging.lastdigtime);
     Sfo_context_info(nhfp, &svc.context, "gamestate-context");
+    relative_time_to_moves(&svc.context.seer_turn);
+    relative_time_to_moves(&svc.context.digging.lastdigtime);
+
     Sfo_flag(nhfp, &flags, "gamestate-flags");
     urealtime.finish_time = getnow();
     urealtime.realtime += timet_delta(urealtime.finish_time,
@@ -509,7 +514,9 @@ savelev_core(NHFILE *nhfp, xint8 lev)
     save_stairs(nhfp);
     Sfo_dest_area(nhfp, &svu.updest, "lev-updest");
     Sfo_dest_area(nhfp, &svd.dndest, "lev-dndest");
+    save_adjust_levelflags();
     Sfo_levelflags(nhfp, &svl.level.flags, "lev-level_flags");
+    rest_adjust_levelflags();
 
     Sfo_int(nhfp, &svd.doors_alloc, "lev-doors_alloc");
     /* don't rely on underlying write() behavior to write
@@ -554,6 +561,13 @@ savelev_core(NHFILE *nhfp, xint8 lev)
         (void) memset(svr.rooms, 0, sizeof(svr.rooms));
     }
     return;
+}
+
+void
+save_adjust_levelflags(void)
+{
+    /* adjust any timestamps */
+    moves_to_relative_time(&svl.level.flags.stasis_until);
 }
 
 staticfn void
@@ -844,7 +858,12 @@ savemon(NHFILE *nhfp, struct monst *mtmp)
         buflen = EDOG(mtmp) ? (int) sizeof (struct edog) : 0;
         Sfo_int(nhfp, &buflen, "monst-edog_length");
         if (buflen > 0) {
+            /* we only store relative times in save and bones */
+            moves_to_relative_time(&EDOG(mtmp)->droptime);
+            moves_to_relative_time(&EDOG(mtmp)->hungrytime);
             Sfo_edog(nhfp, EDOG(mtmp), "monst-edog");
+            relative_time_to_moves(&EDOG(mtmp)->droptime);
+            relative_time_to_moves(&EDOG(mtmp)->hungrytime);
         }
         buflen = EBONES(mtmp) ? (int) sizeof (struct ebones) : 0;
         Sfo_int(nhfp, &buflen, "monst-ebones_length");
@@ -1111,6 +1130,7 @@ freedynamicdata(void)
     cmdq_clear(CQ_REPEAT);
     cmdbind_freeall();
     free_tutorial(); /* (only needed if quitting while in tutorial) */
+    wish_history_flush();
 
     /* per-turn data, but might get added to when freeing other stuff */
     dobjsfree(); /* really free deleted objects */

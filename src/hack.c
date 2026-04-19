@@ -597,6 +597,26 @@ moverock_core(coordxy sx, coordxy sy)
                     }
                     seetrap(ttmp);
                     return sobj_at(BOULDER, sx, sy) ? -1 : 0;
+                case ROLLING_BOULDER_TRAP:
+                {
+                    int tox = rx;
+                    int toy = ry;
+                    /* the boulder continues until it reaches one of
+                       the trap's launch spots or hits a wall / out-of-bounds */
+                    while (isok(tox + u.dx, toy + u.dy)) {
+                        tox += u.dx;
+                        toy += u.dy;
+                        if (tox == ttmp->launch.x && toy == ttmp->launch.y)
+                            break;
+                        if (tox == ttmp->launch2.x && toy == ttmp->launch2.y)
+                            break;
+                    }
+                    pline("%s away from you!",
+                          Tobjnam(otmp, "suddenly roll"));
+                    feeltrap(ttmp);
+                    launch_obj(BOULDER, sx, sy, tox, toy, ROLL | LAUNCH_KNOWN);
+                    return sobj_at(BOULDER, sx, sy) ? -1 : 0;
+                }
                 default:
                     break; /* boulder not affected by this trap */
                 }
@@ -1839,8 +1859,8 @@ handle_tip(int tip)
     if (!flags.tips)
         return FALSE;
 
-    if (tip >= 0 && tip < NUM_TIPS && !svc.context.tips[tip]) {
-        svc.context.tips[tip] = TRUE;
+    if (tip >= 0 && tip < NUM_TIPS && !(svc.context.tips & (1 << tip))) {
+        svc.context.tips |= (1 << tip);
         /* the "Tip:" prefix is a hint to use of OPTIONS=!tips to suppress */
         switch (tip) {
         case TIP_ENHANCE:
@@ -1891,7 +1911,7 @@ swim_move_danger(coordxy x, coordxy y)
             || liquid_wall) {
             if (svc.context.nopick) {
                 /* moving with m-prefix */
-                svc.context.tips[TIP_SWIM] = TRUE;
+                svc.context.tips |= (1 << TIP_SWIM);
                 return FALSE;
             } else if (ParanoidSwim || liquid_wall) {
                 You(_("avoid %s into the %s."),
@@ -3083,6 +3103,93 @@ invocation_message(void)
     }
 }
 
+/* for status: set up iflags.terrain_typ, an index into terrain_descrp[];
+   some types need fixing up  */
+void
+classify_terrain(void)
+{
+    struct rm *lev = &levl[u.ux][u.uy];
+    int typ = svl.lastseentyp[u.ux][u.uy]; /* lev->typ */
+
+    /*
+     * If the terrain under the hero is different now from what it
+     * was on the previous check, bring iflags.terrain_typ up to date
+     * and request a status update.  Unless hero is running--then the
+     * update request will be suppressed.
+     */
+
+    if (Underwater) {
+        typ = xSUBMERGED;
+    } else {
+        switch (typ) {
+        case STONE:
+            if (svl.level.flags.arboreal)
+                typ = TREE;
+            break;
+        case CORR:
+        case ROOM:
+            /* this matches surface() but 'floor' is odd in many places */
+            typ = !Is_earthlevel(&u.uz) ? xFLOOR : xGROUND;
+            break;
+        case DOOR:
+            /* defaults to "doorway" (door-less or broken) */
+            if ((lev->doormask & D_ISOPEN) != 0)
+                typ = xOPENDOOR;
+            else if ((lev->doormask & (D_CLOSED | D_LOCKED | D_TRAPPED)) != 0)
+                typ = xSHUTDOOR;
+            break;
+        case DRAWBRIDGE_UP:
+            /* ICE, MOAT, LAVA, or 'STONE' (which ought to be 'room') */
+            typ = db_under_typ(lev->drawbridgemask);
+            if (typ == STONE || typ == ROOM)
+                typ = xGROUND;
+            break;
+        case MOAT:
+            /* moat and swamp handling match waterbody_name()'s result */
+            if (Is_medusa_level(&u.uz))
+                typ = xSEA;
+            else if (Is_juiblex_level(&u.uz))
+                typ = xSWAMP;
+            break;
+        case WATER:
+            if (!Is_waterlevel(&u.uz))
+                typ = xWATERWALL;
+            break;
+#if 0   /* don't bother -- Passes_walls for hero is rare, moving
+         * from one type of wall to another even rarer, and the
+         * cost of some extra once per move status updates is low */
+        case VWALL:
+        case HWALL:
+        case TLCORNER:
+        case TRCORNER:
+        case BLCORNER:
+        case BRCORNER:
+        case CROSSWALL:
+        case TUWALL:
+        case TDWALL:
+        case TLWALL:
+        case TRWALL:
+        case SDOOR: /* (note: lastseentyp[][] never yields SDOOR) */
+            /* any wall type would do, terrain_descr[] is "Wall" for all;
+               forcing just one avoids false 'changed' detection below if
+               hero with Passes_walls ability moves from one to another */
+            typ = VWALL;
+            break;
+#endif
+        default:
+            break;
+        }
+    }
+
+    if (typ != iflags.terrain_typ) {
+        /* terrain at hero's spot is different */
+        iflags.terrain_typ = typ;
+        /* request a status update unless hero is running */
+        if (flags.terrainstatus && !svc.context.run)
+            disp.botl = TRUE;
+    }
+}
+
 /* moving onto different terrain;
    might be going into solid rock, inhibiting levitation or flight,
    or coming back out of such, reinstating levitation/flying */
@@ -3123,13 +3230,19 @@ switch_terrain(void)
     }
     if ((!!Levitation ^ was_levitating) || (!!Flying ^ was_flying))
         disp.botl = TRUE; /* update Lev/Fly status condition */
+
+    if (flags.terrainstatus)
+        classify_terrain();
 }
 
 /* set or clear u.uinwater */
 void
 set_uinwater(int in_out)
 {
-    u.uinwater = in_out ? 1 : 0;
+    if (in_out != (int) u.uinwater) {
+        u.uinwater = in_out ? 1 : 0;
+        switch_terrain();
+    }
 }
 
 /* extracted from spoteffects; called by spoteffects to check for entering or
@@ -3245,8 +3358,11 @@ spoteffects(boolean pick)
     spotterrain = levl[u.ux][u.uy].typ;
     spotloc.x = u.ux, spotloc.y = u.uy;
 
-    /* moving onto different terrain might cause Lev or Fly to toggle */
-    if (spotterrain != levl[u.ux0][u.uy0].typ || !on_level(&u.uz, &u.uz0))
+    /* moving onto different terrain might cause Lev or Fly to toggle;
+      level change sets <ux0,uy0> to <ux,uy>, so this spotterrain
+      check always fails then, but it also sets iflags.terrain_typ */
+    if (spotterrain != levl[u.ux0][u.uy0].typ
+        || iflags.terrain_typ == MAX_TYPE)
         switch_terrain();
 
     if (pooleffects(TRUE))
@@ -4034,9 +4150,19 @@ end_running(boolean and_travel)
 {
     /* moveloop() suppresses time_botl when context.run is non-zero; when
        running stops, update 'time' even if other botl status is unchanged */
-    if (flags.time && svc.context.run)
-        disp.time_botl = TRUE;
-    svc.context.run = 0;
+    if (svc.context.run) {
+        svc.context.run = 0;
+        if (flags.time)
+            disp.time_botl = TRUE;
+        /* classify_terrain() suppresses setting disp.botl when
+           running; after that, it can no longer compare current terrain
+           against iflaga.terrain_typ to detect a change, so recompute */
+        if (flags.terrainstatus) {
+            iflags.terrain_typ = MAX_TYPE; /* "none of the above" value */
+            classify_terrain();
+        }
+    }
+
     /* 'context.mv' isn't travel but callers who want to end travel
        all clear it too */
     if (and_travel)

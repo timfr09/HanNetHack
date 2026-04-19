@@ -32,6 +32,9 @@
 
 #define OPTIONS_AT_RUNTIME  /* build info done at runtime not text file */
 
+#define EARLY_CONFIGFILE_PASS
+#define TTY_PERM_INVENT
+
 /*
  * -----------------------------------------------------------------
  *  The remaining code shouldn't need modification.

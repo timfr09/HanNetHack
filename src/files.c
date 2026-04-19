@@ -2546,8 +2546,10 @@ proc_wizkit_line(char *buf)
     otmp = readobjnam(buf, (struct obj *) 0);
 
     if (otmp) {
-        if (otmp != &hands_obj)
+        if (otmp != &hands_obj) {
+            wish_history_add(buf);
             wizkit_addinv(otmp);
+        }
     } else {
         /* .60 limits output line width to 79 chars */
         config_error_add("Bad wizkit item: \"%.60s\"", buf);

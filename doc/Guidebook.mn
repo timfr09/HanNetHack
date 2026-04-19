@@ -60,7 +60,7 @@
 .ds f0 \*(vr
 .ds f1 \" empty
 .\"DO NOT REMOVE NH_DATESUB .ds f2 Date(%B %-d, %Y)
-.ds f2 March 21, 2026
+.ds f2 April 16, 2026
 .
 .\" A note on some special characters:
 .\" \(lq = left double quote
@@ -1247,6 +1247,9 @@ Autocompletes.
 Default key is \(oqM-A\(cq, and also \(oq\(haN\(cq if
 .op number_pad
 is on.
+.lp ""
+Preceding #annotate with the \(oqm\(cq prefix is the same as
+#overview with the prefix.
 .lp "#apply   "
 Apply (use) a tool such as a pick-axe, a key, or a lamp.
 Default key is \(oqa\(cq.
@@ -1935,6 +1938,7 @@ Wish for something.
 Autocompletes.
 Debug mode only.
 Default key is \(oq\(haW\(cq.
+Precede this command with the \(oq\f(CRm\fP\(cq prefix to show a wish history menu.
 .lp "#wmode   "
 Show wall modes.
 Autocompletes.
@@ -2720,6 +2724,12 @@ Some of the more obscure weapons (such as the \fIaklys\fP,
 \fIlucern hammer\fP, and \fIbec-de-corbin\fP) are defined in an
 appendix to \fIUnearthed Arcana\fP, an AD&D supplement.
 .pg
+Some interfaces support the
+.op weaponstatus
+option.
+When it is enabled, an extra status condition is displayed, describing
+the currently wielded weapon.
+.pg
 The commands to use weapons are \(oqw\(cq (wield), \(oqt\(cq (throw),
 \(oqf\(cq (fire), \(oqQ\(cq (quiver),
 \(oqx\(cq (exchange), \(oqX\(cq (twoweapon), and \(lq#enhance\(rq
@@ -2951,6 +2961,12 @@ The
 option can be set (prior to game start) to attempt to play the entire
 game without wearing any armor (a self-imposed challenge which is
 extremely difficult to accomplish).
+.pg
+Some interfaces support the
+.op armorstatus
+option.
+When it is enabled, an extra status condition is displayed, summarizing
+currently worn armor.
 .pg
 The commands to use armor are \(oqW\(cq (wear) and \(oqT\(cq (take off).
 The \(oqA\(cq command can be used to take off armor as well as other
@@ -3398,6 +3414,14 @@ not penalized for being spoken to by an angry god, priest(ess), or
 other religious figure; a true atheist would hear the words but
 attach no special meaning to them.
 .pg
+A pauper starts the game with no possessions, no spells, and no weapon or
+spell skills (and if playing as a knight, your pony will not have a saddle).
+Can only be initiated by starting a new game with \f(CROPTIONS=pauper\fP
+set in your run-time configurtion file or \f(CRNETHACKOPTIONS\fP environment
+variable.
+Once the game is underway, you can acquire and use items, spells, and skills
+in the usual way.
+.pg
 Most players fight with a wielded weapon (or tool intended to be
 wielded as a weapon).  Another challenge is to win the game without
 using such a wielded weapon.  You are still permitted to throw,
@@ -3554,7 +3578,8 @@ the Castle level's drawbridge or can be given to you via prayer boon.
 and \fIPauper\fP are also conducts, and they can only be
 enabled by setting the correspondingly named option in NETHACKOPTIONS
 or run-time configuration file prior to game start.
-In the case of \fIBlind\fP and \fIDeaf\fP, the option also enforces the conduct.
+In the case of \fIBlind\fP and \fIDeaf\fP, the option also enforces the
+conduct.
 They aren't really significant accomplishments unless/until you make
 substantial progress into the dungeon.
 .
@@ -3721,7 +3746,7 @@ Otherwise the last section extends to the end of the options file.
 Highlight menu lines with different colors.
 See the \(lqConfiguring Menu Colors\(rq section.
 .lp MSGTYPE
-Change the way messages are shown in the top status line.
+Change the way messages are shown in the top line.
 See the \(lqConfiguring Message Types\(rq section.
 .lp ROGUESYMBOLS
 Custom symbols for the rogue level's symbol set.
@@ -3747,6 +3772,7 @@ Debug mode only:  extra items to add to initial inventory.
 Value is the name of a text file containing a list of item names,
 one per line, up to a maximum of 128 lines.
 Each line is processed by the function that handles wishing.
+Entries are added to the wish history; see the wizwish-command.
 .lp ""
 Example:
 .sd
@@ -3869,6 +3895,21 @@ If \f(CRalign\fP is not specified, there is no default value;
 player will be prompted unless role and/or race forces a choice for alignment.
 Cannot be set with the \(oq\f(CRO\fP\(cq command.
 Persistent.
+.lp armorstatus
+Display an extra status condition which summarizes currently worn armor
+(default off, not supported by all interfaces).
+.lp ""
+For the usual case where more than one piece of armor is worn, a list of
+letters is shown in the following order:
+.sd
+\f(CRG\fP - gloves;
+\f(CRC\fP - cloak;
+\f(CRA\fP - suit;
+\f(CRU\fP - shirt;
+\f(CRH\fP - helmet;
+\f(CRB\fP - boots;
+\f(CRS\fP - shield.
+.ed
 .lp autodescribe
 Automatically describe the terrain under cursor when asked to get a location
 on the map (default true).
@@ -4486,6 +4527,10 @@ The positive (no \(oq!\(cq) and negative (with \(oq!\(cq) entries
 can be intermixed.
 .lp pauper
 Start the character with no possessions (default false).  Persistent.
+.lp ""
+Also start with no spells or skills, which are tied to starting equipment.
+Does not inhibit acquiring and using items, spells, and skills once play
+has started.
 .lp perm_invent
 If true, always display your current inventory in a window (default false).
 .lp ""
@@ -4859,6 +4904,9 @@ and prior versions (for example \(lqsuppress_alert:3.3.1\(rq).
 This option may be used to select one of the named symbol sets found within
 \(lqsymbols\(rq to alter the symbols displayed on the screen.
 Use \(lqsymset:default\(rq to explicitly select the default symbols.
+.lp terrainstatus
+Display an extra status condition describing the spot beneath the hero's
+feet (default off, not supported by all interfaces).
 .lp "time    "
 Show the elapsed game time in turns on bottom line (default off).
 Persistent.
@@ -4895,6 +4943,16 @@ Play a tutorial level at the start of the game.
 Setting this option on or off in the config file will skip the query.
 .lp "verbose "
 Provide more commentary during the game (default on).  Persistent.
+.lp weaponstatus
+Display an extra status condition which describes currently wielded weapon
+(default off, not supported by all interfaces).
+.lp ""
+Some possible displayed values are:
+.sd
+\f(CRbare-hnds\fP - no weapon and no gloves;
+\f(CRempty-hnd\fP - no weapon but gloves are worn;
+\f(CRdual-weps\fP - wielding two weapons.
+.ed
 .lp whatis_coord
 When using the \(oq/\(cq or \(oq;\(cq commands to look around on the map with
 .op autodescribe

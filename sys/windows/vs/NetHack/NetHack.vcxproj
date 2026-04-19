@@ -74,7 +74,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <AdditionalIncludeDirectories>$(WinWin32Dir);$(IncDir);$(SysWindDir);$(SysShareDir);$(WinShareDir);$(LuaDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32CON;NO_TILE_C;DLB;SAFEPROCS;SND_LIB_WINDSOUND;USER_SOUNDS;SND_SOUNDEFFECTS_AUTOMAP;_LIB;HAS_STDINT_H;HAS_INTTYPES_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32CON;NO_TILE_C;DLB;SND_LIB_WINDSOUND;USER_SOUNDS;SND_SOUNDEFFECTS_AUTOMAP;_LIB;HAS_STDINT_H;HAS_INTTYPES_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -113,6 +113,7 @@
     <ClCompile Include="$(SrcDir)do_wear.c" />
     <ClCompile Include="$(SrcDir)drawing.c" />
     <ClCompile Include="$(SrcDir)dungeon.c" />
+    <ClCompile Include="$(SrcDir)earlyarg.c" />
     <ClCompile Include="$(SrcDir)eat.c" />
     <ClCompile Include="$(SrcDir)end.c" />
     <ClCompile Include="$(SrcDir)engrave.c" />
@@ -219,7 +220,6 @@
     <ClCompile Include="$(SysWindDir)windmain.c" />
     <ClCompile Include="$(SysWindDir)windsys.c" />
     <ClCompile Include="$(SndWindDir)windsound.c" />
-    <ClCompile Include="$(WinShareDir)safeproc.c" />
     <ClCompile Include="$(WinTtyDir)getline.c" />
     <ClCompile Include="$(WinTtyDir)topl.c" />
     <ClCompile Include="$(WinTtyDir)wintty.c" />
@@ -261,6 +261,7 @@
     <ClInclude Include="$(IncDir)isaac64.h" />
     <ClInclude Include="$(IncDir)lint.h" />
     <ClInclude Include="$(IncDir)load_img.h" />
+    <ClInclude Include="$(IncDir)mcastu.h" />
     <ClInclude Include="$(IncDir)mextra.h" />
     <ClInclude Include="$(IncDir)mfndpos.h" />
     <ClInclude Include="$(IncDir)mkroom.h" />

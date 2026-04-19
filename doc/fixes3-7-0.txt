@@ -1583,12 +1583,21 @@ allow rogues to also backstab sleeping or paralyzed monsters
 rogues cannot backstab monsters that have no backside
 give experience if opening Schroedinger's Box causes death of the cat inside
 priest donation amounts are explicitly stated, randomized slightly, based on
-       peak rather than current level, and allow for bulk donations (buying
-       larger amounts of clairvoyance/protection) if you have a lot of gold
+        peak rather than current level, and allow for bulk donations (buying
+        larger amounts of clairvoyance/protection) if you have a lot of gold
 amulet of magical breathing increases power regeneration
 change some command keys, 'v' is now chronicle, 'V' is versionshort,
 	m-prefix 'V' is longer version, remove key binding of #history
 one orc-town shaman has a higher level, affecting spellcasting
+hero has a small chance of catching items thrown at them
+wizard mode: history menu for #wizwish and WIZKIT
+monster priests and wizards did not cast spells
+prevent phaseable monsters hiding deep inside nondiggable walls
+blessed potion of see invisible does not guarantee the intrinsic
+prevent selecting all options in #optionsfull menu
+shapeshifters change shape less
+rolling boulder traps aren't removed when stepped on and move boulders
+        pushed onto them
 
 
 Fixes to 3.7.0-x General Problems Exposed Via git Repository
@@ -2194,6 +2203,7 @@ mounted hero was able to deliver joust hits when trapped
 timer sanity check for melting ice gave false complaint about non-ice for
 	frozen moat under open drawbridge
 mhitm_ad_phys() was not applying Half_physical_damage when hero was target
+callers of thitu() were not applyibg Half_physical_damage either
 throwing crystal plate mail or helm of brilliance up against the ceiling could
 	result in the item being cracked and then vanishing
 yn_function (used all over the place) sometimes triggered an impossible()
@@ -2908,7 +2918,7 @@ add "make fetch-docs" to download pre-formatted documentation
 monsters will use throw-and-return weapons such as an aklys
 archeologists can identify scrolls by deciphering their labels
 monster destroy armor -spell first erodes armor
-iron shoes protect the wearer against certain floor-based traps
+iron footwear protects the wearer against certain floor-based traps
 ring of stealth prevents hero from leaving tracks
 the game now automatically tracks which sell prices and buy prices you have
         seen for each type of item; these are visible in the discoveries list,
@@ -3121,6 +3131,7 @@ applied several source comment spelling or grammar fixes that were linked
 modernize code of LaTeX Guidebook (pr #1473 by Daniel Clow)
 restore ability for a characteristic also resets exercise/abuse for that
 	characteristic (pr #1403 by greg-kennedy)
+cross-compilation for the Amiga on Linux (pr #1494 by ingpaschke)
 
 
 Code Cleanup and Reorganization

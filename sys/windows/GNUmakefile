@@ -794,6 +794,7 @@ HACK_H = $(CONFIG_H) ../include/align.h ../include/artilist.h \
 	../include/decl.h ../include/defsym.h ../include/display.h \
 	../include/dungeon.h ../include/engrave.h ../include/flag.h \
 	../include/hack.h ../include/lint.h ../include/mextra.h \
+	../include/mcastu.h \
 	../include/mkroom.h ../include/monattk.h ../include/mondata.h \
 	../include/monflag.h ../include/monst.h ../include/monsters.h \
 	../include/nhlua.h ../include/obj.h ../include/objclass.h \
@@ -1231,21 +1232,21 @@ COREOBJS = $(addsuffix .o, allmain alloc apply artifact attrib ball bones botl \
 	   calendar cfgfiles cmd coloratt cppregex \
 	   dbridge decl detect dig display dlb do do_name do_wear \
 	   dog dogmove dokick dothrow drawing dungeon \
-	   eat end engrave exper explode extralev files fountain \
+	   earlyarg eat end engrave exper explode extralev files fountain \
 	   getpos glyphs hack iactions insight invent isaac64 light lock \
 	   mail makemon mcastu mdlib mhitm mhitu minion mklev mkmap mkmaze mkobj mkroom \
 	   mon mondata monmove monst mplayer mthrowu muse music \
 	   nhlobj nhlsel nhlua windsound o_init objects objnam options \
 	   pager pickup pline polyself potion pray priest quest questpgr \
 	   random read rect region report restore rip rnd role rumors \
-	   safeproc save sfbase sfstruct shk shknam sit selvar sounds sp_lev \
+	   save sfbase sfstruct shk shknam sit selvar sounds sp_lev \
 	   spell stairs steal steed strutil \
 	   symbols sys teleport timeout topten track trap u_init uhitm utf8map \
 	   vault version vision weapon were wield windmain windows windsys wizard \
 	   wizcmds worm worn write zap $(SOUNDLIBOBJS))
 
-CFLAGSW = $(CFLAGS) $(CFLAGSXTRA) $(SOUNDLIBINCL) $(COMMONDEF) $(DLBFLG) -DTILES -D_WINDOWS -DMSWIN_GRAPHICS -DSAFEPROCS -DNOTTYGRAPHICS $(SOUNDLIBDEFS)
-CPPFLAGSW = $(CFLAGS) $(CPPFLAGSXTRA) $(COMMONDEF) $(DLBFLG) -DTILES -D_WINDOWS -DMSWIN_GRAPHICS -DSAFEPROCS -DNOTTYGRAPHICS $(SOUNDLIBDEFS)
+CFLAGSW = $(CFLAGS) $(CFLAGSXTRA) $(SOUNDLIBINCL) $(COMMONDEF) $(DLBFLG) -DTILES -D_WINDOWS -DMSWIN_GRAPHICS -DNOTTYGRAPHICS $(SOUNDLIBDEFS)
+CPPFLAGSW = $(CFLAGS) $(CPPFLAGSXTRA) $(COMMONDEF) $(DLBFLG) -DTILES -D_WINDOWS -DMSWIN_GRAPHICS -DNOTTYGRAPHICS $(SOUNDLIBDEFS)
 
 ONHW = $(O)nethackw
 NHWONLY = $(addsuffix .o, mhaskyn mhdlg mhfont mhinput mhmain mhmap mhmenu \
@@ -1347,8 +1348,8 @@ CLEAN_FILE += $(NHWTARGETS) $(NHWOBJS) $(NHWRES) $(BMPS) $(WAV)
 #==========================================
 # nethack
 #==========================================
-CFLAGSNH = $(CFLAGSU) $(CFLAGSXTRA) $(SOUNDLIBINCL) -DNO_TILE_C -DSAFEPROCS -D_LIB -DWIN32CON $(SOUNDLIBDEFS)
-CPPFLAGSNH = $(CFLAGSU) $(CPPFLAGSXTRA) -DNO_TILE_C -DSAFEPROCS -D_LIB -DWIN32CON $(SOUNDLIBDEFS)
+CFLAGSNH = $(CFLAGSU) $(CFLAGSXTRA) $(SOUNDLIBINCL) -DNO_TILE_C -D_LIB -DWIN32CON $(SOUNDLIBDEFS)
+CPPFLAGSNH = $(CFLAGSU) $(CPPFLAGSXTRA) -DNO_TILE_C -D_LIB -DWIN32CON $(SOUNDLIBDEFS)
 
 ONH = $(O)nethack
 

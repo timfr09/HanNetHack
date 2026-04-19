@@ -17,7 +17,6 @@ staticfn boolean mu_maybe_destroy_web(struct monst *, boolean, struct trap *);
 staticfn struct obj *t_missile(int, struct trap *);
 staticfn boolean floor_trigger(int);
 staticfn boolean check_in_air(struct monst *, unsigned);
-staticfn boolean wearing_iron_shoes(struct monst *);
 staticfn int trapeffect_arrow_trap(struct monst *, struct trap *, unsigned);
 staticfn int trapeffect_dart_trap(struct monst *, struct trap *, unsigned);
 staticfn int trapeffect_rocktrap(struct monst *, struct trap *, unsigned);
@@ -1115,12 +1114,12 @@ check_in_air(struct monst *mtmp, unsigned trflags)
             || ((is_you ? Flying : is_flyer(mtmp->data)) && !plunged));
 }
 
-/* return TRUE if mtmp is wearing iron shoes */
-staticfn boolean
+/* return TRUE if mtmp is wearing shoes made of iron (iron/kicking) */
+boolean
 wearing_iron_shoes(struct monst *mtmp)
 {
     struct obj *armf = which_armor(mtmp, W_ARMF);
-    return armf && armf->otyp == IRON_SHOES;
+    return armf && objects[armf->otyp].oc_material == IRON;
 }
 
 /* is trap ttmp harmless to monster mtmp? */
@@ -1215,6 +1214,7 @@ trapeffect_arrow_trap(
     unsigned trflags UNUSED)
 {
     struct obj *otmp;
+    int dam;
 
     if (mtmp == &gy.youmonst) {
         if (trap->once && trap->tseen && !rn2(15)) {
@@ -1228,9 +1228,10 @@ trapeffect_arrow_trap(
         seetrap(trap);
         pline(_("An arrow shoots out at you!"));
         otmp = t_missile(ARROW, trap);
+        dam = dmgval(otmp, &gy.youmonst);
         if (u.usteed && !rn2(2) && steedintrap(trap, otmp)) {
             ; /* nothing */
-        } else if (thitu(8, dmgval(otmp, &gy.youmonst), &otmp, _("arrow"))) {
+        } else if (thitu(8, Maybe_Half_Phys(dam), &otmp, _("arrow"))) {
             if (otmp)
                 obfree(otmp, (struct obj *) 0);
         } else {
@@ -1274,6 +1275,7 @@ trapeffect_dart_trap(
     unsigned int trflags UNUSED)
 {
     struct obj *otmp;
+    int dam;
 
     if (mtmp == &gy.youmonst) {
         int oldumort = u.umortality;
@@ -1291,10 +1293,11 @@ trapeffect_dart_trap(
         otmp = t_missile(DART, trap);
         if (!rn2(6))
             otmp->opoisoned = 1;
+        dam = dmgval(otmp, &gy.youmonst);
         if (u.usteed && !rn2(2) && steedintrap(trap, otmp)) {
             ; /* nothing */
-        } else if (thitu(7, dmgval(otmp, &gy.youmonst),
-                         &otmp, _("little dart"))) {
+        } else if (thitu(7, Maybe_Half_Phys(dam), &otmp,
+                         _("little dart"))) {
             if (otmp) {
                 if (otmp->opoisoned)
                     poisoned("dart", A_CON, "little dart",
@@ -2474,10 +2477,6 @@ trapeffect_poly_trap(
     struct trap *trap,
     unsigned int trflags)
 {
-    static int possible_boots[] = {
-        ELVEN_BOOTS, KICKING_BOOTS, FUMBLE_BOOTS, LEVITATION_BOOTS,
-        JUMPING_BOOTS, SPEED_BOOTS, WATER_WALKING_BOOTS };
-
     if (mtmp == &gy.youmonst) {
         boolean viasitting = (trflags & VIASITTING) != 0;
         int steed_article = ARTICLE_THE;
@@ -2501,7 +2500,8 @@ trapeffect_poly_trap(
         if (wearing_iron_shoes(mtmp)) {
             deltrap(trap);
             pline(_("%s warps strangely."), Yname2(uarmf));
-            poly_obj(uarmf, ROLL_FROM(possible_boots));
+            poly_obj(
+                uarmf, uarmf->otyp == IRON_SHOES ? KICKING_BOOTS : IRON_SHOES);
             update_inventory();
             if (uarmf)
                 prinv(NULL, uarmf, 0);
@@ -2527,7 +2527,8 @@ trapeffect_poly_trap(
                 impossible("re-equipping iron shoes destroyed them?");
                 return Trap_Effect_Finished;
             }
-            shoes = poly_obj(shoes, ROLL_FROM(possible_boots));
+            shoes = poly_obj(
+                shoes, shoes->otyp == IRON_SHOES ? KICKING_BOOTS : IRON_SHOES);
             /* now equip them again */
             if (shoes) {
                 mtmp->misc_worn_check |= W_ARMF;
@@ -2692,9 +2693,15 @@ trapeffect_rolling_boulder_trap(
               !Deaf ? _("Click!  ") : "");
         if (!launch_obj(BOULDER, trap->launch.x, trap->launch.y,
                         trap->launch2.x, trap->launch2.y, style)) {
+            /* if this is a known trap, the player may have known there wasn't
+               a lined up boulder, so use a shorter message to avoid --More--
+               spam */
             deltrap(trap);
             newsym(u.ux, u.uy); /* get rid of trap symbol */
-            pline(_("Fortunately for you, no boulder was released."));
+            if (style & LAUNCH_KNOWN)
+                pline(_("No boulder was released."));
+            else
+                pline(_("Fortunately for you, no boulder was released."));
         }
     } else {
         if (!m_in_air(mtmp)) {
@@ -2837,6 +2844,8 @@ immune_to_trap(struct monst *mon, unsigned ttype)
            hanging to the ceiling */
         if (Sokoban && (is_pit(ttype) || is_hole(ttype)))
             return TRAP_NOT_IMMUNE;
+        if (In_sokoban(&u.uz) && ttype == ROLLING_BOULDER_TRAP)
+            return TRAP_CLEARLY_IMMUNE; /* not dangerous in Sokoban */
         if (is_floater(pm) || is_flyer(pm)
             || (is_clinger(pm) && has_ceiling(&u.uz)))
             return TRAP_CLEARLY_IMMUNE;
@@ -3413,9 +3422,11 @@ launch_obj(
                 break;
             }
         } else if (u_at(x, y)) {
+            int dam = dmgval(singleobj, &gy.youmonst);
+
             if (gm.multi)
                 nomul(0);
-            if (thitu(9 + singleobj->spe, dmgval(singleobj, &gy.youmonst),
+            if (thitu(9 + singleobj->spe, Maybe_Half_Phys(dam),
                       &singleobj, (char *) 0))
                 stop_occupation();
         }
@@ -3606,7 +3617,7 @@ find_random_launch_coord(struct trap *ttmp, coord *cc)
     coordxy dx, dy;
     coordxy x, y;
 
-    if (!ttmp || !cc)
+    if (!ttmp || !cc || Sokoban)
         return FALSE;
 
     x = ttmp->tx;

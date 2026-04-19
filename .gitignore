@@ -113,3 +113,5 @@ dat/save/
 # Claude Code local settings
 .claude/
 CLAUDE.local.md
+
+sys/amiga/regex/

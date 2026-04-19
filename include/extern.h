@@ -105,7 +105,6 @@ extern void stop_occupation(void);
 extern void init_sound_disp_gamewindows(void);
 extern void newgame(void);
 extern void welcome(boolean);
-extern int argcheck(int, char **, enum earlyarg);
 extern long timet_to_seconds(time_t);
 extern long timet_delta(time_t, time_t);
 
@@ -277,6 +276,8 @@ extern void max_rank_sz(void);
 extern long botl_score(void);
 #endif
 extern int describe_level(char *, int);
+extern char *weapon_status(char *) NONNULL NONNULLARG1;
+extern char *armor_status(char *) NONNULL NONNULLARG1;
 extern void status_initialize(boolean);
 extern void status_finish(void);
 extern boolean exp_percent_changing(void);
@@ -336,6 +337,15 @@ extern boolean parse_conf_file(FILE *fp, boolean (*proc)(char *arg));
 extern void set_configfile_name(const char *);
 extern char *get_configfile(void);
 extern const char *get_default_configfile(void);
+extern void rcfile(void);
+extern void rcfile_interface_options(void);
+extern void heed_all_config_statements(void);
+extern void disregard_all_config_statements(void);
+extern void heed_this_config_statement(int);
+extern void disregard_this_config_statement(int);
+extern boolean config_unmatched_ignored(void);
+extern void clear_ignore_errors_on_unmatched(void);
+extern void set_ignore_errors_on_unmatched(void);
 
 /* ### coloratt.c ### */
 
@@ -920,6 +930,14 @@ extern void overview_stats(winid, const char *, long *, long *) NONNULLPTRS;
 extern void remdun_mapseen(int);
 extern const char *endgamelevelname(char *, int);
 
+/* ### earlyarg.c ### */
+
+extern int argcheck(int, char **, enum earlyarg);
+extern void early_options(int *argc_p, char ***argv_p, char **hackdir_p);
+#ifdef WIN32
+int windows_early_options(const char *);
+#endif
+
 /* ### eat.c ### */
 
 extern void eatmupdate(void);
@@ -1199,6 +1217,7 @@ extern void runmode_delay_output(void);
 extern void overexert_hp(void);
 extern boolean overexertion(void);
 extern void invocation_message(void);
+extern void classify_terrain(void);
 extern void switch_terrain(void);
 extern void set_uinwater(int);
 extern boolean pooleffects(boolean);
@@ -1969,7 +1988,7 @@ extern long filesize(char *);
 #endif /* MSDOS */
 extern char *foundfile_buffer(void);
 #endif /* __GO32__ */
-extern void chdrive(char *);
+extern void chdrive(const char *);
 #ifndef TOS
 extern void disable_ctrlP(void);
 extern void enable_ctrlP(void);
@@ -2313,6 +2332,11 @@ extern int msgtype_type(const char *, boolean) NONNULLARG1;
 extern void hide_unhide_msgtypes(boolean, int);
 extern void msgtype_free(void);
 extern void options_free_window_colors(void);
+extern void heed_all_options(void);
+extern void disregard_all_options(void);
+extern void heed_this_option(enum opt);
+extern void disregard_this_option(enum opt);
+extern void clear_ignore_errors_on_unmatched(void);
 #ifdef TTY_PERM_INVENT
 extern void check_perm_invent_again(void);
 #endif
@@ -2338,12 +2362,13 @@ extern int dowhatdoes(void);
 extern char *dowhatdoes_core(char, char *) NONNULLARG2; /*might return NULL*/
 extern int dohelp(void);
 extern int dohistory(void);
+void allopt_array_init(void);
 
 /* ### xxmain.c ### */
 
-#if defined(MICRO) || defined(WIN32)
+#if defined(UNIX) || defined(MICRO) || defined(WIN32)
 #ifdef CHDIR
-extern void chdirx(char *, boolean);
+extern void chdirx(const char *, boolean);
 #endif /* CHDIR */
 extern boolean authorize_wizard_mode(void);
 extern boolean authorize_explore_mode(void);
@@ -2711,6 +2736,9 @@ void restore_gamelog(NHFILE *);
 boolean restgamestate(NHFILE *);
 void restore_msghistory(NHFILE *);
 #endif
+extern void rest_adjust_levelflags(void);
+extern void moves_to_relative_time(long *);
+extern void relative_time_to_moves(long *);
 
 /* ### rip.c ### */
 
@@ -3262,6 +3290,7 @@ extern struct monst *activate_statue_trap(struct trap *, coordxy, coordxy,
 extern int immune_to_trap(struct monst *, unsigned) NO_NNARGS; /* revisit */
 extern void set_utrap(unsigned, unsigned);
 extern void reset_utrap(boolean);
+extern boolean wearing_iron_shoes(struct monst *);
 extern boolean m_harmless_trap(struct monst *, struct trap *) NONNULLPTRS;
 extern void dotrap(struct trap *, unsigned) NONNULLARG1;
 extern void seetrap(struct trap *) NONNULLARG1;
@@ -3454,8 +3483,8 @@ extern void append_slash(char *) NONNULLARG1;
 extern boolean check_user_string(const char *) NONNULLARG1;
 extern char *get_login_name(void);
 extern unsigned long sys_random_seed(void);
-ATTRNORETURN extern void after_opt_showpaths(const char *) NORETURN;
 #endif /* UNIX */
+ATTRNORETURN extern void after_opt_showpaths(const char *) NORETURN;
 
 /* ### unixtty.c ### */
 
@@ -3986,6 +4015,8 @@ extern boolean inventory_resistance_check(int);
 extern char *item_what(int);
 extern int destroy_items(struct monst *, int, int) NONNULLARG1;
 extern int resist(struct monst *, char, int, int) NONNULLARG1;
+extern void wish_history_add(char *);
+extern void wish_history_flush(void);
 extern void makewish(void);
 extern const char *flash_str(int, boolean) NONNULL;
 

@@ -1674,7 +1674,7 @@ struct ext_func_tab extcmdlist[] = {
     { M('a'), "adjust", "adjust inventory letters",
               doorganize, IFBURIED | AUTOCOMPLETE | GENERALCMD, NULL },
     { M('A'), "annotate", "name current level",
-              donamelevel, IFBURIED | AUTOCOMPLETE | GENERALCMD, NULL },
+              donamelevel, IFBURIED | AUTOCOMPLETE | GENERALCMD | CMD_M_PREFIX, NULL },
     { 'a',    "apply", "apply (use) a tool (pick-axe, key, lamp...)",
               doapply, CMD_M_PREFIX, NULL },
     { C('x'), "attributes", "show your attributes",
@@ -1997,7 +1997,7 @@ struct ext_func_tab extcmdlist[] = {
     { '\0',   "wizwhere", "show locations of special levels",
               wiz_where, IFBURIED | AUTOCOMPLETE | WIZMODECMD, NULL },
     { C('w'), "wizwish", "wish for something",
-              wiz_wish, IFBURIED | WIZMODECMD, NULL },
+              wiz_wish, IFBURIED | CMD_M_PREFIX | WIZMODECMD, NULL },
     { '\0',   "wmode", "show wall modes",
               wiz_show_wmodes, IFBURIED | AUTOCOMPLETE | WIZMODECMD, NULL },
     { 'z',    "zap", "zap a wand",
@@ -2298,7 +2298,6 @@ handler_rebind_keys_add(boolean keyfirst)
     char buf2[QBUFSZ];
     uchar key = '\0';
     int clr = NO_COLOR;
-    struct Cmd_bind *bind;
 
     if (keyfirst) {
         pline(_("Bind which key? "));
@@ -2314,8 +2313,9 @@ handler_rebind_keys_add(boolean keyfirst)
 
     /* Korean i18n: key binding messages */
     if (key) {
-        bind = cmdbind_get(key);
-        if (bind) {
+        struct Cmd_bind *bind = cmdbind_get(key);
+
+        if (bind && bind->cmd) {
             Sprintf(buf, _("Key '%s' is currently bound to \"%s\"."),
                     key2txt(key, buf2), bind->cmd->ef_txt);
         } else {
@@ -3706,7 +3706,8 @@ rhack(int key)
                  * the former call to help_dir() (for 'bad_command' below).
                  */
                 if (was_m_prefix) {
-                    pline(_("The %s command does not accept '%s' prefix."),
+                    custompline(SUPPRESS_HISTORY,
+                          _("The %s command does not accept '%s' prefix."),
                           tlist->ef_txt, which);
                 } else {
                     uchar ch = tlist->key;

@@ -87,7 +87,7 @@
       <Optimization>Disabled</Optimization>
       <OmitFramePointers>true</OmitFramePointers>
       <AdditionalIncludeDirectories>$(WinWin32Dir);$(IncDir);$(SysWindDir);$(SysShareDir);$(WinShareDir);$(LuaDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>TILES;_WINDOWS;DLB;MSWIN_GRAPHICS;SAFEPROCS;NOTTYGRAPHICS;SND_LIB_WINDSOUND;USER_SOUNDS;SND_SOUNDEFFECTS_AUTOMAP;HAS_STDINT_H;HAS_INTTYPES_H;PDC_WIDE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>TILES;_WINDOWS;DLB;MSWIN_GRAPHICS;NOTTYGRAPHICS;SND_LIB_WINDSOUND;USER_SOUNDS;SND_SOUNDEFFECTS_AUTOMAP;HAS_STDINT_H;HAS_INTTYPES_H;PDC_WIDE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard_C Condition="'$(DefaultPlatformToolset)'!='v142' And '$(Configuration)|$(Platform)'=='Debug|Win32'">stdclatest</LanguageStandard_C>
       <LanguageStandard_C Condition="'$(DefaultPlatformToolset)'!='v142' And '$(Configuration)|$(Platform)'=='Release|Win32'">stdclatest</LanguageStandard_C>
       <LanguageStandard_C Condition="'$(DefaultPlatformToolset)'!='v142' And '$(Configuration)|$(Platform)'=='Debug|x64'">stdclatest</LanguageStandard_C>
@@ -135,6 +135,7 @@
     <ClCompile Include="$(SrcDir)do_wear.c" />
     <ClCompile Include="$(SrcDir)drawing.c" />
     <ClCompile Include="$(SrcDir)dungeon.c" />
+    <ClCompile Include="$(SrcDir)earlyarg.c" />
     <ClCompile Include="$(SrcDir)eat.c" />
     <ClCompile Include="$(SrcDir)end.c" />
     <ClCompile Include="$(SrcDir)engrave.c" />
@@ -264,7 +265,6 @@
     <ClCompile Include="$(SysWindDir)windsys.c" />
     <ClCompile Include="$(SysWindDir)win10.c" />
     <ClCompile Include="$(SndWindDir)windsound.c" />
-    <ClCompile Include="$(WinShareDir)safeproc.c" />
     <ClCompile Include="$(WinWin32Dir)mhaskyn.c" />
     <ClCompile Include="$(WinWin32Dir)mhdlg.c" />
     <ClCompile Include="$(WinWin32Dir)mhfont.c" />
@@ -329,6 +329,7 @@
     <ClInclude Include="$(IncDir)lint.h" />
     <ClInclude Include="$(IncDir)load_img.h" />
     <ClInclude Include="$(IncDir)mail.h" />
+    <ClInclude Include="$(IncDir)mcastu.h" />
     <ClInclude Include="$(IncDir)mextra.h" />
     <ClInclude Include="$(IncDir)mfndpos.h" />
     <ClInclude Include="$(IncDir)micro.h" />

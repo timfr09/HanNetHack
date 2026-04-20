@@ -115,6 +115,9 @@ struct tilemap_t {
 } tilemap[MAX_GLYPH];
 
 #define MAX_TILENAM 256
+/* Enough slots for distinct tile indices used as keys to tilelist[];
+ * 3.x grows past 2500 tiles with full monsters/objects/cmap coverage. */
+#define TILELIST_SZ 12000
     /* List of tiles encountered and their usage */
 struct tiles_used {
     int tilenum;
@@ -123,7 +126,7 @@ struct tiles_used {
     char tilenam[MAX_TILENAM];
     char references[1024];
 };
-struct tiles_used *tilelist[2500] = { 0 };
+struct tiles_used *tilelist[TILELIST_SZ] = { 0 };
 
 /* Some special tiles used for init of some things */
 int TILE_stone = 0,       /* will get set to correct tile later */
@@ -251,7 +254,7 @@ tilename(int set, const int file_entry, int gend UNUSED)
                 if (!obj_descr[i].oc_name)
                     return obj_descr[i].oc_descr;
 
-                Sprintf(buf, "%s / %s", obj_descr[i].oc_descr,
+                Snprintf(buf, sizeof buf, "%s / %s", obj_descr[i].oc_descr,
                         obj_descr[i].oc_name);
                 return buf;
             }
@@ -278,10 +281,10 @@ tilename(int set, const int file_entry, int gend UNUSED)
                     return defsyms[cmap].explanation;
                 } else if (altlabels[cmap].tilelabel
                            && *altlabels[cmap].tilelabel) {
-                    Sprintf(buf, "%s", altlabels[cmap].tilelabel);
+                    Snprintf(buf, sizeof buf, "%s", altlabels[cmap].tilelabel);
                     return buf;
                 } else {
-                    Sprintf(buf, "cmap %d %d", cmap, tilenum);
+                    Snprintf(buf, sizeof buf, "cmap %d %d", cmap, tilenum);
                     return buf;
                 }
             }
@@ -300,7 +303,7 @@ tilename(int set, const int file_entry, int gend UNUSED)
             for (cmap = S_vwall; cmap <= S_trwall; cmap++) {
                 i = cmap - S_vwall;
                 if (tilenum == file_entry) {
-                    Sprintf(buf, "%s %s", wall_texts[k], walldesc[i]);
+                    Snprintf(buf, sizeof buf, "%s %s", wall_texts[k], walldesc[i]);
                     return buf;
                 }
                 for (condnum = 0; conditionals[condnum].sequence != -1;
@@ -322,10 +325,10 @@ tilename(int set, const int file_entry, int gend UNUSED)
                     return defsyms[cmap].explanation;
                 } else if (altlabels[cmap].tilelabel
                            && *altlabels[cmap].tilelabel) {
-                    Sprintf(buf, "%s", altlabels[cmap].tilelabel);
+                    Snprintf(buf, sizeof buf, "%s", altlabels[cmap].tilelabel);
                     return buf;
                 } else {
-                    Sprintf(buf, "cmap %d %d", cmap, tilenum);
+                    Snprintf(buf, sizeof buf, "cmap %d %d", cmap, tilenum);
                     return buf;
                 }
             }
@@ -348,7 +351,7 @@ tilename(int set, const int file_entry, int gend UNUSED)
                it isn't much help in identifying details
                these. Roll our own name. */
             if (tilenum == file_entry) {
-                Sprintf(buf, "%s altar", altar_text[k]);
+                Snprintf(buf, sizeof buf, "%s altar", altar_text[k]);
                 return buf;
             }
             tilenum++;
@@ -370,10 +373,10 @@ tilename(int set, const int file_entry, int gend UNUSED)
                     return defsyms[cmap].explanation;
                 } else if (altlabels[cmap].tilelabel
                            && *altlabels[cmap].tilelabel) {
-                    Sprintf(buf, "%s", altlabels[cmap].tilelabel);
+                    Snprintf(buf, sizeof buf, "%s", altlabels[cmap].tilelabel);
                     return buf;
                 } else {
-                    Sprintf(buf, "cmap %d %d", cmap, tilenum);
+                    Snprintf(buf, sizeof buf, "cmap %d %d", cmap, tilenum);
                     return buf;
                 }
             }
@@ -397,7 +400,7 @@ tilename(int set, const int file_entry, int gend UNUSED)
             for (cmap = S_vbeam; cmap <= S_rslant; cmap++) {
                 i = cmap - S_vbeam;
                 if (tilenum == file_entry) {
-                    Sprintf(buf, "%s zap %d %d", zap_texts[k], k + 1, i % 4);
+                    Snprintf(buf, sizeof buf, "%s zap %d %d", zap_texts[k], k + 1, i % 4);
                     return buf;
                 }
                 for (condnum = 0; conditionals[condnum].sequence != -1;
@@ -413,7 +416,7 @@ tilename(int set, const int file_entry, int gend UNUSED)
 #else
         i = file_entry - tilenum;
         if (i < (NUM_ZAP << 2)) {
-            Sprintf(buf, "%s zap %d %d", zap_texts[i / 4], (i / 4) + 1, i % 4);
+            Snprintf(buf, sizeof buf, "%s zap %d %d", zap_texts[i / 4], (i / 4) + 1, i % 4);
             return buf;
         }
         tilenum += (NUM_ZAP << 2);
@@ -427,10 +430,10 @@ tilename(int set, const int file_entry, int gend UNUSED)
                     return defsyms[cmap].explanation;
                 } else if (altlabels[cmap].tilelabel
                            && *altlabels[cmap].tilelabel) {
-                    Sprintf(buf, "%s", altlabels[cmap].tilelabel);
+                    Snprintf(buf, sizeof buf, "%s", altlabels[cmap].tilelabel);
                     return buf;
                 } else {
-                    Sprintf(buf, "cmap %d %d", cmap, tilenum);
+                    Snprintf(buf, sizeof buf, "cmap %d %d", cmap, tilenum);
                     return buf;
                 }
             }
@@ -454,10 +457,10 @@ tilename(int set, const int file_entry, int gend UNUSED)
                     return defsyms[cmap].explanation;
                 } else if (altlabels[cmap].tilelabel
                            && *altlabels[cmap].tilelabel) {
-                    Sprintf(buf, "%s", altlabels[cmap].tilelabel);
+                    Snprintf(buf, sizeof buf, "%s", altlabels[cmap].tilelabel);
                     return buf;
                 } else {
-                    Sprintf(buf, "cmap swallow %d", cmap);
+                    Snprintf(buf, sizeof buf, "cmap swallow %d", cmap);
                     return buf;
                 }
             }
@@ -471,7 +474,7 @@ tilename(int set, const int file_entry, int gend UNUSED)
                 if (tilenum == file_entry) {
                     /* substitute "explosion " in the tilelabel
                        with "explosion dark " etc */
-                    Sprintf(buf, "explosion %s %s", expl_texts[k],
+                    Snprintf(buf, sizeof buf, "explosion %s %s", expl_texts[k],
                             &altlabels[cmap].tilelabel[10]);
                     return buf;
                 }
@@ -491,21 +494,21 @@ tilename(int set, const int file_entry, int gend UNUSED)
         /* warnings */
         i = file_entry - tilenum;
         if (i < WARNCOUNT) {
-            Sprintf(buf, "warning %d", i);
+            Snprintf(buf, sizeof buf, "warning %d", i);
             return buf;
         }
         tilenum += WARNCOUNT;
 
         i = file_entry - tilenum;
         if (i < 1) {
-            Sprintf(buf, "unexplored");
+            Snprintf(buf, sizeof buf, "unexplored");
             return buf;
         }
         tilenum += 1;
 
         i = file_entry - tilenum;
         if (i < 1) {
-            Sprintf(buf, "nothing");
+            Snprintf(buf, sizeof buf, "nothing");
             return buf;
         }
         tilenum++;
@@ -516,7 +519,7 @@ tilename(int set, const int file_entry, int gend UNUSED)
             for (cmap = S_vwall; cmap <= S_trwall; cmap++) {
                 i = cmap - S_vwall;
                 if (tilenum == file_entry) {
-                    Sprintf(buf, "%s %s", wall_texts[k], walldesc[i]);
+                    Snprintf(buf, sizeof buf, "%s %s", wall_texts[k], walldesc[i]);
                     return buf;
                 }
                 for (condnum = 0; conditionals[condnum].sequence != -1;
@@ -530,7 +533,7 @@ tilename(int set, const int file_entry, int gend UNUSED)
             }
         }
     } /* OTH_GLYPH */
-    Sprintf(buf, "unknown %d %d", set, file_entry);
+    Snprintf(buf, sizeof buf, "unknown %d %d", set, file_entry);
     return buf;
 }
 #endif /* TILETEXT || OBTAIN_TILEMAP */
@@ -578,7 +581,13 @@ init_tilemap(void)
     int file_entry = 0;
 
 #if defined(OBTAIN_TILEMAP)
+    /* Ensure .name[] is NUL-terminated for glyphs we never assign text to. */
+    memset((void *) tilemap, 0, sizeof(tilemap));
     tilemap_file = fopen("tilemappings.lst", "w");
+    if (!tilemap_file) {
+        Fprintf(stderr, "tilemap: cannot create tilemappings.lst in cwd (check permissions).\n");
+        exit(EXIT_FAILURE);
+    }
     Fprintf(tilemap_file, "NUMMONS = %d\n", NUMMONS);
     Fprintf(tilemap_file, "NUM_OBJECTS = %d\n", NUM_OBJECTS);
     Fprintf(tilemap_file, "MAXEXPCHARS = %d\n", MAXEXPCHARS);
@@ -704,7 +713,7 @@ init_tilemap(void)
         tilemap[GLYPH_BODY_OFF + i].tilenum = corpsetile;
         tilemap[GLYPH_BODY_PILETOP_OFF + i].tilenum = corpsetile;
 #if defined(OBTAIN_TILEMAP)
-        Sprintf(buf, "%s (mnum=%d)", tilename(MON_GLYPH, file_entry, 0), i);
+        Snprintf(buf, sizeof buf, "%s (mnum=%d)", tilename(MON_GLYPH, file_entry, 0), i);
         Snprintf(tilemap[GLYPH_MON_MALE_OFF + i].name,
                  sizeof tilemap[0].name,"male %s", buf);
         Snprintf(tilemap[GLYPH_PET_MALE_OFF + i].name,
@@ -737,7 +746,7 @@ init_tilemap(void)
         tilemap[GLYPH_DETECT_FEM_OFF + i].tilenum = tilenum;
         tilemap[GLYPH_RIDDEN_FEM_OFF + i].tilenum = tilenum;
 #if defined(OBTAIN_TILEMAP)
-        Sprintf(buf, "%s (mnum=%d)", tilename(MON_GLYPH, file_entry, 0), i);
+        Snprintf(buf, sizeof buf, "%s (mnum=%d)", tilename(MON_GLYPH, file_entry, 0), i);
         Snprintf(tilemap[GLYPH_MON_FEM_OFF + i].name, 
                  sizeof tilemap[0].name, "female %s", buf);
         Snprintf(tilemap[GLYPH_PET_FEM_OFF + i].name,
@@ -784,8 +793,9 @@ init_tilemap(void)
     }
     tilemap[GLYPH_INVISIBLE].tilenum = tilenum;
 #if defined(OBTAIN_TILEMAP)
-    Sprintf(tilemap[GLYPH_INVISIBLE].name, "%s (mnum=%d)", "invisible mon",
-            file_entry);
+    Snprintf(tilemap[GLYPH_INVISIBLE].name,
+             sizeof tilemap[GLYPH_INVISIBLE].name, "%s (mnum=%d)",
+             "invisible mon", file_entry);
     add_tileref(tilenum, GLYPH_INVISIBLE, monsters_file,
                 file_entry, tilemap[GLYPH_INVISIBLE].name, "invisible ");
 #endif
@@ -1259,7 +1269,8 @@ init_tilemap(void)
                 sizeof tilemap[0].name,
                 "statue of female %s (mnum=%d)",
                 tilename(MON_GLYPH, file_entry, 0), i);
-        Sprintf(tilemap[GLYPH_STATUE_FEM_PILETOP_OFF + i].name,
+        Snprintf(tilemap[GLYPH_STATUE_FEM_PILETOP_OFF + i].name,
+                sizeof tilemap[0].name,
                 "piletop statue of female %s (mnum=%d)",
                 tilename(MON_GLYPH, file_entry, 0), i);
         add_tileref(tilenum, GLYPH_STATUE_FEM_OFF + i, generated, file_entry,
@@ -1380,6 +1391,14 @@ main(int argc, char *argv[])
             exit(EXIT_FAILURE);
             /*NOTREACHED*/
         }
+        if (!tilelist[tilenum]) {
+            Fprintf(stderr,
+                    "ERROR: glyph %d tile index %d has no tilelist[] entry (internal bug).\n",
+                    i, tilenum);
+            (void) fclose(ofp);
+            unlink(filename);
+            exit(EXIT_FAILURE);
+        }
         Fprintf(ofp,
                 "    { 0U, { NO_COLOR, 0 }, NO_CUSTOMCOLOR, NO_CUSTOMCOLOR, %4d%s },   /* [%04d] %s:%03d %s */\n",
                 tilenum, enhanced, i,
@@ -1495,6 +1514,14 @@ add_tileref(
     struct tiles_used temp = { 0 };
     static const char ellipsis[] = "...";
     char buf[BUFSZ];
+
+    if (n < 0 || (unsigned) n >= TILELIST_SZ) {
+        Fprintf(stderr,
+                "tilemap: tile index %d out of bounds (max %u); "
+                "raise TILELIST_SZ in tilemap.c\n",
+                n, (unsigned) (TILELIST_SZ - 1));
+        exit(EXIT_FAILURE);
+    }
 
     if (!tilelist[n]) {
         if ((tilelist[n] = malloc(sizeof temp)) != 0) {

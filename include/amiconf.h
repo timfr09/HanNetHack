@@ -17,6 +17,10 @@
 #ifdef CROSS_TO_AMIGA
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <dos/dos.h>
+#include <clib/dos_protos.h>
+#include <proto/dos.h>
 #endif
 
 #ifdef __SASC_60    /* since SAS can prevent re-inclusion */
@@ -48,13 +52,9 @@ typedef long off_t;
 #define PATHLEN 130
 
 /* data librarian defs */
-#ifndef NOCWD_ASSUMPTIONS
-#define DLBFILE "NetHack:nhdat"   /* main library */
-#define DLBFILE2 "NetHack:nhsdat" /* sound library */
-#else
 #define DLBFILE "nhdat"   /* main library */
-#define DLBFILE2 "nhsdat" /* sound library */
-#endif
+/* nhsdat sound library not used in 3.7 */
+#undef DLBFILE2
 
 #ifndef CROSS_TO_AMIGA
 #define FILENAME_CMP stricmp /* case insensitive */
@@ -193,21 +193,21 @@ void amii_setpens(int);
 #define M(c) ((c) -128)
 #endif
 struct ami_sysflags {
-	char sysflagsid[10];
+    char sysflagsid[10];
 #ifdef AMIFLUSH
-	boolean altmeta;  /* use ALT keys as META */
-	boolean amiflush; /* kill typeahead */
+    boolean altmeta;  /* use ALT keys as META */
+    boolean amiflush; /* kill typeahead */
 #endif
 #ifdef AMII_GRAPHICS	        
-	int numcols;
-	unsigned short amii_dripens[20]; /* DrawInfo Pens currently there are 13 in v39 */
-	AMII_COLOR_TYPE amii_curmap[AMII_MAXCOLORS]; /* colormap */
+    int numcols;
+    unsigned short amii_dripens[20]; /* DrawInfo Pens currently there are 13 in v39 */
+    AMII_COLOR_TYPE amii_curmap[AMII_MAXCOLORS]; /* colormap */
 #endif
 #ifdef OPT_DISPMAP
-	boolean fast_map; /* use optimized, less flexible map display */
+    boolean fast_map; /* use optimized, less flexible map display */
 #endif
 #ifdef MFLOPPY
-	boolean asksavedisk;
+    boolean asksavedisk;
 #endif
 };
 extern struct ami_sysflags sysflags;

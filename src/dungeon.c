@@ -1586,12 +1586,18 @@ u_on_newpos(coordxy x, coordxy y)
         u.usteed->mx = u.ux, u.usteed->my = u.uy;
     /* when changing levels, don't leave old position set with
        stale values from previous level */
-    if (!on_level(&u.uz, &u.uz0))
+    if (!on_level(&u.uz, &u.uz0)) {
         u.ux0 = u.ux, u.uy0 = u.uy;
-    else if (!Blind && !Hallucination && !u.uswallow)
+        /* sets lastseentyp[u.ux][u.uy]; needed for switch_terrain()
+           somewhere back up the call chain */
+        map_location(u.ux, u.uy, FALSE);
+        iflags.terrain_typ = MAX_TYPE; /* "none of the above" value */
+    } else {
         /* still on same level; might have come close enough to
            generic object(s) to redisplay them as specific objects */
-        see_nearby_objects();
+        if (!Blind && !Hallucination && !u.uswallow)
+            see_nearby_objects();
+    }
     earth_sense();
 }
 
@@ -2286,7 +2292,6 @@ print_dungeon(boolean bymenu, schar *rlev, xint16 *rdgn)
 {
     int i, last_level, nlev;
     char buf[BUFSZ];
-    const char *descr;
     boolean first, unplaced;
     s_level *slev;
     dungeon *dptr;
@@ -2564,6 +2569,8 @@ query_annotation(d_level *lev)
 int
 donamelevel(void)
 {
+    if (iflags.menu_requested)
+        return dooverview();
     query_annotation((d_level *) 0);
     return ECMD_OK;
 }

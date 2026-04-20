@@ -59,6 +59,12 @@ msgstr ""
 # 몬스터, 아이템, 역할 이름 등
 # xgettext로 자동 추출되지 않는 항목들
 # ============================================================
+
+# UI: 좁은 대화상자 제목에 들어갈 짧은 표현으로 의역
+#: win/win32/mswproc.c
+msgid "Who are you?"
+msgstr "당신의 이름은?"
+
 #: (manual addition for i18n)
 msgid "lichen"
 msgstr "이끼"
@@ -38273,34 +38279,44 @@ msgstr "알을 낳으려면 #sit 명령을 사용해라."
 msgid "break out of your armor!"
 msgstr "갑옷을 부수고 나왔다!"
 
-#: ../src/polyself.c:1179
+#: ../src/polyself.c:1181
+#, c-format
+msgid "%s tears apart!"
+msgstr "%s{이/가} 갈기갈기 찢어진다!"
+
+#: ../src/polyself.c:1185
+#, c-format
+msgid "knot on your %s is pulled apart!"
+msgstr "%s의 매듭이 풀려 갈라진다!"
+
+#: ../src/polyself.c:1190
 #, c-format
 msgid "clasp on your %s breaks open!"
-msgstr "%s의 걸쇠가 부러졌다!"
+msgstr "%s의 걸쇠가 부러져 벌어진다!"
 
-#: ../src/polyself.c:1184
+#: ../src/polyself.c:1197
 msgid "shirt rips to shreds!"
 msgstr "셔츠가 갈기갈기 찢어졌다!"
 
-#: ../src/polyself.c:1191
+#: ../src/polyself.c:1204
 msgid "armor falls around you!"
 msgstr "갑옷이 당신 주변으로 떨어졌다!"
 
-#: ../src/polyself.c:1203
+#: ../src/polyself.c:1216
 #, c-format
 msgid "%s falls, unsupported!"
 msgstr "%s{이/가} 지지되지 않아 떨어졌다!"
 
-#: ../src/polyself.c:1205
+#: ../src/polyself.c:1218
 #, c-format
 msgid "shrink out of your %s!"
 msgstr "%s에서 줄어들어 빠져나왔다!"
 
-#: ../src/polyself.c:1211
+#: ../src/polyself.c:1224
 msgid "seep right through your shirt!"
 msgstr "셔츠를 뚫고 스며든다!"
 
-#: ../src/polyself.c:1213
+#: ../src/polyself.c:1226
 msgid "become much too small for your shirt!"
 msgstr "셔츠에 비해 너무 작아졌다!"
 
@@ -48539,7 +48555,11 @@ msgstr "%s굴러가는 바위 함정을 작동시켰다!"
 msgid "Click!  "
 msgstr "딸깍!"
 
-#: ../src/trap.c:2697
+#: ../src/trap.c:2702
+msgid "No boulder was released."
+msgstr "바위가 나오지 않았다."
+
+#: ../src/trap.c:2704
 msgid "Fortunately for you, no boulder was released."
 msgstr "다행히 바위가 굴러오지 않았다."
 

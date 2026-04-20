@@ -325,9 +325,13 @@ special_throne_effect(int effect) {
     case 11:
         /* polymorph effect (not blocked by magic resistance, but other things
            that protect from polymorphs work) */
-        pline(_("This throne was not meant for those such as you!"));
-        You_feel(_("a change coming over you."));
-        polyself(POLY_NOFLAGS);
+        if (is_vampire(gy.youmonst.data)) {
+            You_feel(_("unworthy."));
+        } else {
+            pline(_("This throne was not meant for those such as you!"));
+            You_feel(_("a change coming over you."));
+            polyself(POLY_NOFLAGS);
+        }
         break;
     case 12:
         /* acid damage */

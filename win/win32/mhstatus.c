@@ -3,6 +3,7 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include <assert.h>
+#include <wchar.h>
 #include "winos.h"
 #include "winMS.h"
 #include "mhstatus.h"
@@ -357,13 +358,18 @@ onWMPaint(HWND hWnd, WPARAM wParam UNUSED, LPARAM lParam UNUSED)
                 cached_font * fnt = mswin_get_font(NHW_STATUS, fntatr, hdc, FALSE);
 
                 BOOL useUnicode = fnt->supportsUnicode;
+                /* UTF-8 byte length (vlen) must not be passed to DrawTextW /
+                 * GetTextExtentPoint32W, which count WCHARs. */
+                int wlen;
 
 #ifdef ENABLE_NLS
                 /* For NLS builds, convert UTF-8 str directly to wide chars */
                 MultiByteToWideChar(CP_UTF8, 0, str, -1, wbuf, SIZE(wbuf));
                 useUnicode = TRUE; /* always use wide-char path for NLS */
+                wlen = (int) wcslen(wbuf);
 #else
                 winos_ascii_to_wide_str((const unsigned char *) str, wbuf, SIZE(wbuf));
+                wlen = vlen;
 #endif
 
                 nFg = (clr == NO_COLOR ? status_fg_color
@@ -405,10 +411,10 @@ onWMPaint(HWND hWnd, WPARAM wParam UNUSED, LPARAM lParam UNUSED)
 
                     if (useUnicode) {
                         /* get bounding rectangle */
-                        GetTextExtentPoint32W(hdc, wbuf, vlen, &sz);
+                        GetTextExtentPoint32W(hdc, wbuf, wlen, &sz);
 
                         /* first draw title normally */
-                        DrawTextW(hdc, wbuf, vlen, &rt, DT_LEFT);
+                        DrawTextW(hdc, wbuf, wlen, &rt, DT_LEFT);
                     }
                     else {
                         /* get bounding rectangle */
@@ -434,7 +440,7 @@ onWMPaint(HWND hWnd, WPARAM wParam UNUSED, LPARAM lParam UNUSED)
                         SetTextColor(hdc, nBg);
 
                         if (useUnicode)
-                            DrawTextW(hdc, wbuf, vlen, &barrect, DT_LEFT);
+                            DrawTextW(hdc, wbuf, wlen, &barrect, DT_LEFT);
                         else
                             NH_DrawText(hdc, str, vlen, &barrect, DT_LEFT);
                     }
@@ -455,10 +461,10 @@ onWMPaint(HWND hWnd, WPARAM wParam UNUSED, LPARAM lParam UNUSED)
 
                     if (useUnicode) {
                         /* get bounding rectangle */
-                        GetTextExtentPoint32W(hdc, wbuf, vlen, &sz);
+                        GetTextExtentPoint32W(hdc, wbuf, wlen, &sz);
 
                         /* draw */
-                        DrawTextW(hdc, wbuf, vlen, &rt, DT_LEFT);
+                        DrawTextW(hdc, wbuf, wlen, &rt, DT_LEFT);
                     }
                     else {
                         /* get bounding rectangle */

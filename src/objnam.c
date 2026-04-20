@@ -801,7 +801,6 @@ xname_flags(
         break;
     case ROCK_CLASS:
         if (typ == STATUE && omndx != NON_PM) {
-            char anbuf[10];
             const char *statue_pmname = _(obj_pmname(obj));
 
             /* Korean: "X 석상" instead of "statue of X" */
@@ -2215,7 +2214,8 @@ the(const char *str)
         insert_the = TRUE;
     } else {
         /* Probably a proper name, might not need an article */
-        char *tmp, *named, *called;
+        char *named, *called;
+        const char *tmp;
         int l;
 
         /* some objects have capitalized adjectives in their names */

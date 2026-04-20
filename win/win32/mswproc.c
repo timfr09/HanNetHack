@@ -46,6 +46,7 @@ extern void logDebug(const char *fmt, ...);
 void
 logDebug(const char *fmt, ...)
 {
+    (void) fmt;
 }
 #endif
 
@@ -734,9 +735,6 @@ mswin_exit_nhwindows(const char *str)
     /* Write Window settings to the registry */
     mswin_write_reg();
 
-    /* set things back to failsafes */
-    windowprocs = *get_safe_procs(0);
-
     /* and make sure there is still a way to communicate something */
     windowprocs.win_raw_print = mswin_raw_print;
     windowprocs.win_raw_print_bold = mswin_raw_print_bold;
@@ -1065,7 +1063,7 @@ mswin_display_file(const char *filename, boolean must_exist)
             TCHAR message[90];
             nh_stprintf(message, sizeof message,
                         TEXT("Warning! Could not find file: %s\n"),
-                        NH_A2W(filename, wbuf, sizeof(wbuf)));
+                        NH_A2W(filename, wbuf, BUFSZ));
             NHMessageBox(GetNHApp()->hMainWnd, message,
                          MB_OK | MB_ICONEXCLAMATION);
         }

@@ -1181,7 +1181,12 @@ ini_inv_mkobj_filter(int oclass, boolean got_level1_spellbook)
 staticfn short
 ini_inv_obj_substitution(const struct trobj *trop, struct obj *obj)
 {
-    if (gu.urace.mnum != PM_HUMAN) {
+    if (gu.urace.mnum == PM_HUMAN) {
+        nhUse(trop);
+        return obj->otyp;
+    }
+
+    {
         int i;
 
         /* substitute race-specific items; this used to be in
@@ -1199,6 +1204,7 @@ ini_inv_obj_substitution(const struct trobj *trop, struct obj *obj)
                 break;
             }
     }
+    nhUse(trop);
     return obj->otyp;
 }
 
@@ -1261,12 +1267,12 @@ ini_inv_use_obj(struct obj *obj)
 
     if (obj->oclass == ARMOR_CLASS) {
         if (is_shield(obj) && !uarms && !(uwep && bimanual(uwep))) {
-            setworn(obj, W_ARMS);
             /* Prior to 3.6.2 this used to unset uswapwep if it was set,
                but wearing a shield doesn't prevent having an alternate
                weapon ready to swap with the primary; just make sure we
                aren't two-weaponing (academic; no one starts that way) */
             set_twoweap(FALSE); /* u.twoweap = FALSE */
+            setworn(obj, W_ARMS);
         } else if (is_helmet(obj) && !uarmh)
             setworn(obj, W_ARMH);
         else if (is_gloves(obj) && !uarmg)

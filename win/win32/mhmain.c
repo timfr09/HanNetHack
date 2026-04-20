@@ -1138,13 +1138,13 @@ About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_INITDIALOG:
         getversionstring(buf, sizeof buf);
         SetDlgItemText(hDlg, IDC_ABOUT_VERSION,
-                       NH_A2W(buf, wbuf, sizeof(wbuf)));
+                       NH_A2W(buf, wbuf, BUFSZ));
 
         Sprintf(buf, "%s\n%s\n%s\n%s",
                 COPYRIGHT_BANNER_A, COPYRIGHT_BANNER_B,
                 nomakedefs.copyright_banner_c, COPYRIGHT_BANNER_D);
         SetDlgItemText(hDlg, IDC_ABOUT_COPYRIGHT,
-                       NH_A2W(buf, wbuf, sizeof(wbuf)));
+                       NH_A2W(buf, wbuf, BUFSZ));
 
         /* center dialog in the main window */
         GetWindowRect(GetNHApp()->hMainWnd, &main_rt);

@@ -253,6 +253,7 @@ extern COLORREF message_fg_color;
 #define nh_stprintf swprintf
 #define NH_W2A(w, a, cb) \
     (WideCharToMultiByte(NH_CODEPAGE, 0, (w), -1, (a), (cb), NULL, NULL), (a))
+/* cb = destination size in WCHARs (not sizeof(TCHAR[]) bytes). E.g. BUFSZ for TCHAR wbuf[BUFSZ]. */
 #define NH_A2W(a, w, cb) \
     (MultiByteToWideChar(NH_CODEPAGE, 0, (a), -1, (w), (cb)), (w))
 #else

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  HanNetHack Windows Installer (MSI) — WiX Toolset v4 / v5
+
+  Required preprocessor variables (pass with -d on the command line):
+    Version    : MSI ProductVersion as Major.Minor.Build (e.g. 3.7.0.20260420)
+    BinaryDir  : path to a fully populated `binary\` directory produced by
+                 `nmake package` (NetHack.exe, NetHackW.exe, nhdat370,
+                 gettext DLLs, locale\ tree, etc.)
+
+  Required WiX extensions (install once with `wix extension add`):
+    WixToolset.UI.wixext
+-->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
+  <!--
+    UpgradeCode MUST stay constant for the lifetime of the product so that
+    new MSIs are recognised as upgrades of older installations.  Generate
+    once and never change.
+  -->
+  <?define UpgradeCode = "8B5A2E4D-8C0F-4E7B-9F3A-7B0E1C9D8F2A" ?>
+
+  <Package Name="HanNetHack"
+           Manufacturer="HanNetHack Project"
+           Version="$(var.Version)"
+           UpgradeCode="$(var.UpgradeCode)"
+           Compressed="yes"
+           Scope="perMachine"
+           InstallerVersion="500">
+
+    <SummaryInformation Description="HanNetHack — Korean-localized NetHack 3.7"
+                        Manufacturer="HanNetHack Project" />
+
+    <MajorUpgrade
+        DowngradeErrorMessage="A newer version of [ProductName] is already installed."
+        Schedule="afterInstallInitialize" />
+
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <!-- Install location: %ProgramFiles%\HanNetHack -->
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLFOLDER" Name="HanNetHack" />
+    </StandardDirectory>
+
+    <!-- Start Menu group -->
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="ApplicationProgramsFolder" Name="HanNetHack" />
+    </StandardDirectory>
+
+    <!--
+      Auto-harvest every file under the staged binary\ tree.
+
+      WiX v4's <Files> element walks BinaryDir at build time, mirrors the
+      sub-directory layout under INSTALLFOLDER, and emits one Component
+      per file.  This is the WiX-recommended way to ship a directory that
+      already represents the final on-disk layout.
+    -->
+    <ComponentGroup Id="ProductFiles" Directory="INSTALLFOLDER">
+      <Files Include="$(var.BinaryDir)\**" />
+    </ComponentGroup>
+
+    <!--
+      Start Menu shortcuts.  The empty-folder cleanup and the
+      KeyPath-bearing RegistryValue are required by Windows Installer
+      ICEs for shortcut-only components.
+    -->
+    <Component Id="ApplicationShortcuts"
+               Directory="ApplicationProgramsFolder"
+               Guid="6F0E2C1A-9B4D-4E0E-B1F0-3D2A8C5B6E12">
+      <Shortcut Id="GuiShortcut"
+                Name="HanNetHack (GUI)"
+                Description="Korean-localized NetHack — graphical Windows client"
+                Target="[INSTALLFOLDER]NetHackW.exe"
+                WorkingDirectory="INSTALLFOLDER" />
+      <Shortcut Id="ConsoleShortcut"
+                Name="HanNetHack (Console)"
+                Description="Korean-localized NetHack — console client"
+                Target="[INSTALLFOLDER]NetHack.exe"
+                WorkingDirectory="INSTALLFOLDER" />
+      <Shortcut Id="UninstallShortcut"
+                Name="Uninstall HanNetHack"
+                Target="[System64Folder]msiexec.exe"
+                Arguments="/x [ProductCode]" />
+      <RemoveFolder Id="RemoveAppMenuFolder"
+                    Directory="ApplicationProgramsFolder"
+                    On="uninstall" />
+      <RegistryValue Root="HKCU"
+                     Key="Software\HanNetHack"
+                     Name="installed"
+                     Type="integer"
+                     Value="1"
+                     KeyPath="yes" />
+    </Component>
+
+    <Feature Id="Main"
+             Title="HanNetHack"
+             Description="Game executables, data and Korean locale."
+             Level="1"
+             ConfigurableDirectory="INSTALLFOLDER">
+      <ComponentGroupRef Id="ProductFiles" />
+      <ComponentRef Id="ApplicationShortcuts" />
+    </Feature>
+
+    <!--
+      WixUI_InstallDir = welcome → license → install dir → confirm → finish.
+      It is the closest match to a typical "Inno Setup style" wizard.
+    -->
+    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+
+  </Package>
+</Wix>

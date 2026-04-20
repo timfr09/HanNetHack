@@ -1,0 +1,198 @@
+name: Release
+
+# Builds the Windows package (zip + MSI) and, when a vX.Y.Z tag is pushed,
+# attaches them to a GitHub Release.  Can also be triggered manually via
+# the "Run workflow" button to produce build artifacts without a release.
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write   # needed by softprops/action-gh-release
+
+env:
+  # Pin the gettext / iconv versions so builds stay reproducible.
+  # Source: https://github.com/mlocati/gettext-iconv-windows/releases
+  GETTEXT_VER: '0.22.4'
+  ICONV_VER:   '1.17'
+
+jobs:
+  windows-x64:
+    name: Build Windows x64 (zip + MSI)
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history so version.c picks up git info
+
+      - name: Derive version string
+        id: ver
+        shell: pwsh
+        run: |
+          # Tag like "v3.7.0-han.20260420" → MSI version "3.7.0.20260420"
+          # workflow_dispatch / non-tag → "3.7.0.0"
+          $ref = "${{ github.ref_name }}"
+          if ($ref -match '^v(\d+)\.(\d+)\.(\d+)(?:[-.]?[A-Za-z]*\.?(\d+))?') {
+            $maj = $Matches[1]; $min = $Matches[2]; $bld = $Matches[3]
+            $rev = if ($Matches[4]) { $Matches[4] } else { '0' }
+            $msi = "$maj.$min.$bld.$rev"
+            $tag = $ref
+          } else {
+            $msi = '3.7.0.0'
+            $tag = "dev-$(Get-Date -Format yyyyMMddHHmm)"
+          }
+          "msi_version=$msi"   | Out-File -Append $env:GITHUB_OUTPUT
+          "tag_label=$tag"     | Out-File -Append $env:GITHUB_OUTPUT
+          Write-Host "MSI ProductVersion: $msi"
+          Write-Host "Tag label:          $tag"
+
+      - name: Set up MSVC (x64)
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: Download gettext / iconv (runtime + MSVC dev libs)
+        shell: pwsh
+        run: |
+          $base   = "https://github.com/mlocati/gettext-iconv-windows/releases/download"
+          $bundle = "v${env:GETTEXT_VER}-v${env:ICONV_VER}"
+          $rt     = "gettext${env:GETTEXT_VER}-iconv${env:ICONV_VER}-shared-64.zip"
+          $dev    = "gettext${env:GETTEXT_VER}-iconv${env:ICONV_VER}-shared-64-dev-msvc.zip"
+
+          New-Item -ItemType Directory -Force -Path lib\gettext           | Out-Null
+          New-Item -ItemType Directory -Force -Path lib\gettext-msvc-dev  | Out-Null
+
+          Write-Host "Downloading $rt"
+          Invoke-WebRequest "$base/$bundle/$rt"  -OutFile gettext-rt.zip
+          Expand-Archive gettext-rt.zip  -DestinationPath lib\gettext   -Force
+
+          Write-Host "Downloading $dev"
+          Invoke-WebRequest "$base/$bundle/$dev" -OutFile gettext-dev.zip
+          Expand-Archive gettext-dev.zip -DestinationPath lib\gettext-msvc-dev -Force
+
+          Write-Host "--- lib\gettext\bin ---"
+          Get-ChildItem lib\gettext\bin | Select-Object Name | Format-Table -AutoSize
+          Write-Host "--- lib\gettext-msvc-dev ---"
+          Get-ChildItem lib\gettext-msvc-dev | Select-Object Name | Format-Table -AutoSize
+
+      - name: Compile Korean translations (.po → .mo)
+        shell: cmd
+        run: |
+          call sys\windows\build-translations.cmd
+          if not exist dat\locale\ko\LC_MESSAGES\nethack.mo (
+              echo ERROR: nethack.mo was not produced.
+              exit /b 1
+          )
+
+      - name: nmake package
+        shell: cmd
+        working-directory: src
+        run: |
+          nmake package
+          if errorlevel 1 exit /b %ERRORLEVEL%
+
+      - name: Verify build output
+        shell: pwsh
+        run: |
+          $required = @(
+            'binary\NetHack.exe',
+            'binary\NetHackW.exe',
+            'binary\nhdat370',
+            'binary\intl-8.dll',
+            'binary\iconv-2.dll',
+            'binary\locale\ko\LC_MESSAGES\nethack.mo',
+            'binary\locale\ko\quest.lua'
+          )
+          $missing = $required | Where-Object { -not (Test-Path $_) }
+          if ($missing) {
+            Write-Error ("Missing files:`n  " + ($missing -join "`n  "))
+            exit 1
+          }
+          Write-Host "All required files present."
+
+      - name: Install WiX v4 toolset
+        shell: pwsh
+        run: |
+          dotnet tool install --global wix --version 4.0.5
+          # Refresh PATH for subsequent steps in this job.
+          "$env:USERPROFILE\.dotnet\tools" | Out-File -Append $env:GITHUB_PATH
+          & "$env:USERPROFILE\.dotnet\tools\wix.exe" --version
+          & "$env:USERPROFILE\.dotnet\tools\wix.exe" extension add -g WixToolset.UI.wixext
+
+      - name: Build MSI installer
+        shell: cmd
+        run: |
+          call sys\windows\wix\build-msi.cmd ${{ steps.ver.outputs.msi_version }}
+          if errorlevel 1 exit /b %ERRORLEVEL%
+
+      - name: Rename MSI for release
+        shell: pwsh
+        run: |
+          $src = Get-ChildItem package\hannethack-*.msi | Select-Object -First 1
+          if (-not $src) { throw "No MSI produced." }
+          $dst = "package\hannethack-${{ steps.ver.outputs.tag_label }}-win-x64.msi"
+          Move-Item $src.FullName $dst -Force
+          Write-Host "Renamed to: $dst"
+
+      - name: Compute SHA256 sums
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem package\*.zip,package\*.msi
+          $files | ForEach-Object {
+            $h = (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower()
+            "$h  $($_.Name)"
+          } | Out-File package\SHA256SUMS.txt -Encoding ascii
+          Get-Content package\SHA256SUMS.txt | Write-Host
+
+      - name: Upload build artifacts (always)
+        uses: actions/upload-artifact@v4
+        with:
+          name: hannethack-windows-x64
+          path: |
+            package/*.zip
+            package/*.msi
+            package/SHA256SUMS.txt
+          if-no-files-found: error
+
+      - name: Create GitHub Release (tag pushes only)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          body: |
+            ## HanNetHack ${{ github.ref_name }} — Windows x64
+
+            ### Downloads
+
+            | File | Description |
+            |---|---|
+            | `hannethack-${{ github.ref_name }}-win-x64.msi` | Installer (recommended) — installs to *Program Files*, adds Start Menu shortcuts, supports clean uninstall via *Settings → Apps*. |
+            | `nethack-370-win-x64.zip` | Portable build — unzip anywhere and run `NetHackW.exe`. |
+            | `nethack-370-win-x64-debugsymbols.zip` | Debug symbols (`.PDB`). Only needed for crash report analysis. |
+            | `SHA256SUMS.txt` | SHA-256 checksums for verifying downloads. |
+
+            ### Verifying the download (PowerShell)
+
+            ```powershell
+            Get-FileHash hannethack-${{ github.ref_name }}-win-x64.msi -Algorithm SHA256
+            ```
+
+            Compare the printed hash with the matching line in `SHA256SUMS.txt`.
+
+            ### SmartScreen note
+
+            Builds are not Authenticode-signed yet, so Windows SmartScreen may
+            warn the first time you run the installer or executable.  Click
+            *More info → Run anyway* if you trust the SHA-256 you verified
+            above.
+          files: |
+            package/*.zip
+            package/*.msi
+            package/SHA256SUMS.txt

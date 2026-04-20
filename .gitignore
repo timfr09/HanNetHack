@@ -95,6 +95,12 @@ bundle/*
 *.user
 util/*.lib
 util/*.exp
+util/*.dll
+util/tile2bmp.exe
+util/tilemap.exe
+
+# Local build helper scripts
+_nh_*.bat
 submodules/CHKSUMS.tmp
 
 # PO backup files

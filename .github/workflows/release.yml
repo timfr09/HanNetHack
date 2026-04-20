@@ -145,14 +145,21 @@ jobs:
           }
           Write-Host "All required files present."
 
-      - name: Install WiX v4 toolset
+      - name: Install WiX toolset
         shell: pwsh
+        env:
+          # WiX v7 is required for the <Files Include="..."> auto-harvest
+          # element used in Package.wxs.  Keep CLI and extension on the same
+          # major version (v5/v7 extensions are not loadable by v4 CLI).
+          WIX_VERSION: '7.0.0'
         run: |
-          dotnet tool install --global wix --version 4.0.5
+          dotnet tool install --global wix --version $env:WIX_VERSION
           # Refresh PATH for subsequent steps in this job.
           "$env:USERPROFILE\.dotnet\tools" | Out-File -Append $env:GITHUB_PATH
-          & "$env:USERPROFILE\.dotnet\tools\wix.exe" --version
-          & "$env:USERPROFILE\.dotnet\tools\wix.exe" extension add -g WixToolset.UI.wixext
+          $wix = "$env:USERPROFILE\.dotnet\tools\wix.exe"
+          & $wix --version
+          & $wix extension add -g "WixToolset.UI.wixext/$env:WIX_VERSION"
+          & $wix extension list -g
 
       - name: Build MSI installer
         shell: cmd

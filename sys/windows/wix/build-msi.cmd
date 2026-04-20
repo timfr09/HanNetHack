@@ -46,11 +46,13 @@ REM ----- Version (must be Major.Minor.Build[.Revision], all numeric) -----
 set "VERSION=%~1"
 if "%VERSION%"=="" set "VERSION=3.7.0.0"
 
-REM ----- Make sure WiX v4 CLI is available -----
+REM ----- Make sure WiX v7 CLI is available -----
+REM v7 is required because Package.wxs uses <Files Include="..."> which is
+REM only available in WiX v5+.
 where wix >nul 2>&1
 if errorlevel 1 (
-    echo === Installing WiX v4 (dotnet tool) ===
-    dotnet tool install --global wix --version 4.0.5
+    echo === Installing WiX v7 (dotnet tool) ===
+    dotnet tool install --global wix --version 7.0.0
     if errorlevel 1 (
         echo ERROR: dotnet tool install failed. Install .NET SDK 6+ first:
         echo        https://dotnet.microsoft.com/download
@@ -58,11 +60,11 @@ if errorlevel 1 (
     )
 )
 
-REM ----- Make sure the WixUI extension is installed -----
+REM ----- Make sure the WixUI extension is installed (must match CLI line) -----
 wix extension list -g 2>nul | findstr /I "WixToolset.UI.wixext" >nul
 if errorlevel 1 (
-    echo === Installing WixToolset.UI.wixext ===
-    wix extension add -g WixToolset.UI.wixext
+    echo === Installing WixToolset.UI.wixext 7.0.0 ===
+    wix extension add -g WixToolset.UI.wixext/7.0.0
 )
 
 set "MSI_OUT=%PKG_DIR%\hannethack-%VERSION%-win-x64.msi"

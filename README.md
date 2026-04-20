@@ -127,7 +127,7 @@ Please report translation errors or suggestions on [GitHub Issues](https://githu
 HanNetHack uses semantic versioning with Korean translation suffix:
 
 ```
-v3.7.0-ko.3
+v3.7.0-ko.4
   │    │  └── Korean translation version
   │    └───── Based on NetHack 3.7.0
   └────────── Major version

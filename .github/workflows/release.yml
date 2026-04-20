@@ -14,10 +14,14 @@ permissions:
   contents: write   # needed by softprops/action-gh-release
 
 env:
-  # Pin the gettext / iconv versions so builds stay reproducible.
-  # Source: https://github.com/mlocati/gettext-iconv-windows/releases
-  GETTEXT_VER: '0.22.4'
-  ICONV_VER:   '1.17'
+  # Pin the gettext / iconv bundle so builds stay reproducible.
+  # The bundle tag is "v<GETTEXT_VER>-v<ICONV_VER>" and the asset filenames
+  # follow the same numeric pattern.  Source:
+  #   https://github.com/mlocati/gettext-iconv-windows/releases
+  # (Starting with the v1.0-v1.x line the upstream project ships the
+  # MSVC dev libraries we need; older 0.22.x releases do not.)
+  GETTEXT_VER: '1.0'
+  ICONV_VER:   '1.19'
 
 jobs:
   windows-x64:
@@ -56,9 +60,15 @@ jobs:
         with:
           arch: x64
 
-      - name: Download gettext / iconv (runtime + MSVC dev libs)
+      - name: Download gettext / iconv (tools + MSVC dev libs)
         shell: pwsh
         run: |
+          # We need two bundles from mlocati/gettext-iconv-windows:
+          #   1. shared-64.zip          → lib\gettext        (xgettext, msgfmt,
+          #      msgmerge, msgcat -- used by build-translations.cmd)
+          #   2. shared-64-dev-msvc.zip → lib\gettext-msvc-dev (libintl.h
+          #      headers, intl.dll.lib / iconv.dll.lib import libs, and
+          #      MSVC-built runtime DLLs that ship in the final binary)
           $base   = "https://github.com/mlocati/gettext-iconv-windows/releases/download"
           $bundle = "v${env:GETTEXT_VER}-v${env:ICONV_VER}"
           $rt     = "gettext${env:GETTEXT_VER}-iconv${env:ICONV_VER}-shared-64.zip"
@@ -67,18 +77,28 @@ jobs:
           New-Item -ItemType Directory -Force -Path lib\gettext           | Out-Null
           New-Item -ItemType Directory -Force -Path lib\gettext-msvc-dev  | Out-Null
 
-          Write-Host "Downloading $rt"
+          Write-Host "Downloading $base/$bundle/$rt"
           Invoke-WebRequest "$base/$bundle/$rt"  -OutFile gettext-rt.zip
           Expand-Archive gettext-rt.zip  -DestinationPath lib\gettext   -Force
 
-          Write-Host "Downloading $dev"
+          Write-Host "Downloading $base/$bundle/$dev"
           Invoke-WebRequest "$base/$bundle/$dev" -OutFile gettext-dev.zip
           Expand-Archive gettext-dev.zip -DestinationPath lib\gettext-msvc-dev -Force
 
-          Write-Host "--- lib\gettext\bin ---"
-          Get-ChildItem lib\gettext\bin | Select-Object Name | Format-Table -AutoSize
-          Write-Host "--- lib\gettext-msvc-dev ---"
-          Get-ChildItem lib\gettext-msvc-dev | Select-Object Name | Format-Table -AutoSize
+          Write-Host "--- lib\gettext\bin (translation tools) ---"
+          Get-ChildItem lib\gettext\bin -Filter '*.exe' | Select-Object Name | Format-Table -AutoSize
+          Write-Host "--- lib\gettext-msvc-dev\bin (runtime DLLs) ---"
+          Get-ChildItem lib\gettext-msvc-dev\bin -ErrorAction SilentlyContinue | Select-Object Name | Format-Table -AutoSize
+
+          # Sanity-check the two file paths the rest of the build relies on.
+          foreach ($p in @(
+              'lib\gettext\bin\msgfmt.exe',
+              'lib\gettext-msvc-dev\include\libintl.h',
+              'lib\gettext-msvc-dev\lib\intl.dll.lib',
+              'lib\gettext-msvc-dev\bin\intl-8.dll'
+          )) {
+              if (-not (Test-Path $p)) { throw "Required file missing: $p (bundle layout changed?)" }
+          }
 
       - name: Compile Korean translations (.po → .mo)
         shell: cmd

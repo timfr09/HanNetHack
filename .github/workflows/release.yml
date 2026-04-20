@@ -1,0 +1,207 @@
+name: Release
+
+# Builds the Windows portable zip and, when a vX.Y.Z tag is pushed, attaches
+# it to a GitHub Release.  Can also be triggered manually via the
+# "Run workflow" button to produce build artifacts without a release.
+#
+# NOTE: MSI installer publishing is intentionally disabled for now.  The
+# WiX project under sys/windows/wix/ and the matching CI steps are kept in
+# the repository (currently unreferenced) so that they can be re-enabled
+# once Authenticode code signing is in place — an unsigned MSI triggers
+# noisier SmartScreen warnings than an unsigned portable zip and is harder
+# for end users to dismiss.  See sys/windows/wix/README.md for how to
+# rebuild the MSI locally in the meantime.
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write   # needed by softprops/action-gh-release
+
+env:
+  # Pin the gettext / iconv bundle so builds stay reproducible.
+  # The bundle tag is "v<GETTEXT_VER>-v<ICONV_VER>" and the asset filenames
+  # follow the same numeric pattern.  Source:
+  #   https://github.com/mlocati/gettext-iconv-windows/releases
+  # (Starting with the v1.0-v1.x line the upstream project ships the
+  # MSVC dev libraries we need; older 0.22.x releases do not.)
+  GETTEXT_VER: '1.0'
+  ICONV_VER:   '1.19'
+
+jobs:
+  windows-x64:
+    name: Build Windows x64 (portable zip)
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history so version.c picks up git info
+
+      - name: Derive version label
+        id: ver
+        shell: pwsh
+        run: |
+          # Tag like "v3.7.0-han.20260420" → keep the tag as-is for filenames.
+          # workflow_dispatch / non-tag → synthesize a dev-* label.
+          $ref = "${{ github.ref_name }}"
+          if ($ref -match '^v\d') {
+            $tag = $ref
+          } else {
+            $tag = "dev-$(Get-Date -Format yyyyMMddHHmm)"
+          }
+          "tag_label=$tag" | Out-File -Append $env:GITHUB_OUTPUT
+          Write-Host "Tag label: $tag"
+
+      - name: Set up MSVC (x64)
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: Download gettext / iconv (tools + MSVC dev libs)
+        shell: pwsh
+        run: |
+          # We need two bundles from mlocati/gettext-iconv-windows:
+          #   1. shared-64.zip          → lib\gettext        (xgettext, msgfmt,
+          #      msgmerge, msgcat -- used by build-translations.cmd)
+          #   2. shared-64-dev-msvc.zip → lib\gettext-msvc-dev (libintl.h
+          #      headers, intl.dll.lib / iconv.dll.lib import libs, and
+          #      MSVC-built runtime DLLs that ship in the final binary)
+          $base   = "https://github.com/mlocati/gettext-iconv-windows/releases/download"
+          $bundle = "v${env:GETTEXT_VER}-v${env:ICONV_VER}"
+          $rt     = "gettext${env:GETTEXT_VER}-iconv${env:ICONV_VER}-shared-64.zip"
+          $dev    = "gettext${env:GETTEXT_VER}-iconv${env:ICONV_VER}-shared-64-dev-msvc.zip"
+
+          New-Item -ItemType Directory -Force -Path lib\gettext           | Out-Null
+          New-Item -ItemType Directory -Force -Path lib\gettext-msvc-dev  | Out-Null
+
+          Write-Host "Downloading $base/$bundle/$rt"
+          Invoke-WebRequest "$base/$bundle/$rt"  -OutFile gettext-rt.zip
+          Expand-Archive gettext-rt.zip  -DestinationPath lib\gettext   -Force
+
+          Write-Host "Downloading $base/$bundle/$dev"
+          Invoke-WebRequest "$base/$bundle/$dev" -OutFile gettext-dev.zip
+          Expand-Archive gettext-dev.zip -DestinationPath lib\gettext-msvc-dev -Force
+
+          Write-Host "--- lib\gettext\bin (translation tools) ---"
+          Get-ChildItem lib\gettext\bin -Filter '*.exe' | Select-Object Name | Format-Table -AutoSize
+          Write-Host "--- lib\gettext-msvc-dev\bin (runtime DLLs) ---"
+          Get-ChildItem lib\gettext-msvc-dev\bin -ErrorAction SilentlyContinue | Select-Object Name | Format-Table -AutoSize
+
+          # Sanity-check the file paths the rest of the build relies on.
+          foreach ($p in @(
+              'lib\gettext\bin\msgfmt.exe',
+              'lib\gettext-msvc-dev\include\libintl.h',
+              'lib\gettext-msvc-dev\lib\intl.dll.lib',
+              'lib\gettext-msvc-dev\bin\intl-8.dll'
+          )) {
+              if (-not (Test-Path $p)) { throw "Required file missing: $p (bundle layout changed?)" }
+          }
+
+      - name: Compile Korean translations (.po → .mo)
+        shell: cmd
+        run: |
+          call sys\windows\build-translations.cmd
+          if not exist dat\locale\ko\LC_MESSAGES\nethack.mo (
+              echo ERROR: nethack.mo was not produced.
+              exit /b 1
+          )
+
+      - name: Set up src\Makefile (nhsetup)
+        shell: cmd
+        working-directory: sys\windows
+        run: |
+          call nhsetup.bat
+          if not exist ..\..\src\Makefile (
+              echo ERROR: nhsetup did not produce src\Makefile.
+              exit /b 1
+          )
+
+      - name: nmake package
+        shell: cmd
+        working-directory: src
+        run: |
+          nmake package
+          if errorlevel 1 exit /b %ERRORLEVEL%
+
+      - name: Verify build output
+        shell: pwsh
+        run: |
+          $required = @(
+            'binary\NetHack.exe',
+            'binary\NetHackW.exe',
+            'binary\nhdat370',
+            'binary\intl-8.dll',
+            'binary\iconv-2.dll',
+            'binary\locale\ko\LC_MESSAGES\nethack.mo',
+            'binary\locale\ko\quest.lua'
+          )
+          $missing = $required | Where-Object { -not (Test-Path $_) }
+          if ($missing) {
+            Write-Error ("Missing files:`n  " + ($missing -join "`n  "))
+            exit 1
+          }
+          Write-Host "All required files present."
+
+      - name: Compute SHA256 sums
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem package\*.zip
+          $files | ForEach-Object {
+            $h = (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower()
+            "$h  $($_.Name)"
+          } | Out-File package\SHA256SUMS.txt -Encoding ascii
+          Get-Content package\SHA256SUMS.txt | Write-Host
+
+      - name: Upload build artifacts (always)
+        uses: actions/upload-artifact@v4
+        with:
+          name: hannethack-windows-x64
+          path: |
+            package/*.zip
+            package/SHA256SUMS.txt
+          if-no-files-found: error
+
+      - name: Create GitHub Release (tag pushes only)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          body: |
+            ## HanNetHack ${{ github.ref_name }} — Windows x64
+
+            ### Downloads
+
+            | File | Description |
+            |---|---|
+            | `nethack-370-win-x64.zip` | Portable build — unzip anywhere and run `NetHackW.exe` (GUI) or `NetHack.exe` (console). |
+            | `nethack-370-win-x64-debugsymbols.zip` | Debug symbols (`.PDB`). Only needed for crash report analysis — regular players can ignore this. |
+            | `SHA256SUMS.txt` | SHA-256 checksums for verifying downloads. |
+
+            ### Verifying the download (PowerShell)
+
+            ```powershell
+            Get-FileHash nethack-370-win-x64.zip -Algorithm SHA256
+            ```
+
+            Compare the printed hash with the matching line in `SHA256SUMS.txt`.
+
+            ### SmartScreen note
+
+            Builds are not Authenticode-signed yet, so Windows SmartScreen
+            may warn the first time you run `NetHackW.exe` or `NetHack.exe`.
+            Click *More info → Run anyway* once you have verified the
+            SHA-256 above.
+
+            *(An MSI installer is planned for a future release once code
+            signing is in place; until then the portable zip is the only
+            published Windows artifact.)*
+          files: |
+            package/*.zip
+            package/SHA256SUMS.txt

@@ -1,7 +1,21 @@
 # HanNetHack Windows Installer (WiX MSI)
 
-This directory contains the [WiX Toolset v4](https://wixtoolset.org/) project
-that produces the `.msi` installer shipped on GitHub Releases.
+This directory contains the [WiX Toolset v5](https://wixtoolset.org/) project
+that can produce a `.msi` installer for HanNetHack on Windows x64.
+
+> **Status — currently *not* published on GitHub Releases.**
+>
+> Unsigned MSIs trigger noticeably worse SmartScreen / "unknown publisher"
+> warnings than unsigned portable executables (Windows treats running an
+> installer as a higher-privilege action), and many users abandon installs
+> at that prompt.  Until Authenticode code signing is in place
+> (e.g. via [SignPath OSS](https://signpath.io/open-source) or
+> [Azure Trusted Signing](https://learn.microsoft.com/azure/trusted-signing/)),
+> the release workflow only ships the portable zip.
+>
+> The WiX project below is kept fully working so it can be re-enabled in
+> `.github/workflows/release.yml` with no source changes the moment a
+> signing certificate becomes available.
 
 ## Files
 
@@ -31,34 +45,43 @@ that produces the `.msi` installer shipped on GitHub Releases.
    sys\windows\wix\build-msi.cmd 3.7.0.0
    ```
 
-   The script will install the WiX v4 `dotnet` tool and the `WixToolset.UI.wixext`
+   The script will install the WiX v5 `dotnet` tool and the `WixToolset.UI.wixext`
    extension on first run. The MSI is written to
    `package\hannethack-<version>-win-x64.msi`.
 
-## Cutting a release
+## Re-enabling MSI publishing in CI
 
-Releases are produced automatically by `.github/workflows/release.yml`.
+Once a code-signing certificate is available, restore the MSI pipeline by
+adding these steps back into `.github/workflows/release.yml`, between the
+*Verify build output* and *Compute SHA256 sums* steps:
 
-1. Bump translations / docs / version metadata if needed.
-2. Tag the commit and push:
+```yaml
+- name: Install WiX toolset
+  shell: pwsh
+  env:
+    WIX_VERSION: '5.0.2'
+  run: |
+    dotnet tool install --global wix --version $env:WIX_VERSION
+    "$env:USERPROFILE\.dotnet\tools" | Out-File -Append $env:GITHUB_PATH
+    & "$env:USERPROFILE\.dotnet\tools\wix.exe" extension add -g `
+        "WixToolset.UI.wixext/$env:WIX_VERSION"
 
-   ```bash
-   git tag -a v3.7.0-han.20260420 -m "HanNetHack 3.7 build 2026-04-20"
-   git push origin v3.7.0-han.20260420
-   ```
+- name: Build MSI installer
+  shell: cmd
+  run: call sys\windows\wix\build-msi.cmd <derived-version>
 
-3. Watch the *Actions → Release* run. On success it will:
-   * Build the game on a clean `windows-latest` runner.
-   * Compile the Korean `.mo` from `po/ko*.po`.
-   * Run `nmake package` → `package\nethack-370-win-x64.zip` and
-     `package\nethack-370-win-x64-debugsymbols.zip`.
-   * Build the MSI via `sys\windows\wix\build-msi.cmd`.
-   * Compute `SHA256SUMS.txt` for every artifact.
-   * Create the GitHub Release and attach all artifacts.
+- name: Sign MSI + executables
+  # ... signtool / SignPath / Azure Trusted Signing step here ...
 
-The same workflow can be triggered manually via *Actions → Release →
-Run workflow*; in that case the MSI/zip are uploaded as build
-artifacts but no Release is created.
+- name: Rename MSI for release
+  shell: pwsh
+  run: |
+    $src = Get-ChildItem package\hannethack-*.msi | Select-Object -First 1
+    Move-Item $src.FullName "package\hannethack-${{ github.ref_name }}-win-x64.msi" -Force
+```
+
+Then add `package/*.msi` to both the `upload-artifact` and the
+`softprops/action-gh-release` `files:` lists.
 
 ## Notes for maintainers
 
@@ -71,6 +94,9 @@ artifacts but no Release is created.
 * The package layout mirrors `binary\` exactly via WiX v4's `<Files>`
   element.  To add or remove shipped files, change what `nmake package`
   produces — no edits to the WiX project are required.
-* No code-signing certificate is configured. Add a signing step before
-  the *Build MSI installer* step in `release.yml` once a certificate is
-  available, e.g. via [`signtool sign /fd SHA256 /a /tr http://...`](https://learn.microsoft.com/en-us/windows/win32/seccrypto/signtool).
+* No code-signing certificate is configured. Sign the MSI (and ideally
+  the `.exe` files inside `binary\` *before* packaging the MSI, since
+  the MSI embeds them) once a certificate is available, e.g. via
+  [`signtool sign /fd SHA256 /a /tr http://...`](https://learn.microsoft.com/en-us/windows/win32/seccrypto/signtool),
+  [SignPath](https://signpath.io/open-source) (free for OSS), or
+  [Azure Trusted Signing](https://learn.microsoft.com/azure/trusted-signing/).

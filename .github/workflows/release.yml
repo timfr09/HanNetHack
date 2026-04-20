@@ -1,8 +1,16 @@
 name: Release
 
-# Builds the Windows package (zip + MSI) and, when a vX.Y.Z tag is pushed,
-# attaches them to a GitHub Release.  Can also be triggered manually via
-# the "Run workflow" button to produce build artifacts without a release.
+# Builds the Windows portable zip and, when a vX.Y.Z tag is pushed, attaches
+# it to a GitHub Release.  Can also be triggered manually via the
+# "Run workflow" button to produce build artifacts without a release.
+#
+# NOTE: MSI installer publishing is intentionally disabled for now.  The
+# WiX project under sys/windows/wix/ and the matching CI steps are kept in
+# the repository (currently unreferenced) so that they can be re-enabled
+# once Authenticode code signing is in place — an unsigned MSI triggers
+# noisier SmartScreen warnings than an unsigned portable zip and is harder
+# for end users to dismiss.  See sys/windows/wix/README.md for how to
+# rebuild the MSI locally in the meantime.
 
 on:
   push:
@@ -25,7 +33,7 @@ env:
 
 jobs:
   windows-x64:
-    name: Build Windows x64 (zip + MSI)
+    name: Build Windows x64 (portable zip)
     runs-on: windows-latest
 
     steps:
@@ -34,26 +42,20 @@ jobs:
         with:
           fetch-depth: 0   # full history so version.c picks up git info
 
-      - name: Derive version string
+      - name: Derive version label
         id: ver
         shell: pwsh
         run: |
-          # Tag like "v3.7.0-han.20260420" → MSI version "3.7.0.20260420"
-          # workflow_dispatch / non-tag → "3.7.0.0"
+          # Tag like "v3.7.0-han.20260420" → keep the tag as-is for filenames.
+          # workflow_dispatch / non-tag → synthesize a dev-* label.
           $ref = "${{ github.ref_name }}"
-          if ($ref -match '^v(\d+)\.(\d+)\.(\d+)(?:[-.]?[A-Za-z]*\.?(\d+))?') {
-            $maj = $Matches[1]; $min = $Matches[2]; $bld = $Matches[3]
-            $rev = if ($Matches[4]) { $Matches[4] } else { '0' }
-            $msi = "$maj.$min.$bld.$rev"
+          if ($ref -match '^v\d') {
             $tag = $ref
           } else {
-            $msi = '3.7.0.0'
             $tag = "dev-$(Get-Date -Format yyyyMMddHHmm)"
           }
-          "msi_version=$msi"   | Out-File -Append $env:GITHUB_OUTPUT
-          "tag_label=$tag"     | Out-File -Append $env:GITHUB_OUTPUT
-          Write-Host "MSI ProductVersion: $msi"
-          Write-Host "Tag label:          $tag"
+          "tag_label=$tag" | Out-File -Append $env:GITHUB_OUTPUT
+          Write-Host "Tag label: $tag"
 
       - name: Set up MSVC (x64)
         uses: ilammy/msvc-dev-cmd@v1
@@ -90,7 +92,7 @@ jobs:
           Write-Host "--- lib\gettext-msvc-dev\bin (runtime DLLs) ---"
           Get-ChildItem lib\gettext-msvc-dev\bin -ErrorAction SilentlyContinue | Select-Object Name | Format-Table -AutoSize
 
-          # Sanity-check the two file paths the rest of the build relies on.
+          # Sanity-check the file paths the rest of the build relies on.
           foreach ($p in @(
               'lib\gettext\bin\msgfmt.exe',
               'lib\gettext-msvc-dev\include\libintl.h',
@@ -145,43 +147,10 @@ jobs:
           }
           Write-Host "All required files present."
 
-      - name: Install WiX toolset
-        shell: pwsh
-        env:
-          # WiX v5 is the lowest version that supports the <Files Include="...">
-          # auto-harvest element used in Package.wxs.  We deliberately stay on
-          # v5 because v6+ requires accepting the Open Source Maintenance Fee
-          # EULA at every invocation, which complicates CI.
-          # Keep CLI and extension on the same major version.
-          WIX_VERSION: '5.0.2'
-        run: |
-          dotnet tool install --global wix --version $env:WIX_VERSION
-          # Refresh PATH for subsequent steps in this job.
-          "$env:USERPROFILE\.dotnet\tools" | Out-File -Append $env:GITHUB_PATH
-          $wix = "$env:USERPROFILE\.dotnet\tools\wix.exe"
-          & $wix --version
-          & $wix extension add -g "WixToolset.UI.wixext/$env:WIX_VERSION"
-          & $wix extension list -g
-
-      - name: Build MSI installer
-        shell: cmd
-        run: |
-          call sys\windows\wix\build-msi.cmd ${{ steps.ver.outputs.msi_version }}
-          if errorlevel 1 exit /b %ERRORLEVEL%
-
-      - name: Rename MSI for release
-        shell: pwsh
-        run: |
-          $src = Get-ChildItem package\hannethack-*.msi | Select-Object -First 1
-          if (-not $src) { throw "No MSI produced." }
-          $dst = "package\hannethack-${{ steps.ver.outputs.tag_label }}-win-x64.msi"
-          Move-Item $src.FullName $dst -Force
-          Write-Host "Renamed to: $dst"
-
       - name: Compute SHA256 sums
         shell: pwsh
         run: |
-          $files = Get-ChildItem package\*.zip,package\*.msi
+          $files = Get-ChildItem package\*.zip
           $files | ForEach-Object {
             $h = (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower()
             "$h  $($_.Name)"
@@ -194,7 +163,6 @@ jobs:
           name: hannethack-windows-x64
           path: |
             package/*.zip
-            package/*.msi
             package/SHA256SUMS.txt
           if-no-files-found: error
 
@@ -212,26 +180,28 @@ jobs:
 
             | File | Description |
             |---|---|
-            | `hannethack-${{ github.ref_name }}-win-x64.msi` | Installer (recommended) — installs to *Program Files*, adds Start Menu shortcuts, supports clean uninstall via *Settings → Apps*. |
-            | `nethack-370-win-x64.zip` | Portable build — unzip anywhere and run `NetHackW.exe`. |
-            | `nethack-370-win-x64-debugsymbols.zip` | Debug symbols (`.PDB`). Only needed for crash report analysis. |
+            | `nethack-370-win-x64.zip` | Portable build — unzip anywhere and run `NetHackW.exe` (GUI) or `NetHack.exe` (console). |
+            | `nethack-370-win-x64-debugsymbols.zip` | Debug symbols (`.PDB`). Only needed for crash report analysis — regular players can ignore this. |
             | `SHA256SUMS.txt` | SHA-256 checksums for verifying downloads. |
 
             ### Verifying the download (PowerShell)
 
             ```powershell
-            Get-FileHash hannethack-${{ github.ref_name }}-win-x64.msi -Algorithm SHA256
+            Get-FileHash nethack-370-win-x64.zip -Algorithm SHA256
             ```
 
             Compare the printed hash with the matching line in `SHA256SUMS.txt`.
 
             ### SmartScreen note
 
-            Builds are not Authenticode-signed yet, so Windows SmartScreen may
-            warn the first time you run the installer or executable.  Click
-            *More info → Run anyway* if you trust the SHA-256 you verified
-            above.
+            Builds are not Authenticode-signed yet, so Windows SmartScreen
+            may warn the first time you run `NetHackW.exe` or `NetHack.exe`.
+            Click *More info → Run anyway* once you have verified the
+            SHA-256 above.
+
+            *(An MSI installer is planned for a future release once code
+            signing is in place; until then the portable zip is the only
+            published Windows artifact.)*
           files: |
             package/*.zip
-            package/*.msi
             package/SHA256SUMS.txt

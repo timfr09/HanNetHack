@@ -1181,7 +1181,12 @@ ini_inv_mkobj_filter(int oclass, boolean got_level1_spellbook)
 staticfn short
 ini_inv_obj_substitution(const struct trobj *trop, struct obj *obj)
 {
-    if (gu.urace.mnum != PM_HUMAN) {
+    if (gu.urace.mnum == PM_HUMAN) {
+        nhUse(trop);
+        return obj->otyp;
+    }
+
+    {
         int i;
 
         /* substitute race-specific items; this used to be in
@@ -1199,6 +1204,7 @@ ini_inv_obj_substitution(const struct trobj *trop, struct obj *obj)
                 break;
             }
     }
+    nhUse(trop);
     return obj->otyp;
 }
 

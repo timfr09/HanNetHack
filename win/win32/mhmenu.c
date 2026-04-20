@@ -663,7 +663,6 @@ onMSNHCommand(HWND hWnd, WPARAM wParam, LPARAM lParam)
             p = strchr(data->menui.menu.items[new_item].str, '\t');
             column = 0;
             for (;;) {
-                TCHAR wbuf[BUFSZ];
                 RECT drawRect;
                 SetRect(&drawRect, 0, 0, 1, 1);
                 if (p != NULL)
@@ -1205,7 +1204,6 @@ onDrawItem(HWND hWnd, WPARAM wParam, LPARAM lParam)
             min(x + data->menui.menu.tab_stop_size[0], lpdis->rcItem.right),
             lpdis->rcItem.bottom);
     for (;;) {
-        TCHAR wbuf2[BUFSZ];
         if (p != NULL)
             *p = '\0'; /* for time being, view tab field as zstring */
         NH_DrawText(lpdis->hDC, p1, strlen(p1), &drawRect,

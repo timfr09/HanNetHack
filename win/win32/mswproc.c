@@ -46,6 +46,7 @@ extern void logDebug(const char *fmt, ...);
 void
 logDebug(const char *fmt, ...)
 {
+    (void) fmt;
 }
 #endif
 

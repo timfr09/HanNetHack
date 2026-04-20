@@ -559,45 +559,19 @@ typedef unsigned char uchar;
  * When enabled, NetHack can display messages in languages other than English.
  * Requires libintl and appropriate .mo translation files.
  * Korean localization includes automatic postposition (조사) handling.
- */
-#define ENABLE_NLS
-
-/*
- * On MSVC, vsnprintf/sprintf do not support positional format specifiers
- * like %1$s, %2$s (used in gettext translations to reorder arguments).
- * MSVC provides _vsprintf_p/_sprintf_p which do support them.
  *
- * We redefine sprintf and vsnprintf globally so that all string formatting
- * in the codebase (including Sprintf macro) supports positional parameters.
+ * HOSTUTIL: MSVC host-only tools (objutil tilemap, makedefs objects, …) are built
+ * with /DHOSTUTIL=1 so NLS is off: no libintl fprintf/sprintf redirection, avoiding
+ * runtime failures (e.g. 0xc0000409) in utilities that never load message catalogs.
  */
-#if defined(ENABLE_NLS) && defined(_MSC_VER)
-#include <stdio.h>
-#include <stdarg.h>
-/* _vsprintf_p supports positional params; use as vsnprintf replacement */
-/*
- * Check if a format string contains '$' (positional parameter indicator).
- * Can't use strchr here because string.h may not be included yet.
- */
-/*
- * _vsprintf_p handles both standard and positional format specifiers.
- * We use it for ALL formatting so %1$s/%2$s translations always work.
- * Note: %-1d is not compatible with _vsprintf_p, so translations
- * must use %d instead (ko.po has been updated accordingly).
- */
-#define nh_vsnprintf(buf, size, fmt, args) _vsprintf_p((buf), (size), (fmt), (args))
-static __inline int nh_sprintf_p(char *buf, const char *fmt, ...)
-{
-    va_list args;
-    int ret;
-    va_start(args, fmt);
-    ret = _vsprintf_p(buf, 4096, fmt, args);
-    va_end(args);
-    return ret;
-}
-#define sprintf nh_sprintf_p
-#else
-#define nh_vsnprintf(buf, size, fmt, args) vsnprintf((buf), (size), (fmt), (args))
+#if !defined(HOSTUTIL)
+#define ENABLE_NLS
 #endif
+
+/* nh_vsnprintf / MSVC sprintf wrapper: placed after #include "global.h" below
+ * so BUFSZ is in scope; nh_sprintf_p must not claim a buffer larger than BUFSZ.
+ * See win/share/tilemap.c: short buffers use Snprintf(..., sizeof ...), not Sprintf.
+ */
 
 /* SELECTSAVED: Enable the 'selectsaved' run-time option, allowing it
  * to be set in user's config file or NETHACKOPTIONS.  When set, if
@@ -736,6 +710,34 @@ static __inline int nh_sprintf_p(char *buf, const char *fmt, ...)
 #include "cstd.h"
 #include "integer.h"
 #include "global.h" /* Define everything else according to choices above */
+
+/*
+ * On MSVC, vsnprintf/sprintf do not support positional format specifiers
+ * like %1$s, %2$s (used in gettext translations to reorder arguments).
+ * MSVC provides _vsprintf_p/_sprintf_p which do support them.
+ *
+ * nh_sprintf_p must use BUFSZ, not an arbitrary large size: Sprintf targets are
+ * often char[BUFSZ] or smaller (e.g. tilemap[].name); claiming a 4096-byte
+ * buffer causes buffer overruns and FastFail (0xc0000409) under /GS.
+ */
+#if defined(ENABLE_NLS) && defined(_MSC_VER)
+#include <stdio.h>
+#include <stdarg.h>
+#define nh_vsnprintf(buf, size, fmt, args) _vsprintf_p((buf), (size), (fmt), (args))
+static __inline int nh_sprintf_p(char *buf, const char *fmt, ...)
+{
+    va_list args;
+    int ret;
+
+    va_start(args, fmt);
+    ret = _vsprintf_p(buf, BUFSZ, fmt, args);
+    va_end(args);
+    return ret;
+}
+#define sprintf nh_sprintf_p
+#else
+#define nh_vsnprintf(buf, size, fmt, args) vsnprintf((buf), (size), (fmt), (args))
+#endif
 
 /* Place the following after #include [platform]conf.h in global.h so that
    overrides are possible in there, for things like unix-specific file

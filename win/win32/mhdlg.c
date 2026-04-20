@@ -61,12 +61,12 @@ GetlinDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     struct getlin_data *data;
     RECT main_rt, dlg_rt;
-    SIZE dlg_sz;
+    SIZE dlg_sz = { 0, 0 };
     TCHAR wbuf[BUFSZ];
     HDC WindowDC;
     HWND ControlHWND;
-    SIZE WindowExtents;
-    SIZE ViewPortExtents;
+    SIZE WindowExtents = { 0, 0 };
+    SIZE ViewPortExtents = { 0, 0 };
     RECT ControlRect;
     RECT ClientRect;
     LONG Division;

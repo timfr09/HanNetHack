@@ -2292,7 +2292,6 @@ print_dungeon(boolean bymenu, schar *rlev, xint16 *rdgn)
 {
     int i, last_level, nlev;
     char buf[BUFSZ];
-    const char *descr;
     boolean first, unplaced;
     s_level *slev;
     dungeon *dptr;

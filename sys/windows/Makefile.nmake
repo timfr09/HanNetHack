@@ -67,7 +67,7 @@ CURSES_GRAPHICAL = Y
 # Do you want debug information available to the executable?
 #
 
-DEBUGINFO = Y
+DEBUGINFO = N
 
 #
 #------------------------------------------------------------------------------
@@ -96,6 +96,24 @@ GIT_AVAILABLE = N
 # line by adding GIT=1
 #   for example:
 #      nmake GIT=1 package
+#
+#------------------------------------------------------------------------------
+# HanNetHack: GNU gettext (libintl) for ENABLE_NLS with MSVC
+#
+# Download gettext1.0-iconv*-shared-64-dev-msvc.zip (x64) from
+#   https://github.com/mlocati/gettext-iconv-windows/releases
+# and extract at the top of the source tree so that (nmake runs in src/):
+#   ../lib/gettext-msvc-dev/include/libintl.h
+# exists. If missing, R_GETTEXTINCL is empty and the build will fail on i18n
+# unless you install the dev files.
+#
+!IF EXIST("..\lib\gettext-msvc-dev\include\libintl.h")
+R_GETTEXTINCL = /I..\lib\gettext-msvc-dev\include
+GETTEXT_LIBS = ..\lib\gettext-msvc-dev\lib\intl.dll.lib ..\lib\gettext-msvc-dev\lib\iconv.dll.lib
+!ELSE
+R_GETTEXTINCL =
+GETTEXT_LIBS =
+!ENDIF
 #
 #------------------------------------------------------------------------------
 # This Makefile will attempt to auto-detect your selected target architecture
@@ -865,7 +883,7 @@ COREOBJTTY = \
 	$(OTTY)end.o      $(OTTY)engrave.o  $(OTTY)exper.o    $(OTTY)explode.o \
 	$(OTTY)extralev.o $(OTTY)files.o    $(OTTY)fountain.o $(OTTY)getpos.o \
 	$(OTTY)glyphs.o   $(OTTY)iactions.o $(OTTY)hack.o     $(OTTY)insight.o \
-	$(OTTY)invent.o   $(OTTY)isaac64.o  $(OTTY)light.o    $(OTTY)lock.o \
+	$(OTTY)i18n.o     $(OTTY)ko_postpos.o $(OTTY)invent.o $(OTTY)isaac64.o  $(OTTY)light.o    $(OTTY)lock.o \
 	$(OTTY)mail.o     $(OTTY)makemon.o  $(OTTY)mcastu.o   $(OTTY)mhitm.o \
 	$(OTTY)mhitu.o    $(OTTY)minion.o   $(OTTY)mklev.o    $(OTTY)mkmap.o \
 	$(OTTY)mkmaze.o   $(OTTY)mkobj.o    $(OTTY)mkroom.o   $(OTTY)mon.o \
@@ -928,7 +946,7 @@ COREOBJGUI = \
 	$(OGUI)end.o      $(OGUI)engrave.o  $(OGUI)exper.o    $(OGUI)explode.o \
 	$(OGUI)extralev.o $(OGUI)files.o    $(OGUI)fountain.o $(OGUI)getpos.o \
 	$(OGUI)glyphs.o   $(OGUI)iactions.o $(OGUI)hack.o     $(OGUI)insight.o \
-	$(OGUI)invent.o   $(OGUI)isaac64.o  $(OGUI)light.o    $(OGUI)lock.o \
+	$(OGUI)i18n.o     $(OGUI)ko_postpos.o $(OGUI)invent.o $(OGUI)isaac64.o  $(OGUI)light.o    $(OGUI)lock.o \
 	$(OGUI)mail.o     $(OGUI)makemon.o  $(OGUI)mcastu.o   $(OGUI)mhitm.o \
 	$(OGUI)mhitu.o    $(OGUI)minion.o   $(OGUI)mklev.o    $(OGUI)mkmap.o \
 	$(OGUI)mkmaze.o   $(OGUI)mkobj.o    $(OGUI)mkroom.o   $(OGUI)mon.o \
@@ -1319,6 +1337,9 @@ ctmpflags = $(ctmpflags) -w45262 -w45264 -w45266 -w44431 -w44777 -wd4820 /std:cl
 !ENDIF
 !ENDIF
 
+# HanNetHack: UTF-8 source files (Korean in ko_postpos.c, headers, etc.)
+ctmpflags = $(ctmpflags) /utf-8
+
 #More verbose warning output options below
 #ctmpflags = $(ctmpflags:-W4=-wd4131
 #ctmpflags = $(ctmpflags:-W4=-Wall)
@@ -1359,7 +1380,7 @@ conlibs     = $(baselibs)
 guilibs     = $(winlibs)
 #
 
-INCLUSIONS= /I$(R_INCL) /I$(R_MSWSYS) $(R_LUAINCL) $(R_SOUNDLIBINCL)
+INCLUSIONS= /I$(R_INCL) /I$(R_MSWSYS) $(R_LUAINCL) $(R_SOUNDLIBINCL) $(R_GETTEXTINCL)
 
 #==========================================
 # Util and console builds
@@ -1367,7 +1388,11 @@ INCLUSIONS= /I$(R_INCL) /I$(R_MSWSYS) $(R_LUAINCL) $(R_SOUNDLIBINCL)
 
 CFLAGS   = $(ctmpflags) $(INCLUSIONS) $(DLBDEF) $(SOUNDLIBDEFS)
 CPPFLAGS = $(cpptmpflags) $(INCLUSIONS) $(DLBDEF) $(SOUNDLIBDEFS)
-LFLAGS   = $(lflags) $(conlibs) $(MACHINE)
+LFLAGS   = $(lflags) $(conlibs) $(MACHINE) $(GETTEXT_LIBS)
+# Host utilities built with /DHOSTUTIL=1 (no libintl); link without gettext import libs.
+UTIL_LFLAGS_NOGETTEXT = $(lflags) $(conlibs) $(MACHINE)
+# All objutil\*.o: single inference rule with this (avoid duplicate explicit rules / U4004).
+OBJUTIL_CPPFLAGS = /DHOSTUTIL=1
 
 #==========================================
 # - Game build
@@ -1398,7 +1423,7 @@ DLB =
 	$(Q)$(CC) $(CFLAGS) $(GUIDEF) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) -Fo$@ $<
 
 .c{$(R_OBJUTIL)}.o:
-	$(Q)$(CC) $(CFLAGS) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) -Fo$@ $<
+	$(Q)$(CC) $(CFLAGS) $(OBJUTIL_CPPFLAGS) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) -Fo$@ $<
 
 {$(R_SRC)}.c{$(R_OBJTTY)}.o:
 	$(Q)$(CC) $(CFLAGS) $(TTYDEF) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) -Fo$@ $<
@@ -1407,7 +1432,7 @@ DLB =
 	$(Q)$(CC) $(CFLAGS) $(GUIDEF) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) -Fo$@ $<
 
 {$(R_SRC)}.c{$(R_OBJUTIL)}.o:
-	$(Q)$(CC) $(CFLAGS) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) -Fo$@ $<
+	$(Q)$(CC) $(CFLAGS) $(OBJUTIL_CPPFLAGS) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) -Fo$@ $<
 
 #==========================================
 # Rules for files in sound\windsound
@@ -1440,7 +1465,7 @@ DLB =
 	$(Q)$(CC) $(CFLAGS) $(GUIDEF) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) -Fo$@ $<
 
 {$(R_SSYS)}.c{$(R_OBJUTIL)}.o:
-	$(Q)$(CC) $(CFLAGS) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) -Fo$@ $<
+	$(Q)$(CC) $(CFLAGS) $(OBJUTIL_CPPFLAGS) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) -Fo$@ $<
 
 {$(R_SSYS)}.cpp{$(R_OBJTTY)}.o:
 	$(Q)$(CC) $(CPPFLAGS) $(TTYDEF) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) /EHsc -Fo$@ $<
@@ -1449,7 +1474,7 @@ DLB =
 	$(Q)$(CC) $(CPPFLAGS) $(GUIDEF) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) /EHsc -Fo$@ $<
 
 {$(R_SSYS)}.cpp{$(R_OBJUTIL)}.o:
-	$(Q)$(CC) $(CPPFLAGS) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) /EHsc -Fo$@ $<
+	$(Q)$(CC) $(CPPFLAGS) $(OBJUTIL_CPPFLAGS) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) /EHsc -Fo$@ $<
 
 #==========================================
 # Rules for files in sys\windows
@@ -1470,9 +1495,7 @@ DLB =
 #==========================================
 
 {$(R_UTIL)}.c{$(R_OBJUTIL)}.o:
-	echo R_UTIL=$(R_UTIL)
-	echo R_OBJUTIL=$(R_OBJUTIL)
-	$(Q)$(CC) $(CFLAGS) -Fo$@ $<
+	$(Q)$(CC) $(CFLAGS) $(OBJUTIL_CPPFLAGS) -Fo$@ $<
 
 #==========================================
 # Rules for files in win\share
@@ -1485,7 +1508,7 @@ DLB =
 	$(Q)$(CC) $(CFLAGS) -I$(R_WSHR) $(GUIDEF) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) -Fo$@ $<
 
 {$(R_WSHR)}.c{$(R_OBJUTIL)}.o:
-	$(Q)$(CC) $(CFLAGS) -I$(R_WSHR) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) -Fo$@ $<
+	$(Q)$(CC) $(CFLAGS) $(OBJUTIL_CPPFLAGS) -I$(R_WSHR) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) -Fo$@ $<
 
 #==========================================
 # Rules for files in win\tty
@@ -1695,6 +1718,7 @@ $(GAMEDIR)NetHack.exe : gamedir.tag $(OTTY)consoletty.o \
 		$(OTTY)date.o
 		$(OTTY)console.res
 << keep
+	@if exist $(LIBDIR)gettext-msvc-dev\bin\intl-8.dll copy /Y $(LIBDIR)gettext-msvc-dev\bin\*.dll $(GAMEDIR) >nul
 	@if exist binary.tag del binary.tag
 
 #---------
@@ -1721,6 +1745,7 @@ $(GAMEDIR)NetHackW.exe : gamedir.tag $(OGUI)tile.o \
 		$(OGUI)date.o
 		$(OGUI)NetHackW.res
 << keep
+	@if exist $(LIBDIR)gettext-msvc-dev\bin\intl-8.dll copy /Y $(LIBDIR)gettext-msvc-dev\bin\*.dll $(GAMEDIR) >nul
 
 #--------
 # install
@@ -1816,6 +1841,7 @@ $(OUTL)nhsizes3.o: $(CONFIG_H) nhsizes3.c
 $(U)makedefs.exe: $(OUTLHACKLIB) $(MAKEDEFSOBJS)
 	@echo Linking $(@:\=/)
 	@$(link) $(LFLAGS) /PDB:"$(OUTL)$(@B).PDB" /MAP:"$(OUTL)$(@B).MAP" -out:$@ $(MAKEDEFSOBJS) $(OUTLHACKLIB)
+	@if exist $(LIBDIR)gettext-msvc-dev\bin\intl-8.dll copy /Y $(LIBDIR)gettext-msvc-dev\bin\*.dll $(U) >nul
 
 $(OUTL)makedefs.o: $(U)makedefs.c $(SRC)mdlib.c $(CONFIG_H) $(INCL)permonst.h \
 		$(INCL)objclass.h $(INCL)sym.h $(INCL)defsym.h \
@@ -2211,17 +2237,15 @@ tile.c: $(U)tilemap.exe
 
 $(U)tilemap.exe: $(OUTL)tilemap.o $(OUTL)monst.o $(OUTL)objects.o $(OUTL)drawing.o $(OUTLHACKLIB)
 	@echo Linking $(@:\=/)
-	@$(link) $(LFLAGS) /PDB:"$(OUTL)$(@B).PDB" /MAP:"$(OUTL)$(@B).MAP" $(HACKLIB) -out:$@ \
+	@$(link) $(UTIL_LFLAGS_NOGETTEXT) /STACK:8388608 /PDB:"$(OUTL)$(@B).PDB" /MAP:"$(OUTL)$(@B).MAP" -out:$@ \
 		$(OUTL)tilemap.o $(OUTL)monst.o $(OUTL)objects.o $(OUTL)drawing.o $(OUTLHACKLIB)
 
-$(OUTL)tilemap.o: $(WSHR)tilemap.c $(HACK_H)
-	$(Q)$(CC) $(CFLAGS) $(CROSSCOMPILE) -Fo$@ $(WSHR)tilemap.c
-
+# tilemap.c is compiled multiple ways; keep only these extra-macro variants (OBJUTIL_CPPFLAGS is in inference rules).
 $(OUTL)tiletx32.o: $(WSHR)tilemap.c $(HACK_H)
-	$(Q)$(CC) $(CFLAGS) $(CROSSCOMPILE) /DTILETEXT /DTILE_X=32 /DTILE_Y=32 -Fo$@ $(WSHR)tilemap.c
+	$(Q)$(CC) $(CFLAGS) $(OBJUTIL_CPPFLAGS) $(CROSSCOMPILE) /DTILETEXT /DTILE_X=32 /DTILE_Y=32 -Fo$@ $(WSHR)tilemap.c
 
 $(OUTL)tiletxt.o: $(WSHR)tilemap.c $(HACK_H)
-	$(Q)$(CC) $(CFLAGS) $(CROSSCOMPILE) /DTILETEXT -Fo$@ $(WSHR)tilemap.c
+	$(Q)$(CC) $(CFLAGS) $(OBJUTIL_CPPFLAGS) $(CROSSCOMPILE) /DTILETEXT -Fo$@ $(WSHR)tilemap.c
 
 $(OUTL)gifread.o: $(WSHR)gifread.c  $(CONFIG_H) $(TILE_H)
 	$(Q)$(CC) $(CFLAGS) $(CROSSCOMPILE) -I$(WSHR) -Fo$@ $(WSHR)gifread.c
@@ -2282,6 +2306,7 @@ $(U)tile2bmp.exe: $(OUTL)tile2bmp.o $(TEXT_IO) $(OUTL)alloc.o $(OUTL)panic.o
 		$(OUTL)alloc.o
 		$(OUTL)panic.o
 <<
+	@if exist $(LIBDIR)gettext-msvc-dev\bin\intl-8.dll copy /Y $(LIBDIR)gettext-msvc-dev\bin\*.dll $(U) >nul
 
 $(U)til2bm32.exe: $(OUTL)til2bm32.o $(TEXT_IO32)
 	@echo Linking $(@:\=/)
@@ -3265,6 +3290,8 @@ $(OTTY)hack.o: hack.c $(HACK_H)
 $(OTTY)hacklib.o: hacklib.c $(HACK_H)
 $(OTTY)iactions.o: iactions.c $(HACK_H)
 $(OTTY)insight.o: insight.c $(HACK_H)
+$(OTTY)i18n.o: i18n.c $(HACK_H) $(INCL)i18n.h
+$(OTTY)ko_postpos.o: ko_postpos.c $(HACK_H) $(INCL)ko_postpos.h
 $(OTTY)invent.o: invent.c $(HACK_H)
 $(OTTY)isaac64.o: isaac64.c $(CONFIG_H) $(INCL)isaac64.h
 $(OTTY)light.o: light.c $(HACK_H)
@@ -3646,6 +3673,8 @@ $(OGUI)hack.o: hack.c $(HACK_H)
 $(OGUI)hacklib.o: hacklib.c $(HACK_H)
 $(OGUI)iactions.o: iactions.c $(HACK_H)
 $(OGUI)insight.o: insight.c $(HACK_H)
+$(OGUI)i18n.o: i18n.c $(HACK_H) $(INCL)i18n.h
+$(OGUI)ko_postpos.o: ko_postpos.c $(HACK_H) $(INCL)ko_postpos.h
 $(OGUI)invent.o: invent.c $(HACK_H)
 $(OGUI)isaac64.o: isaac64.c $(CONFIG_H) $(INCL)isaac64.h
 $(OGUI)light.o: light.c $(HACK_H)

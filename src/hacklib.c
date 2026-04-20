@@ -349,11 +349,11 @@ s_suffix(const char *s)
 
     Strcpy(buf, s);
 
-    /* For non-ASCII text (e.g., Korean), append Korean possessive marker
-     * instead of English "'s". Korean uses "의" for possession. */
+    /* For non-ASCII text (e.g., Korean), append possessive (U+C758) instead
+     * of English "'s". Use UTF-8 bytes so MSVC without /utf-8 still parses. */
     for (p = (const unsigned char *) s; *p; p++) {
         if (*p >= 0x80) { /* non-ASCII byte (UTF-8) */
-            Strcat(buf, "의");
+            Strcat(buf, "\xec\x9d\x98"); /* U+C758 (Korean "ui" possessive) */
             return buf;
         }
     }
@@ -658,7 +658,8 @@ sitoa(int n)
 {
     static char buf[13];
 
-    Sprintf(buf, (n < 0) ? "%d" : "+%d", n);
+    /* nh_sprintf_p uses BUFSZ; buf is only 13 bytes — must use bounded Snprintf */
+    Snprintf(buf, sizeof buf, (n < 0) ? "%d" : "+%d", n);
     return buf;
 }
 
@@ -881,6 +882,8 @@ nh_snprintf(
     va_start(ap, fmt);
     n = nh_vsnprintf(str, size, fmt, ap);
     va_end(ap);
+    if (size == 0)
+        return;
     if (n < 0 || (size_t) n >= size) { /* is there a problem? */
 #if 0
 TODO: add set_impossible(), impossible -> func pointer,

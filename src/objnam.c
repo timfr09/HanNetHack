@@ -801,7 +801,6 @@ xname_flags(
         break;
     case ROCK_CLASS:
         if (typ == STATUE && omndx != NON_PM) {
-            char anbuf[10];
             const char *statue_pmname = _(obj_pmname(obj));
 
             /* Korean: "X 석상" instead of "statue of X" */

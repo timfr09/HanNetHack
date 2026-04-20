@@ -3652,12 +3652,15 @@ status_hilite2str(struct hilite_s *hl)
             impossible("hl->behavior=percentage, rel error");
         break;
     case BL_TH_UPDOWN:
+        /* i18n: status hilite threshold direction; C_("threshold")
+           context separates these from generic "up"/"down" which mean
+           the spatial direction (위/아래) used by stairs.c, muse.c, etc. */
         if (hl->rel == LT_VALUE)
-            Sprintf(behavebuf, _("down"));
+            Sprintf(behavebuf, C_("threshold", "down"));
         else if (hl->rel == GT_VALUE)
-            Sprintf(behavebuf, _("up"));
+            Sprintf(behavebuf, C_("threshold", "up"));
         else if (hl->rel == EQ_VALUE)
-            Sprintf(behavebuf, _("changed"));
+            Sprintf(behavebuf, C_("threshold", "changed"));
         else
             impossible("hl->behavior=updown, rel error");
         break;

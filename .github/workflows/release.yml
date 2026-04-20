@@ -148,10 +148,12 @@ jobs:
       - name: Install WiX toolset
         shell: pwsh
         env:
-          # WiX v7 is required for the <Files Include="..."> auto-harvest
-          # element used in Package.wxs.  Keep CLI and extension on the same
-          # major version (v5/v7 extensions are not loadable by v4 CLI).
-          WIX_VERSION: '7.0.0'
+          # WiX v5 is the lowest version that supports the <Files Include="...">
+          # auto-harvest element used in Package.wxs.  We deliberately stay on
+          # v5 because v6+ requires accepting the Open Source Maintenance Fee
+          # EULA at every invocation, which complicates CI.
+          # Keep CLI and extension on the same major version.
+          WIX_VERSION: '5.0.2'
         run: |
           dotnet tool install --global wix --version $env:WIX_VERSION
           # Refresh PATH for subsequent steps in this job.

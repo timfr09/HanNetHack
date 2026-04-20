@@ -1790,6 +1790,7 @@ binary.tag: 	$(DAT)data $(DAT)rumors $(DAT)oracles $(DLB) \
 	if exist $(DAT)porthelp copy $(DAT)porthelp $(GAMEDIR)
 	if exist $(DAT)ttyoptions copy $(DAT)ttyoptions $(GAMEDIR)
 ! ENDIF
+	if exist $(DAT)locale\*.* xcopy /E /I /Y $(DAT)locale $(GAMEDIR)locale
 	echo binary built > $@
 
 #	copy $(MSWSYS)windsyshlp    $(GAMEDIR)
@@ -2813,7 +2814,7 @@ $(SndWavDir)sa2_xplevelup.wav: $(SndWavDir)sa2_xplevelup.uu $(U)uudecode.exe
 
 PKGFILES = nethackrc.template Guidebook.txt license NetHack.exe NetHack.txt \
 	 NetHackW.exe opthelp nhdat370 record symbols \
-	 sysconf.template $(SFCTOOLBASENAM)
+	 sysconf.template locale $(SFCTOOLBASENAM)
 FILESTOZIP = $(BinDir)nethackrc.template $(BinDir)Guidebook.txt $(BinDir)license \
 	$(BinDir)NetHack.exe $(BinDir)NetHack.txt $(BinDir)NetHackW.exe \
 	$(BinDir)opthelp $(BinDir)nhdat370 $(BinDir)record \

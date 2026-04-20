@@ -47,9 +47,17 @@ mswin_getlin_window(const char *question, char *result, size_t result_size)
     data.result = result;
     data.result_size = result_size;
 
-    /* create modal dialog window */
+    /* Create the dialog as Unicode (DialogBoxParamW) so that the edit
+     * control is created as a Unicode window.  Otherwise the edit control
+     * is ANSI and IME-composed Korean/CJK characters get mangled when
+     * Windows converts between the system ACP and UTF-16 internally. */
+#ifdef ENABLE_NLS
+    ret = DialogBoxParamW(GetNHApp()->hApp, MAKEINTRESOURCEW(IDD_GETLIN),
+                          GetNHApp()->hMainWnd, GetlinDlgProc, (LPARAM) &data);
+#else
     ret = DialogBoxParam(GetNHApp()->hApp, MAKEINTRESOURCE(IDD_GETLIN),
                          GetNHApp()->hMainWnd, GetlinDlgProc, (LPARAM) &data);
+#endif
     if (ret == -1)
         panic("Cannot create getlin window");
 
@@ -81,10 +89,10 @@ GetlinDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             MultiByteToWideChar(CP_UTF8, 0, data->question, -1, wq, BUFSZ);
             SetWindowTextW(hWnd, wq);
             /* Also set wbuf for size calculation below */
-            NH_A2W(data->question, wbuf, sizeof(wbuf));
+            NH_A2W(data->question, wbuf, BUFSZ);
         }
 #else
-        SetWindowText(hWnd, NH_A2W(data->question, wbuf, sizeof(wbuf)));
+        SetWindowText(hWnd, NH_A2W(data->question, wbuf, BUFSZ));
 #endif
         SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR) data);
 
@@ -263,7 +271,7 @@ ExtCmdDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         for (i = 0; extcmdlist[i].ef_txt; i++) {
             SendDlgItemMessage(
                 hWnd, IDC_EXTCMD_LIST, LB_ADDSTRING, (WPARAM) 0,
-                (LPARAM) NH_A2W(extcmdlist[i].ef_txt, wbuf, sizeof(wbuf)));
+                (LPARAM) NH_A2W(extcmdlist[i].ef_txt, wbuf, BUFSZ));
         }
 
         /* set focus to the list control */
@@ -690,7 +698,7 @@ plselInitDialog(struct plsel_data * data)
 
     /* set player name */
     control_t * name_box = &data->controls[psc_name_box];
-    SetDlgItemText(data->dialog, name_box->id, NH_A2W(svp.plname, wbuf, sizeof(wbuf)));
+    SetDlgItemText(data->dialog, name_box->id, NH_A2W(svp.plname, wbuf, BUFSZ));
 
     plselRandomize(data);
 

@@ -1063,7 +1063,7 @@ mswin_display_file(const char *filename, boolean must_exist)
             TCHAR message[90];
             nh_stprintf(message, sizeof message,
                         TEXT("Warning! Could not find file: %s\n"),
-                        NH_A2W(filename, wbuf, sizeof(wbuf)));
+                        NH_A2W(filename, wbuf, BUFSZ));
             NHMessageBox(GetNHApp()->hMainWnd, message,
                          MB_OK | MB_ICONEXCLAMATION);
         }

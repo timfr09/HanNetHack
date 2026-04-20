@@ -59,6 +59,12 @@ msgstr ""
 # 몬스터, 아이템, 역할 이름 등
 # xgettext로 자동 추출되지 않는 항목들
 # ============================================================
+
+# UI: 좁은 대화상자 제목에 들어갈 짧은 표현으로 의역
+#: win/win32/mswproc.c
+msgid "Who are you?"
+msgstr "당신의 이름은?"
+
 #: (manual addition for i18n)
 msgid "lichen"
 msgstr "이끼"

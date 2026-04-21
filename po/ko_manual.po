@@ -1303,7 +1303,7 @@ msgid "throwing star"
 msgstr "표창"
 
 msgid "tin opener"
-msgstr "깡통 따개"
+msgstr "통조림 따개"
 
 msgid "tin whistle"
 msgstr "호루라기"
@@ -4044,7 +4044,7 @@ msgid "stinking "
 msgstr "악취 나는 "
 
 msgid "opening the tin"
-msgstr "깡통 여는 중"
+msgstr "통조림 여는 중"
 
 # ============================================================
 # [조합 메시지] 동사 접두어 - be동사 (are/were/was)
@@ -8255,15 +8255,29 @@ msgstr "%s"
 msgid "Set %s to what?"
 msgstr "%s{을/를} 무엇으로 설정할까요?"
 
-# botl.c - 상태 강조 설정
+# botl.c - 상태 강조 임계값 행동 (BL_TH_UPDOWN)
+# C_("threshold") 컨텍스트로 분리됨. 기본 "up"/"down"(stairs.c, muse.c 등)은
+# 공간 방향(위/아래)이므로 별도 항목.
+msgctxt "threshold"
 msgid "down"
 msgstr "하락"
 
+msgctxt "threshold"
 msgid "up"
 msgstr "상승"
 
+msgctxt "threshold"
 msgid "changed"
 msgstr "변화"
+
+# 일반 방향(공간) 의미 - stairs.c, muse.c, sounds.c, do.c 등에서 사용
+# 예: "%s escapes %sstairs!" → "%s가 위 계단으로 도망쳤다!"
+#     "They won't hear you %s there." → "위쪽에서는 너의 말을 못 들을 것이다."
+msgid "up"
+msgstr "위"
+
+msgid "down"
+msgstr "아래"
 
 msgid "always"
 msgstr "항상"
@@ -9342,10 +9356,10 @@ msgstr "%s 위의 함정문이 열렸지만 아무것도 떨어지지 않았다!
 msgid "%s squeak %s."
 msgstr "%s{이/가} %s 삐걱거렸다."
 
-# trap.c:1505 - 곰 덫이 허공을 통과
+# trap.c:1505 - 곰 덫이 허공을 통과 (플레이어가 무형 상태일 때)
 #, c-format
 msgid "%s bear trap closes harmlessly through you."
-msgstr "%s 곰 덫이 당신을 무해하게 통과하며 닫혔다."
+msgstr "%s 곰 덫이 당신을 그대로 통과하며 아무 해도 입히지 않은 채 닫혔다."
 
 #: ../src/apply.c:911 ../src/dungeon.c:3368 ../src/hack.c:526 ../src/mon.c:1628
 #: ../src/muse.c:3125 ../src/muse.c:3137 ../src/priest.c:483 ../src/read.c:1444
@@ -16349,7 +16363,7 @@ msgstr "%s %s에 튀었다!"
 # %4$s = currency(): "조크미드" 자음종성 → 가→{이/가}
 #, c-format
 msgid "%s%sThat will cost you %ld %s (Yendorian Fuel Tax)."
-msgstr "%s%s그것은 %ld %s{이/가} 들 것입니다 (옌도리안 연료세)."
+msgstr "%s%s그것은 %ld %s{이/가} 들 것이다 (옌도리안 연료세)."
 
 # mhitu.c:2165 - 로맨틱 만남
 # %s = noit_mon_nam(): 몬스터 이름 가변종성
@@ -16602,7 +16616,7 @@ msgstr "NetHack은 언데드 스튜디오 관객 앞에서 촬영되었다."
 #: ../src/allmain.c:896
 #, c-format
 msgid "%s %s, welcome to NetHack!  You are a%s."
-msgstr "%s %s, NetHack에 오신 것을 환영합니다! 당신은 %s입니다."
+msgstr "%s %s, NetHack에 오신 것을 환영한다! 당신은 %s이다."
 
 #: ../src/allmain.c:897
 #, c-format
@@ -17761,27 +17775,27 @@ msgstr "뛰어다니는 중"
 
 #: ../src/apply.c:2196
 msgid "seem to be out of tins."
-msgstr "깡통이 다 떨어진 것 같다."
+msgstr "통조림이 다 떨어진 것 같다."
 
 #: ../src/apply.c:2202
 #, c-format
 msgid "cannot tin %s which is partly eaten."
-msgstr "부분적으로 먹은 %s{을/를} 깡통에 담을 수 없다."
+msgstr "일부 먹은 %s{을/를} 통조림에 담을 수 없다."
 
 #: ../src/apply.c:2211
 #, c-format
 msgid "tin %s without wearing gloves."
-msgstr "장갑을 끼지 않고 %s{을/를} 깡통에 담는다."
+msgstr "장갑을 끼지 않고 %s{을/를} 통조림에 담는다."
 
 #: ../src/apply.c:2214
 #, c-format
 msgid "Tinning %s without wearing gloves is a fatal mistake..."
-msgstr "장갑 없이 %s{을/를} 깡통에 담는 것은 치명적인 실수다..."
+msgstr "장갑 없이 %s{을/를} 통조림에 담는 것은 치명적인 실수다..."
 
 #: ../src/apply.c:2216
 #, c-format
 msgid "trying to tin %s without gloves"
-msgstr "장갑 없이 %s{을/를} 통조림으로 만들려 함"
+msgstr "장갑 없이 %s{을/를} 통조림에 담으려 함"
 
 #: ../src/apply.c:2222
 msgid "Yes...  But War does not preserve its enemies..."
@@ -17793,11 +17807,11 @@ msgstr "시체가 손아귀를 피한다."
 
 #: ../src/apply.c:2228
 msgid "That's too insubstantial to tin."
-msgstr "그것은 깡통에 담기에 너무 비실체적이다."
+msgstr "그것은 통조림에 담기에 너무 실체가 없다."
 
 #: ../src/apply.c:2234
 msgid "You tin it, you bought it!"
-msgstr "통조림으로 만들었으니, 산 거야!"
+msgstr "통조림에 담았으니, 산 거예요!"
 
 #: ../src/apply.c:2262
 #, c-format
@@ -18676,7 +18690,7 @@ msgstr "%s{이/가} 당신의 %s{을/를} 흡수했다!"
 
 #: ../src/artifact.c:1768
 msgid "a surge of power, but nothing seems to happen."
-msgstr "힘의 급증, 하지만 아무 일도 일어나지 않는 것 같다."
+msgstr "힘이 급증하는 듯하지만, 아무 일도 일어나지 않는 것 같다."
 
 #
 #: ../src/artifact.c:1791 ../src/potion.c:1118 ../src/pray.c:417
@@ -19926,7 +19940,7 @@ msgstr "%s 명령은 '%s' 접두사를 허용하지 않는다."
 #: ../src/cmd.c:3717
 #, c-format
 msgid "The '%s' prefix should be followed by a movement command%s."
-msgstr "'%s' 접두사 뒤에는 이동 명령%s이 와야 한다."
+msgstr "'%s' 접두사 뒤에는 이동 명령%s{이/가} 와야 한다."
 
 #: ../src/cmd.c:3719
 msgid " other than up or down"
@@ -20904,7 +20918,7 @@ msgstr "여기서 %s할 공간이 충분하지 않다."
 
 #: ../src/dig.c:276
 msgid "ladder resists your effort."
-msgstr "사다리가 노력에 저항한다."
+msgstr "사다리는 너의 노력에 끄떡도 하지 않는다."
 
 #: ../src/dig.c:279
 #, c-format
@@ -25493,7 +25507,7 @@ msgstr "먹으겠습니까?"
 
 #: ../src/eat.c:1588 ../src/eat.c:1660
 msgid "discard the open tin."
-msgstr "열린 깡통을 버린다."
+msgstr "열린 통조림을 버린다."
 
 #: ../src/eat.c:1643
 #, c-format
@@ -25536,23 +25550,23 @@ msgstr "블루토"
 
 #: ../src/eat.c:1712
 msgid "give up your attempt to open the tin."
-msgstr "깡통 열기를 포기한다."
+msgstr "통조림 열기를 포기한다."
 
 #: ../src/eat.c:1718
 msgid "You succeed in opening the tin."
-msgstr "깡통을 여는 데 성공했다."
+msgstr "통조림을 여는 데 성공했다."
 
 #: ../src/eat.c:1730
 msgid "You bite right into the metal tin..."
-msgstr "금속 깡통을 바로 물어뜯다..."
+msgstr "금속 통조림을 그대로 물어뜯었다..."
 
 #: ../src/eat.c:1733
 msgid "cannot handle the tin properly to open it."
-msgstr "깡통을 제대로 다루지 못해 열 수 없다."
+msgstr "통조림을 제대로 다루지 못해 열 수 없다."
 
 #: ../src/eat.c:1744
 msgid "The tin opens like magic!"
-msgstr "깡통이 마법처럼 열린다!"
+msgstr "통조림이 마법처럼 열린다!"
 
 #
 #: ../src/eat.c:1746
@@ -25777,7 +25791,7 @@ msgstr "윽 - 개밥이잖아!"
 
 #: ../src/eat.c:2154
 msgid "A little goes a long way."
-msgstr "조금이 많은 역할을 한다."
+msgstr "적은 양으로도 충분히 든든하다."
 
 #: ../src/eat.c:2174
 #, c-format
@@ -26125,7 +26139,7 @@ msgstr "; 계속 먹겠습니까?"
 #: ../src/eat.c:3664
 #, c-format
 msgid "There are %ld gold pieces here; eat them?"
-msgstr "여기에 금화 %ld닢이 있습니다; 먹으겠습니까?"
+msgstr "여기에 금화 %ld닢이 있다; 먹겠습니까?"
 
 # ============================================================
 # UI 메시지 (invent.c - "here" 관련)
@@ -26155,7 +26169,7 @@ msgstr "그것을 %s!"
 
 #: ../src/eat.c:3744
 msgid "jaw gapes convulsively."
-msgstr "턱이 경련적으로 벌어진다."
+msgstr "턱이 경련하듯 벌어진다."
 
 #: ../src/eat.c:3752
 #, c-format
@@ -27230,7 +27244,7 @@ msgstr "게임 종료 공개 파일:"
 #: ../src/files.c:3300
 #, c-format
 msgid "No end-of-game disclosure file (%s)."
-msgstr "게임 종료 공개 파일이 없습니다 (%s)."
+msgstr "게임 종료 공개 파일이 없다 (%s)."
 
 #: ../src/files.c:3466
 #, c-format
@@ -27959,7 +27973,7 @@ msgstr "도개교가 올라가 있다!"
 
 #: ../src/hack.c:1040
 msgid "Sokoban walls resist your ability."
-msgstr "소코반 벽이 당신의 능력을 저항한다."
+msgstr "소코반의 벽은 너의 능력에 끄떡도 하지 않는다."
 
 #: ../src/hack.c:1048
 msgid "solid stone"
@@ -30884,7 +30898,7 @@ msgstr "이전보다 더 죽지 않은 것 같다."
 
 #: ../src/mcastu.c:463
 msgid "have an out of body experience."
-msgstr "유체이탈 경험을 한다."
+msgstr "유체이탈을 경험한다."
 
 #: ../src/mcastu.c:473 ../src/uhitm.c:3879
 msgid "Lucky for you, it didn't work!"
@@ -34147,9 +34161,10 @@ msgid "%s escapes down the ladder!"
 msgstr "%s{이/가} 사다리를 타고 아래로 도망쳤다!"
 
 #: ../src/muse.c:1132
+# %s = "위"/"아래" (방향). 한국어에서 "위쪽 계단/아래쪽 계단" 형태로 자연스럽게 결합.
 #, c-format
 msgid "%s escapes %sstairs!"
-msgstr "%s{이/가} %s에서 탈출했다!"
+msgstr "%s{이/가} %s쪽 계단으로 도망쳤다!"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -34642,7 +34657,7 @@ msgstr "만화경 같은 나비들의 향연을 펼친다."
 
 #: ../src/music.c:578
 msgid "What you perform is quite far from music..."
-msgstr "연주하는 것이 음악과는 거리가 멀다..."
+msgstr "당신이 연주하는 것은 음악이라 부르기 어렵다..."
 
 #: ../src/music.c:592
 #, c-format
@@ -39236,7 +39251,7 @@ msgstr "%s..."
 
 #: ../src/potion.c:155
 msgid "deathly sick."
-msgstr "치명적으로 아프다."
+msgstr "죽을 것처럼 아프다."
 
 #: ../src/potion.c:159
 #, c-format
@@ -40715,7 +40730,7 @@ msgstr "부적절함을 느낀다."
 
 #: ../src/pray.c:2068
 msgid "partially absolved."
-msgstr "부분적으로 용서받았다."
+msgstr "일부 용서받았다."
 
 #: ../src/pray.c:2078
 msgid "realize that the gods are not like you and I."
@@ -43124,8 +43139,11 @@ msgid "Shall I pick a character for you? [ynaq] "
 msgstr "캐릭터를 자동으로 선택하시겠습니까? [ynaq] "
 
 #: ../src/role.c:1608
+# 한국어 어순: 동사("자동 선택할까요?")가 끝의 "? [ynaq] " msgid에서 나옴.
+# 시작 부분은 제로 폭 공백(U+200B)으로 비워 항목들이 자연스럽게 이어지도록 함.
+# 빈 문자열로 두면 영어 원문 "Auto-select "로 폴백되므로 ZWSP 필수.
 msgid "Auto-select "
-msgstr "자동 선택: "
+msgstr "​"
 
 #: ../src/role.c:1610 ../src/role.c:1678
 msgid "race"
@@ -43144,8 +43162,10 @@ msgid "alignment"
 msgstr "성향"
 
 #: ../src/role.c:1627
+# 한국어 어순상 동사("자동 선택할까요?")를 여기에 배치.
+# 조립 결과 예: "종족, 역할, 성별 그리고 성향을 자동 선택할까요? [ynaq] "
 msgid "? [ynaq] "
-msgstr "? [ynaq] "
+msgstr "{을/를} 자동 선택할까요? [ynaq] "
 
 #: ../src/role.c:1633
 msgid "Shall I pick "
@@ -43449,8 +43469,9 @@ msgid "%s senses your presence."
 msgstr "%s{이/가} 당신의 존재를 감지했다."
 
 #: ../src/shk.c:804
+# 상점 주인 발화 - 가이드: 상점 주인은 반존대(-요)
 msgid "Invisible customers are not welcome!"
-msgstr "투명한 손님은 환영하지 않습니다!"
+msgstr "투명한 손님은 환영하지 않아요!"
 
 #: ../src/shk.c:806
 #, c-format
@@ -43712,7 +43733,7 @@ msgstr "그 빚을 갚는다."
 
 #: ../src/shk.c:1994
 msgid "That debt is partially offset by your credit."
-msgstr "그 빚은 신용으로 부분적으로 상쇄됐다."
+msgstr "그 빚은 너의 외상으로 일부 상쇄됐다."
 
 #: ../src/shk.c:1995
 msgid "pay the remainder."
@@ -44285,7 +44306,7 @@ msgstr "투명화가 %s{을/를} 속이지 못한다!"
 #: ../src/shk.c:5304
 #, c-format
 msgid "%sYou did %ld %s worth of damage!%s  Pay?"
-msgstr "%s당신은 %ld %s 가치의 피해를 입혔습니다!%s  지불하시겠습니까?"
+msgstr "%s당신은 %ld %s 가치의 피해를 입혔다!%s  지불하시겠습니까?"
 
 #: ../src/shk.c:5317
 #, c-format
@@ -44475,7 +44496,7 @@ msgstr "경찰%s{이/가} (실망하며) 허공으로 사라진다%s."
 #: ../src/shk.c:5706
 #, c-format
 msgid "%sYou owe%s %ld %s."
-msgstr "%s당신은%s %ld %s{을/를} 빚지고 있습니다."
+msgstr "%s당신은%s %ld %s{을/를} 빚지고 있어요."
 
 # 상점 주인 대화 - 물약 비용 청구
 #: ../src/shk.c:5707
@@ -45435,7 +45456,7 @@ msgstr "어린 바보"
 #: ../src/sounds.c:804
 #, c-format
 msgid "I vant to suck your %s!"
-msgstr "네 %s를 빨아먹겠다!"
+msgstr "네 %s{을/를} 빨아먹겠다!"
 
 #: ../src/sounds.c:807
 #, c-format
@@ -45861,7 +45882,7 @@ msgstr "그들은 저 밖에서 당신을 듣지 못할 것이다."
 
 #: ../src/sounds.c:1278
 msgid "speech is unintelligible underwater."
-msgstr "수중에서는 말이 알아들을 수 없다."
+msgstr "수중에서는 말을 알아들을 수 없다."
 
 #: ../src/sounds.c:1300 ../src/sounds.c:1338 ../src/sounds.c:1385
 #: ../src/sounds.c:1500
@@ -45870,9 +45891,10 @@ msgid "%s seems not to notice you."
 msgstr "%s{이/가} 당신을 알아채지 못하는 것 같다."
 
 #: ../src/sounds.c:1307
+# %s = "위"/"아래" (방향)
 #, c-format
 msgid "They won't hear you %s there."
-msgstr "그들은 %s 거기서 당신을 듣지 못할 것이다."
+msgstr "%s쪽에 있는 자들은 너의 말을 듣지 못할 것이다."
 
 #: ../src/sounds.c:1322
 msgid "Talking to yourself is a bad habit for a dungeoneer."
@@ -45884,7 +45906,7 @@ msgstr "벽에 대고 말하는 것과 같다."
 
 #: ../src/sounds.c:1357
 msgid "tells you a funny joke!"
-msgstr "재미있는 농담을 한다!"
+msgstr "재미있는 농담을 들려준다!"
 
 #: ../src/sounds.c:1358
 msgid "insults your heritage!"
@@ -45896,7 +45918,7 @@ msgstr "즐겁게 껄껄 웃는다!"
 
 #: ../src/sounds.c:1361
 msgid "deprecates your exploration efforts."
-msgstr "사다리가 노력에 저항한다."
+msgstr "당신의 탐험 노력을 비하한다."
 
 #: ../src/sounds.c:1362
 msgid "suggests a stint of rehab..."
@@ -45905,12 +45927,15 @@ msgstr "재활 치료를 권한다..."
 #
 #: ../src/sounds.c:1363
 msgid "doesn't seem to be interested."
-msgstr "영향을 받지 않은 것 같다."
+msgstr "관심이 없는 것 같다."
 
 #: ../src/sounds.c:1369
+# 환각 상태에서 벽이 무언가 행동/말을 하는 형식.
+# %s = walltalk[] 배열의 동사구 ("재미있는 농담을 한다!" 등).
+# pline_The()가 앞에 "그 "를 붙이므로 "벽이"로 시작.
 #, c-format
 msgid "wall %s"
-msgstr "벽 %s"
+msgstr "벽이 %s"
 
 #: ../src/sounds.c:1395
 #, c-format
@@ -45918,8 +45943,9 @@ msgid "%s is eating noisily."
 msgstr "%s{이/가} 시끄럽게 먹고 있다."
 
 #: ../src/sounds.c:1400
+# 영어 관용구 "falls on deaf ears" = 들은 척도 하지 않다, 흘려듣다
 msgid "falls on deaf ears"
-msgstr "구멍에 빠졌다"
+msgstr "흘려듣는다"
 
 #: ../src/sounds.c:1401
 msgid "is inaudible"
@@ -45940,9 +45966,10 @@ msgid "briefly doff your %s."
 msgstr "잠깐 %s{을/를} 벗었다."
 
 #: ../src/sounds.c:1459
+# %s = "위"/"아래" (방향)
 #, c-format
 msgid "There's no one %s there."
-msgstr "그곳에는 %s 아무도 없다."
+msgstr "%s쪽에는 아무도 없다."
 
 #: ../src/sounds.c:1461
 msgid "lout here doesn't acknowledge you..."
@@ -46441,9 +46468,14 @@ msgid "to the end game"
 msgstr "엔드게임으로"
 
 #: ../src/stairs.c:229
+# %1$s = 계단 종류 ("계단"/"사다리"/"계단")
+# %2$s = 방향 ("위"/"아래")
+# %3$s = 던전 이름 ("노움 광산" 등)
+# 영어: "branch staircase up to the Gnomish Mines"
+# 한국어: "노움 광산으로 가는 위쪽 계단 분기"
 #, c-format
 msgid "branch %s %s to %s"
-msgstr "분기 %s에서 %s로 %s"
+msgstr "%3$s{으로/로} 가는 %2$s쪽 %1$s 분기"
 
 #: ../src/steal.c:92
 #, c-format
@@ -47171,8 +47203,9 @@ msgid "petrifying"
 msgstr "석화"
 
 #: ../src/timeout.c:36
+# 속성 라벨(propertynames[]) - 명사형으로 표시
 msgid "fatally sick"
-msgstr "치명적으로 아프다."
+msgstr "치명적 질병"
 
 #: ../src/timeout.c:41
 msgid "deafness"
@@ -47868,12 +47901,12 @@ msgstr "기록 파일을 쓸 수 없다."
 
 #: ../src/topten.c:846
 msgid "You made the top ten list!"
-msgstr "상위 10위 안에 들었습니다!"
+msgstr "상위 10위 안에 들었다!"
 
 #: ../src/topten.c:851
 #, c-format
 msgid "You reached the %d%s place on the top %d list."
-msgstr "상위 %3$d위 목록에서 %1$d%2$s위에 올랐습니다."
+msgstr "상위 %3$d위 목록에서 %1$d%2$s위에 올랐다."
 
 #: ../src/topten.c:949
 msgid " No  Points     Name"

@@ -653,9 +653,9 @@ plselInitDialog(struct plsel_data * data)
         lvitem.state = 0;
         lvitem.stateMask = LVIS_FOCUSED;
         if (flags.female && roles[i].name.f)
-            lvitem.pszText = NH_A2W(roles[i].name.f, wbuf, BUFSZ);
+            lvitem.pszText = NH_A2W(_(roles[i].name.f), wbuf, BUFSZ);
         else
-            lvitem.pszText = NH_A2W(roles[i].name.m, wbuf, BUFSZ);
+            lvitem.pszText = NH_A2W(_(roles[i].name.m), wbuf, BUFSZ);
         if (ListView_InsertItem(role_list->hWnd, &lvitem) == -1) {
             panic("cannot insert menu item");
         }
@@ -675,7 +675,7 @@ plselInitDialog(struct plsel_data * data)
         lvitem.iSubItem = 0;
         lvitem.state = 0;
         lvitem.stateMask = LVIS_FOCUSED;
-        lvitem.pszText = NH_A2W(races[i].noun, wbuf, BUFSZ);
+        lvitem.pszText = NH_A2W(_(races[i].noun), wbuf, BUFSZ);
         if (ListView_InsertItem(race_list->hWnd, &lvitem) == -1) {
             panic("cannot insert menu item");
         }

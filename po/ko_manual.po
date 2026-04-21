@@ -1303,7 +1303,7 @@ msgid "throwing star"
 msgstr "표창"
 
 msgid "tin opener"
-msgstr "깡통 따개"
+msgstr "통조림 따개"
 
 msgid "tin whistle"
 msgstr "호루라기"
@@ -4044,7 +4044,7 @@ msgid "stinking "
 msgstr "악취 나는 "
 
 msgid "opening the tin"
-msgstr "깡통 여는 중"
+msgstr "통조림 여는 중"
 
 # ============================================================
 # [조합 메시지] 동사 접두어 - be동사 (are/were/was)
@@ -17775,27 +17775,27 @@ msgstr "뛰어다니는 중"
 
 #: ../src/apply.c:2196
 msgid "seem to be out of tins."
-msgstr "깡통이 다 떨어진 것 같다."
+msgstr "통조림이 다 떨어진 것 같다."
 
 #: ../src/apply.c:2202
 #, c-format
 msgid "cannot tin %s which is partly eaten."
-msgstr "부분적으로 먹은 %s{을/를} 깡통에 담을 수 없다."
+msgstr "일부 먹은 %s{을/를} 통조림에 담을 수 없다."
 
 #: ../src/apply.c:2211
 #, c-format
 msgid "tin %s without wearing gloves."
-msgstr "장갑을 끼지 않고 %s{을/를} 깡통에 담는다."
+msgstr "장갑을 끼지 않고 %s{을/를} 통조림에 담는다."
 
 #: ../src/apply.c:2214
 #, c-format
 msgid "Tinning %s without wearing gloves is a fatal mistake..."
-msgstr "장갑 없이 %s{을/를} 깡통에 담는 것은 치명적인 실수다..."
+msgstr "장갑 없이 %s{을/를} 통조림에 담는 것은 치명적인 실수다..."
 
 #: ../src/apply.c:2216
 #, c-format
 msgid "trying to tin %s without gloves"
-msgstr "장갑 없이 %s{을/를} 통조림으로 만들려 함"
+msgstr "장갑 없이 %s{을/를} 통조림에 담으려 함"
 
 #: ../src/apply.c:2222
 msgid "Yes...  But War does not preserve its enemies..."
@@ -17807,11 +17807,11 @@ msgstr "시체가 손아귀를 피한다."
 
 #: ../src/apply.c:2228
 msgid "That's too insubstantial to tin."
-msgstr "그것은 깡통에 담기에 너무 비실체적이다."
+msgstr "그것은 통조림에 담기에 너무 실체가 없다."
 
 #: ../src/apply.c:2234
 msgid "You tin it, you bought it!"
-msgstr "통조림으로 만들었으니, 산 거야!"
+msgstr "통조림에 담았으니, 산 거예요!"
 
 #: ../src/apply.c:2262
 #, c-format
@@ -18690,7 +18690,7 @@ msgstr "%s{이/가} 당신의 %s{을/를} 흡수했다!"
 
 #: ../src/artifact.c:1768
 msgid "a surge of power, but nothing seems to happen."
-msgstr "힘의 급증, 하지만 아무 일도 일어나지 않는 것 같다."
+msgstr "힘이 급증하는 듯하지만, 아무 일도 일어나지 않는 것 같다."
 
 #
 #: ../src/artifact.c:1791 ../src/potion.c:1118 ../src/pray.c:417
@@ -25507,7 +25507,7 @@ msgstr "먹으겠습니까?"
 
 #: ../src/eat.c:1588 ../src/eat.c:1660
 msgid "discard the open tin."
-msgstr "열린 깡통을 버린다."
+msgstr "열린 통조림을 버린다."
 
 #: ../src/eat.c:1643
 #, c-format
@@ -25550,23 +25550,23 @@ msgstr "블루토"
 
 #: ../src/eat.c:1712
 msgid "give up your attempt to open the tin."
-msgstr "깡통 열기를 포기한다."
+msgstr "통조림 열기를 포기한다."
 
 #: ../src/eat.c:1718
 msgid "You succeed in opening the tin."
-msgstr "깡통을 여는 데 성공했다."
+msgstr "통조림을 여는 데 성공했다."
 
 #: ../src/eat.c:1730
 msgid "You bite right into the metal tin..."
-msgstr "금속 깡통을 바로 물어뜯다..."
+msgstr "금속 통조림을 그대로 물어뜯었다..."
 
 #: ../src/eat.c:1733
 msgid "cannot handle the tin properly to open it."
-msgstr "깡통을 제대로 다루지 못해 열 수 없다."
+msgstr "통조림을 제대로 다루지 못해 열 수 없다."
 
 #: ../src/eat.c:1744
 msgid "The tin opens like magic!"
-msgstr "깡통이 마법처럼 열린다!"
+msgstr "통조림이 마법처럼 열린다!"
 
 #
 #: ../src/eat.c:1746
@@ -25791,7 +25791,7 @@ msgstr "윽 - 개밥이잖아!"
 
 #: ../src/eat.c:2154
 msgid "A little goes a long way."
-msgstr "조금이 많은 역할을 한다."
+msgstr "적은 양으로도 충분히 든든하다."
 
 #: ../src/eat.c:2174
 #, c-format
@@ -30898,7 +30898,7 @@ msgstr "이전보다 더 죽지 않은 것 같다."
 
 #: ../src/mcastu.c:463
 msgid "have an out of body experience."
-msgstr "유체이탈 경험을 한다."
+msgstr "유체이탈을 경험한다."
 
 #: ../src/mcastu.c:473 ../src/uhitm.c:3879
 msgid "Lucky for you, it didn't work!"
@@ -45906,7 +45906,7 @@ msgstr "벽에 대고 말하는 것과 같다."
 
 #: ../src/sounds.c:1357
 msgid "tells you a funny joke!"
-msgstr "재미있는 농담을 한다!"
+msgstr "재미있는 농담을 들려준다!"
 
 #: ../src/sounds.c:1358
 msgid "insults your heritage!"

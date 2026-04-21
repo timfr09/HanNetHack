@@ -1,78 +1,106 @@
-# HanNetHack - 한국어 NetHack
+# HanNetHack — Korean NetHack
 
-![Version](https://img.shields.io/badge/version-3.7.0--ko.3-blue)
+![Version](https://img.shields.io/badge/version-3.7.0--ko.4-blue)
 ![License](https://img.shields.io/badge/license-NGPL-green)
 ![Translation](https://img.shields.io/badge/translation-WIP-yellow)
+![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey)
 
-NetHack 3.7 기반의 한국어 번역 개인 프로젝트입니다.
+A personal Korean localization of NetHack 3.7.
 
 > **Note**: This is an unofficial fan translation project, not affiliated with the NetHack DevTeam.
 
-> **번역 오류 제보**: 아직 번역 오류가 있을 수 있습니다. 오류를 발견하시면 [Issues](https://github.com/timfr09/HanNetHack/issues)에 제보해 주세요!
+> **Reporting translation errors**: Translations are still being polished. If you spot a mistake or awkward phrasing, please open a ticket on [Issues](https://github.com/timfr09/HanNetHack/issues).
 
-![HanNetHack Screenshot](docs/screenshot_ko.png)
+![HanNetHack on Windows](assets/screenshot-win.png)
 
 ---
 
 ## Features
 
 ### Korean Translation
-- 10,000+ messages translated (work in progress)
-- Dynamic postposition system for natural Korean grammar
-- Speech style distinction (polite/casual/semi-polite)
+- 11,000+ messages translated (work in progress)
+- Dynamic postposition system for natural Korean grammar (`{은/는}`, `{이/가}`, `{을/를}`, `{과/와}`, `{으로/로}`)
+- Speech-style distinction (polite / casual / semi-polite) following the in-game speaker
 - Consistent terminology across all game messages
-- Word order optimized for natural Korean (positional format specifiers)
-- Context-aware translations using `C_()` for shared strings
+- Word order optimized for natural Korean using positional format specifiers (`%1$s`, `%2$s`, …)
+- Context-aware translations using `C_()` (`pgettext`) for shared strings with different meanings
 - Encyclopedia (data.base) Korean translation
 
 ### Enhanced Display
-- Korean full-width symbol set
-- Emoji symbol set
-- CJK/UTF-8 character width handling
+- Korean full-width symbol set (`symset:Korean`)
+- Emoji symbol set (`symset:Emoji`)
+- CJK / UTF-8 character width handling for both TTY and Windows GUI
+- Localized character-creation dialog on the Windows GUI build (job/race names shown in Korean)
 
 ---
 
 ## Installation
 
-### Build from Source
+### Pre-built Binaries
+
+The easiest way to try HanNetHack is to grab a pre-built release from the
+[Releases](https://github.com/timfr09/HanNetHack/releases) page. Windows portable
+ZIPs are produced by the GitHub Actions release workflow.
+
+### Build from Source — Linux
 
 ```bash
 # Clone the repository
 git clone https://github.com/timfr09/HanNetHack.git
 cd HanNetHack
 
-# Linux
-cd sys/unix
-sh setup.sh hints/linux
-cd ../..
-make all
-make install
+cd sys/unix && sh setup.sh hints/linux.370 && cd ../..
+make fetch-lua          # one-time: download Lua 5.4.8 source
+make all                # do NOT use -j (Lua build can race)
+make install            # installs to ~/nh/install/
 
-# The game will be installed to ~/nethack by default
+HACKDIR=~/nh/install/games/lib/nethackdir TERM=xterm-256color ./src/nethack
 ```
 
-### Pre-built Binaries
+### Build from Source — Windows (Visual Studio)
 
-See [Releases](https://github.com/timfr09/HanNetHack/releases) for pre-built binaries.
+The Windows GUI build (`NetHackW.exe`, GDI tile renderer) and the Windows
+console build (`NetHack.exe`) are both fully supported. Korean text in messages,
+inventory, and the player-selection dialog all renders natively.
+
+```cmd
+:: From a Developer Command Prompt for VS 2022 at the repo root:
+sys\windows\fetch.cmd lua
+sys\windows\fetch.cmd pdcursesmod
+sys\windows\setup-gettext.cmd
+
+:: Build (or open sys\windows\vs\NetHack.sln in Visual Studio)
+msbuild sys\windows\vs\NetHack.sln /p:Configuration=Release /p:Platform=x64 /m
+
+:: Install into a runnable directory
+sys\windows\install.cmd
+```
+
+The result lives in `install\HanNetHack\` and can be moved anywhere; double-click
+`NetHackW.exe` for the GUI version.
+
+See [`sys/windows/build-hannethack.txt`](sys/windows/build-hannethack.txt) for
+prerequisites, troubleshooting, and Visual Studio setup details.
 
 ---
 
 ## Configuration
 
-### Language Setting
+### Language
 
-The game defaults to Korean. To change the language, edit `~/.nethackrc`:
+The game defaults to Korean. To change it, edit `~/.nethackrc` (or
+`%USERPROFILE%\NetHack\.nethackrc` on Windows):
 
 ```
-OPTIONS=language:en    # English
 OPTIONS=language:ko    # Korean (default)
+OPTIONS=language:en    # English
 ```
 
 ### Symbol Sets
 
 ```
-OPTIONS=symset:Korean  # Korean full-width symbols
-OPTIONS=symset:Emoji   # Emoji symbols
+OPTIONS=symset:Korean                    # Korean full-width symbols
+OPTIONS=symset:Emoji                     # Emoji symbols
 OPTIONS=symset:IBMgraphics_langstripped  # ASCII
 ```
 
@@ -82,24 +110,25 @@ OPTIONS=symset:IBMgraphics_langstripped  # ASCII
 
 ### Postposition System
 
-Korean requires different postpositions based on whether the preceding syllable ends with a consonant. HanNetHack automatically handles this:
+Korean postpositions depend on whether the preceding syllable ends in a
+consonant. HanNetHack picks the correct form at runtime:
 
-| Pattern | Usage | Example |
-|---------|-------|---------|
-| `{은/는}` | Topic marker | 드래곤**은** / 개미**는** |
-| `{이/가}` | Subject marker | 검**이** / 도끼**가** |
-| `{을/를}` | Object marker | 검**을** / 도끼**를** |
-| `{과/와}` | "and/with" | 검**과** / 방패**와** |
-| `{으로/로}` | Direction/means | 북쪽**으로** / 아래**로** |
+| Pattern    | Usage             | Example                        |
+|------------|-------------------|--------------------------------|
+| `{은/는}`  | Topic marker      | 드래곤**은** / 개미**는**       |
+| `{이/가}`  | Subject marker    | 검**이** / 도끼**가**          |
+| `{을/를}`  | Object marker     | 검**을** / 도끼**를**          |
+| `{과/와}`  | "and / with"      | 검**과** / 방패**와**          |
+| `{으로/로}`| Direction / means | 북쪽**으로** / 아래**로**       |
 
 ### Speech Styles
 
-| Context | Style | Example |
-|---------|-------|---------|
-| User prompts | Polite | "무엇을 버리시겠습니까?" |
-| Game narration | Casual | "배가 고프다." |
-| Shopkeeper | Semi-polite | "계산해 주세요." |
-| NPCs | Casual | "안녕." |
+| Context         | Style        | Example                          |
+|-----------------|--------------|----------------------------------|
+| User prompts    | Polite       | "무엇을 버리시겠습니까?"         |
+| Game narration  | Casual       | "배가 고프다."                   |
+| Shopkeeper      | Semi-polite  | "계산해 주세요."                 |
+| Other NPCs      | Casual       | "안녕."                          |
 
 ---
 
@@ -107,28 +136,29 @@ Korean requires different postpositions based on whether the preceding syllable 
 
 ### Translation Improvements
 
-1. Edit `po/ko_manual.po` with your translations (NOT `ko.po`)
-2. Build the translation: `cd po && make merge compile`
-3. Test in-game
-4. Submit a pull request
+1. Edit `po/ko_manual.po` (**not** `ko.po` — that file is auto-generated and
+   gets overwritten by `make update-po`).
+2. Compile the merged catalog: `cd po && make compile`.
+3. Run the game and verify the change in context.
+4. Submit a pull request against this fork.
 
-> **Note**: `ko_manual.po` is the safe file for manual edits. `ko.po` can be overwritten by `make update-po`.
-
-See `po/README.md` for detailed translation workflow.
+See [`po/README.md`](po/README.md) and `po/TRANSLATION_GUIDE_KO.md` for the
+full translation workflow and conventions.
 
 ### Reporting Issues
 
-Please report translation errors or suggestions on [GitHub Issues](https://github.com/timfr09/HanNetHack/issues).
+Please report translation errors or suggestions on
+[GitHub Issues](https://github.com/timfr09/HanNetHack/issues).
 
 ---
 
 ## Versioning
 
-HanNetHack uses semantic versioning with Korean translation suffix:
+HanNetHack uses semantic versioning with a Korean-translation suffix:
 
 ```
 v3.7.0-ko.4
-  │    │  └── Korean translation version
+  │    │  └── Korean translation iteration
   │    └───── Based on NetHack 3.7.0
   └────────── Major version
 ```
@@ -137,9 +167,7 @@ v3.7.0-ko.4
 
 ## License
 
-NetHack General Public License (NGPL)
-
-See `dat/license` for details.
+NetHack General Public License (NGPL). See `dat/license` for details.
 
 ---
 
@@ -153,5 +181,5 @@ See `dat/license` for details.
 ## Links
 
 - [Original NetHack](https://nethack.org/)
-- [NetHack GitHub](https://github.com/NetHack/NetHack)
+- [NetHack on GitHub](https://github.com/NetHack/NetHack)
 - [HanNetHack Releases](https://github.com/timfr09/HanNetHack/releases)

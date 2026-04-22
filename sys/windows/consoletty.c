@@ -870,7 +870,7 @@ back_buffer_flip(void)
                     do_anything |= do_wide_content;
             } else {
 #endif
-                if (back->utf8str && front->utf8str
+                if (back->utf8str[0] && front->utf8str[0]
                     && strcmp((const char *) back->utf8str,
                            (const char *) front->utf8str))
                     do_anything |= do_utf8_content;

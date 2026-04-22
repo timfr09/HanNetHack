@@ -14,7 +14,7 @@ set LOCALE_DIR=dat\locale\ko\LC_MESSAGES
 REM Check if gettext tools are available
 if not exist "%GETTEXT_DIR%\msgfmt.exe" (
     echo WARNING: gettext tools not found at %GETTEXT_DIR%
-    echo          Run sys\windows\setup-gettext.cmd first.
+    echo          Run sys\windows\setup-gettext.cmd to download msgfmt/msgcat.
     exit /b 0
 )
 

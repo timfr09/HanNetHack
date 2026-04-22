@@ -1713,7 +1713,6 @@ $(GAMEDIR)NetHack.exe : gamedir.tag $(OTTY)consoletty.o \
 		$(OTTY)date.o
 		$(OTTY)console.res
 << keep
-	@if exist $(LIBDIR)gettext-msvc-dev\bin\intl-8.dll copy /Y $(LIBDIR)gettext-msvc-dev\bin\*.dll $(GAMEDIR) >nul
 	@if exist binary.tag del binary.tag
 
 #---------
@@ -1740,7 +1739,6 @@ $(GAMEDIR)NetHackW.exe : gamedir.tag $(OGUI)tile.o \
 		$(OGUI)date.o
 		$(OGUI)NetHackW.res
 << keep
-	@if exist $(LIBDIR)gettext-msvc-dev\bin\intl-8.dll copy /Y $(LIBDIR)gettext-msvc-dev\bin\*.dll $(GAMEDIR) >nul
 
 #--------
 # install
@@ -1838,7 +1836,6 @@ $(OUTL)nhsizes3.o: $(CONFIG_H) nhsizes3.c
 $(U)makedefs.exe: $(OUTLHACKLIB) $(MAKEDEFSOBJS)
 	@echo Linking $(@:\=/)
 	@$(link) $(LFLAGS) /PDB:"$(OUTL)$(@B).PDB" /MAP:"$(OUTL)$(@B).MAP" -out:$@ $(MAKEDEFSOBJS) $(OUTLHACKLIB)
-	@if exist $(LIBDIR)gettext-msvc-dev\bin\intl-8.dll copy /Y $(LIBDIR)gettext-msvc-dev\bin\*.dll $(U) >nul
 
 $(OUTL)makedefs.o: $(U)makedefs.c $(SRC)mdlib.c $(CONFIG_H) $(INCL)permonst.h \
 		$(INCL)objclass.h $(INCL)sym.h $(INCL)defsym.h \
@@ -2381,7 +2378,6 @@ $(U)tile2bmp.exe: $(OUTL)tile2bmp.o $(TEXT_IO) $(OUTL)alloc.o $(OUTL)panic.o
 		$(OUTL)alloc.o
 		$(OUTL)panic.o
 <<
-	@if exist $(LIBDIR)gettext-msvc-dev\bin\intl-8.dll copy /Y $(LIBDIR)gettext-msvc-dev\bin\*.dll $(U) >nul
 
 $(U)til2bm32.exe: $(OUTL)til2bm32.o $(TEXT_IO32)
 	@echo Linking $(@:\=/)

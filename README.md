@@ -67,7 +67,10 @@ inventory, and the player-selection dialog all renders natively.
 :: From a Developer Command Prompt for VS 2022 at the repo root:
 sys\windows\fetch.cmd lua
 sys\windows\fetch.cmd pdcursesmod
-sys\windows\setup-gettext.cmd
+
+:: Optional: gettext tools under lib\gettext\bin — only if you edit po/*.po
+:: or run `nmake package` to rebuild the .mox catalog inside nhdat.
+::   sys\windows\setup-gettext.cmd
 
 :: Build (or open sys\windows\vs\NetHack.sln in Visual Studio)
 msbuild sys\windows\vs\NetHack.sln /p:Configuration=Release /p:Platform=x64 /m

@@ -127,4 +127,7 @@ po/messages.mo
 .claude/
 CLAUDE.local.md
 
+# Ad-hoc vendor drops (canonical fetch layout uses lib/ at repo root)
+sys/lib/
+
 sys/amiga/regex/

@@ -148,6 +148,7 @@
     <ClCompile Include="$(SrcDir)glyphs.c" />
     <ClCompile Include="$(SrcDir)hack.c" />
     <ClCompile Include="$(SrcDir)i18n.c" />
+    <ClCompile Include="$(SrcDir)mo_reader.c" />
     <ClCompile Include="$(SrcDir)ko_postpos.c" />
     <ClCompile Include="$(SrcDir)iactions.c" />
     <ClCompile Include="$(SrcDir)invent.c" />

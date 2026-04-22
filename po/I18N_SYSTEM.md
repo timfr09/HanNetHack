@@ -500,17 +500,26 @@ Required defines:
 - `ENABLE_NLS` - Enable Native Language Support
 - `LOCALEDIR` - Default locale directory path
 
-Required libraries:
-- `libintl` - GNU gettext runtime
-- `libiconv` - Character encoding conversion (if needed)
+Runtime libraries (HanNetHack): **none** for gettext — the game uses
+`src/mo_reader.c` to load an XOR-obfuscated `.mox` catalog from nhdat
+instead of linking `libintl` / `libiconv`.
+
+Build-time / translator tools still use the usual GNU gettext CLI
+(`msgfmt`, `msgcat`, `xgettext`, …) from a system package or
+`lib/gettext/bin` on Windows.
 
 ### CMake Configuration
+
+Upstream NetHack forks that still use GNU gettext might use:
 
 ```cmake
 find_package(Intl REQUIRED)
 target_link_libraries(nethack ${Intl_LIBRARIES})
 target_compile_definitions(nethack PRIVATE ENABLE_NLS)
 ```
+
+HanNetHack’s MSVC / Makefile.nmake build does **not** use this; it
+compiles `mo_reader.c` and avoids `Intl` linkage.
 
 ---
 

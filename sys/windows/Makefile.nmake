@@ -2227,27 +2227,7 @@ $(DAT)locale\ko\nethack.mox: $(U)encode_mo.exe $(PO)ko.mo
 
 !IF ("$(USE_DLB)"=="Y")
 #
-# Korean locale text / lua assets that ride inside nhdat alongside
-# the English ones.  Kept explicit (no wildcards) so new files are a
-# conscious addition and stay in sync with the Unix build.
-#
-LOCALE_KO_TEXT = $(DAT)locale\ko\help $(DAT)locale\ko\hh \
-	$(DAT)locale\ko\cmdhelp $(DAT)locale\ko\keyhelp \
-	$(DAT)locale\ko\history $(DAT)locale\ko\opthelp \
-	$(DAT)locale\ko\optmenu $(DAT)locale\ko\usagehlp \
-	$(DAT)locale\ko\wizhelp \
-	$(DAT)locale\ko\bogusmon.txt $(DAT)locale\ko\engrave.txt \
-	$(DAT)locale\ko\epitaph.txt $(DAT)locale\ko\oracles.txt \
-	$(DAT)locale\ko\rumors.tru $(DAT)locale\ko\rumors.fal \
-	$(DAT)locale\ko\data.base
-
-LOCALE_KO_LUA = $(DAT)locale\ko\quest.lua $(DAT)locale\ko\themerms.lua \
-	$(DAT)locale\ko\tut-1.lua $(DAT)locale\ko\tut-2.lua \
-	$(DAT)locale\ko\air.lua $(DAT)locale\ko\astral.lua \
-	$(DAT)locale\ko\earth.lua $(DAT)locale\ko\water.lua \
-	$(DAT)locale\ko\minend-2.lua $(DAT)locale\ko\Arc-loca.lua \
-	$(DAT)locale\ko\nhcore.lua $(DAT)locale\ko\nhlib.lua
-
+# Korean locale assets are appended to dlb.lst below.
 nhdat$(NHV):	$(U)dlb.exe $(DAT)data $(DAT)oracles $(OPTIONS_FILE) $(LUA_FILES) \
 	$(DAT)rumors $(DAT)help $(DAT)hh $(DAT)cmdhelp $(DAT)keyhelp \
 	$(DAT)history $(DAT)opthelp $(DAT)optmenu $(DAT)wizhelp $(DAT)porthelp \

@@ -2183,11 +2183,83 @@ $(OGUI)dlb_main.o: $(UTIL)dlb_main.c $(INCL)config.h $(INCL)dlb.h
 $(DAT)porthelp: $(MSWSYS)porthelp
 	@copy $(MSWSYS)porthelp $@ >nul
 
+#==========================================
+# Translation catalog pipeline (.po -> .mo -> .mox)
+#==========================================
+#
+# Prefer a gettext-iconv install that the user placed under
+# lib\gettext\ via sys\windows\setup-gettext.cmd; otherwise assume
+# msgfmt / msgcat are reachable through PATH.
+#
+#
+# nmake runs in src/ so Makefile rules reference ..\po\... for .po
+# source files, same as the existing ..\dat\... convention.
+#
+!IF EXIST("..\lib\gettext\bin\msgfmt.exe")
+MSGFMT_EXE = ..\lib\gettext\bin\msgfmt.exe
+MSGCAT_EXE = ..\lib\gettext\bin\msgcat.exe
+!ELSE
+MSGFMT_EXE = msgfmt
+MSGCAT_EXE = msgcat
+!ENDIF
+
+PO = ..\po$(BACKSLASH)
+
+# Merge auto-extracted + hand-curated translations.  ko_manual.po
+# takes priority (matches po/Makefile's `merge` target).
+$(PO)ko_merged.po: $(PO)ko.po $(PO)ko_manual.po
+	@echo Merging Korean translation sources
+	@$(MSGCAT_EXE) --use-first -o $@ $(PO)ko_manual.po $(PO)ko.po
+
+$(PO)ko.mo: $(PO)ko_merged.po
+	@echo Compiling $(@:\=/)
+	@$(MSGFMT_EXE) -c -o $@ $(PO)ko_merged.po
+
+$(U)encode_mo.exe: $(OUTL)encode_mo.o
+	@echo Linking $(@:\=/)
+	@$(link) $(LFLAGS) /PDB:"$(OUTL)$(@B).PDB" /MAP:"$(OUTL)$(@B).MAP" \
+		-out:$@ $(OUTL)encode_mo.o
+
+$(OUTL)encode_mo.o: $(U)encode_mo.c $(INCL)mox_format.h
+	$(Q)$(CC) $(CFLAGS) $(CROSSCOMPILE) /D_CRT_SECURE_NO_WARNINGS \
+		-Fo$@ $(U)encode_mo.c
+
+# Produce the XOR-obfuscated catalog next to the plain .mo so DLB
+# packaging can pick it up.  Keeping both artifacts around lets the
+# translator workflow in po/Makefile stay functional too.
+$(DAT)locale\ko\nethack.mox: $(U)encode_mo.exe $(PO)ko.mo
+	@if not exist $(DAT)locale\ko mkdir $(DAT)locale\ko
+	@echo Encoding $(@:\=/)
+	@$(U)encode_mo.exe $(PO)ko.mo $@
+
 !IF ("$(USE_DLB)"=="Y")
+#
+# Korean locale text / lua assets that ride inside nhdat alongside
+# the English ones.  Kept explicit (no wildcards) so new files are a
+# conscious addition and stay in sync with the Unix build.
+#
+LOCALE_KO_TEXT = $(DAT)locale\ko\help $(DAT)locale\ko\hh \
+	$(DAT)locale\ko\cmdhelp $(DAT)locale\ko\keyhelp \
+	$(DAT)locale\ko\history $(DAT)locale\ko\opthelp \
+	$(DAT)locale\ko\optmenu $(DAT)locale\ko\usagehlp \
+	$(DAT)locale\ko\wizhelp \
+	$(DAT)locale\ko\bogusmon.txt $(DAT)locale\ko\engrave.txt \
+	$(DAT)locale\ko\epitaph.txt $(DAT)locale\ko\oracles.txt \
+	$(DAT)locale\ko\rumors.tru $(DAT)locale\ko\rumors.fal \
+	$(DAT)locale\ko\data.base
+
+LOCALE_KO_LUA = $(DAT)locale\ko\quest.lua $(DAT)locale\ko\themerms.lua \
+	$(DAT)locale\ko\tut-1.lua $(DAT)locale\ko\tut-2.lua \
+	$(DAT)locale\ko\air.lua $(DAT)locale\ko\astral.lua \
+	$(DAT)locale\ko\earth.lua $(DAT)locale\ko\water.lua \
+	$(DAT)locale\ko\minend-2.lua $(DAT)locale\ko\Arc-loca.lua \
+	$(DAT)locale\ko\nhcore.lua $(DAT)locale\ko\nhlib.lua
+
 nhdat$(NHV):	$(U)dlb.exe $(DAT)data $(DAT)oracles $(OPTIONS_FILE) $(LUA_FILES) \
 	$(DAT)rumors $(DAT)help $(DAT)hh $(DAT)cmdhelp $(DAT)keyhelp \
 	$(DAT)history $(DAT)opthelp $(DAT)optmenu $(DAT)wizhelp $(DAT)porthelp \
-	$(DAT)license $(DAT)engrave $(DAT)epitaph $(DAT)bogusmon $(DAT)tribute
+	$(DAT)license $(DAT)engrave $(DAT)epitaph $(DAT)bogusmon $(DAT)tribute \
+	$(DAT)locale\ko\nethack.mox
 	@echo Building $@
 	@cd $(DAT)
 	@echo data >dlb.lst
@@ -2212,6 +2284,12 @@ nhdat$(NHV):	$(U)dlb.exe $(DAT)data $(DAT)oracles $(OPTIONS_FILE) $(LUA_FILES) \
 	@echo tribute >>dlb.lst
 #	@for %%N in ($(luawildcards)) do dir /b %%N >>dlb.lst
 	@for %%N in (*.lua) do @echo %%N >>dlb.lst
+#	Korean locale assets (text + lua + obfuscated message catalog).
+#	Paths stored with forward slashes so dlb_fopen() can look them
+#	up consistently on every platform.
+	@if exist locale\ko\nethack.mox @echo locale/ko/nethack.mox >>dlb.lst
+	@for %%N in (help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp data.base bogusmon.txt engrave.txt epitaph.txt oracles.txt rumors.tru rumors.fal) do @if exist locale\ko\%%N @echo locale/ko/%%N >>dlb.lst
+	@for %%N in (locale\ko\*.lua) do @echo locale/ko/%%~nxN >>dlb.lst
 	@$(U)dlb cIf dlb.lst $(SRC)nhdat
 	@cd $(SRC)
 !ENDIF

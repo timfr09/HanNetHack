@@ -94,8 +94,12 @@ LUA_VERSION = 5.4.8
 DATHELP = help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp
 # Korean message catalog
 LOCALE_KO_MO = dat/locale/ko/LC_MESSAGES/nethack.mo
+# XOR-obfuscated message catalog shipped inside nhdat (see
+# include/mox_format.h, src/mo_reader.c).
+LOCALE_KO_MOX = dat/locale/ko/nethack.mox
 # Korean localized files (in locale/ko/ directory)
-LOCALE_KO = locale/ko/help locale/ko/hh locale/ko/cmdhelp locale/ko/keyhelp \
+LOCALE_KO = locale/ko/nethack.mox \
+	locale/ko/help locale/ko/hh locale/ko/cmdhelp locale/ko/keyhelp \
 	locale/ko/history locale/ko/opthelp locale/ko/optmenu locale/ko/usagehlp locale/ko/wizhelp \
 	locale/ko/bogusmon.txt locale/ko/engrave.txt locale/ko/epitaph.txt \
 	locale/ko/oracles.txt locale/ko/rumors.tru locale/ko/rumors.fal \
@@ -139,7 +143,7 @@ LUA2NHTOP = ../../..
 LUABASELIB = liblua-$(LUA_VERSION).a
 TOPLUALIB = lib/lua/$(LUABASELIB)
 
-ALLDEP = $(PRECHECK) $(GAME) recover Guidebook $(VARDAT) spec_levs check-dlb $(LOCALE_KO_MO)
+ALLDEP = $(PRECHECK) $(GAME) recover Guidebook $(VARDAT) spec_levs check-dlb $(LOCALE_KO_MO) $(LOCALE_KO_MOX)
 
 # first target is also the default target for 'make' without any arguments
 all:    $(ALLDEP)
@@ -147,7 +151,10 @@ all:    $(ALLDEP)
 	@echo "Done."
 
 # Korean message catalog (merge ko_manual.po + ko.po, then compile)
-$(LOCALE_KO_MO): po/ko.po po/ko_manual.po
+# po/Makefile produces nethack.mo (legacy path) AND nethack.mox
+# (obfuscated catalog consumed at runtime by src/mo_reader.c) in one
+# shot, so both targets piggyback on the same invocation.
+$(LOCALE_KO_MO) $(LOCALE_KO_MOX): po/ko.po po/ko_manual.po
 	( cd po && $(MAKE) compile )
 
 $(GAME): lua_support

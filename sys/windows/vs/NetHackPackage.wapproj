@@ -118,6 +118,9 @@
     <Content Include="..\..\..\vsbinary\$(Configuration)\$(Platform)\Guidebook.txt">
       <Link>NetHackW\Guidebook.txt</Link>
     </Content>
+    <Content Include="..\..\..\vsbinary\$(Configuration)\$(Platform)\Guidebook.ko.txt">
+      <Link>NetHackW\Guidebook.ko.txt</Link>
+    </Content>
     <Content Include="..\..\..\vsbinary\$(Configuration)\$(Platform)\license">
       <Link>NetHackW\license</Link>
     </Content>

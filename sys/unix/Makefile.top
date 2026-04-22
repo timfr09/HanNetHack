@@ -493,10 +493,9 @@ install: rootcheck $(PRECHECK) $(GAME) recover $(VARDAT) spec_levs sys/unix/sysc
 			chmod $(VARFILEPERM) perm record logfile xlogfile livelog )
 # sysconf
 	true; $(SYSCONFINSTALL)
-# install Korean locale files
-	-mkdir -p $(INSTDIR)/locale/ko/LC_MESSAGES
-	-cp dat/locale/ko/LC_MESSAGES/nethack.mo $(INSTDIR)/locale/ko/LC_MESSAGES/
-	-chmod $(FILEPERM) $(INSTDIR)/locale/ko/LC_MESSAGES/nethack.mo
+# Korean translations and localized data files travel inside nhdat
+# (see src/mo_reader.c + include/mox_format.h), so no separate
+# locale/ko install step is needed.
 # other steps from hints file
 	true; $(POSTINSTALL)
 # and a reminder

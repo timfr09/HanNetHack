@@ -11,7 +11,7 @@ A personal Korean localization of NetHack 3.7.
 
 > **Reporting translation errors**: Translations are still being polished. If you spot a mistake or awkward phrasing, please open a ticket on [Issues](https://github.com/timfr09/HanNetHack/issues).
 
-![HanNetHack on Windows](assets/screenshot-win.png)
+![HanNetHack on Windows](doc/screenshot-win.png)
 
 ---
 

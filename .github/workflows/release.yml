@@ -23,11 +23,11 @@ permissions:
 
 env:
   # Pin the gettext / iconv bundle so builds stay reproducible.
-  # The bundle tag is "v<GETTEXT_VER>-v<ICONV_VER>" and the asset filenames
-  # follow the same numeric pattern.  Source:
+  # Only the CLI tools (msgfmt, msgcat, xgettext, msgmerge) are used -
+  # for building the XOR-obfuscated .mox catalog that ships inside
+  # nhdat.  No libintl dev libs or runtime DLLs are needed now that
+  # translations are read through src/mo_reader.c.
   #   https://github.com/mlocati/gettext-iconv-windows/releases
-  # (Starting with the v1.0-v1.x line the upstream project ships the
-  # MSVC dev libraries we need; older 0.22.x releases do not.)
   GETTEXT_VER: '1.0'
   ICONV_VER:   '1.19'
 
@@ -62,54 +62,33 @@ jobs:
         with:
           arch: x64
 
-      - name: Download gettext / iconv (tools + MSVC dev libs)
+      - name: Download gettext / iconv CLI tools
         shell: pwsh
         run: |
-          # We need two bundles from mlocati/gettext-iconv-windows:
-          #   1. shared-64.zip          → lib\gettext        (xgettext, msgfmt,
-          #      msgmerge, msgcat -- used by build-translations.cmd)
-          #   2. shared-64-dev-msvc.zip → lib\gettext-msvc-dev (libintl.h
-          #      headers, intl.dll.lib / iconv.dll.lib import libs, and
-          #      MSVC-built runtime DLLs that ship in the final binary)
+          # Only the shared-64 bundle is needed: it provides the msgfmt,
+          # msgcat, msgmerge and xgettext binaries used by the .po->.mo->
+          # .mox pipeline inside sys\windows\Makefile.nmake.  No dev libs
+          # or runtime DLLs are downloaded because HanNetHack no longer
+          # links against libintl at all.
           $base   = "https://github.com/mlocati/gettext-iconv-windows/releases/download"
           $bundle = "v${env:GETTEXT_VER}-v${env:ICONV_VER}"
           $rt     = "gettext${env:GETTEXT_VER}-iconv${env:ICONV_VER}-shared-64.zip"
-          $dev    = "gettext${env:GETTEXT_VER}-iconv${env:ICONV_VER}-shared-64-dev-msvc.zip"
 
-          New-Item -ItemType Directory -Force -Path lib\gettext           | Out-Null
-          New-Item -ItemType Directory -Force -Path lib\gettext-msvc-dev  | Out-Null
+          New-Item -ItemType Directory -Force -Path lib\gettext | Out-Null
 
           Write-Host "Downloading $base/$bundle/$rt"
-          Invoke-WebRequest "$base/$bundle/$rt"  -OutFile gettext-rt.zip
-          Expand-Archive gettext-rt.zip  -DestinationPath lib\gettext   -Force
-
-          Write-Host "Downloading $base/$bundle/$dev"
-          Invoke-WebRequest "$base/$bundle/$dev" -OutFile gettext-dev.zip
-          Expand-Archive gettext-dev.zip -DestinationPath lib\gettext-msvc-dev -Force
+          Invoke-WebRequest "$base/$bundle/$rt" -OutFile gettext-rt.zip
+          Expand-Archive gettext-rt.zip -DestinationPath lib\gettext -Force
 
           Write-Host "--- lib\gettext\bin (translation tools) ---"
           Get-ChildItem lib\gettext\bin -Filter '*.exe' | Select-Object Name | Format-Table -AutoSize
-          Write-Host "--- lib\gettext-msvc-dev\bin (runtime DLLs) ---"
-          Get-ChildItem lib\gettext-msvc-dev\bin -ErrorAction SilentlyContinue | Select-Object Name | Format-Table -AutoSize
 
-          # Sanity-check the file paths the rest of the build relies on.
           foreach ($p in @(
               'lib\gettext\bin\msgfmt.exe',
-              'lib\gettext-msvc-dev\include\libintl.h',
-              'lib\gettext-msvc-dev\lib\intl.dll.lib',
-              'lib\gettext-msvc-dev\bin\intl-8.dll'
+              'lib\gettext\bin\msgcat.exe'
           )) {
-              if (-not (Test-Path $p)) { throw "Required file missing: $p (bundle layout changed?)" }
+              if (-not (Test-Path $p)) { throw "Required tool missing: $p (bundle layout changed?)" }
           }
-
-      - name: Compile Korean translations (.po → .mo)
-        shell: cmd
-        run: |
-          call sys\windows\build-translations.cmd
-          if not exist dat\locale\ko\LC_MESSAGES\nethack.mo (
-              echo ERROR: nethack.mo was not produced.
-              exit /b 1
-          )
 
       - name: Set up src\Makefile (nhsetup)
         shell: cmd
@@ -131,21 +110,36 @@ jobs:
       - name: Verify build output
         shell: pwsh
         run: |
+          # Korean translations now ride inside nhdat (see
+          # src/mo_reader.c), so we only check for the core binaries,
+          # the DLB archive, and the obfuscated catalog that was fed
+          # into it.  The build should NOT ship libintl/iconv DLLs or
+          # a loose locale\ tree anymore - those are actively
+          # verified to be absent to catch regressions.
           $required = @(
             'binary\NetHack.exe',
             'binary\NetHackW.exe',
             'binary\nhdat370',
-            'binary\intl-8.dll',
-            'binary\iconv-2.dll',
-            'binary\locale\ko\LC_MESSAGES\nethack.mo',
-            'binary\locale\ko\quest.lua'
+            'dat\locale\ko\nethack.mox'
           )
           $missing = $required | Where-Object { -not (Test-Path $_) }
           if ($missing) {
             Write-Error ("Missing files:`n  " + ($missing -join "`n  "))
             exit 1
           }
-          Write-Host "All required files present."
+
+          $forbidden = @(
+            'binary\intl-8.dll',
+            'binary\iconv-2.dll',
+            'binary\locale'
+          )
+          $leaked = $forbidden | Where-Object { Test-Path $_ }
+          if ($leaked) {
+            Write-Error ("Unexpected files shipped alongside binary:`n  " + ($leaked -join "`n  "))
+            exit 1
+          }
+
+          Write-Host "All required files present, no libintl/locale leakage."
 
       - name: Compute SHA256 sums
         shell: pwsh

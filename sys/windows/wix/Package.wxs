@@ -6,7 +6,12 @@
     Version    : MSI ProductVersion as Major.Minor.Build (e.g. 3.7.0.20260420)
     BinaryDir  : path to a fully populated `binary\` directory produced by
                  `nmake package` (NetHack.exe, NetHackW.exe, nhdat370,
-                 gettext DLLs, locale\ tree, etc.)
+                 record, opthelp, symbols, templates, License.rtf).
+                 Korean translations and help/lua data travel inside
+                 nhdat as an XOR-obfuscated message catalog
+                 (locale/ko/nethack.mox) plus plain assets, so the
+                 installer does not ship a locale\ tree or any gettext
+                 redistributables.
 
   Required WiX extensions (install once with `wix extension add`):
     WixToolset.UI.wixext
@@ -95,7 +100,7 @@
 
     <Feature Id="Main"
              Title="HanNetHack"
-             Description="Game executables, data and Korean locale."
+             Description="Game executables and data (Korean translations bundled in nhdat)."
              Level="1"
              ConfigurableDirectory="INSTALLFOLDER">
       <ComponentGroupRef Id="ProductFiles" />

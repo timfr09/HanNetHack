@@ -223,7 +223,7 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
 
 #ifdef EARLY_CONFIGFILE_PASS
     rcfile_interface_options();
-    if (gc.chosen_windowtype && *gc.chosen_windowtype)
+    if (*gc.chosen_windowtype)
         windowtype = gc.chosen_windowtype;
 #endif
 

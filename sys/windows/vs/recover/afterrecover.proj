@@ -2,11 +2,11 @@
   <Import Project="..\dirs.props"/>
   <Import Project="$(vsDir)files.props"/>
   <Target Name="Build"
-     Inputs="$(DocDir)recover.txt"
-	 Outputs="$(BinDir)recover.txt">
-	<Copy SourceFiles="$(DocDir)recover.txt" DestinationFiles="$(BinDir)recover.txt"/>
+     Inputs="$(DocDir)recover.txt;$(DocDir)recover.ko.txt"
+	 Outputs="$(BinDir)recover.txt;$(BinDir)recover.ko.txt">
+	<Copy SourceFiles="$(DocDir)recover.txt;$(DocDir)recover.ko.txt" DestinationFiles="$(BinDir)recover.txt;$(BinDir)recover.ko.txt"/>
   </Target>
   <Target Name="Clean">
-	<Delete Files="$(BinDir)recover.txt"/>
+	<Delete Files="$(BinDir)recover.txt;$(BinDir)recover.ko.txt"/>
   </Target>
 </Project>

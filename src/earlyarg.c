@@ -711,7 +711,7 @@ dump_enums(void)
         objclass_classes_enum,
         objclass_syms_enum,
         arti_enum,
-	mcastu_enum,
+        mcastu_enum,
         NUM_ENUM_DUMPS
     };
 
@@ -743,7 +743,7 @@ dump_enums(void)
         objclass_classes_dump,
         objclass_syms_dump,
         arti_enum_dump,
-	mcastu_enum_dump,
+        mcastu_enum_dump,
     };
 
     static const struct de_params {

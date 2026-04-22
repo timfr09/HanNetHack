@@ -754,6 +754,8 @@ m_throw(
                     hitv += 8 + singleobj->spe;
                     if (dam < 1)
                         dam = 1;
+                    if (singleobj->otyp != ACID_VENOM)
+                        dam = Maybe_Half_Phys(dam);
                     hitu = thitu(hitv, dam, &singleobj, (char *) 0);
                 }
             }
@@ -1251,7 +1253,7 @@ thrwmu(struct monst *mtmp)
         if (dam < 1)
             dam = 1;
 
-        (void) thitu(hitv, dam, &otmp, (char *) 0);
+        (void) thitu(hitv, Maybe_Half_Phys(dam), &otmp, (char *) 0);
         stop_occupation();
         return;
     } else if ((arw = autoreturn_weapon(otmp)) != 0 && !mwelded(otmp)) {

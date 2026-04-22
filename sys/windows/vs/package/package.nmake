@@ -65,11 +65,11 @@ default: packageall
 # packaging
 #===============================================================================
 
-PKGFILES=Guidebook.txt license NetHack.exe NetHack.txt \
+PKGFILES=Guidebook.txt Guidebook.ko.txt license NetHack.exe NetHack.txt NetHack.ko.txt \
 	 NetHackW.exe opthelp nhdat370 record symbols.template sysconf.template \
 	nethackrc.template
-FILESTOZIP=$(VSBINDIR)\Guidebook.txt $(VSBINDIR)\license \
-	$(VSBINDIR)\NetHack.exe $(VSBINDIR)\NetHack.txt $(VSBINDIR)\NetHackW.exe \
+FILESTOZIP=$(VSBINDIR)\Guidebook.txt $(VSBINDIR)\Guidebook.ko.txt $(VSBINDIR)\license \
+	$(VSBINDIR)\NetHack.exe $(VSBINDIR)\NetHack.txt $(VSBINDIR)\NetHack.ko.txt $(VSBINDIR)\NetHackW.exe \
 	$(VSBINDIR)\opthelp $(VSBINDIR)\nhdat370 $(VSBINDIR)\record \
 	$(VSBINDIR)\symbols.template $(VSBINDIR)\sysconf.template $(VSBINDIR)\nethackrc.template
 DBGSYMS = NetHack.PDB NetHackW.PDB
@@ -94,10 +94,14 @@ $(VSBINDIR)\license: $(BinDir)\license
 	copy /Y $(BinDir)\license $@
 $(VSBINDIR)\Guidebook.txt: $(BinDir)\Guidebook.txt
 	copy /Y $(DocDir)\Guidebook.txt $@
+$(VSBINDIR)\Guidebook.ko.txt: $(BinDir)\Guidebook.ko.txt
+	copy /Y $(DocDir)\Guidebook.ko.txt $@
 $(VSBINDIR)\NetHack.exe: $(BinDir)\NetHack.exe
 	copy /Y $(BinDir)\NetHack.exe $@
 $(VSBINDIR)\NetHack.txt: $(BinDir)\NetHack.txt
 	copy /Y $(DocDir)\NetHack.txt $@
+$(VSBINDIR)\NetHack.ko.txt: $(BinDir)\NetHack.ko.txt
+	copy /Y $(DocDir)\nethack.ko.txt $@
 $(VSBINDIR)\NetHackW.exe: $(BinDir)\NetHackW.exe
 	copy /Y $(BinDir)\NetHackW.exe $@
 $(VSBINDIR)\opthelp: $(BinDir)\opthelp

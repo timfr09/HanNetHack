@@ -420,7 +420,7 @@ endif
 SYSCFLAGS=-DLUA_USE_LINUX
 ifdef GITSUBMODULES
 LUAFLAGS=CC='$(CC)' SYSCFLAGS='$(SYSCFLAGS)'
-ifneq "$(CCISCLANG)" ""
+ifeq "$(CCISCLANG)" "1"
 # clang
 LUAFLAGS +=CWARNGCC=''
 endif   # clang

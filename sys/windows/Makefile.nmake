@@ -152,8 +152,6 @@ GETTEXT_LIBS =
 # if next line is commented out, full compiler command lines will be output
 Q=@
 
-SKIP_NETHACKW = N
-
 !IFNDEF LUA_VERSION
 LUAVER=5.4.8
 !ELSE
@@ -1752,7 +1750,9 @@ binary.tag: 	$(DAT)data $(DAT)rumors $(DAT)oracles $(DLB) \
 	if exist $(MSWSYS)sysconf.template copy $(MSWSYS)sysconf.template $(GAMEDIR)
 	if exist $(DAT)symbols copy $(DAT)symbols $(GAMEDIR)symbols
 	if exist $(DOC)guidebook.txt copy $(DOC)guidebook.txt $(GAMEDIR)Guidebook.txt
+	if exist $(DOC)Guidebook.ko.txt copy $(DOC)Guidebook.ko.txt $(GAMEDIR)Guidebook.ko.txt
 	if exist $(DOC)nethack.txt copy $(DOC)nethack.txt $(GAMEDIR)NetHack.txt
+	if exist $(DOC)nethack.ko.txt copy $(DOC)nethack.ko.txt $(GAMEDIR)NetHack.ko.txt
 #	if exist $(UTIL)sfctool.pdb copy $(UTIL)sfctool.pdb $(GAMEDIR)sfctool.pdb
 	@if exist $(GAMEDIR)NetHack.PDB echo NOTE: You may want to remove $(U_GAMEDIR)/NetHack.PDB to conserve space
 	@if exist $(GAMEDIR)NetHackW.PDB echo NOTE: You may want to remove $(U_GAMEDIR)/NetHackW.PDB to conserve space
@@ -1792,6 +1792,7 @@ binary.tag: 	$(DAT)data $(DAT)rumors $(DAT)oracles $(DLB) \
 recover: $(OUTLHACKLIB) $(U)recover.exe
 	if exist $(U)recover.exe copy $(U)recover.exe  $(GAMEDIR)
 	if exist $(DOC)recover.txt copy $(DOC)recover.txt $(GAMEDIR)recover.txt
+	if exist $(DOC)recover.ko.txt copy $(DOC)recover.ko.txt $(GAMEDIR)recover.ko.txt
 
 $(OUTL)utility.tag: $(INCL)nhlua.h outldir$(TARGET_CPU).tag $(OUTLHACKLIB) $(U)tile2bmp.exe $(U)makedefs.exe
 	     @echo utilities made >$@
@@ -2862,11 +2863,11 @@ $(SndWavDir)sa2_xplevelup.wav: $(SndWavDir)sa2_xplevelup.uu $(U)uudecode.exe
 # packaging
 #===============================================================================
 
-PKGFILES = nethackrc.template Guidebook.txt license NetHack.exe NetHack.txt \
+PKGFILES = nethackrc.template Guidebook.txt Guidebook.ko.txt license NetHack.exe NetHack.txt NetHack.ko.txt \
 	 NetHackW.exe opthelp nhdat370 record symbols \
 	 sysconf.template $(SFCTOOLBASENAM)
-FILESTOZIP = $(BinDir)nethackrc.template $(BinDir)Guidebook.txt $(BinDir)license \
-	$(BinDir)NetHack.exe $(BinDir)NetHack.txt $(BinDir)NetHackW.exe \
+FILESTOZIP = $(BinDir)nethackrc.template $(BinDir)Guidebook.txt $(BinDir)Guidebook.ko.txt $(BinDir)license \
+	$(BinDir)NetHack.exe $(BinDir)NetHack.txt $(BinDir)NetHack.ko.txt $(BinDir)NetHackW.exe \
 	$(BinDir)opthelp $(BinDir)nhdat370 $(BinDir)record \
 	$(BinDir)symbols $(BinDir)sysconf.template $(SFCTOOLPKG)
 
@@ -2874,6 +2875,11 @@ DBGSYMS = NetHack.PDB NetHackW.PDB $(SFCTOOLPDBNAM)
 PDBTOZIP = $(BinDir)NetHack.PDB $(BinDir)NetHackW.PDB $(SFCTOOLPDBBIN)
 MAINZIP = $(PkgDir)nethack-$(NHV)-win-$(TARGET_CPU).zip
 DBGSYMZIP = $(PkgDir)nethack-$(NHV)-win-$(TARGET_CPU)-debugsymbols.zip
+
+$(BinDir)Guidebook.ko.txt: $(DOC)Guidebook.ko.txt
+	if exist $(DOC)Guidebook.ko.txt copy $(DOC)Guidebook.ko.txt $(GAMEDIR)Guidebook.ko.txt
+$(BinDir)NetHack.ko.txt: $(DOC)nethack.ko.txt
+	if exist $(DOC)nethack.ko.txt copy $(DOC)nethack.ko.txt $(GAMEDIR)NetHack.ko.txt
 
 package: binary $(FILESTOZIP) $(MAINZIP) $(DBGSYMZIP)
 	@echo NetHack Windows package created: $(MAINZIP)

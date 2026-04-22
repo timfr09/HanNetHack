@@ -3624,6 +3624,9 @@ process_keystroke2(
 {
     /* Use these values for the numeric keypad */
     static const char keypad_nums[] = "789-456+1230.";
+    /* UTF-8 spill buffer for prompt input (ReadConsoleW -> bytes). */
+    static unsigned char pending_utf8[8];
+    static int pending_len = 0, pending_idx = 0;
 
     unsigned char ch;
     int vk;
@@ -3631,6 +3634,19 @@ process_keystroke2(
     unsigned long shiftstate;
     int altseq;
     DWORD count;
+
+    /* If a prior wide char expanded to multiple UTF-8 bytes, emit the rest. */
+    if (pending_idx < pending_len) {
+        ch = pending_utf8[pending_idx++];
+        *valid = TRUE;
+        if (pending_idx >= pending_len) {
+            pending_idx = 0;
+            pending_len = 0;
+        }
+        if (ch == '\r')
+            ch = '\n';
+        return ch;
+    }
 
     ch = ir->Event.KeyEvent.uChar.AsciiChar;
     vk = ir->Event.KeyEvent.wVirtualKeyCode;
@@ -3672,11 +3688,35 @@ process_keystroke2(
     }
     /* Attempt to work better with international keyboards. */
     else {
-        CHAR ch2;
-        ReadConsole(hConIn, &ch2, 1, &count, NULL);
-        ch = ch2 & 0xFF;
-        if (ch == 0)
+        WCHAR wch2;
+        char utf8[8];
+        int nbytes, i;
+
+        ReadConsoleW(hConIn, &wch2, 1, &count, NULL);
+        if (count == 0 || wch2 == 0) {
             *valid = FALSE;
+            return 0;
+        }
+
+        /* Fast path for ASCII controls/characters. */
+        if (wch2 <= 0x7f) {
+            ch = (unsigned char) (wch2 & 0x7f);
+        } else {
+            nbytes = WideCharToMultiByte(CP_UTF8, 0, &wch2, 1,
+                                         utf8, (int) sizeof utf8,
+                                         NULL, NULL);
+            if (nbytes <= 0) {
+                *valid = FALSE;
+                return 0;
+            }
+            ch = (unsigned char) utf8[0];
+            if (nbytes > 1) {
+                pending_len = nbytes;
+                pending_idx = 1;
+                for (i = 0; i < nbytes && i < (int) sizeof pending_utf8; ++i)
+                    pending_utf8[i] = (unsigned char) utf8[i];
+            }
+        }
     }
     if (ch == '\r')
         ch = '\n';

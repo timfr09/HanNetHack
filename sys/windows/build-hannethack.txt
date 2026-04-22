@@ -2,9 +2,9 @@ Building HanNetHack on Windows (Visual Studio)
 ================================================
 
 This guide covers building HanNetHack (Korean NetHack) on Windows
-using Visual Studio. HanNetHack requires an additional dependency
-(gettext/libintl) compared to upstream NetHack for Korean
-localization (i18n) support.
+using Visual Studio. The game reads Korean strings from an in-memory
+message catalog (src/mo_reader.c) loaded out of nhdat; it does **not**
+link GNU libintl or ship gettext runtime DLLs.
 
 
 Quick Start
@@ -15,7 +15,6 @@ top of the HanNetHack source tree in a Windows Command Prompt:
 
     sys\windows\fetch.cmd lua
     sys\windows\fetch.cmd pdcursesmod
-    sys\windows\setup-gettext.cmd
 
 Then open sys\windows\vs\NetHack.sln in Visual Studio, select
 Release | x64, and build the solution (Ctrl+Shift+B).
@@ -25,6 +24,11 @@ After building, run the install script to set up the game directory:
     sys\windows\install.cmd
 
 The game will be ready to play in the install\HanNetHack\ directory.
+
+Optional — only if you change po/*.po or need to regenerate the
+obfuscated catalog (dat/locale/ko/nethack.mox) for nmake package:
+
+    sys\windows\setup-gettext.cmd
 
 
 Prerequisites
@@ -46,14 +50,10 @@ Prerequisites
      From the top of the source tree:
          sys\windows\fetch.cmd pdcursesmod
 
-  4. gettext/libintl (required for Korean localization)
-     From the top of the source tree:
+  4. gettext *tools* (optional — translators / nmake package only)
+     msgfmt and msgcat must be on PATH or under lib\gettext\bin\ when
+     rebuilding .mo / .mox from .po.  One-shot setup:
          sys\windows\setup-gettext.cmd
-
-     This script will:
-       - Download prebuilt gettext binaries
-       - Create a libintl.h header for MSVC
-       - Generate an MSVC-compatible import library (intl.lib)
 
 
 Building from Visual Studio IDE
@@ -82,6 +82,18 @@ If you see errors about platform toolset (v145), add:
     /p:PlatformToolset=v143
 
 
+Full data package (nmake, from src\)
+--------------------------------------
+
+To rebuild nhdat370 with the Korean locale bundle and .mox catalog
+(the same output as CI `nmake package`), run from src\ after
+nhsetup produces src\Makefile:
+
+    nmake package
+
+That path needs msgfmt/msgcat (see prerequisite 4).
+
+
 Post-Build: Installing
 ----------------------
 
@@ -91,8 +103,7 @@ Run the install script to copy all necessary files:
 
 This creates an install\HanNetHack\ directory with:
   - NetHack.exe / NetHackW.exe
-  - All required DLLs (libintl, libiconv, etc.)
-  - Game data files (nhdat)
+  - Game data files (nhdat — includes Korean catalog and locale text)
   - Configuration template
 
 You can move the install\HanNetHack\ directory anywhere.
@@ -105,8 +116,8 @@ Differences from Upstream NetHack
 
 HanNetHack adds the following to the Windows build:
 
-  - i18n.c and ko_postpos.c source files for Korean localization
-  - gettext (libintl) dependency for translation support
+  - i18n.c, mo_reader.c, and ko_postpos.c for Korean localization
+  - Custom in-tree message catalog loader (no libintl link)
   - /utf-8 compiler flag for Korean string literals in source
   - DISABLE_WARNING_FORMAT / RESTORE_WARNING_FORMAT macros for MSVC
   - Windows-compatible wcwidth() implementation for CJK character widths
@@ -120,13 +131,15 @@ Troubleshooting
      or retarget the solution in Visual Studio (right-click solution
      -> Retarget Solution).
 
-  Q: Build fails with "cannot open include file 'libintl.h'"
-  A: Run sys\windows\setup-gettext.cmd to set up the gettext dependency.
+  Q: nmake fails with "msgfmt" / "msgcat" not found when building nhdat
+  A: Run sys\windows\setup-gettext.cmd so tools land in lib\gettext\bin,
+     or install gettext on PATH.
 
-  Q: Build fails with "unresolved external symbol init_i18n / wcwidth"
-  A: Ensure i18n.c and ko_postpos.c are included in the project.
-     These should already be in NetHack.vcxproj and NetHackW.vcxproj.
+  Q: Build fails with "unresolved external symbol" in i18n / mo_reader
+  A: Ensure mo_reader.c is compiled and linked in the project (same as
+     i18n.c).  NetHack.vcxproj / NetHackW.vcxproj should list it.
 
-  Q: Game crashes on startup with missing DLL error
-  A: Copy the required DLLs to the game directory, or run
-     sys\windows\install.cmd which does this automatically.
+  Q: Older docs mention libintl.h or copying intl-8.dll
+  A: Those steps applied to an earlier HanNetHack branch.  Current
+     builds statically decode the catalog; no gettext DLLs beside the
+     .exe are required.

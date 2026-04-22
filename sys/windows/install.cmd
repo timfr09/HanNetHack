@@ -16,7 +16,6 @@ if "%PLATFORM%"=="" set PLATFORM=x64
 
 set SRCDIR=binary\%CONFIG%\%PLATFORM%
 set DSTDIR=install\HanNetHack
-set GETTEXTBIN=lib\gettext\bin
 
 echo === HanNetHack Windows Installer ===
 echo.
@@ -36,12 +35,12 @@ if not exist "%SRCDIR%\NetHack.exe" (
 REM Create install directory
 if not exist "%DSTDIR%" mkdir "%DSTDIR%"
 
-echo [1/4] Copying executables...
+echo [1/2] Copying executables...
 copy /y "%SRCDIR%\NetHack.exe" "%DSTDIR%\" >nul
 copy /y "%SRCDIR%\NetHackW.exe" "%DSTDIR%\" >nul
 copy /y "%SRCDIR%\recover.exe" "%DSTDIR%\" >nul
 
-echo [2/4] Copying game data...
+echo [2/2] Copying game data...
 if exist "%SRCDIR%\nhdat370" copy /y "%SRCDIR%\nhdat370" "%DSTDIR%\" >nul
 if exist "%SRCDIR%\license" copy /y "%SRCDIR%\license" "%DSTDIR%\" >nul
 if exist "%SRCDIR%\Guidebook.txt" copy /y "%SRCDIR%\Guidebook.txt" "%DSTDIR%\" >nul
@@ -63,40 +62,11 @@ if not exist "%DSTDIR%\nethackrc" (
 REM Create save directory
 if not exist "%DSTDIR%\save" mkdir "%DSTDIR%\save"
 
-echo [3/4] Copying runtime DLLs...
-if exist "%GETTEXTBIN%\libintl-8.dll" (
-    copy /y "%GETTEXTBIN%\libintl-8.dll" "%DSTDIR%\" >nul
-    copy /y "%GETTEXTBIN%\libiconv-2.dll" "%DSTDIR%\" >nul
-    copy /y "%GETTEXTBIN%\libgcc_s_seh-1.dll" "%DSTDIR%\" >nul
-    copy /y "%GETTEXTBIN%\libwinpthread-1.dll" "%DSTDIR%\" >nul
-) else if exist "%SRCDIR%\libintl-8.dll" (
-    copy /y "%SRCDIR%\libintl-8.dll" "%DSTDIR%\" >nul
-    copy /y "%SRCDIR%\libiconv-2.dll" "%DSTDIR%\" >nul
-    copy /y "%SRCDIR%\libgcc_s_seh-1.dll" "%DSTDIR%\" >nul
-    copy /y "%SRCDIR%\libwinpthread-1.dll" "%DSTDIR%\" >nul
-) else (
-    echo WARNING: gettext DLLs not found. Korean localization may not work.
-    echo          Run sys\windows\setup-gettext.cmd first.
-)
-
-echo [4/4] Copying locale data...
-REM Compile .mo from .po if msgfmt is available and .mo doesn't exist
-if not exist "dat\locale\ko\LC_MESSAGES\nethack.mo" (
-    if exist "lib\gettext\bin\msgfmt.exe" (
-        if exist "po\ko.po" (
-            echo       Compiling Korean translation...
-            if not exist "dat\locale\ko\LC_MESSAGES" mkdir "dat\locale\ko\LC_MESSAGES"
-            "lib\gettext\bin\msgfmt.exe" -o "dat\locale\ko\LC_MESSAGES\nethack.mo" "po\ko.po"
-        )
-    )
-)
-REM Copy all Korean locale files (translations, lua, help, data)
-if exist "dat\locale\ko" (
-    xcopy /y /e /i "dat\locale\ko" "%DSTDIR%\locale\ko" >nul
-    echo       Copied Korean locale files.
-) else (
-    echo WARNING: Korean locale directory not found at dat\locale\ko
-)
+REM Korean translations + localized help/lua data live inside
+REM nhdat now (XOR-obfuscated nethack.mox + plain locale/ko/* text
+REM files), so the installer no longer copies libintl/iconv DLLs or
+REM a loose locale\ directory.  See include/mox_format.h and
+REM src/mo_reader.c for the catalog pipeline.
 
 echo.
 echo === Installation Complete ===

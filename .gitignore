@@ -116,8 +116,18 @@ dat/alock.*
 dat/block.*
 dat/save/
 
+# Generated translation catalogs (built from po/ sources)
+dat/locale/*/LC_MESSAGES/nethack.mo
+dat/locale/*/nethack.mox
+po/ko.mo
+po/ko_merged.po
+po/messages.mo
+
 # Claude Code local settings
 .claude/
 CLAUDE.local.md
+
+# Ad-hoc vendor drops (canonical fetch layout uses lib/ at repo root)
+sys/lib/
 
 sys/amiga/regex/

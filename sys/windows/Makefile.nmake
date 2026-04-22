@@ -98,22 +98,17 @@ GIT_AVAILABLE = N
 #      nmake GIT=1 package
 #
 #------------------------------------------------------------------------------
-# HanNetHack: GNU gettext (libintl) for ENABLE_NLS with MSVC
+# HanNetHack: translations no longer go through libintl at runtime.
+# The XOR-obfuscated catalog (dat/locale/<lang>/nethack.mox) is read
+# directly by src/mo_reader.c inside nhdat, so there is no linkage
+# against intl.dll / iconv.dll and no redistributable DLLs.
 #
-# Download gettext1.0-iconv*-shared-64-dev-msvc.zip (x64) from
-#   https://github.com/mlocati/gettext-iconv-windows/releases
-# and extract at the top of the source tree so that (nmake runs in src/):
-#   ../lib/gettext-msvc-dev/include/libintl.h
-# exists. If missing, R_GETTEXTINCL is empty and the build will fail on i18n
-# unless you install the dev files.
+# The translator workflow (po/Makefile) still uses the msgfmt /
+# msgcat / xgettext CLIs from gettext-iconv-windows, but those run
+# out-of-band and do not affect the game binary.
 #
-!IF EXIST("..\lib\gettext-msvc-dev\include\libintl.h")
-R_GETTEXTINCL = /I..\lib\gettext-msvc-dev\include
-GETTEXT_LIBS = ..\lib\gettext-msvc-dev\lib\intl.dll.lib ..\lib\gettext-msvc-dev\lib\iconv.dll.lib
-!ELSE
 R_GETTEXTINCL =
 GETTEXT_LIBS =
-!ENDIF
 #
 #------------------------------------------------------------------------------
 # This Makefile will attempt to auto-detect your selected target architecture
@@ -883,7 +878,7 @@ COREOBJTTY = \
 	$(OTTY)end.o      $(OTTY)engrave.o  $(OTTY)exper.o    $(OTTY)explode.o \
 	$(OTTY)extralev.o $(OTTY)files.o    $(OTTY)fountain.o $(OTTY)getpos.o \
 	$(OTTY)glyphs.o   $(OTTY)iactions.o $(OTTY)hack.o     $(OTTY)insight.o \
-	$(OTTY)i18n.o     $(OTTY)ko_postpos.o $(OTTY)invent.o $(OTTY)isaac64.o  $(OTTY)light.o    $(OTTY)lock.o \
+	$(OTTY)i18n.o     $(OTTY)ko_postpos.o $(OTTY)mo_reader.o $(OTTY)invent.o $(OTTY)isaac64.o  $(OTTY)light.o    $(OTTY)lock.o \
 	$(OTTY)mail.o     $(OTTY)makemon.o  $(OTTY)mcastu.o   $(OTTY)mhitm.o \
 	$(OTTY)mhitu.o    $(OTTY)minion.o   $(OTTY)mklev.o    $(OTTY)mkmap.o \
 	$(OTTY)mkmaze.o   $(OTTY)mkobj.o    $(OTTY)mkroom.o   $(OTTY)mon.o \
@@ -946,7 +941,7 @@ COREOBJGUI = \
 	$(OGUI)end.o      $(OGUI)engrave.o  $(OGUI)exper.o    $(OGUI)explode.o \
 	$(OGUI)extralev.o $(OGUI)files.o    $(OGUI)fountain.o $(OGUI)getpos.o \
 	$(OGUI)glyphs.o   $(OGUI)iactions.o $(OGUI)hack.o     $(OGUI)insight.o \
-	$(OGUI)i18n.o     $(OGUI)ko_postpos.o $(OGUI)invent.o $(OGUI)isaac64.o  $(OGUI)light.o    $(OGUI)lock.o \
+	$(OGUI)i18n.o     $(OGUI)ko_postpos.o $(OGUI)mo_reader.o $(OGUI)invent.o $(OGUI)isaac64.o  $(OGUI)light.o    $(OGUI)lock.o \
 	$(OGUI)mail.o     $(OGUI)makemon.o  $(OGUI)mcastu.o   $(OGUI)mhitm.o \
 	$(OGUI)mhitu.o    $(OGUI)minion.o   $(OGUI)mklev.o    $(OGUI)mkmap.o \
 	$(OGUI)mkmaze.o   $(OGUI)mkobj.o    $(OGUI)mkroom.o   $(OGUI)mon.o \
@@ -1148,7 +1143,7 @@ HACK_H = $(CONFIG_H) $(INCL)align.h $(INCL)artilist.h \
 	$(INCL)attrib.h $(INCL)botl.h $(INCL)context.h \
 	$(INCL)decl.h $(INCL)defsym.h $(INCL)display.h \
 	$(INCL)dungeon.h $(INCL)engrave.h $(INCL)flag.h \
-	$(INCL)hack.h $(INCL)lint.h $(INCL)mextra.h \
+	$(INCL)hack.h $(INCL)i18n.h $(INCL)lint.h $(INCL)mextra.h \
 	$(INCL)mcastu.h \
 	$(INCL)mkroom.h $(INCL)monattk.h $(INCL)mondata.h \
 	$(INCL)monflag.h $(INCL)monst.h $(INCL)monsters.h \
@@ -1718,7 +1713,6 @@ $(GAMEDIR)NetHack.exe : gamedir.tag $(OTTY)consoletty.o \
 		$(OTTY)date.o
 		$(OTTY)console.res
 << keep
-	@if exist $(LIBDIR)gettext-msvc-dev\bin\intl-8.dll copy /Y $(LIBDIR)gettext-msvc-dev\bin\*.dll $(GAMEDIR) >nul
 	@if exist binary.tag del binary.tag
 
 #---------
@@ -1745,7 +1739,6 @@ $(GAMEDIR)NetHackW.exe : gamedir.tag $(OGUI)tile.o \
 		$(OGUI)date.o
 		$(OGUI)NetHackW.res
 << keep
-	@if exist $(LIBDIR)gettext-msvc-dev\bin\intl-8.dll copy /Y $(LIBDIR)gettext-msvc-dev\bin\*.dll $(GAMEDIR) >nul
 
 #--------
 # install
@@ -1790,7 +1783,8 @@ binary.tag: 	$(DAT)data $(DAT)rumors $(DAT)oracles $(DLB) \
 	if exist $(DAT)porthelp copy $(DAT)porthelp $(GAMEDIR)
 	if exist $(DAT)ttyoptions copy $(DAT)ttyoptions $(GAMEDIR)
 ! ENDIF
-	if exist $(DAT)locale\*.* xcopy /E /I /Y $(DAT)locale $(GAMEDIR)locale
+#	Korean locale data lives inside nhdat now (see sys/windows
+#	Makefile.nmake nhdat target + src/mo_reader.c); no loose copy.
 	echo binary built > $@
 
 #	copy $(MSWSYS)windsyshlp    $(GAMEDIR)
@@ -1842,7 +1836,6 @@ $(OUTL)nhsizes3.o: $(CONFIG_H) nhsizes3.c
 $(U)makedefs.exe: $(OUTLHACKLIB) $(MAKEDEFSOBJS)
 	@echo Linking $(@:\=/)
 	@$(link) $(LFLAGS) /PDB:"$(OUTL)$(@B).PDB" /MAP:"$(OUTL)$(@B).MAP" -out:$@ $(MAKEDEFSOBJS) $(OUTLHACKLIB)
-	@if exist $(LIBDIR)gettext-msvc-dev\bin\intl-8.dll copy /Y $(LIBDIR)gettext-msvc-dev\bin\*.dll $(U) >nul
 
 $(OUTL)makedefs.o: $(U)makedefs.c $(SRC)mdlib.c $(CONFIG_H) $(INCL)permonst.h \
 		$(INCL)objclass.h $(INCL)sym.h $(INCL)defsym.h \
@@ -2183,11 +2176,63 @@ $(OGUI)dlb_main.o: $(UTIL)dlb_main.c $(INCL)config.h $(INCL)dlb.h
 $(DAT)porthelp: $(MSWSYS)porthelp
 	@copy $(MSWSYS)porthelp $@ >nul
 
+#==========================================
+# Translation catalog pipeline (.po -> .mo -> .mox)
+#==========================================
+#
+# Prefer a gettext-iconv install that the user placed under
+# lib\gettext\ via sys\windows\setup-gettext.cmd; otherwise assume
+# msgfmt / msgcat are reachable through PATH.
+#
+#
+# nmake runs in src/ so Makefile rules reference ..\po\... for .po
+# source files, same as the existing ..\dat\... convention.
+#
+!IF EXIST("..\lib\gettext\bin\msgfmt.exe")
+MSGFMT_EXE = ..\lib\gettext\bin\msgfmt.exe
+MSGCAT_EXE = ..\lib\gettext\bin\msgcat.exe
+!ELSE
+MSGFMT_EXE = msgfmt
+MSGCAT_EXE = msgcat
+!ENDIF
+
+PO = ..\po$(BACKSLASH)
+
+# Merge auto-extracted + hand-curated translations.  ko_manual.po
+# takes priority (matches po/Makefile's `merge` target).
+$(PO)ko_merged.po: $(PO)ko.po $(PO)ko_manual.po
+	@echo Merging Korean translation sources
+	@$(MSGCAT_EXE) --use-first -o $@ $(PO)ko_manual.po $(PO)ko.po
+
+$(PO)ko.mo: $(PO)ko_merged.po
+	@echo Compiling $(@:\=/)
+	@$(MSGFMT_EXE) -c -o $@ $(PO)ko_merged.po
+
+$(U)encode_mo.exe: $(OUTL)encode_mo.o
+	@echo Linking $(@:\=/)
+	@$(link) $(LFLAGS) /PDB:"$(OUTL)$(@B).PDB" /MAP:"$(OUTL)$(@B).MAP" \
+		-out:$@ $(OUTL)encode_mo.o
+
+$(OUTL)encode_mo.o: $(U)encode_mo.c $(INCL)mox_format.h
+	$(Q)$(CC) $(CFLAGS) $(CROSSCOMPILE) /D_CRT_SECURE_NO_WARNINGS \
+		-Fo$@ $(U)encode_mo.c
+
+# Produce the XOR-obfuscated catalog next to the plain .mo so DLB
+# packaging can pick it up.  Keeping both artifacts around lets the
+# translator workflow in po/Makefile stay functional too.
+$(DAT)locale\ko\nethack.mox: $(U)encode_mo.exe $(PO)ko.mo
+	@if not exist $(DAT)locale\ko mkdir $(DAT)locale\ko
+	@echo Encoding $(@:\=/)
+	@$(U)encode_mo.exe $(PO)ko.mo $@
+
 !IF ("$(USE_DLB)"=="Y")
+#
+# Korean locale assets are appended to dlb.lst below.
 nhdat$(NHV):	$(U)dlb.exe $(DAT)data $(DAT)oracles $(OPTIONS_FILE) $(LUA_FILES) \
 	$(DAT)rumors $(DAT)help $(DAT)hh $(DAT)cmdhelp $(DAT)keyhelp \
 	$(DAT)history $(DAT)opthelp $(DAT)optmenu $(DAT)wizhelp $(DAT)porthelp \
-	$(DAT)license $(DAT)engrave $(DAT)epitaph $(DAT)bogusmon $(DAT)tribute
+	$(DAT)license $(DAT)engrave $(DAT)epitaph $(DAT)bogusmon $(DAT)tribute \
+	$(DAT)locale\ko\nethack.mox
 	@echo Building $@
 	@cd $(DAT)
 	@echo data >dlb.lst
@@ -2212,6 +2257,12 @@ nhdat$(NHV):	$(U)dlb.exe $(DAT)data $(DAT)oracles $(OPTIONS_FILE) $(LUA_FILES) \
 	@echo tribute >>dlb.lst
 #	@for %%N in ($(luawildcards)) do dir /b %%N >>dlb.lst
 	@for %%N in (*.lua) do @echo %%N >>dlb.lst
+#	Korean locale assets (text + lua + obfuscated message catalog).
+#	Paths stored with forward slashes so dlb_fopen() can look them
+#	up consistently on every platform.
+	@if exist locale\ko\nethack.mox @echo locale/ko/nethack.mox >>dlb.lst
+	@for %%N in (help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp data.base bogusmon.txt engrave.txt epitaph.txt oracles.txt rumors.tru rumors.fal) do @if exist locale\ko\%%N @echo locale/ko/%%N >>dlb.lst
+	@for %%N in (locale\ko\*.lua) do @echo locale/ko/%%~nxN >>dlb.lst
 	@$(U)dlb cIf dlb.lst $(SRC)nhdat
 	@cd $(SRC)
 !ENDIF
@@ -2307,7 +2358,6 @@ $(U)tile2bmp.exe: $(OUTL)tile2bmp.o $(TEXT_IO) $(OUTL)alloc.o $(OUTL)panic.o
 		$(OUTL)alloc.o
 		$(OUTL)panic.o
 <<
-	@if exist $(LIBDIR)gettext-msvc-dev\bin\intl-8.dll copy /Y $(LIBDIR)gettext-msvc-dev\bin\*.dll $(U) >nul
 
 $(U)til2bm32.exe: $(OUTL)til2bm32.o $(TEXT_IO32)
 	@echo Linking $(@:\=/)
@@ -2814,7 +2864,7 @@ $(SndWavDir)sa2_xplevelup.wav: $(SndWavDir)sa2_xplevelup.uu $(U)uudecode.exe
 
 PKGFILES = nethackrc.template Guidebook.txt license NetHack.exe NetHack.txt \
 	 NetHackW.exe opthelp nhdat370 record symbols \
-	 sysconf.template locale $(SFCTOOLBASENAM)
+	 sysconf.template $(SFCTOOLBASENAM)
 FILESTOZIP = $(BinDir)nethackrc.template $(BinDir)Guidebook.txt $(BinDir)license \
 	$(BinDir)NetHack.exe $(BinDir)NetHack.txt $(BinDir)NetHackW.exe \
 	$(BinDir)opthelp $(BinDir)nhdat370 $(BinDir)record \
@@ -3291,8 +3341,9 @@ $(OTTY)hack.o: hack.c $(HACK_H)
 $(OTTY)hacklib.o: hacklib.c $(HACK_H)
 $(OTTY)iactions.o: iactions.c $(HACK_H)
 $(OTTY)insight.o: insight.c $(HACK_H)
-$(OTTY)i18n.o: i18n.c $(HACK_H) $(INCL)i18n.h
+$(OTTY)i18n.o: i18n.c $(HACK_H) $(INCL)i18n.h $(INCL)dlb.h $(INCL)mo_reader.h
 $(OTTY)ko_postpos.o: ko_postpos.c $(HACK_H) $(INCL)ko_postpos.h
+$(OTTY)mo_reader.o: mo_reader.c $(INCL)mo_reader.h $(INCL)mox_format.h
 $(OTTY)invent.o: invent.c $(HACK_H)
 $(OTTY)isaac64.o: isaac64.c $(CONFIG_H) $(INCL)isaac64.h
 $(OTTY)light.o: light.c $(HACK_H)
@@ -3674,8 +3725,9 @@ $(OGUI)hack.o: hack.c $(HACK_H)
 $(OGUI)hacklib.o: hacklib.c $(HACK_H)
 $(OGUI)iactions.o: iactions.c $(HACK_H)
 $(OGUI)insight.o: insight.c $(HACK_H)
-$(OGUI)i18n.o: i18n.c $(HACK_H) $(INCL)i18n.h
+$(OGUI)i18n.o: i18n.c $(HACK_H) $(INCL)i18n.h $(INCL)dlb.h $(INCL)mo_reader.h
 $(OGUI)ko_postpos.o: ko_postpos.c $(HACK_H) $(INCL)ko_postpos.h
+$(OGUI)mo_reader.o: mo_reader.c $(INCL)mo_reader.h $(INCL)mox_format.h
 $(OGUI)invent.o: invent.c $(HACK_H)
 $(OGUI)isaac64.o: isaac64.c $(CONFIG_H) $(INCL)isaac64.h
 $(OGUI)light.o: light.c $(HACK_H)

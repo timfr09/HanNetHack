@@ -80,8 +80,10 @@ sys\windows\install.cmd
 ```
 
 The result lives in `install\HanNetHack\` and can be moved anywhere; double-click
-`NetHackW.exe` for the GUI version.  Both `Guidebook.txt` (English) and
-`Guidebook.ko.txt` (Korean) are included in the packaged/install output.
+`NetHackW.exe` for the GUI version.  The packaged/install output includes
+English/Korean document pairs for `Guidebook` and `NetHack` docs
+(`Guidebook.txt` + `Guidebook.ko.txt`, `NetHack.txt` + `NetHack.ko.txt`),
+plus `recover.txt` + `recover.ko.txt`.
 
 See [`sys/windows/build-hannethack.txt`](sys/windows/build-hannethack.txt) for
 prerequisites, troubleshooting, and Visual Studio setup details.

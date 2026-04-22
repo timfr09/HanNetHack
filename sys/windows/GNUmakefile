@@ -1389,7 +1389,7 @@ endif
 endif
 
 NHV=370
-PKGFILES = nethackrc.template Guidebook.txt Guidebook.ko.txt license NetHack.exe NetHack.txt \
+PKGFILES = nethackrc.template Guidebook.txt Guidebook.ko.txt license NetHack.exe NetHack.txt NetHack.ko.txt \
 	NetHackW.exe opthelp nhdat370 record symbols sysconf.template $(notdir $(LUADLL))
 
 FILESTOZIP = $(addprefix $(GAMEDIR)/, $(PKGFILES))
@@ -1479,7 +1479,7 @@ all: package
 TO_BINARY = $(GAMEDIR)/NetHack.exe $(RTARGETS) $(GAMEDIRDLLS) \
 	     $(addprefix $(GAMEDIR)/, \
 	     $(addsuffix .template, sysconf nethackrc symbols) \
-	     Guidebook.txt Guidebook.ko.txt NetHack.txt license opthelp record)
+	     Guidebook.txt Guidebook.ko.txt NetHack.txt NetHack.ko.txt license opthelp record)
 
 ifeq "$(HAVE_SOUNDLIB)" "Y"
 TO_BINARY += $(addprefix $(GAMEDIR)/, $(addsuffix .wav, $(WAVLIST)))
@@ -1517,6 +1517,9 @@ $(GAMEDIR)/symbols.template: $(DAT)/symbols
 	cp $< $@
 
 $(GAMEDIR)/NetHack.txt: $(DOC)/nethack.txt
+	cp $< $@
+
+$(GAMEDIR)/NetHack.ko.txt: $(DOC)/nethack.ko.txt
 	cp $< $@
 
 $(GAMEDIR)/record:

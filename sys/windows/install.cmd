@@ -46,7 +46,9 @@ if exist "%SRCDIR%\license" copy /y "%SRCDIR%\license" "%DSTDIR%\" >nul
 if exist "%SRCDIR%\Guidebook.txt" copy /y "%SRCDIR%\Guidebook.txt" "%DSTDIR%\" >nul
 if exist "%SRCDIR%\Guidebook.ko.txt" copy /y "%SRCDIR%\Guidebook.ko.txt" "%DSTDIR%\" >nul
 if exist "%SRCDIR%\nethack.txt" copy /y "%SRCDIR%\nethack.txt" "%DSTDIR%\" >nul
+if exist "%SRCDIR%\NetHack.ko.txt" copy /y "%SRCDIR%\NetHack.ko.txt" "%DSTDIR%\" >nul
 if exist "%SRCDIR%\recover.txt" copy /y "%SRCDIR%\recover.txt" "%DSTDIR%\" >nul
+if exist "%SRCDIR%\recover.ko.txt" copy /y "%SRCDIR%\recover.ko.txt" "%DSTDIR%\" >nul
 if exist "%SRCDIR%\opthelp" copy /y "%SRCDIR%\opthelp" "%DSTDIR%\" >nul
 if exist "%SRCDIR%\symbols.template" copy /y "%SRCDIR%\symbols.template" "%DSTDIR%\" >nul
 if exist "%SRCDIR%\sysconf.template" copy /y "%SRCDIR%\sysconf.template" "%DSTDIR%\" >nul

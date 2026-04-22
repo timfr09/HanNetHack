@@ -98,22 +98,17 @@ GIT_AVAILABLE = N
 #      nmake GIT=1 package
 #
 #------------------------------------------------------------------------------
-# HanNetHack: GNU gettext (libintl) for ENABLE_NLS with MSVC
+# HanNetHack: translations no longer go through libintl at runtime.
+# The XOR-obfuscated catalog (dat/locale/<lang>/nethack.mox) is read
+# directly by src/mo_reader.c inside nhdat, so there is no linkage
+# against intl.dll / iconv.dll and no redistributable DLLs.
 #
-# Download gettext1.0-iconv*-shared-64-dev-msvc.zip (x64) from
-#   https://github.com/mlocati/gettext-iconv-windows/releases
-# and extract at the top of the source tree so that (nmake runs in src/):
-#   ../lib/gettext-msvc-dev/include/libintl.h
-# exists. If missing, R_GETTEXTINCL is empty and the build will fail on i18n
-# unless you install the dev files.
+# The translator workflow (po/Makefile) still uses the msgfmt /
+# msgcat / xgettext CLIs from gettext-iconv-windows, but those run
+# out-of-band and do not affect the game binary.
 #
-!IF EXIST("..\lib\gettext-msvc-dev\include\libintl.h")
-R_GETTEXTINCL = /I..\lib\gettext-msvc-dev\include
-GETTEXT_LIBS = ..\lib\gettext-msvc-dev\lib\intl.dll.lib ..\lib\gettext-msvc-dev\lib\iconv.dll.lib
-!ELSE
 R_GETTEXTINCL =
 GETTEXT_LIBS =
-!ENDIF
 #
 #------------------------------------------------------------------------------
 # This Makefile will attempt to auto-detect your selected target architecture
@@ -1790,7 +1785,8 @@ binary.tag: 	$(DAT)data $(DAT)rumors $(DAT)oracles $(DLB) \
 	if exist $(DAT)porthelp copy $(DAT)porthelp $(GAMEDIR)
 	if exist $(DAT)ttyoptions copy $(DAT)ttyoptions $(GAMEDIR)
 ! ENDIF
-	if exist $(DAT)locale\*.* xcopy /E /I /Y $(DAT)locale $(GAMEDIR)locale
+#	Korean locale data lives inside nhdat now (see sys/windows
+#	Makefile.nmake nhdat target + src/mo_reader.c); no loose copy.
 	echo binary built > $@
 
 #	copy $(MSWSYS)windsyshlp    $(GAMEDIR)
@@ -2892,7 +2888,7 @@ $(SndWavDir)sa2_xplevelup.wav: $(SndWavDir)sa2_xplevelup.uu $(U)uudecode.exe
 
 PKGFILES = nethackrc.template Guidebook.txt license NetHack.exe NetHack.txt \
 	 NetHackW.exe opthelp nhdat370 record symbols \
-	 sysconf.template locale $(SFCTOOLBASENAM)
+	 sysconf.template $(SFCTOOLBASENAM)
 FILESTOZIP = $(BinDir)nethackrc.template $(BinDir)Guidebook.txt $(BinDir)license \
 	$(BinDir)NetHack.exe $(BinDir)NetHack.txt $(BinDir)NetHackW.exe \
 	$(BinDir)opthelp $(BinDir)nhdat370 $(BinDir)record \

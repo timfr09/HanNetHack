@@ -29,9 +29,6 @@
     <WinCursDir>$(RootDir)win\curses\</WinCursDir>
     <SubmodulesDir>$(RootDir)submodules\</SubmodulesDir>
     <LuaDir>$(LibDir)lua-$(LUA_VERSION)\src\</LuaDir>
-    <LibIntlDir>$(LibDir)libintl\</LibIntlDir>
-    <LibIntlIncDir>$(LibIntlDir)include\</LibIntlIncDir>
-    <LibIntlLibDir>$(LibIntlDir)lib\</LibIntlLibDir>
     <SftagsDir>$(RootDir)\sys\windows\vs\sftags\</SftagsDir>
     <SfctoolDir>$(RootDir)\sys\windows\vs\sfctool\</SfctoolDir>
     <PackageBin>$(RootDir)binary\$(Configuration)\$(Platform)</PackageBin>

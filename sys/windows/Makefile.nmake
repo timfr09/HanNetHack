@@ -883,7 +883,7 @@ COREOBJTTY = \
 	$(OTTY)end.o      $(OTTY)engrave.o  $(OTTY)exper.o    $(OTTY)explode.o \
 	$(OTTY)extralev.o $(OTTY)files.o    $(OTTY)fountain.o $(OTTY)getpos.o \
 	$(OTTY)glyphs.o   $(OTTY)iactions.o $(OTTY)hack.o     $(OTTY)insight.o \
-	$(OTTY)i18n.o     $(OTTY)ko_postpos.o $(OTTY)invent.o $(OTTY)isaac64.o  $(OTTY)light.o    $(OTTY)lock.o \
+	$(OTTY)i18n.o     $(OTTY)ko_postpos.o $(OTTY)mo_reader.o $(OTTY)invent.o $(OTTY)isaac64.o  $(OTTY)light.o    $(OTTY)lock.o \
 	$(OTTY)mail.o     $(OTTY)makemon.o  $(OTTY)mcastu.o   $(OTTY)mhitm.o \
 	$(OTTY)mhitu.o    $(OTTY)minion.o   $(OTTY)mklev.o    $(OTTY)mkmap.o \
 	$(OTTY)mkmaze.o   $(OTTY)mkobj.o    $(OTTY)mkroom.o   $(OTTY)mon.o \
@@ -946,7 +946,7 @@ COREOBJGUI = \
 	$(OGUI)end.o      $(OGUI)engrave.o  $(OGUI)exper.o    $(OGUI)explode.o \
 	$(OGUI)extralev.o $(OGUI)files.o    $(OGUI)fountain.o $(OGUI)getpos.o \
 	$(OGUI)glyphs.o   $(OGUI)iactions.o $(OGUI)hack.o     $(OGUI)insight.o \
-	$(OGUI)i18n.o     $(OGUI)ko_postpos.o $(OGUI)invent.o $(OGUI)isaac64.o  $(OGUI)light.o    $(OGUI)lock.o \
+	$(OGUI)i18n.o     $(OGUI)ko_postpos.o $(OGUI)mo_reader.o $(OGUI)invent.o $(OGUI)isaac64.o  $(OGUI)light.o    $(OGUI)lock.o \
 	$(OGUI)mail.o     $(OGUI)makemon.o  $(OGUI)mcastu.o   $(OGUI)mhitm.o \
 	$(OGUI)mhitu.o    $(OGUI)minion.o   $(OGUI)mklev.o    $(OGUI)mkmap.o \
 	$(OGUI)mkmaze.o   $(OGUI)mkobj.o    $(OGUI)mkroom.o   $(OGUI)mon.o \
@@ -1148,7 +1148,7 @@ HACK_H = $(CONFIG_H) $(INCL)align.h $(INCL)artilist.h \
 	$(INCL)attrib.h $(INCL)botl.h $(INCL)context.h \
 	$(INCL)decl.h $(INCL)defsym.h $(INCL)display.h \
 	$(INCL)dungeon.h $(INCL)engrave.h $(INCL)flag.h \
-	$(INCL)hack.h $(INCL)lint.h $(INCL)mextra.h \
+	$(INCL)hack.h $(INCL)i18n.h $(INCL)lint.h $(INCL)mextra.h \
 	$(INCL)mcastu.h \
 	$(INCL)mkroom.h $(INCL)monattk.h $(INCL)mondata.h \
 	$(INCL)monflag.h $(INCL)monst.h $(INCL)monsters.h \
@@ -3291,8 +3291,9 @@ $(OTTY)hack.o: hack.c $(HACK_H)
 $(OTTY)hacklib.o: hacklib.c $(HACK_H)
 $(OTTY)iactions.o: iactions.c $(HACK_H)
 $(OTTY)insight.o: insight.c $(HACK_H)
-$(OTTY)i18n.o: i18n.c $(HACK_H) $(INCL)i18n.h
+$(OTTY)i18n.o: i18n.c $(HACK_H) $(INCL)i18n.h $(INCL)dlb.h $(INCL)mo_reader.h
 $(OTTY)ko_postpos.o: ko_postpos.c $(HACK_H) $(INCL)ko_postpos.h
+$(OTTY)mo_reader.o: mo_reader.c $(INCL)mo_reader.h $(INCL)mox_format.h
 $(OTTY)invent.o: invent.c $(HACK_H)
 $(OTTY)isaac64.o: isaac64.c $(CONFIG_H) $(INCL)isaac64.h
 $(OTTY)light.o: light.c $(HACK_H)
@@ -3674,8 +3675,9 @@ $(OGUI)hack.o: hack.c $(HACK_H)
 $(OGUI)hacklib.o: hacklib.c $(HACK_H)
 $(OGUI)iactions.o: iactions.c $(HACK_H)
 $(OGUI)insight.o: insight.c $(HACK_H)
-$(OGUI)i18n.o: i18n.c $(HACK_H) $(INCL)i18n.h
+$(OGUI)i18n.o: i18n.c $(HACK_H) $(INCL)i18n.h $(INCL)dlb.h $(INCL)mo_reader.h
 $(OGUI)ko_postpos.o: ko_postpos.c $(HACK_H) $(INCL)ko_postpos.h
+$(OGUI)mo_reader.o: mo_reader.c $(INCL)mo_reader.h $(INCL)mox_format.h
 $(OGUI)invent.o: invent.c $(HACK_H)
 $(OGUI)isaac64.o: isaac64.c $(CONFIG_H) $(INCL)isaac64.h
 $(OGUI)light.o: light.c $(HACK_H)

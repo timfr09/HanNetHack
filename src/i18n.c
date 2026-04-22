@@ -227,41 +227,173 @@ get_localized_filename(const char *fname)
 
 #include "i18n.h"
 #include "ko_postpos.h"
-
-/* Domain name for gettext */
-#define TEXTDOMAIN "nethack"
+#include "dlb.h"
+#include "mo_reader.h"
 
 /*
- * Context-aware gettext (pgettext)
+ * ------------------------------------------------------------------
+ * Message catalog runtime
  *
- * GNU gettext stores context-aware messages as "context\004msgid".
- * This function looks up the combined key and returns the translation.
- * If not found, returns the original msgid.
+ * HanNetHack no longer links against libintl.  Instead an XOR-
+ * obfuscated catalog (locale/<lang>/nethack.mox) is shipped inside
+ * the nhdat DLB and decoded on the fly by src/mo_reader.c.
+ *
+ * The public gettext-like helpers (nh_gettext, nh_ngettext,
+ * nh_pgettext) replace the libintl exports; include/i18n.h maps the
+ * classic gettext()/ngettext()/pgettext() names onto them with
+ * macros so existing call sites need no changes.
+ * ------------------------------------------------------------------
  */
-const char *
-pgettext(const char *msgctxt, const char *msgid)
-{
-    static char msg_ctxt_id[BUFSZ];
-    const char *translation;
-
-    if (!msgctxt || !*msgctxt)
-        return gettext(msgid);
-
-    /* Build the context-aware key: "context\004msgid" */
-    snprintf(msg_ctxt_id, sizeof(msg_ctxt_id), "%s\004%s", msgctxt, msgid);
-
-    translation = gettext(msg_ctxt_id);
-
-    /* If not translated (gettext returns the input), return original msgid */
-    if (translation == msg_ctxt_id || strcmp(translation, msg_ctxt_id) == 0)
-        return msgid;
-
-    return translation;
-}
 
 /* Cached language info */
 static char current_lang[8] = "";
 static boolean korean_locale = FALSE;
+static mo_catalog *g_catalog = (mo_catalog *) 0;
+
+/*
+ * Read an entire DLB-resident file into a freshly malloc()ed buffer.
+ * Returns the buffer (caller takes ownership) and writes the byte
+ * count to *out_len.  Returns NULL on any failure.
+ */
+static uint8_t *
+slurp_dlb_file(const char *path, size_t *out_len)
+{
+    dlb *fp;
+    long end;
+    size_t len;
+    uint8_t *buf;
+    int got;
+
+    if (!path || !*path || !out_len)
+        return (uint8_t *) 0;
+
+    fp = dlb_fopen(path, RDBMODE);
+    if (!fp)
+        return (uint8_t *) 0;
+
+    if (dlb_fseek(fp, 0L, SEEK_END) != 0) {
+        (void) dlb_fclose(fp);
+        return (uint8_t *) 0;
+    }
+    end = dlb_ftell(fp);
+    if (end <= 0) {
+        (void) dlb_fclose(fp);
+        return (uint8_t *) 0;
+    }
+    if (dlb_fseek(fp, 0L, SEEK_SET) != 0) {
+        (void) dlb_fclose(fp);
+        return (uint8_t *) 0;
+    }
+
+    len = (size_t) end;
+    buf = (uint8_t *) alloc(len);
+    if (!buf) {
+        (void) dlb_fclose(fp);
+        return (uint8_t *) 0;
+    }
+
+    got = dlb_fread((char *) buf, 1, (int) len, fp);
+    (void) dlb_fclose(fp);
+    if ((size_t) got != len) {
+        free(buf);
+        return (uint8_t *) 0;
+    }
+
+    *out_len = len;
+    return buf;
+}
+
+/*
+ * Attempt to load locale/<lang>/nethack.mox through the DLB layer.
+ * On success installs the catalog as g_catalog and returns TRUE.
+ * Any previously loaded catalog is freed regardless of outcome.
+ */
+static boolean
+load_catalog_for_lang(const char *lang)
+{
+    char path[BUFSZ];
+    uint8_t *buf;
+    size_t len = 0;
+    mo_catalog *cat;
+
+    if (g_catalog) {
+        mo_free(g_catalog);
+        g_catalog = (mo_catalog *) 0;
+    }
+    if (!lang || !*lang || strcmp(lang, "en") == 0)
+        return FALSE;
+
+    Snprintf(path, sizeof path, "locale/%s/nethack.mox", lang);
+    buf = slurp_dlb_file(path, &len);
+    if (!buf)
+        return FALSE;
+
+    cat = mox_load(buf, len);
+    if (!cat) {
+        /* mox_load() frees the buffer on failure. */
+        return FALSE;
+    }
+    g_catalog = cat;
+    return TRUE;
+}
+
+/*
+ * gettext equivalent: look up msgid in the active catalog and return
+ * the translation.  On miss (or if no catalog is loaded) returns the
+ * original msgid pointer so callers can safely use the result as a
+ * display string.
+ */
+const char *
+nh_gettext(const char *msgid)
+{
+    const char *tr;
+
+    if (!msgid)
+        return msgid;
+    if (!g_catalog)
+        return msgid;
+    tr = mo_lookup(g_catalog, msgid);
+    return tr ? tr : msgid;
+}
+
+/*
+ * ngettext equivalent.  HanNetHack only ships a Korean catalog today,
+ * which uses nplurals=1, so we always return the first msgstr form
+ * when a translation exists.  Without a catalog we fall back to the
+ * English singular/plural pair based on n.
+ */
+const char *
+nh_ngettext(const char *msgid_singular, const char *msgid_plural,
+            unsigned long int n)
+{
+    const char *tr;
+
+    if (g_catalog && msgid_singular) {
+        tr = mo_lookup(g_catalog, msgid_singular);
+        if (tr)
+            return tr;
+    }
+    return (n == 1UL) ? msgid_singular : msgid_plural;
+}
+
+/*
+ * pgettext equivalent.  Looks up "ctx\004msgid" and falls back to the
+ * bare msgid on miss.
+ */
+const char *
+nh_pgettext(const char *msgctxt, const char *msgid)
+{
+    const char *tr;
+
+    if (!msgid)
+        return msgid;
+    if (!msgctxt || !*msgctxt)
+        return nh_gettext(msgid);
+    if (!g_catalog)
+        return msgid;
+    tr = mo_lookup_ctx(g_catalog, msgctxt, msgid);
+    return tr ? tr : msgid;
+}
 
 /*
  * Map language code to full locale name
@@ -297,182 +429,40 @@ get_locale_for_lang(const char *lang)
 }
 
 /*
- * Find locale directory by checking multiple paths
- * The lang parameter specifies which language to look for (e.g., "ko", "ja", "en")
- */
-/*
- * Convert all backslashes to forward slashes in a path (in-place).
- * MinGW-compiled libintl requires forward slashes for catalog lookup.
- */
-#ifdef _WIN32
-static void
-normalize_path_separators(char *path)
-{
-    char *p;
-    for (p = path; *p; p++) {
-        if (*p == '\\')
-            *p = '/';
-    }
-}
-#endif
-
-static const char *
-find_locale_dir(const char *lang)
-{
-    static char localedir_buf[BUFSZ * 2];
-    const char *env_dir;
-    char testpath[BUFSZ * 2];
-
-    if (!lang || !*lang)
-        lang = "ko";  /* Default to Korean */
-
-    /* 1. Check environment variable first */
-    env_dir = getenv("NETHACK_LOCALE_DIR");
-    if (env_dir && env_dir[0]) {
-        snprintf(testpath, sizeof(testpath), "%s/%s/LC_MESSAGES/nethack.mo", env_dir, lang);
-        if (access(testpath, R_OK) == 0)
-            return env_dir;
-    }
-
-    /* 2. Check relative to executable (for development/portable installs) */
-#ifdef _WIN32
-    {
-        char exe_path[BUFSZ * 2];
-        DWORD len = GetModuleFileNameA(NULL, exe_path, sizeof(exe_path) - 1);
-        if (len > 0) {
-            char *slash;
-            exe_path[len] = '\0';
-            /* Convert to forward slashes for libintl compatibility */
-            normalize_path_separators(exe_path);
-            /* Find last path separator */
-            slash = strrchr(exe_path, '/');
-            if (slash) {
-                *slash = '\0';
-                /* Try locale/ next to exe (installed layout) */
-                snprintf(localedir_buf, sizeof(localedir_buf), "%s/locale", exe_path);
-                snprintf(testpath, sizeof(testpath), "%s/%s/LC_MESSAGES/nethack.mo", localedir_buf, lang);
-                if (access(testpath, R_OK) == 0)
-                    return localedir_buf;
-                /* Try ../../../dat/locale (if exe is in binary/Release/x64) */
-                snprintf(localedir_buf, sizeof(localedir_buf), "%s/../../../dat/locale", exe_path);
-                snprintf(testpath, sizeof(testpath), "%s/%s/LC_MESSAGES/nethack.mo", localedir_buf, lang);
-                if (access(testpath, R_OK) == 0)
-                    return localedir_buf;
-            }
-        }
-    }
-#elif defined(__linux__)
-#if defined(__GNUC__) && !defined(__clang__)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wformat-truncation"
-#endif
-    {
-        char exe_path[BUFSZ * 2];
-        ssize_t len = readlink("/proc/self/exe", exe_path, sizeof(exe_path) - 1);
-        if (len > 0) {
-            char *slash;
-            exe_path[len] = '\0';
-            slash = strrchr(exe_path, '/');
-            if (slash) {
-                *slash = '\0';
-                /* Try ../dat/locale (if exe is in src/) */
-                snprintf(localedir_buf, sizeof(localedir_buf), "%s/../dat/locale", exe_path);
-                snprintf(testpath, sizeof(testpath), "%s/%s/LC_MESSAGES/nethack.mo", localedir_buf, lang);
-                if (access(testpath, R_OK) == 0)
-                    return localedir_buf;
-                /* Try ./dat/locale (if exe is in root) */
-                snprintf(localedir_buf, sizeof(localedir_buf), "%s/dat/locale", exe_path);
-                snprintf(testpath, sizeof(testpath), "%s/%s/LC_MESSAGES/nethack.mo", localedir_buf, lang);
-                if (access(testpath, R_OK) == 0)
-                    return localedir_buf;
-            }
-        }
-    }
-#if defined(__GNUC__) && !defined(__clang__)
-#pragma GCC diagnostic pop
-#endif
-#endif
-
-    /* 3. Check HACKDIR/locale */
-#ifdef HACKDIR
-#if defined(__GNUC__) && !defined(__clang__)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wformat-truncation"
-#endif
-    snprintf(localedir_buf, sizeof(localedir_buf), "%s/locale", HACKDIR);
-    snprintf(testpath, sizeof(testpath), "%s/%s/LC_MESSAGES/nethack.mo", localedir_buf, lang);
-#if defined(__GNUC__) && !defined(__clang__)
-#pragma GCC diagnostic pop
-#endif
-    if (access(testpath, R_OK) == 0)
-        return localedir_buf;
-#endif
-
-    /* 4. Check compile-time LOCALEDIR */
-#ifdef LOCALEDIR
-    snprintf(testpath, sizeof(testpath), "%s/%s/LC_MESSAGES/nethack.mo", LOCALEDIR, lang);
-    if (access(testpath, R_OK) == 0)
-        return LOCALEDIR;
-#endif
-
-    /* 5. Fallback to system default */
-    return "/usr/share/locale";
-}
-
-/*
- * Set the language at runtime
+ * Set the language at runtime.
  *
- * This function changes the locale and updates gettext settings.
- * For gettext to work, we need:
- * 1. A non-C locale set (glibc ignores LANGUAGE when LC_ALL=C)
- * 2. LANGUAGE set to the desired language code
- * 3. Correct locale directory for gettext message catalogs
+ * We only need two side effects now:
+ *   1. setlocale() so wcwidth/mbtowc behave sensibly for the target
+ *      script (Korean TTY rendering leans on this).
+ *   2. Load the obfuscated .mox catalog through the DLB so nh_gettext
+ *      & friends start returning translated strings.
  */
 void
 set_language(const char *lang)
 {
-    const char *localedir;
     const char *locale_name;
     char *loc_result;
 
     if (!lang || !*lang)
         lang = "ko";  /* Default to Korean for HanNetHack */
 
-    /* Automatically find locale directory for the specified language */
-    localedir = find_locale_dir(lang);
-
-    /* Set LANGUAGE for gettext message catalog lookup */
-    setenv("LANGUAGE", lang, 1);
-
-    /* Get the full locale name for this language */
+    /* Get the full locale name for this language and install it. */
     locale_name = get_locale_for_lang(lang);
-
-    /* Try to set the locale - this requires locale data to exist in system
-     * locale directories. Note: We must NOT set LOCPATH before setlocale
-     * because LOCPATH affects where glibc looks for locale data, and our
-     * locale directory only contains gettext message catalogs, not locale
-     * data (LC_CTYPE, etc). */
     loc_result = setlocale(LC_ALL, locale_name);
-    if (!loc_result) {
-        /* Locale not available, try empty string (use environment) */
+    if (!loc_result)
         loc_result = setlocale(LC_ALL, "");
-    }
-    if (!loc_result) {
-        /* Last resort: C.UTF-8 for basic UTF-8 support */
-        setlocale(LC_ALL, "C.UTF-8");
-    }
+    if (!loc_result)
+        (void) setlocale(LC_ALL, "C.UTF-8");
 
-    /* Initialize gettext with locale directory */
-    bindtextdomain(TEXTDOMAIN, localedir);
-    bind_textdomain_codeset(TEXTDOMAIN, "UTF-8");
-    textdomain(TEXTDOMAIN);
-
-    /* Update cached language info */
+    /* Update cached language info before loading the catalog so that
+     * any failure path still leaves the language state consistent. */
     strncpy(current_lang, lang, sizeof(current_lang) - 1);
     current_lang[sizeof(current_lang) - 1] = '\0';
-
-    /* Check if Korean */
     korean_locale = (strcmp(current_lang, "ko") == 0);
+
+    /* Load the obfuscated message catalog via DLB.  Failure is not
+     * fatal - nh_gettext will simply echo the English msgid back. */
+    (void) load_catalog_for_lang(current_lang);
 }
 
 /*

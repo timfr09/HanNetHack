@@ -14,20 +14,36 @@
 
 #ifdef ENABLE_NLS
 
-#include <libintl.h>
 #include <locale.h>
 
-/* Standard gettext macros */
-#define _(String)       gettext(String)
+/*
+ * HanNetHack uses its own gettext-compatible runtime (src/mo_reader.c)
+ * driven by an XOR-obfuscated .mox catalog bundled inside the DLB.
+ * The public helpers below keep the familiar gettext() / ngettext() /
+ * pgettext() interface so the rest of the game source is unchanged.
+ */
+extern const char *nh_gettext(const char *msgid);
+extern const char *nh_ngettext(const char *msgid_singular,
+                               const char *msgid_plural,
+                               unsigned long int n);
+extern const char *nh_pgettext(const char *msgctxt, const char *msgid);
+
+/* Backward-compat aliases for any legacy call sites that reference
+ * gettext/ngettext/pgettext by name (including a few inside i18n.c). */
+#define gettext(S)              nh_gettext(S)
+#define ngettext(S, P, N)       nh_ngettext((S), (P), (N))
+#define pgettext(C, S)          nh_pgettext((C), (S))
+
+/* Standard gettext macros (unchanged call sites). */
+#define _(String)       nh_gettext(String)
 #define N_(String)      gettext_noop(String)
 #define gettext_noop(String) String
 
 /* Plural forms */
-#define P_(Singular, Plural, N) ngettext(Singular, Plural, N)
+#define P_(Singular, Plural, N) nh_ngettext((Singular), (Plural), (N))
 
 /* Context-aware translation (pgettext) */
-extern const char *pgettext(const char *msgctxt, const char *msgid);
-#define C_(Context, String) pgettext(Context, String)
+#define C_(Context, String) nh_pgettext((Context), (String))
 
 /* Initialize internationalization subsystem */
 extern void init_i18n(void);

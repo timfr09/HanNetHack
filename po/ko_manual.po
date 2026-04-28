@@ -75,7 +75,7 @@ msgstr "격자 벌레"
 
 #: (manual addition for i18n)
 msgid "acid blob"
-msgstr "산성 점액괴물"
+msgstr "산성 슬라임"
 
 #: (manual addition for i18n)
 msgid "quivering blob"
@@ -91,7 +91,7 @@ msgstr "거대 개미"
 
 #: (manual addition for i18n)
 msgid "killer bee"
-msgstr "살인 벌"
+msgstr "킬러 벌"
 
 #: (manual addition for i18n)
 msgid "soldier ant"

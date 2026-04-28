@@ -444,7 +444,7 @@ dlb_init(void)
             dlb_initialized = do_dlb_init();
     }
 
-#if defined(ENABLE_NLS) && defined(SAFEPROCS)
+#ifdef ENABLE_NLS
     /*
      * The message catalog (locale/<lang>/nethack.mox) is read through
      * dlb_fopen, but init_i18n() runs in early_init() - long before
@@ -454,8 +454,8 @@ dlb_init(void)
      * actually loaded for the user's selected language.  Cheap and
      * idempotent if it has already loaded.
      *
-     * SAFEPROCS guards out the dlb host utility build, which compiles
-     * dlb.c without linking i18n.o.
+     * Host utilities define HOSTUTIL=1 which clears ENABLE_NLS in
+     * config.h, so they skip this block and never reference i18n.o.
      */
     if (dlb_initialized) {
         const char *lang = get_current_language();

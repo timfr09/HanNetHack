@@ -2153,11 +2153,15 @@ $(U)dlb.exe: $(DLBOBJ_HOST) $(OUTL)dlb$(HOST).o $(OUTLHACKLIB)
 
 !IFDEF TEST_CROSSCOMPILE
 $(OUTL)dlb$(HOST).o: $(OUTL)dlb_main$(HOST).o $(OUTL)alloc$(HOST).o $(OUTL)panic$(HOST).o $(INCL)dlb.h
-	$(Q)$(CC) $(CFLAGS) $(TTYDEF) $(CROSSCOMPILE) /Fo$@ $(SRC)dlb.c
+	$(Q)$(CC) $(CFLAGS) $(OBJUTIL_CPPFLAGS) $(TTYDEF) $(CROSSCOMPILE) /Fo$@ $(SRC)dlb.c
 !ENDIF
 
+# Host util dlb.o is built with /DHOSTUTIL=1 so config.h drops ENABLE_NLS,
+# matching the rest of objutil/.  Without this, src/dlb.c references i18n
+# helpers (set_language, get_current_language) that the standalone util
+# binary does not link.
 $(OUTL)dlb.o: $(OUTL)dlb_main.o $(OUTL)alloc.o $(OUTL)panic.o $(INCL)dlb.h
-	$(Q)$(CC) $(CFLAGS) $(TTYDEF) /Fo$@ $(SRC)dlb.c
+	$(Q)$(CC) $(CFLAGS) $(OBJUTIL_CPPFLAGS) $(TTYDEF) /Fo$@ $(SRC)dlb.c
 
 $(OTTY)dlb.o: $(OTTY)dlb_main.o $(OTTY)alloc.o $(OTTY)panic.o $(INCL)dlb.h
 	$(Q)$(CC) $(CFLAGS) $(TTYDEF) /Fo$@ $(SRC)dlb.c
@@ -2166,7 +2170,7 @@ $(OGUI)dlb.o: $(OGUI)dlb_main.o $(OGUI)alloc.o $(OGUI)panic.o $(INCL)dlb.h
 	$(Q)$(CC) $(CFLAGS) $(TTYDEF) /Fo$@ $(SRC)dlb.c
 
 $(OUTL)dlb_main.o: $(UTIL)dlb_main.c $(INCL)config.h $(INCL)dlb.h
-	$(Q)$(CC) $(CFLAGS) $(TTYDEF) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) /Fo$@ $(UTIL)dlb_main.c
+	$(Q)$(CC) $(CFLAGS) $(OBJUTIL_CPPFLAGS) $(TTYDEF) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) /Fo$@ $(UTIL)dlb_main.c
 
 $(OTTY)dlb_main.o: $(UTIL)dlb_main.c $(INCL)config.h $(INCL)dlb.h
 	$(Q)$(CC) $(CFLAGS) $(TTYDEF) $(CROSSCOMPILE) $(CROSSCOMPILE_TARGET) /Fo$@ $(UTIL)dlb_main.c

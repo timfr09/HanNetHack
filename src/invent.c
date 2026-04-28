@@ -1225,7 +1225,7 @@ hold_another_object(
         /* in case touching this object turns out to be fatal */
         place_object(obj, u.ux, u.uy);
 
-        if (!touch_artifact(obj, &gy.youmonst)) {
+        if (!touch_artifact(obj, u.umonst)) {
             obj_extract_self(obj); /* remove it from the floor */
             dropy(obj);            /* now put it back again :-) */
             return obj;
@@ -1497,7 +1497,7 @@ carrying(int type)
 {
     struct obj *otmp;
 
-    /* this could be replaced by 'return m_carrying(&gy.youmonst, type);' */
+    /* this could be replaced by 'return m_carrying(u.umonst, type);' */
     for (otmp = gi.invent; otmp; otmp = otmp->nobj)
         if (otmp->otyp == type)
             break;
@@ -4291,7 +4291,7 @@ look_here(
                       : (otmp->quan > 1L) ? _("They're")
                         : _("It's"),
                       corpse_xname(otmp, (const char *) 0, CXN_ARTICLE),
-                      poly_when_stoned(gy.youmonst.data) ? ""
+                      poly_when_stoned(u.umonst->data) ? ""
                       : _(", unfortunately"));
                 feel_cockatrice(otmp, FALSE);
                 break;
@@ -4372,7 +4372,7 @@ feel_cockatrice(struct obj *otmp, boolean force_touch)
         /* "the <cockatrice> corpse" */
         Strcpy(kbuf, corpse_xname(otmp, (const char *) 0, CXN_PFX_THE));
 
-        if (poly_when_stoned(gy.youmonst.data))
+        if (poly_when_stoned(u.umonst->data))
             You(_("touched %s with your bare %s."), kbuf,
                 makeplural(body_part(HAND)));
         else
@@ -4802,8 +4802,8 @@ useupf(struct obj *obj, long numused)
             (void) stolen_value(otmp, otmp->ox, otmp->oy, FALSE, FALSE);
     }
     delobj(otmp);
-    if (at_u && u.uundetected && hides_under(gy.youmonst.data))
-        (void) hideunder(&gy.youmonst);
+    if (at_u && u.uundetected && hides_under(u.umonst->data))
+        (void) hideunder(u.umonst);
 }
 
 /*
@@ -5387,7 +5387,7 @@ display_minventory(
         /* Fool the 'weapon in hand' routine into
          * displaying 'weapon in claw', etc. properly.
          */
-        gy.youmonst.data = mon->data;
+        u.umonst->data = mon->data;
         /* in case inside a shop, don't append "for sale" prices */
         iflags.suppress_price++;
 
@@ -5398,7 +5398,7 @@ display_minventory(
 
         iflags.suppress_price--;
         /* was 'set_uasmon();' but that potentially has side-effects */
-        gy.youmonst.data = &mons[u.umonnum]; /* basic part of set_uasmon() */
+        u.umonst->data = &mons[u.umonnum]; /* basic part of set_uasmon() */
     } else {
         invdisp_nothing(title ? title : tmp, "(none)");
         n = 0;

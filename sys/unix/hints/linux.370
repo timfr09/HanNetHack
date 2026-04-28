@@ -229,6 +229,10 @@ ifdef MAKEFILE_SRC
 ifdef CURSESLIB
 WINLIB += $(CURSESLIB)
 endif   #CURSESLIB
+ifdef WANT_NHUUID
+CFLAGS+= -DNHUUID
+LIBS+=-luuid
+endif   #NHUUID
 endif   #MAKEFILE_SRC
 
 ifdef WANT_WIN_X11

@@ -842,7 +842,6 @@ static const struct instance_globals_x g_init_x = {
 static const struct instance_globals_y g_init_y = {
     /* decl.c */
     (ROWNO - 1) & ~1, /* y_maze_max */
-    DUMMY, /* youmonst */
     /* pline.c */
     NULL, /* you_buf */
     0, /* you_buf_siz */
@@ -930,6 +929,11 @@ static const struct instance_globals_saved_m init_svm = {
 static const struct instance_globals_saved_n init_svn = {
     /* dungeon.c */
     0,                                   /* n_dgns */
+    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0
+    },                                   /* nhuuid */
     /* mkroom.c */
     0,                                   /* nroom */
     /* region.c */
@@ -1064,6 +1068,12 @@ const struct const_globals cg = {
     } while(0);
 
 void
+program_state_init(void)
+{
+    program_state = init_program_state;
+}
+
+void
 decl_globals_init(void)
 {
 #if 0
@@ -1114,7 +1124,6 @@ decl_globals_init(void)
     svu = init_svu;
     svx = init_svx;
     svy = init_svy;
-    program_state = init_program_state;
 
     gv.valuables[0].list = gg.gems;
     gv.valuables[0].size = SIZE(gg.gems);

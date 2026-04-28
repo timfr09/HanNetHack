@@ -3609,12 +3609,12 @@ append_honorific(char *buf)
     };
 
     Strcat(buf, _(honored[rn2(SIZE(honored) - 1) + u.uevent.udemigod]));
-    if (is_vampire(gy.youmonst.data))
+    if (is_vampire(u.umonst->data))
         Strcat(buf, (flags.female) ? _(" dark lady") : _(" dark lord"));
-    else if (maybe_polyd(is_elf(gy.youmonst.data), Race_if(PM_ELF)))
+    else if (maybe_polyd(is_elf(u.umonst->data), Race_if(PM_ELF)))
         Strcat(buf, (flags.female) ? _(" hiril") : _(" hir"));
     else
-        Strcat(buf, !is_human(gy.youmonst.data) ? _(" creature")
+        Strcat(buf, !is_human(u.umonst->data) ? _(" creature")
                       : (flags.female) ? _(" lady")
                         : _(" sir"));
 }
@@ -5910,7 +5910,7 @@ cad(
 {
     const char *res = 0;
 
-    switch (is_demon(gy.youmonst.data) ? 3 : poly_gender()) {
+    switch (is_demon(u.umonst->data) ? 3 : poly_gender()) {
     case 0:
         res = "cad";
         break;
@@ -5929,7 +5929,7 @@ cad(
         break;
     }
     if (altusage) {
-        char *cadbuf = mon_nam(&gy.youmonst); /* snag an output buffer */
+        char *cadbuf = mon_nam(u.umonst); /* snag an output buffer */
 
         /* alternate usage adds a leading double quote and trailing
            exclamation point plus sentence separating spaces */

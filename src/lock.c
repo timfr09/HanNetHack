@@ -92,7 +92,7 @@ picklock(void)
         }
     }
 
-    if (gx.xlock.usedtime++ >= 50 || nohands(gy.youmonst.data)) {
+    if (gx.xlock.usedtime++ >= 50 || nohands(u.umonst->data)) {
         You(_("give up your attempt at %s."), lock_action());
         exercise(A_DEX, TRUE); /* even if you don't succeed */
         return ((gx.xlock.usedtime = 0));
@@ -221,7 +221,7 @@ forcelock(void)
     if ((gx.xlock.box->ox != u.ux) || (gx.xlock.box->oy != u.uy))
         return ((gx.xlock.usedtime = 0)); /* you or it moved */
 
-    if (gx.xlock.usedtime++ >= 50 || !uwep || nohands(gy.youmonst.data)) {
+    if (gx.xlock.usedtime++ >= 50 || !uwep || nohands(u.umonst->data)) {
         You(_("give up your attempt to force the lock."));
         if (gx.xlock.usedtime >= 50) /* you made the effort */
             exercise((gx.xlock.picktyp) ? A_DEX : A_STR, TRUE);
@@ -318,7 +318,7 @@ autokey(boolean opening) /* True: key, pick, or card; False: key or pick */
         } else {
             switch (o->otyp) {
             case SKELETON_KEY:
-                if (!key || is_magic_key(&gy.youmonst, o))
+                if (!key || is_magic_key(u.umonst, o))
                     key = o;
                 break;
             case LOCK_PICK:
@@ -381,7 +381,7 @@ pick_lock(
 
     /* check whether we're resuming an interrupted previous attempt */
     if (gx.xlock.usedtime && picktyp == gx.xlock.picktyp) {
-        if (nohands(gy.youmonst.data)) {
+        if (nohands(u.umonst->data)) {
             const char *what = (picktyp == LOCK_PICK) ? _("pick") : _("key");
 
             if (picktyp == CREDIT_CARD)
@@ -397,13 +397,13 @@ pick_lock(
             const char *action = lock_action();
 
             You(_("resume your attempt at %s."), action);
-            gx.xlock.magic_key = is_magic_key(&gy.youmonst, pick);
+            gx.xlock.magic_key = is_magic_key(u.umonst, pick);
             set_occupation(picklock, action, 0);
             return PICKLOCK_DID_SOMETHING;
         }
     }
 
-    if (nohands(gy.youmonst.data)) {
+    if (nohands(u.umonst->data)) {
         You_cant(_("hold %s -- you have no hands!"), doname(pick));
         return PICKLOCK_DID_NOTHING;
     } else if (u.uswallow) {
@@ -514,7 +514,7 @@ pick_lock(
                              an(simple_typename(picktyp)));
                     return PICKLOCK_LEARNED_SOMETHING;
                 } else if (autounlock
-                           && !touch_artifact(pick, &gy.youmonst)) {
+                           && !touch_artifact(pick, u.umonst)) {
                     /* note: for !autounlock, apply already did touch check */
                     return PICKLOCK_DID_SOMETHING;
                 }
@@ -627,7 +627,7 @@ pick_lock(
                 return PICKLOCK_DID_NOTHING;
 
             /* note: for !autounlock, 'apply' already did touch check */
-            if (autounlock && !touch_artifact(pick, &gy.youmonst))
+            if (autounlock && !touch_artifact(pick, u.umonst))
                 return PICKLOCK_DID_SOMETHING;
 
             switch (picktyp) {
@@ -650,7 +650,7 @@ pick_lock(
     svc.context.move = 0;
     gx.xlock.chance = ch;
     gx.xlock.picktyp = picktyp;
-    gx.xlock.magic_key = is_magic_key(&gy.youmonst, pick);
+    gx.xlock.magic_key = is_magic_key(u.umonst, pick);
     gx.xlock.usedtime = 0;
     set_occupation(picklock, lock_action(), 0);
     return PICKLOCK_DID_SOMETHING;
@@ -786,7 +786,7 @@ doopen_indir(coordxy x, coordxy y)
     const char *dirprompt;
     int res = ECMD_OK;
 
-    if (nohands(gy.youmonst.data)) {
+    if (nohands(u.umonst->data)) {
         You_cant(_("open anything -- you have no hands!"));
         return ECMD_OK;
     }
@@ -894,7 +894,7 @@ doopen_indir(coordxy x, coordxy y)
         return res;
     }
 
-    if (verysmall(gy.youmonst.data)) {
+    if (verysmall(u.umonst->data)) {
         pline(_("You're too small to pull the door open."));
         return res;
     }
@@ -960,7 +960,7 @@ doclose(void)
     boolean portcullis;
     int res = ECMD_OK;
 
-    if (nohands(gy.youmonst.data)) {
+    if (nohands(u.umonst->data)) {
         You_cant(_("close anything -- you have no hands!"));
         return ECMD_OK;
     }
@@ -1030,7 +1030,7 @@ doclose(void)
     }
 
     if (door->doormask == D_ISOPEN) {
-        if (verysmall(gy.youmonst.data) && !u.usteed) {
+        if (verysmall(u.umonst->data) && !u.usteed) {
             pline(_("You're too small to push the door closed."));
             return res;
         }
@@ -1280,7 +1280,7 @@ chest_shatter_msg(struct obj *otmp)
 
     if (otmp->oclass == POTION_CLASS) {
         You(_("%s %s shatter!"), Blind ? _("hear") : _("see"), an(bottlename()));
-        if (!breathless(gy.youmonst.data) || haseyes(gy.youmonst.data))
+        if (!breathless(u.umonst->data) || haseyes(u.umonst->data))
             potionbreathe(otmp);
         return;
     }

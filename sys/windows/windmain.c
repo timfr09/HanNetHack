@@ -167,12 +167,6 @@ MAIN(int argc, char *argv[])
     /* setting iflags.colorcount has to be after early_init()
      * because it zeros out all of iflags */
     hwnd = GetDesktopWindow();
-    hdc = GetDC(hwnd);
-    if (hdc) {
-        bpp = GetDeviceCaps(hdc, BITSPIXEL);
-        iflags.colorcount = (bpp >= 16) ? 16777216 : (bpp >= 8) ? 256 : 16;
-        ReleaseDC(hwnd, hdc);
-    }
 
 #ifdef _MSC_VER
 #ifdef DEBUG
@@ -201,6 +195,15 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
 #ifndef MSWIN_GRAPHICS
     early_init(argc, argv); /* already in WinMain for MSWIN_GRAPHICS */
 #endif
+
+    /* this must be done after early_init() because early_init()
+       sets iflags to zero */
+    hdc = GetDC(hwnd);
+    if (hdc) {
+        bpp = GetDeviceCaps(hdc, BITSPIXEL);
+        iflags.colorcount = (bpp >= 16) ? 16777216 : (bpp >= 8) ? 256 : 16;
+        ReleaseDC(hwnd, hdc);
+    }
     gh.hname = "NetHack"; /* used for syntax messages */
     set_default_prefix_locations(
         argv[0]); /* must be re-done after initoptions_init()
@@ -297,7 +300,7 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
     if WINDOWPORT(tty) {
         int i;
 
-        for (i = 0; i < 20; ++i) {
+        for (i = 0; i < 5; ++i) {
             nh_delay_output();
         }
 

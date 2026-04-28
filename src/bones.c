@@ -611,6 +611,7 @@ savebones(int how, time_t when, struct obj *corpse)
 
     nhfp->mode = WRITING;
     store_version(nhfp);
+    Sfo_char(nhfp, &svn.nhuuid[0], "ancestor-nhuuid", sizeof svn.nhuuid);
     /* if a bones pool digit is in use, it precedes the bonesid
        string and isn't recorded in the file */
     Sfo_char(nhfp, &c, "bones_count", 1);
@@ -632,6 +633,7 @@ getbones(void)
     NHFILE *nhfp = (NHFILE *) 0;
     char c = 0, *bonesid,
          oldbonesid[40] = { 0 }; /* was [10]; more should be safer */
+    char ancestor_nhuuid[SIZE(svn.nhuuid)];
 
 #ifndef SFCTOOL
     if (discover) /* save bones files for real games */
@@ -657,19 +659,24 @@ getbones(void)
         return 0;
     }
 
+    restoreinfo.mread_flags = 1; /* return despite error for a bones file */
     if (validate(nhfp, gb.bones, FALSE) != SF_UPTODATE) {
         if (!wizard)
             pline(_("Discarding unusable bones; no need to panic..."));
         ok = FALSE;
+        restoreinfo.mread_flags = 0;
     } else {
         ok = TRUE;
         if (wizard) {
             if (y_n("Get bones?") == 'n') {
                 close_nhfile(nhfp);
                 compress_bonesfile();
+                restoreinfo.mread_flags = 0;
                 return 0;
             }
         }
+        Sfi_char(nhfp, &ancestor_nhuuid[0], "ancestor-nhuuid",
+                 sizeof ancestor_nhuuid);
         Sfi_char(nhfp, &c, "bones_count", 1); /* length incl. '\0' */
             if ((unsigned) c <= sizeof oldbonesid) {
                 Sfi_char(nhfp, oldbonesid, "bonesid", (int) c);
@@ -680,6 +687,7 @@ getbones(void)
                 close_nhfile(nhfp);
                 compress_bonesfile();
                 /* ToDo: maybe unlink these problematic bones? */
+                restoreinfo.mread_flags = 0;
                 return 0;
             }
         if (strcmp(bonesid, oldbonesid) != 0) {
@@ -691,6 +699,7 @@ getbones(void)
                 pline1(errbuf);
                 ok = FALSE; /* won't die of trickery */
             }
+            restoreinfo.mread_flags = 0;
             trickery(errbuf);
         } else {
             struct monst *mtmp;
@@ -722,6 +731,7 @@ getbones(void)
             fix_shop_damage();
         }
     }
+    restoreinfo.mread_flags = 0;
     close_nhfile(nhfp);
     sanitize_engravings();
     u.uroleplay.numbones++;

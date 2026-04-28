@@ -892,7 +892,7 @@ wiz_smell(void)
 
     cc.x = u.ux;
     cc.y = u.uy;
-    if (!olfaction(gy.youmonst.data)) {
+    if (!olfaction(u.umonst->data)) {
         You(_("are incapable of detecting odors in your present form."));
         return ECMD_OK;
     }
@@ -909,7 +909,7 @@ wiz_smell(void)
             if (u.usteed) {
                 mptr = u.usteed->data;
             } else {
-                mptr = gy.youmonst.data;
+                mptr = u.umonst->data;
                 is_you = TRUE;
             }
         } else if ((mtmp = m_at(cc.x, cc.y)) != (struct monst *) 0) {
@@ -1774,6 +1774,14 @@ wiz_display_macros(void)
         putstr(win, 0, _("No display macro issues detected."));
     display_nhwindow(win, FALSE);
     destroy_nhwindow(win);
+    return ECMD_OK;
+}
+
+/* the #wizshownhuuid command */
+int
+wiz_show_nhuuid(void)
+{
+    pline(_("The NHUUID for this game is { %s }."), svn.nhuuid);
     return ECMD_OK;
 }
 

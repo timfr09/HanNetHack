@@ -53251,3 +53251,58 @@ msgstr "\"%s\"{을/를} 읽기용으로 열 수 없다!"
 
 #~ msgid "Unique items"
 #~ msgstr "고유 물품"
+
+# ============================================================
+# v3.7.0-ko.5 업스트림 머지로 새로 추가된 문자열
+# (insight.c rerolling block, options.c idlecheckpoint,
+#  trap.c lethargic aura, teleport.c stasis, hack.c rolling
+#  boulder, wizcmds.c NHUUID)
+# ============================================================
+
+# insight.c #conduct - 캐릭터 재굴리기 안내
+# 선행 공백은 원문 형식 유지용
+msgid " Character rerolling was not enabled."
+msgstr " 캐릭터 재굴리기가 활성화되지 않았다."
+
+msgid " Your character was not rerolled."
+msgstr " 캐릭터를 다시 굴리지 않았다."
+
+# %s 자리에 N_times 결과(예: "한 번", "두 번", "10번")가 들어감
+#, c-format
+msgid " Your character was rerolled %s."
+msgstr " 캐릭터를 %s다시 굴렸다."
+
+# hack.c - 굴러가는 바위 함정에서 자기 발치에 풀려난 바위가 굴러가는 메시지
+# 형식: "<obj>{이/가} 갑자기 굴러 away from you!"
+# Tobjnam(obj, "suddenly roll")이 "<obj>{이/가} 갑자기 굴러"를 만들고
+# 그 뒤에 "away from you!"가 붙는 구조이므로 어순 보정
+#, c-format
+msgid "%s away from you!"
+msgstr "%s 당신에게서 멀어진다!"
+
+msgid "suddenly roll"
+msgstr "{이/가} 갑자기 굴러간다"
+
+# trap.c - 무기력 오라 함정 (마법화 신발의 강화도가 깎임)
+#, c-format
+msgid "A lethargic aura surrounds %s."
+msgstr "%s{을/를} 무기력한 기운이 감싼다."
+
+# teleport.c - 정지 결계가 몬스터의 순간이동을 막음
+#, c-format
+msgid "A mysterious force prevents you teleporting %s!"
+msgstr "신비한 힘이 %s{을/를} 순간이동시키는 것을 막는다!"
+
+# wizcmds.c - 위자드 모드 #wizshownhuuid 명령
+#, c-format
+msgid "The NHUUID for this game is { %s }."
+msgstr "이 게임의 NHUUID는 { %s } 이다."
+
+# options.c - IDLECHECKPOINT가 컴파일되지 않은 빌드에서의 안내
+msgid "There is no underlying support for 'idlecheckpoint' compiled in."
+msgstr "이 빌드에는 'idlecheckpoint' 지원이 컴파일되어 있지 않다."
+
+# Lua 퀘스트 파일에 등장하는 마법 단어. 새기거나 인식하기 위해서는 원어
+# 그대로여야 하므로(소스에서 strcmp로 비교) 영어 그대로 유지한다.
+msgid "Elbereth"
+msgstr "Elbereth"

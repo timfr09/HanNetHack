@@ -1,4 +1,4 @@
-NHDT-Branch: NetHack-3.7 $:$NHDT-Revision: 1.1580 $ $NHDT-Date: 1764109066 2025/11/25 22:17:46 $
+NHDT-Branch: NetHack-3.7 $:$NHDT-Revision: 1.1649 $ $NHDT-Date: 1777000050 2026/04/23 19:07:30 $
 
 General Fixes and Modified Features
 -----------------------------------
@@ -1598,6 +1598,11 @@ prevent selecting all options in #optionsfull menu
 shapeshifters change shape less
 rolling boulder traps aren't removed when stepped on and move boulders
         pushed onto them
+when starting a new game as a monk, newsym(0,0) was being called (adjabil ->
+	postadjabil -> see_monsters when initializing See_invisible as hero
+	became level 1; seen 'monster' was the hero who hadn't been placed
+	on the map yet)
+incorporate a fix to prevent segfault due to rolling boulder trap
 
 
 Fixes to 3.7.0-x General Problems Exposed Via git Repository
@@ -2228,7 +2233,10 @@ when reading an engraving, suppress the addition of a trailing period if the
 cursed magic whistle could teleport hero on no-teleport levels
 give a brief explanation when receiving a wish for acquiring the Amulet
 teleportation traps no longer teleport you on levels made temporarily
-        no-teleport by the presence of a monster
+	no-teleport by the presence of a monster
+an attempt to pick up an object from a monster's stomach would trigger
+	an impossible() in newsym() due to object having no ox,oy coordinates
+	set; set the coordinates to the monster's at the start of pick_obj()
 
 
 Fixes to 3.7.0-x Platform and/or Interface Problems Exposed Via git Repository

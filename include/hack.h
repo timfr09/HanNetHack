@@ -465,7 +465,7 @@ enum encumbrance_types {
 };
 
 struct entity {
-    struct monst *emon;     /* youmonst for the player */
+    struct monst *emon;     /* u.umonst for the player */
     struct permonst *edata; /* must be non-zero for record to be valid */
     int ex, ey;
 };
@@ -588,6 +588,13 @@ enum inventory_counts {
     invlet_max = invlet_basic + invlet_gold + invlet_overflow,
     /* 2023/11/30 invlet_max is not yet used anywhere */
 };
+
+#ifndef IDLECHECKPOINT_WAIT_TIME
+#define IDLECHECKPOINT_WAIT_TIME 10  /* seconds to wait before executing a checkpoint;
+                                      * always #define'd but only has meaning if
+                                      * IDLECHECKPOINT is defined.
+                                      */
+#endif
 
 struct kinfo {
     struct kinfo *next; /* chain of delayed killers */
@@ -1285,7 +1292,7 @@ typedef uint32_t mmflags_nht;     /* makemon MM_ flags */
 #define FM_FMON 0x01    /* search the fmon chain */
 #define FM_MIGRATE 0x02 /* search the migrating monster chain */
 #define FM_MYDOGS 0x04  /* search gm.mydogs */
-#define FM_YOU 0x08     /* check for gy.youmonst */
+#define FM_YOU 0x08     /* check for u.umonst */
 #define FM_EVERYWHERE (FM_YOU | FM_FMON | FM_MIGRATE | FM_MYDOGS)
 
 /* Flags to control pick_[race,role,gend,align] routines in role.c */

@@ -629,12 +629,13 @@ HOBJ = $(TARGETPFX)allmain.o $(TARGETPFX)alloc.o \
 	$(TARGETPFX)teleport.o $(TARGETPFX)timeout.o $(TARGETPFX)topten.o \
 	$(TARGETPFX)track.o $(TARGETPFX)trap.o $(TARGETPFX)u_init.o \
 	$(TARGETPFX)uhitm.o $(TARGETPFX)utf8map.o $(TARGETPFX)vault.o \
-	$(TARGETPFX)vision.o $(TARGETPFX)weapon.o \
-	$(TARGETPFX)were.o $(TARGETPFX)wield.o $(TARGETPFX)windows.o \
-	$(TARGETPFX)wizard.o $(TARGETPFX)wizcmds.o $(TARGETPFX)worm.o \
-	$(TARGETPFX)worn.o $(TARGETPFX)write.o $(TARGETPFX)zap.o \
+	$(TARGETPFX)vision.o $(TARGETPFX)weapon.o $(TARGETPFX)were.o \
+	$(TARGETPFX)wield.o $(TARGETPFX)windows.o $(TARGETPFX)wizard.o \
+	$(TARGETPFX)wizcmds.o $(TARGETPFX)worm.o $(TARGETPFX)worn.o \
+	$(TARGETPFX)write.o $(TARGETPFX)zap.o \
 	$(TARGETPFX)i18n.o $(TARGETPFX)ko_postpos.o \
-	$(REGEXOBJ) $(RANDOBJ) $(SYSOBJ) $(WINOBJ) $(HINTOBJ) $(SNDLIBOBJ) \
+	$(REGEXOBJ) $(RANDOBJ) $(SYSOBJ) $(WINOBJ) \
+	$(HINTOBJ) $(SNDLIBOBJ) $(UUIDOBJ) \
 	$(TARGETPFX)version.o 
 
 DATE_O = $(TARGETPFX)date.o
@@ -880,6 +881,7 @@ depend2:	$(WINQTMOC)
 	- diff Makefile.bak $(MAKEFILE_NAME)
 	@rm -f Makefile.bak
 	@rm -f ../include/nhlua.h tile.c
+
 
 # DO NOT DELETE THIS LINE OR CHANGE ANYTHING BEYOND IT
 

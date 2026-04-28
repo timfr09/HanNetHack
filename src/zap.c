@@ -591,7 +591,7 @@ release_hold(void)
         }
         /* gives "you get regurgitated" or "you get expelled from <mon>" */
         expels(mtmp, mtmp->data, TRUE);
-    } else if (sticks(gy.youmonst.data)) {
+    } else if (sticks(u.umonst->data)) {
         /* order matters if 'holding' status condition is enabled;
            set_ustuck() will set flag for botl update, You() pline will
            trigger a status update with "UHold" removed */
@@ -695,7 +695,7 @@ get_mon_location(
     coordxy *xp, coordxy *yp,
     int locflags) /* non-zero means get location even if monster is buried */
 {
-    if (mon == &gy.youmonst || (u.usteed && mon == u.usteed)) {
+    if (mon == u.umonst || (u.usteed && mon == u.usteed)) {
         *xp = u.ux;
         *yp = u.uy;
         return TRUE;
@@ -1160,7 +1160,7 @@ unturn_dead(struct monst *mon)
     struct monst *mtmp2;
     char owner[BUFSZ], corpse[BUFSZ];
     unsigned save_norevive;
-    boolean youseeit, different_type, is_u = (mon == &gy.youmonst);
+    boolean youseeit, different_type, is_u = (mon == u.umonst);
     int corpsenm, res = 0;
 
     youseeit = is_u ? TRUE : canseemon(mon);
@@ -1225,9 +1225,9 @@ unturn_dead(struct monst *mon)
 void
 unturn_you(void)
 {
-    (void) unturn_dead(&gy.youmonst); /* hit carried corpses and eggs */
+    (void) unturn_dead(u.umonst); /* hit carried corpses and eggs */
 
-    if (is_undead(gy.youmonst.data)) {
+    if (is_undead(u.umonst->data)) {
         You_feel(_("frightened and %sstunned."), Stunned ? _("even more ") : "");
         make_stunned((HStun & TIMEOUT) + (long) rnd(30), FALSE);
     } else {
@@ -2103,7 +2103,7 @@ stone_to_flesh_obj(struct obj *obj) /* nonnull */
            non-omnivorous form, regardless of whether it's herbivorous,
            non-eating, or something stranger) */
         if (Role_if(PM_MONK) || !u.uconduct.unvegetarian
-            || !carnivorous(gy.youmonst.data))
+            || !carnivorous(u.umonst->data))
             Norep(_("You smell the odor of meat."));
         else
             Norep(_("You smell a delicious smell."));
@@ -2166,7 +2166,7 @@ bhito(struct obj *obj, struct obj *otmp)
         if (svc.context.bypasses) {
             return 0;
         } else {
-            debugpline1("%s for a moment.", Tobjnam(obj, "pulsate"));
+            debugpline1("%s for a moment.", Tobjnam(obj, _("pulsate")));
             obj->bypass = 0;
         }
     }
@@ -2207,14 +2207,14 @@ bhito(struct obj *obj, struct obj *otmp)
             if (obj_shudders(obj)) {
                 boolean cover = ((obj == svl.level.objects[u.ux][u.uy])
                                  && u.uundetected
-                                 && hides_under(gy.youmonst.data));
+                                 && hides_under(u.umonst->data));
 
                 if (cansee(obj->ox, obj->oy))
                     learn_it = TRUE;
                 do_osshock(obj);
                 /* eek - your cover might have been blown */
                 if (cover)
-                    (void) hideunder(&gy.youmonst);
+                    (void) hideunder(u.umonst);
                 break;
             }
             obj = poly_obj(obj, STRANGE_OBJECT);
@@ -2441,7 +2441,7 @@ bhitpile(
 
     /* if hiding underneath an object and zapping up or down, the top item
        is either the only thing hit (up) or is skipped (down) */
-    hidingunder = (zz != 0 && u.uundetected && hides_under(gy.youmonst.data));
+    hidingunder = (zz != 0 && u.uundetected && hides_under(u.umonst->data));
     first = TRUE;
 
     if (obj->otyp == SPE_FORCE_BOLT || obj->otyp == WAN_STRIKING) {
@@ -2630,7 +2630,7 @@ dozap(void)
     struct obj *obj;
     int damage, need_dir;
 
-    if (nohands(gy.youmonst.data)) {
+    if (nohands(u.umonst->data)) {
         You(_("aren't able to zap anything in your current form."));
         return ECMD_OK;
     }
@@ -2742,7 +2742,7 @@ zapyourself(struct obj *obj, boolean ordinary)
             monstseesu(M_SEEN_ELEC);
             ugolemeffects(AD_ELEC, orig_dmg);
         }
-        (void) destroy_items(&gy.youmonst, AD_ELEC, orig_dmg);
+        (void) destroy_items(u.umonst, AD_ELEC, orig_dmg);
         (void) flashburn((long) rnd(100), TRUE);
         break;
 
@@ -2765,8 +2765,8 @@ zapyourself(struct obj *obj, boolean ordinary)
             monstunseesu(M_SEEN_FIRE);
         }
         burn_away_slime();
-        (void) burnarmor(&gy.youmonst);
-        (void) destroy_items(&gy.youmonst, AD_FIRE, orig_dmg);
+        (void) burnarmor(u.umonst);
+        (void) destroy_items(u.umonst, AD_FIRE, orig_dmg);
         ignite_items(gi.invent);
         break;
 
@@ -2785,7 +2785,7 @@ zapyourself(struct obj *obj, boolean ordinary)
             damage = orig_dmg;
             monstunseesu(M_SEEN_COLD);
         }
-        (void) destroy_items(&gy.youmonst, AD_COLD, orig_dmg);
+        (void) destroy_items(u.umonst, AD_COLD, orig_dmg);
         break;
 
     case WAN_MAGIC_MISSILE:
@@ -2812,7 +2812,7 @@ zapyourself(struct obj *obj, boolean ordinary)
 
     case WAN_CANCELLATION:
     case SPE_CANCELLATION:
-        (void) cancel_monst(&gy.youmonst, obj, TRUE, TRUE, TRUE);
+        (void) cancel_monst(u.umonst, obj, TRUE, TRUE, TRUE);
         break;
 
     case SPE_DRAIN_LIFE:
@@ -2885,7 +2885,7 @@ zapyourself(struct obj *obj, boolean ordinary)
 
     case WAN_DEATH:
     case SPE_FINGER_OF_DEATH:
-        if (nonliving(gy.youmonst.data) || is_demon(gy.youmonst.data)) {
+        if (nonliving(u.umonst->data) || is_demon(u.umonst->data)) {
             pline((obj->otyp == WAN_DEATH)
                       ? _("The wand shoots an apparently harmless beam at you.")
                       : _("You seem no deader than before."));
@@ -2940,16 +2940,16 @@ zapyourself(struct obj *obj, boolean ordinary)
             unpunish();
         }
         /* invent is hit iff hero doesn't escape from a trap */
-        if (!u.utrap || !openholdingtrap(&gy.youmonst, &learn_it)) {
+        if (!u.utrap || !openholdingtrap(u.umonst, &learn_it)) {
             boxlock_invent(obj);
             /* trigger previously escaped trapdoor */
-            (void) openfallingtrap(&gy.youmonst, TRUE, &learn_it);
+            (void) openfallingtrap(u.umonst, TRUE, &learn_it);
         }
         break;
     case WAN_LOCKING:
     case SPE_WIZARD_LOCK:
         /* similar logic to opening; invent is hit iff no trap triggered */
-        if (u.utrap || !closeholdingtrap(&gy.youmonst, &learn_it)) {
+        if (u.utrap || !closeholdingtrap(u.umonst, &learn_it)) {
             boxlock_invent(obj);
         }
         break;
@@ -3033,7 +3033,7 @@ lightdamage(
     const char *how;
     int dmg = amt;
 
-    if (dmg && gy.youmonst.data == &mons[PM_GREMLIN]) {
+    if (dmg && u.umonst->data == &mons[PM_GREMLIN]) {
         /* reduce high values (from destruction of wand with many charges) */
         dmg = rnd(dmg);
         if (dmg > 10)
@@ -3060,7 +3060,7 @@ lightdamage(
 boolean
 flashburn(long duration, boolean via_lightning)
 {
-    if (!resists_blnd(&gy.youmonst)) {
+    if (!resists_blnd(u.umonst)) {
         You(_(are_blinded_by_the_flash));
         make_blinded(duration, FALSE);
         if (!Blind)
@@ -3073,7 +3073,7 @@ flashburn(long duration, boolean via_lightning)
        if hero is both lightning resistant and blindness resistant, or
        worse, have a single sparkle where the player confuses blindness
        resistance for lightning resistance */
-    if (!via_lightning && resists_blnd_by_arti(&gy.youmonst)) {
+    if (!via_lightning && resists_blnd_by_arti(u.umonst)) {
         shieldeff(u.ux, u.uy);
         return TRUE;
     }
@@ -3154,7 +3154,7 @@ cancel_monst(struct monst *mdef, struct obj *obj, boolean youattack,
     static const char
         writing_vanishes[] = N_("Some writing vanishes from %s head!"),
         your[] = N_("your"); /* should be extern */
-    boolean youdefend = (mdef == &gy.youmonst);
+    boolean youdefend = (mdef == u.umonst);
 
     if (youdefend ? (!youattack && Antimagic)
                   : resist(mdef, obj->oclass, 0, NOTELL))
@@ -3282,10 +3282,10 @@ zap_updown(struct obj *obj) /* wand or spell, nonnull */
         }
         /* down will release you from bear trap or web */
         if (u.dz > 0 && u.utrap) {
-            (void) openholdingtrap(&gy.youmonst, &disclose);
+            (void) openholdingtrap(u.umonst, &disclose);
             /* down will trigger trapdoor, hole, or [spiked-] pit */
         } else if (u.dz > 0 && !u.utrap) {
-            (void) openfallingtrap(&gy.youmonst, FALSE, &disclose);
+            (void) openfallingtrap(u.umonst, FALSE, &disclose);
         }
         break;
     case WAN_STRIKING:
@@ -3320,7 +3320,7 @@ zap_updown(struct obj *obj) /* wand or spell, nonnull */
             }
             newsym(x, y);
         } else if (u.dz > 0 && ttmp) {
-            if (!striking && closeholdingtrap(&gy.youmonst, &disclose)) {
+            if (!striking && closeholdingtrap(u.umonst, &disclose)) {
                 ; /* now stuck in web or bear trap */
             } else if (striking && ttmp->ttyp == TRAPDOOR) {
                 /* striking transforms trapdoor into hole */
@@ -3395,14 +3395,14 @@ zap_updown(struct obj *obj) /* wand or spell, nonnull */
         /* game flavor: if you're hiding under "something"
          * a zap upward should hit that "something".
          */
-        if (u.uundetected && hides_under(gy.youmonst.data)) {
+        if (u.uundetected && hides_under(u.umonst->data)) {
             int hitit = 0;
             otmp = svl.level.objects[u.ux][u.uy];
 
             if (otmp)
                 hitit = bhito(otmp, obj);
             if (hitit) {
-                (void) hideunder(&gy.youmonst);
+                (void) hideunder(u.umonst);
                 disclose = TRUE;
             }
         }
@@ -3559,7 +3559,7 @@ hit(
     struct monst *mtmp, /* target; for missile, might be hero */
     const char *force)  /* usually either "." or "!" via exclam() */
 {
-    boolean verbosely = (mtmp == &gy.youmonst
+    boolean verbosely = (mtmp == u.umonst
                          || (flags.verbose
                              && (cansee(gb.bhitpos.x, gb.bhitpos.y)
                                  || canspotmon(mtmp) || engulfing_u(mtmp))));
@@ -3983,7 +3983,7 @@ bhit(
            they will be aiming at the monster */
         xyglyph = glyph_at(x, y);
         if (mtmp && (((weapon == THROWN_WEAPON || weapon == KICKED_WEAPON)
-                      && (shade_miss(&gy.youmonst, mtmp, obj, TRUE, TRUE)
+                      && (shade_miss(u.umonst, mtmp, obj, TRUE, TRUE)
                           || (M_AP_TYPE(mtmp) == M_AP_OBJECT
                               && !glyph_is_monster(xyglyph)
                               && !glyph_is_warning(xyglyph)
@@ -4202,7 +4202,7 @@ boomhit(struct obj *obj, int dx, int dy)
         }
         if (u_at(gb.bhitpos.x, gb.bhitpos.y)) { /* ct == 9 */
             if (Fumbling || rn2(20) >= ACURR(A_DEX)) {
-                int dam = dmgval(obj, &gy.youmonst);
+                int dam = dmgval(obj, u.umonst);
 
                 /* we hit ourselves */
                 (void) thitu(10 + obj->spe, Maybe_Half_Phys(dam), &obj,
@@ -4212,7 +4212,7 @@ boomhit(struct obj *obj, int dx, int dy)
             } else { /* we catch it */
                 tmp_at(DISP_END, 0);
                 You(_("skillfully catch the boomerang."));
-                return &gy.youmonst;
+                return u.umonst;
             }
         }
         tmp_at(gb.bhitpos.x, gb.bhitpos.y);
@@ -4431,9 +4431,9 @@ zhitu(
             monstunseesu(M_SEEN_FIRE);
         }
         burn_away_slime();
-        if (burnarmor(&gy.youmonst)) { /* "body hit" */
+        if (burnarmor(u.umonst)) { /* "body hit" */
             if (!rn2(3))
-                (void) destroy_items(&gy.youmonst, AD_FIRE, orig_dam);
+                (void) destroy_items(u.umonst, AD_FIRE, orig_dam);
             if (!rn2(3))
                 ignite_items(gi.invent);
         }
@@ -4450,7 +4450,7 @@ zhitu(
             monstunseesu(M_SEEN_COLD);
         }
         if (!rn2(3))
-            (void) destroy_items(&gy.youmonst, AD_COLD, orig_dam);
+            (void) destroy_items(u.umonst, AD_COLD, orig_dam);
         break;
     case ZT_SLEEP:
         if (Sleep_resistance) {
@@ -4491,7 +4491,7 @@ zhitu(
                 (void) disintegrate_arm(uarmc);
             if (uarmu)
                 (void) disintegrate_arm(uarmu);
-        } else if (nonliving(gy.youmonst.data) || is_demon(gy.youmonst.data)) {
+        } else if (nonliving(u.umonst->data) || is_demon(u.umonst->data)) {
             shieldeff(sx, sy);
             You(_("seem unaffected."));
             break;
@@ -4521,7 +4521,7 @@ zhitu(
             monstunseesu(M_SEEN_ELEC);
         }
         if (!rn2(3))
-            (void) destroy_items(&gy.youmonst, AD_ELEC, orig_dam);
+            (void) destroy_items(u.umonst, AD_ELEC, orig_dam);
         break;
     case ZT_POISON_GAS:
         poisoned("blast", A_DEX, "poisoned blast", 15, FALSE);
@@ -4543,7 +4543,7 @@ zhitu(
         if (u.twoweap && !rn2(3))
             acid_damage(uswapwep);
         if (!rn2(6))
-            erode_armor(&gy.youmonst, ERODE_CORRODE);
+            erode_armor(u.umonst, ERODE_CORRODE);
         break;
     }
 
@@ -4892,7 +4892,7 @@ dobuzz(
                             pline(_("%s disintegrates."), Monnam(mon));
                             pline(_("%s body reintegrates before your %s!"),
                                   s_suffix(Monnam(mon)),
-                                  (eyecount(gy.youmonst.data) == 1)
+                                  (eyecount(u.umonst->data) == 1)
                                       ? body_part(EYE)
                                       : makeplural(body_part(EYE)));
                             pline(_("%s resurrects!"), Monnam(mon));
@@ -5804,7 +5804,7 @@ maybe_destroy_item(
     long i, cnt, quan;
     int dmg, xresist, skip, dindx;
     const char *mult;
-    boolean u_carry = (carrier == &gy.youmonst);
+    boolean u_carry = (carrier == u.umonst);
     boolean vis = !u_carry && canseemon(carrier);
     boolean chargeit = FALSE;
 
@@ -5913,8 +5913,8 @@ maybe_destroy_item(
         }
         if (u_carry) { /* effects that happen only to the player */
             if (osym == POTION_CLASS && dmgtyp != AD_COLD
-                && (!breathless(gy.youmonst.data)
-                    || haseyes(gy.youmonst.data))) {
+                && (!breathless(u.umonst->data)
+                    || haseyes(u.umonst->data))) {
                 potionbreathe(obj);
             }
             if (obj->owornmask) { /* m_useup handles these for monster */
@@ -5978,7 +5978,7 @@ destroy_items(
         boolean deferred;
     } items_to_destroy[MAX_ITEMS_DESTROYED];
     int elig_stacks = 0; /* number of destroyable objects found so far */
-    boolean u_carry = (mon == &gy.youmonst);
+    boolean u_carry = (mon == u.umonst);
     /* this is a struct obj** because we might destroy the first item in it */
     struct obj **objchn = u_carry ? &gi.invent : &mon->minvent;
     int dmg_out = 0; /* damage caused by items getting destroyed */

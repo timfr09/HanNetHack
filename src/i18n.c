@@ -251,6 +251,54 @@ static boolean korean_locale = FALSE;
 static mo_catalog *g_catalog = (mo_catalog *) 0;
 
 /*
+ * Normalize user/config language values into short codes used by
+ * our bundled catalogs ("ko", "en", "ja", "zh").
+ *
+ * Accepts inputs like:
+ *   - "ko", "ko_KR", "ko-KR", "Korean_Korea.utf8"
+ *   - "en_US", "English_United States"
+ */
+static const char *
+normalize_language_code(const char *lang, char out[8])
+{
+    const char *p;
+    int n = 0;
+
+    if (!out)
+        return "ko";
+    out[0] = '\0';
+
+    if (!lang || !*lang)
+        lang = "ko";
+
+    /* Handle common language names first. */
+    if (!strncmpi(lang, "korean", 6))
+        lang = "ko";
+    else if (!strncmpi(lang, "english", 7))
+        lang = "en";
+    else if (!strncmpi(lang, "japanese", 8))
+        lang = "ja";
+    else if (!strncmpi(lang, "chinese", 7))
+        lang = "zh";
+
+    /* Pull primary subtag until separator (ko_KR -> ko, ko-KR -> ko). */
+    for (p = lang; *p && n < 7; ++p) {
+        char c = *p;
+        if (c == '_' || c == '-' || c == '.' || c == '@' || c == ' ')
+            break;
+        if (c >= 'A' && c <= 'Z')
+            c = (char) (c - 'A' + 'a');
+        out[n++] = c;
+    }
+    out[n] = '\0';
+
+    /* Defensive fallback to Korean default for empty/garbage input. */
+    if (!out[0])
+        Strcpy(out, "ko");
+    return out;
+}
+
+/*
  * Read an entire DLB-resident file into a freshly malloc()ed buffer.
  * Returns the buffer (caller takes ownership) and writes the byte
  * count to *out_len.  Returns NULL on any failure.
@@ -312,6 +360,7 @@ static boolean
 load_catalog_for_lang(const char *lang)
 {
     char path[BUFSZ];
+    char normalized[8];
     uint8_t *buf;
     size_t len = 0;
     mo_catalog *cat;
@@ -320,6 +369,7 @@ load_catalog_for_lang(const char *lang)
         mo_free(g_catalog);
         g_catalog = (mo_catalog *) 0;
     }
+    lang = normalize_language_code(lang, normalized);
     if (!lang || !*lang || strcmp(lang, "en") == 0)
         return FALSE;
 
@@ -440,11 +490,12 @@ get_locale_for_lang(const char *lang)
 void
 set_language(const char *lang)
 {
+    char normalized[8];
     const char *locale_name;
     char *loc_result;
 
-    if (!lang || !*lang)
-        lang = "ko";  /* Default to Korean for HanNetHack */
+    /* Keep language handling robust against full locale/name inputs. */
+    lang = normalize_language_code(lang, normalized);
 
     /* Get the full locale name for this language and install it. */
     locale_name = get_locale_for_lang(lang);

@@ -9,7 +9,7 @@
 #include <string.h>
 #endif
 
-#if defined(ENABLE_NLS) && defined(SAFEPROCS)
+#ifdef ENABLE_NLS
 #include "i18n.h"
 #endif
 

@@ -444,6 +444,24 @@ dlb_init(void)
             dlb_initialized = do_dlb_init();
     }
 
+#ifdef ENABLE_NLS
+    /*
+     * The message catalog (locale/<lang>/nethack.mox) is read through
+     * dlb_fopen, but init_i18n() runs in early_init() - long before
+     * dlb_init() succeeds.  At that early call set_language() silently
+     * fails to load the catalog and nh_gettext falls back to English.
+     * Now that DLB is ready, re-run set_language() so the catalog is
+     * actually loaded for the user's selected language.  Cheap and
+     * idempotent if it has already loaded.
+     */
+    if (dlb_initialized) {
+        const char *lang = get_current_language();
+
+        if (lang && *lang)
+            set_language(lang);
+    }
+#endif
+
     return dlb_initialized;
 }
 

@@ -182,6 +182,11 @@ early_options(int *argc_p, char ***argv_p, char **hackdir_p)
     char **argv, *arg, *origarg;
     int argc, oldargc, ndx = 0, consumed = 0;
 
+#ifdef ENHANCED_SYMBOLS
+    if (argcheck(*argc_p, *argv_p, ARG_DUMPGLYPHIDS) == 2)
+        opt_terminate();
+#endif
+
     config_error_init(FALSE, "command line", FALSE);
 
     /* treat "nethack ?" as a request for usage info; due to shell

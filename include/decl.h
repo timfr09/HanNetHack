@@ -1082,7 +1082,6 @@ struct instance_globals_y {
 
     /* decl.c */
     int y_maze_max;
-    struct monst youmonst;
 
     /* pline.c */
     /* work buffer for You(), &c and verbalize() */
@@ -1175,6 +1174,8 @@ struct instance_globals_saved_m {
 struct instance_globals_saved_n {
     /* dungeon.c */
     int n_dgns; /* number of dungeons (also used in mklev.c and do.c) */
+    /* files.c */
+    char nhuuid[37];
     /* mkroom.c */
     int nroom;
     /* region.c */

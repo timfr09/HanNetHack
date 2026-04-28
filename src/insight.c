@@ -1,4 +1,4 @@
-/* NetHack 3.7	insight.c	$NHDT-Date: 1737384766 2025/01/20 06:52:46 $  $NHDT-Branch: NetHack-3.7 $:$NHDT-Revision: 1.128 $ */
+/* NetHack 3.7	insight.c	$NHDT-Date: 1777004419 2026/04/23 20:20:19 $  $NHDT-Branch: NetHack-3.7 $:$NHDT-Revision: 1.134 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -17,13 +17,14 @@
 
 staticfn void enlght_out(const char *);
 staticfn void enlght_line(const char *, const char *, const char *,
-                        const char *);
+                          const char *);
 staticfn char *enlght_combatinc(const char *, int, int, char *);
 staticfn void enlght_halfdmg(int, int);
 staticfn boolean walking_on_water(void);
 staticfn boolean cause_known(int);
 staticfn char *attrval(int, int, char *);
 staticfn char *fmt_elapsed_time(char *, int);
+staticfn char *N_times(long, char *) NONNULL NONNULLARG2;
 staticfn void background_enlightenment(int, int);
 staticfn void basics_enlightenment(int, int);
 staticfn void characteristics_enlightenment(int, int);
@@ -390,6 +391,28 @@ fmt_elapsed_time(char *outbuf, int final)
     return outbuf;
 }
 
+/* "once" vs "twice" vs "17 times", used in several places */
+staticfn char *
+N_times(long n, char *outbuf)
+{
+    switch (n) {
+    case 0:
+    default:
+        Sprintf(outbuf, _("%ld times"), n);
+        break;
+    case 1:
+        Strcpy(outbuf, _("once"));
+        break;
+    case 2:
+        Strcpy(outbuf, _("twice"));
+        break;
+    case 3:
+        Strcpy(outbuf, _("thrice"));
+        break;
+    }
+    return outbuf;
+}
+
 void
 enlightenment(
     int mode,  /* BASICENLIGHTENMENT | MAGICENLIGHTENMENT (| both) */
@@ -500,8 +523,8 @@ background_enlightenment(int unused_mode UNUSED, int final)
        the player to know he's not a samurai at the moment... */
     if (Upolyd) {
         char anbuf[20]; /* includes trailing space; [4] suffices */
-        struct permonst *uasmon = gy.youmonst.data;
-        boolean altphrasing = vampshifted(&gy.youmonst);
+        struct permonst *uasmon = u.umonst->data;
+        boolean altphrasing = vampshifted(u.umonst);
 
         tmpbuf[0] = '\0';
         /* here we always use current gender, not saved role gender */
@@ -509,7 +532,7 @@ background_enlightenment(int unused_mode UNUSED, int final)
             Sprintf(tmpbuf, "%s ", _(genders[flags.female ? 1 : 0].adj));
         if (altphrasing)
             Sprintf(eos(tmpbuf), "%s in ",
-                    pmname(&mons[gy.youmonst.cham],
+                    pmname(&mons[u.umonst->cham],
                            flags.female ? FEMALE : MALE));
         Snprintf(buf, sizeof(buf), _("%s%s%s%s form"),
                  !final ? _("currently ") : "",
@@ -1082,7 +1105,7 @@ status_enlightenment(int mode, int final)
         if (wizard && (HBlinded == BlindedTimeout && !Blindfolded))
             Sprintf(eos(buf), " (%ld)", BlindedTimeout);
         /* !haseyes: avoid "you are innately blind innately" */
-        you_are(buf, !haseyes(gy.youmonst.data) ? "" : from_what(BLINDED));
+        you_are(buf, !haseyes(u.umonst->data) ? "" : from_what(BLINDED));
     }
     if (Deaf)
         you_are(_("deaf"), from_what(DEAF));
@@ -1136,7 +1159,7 @@ status_enlightenment(int mode, int final)
             Sprintf(eos(buf), " (%u)", u.uswldtim);
         you_are(buf, "");
     } else if (u.ustuck) {
-        boolean ustick = (Upolyd && sticks(gy.youmonst.data));
+        boolean ustick = (Upolyd && sticks(u.umonst->data));
         int dx = u.ustuck->mx - u.ux, dy = u.ustuck->my - u.uy;
 
         Snprintf(buf, sizeof buf, _("%s %s (%s)"),
@@ -1770,7 +1793,7 @@ attributes_enlightenment(
     }
     /* including this might bring attention to the fact that ceiling
        clinging has inconsistencies... */
-    if (is_clinger(gy.youmonst.data)) {
+    if (is_clinger(u.umonst->data)) {
         boolean has_lid = has_ceiling(&u.uz);
 
         if (has_lid && !u.uinwater) {
@@ -1831,7 +1854,7 @@ attributes_enlightenment(
         if (prot)
             you_have(enlght_combatinc("defense", prot, final, buf), "");
     }
-    if ((armpro = magic_negation(&gy.youmonst)) > 0) {
+    if ((armpro = magic_negation(u.umonst)) > 0) {
         /* magic cancellation factor, conferred by worn armor */
         const char *mc_type;
         switch (armpro) {
@@ -1898,20 +1921,20 @@ attributes_enlightenment(
         && !(final == ENL_GAMEOVERDEAD
              && u.umonnum == PM_GREEN_SLIME && !Unchanging)) {
         /* foreign shape (except were-form which is handled below) */
-        if (!vampshifted(&gy.youmonst))
+        if (!vampshifted(u.umonst))
             Sprintf(buf, _("polymorphed into %s"),
-                    an(pmname(gy.youmonst.data,
+                    an(pmname(u.umonst->data,
                               flags.female ? FEMALE : MALE)));
         else
             Sprintf(buf, _("polymorphed into %s in %s form"),
-                    an(pmname(&mons[gy.youmonst.cham],
+                    an(pmname(&mons[u.umonst->cham],
                               flags.female ? FEMALE : MALE)),
-                    pmname(gy.youmonst.data, flags.female ? FEMALE : MALE));
+                    pmname(u.umonst->data, flags.female ? FEMALE : MALE));
         if (wizard)
             Sprintf(eos(buf), " (%d)", u.mtimedone);
         you_are(buf, "");
     }
-    if (lays_eggs(gy.youmonst.data) && flags.female) /* Upolyd */
+    if (lays_eggs(u.umonst->data) && flags.female) /* Upolyd */
         you_can(_("lay eggs"), "");
     if (ismnum(u.ulycn)) {
         /* "you are a werecreature [in beast form]" */
@@ -2031,23 +2054,10 @@ attributes_enlightenment(
         buf[0] = '\0';
         if (final < 2) { /* still in progress, or quit/escaped/ascended */
             p = _("survived after being killed ");
-            switch (u.umortality) {
-            case 0:
+            if (!u.umortality)
                 p = !final ? (char *) 0 : _("survived");
-                break;
-            case 1:
-                Strcpy(buf, _("once"));
-                break;
-            case 2:
-                Strcpy(buf, _("twice"));
-                break;
-            case 3:
-                Strcpy(buf, _("thrice"));
-                break;
-            default:
-                Sprintf(buf, _("%d times"), u.umortality);
-                break;
-            }
+            else
+                (void) N_times((long) u.umortality, buf);
         } else { /* game ended in character's death */
             p = _("are dead");
             switch (u.umortality) {
@@ -2095,7 +2105,7 @@ youhiding(boolean via_enlghtmt, /* enlightenment line vs topl message */
            for the hypothetical furniture and monster cases */
         bp = eos(strcpy(buf, _("mimicking")));
         if (U_AP_TYPE == M_AP_OBJECT) {
-            Sprintf(bp, _(" %s"), an(simple_typename(gy.youmonst.mappearance)));
+            Sprintf(bp, _(" %s"), an(simple_typename(u.umonst->mappearance)));
         } else if (U_AP_TYPE == M_AP_FURNITURE) {
             Strcpy(bp, _(" something"));
         } else if (U_AP_TYPE == M_AP_MONSTER) {
@@ -2105,15 +2115,15 @@ youhiding(boolean via_enlghtmt, /* enlightenment line vs topl message */
         }
     } else if (u.uundetected) {
         bp = eos(buf); /* points past "hiding" */
-        if (gy.youmonst.data->mlet == S_EEL) {
+        if (u.umonst->data->mlet == S_EEL) {
             if (is_pool(u.ux, u.uy))
                 Sprintf(bp, _(" in the %s"), waterbody_name(u.ux, u.uy));
-        } else if (hides_under(gy.youmonst.data)) {
+        } else if (hides_under(u.umonst->data)) {
             struct obj *o = svl.level.objects[u.ux][u.uy];
 
             if (o)
                 Sprintf(bp, _(" underneath %s"), ansimpleoname(o));
-        } else if (is_clinger(gy.youmonst.data) || Flying) {
+        } else if (is_clinger(u.umonst->data) || Flying) {
             /* Flying: 'lurker above' hides on ceiling but doesn't cling */
             Sprintf(bp, _(" on the %s"), ceiling(u.ux, u.uy));
         } else {
@@ -2152,12 +2162,25 @@ doconduct(void)
 void
 show_conduct(int final)
 {
-    char buf[BUFSZ];
+    char buf[BUFSZ], bufN[40];
     int ngenocided;
 
     /* Create the conduct window */
     ge.en_win = create_nhwindow(NHW_MENU);
     putstr(ge.en_win, 0, _("Voluntary challenges:"));
+
+    /* rerolling; "You <this or that>" is about the character, rerolling
+       is about the player so phrase it differently;
+       also, always use past tense since the chance to do something with it
+       is gone by time player can issue #conduct command or see disclosure */
+    if (!u.uroleplay.reroll)
+        Strcpy(buf, _(" Character rerolling was not enabled."));
+    else if (!u.uroleplay.numrerolls)
+        Strcpy(buf, _(" Your character was not rerolled."));
+    else
+        Sprintf(buf, _(" Your character was rerolled %s."),
+                N_times(u.uroleplay.numrerolls, bufN));
+    enlght_out(buf);
 
     if (u.uroleplay.blind)
         you_have_been(_("blind from birth"));
@@ -2173,11 +2196,6 @@ show_conduct(int final)
                     _(" without possessions"), "");
         else
             you_are(_("without possessions"), "");
-    }
-    if (u.uroleplay.reroll) {
-        Sprintf(buf, _("rerolled your character %ld time%s"),
-                u.uroleplay.numrerolls, plur(u.uroleplay.numrerolls));
-        you_have_X(buf);
     }
 
     /* nudist is far more than a subset of possessionless, and a much
@@ -2279,25 +2297,13 @@ show_conduct(int final)
     if (sokoban_in_play()) {
         const char *presentverb = _("have violated"), *pastverb = _("violated");
 
-        Strcpy(buf, _(" the special Sokoban rules "));
-        switch (u.uconduct.sokocheat) {
-        case 0L:
+        if (!u.uconduct.sokocheat) {
             presentverb = _("have not violated");
             pastverb = _("did not violate");
             Strcpy(buf, _(" any of the special Sokoban rules"));
-            break;
-        case 1L:
-            Strcat(buf, _("once"));
-            break;
-        case 2L:
-            Strcat(buf, _("twice"));
-            break;
-        case 3L:
-            Strcat(buf, _("thrice"));
-            break;
-        default:
-            Sprintf(eos(buf), _("%ld times"), u.uconduct.sokocheat);
-            break;
+        } else {
+            Strcpy(buf, _(" the special Sokoban rules "));
+            Strcat(buf, N_times(u.uconduct.sokocheat, bufN));
         }
         enl_msg(You_, presentverb, pastverb, buf, "");
     }
@@ -2964,19 +2970,9 @@ list_vanquished(char defquery, boolean ask)
                     Sprintf(buf, "%s%s",
                             !type_is_pname(&mons[i]) ? _("the ") : "",
                             _(mons[i].pmnames[NEUTRAL]));
-                    if (nkilled > 1) {
-                        switch (nkilled) {
-                        case 2:
-                            Sprintf(eos(buf), _(" (twice)"));
-                            break;
-                        case 3:
-                            Sprintf(eos(buf), _(" (thrice)"));
-                            break;
-                        default:
-                            Sprintf(eos(buf), _(" (%d times)"), nkilled);
-                            break;
-                        }
-                    }
+                    if (nkilled > 1)
+                        Sprintf(eos(buf), _(" (%s)"),
+                                N_times((long) nkilled, buftoo));
                     was_uniq = TRUE;
                 } else {
                     if (uniq_header && was_uniq) {
@@ -3442,7 +3438,7 @@ mstatusline(struct monst *mtmp)
     if (mtmp == u.ustuck) {
         struct permonst *pm = u.ustuck->data;
 
-        /* being swallowed/engulfed takes priority over sticks(youmonst);
+        /* being swallowed/engulfed takes priority over sticks(u.umonst);
            this used to have that backwards and checked sticks() first */
         Strcat(info, u.uswallow ? (digests(pm)
                                    ? ", digesting you"
@@ -3454,10 +3450,10 @@ mstatusline(struct monst *mtmp)
                                    : (is_animal(pm) && !enfolds(pm))
                                      ? _(", swallowing you")
                                      : _(", engulfing you"))
-                     /* !u.uswallow; if both youmonst and ustuck are holders,
-                        youmonst wins */
-                     : (!sticks(gy.youmonst.data) ? _(", holding you")
-                                                 : _(", held by you")));
+                     /* !u.uswallow; if both u.umonst and ustuck are holders,
+                        u.umonst wins */
+                     : (!sticks(u.umonst->data) ? _(", holding you")
+                                                : _(", held by you")));
     }
     if (mtmp == u.usteed) {
         Strcat(info, _(", carrying you"));
@@ -3519,7 +3515,7 @@ ustatusline(void)
         Strcat(info, _(", blind"));
         if (u.ucreamed) {
             if ((long) u.ucreamed < BlindedTimeout || Blindfolded
-                || !haseyes(gy.youmonst.data))
+                || !haseyes(u.umonst->data))
                 Strcat(info, _(", cover"));
             Strcat(info, _("ed by sticky goop"));
         } /* note: "goop" == "glop"; variation is intentional */
@@ -3555,7 +3551,7 @@ ustatusline(void)
         if (u.uswallow)
             Strcat(info, digests(u.ustuck->data) ? _(", being digested by ")
                                                  : _(", engulfed by "));
-        else if (!sticks(gy.youmonst.data))
+        else if (!sticks(u.umonst->data))
             Strcat(info, _(", held by "));
         else
             Strcat(info, _(", holding "));

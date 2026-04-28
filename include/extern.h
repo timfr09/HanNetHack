@@ -351,7 +351,7 @@ extern void set_ignore_errors_on_unmatched(void);
 
 extern char *color_attr_to_str(color_attr *);
 extern boolean color_attr_parse_str(color_attr *, char *);
-extern int32 colortable_to_int32(struct nethack_color *);
+extern int32 colortable_to_int32(const struct nethack_color *);
 extern int query_color(const char *, int) NO_NNARGS;
 extern int query_attr(const char *, int) NO_NNARGS;
 extern boolean query_color_attr(color_attr *, const char *) NONNULLARG1;
@@ -510,6 +510,7 @@ extern void destroy_drawbridge(coordxy, coordxy);
 
 /* ### decl.c ### */
 
+extern void program_state_init(void);
 extern void decl_globals_init(void);
 extern void sa_victual(volatile struct victual_info *);
 
@@ -1127,6 +1128,8 @@ extern boolean Death_quote(char *, int) NONNULLARG1;
 extern void livelog_add(long ll_type, const char *) NONNULLARG2;
 ATTRNORETURN extern void do_deferred_showpaths(int) NORETURN;
 extern boolean contains_directory(const char *);
+extern void get_nhuuid(void);
+extern void free_nhuuid(void);
 
 /* ### fountain.c ### */
 
@@ -3884,6 +3887,7 @@ extern void wizcustom_callback(winid win, int glyphnum, char *id);
 extern int wiz_display_macros(void);
 extern int wiz_mon_diff(void);
 extern int wiz_objprobs(void);
+extern int wiz_show_nhuuid(void);
 #endif
 extern void sanity_check(void);
 
@@ -4028,6 +4032,8 @@ extern char *get_port_id(char *);
 #ifdef RUNTIME_PASTEBUF_SUPPORT
 extern void port_insert_pastebuf(char *);
 #endif
+extern void get_nhuuid(void);
+extern void free_nhuuid(void);
 
 #endif /* !MAKEDEFS_C && !MDLIB_C */
 

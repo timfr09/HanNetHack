@@ -5343,6 +5343,14 @@ optfn_boolean(
 #endif
             go.opt_need_redraw = TRUE;
             break;
+#ifndef IDLECHECKPOINT
+	case opt_idlecheckpoint:
+	    pline(_("There is no underlying support for 'idlecheckpoint'"
+		  " compiled in.")); 
+	    iflags.idlecheckpoint = FALSE;
+	    give_opt_msg = FALSE;
+            break;
+#endif
         default:
             break;
         }
@@ -7403,7 +7411,8 @@ initoptions_finish(void)
 #ifdef ENHANCED_SYMBOLS
     if (glyphid_cache_status())
         free_glyphid_cache();
-    apply_customizations(gc.currentgraphics, do_custom_symbols);
+    apply_customizations(gc.currentgraphics,
+                         do_custom_symbols | do_custom_colors);
 #endif
     go.opt_initial = FALSE;
     return;
@@ -8732,8 +8741,8 @@ doset_simple_menu(void)
 int
 doset_simple(void)
 {
-    int pickedone = 0,
-        opt_crt_flags = docrtNocls;
+    int pickedone = 0;
+    boolean flush = FALSE;
 
     if (iflags.menu_requested) {
         /* doset() checks for 'm' and calls doset_simple(); clear the
@@ -8748,40 +8757,13 @@ doset_simple(void)
     give_opt_msg = FALSE;
     do {
         pickedone = doset_simple_menu();
+        flush = go.opt_need_redraw;
 
-        /* some option choices warrant immediate updating beyond the
-           option value itself */
-        if (go.opt_need_glyph_reset) {
-            reset_glyphmap(gm_optionchange);
-        }
-        if (go.opt_need_redraw) {
-            check_gold_symbol();
-            reglyph_darkroom();
-            if (go.opt_symset_changed)
-                opt_crt_flags &= ~(docrtRefresh | docrtNocls);
-            docrt_flags(opt_crt_flags);
+        reset_needed_visuals();
+        if (flush) {
             flush_screen(1);
+            flush = FALSE;
         }
-        if (go.opt_need_promptstyle)
-            adjust_menu_promptstyle(WIN_INVEN, &iflags.menu_headings);
-        if (go.opt_update_basic_palette) {
-#ifdef CHANGE_COLOR
-            change_palette();
-#endif
-            go.opt_update_basic_palette = FALSE;
-        }
-        if (go.opt_reset_customcolors || go.opt_reset_customsymbols) {
-            if (go.opt_reset_customcolors)
-                reset_customcolors();
-            if (go.opt_reset_customsymbols)
-                reset_customsymbols();
-            docrt_flags(opt_crt_flags);
-        }
-        /* status may need updating if terminal is tall enough that
-           doset_simple menu doesn't cover up status or wide enough for
-           curses to honor player's choice of align_status:Right|Left */
-        if (disp.botl || disp.botlx)
-            bot();
     } while (pickedone > 0);
     give_opt_msg = TRUE;
     return ECMD_OK;

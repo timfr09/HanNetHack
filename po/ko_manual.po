@@ -53306,3 +53306,12 @@ msgstr "이 빌드에는 'idlecheckpoint' 지원이 컴파일되어 있지 않�
 # 그대로여야 하므로(소스에서 strcmp로 비교) 영어 그대로 유지한다.
 msgid "Elbereth"
 msgstr "Elbereth"
+
+# nhlua.c nh.getlin() — Lua에서 영문 msgid를 넘기면 C에서 gettext 처리
+msgid "What do you want to call this dungeon level?"
+msgstr "이 던전 층을 뭐라고 부르겠습니까?"
+
+# nhlua.c nhl_test() 디버그 출력 (위저드·개발용)
+#, c-format
+msgid "TEST:{ x=%i, y=%i, name=\"%s\" }"
+msgstr "테스트:{ x=%i, y=%i, 이름=\"%s\" }"

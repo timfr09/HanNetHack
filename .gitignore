@@ -111,6 +111,13 @@ po/*_merged.po
 # Compiled translation files (generated from .po during build)
 *.mo
 
+# gettext backup / scratch copies (should never be committed)
+*.backup
+po/*.backup
+
+# Stale duplicate POT kept under dat/ (canonical template is po/nethack.pot)
+dat/nethack.pot
+
 # Game save/lock files (accidentally added during development)
 dat/alock.*
 dat/block.*

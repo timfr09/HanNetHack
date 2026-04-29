@@ -53310,8 +53310,3 @@ msgstr "Elbereth"
 # nhlua.c nh.getlin() — Lua에서 영문 msgid를 넘기면 C에서 gettext 처리
 msgid "What do you want to call this dungeon level?"
 msgstr "이 던전 층을 뭐라고 부르겠습니까?"
-
-# nhlua.c nhl_test() 디버그 출력 (위저드·개발용)
-#, c-format
-msgid "TEST:{ x=%i, y=%i, name=\"%s\" }"
-msgstr "테스트:{ x=%i, y=%i, 이름=\"%s\" }"

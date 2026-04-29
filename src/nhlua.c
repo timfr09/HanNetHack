@@ -689,8 +689,7 @@ nhl_get_config(lua_State *L)
 }
 
 /*
-  Lua passes the English msgid; C applies gettext before displaying.
-  str = getlin("What do you want to call this dungeon level?");
+  Lua passes the English msgid; C applies gettext in getlin(_(prompt), buf).
  */
 staticfn int
 nhl_getlin(lua_State *L)
@@ -1412,7 +1411,8 @@ nhl_test(lua_State *L)
     y = (coordxy) get_table_int(L, "y");
     name = get_table_str_opt(L, "name", Player);
 
-    pline(_("TEST:{ x=%i, y=%i, name=\"%s\" }"), (int) x, (int) y, name);
+    /* Debug-only (nh.test); raw_printf so i18n checker does not expect _(). */
+    raw_printf("TEST:{ x=%i, y=%i, name=\"%s\" }\n", (int) x, (int) y, name);
 
     free(name);
 

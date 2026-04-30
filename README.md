@@ -5,6 +5,9 @@
 ![Translation](https://img.shields.io/badge/translation-WIP-yellow)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey)
 
+넷핵 3.7 버전을 기반으로 하는 한국어판 넷핵입니다. 비공식 개인 프로젝트로 진행중입니다.
+오리지널 3.7 버전은 현재 개발 중입니다. 원본 변경 내용을 주기적으로 이 저장소에 반영하고 있습니다.
+
 A personal Korean localization of NetHack 3.7.
 
 > **Note**: This is an unofficial fan translation project, not affiliated with the NetHack DevTeam.

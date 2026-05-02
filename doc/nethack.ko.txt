@@ -121,68 +121,104 @@ NETHACK(6)                       게임 매뉴얼                       NETHACK(
        종료합니다. 'nethack --usage | more'를 사용하면 한 페이지씩 읽을 수
        있습니다.
 
-저자 Jay Fenlason(+ Kenny Woodland, Mike Thome 및 Jon Payne)은 로그와 매우 유사하지만 버그로 가득
-찬 원래 해킹을 작성했습니다.
+저자
+       Jay Fenlason(+ Kenny Woodland, Mike Thome 및 Jon Payne)은 rogue와 매우
+       닮았지만 버그가 잔뜩인 원조 hack을 썼습니다.
 
-       Andries Brouwer는 계속해서 소스를 완전히 다른 게임으로 변형했습니다.
+       Andries Brouwer는 소스를 끊임없이 비틀어 완전히 다른 게임으로 만들었습니다.
 
-       마이크 스티븐슨은 세계 사이의 유즈넷 존(Usenet Zone)에 거주하는 수많은 이상한 사람들의 도움을 받아 다양한 뒤틀린
-       캐릭터 클래스와 가학적인 함정을 추가하는 등 소스 왜곡을 계속해 왔습니다. 이러한 악당 중 상당수는 역사적 불명예 명부와 기타
-       다양한 장소에서 불멸의 존재로 남아 있습니다.
+       Mike Stephenson은 소스 왜곡을 이어 왔으며, 세계와 세계 사이에 있는
+       Usenet Zone에 사는 여러 기묘한 사람들의 도움으로 뒤틀린 직업과 가학적인
+       함정을 더했습니다. 이런 무리 중 일부는 불명예의 연대기 등 여러 곳에 이름이
+       남아 있습니다.
 
-       그 결과 생긴 혼란은 이제 유즈넷에 의한 개발을 나타내기 위해 NetHack이라고 불립니다. Andries Brouwer는 결국
-       자신의 새 버전을 출시할 수도 있기 때문에 이러한 구별을 요청했습니다.
+       그 결과 난장판은 이제 Usenet을 통한 개발을 뜻하는 이름으로 NetHack이라
+       불립니다. Andries Brouwer는 자신만의 새 버전을 언젠가 내놓을 수도 있어
+       이런 구별을 요청했습니다.
 
-파일 런타임 구성 옵션은 위에서 논의되었으며 플랫폼 특정 위치에 있는 파일에 대해 플랫폼 특정 이름을 사용합니다. Unix의 경우 사용자 홈
-디렉터리의 이름은 '.nethackrc'입니다.
+파일
+       런타임 구성 옵션은 위에서 설명했으며, 플랫폼마다 다른 위치의 파일에
+       플랫폼별 이름을 씁니다. Unix에서는 사용자 홈 디렉터리의 '.nethackrc'
+       입니다.
 
-       다른 모든 파일은 플레이그라운드 디렉터리(보통 /usr/games/lib/nethackdir)에 있습니다. 컴파일 중에 DLB가
-       정의된 경우 데이터 파일과 특수 레벨은 별도의 파일이 아닌 더 큰 파일(일반적으로 nhdat) 내에 있습니다.
+       그 밖의 모든 파일은 보통 /usr/games/lib/nethackdir 플레이그라운드
+       디렉터리에 있습니다. 컴파일 시 DLB가 정의되어 있으면 데이터 파일과
+       특수 레벨은 따로 두지 않고 보통 nhdat이라는 더 큰 파일 안에 들어
+       있습니다.
 
-       nethack 프로그램 자체. 가이드북 | 가이드북.txt NetHack의 사용자 매뉴얼. 데이터, 오라클, 소문
-       NetHack에서 사용하는 데이터 파일입니다. bogusmon 또 다른 데이터 파일. 조각, 비명, 헌정 더 많은 데이터
-       파일. 기호 괴물, 개체 및 지도 기능을 표시하는 방법에 대한 사양 집합을 포함하는 데이터 파일입니다. 옵션 빌드 시 옵션
-       설정에 대한 설명이 포함된 데이터 파일입니다. help, hh, cmdhelp 도움말 데이터 파일. ('cmdhelp'은 더
-       이상 사용되지 않습니다.) opthelp, optmenu, wizhelp 추가 도움말 데이터 파일입니다. keyhelp,
-       Usagehlp 더 많은 도움말 데이터 파일. *.lua 사전 정의된 특수 레벨, 특수 레벨에 대한 던전 제어, 퀘스트
-       텍스트. 역사 NetHack의 간략한 역사입니다. 재배포에 관한 라이센스 규칙. 기록 최고 득점자 목록입니다. 로그 파일
-       플레이한 게임의 확장 목록(선택 사항). xlogfile 'logfile'의 더 자세한 버전입니다(선택 사항).
-       Paniclog 프로그램 실행 중에 발견된 예외 상황에 대한 기록입니다. xlock.nn 활성 게임의 던전 레벨 'nn'에
-       대한 설명 'x' 동시 활성 게임 수에 제한이 있는 경우. UUcccccc.nn 활성 게임 수에 제한이 없을 때
-       'cccccc'이라는 캐릭터를 플레이하는 사용자 'UU'의 활성 게임 던전 레벨 'nn'에 대한 대체 형식입니다.
-       xlock.0 또는 UUcccccc.0에 대한 perm 잠금 파일입니다. bonD0.nn 'nn' 레벨에서 죽음을 맞이한
-       사망한 모험가의 유령과 소지품에 대한 설명입니다. 후속 캐릭터가 이 이전 레벨에 직면할 수 있습니다.
+       nethack                     프로그램 본체.
+       Guidebook | Guidebook.txt   NetHack 사용자 설명서.
+       data, oracles, rumors       NetHack이 쓰는 데이터 파일.
+       bogusmon                    또 다른 데이터 파일.
+       engrave, epitaph, tribute   그 외 데이터 파일.
+       symbols                     몬스터·물건·지형 표시 방법에 대한
+                                   규격 묶음을 담은 데이터 파일.
+       options                     빌드 시 옵션 설정을 설명하는 데이터 파일.
+       help, hh, cmdhelp           도움말 데이터 파일. ('cmdhelp'는 구식.)
+       opthelp, optmenu, wizhelp   추가 도움말 데이터 파일.
+       keyhelp, usagehlp           또 다른 도움말 데이터 파일.
+       *.lua                       특수 레벨 정의, 특수 레벨용 던전 제어,
+                                   퀘스트 텍스트.
+       history                     짧은 NetHack 역사.
+       license                     재배포 조건.
+       record                      최고 점수 목록.
+       logfile                     진행한 게임 목록(선택).
+       xlogfile                    'logfile'의 더 자세한 버전(선택).
+       paniclog                    실행 중 발견된 예외 상황 기록.
+       xlock.nn                    동시에 열 수 있는 활성 게임 수에 제한이
+                                   있을 때, 활성 게임 'x'의 던전 레벨 'nn'
+                                   에 대한 설명.
+       UUcccccc.nn                 동시 플레이 수에 제한이 없을 때, 사용자
+                                   'UU'가 이름 'cccccc'인 캐릭터로 플레이
+                                   중인 활성 게임의 던전 레벨 'nn'에 대한
+                                   다른 형식.
+       perm                        xlock.0 또는 UUcccccc.0용 잠금 파일.
+       bonD0.nn                    레벨 'nn'에서 사망한 모험가의 유령과
+                                   소지품에 대한 설명. 이후 캐릭터가 그
+                                   옛 레벨을 마주칠 수 있습니다.
 
-       save/ 저장된 게임이 포함된 하위 디렉터리입니다.
+       save/                       저장된 게임이 들어 있는 하위 디렉터리.
 
-       sysconf 시스템 전체 옵션. 'SYSCF' 옵션이 활성화된 상태로 프로그램이 빌드된 경우 필요하며, 그렇지 않은
-       경우 무시됩니다.
+       sysconf                     시스템 전역 옵션. SYSCF로 빌드했을 때
+                                   필요하며, 아니면 무시됩니다.
 
-       'sysconf'의 위치는 빌드 시 지정되며 소스 파일 "include/unixconf.h"를 업데이트하고 프로그램을 다시 빌드하는 경우를
-       제외하고는 변경할 수 없습니다.
+       'sysconf' 위치는 빌드 시 정해지며, 소스 파일 "config.h"를 고치고
+       프로그램을 다시 빌드하지 않고는 바꿀 수 없습니다.
 
-       NetHack의 가이드북은 프로그램 배포판을 패키지하거나 설치한 사람이 이를 포함하지 않은 경우 존재하지 않을 수 있습니다.
+       패키징하거나 설치한 사람이 빼먹었다면 NetHack 설명서(Guidebook)가
+       없을 수도 있습니다.
 
-       완벽한 세상에서는 'paniclog'은 비어 있는 상태로 유지됩니다.
+       이상적인 세계에서는 'paniclog'가 비어 있을 것입니다.
 
-ENVIRONMENT USER 또는 LOGNAME 로그인 이름입니다. HOME 귀하의 홈 디렉토리입니다. 쉘 당신의 쉘. TERM
-터미널 유형입니다. HACKPAGER 또는 PAGER 기본 호출기를 대체합니다. MAIL 메일함 파일. MAILREADER 기본
-리더(아마도 /bin/mail 또는 /usr/ucb/mail)를 대체합니다. NETHACKDIR 또는 HACKDIR 놀이터.
-NETHACKOPTIONS 여러 NetHack 옵션을 미리 정의하는 문자열입니다.
+환경
+       USER 또는 LOGNAME          로그인 이름.
+       HOME                       홈 디렉터리.
+       SHELL                      사용하는 셸.
+       TERM                       터미널 종류.
+       HACKPAGER 또는 PAGER       기본 pager 대체.
+       MAIL                       사서함 파일.
+       MAILREADER                 기본 읽기 프로그램 대체
+                                  (보통 /bin/mail 또는 /usr/ucb/mail).
+       NETHACKDIR 또는 HACKDIR    플레이그라운드.
+       NETHACKOPTIONS             여러 NetHack 옵션을 미리 정하는 문자열.
 
-       NETHACKOPTIONS와 .nethackrc에 동일한 옵션이 지정된 경우 NETHACKOPTIONS에 할당된 값이 우선
-       적용됩니다.
+       NETHACKOPTIONS와 .nethackrc에 같은 옵션이 있으면 NETHACKOPTIONS 값이
+       우선합니다.
 
-       SHOPTYPE 및 SPLEVTYPE은 디버깅(마법사) 모드에서 사용할 수 있습니다. 'DEBUG'을 활성화하여 프로그램을
-       빌드한 경우 DEBUGFILES를 사용할 수 있습니다.
+       SHOPTYPE과 SPLEVTYPE은 디버그(마법사) 모드에서 쓸 수 있습니다.
+       DEBUGFILES는 'DEBUG'로 빌드했을 때 쓸 수 있습니다.
 
-다음 항목도 참조하세요. 복구(6)
+참고
+       recover(6)
 
-버그 아마 무한할 겁니다.
+버그
+       아마 끝이 없습니다.
 
-저작권 이 파일은 NetHack-3.7:1.31 버전의 Copyright (C) Robert Patrick Rankin, 2024입니다.
-NetHack은 자유롭게 재배포될 수 있습니다. 자세한 내용은 라이센스를 참조하세요.
+저작권
+       이 파일은 Copyright (C) Robert Patrick Rankin, 2024이며 NetHack-5:1.31
+       버전용입니다. NetHack은 자유롭게 재배포할 수 있습니다. 자세한 내용은
+       license를 참고하세요.
 
        Dungeons & Dragons는 Wizards of the Coast, Inc.의 상표입니다.
 
-NETHACK 2024년 12월 25일 NETHACK(6)
+NETHACK                          2026년 4월 26일                      NETHACK(6)

@@ -6,8 +6,7 @@
 #include "hack.h"
 
 #ifdef ENABLE_NLS
-#include "i18n.h"
-#include "ko_postpos.h"
+#include "ko_postpos.h" /* ko_process_string; i18n.h already via hack.h */
 #endif
 
 #define BIGBUFSZ (5 * BUFSZ) /* big enough to format a 4*BUFSZ string (from

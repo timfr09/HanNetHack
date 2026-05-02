@@ -2313,7 +2313,6 @@ handler_rebind_keys_add(boolean keyfirst)
     start_menu(win, MENU_BEHAVE_STANDARD);
     any = cg.zeroany;
 
-    /* Korean i18n: key binding messages */
     if (key) {
         struct Cmd_bind *bind = cmdbind_get(key);
 

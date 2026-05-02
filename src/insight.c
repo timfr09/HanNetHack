@@ -13,7 +13,9 @@
  */
 
 #include "hack.h"
+#ifdef ENABLE_NLS
 #include "ko_postpos.h"
+#endif
 
 staticfn void enlght_out(const char *);
 staticfn void enlght_line(const char *, const char *, const char *,

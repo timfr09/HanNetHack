@@ -13,11 +13,6 @@ make all         # compiles everything; do NOT use -j (parallel make can race on
 make install     # installs to ~/nh/install/
 ```
 
-### Known Build Fix (upstream bug)
-Two build errors exist on the current branch:
-- `src/insight.c` calls `ko_process_string` without `#include "ko_postpos.h"` — add the include after `#include "hack.h"`.
-- `src/nhlobj.c` calls `get_table_objtype` / `get_table_objclass` (static in `sp_lev.c`) without declarations — add `extern` declarations to `include/sp_lev.h`.
-
 ### Running the Game
 ```bash
 HACKDIR=~/nh/install/games/lib/nethackdir TERM=xterm-256color ./src/nethack

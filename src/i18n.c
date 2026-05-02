@@ -238,10 +238,10 @@ get_localized_filename(const char *fname)
  * gettext catalog (locale/<lang>/nethack.mo) is shipped inside the
  * nhdat DLB and parsed on the fly by src/mo_reader.c.
  *
- * The public gettext-like helpers (nh_gettext, nh_ngettext,
- * nh_pgettext) replace the libintl exports; include/i18n.h maps the
- * classic gettext()/ngettext()/pgettext() names onto them with
- * macros so existing call sites need no changes.
+ * The public gettext-like helpers (nh_gettext, nh_pgettext) replace
+ * the libintl exports; include/i18n.h maps the classic gettext() /
+ * pgettext() names onto them with macros so existing call sites
+ * need no changes.
  * ------------------------------------------------------------------
  */
 
@@ -404,26 +404,6 @@ nh_gettext(const char *msgid)
         return msgid;
     tr = mo_lookup(g_catalog, msgid);
     return tr ? tr : msgid;
-}
-
-/*
- * ngettext equivalent.  HanNetHack only ships a Korean catalog today,
- * which uses nplurals=1, so we always return the first msgstr form
- * when a translation exists.  Without a catalog we fall back to the
- * English singular/plural pair based on n.
- */
-const char *
-nh_ngettext(const char *msgid_singular, const char *msgid_plural,
-            unsigned long int n)
-{
-    const char *tr;
-
-    if (g_catalog && msgid_singular) {
-        tr = mo_lookup(g_catalog, msgid_singular);
-        if (tr)
-            return tr;
-    }
-    return (n == 1UL) ? msgid_singular : msgid_plural;
 }
 
 /*

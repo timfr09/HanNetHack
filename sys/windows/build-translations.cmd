@@ -33,7 +33,7 @@ REM xgettext is missing we just keep whatever local ko.po already exists and
 REM move on.
 if exist "%PO_DIR%\ko.po" (
     echo [1/3] Refreshing ko.po from source...
-    "%GETTEXT_DIR%\xgettext.exe" --keyword=_ --keyword=N_ --keyword=C_:1c,2 --keyword=P_:1,2 ^
+    "%GETTEXT_DIR%\xgettext.exe" --keyword=_ --keyword=N_ --keyword=C_:1c,2 ^
         --from-code=UTF-8 --language=C --no-location ^
         -o "%PO_DIR%\nethack_build.pot" ^
         src\*.c include\*.h win\win32\mswproc.c 2>nul

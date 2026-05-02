@@ -36,7 +36,7 @@ KO_LOCALE_LUA = $(addprefix $(DATDIR)/, $(notdir $(wildcard $(DATDIR)/locale/ko/
 LUA_SOURCES = $(filter-out $(KO_LOCALE_LUA), $(wildcard $(DATDIR)/*.lua))
 
 # xgettext options for C files
-XGETTEXT_OPTS = --keyword=_ --keyword=N_ --keyword=P_:1,2 \
+XGETTEXT_OPTS = --keyword=_ --keyword=N_ \
                 --keyword=C_:1c,2 \
                 --from-code=UTF-8 \
                 --add-comments=TRANSLATORS: \

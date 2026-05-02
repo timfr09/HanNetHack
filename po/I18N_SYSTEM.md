@@ -117,9 +117,6 @@ _("text")
 // No-operation marker - for static arrays (translated at use time)
 N_("text")
 
-// Plural forms (rarely needed for Korean/Japanese)
-P_("singular", "plural", count)
-
 // Context-aware translation (for ambiguous strings)
 C_("context", "text")
 ```

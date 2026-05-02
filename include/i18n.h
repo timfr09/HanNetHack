@@ -19,28 +19,26 @@
 /*
  * HanNetHack uses its own gettext-compatible runtime (src/mo_reader.c)
  * driven by a GNU gettext .mo catalog bundled inside the DLB.  The
- * public helpers below keep the familiar gettext() / ngettext() /
- * pgettext() interface so the rest of the game source is unchanged.
+ * public helpers below keep the familiar gettext() / pgettext()
+ * interface so the rest of the game source is unchanged.
+ *
+ * ngettext()-style plural handling is intentionally omitted:
+ * Korean has nplurals=1 and no call site in the tree asks for a
+ * plural form.  If another locale ever needs it, add nh_ngettext()
+ * (and a P_ macro) back alongside nh_pgettext().
  */
 extern const char *nh_gettext(const char *msgid);
-extern const char *nh_ngettext(const char *msgid_singular,
-                               const char *msgid_plural,
-                               unsigned long int n);
 extern const char *nh_pgettext(const char *msgctxt, const char *msgid);
 
 /* Backward-compat aliases for any legacy call sites that reference
- * gettext/ngettext/pgettext by name (including a few inside i18n.c). */
+ * gettext/pgettext by name (including a few inside i18n.c). */
 #define gettext(S)              nh_gettext(S)
-#define ngettext(S, P, N)       nh_ngettext((S), (P), (N))
 #define pgettext(C, S)          nh_pgettext((C), (S))
 
 /* Standard gettext macros (unchanged call sites). */
 #define _(String)       nh_gettext(String)
 #define N_(String)      gettext_noop(String)
 #define gettext_noop(String) String
-
-/* Plural forms */
-#define P_(Singular, Plural, N) nh_ngettext((Singular), (Plural), (N))
 
 /* Context-aware translation (pgettext) */
 #define C_(Context, String) nh_pgettext((Context), (String))
@@ -76,7 +74,6 @@ extern char *apply_korean_postpositions(char *str);
 /* Fallback macros when NLS is disabled */
 #define _(String)       (String)
 #define N_(String)      String
-#define P_(Singular, Plural, N) ((N) == 1 ? (Singular) : (Plural))
 #define C_(Context, String) (String)
 
 #define init_i18n()     ((void)0)

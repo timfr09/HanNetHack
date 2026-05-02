@@ -124,7 +124,6 @@ make stats
 - `_("string")` — 기본 번역
 - `C_("context", "string")` — 동음이의어 구분 (예: `C_("moon", "full")` vs `_("full")`)
 - `N_("string")` — 지연 번역 (컴파일 타임에 등록, 런타임에 번역)
-- `P_("singular", "plural")` — 복수형 (한국어는 보통 불필요)
 
 ---
 

@@ -30,7 +30,7 @@ Korean is the default language. Config goes in `~/.nethackrc`.
 ### Documentation map (for humans / agents)
 | Doc | Audience |
 |-----|----------|
-| `README.md` | Players & contributors — overview, build, links |
+| `README.md` | Visitors — what the fork is, upstream merges, issues; Windows ZIP (KO); overview + build & i18n notes |
 | `po/README.md` | Translators — short workflow |
 | `po/TRANSLATION_GUIDE_KO.md` | Translators — rules, tone, particles |
 | `po/I18N_SYSTEM.md` | Developers — architecture & APIs |

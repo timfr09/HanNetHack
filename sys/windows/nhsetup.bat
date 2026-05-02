@@ -3,11 +3,22 @@
 @REM  NetHack may be freely redistributed.  See license for details.
 @REM  Win32 setup batch file, see Install.windows for details
 @REM
+@REM  HanNetHack: by default this script writes Makefile.win + GNUmakefile*.win
+@REM  in src\ without touching Makefile (avoids clobbering a Unix setup.sh
+@REM  tree).  Run "nhsetup.bat /install-makefile" to copy into src\Makefile
+@REM  and src\GNUmakefile (NetHack's classic names; existing Makefile -> Makefile-orig).
+@REM  Aliases: /im  |  legacy: /overwrite, /o
+@REM
 @echo off
 pushd %~dp0
 set WIN32PATH=..\..\win\win32
 set BINPATH=..\..\binary
 set VCDir=
+set NH_INSTALL_MAKEFILE=0
+if /I "%~1"=="/install-makefile" set NH_INSTALL_MAKEFILE=1
+if /I "%~1"=="/im" set NH_INSTALL_MAKEFILE=1
+if /I "%~1"=="/overwrite" set NH_INSTALL_MAKEFILE=1
+if /I "%~1"=="/o" set NH_INSTALL_MAKEFILE=1
 
 goto :main
 
@@ -34,8 +45,30 @@ echo Moving Makefiles into ..\..\src for those not using Visual Studio
 REM Some file movement for those that still want to use MAKE or NMAKE and a Makefile
 :do_tty
 if NOT exist %BINPATH%\*.* mkdir %BINPATH%
-if NOT exist %BINPATH%\license copy ..\..\dat\license %BINPATH%\license >nul
+if not exist %BINPATH%\license copy ..\..\dat\license %BINPATH%\license >nul
 
+if "%NH_INSTALL_MAKEFILE%"=="1" goto :install_makefile
+
+echo [HanNetHack] Side makefiles only: writing Makefile.win (leaving src\Makefile unchanged).
+echo           To install as src\Makefile so plain "nmake" works from src\, run:
+echo              nhsetup.bat /install-makefile
+echo           Short: /im    Legacy: /overwrite /o    prior Makefile -^> Makefile-orig.
+echo.
+copy /Y Makefile.nmake ..\..\src\Makefile.win >nul
+echo Copying Microsoft Makefile.nmake to ..\..\src\Makefile.win - done.
+copy /Y GNUmakefile ..\..\src\GNUmakefile.win >nul
+echo Copying mingw-w64 GNUmakefile to ..\..\src\GNUmakefile.win - done.
+copy /Y GNUmakefile.depend ..\..\src\GNUmakefile.depend.win >nul
+echo Copying GNUmakefile.depend to ..\..\src\GNUmakefile.depend.win - done.
+echo.
+echo From the src\ directory, run nmake with the side Makefile, e.g.:
+echo     nmake /f Makefile.win
+echo     nmake /f Makefile.win package
+echo.
+goto :aftercopy
+
+:install_makefile
+echo [HanNetHack] Installing Makefile.nmake as ..\..\src\Makefile (classic layout^)
 echo Copying Microsoft Makefile - Makefile.nmake to ..\..\src\Makefile
 if NOT exist ..\..\src\Makefile goto donenmake
 copy ..\..\src\Makefile ..\..\src\Makefile-orig >nul
@@ -53,6 +86,7 @@ echo Copying mingw-w64 GNUmakefile.depend to ..\..\src\GNUmakefile.depend
 copy /Y GNUmakefile.depend ..\..\src\GNUmakefile.depend >nul
 echo mingw-w64 Makefile copies to ..\..\src completed.
 
+:aftercopy
 echo Done copying files.
 goto :done
 
@@ -73,4 +107,5 @@ set _pause=N
 for %%x in (%cmdcmdline%) do if /i "%%~x"=="/c" set _pause=Y
 if "%_pause%"=="Y" pause
 set _pause=
+set NH_INSTALL_MAKEFILE=
 popd

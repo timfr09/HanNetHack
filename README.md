@@ -5,55 +5,64 @@
 ![Translation](https://img.shields.io/badge/translation-WIP-yellow)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey)
 
-**HanNetHack**은 NetHack 3.7을 바탕으로 한 **비공식 한국어 로컬라이즈 포크**입니다. 게임 안의 영문 메시지는 GNU gettext 형식의 **`nethack.mo`** 번역 카탈로그로 빌드되어 `nhdat` 데이터 묶음 안에 포함되고, 실행 시에는 이 포크에 포함된 자체 리더(`src/mo_reader.c`)가 이를 읽습니다. (`libintl` 동적 라이브러리를 런타임에 의존하지 않습니다.)
+## 처음 오시는 분께
 
-번역을 손으로 고치는 저장소 기준 파일은 **`po/ko_manual.po`** 하나입니다. `ko.po`는 로컬에서 `make update-po` 등으로 만들어 두는 **선택적 캐시**(자동 추출 문자열용)이며 git에는 올리지 않습니다. 한국어 도움말·루머·Lua 등은 `dat/locale/ko/` 아래 두고 `dlb_fopen()`이 언어별 경로를 우선합니다.
+**HanNetHack**은 [NetHack](https://www.nethack.org/) 3.7을 바탕으로 한 **비공식 한국어 로컬라이즈 포크**입니다. NetHack DevTeam 공식 배포물이 아닙니다.
 
-원본 [NetHack](https://github.com/NetHack/NetHack) 저장소의 변경은 가능할 때마다 이쪽 브랜치로 가져와 병합합니다.
+NetHack 3.7은 업스트림에서도 계속 개발·조정이 이루어지는 버전입니다. HanNetHack은 [NetHack/NetHack](https://github.com/NetHack/NetHack) 저장소의 **`NetHack-3.7`** 브랜치에 올라오는 변경을 가능할 때마다 가져와 이 포크에 병합합니다.
+
+- **버그·오역·문구 개선 제안**: [GitHub Issues](https://github.com/timfr09/HanNetHack/issues)에 올려 주세요. (영문·한국어 모두 가능합니다.)
+- **원본 게임**: 상위 프로젝트는 [NetHack on GitHub](https://github.com/NetHack/NetHack)입니다.
 
 ---
 
-**English:** A personal, unofficial Korean localization of NetHack 3.7 for Linux and Windows. Message catalogs ship as `.mo` inside `nhdat`; runtime lookup uses the in-tree reader above, not GNU libintl.
+## Windows에서 릴리스 ZIP으로 플레이하기
 
-> **Note**: This is an unofficial fan translation project, not affiliated with the NetHack DevTeam.
+1. [Releases](https://github.com/timfr09/HanNetHack/releases)에서 Windows용 포터블 ZIP을 받습니다. (GitHub Actions가 빌드한 패키지와 동일한 형식입니다.)
+2. 원하는 폴더에 압축을 풉니다.
+3. **`NetHackW.exe`** 를 실행하면 타일 GUI, **`NetHack.exe`** 는 콘솔(터미널) 버전입니다. 데이터와 번역은 ZIP 안에 포함되어 있습니다.
+4. 설정은 사용자별 `NetHack\.nethackrc`(또는 배포 문서에 안내된 경로)에서 할 수 있습니다. 기본 언어는 한국어입니다. 영어로 바꾸려면 `OPTIONS=language:en` 등을 사용합니다.
 
-> **Reporting translation errors**: Translations are still being polished. If you spot a mistake or awkward phrasing, please open a ticket on [Issues](https://github.com/timfr09/HanNetHack/issues).
+빌드·번역·개발 정보는 아래 **Overview**와 **Korean translation system (brief)** 등을 참고하세요. (번역 파이프라인 요약은 영어로 적어 두었습니다.)
 
 ![HanNetHack on Windows](doc/screenshot-win.png)
 
 ---
 
-## Features
+## Overview
 
-### Korean Translation
-- 대규모 게임 메시지 번역 (계속 다듬는 중; 통계는 `cd po && make stats`)
-- Dynamic postposition system for natural Korean grammar (`{은/는}`, `{이/가}`, `{을/를}`, `{과/와}`, `{으로/로}`)
-- Speech-style distinction (polite / casual / semi-polite) following the in-game speaker
-- Consistent terminology across all game messages
-- Word order optimized for natural Korean using positional format specifiers (`%1$s`, `%2$s`, …)
-- Context-aware translations using `C_()` (`pgettext`) for shared strings with different meanings
-- Encyclopedia (data.base) Korean translation
+**HanNetHack** is an unofficial, community-maintained Korean localization of NetHack 3.7 for Linux and Windows. It is **not** affiliated with the NetHack DevTeam.
 
-### Enhanced Display
-- Korean full-width symbol set (`symset:Korean`)
-- Emoji symbol set (`symset:Emoji`)
-- CJK / UTF-8 character width handling for both TTY and Windows GUI
-- Localized character-creation dialog on the Windows GUI build (job/race names shown in Korean)
+NetHack 3.7 is still under active upstream development. This fork periodically merges new commits from the upstream [`NetHack-3.7`](https://github.com/NetHack/NetHack/tree/NetHack-3.7) branch when practical. Maintainer-oriented merge workflow: [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md).
 
----
+- **Bugs, translation mistakes, or wording feedback**: please file [GitHub Issues](https://github.com/timfr09/HanNetHack/issues).
+- **Upstream source**: [NetHack/NetHack](https://github.com/NetHack/NetHack).
 
-## Installation
+### Korean translation system (brief)
 
-### Pre-built Binaries
+Source code uses GNU gettext-style macros (`_()`, `N_()`, `pgettext`, …). Translations are compiled to a standard **`.mo`** message catalog that is **bundled inside `nhdat`** at build time (not loaded from a separate locale directory next to the binary).
 
-The easiest way to try HanNetHack is to grab a pre-built release from the
-[Releases](https://github.com/timfr09/HanNetHack/releases) page. Windows portable
-ZIPs are produced by the GitHub Actions release workflow.
+At runtime, strings are resolved through the in-tree reader **`src/mo_reader.c`**. The game **does not link against GNU `libintl`**.
 
-### Build from Source — Linux
+- **Canonical translator-edited file in git:** `po/ko_manual.po`. A local `po/ko.po` produced by `make update-po` is an optional extraction/merge aid and is **not** committed.
+- Korean help, rumors, Lua, and other locale assets live under **`dat/locale/ko/`**; when opening data files, **`dlb_fopen()`** prefers language-specific paths when present.
+- Korean grammar markers in strings (topic/object particles, etc.) are interpreted by **`ko_postpos.c`**. Rules and tone guidelines: [`po/TRANSLATION_GUIDE_KO.md`](po/TRANSLATION_GUIDE_KO.md); APIs and pipeline: [`po/I18N_SYSTEM.md`](po/I18N_SYSTEM.md).
+
+### Pre-built binaries
+
+The easiest way to try the game is a release build from the [Releases](https://github.com/timfr09/HanNetHack/releases) page (Windows portable ZIPs are built by CI).
+
+### Features (summary)
+
+- Large-scale Korean UI and message translation (ongoing; `cd po && make stats`)
+- Runtime Korean grammar (topic/subject/object markers, etc.) via a small postposition engine
+- Speech-style-aware wording where the speaker warrants it
+- UTF-8 display width handling on TTY and the Windows GUI
+- Localized text in the Windows GUI character picker
+
+### Build from source — Linux
 
 ```bash
-# Clone the repository
 git clone https://github.com/timfr09/HanNetHack.git
 cd HanNetHack
 
@@ -65,133 +74,77 @@ make install            # installs to ~/nh/install/
 HACKDIR=~/nh/install/games/lib/nethackdir TERM=xterm-256color ./src/nethack
 ```
 
-### Build from Source — Windows (Visual Studio)
+### Build from source — Windows (Visual Studio)
 
-The Windows GUI build (`NetHackW.exe`, GDI tile renderer) and the Windows
-console build (`NetHack.exe`) are both fully supported. Korean text in messages,
-inventory, and the player-selection dialog all renders natively.
+The Windows GUI build (`NetHackW.exe`) and console build (`NetHack.exe`) are supported.
+
+Prerequisite fetch steps (Lua, PDCursesMod, etc.) are unchanged; see [`sys/windows/build-hannethack.txt`](sys/windows/build-hannethack.txt).
+
+**Makefiles:** `sys\windows\nhsetup.bat` installs Windows nmake rules into `src\` **without overwriting** an existing Unix-generated `src\Makefile`. It writes `src\Makefile.win` (and matching `GNUmakefile.win`). From `src\`, run:
 
 ```cmd
-:: From a Developer Command Prompt for VS 2022 at the repo root:
-sys\windows\fetch.cmd lua
-sys\windows\fetch.cmd pdcursesmod
-
-:: Optional: gettext tools under lib\gettext\bin — only if you edit po/*.po
-:: or run `nmake package` to rebuild the .mo catalog inside nhdat.
-::   sys\windows\setup-gettext.cmd
-
-:: Build (or open sys\windows\vs\NetHack.sln in Visual Studio)
-msbuild sys\windows\vs\NetHack.sln /p:Configuration=Release /p:Platform=x64 /m
-
-:: Install into a runnable directory
-sys\windows\install.cmd
+nmake /f Makefile.win package
 ```
 
-The result lives in `install\HanNetHack\` and can be moved anywhere; double-click
-`NetHackW.exe` for the GUI version.  The packaged/install output includes
-English/Korean document pairs for `Guidebook` and `NetHack` docs
-(`Guidebook.txt` + `Guidebook.ko.txt`, `NetHack.txt` + `NetHack.ko.txt`),
-plus `recover.txt` + `recover.ko.txt`.
+To use the traditional NetHack layout (`nmake` with default `Makefile`), run:
 
-See [`sys/windows/build-hannethack.txt`](sys/windows/build-hannethack.txt) for
-prerequisites, troubleshooting, and Visual Studio setup details.
-
----
-
-## Configuration
-
-### Language
-
-The game defaults to Korean. To change it, edit `~/.nethackrc` (or
-`%USERPROFILE%\NetHack\.nethackrc` on Windows):
-
-```
-OPTIONS=language:ko    # Korean (default)
-OPTIONS=language:en    # English
+```cmd
+sys\windows\nhsetup.bat /install-makefile
+cd src
+nmake package
 ```
 
-### Symbol Sets
+(`nhsetup.bat /im` is the short form. Legacy: `/overwrite`, `/o`.) Continuous integration uses `/install-makefile` so plain `nmake package` matches upstream expectations.
+
+You can also open `sys\windows\vs\NetHack.sln` in Visual Studio. Optional gettext tools under `lib\gettext\bin` are only needed if you edit `po/*.po` or rebuild the `.mo` bundled into `nhdat` (`sys\windows\setup-gettext.cmd`).
+
+After building, `sys\windows\install.cmd` stages a playable tree under `install\HanNetHack\`.
+
+### Configuration
+
+The game defaults to Korean. To switch language, edit `~/.nethackrc` or `%USERPROFILE%\NetHack\.nethackrc`:
 
 ```
-OPTIONS=symset:Korean                    # Korean full-width symbols
-OPTIONS=symset:Emoji                     # Emoji symbols
-OPTIONS=symset:IBMgraphics_langstripped  # ASCII
+OPTIONS=language:ko
+OPTIONS=language:en
 ```
 
----
+### Translation workflow
 
-## Translation Details
+1. Edit **`po/ko_manual.po`** only (the canonical file committed to git).
+2. `cd po && make compile` produces `dat/locale/ko/nethack.mo`.
+3. Rebuild so `nhdat` picks up the catalog (`make all` on Linux after Unix setup; Windows as above).
 
-### Postposition System
+Quick reference: [`po/README.md`](po/README.md). Korean style guide: [`po/TRANSLATION_GUIDE_KO.md`](po/TRANSLATION_GUIDE_KO.md). Maintainer merge notes: [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md).
 
-Korean postpositions depend on whether the preceding syllable ends in a
-consonant. HanNetHack picks the correct form at runtime:
+### Implementation notes (developers)
 
-| Pattern    | Usage             | Example                        |
-|------------|-------------------|--------------------------------|
-| `{은/는}`  | Topic marker      | 드래곤**은** / 개미**는**       |
-| `{이/가}`  | Subject marker    | 검**이** / 도끼**가**          |
-| `{을/를}`  | Object marker     | 검**을** / 도끼**를**          |
-| `{과/와}`  | "and / with"      | 검**과** / 방패**와**          |
-| `{으로/로}`| Direction / means | 북쪽**으로** / 아래**로**       |
+See **Korean translation system (brief)** above for architecture; [`po/I18N_SYSTEM.md`](po/I18N_SYSTEM.md) for full technical detail.
 
-### Speech Styles
+### Postposition reference
 
-| Context         | Style        | Example                          |
-|-----------------|--------------|----------------------------------|
-| User prompts    | Polite       | "무엇을 버리시겠습니까?"         |
-| Game narration  | Casual       | "배가 고프다."                   |
-| Shopkeeper      | Semi-polite  | "계산해 주세요."                 |
-| Other NPCs      | Casual       | "안녕."                          |
+| Pattern    | Role              | Example (conceptual)   |
+|------------|-------------------|-------------------------|
+| `{은/는}`  | Topic marker      | dragon**은** / ant**는** |
+| `{이/가}`  | Subject marker    | sword**이** / axe**가**  |
+| `{을/를}`  | Object marker     | sword**을** / axe**를**  |
+| `{과/와}`  | and / with        | sword**과** / shield**와** |
+| `{으로/로}`| direction / means | north**으로** / down**로** |
 
----
+### Versioning
 
-## Contributing
+HanNetHack uses semantic versioning with a Korean-translation suffix, e.g. `v3.7.0-ko.4` (based on NetHack 3.7.0, Korean iteration 4).
 
-### Translation Improvements
+### License
 
-1. Edit **`po/ko_manual.po`** only (the canonical committed source).
-2. Build the catalog: `cd po && make compile` (writes `dat/locale/ko/nethack.mo`; optional local `ko.po` from `make update-po` acts as a merge fallback).
-3. Rebuild the game so `nhdat` picks up the new catalog: from the repo root, `make all` (after the usual `sys/unix` setup on Linux).
-4. Play-test and open a pull request against **this fork** (`timfr09/HanNetHack`).
+NetHack General Public License (NGPL). See `dat/license`.
 
-Quick reference: [`po/README.md`](po/README.md). Detailed Korean conventions: [`po/TRANSLATION_GUIDE_KO.md`](po/TRANSLATION_GUIDE_KO.md). Maintainer-oriented upstream merge notes: [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md).
-
-### Reporting Issues
-
-Please report translation errors or suggestions on
-[GitHub Issues](https://github.com/timfr09/HanNetHack/issues).
-
----
-
-## Versioning
-
-HanNetHack uses semantic versioning with a Korean-translation suffix:
-
-```
-v3.7.0-ko.4
-  │    │  └── Korean translation iteration
-  │    └───── Based on NetHack 3.7.0
-  └────────── Major version
-```
-
----
-
-## License
-
-NetHack General Public License (NGPL). See `dat/license` for details.
-
----
-
-## Credits
+### Credits
 
 - **Original NetHack**: [NetHack DevTeam](https://github.com/NetHack/NetHack)
-- **Korean Translation**: HanNetHack Project
+- **Korean localization**: HanNetHack contributors
 
----
+### Links
 
-## Links
-
-- [Original NetHack](https://nethack.org/)
-- [NetHack on GitHub](https://github.com/NetHack/NetHack)
+- [NetHack](https://www.nethack.org/)
 - [HanNetHack Releases](https://github.com/timfr09/HanNetHack/releases)

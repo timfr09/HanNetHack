@@ -433,7 +433,10 @@ deliver_by_pline(const char *str)
 
         convert_line(in_line, out_line);
         apply_korean_postpositions(out_line);
-        pline(_("%s"), out_line);
+        /* out_line is the fully rendered, postposition-resolved
+           quest text; pass it through a "%s" format so any stray
+           '%' in the rendered text isn't taken as a directive. */
+        pline("%s", out_line);
     }
 }
 

@@ -2258,6 +2258,38 @@ The(const char *str)
     return tmp;
 }
 
+/*
+ * In Korean builds, aobjnam() / Tobjnam() insert a subject particle
+ * "{이/가}" after the noun and then append `verb` unless `verb` is
+ * a copula (is / was / are / were).  Format strings already carry
+ * the real predicate for copula cases ("%s is here." ->
+ * "%s{이/가} 여기에 있다."), so repeating the copula as "이다"
+ * after the noun would produce an awkward double-stated sentence.
+ *
+ * We decide this by comparing `verb` against the live translations
+ * of "is" / "was" / "are" / "were" instead of against hard-coded
+ * UTF-8 bytes.  That keeps the check correct even when translators
+ * change the copula wording.
+ */
+static boolean
+ko_verb_is_copula(const char *verb)
+{
+    static const char *const copula_msgids[] = {
+        "is", "was", "are", "were", NULL
+    };
+    int i;
+
+    if (!verb || !*verb)
+        return FALSE;
+    for (i = 0; copula_msgids[i]; i++) {
+        const char *tr = _(copula_msgids[i]);
+
+        if (tr && *tr && strcmp(verb, tr) == 0)
+            return TRUE;
+    }
+    return FALSE;
+}
+
 /* returns "count cxname(otmp)" or just cxname(otmp) if count == 1 */
 char *
 aobjnam(struct obj *otmp, const char *verb)
@@ -2276,12 +2308,7 @@ aobjnam(struct obj *otmp, const char *verb)
             /* Insert subject particle; resolved by vpline's
                ko_process_string */
             Strcat(bp, "{이/가}");
-            /* Skip copula — format strings provide the real predicate */
-            if (strcmp(translated_verb,
-                       "\xec\x9d\xb4\xeb\x8b\xa4") != 0       /* 이다 */
-                && strcmp(translated_verb,
-                          "\xec\x9d\xb4\xec\x97\x88"
-                          "\xeb\x8b\xa4") != 0) {               /* 이었다 */
+            if (!ko_verb_is_copula(translated_verb)) {
                 Strcat(bp, " ");
                 Strcat(bp, translated_verb);
             }
@@ -2332,11 +2359,7 @@ Tobjnam(struct obj *otmp, const char *verb)
 
         if (is_korean_locale()) {
             Strcat(bp, "{이/가}");
-            if (strcmp(translated_verb,
-                       "\xec\x9d\xb4\xeb\x8b\xa4") != 0       /* 이다 */
-                && strcmp(translated_verb,
-                          "\xec\x9d\xb4\xec\x97\x88"
-                          "\xeb\x8b\xa4") != 0) {               /* 이었다 */
+            if (!ko_verb_is_copula(translated_verb)) {
                 Strcat(bp, " ");
                 Strcat(bp, translated_verb);
             }

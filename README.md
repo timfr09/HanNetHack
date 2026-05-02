@@ -72,7 +72,7 @@ sys\windows\fetch.cmd lua
 sys\windows\fetch.cmd pdcursesmod
 
 :: Optional: gettext tools under lib\gettext\bin — only if you edit po/*.po
-:: or run `nmake package` to rebuild the .mox catalog inside nhdat.
+:: or run `nmake package` to rebuild the .mo catalog inside nhdat.
 ::   sys\windows\setup-gettext.cmd
 
 :: Build (or open sys\windows\vs\NetHack.sln in Visual Studio)

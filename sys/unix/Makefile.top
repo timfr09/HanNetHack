@@ -92,13 +92,11 @@ LUA_VERSION = 5.4.8
 #
 
 DATHELP = help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp
-# Korean message catalog
-LOCALE_KO_MO = dat/locale/ko/LC_MESSAGES/nethack.mo
-# XOR-obfuscated message catalog shipped inside nhdat (see
-# include/mox_format.h, src/mo_reader.c).
-LOCALE_KO_MOX = dat/locale/ko/nethack.mox
+# Korean message catalog shipped inside nhdat.  src/mo_reader.c
+# looks this up through dlb_fopen() as "locale/ko/nethack.mo".
+LOCALE_KO_MO = dat/locale/ko/nethack.mo
 # Korean localized files (in locale/ko/ directory)
-LOCALE_KO = locale/ko/nethack.mox \
+LOCALE_KO = locale/ko/nethack.mo \
 	locale/ko/help locale/ko/hh locale/ko/cmdhelp locale/ko/keyhelp \
 	locale/ko/history locale/ko/opthelp locale/ko/optmenu locale/ko/usagehlp locale/ko/wizhelp \
 	locale/ko/bogusmon.txt locale/ko/engrave.txt locale/ko/epitaph.txt \
@@ -143,18 +141,18 @@ LUA2NHTOP = ../../..
 LUABASELIB = liblua-$(LUA_VERSION).a
 TOPLUALIB = lib/lua/$(LUABASELIB)
 
-ALLDEP = $(PRECHECK) $(GAME) recover Guidebook $(VARDAT) spec_levs check-dlb $(LOCALE_KO_MO) $(LOCALE_KO_MOX)
+ALLDEP = $(PRECHECK) $(GAME) recover Guidebook $(VARDAT) spec_levs check-dlb $(LOCALE_KO_MO)
 
 # first target is also the default target for 'make' without any arguments
 all:    $(ALLDEP)
 	true; $(MOREALL)
 	@echo "Done."
 
-# Korean message catalog (merge ko_manual.po + ko.po, then compile)
-# po/Makefile produces nethack.mo (legacy path) AND nethack.mox
-# (obfuscated catalog consumed at runtime by src/mo_reader.c) in one
-# shot, so both targets piggyback on the same invocation.
-$(LOCALE_KO_MO) $(LOCALE_KO_MOX): po/ko.po po/ko_manual.po
+# Korean message catalog (compile ko_manual.po, optionally merging
+# with the local ko.po cache if it exists).  po/Makefile produces
+# nethack.mo at dat/locale/ko/nethack.mo, which gets bundled inside
+# nhdat and loaded at runtime by src/mo_reader.c.
+$(LOCALE_KO_MO): po/ko_manual.po
 	( cd po && $(MAKE) compile )
 
 $(GAME): lua_support
@@ -494,8 +492,8 @@ install: rootcheck $(PRECHECK) $(GAME) recover $(VARDAT) spec_levs sys/unix/sysc
 # sysconf
 	true; $(SYSCONFINSTALL)
 # Korean translations and localized data files travel inside nhdat
-# (see src/mo_reader.c + include/mox_format.h), so no separate
-# locale/ko install step is needed.
+# (see src/mo_reader.c), so no separate locale/ko install step is
+# needed.
 # other steps from hints file
 	true; $(POSTINSTALL)
 # and a reminder

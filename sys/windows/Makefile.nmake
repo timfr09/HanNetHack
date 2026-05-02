@@ -99,9 +99,10 @@ GIT_AVAILABLE = N
 #
 #------------------------------------------------------------------------------
 # HanNetHack: translations no longer go through libintl at runtime.
-# The XOR-obfuscated catalog (dat/locale/<lang>/nethack.mox) is read
-# directly by src/mo_reader.c inside nhdat, so there is no linkage
-# against intl.dll / iconv.dll and no redistributable DLLs.
+# The GNU gettext .mo catalog (dat/locale/<lang>/nethack.mo) is
+# bundled inside nhdat and parsed by src/mo_reader.c, so there is
+# no linkage against intl.dll / iconv.dll and no redistributable
+# DLLs are shipped.
 #
 # The translator workflow (po/Makefile) still uses the msgfmt /
 # msgcat / xgettext CLIs from gettext-iconv-windows, but those run
@@ -2182,13 +2183,12 @@ $(DAT)porthelp: $(MSWSYS)porthelp
 	@copy $(MSWSYS)porthelp $@ >nul
 
 #==========================================
-# Translation catalog pipeline (.po -> .mo -> .mox)
+# Translation catalog pipeline (.po -> .mo)
 #==========================================
 #
 # Prefer a gettext-iconv install that the user placed under
 # lib\gettext\ via sys\windows\setup-gettext.cmd; otherwise assume
 # msgfmt / msgcat are reachable through PATH.
-#
 #
 # nmake runs in src/ so Makefile rules reference ..\po\... for .po
 # source files, same as the existing ..\dat\... convention.
@@ -2203,32 +2203,29 @@ MSGCAT_EXE = msgcat
 
 PO = ..\po$(BACKSLASH)
 
-# Merge auto-extracted + hand-curated translations.  ko_manual.po
-# takes priority (matches po/Makefile's `merge` target).
-$(PO)ko_merged.po: $(PO)ko.po $(PO)ko_manual.po
+# Build the merged catalog from ko_manual.po (the canonical Korean
+# translations, committed to the repo) plus ko.po if it exists
+# (update-po's local cache, gitignored).  This mirrors the logic
+# in po/Makefile's `merge` target.
+$(PO)ko_merged.po: $(PO)ko_manual.po
 	@echo Merging Korean translation sources
-	@$(MSGCAT_EXE) --use-first -o $@ $(PO)ko_manual.po $(PO)ko.po
+	@if exist $(PO)ko.po ( \
+		$(MSGCAT_EXE) --use-first -o $@ $(PO)ko_manual.po $(PO)ko.po \
+	) else ( \
+		copy /y $(PO)ko_manual.po $@ >nul \
+	)
 
 $(PO)ko.mo: $(PO)ko_merged.po
 	@echo Compiling $(@:\=/)
 	@$(MSGFMT_EXE) -c -o $@ $(PO)ko_merged.po
 
-$(U)encode_mo.exe: $(OUTL)encode_mo.o
-	@echo Linking $(@:\=/)
-	@$(link) $(LFLAGS) /PDB:"$(OUTL)$(@B).PDB" /MAP:"$(OUTL)$(@B).MAP" \
-		-out:$@ $(OUTL)encode_mo.o
-
-$(OUTL)encode_mo.o: $(U)encode_mo.c $(INCL)mox_format.h
-	$(Q)$(CC) $(CFLAGS) $(CROSSCOMPILE) /D_CRT_SECURE_NO_WARNINGS \
-		-Fo$@ $(U)encode_mo.c
-
-# Produce the XOR-obfuscated catalog next to the plain .mo so DLB
-# packaging can pick it up.  Keeping both artifacts around lets the
-# translator workflow in po/Makefile stay functional too.
-$(DAT)locale\ko\nethack.mox: $(U)encode_mo.exe $(PO)ko.mo
+# Stage the compiled catalog where the dlb packaging step below
+# can pick it up.  src/mo_reader.c loads this via dlb_fopen() as
+# "locale/ko/nethack.mo" at runtime.
+$(DAT)locale\ko\nethack.mo: $(PO)ko.mo
 	@if not exist $(DAT)locale\ko mkdir $(DAT)locale\ko
-	@echo Encoding $(@:\=/)
-	@$(U)encode_mo.exe $(PO)ko.mo $@
+	@echo Staging $(@:\=/)
+	@copy /y $(PO)ko.mo $@ >nul
 
 !IF ("$(USE_DLB)"=="Y")
 #
@@ -2237,7 +2234,7 @@ nhdat$(NHV):	$(U)dlb.exe $(DAT)data $(DAT)oracles $(OPTIONS_FILE) $(LUA_FILES) \
 	$(DAT)rumors $(DAT)help $(DAT)hh $(DAT)cmdhelp $(DAT)keyhelp \
 	$(DAT)history $(DAT)opthelp $(DAT)optmenu $(DAT)wizhelp $(DAT)porthelp \
 	$(DAT)license $(DAT)engrave $(DAT)epitaph $(DAT)bogusmon $(DAT)tribute \
-	$(DAT)locale\ko\nethack.mox
+	$(DAT)locale\ko\nethack.mo
 	@echo Building $@
 	@cd $(DAT)
 	@echo data >dlb.lst
@@ -2262,10 +2259,10 @@ nhdat$(NHV):	$(U)dlb.exe $(DAT)data $(DAT)oracles $(OPTIONS_FILE) $(LUA_FILES) \
 	@echo tribute >>dlb.lst
 #	@for %%N in ($(luawildcards)) do dir /b %%N >>dlb.lst
 	@for %%N in (*.lua) do @echo %%N >>dlb.lst
-#	Korean locale assets (text + lua + obfuscated message catalog).
+#	Korean locale assets (text + lua + gettext .mo message catalog).
 #	Paths stored with forward slashes so dlb_fopen() can look them
 #	up consistently on every platform.
-	@if exist locale\ko\nethack.mox @echo locale/ko/nethack.mox >>dlb.lst
+	@if exist locale\ko\nethack.mo @echo locale/ko/nethack.mo >>dlb.lst
 	@for %%N in (help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp data.base bogusmon.txt engrave.txt epitaph.txt oracles.txt rumors.tru rumors.fal) do @if exist locale\ko\%%N @echo locale/ko/%%N >>dlb.lst
 	@for %%N in (locale\ko\*.lua) do @echo locale/ko/%%~nxN >>dlb.lst
 	@$(U)dlb cIf dlb.lst $(SRC)nhdat
@@ -3353,7 +3350,7 @@ $(OTTY)iactions.o: iactions.c $(HACK_H)
 $(OTTY)insight.o: insight.c $(HACK_H)
 $(OTTY)i18n.o: i18n.c $(HACK_H) $(INCL)i18n.h $(INCL)dlb.h $(INCL)mo_reader.h
 $(OTTY)ko_postpos.o: ko_postpos.c $(HACK_H) $(INCL)ko_postpos.h
-$(OTTY)mo_reader.o: mo_reader.c $(INCL)mo_reader.h $(INCL)mox_format.h
+$(OTTY)mo_reader.o: mo_reader.c $(INCL)mo_reader.h
 $(OTTY)invent.o: invent.c $(HACK_H)
 $(OTTY)isaac64.o: isaac64.c $(CONFIG_H) $(INCL)isaac64.h
 $(OTTY)light.o: light.c $(HACK_H)
@@ -3737,7 +3734,7 @@ $(OGUI)iactions.o: iactions.c $(HACK_H)
 $(OGUI)insight.o: insight.c $(HACK_H)
 $(OGUI)i18n.o: i18n.c $(HACK_H) $(INCL)i18n.h $(INCL)dlb.h $(INCL)mo_reader.h
 $(OGUI)ko_postpos.o: ko_postpos.c $(HACK_H) $(INCL)ko_postpos.h
-$(OGUI)mo_reader.o: mo_reader.c $(INCL)mo_reader.h $(INCL)mox_format.h
+$(OGUI)mo_reader.o: mo_reader.c $(INCL)mo_reader.h
 $(OGUI)invent.o: invent.c $(HACK_H)
 $(OGUI)isaac64.o: isaac64.c $(CONFIG_H) $(INCL)isaac64.h
 $(OGUI)light.o: light.c $(HACK_H)

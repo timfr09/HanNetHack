@@ -234,14 +234,14 @@ get_localized_filename(const char *fname)
  * ------------------------------------------------------------------
  * Message catalog runtime
  *
- * HanNetHack no longer links against libintl.  Instead an XOR-
- * obfuscated catalog (locale/<lang>/nethack.mox) is shipped inside
- * the nhdat DLB and decoded on the fly by src/mo_reader.c.
+ * HanNetHack does not link against libintl.  Instead a plain GNU
+ * gettext catalog (locale/<lang>/nethack.mo) is shipped inside the
+ * nhdat DLB and parsed on the fly by src/mo_reader.c.
  *
- * The public gettext-like helpers (nh_gettext, nh_ngettext,
- * nh_pgettext) replace the libintl exports; include/i18n.h maps the
- * classic gettext()/ngettext()/pgettext() names onto them with
- * macros so existing call sites need no changes.
+ * The public gettext-like helpers (nh_gettext, nh_pgettext) replace
+ * the libintl exports; include/i18n.h maps the classic gettext() /
+ * pgettext() names onto them with macros so existing call sites
+ * need no changes.
  * ------------------------------------------------------------------
  */
 
@@ -352,7 +352,7 @@ slurp_dlb_file(const char *path, size_t *out_len)
 }
 
 /*
- * Attempt to load locale/<lang>/nethack.mox through the DLB layer.
+ * Attempt to load locale/<lang>/nethack.mo through the DLB layer.
  * On success installs the catalog as g_catalog and returns TRUE.
  * Any previously loaded catalog is freed regardless of outcome.
  */
@@ -373,14 +373,14 @@ load_catalog_for_lang(const char *lang)
     if (!lang || !*lang || strcmp(lang, "en") == 0)
         return FALSE;
 
-    Snprintf(path, sizeof path, "locale/%s/nethack.mox", lang);
+    Snprintf(path, sizeof path, "locale/%s/nethack.mo", lang);
     buf = slurp_dlb_file(path, &len);
     if (!buf)
         return FALSE;
 
-    cat = mox_load(buf, len);
+    cat = mo_load(buf, len);
     if (!cat) {
-        /* mox_load() frees the buffer on failure. */
+        /* mo_load() frees the buffer on failure. */
         return FALSE;
     }
     g_catalog = cat;
@@ -404,26 +404,6 @@ nh_gettext(const char *msgid)
         return msgid;
     tr = mo_lookup(g_catalog, msgid);
     return tr ? tr : msgid;
-}
-
-/*
- * ngettext equivalent.  HanNetHack only ships a Korean catalog today,
- * which uses nplurals=1, so we always return the first msgstr form
- * when a translation exists.  Without a catalog we fall back to the
- * English singular/plural pair based on n.
- */
-const char *
-nh_ngettext(const char *msgid_singular, const char *msgid_plural,
-            unsigned long int n)
-{
-    const char *tr;
-
-    if (g_catalog && msgid_singular) {
-        tr = mo_lookup(g_catalog, msgid_singular);
-        if (tr)
-            return tr;
-    }
-    return (n == 1UL) ? msgid_singular : msgid_plural;
 }
 
 /*
@@ -484,8 +464,8 @@ get_locale_for_lang(const char *lang)
  * We only need two side effects now:
  *   1. setlocale() so wcwidth/mbtowc behave sensibly for the target
  *      script (Korean TTY rendering leans on this).
- *   2. Load the obfuscated .mox catalog through the DLB so nh_gettext
- *      & friends start returning translated strings.
+ *   2. Load the .mo catalog through the DLB so nh_gettext & friends
+ *      start returning translated strings.
  */
 void
 set_language(const char *lang)
@@ -511,8 +491,8 @@ set_language(const char *lang)
     current_lang[sizeof(current_lang) - 1] = '\0';
     korean_locale = (strcmp(current_lang, "ko") == 0);
 
-    /* Load the obfuscated message catalog via DLB.  Failure is not
-     * fatal - nh_gettext will simply echo the English msgid back. */
+    /* Load the message catalog via DLB.  Failure is not fatal -
+     * nh_gettext will simply echo the English msgid back. */
     (void) load_catalog_for_lang(current_lang);
 }
 
@@ -560,117 +540,46 @@ is_korean_locale(void)
 }
 
 /*
- * Process Korean postpositions in a translated string
+ * Process Korean postpositions in a translated string.
  *
- * This function processes format strings containing postposition patterns
- * like {은/는}, {이/가}, {을/를} after variable substitution.
+ * Performs sprintf-style formatting into a temporary buffer and
+ * then delegates the actual {X/Y} replacement to the single
+ * implementation in src/ko_postpos.c.  Assumes `buf` is a BUFSZ-
+ * sized char array (matches every call site).
  *
  * Usage:
  *   char buf[BUFSZ];
  *   process_korean_postpositions(buf, "%s{을/를} 때렸다.", mon_nam(mtmp));
- *
- * The function:
- * 1. Performs sprintf-style formatting
- * 2. Scans for postposition patterns {X/Y}
- * 3. Replaces each pattern based on the preceding character's batchim
  */
 char *
 process_korean_postpositions(char *buf, const char *format, ...)
 {
     va_list args;
     char temp[BUFSZ * 2];
-    char *outp;
-    const char *inp;
-    ko_postpos_type pp_type;
-    int pp_len;
-    const char *last_char_pos;
-    int last_char_len;
-    ko_batchim_type batchim;
 
     if (!buf || !format)
         return buf;
 
-    /* First, do standard formatting */
     va_start(args, format);
-    nh_vsnprintf(temp, sizeof(temp), format, args);
+    nh_vsnprintf(temp, sizeof temp, format, args);
     va_end(args);
 
-    /* If not Korean locale, just copy and return */
     if (!korean_locale) {
         strncpy(buf, temp, BUFSZ - 1);
         buf[BUFSZ - 1] = '\0';
         return buf;
     }
 
-    /* Process postposition patterns */
-    outp = buf;
-    inp = temp;
-
-    while (*inp && (outp - buf) < BUFSZ - 10) {
-        if (*inp == KO_PP_START) {
-            /* Found potential postposition pattern */
-            if (ko_parse_postposition_pattern(inp, &pp_type, &pp_len)) {
-                /* Find the last character before this pattern */
-                *outp = '\0';  /* Temporarily terminate for scanning */
-                last_char_len = ko_find_last_char(buf, &last_char_pos);
-
-                if (last_char_len > 0) {
-                    /* Determine batchim */
-                    unsigned int cp;
-                    int bytes;
-                    cp = utf8_to_codepoint(last_char_pos, &bytes);
-                    batchim = ko_check_batchim_codepoint(cp);
-
-                    /* If ASCII, check English pronunciation rules */
-                    if (batchim == KO_BATCHIM_NONE && cp < 0x80) {
-                        /* Find start of the ASCII word */
-                        const char *word_start = last_char_pos;
-                        while (word_start > buf && isalnum((unsigned char)*(word_start-1))) {
-                            word_start--;
-                        }
-                        char word[64];
-                        int wlen = last_char_pos + last_char_len - word_start;
-                        if (wlen > 0 && wlen < (int)sizeof(word)) {
-                            strncpy(word, word_start, wlen);
-                            word[wlen] = '\0';
-                            batchim = ko_english_batchim(word);
-                        }
-                    }
-                } else {
-                    batchim = KO_BATCHIM_NONE;
-                }
-
-                /* Get the appropriate postposition */
-                const char *pp = ko_get_postposition(batchim, pp_type);
-                if (pp) {
-                    while (*pp && (outp - buf) < BUFSZ - 1) {
-                        *outp++ = *pp++;
-                    }
-                }
-
-                /* Skip the pattern in input */
-                inp += pp_len;
-                continue;
-            }
-        }
-
-        /* Copy regular character */
-        int charlen = utf8_char_len((unsigned char)*inp);
-        while (charlen-- > 0 && *inp && (outp - buf) < BUFSZ - 1) {
-            *outp++ = *inp++;
-        }
-    }
-
-    *outp = '\0';
-    return buf;
+    return ko_process_string(buf, BUFSZ, temp);
 }
 
 /*
- * Apply Korean postpositions to an already-formatted string
+ * Apply Korean postpositions to an already-formatted string.
  *
- * This is a simpler wrapper for cases where the string is already
- * formatted and we just need to process the postposition patterns.
- * The string is modified in place.
+ * Convenience wrapper for callers that already have the fully
+ * formatted string on hand and just need the {X/Y} markers
+ * resolved.  Result is written back into `str`, which is assumed
+ * to be a BUFSZ-sized buffer.
  *
  * Usage:
  *   apply_korean_postpositions(out_line);
@@ -683,11 +592,10 @@ apply_korean_postpositions(char *str)
     if (!str || !korean_locale)
         return str;
 
-    /* Copy to temp buffer and process back into original */
     strncpy(temp, str, BUFSZ - 1);
     temp[BUFSZ - 1] = '\0';
 
-    return process_korean_postpositions(str, "%s", temp);
+    return ko_process_string(str, BUFSZ, temp);
 }
 
 #endif /* ENABLE_NLS */

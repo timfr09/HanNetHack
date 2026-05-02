@@ -61,8 +61,7 @@ po/
 └── ko_merged.po         # 빌드 시 자동 생성 (ko_manual.po + ko.po)
 
 dat/locale/ko/
-├── LC_MESSAGES/
-│   └── nethack.mo       # 컴파일된 gettext 번역
+├── nethack.mo           # 컴파일된 gettext 번역 (nhdat에 번들됨)
 ├── help                 # 메인 도움말
 ├── hh                   # 빠른 도움말
 ├── cmdhelp              # 명령어 도움말
@@ -125,7 +124,6 @@ make stats
 - `_("string")` — 기본 번역
 - `C_("context", "string")` — 동음이의어 구분 (예: `C_("moon", "full")` vs `_("full")`)
 - `N_("string")` — 지연 번역 (컴파일 타임에 등록, 런타임에 번역)
-- `P_("singular", "plural")` — 복수형 (한국어는 보통 불필요)
 
 ---
 

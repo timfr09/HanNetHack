@@ -8,8 +8,8 @@
                  `nmake package` (NetHack.exe, NetHackW.exe, nhdat370,
                  record, opthelp, symbols, templates, License.rtf).
                  Korean translations and help/lua data travel inside
-                 nhdat as an XOR-obfuscated message catalog
-                 (locale/ko/nethack.mox) plus plain assets, so the
+                 nhdat as a GNU gettext message catalog
+                 (locale/ko/nethack.mo) plus plain assets, so the
                  installer does not ship a locale\ tree or any gettext
                  redistributables.
 

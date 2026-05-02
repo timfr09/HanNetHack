@@ -83,13 +83,28 @@ number_batchim(int digit)
     }
 }
 
-/* Returns batchim type for single letter by Korean pronunciation */
+/*
+ * Returns the batchim class implied by the Korean pronunciation
+ * of a single Latin letter, judged by the letter's own Korean
+ * name (알파벳 이름) rather than any word-level pronunciation.
+ *
+ *   F 에프, L 엘, M 엠, N 엔, R 아르, S 에스, X 엑스  -> 받침
+ *   everything else                                    -> 받침 없음
+ *
+ * This is deliberately a heuristic, not a full transliteration
+ * engine.  It works well for initialisms and abbreviations where
+ * the letter *is* read individually ("USB가", "DNA가", "HTML이"),
+ * but it can pick the wrong particle for proper words where the
+ * Korean pronunciation of the whole word disagrees with the last
+ * letter's name ("Elf" reads as "엘프" with no batchim, but 'f'
+ * alone has one).  Translators should override those cases in
+ * ko_manual.po with an explicit particle.
+ */
 static ko_batchim_type
 letter_batchim(char c)
 {
     c = toupper((unsigned char)c);
     switch (c) {
-    /* Letters with batchim (consonant ending in Korean) */
     case 'F':  /* 에프 */
     case 'L':  /* 엘 */
     case 'M':  /* 엠 */
@@ -98,7 +113,6 @@ letter_batchim(char c)
     case 'S':  /* 에스 */
     case 'X':  /* 엑스 */
         return KO_BATCHIM_OTHER;
-    /* Letters without batchim */
     default:
         return KO_BATCHIM_NONE;
     }
@@ -237,6 +251,43 @@ ko_check_batchim_codepoint(unsigned int codepoint)
 }
 
 /*
+ * Extend a last-character batchim check to cover the whole trailing
+ * ASCII word.  Hangul syllables already carry the jongsung index in
+ * the last character; for ASCII tails we typically want to honour
+ * the Korean pronunciation of the full word ("King" -> 킹 -> ㅇ
+ * 받침), not just the final letter.
+ */
+static ko_batchim_type
+refine_batchim_with_ascii_word(const char *buf_start,
+                               const char *last_pos, int last_len,
+                               ko_batchim_type batchim)
+{
+    const char *word_start;
+    int wlen;
+    char word[64];
+
+    if (batchim != KO_BATCHIM_NONE)
+        return batchim;
+    if (!buf_start || !last_pos || last_len <= 0)
+        return batchim;
+    if ((unsigned char) *last_pos >= 0x80)
+        return batchim; /* only meaningful for ASCII tails */
+
+    word_start = last_pos;
+    while (word_start > buf_start
+           && isalnum((unsigned char) *(word_start - 1)))
+        word_start--;
+
+    wlen = (int) (last_pos + last_len - word_start);
+    if (wlen <= 0 || wlen >= (int) sizeof word)
+        return batchim;
+
+    memcpy(word, word_start, (size_t) wlen);
+    word[wlen] = '\0';
+    return ko_english_batchim(word);
+}
+
+/*
  * Check if a Korean syllable has a final consonant (받침)
  */
 ko_batchim_type
@@ -246,6 +297,7 @@ ko_check_batchim(const char *utf8str)
     int last_len;
     unsigned int cp;
     int bytes;
+    ko_batchim_type batchim;
 
     if (!utf8str || !*utf8str)
         return KO_BATCHIM_NONE;
@@ -257,7 +309,9 @@ ko_check_batchim(const char *utf8str)
 
     /* Decode and check */
     cp = utf8_to_codepoint(last_pos, &bytes);
-    return ko_check_batchim_codepoint(cp);
+    batchim = ko_check_batchim_codepoint(cp);
+    return refine_batchim_with_ascii_word(utf8str, last_pos, last_len,
+                                          batchim);
 }
 
 /*
@@ -281,61 +335,88 @@ ko_get_postposition(ko_batchim_type batchim, ko_postpos_type pp_type)
 }
 
 /*
- * Parse a postposition pattern from a string
+ * Parse a postposition pattern from a string.
+ *
+ * All currently recognised markers ({은/는} {이/가} {을/를}
+ * {과/와} {으로/로}) fit within a tight byte budget - the longest
+ * is "{으로/로}" at 11 UTF-8 bytes - so we cap the scan at
+ * KO_PP_MAX_BYTES.  This keeps us from walking the whole
+ * remaining message when translated text happens to contain a
+ * standalone '{' (e.g. Lua table debug output echoed back into a
+ * message), and makes mismatched / malformed markers a fast FALSE.
+ *
+ * We also treat '}' before '/' and a nested '{' after '/' as a
+ * non-marker so those shapes degrade to plain text rather than
+ * being absorbed by a partial match.
  */
+#define KO_PP_MAX_BYTES 16
+
 boolean
 ko_parse_postposition_pattern(const char *pattern,
                               ko_postpos_type *pp_type,
                               int *pattern_len)
 {
-    const char *slash_pos;
-    const char *end_pos;
+    const char *slash_pos = NULL;
+    const char *end_pos = NULL;
+    size_t k, first_len, second_len;
     int i;
-    size_t first_len, second_len;
 
-    if (!pattern || *pattern != KO_PP_START) {
+    if (pp_type)
         *pp_type = KO_PP_NONE;
+    if (pattern_len)
         *pattern_len = 0;
+
+    if (!pattern || *pattern != KO_PP_START)
         return FALSE;
-    }
 
-    /* Find '/' separator */
-    slash_pos = strchr(pattern + 1, KO_PP_SEP);
-    if (!slash_pos) {
-        *pp_type = KO_PP_NONE;
-        *pattern_len = 0;
+    /* Locate '/' separator within the size budget.  A stray '}'
+     * or NUL before the '/' means this isn't a marker. */
+    for (k = 1; k < KO_PP_MAX_BYTES; k++) {
+        char c = pattern[k];
+
+        if (c == '\0' || c == KO_PP_END)
+            return FALSE;
+        if (c == KO_PP_SEP) {
+            slash_pos = pattern + k;
+            break;
+        }
+    }
+    if (!slash_pos)
         return FALSE;
-    }
 
-    /* Find '}' end */
-    end_pos = strchr(slash_pos + 1, KO_PP_END);
-    if (!end_pos) {
-        *pp_type = KO_PP_NONE;
-        *pattern_len = 0;
+    /* Locate '}' end within the remaining budget.  A nested '{'
+     * disqualifies the whole thing so "{X/{Y}}" stays literal. */
+    for (k = 1; (slash_pos - pattern) + k < KO_PP_MAX_BYTES; k++) {
+        char c = slash_pos[k];
+
+        if (c == '\0' || c == KO_PP_START)
+            return FALSE;
+        if (c == KO_PP_END) {
+            end_pos = slash_pos + k;
+            break;
+        }
+    }
+    if (!end_pos)
         return FALSE;
-    }
 
-    first_len = slash_pos - (pattern + 1);
-    second_len = end_pos - (slash_pos + 1);
+    first_len = (size_t) (slash_pos - (pattern + 1));
+    second_len = (size_t) (end_pos - (slash_pos + 1));
 
-    /* Match against known patterns */
+    /* Match against known patterns. */
     for (i = 1; i < KO_PP_COUNT; i++) {
         if (!pattern_strings[i][0] || !pattern_strings[i][1])
             continue;
 
-        if (strlen(pattern_strings[i][0]) == first_len &&
-            strlen(pattern_strings[i][1]) == second_len &&
-            strncmp(pattern + 1, pattern_strings[i][0], first_len) == 0 &&
-            strncmp(slash_pos + 1, pattern_strings[i][1], second_len) == 0) {
-            *pp_type = (ko_postpos_type)i;
-            *pattern_len = (int)(end_pos - pattern + 1);
+        if (strlen(pattern_strings[i][0]) == first_len
+            && strlen(pattern_strings[i][1]) == second_len
+            && memcmp(pattern + 1, pattern_strings[i][0], first_len) == 0
+            && memcmp(slash_pos + 1, pattern_strings[i][1], second_len) == 0) {
+            *pp_type = (ko_postpos_type) i;
+            *pattern_len = (int) (end_pos - pattern + 1);
             return TRUE;
         }
     }
 
-    /* No match found */
-    *pp_type = KO_PP_NONE;
-    *pattern_len = 0;
     return FALSE;
 }
 
@@ -377,6 +458,11 @@ ko_process_string(char *outbuf, size_t outbufsz, const char *input)
                 if (last_char_len > 0) {
                     cp = utf8_to_codepoint(last_char_pos, &bytes);
                     batchim = ko_check_batchim_codepoint(cp);
+                    /* If the tail is ASCII, widen the check to the
+                     * whole trailing word so we honour Korean
+                     * pronunciation of short English names. */
+                    batchim = refine_batchim_with_ascii_word(
+                        outbuf, last_char_pos, last_char_len, batchim);
                 } else {
                     batchim = KO_BATCHIM_NONE;
                 }
@@ -407,7 +493,21 @@ ko_process_string(char *outbuf, size_t outbufsz, const char *input)
 }
 
 /*
- * Get batchim type for English words/numbers
+ * Pick a batchim class for an ASCII word or number when we need
+ * to attach a Korean particle to it.
+ *
+ * The rule is intentionally simple: look at the last character.
+ *
+ *   - If it's a digit, delegate to number_batchim() (which knows
+ *     the Korean reading of each digit: 일, 이, 삼 ...).
+ *   - If it's a letter, delegate to letter_batchim() (which uses
+ *     the letter's Korean name: F 에프, L 엘, ...).
+ *   - Otherwise default to "no batchim".
+ *
+ * See letter_batchim()'s comment for why this is a heuristic
+ * rather than a full romanisation of the whole word.  Call sites
+ * that want word-level accuracy should pre-resolve the particle
+ * in the translation catalog.
  */
 ko_batchim_type
 ko_english_batchim(const char *str)
@@ -421,17 +521,12 @@ ko_english_batchim(const char *str)
     len = strlen(str);
     last_char = str[len - 1];
 
-    /* Check if it's a number */
-    if (isdigit((unsigned char)last_char)) {
+    if (isdigit((unsigned char)last_char))
         return number_batchim(last_char - '0');
-    }
 
-    /* Check if it's a letter */
-    if (isalpha((unsigned char)last_char)) {
+    if (isalpha((unsigned char)last_char))
         return letter_batchim(last_char);
-    }
 
-    /* Unknown - default to no batchim */
     return KO_BATCHIM_NONE;
 }
 

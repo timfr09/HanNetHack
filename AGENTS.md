@@ -3,7 +3,7 @@
 ## Cursor Cloud specific instructions
 
 ### Project Overview
-HanNetHack is a Korean-localized fork of NetHack 3.7. It's a C-based roguelike game with an in-tree message catalog (`src/mo_reader.c`, XOR `.mox` inside nhdat), GNU gettext *tools* for maintaining `po/*.po`, and a Korean postposition engine.
+HanNetHack is a Korean-localized fork of NetHack 3.7. It's a C-based roguelike game with an in-tree message catalog (`src/mo_reader.c` reads a plain GNU gettext `.mo` bundled inside nhdat), GNU gettext *tools* for maintaining `po/*.po`, and a Korean postposition engine.
 
 ### Build
 ```bash
@@ -25,7 +25,8 @@ HACKDIR=~/nh/install/games/lib/nethackdir TERM=xterm-256color ./src/nethack
 Korean is the default language. Config goes in `~/.nethackrc`.
 
 ### Translation Workflow
-- **Edit `po/ko_manual.po`** (never `ko.po` directly — it gets overwritten by `make update-po`).
+- **Only `po/ko_manual.po` is committed.** It is the canonical source of Korean translations.
+- `po/ko.po` is a local cache rebuilt by `make update-po` from `nethack.pot`; it is gitignored and never edited by hand. `make compile` works without it (uses `ko_manual.po` directly).
 - `cd po && make compile` to merge + compile translations.
 - `cd po && make stats` to see translation statistics.
 - `scripts/check-i18n-wrapping.sh` checks for unwrapped `_()` strings in source.

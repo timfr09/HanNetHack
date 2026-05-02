@@ -66,10 +66,10 @@ REM Create save directory
 if not exist "%DSTDIR%\save" mkdir "%DSTDIR%\save"
 
 REM Korean translations + localized help/lua data live inside
-REM nhdat now (XOR-obfuscated nethack.mox + plain locale/ko/* text
+REM nhdat now (GNU gettext nethack.mo + plain locale/ko/* text
 REM files), so the installer no longer copies libintl/iconv DLLs or
-REM a loose locale\ directory.  See include/mox_format.h and
-REM src/mo_reader.c for the catalog pipeline.
+REM a loose locale\ directory.  See src/mo_reader.c for the catalog
+REM pipeline.
 
 echo.
 echo === Installation Complete ===

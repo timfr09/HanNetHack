@@ -4,8 +4,7 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
-#include "ko_postpos.h"  /* for utf8_char_len */
-#include "i18n.h"        /* for utf8_char_width */
+#include "i18n.h"  /* utf8_char_len / utf8_char_width / utf8_display_width */
 
 #ifdef TTY_GRAPHICS
 

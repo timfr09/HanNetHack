@@ -310,7 +310,7 @@ wormgone(struct monst *worm)
     int wnum = worm->wormno;
 
     if (!wnum) /* note: continuing with wnum==0 runs to completion */
-        impossible("wormgone: wormno is 0");
+        impossible(_("wormgone: wormno is 0"));
 
     worm->wormno = 0; /* still a long worm but doesn't grow/shrink anymore */
     /*
@@ -398,7 +398,7 @@ cutworm(struct monst *worm, coordxy x, coordxy y,
     while ((curr->wx != x) || (curr->wy != y)) {
         curr = curr->nseg;
         if (!curr) {
-            impossible("cutworm: no segment at (%d,%d)", (int) x, (int) y);
+            impossible(_("cutworm: no segment at (%d,%d)", (int) x, (int) y);
             return;
         }
     }
@@ -623,9 +623,9 @@ place_wsegs(struct monst *worm, struct monst *oldworm)
         if (oldworm && mtmp == oldworm)
             remove_monster(x, y);
         else if (mtmp)
-            impossible("placing worm seg <%d,%d> over another mon", x, y);
+            impossible(_("placing worm seg <%d,%d> over another mon", x, y);
         else if (oldworm)
-            impossible("replacing worm seg <%d,%d> on empty spot", x, y);
+            impossible(_("replacing worm seg <%d,%d> on empty spot", x, y);
 
         place_worm_seg(worm, x, y);
         curr = curr->nseg;
@@ -642,7 +642,7 @@ sanity_check_worm(struct monst *worm)
     int wnum, x, y;
 
     if (!worm) {
-        impossible("worm_sanity: null monster!");
+        impossible(_("worm_sanity: null monster!"));
         return;
     }
     /* note: wormno can't be less than 0 (unsigned bit field) and can't
@@ -650,13 +650,13 @@ sanity_check_worm(struct monst *worm)
        so checking for 0 is all we can manage for wormno validation;
        since caller has already done that, this is rather pointless... */
     if (!worm->wormno) {
-        impossible("worm_sanity: not a worm!");
+        impossible(_("worm_sanity: not a worm!"));
         return;
     }
 
     wnum = worm->wormno;
     if (!wtails[wnum] || !wheads[wnum]) {
-        impossible("wormno %d is set without proper tail", wnum);
+        impossible(_("wormno %d is set without proper tail", wnum);
         return;
     }
     /* if worm is migrating, we can't check its segments against the map */
@@ -667,9 +667,9 @@ sanity_check_worm(struct monst *worm)
     while (curr != wheads[wnum]) {
         x = curr->wx, y = curr->wy;
         if (!isok(x, y))
-            impossible("worm seg not isok <%d,%d>", x, y);
+            impossible(_("worm seg not isok <%d,%d>", x, y);
         else if (svl.level.monsters[x][y] != worm)
-            impossible("mon (%s) at seg location is not worm (%s)",
+            impossible(_("mon (%s) at seg location is not worm (%s)",
                        fmt_ptr((genericptr_t) svl.level.monsters[x][y]),
                        fmt_ptr((genericptr_t) worm));
 
@@ -743,7 +743,7 @@ place_worm_tail_randomly(struct monst *worm, coordxy x, coordxy y)
     int ox = x, oy = y;
 
     if (wnum && (!wtails[wnum] || !wheads[wnum])) {
-        impossible("place_worm_tail_randomly: wormno is set without a tail!");
+        impossible(_("place_worm_tail_randomly: wormno is set without a tail!"));
         return;
     }
     if (wtails[wnum] == wheads[wnum]) {
@@ -911,7 +911,7 @@ worm_cross(int x1, int y1, int x2, int y2)
      */
 
     if (distmin(x1, y1, x2, y2) != 1) {
-        impossible("worm_cross checking for non-adjacent location?");
+        impossible(_("worm_cross checking for non-adjacent location?"));
         return FALSE;
     }
     /* attempting to pass between worm segs is only relevant for diagonal */

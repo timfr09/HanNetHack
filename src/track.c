@@ -98,7 +98,7 @@ rest_track(NHFILE *nhfp)
     Sfi_int(nhfp, &utpnt, "track-utpnt");
 
     if (utcnt > UTSZ || utpnt > UTSZ)
-        panic("rest_track: impossible pt counts");
+        panic(_("rest_track: impossible pt counts"));
     for (i = 0; i < utcnt; i++) {
         Sfi_nhcoord(nhfp, &utrack[i], "utrack");
     }

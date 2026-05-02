@@ -71,7 +71,7 @@ sys_early_init(void)
 
     /* sanity checks */
     if (sysopt.pers_is_uid != 0 && sysopt.pers_is_uid != 1)
-        panic("config error: PERS_IS_UID must be either 0 or 1");
+        panic(_("config error: PERS_IS_UID must be either 0 or 1"));
 
 #ifdef PANICTRACE
     /* panic options */

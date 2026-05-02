@@ -119,7 +119,7 @@ revive_nasty(coordxy x, coordxy y, const char *msg)
             if ((mtmp = m_at(x, y)) && enexto(&cc, x, y, mtmp->data))
                 rloc_to(mtmp, cc.x, cc.y);
             if (msg)
-                Norep("%s", msg);
+                Norep(_("%s", msg);
             revived = revive_corpse(otmp);
         }
     }
@@ -785,14 +785,14 @@ still_chewing(coordxy x, coordxy y)
         }
         digtxt = u_at(x, y)
                  ? _("devour the iron bars.")
-                 : _("eat through the bars.");
+                 : _("eat through the bars."));
         dissolve_bars(x, y);
     } else if (lev->typ == SDOOR) {
         if (lev->doormask & D_TRAPPED) {
             lev->doormask = D_NODOOR;
             b_trapped(_("secret door"), NO_PART);
         } else {
-            digtxt = _("chew through the secret door.");
+            digtxt = _("chew through the secret door."));
             lev->doormask = D_BROKEN;
         }
         lev->typ = DOOR;
@@ -840,7 +840,7 @@ movobj(struct obj *obj, coordxy ox, coordxy oy)
 staticfn void
 dosinkfall(void)
 {
-    const char *fell_on_sink = _("fell onto a sink");
+    const char *fell_on_sink = _("fell onto a sink"));
     struct obj *obj;
     int dmg;
     boolean lev_boots = (uarmf && uarmf->otyp == LEVITATION_BOOTS),
@@ -1096,9 +1096,9 @@ test_move(
                     return FALSE;
             } else {
                 if (mode == DO_MOVE) {
-                    if (amorphous(u.umonst->data))
+                    if (amorphous(gy.youmonst.data))
                         You(_("try to ooze under the door,"
-                            " but can't squeeze your possessions through."));
+                            " but can't squeeze your possessions through.");
                     if (flags.autoopen && !svc.context.run
                         && !Confusion && !Stunned && !Fumbling) {
                         int tmp = doopen_indir(x, y);
@@ -1570,7 +1570,7 @@ trapmove(
     switch (u.utraptype) {
     case TT_BEARTRAP:
         if (flags.verbose) {
-            predicament = _("caught in a bear trap");
+            predicament = _("caught in a bear trap"));
             if (u.usteed)
                 Norep(_("%s is %s."), upstart(steedname), predicament);
             else
@@ -1598,7 +1598,7 @@ trapmove(
         }
         if (--u.utrap) {
             if (flags.verbose) {
-                predicament = _("stuck to the web");
+                predicament = _("stuck to the web"));
                 if (u.usteed)
                     Norep(_("%s is %s."), upstart(steedname), predicament);
                 else
@@ -1685,10 +1685,10 @@ trapmove(
         }
         break;
     case TT_NONE:
-        impossible("trapmove: trapped in nothing?");
+        impossible(_("trapmove: trapped in nothing?"));
         break;
     default:
-        impossible("trapmove: stuck in unknown trap? (%d)",
+        impossible(_("trapmove: stuck in unknown trap? (%d)",
                    (int) u.utraptype);
         break;
     }
@@ -1698,8 +1698,8 @@ trapmove(
 boolean
 u_rooted(void)
 {
-    if (!u.umonst->data->mmove) {
-        You(_("are rooted %s."),
+    if (!gy.youmonst.data->mmove) {
+        You(_("are rooted %s.",
             Levitation || Is_airlevel(&u.uz) || Is_waterlevel(&u.uz)
                 ? _("in place")
                 : _("to the ground"));
@@ -1828,9 +1828,9 @@ u_locomotion(const char *def)
        its is_flyer() and is_floater() tests wouldn't work on hero except
        when hero is polymorphed and not wearing an amulet of flying
        or boots/ring/spell of levitation */
-    return Levitation ? (capitalize ? _("Float") : _("float"))
-           : Flying ? (capitalize ? _("Fly") : _("fly"))
-             : locomotion(u.umonst->data, def);
+    return Levitation ? (capitalize ? "Float" : "float")
+           : Flying ? (capitalize ? "Fly" : "fly")
+             : locomotion(gy.youmonst.data, def);
 }
 
 /* Return a simplified floor solid/liquid state based on hero's state */
@@ -1877,7 +1877,7 @@ handle_tip(int tip)
             l_nhcore_call(NHCORE_GETPOS_TIP);
             break;
         default:
-            impossible("Unknown tip in handle_tip(%i)", tip);
+            impossible(_("Unknown tip in handle_tip(%i)", tip);
             break;
         }
         return TRUE;
@@ -2146,7 +2146,7 @@ domove_swap_with_pet(
     } else if (mtmp->mpeaceful && mtmp->mtrapped) {
         /* all mtame are also mpeaceful, so this affects pets too */
         assert(trap != NULL); /* implied by mtrapped */
-        const char *what = trapname(trap->ttyp, FALSE), *which = _("that ");
+        const char *what = trapname(trap->ttyp, FALSE), *which = _("that "));
         char anbuf[10];
 
         if (!trap->tseen) {
@@ -2232,7 +2232,7 @@ domove_swap_with_pet(
             }
             break;
         default:
-            impossible("that's strange, unknown mintrap result!");
+            impossible(_("that's strange, unknown mintrap result!"));
             break;
         }
     }
@@ -3002,7 +3002,7 @@ domove_core(void)
     /* must come after we finished picking up, in spoteffects() */
     if (cause_delay) {
         nomul(-2);
-        gm.multi_reason = _("dragging an iron ball");
+        gm.multi_reason = _("dragging an iron ball"));
         gn.nomovemsg = "";
     }
 
@@ -3428,7 +3428,7 @@ spoteffects(boolean pick)
         long time_left = spot_time_left(u.ux, u.uy, MELT_ICE_AWAY);
 
         if (time_left && time_left < 15L)
-            pline("%s", _(icewarnings[(time_left < 5L) ? 2
+            pline(_("%s", _(icewarnings[(time_left < 5L) ? 2
                                     : (time_left < 10L) ? 1
                                       : 0]));
     }
@@ -3823,9 +3823,9 @@ pickup_checks(void)
         }
     }
     if (is_pool(u.ux, u.uy)) {
-        if (Wwalking || is_floater(u.umonst->data)
-            || is_clinger(u.umonst->data) || (Flying && !Breathless)) {
-            You(_("cannot dive into the %s to pick things up."),
+        if (Wwalking || is_floater(gy.youmonst.data)
+            || is_clinger(gy.youmonst.data) || (Flying && !Breathless)) {
+            You(_("cannot dive into the %s to pick things up.",
                 hliquid("water"));
             return 0;
         } else if (!Underwater) {
@@ -3834,11 +3834,11 @@ pickup_checks(void)
         }
     }
     if (is_lava(u.ux, u.uy)) {
-        if (Wwalking || is_floater(u.umonst->data)
-            || is_clinger(u.umonst->data) || (Flying && !Breathless)) {
+        if (Wwalking || is_floater(gy.youmonst.data)
+            || is_clinger(gy.youmonst.data) || (Flying && !Breathless)) {
             You_cant(_("reach the bottom to pick things up."));
             return 0;
-        } else if (!likes_lava(u.umonst->data)) {
+        } else if (!likes_lava(gy.youmonst.data)) {
             You(_("would burn to a crisp trying to pick things up."));
             return 0;
         }
@@ -4242,7 +4242,7 @@ maybe_wail(void)
         int i, powercnt;
 
         who = (Role_if(PM_WIZARD) || Role_if(PM_VALKYRIE)) ? gu.urole.name.m
-                                                           : _("Elf");
+                                                           : _("Elf"));
         if (u.uhp == 1) {
             pline(_("%s is about to die."), who);
         } else {
@@ -4267,7 +4267,7 @@ int
 saving_grace(int dmg)
 {
     if (dmg < 0) {
-        impossible("saving_grace check for negative damage? (%d)", dmg);
+        impossible(_("saving_grace check for negative damage? (%d)", dmg);
         return 0;
     }
 #if 0   /* saving grace _does_ protect hero during own actions */
@@ -4331,7 +4331,7 @@ losehp(int n, const char *knam, schar k_format)
 #if 0   /* code below is prepared to handle negative 'loss' so don't add this
          * until we've verified that no callers intentionally rely on that */
     if (n <= 0) {
-        impossible("hero losing %d hit points due to \"%s\"?", n, knam);
+        impossible(_("hero losing %d hit points due to \"%s\"?", n, knam);
         return;
     }
 #endif
@@ -4628,7 +4628,7 @@ rounddiv(long x, int y)
     int divsgn = 1;
 
     if (y == 0)
-        panic("division by zero in rounddiv");
+        panic(_("division by zero in rounddiv"));
     else if (y < 0) {
         divsgn = -divsgn;
         y = -y;

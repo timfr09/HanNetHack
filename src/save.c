@@ -435,7 +435,7 @@ savelev(NHFILE *nhfp, xint8 lev)
     if (set_uz_save && (nhfp->mode & (COUNTING | WRITING))) {
         if (u.uz.dnum == 0 && u.uz.dlevel == 0) {
             program_state.something_worth_saving = 0;
-            panic("savelev: where are we?");
+            panic(_("savelev: where are we?"));
         }
         gu.uz_save = u.uz;
     }
@@ -458,7 +458,7 @@ savelev_core(NHFILE *nhfp, xint8 lev)
     program_state.saving++; /* even if current mode is FREEING */
 
     if (!nhfp)
-        panic("Save on bad file!"); /* impossible */
+        panic(_("Save on bad file!")); /* impossible */
     /*
      *  Level file contents:
      *    version info (handled by caller);

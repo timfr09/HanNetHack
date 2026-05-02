@@ -794,7 +794,7 @@ teleport_pet(struct monst *mtmp, boolean force_it)
     if (mtmp->mleashed) {
         otmp = get_mleash(mtmp);
         if (!otmp) {
-            impossible("%s is leashed, without a leash.", Monnam(mtmp));
+            impossible(_("%s is leashed, without a leash.", Monnam(mtmp));
             goto release_it;
         }
         if (otmp->cursed && !force_it) {
@@ -818,7 +818,7 @@ tele_to_rnd_pet(void)
     int cnt = 0;
 
     if (noteleport_level(&gy.youmonst)) {
-        impossible("%s", "attempt to teleport hero to be near a pet"
+        impossible(_("%s", "attempt to teleport hero to be near a pet"
                          " on no-teleport level");
         return;
     }
@@ -853,7 +853,7 @@ scrolltele(struct obj *scroll)
     coord cc;
 
     /* Disable teleportation in stronghold && Vlad's Tower */
-    if (noteleport_level(u.umonst) && !wizard) {
+    if (noteleport_level(&gy.youmonst) && !wizard) {
         pline(_("A mysterious force prevents you from teleporting!"));
         if (scroll)
             learnscroll(scroll); /* this is obviously a teleport scroll */
@@ -1115,11 +1115,11 @@ dotele(
         } else
 #endif
         if (u.uhunger <= 10) {
-            cantdoit = _("are too weak from hunger");
+            cantdoit = _("are too weak from hunger"));
         } else if (ACURR(A_STR) < 4) {
-            cantdoit = _("lack the strength");
+            cantdoit = _("lack the strength"));
         } else if (energy > u.uen) {
-            cantdoit = _("lack the energy");
+            cantdoit = _("lack the energy"));
         }
         if (cantdoit) {
             You(_("%s %s."), cantdoit,
@@ -1166,7 +1166,7 @@ dotele(
 void
 level_tele(void)
 {
-    const char *get_there_from = _("get there from %s.");
+    const char *get_there_from = _("get there from %s."));
     int newlev;
     d_level newlevel;
     const char *escape_by_flying = 0; /* when surviving dest of -N */
@@ -1258,8 +1258,8 @@ level_tele(void)
                 goto random_levtport;
             if (ynq(_("Go to Nowhere.  Are you sure?")) != 'y')
                 return;
-            You(_("%s in agony as your body begins to warp..."),
-                is_silent(u.umonst->data) ? _("writhe") : _("scream"));
+            You(_("%s in agony as your body begins to warp...",
+                is_silent(gy.youmonst.data) ? "writhe" : "scream");
             display_nhwindow(WIN_MESSAGE, FALSE);
             You(_("cease to exist."));
             if (gi.invent)
@@ -1349,9 +1349,9 @@ level_tele(void)
         if (svk.killer.name[0]) {
             ; /* arrival in heaven is pending */
         } else if (Levitation) {
-            escape_by_flying = _("float gently down to earth");
+            escape_by_flying = _("float gently down to earth"));
         } else if (Flying) {
-            escape_by_flying = _("fly down to the ground");
+            escape_by_flying = _("fly down to the ground"));
         } else {
             pline(_("Unfortunately, you don't know how to fly."));
             You(_("plummet a few thousand feet to your death."));
@@ -1372,7 +1372,7 @@ level_tele(void)
         done(DIED);
         /* can only get here via life-saving (or declining to die in
            explore|debug mode); the hero has now left the dungeon... */
-        escape_by_flying = _("find yourself back on the surface");
+        escape_by_flying = _("find yourself back on the surface"));
         u.uz = lsav; /* restore u.uz so escape code works */
     }
 
@@ -1479,11 +1479,11 @@ domagicportal(struct trap *ttmp)
     if (In_tutorial(&u.uz) && !In_tutorial(&target_level)) {
         /* returning to normal play => arrive on level 1 stairs */
         totype = UTOTYPE_ATSTAIRS;
-        stunmsg = _("Resuming regular play.");
+        stunmsg = _("Resuming regular play."));
     } else {
         totype = UTOTYPE_PORTAL;
         stunmsg = !Stunned ? _("You feel slightly dizzy.")
-                            : _("You feel dizzier.");
+                            : _("You feel dizzier."));
         make_stunned((HStun & TIMEOUT) + 3L, FALSE);
     }
 
@@ -1886,7 +1886,7 @@ rloc(
     if (!backupcc.x) {
         /* level either full of monsters or somehow faulty */
         if ((rlocflags & RLOC_ERR) != 0)
-            impossible("rloc(): couldn't relocate monster");
+            impossible(_("rloc(): couldn't relocate monster"));
         return FALSE;
     }
     x = backupcc.x, y = backupcc.y;
@@ -2079,7 +2079,7 @@ mlevel_tele_trap(
                 get_level(&tolevel, nlev);
             }
         } else {
-            impossible("mlevel_tele_trap: unexpected trap type (%d)", tt);
+            impossible(_("mlevel_tele_trap: unexpected trap type (%d)", tt);
             return Trap_Effect_Finished;
         }
 

@@ -176,7 +176,7 @@ stealarm(void)
             for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
                 if (mtmp->m_id == gs.stealmid) {
                     if (DEADMONSTER(mtmp)) {
-                        impossible("stealarm(): dead monster stealing");
+                        impossible(_("stealarm(): dead monster stealing"));
                         goto botm; /* (could just use 'break' here) */
                     }
                     /* maybe the thief polymorphed into something without a
@@ -241,7 +241,7 @@ remove_worn_item(
 
     if (obj->owornmask & W_ARMOR) {
         if (obj == uskin) {
-            impossible("Removing embedded scales?");
+            impossible(_("Removing embedded scales?"));
             skinback(TRUE); /* uarm = uskin; uskin = 0; */
         }
         if (obj == uarm)
@@ -325,7 +325,7 @@ worn_item_removal(
        to suppress the message for that case */
     verb = ((obj->owornmask & W_WEAPONS) != 0L) ? _("disarms")
            : ((obj->owornmask & W_ACCESSORY) != 0L) ? _("removes")
-             : _("takes off");
+             : _("takes off"));
     pline(C_("steal_disarm", "%s %s %s."), Some_Monnam(mon), verb, objbuf);
     iflags.last_msg = PLNMSG_MON_TAKES_OFF_ITEM;
     /* removal might trigger more messages (due to loss of Lev|Fly;
@@ -386,8 +386,8 @@ steal(struct monst *mtmp, char *objnambuf)
 
             /* buried ball is not tracked via 'uball' and there is no chain
                at all (hence no uchain to take off) */
-            pline(_("%s takes off your unseen chain."), Monnambuf);
-            (void) openholdingtrap(u.umonst, &dummy);
+            pline(_("%s takes off your unseen chain.", Monnambuf);
+            (void) openholdingtrap(&gy.youmonst, &dummy);
         } else if (Blind) {
             pline(_("Somebody tries to rob you, but finds nothing to steal."));
         } else if (inv_cnt(TRUE) > inv_cnt(FALSE)) {
@@ -427,7 +427,7 @@ steal(struct monst *mtmp, char *objnambuf)
                 break;
         }
     if (!otmp) {
-        impossible("Steal fails!");
+        impossible(_("Steal fails!"));
         return 0;
     }
     /* can't steal ring(s) while wearing gloves */
@@ -547,7 +547,7 @@ steal(struct monst *mtmp, char *objnambuf)
                 named++;
                 /* the following is to set multi for later on */
                 nomul(-armordelay);
-                gm.multi_reason = _("taking off clothes");
+                gm.multi_reason = _("taking off clothes"));
                 gn.nomovemsg = 0;
                 remove_worn_item(otmp, TRUE);
                 otmp->cursed = curssv;
@@ -560,7 +560,7 @@ steal(struct monst *mtmp, char *objnambuf)
             }
             break;
         default:
-            impossible("Tried to steal a strange worn thing. [%d]",
+            impossible(_("Tried to steal a strange worn thing. [%d]",
                        otmp->oclass);
         }
         /* hero's blindfold might have just been stolen; if so, replace
@@ -621,11 +621,11 @@ mpickobj(struct monst *mtmp, struct obj *otmp)
     boolean snuff_otmp = FALSE;
 
     if (!otmp) {
-        impossible("monster (%s) taking or picking up nothing?",
+        impossible(_("monster (%s) taking or picking up nothing?",
                    pmname(mtmp->data, Mgender(mtmp)));
         return 1;
     } else if (otmp == uball || otmp == uchain) {
-        impossible("monster (%s) taking or picking up attached %s (%s)?",
+        impossible(_("monster (%s) taking or picking up attached %s (%s)?",
                    pmname(mtmp->data, Mgender(mtmp)),
                    (otmp == uchain) ? "chain" : "ball", simpleonames(otmp));
         return 0;

@@ -318,7 +318,7 @@ priestname(
     /* for high priest(ess), "high" (or "grand" for poohbah) will be inserted
        [this was done near the end but we want 'what' to be updated sooner] */
     if (mon->ispriest || aligned_priest || high_priest)
-        what = do_hallu ? _("poohbah") : mon->female ? _("priestess") : _("priest");
+        what = do_hallu ? _("poohbah") : mon->female ? _("priestess") : _("priest"));
 
     *pname = '\0';
     if (article != ARTICLE_NONE && (!do_hallu || !bogon_is_pname(whatcode))) {
@@ -450,14 +450,14 @@ intemple(int roomno)
         if (sanctum && Is_sanctum(&u.uz)) {
             if (priest->mpeaceful) {
                 /* first time inside */
-                msg1 = _("Infidel, you have entered Moloch's Sanctum!");
-                msg2 = _("Be gone!");
+                msg1 = _("Infidel, you have entered Moloch's Sanctum!"));
+                msg2 = _("Be gone!"));
                 priest->mpeaceful = 0;
                 /* became angry voluntarily; no penalty for attacking him */
                 set_malign(priest);
             } else {
                 /* repeat visit, or attacked priest before entering */
-                msg1 = _("You desecrate this place by your presence!");
+                msg1 = _("You desecrate this place by your presence!"));
             }
         } else if (svm.moves >= epri_p->enter_time) {
             Sprintf(buf, _("Pilgrim, you enter a %s place!"),
@@ -474,13 +474,13 @@ intemple(int roomno)
         if (!sanctum) {
             if (!shrined || !p_coaligned(priest)
                 || u.ualign.record <= ALGN_SINNED) {
-                msg1 = _("have a%s forbidding feeling...");
-                msg2 = (!shrined || !p_coaligned(priest)) ? "" : _(" strange");
+                msg1 = _("have a%s forbidding feeling..."));
+                msg2 = (!shrined || !p_coaligned(priest)) ? "" : _(" strange"));
                 this_time = &epri_p->hostile_time;
                 other_time = &epri_p->peaceful_time;
             } else {
-                msg1 = _("experience %s sense of peace.");
-                msg2 = (u.ualign.record >= ALGN_DEVOUT) ? _("a") : _("an unusual");
+                msg1 = _("experience %s sense of peace."));
+                msg2 = (u.ualign.record >= ALGN_DEVOUT) ? _("a") : _("an unusual"));
                 this_time = &epri_p->peaceful_time;
                 other_time = &epri_p->hostile_time;
             }
@@ -532,8 +532,8 @@ intemple(int roomno)
             if (flags.verbose)
                 You(_("are frightened to death, and unable to move."));
             nomul(-3);
-            gm.multi_reason = _("being terrified of a ghost");
-            gn.nomovemsg = _("You regain your composure.");
+            gm.multi_reason = _("being terrified of a ghost"));
+            gn.nomovemsg = _("You regain your composure."));
         }
     }
 }
@@ -548,7 +548,7 @@ forget_temple_entry(struct monst *priest)
     struct epri *epri_p = priest->ispriest ? EPRI(priest) : 0;
 
     if (!epri_p) {
-        impossible("attempting to manipulate shrine data for non-priest?");
+        impossible(_("attempting to manipulate shrine data for non-priest?"));
         return;
     }
     epri_p->intone_time = epri_p->enter_time = epri_p->peaceful_time =
@@ -616,7 +616,7 @@ priest_talk(struct monst *priest)
             if (pmoney > 0L) {
                 const char *bits;
                 bits = (Hallucination) ? currency(pmoney)
-                                       : (pmoney == 1L) ? _("bit") : _("bits");
+                                       : (pmoney == 1L) ? _("bit") : _("bits"));
                 /* Note: two bits is actually 25 cents.  Hmm. */
                 pline(_("%s gives you %s%s for an ale."), Monnam(priest),
                       (pmoney == 1L) ? _("one ") : _("two "), bits);

@@ -241,7 +241,7 @@ restore_dungeon(NHFILE *nhfp)
     Sfi_int(nhfp, &count, "level_info_count");
 
     if (count >= MAXLINFO)
-        panic("level information count larger (%d) than allocated size",
+        panic(_("level information count larger (%d) than allocated size",
               count);
     for (i = 0; i < count; ++i) {
         Sfi_linfo(nhfp, &svl.level_info[i], "svl.level_info");
@@ -290,7 +290,7 @@ dname_to_dnum(const char *s)
         if (!strcmp(svd.dungeons[i].dname, s))
             return i;
 
-    panic("Couldn't resolve dungeon number for name \"%s\".", s);
+    panic(_("Couldn't resolve dungeon number for name \"%s\".", s);
     /*NOT REACHED*/
     return (xint16) 0;
 }
@@ -320,7 +320,7 @@ find_branch(
             if (!strcmp(pd->tmpbranch[i].name, s))
                 break;
         if (i == pd->n_brs)
-            panic("find_branch: can't find %s", s);
+            panic(_("find_branch: can't find %s", s);
     } else {
         /* support for level tport by name */
         branch *br;
@@ -360,7 +360,7 @@ parent_dnum(
         if ((i -= pd->tmpdungeon[pdnum].branches) < 0)
             return pdnum;
 
-    panic("parent_dnum: couldn't resolve branch.");
+    panic(_("parent_dnum: couldn't resolve branch."));
     /*NOT REACHED*/
     return (xint16) 0;
 }
@@ -389,7 +389,7 @@ level_range(
     if (chain >= 0) { /* relative to a special level */
         s_level *levtmp = pd->final_lev[chain];
         if (!levtmp)
-            panic("level_range: empty chain level!");
+            panic(_("level_range: empty chain level!"));
 
         base += levtmp->dlevel.dlevel;
     } else { /* absolute in the dungeon */
@@ -399,7 +399,7 @@ level_range(
     }
 
     if (base < 1 || base > lmax)
-        panic("level_range: base value out of range");
+        panic(_("level_range: base value out of range"));
 
     *adjusted_base = base;
 
@@ -450,7 +450,7 @@ correct_branch_type(struct tmpbranch *tbr)
     case TBR_PORTAL:
         return BR_PORTAL;
     }
-    impossible("correct_branch_type: unknown branch type");
+    impossible(_("correct_branch_type: unknown branch type"));
     return BR_STAIR;
 }
 
@@ -473,7 +473,7 @@ insert_branch(branch *new_branch, boolean extract_first)
                 break;
 
         if (!curr)
-            panic("insert_branch: not found");
+            panic(_("insert_branch: not found"));
         if (prev)
             prev->next = curr->next;
         else
@@ -638,7 +638,7 @@ pick_level(
     for (i = 1; i <= MAXLEVEL; i++)
         if (map[i] && !nth--)
             return i;
-    panic("pick_level:  ran out of valid levels");
+    panic(_("pick_level:  ran out of valid levels"));
     /*NOTREACHED*/
     return 0;
 }
@@ -767,12 +767,12 @@ get_dgn_flags(lua_State *L)
                                                          flagstrs)];
                 lua_pop(L, 1);
             } else
-                impossible("flags[%i] is not a string", f);
+                impossible(_("flags[%i] is not a string", f);
         }
     } else if (lua_type(L, -1) == LUA_TSTRING) {
         dgn_flags |= flagstrs2i[luaL_checkoption(L, -1, NULL, flagstrs)];
     } else if (lua_type(L, -1) != LUA_TNIL)
-        impossible("flags is not an array or string");
+        impossible(_("flags is not an array or string"));
     lua_pop(L, 1);
 
     return dgn_flags;
@@ -851,17 +851,17 @@ init_dungeon_levels(
                     }
                 }
                 if (tmpl->chain == -1)
-                    panic("Could not chain level %s to %s",
+                    panic(_("Could not chain level %s to %s",
                           lvl_name, lvl_chain);
                 /* free(lvl_chain); -- recorded in pd.tmplevel[] */
             }
         } else
-            panic("dungeon[%i].levels[%i] is not a hash", dngidx, f);
+            panic(_("dungeon[%i].levels[%i] is not a hash", dngidx, f);
         lua_pop(L, 1);
     }
     pd->n_levs += nlevels;
     if (pd->n_levs > LEV_LIMIT)
-        panic("init_dungeon: too many special levels");
+        panic(_("init_dungeon: too many special levels"));
 }
 
 staticfn void
@@ -917,17 +917,17 @@ init_dungeon_branches(
                         break;
                     }
                 if (tmpb->chain == -1)
-                    panic("Could not chain branch %s to level %s",
+                    panic(_("Could not chain branch %s to level %s",
                           br_name, br_chain);
                 free(br_chain);
             }
         } else
-            panic("dungeon[%i].branches[%i] is not a hash", dngidx, f);
+            panic(_("dungeon[%i].branches[%i] is not a hash", dngidx, f);
         lua_pop(L, 1);
     }
     pd->n_brs += nbranches;
     if (pd->n_brs > BRANCH_LIMIT)
-        panic("init_dungeon: too many branches");
+        panic(_("init_dungeon: too many branches"));
 }
 
 staticfn void
@@ -1036,7 +1036,7 @@ init_dungeon_dungeons(
     if (lua_type(L, -1) == LUA_TTABLE) {
         init_dungeon_levels(L, pd, dngidx);
     } else if (lua_type(L, -1) != LUA_TNIL)
-        panic("dungeon[%i].levels is not an array of hashes", dngidx);
+        panic(_("dungeon[%i].levels is not an array of hashes", dngidx);
     lua_pop(L, 1);
     /* levels end */
 
@@ -1045,7 +1045,7 @@ init_dungeon_dungeons(
     if (lua_type(L, -1) == LUA_TTABLE) {
         init_dungeon_branches(L, pd, dngidx);
     } else if (lua_type(L, -1) != LUA_TNIL)
-        panic("dungeon[%i].branches is not an array of hashes", dngidx);
+        panic(_("dungeon[%i].branches is not an array of hashes", dngidx);
     lua_pop(L, 1);
     /* branches end */
 
@@ -1254,7 +1254,7 @@ init_dungeons(void)
 
     lua_getglobal(L, "dungeon");
     if (!lua_istable(L, -1))
-        panic("dungeon is not a lua table");
+        panic(_("dungeon is not a lua table"));
 
     lua_len(L, -1);
     svn.n_dgns = (int) lua_tointeger(L, -1);
@@ -1270,7 +1270,7 @@ init_dungeons(void)
      */
 
     if (svn.n_dgns >= MAXDUNGEON)
-        panic("init_dungeons: too many dungeons");
+        panic(_("init_dungeons: too many dungeons"));
 
     tidx = lua_gettop(L);
 
@@ -1279,7 +1279,7 @@ init_dungeons(void)
     while (lua_next(L, tidx) != 0) {
 
         if (!lua_istable(L, -1))
-            panic("dungeon[%i] is not a lua table", i);
+            panic(_("dungeon[%i] is not a lua table", i);
 
         if (init_dungeon_dungeons(L, &pd, i)) {
             for (; cl < pd.n_levs; cl++) {
@@ -1291,7 +1291,7 @@ init_dungeons(void)
              * up.
              */
             if (!place_level(pd.start, &pd))
-                panic("init_dungeon:  couldn't place levels");
+                panic(_("init_dungeon:  couldn't place levels"));
 #ifdef DDEBUG
             fprintf(stderr, "--- end of dungeon %d ---\n", i);
             fflush(stderr);
@@ -1411,7 +1411,7 @@ ledger_to_dnum(xint16 ledgerno)
                             + svd.dungeons[i].num_dunlevs))
             return i;
 
-    panic("level number out of range [ledger_to_dnum(%d)]", (int) ledgerno);
+    panic(_("level number out of range [ledger_to_dnum(%d)]", (int) ledgerno);
     /*NOT REACHED*/
     return (xint16) 0;
 }
@@ -1489,7 +1489,7 @@ builds_up(d_level *lev)
             return br->end1_up;
         }
     }
-    impossible("builds_up: can't find branch for dungeon %d", lev->dnum);
+    impossible(_("builds_up: can't find branch for dungeon %d", lev->dnum);
     return FALSE;
 }
 
@@ -1721,28 +1721,28 @@ ceiling(coordxy x, coordxy y)
      * see check_special_room()
      */
     if (*in_rooms(x, y, VAULT))
-        what = _("vault's ceiling");
+        what = _("vault's ceiling"));
     else if (*in_rooms(x, y, TEMPLE))
-        what = _("temple's ceiling");
+        what = _("temple's ceiling"));
     else if (*in_rooms(x, y, SHOPBASE))
-        what = _("shop's ceiling");
+        what = _("shop's ceiling"));
     else if (Is_waterlevel(&u.uz))
         /* water plane has no surface; its air bubbles aren't below sky */
-        what = _("water above");
+        what = _("water above"));
     else if (IS_AIR(lev->typ))
-        what = _("sky");
+        what = _("sky"));
     else if (Is_firelevel(&u.uz))
-        what = _("flames above");
+        what = _("flames above"));
     else if (In_quest(&u.uz))
         /* just in case; try to avoid in caller if you can */
-        what = _("expanse above");
+        what = _("expanse above"));
     else if (Underwater)
-        what = _("water's surface");
+        what = _("water's surface"));
     else if ((IS_ROOM(lev->typ) && !Is_earthlevel(&u.uz))
              || IS_WALL(lev->typ) || IS_DOOR(lev->typ) || lev->typ == SDOOR)
-        what = _("ceiling");
+        what = _("ceiling"));
     else
-        what = _("rock cavern");
+        what = _("rock cavern"));
 
     return what;
 }
@@ -1757,35 +1757,35 @@ surface(coordxy x, coordxy y)
         /* 'husk' is iffy but maw is wrong for 't' class */
         return digests(u.ustuck->data) ? _("maw")
                : enfolds(u.ustuck->data) ? _("husk")
-                 : _("nonesuch"); /* can't happen (fingers crossed...) */
+                 : _("nonesuch")); /* can't happen (fingers crossed...) */
     else if (IS_AIR(levtyp))
         return Is_waterlevel(&u.uz) ? _("air bubble")
-                                    : (levtyp == CLOUD) ? _("cloud") : _("air");
+                                    : (levtyp == CLOUD) ? _("cloud") : _("air"));
     else if (is_pool(x, y))
         return (Underwater && !Is_waterlevel(&u.uz))
             ? _("bottom") : hliquid("water");
     else if (is_ice(x, y))
-        return _("ice");
+        return _("ice"));
     else if (is_lava(x, y))
         return hliquid("lava");
     else if (lev->typ == DRAWBRIDGE_DOWN)
-        return _("bridge");
+        return _("bridge"));
     else if (IS_ALTAR(levtyp))
-        return _("altar");
+        return _("altar"));
     else if (IS_GRAVE(levtyp))
-        return _("headstone");
+        return _("headstone"));
     else if (IS_FOUNTAIN(levtyp))
-        return _("fountain");
+        return _("fountain"));
     else if (On_stairs(x, y))
-        return _("stairs");
+        return _("stairs"));
     else if (IS_WALL(levtyp) || levtyp == SDOOR)
-        return _("wall"); /* 'surface' during Passes_walls */
+        return _("wall")); /* 'surface' during Passes_walls */
     else if (IS_DOOR(levtyp))
-        return _("doorway"); /* even for closed door */
+        return _("doorway")); /* even for closed door */
     else if (IS_ROOM(levtyp) && !Is_earthlevel(&u.uz))
-        return _("floor");
+        return _("floor"));
     else
-        return _("ground");
+        return _("ground"));
 }
 
 /*
@@ -1831,7 +1831,7 @@ get_level(d_level *newlevel, int levnum)
                     if (br->end2.dnum == dgn)
                         break;
                 if (!br)
-                    panic("get_level: can't find parent dungeon");
+                    panic(_("get_level: can't find parent dungeon"));
 
                 dgn = br->end1.dnum;
             } while (levnum < svd.dungeons[dgn].depth_start);
@@ -1881,7 +1881,7 @@ dungeon_branch(const char *s)
             break;
 
     if (!br)
-        panic("dgn_entrance: can't find entrance to %s", s);
+        panic(_("dgn_entrance: can't find entrance to %s", s);
 
     return br;
 }
@@ -1926,7 +1926,7 @@ In_W_tower(coordxy x, coordxy y, d_level *lev)
     if (!On_W_tower_level(lev))
         return FALSE;
     if (!svd.dndest.nlx) {
-        impossible("No boundary for Wizard's Tower?");
+        impossible(_("No boundary for Wizard's Tower?"));
         return FALSE;
     }
     /*
@@ -2242,15 +2242,15 @@ br_string(int type)
 {
     switch (type) {
     case BR_PORTAL:
-        return _("Portal");
+        return _("Portal"));
     case BR_NO_END1:
-        return _("Connection");
+        return _("Connection"));
     case BR_NO_END2:
-        return _("One way stair");
+        return _("One way stair"));
     case BR_STAIR:
-        return _("Stair");
+        return _("Stair"));
     }
-    return _(" (unknown)");
+    return _(" (unknown)"));
 }
 
 staticfn char
@@ -2465,10 +2465,10 @@ recbranch_mapseen(d_level *source, d_level *dest)
 
     if ((mptr = find_mapseen(source)) != 0) {
         if (mptr->br && br != mptr->br)
-            impossible("Two branches on the same level?");
+            impossible(_("Two branches on the same level?"));
         mptr->br = br;
     } else {
-        impossible("Can't note branch for unseen level (%d, %d)",
+        impossible(_("Can't note branch for unseen level (%d, %d)",
                    source->dnum, source->dlevel);
     }
 }
@@ -3369,17 +3369,17 @@ seen_string(xint16 x, const char *obj)
     /* players are computer scientists: 0, 1, 2, n */
     switch (x) {
     case 0:
-        return _("no");
+        return _("no"));
     /* an() returns too much.  index/strchr is ok in this case */
     case 1:
-        return strchr(vowels, *obj) ? _("an") : _("a");
+        return strchr(vowels, *obj) ? _("an") : _("a"));
     case 2:
-        return _("some");
+        return _("some"));
     case 3:
-        return _("many");
+        return _("many"));
     }
 
-    return _("(unknown)");
+    return _("(unknown)"));
 }
 
 /* better br_string */
@@ -3392,16 +3392,16 @@ br_string2(branch *br)
 
     switch (br->type) {
     case BR_PORTAL:
-        return closed_portal ? _("Sealed portal") : _("Portal");
+        return closed_portal ? _("Sealed portal") : _("Portal"));
     case BR_NO_END1:
-        return _("Connection");
+        return _("Connection"));
     case BR_NO_END2:
-        return br->end1_up ? _("One way stairs up") : _("One way stairs down");
+        return br->end1_up ? _("One way stairs up") : _("One way stairs down"));
     case BR_STAIR:
-        return br->end1_up ? _("Stairs up") : _("Stairs down");
+        return br->end1_up ? _("Stairs up") : _("Stairs down"));
     }
 
-    return _("(unknown)");
+    return _("(unknown)"));
 }
 
 /* get the name of an endgame level; topten.c does something similar */
@@ -3416,16 +3416,16 @@ endgamelevelname(char *outbuf, int indx)
         Strcpy(outbuf, _("Astral Plane"));
         break;
     case -4:
-        planename = _("Water");
+        planename = _("Water"));
         break;
     case -3:
-        planename = _("Fire");
+        planename = _("Fire"));
         break;
     case -2:
-        planename = _("Air");
+        planename = _("Air"));
         break;
     case -1:
-        planename = _("Earth");
+        planename = _("Earth"));
         break;
     }
     if (planename)
@@ -3441,10 +3441,10 @@ shop_string(int rtype)
 {
     extern const struct shclass shtypes[]; /* defined in shknam.c */
     int shoptype = rtype - SHOPBASE; /* convert room type to shop type */
-    const char *str = _("shop?"); /* catchall */
+    const char *str = _("shop?")); /* catchall */
 
     if (shoptype < 0) {
-        str = _("untended shop");
+        str = _("untended shop"));
     } else if (shtypes[shoptype].annotation) {
         str = shtypes[shoptype].annotation;
     } else if (shtypes[shoptype].name) {

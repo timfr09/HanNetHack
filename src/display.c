@@ -532,7 +532,7 @@ display_monster(
     if (mon_mimic && (sightflags == PHYSICALLY_SEEN)) {
         switch (M_AP_TYPE(mon)) {
         default:
-            impossible("display_monster:  bad m_ap_type value [ = %d ]",
+            impossible(_("display_monster:  bad m_ap_type value [ = %d ]",
                        (int) mon->m_ap_type);
             FALLTHROUGH;
             /*FALLTHRU*/
@@ -644,7 +644,7 @@ display_warning(struct monst *mon)
     } else if (MATCH_WARN_OF_MON(mon)) {
         glyph = mon_to_glyph(mon, rn2_on_display_rng);
     } else {
-        impossible("display_warning did not match warning type?");
+        impossible(_("display_warning did not match warning type?"));
         return;
     }
     show_mon_or_warn(x, y, glyph);
@@ -1208,7 +1208,7 @@ tmp_at(coordxy x, coordxy y)
     }
 
     if (!tglyph) {
-        panic("tmp_at: tglyph not initialized");
+        panic(_("tmp_at: tglyph not initialized"));
     } else {
         switch (x) {
         case DISP_CHANGE:
@@ -1990,12 +1990,12 @@ show_glyph(coordxy x, coordxy y, int glyph)
         } else if ((offset = (glyph - GLYPH_MON_MALE_OFF)) >= 0) {
             text = "male monster";
         }
-        impossible("show_glyph:  bad pos <%d,%d> with glyph %d [%s %d].",
+        impossible(_("show_glyph:  bad pos <%d,%d> with glyph %d [%s %d].",
                    x, y, glyph, text, offset);
         return;
     } else if (glyph < 0 || glyph >= MAX_GLYPH) {
         /* valid location but invalid glyph */
-        impossible("show_glyph:  bad glyph %d [max %d] at <%d,%d>.",
+        impossible(_("show_glyph:  bad glyph %d [max %d] at <%d,%d>.",
                    glyph, MAX_GLYPH, x, y);
         return;
     }
@@ -2408,7 +2408,7 @@ back_to_glyph(coordxy x, coordxy y)
             idx = S_room;
             break;
         default:
-            impossible("Strange db-under: %d",
+            impossible(_("Strange db-under: %d",
                        ptr->drawbridgemask & DB_UNDER);
             idx = S_room; /* something is better than nothing */
             break;
@@ -2418,7 +2418,7 @@ back_to_glyph(coordxy x, coordxy y)
         idx = (ptr->horizontal) ? S_hodbridge : S_vodbridge;
         break;
     default:
-        impossible("back_to_glyph:  unknown level type [ = %d ]", ptr->typ);
+        impossible(_("back_to_glyph:  unknown level type [ = %d ]", ptr->typ);
         idx = S_room;
         break;
     }
@@ -2439,7 +2439,7 @@ swallow_to_glyph(int mnum, int loc)
     int m_3 = what_mon(mnum, rn2_on_display_rng) << 3;
 
     if (loc < S_sw_tl || S_sw_br < loc) {
-        impossible("swallow_to_glyph: bad swallow location");
+        impossible(_("swallow_to_glyph: bad swallow location"));
         loc = S_sw_br;
     }
     return (m_3 | (loc - S_sw_tl)) + GLYPH_SWALLOW_OFF;
@@ -2461,7 +2461,7 @@ int
 zapdir_to_glyph(int dx, int dy, int beam_type)
 {
     if (beam_type >= NUM_ZAP) {
-        impossible("zapdir_to_glyph:  illegal beam type");
+        impossible(_("zapdir_to_glyph:  illegal beam type"));
         beam_type = 0;
     }
     dx = (dx == dy) ? 2 : (dx && dy) ? 3 : dx ? 1 : 0;
@@ -2567,7 +2567,7 @@ get_bkglyph_and_framecolor(
 #if 0
     /* this guard should be unnecessary */
     if (!framecolor) {
-        impossible("null framecolor passed to get_bkglyph_and_framecolor");
+        impossible(_("null framecolor passed to get_bkglyph_and_framecolor"));
         return;
     }
 #endif
@@ -3588,7 +3588,7 @@ wall_angle(struct rm *lev)
 
             break;
         default:
-            impossible("wall_angle: unknown T wall mode %d",
+            impossible(_("wall_angle: unknown T wall mode %d",
                        lev->wall_info & WM_MASK);
             col = T_stone;
             break;
@@ -3617,7 +3617,7 @@ wall_angle(struct rm *lev)
             idx = seenv & (SV0 | SV1 | SV5 | SV6 | SV7) ? S_vwall : S_stone;
             break;
         default:
-            impossible("wall_angle: unknown vwall mode %d",
+            impossible(_("wall_angle: unknown vwall mode %d",
                        lev->wall_info & WM_MASK);
             idx = S_stone;
             break;
@@ -3637,7 +3637,7 @@ wall_angle(struct rm *lev)
             idx = seenv & (SV0 | SV1 | SV2 | SV3 | SV7) ? S_hwall : S_stone;
             break;
         default:
-            impossible("wall_angle: unknown hwall mode %d",
+            impossible(_("wall_angle: unknown hwall mode %d",
                        lev->wall_info & WM_MASK);
             idx = S_stone;
             break;
@@ -3656,7 +3656,7 @@ wall_angle(struct rm *lev)
         idx = seenv & ~(inner) ? which : S_stone;          \
         break;                                             \
     default:                                               \
-        impossible("wall_angle: unknown %s mode %d", name, \
+        impossible(_("wall_angle: unknown %s mode %d", name, \
                    (lev)->wall_info &WM_MASK);             \
         idx = S_stone;                                     \
         break;                                             \
@@ -3742,7 +3742,7 @@ wall_angle(struct rm *lev)
                 } else if (seenv & SV7) {
                     col = seenv & SV1 ? C_crwall : C_tlwall;
                 } else {
-                    impossible("wall_angle: bottom of crwall check");
+                    impossible(_("wall_angle: bottom of crwall check"));
                     col = C_crwall;
                 }
 
@@ -3773,14 +3773,14 @@ wall_angle(struct rm *lev)
             break;
 
         default:
-            impossible("wall_angle: unknown crosswall mode");
+            impossible(_("wall_angle: unknown crosswall mode"));
             idx = S_stone;
             break;
         }
         break;
 
     default:
-        impossible("wall_angle: unexpected wall type %d", lev->typ);
+        impossible(_("wall_angle: unexpected wall type %d", lev->typ);
         idx = S_stone;
     }
     return idx;

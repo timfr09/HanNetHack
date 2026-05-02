@@ -841,8 +841,8 @@ polymon(int mntmp)
         You(_("no longer feel sick."));
     }
     if (Slimed) {
-        if (flaming(u.umonst->data)) {
-            make_slimed(0L, _("The slime burns away!"));
+        if (flaming(gy.youmonst.data)) {
+            make_slimed(0L, "The slime burns away!");
         } else if (mntmp == PM_GREEN_SLIME) {
             /* do it silently */
             make_slimed(0L, (char *) 0);
@@ -947,8 +947,8 @@ polymon(int mntmp)
         if (canspotmon(u.ustuck))
             Strcpy(ustuckNam, Monnam(u.ustuck));
         set_ustuck((struct monst *) 0);
-        pline(_("%s loses its grip on you."), ustuckNam);
-    } else if (sticking && !sticks(u.umonst->data)) {
+        pline(_("%s loses its grip on you.", ustuckNam);
+    } else if (sticking && !sticks(gy.youmonst.data)) {
         /* was holding onto u.ustuck but no longer capable of that */
         uunstick();
     }
@@ -1008,7 +1008,7 @@ polymon(int mntmp)
         /* probably should burn webs too if PM_FIRE_ELEMENTAL */
         reset_utrap(TRUE);
     }
-    if (webmaker(u.umonst->data) && u.utrap && u.utraptype == TT_WEB) {
+    if (webmaker(gy.youmonst.data) && u.utrap && u.utraptype == TT_WEB) {
         You(_("orient yourself on the web."));
         reset_utrap(TRUE);
     }
@@ -1030,7 +1030,9 @@ polymon(int mntmp)
     /* the explanation of '#monster' used to be shown sooner, but there are
        possible fatalities above and it isn't useful unless hero survives */
     if (flags.verbose) {
-        struct permonst *uptr = u.umonst->data;
+        static const char use_thec[] = "Use the command #%s to %s.";
+        static const char monsterc[] = "monster";
+        struct permonst *uptr = gy.youmonst.data;
         boolean might_hide = (is_hider(uptr) || hides_under(uptr));
 
         if (can_breathe(uptr))
@@ -1056,9 +1058,9 @@ polymon(int mntmp)
         if (is_mind_flayer(uptr))
             pline(_("Use the command #monster to emit a mental blast."));
         if (uptr->msound == MS_SHRIEK) /* worthless, actually */
-            pline(_("Use the command #monster to shriek."));
-        if (is_vampire(uptr) || is_vampshifter(u.umonst))
-            pline(_("Use the command #monster to change shape."));
+            pline(use_thec, monsterc, "shriek");
+        if (is_vampire(uptr) || is_vampshifter(&gy.youmonst))
+            pline(use_thec, monsterc, "change shape");
 
         if (lays_eggs(uptr) && flags.female
             && !(uptr == &mons[PM_GIANT_EEL]
@@ -1319,13 +1321,13 @@ drop_weapon(int alone)
             candropwep = canletgo(uwep, "");
             candropswapwep = !u.twoweap || canletgo(uswapwep, "");
             if (alone) {
-                what = (candropwep && candropswapwep) ? _("drop") : _("release");
+                what = (candropwep && candropswapwep) ? _("drop") : _("release"));
                 which = is_sword(uwep) ? _("sword") : weapon_descr(uwep);
                 if (u.twoweap) {
                     whichtoo =
                         is_sword(uswapwep) ? _("sword") : weapon_descr(uswapwep);
                     if (strcmp(which, whichtoo))
-                        which = _("weapon");
+                        which = _("weapon"));
                 }
                 if (uwep->quan != 1L || u.twoweap)
                     which = makeplural(which);
@@ -1392,9 +1394,9 @@ rehumanize(void)
      * reverts to human rather than to vampire.
      */
 
-    if (emits_light(u.umonst->data))
-        del_light_source(LS_MONSTER, monst_to_any(u.umonst));
-    polyman(_("You return to %s form!"), gu.urace.adj);
+    if (emits_light(gy.youmonst.data))
+        del_light_source(LS_MONSTER, monst_to_any(&gy.youmonst));
+    polyman("You return to %s form!", gu.urace.adj);
 
     if (u.uhp < 1) {
         /* can only happen if some bit of code reduces u.uhp
@@ -1440,7 +1442,7 @@ dobreathe(void)
 
     mattk = attacktype_fordmg(gy.youmonst.data, AT_BREA, AD_ANY);
     if (!mattk)
-        impossible("bad breath attack?"); /* mouthwash needed... */
+        impossible(_("bad breath attack?")); /* mouthwash needed... */
     else if (!u.dx && !u.dy && !u.dz)
         ubreatheu(mattk);
     else
@@ -1458,7 +1460,7 @@ dospit(void)
         return ECMD_CANCEL;
     mattk = attacktype_fordmg(gy.youmonst.data, AT_SPIT, AD_ANY);
     if (!mattk) {
-        impossible("bad spit attack?");
+        impossible(_("bad spit attack?"));
     } else {
         switch (mattk->adtyp) {
         case AD_BLND:
@@ -1466,7 +1468,7 @@ dospit(void)
             otmp = mksobj(BLINDING_VENOM, TRUE, FALSE);
             break;
         default:
-            impossible("bad attack type in dospit");
+            impossible(_("bad attack type in dospit"));
             FALLTHROUGH;
             /*FALLTHRU*/
         case AD_ACID:
@@ -1524,7 +1526,7 @@ dospinweb(void)
                 if (u.ustuck->data->mattk[i].aatyp == AT_ENGL)
                     break;
             if (i == NATTK)
-                impossible("Swallower has no engulfing attack?");
+                impossible(_("Swallower has no engulfing attack?"));
             else {
                 char sweep[30];
 
@@ -1602,7 +1604,7 @@ dospinweb(void)
             dotrap(ttmp, NO_TRAP_FLAGS);
             return ECMD_TIME;
         default:
-            impossible("Webbing over trap type %d?", ttmp->ttyp);
+            impossible(_("Webbing over trap type %d?", ttmp->ttyp);
             return ECMD_OK;
         }
     } else if (On_stairs(x, y)) {
@@ -1635,7 +1637,7 @@ dosummon(void)
 
     You(_("call upon your brethren for help!"));
     exercise(A_WIS, TRUE);
-    if (!were_summon(u.umonst->data, TRUE, &placeholder, (char *) 0))
+    if (!were_summon(gy.youmonst.data, TRUE, &placeholder, (char *) 0))
         pline(_("But none arrive."));
     return ECMD_TIME;
 }
@@ -1656,7 +1658,7 @@ dogaze(void)
         }
     }
     if (adtyp != AD_CONF && adtyp != AD_FIRE) {
-        impossible("gaze attack %d?", adtyp);
+        impossible(_("gaze attack %d?", adtyp);
         return ECMD_OK;
     }
 
@@ -1744,7 +1746,7 @@ dogaze(void)
                                   ? -d((int) mtmp->m_lev + 1,
                                        (int) mtmp->data->mattk[0].damd)
                                   : -200);
-                        gm.multi_reason = _("frozen by a monster's gaze");
+                        gm.multi_reason = _("frozen by a monster's gaze"));
                         gn.nomovemsg = 0;
                         return ECMD_TIME;
                     } else
@@ -1784,13 +1786,13 @@ dohide(void)
     /* can't hide while being held (or holding) or while trapped
        (except for floor hiders [trapper or mimic] in pits) */
     if (u.ustuck || (u.utrap && (u.utraptype != TT_PIT || on_ceiling))) {
-        You_cant(_("hide while you're %s."),
-                 !u.ustuck ? _("trapped")
-                   : u.uswallow ? (digests(u.ustuck->data) ? _("swallowed")
-                                                           : _("engulfed"))
-                     : !sticks(u.umonst->data) ? _("being held")
-                       : (humanoid(u.ustuck->data) ? _("holding someone")
-                                                   : _("holding that creature")));
+        You_cant(_("hide while you're %s.",
+                 !u.ustuck ? "trapped"
+                   : u.uswallow ? (digests(u.ustuck->data) ? "swallowed"
+                                                           : "engulfed")
+                     : !sticks(gy.youmonst.data) ? "being held"
+                       : (humanoid(u.ustuck->data) ? "holding someone"
+                                                   : "holding that creature"));
         if (u.uundetected || (ismimic && U_AP_TYPE != M_AP_NOTHING)) {
             u.uundetected = 0;
             gy.youmonst.m_ap_type = M_AP_NOTHING;
@@ -1882,9 +1884,9 @@ dopoly(void)
 
     if (is_vampire(gy.youmonst.data) || is_vampshifter(&gy.youmonst)) {
         polyself(POLY_MONSTER);
-        if (savedat != u.umonst->data) {
-            You(_("transform into %s."),
-                an(pmname(u.umonst->data, Ugender)));
+        if (savedat != gy.youmonst.data) {
+            You(_("transform into %s.",
+                an(pmname(gy.youmonst.data, Ugender)));
             newsym(u.ux, u.uy);
         }
     }
@@ -1945,7 +1947,7 @@ uunstick(void)
     struct monst *mtmp = u.ustuck;
 
     if (!mtmp) {
-        impossible("uunstick: no ustuck?");
+        impossible(_("uunstick: no ustuck?"));
         return;
     }
     set_ustuck((struct monst *) 0); /* before pline() */
@@ -2057,8 +2059,8 @@ mbodypart(struct monst *mon, int part)
     struct permonst *mptr = mon->data;
 
     if (part <= NO_PART) {
-        impossible("mbodypart: bad part %d", part);
-        return _("mystery part");
+        impossible(_("mbodypart: bad part %d", part);
+        return _("mystery part"));
     }
 
     /* some special cases */
@@ -2066,11 +2068,11 @@ mbodypart(struct monst *mon, int part)
         || mptr->mlet == S_RODENT || mptr == &mons[PM_OWLBEAR]) {
         switch (part) {
         case HAND:
-            return _("paw");
+            return _("paw"));
         case HANDED:
-            return _("pawed");
+            return _("pawed"));
         case FOOT:
-            return _("rear paw");
+            return _("rear paw"));
         case ARM:
         case LEG:
             return _(horse_parts[part]); /* "foreleg", "rear leg" */
@@ -2085,18 +2087,18 @@ mbodypart(struct monst *mon, int part)
         && (humanoid(mptr) && attacktype(mptr, AT_CLAW)
             && !strchr(not_claws, mptr->mlet) && mptr != &mons[PM_STONE_GOLEM]
             && mptr != &mons[PM_AMOROUS_DEMON]))
-        return (part == HAND) ? _("claw") : _("clawed");
+        return (part == HAND) ? _("claw") : _("clawed"));
     if ((mptr == &mons[PM_MUMAK] || mptr == &mons[PM_MASTODON])
         && part == NOSE)
-        return _("trunk");
+        return _("trunk"));
     if (mptr == &mons[PM_SHARK] && part == HAIR)
-        return _("skin"); /* sharks don't have scales */
+        return _("skin")); /* sharks don't have scales */
     if ((mptr == &mons[PM_JELLYFISH] || mptr == &mons[PM_KRAKEN])
         && (part == ARM || part == FINGER || part == HAND || part == FOOT
             || part == TOE))
-        return _("tentacle");
+        return _("tentacle"));
     if (mptr == &mons[PM_FLOATING_EYE] && part == EYE)
-        return _("cornea");
+        return _("cornea"));
     if (humanoid(mptr) && (part == ARM || part == FINGER || part == FINGERTIP
                            || part == HAND || part == HANDED))
         return _(humanoid_parts[part]);
@@ -2110,15 +2112,15 @@ mbodypart(struct monst *mon, int part)
         return _(horse_parts[part]);
     if (mptr->mlet == S_LIGHT) {
         if (part == HANDED)
-            return _("rayed");
+            return _("rayed"));
         else if (part == ARM || part == FINGER || part == FINGERTIP
                  || part == HAND)
-            return _("ray");
+            return _("ray"));
         else
-            return _("beam");
+            return _("beam"));
     }
     if (mptr == &mons[PM_STALKER] && part == HEAD)
-        return _("head");
+        return _("head"));
     if (mptr->mlet == S_EEL && mptr != &mons[PM_JELLYFISH])
         return _(fish_parts[part]);
     if (mptr->mlet == S_WORM)
@@ -2278,11 +2280,11 @@ udeadinside(void)
        seems silly when you're polymorphed into something undead;
        monkilled() distinguishes between living (killed) and non (destroyed)
        for monster death message; we refine the nonliving aspect a bit */
-    return !nonliving(u.umonst->data)
-             ? _("dead")          /* living, including demons */
-             : !weirdnonliving(u.umonst->data)
-                 ? _("condemned") /* undead plus manes */
-                 : _("empty");    /* golems plus vortices */
+    return !nonliving(gy.youmonst.data)
+             ? "dead"          /* living, including demons */
+             : !weirdnonliving(gy.youmonst.data)
+                 ? "condemned" /* undead plus manes */
+                 : "empty";    /* golems plus vortices */
 }
 
 /*polyself.c*/

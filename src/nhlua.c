@@ -152,7 +152,7 @@ l_nhcore_init(void)
                 nhcore_call_available[i] = TRUE;
         }
     } else
-        impossible("l_nhcore_init failed");
+        impossible(_("l_nhcore_init failed"));
 }
 
 void
@@ -176,7 +176,7 @@ l_nhcore_call(int callidx)
 
     lua_getglobal(gl.luacore, "nhcore");
     if (!lua_istable(gl.luacore, -1)) {
-        /*impossible("nhcore is not a lua table");*/
+        /*impossible(_("nhcore is not a lua table"));*/
         nhl_done(gl.luacore);
         gl.luacore = 0;
         return;
@@ -187,7 +187,7 @@ l_nhcore_call(int callidx)
     if (ltyp == LUA_TFUNCTION) {
         nhl_pcall_handle(gl.luacore, 0, 1, "l_nhcore_call", NHLpa_panic);
     } else {
-        /*impossible("nhcore.%s is not a lua function",
+        /*impossible(_("nhcore.%s is not a lua function",
           nhcore_call_names[callidx]);*/
         nhcore_call_available[callidx] = FALSE;
     }
@@ -615,14 +615,14 @@ nhl_getmap(lua_State *L)
     }
 }
 
-/* impossible("Error!") */
+/* impossible(_("Error!") */
 staticfn int
 nhl_impossible(lua_State *L)
 {
     int argc = lua_gettop(L);
 
     if (argc == 1)
-        impossible("%s", luaL_checkstring(L, 1));
+        impossible(_("%s", luaL_checkstring(L, 1));
     else
         nhl_error(L, "Wrong args");
     return 0;
@@ -1225,14 +1225,14 @@ nhl_variable(lua_State *L)
     const char *key;
 
     if (!gl.luacore) {
-        panic("nh luacore not inited");
+        panic(_("nh luacore not inited"));
         /*NOTREACHED*/
         return 0;
     }
 
     lua_getglobal(gl.luacore, "nh_lua_variables");
     if (!lua_istable(gl.luacore, -1)) {
-        impossible("nh_lua_variables is not a lua table");
+        impossible(_("nh_lua_variables is not a lua table"));
         return 0;
     }
 
@@ -1262,7 +1262,7 @@ nhl_variable(lua_State *L)
         /* set nh_lua_variables[key] = value;
            nh.variable("key", value); */
         key = luaL_checkstring(L, 1);
-        //pline("SETVAR:%s", key);
+        //pline(_("SETVAR:%s", key);
         typ = lua_type(L, -1);
 
         if (typ == LUA_TSTRING) {
@@ -1299,7 +1299,7 @@ get_nh_lua_variables(void)
     char *key = NULL;
 
     if (!gl.luacore) {
-        panic("nh luacore not inited");
+        panic(_("nh luacore not inited"));
         /*NOTREACHED*/
         return key;
     }
@@ -1670,7 +1670,7 @@ nhl_callback(lua_State *L)
     const char *fn, *cb;
 
     if (!gl.luacore) {
-        panic("nh luacore not inited");
+        panic(_("nh luacore not inited"));
         /*NOTREACHED*/
         return 0;
     }
@@ -1693,7 +1693,7 @@ nhl_callback(lua_State *L)
         if (rm) {
             nhcb_counts[i]--;
             if (nhcb_counts[i] < 0)
-                impossible("nh.callback counts are wrong");
+                impossible(_("nh.callback counts are wrong"));
         } else {
             nhcb_counts[i]++;
         }
@@ -1736,7 +1736,7 @@ nhl_gamestate(lua_State *L)
 
         /* restore game state */
         svm.moves = gg.gmst_moves;
-        pline("Resetting time to move #%ld.", svm.moves);
+        pline(_("Resetting time to move #%ld.", svm.moves);
         gg.gmst_moves = 0L;
 
         gl.lastinvnr = 51;
@@ -1794,7 +1794,7 @@ nhl_gamestate(lua_State *L)
         (void) memset(svs.spl_book, 0, sizeof(svs.spl_book));
         gg.gmst_stored = TRUE;
     } else {
-        impossible("nhl_gamestate: inconsistent state (%s vs %s)",
+        impossible(_("nhl_gamestate: inconsistent state (%s vs %s)",
                    reststate ? "restore" : "save",
                    gg.gmst_stored ? "already stored" : "not stored");
     }
@@ -2079,7 +2079,7 @@ staticfn int
 nhl_set_package_path(lua_State *L, const char *path)
 {
     if (LUA_TTABLE != lua_getglobal(L, "package")) {
-        impossible("package not a table in nhl_set_package_path");
+        impossible(_("package not a table in nhl_set_package_path"));
         return 1;
     };
     lua_pushstring(L, path);
@@ -2128,7 +2128,7 @@ nhl_pcall(lua_State *L, int nargs, int nresults, const char *name)
         if (setjmp(nud->jb)) {
             /* panic, because we don't know if the game state is corrupt */
             /* XXX can we get a lua stack trace as well? */
-            panic("Lua time exceeded %d:%s", nud->sid,
+            panic(_("Lua time exceeded %d:%s", nud->sid,
                   nud->name ? nud->name : "(unknown)");
         }
     }
@@ -2163,12 +2163,12 @@ nhl_pcall_handle(lua_State *L, int nargs, int nresults, const char *name,
         /* XXX can we get a lua stack trace as well? */
         switch (npa) {
         case NHLpa_panic:
-            panic("Lua error %d:%s %s", nud->sid,
+            panic(_("Lua error %d:%s %s", nud->sid,
                   nud->name ? nud->name : "(unknown)", lua_tostring(L, -1));
             /*NOTREACHED*/
             break;
         case NHLpa_impossible:
-            impossible("Lua error: %d:%s %s", nud->sid,
+            impossible(_("Lua error: %d:%s %s", nud->sid,
                        nud->name ? nud->name : "(unknown)",
                        lua_tostring(L, -1));
                 /* Drop the error.  If the caller cares, use nhl_pcall(). */
@@ -2198,7 +2198,7 @@ nhl_loadlua(lua_State *L, const char *fname)
     Sprintf(altfname, "(%s)", fname);
     fh = dlb_fopen(fname, RDBMODE);
     if (!fh) {
-        impossible("nhl_loadlua: Error opening %s", altfname);
+        impossible(_("nhl_loadlua: Error opening %s", altfname);
         ret = FALSE;
         goto give_up;
     }
@@ -2260,7 +2260,7 @@ nhl_loadlua(lua_State *L, const char *fname)
                 /* cnt==0 so inner loop will terminate */
             } else {
                 /* LOADCHUNKSIZE portion of buffer already completely full */
-                impossible("(%s) line too long", altfname);
+                impossible(_("(%s) line too long", altfname);
                 goto give_up;
             }
         }
@@ -2270,7 +2270,7 @@ nhl_loadlua(lua_State *L, const char *fname)
 
     llret = luaL_loadbuffer(L, buf, strlen(buf), altfname);
     if (llret != LUA_OK) {
-        impossible("luaL_loadbuffer: Error loading %s: %s", altfname,
+        impossible(_("luaL_loadbuffer: Error loading %s: %s", altfname,
                    lua_tostring(L, -1));
         ret = FALSE;
         goto give_up;
@@ -2671,7 +2671,7 @@ start_luapat(void)
                          luapat,
               "function matches(s,p) return not not stringm.match(s,p) end");
     if (rv != LUA_OK) {
-        panic("start_luapat: %d", rv);
+        panic(_("start_luapat: %d", rv);
     }
     return TRUE;
 }
@@ -2706,7 +2706,7 @@ opencheckpat(lua_State *L, const char *ename, int param)
     lua_pushstring(luapat, string);                              /* -0,+1 */
 
     if (nhl_pcall(luapat, 2, 1)) {                               /* -3,+1 */
-        /* impossible("access check internal error"); */
+        /* impossible(_("access check internal error")); */
         return NHL_SBRV_FAIL;
     }
     rv = lua_toboolean(luapat, -1);                              /* -0,+0 */
@@ -2926,7 +2926,7 @@ UNSAFEIO:
         luaL_requiref(L, LUA_IOLIBNAME, luaopen_io, 1);
         lua_pop(L, 1);
         if (!hook_open(L))
-            panic("can't hook io.open");
+            panic(_("can't hook io.open"));
     }
 #endif
     if (lflags & NHL_SB_OSMASK) {
@@ -2996,7 +2996,7 @@ nhl_panic(lua_State *L)
 
     if (msg == NULL)
         msg = "error object is not a string";
-    panic("unprotected error in call to Lua API (%s)\n", msg);
+    panic(_("unprotected error in call to Lua API (%s)\n", msg);
     /*NOTREACHED*/
     return 0; /* return to Lua to abort */
 }
@@ -3070,7 +3070,7 @@ nhlL_newstate(nhl_sandbox_info *sbi, const char *name)
 #endif
                                );
     if (!L)
-        panic("NULL lua_newstate");
+        panic(_("NULL lua_newstate"));
 
     if(nud) nud->L = L;
     lua_atpanic(L, nhl_panic);
@@ -3081,7 +3081,7 @@ nhlL_newstate(nhl_sandbox_info *sbi, const char *name)
 #ifdef NHL_SANDBOX
     if (nud && (sbi->steps || sbi->perpcall)) {
         if (sbi->steps && sbi->perpcall)
-            impossible("steps and perpcall both non-zero");
+            impossible(_("steps and perpcall both non-zero"));
         if (sbi->perpcall) {
             nud->perpcall = sbi->perpcall;
         } else {

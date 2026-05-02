@@ -1053,8 +1053,8 @@ mon_would_consume_item(struct monst *mtmp, struct obj *otmp)
 boolean
 itsstuck(struct monst *mtmp)
 {
-    if (sticks(u.umonst->data) && mtmp == u.ustuck && !u.uswallow) {
-        pline_mon(mtmp, _("%s cannot escape from you!"), Monnam(mtmp));
+    if (sticks(gy.youmonst.data) && mtmp == u.ustuck && !u.uswallow) {
+        pline_mon(mtmp, "%s cannot escape from you!", Monnam(mtmp));
         return TRUE;
     }
     return FALSE;
@@ -1816,7 +1816,7 @@ m_move(struct monst *mtmp, int after)
             mmoved = MMOVE_NOTHING; /* shk follow hero outside shop */
             break;
         default:
-            impossible("unknown shk/gd/pri_move return value (%d)", xm);
+            impossible(_("unknown shk/gd/pri_move return value (%d)", xm);
             FALLTHROUGH;
             /*FALLTHRU*/
         case 0:

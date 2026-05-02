@@ -371,7 +371,7 @@ learn(void)
         svc.context.spbook.book = 0; /* no longer studying */
         svc.context.spbook.o_id = 0;
         nomul(svc.context.spbook.delay); /* remaining delay is uninterrupted */
-        gm.multi_reason = _("reading a book");
+        gm.multi_reason = _("reading a book"));
         gn.nomovemsg = 0;
         svc.context.spbook.delay = 0;
         return 0;
@@ -396,7 +396,7 @@ learn(void)
             break;
 
     if (i == MAXSPELL) {
-        impossible("Too many spells memorized!");
+        impossible(_("Too many spells memorized!"));
     } else if (spellid(i) == booktype) {
         /* normal book can be read and re-read a total of 4 times */
         if (book->spestudied > MAX_SPELL_STUDY) {
@@ -554,7 +554,7 @@ study_book(struct obj *spellbook)
             svc.context.spbook.delay = -8 * objects[booktype].oc_delay;
             break;
         default:
-            impossible("Unknown spellbook level %d, book %d;",
+            impossible(_("Unknown spellbook level %d, book %d;",
                        objects[booktype].oc_level, booktype);
             return 0;
         }
@@ -606,7 +606,7 @@ study_book(struct obj *spellbook)
             boolean gone = cursed_book(spellbook);
 
             nomul(svc.context.spbook.delay); /* study time */
-            gm.multi_reason = _("reading a book");
+            gm.multi_reason = _("reading a book"));
             gn.nomovemsg = 0;
             svc.context.spbook.delay = 0;
             if (gone || !rn2(3)) {
@@ -622,7 +622,7 @@ study_book(struct obj *spellbook)
                 spellbook->in_use = FALSE;
             }
             nomul(svc.context.spbook.delay);
-            gm.multi_reason = _("reading a book");
+            gm.multi_reason = _("reading a book"));
             gn.nomovemsg = 0;
             svc.context.spbook.delay = 0;
             return 1;
@@ -690,7 +690,7 @@ rejectcasting(void)
     if (Stunned) {
         You(_("are too impaired to cast a spell."));
         return TRUE;
-    } else if (!can_chant(u.umonst)) {
+    } else if (!can_chant(&gy.youmonst)) {
         You(_("are unable to chant the incantation."));
         return TRUE;
     } else if (!freehand() && !(uwep && uwep->otyp == QUARTERSTAFF)) {
@@ -833,21 +833,21 @@ spelltypemnemonic(int skill)
 {
     switch (skill) {
     case P_ATTACK_SPELL:
-        return _("attack");
+        return _("attack"));
     case P_HEALING_SPELL:
-        return _("healing");
+        return _("healing"));
     case P_DIVINATION_SPELL:
-        return _("divination");
+        return _("divination"));
     case P_ENCHANTMENT_SPELL:
-        return _("enchantment");
+        return _("enchantment"));
     case P_CLERIC_SPELL:
-        return _("clerical");
+        return _("clerical"));
     case P_ESCAPE_SPELL:
-        return _("escape");
+        return _("escape"));
     case P_MATTER_SPELL:
-        return _("matter");
+        return _("matter"));
     default:
-        impossible("Unknown spell skill, %d;", skill);
+        impossible(_("Unknown spell skill, %d;", skill);
         return "";
     }
 }
@@ -1579,7 +1579,7 @@ spelleffects(int spell_otyp, boolean atme, boolean force)
         cast_chain_lightning();
         break;
     default:
-        impossible("Unknown spell %d attempted.", spell);
+        impossible(_("Unknown spell %d attempted.", spell);
         obfree(pseudo, (struct obj *) 0);
         return ECMD_OK;
     }
@@ -1712,7 +1712,7 @@ tport_spell(int what)
         if (spellid(i) == SPE_TELEPORT_AWAY || spellid(i) == NO_SPELL)
             break;
     if (i == MAXSPELL) {
-        impossible("tport_spell: spellbook full");
+        impossible(_("tport_spell: spellbook full"));
         /* wizard mode ^T is not able to honor player's menu choice */
     } else if (spellid(i) == NO_SPELL) {
         if (what == HIDE_SPELL || what == REMOVESPELL) {
@@ -2336,10 +2336,10 @@ initialspell(struct obj *obj)
             break;
 
     if (i == MAXSPELL) {
-        impossible("Too many spells memorized!");
+        impossible(_("Too many spells memorized!"));
     } else if (spellid(i) != NO_SPELL) {
         /* initial inventory shouldn't contain duplicate spellbooks */
-        impossible("Spell %s already known.", OBJ_NAME(objects[otyp]));
+        impossible(_("Spell %s already known.", OBJ_NAME(objects[otyp]));
     } else {
         svs.spl_book[i].sp_id = otyp;
         svs.spl_book[i].sp_lev = objects[otyp].oc_level;
@@ -2390,7 +2390,7 @@ force_learn_spell(short otyp)
         if (spellid(i) == NO_SPELL || spellid(i) == otyp)
             break;
     if (i == MAXSPELL) {
-        impossible("Too many spells memorized");
+        impossible(_("Too many spells memorized"));
         return '\0';
     }
     /* for a going-stale or forgotten spell the sp_id and sp_lev assignments

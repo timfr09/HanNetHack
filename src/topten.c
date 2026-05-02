@@ -110,7 +110,7 @@ formatkiller(
     buf[0] = '\0'; /* lint suppression */
     switch (svk.killer.format) {
     default:
-        impossible("bad killer format? (%d)", svk.killer.format);
+        impossible(_("bad killer format? (%d)", svk.killer.format);
         FALLTHROUGH;
         /*FALLTHRU*/
     case NO_KILLER_PREFIX:
@@ -1033,23 +1033,23 @@ outentry(int rank, struct toptenentry *t1, boolean so)
                 Sprintf(location_info, _("on the %s Plane"), _("Astral"));
                 break;
             case -4:
-                arg = _("Water");
+                arg = _("Water"));
                 Sprintf(location_info, _("on the Plane of %s"), arg);
                 break;
             case -3:
-                arg = _("Fire");
+                arg = _("Fire"));
                 Sprintf(location_info, _("on the Plane of %s"), arg);
                 break;
             case -2:
-                arg = _("Air");
+                arg = _("Air"));
                 Sprintf(location_info, _("on the Plane of %s"), arg);
                 break;
             case -1:
-                arg = _("Earth");
+                arg = _("Earth"));
                 Sprintf(location_info, _("on the Plane of %s"), arg);
                 break;
             default:
-                arg = _("Void");
+                arg = _("Void"));
                 Sprintf(location_info, _("on the Plane of %s"), arg);
                 break;
             }
@@ -1410,7 +1410,7 @@ classmon(char *plch)
     if (!strcmp(plch, "E"))
         return PM_RANGER;
 
-    impossible("What weird role is this? (%s)", plch);
+    impossible(_("What weird role is this? (%s)", plch);
     return  PM_HUMAN_MUMMY;
 }
 
@@ -1427,7 +1427,7 @@ get_rnd_toptenentry(void)
 
     rfile = fopen_datafile(RECORD, "r", SCOREPREFIX);
     if (!rfile) {
-        impossible("Cannot open record file!");
+        impossible(_("Cannot open record file!"));
         return NULL;
     }
 

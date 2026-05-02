@@ -293,7 +293,7 @@ restobjchn(NHFILE *nhfp, boolean frozen)
         otmp2 = otmp;
     }
     if (first && otmp2->nobj) {
-        impossible("Restobjchn: error reading objchn.");
+        impossible(_("Restobjchn: error reading objchn."));
         otmp2->nobj = 0;
     }
 #ifdef SFCTOOL
@@ -439,7 +439,7 @@ restmonchn(NHFILE *nhfp)
                 mtmp->mw = obj;
             else {
                 MON_NOWEP(mtmp);
-                impossible("bad monster weapon restore");
+                impossible(_("bad monster weapon restore"));
             }
         }
 
@@ -457,7 +457,7 @@ restmonchn(NHFILE *nhfp)
     }
 #ifndef SFCTOOL
     if (first && mtmp2->nmon) {
-        impossible("Restmonchn: error reading monchn.");
+        impossible(_("Restmonchn: error reading monchn."));
         mtmp2->nmon = 0;
     }
 #endif
@@ -506,7 +506,7 @@ ghostfruit(struct obj *otmp)
             break;
 
     if (!oldf)
-        impossible("no old fruit?");
+        impossible(_("no old fruit?"));
     else
         otmp->spe = fruitadd(oldf->fname, (struct fruit *) 0);
 }
@@ -759,7 +759,7 @@ restlevelfile(xint8 ltmp)
     if (!nhfp) {
         /* failed to create a new file; don't attempt to make a panic save */
         program_state.something_worth_saving = 0;
-        panic("restlevelfile: %s", whynot);
+        panic(_("restlevelfile: %s", whynot);
     }
     bufon(nhfp->fd);
     nhfp->mode = WRITING | FREEING;
@@ -906,7 +906,7 @@ dorecover(NHFILE *nhfp)
     max_rank_sz(); /* to recompute gm.mrank_sz (botl.c) */
 
     if ((uball && !uchain) || (uchain && !uball)) {
-        impossible("restgamestate: lost ball & chain");
+        impossible(_("restgamestate: lost ball & chain"));
         /* poor man's unpunish() */
         setworn((struct obj *) 0, W_CHAIN);
         setworn((struct obj *) 0, W_BALL);
@@ -1278,7 +1278,7 @@ getlev(NHFILE *nhfp, int pid, xint8 lev)
                     if (trap->ttyp == MAGIC_PORTAL)
                         break;
                 if (!trap)
-                    panic("getlev: need portal but none found");
+                    panic(_("getlev: need portal but none found"));
                 assign_level(&trap->dst, &ltmp);
                 break;
             }
@@ -1396,7 +1396,7 @@ restore_gamelog(NHFILE *nhfp)
         if (slen == -1)
             break;
         if (slen > ((BUFSZ*2) - 1))
-            panic("restore_gamelog: msg too big (%d)", slen);
+            panic(_("restore_gamelog: msg too big (%d)", slen);
         Sfi_char(nhfp, msg, "gamelog-gamelog_text", slen);
         msg[slen] = '\0';
         Sfi_gamelog_line(nhfp, &tmp, "gamelog-gamelog_line");
@@ -1423,7 +1423,7 @@ restore_msghistory(NHFILE *nhfp)
         if (msgsize == -1)
             break;
         if (msgsize > BUFSZ - 1)
-            panic("restore_msghistory: msg too big (%d)", msgsize);
+            panic(_("restore_msghistory: msg too big (%d)", msgsize);
         Sfi_char(nhfp, msg, "msghistory-msg", msgsize);
         msg[msgsize] = '\0';
 #ifndef SFCTOOL

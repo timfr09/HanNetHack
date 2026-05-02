@@ -320,7 +320,7 @@ dog_eat(struct monst *mtmp,
             edog->apport += (int) (200L / ((long) edog->dropdist + svm.moves
                                            - edog->droptime));
             if (edog->apport <= 0) {
-                impossible("dog_eat: pet apport <= 0 (%d, %d, %ld, %ld, %d, %u, %u)",
+                impossible(_("dog_eat: pet apport <= 0 (%d, %d, %ld, %ld, %d, %u, %u)",
                             edog->apport, edog->dropdist, edog->droptime,
                             svm.moves,
                             prior_apport,
@@ -1004,7 +1004,7 @@ dog_move(
      * monsters with other structures that can be tame.)
      */
     if (!edog && !mtmp->isminion) {
-        impossible("dog_move for non-pet?");
+        impossible(_("dog_move for non-pet?"));
         return MMOVE_NOTHING;
     }
 

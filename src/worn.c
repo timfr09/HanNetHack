@@ -86,7 +86,7 @@ setworn(struct obj *obj, long mask)
             if (wp->w_mask & mask) {
                 oobj = *(wp->w_obj);
                 if (oobj && !(oobj->owornmask & wp->w_mask))
-                    impossible("Setworn: mask=0x%08lx.", wp->w_mask);
+                    impossible(_("Setworn: mask=0x%08lx.", wp->w_mask);
                 if (oobj) {
                     if (u.twoweap && (oobj->owornmask & (W_WEP | W_SWAPWEP)))
                         set_twoweap(FALSE); /* u.twoweap = FALSE */
@@ -383,7 +383,7 @@ check_wornmask_slots(void)
                 Sprintf(whybuf, "%s wrong bit set in owornmask [0x%08lx]",
                         wp->w_what, o->owornmask);
             if (whybuf[0])
-                impossible("Worn-slot insanity: %s.", whybuf);
+                impossible(_("Worn-slot insanity: %s.", whybuf);
         } /* o != NULL */
 
         /* check whether any item other than the one in the slot pointer
@@ -399,7 +399,7 @@ check_wornmask_slots(void)
                     || (otmp->owornmask & I_SPECIAL) == 0L)) {
                 Sprintf(whybuf, "%s [0x%08lx] has %s mask 0x%08lx bit set",
                         simpleonames(otmp), otmp->owornmask, wp->w_what, m);
-                impossible("Worn-slot insanity: %s.", whybuf);
+                impossible(_("Worn-slot insanity: %s.", whybuf);
             }
         }
     } /* for wp in worn[] */
@@ -430,7 +430,7 @@ check_wornmask_slots(void)
             Sprintf(whybuf, "%s, hero is not %s",
                     what, an(mons[u.umonnum].pmnames[NEUTRAL]));
         if (whybuf[0])
-            impossible("Worn-slot insanity: %s.", whybuf);
+            impossible(_("Worn-slot insanity: %s.", whybuf);
     } /* uskin */
 #endif /* EXTRA_SANITY_CHECKS */
 
@@ -464,7 +464,7 @@ check_wornmask_slots(void)
             why = "without two weapon attacks";
 
         if (why)
-            impossible("Two-weapon insanity: %s.", why);
+            impossible(_("Two-weapon insanity: %s.", why);
     }
 #endif /* EXTRA_SANITY_CHECKS */
     return;
@@ -1033,7 +1033,7 @@ which_armor(struct monst *mon, long flag)
         case W_ARMU:
             return uarmu;
         default:
-            impossible("bad flag in which_armor");
+            impossible(_("bad flag in which_armor"));
             return 0;
         }
     } else {
@@ -1402,7 +1402,7 @@ extract_from_minvent(
      */
 
     if (obj->where != OBJ_MINVENT) {
-        impossible("extract_from_minvent called on object not in minvent");
+        impossible(_("extract_from_minvent called on object not in minvent"));
         return;
     }
     /* handle gold dragon scales/scale-mail (lit when worn) before clearing

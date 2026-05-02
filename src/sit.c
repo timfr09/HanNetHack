@@ -204,11 +204,11 @@ throne_sit_effect(void)
                           FALSE);
             break;
         default:
-            impossible("throne effect");
+            impossible(_("throne effect"));
             break;
         }
     } else {
-        if (is_prince(u.umonst->data) || u.uevent.uhand_of_elbereth)
+        if (is_prince(gy.youmonst.data) || u.uevent.uhand_of_elbereth)
             You_feel(_("very comfortable here."));
         else
             You_feel(_("somehow out of place..."));
@@ -325,7 +325,7 @@ special_throne_effect(int effect) {
     case 11:
         /* polymorph effect (not blocked by magic resistance, but other things
            that protect from polymorphs work) */
-        if (is_vampire(u.umonst->data)) {
+        if (is_vampire(gy.youmonst.data)) {
             You_feel(_("unworthy."));
         } else {
             pline(_("This throne was not meant for those such as you!"));
@@ -374,8 +374,8 @@ lay_an_egg(void)
             return ECMD_OK;
         }
         if (Upolyd
-            && (u.umonst->data == &mons[PM_GIANT_EEL]
-                || u.umonst->data == &mons[PM_ELECTRIC_EEL])) {
+            && (gy.youmonst.data == &mons[PM_GIANT_EEL]
+                || gy.youmonst.data == &mons[PM_ELECTRIC_EEL])) {
             You(_("yearn for the Sargasso Sea."));
             return ECMD_OK;
         }
@@ -388,7 +388,7 @@ lay_an_egg(void)
     set_corpsenm(uegg, egg_type_from_parent(u.umonnum, FALSE));
     uegg->known = 1;
     observe_object(uegg);
-    You(_("%s an egg."), eggs_in_water(u.umonst->data) ? _("spawn") : _("lay"));
+    You(_("%s an egg.", eggs_in_water(gy.youmonst.data) ? "spawn" : "lay");
     dropy(uegg);
     stackobj(uegg);
     morehungry((int) objects[EGG].oc_nutrition);
@@ -439,15 +439,15 @@ dosit(void)
         struct obj *obj;
 
         obj = svl.level.objects[u.ux][u.uy];
-        if (u.umonst->data->mlet == S_DRAGON && obj->oclass == COIN_CLASS) {
-            You(_("coil up around your %shoard."),
+        if (gy.youmonst.data->mlet == S_DRAGON && obj->oclass == COIN_CLASS) {
+            You(_("coil up around your %shoard.",
                 (obj->quan + money_cnt(gi.invent) < u.ulevel * 1000)
                 ? "meager " : "");
         } else if (obj->otyp == TOWEL) {
             pline(_("It's probably not a good time for a picnic..."));
         } else {
-            if (slithy(u.umonst->data))
-                You(_("coil up around %s."), the(xname(obj)));
+            if (slithy(gy.youmonst.data))
+                You(_("coil up around %s.", the(xname(obj)));
             else
                 You(_("sit on %s."), the(xname(obj)));
             if (obj->otyp == CORPSE && amorphous(&mons[obj->corpsenm]))
@@ -507,7 +507,7 @@ dosit(void)
             There(_("are no cushions floating nearby."));
         else
             You(_("sit down on the muddy bottom."));
-    } else if (is_pool(u.ux, u.uy) && !eggs_in_water(u.umonst->data)) {
+    } else if (is_pool(u.ux, u.uy) && !eggs_in_water(gy.youmonst.data)) {
  in_water:
         You(_("sit in the %s."), hliquid("water"));
         if (Upolyd && u.umonnum == PM_GREMLIN) {
@@ -523,9 +523,9 @@ dosit(void)
                 (void) water_damage(uarm, _("armor"), TRUE);
         }
     } else if (IS_SINK(typ)) {
-        You(_("sit on the %s."), _(defsyms[S_sink].explanation));
-        Your(_("%s gets wet."),
-             humanoid(u.umonst->data) ? _("rump") : _("underside"));
+        You(sit_message, defsyms[S_sink].explanation);
+        Your(_("%s gets wet.",
+             humanoid(gy.youmonst.data) ? "rump" : "underside");
     } else if (IS_ALTAR(typ)) {
         You(_("sit on the %s."), _(defsyms[S_altar].explanation));
         altar_wrath(u.ux, u.uy);
@@ -539,8 +539,8 @@ dosit(void)
         /* must be WWalking */
         You(_("sit on the %s."), hliquid("lava"));
         burn_away_slime();
-        if (likes_lava(u.umonst->data)) {
-            pline_The(_("%s feels warm."), hliquid("lava"));
+        if (likes_lava(gy.youmonst.data)) {
+            pline_The("%s feels warm.", hliquid("lava"));
             return ECMD_TIME;
         }
         pline_The(_("%s burns you!"), hliquid("lava"));

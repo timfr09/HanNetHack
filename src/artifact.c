@@ -410,9 +410,9 @@ void
 found_artifact(int a)
 {
     if (a < 1 || a > NROFARTIFACTS)
-        impossible("found_artifact: invalid artifact index! (%d)", a);
+        impossible(_("found_artifact: invalid artifact index! (%d)", a);
     else if (!artiexist[a].exists)
-        impossible("found_artifact: artifact doesn't exist yet? (%d)", a);
+        impossible(_("found_artifact: artifact doesn't exist yet? (%d)", a);
     else
         artiexist[a].found = 1;
 }
@@ -509,7 +509,7 @@ artifact_origin(
         if ((aflags & ONAME_RANDOM) != 0)
             artiexist[a].rndm = 1, ++ct;
         if (ct != 1)
-            impossible("invalid artifact origin: %4o", aflags);
+            impossible(_("invalid artifact origin: %4o", aflags);
     }
 }
 
@@ -1054,7 +1054,7 @@ spec_applies(const struct artifact *weap, struct monst *mtmp)
         case AD_STON:
             return !(yours ? Stone_resistance : resists_ston(mtmp));
         default:
-            impossible("Weird weapon special attack.");
+            impossible(_("Weird weapon special attack."));
         }
     }
     return 0;
@@ -1124,7 +1124,7 @@ discover_artifact(xint16 m)
         }
     /* there is one slot per artifact, so we should never reach the
        end without either finding the artifact or an empty slot... */
-    impossible("couldn't discover artifact (%d)", (int) m);
+    impossible(_("couldn't discover artifact (%d)", (int) m);
 }
 
 /* used to decide whether an artifact has been fully identified */
@@ -1358,7 +1358,7 @@ Mb_hit(struct monst *magr, /* attacker */
                 resisted = TRUE;
             } else {
                 nomul(-3);
-                gm.multi_reason = _("being scared stiff");
+                gm.multi_reason = _("being scared stiff"));
                 gn.nomovemsg = "";
                 if (magr && magr == u.ustuck && sticks(gy.youmonst.data)) {
                     set_ustuck((struct monst *) 0);
@@ -1471,7 +1471,7 @@ artifact_hit(
     *dmgptr += spec_dbon(otmp, mdef, *dmgptr);
 
     if (youattack && youdefend) {
-        impossible("attacking yourself with weapon?");
+        impossible(_("attacking yourself with weapon?"));
         return FALSE;
     }
 
@@ -1552,7 +1552,7 @@ artifact_hit(
     /* reverse from AD&D. */
     if (spec_ability(otmp, SPFX_BEHEAD)) {
         if (is_art(otmp, ART_TSURUGI_OF_MURAMASA) && dieroll == 1) {
-            wepdesc = _("The razor-sharp blade");
+            wepdesc = _("The razor-sharp blade"));
             /* not really beheading, but so close, why add another SPFX */
             if (youattack && engulfing_u(mdef)) {
                 You(_("slice %s wide open!"), mon_nam(mdef));
@@ -1578,8 +1578,8 @@ artifact_hit(
                 observe_object(otmp);
                 return TRUE;
             } else {
-                if (bigmonst(u.umonst->data)) {
-                    pline(_("%s cuts deeply into you!"),
+                if (bigmonst(gy.youmonst.data)) {
+                    pline(_("%s cuts deeply into you!",
                           magr ? Monnam(magr) : wepdesc);
                     *dmgptr *= 2;
                     return TRUE;
@@ -1625,15 +1625,15 @@ artifact_hit(
                 observe_object(otmp);
                 return TRUE;
             } else {
-                if (!has_head(u.umonst->data)) {
-                    pline(_("Somehow, %s misses you wildly."),
+                if (!has_head(gy.youmonst.data)) {
+                    pline(_("Somehow, %s misses you wildly.",
                           magr ? mon_nam(magr) : wepdesc);
                     *dmgptr = 0;
                     return TRUE;
                 }
-                if (noncorporeal(u.umonst->data)
-                    || amorphous(u.umonst->data)) {
-                    pline(_("%s slices through your %s."), wepdesc,
+                if (noncorporeal(gy.youmonst.data)
+                    || amorphous(gy.youmonst.data)) {
+                    pline(_("%s slices through your %s.", wepdesc,
                           body_part(NECK));
                     return TRUE;
                 }
@@ -1648,7 +1648,7 @@ artifact_hit(
     if (spec_ability(otmp, SPFX_DRLI)) {
         /* some non-living creatures (golems, vortices) are vulnerable to
            life drain effects so can get "<Arti> draws the <life>" feedback */
-        const char *life = nonliving(mdef->data) ? _("animating force") : _("life");
+        const char *life = nonliving(mdef->data) ? _("animating force") : _("life"));
 
         if (!youdefend) {
             int m_lev = (int) mdef->m_lev, /* will be 0 for 1d4 mon */
@@ -2138,7 +2138,7 @@ arti_invoke(struct obj *obj)
     int res = ECMD_OK;
 
     if (!obj) {
-        impossible("arti_invoke without obj");
+        impossible(_("arti_invoke without obj"));
         return ECMD_OK;
     }
     oart = get_artifact(obj);
@@ -2175,7 +2175,7 @@ arti_invoke(struct obj *obj)
         case FIRESTORM: res = invoke_storm_spell(obj); break;
         case BLINDING_RAY: res = invoke_blinding_ray(obj); break;
         default:
-            impossible("Unknown invoke power %d.", oart->inv_prop);
+            impossible(_("Unknown invoke power %d.", oart->inv_prop);
             break;
         }
         return res;
@@ -2292,7 +2292,7 @@ arti_speak(struct obj *obj)
 
     line = getrumor(bcsign(obj), buf, TRUE);
     if (!*line)
-        line = _("NetHack rumors file closed for renovation.");
+        line = _("NetHack rumors file closed for renovation."));
     pline(_("%s:"), Tobjnam(obj, _("whisper")));
     SetVoice((struct monst *) 0, 0, 80, voice_talking_artifact);
     verbalize1(line);

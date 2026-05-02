@@ -515,7 +515,7 @@ readmail(struct obj *otmp UNUSED)
            the pline below, not the data here) */
         N_("%sInvitation: Visit the NetHack web site at %s%s")
     };
-    const char *const it_reads = N_("It reads:  \"");
+    const char *const it_reads = N_("It reads:  \""));
 
     i = rn2(SIZE(junk_templates));
     if (strchr(junk_templates[i], '%')) {
@@ -526,7 +526,7 @@ readmail(struct obj *otmp UNUSED)
             recipient = DEVTEAM_URL;
             delivery = subst_delivery;
         } else {
-            impossible("fake mail #%d has undefined substitution", i);
+            impossible(_("fake mail #%d has undefined substitution", i);
             delivery = faulty_delivery;
         }
     }

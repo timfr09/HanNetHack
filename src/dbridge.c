@@ -255,7 +255,7 @@ create_drawbridge(coordxy x, coordxy y, int dir, boolean flag)
         x2++;
         break;
     default:
-        impossible("bad direction in create_drawbridge");
+        impossible(_("bad direction in create_drawbridge"));
         FALLTHROUGH;
         /*FALLTHRU*/
     case DB_WEST:

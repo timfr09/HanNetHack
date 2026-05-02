@@ -611,7 +611,7 @@ failed_grab(
             boolean tailmiss = gn.notonhead;
             const char *verb = (mattk->adtyp == AD_DGST) ? _("gulp")
                                : (mattk->adtyp == AD_STCK) ? _("adhere")
-                                 : _("grab");
+                                 : _("grab"));
 
             /* beware of "Foo's grab passes through Bar's ghost";
                mon_nam(x_monnam) calls s_suffix() for named ghosts and
@@ -1172,23 +1172,15 @@ mon_poly(struct monst *magr, struct monst *mdef, int dmg)
                 boolean was_seen = !!strcmpi("It", Before),
                         verbosely = flags.verbose || !was_seen;
 
-                if (canspotmon(mdef)) {
-                    char *after = x_monnam(mdef, ARTICLE_A, (char *) 0,
-                                           (SUPPRESS_NAME | SUPPRESS_IT
-                                            | SUPPRESS_INVISIBLE), FALSE);
-                    if (verbosely)
-                        pline(_("%s undergoes a freakish metamorphosis and turns into %s."),
-                              Before, after);
-                    else
-                        pline(_("%s turns into %s."), Before, after);
-                } else if (was_seen || magr == u.umonst) {
-                    if (was_seen)
-                        pline(_("%s undergoes a freakish metamorphosis and disappears."),
-                              Before);
-                    else
-                        pline(_("%s undergoes a freakish metamorphosis."),
-                              Before);
-                }
+                if (canspotmon(mdef))
+                    pline(_("%s%s%s turns into %s.", Before,
+                          verbosely ? freaky : "", verbosely ? " and" : "",
+                          x_monnam(mdef, ARTICLE_A, (char *) 0,
+                                   (SUPPRESS_NAME | SUPPRESS_IT
+                                    | SUPPRESS_INVISIBLE), FALSE));
+                else if (was_seen || magr == &gy.youmonst)
+                    pline(_("%s%s%s.", Before, freaky,
+                          !was_seen ? "" : " and disappears");
             }
             dmg = 0;
             if (can_teleport(magr->data)) {
@@ -1254,8 +1246,8 @@ void
 slept_monst(struct monst *mon)
 {
     if (helpless(mon) && mon == u.ustuck
-        && !sticks(u.umonst->data) && !u.uswallow) {
-        pline_mon(mon, _("%s grip relaxes."), s_suffix(Monnam(mon)));
+        && !sticks(gy.youmonst.data) && !u.uswallow) {
+        pline_mon(mon, "%s grip relaxes.", s_suffix(Monnam(mon)));
         unstuck(mon);
     }
 }

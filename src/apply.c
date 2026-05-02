@@ -145,7 +145,7 @@ use_towel(struct obj *obj)
                 what = (ublindf->otyp == LENSES)
                            ? _("lenses")
                            : (obj->otyp == ublindf->otyp) ? _("other towel")
-                                                          : _("blindfold");
+                                                          : _("blindfold"));
                 if (ublindf->cursed) {
                     You(_("push your %s %s."), what,
                         rn2(2) ? _("cock-eyed") : _("crooked"));
@@ -325,7 +325,7 @@ use_stethoscope(struct obj *obj)
     boolean interference = (u.uswallow && is_whirly(u.ustuck->data)
                             && !rn2(Role_if(PM_HEALER) ? 10 : 3));
 
-    if (nohands(u.umonst->data)) {
+    if (nohands(gy.youmonst.data)) {
         You(_("have no hands!")); /* not `body_part(HAND)' */
         return ECMD_OK;
     } else if (Deaf) {
@@ -476,7 +476,7 @@ static const char whistle_str[] = N_("produce a %s whistling sound."),
 staticfn void
 use_whistle(struct obj *obj)
 {
-    if (!can_blow(u.umonst)) {
+    if (!can_blow(&gy.youmonst)) {
         You(_("are incapable of using the whistle."));
     } else if (Underwater) {
         You(_("blow bubbles through %s."), yname(obj));
@@ -495,7 +495,7 @@ use_whistle(struct obj *obj)
 staticfn void
 use_magic_whistle(struct obj *obj)
 {
-    if (!can_blow(u.umonst)) {
+    if (!can_blow(&gy.youmonst)) {
         You(_("are incapable of using the whistle."));
     } else if (obj->cursed && !rn2(2)) {
         You(_("produce a %shigh-%s."), Underwater ? _("very ") : "",
@@ -898,7 +898,7 @@ mleashed_next2u(struct monst *mtmp)
             struct obj *otmp = get_mleash(mtmp);
 
             if (!otmp) {
-                impossible("leashed-unleashed mon?");
+                impossible(_("leashed-unleashed mon?"));
                 return TRUE;
             }
 
@@ -939,7 +939,7 @@ check_leash(coordxy x, coordxy y)
             continue;
         mtmp = find_mid(otmp->leashmon, FM_FMON);
         if (!mtmp) {
-            impossible("leash in use isn't attached to anything?");
+            impossible(_("leash in use isn't attached to anything?"));
             otmp->leashmon = 0;
             continue;
         }
@@ -1051,12 +1051,12 @@ use_mirror(struct obj *obj)
                         pline(_("Yikes!  You've frozen yourself!"));
                     if (!Hallucination || !rn2(4)) {
                         nomul(-rnd(MAXULEV + 6 - u.ulevel));
-                        gm.multi_reason = _("gazing into a mirror");
+                        gm.multi_reason = _("gazing into a mirror"));
                     }
                     gn.nomovemsg = 0; /* default, "you can move again" */
                 }
-            } else if (is_vampire(u.umonst->data)
-                       || is_vampshifter(u.umonst)) {
+            } else if (is_vampire(gy.youmonst.data)
+                       || is_vampshifter(&gy.youmonst)) {
                 You(_("don't have a reflection."));
             } else if (u.umonnum == PM_UMBER_HULK) {
                 pline(_("Huh?  That doesn't look like you!"));
@@ -1320,7 +1320,7 @@ use_bell(struct obj **optr)
 staticfn void
 use_candelabrum(struct obj *obj)
 {
-    const char *s = (obj->spe != 1) ? _("candles") : _("candle");
+    const char *s = (obj->spe != 1) ? _("candles") : _("candle"));
 
     if (obj->lamplit) {
         You(_("snuff the %s."), s);
@@ -1370,7 +1370,7 @@ use_candelabrum(struct obj *obj)
         /* to make absolutely sure the game doesn't become unwinnable as
            a consequence of a broken candelabrum */
         if (obj->age == 0) {
-            impossible("Candelabrum with candles but no fuel?");
+            impossible(_("Candelabrum with candles but no fuel?"));
             obj->age = 1;
         }
     } else {
@@ -1390,7 +1390,7 @@ use_candle(struct obj **optr)
 {
     struct obj *obj = *optr;
     struct obj *otmp;
-    const char *s = (obj->quan != 1) ? _("candles") : _("candle");
+    const char *s = (obj->quan != 1) ? _("candles") : _("candle"));
     char qbuf[QBUFSZ], qsfx[QBUFSZ], *q;
     boolean was_lamplit;
 
@@ -1423,7 +1423,7 @@ use_candle(struct obj **optr)
             obj = splitobj(obj, 7L - (long) otmp->spe);
             /* avoid a grammatical error if obj->quan gets
                reduced to 1 candle from more than one */
-            s = (obj->quan != 1) ? _("candles") : _("candle");
+            s = (obj->quan != 1) ? _("candles") : _("candle"));
         } else
             *optr = 0;
 
@@ -1696,7 +1696,7 @@ use_lamp(struct obj *obj)
                       otense(obj, _("burn")));
             if (obj->unpaid && costly_spot(u.ux, u.uy)
                 && obj->age == 20L * (long) objects[obj->otyp].oc_cost) {
-                const char *ithem = (obj->quan > 1L) ? _("them") : _("it");
+                const char *ithem = (obj->quan > 1L) ? _("them") : _("it"));
                 struct monst *shkp VOICEONLY
                                = shop_keeper(*in_rooms(u.ux, u.uy, SHOPBASE));
 
@@ -1796,7 +1796,7 @@ dorub(void)
 {
     struct obj *obj;
 
-    if (nohands(u.umonst->data)) {
+    if (nohands(gy.youmonst.data)) {
         You(_("aren't able to rub anything without hands."));
         return ECMD_OK;
     }
@@ -2115,7 +2115,7 @@ jump(int magic) /* 0=Physical, otherwise skill level */
                 set_wounded_legs(RIGHT_SIDE, rn1(10, 11));
                 return ECMD_TIME;
             default:
-                impossible("Jumping out of strange trap (%d)?", u.utraptype);
+                impossible(_("Jumping out of strange trap (%d)?", u.utraptype);
                 break;
             }
             /* if we reach here, hero is no longer trapped */
@@ -2166,7 +2166,7 @@ jump(int magic) /* 0=Physical, otherwise skill level */
          */
         teleds(cc.x, cc.y, TELEDS_NO_FLAGS);
         nomul(-1);
-        gm.multi_reason = _("jumping around");
+        gm.multi_reason = _("jumping around"));
         gn.nomovemsg = "";
         morehungry(rnd(25));
         return ECMD_TIME;
@@ -2207,8 +2207,8 @@ use_tinning_kit(struct obj *obj)
         char kbuf[BUFSZ];
         const char *corpse_name = an(cxname(corpse));
 
-        if (poly_when_stoned(u.umonst->data)) {
-            You(_("tin %s without wearing gloves."), corpse_name);
+        if (poly_when_stoned(gy.youmonst.data)) {
+            You(_("tin %s without wearing gloves.", corpse_name);
             kbuf[0] = '\0';
         } else {
             pline(_("Tinning %s without wearing gloves is a fatal mistake..."),
@@ -2262,7 +2262,7 @@ use_tinning_kit(struct obj *obj)
         (void) hold_another_object(can, _("You make, but cannot pick up, %s."),
                                    doname(can), (const char *) 0);
     } else
-        impossible("Tinning failed.");
+        impossible(_("Tinning failed."));
 }
 
 void
@@ -2386,7 +2386,7 @@ use_unicorn_horn(struct obj **optr)
             did_prop++;
             break;
         default:
-            impossible("use_unicorn_horn: bad trouble? (%d)", idx);
+            impossible(_("use_unicorn_horn: bad trouble? (%d)", idx);
             break;
         }
     }
@@ -2416,7 +2416,7 @@ fig_transform(anything *arg, long timeout)
     char monnambuf[BUFSZ], carriedby[BUFSZ];
 
     if (!figurine) {
-        impossible("null figurine in fig_transform()");
+        impossible(_("null figurine in fig_transform()"));
         return;
     }
     silent = (timeout != svm.moves); /* happened while away */
@@ -2501,7 +2501,7 @@ fig_transform(anything *arg, long timeout)
 #endif
 
         default:
-            impossible("figurine came to life where? (%d)",
+            impossible(_("figurine came to life where? (%d)",
                        (int) figurine->where);
             break;
         }
@@ -2690,7 +2690,7 @@ touchstone_ok(struct obj *obj)
 staticfn int
 use_stone(struct obj *tstone)
 {
-    static const char scritch[] = N_("\"scritch, scritch\"");
+    static const char scritch[] = N_("\"scritch, scritch\""));
     struct obj *obj;
     boolean do_scratch;
     const char *streak_color;
@@ -2836,34 +2836,34 @@ use_trap(struct obj *otmp)
     const char *what = (char *) 0;
     char buf[BUFSZ];
     int levtyp = levl[u.ux][u.uy].typ;
-    const char *occutext = _("setting the trap");
+    const char *occutext = _("setting the trap"));
 
-    if (nohands(u.umonst->data))
-        what = _("without hands");
+    if (nohands(gy.youmonst.data))
+        what = "without hands";
     else if (Stunned)
-        what = _("while stunned");
+        what = _("while stunned"));
     else if (u.uswallow)
-        what = digests(u.ustuck->data) ? _("while swallowed") : _("while engulfed");
+        what = digests(u.ustuck->data) ? _("while swallowed") : _("while engulfed"));
     else if (Underwater)
-        what = _("underwater");
+        what = _("underwater"));
     else if (Levitation)
-        what = _("while levitating");
+        what = _("while levitating"));
     else if (is_pool(u.ux, u.uy))
-        what = _("in water");
+        what = _("in water"));
     else if (is_lava(u.ux, u.uy))
-        what = _("in lava");
+        what = _("in lava"));
     else if (On_stairs(u.ux, u.uy)) {
         stairway *stway = stairway_at(u.ux, u.uy);
-        what = stway->isladder ? _("on the ladder") : _("on the stairs");
+        what = stway->isladder ? _("on the ladder") : _("on the stairs"));
     } else if (IS_FURNITURE(levtyp) || IS_OBSTRUCTED(levtyp)
              || closed_door(u.ux, u.uy) || t_at(u.ux, u.uy))
-        what = _("here");
+        what = _("here"));
     else if (Is_airlevel(&u.uz) || Is_waterlevel(&u.uz))
         what = (levtyp == AIR)
                    ? _("in midair")
                    : (levtyp == CLOUD)
                          ? _("in a cloud")
-                         : _("in this place"); /* Air/Water Plane catch-all */
+                         : _("in this place")); /* Air/Water Plane catch-all */
     if (what) {
         You_cant(_("set a trap %s!"), what);
         reset_trapset();
@@ -2970,8 +2970,8 @@ use_whip(struct obj *obj)
     struct monst *mtmp;
     struct obj *otmp;
     int rx, ry, proficient, res = ECMD_OK;
-    const char *msg_slipsfree = _("The bullwhip slips free.");
-    const char *msg_snap = _("Snap!");
+    const char *msg_slipsfree = _("The bullwhip slips free."));
+    const char *msg_snap = _("Snap!"));
 
     if (obj != uwep) {
         if (wield_tool(obj, "lash")) {
@@ -3120,7 +3120,7 @@ use_whip(struct obj *obj)
             cc.y = ry;
             You(_("wrap your bullwhip around %s."), wrapped_what);
             if (proficient && rn2(proficient + 2)) {
-                if (!mtmp || enexto(&cc, rx, ry, u.umonst->data)) {
+                if (!mtmp || enexto(&cc, rx, ry, gy.youmonst.data)) {
                     You(_("yank yourself out of the pit!"));
                     reset_utrap(TRUE); /* [was after teleds(); do this before
                                         * in case it has no alternative other
@@ -3933,8 +3933,8 @@ do_break_wand(struct obj *obj)
     boolean is_fragile = (objdescr_is(obj, "balsa")
                           || objdescr_is(obj, "glass"));
 
-    if (nohands(u.umonst->data)) {
-        You_cant(_("break %s without hands!"), yname(obj));
+    if (nohands(gy.youmonst.data)) {
+        You_cant(_("break %s without hands!", yname(obj));
         return ECMD_OK;
     } else if (!freehand()) {
         Your(_("%s are occupied!"), makeplural(body_part(HAND)));
@@ -4228,7 +4228,7 @@ doapply(void)
     struct obj *obj;
     int res = ECMD_TIME;
 
-    if (nohands(u.umonst->data)) {
+    if (nohands(gy.youmonst.data)) {
         You(_("aren't able to use or apply tools in your current form."));
         return ECMD_OK;
     }

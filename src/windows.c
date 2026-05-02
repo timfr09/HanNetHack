@@ -1671,7 +1671,7 @@ choose_classes_menu(const char *prompt,
         case 0:
             idx = def_char_to_monclass(*class_list);
             if (!IndexOk(idx, def_monsyms)) {
-                panic("choose_classes_menu: invalid monclass '%c'",
+                panic(_("choose_classes_menu: invalid monclass '%c'",
                       *class_list);
                 /*NOTREACHED*/
             }
@@ -1682,7 +1682,7 @@ choose_classes_menu(const char *prompt,
         case 1:
             idx = def_char_to_objclass(*class_list);
             if (!IndexOk(idx, def_oc_syms)) {
-                panic("choose_classes_menu: invalid objclass '%c'",
+                panic(_("choose_classes_menu: invalid objclass '%c'",
                       *class_list);
                 /*NOTREACHED*/
             }
@@ -1691,7 +1691,7 @@ choose_classes_menu(const char *prompt,
             Sprintf(buf, "%c  %s", *class_list, text);
             break;
         default:
-            panic("choose_classes_menu: invalid category %d", category);
+            panic(_("choose_classes_menu: invalid category %d", category);
             /*NOTREACHED*/
         }
         if (way && *class_select) { /* Selections there already */

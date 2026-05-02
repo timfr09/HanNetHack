@@ -212,7 +212,7 @@ summon_minion(aligntyp alignment, boolean talk)
         mnum = ndemon(alignment);
         break;
     default:
-        impossible("unaligned player?");
+        impossible(_("unaligned player?"));
         mnum = ndemon(A_NONE);
         break;
     }
@@ -550,7 +550,7 @@ gain_guardian_angel(void)
             if ((otmp = select_hwep(mtmp)) == 0) {
                 otmp = mksobj(SILVER_SABER, FALSE, FALSE);
                 if (mpickobj(mtmp, otmp))
-                    panic("merged weapon?");
+                    panic(_("merged weapon?"));
             }
             bless(otmp);
             if (otmp->spe < 4)

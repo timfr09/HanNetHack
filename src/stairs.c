@@ -195,8 +195,8 @@ stairs_description(
     const char *stairs, *updown;
 
     tolev = sway->tolev;
-    stairs = sway->isladder ? _("ladder") : stcase ? _("staircase") : _("stairs");
-    updown = sway->up ? _("up") : _("down");
+    stairs = sway->isladder ? _("ladder") : stcase ? _("staircase") : _("stairs"));
+    updown = sway->up ? _("up") : _("down"));
 
     if (!known_branch_stairs(sway)) {
         /* ordinary stairs or branch stairs to not-yet-visited branch */

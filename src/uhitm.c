@@ -86,7 +86,7 @@ mhitm_mgc_atk_negated(
     if (negated) {
         /* attack has been thwarted by negation, aka magical cancellation */
         if (verbosely) {
-            if (mdef == u.umonst)
+            if (mdef == &gy.youmonst)
                 You(_("avoid harm."));
             else if (gv.vis && canseemon(mdef))
                 pline_mon(mdef, _("%s avoids harm."), Monnam(mdef));
@@ -538,11 +538,11 @@ do_attack(struct monst *mtmp)
         gu.unweapon = FALSE;
         if (flags.verbose) {
             if (uwep)
-                You(_("begin bashing monsters with %s."), yname(uwep));
-            else if (!cantwield(u.umonst->data))
-                You(_("begin %s monsters with your %s %s."),
-                    ing_suffix(Role_if(PM_MONK) ? _("strike") : _("bash")),
-                    uarmg ? _("gloved") : _("bare"), /* Del Lamb */
+                You(_("begin bashing monsters with %s.", yname(uwep));
+            else if (!cantwield(gy.youmonst.data))
+                You(_("begin %s monsters with your %s %s.",
+                    ing_suffix(Role_if(PM_MONK) ? "strike" : "bash"),
+                    uarmg ? "gloved" : "bare", /* Del Lamb */
                     makeplural(body_part(HAND)));
         }
     }
@@ -974,7 +974,7 @@ hmon_hitmon_weapon_melee(
                                    50 + 15 * (greatest_erosion(obj)
                                               - greatest_erosion(monwep)),
                                    100))) {
-        const char *from_your_blow = _(" from the force of your blow!");
+        const char *from_your_blow = _(" from the force of your blow!"));
         char buf[BUFSZ];
         /*
          * 2.5% chance of shattering defender's weapon when
@@ -1222,7 +1222,7 @@ hmon_hitmon_misc_obj(
             const char *eggp =
                 (ismnum(mnum) && obj->known)
                     ? the(mons[mnum].pmnames[NEUTRAL])
-                    : (cnt > 1L) ? _("some") : _("an");
+                    : (cnt > 1L) ? _("some") : _("an"));
 
             You(_("hit %s with %s egg%s."), mon_nam(mon), eggp,
                 plur(cnt));
@@ -1669,9 +1669,9 @@ hmon_hitmon_msg_silver(
 
     if (canspotmon(mon)) {
         if (hmd->barehand_silver_rings == 1)
-            fmt = _("Your silver ring sears %s!");
+            fmt = _("Your silver ring sears %s!"));
         else if (hmd->barehand_silver_rings == 2)
-            fmt = _("Your silver rings sear %s!");
+            fmt = _("Your silver rings sear %s!"));
         else if (hmd->silverobj && hmd->saved_oname[0]) {
             /* guard constructed format string against '%' in
                saved_oname[] from xname(via cxname()) */
@@ -1683,10 +1683,10 @@ hmon_hitmon_msg_silver(
                     sizeof(silverobjbuf) - (strlen(silverobjbuf) + 1));
             fmt = silverobjbuf;
         } else
-            fmt = _("The silver sears %s!");
+            fmt = _("The silver sears %s!"));
     } else {
         *whom = highc(*whom); /* "it" -> "It" */
-        fmt = _("%s is seared!");
+        fmt = _("%s is seared!"));
     }
     /* note: s_suffix returns a modifiable buffer */
     if (!noncorporeal(hmd->mdat) && !amorphous(hmd->mdat))
@@ -1714,10 +1714,10 @@ hmon_hitmon_msg_lightobj(
             Strcat(emitlightobjbuf, _(" %s!"));
             fmt = emitlightobjbuf;
         } else
-            fmt = _("The light sears %s!");
+            fmt = _("The light sears %s!"));
     } else {
         *whom = highc(*whom); /* "it" -> "It" */
-        fmt = _("%s is seared!");
+        fmt = _("%s is seared!"));
     }
     /* note: s_suffix returns a modifiable buffer */
     if (!noncorporeal(hmd->mdat) && !amorphous(hmd->mdat))
@@ -2027,8 +2027,8 @@ shade_miss(
 
     if (verbose
         && ((youdef || cansee(mdef->mx, mdef->my) || sensemon(mdef))
-            || (magr == u.umonst && m_next2u(mdef)))) {
-        const char *harmlessly_thru = _(" harmlessly through ");
+            || (magr == &gy.youmonst && m_next2u(mdef)))) {
+        static const char harmlessly_thru[] = " harmlessly through ";
 
         what = (!obj || shade_aware(obj)) ? _("attack") : cxname(obj);
         target = youdef ? _("you") : mon_nam(mdef);
@@ -2186,7 +2186,7 @@ steal_it(struct monst *mdef, struct attack *mattk)
         while ((otmp = *minvent_ptr) != 0)
             if (otmp->owornmask & W_ARM) {
                 if (ustealo)
-                    panic("steal_it: multiple worn suits");
+                    panic(_("steal_it: multiple worn suits"));
                 *minvent_ptr = otmp->nobj; /* take armor out of minvent */
                 ustealo = otmp;
                 ustealo->nobj = (struct obj *) 0;
@@ -2204,8 +2204,8 @@ steal_it(struct monst *mdef, struct attack *mattk)
            but was using hardcoded pronouns She/her for target monster;
            switch to dynamic pronoun */
         if (gender(mdef) == (int) u.mfemale
-            && u.umonst->data->mlet == S_NYMPH)
-            You(_("charm %s.  %s gladly hands over %s%s possessions."),
+            && gy.youmonst.data->mlet == S_NYMPH)
+            You(_("charm %s.  %s gladly hands over %s%s possessions.",
                 mon_nam(mdef), upstart(strcpy(heshe, mhe(mdef))),
                 !gold ? "" : "most of ", mhis(mdef));
         else
@@ -4642,9 +4642,9 @@ mhitm_ad_sedu(
                    /* !SYSOPT_SEDUCE: when hero is attacking and AD_SSEX
                       is disabled, it would be changed to another damage
                       type, but when defending, it remains as-is */
-                   || dmgtype(u.umonst->data, AD_SSEX)) {
-            pline_mon(magr, _("%s %s."), Monnam(magr),
-                  Deaf ? _("says something but you can't hear it")
+                   || dmgtype(gy.youmonst.data, AD_SSEX)) {
+            pline_mon(magr, "%s %s.", Monnam(magr),
+                  Deaf ? "says something but you can't hear it"
                   : magr->minvent
                     ? _("brags about the goods some dungeon explorer provided")
                   : _("makes some remarks about how difficult theft is lately"));
@@ -4966,7 +4966,7 @@ gulpum(struct monst *mdef, struct attack *mattk)
     struct permonst *pd = mdef->data;
     const char *expel_verb = u_digest ? _("regurgitate")
                              : u_enfold ? _("release")
-                               : _("expel");
+                               : _("expel"));
 
     /* Not totally the same as for real monsters.  Specifically, these
      * don't take multiple moves.  (It's just too hard, for too little
@@ -5084,7 +5084,7 @@ gulpum(struct monst *mdef, struct attack *mattk)
                         if (Slow_digestion)
                             tmp *= 2;
                         nomul(-tmp);
-                        gm.multi_reason = _("digesting something");
+                        gm.multi_reason = _("digesting something"));
                         gn.nomovemsg = msgbuf;
                         /* possible intrinsic once totally digested */
                         gc.corpsenm_digested = monsndx(pd);
@@ -5104,16 +5104,16 @@ gulpum(struct monst *mdef, struct attack *mattk)
                 end_engulf();
                 return M_ATTK_DEF_DIED;
             case AD_PHYS:
-                if (u.umonst->data == &mons[PM_FOG_CLOUD]) {
-                    pline(_("%s is laden with your moisture."), Monnam(mdef));
+                if (gy.youmonst.data == &mons[PM_FOG_CLOUD]) {
+                    pline(_("%s is laden with your moisture.", Monnam(mdef));
                     if ((breathless(pd) || amphibious(pd)) && !flaming(pd)) {
                         dam = 0;
                         pline(_("%s seems unharmed."), Monnam(mdef));
                     }
                 } else {
-                    pline(_("%s is %s!"), Monnam(mdef),
-                          enfolds(u.umonst->data) ? _("being squashed")
-                            : _("pummeled with your debris"));
+                    pline(_("%s is %s!", Monnam(mdef),
+                          enfolds(gy.youmonst.data) ? "being squashed"
+                            : "pummeled with your debris");
                 }
                 break;
             case AD_ACID:
@@ -5183,9 +5183,9 @@ gulpum(struct monst *mdef, struct attack *mattk)
                 if (DEADMONSTER(mdef)) /* not lifesaved */
                     return M_ATTK_DEF_DIED;
             }
-            You(C_("you_expel", "%s %s!"), expel_verb, mon_nam(mdef));
-            if ((Slow_digestion || is_animal(u.umonst->data)) && u_digest) {
-                pline(_("Obviously, you didn't like %s taste."),
+            You(_("%s %s!", expel_verb, mon_nam(mdef));
+            if ((Slow_digestion || is_animal(gy.youmonst.data)) && u_digest) {
+                pline(_("Obviously, you didn't like %s taste.",
                       s_suffix(mon_nam(mdef)));
             }
         }
@@ -5202,8 +5202,8 @@ missum(
     if (wouldhavehit) /* monk is missing due to penalty for wearing suit */
         Your(_("armor is rather cumbersome..."));
 
-    if (could_seduce(u.umonst, mdef, mattk))
-        You(_("pretend to be friendly to %s."), mon_nam(mdef));
+    if (could_seduce(&gy.youmonst, mdef, mattk))
+        You(_("pretend to be friendly to %s.", mon_nam(mdef));
     else if (canspotmon(mdef) && flags.verbose)
         You(_("miss %s."), mon_nam(mdef));
     else
@@ -5354,7 +5354,7 @@ mhitm_knockback(
     /* subtly vary the message text if monster won't actually move */
     knockedhow = dismount ? _("out of your saddle")
                  : will_hurtle(mdef, defx + dx, defy + dy) ? _("backward")
-                   : _("back");
+                   : _("back"));
 
     /* give the message */
     if (u_def || canseemon(mdef)) {
@@ -5593,7 +5593,7 @@ hmonas(struct monst *mon)
                 case AT_CLAW:
                 case AT_TUCH:
                     /* verb=="claws" may be overridden below */
-                    verb = (mattk->aatyp == AT_TUCH) ? _("touch") : _("claws");
+                    verb = (mattk->aatyp == AT_TUCH) ? _("touch") : _("claws"));
                     /* decide if silver-hater will be hit by silver ring(s);
                        for 'multi_claw' where attacks alternate right/left,
                        assume 'even' claw or touch attacks use dominant hand
@@ -5714,7 +5714,7 @@ hmonas(struct monst *mon)
                     unconcerned = FALSE;
             }
             if (mon->data == &mons[PM_SHADE]) {
-                const char *verb = byhand ? C_("you_hit", "grasp") : _("hug");
+                const char *verb = byhand ? C_("you_hit", "grasp") : _("hug"));
 
                 /* hugging a shade; successful if blessed outermost armor
                    for normal hug, or blessed gloves or silver ring(s) for
@@ -5774,8 +5774,8 @@ hmonas(struct monst *mon)
                 /* can't engulf unsolid creatures */
                 if (mon->data == &mons[PM_SHADE]) {
                     /* no specialdmg check needed */
-                    Your(_("attempt to surround %s is harmless."), mon_nam(mon));
-                } else if (failed_grab(u.umonst, mon, mattk)) {
+                    Your(_("attempt to surround %s is harmless.", mon_nam(mon));
+                } else if (failed_grab(&gy.youmonst, mon, mattk)) {
                     ; /* non-shade miss; message already given */
                 } else {
                     sum[i] = gulpum(mon, mattk);
@@ -6202,7 +6202,7 @@ that_is_a_mimic(
     struct monst *mtmp, /* a hidden mimic (nonnull) */
     unsigned mimic_flags) /* 0, MIM_REVEAL, MIM_OMIT_WAIT, REVEAL+OMIT */
 {
-    const char *generic = _("a monster");
+    const char *generic = _("a monster"));
     char fmtbuf[BUFSZ];
     const char *what = NULL;
     boolean reveal_it = (mimic_flags & MIM_REVEAL) != 0,
@@ -6232,7 +6232,7 @@ that_is_a_mimic(
 
             fakeobj = object_from_map(glyph, x, y, &otmp);
             otmp_name = (otmp && otmp->otyp != STRANGE_OBJECT)
-                        ? simpleonames(otmp) : _("strange object");
+                        ? simpleonames(otmp) : _("strange object"));
             Snprintf(fmtbuf, sizeof fmtbuf, _("%s %s %s %%s!"),
                      (otmp && is_plural(otmp)) ? _("Those") : _("That"),
                      otmp_name, otmp ? otense(otmp, _("are")) : _("is"));
@@ -6427,7 +6427,7 @@ light_hits_gremlin(struct monst *mon, int dmg)
     if (!Deaf && mdistu(mon) <= 90) {
         /* cry of pain can be heard somewhat farther than the waking radius */
         const char *cry = (dmg > mon->mhp / 2) ? _("wails in agony")
-                                                : _("cries out in pain");
+                                                : _("cries out in pain"));
         if (is_korean_locale()) {
             pline_mon(mon, "%s{이/가} %s!", Monnam(mon), cry);
         } else {

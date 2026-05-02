@@ -518,7 +518,7 @@ savebones(int how, time_t when, struct obj *corpse)
                     EBONES(mtmp)->role = i;
                     break;
                 }
-                /* impossible("savebones: bad gu.urole.name.m \"%s\"",
+                /* impossible(_("savebones: bad gu.urole.name.m \"%s\"",
                               gu.urole.name.m); */
             }
             for (i = 0; i <= NUM_RACES; ++i) {
@@ -526,7 +526,7 @@ savebones(int how, time_t when, struct obj *corpse)
                     EBONES(mtmp)->race = i;
                     break;
                 }
-                /* impossible("savebones: bad gu.urace.noun \"%s\"",
+                /* impossible(_("savebones: bad gu.urace.noun \"%s\"",
                               gu.urace.noun); */
             }
             EBONES(mtmp)->oldalign = u.ualign;

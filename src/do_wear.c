@@ -1120,8 +1120,8 @@ Amulet_off(void)
         early_off_msg = TRUE;
 
         if (Underwater) {
-            if (!cant_drown(u.umonst->data) && !Swimming) {
-                You(_("suddenly inhale an unhealthy amount of %s!"),
+            if (!cant_drown(gy.youmonst.data) && !Swimming) {
+                You(_("suddenly inhale an unhealthy amount of %s!",
                     hliquid("water"));
                 mkn = TRUE; /* in case of life-saving */
                 (void) drown();
@@ -1353,7 +1353,7 @@ Ring_off_or_gone(struct obj *obj, boolean gone)
 
     svc.context.takeoff.mask &= ~mask;
     if (!(u.uprops[objects[obj->otyp].oc_oprop].extrinsic & mask))
-        impossible("Strange... I didn't know you had that ring.");
+        impossible(_("Strange... I didn't know you had that ring."));
     if (gone)
         setnotworn(obj);
     else
@@ -1502,7 +1502,7 @@ Blindf_off(struct obj *otmp)
     if (!otmp)
         otmp = ublindf;
     if (!otmp) {
-        impossible("Blindf_off without eyewear?");
+        impossible(_("Blindf_off without eyewear?"));
         return;
     }
     svc.context.takeoff.mask &= ~W_TOOL;
@@ -1822,7 +1822,7 @@ armor_or_accessory_off(struct obj *obj)
     } else if (obj == ublindf) {
         Blindf_off(obj); /* does its own off_msg */
     } else {
-        impossible("removing strange accessory: %s",
+        impossible(_("removing strange accessory: %s",
                    safe_typename(obj->otyp));
         if (obj->owornmask)
             remove_worn_item(obj, FALSE);
@@ -1895,7 +1895,7 @@ int
 cursed(struct obj *otmp)
 {
     if (!otmp) {
-        impossible("cursed without otmp");
+        impossible(_("cursed without otmp"));
         return 0;
     }
     /* Curses, like chickens, come home to roost. */
@@ -1931,7 +1931,7 @@ armoroff(struct obj *otmp)
        delays and which didn't; now both are handled for all types */
     if (delay) {
         nomul(delay);
-        gm.multi_reason = _("disrobing");
+        gm.multi_reason = _("disrobing"));
         switch (objects[otmp->otyp].oc_armcat) {
         case ARM_SUIT:
             what = suit_simple_name(otmp);
@@ -1962,7 +1962,7 @@ armoroff(struct obj *otmp)
             ga.afternmv = Shirt_off;
             break;
         default:
-            impossible("Taking off unknown armor (%d: %d), delay %d",
+            impossible(_("Taking off unknown armor (%d: %d), delay %d",
                        otmp->otyp, objects[otmp->otyp].oc_armcat, delay);
             break;
         }
@@ -1997,7 +1997,7 @@ armoroff(struct obj *otmp)
             (void) Shirt_off();
             break;
         default:
-            impossible("Taking off unknown armor (%d: %d), no delay",
+            impossible(_("Taking off unknown armor (%d: %d), no delay",
                        otmp->otyp, objects[otmp->otyp].oc_armcat);
             break;
         }
@@ -2253,13 +2253,13 @@ accessory_or_armor_on(struct obj *obj)
             char answer, qbuf[QBUFSZ];
             int res = 0;
 
-            if (nolimbs(u.umonst->data)) {
+            if (nolimbs(gy.youmonst.data)) {
                 You(_("cannot make the ring stick to your body."));
                 return ECMD_OK;
             }
             if (uleft && uright) {
-                There(_("are no more %s%s to fill."),
-                      humanoid(u.umonst->data) ? "ring-" : "",
+                There(_("are no more %s%s to fill.",
+                      humanoid(gy.youmonst.data) ? "ring-" : "",
                       fingers_or_gloves(FALSE));
                 return ECMD_OK;
             }
@@ -2269,8 +2269,8 @@ accessory_or_armor_on(struct obj *obj)
                 mask = LEFT_RING;
             } else {
                 do {
-                    Sprintf(qbuf, _("Which %s%s, Right or Left?"),
-                            humanoid(u.umonst->data) ? "ring-" : "",
+                    Sprintf(qbuf, "Which %s%s, Right or Left?",
+                            humanoid(gy.youmonst.data) ? "ring-" : "",
                             body_part(FINGER));
                     answer = yn_function(qbuf, rightleftchars, '\0', TRUE);
                     switch (answer) {
@@ -2323,8 +2323,8 @@ accessory_or_armor_on(struct obj *obj)
                 return ECMD_OK;
             }
         } else if (eyewear) {
-            if (!has_head(u.umonst->data)) {
-                You(_("have no head to wear %s on."), ansimpleoname(obj));
+            if (!has_head(gy.youmonst.data)) {
+                You(_("have no head to wear %s on.", ansimpleoname(obj));
                 return ECMD_OK;
             }
 
@@ -2334,12 +2334,12 @@ accessory_or_armor_on(struct obj *obj)
                          body_part(FACE));
                 else if (ublindf->otyp == BLINDFOLD) {
                     if (obj->otyp == LENSES)
-                        already_wearing2(N_("lenses"), N_("a blindfold"));
+                        already_wearing2(N_("lenses"), N_("a blindfold");
                     else
                         already_wearing(_("a blindfold"));
                 } else if (ublindf->otyp == LENSES) {
                     if (obj->otyp == BLINDFOLD)
-                        already_wearing2(N_("a blindfold"), N_("some lenses"));
+                        already_wearing2(N_("a blindfold"), N_("some lenses");
                     else
                         already_wearing(_("some lenses"));
                 } else {
@@ -2392,13 +2392,13 @@ accessory_or_armor_on(struct obj *obj)
         else if (obj == uarmu)
             ga.afternmv = Shirt_on;
         else
-            panic("wearing armor not worn as armor? [%08lx]", obj->owornmask);
+            panic(_("wearing armor not worn as armor? [%08lx]", obj->owornmask);
 
         delay = -objects[obj->otyp].oc_delay;
         if (delay) {
             nomul(delay);
-            gm.multi_reason = _("dressing up");
-            gn.nomovemsg = _("You finish your dressing maneuver.");
+            gm.multi_reason = _("dressing up"));
+            gn.nomovemsg = _("You finish your dressing maneuver."));
         } else {
             unmul(""); /* call afternmv, clear it+nomovemsg+multi_reason */
             on_msg(obj);
@@ -2422,7 +2422,7 @@ accessory_or_armor_on(struct obj *obj)
             /* setworn() and on_msg() handled by Blindf_on() */
             Blindf_on(obj);
         } else {
-            impossible("putting on unexpected type of accessory: %s",
+            impossible(_("putting on unexpected type of accessory: %s",
                        safe_typename(obj->otyp));
         }
     }
@@ -2437,7 +2437,7 @@ dowear(void)
 
     /* cantweararm() checks for suits of armor, not what we want here;
        verysmall() or nohands() checks for shields, gloves, etc... */
-    if (verysmall(u.umonst->data) || nohands(u.umonst->data)) {
+    if (verysmall(gy.youmonst.data) || nohands(gy.youmonst.data)) {
         pline(_("Don't even bother."));
         return ECMD_OK;
     }
@@ -2460,8 +2460,8 @@ doputon(void)
     if (uleft && uright && uamul && ublindf
         && uarm && uarmu && uarmc && uarmh && uarms && uarmg && uarmf) {
         /* 'P' message doesn't mention armor */
-        Your(_("%s%s are full, and you're already wearing an amulet and %s."),
-             humanoid(u.umonst->data) ? "ring-" : "",
+        Your(_("%s%s are full, and you're already wearing an amulet and %s.",
+             humanoid(gy.youmonst.data) ? "ring-" : "",
              fingers_or_gloves(FALSE),
              (ublindf->otyp == LENSES) ? _("some lenses") : _("a blindfold"));
         return ECMD_OK;
@@ -2578,7 +2578,7 @@ glibr(void)
         if (otmp->quan > 1L)
             otherwep = makeplural(otherwep);
         hand = body_part(HAND);
-        which = URIGHTY ? _("left ") : _("right ");  /* text for the off hand */
+        which = URIGHTY ? _("left ") : _("right "));  /* text for the off hand */
         Your(_("%s %s%s from your %s%s."), otherwep, xfl ? _("also ") : "",
              otense(otmp, _("slip")), which, hand);
         xfl++;
@@ -2613,7 +2613,7 @@ glibr(void)
             hand = makeplural(hand);
         } else if (wastwoweap) {
             /* preceding msg was about non-dominant hand */
-            which = URIGHTY ? _("right ") : _("left ");
+            which = URIGHTY ? _("right ") : _("left "));
         }
         pline(_("%s %s%s %s%s from your %s%s."),
               !strncmp(thiswep, "corpse", 6) ? _("The") : _("Your"),
@@ -2659,7 +2659,7 @@ struct obj *
 stuck_ring(struct obj *ring, int otyp)
 {
     if (ring != uleft && ring != uright) {
-        impossible("stuck_ring: neither left nor right?");
+        impossible(_("stuck_ring: neither left nor right?"));
         return (struct obj *) 0;
     }
 
@@ -2708,8 +2708,8 @@ select_off(struct obj *otmp)
     if (otmp == uright || otmp == uleft) {
         struct obj glibdummy;
 
-        if (nolimbs(u.umonst->data)) {
-            pline_The(_("ring is stuck."));
+        if (nolimbs(gy.youmonst.data)) {
+            pline_The("ring is stuck.");
             return 0;
         }
         glibdummy = cg.zeroobj;
@@ -2817,7 +2817,7 @@ select_off(struct obj *otmp)
         svc.context.takeoff.mask |= W_QUIVER;
 
     else
-        impossible("select_off: %s???", doname(otmp));
+        impossible(_("select_off: %s???", doname(otmp));
 
     return 0;
 }
@@ -2890,7 +2890,7 @@ do_takeoff(void)
         if (!cursed(ublindf))
             Blindf_off(ublindf);
     } else {
-        impossible("do_takeoff: taking off %lx", doff->what);
+        impossible(_("do_takeoff: taking off %lx", doff->what);
     }
     svc.context.takeoff.mask &= ~I_SPECIAL; /* clear cancel_doff() flag */
 
@@ -2970,7 +2970,7 @@ take_off(void)
            remove a blindfold, so 'A' shouldn't have been requiring 2] */
         doff->delay = 1;
     } else {
-        impossible("take_off: taking off %lx", doff->what);
+        impossible(_("take_off: taking off %lx", doff->what);
         return 0; /* force done */
     }
 

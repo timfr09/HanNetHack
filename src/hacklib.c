@@ -231,7 +231,7 @@ str_start_is(
     }
 #if 0
     if (n == 0)
-        panic("string too long");
+        panic(_("string too long"));
 #endif
     return TRUE;
 }
@@ -888,7 +888,7 @@ nh_snprintf(
 #if 0
 TODO: add set_impossible(), impossible -> func pointer,
  test funcpointer before call
-        impossible("snprintf %s: func %s, file line %d",
+        impossible(_("snprintf %s: func %s, file line %d",
                    (n < 0) ? "format error" : "overflow",
                    func, line);
 #endif

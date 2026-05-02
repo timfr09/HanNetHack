@@ -842,7 +842,7 @@ mon_wield_item(struct monst *mon)
         exclaim = FALSE;
         break;
     default:
-        impossible("weapon_check %d for %s?", mon->weapon_check,
+        impossible(_("weapon_check %d for %s?", mon->weapon_check,
                    mon_nam(mon));
         return 0;
     }
@@ -1097,26 +1097,26 @@ skill_level_name(int skill, char *buf)
 
     switch (P_SKILL(skill)) {
     case P_UNSKILLED:
-        ptr = _("Unskilled");
+        ptr = _("Unskilled"));
         break;
     case P_BASIC:
-        ptr = _("Basic");
+        ptr = _("Basic"));
         break;
     case P_SKILLED:
-        ptr = _("Skilled");
+        ptr = _("Skilled"));
         break;
     case P_EXPERT:
-        ptr = _("Expert");
+        ptr = _("Expert"));
         break;
     /* these are for unarmed combat/martial arts only */
     case P_MASTER:
-        ptr = _("Master");
+        ptr = _("Master"));
         break;
     case P_GRAND_MASTER:
-        ptr = _("Grand Master");
+        ptr = _("Grand Master"));
         break;
     default:
-        ptr = _("Unknown");
+        ptr = _("Unknown"));
         break;
     }
     Strcpy(buf, ptr);
@@ -1463,7 +1463,7 @@ lose_weapon_skill(int n) /* number of slots to lose; normally one */
         } else if (u.skills_advanced) {
             skill = u.skill_record[--u.skills_advanced];
             if (P_SKILL(skill) <= P_UNSKILLED)
-                panic("lose_weapon_skill (%d)", skill);
+                panic(_("lose_weapon_skill (%d)", skill);
             P_SKILL(skill)--; /* drop skill one level */
             /* Lost skill might have taken more than one slot; refund rest. */
             u.weapon_slots = slots_required(skill) - 1;
@@ -1496,7 +1496,7 @@ drain_weapon_skill(int n) /* number of skills to drain */
             }
             u.skills_advanced--;
             if (P_SKILL(skill) <= P_UNSKILLED)
-                panic("drain_weapon_skill (%d)", skill);
+                panic(_("drain_weapon_skill (%d)", skill);
             P_SKILL(skill)--;   /* drop skill one level */
             /* refund slots used for skill */
             u.weapon_slots += slots_required(skill);
@@ -1658,7 +1658,7 @@ weapon_dam_bonus(struct obj *weapon)
     } else if (type <= P_LAST_WEAPON) {
         switch (P_SKILL(type)) {
         default:
-            impossible("weapon_dam_bonus: bad skill %d", P_SKILL(type));
+            impossible(_("weapon_dam_bonus: bad skill %d", P_SKILL(type));
             FALLTHROUGH;
         /* FALLTHRU */
         case P_ISRESTRICTED:
@@ -1797,7 +1797,7 @@ skill_init(const struct def_skill *class_skill)
     for (skill = 0; skill < P_NUM_SKILLS; skill++) {
         if (!P_RESTRICTED(skill)) {
             if (P_MAX_SKILL(skill) < P_SKILL(skill)) {
-                impossible("skill_init: curr > max: %s", P_NAME(skill));
+                impossible(_("skill_init: curr > max: %s", P_NAME(skill));
                 P_MAX_SKILL(skill) = P_SKILL(skill);
             }
             P_ADVANCE(skill) = practice_needed_to_advance(P_SKILL(skill) - 1);

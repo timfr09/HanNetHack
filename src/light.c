@@ -73,7 +73,7 @@ new_light_core(coordxy x, coordxy y, int range, int type, anything *id)
     if (range > MAX_RADIUS || range < 0
         /* camera flash uses radius 0 and passes Null object */
         || (range == 0 && (type != LS_OBJECT || id->a_obj != 0))) {
-        impossible("new_light_source:  illegal range %d", range);
+        impossible(_("new_light_source:  illegal range %d", range);
         return (light_source *) 0;
     }
 
@@ -107,7 +107,7 @@ del_light_source(int type, anything *id)
        (in particular: chameleon vs prot. from shape changers) */
     switch (type) {
     case LS_NONE:
-        impossible("del_light_source:type=none");
+        impossible(_("del_light_source:type=none"));
         tmp_id.a_uint = 0;
         break;
     case LS_OBJECT:
@@ -132,7 +132,7 @@ del_light_source(int type, anything *id)
     if (curr) {
         delete_ls(curr);
     } else {
-        impossible("del_light_source: not found type=%d, id=%s", type,
+        impossible(_("del_light_source: not found type=%d, id=%s", type,
                    fmt_ptr((genericptr_t) id->a_obj));
     }
 }
@@ -159,7 +159,7 @@ delete_ls(light_source *ls)
         free((genericptr_t) ls);
         gv.vision_full_recalc = 1;
     } else {
-        impossible("delete_ls not found, ls=%s", fmt_ptr((genericptr_t) ls));
+        impossible(_("delete_ls not found, ls=%s", fmt_ptr((genericptr_t) ls));
     }
     return;
 }
@@ -284,7 +284,7 @@ show_transient_light(struct obj *obj, coordxy x, coordxy y)
         }
         assert(obj != NULL); /* necessary condition to get into this 'else' */
         if (!ls || obj->where != OBJ_FREE) {
-            impossible("transient light %s %s %s not %s?",
+            impossible(_("transient light %s %s %s not %s?",
                        obj->lamplit ? "lit" : "unlit",
                        simpleonames(obj), otense(obj, "are"),
                        !ls ? "a light source" : "free");
@@ -424,7 +424,7 @@ save_light_sources(NHFILE *nhfp, int range)
     light_source **prev, *curr;
 
     /* camera flash light sources have Null object and would trigger
-       impossible("no id!") below; they can only happen here if we're
+       impossible(_("no id!") below; they can only happen here if we're
        in the midst of a panic save and they wouldn't be useful after
        restore so just throw any that are present away */
     discard_flashes();
@@ -435,14 +435,14 @@ save_light_sources(NHFILE *nhfp, int range)
         Sfo_int(nhfp, &count, "lightsource-count");
         actual = maybe_write_ls(nhfp, range, TRUE);
         if (actual != count)
-            panic("counted %d light sources, wrote %d! [range=%d]", count,
+            panic(_("counted %d light sources, wrote %d! [range=%d]", count,
                   actual, range);
     }
 
      if (release_data(nhfp)) {
         for (prev = &gl.light_base; (curr = *prev) != 0; ) {
             if (!curr->id.a_monst) {
-                impossible("save_light_sources: no id! [range=%d]", range);
+                impossible(_("save_light_sources: no id! [range=%d]", range);
                 is_global = 0;
             } else
                 switch (curr->type) {
@@ -454,7 +454,7 @@ save_light_sources(NHFILE *nhfp, int range)
                     break;
                 default:
                     is_global = 0;
-                    impossible("save_light_sources: bad type (%d) [range=%d]",
+                    impossible(_("save_light_sources: bad type (%d) [range=%d]",
                                curr->type, range);
                     break;
                 }
@@ -541,7 +541,7 @@ relink_light_sources(boolean ghostly)
             if (ls->type == LS_OBJECT || ls->type == LS_MONSTER) {
                 nid = ls->id.a_uint;
                 if (ghostly && !lookup_id_mapping(nid, &nid))
-                    panic("relink_light_sources: no id mapping");
+                    panic(_("relink_light_sources: no id mapping"));
 
                 which = '\0';
                 if (ls->type == LS_OBJECT) {
@@ -552,10 +552,10 @@ relink_light_sources(boolean ghostly)
                         which = 'm';
                 }
                 if (which != '\0')
-                    panic("relink_light_sources: can't find %c_id %u",
+                    panic(_("relink_light_sources: can't find %c_id %u",
                           which, nid);
             } else {
-                panic("relink_light_sources: bad type (%d)", ls->type);
+                panic(_("relink_light_sources: bad type (%d)", ls->type);
             }
             ls->flags &= ~LSF_NEEDS_FIXUP;
         }
@@ -575,7 +575,7 @@ maybe_write_ls(NHFILE *nhfp, int range, boolean write_it)
 
     for (ls = gl.light_base; ls; ls = ls->next) {
         if (!ls->id.a_monst) {
-            impossible("maybe_write_ls: no id! [range=%d]", range);
+            impossible(_("maybe_write_ls: no id! [range=%d]", range);
             continue;
         }
         switch (ls->type) {
@@ -587,7 +587,7 @@ maybe_write_ls(NHFILE *nhfp, int range, boolean write_it)
             break;
         default:
             is_global = 0;
-            impossible("maybe_write_ls: bad type (%d) [range=%d]", ls->type,
+            impossible(_("maybe_write_ls: bad type (%d) [range=%d]", ls->type,
                        range);
             break;
         }
@@ -612,19 +612,19 @@ light_sources_sanity_check(void)
 
     for (ls = gl.light_base; ls; ls = ls->next) {
         if (!ls->id.a_monst)
-            panic("insane light source: no id!");
+            panic(_("insane light source: no id!"));
         if (ls->type == LS_OBJECT) {
             otmp = ls->id.a_obj;
             auint = otmp->o_id;
             if (find_oid(auint) != otmp)
-                panic("insane light source: can't find obj #%u!", auint);
+                panic(_("insane light source: can't find obj #%u!", auint);
         } else if (ls->type == LS_MONSTER) {
             mtmp = (struct monst *) ls->id.a_monst;
             auint = mtmp->m_id;
             if (find_mid(auint, FM_EVERYWHERE) != mtmp)
-                panic("insane light source: can't find mon #%u!", auint);
+                panic(_("insane light source: can't find mon #%u!", auint);
         } else {
-            panic("insane light source: bad ls type %d", ls->type);
+            panic(_("insane light source: bad ls type %d", ls->type);
         }
     }
 }
@@ -648,7 +648,7 @@ write_ls(NHFILE *nhfp, light_source *ls)
                 ls->id = cg.zeroany;
                 ls->id.a_uint = otmp->o_id;
                 if (find_oid((unsigned) ls->id.a_uint) != otmp) {
-                    impossible("write_ls: can't find obj #%u!",
+                    impossible(_("write_ls: can't find obj #%u!",
                                ls->id.a_uint);
                     ls->flags |= LSF_IS_PROBLEMATIC;
                 }
@@ -675,7 +675,7 @@ write_ls(NHFILE *nhfp, light_source *ls)
                     ls->id = cg.zeroany;
                     ls->id.a_uint = mtmp->m_id;
                     if (find_mid((unsigned) ls->id.a_uint, monloc) != mtmp) {
-                        impossible("write_ls: can't find mon%s #%u!",
+                        impossible(_("write_ls: can't find mon%s #%u!",
                                    DEADMONSTER(mtmp) ? " because it's dead"
                                                      : "",
                                    ls->id.a_uint);
@@ -697,7 +697,7 @@ write_ls(NHFILE *nhfp, light_source *ls)
             ls->flags &= ~LSF_IS_PROBLEMATIC;
         }
     } else {
-        impossible("write_ls: bad type (%d)", ls->type);
+        impossible(_("write_ls: bad type (%d)", ls->type);
     }
 }
 
@@ -834,7 +834,7 @@ obj_adjust_light_radius(struct obj *obj, int new_radius)
             ls->range = new_radius;
             return;
         }
-    impossible("obj_adjust_light_radius: can't find %s", xname(obj));
+    impossible(_("obj_adjust_light_radius: can't find %s", xname(obj));
 }
 
 /* Candlelight is proportional to the number of candles;
@@ -870,7 +870,7 @@ candle_light_range(struct obj *obj)
         }
     } else {
         /* we're only called for lit candelabrum or candles */
-        /* impossible("candlelight for %d?", obj->otyp); */
+        /* impossible(_("candlelight for %d?", obj->otyp); */
         radius = 3; /* lamp's value */
     }
     return radius;
@@ -917,17 +917,17 @@ arti_light_description(struct obj *obj)
 {
     switch (arti_light_radius(obj)) {
     case 4:
-        return _("radiantly"); /* blessed gold dragon scale mail */
+        return _("radiantly")); /* blessed gold dragon scale mail */
     case 3:
-        return _("brilliantly"); /* blessed artifact, uncursed gold DSM */
+        return _("brilliantly")); /* blessed artifact, uncursed gold DSM */
     case 2:
-        return _("brightly"); /* uncursed artifact, cursed gold DSM */
+        return _("brightly")); /* uncursed artifact, cursed gold DSM */
     case 1:
-        return _("dimly"); /* cursed artifact, embedded scales */
+        return _("dimly")); /* cursed artifact, embedded scales */
     default:
         break;
     }
-    return _("strangely");
+    return _("strangely"));
 }
 
 /* the #lightsources command */

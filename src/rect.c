@@ -32,7 +32,7 @@ init_rect(void)
         n_rects = (COLNO * ROWNO) / 30;
         rect = (NhRect *) alloc(sizeof(NhRect) * n_rects);
         if (!rect)
-            panic("Could not alloc rect");
+            panic(_("Could not alloc rect"));
     }
 
     rect_cnt = 1;
@@ -161,7 +161,7 @@ void
 add_rect(NhRect *r)
 {
     if (rect_cnt >= n_rects) {
-        impossible("n_rects may be too small.");
+        impossible(_("n_rects may be too small."));
         return;
     }
     /* Check that this NhRect is not included in another one */

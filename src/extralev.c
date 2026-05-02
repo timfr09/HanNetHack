@@ -59,13 +59,13 @@ roguecorr(coordxy x, coordxy y, int dir)
             fromx += 1 + 26 * x;
             fromy += 7 * y;
             if (!IS_WALL(levl[fromx][fromy].typ))
-                impossible("down: no wall at %d,%d?", fromx, fromy);
+                impossible(_("down: no wall at %d,%d?", fromx, fromy);
             dodoor(fromx, fromy, &svr.rooms[gr.r[x][y].nroom]);
             levl[fromx][fromy].doormask = D_NODOOR;
             fromy++;
         }
         if (y >= 2) {
-            impossible("down door from %d,%d going nowhere?", x, y);
+            impossible(_("down door from %d,%d going nowhere?", x, y);
             return;
         }
         y++;
@@ -81,7 +81,7 @@ roguecorr(coordxy x, coordxy y, int dir)
             tox += 1 + 26 * x;
             toy += 7 * y;
             if (!IS_WALL(levl[tox][toy].typ))
-                impossible("up: no wall at %d,%d?", tox, toy);
+                impossible(_("up: no wall at %d,%d?", tox, toy);
             dodoor(tox, toy, &svr.rooms[gr.r[x][y].nroom]);
             levl[tox][toy].doormask = D_NODOOR;
             toy--;
@@ -101,13 +101,13 @@ roguecorr(coordxy x, coordxy y, int dir)
             fromx += 1 + 26 * x;
             fromy += 7 * y;
             if (!IS_WALL(levl[fromx][fromy].typ))
-                impossible("down: no wall at %d,%d?", fromx, fromy);
+                impossible(_("down: no wall at %d,%d?", fromx, fromy);
             dodoor(fromx, fromy, &svr.rooms[gr.r[x][y].nroom]);
             levl[fromx][fromy].doormask = D_NODOOR;
             fromx++;
         }
         if (x >= 2) {
-            impossible("right door from %d,%d going nowhere?", x, y);
+            impossible(_("right door from %d,%d going nowhere?", x, y);
             return;
         }
         x++;
@@ -123,7 +123,7 @@ roguecorr(coordxy x, coordxy y, int dir)
             tox += 1 + 26 * x;
             toy += 7 * y;
             if (!IS_WALL(levl[tox][toy].typ))
-                impossible("left: no wall at %d,%d?", tox, toy);
+                impossible(_("left: no wall at %d,%d?", tox, toy);
             dodoor(tox, toy, &svr.rooms[gr.r[x][y].nroom]);
             levl[tox][toy].doormask = D_NODOOR;
             tox--;
@@ -131,7 +131,7 @@ roguecorr(coordxy x, coordxy y, int dir)
         roguejoin(fromx, fromy, tox, toy, TRUE);
         return;
     } else
-        impossible("corridor in direction %d?", dir);
+        impossible(_("corridor in direction %d?", dir);
 }
 
 /* Modified walkfrom() from mkmaze.c */
@@ -267,9 +267,9 @@ makeroguerooms(void)
             if (here.doortable & XL_RIGHT)
                 roguecorr(x, y, XL_RIGHT);
             if (here.doortable & XL_LEFT)
-                impossible("left end of %d, %d never connected?", x, y);
+                impossible(_("left end of %d, %d never connected?", x, y);
             if (here.doortable & XL_UP)
-                impossible("up end of %d, %d never connected?", x, y);
+                impossible(_("up end of %d, %d never connected?", x, y);
         }
 #undef here
 }

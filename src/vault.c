@@ -257,7 +257,7 @@ uleftvault(struct monst *grd)
 {
     /* only called if caller has checked vault_occupied() and findgd() */
     if (!grd || !grd->isgd || DEADMONSTER(grd)) {
-        impossible("escaping vault without guard?");
+        impossible(_("escaping vault without guard?"));
         return;
     }
     /* if carrying gold and arriving anywhere other than next to the guard,
@@ -308,7 +308,7 @@ find_guard_dest(struct monst *guard, coordxy *rx, coordxy *ry)
  incr_radius:
         ;
     }
-    impossible("Not a single corridor on this level?");
+    impossible(_("Not a single corridor on this level?"));
     tele();
     return FALSE;
 }
@@ -469,8 +469,8 @@ invault(void)
                 && gy.youmonst.mappearance != GOLD_PIECE)
                 if (!Deaf) {
                     SetVoice(guard, 0, 80, 0);
-                    verbalize(_("Hey!  Who left that %s in here?"),
-                              mimic_obj_name(u.umonst));
+                    verbalize(_("Hey!  Who left that %s in here?",
+                              mimic_obj_name(&gy.youmonst));
                 }
             /* You're mimicking some object or you're hidden. */
             pline(_("Puzzled, %s turns around and leaves."), mhe(guard));
@@ -763,7 +763,7 @@ gd_pick_corridor_gold(struct monst *grd, int goldx, int goldy)
            If guard is two or more steps away; bring him closer first. */
         gold = g_at(goldx, goldy);
         if (!gold) {
-            impossible("vault guard: no gold at hero's feet?");
+            impossible(_("vault guard: no gold at hero's feet?"));
             return;
         }
         gdelta = distu(guardx, guardy);
@@ -1165,7 +1165,7 @@ gd_move(struct monst *grd)
            is too small, but it has occurred when the same <x,y> are
            put into it repeatedly for some as yet unexplained reason */
         if (egrd->fcend++ == FCSIZ)
-            panic("fakecorr overflow");
+            panic(_("fakecorr overflow"));
         fcp->fx = nx;
         fcp->fy = ny;
         fcp->ftyp = typ;

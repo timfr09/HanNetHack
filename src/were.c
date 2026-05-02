@@ -106,7 +106,7 @@ new_were(struct monst *mon)
 
     pm = counter_were(monsndx(mon->data));
     if (pm < LOW_PM) {
-        impossible("unknown lycanthrope %s.",
+        impossible(_("unknown lycanthrope %s.",
                     mon->data->pmnames[NEUTRAL]);
         return;
     }

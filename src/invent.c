@@ -894,7 +894,7 @@ merged(struct obj **potmp, struct obj **pobj)
             } else if ((wmask & W_QUIVER) != 0L) {
                 wmask = W_QUIVER;
             } else {
-                impossible("merging strangely worn items (%lx)", wmask);
+                impossible(_("merging strangely worn items (%lx)", wmask);
                 wmask = otmp->owornmask;
             }
             if ((otmp->owornmask & ~wmask) != 0L)
@@ -964,28 +964,28 @@ addinv_core1(struct obj *obj)
         disp.botl = TRUE;
     } else if (obj->otyp == AMULET_OF_YENDOR) {
         if (u.uhave.amulet)
-            impossible("already have amulet?");
+            impossible(_("already have amulet?"));
         u.uhave.amulet = 1;
         record_achievement(ACH_AMUL);
     } else if (obj->otyp == CANDELABRUM_OF_INVOCATION) {
         if (u.uhave.menorah)
-            impossible("already have candelabrum?");
+            impossible(_("already have candelabrum?"));
         u.uhave.menorah = 1;
         record_achievement(ACH_CNDL);
     } else if (obj->otyp == BELL_OF_OPENING) {
         if (u.uhave.bell)
-            impossible("already have silver bell?");
+            impossible(_("already have silver bell?"));
         u.uhave.bell = 1;
         record_achievement(ACH_BELL);
     } else if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
         if (u.uhave.book)
-            impossible("already have the book?");
+            impossible(_("already have the book?"));
         u.uhave.book = 1;
         record_achievement(ACH_BOOK);
     } else if (obj->oartifact) {
         if (is_quest_artifact(obj)) {
             if (u.uhave.questart)
-                impossible("already have quest artifact?");
+                impossible(_("already have quest artifact?"));
             u.uhave.questart = 1;
             artitouch(obj);
         }
@@ -1063,7 +1063,7 @@ addinv_core0(
     boolean obj_was_thrown;
 
     if (obj->where != OBJ_FREE)
-        panic("addinv: obj not free");
+        panic(_("addinv: obj not free"));
     if (obj->how_lost == LOST_EXPLODING)
         return (struct obj *) NULL;
 
@@ -1102,7 +1102,7 @@ addinv_core0(
     if (uquiver && merged(&uquiver, &obj)) {
         obj = uquiver;
         if (!obj)
-            panic("addinv: null obj after quiver merge otyp=%d", saved_otyp);
+            panic(_("addinv: null obj after quiver merge otyp=%d", saved_otyp);
         goto added;
     }
     /* merge if possible; find end of chain in the process */
@@ -1110,7 +1110,7 @@ addinv_core0(
         if (merged(&otmp, &obj)) {
             obj = otmp;
             if (!obj)
-                panic("addinv: null obj after merge otyp=%d", saved_otyp);
+                panic(_("addinv: null obj after merge otyp=%d", saved_otyp);
             goto added;
         }
     /* didn't merge, so insert into chain */
@@ -1361,24 +1361,24 @@ freeinv_core(struct obj *obj)
         return;
     } else if (obj->otyp == AMULET_OF_YENDOR) {
         if (!u.uhave.amulet)
-            impossible("don't have amulet?");
+            impossible(_("don't have amulet?"));
         u.uhave.amulet = 0;
     } else if (obj->otyp == CANDELABRUM_OF_INVOCATION) {
         if (!u.uhave.menorah)
-            impossible("don't have candelabrum?");
+            impossible(_("don't have candelabrum?"));
         u.uhave.menorah = 0;
     } else if (obj->otyp == BELL_OF_OPENING) {
         if (!u.uhave.bell)
-            impossible("don't have silver bell?");
+            impossible(_("don't have silver bell?"));
         u.uhave.bell = 0;
     } else if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
         if (!u.uhave.book)
-            impossible("don't have the book?");
+            impossible(_("don't have the book?"));
         u.uhave.book = 0;
     } else if (obj->oartifact) {
         if (is_quest_artifact(obj)) {
             if (!u.uhave.questart)
-                impossible("don't have quest artifact?");
+                impossible(_("don't have quest artifact?"));
             u.uhave.questart = 0;
         }
         set_artifact_intrinsic(obj, 0, W_ART);
@@ -1548,7 +1548,7 @@ currency(long amount)
 {
     const char *res;
 
-    res = Hallucination ? _(ROLL_FROM(currencies)) : _("zorkmid");
+    res = Hallucination ? _(ROLL_FROM(currencies)) : _("zorkmid"));
     if (amount != 1L)
         res = makeplural(res);
     return res;
@@ -1878,7 +1878,7 @@ getobj(
         if (&bp[suggested] == &buf[sizeof buf - 1]
             || ap == &altlets[sizeof altlets - 1]) {
             /* we must have a huge number of noinvsym items somehow */
-            impossible("getobj: inventory overflow");
+            impossible(_("getobj: inventory overflow"));
             break;
         }
 
@@ -1907,7 +1907,7 @@ getobj(
             break; /* adding otmp->invlet is all that's needed */
         case GETOBJ_EXCLUDE_NONINVENT: /* not applicable for invent items */
         default:
-            impossible("bad return from getobj callback");
+            impossible(_("bad return from getobj callback"));
         }
     }
     unsortloot(&sortedinvent);
@@ -2039,7 +2039,7 @@ getobj(
             }
         }
         if (cntgiven && !strcmp(word, "throw")) {
-            const char *only_one = _("can only throw one at a time");
+            const char *only_one = _("can only throw one at a time"));
             boolean coins;
 
             /* permit counts for throwing gold, but don't accept counts
@@ -3782,7 +3782,7 @@ dounpaid(
                door/doorway") */
             *where = (buriedcount == 0) ? _("on the floor")
                      : (floorcount == 0) ? _("under the floor")
-                       : _("on or under the floor");
+                       : _("on or under the floor"));
 
         if (!count) {
             You(_("aren't carrying any unpaid items but there %s %d %s."),
@@ -4120,7 +4120,7 @@ look_here(
 {
     struct obj *otmp;
     struct trap *trap;
-    const char *verb = Blind ? _("feel") : _("see");
+    const char *verb = Blind ? _("feel") : _("see"));
     const char *dfeature = (char *) 0;
     char fbuf[BUFSZ], fbuf2[BUFSZ];
     winid tmpwin;
@@ -4291,8 +4291,8 @@ look_here(
                       : (otmp->quan > 1L) ? _("They're")
                         : _("It's"),
                       corpse_xname(otmp, (const char *) 0, CXN_ARTICLE),
-                      poly_when_stoned(u.umonst->data) ? ""
-                      : _(", unfortunately"));
+                      poly_when_stoned(gy.youmonst.data) ? ""
+                      : ", unfortunately");
                 feel_cockatrice(otmp, FALSE);
                 break;
             }
@@ -4372,8 +4372,8 @@ feel_cockatrice(struct obj *otmp, boolean force_touch)
         /* "the <cockatrice> corpse" */
         Strcpy(kbuf, corpse_xname(otmp, (const char *) 0, CXN_PFX_THE));
 
-        if (poly_when_stoned(u.umonst->data))
-            You(_("touched %s with your bare %s."), kbuf,
+        if (poly_when_stoned(gy.youmonst.data))
+            You(_("touched %s with your bare %s.", kbuf,
                 makeplural(body_part(HAND)));
         else
             pline(_("Touching %s is a fatal mistake..."), kbuf);
@@ -4927,7 +4927,7 @@ check_invent_gold(const char *why) /* 'why' == caller in case of warning */
         }
 
     if (goldstacks > 1 || wrongslot > 0) {
-        impossible("%s: %s%s%s", why,
+        impossible(_("%s: %s%s%s", why,
                    (wrongslot > 1) ? "gold in wrong slots"
                       : (wrongslot > 0) ? "gold in wrong slot"
                            : "",
@@ -5207,7 +5207,7 @@ doorganize_core(struct obj *obj)
     /* change the inventory and print the resulting item */
     adj_type = collect ? _("Collecting:")
                : !splitting ? _("Moving:")
-                 : _("Splitting:");
+                 : _("Splitting:"));
 
     /*
      * don't use freeinv/addinv to avoid double-touching artifacts,
@@ -5240,7 +5240,7 @@ doorganize_core(struct obj *obj)
             /* Merging: when from and to are compatible */
             if ((!otmpname || (objname && !strcmp(objname, otmpname)))
                 && merged(&otmp, &obj)) {
-                adj_type = _("Merging:");
+                adj_type = _("Merging:"));
                 obj = otmp;
                 otmp = otmp->nobj;
                 extract_nobj(obj, &gi.invent);
@@ -5250,7 +5250,7 @@ doorganize_core(struct obj *obj)
                Found 'otmp' in destination slot; merge if compatible,
                otherwise bump whatever is there to an open slot. */
             if (!splitting) {
-                adj_type = _("Swapping:");
+                adj_type = _("Swapping:"));
                 otmp->invlet = obj->invlet;
             } else {
                 /* strip 'from' name if it has one */
@@ -5267,7 +5267,7 @@ doorganize_core(struct obj *obj)
                 }
 
                 if (merged(&otmp, &obj)) {
-                    adj_type = _("Splitting and merging:");
+                    adj_type = _("Splitting and merging:"));
                     obj = otmp;
                     extract_nobj(obj, &gi.invent);
                 } else if (inv_cnt(FALSE) >= invlet_basic) {
@@ -5432,7 +5432,7 @@ cinv_doname(struct obj *obj)
         if (is_korean_locale()) {
             /* Korean item names have no English articles or keywords;
                prepend translated "trapped " directly */
-            const char *trapped_str = _("trapped ");
+            const char *trapped_str = _("trapped "));
             if (strlen(result) + strlen(trapped_str) + 1 <= QBUFSZ) {
                 char tmp[QBUFSZ];
                 Sprintf(tmp, "%s%s", trapped_str, result);
@@ -5533,7 +5533,7 @@ display_binventory(coordxy x, coordxy y, boolean as_if_seen)
 {
     struct obj *obj;
     char qbuf[QBUFSZ];
-    const char *underwhat = _("here");
+    const char *underwhat = _("here"));
     menu_item *selected = 0;
     int n, n2 = 0;
 
@@ -5555,7 +5555,7 @@ display_binventory(coordxy x, coordxy y, boolean as_if_seen)
             /* "pair of boots" is singular but "beneath it" sounds strange */
             if (pair_of(obj))
                 more_than_1 = TRUE;
-            underwhat = more_than_1 ? _("under them") : _("beneath it");
+            underwhat = more_than_1 ? _("under them") : _("beneath it"));
         } else {
             Sprintf(qbuf, _("Things that are under the %s here:"), seen_liquid);
             if (query_objlist(qbuf, &svl.level.objects[x][y], BY_NEXTHERE,
@@ -5563,7 +5563,7 @@ display_binventory(coordxy x, coordxy y, boolean as_if_seen)
                 free((genericptr_t) selected), selected = 0;
             for (n2 = 0; obj; obj = obj->nexthere)
                 ++n2;
-            underwhat = _("beneath them");
+            underwhat = _("beneath them"));
         }
     }
 

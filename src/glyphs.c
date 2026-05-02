@@ -388,7 +388,7 @@ add_glyph_to_cache(int glyphnum, const char *id)
         i = (i + hash2) & (glyphid_cache_size - 1);
     } while (i != hash1);
     /* This should never happen */
-    panic("glyphid_cache full");
+    panic(_("glyphid_cache full"));
 }
 
 staticfn int
@@ -1106,7 +1106,7 @@ parse_id(
                     Snprintf(buf[0], sizeof buf[0], "G_%s%d", "warning", j);
                 }
                 if (memchr(buf[0], '\0', sizeof buf[0]) == NULL)
-                    panic("parse_id: buf[0] overflowed");
+                    panic(_("parse_id: buf[0] overflowed"));
                 if (!skip_this_one) {
                     fix_glyphname(buf[0]+2);
                     if (dump_ids) {

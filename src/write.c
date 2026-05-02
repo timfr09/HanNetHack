@@ -52,7 +52,7 @@ cost(struct obj *otmp)
         return 30;
     case SCR_BLANK_PAPER:
     default:
-        impossible("You can't write such a weird scroll!");
+        impossible(_("You can't write such a weird scroll!"));
     }
     return 1000;
 }
@@ -85,7 +85,7 @@ dowrite(struct obj *pen)
     const char *typeword;
     int spell_knowledge;
 
-    if (nohands(u.umonst->data)) {
+    if (nohands(gy.youmonst.data)) {
         You(_("need hands to be able to write!"));
         return ECMD_OK;
     } else if (Glib) {
@@ -103,7 +103,7 @@ dowrite(struct obj *pen)
        spellbook), but we want messages saying so to avoid "spellbook" */
     typeword = (paper->otyp == SPE_NOVEL) ? _("book")
                : (paper->oclass == SPBOOK_CLASS) ? _("spellbook")
-                 : _("scroll");
+                 : _("scroll"));
     if (Blind) {
         if (!paper->dknown) {
             You(_("don't know whether that %s is blank or not."), typeword);

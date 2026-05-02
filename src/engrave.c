@@ -364,7 +364,7 @@ read_engr_at(coordxy x, coordxy y)
             }
             break;
         default:
-            impossible("%s is written in a very strange way.", Something);
+            impossible(_("%s is written in a very strange way.", Something);
             sensed = 1;
         }
 
@@ -531,7 +531,7 @@ u_can_engrave(void)
         return FALSE;
     }
 
-    if (cantwield(u.umonst->data)) {
+    if (cantwield(gy.youmonst.data)) {
         You_cant(_("even hold anything!"));
         return FALSE;
     }
@@ -884,7 +884,7 @@ doengrave_sfx_item(struct _doengrave_ctx *de)
         break;
 
     case ILLOBJ_CLASS:
-        impossible("You're engraving with an illegal object!");
+        impossible(_("You're engraving with an illegal object!"));
         break;
     }
 
@@ -898,17 +898,17 @@ doengrave_ctx_verb(struct _doengrave_ctx *de)
     switch (de->type) {
     default:
         de->everb = de->adding ? _("add to the weird writing on")
-                               : _("write strangely on");
+                               : _("write strangely on"));
         break;
     case DUST:
-        de->everb = de->adding ? _("add to the writing in") : _("write in");
-        de->eloc = de->frosted ? _("frost") : _("dust");
+        de->everb = de->adding ? _("add to the writing in") : _("write in"));
+        de->eloc = de->frosted ? _("frost") : _("dust"));
         break;
     case HEADSTONE:
-        de->everb = de->adding ? _("add to the epitaph on") : _("engrave on");
+        de->everb = de->adding ? _("add to the epitaph on") : _("engrave on"));
         break;
     case ENGRAVE:
-        de->everb = de->adding ? _("add to the engraving in") : _("engrave in");
+        de->everb = de->adding ? _("add to the engraving in") : _("engrave in"));
         break;
     case BURN:
         de->everb = de->adding ? (de->frosted ? _("add to the text melted into")
@@ -916,10 +916,10 @@ doengrave_ctx_verb(struct _doengrave_ctx *de)
                        : (de->frosted ? _("melt into") : _("burn into"));
         break;
     case MARK:
-        de->everb = de->adding ? _("add to the graffiti on") : _("scribble on");
+        de->everb = de->adding ? _("add to the graffiti on") : _("scribble on"));
         break;
     case ENGR_BLOOD:
-        de->everb = de->adding ? _("add to the scrawl on") : _("scrawl on");
+        de->everb = de->adding ? _("add to the scrawl on") : _("scrawl on"));
         break;
     }
 }
@@ -1244,8 +1244,8 @@ doengrave(void)
     set_occupation(engrave, _("engraving"), 0);
 
     if (de->post_engr_text[0])
-        pline(_("%s"), de->post_engr_text);
-    if (de->doblind && !resists_blnd(u.umonst)) {
+        pline(_("%s", de->post_engr_text);
+    if (de->doblind && !resists_blnd(&gy.youmonst)) {
         You(_("are blinded by the flash!"));
         make_blinded((long) rnd(50), FALSE);
         if (!Blind)
@@ -1312,9 +1312,9 @@ engrave(void)
 
     /* sanity checks */
     if (dulling_wep && !is_blade(stylus)) {
-        impossible("carving with non-bladed weapon");
+        impossible(_("carving with non-bladed weapon"));
     } else if (svc.context.engraving.type == MARK && !marker) {
-        impossible("making graffiti with non-marker stylus");
+        impossible(_("making graffiti with non-marker stylus"));
     }
 
     /* Step 1: Compute rate. */
@@ -1372,7 +1372,7 @@ engrave(void)
              * stop at the 1st. */
             if (stylus->spe <= -3) {
                 if (firsttime) {
-                    impossible("<= -3 weapon valid for engraving");
+                    impossible(_("<= -3 weapon valid for engraving"));
                 }
                 truncate = TRUE;
             } else if (*endc || svc.context.engraving.actionct == 1) {
@@ -1395,7 +1395,7 @@ engrave(void)
         int ink_cost = max(rate / 2, 1); /* Prevent infinite graffiti */
 
         if (stylus->spe < ink_cost) {
-            impossible("overly dry marker valid for graffiti?");
+            impossible(_("overly dry marker valid for graffiti?"));
             ink_cost = stylus->spe;
             truncate = TRUE;
         }
@@ -1410,25 +1410,25 @@ engrave(void)
 
     switch (svc.context.engraving.type) {
     default:
-        finishverb = _("your weird engraving");
+        finishverb = _("your weird engraving"));
         break;
     case DUST:
         finishverb = is_ice(u.ux, u.uy) ? _("writing in the frost")
-                     : _("writing in the dust");
+                     : _("writing in the dust"));
         break;
     case HEADSTONE:
     case ENGRAVE:
-        finishverb = _("engraving");
+        finishverb = _("engraving"));
         break;
     case BURN:
         finishverb = is_ice(u.ux, u.uy) ? _("melting your message into the ice")
-                     : _("burning your message into the floor");
+                     : _("burning your message into the floor"));
         break;
     case MARK:
-        finishverb = _("defacing the dungeon");
+        finishverb = _("defacing the dungeon"));
         break;
     case ENGR_BLOOD:
-        finishverb = _("scrawling");
+        finishverb = _("scrawling"));
     }
 
     /* actions that happen at the end of every engraving action go here */
@@ -1527,7 +1527,7 @@ engraving_sanity_check(void)
     int levtyp;
 
     if (head_engr && (Is_airlevel(&u.uz) || Is_waterlevel(&u.uz))) {
-        impossible("engraving sanity: on plane of air/water");
+        impossible(_("engraving sanity: on plane of air/water"));
         return;
     }
 
@@ -1535,12 +1535,12 @@ engraving_sanity_check(void)
         coordxy x = ep->engr_x, y = ep->engr_y;
 
         if (!isok(x, y)) {
-            impossible("engraving sanity: !isok <%i,%i>", x, y);
+            impossible(_("engraving sanity: !isok <%i,%i>", x, y);
             continue;
         }
         levtyp = SURFACE_AT(x, y);
         if (is_pool_or_lava(x, y) || IS_AIR(levtyp) || !ACCESSIBLE(levtyp)) {
-            impossible("engraving sanity: illegal surface (%d: \"%s\")",
+            impossible(_("engraving sanity: illegal surface (%d: \"%s\")",
                        levtyp, surface(x, y));
             continue;
         }
@@ -1655,7 +1655,7 @@ del_engr(struct engr *ep)
                 break;
             }
         if (!ept) {
-            impossible("Error in del_engr?");
+            impossible(_("Error in del_engr?"));
             return;
         }
     }
@@ -1709,9 +1709,9 @@ disturb_grave(coordxy x, coordxy y)
     struct rm *lev = &levl[x][y];
 
     if (!IS_GRAVE(lev->typ)) {
-        impossible("Disturbing grave that isn't a grave? (%d)", lev->typ);
+        impossible(_("Disturbing grave that isn't a grave? (%d)", lev->typ);
     } else if (lev->disturbed) {
-        impossible("Disturbing already disturbed grave?");
+        impossible(_("Disturbing already disturbed grave?"));
     } else {
         You(_("disturb the undead!"));
         lev->disturbed = 1;

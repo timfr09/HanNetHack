@@ -160,11 +160,11 @@ money2mon(struct monst *mon, long amount)
     struct obj *ygold = findgold(gi.invent);
 
     if (amount <= 0) {
-        impossible("%s payment in money2mon!", amount ? "negative" : "zero");
+        impossible(_("%s payment in money2mon!", amount ? "negative" : "zero");
         return 0L;
     }
     if (!ygold || ygold->quan < amount) {
-        impossible("Paying without %s gold?", ygold ? "enough" : "");
+        impossible(_("Paying without %s gold?", ygold ? "enough" : "");
         return 0L;
     }
 
@@ -189,11 +189,11 @@ money2u(struct monst *mon, long amount)
     struct obj *mongold = findgold(mon->minvent);
 
     if (amount <= 0) {
-        impossible("%s payment in money2u!", amount ? "negative" : "zero");
+        impossible(_("%s payment in money2u!", amount ? "negative" : "zero");
         return;
     }
     if (!mongold || mongold->quan < amount) {
-        impossible("%s paying without %s gold?", a_monnam(mon),
+        impossible(_("%s paying without %s gold?", a_monnam(mon),
                    mongold ? "enough" : "");
         return;
     }
@@ -645,11 +645,11 @@ credit_report(struct monst *shkp, int idx, boolean silent)
 
     if (idx && !silent) {
         long amt = 0L;
-        const char *msg = _("debt has increased");
+        const char *msg = _("debt has increased"));
 
         if (credit_snap[NOW][0] < credit_snap[BEFORE][0]) {
             amt = credit_snap[BEFORE][0] - credit_snap[NOW][0];
-            msg = _("credit has been reduced");
+            msg = _("credit has been reduced"));
         } else if (credit_snap[NOW][1] > credit_snap[BEFORE][1]) {
             amt = credit_snap[NOW][1] - credit_snap[BEFORE][1];
         } else if (credit_snap[NOW][2] > credit_snap[BEFORE][2]) {
@@ -975,7 +975,7 @@ same_price(struct obj *obj1, struct obj *obj2)
     }
 
     if (!bp1 || !bp2)
-        impossible("same_price: object wasn't on any bill!");
+        impossible(_("same_price: object wasn't on any bill!"));
     else
         are_mergable = (shkp1 == shkp2 && bp1->price == bp2->price);
     return are_mergable;
@@ -1063,7 +1063,7 @@ shop_keeper(char rmno)
             }
         } else {
             /* would have segfaulted on ESHK dereference previously */
-            impossible("%s? (rmno=%d, rtype=%d, mnum=%d, \"%s\")",
+            impossible(_("%s? (rmno=%d, rtype=%d, mnum=%d, \"%s\")",
                        shkp->isshk ? "shopkeeper career change"
                                    : "shop resident not shopkeeper",
                        (int) rmno,
@@ -1144,13 +1144,13 @@ onbill(struct obj *obj, struct monst *shkp, boolean silent)
              ct > 0; --ct, ++bp) {
             if (bp->bo_id == obj->o_id) {
                 if (!obj->unpaid)
-                    impossible("onbill: paid obj on bill?");
+                    impossible(_("onbill: paid obj on bill?"));
                 return bp;
             }
         }
     }
     if (obj->unpaid && !silent)
-        impossible("onbill: unpaid obj %s?",
+        impossible(_("onbill: unpaid obj %s?",
                    !shkp ? "without shopkeeper" : "not on shk's bill");
     return (struct bill_x *) 0;
 }
@@ -1265,7 +1265,7 @@ obfree(struct obj *obj, struct obj *merge)
             merge->o_id = obj->o_id;
     }
     if (obj->owornmask) {
-        impossible("obfree: deleting worn obj (%d: %ld)", obj->otyp,
+        impossible(_("obfree: deleting worn obj (%d: %ld)", obj->otyp,
                    obj->owornmask);
         /* unfortunately at this point we don't know whether worn mask
            applied to hero or a monster or perhaps something bogus, so
@@ -1571,7 +1571,7 @@ make_itemized_bill(
         /* find the object on the bill */
         otmp = bp_to_obj(bp);
         if (!otmp) {
-            impossible("Can't find shop bill entry for #%d", bp->bo_id);
+            impossible(_("Can't find shop bill entry for #%d", bp->bo_id);
             continue;
         }
         bidx = i; /* index into bill_p[], except for hero-owner container */
@@ -1944,7 +1944,7 @@ dopay(void)
         return ECMD_TIME;
     }
     if (shkp != resident) {
-        impossible("dopay: not to shopkeeper?");
+        impossible(_("dopay: not to shopkeeper?"));
         if (resident)
             setpaid(resident);
         return ECMD_OK;
@@ -2231,7 +2231,7 @@ dopayobj(
 
     if (!obj->unpaid && !bp->useup
         && !(Has_contents(obj) && unpaid_cost(obj, COST_CONTENTS))) {
-        impossible("Paid object on bill??");
+        impossible(_("Paid object on bill??"));
         return PAY_BUY;
     }
     if (itemize && insufficient_funds(shkp, obj, 0L)) {
@@ -2338,7 +2338,7 @@ buy_container(
         bp = &eshkp->bill_p[i];
         otmp = bp_to_obj(bp); /* ibill[bidx].obj is the container */
         if (!otmp) {
-            impossible("Can't find contained item on shop bill (#%d).",
+            impossible(_("Can't find contained item on shop bill (#%d).",
                        bp->bo_id);
             return 2; /* failure; have caller give a generic message */
         }
@@ -2372,7 +2372,7 @@ buy_container(
             if (bp->bo_id == boid)
                 break;
         if (i == ebillct) {
-            impossible("Buying %s contents: item #%u disappeared from bill.",
+            impossible(_("Buying %s contents: item #%u disappeared from bill.",
                        simpleonames(container), boid);
             return 2;
         }
@@ -2380,7 +2380,7 @@ buy_container(
 
         buy = dopayobj(shkp, bp, otmp, 1, FALSE, sightunseen);
         if (buy != PAY_BUY) {
-            impossible("Buying %s contents failed unexpectedly (#%u %d).",
+            impossible(_("Buying %s contents failed unexpectedly (#%u %d).",
                        simpleonames(container), otmp->o_id, buy);
             continue;
         }
@@ -2735,7 +2735,7 @@ finish_paybill(void)
         /* this used to be suppressed as "don't bother" (too late to matter)
            but that led to "place_object: \"<item>\" off map <0,0>" warning */
         if (shkp)
-            impossible("finish_paybill: bad location <%d,%d>.", ox, oy);
+            impossible(_("finish_paybill: bad location <%d,%d>.", ox, oy);
         /* force a valid location */
         ox = u.ux ? u.ux : u.ux0;
         oy = u.ux ? u.uy : u.uy0; /* [note: testing u.ux when setting oy
@@ -2933,7 +2933,7 @@ get_cost(
                 i = pseudorand ? AMETHYST : FLUORITE;
                 break;
             default:
-                impossible("bad glass gem %d?", obj->otyp);
+                impossible(_("bad glass gem %d?", obj->otyp);
                 i = STRANGE_OBJECT;
                 break;
             }
@@ -3300,7 +3300,7 @@ unpaid_cost(
 
     /* onbill() gave no message if unexpected problem occurred */
     if (!shkp || (unp_obj->unpaid && !bp))
-        impossible("unpaid_cost: object wasn't on any bill.");
+        impossible(_("unpaid_cost: object wasn't on any bill."));
     return amt;
 }
 
@@ -3366,7 +3366,7 @@ staticfn void
 add_to_billobjs(struct obj *obj)
 {
     if (obj->where != OBJ_FREE)
-        panic("add_to_billobjs: obj not free");
+        panic(_("add_to_billobjs: obj not free"));
     if (obj->timed)
         obj_stop_timers(obj);
 
@@ -3608,15 +3608,15 @@ append_honorific(char *buf)
         N_("most renowned and sacred")
     };
 
-    Strcat(buf, _(honored[rn2(SIZE(honored) - 1) + u.uevent.udemigod]));
-    if (is_vampire(u.umonst->data))
-        Strcat(buf, (flags.female) ? _(" dark lady") : _(" dark lord"));
-    else if (maybe_polyd(is_elf(u.umonst->data), Race_if(PM_ELF)))
-        Strcat(buf, (flags.female) ? _(" hiril") : _(" hir"));
+    Strcat(buf, honored[rn2(SIZE(honored) - 1) + u.uevent.udemigod]);
+    if (is_vampire(gy.youmonst.data))
+        Strcat(buf, (flags.female) ? " dark lady" : " dark lord");
+    else if (maybe_polyd(is_elf(gy.youmonst.data), Race_if(PM_ELF)))
+        Strcat(buf, (flags.female) ? " hiril" : " hir");
     else
-        Strcat(buf, !is_human(u.umonst->data) ? _(" creature")
-                      : (flags.female) ? _(" lady")
-                        : _(" sir"));
+        Strcat(buf, !is_human(gy.youmonst.data) ? " creature"
+                      : (flags.female) ? " lady"
+                        : " sir");
 }
 
 void
@@ -3628,19 +3628,19 @@ splitbill(struct obj *obj, struct obj *otmp)
     struct monst *shkp = shop_keeper(*u.ushops);
 
     if (!shkp || !inhishop(shkp)) {
-        impossible("splitbill: no resident shopkeeper??");
+        impossible(_("splitbill: no resident shopkeeper??"));
         return;
     }
     bp = onbill(obj, shkp, FALSE);
     if (!bp) {
-        impossible("splitbill: not on bill?");
+        impossible(_("splitbill: not on bill?"));
         return;
     }
     if (bp->bquan < otmp->quan) {
-        impossible("Negative quantity on bill??");
+        impossible(_("Negative quantity on bill??"));
     }
     if (bp->bquan == otmp->quan) {
-        impossible("Zero quantity on bill??");
+        impossible(_("Zero quantity on bill??"));
     }
     bp->bquan -= otmp->quan;
 
@@ -3684,7 +3684,7 @@ sub_one_frombill(struct obj *obj, struct monst *shkp)
         *bp = eshkp->bill_p[eshkp->billct];
         return;
     } else if (obj->unpaid) {
-        impossible("sub_one_frombill: unpaid object not on bill");
+        impossible(_("sub_one_frombill: unpaid object not on bill"));
         obj->unpaid = 0;
     }
 }
@@ -3840,7 +3840,7 @@ stolen_value(
                     You(_("have no credit remaining."));
                     return 0;
                 }
-                still = _("still ");
+                still = _("still "));
             }
             Sprintf(buf, _("%sowe %s %ld %s"), still, shkname(shkp),
                     value, currency(value));
@@ -4188,7 +4188,7 @@ sellobj(
                           offer, "");
             break;
         default:
-            impossible("invalid sell response");
+            impossible(_("invalid sell response"));
         }
     }
 }
@@ -4208,7 +4208,7 @@ doinvbill(
     shkp = shop_keeper(*u.ushops);
     if (!shkp || !inhishop(shkp)) {
         if (mode != 0)
-            impossible("doinvbill: no shopkeeper?");
+            impossible(_("doinvbill: no shopkeeper?"));
         return 0;
     }
     eshkp = ESHK(shkp);
@@ -4235,7 +4235,7 @@ doinvbill(
          bp < end_bp; bp++) {
         obj = bp_to_obj(bp);
         if (!obj) {
-            impossible("Bad shopkeeper administration.");
+            impossible(_("Bad shopkeeper administration."));
             goto quit;
         }
         if (bp->useup || bp->bquan > obj->quan) {
@@ -5703,25 +5703,25 @@ check_unpaid_usage(struct obj *otmp, boolean altusage)
 
     arg1 = arg2 = "";
     if (otmp->oclass == SPBOOK_CLASS) {
-        fmt = _("%sYou owe%s %ld %s.");
+        fmt = _("%sYou owe%s %ld %s."));
         Sprintf(buf, _("This is no free library, %s!  "), cad(FALSE));
         arg1 = rn2(2) ? buf : "";
         arg2 = ESHK(shkp)->debit > 0L ? _(" an additional") : "";
     } else if (otmp->otyp == POT_OIL) {
-        fmt = _("%s%sThat will cost you %ld %s (Yendorian Fuel Tax).");
+        fmt = _("%s%sThat will cost you %ld %s (Yendorian Fuel Tax)."));
     } else if (altusage && (otmp->otyp == BAG_OF_TRICKS
                             || otmp->otyp == HORN_OF_PLENTY)) {
-        fmt = _("%s%sEmptying that will cost you %ld %s.");
+        fmt = _("%s%sEmptying that will cost you %ld %s."));
         if (!rn2(3))
-            arg1 = _("Whoa!  ");
+            arg1 = _("Whoa!  "));
         if (!rn2(3))
-            arg1 = _("Watch it!  ");
+            arg1 = _("Watch it!  "));
     } else {
-        fmt = _("%s%sUsage fee, %ld %s.");
+        fmt = _("%s%sUsage fee, %ld %s."));
         if (!rn2(3))
-            arg1 = _("Hey!  ");
+            arg1 = _("Hey!  "));
         if (!rn2(3))
-            arg2 = _("Ahem.  ");
+            arg2 = _("Ahem.  "));
     }
 
     if (!Deaf && !muteshk(shkp)) {
@@ -5924,7 +5924,7 @@ cad(
         res = "fiend";
         break;
     default:
-        impossible("cad: unknown gender");
+        impossible(_("cad: unknown gender"));
         res = "thing";
         break;
     }
@@ -5983,7 +5983,7 @@ globby_bill_fixup(struct obj *obj_absorber, struct obj *obj_absorbed)
     boolean floor_absorber = (obj_absorber->where == OBJ_FLOOR);
 
     if (!obj_absorber->globby)
-        impossible("globby_bill_fixup called for non-globby object");
+        impossible(_("globby_bill_fixup called for non-globby object"));
 
     if (floor_absorber) {
         x = obj_absorber->ox, y = obj_absorber->oy;

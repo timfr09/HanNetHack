@@ -350,7 +350,7 @@ staticfn void
 fix_curse_trouble(struct obj *otmp, const char *what)
 {
     if (!otmp) {
-        impossible("fix_curse_trouble: nothing to uncurse.");
+        impossible(_("fix_curse_trouble: nothing to uncurse."));
         return;
     }
     if (otmp == uarmg && Glib) {
@@ -508,7 +508,7 @@ fix_worst_trouble(int trouble)
             }
         }
         if (nohands(gy.youmonst.data) || !freehand())
-            impossible("fix_worst_trouble: couldn't cure hands.");
+            impossible(_("fix_worst_trouble: couldn't cure hands."));
         break;
     case TROUBLE_CURSED_BLINDFOLD:
         otmp = ublindf;
@@ -738,9 +738,9 @@ angrygods(aligntyp resp_god)
         godvoice(resp_god, (char *) 0);
         pline(_("\"Thou %s, %s.\""),
               (ugod_is_angry() && resp_god == u.ualign.type)
-                  ? _("hast strayed from the path")
-                  : _("art arrogant"),
-              u.umonst->data->mlet == S_HUMAN ? _("mortal") : _("creature"));
+                  ? "hast strayed from the path"
+                  : "art arrogant",
+              gy.youmonst.data->mlet == S_HUMAN ? "mortal" : "creature");
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
         verbalize(_("Thou must relearn thy lessons!"));
         (void) adjattrib(A_WIS, -1, FALSE);
@@ -771,8 +771,8 @@ angrygods(aligntyp resp_god)
                       ? _("scorn")
                       : _("call upon"));
         /* [why isn't this using verbalize()?] */
-        pline(_("\"Then die, %s!\""),
-              (u.umonst->data->mlet == S_HUMAN) ? _("mortal") : _("creature"));
+        pline(_("\"Then die, %s!\"",
+              (gy.youmonst.data->mlet == S_HUMAN) ? "mortal" : "creature");
         summon_minion(resp_god, FALSE);
         break;
 
@@ -1229,9 +1229,9 @@ pleased(aligntyp g_align)
                 if (u.uevent.uheard_tune < 1) {
                     godvoice(g_align, (char *) 0);
                     SetVoice((struct monst *) 0, 0, 80, voice_deity);
-                    verbalize(_("Hark, %s!"), is_human(u.umonst->data)
-                                               ? _("mortal")
-                                               : _("creature"));
+                    verbalize(_("Hark, %s!", is_human(gy.youmonst.data)
+                                               ? "mortal"
+                                               : "creature");
                     SetVoice((struct monst *) 0, 0, 80, voice_deity);
                     verbalize(
                        _("To enter the castle, thou must play the right tune!"));
@@ -1353,7 +1353,7 @@ pleased(aligntyp g_align)
             give_spell();
             break;
         default:
-            impossible("Confused deity!");
+            impossible(_("Confused deity!"));
             break;
         }
 
@@ -1706,7 +1706,7 @@ sacrifice_your_race(
 {
     int pm;
 
-    if (is_demon(u.umonst->data)) {
+    if (is_demon(gy.youmonst.data)) {
         You(_("find the idea very satisfying."));
         exercise(A_WIS, TRUE);
     } else if (u.ualign.type != A_CHAOTIC) {
@@ -1760,7 +1760,7 @@ sacrifice_your_race(
                 dmon->mpeaceful = TRUE;
             You(_("are terrified, and unable to move."));
             nomul(-3);
-            gm.multi_reason = _("being terrified of a demon");
+            gm.multi_reason = _("being terrified of a demon"));
             gn.nomovemsg = 0;
         } else
             pline_The(_("%s."), demonless_msg);
@@ -2262,8 +2262,8 @@ dopray(void)
         }
     }
     nomul(-3);
-    gm.multi_reason = _("praying");
-    gn.nomovemsg = _("You finish your prayer.");
+    gm.multi_reason = _("praying"));
+    gn.nomovemsg = _("You finish your prayer."));
     ga.afternmv = prayer_done;
 
     if (gp.p_type == 3 && !Inhell) {
@@ -2485,7 +2485,7 @@ doturn(void)
      *  the brief paralysis?]
      */
     nomul(-(5 - ((u.ulevel - 1) / 6))); /* -5 .. -1 */
-    gm.multi_reason = _("trying to turn the monsters");
+    gm.multi_reason = _("trying to turn the monsters"));
     gn.nomovemsg = You_can_move_again;
     return ECMD_TIME;
 }
@@ -2549,7 +2549,7 @@ align_gname(aligntyp alignment)
         gnam = gu.urole.cgod;
         break;
     default:
-        impossible("unknown alignment.");
+        impossible(_("unknown alignment."));
         gnam = N_("someone");
         break;
     }
@@ -2617,10 +2617,10 @@ halu_gname(aligntyp alignment)
         gnam = Moloch;
         break;
     default:
-        impossible("rn2 broken in halu_gname?!?");
+        impossible(_("rn2 broken in halu_gname?!?"));
     }
     if (!gnam) {
-        impossible("No random god name?");
+        impossible(_("No random god name?"));
         gnam = N_("your Friend the Computer"); /* Paranoia */
     }
     gnam = _(gnam);

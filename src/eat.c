@@ -189,13 +189,13 @@ eatmupdate(void)
 
     if (is_obj_mappear(&gy.youmonst,ORANGE) && !Hallucination) {
         /* revert from hallucinatory to "normal" mimicking */
-        altmsg = _("You now prefer mimicking yourself.");
+        altmsg = _("You now prefer mimicking yourself."));
         altapp = GOLD_PIECE;
     } else if (is_obj_mappear(&gy.youmonst,GOLD_PIECE) && Hallucination) {
         /* won't happen; anything which might make immobilized
            hero begin hallucinating (black light attack, theft
            of Grayswandir) will terminate the mimicry first */
-        altmsg = _("Your rind escaped intact.");
+        altmsg = _("Your rind escaped intact."));
         altapp = ORANGE;
     }
 
@@ -295,7 +295,7 @@ recalc_wt(void)
     struct obj *piece = svc.context.victual.piece;
 
     if (!piece) {
-        impossible("recalc_wt without piece");
+        impossible(_("recalc_wt without piece"));
         return;
     }
     debugpline1("Old weight = %d", piece->owt);
@@ -554,9 +554,9 @@ done_eating(boolean message)
             pline1(gn.nomovemsg);
         gn.nomovemsg = 0;
     } else if (message) {
-        You(_("finish %s %s."),
-            (u.umonst->data == &mons[PM_FIRE_ELEMENTAL]) ? _("consuming")
-            : _("eating"),
+        You(_("finish %s %s.",
+            (gy.youmonst.data == &mons[PM_FIRE_ELEMENTAL]) ? "consuming"
+            : "eating",
             food_xname(piece, TRUE));
     }
 
@@ -619,12 +619,12 @@ eat_brains(
 
     if (noncorporeal(pd)) {
         if (visflag)
-            pline(_("%s brain is unharmed."),
-                  (mdef == u.umonst) ? _("Your") : s_suffix(Monnam(mdef)));
+            pline(_("%s brain is unharmed.",
+                  (mdef == &gy.youmonst) ? "Your" : s_suffix(Monnam(mdef)));
         return M_ATTK_MISS; /* side-effects can't occur */
-    } else if (magr == u.umonst) {
-        You(_("eat %s brain!"), s_suffix(mon_nam(mdef)));
-    } else if (mdef == u.umonst) {
+    } else if (magr == &gy.youmonst) {
+        You(_("eat %s brain!", s_suffix(mon_nam(mdef)));
+    } else if (mdef == &gy.youmonst) {
         Your(_("brain is eaten!"));
     } else { /* monster against monster */
         if (visflag && canspotmon(mdef))
@@ -850,7 +850,7 @@ cprefx(int pm)
         return;
     }
     case PM_GREEN_SLIME:
-        if (!Slimed && !Unchanging && !slimeproof(u.umonst->data)) {
+        if (!Slimed && !Unchanging && !slimeproof(gy.youmonst.data)) {
             You(_("don't feel very well."));
             make_slimed(10L, (char *) 0);
             delayed_killer(SLIMED, KILLED_BY_AN, "");
@@ -1195,7 +1195,7 @@ cpostfx(int pm)
         if (gy.youmonst.data->mlet != S_MIMIC && !Unchanging) {
             char buf[BUFSZ];
             const char *tempshape = !Hallucination ? _("a pile of gold")
-                                                   : _("an orange");
+                                                   : _("an orange"));
 
             if (!u.uconduct.polyselfs++) /* you're changing form */
                 livelog_printf(LL_CONDUCT,
@@ -1206,12 +1206,12 @@ cpostfx(int pm)
             if (u.usteed)
                 dismount_steed(DISMOUNT_FELL);
             nomul(-tmp);
-            gm.multi_reason = _("pretending to be a pile of gold");
+            gm.multi_reason = _("pretending to be a pile of gold"));
             Sprintf(buf,
                     Hallucination
-                       ? _("You suddenly dread being peeled and mimic %s again!")
-                       : _("You now prefer mimicking %s again."),
-                    an(Upolyd ? pmname(u.umonst->data, Ugender)
+                       ? "You suddenly dread being peeled and mimic %s again!"
+                       : "You now prefer mimicking %s again.",
+                    an(Upolyd ? pmname(gy.youmonst.data, Ugender)
                               : gu.urace.noun));
             ge.eatmbuf = dupstr(buf);
             gn.nomovemsg = ge.eatmbuf;
@@ -1565,7 +1565,7 @@ consume_tin(const char *mesg)
         which = 0; /* 0=>plural, 1=>as-is, 2=>"the" prefix */
         if ((mnum == PM_COCKATRICE || mnum == PM_CHICKATRICE)
             && (Stone_resistance || Hallucination)) {
-            what = _("chicken");
+            what = _("chicken"));
             which = 1; /* suppress pluralization */
         } else if (Hallucination) {
             what = rndmonnam(NULL);
@@ -1726,10 +1726,10 @@ start_tin(struct obj *otmp)
     const char *mesg = 0;
     int tmp;
 
-    if (metallivorous(u.umonst->data)) {
-        mesg = _("You bite right into the metal tin...");
+    if (metallivorous(gy.youmonst.data)) {
+        mesg = "You bite right into the metal tin...";
         tmp = 0;
-    } else if (cantwield(u.umonst->data)) { /* nohands || verysmall */
+    } else if (cantwield(gy.youmonst.data)) { /* nohands || verysmall */
         You(_("cannot handle the tin properly to open it."));
         return;
     } else if (otmp->blessed) {
@@ -1741,13 +1741,13 @@ start_tin(struct obj *otmp)
         tmp = (uwep && uwep->blessed && uwep->otyp == TIN_OPENER) ? 0
                                                                   : rn2(2);
         if (!tmp)
-            mesg = _("The tin opens like magic!");
+            mesg = _("The tin opens like magic!"));
         else
             pline_The(_("tin seems easy to open."));
     } else if (uwep) {
         switch (uwep->otyp) {
         case TIN_OPENER:
-            mesg = _("You easily open the tin."); /* iff tmp==0 */
+            mesg = _("You easily open the tin.")); /* iff tmp==0 */
             tmp = rn2(uwep->cursed ? 3 : !uwep->blessed ? 2 : 1);
             break;
         case DAGGER:
@@ -1833,9 +1833,9 @@ rottenfood(struct obj *obj)
         int duration = rnd(10);
 
         if (!Blind)
-            what = _("goes"), where = _("dark");
+            what = _("goes"), where = _("dark"));
         else if (Levitation || Is_airlevel(&u.uz) || Is_waterlevel(&u.uz))
-            what = _("you lose control of"), where = _("yourself");
+            what = _("you lose control of"), where = _("yourself"));
         else
             what = _("you slap against the"),
             where = (u.usteed) ? _("saddle") : surface(u.ux, u.uy);
@@ -1843,8 +1843,8 @@ rottenfood(struct obj *obj)
         incr_itimeout(&HDeaf, duration);
         disp.botl = TRUE;
         nomul(-duration);
-        gm.multi_reason = _("unconscious from rotten food");
-        gn.nomovemsg = _("You are conscious again.");
+        gm.multi_reason = _("unconscious from rotten food"));
+        gn.nomovemsg = _("You are conscious again."));
         ga.afternmv = Hear_again;
         return 1;
     }
@@ -2130,11 +2130,11 @@ fprefx(struct obj *otmp)
         /* [satiation message may be inaccurate if eating gets interrupted] */
         break;
     case TRIPE_RATION:
-        if (carnivorous(u.umonst->data) && !humanoid(u.umonst->data)) {
+        if (carnivorous(gy.youmonst.data) && !humanoid(gy.youmonst.data)) {
             pline(_("This tripe ration is surprisingly good!"));
-        } else if (maybe_polyd(is_orc(u.umonst->data), Race_if(PM_ORC))) {
-            pline(Hallucination ? _("Tastes great!  Less filling!")
-                                : _("Mmm, tripe... not bad!"));
+        } else if (maybe_polyd(is_orc(gy.youmonst.data), Race_if(PM_ORC))) {
+            pline(Hallucination ? "Tastes great!  Less filling!"
+                                : "Mmm, tripe... not bad!");
         } else {
             pline(_("Yak - dog food!"));
             more_experienced(1, 0);
@@ -2147,10 +2147,10 @@ fprefx(struct obj *otmp)
         }
         break;
     case LEMBAS_WAFER:
-        if (maybe_polyd(is_orc(u.umonst->data), Race_if(PM_ORC))) {
-            pline("%s", _("!#?&* elf kibble!"));
+        if (maybe_polyd(is_orc(gy.youmonst.data), Race_if(PM_ORC))) {
+            pline(_("%s", "!#?&* elf kibble!");
             break;
-        } else if (maybe_polyd(is_elf(u.umonst->data), Race_if(PM_ELF))) {
+        } else if (maybe_polyd(is_elf(gy.youmonst.data), Race_if(PM_ELF))) {
             pline(_("A little goes a long way."));
             break;
         }
@@ -2499,7 +2499,7 @@ staticfn const char *
 foodword(struct obj *otmp)
 {
     if (otmp->oclass == FOOD_CLASS)
-        return _("food");
+        return _("food"));
     if (otmp->oclass == GEM_CLASS && objects[otmp->otyp].oc_material == GLASS
         && otmp->dknown)
         makeknown(otmp->otyp);
@@ -3313,7 +3313,7 @@ lesshungry(int num)
                 || (svc.context.victual.eating
                     && !svc.context.victual.fullwarn))) {
             pline(_("You're having a hard time getting all of it down."));
-            gn.nomovemsg = _("You're finally finished.");
+            gn.nomovemsg = _("You're finally finished."));
             if (!svc.context.victual.eating) {
                 gm.multi = -2;
             } else {
@@ -3424,8 +3424,8 @@ newuhs(boolean incr)
                 incr_itimeout(&HDeaf, duration);
                 disp.botl = TRUE;
                 nomul(-duration);
-                gm.multi_reason = _("fainted from lack of food");
-                gn.nomovemsg = _("You regain consciousness.");
+                gm.multi_reason = _("fainted from lack of food"));
+                gn.nomovemsg = _("You regain consciousness."));
                 ga.afternmv = unfaint;
                 newhs = FAINTED;
                 if (!Levitation)
@@ -3716,7 +3716,7 @@ floorfood(
     } else if (corpsecheck == 2) {
         otmp = getobj(verb, tin_ok, GETOBJ_NOFLAGS);
     } else {
-        impossible("floorfood: unknown request (%s)", verb);
+        impossible(_("floorfood: unknown request (%s)", verb);
         otmp = (struct obj *) 0;
     }
     if (otmp && corpsecheck && !(offering && otmp->oclass == AMULET_CLASS)) {
@@ -3759,7 +3759,7 @@ vomit(void) /* A good idea from David Neves */
        be immobilized for some other reason at the time vomit() is called */
     if (gm.multi >= -2) {
         nomul(-2);
-        gm.multi_reason = _("vomiting");
+        gm.multi_reason = _("vomiting"));
         gn.nomovemsg = You_can_move_again;
     }
 

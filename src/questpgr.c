@@ -41,7 +41,7 @@ quest_info(int typ)
     case MS_GUARDIAN:
         return gu.urole.guardnum;
     default:
-        impossible("quest_info(%d)", typ);
+        impossible(_("quest_info(%d)", typ);
     }
     return 0;
 }
@@ -253,10 +253,10 @@ convert_arg(char c)
         str = rank_of(MIN_QUEST_LEVEL, Role_switch, flags.female);
         break;
     case 's':
-        str = (flags.female) ? _("sister") : _("brother");
+        str = (flags.female) ? _("sister") : _("brother"));
         break;
     case 'S':
-        str = (flags.female) ? _("daughter") : _("son");
+        str = (flags.female) ? _("daughter") : _("son"));
         break;
     case 'l':
         str = ldrname();
@@ -301,16 +301,16 @@ convert_arg(char c)
         str = align_gname(A_LAWFUL);
         break;
     case 'C':
-        str = _("chaotic");
+        str = _("chaotic"));
         break;
     case 'N':
-        str = _("neutral");
+        str = _("neutral"));
         break;
     case 'L':
-        str = _("lawful");
+        str = _("lawful"));
         break;
     case 'x':
-        str = Blind ? _("sense") : _("see");
+        str = Blind ? _("sense") : _("see"));
         break;
     case 'Z':
         str = _(svd.dungeons[0].dname);
@@ -414,7 +414,7 @@ convert_line(char *in_line, char *out_line)
             break;
         }
         if (cc > &out_line[BUFSZ - 1])
-            panic("convert_line: overflow");
+            panic(_("convert_line: overflow"));
     }
     *cc = 0;
     return;
@@ -436,7 +436,7 @@ deliver_by_pline(const char *str)
         /* out_line is the fully rendered, postposition-resolved
            quest text; pass it through a "%s" format so any stray
            '%' in the rendered text isn't taken as a directive. */
-        pline("%s", out_line);
+        pline(_("%s", out_line);
     }
 }
 
@@ -493,14 +493,14 @@ com_pager_core(
     L = nhl_init(&sbi);
     if (!L) {
         if (showerror)
-            impossible("com_pager: nhl_init() failed");
+            impossible(_("com_pager: nhl_init() failed"));
         goto compagerdone;
     }
 
     /* Try localized quest.lua first (e.g., locale/ko/quest.lua) */
     if (!nhl_loadlua(L, get_localized_filename(QTEXT_FILE))) {
         if (showerror)
-            impossible("com_pager: %s not found.", get_localized_filename(QTEXT_FILE));
+            impossible(_("com_pager: %s not found.", get_localized_filename(QTEXT_FILE));
         goto compagerdone;
     }
 
@@ -508,7 +508,7 @@ com_pager_core(
     lua_getglobal(L, "questtext");
     if (!lua_istable(L, -1)) {
         if (showerror)
-            impossible("com_pager: questtext in %s is not a lua table",
+            impossible(_("com_pager: questtext in %s is not a lua table",
                        get_localized_filename(QTEXT_FILE));
         goto compagerdone;
     }
@@ -516,7 +516,7 @@ com_pager_core(
     lua_getfield(L, -1, section);
     if (!lua_istable(L, -1)) {
         if (showerror)
-            impossible("com_pager: questtext[%s] in %s is not a lua table",
+            impossible(_("com_pager: questtext[%s] in %s is not a lua table",
                        section, get_localized_filename(QTEXT_FILE));
         goto compagerdone;
     }

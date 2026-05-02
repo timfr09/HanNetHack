@@ -167,7 +167,7 @@ add_mon_to_reg(NhRegion *reg, struct monst *mon)
        only include it once no matter how segments the region contains */
     if (mon_in_region(reg, mon)) {
         if (mon->data != &mons[PM_LONG_WORM])
-            impossible("add_mon_to_reg: %s [#%u] already in region.",
+            impossible(_("add_mon_to_reg: %s [#%u] already in region.",
                        m_monnam(mon), mon->m_id);
         return;
     }
@@ -1236,7 +1236,7 @@ create_gas_cloud(
         inside_cloud = TRUE;
 
     if (cloudsize > MAX_CLOUD_SIZE) {
-        impossible("create_gas_cloud: cloud too large (%d)!", cloudsize);
+        impossible(_("create_gas_cloud: cloud too large (%d)!", cloudsize);
         cloudsize = MAX_CLOUD_SIZE;
     }
 

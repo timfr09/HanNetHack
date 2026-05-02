@@ -1082,7 +1082,7 @@ skills_for_role(void)
         skills = Skill_W;
         break;
     default:
-        panic("No skills found for role");
+        panic(_("No skills found for role"));
         break;
     }
 

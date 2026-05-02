@@ -68,9 +68,9 @@ use_saddle(struct obj *otmp)
     if (touch_petrifies(ptr) && !uarmg && !Stone_resistance) {
         char kbuf[BUFSZ];
 
-        You(_("touch %s."), mon_nam(mtmp));
-        if (!(poly_when_stoned(u.umonst->data) && polymon(PM_STONE_GOLEM))) {
-            Sprintf(kbuf, _("attempting to saddle %s"),
+        You(_("touch %s.", mon_nam(mtmp));
+        if (!(poly_when_stoned(gy.youmonst.data) && polymon(PM_STONE_GOLEM))) {
+            Sprintf(kbuf, "attempting to saddle %s",
                     an(pmname(mtmp->data, Mgender(mtmp))));
             instapetrify(kbuf);
         }
@@ -144,7 +144,7 @@ put_saddle_on_mon(struct obj *saddle, struct monst *mtmp)
 {
     if (!can_saddle(mtmp) || which_armor(mtmp, W_SADDLE)) {
         if (saddle)
-            impossible("put_saddle_on_mon: saddle obj could get orphaned");
+            impossible(_("put_saddle_on_mon: saddle obj could get orphaned"));
         return;
     }
     if (!saddle) {
@@ -156,7 +156,7 @@ put_saddle_on_mon(struct obj *saddle, struct monst *mtmp)
         }
     }
     if (mpickobj(mtmp, saddle))
-        panic("merged saddle?");
+        panic(_("merged saddle?"));
     mtmp->misc_worn_check |= W_SADDLE;
     saddle->owornmask = W_SADDLE;
     saddle->leashmon = mtmp->m_id;
@@ -239,10 +239,10 @@ mount_steed(
             return (FALSE);
     }
 
-    if (Upolyd && (!humanoid(u.umonst->data)
-                   || verysmall(u.umonst->data)
-                   || bigmonst(u.umonst->data)
-                   || slithy(u.umonst->data))) {
+    if (Upolyd && (!humanoid(gy.youmonst.data)
+                   || verysmall(gy.youmonst.data)
+                   || bigmonst(gy.youmonst.data)
+                   || slithy(gy.youmonst.data))) {
         You(_("won't fit on a saddle."));
         return (FALSE);
     }
@@ -601,7 +601,7 @@ dismount_steed(
     otmp = which_armor(mtmp, W_SADDLE);
     switch (reason) {
     case DISMOUNT_THROWN:
-        verb = _("are thrown");
+        verb = _("are thrown"));
         FALLTHROUGH;
         /*FALLTHRU*/
     case DISMOUNT_KNOCKED:
@@ -907,7 +907,7 @@ place_monster(struct monst *mon, coordxy x, coordxy y)
        vault guards (either living or dead) are parked at <0,0> */
     if (!isok(x, y) && (x != 0 || y != 0 || !mon->isgd)) {
         describe_level(buf, 0);
-        impossible("trying to place %s at <%d,%d> mstate:%lx on %s",
+        impossible(_("trying to place %s at <%d,%d> mstate:%lx on %s",
                    minimal_monnam(mon, TRUE), x, y, mon->mstate, buf);
         x = y = 0;
     }
@@ -915,7 +915,7 @@ place_monster(struct monst *mon, coordxy x, coordxy y)
         /* special case is for convoluted vault guard handling */
         || (DEADMONSTER(mon) && !(mon->isgd && x == 0 && y == 0))) {
         describe_level(buf, 0);
-        impossible("placing %s onto map, mstate:%lx, on %s?",
+        impossible(_("placing %s onto map, mstate:%lx, on %s?",
                    (mon == u.usteed) ? "steed" : "defunct monster",
                    mon->mstate, buf);
         return;
@@ -924,7 +924,7 @@ place_monster(struct monst *mon, coordxy x, coordxy y)
         describe_level(buf, 0);
         monnm = minimal_monnam(mon, FALSE);
         othnm = (mon != othermon) ? minimal_monnam(othermon, TRUE) : "itself";
-        impossible("placing %s over %s at <%d,%d>, mstates:%lx %lx on %s?",
+        impossible(_("placing %s over %s at <%d,%d>, mstates:%lx %lx on %s?",
                    monnm, othnm, x, y, othermon->mstate, mon->mstate, buf);
     }
     mon->mx = x, mon->my = y;

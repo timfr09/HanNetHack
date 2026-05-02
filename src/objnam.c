@@ -127,7 +127,7 @@ strprepend(char *s, const char *pref)
     int i = (int) strlen(pref);
 
     if (i > PREFIX) {
-        impossible("PREFIX too short (for %d).", i);
+        impossible(_("PREFIX too short (for %d).", i);
         return s;
     }
     copynchars(s - i, pref, i + 1);
@@ -319,7 +319,7 @@ safe_typename(int otyp)
         || !OBJ_NAME(objects[otyp])) {
         res = nextobuf();
         Sprintf(res, "glorkum[%d]", otyp);
-        impossible("safe_typename: %s", res);
+        impossible(_("safe_typename: %s", res);
     } else {
         /* force it to be treated as fully discovered */
         save_nameknown = objects[otyp].oc_name_known;
@@ -532,10 +532,10 @@ reorder_fruit(boolean forward)
         /* without sanity checking, this would reduce to 'allfr[f->fid]=f' */
         j = f->fid;
         if (j < 1 || j >= k) {
-            impossible("reorder_fruit: fruit index (%d) out of range", j);
+            impossible(_("reorder_fruit: fruit index (%d) out of range", j);
             return; /* don't sort after all; should never happen... */
         } else if (allfr[j]) {
-            impossible("reorder_fruit: duplicate fruit index (%d)", j);
+            impossible(_("reorder_fruit: duplicate fruit index (%d)", j);
             return;
         }
         allfr[j] = f;
@@ -562,12 +562,12 @@ xcalled(
     const char *pfx, /* usually class string, sometimes more specific */
     const char *sfx) /* user assigned type name */
 {
-    const char *called_str = _(" called ");
+    const char *called_str = _(" called "));
     int bufsiz = siz - 1 - (int) strlen(buf),
         pfxlen = (int) (strlen(pfx) + strlen(called_str));
 
     if (pfxlen > bufsiz)
-        panic("xcalled: not enough room for prefix (%d > %d)",
+        panic(_("xcalled: not enough room for prefix (%d > %d)",
               pfxlen, bufsiz);
 
     Sprintf(eos(buf), "%s%s%.*s", pfx, called_str, bufsiz - pfxlen, sfx);
@@ -750,7 +750,7 @@ xname_flags(
             struct fruit *f = fruit_from_indx(obj->spe);
 
             if (!f) {
-                impossible("Bad fruit #%d?", obj->spe);
+                impossible(_("Bad fruit #%d?", obj->spe);
                 Strcpy(buf, _("fruit"));
             } else {
                 /* fruit name is limited in length to PL_FSIZ; converting
@@ -919,7 +919,7 @@ xname_flags(
             Sprintf(buf, _("%s ring"), _(dn));
         break;
     case GEM_CLASS: {
-        const char *rock = (ocl->oc_material == MINERAL) ? _("stone") : _("gem");
+        const char *rock = (ocl->oc_material == MINERAL) ? _("stone") : _("gem"));
 
         if (!dknown) {
             Strcpy(buf, rock);
@@ -937,7 +937,7 @@ xname_flags(
     } /* gem */
     default:
         Sprintf(buf, "glorkum %d %d %d", obj->oclass, typ, obj->spe);
-        impossible("xname_flags: %s", buf);
+        impossible(_("xname_flags: %s", buf);
         break;
     } /* switch */
 
@@ -950,7 +950,7 @@ xname_flags(
            add '\0' terminator unless fewer than N chars are copied, which
            is what we want, but gcc complains about that so use memcpy() */
         paniclog("xname", (char *) memcpy(buf - 6, "buf[]=", 6));
-        panic("xname: buffer overflow before appending name.");
+        panic(_("xname: buffer overflow before appending name."));
         /*NOTREACHED*/
     }
     bufspaceleft = (size_t) (buf_end - buf_eos);
@@ -1445,10 +1445,10 @@ doname_base(
                 ConcatF1(bp, 0, _(" (attached to %s)"), noit_mon_nam(mlsh));
             } else {
                 if (mlsh) /*&& DEADMONSTER(mlsh)*/
-                    impossible("leashed %s #%u is dead",
+                    impossible(_("leashed %s #%u is dead",
                                mon_pmname(mlsh), (unsigned) obj->leashmon);
                 else
-                    impossible("leashed monster #%u not found",
+                    impossible(_("leashed monster #%u not found",
                                (unsigned) obj->leashmon);
                 obj->leashmon = 0;
             }
@@ -1739,7 +1739,7 @@ doname_base(
         /* ideally this will never happen; if xnamep is any obuf[]
            other than the last, overflow here would be relatively
            benign and we could probably keep going */
-        panic("doname: long object description overflow.");
+        panic(_("doname: long object description overflow."));
         /*NOTREACHED*/
     } else {
         static int doname_full = 0;
@@ -2164,7 +2164,7 @@ an(const char *str)
     char *buf = nextobuf();
 
     if (!str || !*str) {
-        impossible("Alphabet soup: 'an(%s)'.", str ? "\"\"" : "<null>");
+        impossible(_("Alphabet soup: 'an(%s)'.", str ? "\"\"" : "<null>");
         return strcpy(buf, _("an []"));
     }
     (void) just_an(buf, str);
@@ -2192,7 +2192,7 @@ the(const char *str)
     boolean insert_the = FALSE;
 
     if (!str || !*str) {
-        impossible("Alphabet soup: 'the(%s)'.", str ? "\"\"" : "<null>");
+        impossible(_("Alphabet soup: 'the(%s)'.", str ? "\"\"" : "<null>");
         return strcpy(buf, "the []");
     }
     /* Korean doesn't use articles like "the" */
@@ -2930,7 +2930,7 @@ makeplural(const char *oldstr)
         while (*oldstr == ' ')
             oldstr++;
     if (!oldstr || !*oldstr) {
-        impossible("plural of null?");
+        impossible(_("plural of null?"));
         Strcpy(str, "s");
         return str;
     }
@@ -3143,7 +3143,7 @@ makesingular(const char *oldstr)
         while (*oldstr == ' ')
             oldstr++;
     if (!oldstr || !*oldstr) {
-        impossible("singular of null?");
+        impossible(_("singular of null?"));
         str[0] = '\0';
         return str;
     }
@@ -5571,7 +5571,7 @@ armor_simple_name(struct obj *armor)
         break;
     default:
         result = simpleonames(armor);
-        impossible("unknown armor category (%s => %u)", result, armcat);
+        impossible(_("unknown armor category (%s => %u)", result, armcat);
         break;
     }
     return result;
@@ -5634,7 +5634,7 @@ helm_simple_name(struct obj *helmet)
      *      fedora, cornuthaum, dunce cap       -> hat
      *      all other types of helmets          -> helm
      */
-    return !hard_helmet(helmet) ? _("hat") : _("helm");
+    return !hard_helmet(helmet) ? _("hat") : _("helm"));
 }
 
 /* gloves vs gauntlets; depends upon discovery state */
@@ -5754,12 +5754,12 @@ safe_qbuf(
        the result of short_oname() to be shorter than the length of
        the last resort string, but we ignore that possibility here) */
     if (len_qpfx > lenlimit)
-        impossible("safe_qbuf: prefix too long (%u characters).", len_qpfx);
+        impossible(_("safe_qbuf: prefix too long (%u characters).", len_qpfx);
     else if (len_qpfx + len_qsfx > lenlimit)
-        impossible("safe_qbuf: suffix too long (%u + %u characters).",
+        impossible(_("safe_qbuf: suffix too long (%u + %u characters).",
                    len_qpfx, len_qsfx);
     else if (len_qpfx + len_lastR + len_qsfx > lenlimit)
-        impossible("safe_qbuf: filler too long (%u + %u + %u characters).",
+        impossible(_("safe_qbuf: filler too long (%u + %u + %u characters).",
                    len_qpfx, len_lastR, len_qsfx);
 
     /* the output buffer might be the same as the prefix if caller

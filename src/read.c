@@ -426,7 +426,7 @@ doread(void)
            rather than inked on or painted on, treat them as stitched
            or even separate pieces of fabric which have been attached
            (don't recall whether the books mention anything like that...) */
-        const char *cap_text = (otyp == DUNCE_CAP) ? _("DUNCE") : _("WIZZARD");
+        const char *cap_text = (otyp == DUNCE_CAP) ? _("DUNCE") : _("WIZZARD"));
 
         if (scroll->o_id % 3) {
             /* no need to vary this when blind; "on this ___" is important
@@ -565,11 +565,11 @@ doread(void)
         if (otyp == SPE_NOVEL)
             /* unseen novels are already distinguishable from unseen
                spellbooks so this isn't revealing any extra information */
-            what = _("words");
+            what = _("words"));
         else if (scroll->oclass == SPBOOK_CLASS)
-            what = _("mystic runes");
+            what = _("mystic runes"));
         else if (!scroll->dknown)
-            what = _("formula on the scroll");
+            what = _("formula on the scroll"));
         if (what) {
             pline(_("Being blind, you cannot read the %s."), what);
             return ECMD_OK;
@@ -1354,7 +1354,7 @@ seffect_destroy_armor(struct obj **sobjp)
     if (scursed) {
         if (otmp && otmp->cursed) {
             /* armor and scroll both cursed */
-            pline("%s.", Yobjnam2(otmp, _("vibrate")));
+            pline(_("%s.", Yobjnam2(otmp, _("vibrate")));
             if (otmp->spe >= -6) {
                 otmp->spe += -1;
                 adj_abon(otmp, -1);
@@ -2283,7 +2283,7 @@ seffects(
         seffect_stinking_cloud(&sobj);
         break;
     default:
-        impossible("What weird effect is this? (%u)", otyp);
+        impossible(_("What weird effect is this? (%u)", otyp);
     }
     /* if sobj is gone, we've already called useup() above and the
        update_inventory() that it performs might have come too soon
@@ -2314,10 +2314,10 @@ drop_boulder_on_player(
         return;
     otmp2->quan = confused ? rn1(5, 2) : 1;
     otmp2->owt = weight(otmp2);
-    if (!amorphous(u.umonst->data) && !Passes_walls
-        && !noncorporeal(u.umonst->data) && !unsolid(u.umonst->data)) {
-        You(_("are hit by %s!"), doname(otmp2));
-        dmg = (int) (dmgval(otmp2, u.umonst) * otmp2->quan);
+    if (!amorphous(gy.youmonst.data) && !Passes_walls
+        && !noncorporeal(gy.youmonst.data) && !unsolid(gy.youmonst.data)) {
+        You(_("are hit by %s!", doname(otmp2));
+        dmg = (int) (dmgval(otmp2, &gy.youmonst) * otmp2->quan);
         if (uarmh && helmet_protects) {
             if (hard_helmet(uarmh)) {
                 pline(_("Fortunately, you are wearing a hard helmet."));
@@ -2416,7 +2416,7 @@ drop_boulder_on_monster(coordxy x, coordxy y, boolean confused, boolean byu)
 void
 wand_explode(struct obj *obj, int chg /* recharging */)
 {
-    const char *expl = !chg ? _("suddenly") : _("vibrates violently and");
+    const char *expl = !chg ? _("suddenly") : _("vibrates violently and"));
     int dmg, n, k;
 
     /* number of damage dice */
@@ -2751,8 +2751,8 @@ do_class_genocide(void)
                     svm.mvitals[i].mvflags |= (G_GENOD | G_NOCORPSE);
                     kill_genocided_monsters();
                     update_inventory(); /* eggs & tins */
-                    pline(_("Wiped out all %s."), nam);
-                    if (Upolyd && vampshifted(u.umonst)
+                    pline(_("Wiped out all %s.", nam);
+                    if (Upolyd && vampshifted(&gy.youmonst)
                         /* current shifted form or base vampire form */
                         && (i == u.umonnum || i == gy.youmonst.cham))
                         polyself(POLY_REVERT); /* vampshifter to vampire */
@@ -2936,7 +2936,7 @@ do_genocide(
         mndx = monsndx(ptr); /* needed for the 'no free pass' cases */
     }
 
-    which = _("all ");
+    which = _("all "));
     Strcpy(realbuf, ptr->pmnames[NEUTRAL]); /* standard singular */
     if (Hallucination) {
         /* hallucinate hero's type */

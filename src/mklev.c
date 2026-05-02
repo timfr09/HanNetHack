@@ -176,7 +176,7 @@ finddpos(coord *cc, int dir, struct mkroom *aroom)
         y2 = aroom->hy;
         break;
     default:
-        impossible("finddpos: illegal dir");
+        impossible(_("finddpos: illegal dir"));
         return FALSE;
     }
 
@@ -308,7 +308,7 @@ add_room(coordxy lowx, coordxy lowy, coordxy hix, coordxy hiy,
 
 #ifdef DEBUG
     if (svn.nroom >= MAXNROFROOMS)
-        panic("level has too many rooms");
+        panic(_("level has too many rooms"));
 #endif /*DEBUG*/
     croom = &svr.rooms[svn.nroom];
     do_room_or_subroom(croom, lowx, lowy, hix, hiy, lit, rtype, special,
@@ -328,9 +328,9 @@ add_subroom(struct mkroom *proom,
 
 #ifdef DEBUG
     if (gn.nsubroom >= MAXNROFROOMS)
-        panic("level has too many subrooms");
+        panic(_("level has too many subrooms"));
     if (proom->nsubrooms >= MAX_SUBROOMS)
-        panic("room has too many subrooms");
+        panic(_("room has too many subrooms"));
 #endif /*DEBUG*/
     croom = &gs.subrooms[gn.nsubroom];
     do_room_or_subroom(croom, lowx, lowy, hix, hiy, lit, rtype, special,
@@ -956,7 +956,7 @@ fill_ordinary_room(
         struct mkroom *subroom = croom->sbrooms[x];
 
         if (!subroom) {
-            impossible("fill_ordinary_room: Null subroom");
+            impossible(_("fill_ordinary_room: Null subroom"));
             return;
         }
         fill_ordinary_room(subroom, FALSE);
@@ -1071,7 +1071,7 @@ fill_ordinary_room(
 
                 ++tryct;
                 if (tryct == 50) {
-                    impossible("couldn't generate supply chest item");
+                    impossible(_("couldn't generate supply chest item"));
                     break;
                 }
                 /* guarantee at least one noncursed item, with a small
@@ -1160,7 +1160,7 @@ fill_ordinary_room(
         trycnt = 0;
         while (!rn2(5)) {
             if (++trycnt > 100) {
-                impossible("trycnt overflow4");
+                impossible(_("trycnt overflow4"));
                 break;
             }
             if (somexyspace(croom, &pos)) {
@@ -1232,7 +1232,7 @@ mklev_sanity_check(void)
     for (y = 0; y < ROWNO; y++) {
         for (x = 1; x < COLNO; x++) {
             if (!chk_okdoor(x,y))
-                impossible("levl[%i][%i] door not ok", x, y);
+                impossible(_("levl[%i][%i] door not ok", x, y);
         }
     }
 
@@ -1242,7 +1242,7 @@ mklev_sanity_check(void)
         if (rmno == -1)
             rmno = gs.smeq[i];
         if (rmno != -1 && gs.smeq[i] != rmno)
-            impossible("room %i not connected?", i);
+            impossible(_("room %i not connected?", i);
     }
 }
 
@@ -1258,7 +1258,7 @@ makelevel(void)
     int i;
 
     if (wiz1_level.dlevel == 0) {
-        impossible("makelevel() called when dungeon not yet initialized.");
+        impossible(_("makelevel() called when dungeon not yet initialized."));
         init_dungeons();
     }
     oinit(); /* assign level dependent obj probabilities */
@@ -1667,7 +1667,7 @@ find_branch_room(coord *mp)
         croom = generate_stairs_find_room();
         assert(croom != NULL); /* Null iff nroom==0 which won't get here */
         if (!somexyspace(croom, mp))
-            impossible("Can't place branch!");
+            impossible(_("Can't place branch!"));
     }
     return croom;
 }
@@ -2166,7 +2166,7 @@ mkstairs(
     d_level dest;
 
     if (!x || !isok(x, y)) {
-        impossible("mkstairs:  bogus stair attempt at <%d,%d>", x, y);
+        impossible(_("mkstairs:  bogus stair attempt at <%d,%d>", x, y);
         return;
     }
     if (force)
@@ -2176,7 +2176,7 @@ mkstairs(
         int glyph = back_to_glyph(x, y),
             sidx = glyph_to_cmap(glyph);
 
-        impossible("mkstairs:  placing stairs %s on %s at <%d,%d>",
+        impossible(_("mkstairs:  placing stairs %s on %s at <%d,%d>",
                    up ? "up" : "down", defsyms[sidx].explanation, x, y);
     }
 
@@ -2573,7 +2573,7 @@ mkinvpos(coordxy x, coordxy y, int dist)
         /* No kelp! */
         break;
     default:
-        impossible("mkinvpos called with dist %d", dist);
+        impossible(_("mkinvpos called with dist %d", dist);
         break;
     }
 

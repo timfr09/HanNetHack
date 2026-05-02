@@ -120,7 +120,7 @@ staticfn void
 placebc_core(void)
 {
     if (!uchain || !uball) {
-        impossible("Where are your ball and chain?");
+        impossible(_("Where are your ball and chain?"));
         return;
     }
 
@@ -202,7 +202,7 @@ placebc(void)
         return;
     }
     if (uchain && uchain->where != OBJ_FREE) {
-        impossible("bc already placed?");
+        impossible(_("bc already placed?"));
         return;
     }
     placebc_core();
@@ -212,7 +212,7 @@ void
 unplacebc(void)
 {
     if (bcrestriction) {
-        impossible("unplacebc denied, restriction in place");
+        impossible(_("unplacebc denied, restriction in place"));
         return;
     }
     unplacebc_core();
@@ -224,7 +224,7 @@ unplacebc_and_covet_placebc(void)
     int restriction = 0;
 
     if (bcrestriction) {
-        impossible("unplacebc_and_covet_placebc denied, already restricted");
+        impossible(_("unplacebc_and_covet_placebc denied, already restricted"));
     } else {
         restriction = bcrestriction = rnd(400);
         unplacebc_core();
@@ -247,7 +247,7 @@ lift_covet_and_placebc(int pin)
         return;
     }
     if (uchain && uchain->where != OBJ_FREE) {
-        impossible("bc already placed?");
+        impossible(_("bc already placed?"));
         return;
     }
     placebc_core();
@@ -271,7 +271,7 @@ Placebc(const char *funcnm, int linenum)
     }
     if ((uchain && uchain->where != OBJ_FREE)
                    && bcpbreadcrumbs.in_effect) {
-        impossible("Placebc collision at %s:%d, already placed by %s:%d",
+        impossible(_("Placebc collision at %s:%d, already placed by %s:%d",
                    funcnm, linenum,
                    bcpbreadcrumbs.funcnm, bcpbreadcrumbs.linenum);
         return;
@@ -339,7 +339,7 @@ Lift_covet_and_placebc(int pin, char *funcnm, int linenum)
         return;
     }
     if (uchain && uchain->where != OBJ_FREE) {
-        impossible("bc already placed?");
+        impossible(_("bc already placed?"));
         return;
     }
     placebc_core();
@@ -366,7 +366,7 @@ bc_order(void)
         if (obj == uball)
             return BCPOS_BALL;
     }
-    impossible("bc_order:  ball&chain not in same location!");
+    impossible(_("bc_order:  ball&chain not in same location!"));
     return BCPOS_DIFFER;
 }
 
@@ -763,7 +763,7 @@ drag_ball(coordxy x, coordxy y, int *bc_control,
             break;
 
         default:
-            impossible("bad chain movement");
+            impossible(_("bad chain movement"));
             break;
         }
 #undef SKIP_TO_DRAG
@@ -1036,12 +1036,12 @@ bc_sanity_check(void)
     const char *onam;
 
     if (Punished && (!uball || !uchain)) {
-        impossible("Punished without %s%s%s?",
+        impossible(_("Punished without %s%s%s?",
                    !uball ? "iron ball" : "",
                    (!uball && !uchain) ? " and " : "",
                    !uchain ? "attached chain" : "");
     } else if (!Punished && (uball || uchain)) {
-        impossible("Attached %s%s%s without being Punished?",
+        impossible(_("Attached %s%s%s without being Punished?",
                    uchain ? "chain" : "",
                    (uchain && uball) ? " and " : "",
                    uball ? "iron ball" : "");
@@ -1062,7 +1062,7 @@ bc_sanity_check(void)
                   || (uball->owornmask & ~(W_BALL | W_WEAPONS)) != 0L)) {
         otyp = uball->otyp;
         onam = safe_typename(otyp);
-        impossible("uball: type %d (%s), where %d, wornmask=0x%08lx",
+        impossible(_("uball: type %d (%s), where %d, wornmask=0x%08lx",
                    otyp, onam, uball->where, uball->owornmask);
     }
     /* similar check to ball except can't be in inventory */
@@ -1075,7 +1075,7 @@ bc_sanity_check(void)
                    || (uchain->owornmask & ~W_CHAIN) != 0L)) {
         otyp = uchain->otyp;
         onam = safe_typename(otyp);
-        impossible("uchain: type %d (%s), where %d, wornmask=0x%08lx",
+        impossible(_("uchain: type %d (%s), where %d, wornmask=0x%08lx",
                    otyp, onam, uchain->where, uchain->owornmask);
     }
     if (uball && uchain && !(freeball && freechain)) {

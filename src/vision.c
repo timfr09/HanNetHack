@@ -2045,7 +2045,7 @@ view_from(
 
     if (range) {
         if (range > MAX_RADIUS || range < 1)
-            panic("view_from called with range %d", range);
+            panic(_("view_from called with range %d", range);
         limits = circle_ptr(range) + 1; /* start at next row */
         if (left < scol - range)
             left = scol - range;
@@ -2126,7 +2126,7 @@ do_clear_area(
                            && (Is_waterlevel(&u.uz) || Is_airlevel(&u.uz)));
 
         if (range > MAX_RADIUS || range < 1)
-            panic("do_clear_area:  illegal range %d", range);
+            panic(_("do_clear_area:  illegal range %d", range);
         if (gv.vision_full_recalc)
             vision_recalc(0); /* recalc vision if dirty */
         limits = circle_ptr(range);

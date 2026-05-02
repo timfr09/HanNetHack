@@ -1268,10 +1268,10 @@ dokick(void)
     struct monst *mtmp;
     boolean no_kick = FALSE;
 
-    if (nolimbs(u.umonst->data) || slithy(u.umonst->data)) {
+    if (nolimbs(gy.youmonst.data) || slithy(gy.youmonst.data)) {
         You(_("have no legs to kick with."));
         no_kick = TRUE;
-    } else if (verysmall(u.umonst->data)) {
+    } else if (verysmall(gy.youmonst.data)) {
         You(_("are too small to do any kicking."));
         no_kick = TRUE;
     } else if (u.usteed) {
@@ -1288,7 +1288,7 @@ dokick(void)
     } else if (near_capacity() > SLT_ENCUMBER) {
         Your(_("load is too heavy to balance yourself for a kick."));
         no_kick = TRUE;
-    } else if (u.umonst->data->mlet == S_LIZARD) {
+    } else if (gy.youmonst.data->mlet == S_LIZARD) {
         Your(_("legs cannot kick effectively."));
         no_kick = TRUE;
     } else if (u.uinwater && !rn2(2)) {
@@ -1969,7 +1969,7 @@ down_gate(coordxy x, coordxy y)
     /* hole will always be flagged as seen; trap drop might or might not */
     if ((ttmp = t_at(x, y)) != 0 && ttmp->tseen && is_hole(ttmp->ttyp)) {
         gg.gate_str = (ttmp->ttyp == TRAPDOOR) ? _("through the trap door")
-                                              : _("through the hole");
+                                              : _("through the hole"));
         return MIGR_RANDOM;
     }
     return MIGR_NOWHERE;

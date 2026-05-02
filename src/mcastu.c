@@ -67,16 +67,16 @@ cursetxt(struct monst *mtmp, boolean undirected)
         const char *point_msg; /* spellcasting monsters are impolite */
 
         if (undirected)
-            point_msg = _("all around, then curses");
+            point_msg = _("all around, then curses"));
         else if ((Invis && !perceives(mtmp->data)
                   && (mtmp->mux != u.ux || mtmp->muy != u.uy))
                  || is_obj_mappear(&gy.youmonst, STRANGE_OBJECT)
                  || u.uundetected)
-            point_msg = _("and curses in your general direction");
+            point_msg = _("and curses in your general direction"));
         else if (Displaced && (mtmp->mux != u.ux || mtmp->muy != u.uy))
-            point_msg = _("and curses at your displaced image");
+            point_msg = _("and curses at your displaced image"));
         else
-            point_msg = _("at you, then curses");
+            point_msg = _("at you, then curses"));
 
         pline_mon(mtmp, _("%s points %s."), Monnam(mtmp), point_msg);
     } else if ((!(svm.moves % 4) || !rn2(4))) {
@@ -389,8 +389,8 @@ death_inflicted_by(
 staticfn void
 mcast_death_touch(struct monst *mtmp)
 {
-    pline(_("Oh no, %s's using the touch of death!"), mhe(mtmp));
-    if (nonliving(u.umonst->data) || is_demon(u.umonst->data)) {
+    pline(_("Oh no, %s's using the touch of death!", mhe(mtmp));
+    if (nonliving(gy.youmonst.data) || is_demon(gy.youmonst.data)) {
         You(_("seem no deader than before."));
     } else if (!Antimagic && rn2(mtmp->m_lev) > 12) {
         if (Hallucination) {
@@ -415,7 +415,7 @@ mcast_clone_wiz(struct monst *mtmp)
         pline(_("Double Trouble..."));
         clonewiz();
     } else
-        impossible("bad wizard cloning?");
+        impossible(_("bad wizard cloning?"));
 }
 
 staticfn void
@@ -431,7 +431,7 @@ mcast_summon_mons(struct monst *mtmp)
     } else {
         boolean one = (count == 1);
         const char *mappear = one ? _("A monster appears")
-                                  : _("Monsters appear");
+                                  : _("Monsters appear"));
 
         /* messages not quite right if plural monsters created but
            only a single monster is seen */
@@ -498,7 +498,7 @@ mcast_disappear(struct monst *mtmp)
         if (cansee(mtmp->mx, mtmp->my) && !canspotmon(mtmp))
             map_invisible(mtmp->mx, mtmp->my);
     } else
-        impossible("no reason for monster to cast disappear spell?");
+        impossible(_("no reason for monster to cast disappear spell?"));
 }
 
 staticfn void
@@ -674,7 +674,7 @@ mcast_insects(struct monst *mtmp)
 
     /* not canspotmon() which includes unseen things sensed via warning */
     seecaster = canseemon(mtmp) || tp_sensemon(mtmp) || Detect_monsters;
-    what = (let == S_SNAKE) ? _("snakes") : _("insects");
+    what = (let == S_SNAKE) ? _("snakes") : _("insects"));
     if (Hallucination)
         what = makeplural(bogusmon(whatbuf, (char *) 0));
 
@@ -707,17 +707,17 @@ mcast_insects(struct monst *mtmp)
            words, no need to fuss with visibility or singularization;
            player is told what's happening even if hero is unconscious) */
     } else if (!success) {
-        fmt = _("%s casts at a clump of sticks, but nothing happens.%s");
+        fmt = _("%s casts at a clump of sticks, but nothing happens.%s"));
         what = "";
     } else if (let == S_SNAKE) {
-        fmt = _("%s transforms a clump of sticks into %s!");
+        fmt = _("%s transforms a clump of sticks into %s!"));
     } else if (Invis && !perceives(mtmp->data)
                && (mtmp->mux != u.ux || mtmp->muy != u.uy)) {
-        fmt = _("%s summons %s around a spot near you!");
+        fmt = _("%s summons %s around a spot near you!"));
     } else if (Displaced && (mtmp->mux != u.ux || mtmp->muy != u.uy)) {
-        fmt = _("%s summons %s around your displaced image!");
+        fmt = _("%s summons %s around your displaced image!"));
     } else {
-        fmt = _("%s summons %s!");
+        fmt = _("%s summons %s!"));
     }
     if (fmt) {
         DISABLE_WARNING_FORMAT_NONLITERAL;
@@ -740,7 +740,7 @@ mcast_blind_you(void)
         if (!Blind)
             Your1(vision_clears);
     } else
-        impossible("no reason for monster to cast blindness spell?");
+        impossible(_("no reason for monster to cast blindness spell?"));
 }
 
 staticfn int
@@ -763,7 +763,7 @@ mcast_paralyze(struct monst *mtmp)
         monstunseesu(M_SEEN_MAGR);
     }
     nomul(-dmg);
-    gm.multi_reason = _("paralyzed by a monster");
+    gm.multi_reason = _("paralyzed by a monster"));
     gn.nomovemsg = 0;
     return dmg;
 }
@@ -802,12 +802,12 @@ staticfn void
 mcast_spell(struct monst *mtmp, int dmg, int spellnum)
 {
     if (dmg < 0) {
-        impossible("monster cast spell (%d) with negative dmg (%d)?",
+        impossible(_("monster cast spell (%d) with negative dmg (%d)?",
                    spellnum, dmg);
         return;
     }
     if (dmg == 0 && !is_undirected_spell(spellnum)) {
-        impossible("cast directed wizard spell (%d) with dmg=0?", spellnum);
+        impossible(_("cast directed wizard spell (%d) with dmg=0?", spellnum);
         return;
     }
 
@@ -888,7 +888,7 @@ mcast_spell(struct monst *mtmp, int dmg, int spellnum)
         dmg = mcast_open_wounds(dmg);
         break;
     default:
-        impossible("mcastu: invalid magic spell (%d)", spellnum);
+        impossible(_("mcastu: invalid magic spell (%d)", spellnum);
         dmg = 0;
         break;
     }

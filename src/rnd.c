@@ -47,7 +47,7 @@ init_isaac64(unsigned long seed, int (*fn)(int))
     int rngindx = whichrng(fn);
 
     if (rngindx < 0)
-        panic("Bad rng function passed to init_isaac64().");
+        panic(_("Bad rng function passed to init_isaac64()."));
 
     for (i = 0; i < sizeof seed; i++) {
         new_rng_state[i] = (unsigned char) (seed & 0xFF);
@@ -96,7 +96,7 @@ rn2(int x)
 {
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
     if (x <= 0) {
-        impossible("rn2(%d) attempted", x);
+        impossible(_("rn2(%d) attempted", x);
         return 0;
     }
     x = RND(x);
@@ -115,7 +115,7 @@ rnl(int x)
 
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
     if (x <= 0) {
-        impossible("rnl(%d) attempted", x);
+        impossible(_("rnl(%d) attempted", x);
         return 0;
     }
 #endif
@@ -156,7 +156,7 @@ rnd(int x)
 {
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
     if (x <= 0) {
-        impossible("rnd(%d) attempted", x);
+        impossible(_("rnd(%d) attempted", x);
         return 1;
     }
 #endif
@@ -178,7 +178,7 @@ d(int n, int x)
 
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
     if (x < 0 || n < 0 || (x == 0 && n != 0)) {
-        impossible("d(%d,%d) attempted", n, x);
+        impossible(_("d(%d,%d) attempted", n, x);
         return 1;
     }
 #endif

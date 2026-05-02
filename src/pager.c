@@ -91,7 +91,7 @@ append_str(char *buf, const char *new_str)
     oldlen = strlen(buf);
     if (oldlen >= BUFSZ - 1) {
         if (oldlen > BUFSZ - 1)
-            impossible("append_str: 'buf' contains %lu characters.",
+            impossible(_("append_str: 'buf' contains %lu characters.",
                        (unsigned long) oldlen);
         return 0; /* no space available */
     }
@@ -447,8 +447,8 @@ look_at_monster(
             Strcat(buf, digests(mtmp->data) ? _(", swallowing you")
                                             : _(", engulfing you"));
         else
-            Strcat(buf, (Upolyd && sticks(u.umonst->data))
-                          ? _(", being held") : _(", holding you"));
+            Strcat(buf, (Upolyd && sticks(gy.youmonst.data))
+                          ? ", being held" : ", holding you");
     }
     /* if mtmp isn't able to move (other than because it is a type of
        monster that never moves), say so [excerpt from mstatusline() for
@@ -548,7 +548,7 @@ look_at_monster(
             }
             /* should have used up all the how_seen bits by now */
             if (how_seen) {
-                impossible("lookat: unknown method of seeing monster");
+                impossible(_("lookat: unknown method of seeing monster"));
                 Sprintf(eos(monbuf), "(%u)", how_seen);
             }
         } /* seen by something other than normal vision */
@@ -566,7 +566,7 @@ waterbody_name(coordxy x, coordxy y)
     boolean hallucinate = Hallucination && !program_state.gameover;
 
     if (!isok(x, y))
-        return _("drink"); /* should never happen */
+        return _("drink")); /* should never happen */
     ltyp = SURFACE_AT(x, y);
 
     if (ltyp == LAVAPOOL) {
@@ -574,7 +574,7 @@ waterbody_name(coordxy x, coordxy y)
         return pooltype;
     } else if (ltyp == ICE) {
         if (!hallucinate)
-            return _("ice");
+            return _("ice"));
         Snprintf(pooltype, sizeof pooltype, _("frozen %s"), hliquid("water"));
         return pooltype;
     } else if (ltyp == POOL) {
@@ -588,19 +588,19 @@ waterbody_name(coordxy x, coordxy y)
         } else if (Is_medusa_level(&u.uz)) {
             /* somewhat iffy since ordinary stairs can take you beneath,
                but previous generic "water" was rather anti-climactic */
-            return _("shallow sea");
+            return _("shallow sea"));
         } else if (Is_juiblex_level(&u.uz)) {
-            return _("swamp");
+            return _("swamp"));
         } else if (Role_if(PM_SAMURAI) && Is_qstart(&u.uz)) {
             /* samurai quest home level has two isolated moat spots;
                they sound silly if farlook describes them as such */
-            return _("pond");
+            return _("pond"));
         } else {
-            return _("moat");
+            return _("moat"));
         }
     } else if (IS_WATERWALL(ltyp)) {
         if (Is_waterlevel(&u.uz))
-            return _("limitless water"); /* even if hallucinating */
+            return _("limitless water")); /* even if hallucinating */
         Snprintf(pooltype, sizeof pooltype, _("wall of %s"), hliquid("water"));
         return pooltype;
     } else if (ltyp == LAVAWALL) {
@@ -608,7 +608,7 @@ waterbody_name(coordxy x, coordxy y)
         return pooltype;
     }
     /* default; should be unreachable */
-    return _("water"); /* don't hallucinate this as some other liquid */
+    return _("water")); /* don't hallucinate this as some other liquid */
 }
 
 char *
@@ -851,7 +851,7 @@ checkfile(
     }
     /* If someone passed us garbage, prevent fault. */
     if (!inp || strlen(inp) > (BUFSZ - 1)) {
-        impossible("bad do_look buffer passed (%s)!",
+        impossible(_("bad do_look buffer passed (%s)!",
                    !inp ? "null" : "too long");
         goto checkfile_done;
     }
@@ -996,12 +996,12 @@ checkfile(
             found_in_file = skipping_entry = FALSE;
             txt_offset = 0L;
             if (dlb_fseek(fp, txt_offset, SEEK_SET) < 0 ) {
-                impossible("can't get to start of 'data' file");
+                impossible(_("can't get to start of 'data' file"));
                 goto checkfile_done;
             }
             /* skip first record; read second */
             if (!dlb_fgets(buf, BUFSZ, fp) || !dlb_fgets(buf, BUFSZ, fp)) {
-                impossible("can't read 'data' file");
+                impossible(_("can't read 'data' file"));
                 goto checkfile_done;
             } else if (sscanf(buf, "%8lx\n", &txt_offset) < 1
                        || txt_offset == 0L)
@@ -1121,7 +1121,7 @@ checkfile(
     goto checkfile_done; /* skip error feedback */
 
  bad_data_file:
-    impossible("'data' file in wrong format or corrupted");
+    impossible(_("'data' file in wrong format or corrupted"));
  checkfile_done:
     if (datawin != WIN_ERR)
         destroy_nhwindow(datawin);
@@ -1153,10 +1153,10 @@ add_cmap_descr(
         if (!strcmp(x_str, "water")) {
             /* duplicate some transformations performed by waterbody_name() */
             if (idx == S_pool)
-                x_str = _("pool of water");
+                x_str = _("pool of water"));
             else if (idx == S_water)
                 x_str = !Is_waterlevel(&u.uz) ? _("wall of water")
-                                              : _("limitless water");
+                                              : _("limitless water"));
         }
         if (absidx == S_pool)
             idx = S_pool;
@@ -1252,7 +1252,7 @@ do_screen_description(
     struct permonst **for_supplement)
 {
     const char *mon_interior = _("the interior of a monster"),
-               *unreconnoitered = _("unreconnoitered");
+               *unreconnoitered = _("unreconnoitered"));
     static char look_buf[BUFSZ];
     char prefix[BUFSZ];
     int i, j, alt_i, glyph = NO_GLYPH,
@@ -1420,7 +1420,7 @@ do_screen_description(
     }
     if ((glyph && glyph_is_nothing(glyph))
         || (looked && sym == gs.showsyms[SYM_NOTHING + SYM_OFF_X])) {
-        x_str = _("the dark part of a room");
+        x_str = _("the dark part of a room"));
         if (!found) {
             Sprintf(out_str, "%s%s", prefix, x_str);
             *firstmatch = x_str;
@@ -1431,7 +1431,7 @@ do_screen_description(
     }
     if ((glyph && glyph_is_unexplored(glyph))
         || (looked && sym == gs.showsyms[SYM_UNEXPLORED + SYM_OFF_X])) {
-        x_str = _("unexplored");
+        x_str = _("unexplored"));
         if (submerged)
             x_str = C_("terrain", "land"); /* replace "unexplored" */
         if (!found) {
@@ -2650,7 +2650,7 @@ dowhatdoes_core(char q, char *cbuf)
     }
     (void) dlb_fclose(fp);
     if (depth != 0)
-        impossible("cmdhelp: mismatched &? &: &. conditionals.");
+        impossible(_("cmdhelp: mismatched &? &: &. conditionals."));
     return (char *) 0;
 #endif /* 0 */
 }

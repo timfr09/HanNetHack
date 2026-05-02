@@ -103,7 +103,7 @@ thitu(
 
     if (!name) {
         if (!obj)
-            panic("thitu: name & obj both null?");
+            panic(_("thitu: name & obj both null?"));
         name = strcpy(onmbuf,
                       (obj->quan > 1L) ? doname(obj) : mshot_xname(obj));
         knm = strcpy(knmbuf, killer_xname(obj));
@@ -721,7 +721,7 @@ m_throw(
             switch (singleobj->otyp) {
             case EGG:
                 if (!touch_petrifies(&mons[singleobj->corpsenm])) {
-                    impossible("monster throwing egg type %d",
+                    impossible(_("monster throwing egg type %d",
                                singleobj->corpsenm);
                     hitu = 0;
                     break;
@@ -1058,7 +1058,7 @@ spitmm(struct monst *mtmp, struct attack *mattk, struct monst *mtarg)
             otmp = mksobj(BLINDING_VENOM, TRUE, FALSE);
             break;
         default:
-            impossible("bad attack type in spitmm");
+            impossible(_("bad attack type in spitmm"));
             FALLTHROUGH;
             /*FALLTHRU*/
         case AD_ACID:
@@ -1160,7 +1160,7 @@ breamm(struct monst *mtmp, struct attack *mattk, struct monst *mtarg)
                     if (dog->hungrytime >= 10)
                         dog->hungrytime -= 10;
                 }
-            } else impossible("Breath weapon %d used", typ-1);
+            } else impossible(_("Breath weapon %d used", typ-1);
         } else
             return M_ATTK_MISS;
     }

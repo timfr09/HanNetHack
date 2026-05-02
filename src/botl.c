@@ -149,7 +149,7 @@ do_statusline2(void)
     dx = strstri(dloc, "\\G") ? 9 : 0;
 
     /* health and armor class (has trailing space for AC 0..9)
-     * Korean i18n: status abbreviations HP, Pw, AC, Xp, HD, T */
+     * Korean i18n: ko.po uses HP, AC as-is; Pw → 「마력」 */
     hp = Upolyd ? u.mh : u.uhp;
     hpmax = Upolyd ? u.mhmax : u.uhpmax;
     if (hp < 0)

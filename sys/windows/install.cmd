@@ -9,6 +9,12 @@ REM   Defaults: Release x64
 
 setlocal enabledelayedexpansion
 
+REM Run from repo root regardless of current directory (%~dp0 = sys\windows\)
+pushd "%~dp0..\.." || (
+    echo ERROR: Cannot change to repository root.
+    exit /b 1
+)
+
 set CONFIG=%1
 set PLATFORM=%2
 if "%CONFIG%"=="" set CONFIG=Release
@@ -29,7 +35,8 @@ REM Check build output exists
 if not exist "%SRCDIR%\NetHack.exe" (
     echo ERROR: %SRCDIR%\NetHack.exe not found.
     echo        Please build the solution first. See sys\windows\build-hannethack.txt
-    goto :eof
+    popd
+    exit /b 1
 )
 
 REM Create install directory
@@ -52,6 +59,8 @@ if exist "%SRCDIR%\recover.ko.txt" copy /y "%SRCDIR%\recover.ko.txt" "%DSTDIR%\"
 if exist "%SRCDIR%\opthelp" copy /y "%SRCDIR%\opthelp" "%DSTDIR%\" >nul
 if exist "%SRCDIR%\symbols.template" copy /y "%SRCDIR%\symbols.template" "%DSTDIR%\" >nul
 if exist "%SRCDIR%\sysconf.template" copy /y "%SRCDIR%\sysconf.template" "%DSTDIR%\" >nul
+REM windmain copy_config_content reads template from game dir (DATAPREFIX)
+if exist "%SRCDIR%\nethackrc.template" copy /y "%SRCDIR%\nethackrc.template" "%DSTDIR%\" >nul
 if exist "%SRCDIR%\record" copy /y "%SRCDIR%\record" "%DSTDIR%\" >nul
 if exist "%SRCDIR%\tiles.bmp" copy /y "%SRCDIR%\tiles.bmp" "%DSTDIR%\" >nul
 
@@ -80,6 +89,10 @@ echo To play:
 echo   GUI version:     %DSTDIR%\NetHackW.exe
 echo   Console version: %DSTDIR%\NetHack.exe
 echo.
+echo Note: If NetHack.exe looks frozen or broken, run it from
+echo   Command Prompt or Windows Terminal - not from Git Bash.
+echo.
 echo You can move the %DSTDIR% folder anywhere you like.
 
+popd
 endlocal

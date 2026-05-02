@@ -1170,9 +1170,8 @@ console_poskey(coordxy *x, coordxy *y, int *mod)
 
 static void set_console_cursor(int x, int y)
 {
-    nhassert(x >= 0 && x < console.width);
-    nhassert(y >= 0 && y < console.height);
-
+    /* Clamp instead of asserting: tty curx can exceed console.width when
+     * UTF-8/Korean display width differs from byte-oriented cursor tracking. */
     console.cursor.X = max(0, min(console.width - 1, x));
     console.cursor.Y = max(0, min(console.height - 1, y));
 }
@@ -1219,6 +1218,11 @@ cmov(int x, int y)
 void
 nocmov(int x, int y)
 {
+    if (x >= console.width)
+        x = console.width - 1;
+    if (y >= console.height)
+        y = console.height - 1;
+
     ttyDisplay->curx = x;
     ttyDisplay->cury = y;
 

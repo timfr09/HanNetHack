@@ -19188,11 +19188,11 @@ msgstr "근력:%s 민첩:%-1d 체력:%-1d 지능:%-1d 지혜:%-1d 매력:%-1d"
 msgid " S:%ld"
 msgstr " S:%ld"
 
-# do_statusline2() - HP, 마력, 방어력 (HP, AC는 영어 유지)
+# do_statusline2() — HP·AC는 관행대로 유지, 마법 에너지(Pw)는 「마력」으로 표기
 #: ../src/botl.c:142
 #, c-format
 msgid "HP:%d(%d) Pw:%d(%d) AC:%-2d"
-msgstr "HP:%d(%d) Pw:%d(%d) AC:%-2d"
+msgstr "HP:%d(%d) 마력:%d(%d) AC:%-2d"
 
 # 경험치/레벨
 #: ../src/botl.c:149
@@ -35645,7 +35645,7 @@ msgstr " 매력:%s"
 #: ../src/obj_descr_i18n.c:467
 #, c-format
 msgid " Pw:%s"
-msgstr " Pw:%s"
+msgstr " 마력:%s"
 
 #: ../src/obj_descr_i18n.c:468
 #, c-format
@@ -51284,6 +51284,35 @@ msgstr "파일 \"%s\"의 버전이 일치하지 않는다."
 #, c-format
 msgid "Configuration incompatibility for file \"%s\"."
 msgstr "파일 \"%s\"의 구성이 호환되지 않는다."
+
+# savefile header / struct layout mismatch (not a gettext bug)
+#: ../src/version.c:730
+#, c-format
+msgid "comparison of critical bytes mismatched at %u (%s)."
+msgstr "중요 바이트 크기가 맞지 않습니다 (%u: %s)."
+
+#: ../src/version.c:733
+msgid ""
+"This save or bones file does not match this program (upgrades change "
+"internal layouts). Remove files in your playground \"save\" folder and "
+"any \"bon*\" bones files, then start a new game.\n"
+msgstr ""
+"이 세이브나 bones 파일은 지금 실행 중인 프로그램과 맞지 않습니다(업그레이드 시 "
+"내부 구조가 바뀝니다). 플레이그라운드의 \"save\" 폴더 안 파일과 이름이 bon으로 "
+"시작하는 bones 파일을 지운 뒤 새 게임을 시작하세요.\n"
+
+#: ../src/version.c:735
+msgid ""
+"This save or bones file does not match this program (upgrades change "
+"internal layouts). On Windows 3.7+, delete *.NetHack-saved-game under "
+"%LOCALAPPDATA%\\NetHack\\3.7\\ and bones bon* under "
+"%PROGRAMDATA%\\NetHack\\3.7\\ (HanNetHack: "
+"sys/windows/cleanup-incompatible-saves.cmd).\n"
+msgstr ""
+"이 세이브나 bones는 지금 실행 중인 프로그램과 맞지 않습니다(내부 구조 변경). "
+"Windows 3.7+에서는 %%LOCALAPPDATA%%\\NetHack\\3.7\\ 안의 *.NetHack-saved-game과 "
+"%%PROGRAMDATA%%\\NetHack\\3.7\\ 안의 bon* bones를 지우거나, HanNetHack의 "
+"sys\\windows\\cleanup-incompatible-saves.cmd 를 실행하세요.\n"
 
 # ============================================================
 # 무기 스킬 이름 - 맨손 (Weapon skill name - bare hands)

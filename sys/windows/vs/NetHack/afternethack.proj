@@ -3,7 +3,7 @@
   <!-- TODO not copying record -->
   <Target Name="Build"
 	Inputs="$(SysWindDir)nethackrc.template;$(DocDir)Guidebook.txt;$(DocDir)Guidebook.ko.txt;$(DatDir)license;$(SysWindDir)sysconf.template;$(DocDir)nethack.txt;$(DocDir)nethack.ko.txt;$(DatDir)symbols;$(WinWin32Dir)record;$(DatDir)opthelp"
-	Outputs="$(BinDir)nethackrc.template;$(BinDir)Guidebook.txt;$(BinDir)Guidebook.ko.txt;$(BinDir)license;$(BinDir)sysconf.template;$(BinDir)NetHack.ko.txt;$(BinDir)symbols.template;$(BinDir)record;$(BinDir)opthelp">
+	Outputs="$(BinDir)nethackrc.template;$(BinDir)Guidebook.txt;$(BinDir)Guidebook.ko.txt;$(BinDir)license;$(BinDir)sysconf.template;$(BinDir)nethack.txt;$(BinDir)NetHack.ko.txt;$(BinDir)symbols.template;$(BinDir)record;$(BinDir)opthelp">
     <Copy SourceFiles="$(SysWindDir)nethackrc.template;$(DocDir)Guidebook.txt;$(DocDir)Guidebook.ko.txt;$(DatDir)license;$(SysWindDir)sysconf.template;$(DocDir)nethack.txt;$(DocDir)nethack.ko.txt;$(DatDir)symbols;$(WinWin32Dir)record;$(DatDir)opthelp"
 	      DestinationFiles="$(BinDir)nethackrc.template;$(BinDir)Guidebook.txt;$(BinDir)Guidebook.ko.txt;$(BinDir)license;$(BinDir)sysconf.template;$(BinDir)nethack.txt;$(BinDir)NetHack.ko.txt;$(BinDir)symbols.template;$(BinDir)record;$(BinDir)opthelp" />
   </Target>

@@ -49,6 +49,37 @@ wcwidth(wchar_t wc)
  * These are needed for proper TTY rendering of wide characters.
  */
 
+#ifdef _MSC_VER
+/* Byte length of UTF-8 character starting with this lead byte (RFC 3629). */
+static int
+utf8_first_seq_len(unsigned char c)
+{
+    if (c < 0x80)
+        return 1;
+    if ((c & 0xe0) == 0xc0)
+        return 2;
+    if ((c & 0xf0) == 0xe0)
+        return 3;
+    if ((c & 0xf8) == 0xf0)
+        return 4;
+    return 1;
+}
+
+/*
+ * MSVC + UTF-8 console: setlocale(LC_CTYPE) is easy to get wrong after other
+ * LC_ALL tweaks; mbtowc() may fail on valid Hangul. CP_UTF8 conversion is
+ * reliable for width.
+ */
+static int
+utf8_one_wchar_msvc(const char *utf8str, wchar_t *outwc)
+{
+    int blen = utf8_first_seq_len((unsigned char) utf8str[0]);
+
+    if (MultiByteToWideChar(CP_UTF8, 0, utf8str, blen, outwc, 1) != 1)
+        return 0;
+    return blen;
+}
+#endif /* _MSC_VER */
 
 /*
  * Calculate display width of a UTF-8 string
@@ -68,6 +99,19 @@ utf8_display_width(const char *utf8str)
 
     /* Ensure locale is set for mbtowc */
     while (*utf8str) {
+#ifdef _MSC_VER
+        {
+            int bl;
+
+            if ((bl = utf8_one_wchar_msvc(utf8str, &wc)) > 0) {
+                int w = wcwidth(wc);
+
+                width += (w > 0) ? w : 1;
+                utf8str += bl;
+                continue;
+            }
+        }
+#endif /* _MSC_VER */
         len = mbtowc(&wc, utf8str, MB_CUR_MAX);
         if (len <= 0) {
             /* Invalid or incomplete sequence, count as 1 */
@@ -99,6 +143,12 @@ utf8_char_width(const char *utf8str)
     if (!utf8str || !*utf8str)
         return 0;
 
+#ifdef _MSC_VER
+    if (utf8_one_wchar_msvc(utf8str, &wc)) {
+        w = wcwidth(wc);
+        return (w > 0) ? w : 1;
+    }
+#endif
     len = mbtowc(&wc, utf8str, MB_CUR_MAX);
     if (len <= 0)
         return 1;

@@ -2482,10 +2482,17 @@ void set_cp_map(void)
         console.code_page = GetConsoleOutputCP();
 #endif
 
+        /*
+         * Internal glyph bytes from tty_print_glyph/g_putch follow CP437 for the
+         * non-UTF8sym path. CP 65001 only selects UTF-8 *output* encoding for
+         * WriteConsoleA — it is not the interpretation of those bytes.
+         * MultiByteToWideChar(65001, single-byte) mis-decodes 0x80–0xFF (often
+         * to U+FFFD), so walls/box-drawing show as replacement diamonds.
+         */
 #ifndef VIRTUAL_TERMINAL_SEQUENCES
-        if (codePage == 437) {
+        if (codePage == 437 || codePage == 65001) {
 #else
-        if (console.code_page == 437) {
+        if (console.code_page == 437 || console.code_page == 65001) {
 #endif
             memcpy(console.cpMap, cp437, sizeof(console.cpMap));
         } else {
@@ -3740,11 +3747,39 @@ int ray_processkeystroke(
             ch = M('?');
         else
             ch = M(tolower((uchar) keycode));
-    } else if (ch < 32 && !isnumkeypad(scan)) {
+    } else if (ch > 0 && ch < 32 && !isnumkeypad(scan)) {
         /* Control code; ReadConsole seems to filter some of these,
-         * including ESC */
+         * including ESC.  Do not treat AsciiChar==0 as control: CP65001
+         * leaves letters at 0 and they must be translated below. */
         ReadConsoleInput(hConIn, ir, 1, &count);
+#ifdef WIN32CON
+    } else if (!ch && !iskeypad(scan) && altseq <= 0) {
+        /* UTF-8 console: same translation as process_keystroke2 (Unicode,
+         * ToAscii, hjkl VK fallback).  Legacy ReadConsole path leaves ch==0. */
+        boolean v2 = FALSE;
+        int tch = process_keystroke2(hConIn, ir, &v2);
+
+        if (v2 && tch > 0) {
+            ch = (unsigned char) tch;
+            *valid = TRUE;
+        }
+        if (!ch) {
+            CHAR ch2;
+            DWORD written;
+
+            WriteConsoleInput(hConIn, &bogus_key, 1, &written);
+            ReadConsole(hConIn, &ch2, 1, &count, NULL);
+            if (ch2 & 0x80)
+                *valid = FALSE;
+            else {
+                ch = (unsigned char) ch2;
+                *valid = TRUE;
+            }
+            if (ch == 0)
+                *valid = FALSE;
+        }
     }
+#endif
     /* Attempt to work better with international keyboards. */
     else {
         CHAR ch2;
@@ -3884,39 +3919,122 @@ process_keystroke2(
     } else if (ch > 0 && ch < 32 && !isnumkeypad(scan)) {
         /* Control code in AsciiChar; INPUT_RECORD already consumed by caller. */
     }
-    /* When AsciiChar is still 0, layout-specific char may only appear via
-     * ReadConsoleW (legacy paths that Peek then read). */
+    /* When AsciiChar is still 0: prefer ToAscii (matches default_processkeystroke)
+     * so hjkl works when UnicodeChar is empty after ReadConsoleInput (UTF-8
+     * console). ReadConsoleW alone often fails here because the KEY_EVENT was
+     * already consumed above (ray_checkinput ReadConsoleInput path). */
     else if (!ch) {
         WCHAR wch2;
         char utf8[8];
-        int nbytes, i;
+        int nbytes, i, ta;
 
-        ReadConsoleW(hConIn, &wch2, 1, &count, NULL);
-        if (count == 0 || wch2 == 0) {
-            *valid = FALSE;
-            return 0;
-        }
+        if (!altseq) {
+            WORD chr[2];
 
-        /* Fast path for ASCII controls/characters. */
-        if (wch2 <= 0x7f) {
-            ch = (unsigned char) (wch2 & 0x7f);
-        } else {
-            nbytes = WideCharToMultiByte(CP_UTF8, 0, &wch2, 1,
-                                         utf8, (int) sizeof utf8,
-                                         NULL, NULL);
-            if (nbytes <= 0) {
-                *valid = FALSE;
-                return 0;
+            KeyState[VK_SHIFT] = (shiftstate & SHIFT_PRESSED) ? 0x81 : 0;
+            KeyState[VK_CONTROL] =
+                (shiftstate & (LEFT_CTRL_PRESSED | RIGHT_CTRL_PRESSED))
+                    ? 0x81 : 0;
+            KeyState[VK_CAPITAL] = (shiftstate & CAPSLOCK_ON) ? 0x81 : 0;
+            ta = ToAscii(vk, scan, KeyState, chr, 0);
+            if (ta == 1) {
+                ch = (unsigned char) chr[0];
+                *valid = TRUE;
+            } else if (ta == 2) {
+                ch = (unsigned char) chr[1];
+                *valid = TRUE;
             }
-            ch = (unsigned char) utf8[0];
-            if (nbytes > 1) {
-                pending_len = nbytes;
-                pending_idx = 1;
-                for (i = 0; i < nbytes && i < (int) sizeof pending_utf8; ++i)
-                    pending_utf8[i] = (unsigned char) utf8[i];
+            /* ToAscii often fails on UTF-8 consoles; ToUnicode + live key state */
+            if (!ch) {
+                BYTE ks[256];
+                WCHAR tu[8];
+                int rc;
+
+                memset(ks, 0, sizeof ks);
+                if (GetKeyboardState(ks)) {
+                    rc = ToUnicode(vk, scan, ks, tu, 8, 0);
+                    if (rc > 0 && tu[0] != 0) {
+                        if (tu[0] < 128 && rc == 1) {
+                            ch = (unsigned char) tu[0];
+                            *valid = TRUE;
+                        } else if (tu[0] >= (WCHAR) 0x80) {
+                            char mb[8];
+                            int n = WideCharToMultiByte(CP_UTF8, 0, tu, 1, mb,
+                                                        (int) sizeof mb, NULL,
+                                                        NULL);
+
+                            if (n > 0) {
+                                int j;
+
+                                for (j = 0; j < n && j < (int) sizeof pending_utf8;
+                                     ++j)
+                                    pending_utf8[j] = (unsigned char) mb[j];
+                                pending_len = n;
+                                pending_idx = 1;
+                                ch = (unsigned char) mb[0];
+                                *valid = TRUE;
+                                return ch;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (!ch) {
+            ReadConsoleW(hConIn, &wch2, 1, &count, NULL);
+            if (count == 0 || wch2 == 0) {
+                /* Last resort: US QWERTY positions when all translation fails */
+                if (!altseq && !iskeypad(scan)
+                    && !(shiftstate
+                         & (LEFT_CTRL_PRESSED | RIGHT_CTRL_PRESSED))) {
+                    switch (vk) {
+                    case 0x48:
+                        ch = 'h';
+                        break; /* VK_H */
+                    case 0x4A:
+                        ch = 'j';
+                        break; /* VK_J */
+                    case 0x4B:
+                        ch = 'k';
+                        break; /* VK_K */
+                    case 0x4C:
+                        ch = 'l';
+                        break; /* VK_L */
+                    default:
+                        break;
+                    }
+                }
+                if (!ch) {
+                    *valid = FALSE;
+                    return 0;
+                }
+            } else {
+                /* Fast path for ASCII controls/characters. */
+                if (wch2 <= 0x7f) {
+                    ch = (unsigned char) (wch2 & 0x7f);
+                } else {
+                    nbytes = WideCharToMultiByte(CP_UTF8, 0, &wch2, 1,
+                                                 utf8, (int) sizeof utf8,
+                                                 NULL, NULL);
+                    if (nbytes <= 0) {
+                        *valid = FALSE;
+                        return 0;
+                    }
+                    ch = (unsigned char) utf8[0];
+                    if (nbytes > 1) {
+                        pending_len = nbytes;
+                        pending_idx = 1;
+                        for (i = 0; i < nbytes && i < (int) sizeof pending_utf8;
+                             ++i)
+                            pending_utf8[i] = (unsigned char) utf8[i];
+                    }
+                }
             }
         }
     }
+    /* ray_checkinput uses done = valid; ensure set whenever we emit a key. */
+    if (ch)
+        *valid = TRUE;
     if (ch == '\r')
         ch = '\n';
     return ch;

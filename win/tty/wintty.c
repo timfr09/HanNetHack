@@ -1171,7 +1171,8 @@ dmore(
     if (flags.standout)
         standoutbeg();
     xputs(prompt);
-    ttyDisplay->curx += strlen(prompt);
+    /* strlen(prompt) counts UTF-8 bytes; display columns differ for Korean. */
+    ttyDisplay->curx += utf8_display_width(prompt);
     if (flags.standout)
         standoutend();
 
@@ -1463,41 +1464,60 @@ process_menu_window(winid window, struct WinDesc *cw)
                      * of padding information and (2) it calls xputc to
                      * actually output the character.  We're faster doing
                      * this.
+                     *
+                     * Walk UTF-8 by character (not byte): Korean menu text
+                     * must advance curx by display width, or lines misalign
+                     * (tutorial y/n, headers).
                      */
-                    for (n = 0, cp = curr->str;
-                         *cp &&
-#ifndef WIN32CON
-                            (int) ++ttyDisplay->curx < (int) ttyDisplay->cols;
-#else
-                            (int) ttyDisplay->curx < (int) ttyDisplay->cols;
-                         ttyDisplay->curx++,
-#endif
-                         cp++, n++) {
-                        if (n == attr_n && (color != NO_COLOR
-                                            || attr != ATR_NONE))
-                            toggle_menu_attr(TRUE, color, attr);
-                        if (n == 2 && curr->identifier.a_void != 0
-                            && curr->selected) {
-                            char c = (curr->count == -1L) ? '*' : '#';
+                    {
+                        const char *p;
+                        int byteidx;
 
-                            /* all selected: '*' vs count selected: '#' */
-                            (void) putchar(c);
-                        } else if (n == 2 && curr->identifier.a_void != 0
-                                   && show_obj_syms
-                                   && curr->glyphinfo.glyph != NO_GLYPH) {
-                            int gcolor = curr->glyphinfo.gm.sym.color;
+                        for (p = curr->str, byteidx = 0; *p;) {
+                            int clen = utf8_char_len((unsigned char) *p);
+                            int cwid = utf8_char_width(p);
+                            int bi;
 
-                            /* tty_print_glyph could be used, but is overkill
-                               and requires referencing the cursor location */
-                            toggle_menu_attr(TRUE, gcolor, ATR_NONE);
-                            (void) putchar(curr->glyphinfo.ttychar);
-                            toggle_menu_attr(FALSE, gcolor, ATR_NONE);
-                        } else {
-                            (void) putchar(*cp);
+                            if (clen < 1)
+                                clen = 1;
+                            if ((int) ttyDisplay->curx + cwid
+                                > (int) ttyDisplay->cols)
+                                break;
+
+                            if (byteidx == attr_n && (color != NO_COLOR
+                                                      || attr != ATR_NONE))
+                                toggle_menu_attr(TRUE, color, attr);
+
+                            if (byteidx == 2 && curr->identifier.a_void != 0
+                                && curr->selected) {
+                                char c = (curr->count == -1L) ? '*' : '#';
+
+                                /* all selected: '*' vs count selected: '#' */
+                                (void) putchar(c);
+                            } else if (byteidx == 2
+                                       && curr->identifier.a_void != 0
+                                       && show_obj_syms
+                                       && curr->glyphinfo.glyph != NO_GLYPH) {
+                                int gcolor = curr->glyphinfo.gm.sym.color;
+
+                                /* tty_print_glyph could be used, but is overkill
+                                   and requires referencing the cursor location */
+                                toggle_menu_attr(TRUE, gcolor, ATR_NONE);
+                                (void) putchar(curr->glyphinfo.ttychar);
+                                toggle_menu_attr(FALSE, gcolor, ATR_NONE);
+                            } else {
+                                for (bi = 0; bi < clen && p[bi]; bi++)
+                                    (void) putchar((unsigned char) p[bi]);
+                            }
+
+                            byteidx += clen;
+                            p += clen;
+                            ttyDisplay->curx += cwid;
                         }
-                    } /* for *cp */
-                    if (n > attr_n && (color != NO_COLOR || attr != ATR_NONE))
-                        toggle_menu_attr(FALSE, color, attr);
+                        if (byteidx > attr_n && (color != NO_COLOR
+                                                 || attr != ATR_NONE))
+                            toggle_menu_attr(FALSE, color, attr);
+                    }
                 } /* if npages > 0 */
             } else {
                 page_start = 0;
@@ -1558,7 +1578,7 @@ process_menu_window(winid window, struct WinDesc *cw)
             dmore(cw, resp);
         } else {
             /* just put the cursor back... */
-            tty_curs(window, (int) strlen(cw->morestr) + 2, page_lines);
+            tty_curs(window, (int) utf8_display_width(cw->morestr) + 2, page_lines);
             xwaitforspace(resp);
         }
 
@@ -2785,12 +2805,34 @@ tty_end_menu(
                 menu_ch = 'A';
         }
 
-        /* cut off any lines that are too long */
-        len = strlen(curr->str) + 2; /* extra space at beg & end */
-        if (len > (int) ttyDisplay->cols) {
-            curr->str[ttyDisplay->cols - 2] = 0;
-            len = ttyDisplay->cols;
+        /* cut off any lines that are too long (display columns, not bytes) */
+        {
+            int maxw = (int) ttyDisplay->cols - 2;
+
+            if (maxw < 0)
+                maxw = 0;
+            if (utf8_display_width(curr->str) > maxw) {
+                char *p = curr->str;
+                int w = 0;
+
+                while (*p) {
+                    int clen = utf8_char_len((unsigned char) *p);
+                    int cwid = utf8_char_width((const char *) p);
+
+                    if (clen < 1)
+                        clen = 1;
+                    if (w + cwid > maxw) {
+                        *p = '\0';
+                        break;
+                    }
+                    w += cwid;
+                    p += clen;
+                }
+            }
         }
+        len = utf8_display_width(curr->str) + 2; /* extra space at beg & end */
+        if (len > (int) ttyDisplay->cols)
+            len = (int) ttyDisplay->cols;
         if (len > cw->cols)
             cw->cols = len;
     }
@@ -2803,18 +2845,37 @@ tty_end_menu(
         char buf[QBUFSZ];
         /* produce the largest demo string */
         Sprintf(buf, "(%ld of %ld) ", cw->npages, cw->npages);
-        len = strlen(buf);
+        len = utf8_display_width(buf);
         cw->morestr = dupstr("");
     } else {
         cw->morestr = dupstr("(end) ");
-        len = strlen(cw->morestr);
+        len = utf8_display_width(cw->morestr);
     }
 
     if (len > (int) ttyDisplay->cols) {
-        /* truncate the prompt if it's too long for the screen */
-        if (cw->npages <= 1) /* only str in single page case */
-            cw->morestr[ttyDisplay->cols] = 0;
-        len = ttyDisplay->cols;
+        /* truncate the prompt if it's too long for the screen (UTF-8 safe) */
+        if (cw->npages <= 1) { /* only str in single page case */
+            int maxw = (int) ttyDisplay->cols;
+            char *p = cw->morestr;
+            int w = 0;
+
+            if (utf8_display_width(p) > maxw) {
+                while (*p) {
+                    int clen = utf8_char_len((unsigned char) *p);
+                    int cwid = utf8_char_width((const char *) p);
+
+                    if (clen < 1)
+                        clen = 1;
+                    if (w + cwid > maxw) {
+                        *p = '\0';
+                        break;
+                    }
+                    w += cwid;
+                    p += clen;
+                }
+            }
+        }
+        len = (int) ttyDisplay->cols;
     }
     if (len > cw->cols)
         cw->cols = len;

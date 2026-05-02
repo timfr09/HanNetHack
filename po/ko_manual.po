@@ -53343,3 +53343,48 @@ msgstr "Elbereth"
 # nhlua.c nh.getlin() — Lua에서 영문 msgid를 넘기면 C에서 gettext 처리
 msgid "What do you want to call this dungeon level?"
 msgstr "이 던전 층을 뭐라고 부르겠습니까?"
+
+# windmain.c — 락/자가 복구(self-recover) 프롬프트
+msgid "There are files from a game in progress under your name. "
+msgstr "같은 이름으로 진행 중이던 게임에 쓰인 파일이 남아 있습니다. "
+
+msgid "Recover? [yn] "
+msgstr "복구하겠습니까? [yn] "
+
+msgid "\n\nAre you sure you wish to destroy the old game rather than try to\n"
+msgstr "\n\n이전 게임을 복구하지 않고 지우기로 하겠습니까? (되돌릴 수 없을 수 있습니다.)\n"
+
+msgid "recover it? [yn] "
+msgstr "지우겠습니까? [yn] "
+
+msgid "There are files from a game in progress under your name. Recover?"
+msgstr "같은 이름으로 진행 중이던 게임에 쓰인 파일이 남아 있습니다. 복구하겠습니까?"
+
+msgid "There are files from a game in progress under your name. "
+"Recover? [yn]"
+msgstr "같은 이름으로 진행 중이던 게임에 쓰인 파일이 남아 있습니다. "
+"복구하겠습니까? [yn]"
+
+msgid "Are you sure you wish to destroy the old game, rather than try to "
+"recover it? [yn] "
+msgstr "이전 게임을 복구하지 않고 지우기로 하겠습니까? (되돌릴 수 없을 수 있습니다.) "
+"정말 지우겠습니까? [yn] "
+
+#, c-format
+msgid "You chose to %s."
+msgstr "다음을 선택했습니다: %s."
+
+msgid "destroy the old game and start a new one"
+msgstr "이전 게임을 지우고 새 게임을 시작하는 것"
+
+msgid "recover the old game"
+msgstr "이전 게임을 복구하는 것"
+
+msgid "not start a new game"
+msgstr "새 게임을 시작하지 않는 것"
+
+msgid "Couldn't recover the old game."
+msgstr "이전 게임을 복구할 수 없습니다."
+
+msgid "Couldn't destroy the old game."
+msgstr "이전 게임의 잠금/파일을 지울 수 없습니다."

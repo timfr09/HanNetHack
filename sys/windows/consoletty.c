@@ -3633,6 +3633,9 @@ static char author[] = "Ray Chason";
 
 int process_keystroke2(HANDLE hConIn, INPUT_RECORD *ir, boolean *valid);
 
+/* ray_checkinput Peeks; if ray did not ReadConsoleInput, caller must. */
+static boolean ray_removed_key_event_from_queue;
+
 /* Use ray_processkeystroke for key commands, process_keystroke2 for prompts */
 /* int ray_processkeystroke(INPUT_RECORD *ir, boolean *valid, int
  *                          portdebug);
@@ -3679,6 +3682,8 @@ int ray_processkeystroke(
     const struct pad *kpad;
     DWORD count;
 
+    ray_removed_key_event_from_queue = FALSE;
+
 #ifdef QWERTZ_SUPPORT
     if (numberpad & 0x10) {
         numberpad &= ~0x10;
@@ -3696,6 +3701,7 @@ int ray_processkeystroke(
     if (scan == 0 && vk == 0) {
         /* It's the bogus_key */
         ReadConsoleInput(hConIn, ir, 1, &count);
+        ray_removed_key_event_from_queue = TRUE;
         *valid = FALSE;
         return 0;
     }
@@ -3725,6 +3731,7 @@ int ray_processkeystroke(
      */
     if (iskeypad(scan)) {
         ReadConsoleInput(hConIn, ir, 1, &count);
+        ray_removed_key_event_from_queue = TRUE;
         kpad = numberpad ? numpad : keypad;
         if (shiftstate & SHIFT_PRESSED) {
             ch = kpad[scan - KEYPADLO].shift;
@@ -3743,6 +3750,7 @@ int ray_processkeystroke(
 #endif /*QWERTZ_SUPPORT*/
     } else if (altseq > 0) { /* ALT sequence */
         ReadConsoleInput(hConIn, ir, 1, &count);
+        ray_removed_key_event_from_queue = TRUE;
         if (vk == 0xBF)
             ch = M('?');
         else
@@ -3752,6 +3760,7 @@ int ray_processkeystroke(
          * including ESC.  Do not treat AsciiChar==0 as control: CP65001
          * leaves letters at 0 and they must be translated below. */
         ReadConsoleInput(hConIn, ir, 1, &count);
+        ray_removed_key_event_from_queue = TRUE;
 #ifdef WIN32CON
     } else if (!ch && !iskeypad(scan) && altseq <= 0) {
         /* UTF-8 console: same translation as process_keystroke2 (Unicode,
@@ -4100,6 +4109,9 @@ ray_checkinput(
 #ifdef QWERTZ_SUPPORT
                     numberpad &= ~0x10;
 #endif
+                    /* Peek leaves KEY_EVENT in queue unless ray_read removed it. */
+                    if (!ray_removed_key_event_from_queue)
+                        ReadConsoleInput(hConIn, ir, 1, count);
                     if (valid)
                         return ch;
                 } else {

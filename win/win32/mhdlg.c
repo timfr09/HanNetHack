@@ -409,12 +409,19 @@ mswin_player_selection_window(void)
     data.config_alignment = flags.initalign;
 
     if (!plselRandomize(&data)) {
-        /* create modal dialog */
+        /* create modal dialog; use Unicode API when NLS is enabled so the
+         * name edit control is a true Unicode window (IME / UTF-8 plname). */
+#ifdef ENABLE_NLS
+        ret = DialogBoxParamW(
+            GetNHApp()->hApp, MAKEINTRESOURCEW(IDD_PLAYER_SELECTOR),
+            GetNHApp()->hMainWnd, PlayerSelectorDlgProc, (LPARAM) &data);
+#else
         ret = DialogBoxParam(
             GetNHApp()->hApp, MAKEINTRESOURCE(IDD_PLAYER_SELECTOR),
             GetNHApp()->hMainWnd, PlayerSelectorDlgProc, (LPARAM) &data);
+#endif
         if (ret == -1)
-            panic("Cannot create getlin window");
+            panic("Cannot create player selector window");
         ok = (ret == IDOK);
     }
 
@@ -820,6 +827,26 @@ PlayerSelectorDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         switch (LOWORD(wParam)) {
         /* OK button was clicked */
         case IDOK:
+#ifdef ENABLE_NLS
+            {
+                WCHAR wtext[BUFSZ];
+
+                SendDlgItemMessageW(hWnd, IDC_PLSEL_NAME, WM_GETTEXT,
+                                    (WPARAM) BUFSZ, (LPARAM) wtext);
+                WideCharToMultiByte(CP_UTF8, 0, wtext, -1, svp.plname,
+                                    PL_NSIZ, NULL, NULL);
+                (void) mungspaces(svp.plname);
+            }
+#else
+            {
+                TCHAR tbuf[BUFSZ];
+
+                SendDlgItemMessage(hWnd, IDC_PLSEL_NAME, WM_GETTEXT,
+                                   (WPARAM) BUFSZ, (LPARAM) tbuf);
+                NH_W2A(tbuf, svp.plname, PL_NSIZ);
+                (void) mungspaces(svp.plname);
+            }
+#endif
             EndDialog(hWnd, wParam);
             return TRUE;
 
@@ -1045,14 +1072,14 @@ plselDrawItem(HWND hWnd, WPARAM wParam, LPARAM lParam)
 
     if (wParam == IDC_PLSEL_ROLE_LIST) {
         if (flags.female && roles[i].name.f)
-            string = roles[i].name.f;
+            string = _(roles[i].name.f);
         else
-            string = roles[i].name.m;
+            string = _(roles[i].name.m);
         selected = (flags.initrole == i);
     } else {
         assert(wParam == IDC_PLSEL_RACE_LIST);
         ok = ok_race(flags.initrole, i, ROLE_RANDOM, ROLE_RANDOM);
-        string = races[i].noun;
+        string = _(races[i].noun);
         selected = (flags.initrace == i);
     }
 

@@ -560,117 +560,46 @@ is_korean_locale(void)
 }
 
 /*
- * Process Korean postpositions in a translated string
+ * Process Korean postpositions in a translated string.
  *
- * This function processes format strings containing postposition patterns
- * like {은/는}, {이/가}, {을/를} after variable substitution.
+ * Performs sprintf-style formatting into a temporary buffer and
+ * then delegates the actual {X/Y} replacement to the single
+ * implementation in src/ko_postpos.c.  Assumes `buf` is a BUFSZ-
+ * sized char array (matches every call site).
  *
  * Usage:
  *   char buf[BUFSZ];
  *   process_korean_postpositions(buf, "%s{을/를} 때렸다.", mon_nam(mtmp));
- *
- * The function:
- * 1. Performs sprintf-style formatting
- * 2. Scans for postposition patterns {X/Y}
- * 3. Replaces each pattern based on the preceding character's batchim
  */
 char *
 process_korean_postpositions(char *buf, const char *format, ...)
 {
     va_list args;
     char temp[BUFSZ * 2];
-    char *outp;
-    const char *inp;
-    ko_postpos_type pp_type;
-    int pp_len;
-    const char *last_char_pos;
-    int last_char_len;
-    ko_batchim_type batchim;
 
     if (!buf || !format)
         return buf;
 
-    /* First, do standard formatting */
     va_start(args, format);
-    nh_vsnprintf(temp, sizeof(temp), format, args);
+    nh_vsnprintf(temp, sizeof temp, format, args);
     va_end(args);
 
-    /* If not Korean locale, just copy and return */
     if (!korean_locale) {
         strncpy(buf, temp, BUFSZ - 1);
         buf[BUFSZ - 1] = '\0';
         return buf;
     }
 
-    /* Process postposition patterns */
-    outp = buf;
-    inp = temp;
-
-    while (*inp && (outp - buf) < BUFSZ - 10) {
-        if (*inp == KO_PP_START) {
-            /* Found potential postposition pattern */
-            if (ko_parse_postposition_pattern(inp, &pp_type, &pp_len)) {
-                /* Find the last character before this pattern */
-                *outp = '\0';  /* Temporarily terminate for scanning */
-                last_char_len = ko_find_last_char(buf, &last_char_pos);
-
-                if (last_char_len > 0) {
-                    /* Determine batchim */
-                    unsigned int cp;
-                    int bytes;
-                    cp = utf8_to_codepoint(last_char_pos, &bytes);
-                    batchim = ko_check_batchim_codepoint(cp);
-
-                    /* If ASCII, check English pronunciation rules */
-                    if (batchim == KO_BATCHIM_NONE && cp < 0x80) {
-                        /* Find start of the ASCII word */
-                        const char *word_start = last_char_pos;
-                        while (word_start > buf && isalnum((unsigned char)*(word_start-1))) {
-                            word_start--;
-                        }
-                        char word[64];
-                        int wlen = last_char_pos + last_char_len - word_start;
-                        if (wlen > 0 && wlen < (int)sizeof(word)) {
-                            strncpy(word, word_start, wlen);
-                            word[wlen] = '\0';
-                            batchim = ko_english_batchim(word);
-                        }
-                    }
-                } else {
-                    batchim = KO_BATCHIM_NONE;
-                }
-
-                /* Get the appropriate postposition */
-                const char *pp = ko_get_postposition(batchim, pp_type);
-                if (pp) {
-                    while (*pp && (outp - buf) < BUFSZ - 1) {
-                        *outp++ = *pp++;
-                    }
-                }
-
-                /* Skip the pattern in input */
-                inp += pp_len;
-                continue;
-            }
-        }
-
-        /* Copy regular character */
-        int charlen = utf8_char_len((unsigned char)*inp);
-        while (charlen-- > 0 && *inp && (outp - buf) < BUFSZ - 1) {
-            *outp++ = *inp++;
-        }
-    }
-
-    *outp = '\0';
-    return buf;
+    return ko_process_string(buf, BUFSZ, temp);
 }
 
 /*
- * Apply Korean postpositions to an already-formatted string
+ * Apply Korean postpositions to an already-formatted string.
  *
- * This is a simpler wrapper for cases where the string is already
- * formatted and we just need to process the postposition patterns.
- * The string is modified in place.
+ * Convenience wrapper for callers that already have the fully
+ * formatted string on hand and just need the {X/Y} markers
+ * resolved.  Result is written back into `str`, which is assumed
+ * to be a BUFSZ-sized buffer.
  *
  * Usage:
  *   apply_korean_postpositions(out_line);
@@ -683,11 +612,10 @@ apply_korean_postpositions(char *str)
     if (!str || !korean_locale)
         return str;
 
-    /* Copy to temp buffer and process back into original */
     strncpy(temp, str, BUFSZ - 1);
     temp[BUFSZ - 1] = '\0';
 
-    return process_korean_postpositions(str, "%s", temp);
+    return ko_process_string(str, BUFSZ, temp);
 }
 
 #endif /* ENABLE_NLS */

@@ -237,6 +237,43 @@ ko_check_batchim_codepoint(unsigned int codepoint)
 }
 
 /*
+ * Extend a last-character batchim check to cover the whole trailing
+ * ASCII word.  Hangul syllables already carry the jongsung index in
+ * the last character; for ASCII tails we typically want to honour
+ * the Korean pronunciation of the full word ("King" -> 킹 -> ㅇ
+ * 받침), not just the final letter.
+ */
+static ko_batchim_type
+refine_batchim_with_ascii_word(const char *buf_start,
+                               const char *last_pos, int last_len,
+                               ko_batchim_type batchim)
+{
+    const char *word_start;
+    int wlen;
+    char word[64];
+
+    if (batchim != KO_BATCHIM_NONE)
+        return batchim;
+    if (!buf_start || !last_pos || last_len <= 0)
+        return batchim;
+    if ((unsigned char) *last_pos >= 0x80)
+        return batchim; /* only meaningful for ASCII tails */
+
+    word_start = last_pos;
+    while (word_start > buf_start
+           && isalnum((unsigned char) *(word_start - 1)))
+        word_start--;
+
+    wlen = (int) (last_pos + last_len - word_start);
+    if (wlen <= 0 || wlen >= (int) sizeof word)
+        return batchim;
+
+    memcpy(word, word_start, (size_t) wlen);
+    word[wlen] = '\0';
+    return ko_english_batchim(word);
+}
+
+/*
  * Check if a Korean syllable has a final consonant (받침)
  */
 ko_batchim_type
@@ -246,6 +283,7 @@ ko_check_batchim(const char *utf8str)
     int last_len;
     unsigned int cp;
     int bytes;
+    ko_batchim_type batchim;
 
     if (!utf8str || !*utf8str)
         return KO_BATCHIM_NONE;
@@ -257,7 +295,9 @@ ko_check_batchim(const char *utf8str)
 
     /* Decode and check */
     cp = utf8_to_codepoint(last_pos, &bytes);
-    return ko_check_batchim_codepoint(cp);
+    batchim = ko_check_batchim_codepoint(cp);
+    return refine_batchim_with_ascii_word(utf8str, last_pos, last_len,
+                                          batchim);
 }
 
 /*
@@ -377,6 +417,11 @@ ko_process_string(char *outbuf, size_t outbufsz, const char *input)
                 if (last_char_len > 0) {
                     cp = utf8_to_codepoint(last_char_pos, &bytes);
                     batchim = ko_check_batchim_codepoint(cp);
+                    /* If the tail is ASCII, widen the check to the
+                     * whole trailing word so we honour Korean
+                     * pronunciation of short English names. */
+                    batchim = refine_batchim_with_ascii_word(
+                        outbuf, last_char_pos, last_char_len, batchim);
                 } else {
                     batchim = KO_BATCHIM_NONE;
                 }

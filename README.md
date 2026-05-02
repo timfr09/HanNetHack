@@ -23,7 +23,7 @@ NetHack 3.7은 업스트림에서도 계속 개발·조정이 이루어지는 �
 3. **`NetHackW.exe`** 를 실행하면 타일 GUI, **`NetHack.exe`** 는 콘솔(터미널) 버전입니다. 데이터와 번역은 ZIP 안에 포함되어 있습니다.
 4. 설정은 사용자별 `NetHack\.nethackrc`(또는 배포 문서에 안내된 경로)에서 할 수 있습니다. 기본 언어는 한국어입니다. 영어로 바꾸려면 `OPTIONS=language:en` 등을 사용합니다.
 
-빌드·번역·개발 정보는 아래 **Overview**부터 이어지는 섹션을 참고하세요.
+빌드·번역·개발 정보는 아래 **Overview**와 **Korean translation system (brief)** 등을 참고하세요. (번역 파이프라인 요약은 영어로 적어 두었습니다.)
 
 ![HanNetHack on Windows](doc/screenshot-win.png)
 
@@ -37,6 +37,16 @@ NetHack 3.7 is still under active upstream development. This fork periodically m
 
 - **Bugs, translation mistakes, or wording feedback**: please file [GitHub Issues](https://github.com/timfr09/HanNetHack/issues).
 - **Upstream source**: [NetHack/NetHack](https://github.com/NetHack/NetHack).
+
+### Korean translation system (brief)
+
+Source code uses GNU gettext-style macros (`_()`, `N_()`, `pgettext`, …). Translations are compiled to a standard **`.mo`** message catalog that is **bundled inside `nhdat`** at build time (not loaded from a separate locale directory next to the binary).
+
+At runtime, strings are resolved through the in-tree reader **`src/mo_reader.c`**. The game **does not link against GNU `libintl`**.
+
+- **Canonical translator-edited file in git:** `po/ko_manual.po`. A local `po/ko.po` produced by `make update-po` is an optional extraction/merge aid and is **not** committed.
+- Korean help, rumors, Lua, and other locale assets live under **`dat/locale/ko/`**; when opening data files, **`dlb_fopen()`** prefers language-specific paths when present.
+- Korean grammar markers in strings (topic/object particles, etc.) are interpreted by **`ko_postpos.c`**. Rules and tone guidelines: [`po/TRANSLATION_GUIDE_KO.md`](po/TRANSLATION_GUIDE_KO.md); APIs and pipeline: [`po/I18N_SYSTEM.md`](po/I18N_SYSTEM.md).
 
 ### Pre-built binaries
 
@@ -109,13 +119,7 @@ Quick reference: [`po/README.md`](po/README.md). Korean style guide: [`po/TRANSL
 
 ### Implementation notes (developers)
 
-Message catalogs are embedded as standard GNU gettext `.mo` data inside `nhdat` and loaded at runtime by the in-tree reader in `src/mo_reader.c` (no `libintl` link).
-
-- **Canonical hand-edited translation source in git:** `po/ko_manual.po` only.
-- **`po/ko.po`** is an optional local cache produced by `make update-po` (string extraction / merge aid); it is **not** committed.
-- Korean help, rumors, Lua, and other locale-specific assets live under **`dat/locale/ko/`**; `dlb_fopen()` prefers language-specific paths when resolving data files.
-
-Postposition patterns (`{은/는}`, etc.), speech styles, and `pgettext` usage are documented in [`po/TRANSLATION_GUIDE_KO.md`](po/TRANSLATION_GUIDE_KO.md) and [`po/I18N_SYSTEM.md`](po/I18N_SYSTEM.md).
+See **Korean translation system (brief)** above for architecture; [`po/I18N_SYSTEM.md`](po/I18N_SYSTEM.md) for full technical detail.
 
 ### Postposition reference
 

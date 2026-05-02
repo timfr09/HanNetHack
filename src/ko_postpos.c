@@ -83,13 +83,28 @@ number_batchim(int digit)
     }
 }
 
-/* Returns batchim type for single letter by Korean pronunciation */
+/*
+ * Returns the batchim class implied by the Korean pronunciation
+ * of a single Latin letter, judged by the letter's own Korean
+ * name (알파벳 이름) rather than any word-level pronunciation.
+ *
+ *   F 에프, L 엘, M 엠, N 엔, R 아르, S 에스, X 엑스  -> 받침
+ *   everything else                                    -> 받침 없음
+ *
+ * This is deliberately a heuristic, not a full transliteration
+ * engine.  It works well for initialisms and abbreviations where
+ * the letter *is* read individually ("USB가", "DNA가", "HTML이"),
+ * but it can pick the wrong particle for proper words where the
+ * Korean pronunciation of the whole word disagrees with the last
+ * letter's name ("Elf" reads as "엘프" with no batchim, but 'f'
+ * alone has one).  Translators should override those cases in
+ * ko_manual.po with an explicit particle.
+ */
 static ko_batchim_type
 letter_batchim(char c)
 {
     c = toupper((unsigned char)c);
     switch (c) {
-    /* Letters with batchim (consonant ending in Korean) */
     case 'F':  /* 에프 */
     case 'L':  /* 엘 */
     case 'M':  /* 엠 */
@@ -98,7 +113,6 @@ letter_batchim(char c)
     case 'S':  /* 에스 */
     case 'X':  /* 엑스 */
         return KO_BATCHIM_OTHER;
-    /* Letters without batchim */
     default:
         return KO_BATCHIM_NONE;
     }
@@ -479,7 +493,21 @@ ko_process_string(char *outbuf, size_t outbufsz, const char *input)
 }
 
 /*
- * Get batchim type for English words/numbers
+ * Pick a batchim class for an ASCII word or number when we need
+ * to attach a Korean particle to it.
+ *
+ * The rule is intentionally simple: look at the last character.
+ *
+ *   - If it's a digit, delegate to number_batchim() (which knows
+ *     the Korean reading of each digit: 일, 이, 삼 ...).
+ *   - If it's a letter, delegate to letter_batchim() (which uses
+ *     the letter's Korean name: F 에프, L 엘, ...).
+ *   - Otherwise default to "no batchim".
+ *
+ * See letter_batchim()'s comment for why this is a heuristic
+ * rather than a full romanisation of the whole word.  Call sites
+ * that want word-level accuracy should pre-resolve the particle
+ * in the translation catalog.
  */
 ko_batchim_type
 ko_english_batchim(const char *str)
@@ -493,17 +521,12 @@ ko_english_batchim(const char *str)
     len = strlen(str);
     last_char = str[len - 1];
 
-    /* Check if it's a number */
-    if (isdigit((unsigned char)last_char)) {
+    if (isdigit((unsigned char)last_char))
         return number_batchim(last_char - '0');
-    }
 
-    /* Check if it's a letter */
-    if (isalpha((unsigned char)last_char)) {
+    if (isalpha((unsigned char)last_char))
         return letter_batchim(last_char);
-    }
 
-    /* Unknown - default to no batchim */
     return KO_BATCHIM_NONE;
 }
 

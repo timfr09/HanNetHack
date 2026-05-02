@@ -81,7 +81,7 @@ mkcavepos(coordxy x, coordxy y, int dist, boolean waslit, boolean rockit)
     gv.viz_array[y][x] = (dist < 3) ? (IN_SIGHT | COULD_SEE) : COULD_SEE;
     lev->typ = (rockit ? STONE : ROOM); /* flags set via doormask above */
     if (dist >= 3)
-        impossible("mkcavepos called with dist %d", dist);
+        impossible(_("mkcavepos called with dist %d"), dist);
     feel_newsym(x, y);
 }
 
@@ -201,7 +201,7 @@ is_digging(void)
     return FALSE;
 }
 
-#define BY_YOU (u.umonst)
+#define BY_YOU (&gy.youmonst)
 #define BY_OBJECT ((struct monst *) 0)
 
 enum digcheck_result
@@ -393,7 +393,7 @@ dig(void)
         } else if (ttmp && ttmp->ttyp == BEAR_TRAP && u.utrap) {
             if (rnl(7) > (Fumbling ? 1 : 4)) {
                 char kbuf[BUFSZ];
-                int dmg = dmgval(uwep, u.umonst) + dbon();
+                int dmg = dmgval(uwep, &gy.youmonst) + dbon();
 
                 if (dmg < 1)
                     dmg = 1;
@@ -663,8 +663,7 @@ digactualhole(coordxy x, coordxy y, struct monst *madeby, int ttyp)
         return;
 
     if (ttyp != PIT && (!Can_dig_down(&u.uz) && !lev->candig)) {
-        impossible("digactualhole: can't dig %s on this level.",
-                   trapname(ttyp, TRUE));
+        impossible(_("digactualhole: can't dig %s on this level."),                    trapname(ttyp, TRUE));
         ttyp = PIT;
     }
 
@@ -849,7 +848,7 @@ liquid_flow(
     /* caller should have changed levl[x][y].typ to POOL, MOAT, or LAVA */
     if (!is_pool_or_lava(x, y)) {
         if (iflags.sanity_check) {
-            impossible("Insane liquid_flow(%d,%d,%s,%s).", x, y,
+            impossible(_("Insane liquid_flow(%d,%d,%s,%s)."), x, y,
                        ttmp ? trapname(ttmp->ttyp, TRUE) : "no trap",
                        fillmsg ? fillmsg : "no mesg");
         }
@@ -1457,8 +1456,7 @@ mdig_tunnel(struct monst *mtmp)
 
     /* Only rock, trees, and walls fall through to this point. */
     if ((here->wall_info & W_NONDIGGABLE) != 0) {
-        impossible("mdig_tunnel:  %s at (%d,%d) is undiggable",
-                   (IS_WALL(here->typ) ? "wall"
+        impossible(_("mdig_tunnel:  %s at (%d,%d) is undiggable"),                    (IS_WALL(here->typ) ? "wall"
                     : IS_TREE(here->typ) ? "tree" : "stone"),
                    (int) mtmp->mx, (int) mtmp->my);
         return FALSE; /* still alive */
@@ -2182,8 +2180,8 @@ rot_corpse(anything *arg, long timeout)
             && hides_under(mtmp->data)) {
             mtmp->mundetected = 0;
         } else if (u_at(x, y)
-                   && u.uundetected && hides_under(u.umonst->data))
-            (void) hideunder(u.umonst);
+                   && u.uundetected && hides_under(gy.youmonst.data))
+            (void) hideunder(&gy.youmonst);
         newsym(x, y);
     } else if (in_invent)
         update_inventory();
@@ -2242,27 +2240,26 @@ void
 escape_tomb(void)
 {
     debugpline0("escape_tomb");
-    if ((Teleportation || can_teleport(u.umonst->data))
+    if ((Teleportation || can_teleport(gy.youmonst.data))
         && (Teleport_control || rn2(3) < Luck+2)) {
         You(_("attempt a teleport spell."));
         (void) dotele(FALSE);        /* calls unearth_you() */
     } else if (u.uburied) { /* still buried after 'port attempt */
         boolean good;
 
-        if (amorphous(u.umonst->data) || Passes_walls
-            || noncorporeal(u.umonst->data)
-            || (unsolid(u.umonst->data)
-                && u.umonst->data != &mons[PM_WATER_ELEMENTAL])
-            || (tunnels(u.umonst->data) && !needspick(u.umonst->data))) {
-            You(_("%s up through the %s."),
-                (tunnels(u.umonst->data) && !needspick(u.umonst->data))
-                   ? _("try to tunnel")
-                   : (amorphous(u.umonst->data))
-                      ? _("ooze")
-                      : _("phase"),
+        if (amorphous(gy.youmonst.data) || Passes_walls
+            || noncorporeal(gy.youmonst.data)
+            || (unsolid(gy.youmonst.data)
+                && gy.youmonst.data != &mons[PM_WATER_ELEMENTAL])
+            || (tunnels(gy.youmonst.data) && !needspick(gy.youmonst.data))) {
+            You(_("%s up through the %s."),                 (tunnels(gy.youmonst.data) && !needspick(gy.youmonst.data))
+                   ? "try to tunnel"
+                   : (amorphous(gy.youmonst.data))
+                      ? "ooze"
+                      : "phase",
                 surface(u.ux, u.uy));
 
-            good = (tunnels(u.umonst->data) && !needspick(u.umonst->data))
+            good = (tunnels(gy.youmonst.data) && !needspick(gy.youmonst.data))
                       ? dighole(TRUE, FALSE, (coord *) 0) : TRUE;
             if (good)
                 unearth_you();

@@ -325,7 +325,7 @@ use_stethoscope(struct obj *obj)
     boolean interference = (u.uswallow && is_whirly(u.ustuck->data)
                             && !rn2(Role_if(PM_HEALER) ? 10 : 3));
 
-    if (nohands(u.umonst->data)) {
+    if (nohands(gy.youmonst.data)) {
         You(_("have no hands!")); /* not `body_part(HAND)' */
         return ECMD_OK;
     } else if (Deaf) {
@@ -476,7 +476,7 @@ static const char whistle_str[] = N_("produce a %s whistling sound."),
 staticfn void
 use_whistle(struct obj *obj)
 {
-    if (!can_blow(u.umonst)) {
+    if (!can_blow(&gy.youmonst)) {
         You(_("are incapable of using the whistle."));
     } else if (Underwater) {
         You(_("blow bubbles through %s."), yname(obj));
@@ -495,13 +495,13 @@ use_whistle(struct obj *obj)
 staticfn void
 use_magic_whistle(struct obj *obj)
 {
-    if (!can_blow(u.umonst)) {
+    if (!can_blow(&gy.youmonst)) {
         You(_("are incapable of using the whistle."));
     } else if (obj->cursed && !rn2(2)) {
         You(_("produce a %shigh-%s."), Underwater ? _("very ") : "",
             Deaf ? _("frequency vibration") : _("pitched humming noise"));
         wake_nearby(TRUE);
-        if (!rn2(2) && !noteleport_level(u.umonst))
+        if (!rn2(2) && !noteleport_level(&gy.youmonst))
             tele_to_rnd_pet();
     } else {
         /* it's magic!  it works underwater too (at a higher pitch) */
@@ -898,7 +898,7 @@ mleashed_next2u(struct monst *mtmp)
             struct obj *otmp = get_mleash(mtmp);
 
             if (!otmp) {
-                impossible("leashed-unleashed mon?");
+                impossible(_("leashed-unleashed mon?"));
                 return TRUE;
             }
 
@@ -939,7 +939,7 @@ check_leash(coordxy x, coordxy y)
             continue;
         mtmp = find_mid(otmp->leashmon, FM_FMON);
         if (!mtmp) {
-            impossible("leash in use isn't attached to anything?");
+            impossible(_("leash in use isn't attached to anything?"));
             otmp->leashmon = 0;
             continue;
         }
@@ -1055,8 +1055,8 @@ use_mirror(struct obj *obj)
                     }
                     gn.nomovemsg = 0; /* default, "you can move again" */
                 }
-            } else if (is_vampire(u.umonst->data)
-                       || is_vampshifter(u.umonst)) {
+            } else if (is_vampire(gy.youmonst.data)
+                       || is_vampshifter(&gy.youmonst)) {
                 You(_("don't have a reflection."));
             } else if (u.umonnum == PM_UMBER_HULK) {
                 pline(_("Huh?  That doesn't look like you!"));
@@ -1370,7 +1370,7 @@ use_candelabrum(struct obj *obj)
         /* to make absolutely sure the game doesn't become unwinnable as
            a consequence of a broken candelabrum */
         if (obj->age == 0) {
-            impossible("Candelabrum with candles but no fuel?");
+            impossible(_("Candelabrum with candles but no fuel?"));
             obj->age = 1;
         }
     } else {
@@ -1796,7 +1796,7 @@ dorub(void)
 {
     struct obj *obj;
 
-    if (nohands(u.umonst->data)) {
+    if (nohands(gy.youmonst.data)) {
         You(_("aren't able to rub anything without hands."));
         return ECMD_OK;
     }
@@ -1894,7 +1894,7 @@ check_jump(genericptr arg, coordxy x, coordxy y)
     /* let giants jump over boulders (what about Flying?
        and is there really enough head room for giants to jump
        at all, let alone over something tall?) */
-    if (sobj_at(BOULDER, x, y) && !throws_rocks(u.umonst->data))
+    if (sobj_at(BOULDER, x, y) && !throws_rocks(gy.youmonst.data))
         return FALSE;
     return TRUE;
 }
@@ -2003,7 +2003,7 @@ jump(int magic) /* 0=Physical, otherwise skill level */
     if (!magic && !Jumping && known_spell(SPE_JUMPING) >= spe_Fresh)
         return spelleffects(SPE_JUMPING, FALSE, FALSE);
 
-    if (!magic && (nolimbs(u.umonst->data) || slithy(u.umonst->data))) {
+    if (!magic && (nolimbs(gy.youmonst.data) || slithy(gy.youmonst.data))) {
         /* normally (nolimbs || slithy) implies !Jumping,
            but that isn't necessarily the case for knights */
         You_cant(_("jump; you have no legs!"));
@@ -2115,7 +2115,7 @@ jump(int magic) /* 0=Physical, otherwise skill level */
                 set_wounded_legs(RIGHT_SIDE, rn1(10, 11));
                 return ECMD_TIME;
             default:
-                impossible("Jumping out of strange trap (%d)?", u.utraptype);
+                impossible(_("Jumping out of strange trap (%d)?"), u.utraptype);
                 break;
             }
             /* if we reach here, hero is no longer trapped */
@@ -2207,7 +2207,7 @@ use_tinning_kit(struct obj *obj)
         char kbuf[BUFSZ];
         const char *corpse_name = an(cxname(corpse));
 
-        if (poly_when_stoned(u.umonst->data)) {
+        if (poly_when_stoned(gy.youmonst.data)) {
             You(_("tin %s without wearing gloves."), corpse_name);
             kbuf[0] = '\0';
         } else {
@@ -2262,7 +2262,7 @@ use_tinning_kit(struct obj *obj)
         (void) hold_another_object(can, _("You make, but cannot pick up, %s."),
                                    doname(can), (const char *) 0);
     } else
-        impossible("Tinning failed.");
+        impossible(_("Tinning failed."));
 }
 
 void
@@ -2386,7 +2386,7 @@ use_unicorn_horn(struct obj **optr)
             did_prop++;
             break;
         default:
-            impossible("use_unicorn_horn: bad trouble? (%d)", idx);
+            impossible(_("use_unicorn_horn: bad trouble? (%d)"), idx);
             break;
         }
     }
@@ -2416,7 +2416,7 @@ fig_transform(anything *arg, long timeout)
     char monnambuf[BUFSZ], carriedby[BUFSZ];
 
     if (!figurine) {
-        impossible("null figurine in fig_transform()");
+        impossible(_("null figurine in fig_transform()"));
         return;
     }
     silent = (timeout != svm.moves); /* happened while away */
@@ -2501,8 +2501,7 @@ fig_transform(anything *arg, long timeout)
 #endif
 
         default:
-            impossible("figurine came to life where? (%d)",
-                       (int) figurine->where);
+            impossible(_("figurine came to life where? (%d)"),                        (int) figurine->where);
             break;
         }
     }
@@ -2644,7 +2643,7 @@ use_grease(struct obj *obj)
         if (otmp != &hands_obj) {
             You(_("cover %s with a thick layer of grease."), yname(otmp));
             otmp->greased = 1;
-            if (obj->cursed && !nohands(u.umonst->data)) {
+            if (obj->cursed && !nohands(gy.youmonst.data)) {
                 make_glib(oldglib + rn1(6, 10)); /* + 10..15 */
                 pline(_("Some of the grease gets all over your %s."),
                       fingers_or_gloves(TRUE));
@@ -2838,8 +2837,8 @@ use_trap(struct obj *otmp)
     int levtyp = levl[u.ux][u.uy].typ;
     const char *occutext = _("setting the trap");
 
-    if (nohands(u.umonst->data))
-        what = _("without hands");
+    if (nohands(gy.youmonst.data))
+        what = "without hands";
     else if (Stunned)
         what = _("while stunned");
     else if (u.uswallow)
@@ -3120,7 +3119,7 @@ use_whip(struct obj *obj)
             cc.y = ry;
             You(_("wrap your bullwhip around %s."), wrapped_what);
             if (proficient && rn2(proficient + 2)) {
-                if (!mtmp || enexto(&cc, rx, ry, u.umonst->data)) {
+                if (!mtmp || enexto(&cc, rx, ry, gy.youmonst.data)) {
                     You(_("yank yourself out of the pit!"));
                     reset_utrap(TRUE); /* [was after teleds(); do this before
                                         * in case it has no alternative other
@@ -3204,7 +3203,7 @@ use_whip(struct obj *obj)
                            so proficient at catching weapons */
                         int dam, hitvalu, hitu;
 
-                        dam = dmgval(otmp, u.umonst);
+                        dam = dmgval(otmp, &gy.youmonst);
                         hitvalu = 8 + otmp->spe;
                         hitu = thitu(hitvalu, Maybe_Half_Phys(dam),
                                      &otmp, (char *) 0);
@@ -3222,7 +3221,7 @@ use_whip(struct obj *obj)
                     if (otmp->otyp == CORPSE
                         && touch_petrifies(&mons[otmp->corpsenm]) && !uarmg
                         && !Stone_resistance
-                        && !(poly_when_stoned(u.umonst->data)
+                        && !(poly_when_stoned(gy.youmonst.data)
                              && polymon(PM_STONE_GOLEM))) {
                         char kbuf[BUFSZ];
 
@@ -3593,7 +3592,7 @@ use_cream_pie(struct obj *obj)
         You(_("immerse your %s in %s%s."), body_part(FACE),
               several ? _("one of ") : "",
               several ? makeplural(the(xname(obj))) : the(xname(obj)));
-    if (can_blnd((struct monst *) 0, u.umonst, AT_WEAP, obj)) {
+    if (can_blnd((struct monst *) 0, &gy.youmonst, AT_WEAP, obj)) {
         int blindinc = rnd(25);
 
         u.ucreamed += blindinc;
@@ -3933,7 +3932,7 @@ do_break_wand(struct obj *obj)
     boolean is_fragile = (objdescr_is(obj, "balsa")
                           || objdescr_is(obj, "glass"));
 
-    if (nohands(u.umonst->data)) {
+    if (nohands(gy.youmonst.data)) {
         You_cant(_("break %s without hands!"), yname(obj));
         return ECMD_OK;
     } else if (!freehand()) {
@@ -4228,7 +4227,7 @@ doapply(void)
     struct obj *obj;
     int res = ECMD_TIME;
 
-    if (nohands(u.umonst->data)) {
+    if (nohands(gy.youmonst.data)) {
         You(_("aren't able to use or apply tools in your current form."));
         return ECMD_OK;
     }

@@ -862,8 +862,7 @@ extcmd_via_menu(void)
             if (matchlevel > (QBUFSZ - 2)) {
                 free((genericptr_t) pick_list);
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
-                impossible("Too many chars (%d) entered in extcmd_via_menu()",
-                           matchlevel);
+                impossible(_("Too many chars (%d) entered in extcmd_via_menu()"),                            matchlevel);
 #endif
                 ret = -1;
             } else {
@@ -890,7 +889,7 @@ RESTORE_WARNING_FORMAT_NONLITERAL
 int
 domonability(void)
 {
-    struct permonst *uptr = u.umonst->data;
+    struct permonst *uptr = gy.youmonst.data;
     boolean might_hide = (is_hider(uptr) || hides_under(uptr));
     char c = '\0';
 
@@ -918,12 +917,12 @@ domonability(void)
         return domindblast();
     else if (u.umonnum == PM_GREMLIN) {
         if (IS_FOUNTAIN(levl[u.ux][u.uy].typ)) {
-            if (split_mon(u.umonst, (struct monst *) 0))
+            if (split_mon(&gy.youmonst, (struct monst *) 0))
                 dryup(u.ux, u.uy, TRUE);
         } else if (is_pool(u.ux, u.uy)) {
             /* is_pool: might be wearing water walking boots or amulet of
                magical breathing */
-            (void) split_mon(u.umonst, (struct monst *) 0);
+            (void) split_mon(&gy.youmonst, (struct monst *) 0);
         } else {
             There(_("is no fountain here."));
         }
@@ -936,7 +935,7 @@ domonability(void)
             pline(_("Unfortunately sound does not carry well through rock."));
         else
             aggravate();
-    } else if (is_vampire(uptr) || is_vampshifter(u.umonst)) {
+    } else if (is_vampire(uptr) || is_vampshifter(&gy.youmonst)) {
         return dopoly();
     } else if (u.usteed && can_breathe(u.usteed->data)) {
         (void) pet_ranged_attk(u.usteed, TRUE);
@@ -1379,7 +1378,7 @@ dotoggleoption(void)
     if (gc.cmd_bind && gc.cmd_bind->param) {
         return toggle_bool_option(gc.cmd_bind->param);
     } else {
-        pline("Use #optionsfull to set any option instead.");
+        pline(_("Use #optionsfull to set any option instead."));
         return ECMD_OK;
     }
 }
@@ -3975,7 +3974,7 @@ getdir(const char *s)
         } else {
             cmdq_clear(CQ_CANNED);
             dirsym = '\0';
-            impossible("getdir: command queue had no dir?");
+            impossible(_("getdir: command queue had no dir?"));
         }
         free(cmdq);
         goto got_dirsym;
@@ -4083,8 +4082,7 @@ getdir(const char *s)
                 /* could plug in bound values for spkeys[NHKF_GETPOS_PICK],&c
                    but that feels like overkill for something which should
                    never happen; just show their default values */
-                impossible("getpos successful but not one of [.,;:] (%d)",
-                           pos);
+                impossible(_("getpos successful but not one of [.,;:] (%d)"),                            pos);
                 mod = 0; /* neither CLICK_1 nor CLICK_2 */
                 pos = -1; /* return failure */
                 break;
@@ -4207,7 +4205,7 @@ help_dir(
         Sprintf(buf, _("You can't %s %s."), dothat,
                 /* was "upwards" and "downwards", but they're considered
                    to be variants of canonical "upward" and "downward" */
-                (sym == '<') ? _("upward") : _("downward"));
+                (sym == '<') ? _("upward") : _("downward");
     }
 
     /* if '!cmdassist', display via pline() and we're done (note: asking
@@ -4217,7 +4215,7 @@ help_dir(
             if (!*buf)
                 Sprintf(buf, _("Invalid direction for '%s' prefix."),
                         visctrl(spkey));
-            pline("%s", buf);
+            pline(_("%s"), buf);
             return TRUE;
         }
         /* when 'cmdassist' is off and caller doesn't insist, do nothing */
@@ -5064,7 +5062,7 @@ get_count(
         } else if (!allowchars || strchr(allowchars, key)) {
             *count = (cmdcount_nht) cnt;
             if ((long) *count != cnt)
-                impossible("get_count: cmdcount_nht");
+                impossible(_("get_count: cmdcount_nht"));
             break;
         }
 
@@ -5572,8 +5570,7 @@ yn_function(
             paniclog("yn debug", dbg_buf);
 /*TEMP*/    /* don't let this known problem kill the fuzzer */
 /*TEMP*/    iflags.debug_fuzzer = fuzzer_impossible_continue;
-            impossible("yn_function() returned '%s'; using '%s' instead",
-                       visctrl(res), visctrl(altres));
+            impossible(_("yn_function() returned '%s'; using '%s' instead"),                        visctrl(res), visctrl(altres));
 /*TEMP*/    iflags.debug_fuzzer = fuzzing;
         }
         res = altres;

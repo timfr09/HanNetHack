@@ -956,9 +956,6 @@ u_init_misc(void)
     (void) memset((genericptr_t) &ubirthday, 0, sizeof(ubirthday));
     (void) memset((genericptr_t) &urealtime, 0, sizeof(urealtime));
 
-    u.umonst = newmonst();
-    *u.umonst = cg.zeromonst;
-    u.umonst->cham = u.mcham = NON_PM;
     u.uroleplay = tmpuroleplay; /* restore options set via rcfile */
 
 #if 0  /* documentation of more zero values as desirable */
@@ -1085,7 +1082,7 @@ skills_for_role(void)
         skills = Skill_W;
         break;
     default:
-        panic("No skills found for role");
+        panic(_("No skills found for role"));
         break;
     }
 

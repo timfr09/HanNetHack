@@ -1,12 +1,26 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\dirs.props"/>
   <Import Project="$(vsDir)files.props"/>
+  <!-- HanNetHack: pack locale/ko/nethack.mo into nhdat for nh_gettext() / _("...").
+       Without this file, strings like "Who are you?" stay English at runtime. -->
+  <Target Name="EnsureNethackCatalog" BeforeTargets="Build">
+    <Exec Command="cmd /c &quot;$(SysWindDir)build-translations.cmd&quot;"
+          WorkingDirectory="$(RootDir)"
+          Condition="Exists('$(LibDir)gettext\bin\msgfmt.exe')" />
+    <Warning Code="NH8001"
+             Text="Skipping nethack.mo: run sys\windows\setup-gettext.cmd then rebuild (or build-translations.cmd). Korean prompts need locale/ko/nethack.mo inside nhdat."
+             Condition="!Exists('$(LibDir)gettext\bin\msgfmt.exe') AND !Exists('$(DatDir)locale\ko\nethack.mo')" />
+  </Target>
   <Target Name="Build"
-	Inputs="$(ToolsDir)$(HostTools)dlb.exe;@(DlbList);$(SysWindDir)porthelp"
+	Inputs="$(ToolsDir)$(HostTools)dlb.exe;@(DlbList);@(KoDlbLine);$(SysWindDir)porthelp"
 	Outputs="$(BinDir)nhdat$(VERSION_MAJOR)$(VERSION_MINOR)$(PATCHLEVEL)">
 	<MakeDir Directories="$(BinDir)"/>
 	<Copy SourceFiles="$(SysWindDir)porthelp" DestinationFolder="$(DatDir)"/>
-	<WriteLinesToFile File="$(DatDir)dlb.lst" Lines="@(DlbList->'%(filename)%(extension)')" Overwrite="true"/>
+	<ItemGroup>
+	  <_DlbLstLine Include="@(DlbList->'%(filename)%(extension)')" />
+	  <_DlbLstLine Include="@(KoDlbLine)" />
+	</ItemGroup>
+	<WriteLinesToFile File="$(DatDir)dlb.lst" Lines="@(_DlbLstLine)" Overwrite="true"/>
 	<Exec Command="&quot;$(ToolsDir)$(HostTools)dlb.exe&quot; cIf dlb.lst &quot;$(BinDir)\nhdat&quot;" WorkingDirectory="$(DatDir)"/>
 	<Delete Files="$(DatDir)porthelp"/>
   </Target>

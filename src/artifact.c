@@ -410,9 +410,9 @@ void
 found_artifact(int a)
 {
     if (a < 1 || a > NROFARTIFACTS)
-        impossible("found_artifact: invalid artifact index! (%d)", a);
+        impossible(_("found_artifact: invalid artifact index! (%d)"), a);
     else if (!artiexist[a].exists)
-        impossible("found_artifact: artifact doesn't exist yet? (%d)", a);
+        impossible(_("found_artifact: artifact doesn't exist yet? (%d)"), a);
     else
         artiexist[a].found = 1;
 }
@@ -509,7 +509,7 @@ artifact_origin(
         if ((aflags & ONAME_RANDOM) != 0)
             artiexist[a].rndm = 1, ++ct;
         if (ct != 1)
-            impossible("invalid artifact origin: %4o", aflags);
+            impossible(_("invalid artifact origin: %4o"), aflags);
     }
 }
 
@@ -915,7 +915,7 @@ touch_artifact(struct obj *obj, struct monst *mon)
     if (oart == &artilist[ART_NONARTIFACT])
         return 1;
 
-    yours = (mon == u.umonst);
+    yours = (mon == &gy.youmonst);
     /* all quest artifacts are self-willed; if this ever changes, `badclass'
        will have to be extended to explicitly include quest artifacts */
     self_willed = ((oart->spfx & SPFX_INTEL) != 0);
@@ -1015,7 +1015,7 @@ spec_applies(const struct artifact *weap, struct monst *mtmp)
     if (!(weap->spfx & (SPFX_DBONUS | SPFX_ATTK)))
         return (weap->attk.adtyp == AD_PHYS);
 
-    yours = (mtmp == u.umonst);
+    yours = (mtmp == &gy.youmonst);
     ptr = mtmp->data;
 
     if (weap->spfx & SPFX_DMONS) {
@@ -1054,7 +1054,7 @@ spec_applies(const struct artifact *weap, struct monst *mtmp)
         case AD_STON:
             return !(yours ? Stone_resistance : resists_ston(mtmp));
         default:
-            impossible("Weird weapon special attack.");
+            impossible(_("Weird weapon special attack."));
         }
     }
     return 0;
@@ -1124,7 +1124,7 @@ discover_artifact(xint16 m)
         }
     /* there is one slot per artifact, so we should never reach the
        end without either finding the artifact or an empty slot... */
-    impossible("couldn't discover artifact (%d)", (int) m);
+    impossible(_("couldn't discover artifact (%d)"), (int) m);
 }
 
 /* used to decide whether an artifact has been fully identified */
@@ -1257,8 +1257,8 @@ Mb_hit(struct monst *magr, /* attacker */
 {
     struct permonst *old_mdat;
     const char *verb;
-    boolean youattack = (magr == u.umonst),
-            youdefend = (mdef == u.umonst),
+    boolean youattack = (magr == &gy.youmonst),
+            youdefend = (mdef == &gy.youmonst),
             resisted = FALSE, do_stun, do_confuse, result;
     int attack_indx, fakeidx, scare_dieroll = MB_MAX_DIEROLL / 2;
 
@@ -1314,7 +1314,7 @@ Mb_hit(struct monst *magr, /* attacker */
     /* now perform special effects */
     switch (attack_indx) {
     case MB_INDEX_CANCEL:
-        old_mdat = youdefend ? u.umonst->data : mdef->data;
+        old_mdat = youdefend ? gy.youmonst.data : mdef->data;
         /* No mdef->mcan check: even a cancelled monster can be polymorphed
          * into a golem, and the "cancel" effect acts as if some magical
          * energy remains in spellcasting defenders to be absorbed later.
@@ -1324,7 +1324,7 @@ Mb_hit(struct monst *magr, /* attacker */
         } else {
             do_stun = FALSE;
             if (youdefend) {
-                if (u.umonst->data != old_mdat)
+                if (gy.youmonst.data != old_mdat)
                     *dmgptr = 0; /* rehumanized, so no more damage */
                 if (u.uenmax > 0) {
                     u.uenmax--;
@@ -1360,7 +1360,7 @@ Mb_hit(struct monst *magr, /* attacker */
                 nomul(-3);
                 gm.multi_reason = _("being scared stiff");
                 gn.nomovemsg = "";
-                if (magr && magr == u.ustuck && sticks(u.umonst->data)) {
+                if (magr && magr == u.ustuck && sticks(gy.youmonst.data)) {
                     set_ustuck((struct monst *) 0);
                     You(_("release %s!"), mon_nam(magr));
                 }
@@ -1446,14 +1446,14 @@ DISABLE_WARNING_FORMAT_NONLITERAL
  */
 boolean
 artifact_hit(
-    struct monst *magr, /* attacker; might be Null if 'mdef' is u.umonst */
+    struct monst *magr, /* attacker; might be Null if 'mdef' is youmonst */
     struct monst *mdef, /* defender */
     struct obj *otmp,   /* artifact weapon */
     int *dmgptr,        /* output */
     int dieroll)        /* needed for Magicbane and vorpal blades */
 {
-    boolean youattack = (magr == u.umonst);
-    boolean youdefend = (mdef == u.umonst);
+    boolean youattack = (magr == &gy.youmonst);
+    boolean youdefend = (mdef == &gy.youmonst);
     boolean vis = (!youattack && magr && cansee(magr->mx, magr->my))
                   || (!youdefend && cansee(mdef->mx, mdef->my))
                   || (youattack && engulfing_u(mdef) && !Blind);
@@ -1471,7 +1471,7 @@ artifact_hit(
     *dmgptr += spec_dbon(otmp, mdef, *dmgptr);
 
     if (youattack && youdefend) {
-        impossible("attacking yourself with weapon?");
+        impossible(_("attacking yourself with weapon?"));
         return FALSE;
     }
 
@@ -1578,9 +1578,8 @@ artifact_hit(
                 observe_object(otmp);
                 return TRUE;
             } else {
-                if (bigmonst(u.umonst->data)) {
-                    pline(_("%s cuts deeply into you!"),
-                          magr ? Monnam(magr) : wepdesc);
+                if (bigmonst(gy.youmonst.data)) {
+                    pline(_("%s cuts deeply into you!"),                           magr ? Monnam(magr) : wepdesc);
                     *dmgptr *= 2;
                     return TRUE;
                 }
@@ -1625,14 +1624,13 @@ artifact_hit(
                 observe_object(otmp);
                 return TRUE;
             } else {
-                if (!has_head(u.umonst->data)) {
-                    pline(_("Somehow, %s misses you wildly."),
-                          magr ? mon_nam(magr) : wepdesc);
+                if (!has_head(gy.youmonst.data)) {
+                    pline(_("Somehow, %s misses you wildly."),                           magr ? mon_nam(magr) : wepdesc);
                     *dmgptr = 0;
                     return TRUE;
                 }
-                if (noncorporeal(u.umonst->data)
-                    || amorphous(u.umonst->data)) {
+                if (noncorporeal(gy.youmonst.data)
+                    || amorphous(gy.youmonst.data)) {
                     pline(_("%s slices through your %s."), wepdesc,
                           body_part(NECK));
                     return TRUE;
@@ -2138,7 +2136,7 @@ arti_invoke(struct obj *obj)
     int res = ECMD_OK;
 
     if (!obj) {
-        impossible("arti_invoke without obj");
+        impossible(_("arti_invoke without obj"));
         return ECMD_OK;
     }
     oart = get_artifact(obj);
@@ -2175,7 +2173,7 @@ arti_invoke(struct obj *obj)
         case FIRESTORM: res = invoke_storm_spell(obj); break;
         case BLINDING_RAY: res = invoke_blinding_ray(obj); break;
         default:
-            impossible("Unknown invoke power %d.", oart->inv_prop);
+            impossible(_("Unknown invoke power %d."), oart->inv_prop);
             break;
         }
         return res;
@@ -2521,11 +2519,11 @@ retouch_object(
         return 1;
     }
 
-    if (touch_artifact(obj, u.umonst)) {
+    if (touch_artifact(obj, &gy.youmonst)) {
         char buf[BUFSZ];
         int dmg = 0, tmp;
         boolean ag = (objects[obj->otyp].oc_material == SILVER && Hate_silver),
-                bane = bane_applies(get_artifact(obj), u.umonst);
+                bane = bane_applies(get_artifact(obj), &gy.youmonst);
 
         /* nothing else to do if hero can successfully handle this object */
         if (!ag && !bane)
@@ -2781,7 +2779,7 @@ is_magic_key(struct monst *mon, /* if null, non-rogue is assumed */
              struct obj *obj)
 {
     if (is_art(obj, ART_MASTER_KEY_OF_THIEVERY)) {
-        if ((mon == u.umonst) ? Role_if(PM_ROGUE)
+        if ((mon == &gy.youmonst) ? Role_if(PM_ROGUE)
                                  : (mon && mon->data == &mons[PM_ROGUE]))
             return !obj->cursed; /* a rogue; non-cursed suffices for magic */
         /* not a rogue; key must be blessed to behave as a magic one */
@@ -2790,7 +2788,7 @@ is_magic_key(struct monst *mon, /* if null, non-rogue is assumed */
     return FALSE;
 }
 
-/* figure out whether 'mon' (usually u.umonst) is carrying the magic key */
+/* figure out whether 'mon' (usually youmonst) is carrying the magic key */
 struct obj *
 has_magic_key(struct monst *mon) /* if null, hero assumed */
 {
@@ -2798,8 +2796,8 @@ has_magic_key(struct monst *mon) /* if null, hero assumed */
     short key = artilist[ART_MASTER_KEY_OF_THIEVERY].otyp;
 
     if (!mon)
-        mon = u.umonst;
-    for (o = ((mon == u.umonst) ? gi.invent : mon->minvent); o;
+        mon = &gy.youmonst;
+    for (o = ((mon == &gy.youmonst) ? gi.invent : mon->minvent); o;
          o = nxtobj(o, key, FALSE)) {
         if (is_magic_key(mon, o))
             return o;

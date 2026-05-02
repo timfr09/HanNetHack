@@ -15,9 +15,11 @@
 
 # *** OPTIONS ***
 #
-# Use the IBM character set rather than just plain ascii characters
-# for tty window-port.
-OPTIONS=symset:IBMGraphics_2,roguesymset:RogueEpyx
+# HanNetHack: UTF-8 Korean conflicts with IBMGraphics on many consoles; Enhanced1 fits UTF-8.
+# Normal launch is double-click NetHack.exe (game sets UTF-8 code page early). For stubborn
+# terminals, optional NetHack-console.cmd runs chcp 65001 first.
+#OPTIONS=symset:IBMGraphics_2,roguesymset:RogueEpyx
+OPTIONS=symset:Enhanced1,roguesymset:RogueEpyx
 
 # Here is a suggested symbol set from Michael Feir, 
 # for use by blind NetHack players
@@ -89,7 +91,7 @@ MENUCOLOR=" cursed .* \(being worn\)" = orange&underline
 #
 # number_pad option can have an optional value of 0 (off), 1 (on), 
 # or 2(on,legacy-mode) which causes 5='g', alt-5='G', alt-0='I'
-OPTIONS=time,noshowexp,number_pad:2,lit_corridor,mouse_support:1
+OPTIONS=time,noshowexp,!number_pad,lit_corridor,mouse_support:1
 
 # Make commands that ask for an inventory item pop up a menu
 OPTIONS=force_invmenu

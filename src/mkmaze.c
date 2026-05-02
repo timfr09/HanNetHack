@@ -36,7 +36,7 @@ staticfn void populate_maze(void);
         case 1:  (X)++;  break;                                  \
         case 2:  (Y)++;  break;                                  \
         case 3:  --(X);  break;                                  \
-        default: panic("mz_move: bad direction %d", dir);        \
+        default: panic(_("mz_move: bad direction %d"), dir);        \
         }                                                        \
     } while (0)
 
@@ -111,8 +111,7 @@ set_levltyp(coordxy x, coordxy y, schar newtyp)
         }
 #ifdef EXTRA_SANITY_CHECKS
     } else {
-        impossible("set_levltyp(%d,%d,%d)%s%s",
-                   (int) x, (int) y, (int) newtyp,
+        impossible(_("set_levltyp(%d,%d,%d)%s%s"),                    (int) x, (int) y, (int) newtyp,
                    !isok(x, y) ? " not isok()" : "",
                    (newtyp < STONE || newtyp >= MAX_TYPE) ? " bad type" : "");
 #endif /*EXTRA_SANITY_CHECKS*/
@@ -130,8 +129,7 @@ set_levltyp_lit(coordxy x, coordxy y, schar typ, schar lit)
         if (lit != SET_LIT_NOCHANGE) {
 #ifdef EXTRA_SANITY_CHECKS
             if (lit < SET_LIT_NOCHANGE || lit > 1)
-                impossible("set_levltyp_lit(%d,%d,%d,%d)",
-                           (int) x, (int) y, (int) typ, (int) lit);
+                impossible(_("set_levltyp_lit(%d,%d,%d,%d)"),                            (int) x, (int) y, (int) typ, (int) lit);
 #endif /*EXTRA_SANITY_CHECKS*/
             if (IS_LAVA(typ))
                 lit = 1;
@@ -203,7 +201,7 @@ wall_cleanup(coordxy x1, coordxy y1, coordxy x2, coordxy y2)
 
     /* sanity check on incoming variables */
     if (x1 < 0 || x2 >= COLNO || x1 > x2 || y1 < 0 || y2 >= ROWNO || y1 > y2)
-        panic("wall_cleanup: bad bounds (%d,%d) to (%d,%d)", x1, y1, x2, y2);
+        panic(_("wall_cleanup: bad bounds (%d,%d) to (%d,%d)"), x1, y1, x2, y2);
 
     /* change walls surrounded by rock to rock. */
     for (x = x1; x <= x2; x++)
@@ -247,7 +245,7 @@ fix_wall_spines(coordxy x1, coordxy y1, coordxy x2, coordxy y2)
 
     /* sanity check on incoming variables */
     if (x1 < 0 || x2 >= COLNO || x1 > x2 || y1 < 0 || y2 >= ROWNO || y1 > y2)
-        panic("wall_extends: bad bounds (%d,%d) to (%d,%d)", x1, y1, x2, y2);
+        panic(_("wall_extends: bad bounds (%d,%d) to (%d,%d)"), x1, y1, x2, y2);
 
     /* set the correct wall type. */
     for (x = x1; x <= x2; x++)
@@ -406,7 +404,7 @@ place_lregion(
             if (put_lregion_here(x, y, nlx, nly, nhx, nhy, rtype, TRUE, lev))
                 return;
 
-    impossible("Couldn't place lregion type %d!", rtype);
+    impossible(_("Couldn't place lregion type %d!"), rtype);
 }
 
 staticfn boolean
@@ -1191,7 +1189,7 @@ makemaz(const char *s)
             dmonsfree();
             return; /* no mazification right now */
         }
-        impossible("Couldn't load \"%s\" - making a maze.", protofile);
+        impossible(_("Couldn't load \"%s\" - making a maze."), protofile);
     }
 
     svl.level.flags.is_maze_lev = 1;
@@ -1267,7 +1265,7 @@ walkfrom(coordxy x, coordxy y, schar typ)
             mz_move(x, y, dir);
             pos++;
             if (pos > CELLS)
-                panic("Overflow in walkfrom");
+                panic(_("Overflow in walkfrom"));
             mazex[pos] = (char) x;
             mazey[pos] = (char) y;
         }
@@ -1344,7 +1342,7 @@ mazexy(coord *cc)
                 return;
             }
     /* every spot on the area of map allowed for mazes has been rejected */
-    panic("mazexy: can't find a place!");
+    panic(_("mazexy: can't find a place!"));
     /*NOTREACHED*/
     return;
 }
@@ -1468,7 +1466,7 @@ mkportal(coordxy x, coordxy y, xint16 todnum, xint16 todlevel)
     struct trap *ttmp = maketrap(x, y, MAGIC_PORTAL);
 
     if (!ttmp) {
-        impossible("portal on top of portal?");
+        impossible(_("portal on top of portal?"));
         return;
     }
     debugpline4("mkportal: at <%d,%d>, to %s, level %d", x, y,
@@ -1570,12 +1568,12 @@ movebubbles(void)
         for (b = up ? svb.bbubbles : ge.ebubbles; b;
              b = up ? b->next : b->prev) {
             if (b->cons)
-                panic("movebubbles: cons != null");
+                panic(_("movebubbles: cons != null"));
             for (i = 0, x = b->x; i < (int) b->bm[0]; i++, x++)
                 for (j = 0, y = b->y; j < (int) b->bm[1]; j++, y++)
                     if (b->bm[j + 2] & (1 << i)) {
                         if (!isok(x, y)) {
-                            impossible("movebubbles: bad pos (%d,%d)", x, y);
+                            impossible(_("movebubbles: bad pos (%d,%d)"), x, y);
                             continue;
                         }
 
@@ -1786,8 +1784,7 @@ restore_waterlevel(NHFILE *nhfp)
         program_state.something_worth_saving = 0;
         /* during restore, information about what level this is might not
            be available so we're wishy-washy about what we describe */
-        impossible("No %s to restore?",
-                   (Is_waterlevel(&u.uz) || Is_waterlevel(&gu.uz_save))
+        impossible(_("No %s to restore?"),                    (Is_waterlevel(&u.uz) || Is_waterlevel(&gu.uz_save))
                    ? "air bubbles"
                    : (Is_airlevel(&u.uz) || Is_airlevel(&gu.uz_save))
                      ? "clouds"
@@ -1805,7 +1802,7 @@ set_wportal(void)
     for (gw.wportal = gf.ftrap; gw.wportal; gw.wportal = gw.wportal->ntrap)
         if (gw.wportal->ttyp == MAGIC_PORTAL)
             return;
-    impossible("set_wportal(): no portal!");
+    impossible(_("set_wportal(): no portal!"));
 }
 
 staticfn void
@@ -1815,8 +1812,7 @@ setup_waterlevel(void)
     coordxy x, y, xskip, yskip;
 
     if (!Is_waterlevel(&u.uz) && !Is_airlevel(&u.uz))
-        panic("setup_waterlevel(): [%d:%d] neither 'Water' nor 'Air'",
-              (int) u.uz.dnum, (int) u.uz.dlevel);
+        panic(_("setup_waterlevel(): [%d:%d] neither 'Water' nor 'Air'"),               (int) u.uz.dnum, (int) u.uz.dlevel);
 
     /* ouch, hardcoded... (file scope statics and used in bxmin,bymax,&c) */
     svx.xmin = 3;
@@ -1893,11 +1889,11 @@ mk_bubble(coordxy x, coordxy y, int n)
     if (x >= gbxmax || y >= gbymax)
         return;
     if (n >= SIZE(bmask)) {
-        impossible("n too large (mk_bubble)");
+        impossible(_("n too large (mk_bubble)"));
         n = SIZE(bmask) - 1;
     }
     if (bmask[n][1] > MAX_BMASK) {
-        panic("bmask size is larger than MAX_BMASK");
+        panic(_("bmask size is larger than MAX_BMASK"));
     }
     b = (struct bubble *) alloc(sizeof *b);
     if ((x + (int) bmask[n][0] - 1) > gbxmax)
@@ -2076,7 +2072,7 @@ mv_bubble(struct bubble *b, coordxy dx, coordxy dy, boolean ini)
             }
 
             default:
-                impossible("mv_bubble: unknown bubble contents");
+                impossible(_("mv_bubble: unknown bubble contents"));
                 break;
             }
             free((genericptr_t) cons);

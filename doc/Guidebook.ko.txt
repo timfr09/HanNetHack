@@ -4362,46 +4362,61 @@
 
      12.2. 던전 탐험가
 
-          때때로 Netland의 일부 타락한 개인이 문제를 해결하기 위해 특히 흥미로운 수정 사항을 보냅니다.
+          때때로 NET 너머 어딘가의 다소 타락한 이가 게임을 돕기 위해 특히
+          흥미로운 수정 사항을 보내오곤 합니다. NetHack 개발 팀은 이런 무리
+          중에서도 특히 심한 장난꾼들의 이름을 이 Dungeoneers 목록에 적어
+          두기도 합니다.
 
      NetHack 3.7.0 2026년 4월 16일
 
 
-     게임. NetHack 개발 팀은 때때로 Dungeoneers 목록에 이러한 최악의 악당의 이름을 기록합니다.
-
-            Adam Aronow J. Ali Harlow Mikko Juola Alex Kompel Janet Walz
-            Nathan Eady Alex Smith Janne Salmijarvi Norm Meluch Andreas
-            Dorn Jean-Christophe Collet Olaf Seibert Andy Church Jeff
-            베일리 파시 칼리넨 앤디 스완슨 요헨 어비드 팻 랭킨
-            앤디 톰슨 존 칼렌 패트릭 뮬러 아리 허투넨 존
-            Rupley Paul Winner Bart House John S. Bien 피에르 마르티노
-            벤슨 I. 마굴리스 조니 리 랄프 브라운 빌 다이어 존
-            W{tte Ray Chason
+            Adam Aronow           Izchak Miller        Mike Stephenson
+            Alex Kompel           J. Ali Harlow          Mikko Juola
+            Alex Smith              Janet Walz           Nathan Eady
+           Andreas Dorn          Janne Salmijarvi        Norm Meluch
+            Andy Church       Jean-Christophe Collet     Olaf Seibert
+           Andy Swanson            Jeff Bailey          Pasi Kallinen
+           Andy Thomson           Jochen Erwied           Pat Rankin
+           Ari Huttunen            John Kallen          Patric Mueller
+            Bart House             John Rupley           Paul Winner
+        Benson I. Margulies        John S. Bien        Pierre Martineau
+             Bill Dyer              Johnny Lee            Ralf Brown
 
      NetHack 3.7.0 2026년 4월 16일
 
 
-         Boudewijn Waijers 조나단 핸들러 리처드 애디슨 브루스 콕스
-         조슈아 델라헌티 리처드 베이글 브루스 홀로웨이 칼 개리슨
-         리차드 P. 휴이 브루스 뮤본 야마모토 케이조 롭 멘케 칼
-         셸린 키스 심슨 로빈 밴디 크리스 루소 켄 아놀드 로빈
-         존슨 데이비드 코어스 켄 아롬디 로더릭 셰틀러 데이비드
-         다머렐 켄 로버 롤랜드 맥그래스 데이비드 겐첼 켄 와시키타
-         Ron Van Iwaarden David 헤어스톤 Kevin Darcy Ronnen Miller Dean
-         루익 케빈 휴고 로스 브라운 델 램 케빈 시트 사샤
-         Wostmann Derek S. Ray Kevin Smolkowski Scott Bigham Deron
-         메란다 케빈 스위트 스콧 R. 터너 디온 니콜라스 라스 후타르
-         션 헌트 딜런 오도넬 레온 아노트 스티븐 스팩먼 에릭
-         Backus M. Drew Streib Stefan Thielscher 에릭 헨드릭슨
-         말콤 라이언 스티븐 화이트 에릭 R. 스미스 마크 구더럼 스티브
-         Creps Eric S. Raymond Mark Modrall Steve Linhart Erik Andersen
-         마빈 브레슬러 스티브 밴데벤더 프레드릭 융달 매튜 데이
-         테무 수이키 프레데릭 로버 멀린 르로이 팀 레넌 길
-         네이거 마이클 앨리슨 티모 하쿨리넨 그렉 래스킨 마이클 페이어
-         톰 알미 그렉 올슨 마이클 하멜 톰 웨스트 그렉 원더리
-         Michael Sokolov Warren Cheung Hao-yang Wang Mike Engber Warwick
-         앨리슨 헬지 해프팅 마이크 갤럽 이츠하크 사피르 이리나 렘트-드리후우트 마이크 파사레티 이즈차크 밀러 마이크
-         스티븐슨
+         Boudewijn Waijers          Jon W{tte             Ray Chason
+             Bruce Cox           Jonathan Handler      Richard Addison
+          Bruce Holloway         Joshua Delahunty       Richard Beigel
+          Bruce Mewborne          Karl Garrison       Richard P. Hughey
+           Carl Schelin           Keizo Yamamoto          Rob Menke
+            Chris Russo           Keith Simpson          Robin Bandy
+            David Cohrs             Ken Arnold          Robin Johnson
+          David Damerell           Ken Arromdee       Roderick Schertler
+           David Gentzel            Ken Lorber          Roland McGrath
+          David Hairston          Ken Washikita        Ron Van Iwaarden
+            Dean Luick             Kevin Darcy          Ronnen Miller
+             Del Lamb               Kevin Hugo            Ross Brown
+           Derek S. Ray            Kevin Sitze         Sascha Wostmann
+           Deron Meranda         Kevin Smolkowski        Scott Bigham
+           Dion Nicolaas           Kevin Sweet         Scott R. Turner
+          Dylan O'Donnell          Lars Huttar            Sean Hunt
+            Eric Backus            Leon Arnott         Stephen Spackman
+         Eric Hendrickson         M. Drew Streib      Stefan Thielscher
+           Eric R. Smith           Malcolm Ryan         Stephen White
+          Eric S. Raymond         Mark Gooderum          Steve Creps
+           Erik Andersen           Mark Modrall         Steve Linhart
+         Fredrik Ljungdahl       Marvin Bressler      Steve VanDevender
+         Frederick Roeber          Matthew Day           Teemu Suikki
+        G. Branden Robinson        Merlyn LeRoy           Tim Lennan
+            Gil Neiger           Michael Allison        Timo Hakulinen
+            Greg Laskin            Michael Feir            Tom Almy
+            Greg Olson            Michael Hamel            Tom West
+          Gregg Wonderly          Michael Meyer         Warren Cheung
+           Hao-yang Wang         Michael Sokolov       Warwick Allison
+           Helge Hafting           Mike Engber          Yitzhak Sapir
+           Ingo Paschke            Mike Gallop
+       Irina Rempt-Drijfhout     Mike Passaretti
 
      NetHack 3.7.0 2026년 4월 16일
 

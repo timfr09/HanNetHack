@@ -366,11 +366,10 @@ init_shop_selection()
         for (item_prob = 0, j = 0; j < SIZE(shtypes[0].iprobs); j++)
             item_prob += shtypes[i].iprobs[j].iprob;
         if (item_prob != 100)
-            panic("item probabilities total to %d for %s shops!",
-                  item_prob, shtypes[i].name);
+            panic(_("item probabilities total to %d for %s shops!"),                   item_prob, shtypes[i].name);
     }
     if (shop_prob != 100)
-        panic("shop probabilities total to %d!", shop_prob);
+        panic(_("shop probabilities total to %d!"), shop_prob);
 }
 #endif /*0*/
 
@@ -423,7 +422,7 @@ shkveg(void)
         }
     }
     if (maxprob < 1)
-        panic("shkveg no veggy objects");
+        panic(_("shkveg no veggy objects"));
     prob = rnd(maxprob);
 
     j = 0;
@@ -434,7 +433,7 @@ shkveg(void)
     }
 
     if (objects[i].oc_class != oclass || !OBJ_NAME(objects[i]))
-        panic("shkveg probtype error, oclass=%d i=%d", (int) oclass, i);
+        panic(_("shkveg probtype error, oclass=%d i=%d"), (int) oclass, i);
     return i;
 }
 
@@ -641,7 +640,7 @@ shkinit(const struct shclass *shp, struct mkroom *sroom)
         if (wizard) {
             int j = sroom->doorct;
 
-            impossible("Where is shopdoor?");
+            impossible(_("Where is shopdoor?"));
             pline(_("Room at (%d,%d),(%d,%d)."), sroom->lx, sroom->ly, sroom->hx,
                   sroom->hy);
             pline(_("doormax=%d doorct=%d fdoor=%d"), gd.doorindex, sroom->doorct,
@@ -864,9 +863,9 @@ shkname(struct monst *mtmp)
     mtmp->isshk = save_isshk;
 
     if (!mtmp->isshk) {
-        impossible("shkname: \"%s\" is not a shopkeeper.", nam);
+        impossible(_("shkname: \"%s\" is not a shopkeeper."), nam);
     } else if (!has_eshk(mtmp)) {
-        panic("shkname: shopkeeper \"%s\" lacks 'eshk' data.", nam);
+        panic(_("shkname: shopkeeper \"%s\" lacks 'eshk' data."), nam);
     } else {
         const char *shknm = ESHK(mtmp)->shknam;
 

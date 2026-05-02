@@ -380,8 +380,8 @@ check_version(
     if (!filename) {
 #ifdef EXTRA_SANITY_CHECKS
         if (complain)
-            impossible("check_version() called with"
-                       " 'complain'=True but 'filename'=Null");
+            impossible(_("check_version() called with"
+                       " 'complain'=True but 'filename'=Null"));
 #endif
         complain = FALSE; /* 'complain' requires 'filename' for pline(_("%s")) */
     }
@@ -726,10 +726,26 @@ uptodate(NHFILE *nhfp, const char *name, unsigned long utdflags)
     if ((sfstatus = compare_critical_bytes(nhfp, &idx_1st_mismatch, utdflags))
                                                              != SF_UPTODATE) {
         if (sfstatus > 0 && idx_1st_mismatch) {
-            if (!quietly)
-                raw_printf("comparison of critical bytes mismatched at %d (%s).",
-                           critical_sizes[idx_1st_mismatch].ucsize,
+            if (!quietly) {
+                raw_printf(_("comparison of critical bytes mismatched at %u (%s)."),
+                           (unsigned) critical_sizes[idx_1st_mismatch].ucsize,
                            critical_sizes[idx_1st_mismatch].nm);
+                raw_printf("%s",
+#if defined(WIN32)
+                           _("This save or bones file does not match this program "
+                             "(upgrades change internal layouts). On Windows 3.7+, "
+                             "delete *.NetHack-saved-game under "
+                             "%LOCALAPPDATA%\\NetHack\\3.7\\ "
+                             "and bones bon* under %PROGRAMDATA%\\NetHack\\3.7\\ "
+                             "(HanNetHack: sys/windows/cleanup-incompatible-saves.cmd)."
+                             "\n"));
+#else
+                           _("This save or bones file does not match this program "
+                             "(upgrades change internal layouts). Remove files in "
+                             "your playground \"save\" folder and any \"bon*\" bones "
+                             "files, then start a new game.\n"));
+#endif
+            }
         }
     }
 

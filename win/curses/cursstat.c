@@ -179,10 +179,14 @@ curses_status_update(
                 /* fieldfmt[] is " %s"; avoid lone space when empty */
                 *status_vals[fldidx] = '\0';
             } else {
+                const char *sfmt = status_fmt_for_bl(
+                    (enum statusfields) fldidx,
+                    status_fieldfmt[fldidx] ? status_fieldfmt[fldidx] : "%s");
+
                 Sprintf(status_vals[fldidx],
                         (fldidx == BL_TITLE && iflags.wc2_hitpointbar)
-                        ? "%-30.30s" : status_fieldfmt[fldidx]
-                                     ? status_fieldfmt[fldidx] : "%s",
+                            ? "%-30.30s"
+                            : (sfmt ? sfmt : "%s"),
                         text);
                 /* strip trailing spaces; core ought to do this for us */
                 if (fldidx == BL_HUNGER || fldidx == BL_LEVELDESC)

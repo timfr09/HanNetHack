@@ -86,7 +86,7 @@ do_mkroom(int roomtype)
             mkzoo(ANTHOLE);
             break;
         default:
-            impossible("Tried to make a room of type %d.", roomtype);
+            impossible(_("Tried to make a room of type %d."), roomtype);
         }
     }
 }
@@ -163,7 +163,7 @@ mkshop(void)
         if (sroom->hx < 0)
             return;
         if (sroom - svr.rooms >= svn.nroom) {
-            impossible("rooms[] not closed by -1?");
+            impossible(_("rooms[] not closed by -1?"));
             return;
         }
         if (sroom->rtype != OROOM)
@@ -1067,7 +1067,7 @@ invalid_shop_shape(struct mkroom *sroom)
         }
     }
     if (insidect < 1) {
-        impossible("invalid_shop_shape: no squares inside door?");
+        impossible(_("invalid_shop_shape: no squares inside door?"));
         return TRUE;
     }
     /* if insidect > 1, then the shopkeeper already has alternate

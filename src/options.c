@@ -749,7 +749,7 @@ getoptstr(int optidx, int ophase)
     if ((roleoptindx >= 0 && roleoptindx < MAX_ROLEOPT
           && ophase >= 0 && ophase < num_opt_phases))
         return roleoptvals[roleoptindx][ophase];
-    panic("bad index roleoptvals[%d][%d]", roleoptindx, ophase);
+    panic(_("bad index roleoptvals[%d][%d]"), roleoptindx, ophase);
     /*NOTREACHED*/
 }
 
@@ -1516,7 +1516,7 @@ optfn_disclose(
             if (dop) {
                 idx = (int) (dop - disclosure_options);
                 if (idx < 0 || idx > NUM_DISCLOSURE_OPTIONS - 1) {
-                    impossible("bad disclosure index %d %c", idx, c);
+                    impossible(_("bad disclosure index %d %c"), idx, c);
                     continue;
                 }
                 if (prefix_val != -1) {
@@ -8100,7 +8100,7 @@ oc_to_str(char *src, char *dest)
 
     while ((i = (int) *src++) != 0) {
         if (i < 0 || i >= MAXOCLASSES)
-            impossible("oc_to_str:  illegal object class %d", i);
+            impossible(_("oc_to_str:  illegal object class %d"), i);
         else
             *dest++ = def_oc_syms[i].sym;
     }
@@ -9892,7 +9892,7 @@ set_option_mod_status(const char *optnam, int status)
     int k;
 
     if (SET__IS_VALUE_VALID(status)) {
-        impossible("set_option_mod_status: status out of range %d.", status);
+        impossible(_("set_option_mod_status: status out of range %d."), status);
         return;
     }
     for (k = 0; allopt[k].name; k++) {
@@ -9918,8 +9918,7 @@ set_wc_option_mod_status(unsigned long optmask, int status)
     int k = 0;
 
     if (SET__IS_VALUE_VALID(status)) {
-        impossible("set_wc_option_mod_status: status out of range %d.",
-                   status);
+        impossible(_("set_wc_option_mod_status: status out of range %d."),                    status);
         return;
     }
     while (wc_options[k].wc_name) {
@@ -9972,8 +9971,7 @@ set_wc2_option_mod_status(unsigned long optmask, int status)
     int k = 0;
 
     if (SET__IS_VALUE_VALID(status)) {
-        impossible("set_wc2_option_mod_status: status out of range %d.",
-                   status);
+        impossible(_("set_wc2_option_mod_status: status out of range %d."),                    status);
         return;
     }
     while (wc2_options[k].wc_name) {

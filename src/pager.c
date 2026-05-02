@@ -91,8 +91,7 @@ append_str(char *buf, const char *new_str)
     oldlen = strlen(buf);
     if (oldlen >= BUFSZ - 1) {
         if (oldlen > BUFSZ - 1)
-            impossible("append_str: 'buf' contains %lu characters.",
-                       (unsigned long) oldlen);
+            impossible(_("append_str: 'buf' contains %lu characters."),                        (unsigned long) oldlen);
         return 0; /* no space available */
     }
 
@@ -122,7 +121,7 @@ self_lookat(char *outbuf)
         Sprintf(eos(outbuf), _(", mounted on %s"), y_monnam(u.usteed));
     if (u.uundetected || (Upolyd && U_AP_TYPE)
         || visible_region_at(u.ux, u.uy))
-        mhidden_description(u.umonst,
+        mhidden_description(&gy.youmonst,
                             MHID_PREFIX | MHID_ARTICLE | MHID_REGION,
                             eos(outbuf));
     if (Punished)
@@ -146,7 +145,7 @@ monhealthdescr(struct monst *mon, boolean addspace, char *outbuf)
         Strcpy(outbuf, _("uninjured"));
     else if (mon->mhp <= 1 || pct < 5)
         Sprintf(outbuf, "%s%s", (mon->mhp > 0) ? _("nearly ") : "",
-                !nonliving(mon->data) ? _("deceased") : _("defunct"));
+                !nonliving(mon->data) ? _("deceased") : _("defunct");
     else
         Sprintf(outbuf, _("%swounded"),
                 (pct >= 95) ? _("barely ")
@@ -197,7 +196,7 @@ mhidden_description(
             incl_article = (mhid_flags & MHID_ARTICLE) != 0,
             show_altmon = (mhid_flags & MHID_ALTMON) != 0,
             force_region = (mhid_flags & MHID_REGION) != 0;
-    boolean fakeobj, isyou = (mon == u.umonst);
+    boolean fakeobj, isyou = (mon == &gy.youmonst);
     coordxy x = isyou ? u.ux : mon->mx, y = isyou ? u.uy : mon->my;
     int glyph = (svl.level.flags.hero_memory && !isyou) ? levl[x][y].glyph
                                                        : glyph_at(x, y);
@@ -447,8 +446,8 @@ look_at_monster(
             Strcat(buf, digests(mtmp->data) ? _(", swallowing you")
                                             : _(", engulfing you"));
         else
-            Strcat(buf, (Upolyd && sticks(u.umonst->data))
-                          ? _(", being held") : _(", holding you"));
+            Strcat(buf, (Upolyd && sticks(gy.youmonst.data))
+                          ? ", being held" : ", holding you");
     }
     /* if mtmp isn't able to move (other than because it is a type of
        monster that never moves), say so [excerpt from mstatusline() for
@@ -548,7 +547,7 @@ look_at_monster(
             }
             /* should have used up all the how_seen bits by now */
             if (how_seen) {
-                impossible("lookat: unknown method of seeing monster");
+                impossible(_("lookat: unknown method of seeing monster"));
                 Sprintf(eos(monbuf), "(%u)", how_seen);
             }
         } /* seen by something other than normal vision */
@@ -851,8 +850,7 @@ checkfile(
     }
     /* If someone passed us garbage, prevent fault. */
     if (!inp || strlen(inp) > (BUFSZ - 1)) {
-        impossible("bad do_look buffer passed (%s)!",
-                   !inp ? "null" : "too long");
+        impossible(_("bad do_look buffer passed (%s)!"),                    !inp ? "null" : "too long");
         goto checkfile_done;
     }
 
@@ -996,12 +994,12 @@ checkfile(
             found_in_file = skipping_entry = FALSE;
             txt_offset = 0L;
             if (dlb_fseek(fp, txt_offset, SEEK_SET) < 0 ) {
-                impossible("can't get to start of 'data' file");
+                impossible(_("can't get to start of 'data' file"));
                 goto checkfile_done;
             }
             /* skip first record; read second */
             if (!dlb_fgets(buf, BUFSZ, fp) || !dlb_fgets(buf, BUFSZ, fp)) {
-                impossible("can't read 'data' file");
+                impossible(_("can't read 'data' file"));
                 goto checkfile_done;
             } else if (sscanf(buf, "%8lx\n", &txt_offset) < 1
                        || txt_offset == 0L)
@@ -1121,7 +1119,7 @@ checkfile(
     goto checkfile_done; /* skip error feedback */
 
  bad_data_file:
-    impossible("'data' file in wrong format or corrupted");
+    impossible(_("'data' file in wrong format or corrupted"));
  checkfile_done:
     if (datawin != WIN_ERR)
         destroy_nhwindow(datawin);
@@ -1168,7 +1166,7 @@ add_cmap_descr(
 
         /* grab a scratch buffer we can safely return (via *firstmatch
            when applicable) */
-        mbuf = mon_nam(u.umonst);
+        mbuf = mon_nam(&gy.youmonst);
 
         if (absidx == S_pool) {
             levl[cc.x][cc.y].typ = (idx == S_pool) ? POOL : MOAT;
@@ -2650,7 +2648,7 @@ dowhatdoes_core(char q, char *cbuf)
     }
     (void) dlb_fclose(fp);
     if (depth != 0)
-        impossible("cmdhelp: mismatched &? &: &. conditionals.");
+        impossible(_("cmdhelp: mismatched &? &: &. conditionals."));
     return (char *) 0;
 #endif /* 0 */
 }

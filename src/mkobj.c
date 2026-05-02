@@ -294,7 +294,7 @@ mkobj(int oclass, boolean artif)
     }
 
     if (objects[i].oc_class != oclass || !OBJ_NAME(objects[i])) {
-        impossible("probtype error, oclass=%d i=%d", (int) oclass, i);
+        impossible(_("probtype error, oclass=%d i=%d"), (int) oclass, i);
         i = svb.bases[oclass];
     }
 
@@ -461,8 +461,7 @@ splitobj(struct obj *obj, long num)
 
     /* can't split containers */
     if (obj->cobj || num <= 0L || obj->quan <= num)
-        panic("splitobj [cobj=%s num=%ld quan=%ld]",
-              obj->cobj ? "non-empty container" : "(null)", num, obj->quan);
+        panic(_("splitobj [cobj=%s num=%ld quan=%ld]"),               obj->cobj ? "non-empty container" : "(null)", num, obj->quan);
 
     otmp = newobj();
     *otmp = *obj; /* copies whole structure */
@@ -674,7 +673,7 @@ replace_object(struct obj *obj, struct obj *otmp)
         extract_nexthere(obj, &svl.level.objects[obj->ox][obj->oy]);
         break;
     default:
-        panic("replace_object: obj position");
+        panic(_("replace_object: obj position"));
         break;
     }
 }
@@ -760,7 +759,7 @@ costly_alteration(struct obj *obj, int alter_type)
     struct monst *shkp = 0;
 
     if (alter_type < 0 || alter_type >= SIZE(alteration_verbs)) {
-        impossible("invalid alteration type (%d)", alter_type);
+        impossible(_("invalid alteration type (%d)"), alter_type);
         alter_type = 0;
     }
 
@@ -1166,8 +1165,7 @@ mksobj_init(struct obj **obj, boolean artif)
         /* 3.6.3: this used to be impossible() followed by return 0
            but most callers aren't prepared to deal with Null result
            and cluttering them up to do so is pointless */
-        panic("mksobj tried to make type %d, class %d.",
-              (int) otmp->otyp, (int) objects[otmp->otyp].oc_class);
+        panic(_("mksobj tried to make type %d, class %d."),               (int) otmp->otyp, (int) objects[otmp->otyp].oc_class);
         /*NOTREACHED*/
     }
 
@@ -1477,8 +1475,7 @@ start_glob_timeout(
     long when)       /* when to shrink; if 0L, use random value close to 25 */
 {
     if (!obj->globby) {
-        impossible("start_glob_timeout for non-glob [%d: %s]?",
-                   obj->otyp, simpleonames(obj));
+        impossible(_("start_glob_timeout for non-glob [%d: %s]?"),                    obj->otyp, simpleonames(obj));
         return; /* skip timer creation */
     }
     /* sanity precaution */
@@ -1515,8 +1512,7 @@ shrink_glob(
     unsigned old_top_owt = 0;
 
     if (!obj->globby) {
-        impossible("shrink_glob for non-glob [%d: %s]?",
-                   obj->otyp, simpleonames(obj));
+        impossible(_("shrink_glob for non-glob [%d: %s]?"),                    obj->otyp, simpleonames(obj));
         return; /* old timer is gone, don't start a new one */
     }
     /* note: if check_glob() complains about a problem, the " obj " here
@@ -1892,8 +1888,7 @@ weight(struct obj *obj)
     int wt = (int) objects[obj->otyp].oc_weight; /* weight of 1 'otyp' */
 
     if (obj->quan < 1L) {
-        impossible("Calculating weight of %ld %s?",
-                   obj->quan, simpleonames(obj));
+        impossible(_("Calculating weight of %ld %s?"),                    obj->quan, simpleonames(obj));
         return 0;
     }
     /* glob absorption means that merging globs combines their weight
@@ -2077,7 +2072,7 @@ mkcorpstat(
     boolean init = ((corpstatflags & CORPSTAT_INIT) != 0);
 
     if (objtype != CORPSE && objtype != STATUE)
-        impossible("making corpstat type %d", objtype);
+        impossible(_("making corpstat type %d"), objtype);
     if (x == 0 && y == 0) { /* special case - random placement */
         otmp = mksobj(objtype, init, FALSE);
         (void) rloco(otmp);
@@ -2323,7 +2318,7 @@ place_object(struct obj *otmp, coordxy x, coordxy y)
            but we let the game keep going */
     }
     if (otmp->where != OBJ_FREE)
-        panic("place_object: obj \"%s\" [%d] not free",
+        panic(_("place_object: obj \"%s\" [%d] not free"),
               safe_typename(otmp->otyp), otmp->where);
 
     assert(x >= 0 && x < COLNO && y >= 0 && y < ROWNO);
@@ -2513,7 +2508,7 @@ remove_object(struct obj *otmp)
     coordxy y = otmp->oy;
 
     if (otmp->where != OBJ_FLOOR)
-        panic("remove_object: obj where=%d, not on floor", otmp->where);
+        panic(_("remove_object: obj where=%d, not on floor"), otmp->where);
     extract_nexthere(otmp, &svl.level.objects[x][y]);
     extract_nobj(otmp, &fobj);
     if (otmp->otyp == BOULDER)
@@ -2588,7 +2583,7 @@ obj_extract_self(struct obj *obj)
         extract_nobj(obj, &gb.billobjs);
         break;
     default:
-        panic("obj_extract_self, where=%d", obj->where);
+        panic(_("obj_extract_self, where=%d"), obj->where);
         break;
     }
 }
@@ -2610,7 +2605,7 @@ extract_nobj(struct obj *obj, struct obj **head_ptr)
         }
     }
     if (!curr)
-        panic("extract_nobj: object lost");
+        panic(_("extract_nobj: object lost"));
     obj->where = OBJ_FREE;
     obj->nobj = (struct obj *) 0;
 }
@@ -2637,7 +2632,7 @@ extract_nexthere(struct obj *obj, struct obj **head_ptr)
         }
     }
     if (!curr)
-        panic("extract_nexthere: object lost");
+        panic(_("extract_nexthere: object lost"));
     obj->nexthere = (struct obj *) 0;
 }
 
@@ -2652,7 +2647,7 @@ add_to_minv(struct monst *mon, struct obj *obj)
     struct obj *otmp;
 
     if (obj->where != OBJ_FREE)
-        panic("add_to_minv: obj where=%d, not free", obj->where);
+        panic(_("add_to_minv: obj where=%d, not free"), obj->where);
 
     /* merge if possible */
     for (otmp = mon->minvent; otmp; otmp = otmp->nobj)
@@ -2680,7 +2675,7 @@ add_to_container(struct obj *container, struct obj *obj)
     struct obj *otmp;
 
     if (obj->where != OBJ_FREE)
-        panic("add_to_container: obj where=%d, not free", obj->where);
+        panic(_("add_to_container: obj where=%d, not free"), obj->where);
     if (container->where != OBJ_INVENT && container->where != OBJ_MINVENT)
         obj_no_longer_held(obj);
 
@@ -2700,11 +2695,10 @@ void
 add_to_migration(struct obj *obj)
 {
     if (obj->where != OBJ_FREE)
-        panic("add_to_migration: obj where=%d, not free", obj->where);
+        panic(_("add_to_migration: obj where=%d, not free"), obj->where);
 
     if (obj->unpaid) /* caller should have changed unpaid item to stolen */
-        impossible("unpaid object migrating to another level? [%s]",
-                   simpleonames(obj));
+        impossible(_("unpaid object migrating to another level? [%s]"),                    simpleonames(obj));
     obj->no_charge = 0; /* was only relevant while inside a shop */
 
     /* lock picking context becomes stale if it's for this object */
@@ -2722,7 +2716,7 @@ void
 add_to_buried(struct obj *obj)
 {
     if (obj->where != OBJ_FREE)
-        panic("add_to_buried: obj where=%d, not free", obj->where);
+        panic(_("add_to_buried: obj where=%d, not free"), obj->where);
 
     obj->where = OBJ_BURIED;
     obj->nobj = svl.level.buriedobjlist;
@@ -2749,18 +2743,17 @@ dealloc_obj(struct obj *obj)
     if (obj->otyp == BOULDER)
         obj->next_boulder = 0;
     if (obj->where == OBJ_DELETED) {
-        impossible("dealloc_obj: obj already deleted (type=%d)", obj->otyp);
+        impossible(_("dealloc_obj: obj already deleted (type=%d)"), obj->otyp);
         return;
     } else if (obj->where != OBJ_FREE && obj->where != OBJ_LUAFREE) {
-        panic("dealloc_obj: obj not free (type=%d, where=%d)",
-              obj->otyp, obj->where);
+        panic(_("dealloc_obj: obj not free (type=%d, where=%d)"),               obj->otyp, obj->where);
     }
     if (obj->nobj)
-        panic("dealloc_obj with nobj");
+        panic(_("dealloc_obj with nobj"));
     if (obj->cobj)
-        panic("dealloc_obj with cobj");
+        panic(_("dealloc_obj with cobj"));
     if (obj == &hands_obj) {
-        impossible("dealloc_obj with hands_obj");
+        impossible(_("dealloc_obj with hands_obj"));
         return;
     }
 
@@ -2838,7 +2831,7 @@ dobjsfree(void)
         otmp = go.objs_deleted;
         go.objs_deleted = otmp->nobj;
         if (otmp->where != OBJ_DELETED)
-            panic("dobjsfree: obj where=%d, not OBJ_DELETED", otmp->where);
+            panic(_("dobjsfree: obj where=%d, not OBJ_DELETED"), otmp->where);
         obj_extract_self(otmp);
         dealloc_obj_real(otmp);
     }
@@ -2854,7 +2847,7 @@ hornoplenty(
     int objcount = 0;
 
     if (!horn || horn->otyp != HORN_OF_PLENTY) {
-        impossible("bad horn o' plenty");
+        impossible(_("bad horn o' plenty"));
     } else if (horn->spe < 1) {
         pline1(nothing_happens);
         if (!horn->cknown) {
@@ -3005,7 +2998,7 @@ obj_sanity_check(void)
     /* monsters temporarily in transit;
        they should have arrived with hero by the time we get called */
     if (gm.mydogs) {
-        impossible("gm.mydogs sanity [not empty]");
+        impossible(_("gm.mydogs sanity [not empty]"));
         mon_obj_sanity(gm.mydogs, "mydogs minvent sanity");
     }
 
@@ -3239,8 +3232,7 @@ mon_obj_sanity(struct monst *monlist, const char *mesg)
                it here avoids making an extra pass through mon's minvent;
                if the full pass through that list hasn't reset mwep to Null,
                then mwep isn't in that list where it should be */
-            impossible("monst (%s: %u) wielding %s (%u) not in %s inventory",
-                       pmname(mon->data, Mgender(mon)), mon->m_id,
+            impossible(_("monst (%s: %u) wielding %s (%u) not in %s inventory"),                        pmname(mon->data, Mgender(mon)), mon->m_id,
                        safe_typename(mwep->otyp), mwep->o_id, mhis(mon));
 
         }
@@ -3389,11 +3381,11 @@ check_contained(struct obj *container, const char *mesg)
     for (obj = container->cobj; obj; obj = obj->nobj) {
         /* catch direct cycle to avoid unbounded recursion */
         if (obj == container)
-            panic("failed sanity check: container holds itself");
+            panic(_("failed sanity check: container holds itself"));
         if (obj->where != OBJ_CONTAINED)
             insane_object(obj, "%s obj %s %s: %s", mesg, (struct monst *) 0);
         else if (obj->ocontainer != container)
-            impossible("%s obj %s in container %s, not %s", mesg,
+            impossible(_("%s obj %s in container %s, not %s"), mesg,
                   fmt_ptr((genericptr_t) obj),
                   fmt_ptr((genericptr_t) obj->ocontainer),
                   fmt_ptr((genericptr_t) container));
@@ -3405,7 +3397,7 @@ check_contained(struct obj *container, const char *mesg)
                parent is present when something comes before it, or
                notice more deeply embedded cycles (grandparent, &c) */
             if (obj->cobj == container)
-                panic("failed sanity check: container holds its parent");
+                panic(_("failed sanity check: container holds its parent"));
             /* change "contained... sanity" to "nested contained... sanity"
                and "nested contained..." to "nested nested contained..." */
             Strcpy(nestedmesg, "nested ");
@@ -3645,7 +3637,7 @@ struct obj *
 obj_nexto(struct obj *otmp)
 {
     if (!otmp) {
-        impossible("obj_nexto: wasn't given an object to check");
+        impossible(_("obj_nexto: wasn't given an object to check"));
         return (struct obj *) 0;
     }
     return obj_nexto_xy(otmp, otmp->ox, otmp->oy, TRUE);
@@ -3751,7 +3743,7 @@ obj_absorb(struct obj **obj1, struct obj **obj2)
         }
     }
 
-    impossible("obj_absorb: not called with two actual objects");
+    impossible(_("obj_absorb: not called with two actual objects"));
     return (struct obj *) 0;
 }
 
@@ -3810,7 +3802,7 @@ obj_meld(struct obj **obj1, struct obj **obj2)
             }
         }
     } else {
-        impossible("obj_meld: not called with two actual objects");
+        impossible(_("obj_meld: not called with two actual objects"));
     }
     return result;
 }

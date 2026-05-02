@@ -54,7 +54,7 @@ boulder_hits_pool(
     boolean pushing)  /* for a boulder, whether or not it is being pushed */
 {
     if (!otmp || otmp->otyp != BOULDER) {
-        impossible("Not a boulder?");
+        impossible(_("Not a boulder?"));
     } else if (is_pool_or_lava(rx, ry)) {
         boolean lava = is_lava(rx, ry), fills_up;
         const char *what = waterbody_name(rx, ry);
@@ -173,7 +173,7 @@ flooreffects(
     int ttyp = NO_TRAP, res = FALSE;
 
     if (obj->where != OBJ_FREE)
-        panic("flooreffects: obj not free");
+        panic(_("flooreffects: obj not free"));
 
     /* make sure things like water_damage() have no pointers to follow */
     obj->nobj = obj->nexthere = (struct obj *) 0;
@@ -229,7 +229,7 @@ flooreffects(
                 }
                 mtmp->mtrapped = 0;
             } else {
-                if (!Passes_walls && !throws_rocks(u.umonst->data)) {
+                if (!Passes_walls && !throws_rocks(gy.youmonst.data)) {
                     losehp(Maybe_Half_Phys(rnd(15)),
                            _("squished under a boulder"), NO_KILLER_PREFIX);
                     goto deletedwithboulder;
@@ -1112,11 +1112,10 @@ staticfn boolean
 u_stuck_cannot_go(const char *updn)
 {
     if (u.ustuck) {
-        if (u.uswallow || !sticks(u.umonst->data)) {
-            You(_("are %s, and cannot go %s."),
-                !u.uswallow ? _("being held")
-                : digests(u.ustuck->data) ? _("swallowed")
-                : _("engulfed"), updn);
+        if (u.uswallow || !sticks(gy.youmonst.data)) {
+            You(_("are %s, and cannot go %s."),                 !u.uswallow ? "being held"
+                : digests(u.ustuck->data) ? "swallowed"
+                : "engulfed", updn);
             return TRUE;
         } else {
             struct monst *mtmp = u.ustuck;
@@ -1259,7 +1258,7 @@ dodown(void)
         const char *down_or_thru = trap->ttyp == HOLE ? _("down") : _("through");
         const char *actn = u_locomotion(_("jump"));
 
-        if (u.umonst->data->msize >= MZ_HUGE) {
+        if (gy.youmonst.data->msize >= MZ_HUGE) {
             char qbuf[QBUFSZ];
 
             You(_("don't fit %s easily."), down_or_thru);
@@ -1416,8 +1415,7 @@ u_collide_m(struct monst *mtmp)
     coord cc;
 
     if (!mtmp || mtmp == u.usteed || mtmp != m_at(u.ux, u.uy)) {
-        impossible("level arrival collision: %s?",
-                   !mtmp ? "no monster"
+        impossible(_("level arrival collision: %s?"),                    !mtmp ? "no monster"
                      : (mtmp == u.usteed) ? "steed is on map"
                        : "monster not co-located");
         return;
@@ -1428,14 +1426,14 @@ u_collide_m(struct monst *mtmp)
        it was already here.  Randomly move you to an adjacent spot
        or else the monster to any nearby location.  Prior to 3.3.0
        the latter was done unconditionally. */
-    if (!rn2(2) && enexto(&cc, u.ux, u.uy, u.umonst->data)
+    if (!rn2(2) && enexto(&cc, u.ux, u.uy, gy.youmonst.data)
         && next2u(cc.x, cc.y))
         u_on_newpos(cc.x, cc.y); /*[maybe give message here?]*/
     else
         mnexto(mtmp, RLOC_NOMSG);
 
     if ((mtmp = m_at(u.ux, u.uy)) != 0) {
-        /* there was an unconditional impossible("mnexto failed")
+        /* there was an unconditional impossible(_("mnexto failed")
            here, but it's not impossible and we're prepared to cope
            with the situation, so only say something when debugging */
         if (wizard)
@@ -1695,7 +1693,7 @@ goto_level(
     if (!(svl.level_info[new_ledger].flags & LFILE_EXISTS)) {
         /* entering this level for first time; make it now */
         if (svl.level_info[new_ledger].flags & (VISITED)) {
-            impossible("goto_level: returning to discarded level?");
+            impossible(_("goto_level: returning to discarded level?"));
             svl.level_info[new_ledger].flags &= ~(VISITED);
         }
         mklev();
@@ -1738,7 +1736,7 @@ goto_level(
                 u_on_rndspot(0);
             } else {
                 if (!iflags.debug_fuzzer)
-                    impossible("goto_level: no corresponding portal!");
+                    impossible(_("goto_level: no corresponding portal!"));
                 u_on_rndspot(0);
             }
         } else {
@@ -1799,7 +1797,7 @@ goto_level(
             } else { /* ordinary descent */
                 if (flags.verbose)
                     You(_("%s."), ga.at_ladder ? _("climb down the ladder")
-                                         : _("descend the stairs"));
+                                             : _("descend the stairs"));
             }
         }
     } else { /* trap door or level_tele or In_endgame */
@@ -2009,8 +2007,7 @@ hellish_smoke_mesg(void)
               svl.level.flags.temperature > 0 ? _("hot") : _("cold"));
 
     if (In_hell(&u.uz) && svl.level.flags.temperature > 0)
-        You(_("%s smoke..."),
-              olfaction(u.umonst->data) ? _("smell") : _("sense"));
+        You(_("%s smoke..."),               olfaction(gy.youmonst.data) ? "smell" : "sense");
 }
 
 /* give a message when the level temperature is different from previous */
@@ -2202,7 +2199,7 @@ revive_corpse(struct obj *corpse)
             const char *mnam = canspotmon(mtmp) ? Amonnam(mtmp) : Something;
 
             if (!container) {
-                impossible("reviving corpse from non-existent container");
+                impossible(_("reviving corpse from non-existent container"));
             } else if (mcarry && canseemon(mcarry)) {
                 pline(_("%s writhes out of %s!"), mnam, yname(container));
             } else if (container_where == OBJ_INVENT) {
@@ -2239,7 +2236,7 @@ revive_corpse(struct obj *corpse)
             /*FALLTHRU*/
         default:
             /* we should be able to handle the other cases... */
-            impossible("revive_corpse: lost corpse @ %d", where);
+            impossible(_("revive_corpse: lost corpse @ %d"), where);
             break;
         }
         return TRUE;

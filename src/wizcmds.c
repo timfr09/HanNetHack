@@ -144,7 +144,7 @@ makemap_remove_mons(void)
     /* release dead and 'unmade' monsters */
     dmonsfree();
     if (fmon) {
-        impossible("makemap_remove_mons: 'fmon' did not get emptied?");
+        impossible(_("makemap_remove_mons: 'fmon' did not get emptied?"));
     }
     return;
 }
@@ -253,7 +253,7 @@ wiz_kill(void)
 
     cc.x = u.ux, cc.y = u.uy;
     for (;;) {
-        pline("%s:", prompt);
+        pline(_("%s:"), prompt);
         prompt = _("Next monster");
 
         flags.verbose = FALSE;
@@ -540,7 +540,7 @@ wiz_panic(void)
     }
     if (paranoid_query(TRUE,
                        "Do you want to call panic() and end your game?"))
-        panic("Crash test (#panic).");
+        panic(_("Crash test (#panic)."));
     return ECMD_OK;
 }
 
@@ -892,7 +892,7 @@ wiz_smell(void)
 
     cc.x = u.ux;
     cc.y = u.uy;
-    if (!olfaction(u.umonst->data)) {
+    if (!olfaction(gy.youmonst.data)) {
         You(_("are incapable of detecting odors in your present form."));
         return ECMD_OK;
     }
@@ -909,7 +909,7 @@ wiz_smell(void)
             if (u.usteed) {
                 mptr = u.usteed->data;
             } else {
-                mptr = u.umonst->data;
+                mptr = gy.youmonst.data;
                 is_you = TRUE;
             }
         } else if ((mtmp = m_at(cc.x, cc.y)) != (struct monst *) 0) {
@@ -1405,7 +1405,7 @@ you_sanity_check(void)
 
     if (u.uswallow && !u.ustuck) {
         /* this probably ought to be panic() */
-        impossible("sanity_check: swallowed by nothing?");
+        impossible(_("sanity_check: swallowed by nothing?"));
         display_nhwindow(WIN_MESSAGE, TRUE);
         /* try to recover from whatever the problem is */
         u.uswallow = 0;
@@ -1415,13 +1415,12 @@ you_sanity_check(void)
     if ((mtmp = m_at(u.ux, u.uy)) != 0) {
         /* u.usteed isn't on the map */
         if (u.ustuck != mtmp)
-            impossible("sanity_check: you over monster");
+            impossible(_("sanity_check: you over monster"));
     }
     /* [should we also check for (u.uhp < 1), (Upolyd && u.mh < 1),
        and (u.uen < 0) here?] */
     if (u.uhp > u.uhpmax) {
-        impossible("current hero health (%d) better than maximum? (%d)",
-                   u.uhp, u.uhpmax);
+        impossible(_("current hero health (%d) better than maximum? (%d)"),                    u.uhp, u.uhpmax);
         u.uhp = u.uhpmax;
     }
     if (Upolyd && u.mh > u.mhmax) {
@@ -1431,8 +1430,7 @@ you_sanity_check(void)
         u.mh = u.mhmax;
     }
     if (u.uen > u.uenmax) {
-        impossible("current hero energy (%d) better than maximum? (%d)",
-                   u.uen, u.uenmax);
+        impossible(_("current hero energy (%d) better than maximum? (%d)"),                    u.uen, u.uenmax);
         u.uen = u.uenmax;
     }
 
@@ -1451,7 +1449,7 @@ levl_sanity_check(void)
     for (y = 0; y < ROWNO; y++) {
         for (x = 1; x < COLNO; x++) {
             if ((does_block(x, y, &levl[x][y]) ? 1 : 0) != get_viz_clear(x, y))
-                impossible("levl[%i][%i] vision blocking", x, y);
+                impossible(_("levl[%i][%i] vision blocking"), x, y);
         }
     }
 }

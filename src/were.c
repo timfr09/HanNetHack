@@ -106,8 +106,7 @@ new_were(struct monst *mon)
 
     pm = counter_were(monsndx(mon->data));
     if (pm < LOW_PM) {
-        impossible("unknown lycanthrope %s.",
-                    mon->data->pmnames[NEUTRAL]);
+        impossible(_("unknown lycanthrope %s."),                     mon->data->pmnames[NEUTRAL]);
         return;
     }
 
@@ -219,12 +218,12 @@ you_unwere(boolean purify)
         You_feel(_("purified."));
         set_ulycn(NON_PM); /* cure lycanthropy */
     }
-    if (!Unchanging && is_were(u.umonst->data)
+    if (!Unchanging && is_were(gy.youmonst.data)
         && !monster_nearby()
         && (!controllable_poly
             || !paranoid_query(ParanoidWerechange, _("Remain in beast form?"))))
         rehumanize();
-    else if (is_were(u.umonst->data) && !u.mtimedone)
+    else if (is_were(gy.youmonst.data) && !u.mtimedone)
         u.mtimedone = rn1(200, 200); /* 40% of initial were change */
 }
 

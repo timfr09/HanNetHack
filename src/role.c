@@ -1347,7 +1347,7 @@ rolefilterstring(char *outbuf, int which)
         }
         break;
     default:
-        impossible("rolefilterstring: bad role aspect (%d)", which);
+        impossible(_("rolefilterstring: bad role aspect (%d)"), which);
         Strcpy(outbuf, " ?");
         break;
     }
@@ -1994,7 +1994,7 @@ role_menu_extra(int which, winid where, boolean preselect)
                  ATR_NONE, clr, _("Quit"),
                  preselect ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     } else {
-        impossible("role_menu_extra: bad arg (%d)", which);
+        impossible(_("role_menu_extra: bad arg (%d)"), which);
     }
 }
 
@@ -2874,7 +2874,7 @@ plsel_startmenu(int ttyrows, int aspect)
 
     win = create_nhwindow(NHW_MENU);
     if (win == WIN_ERR)
-        panic("could not create role selection window");
+        panic(_("could not create role selection window"));
     start_menu(win, MENU_BEHAVE_STANDARD);
 
     add_menu_str(win, qbuf);

@@ -160,7 +160,7 @@ getrumor(
                 ending = gf.false_rumor_end;
                 break;
             default:
-                impossible("strange truth value for rumor");
+                impossible(_("strange truth value for rumor"));
                 return strcpy(rumor_buf, _("Oops..."));
             }
             Strcpy(rumor_buf,
@@ -170,7 +170,7 @@ getrumor(
                  && !strncmp(rumor_buf, cookie_marker, marklen));
         (void) dlb_fclose(rumors);
         if (count >= 50)
-            impossible("Can't find non-cookie rumor?");
+            impossible(_("Can't find non-cookie rumor?"));
         else if (!gi.in_mklev) /* avoid exercising wisdom for graffiti */
             exercise(A_WIS, (adjtruth > 0));
     } else {
@@ -542,7 +542,7 @@ outrumor(
             return;
         } else if (Blind) {
             if (mechanism == BY_COOKIE)
-                pline("%s", _(fortune_msg));
+                pline(_("%s"), _(fortune_msg));
             pline(_("What a pity that you cannot read it!"));
             return;
         }
@@ -563,7 +563,7 @@ outrumor(
         /* [WIS exercised by getrumor()] */
         return;
     case BY_COOKIE:
-        pline("%s", _(fortune_msg));
+        pline(_("%s"), _(fortune_msg));
         FALLTHROUGH;
     /* FALLTHRU */
     case BY_PAPER:
@@ -777,7 +777,7 @@ couldnt_open_file(const char *filename)
     if (!iflags.debug_fuzzer)
         program_state.something_worth_saving = 0;
 
-    impossible("Can't open '%s' file.", filename);
+    impossible(_("Can't open '%s' file."), filename);
     program_state.something_worth_saving = save_something;
 }
 

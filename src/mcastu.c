@@ -70,7 +70,7 @@ cursetxt(struct monst *mtmp, boolean undirected)
             point_msg = _("all around, then curses");
         else if ((Invis && !perceives(mtmp->data)
                   && (mtmp->mux != u.ux || mtmp->muy != u.uy))
-                 || is_obj_mappear(u.umonst, STRANGE_OBJECT)
+                 || is_obj_mappear(&gy.youmonst, STRANGE_OBJECT)
                  || u.uundetected)
             point_msg = _("and curses in your general direction");
         else if (Displaced && (mtmp->mux != u.ux || mtmp->muy != u.uy))
@@ -390,7 +390,7 @@ staticfn void
 mcast_death_touch(struct monst *mtmp)
 {
     pline(_("Oh no, %s's using the touch of death!"), mhe(mtmp));
-    if (nonliving(u.umonst->data) || is_demon(u.umonst->data)) {
+    if (nonliving(gy.youmonst.data) || is_demon(gy.youmonst.data)) {
         You(_("seem no deader than before."));
     } else if (!Antimagic && rn2(mtmp->m_lev) > 12) {
         if (Hallucination) {
@@ -415,7 +415,7 @@ mcast_clone_wiz(struct monst *mtmp)
         pline(_("Double Trouble..."));
         clonewiz();
     } else
-        impossible("bad wizard cloning?");
+        impossible(_("bad wizard cloning?"));
 }
 
 staticfn void
@@ -498,7 +498,7 @@ mcast_disappear(struct monst *mtmp)
         if (cansee(mtmp->mx, mtmp->my) && !canspotmon(mtmp))
             map_invisible(mtmp->mx, mtmp->my);
     } else
-        impossible("no reason for monster to cast disappear spell?");
+        impossible(_("no reason for monster to cast disappear spell?"));
 }
 
 staticfn void
@@ -554,9 +554,9 @@ mcast_fire_pillar(struct monst *mtmp, int dmg)
     if (Half_spell_damage)
         dmg = (dmg + 1) / 2;
     burn_away_slime();
-    (void) burnarmor(u.umonst);
+    (void) burnarmor(&gy.youmonst);
     /* item destruction dmg */
-    (void) destroy_items(u.umonst, AD_FIRE, orig_dmg);
+    (void) destroy_items(&gy.youmonst, AD_FIRE, orig_dmg);
     ignite_items(gi.invent);
     /* burn up flammable items on the floor, melt ice terrain */
     mon_spell_hits_spot(mtmp, AD_FIRE, u.ux, u.uy);
@@ -587,7 +587,7 @@ mcast_lightning(struct monst *mtmp, int dmg)
     }
     if (Half_spell_damage)
         dmg = (dmg + 1) / 2;
-    (void) destroy_items(u.umonst, AD_ELEC, orig_dmg);
+    (void) destroy_items(&gy.youmonst, AD_ELEC, orig_dmg);
     /* lightning might destroy iron bars if hero is on such a spot;
        reflection protects terrain here [execution won't get here due
        to 'if (reflects) break' above] but hero resistance doesn't;
@@ -731,7 +731,7 @@ mcast_blind_you(void)
 {
     /* note: resists_blnd() doesn't apply here */
     if (!Blinded) {
-        int num_eyes = eyecount(u.umonst->data);
+        int num_eyes = eyecount(gy.youmonst.data);
 
         pline(_("Scales cover your %s!"), (num_eyes == 1)
                                        ? body_part(EYE)
@@ -740,7 +740,7 @@ mcast_blind_you(void)
         if (!Blind)
             Your1(vision_clears);
     } else
-        impossible("no reason for monster to cast blindness spell?");
+        impossible(_("no reason for monster to cast blindness spell?"));
 }
 
 staticfn int
@@ -802,12 +802,11 @@ staticfn void
 mcast_spell(struct monst *mtmp, int dmg, int spellnum)
 {
     if (dmg < 0) {
-        impossible("monster cast spell (%d) with negative dmg (%d)?",
-                   spellnum, dmg);
+        impossible(_("monster cast spell (%d) with negative dmg (%d)?"),                    spellnum, dmg);
         return;
     }
     if (dmg == 0 && !is_undirected_spell(spellnum)) {
-        impossible("cast directed wizard spell (%d) with dmg=0?", spellnum);
+        impossible(_("cast directed wizard spell (%d) with dmg=0?"), spellnum);
         return;
     }
 
@@ -888,7 +887,7 @@ mcast_spell(struct monst *mtmp, int dmg, int spellnum)
         dmg = mcast_open_wounds(dmg);
         break;
     default:
-        impossible("mcastu: invalid magic spell (%d)", spellnum);
+        impossible(_("mcastu: invalid magic spell (%d)"), spellnum);
         dmg = 0;
         break;
     }

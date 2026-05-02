@@ -165,7 +165,7 @@ awaken_soldiers(struct monst *bugler  /* monster that played instrument */)
     int distance, distm;
 
     /* distance of affected non-soldier monsters to bugler */
-    distance = ((bugler == u.umonst) ? u.ulevel
+    distance = ((bugler == &gy.youmonst) ? u.ulevel
                                          : bugler->data->mlevel) * 30;
 
     for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
@@ -180,9 +180,8 @@ awaken_soldiers(struct monst *bugler  /* monster that played instrument */)
             if (canseemon(mtmp))
                 pline(_("%s is now ready for battle!"), Monnam(mtmp));
             else if (!Deaf)
-                Norep(_("%s the rattle of battle gear being readied."),
-                      _("You hear"));  /* Deaf-aware */
-        } else if ((distm = ((bugler == u.umonst)
+                Norep(_("%s the rattle of battle gear being readied."),                       "You hear");  /* Deaf-aware */
+        } else if ((distm = ((bugler == &gy.youmonst)
                                  ? mdistu(mtmp)
                                  : dist2(bugler->mx, bugler->my, mtmp->mx,
                                          mtmp->my))) < distance) {
@@ -301,7 +300,7 @@ do_pit(coordxy x, coordxy y, unsigned tu_pit)
             Your(_("chain breaks!"));
             reset_utrap(TRUE);
         }
-        if (Levitation || Flying || is_clinger(u.umonst->data)) {
+        if (Levitation || Flying || is_clinger(gy.youmonst.data)) {
             if (!tu_pit) { /* no pit here previously */
                 pline(_("A chasm opens up under you!"));
                 You(_("don't fall in!"));
@@ -327,10 +326,10 @@ do_pit(coordxy x, coordxy y, unsigned tu_pit)
             if (keepfooting)
                 exercise(A_DEX, TRUE);
             else
-                selftouch((Upolyd && (slithy(u.umonst->data)
-                                    || nolimbs(u.umonst->data)))
-                          ? _("Shaken, you")
-                          : _("Falling down, you"));
+                selftouch((Upolyd && (slithy(gy.youmonst.data)
+                                    || nolimbs(gy.youmonst.data)))
+                          ? "Shaken, you"
+                          : "Falling down, you");
         }
     } else {
         newsym(x, y);
@@ -653,7 +652,7 @@ do_improvisation(struct obj *instr)
         else
             You(_("blow into the bugle."));
         Hero_playnotes(obj_to_instr(&itmp), improvisation, 80);
-        awaken_soldiers(u.umonst);
+        awaken_soldiers(&gy.youmonst);
         exercise(A_WIS, FALSE);
         break;
     case MAGIC_HARP: /* Charm monsters */
@@ -722,7 +721,7 @@ do_improvisation(struct obj *instr)
         disp.botl = TRUE;
         break;
     default:
-        impossible("What a weird instrument (%d)!", instr->otyp);
+        impossible(_("What a weird instrument (%d)!"), instr->otyp);
         return 0;
     }
     nhUse(improvisation);
@@ -769,7 +768,7 @@ do_play_instrument(struct obj *instr)
     } else if ((instr->otyp == WOODEN_FLUTE || instr->otyp == MAGIC_FLUTE
                 || instr->otyp == TOOLED_HORN || instr->otyp == FROST_HORN
                 || instr->otyp == FIRE_HORN || instr->otyp == BUGLE)
-               && !can_blow(u.umonst)) {
+               && !can_blow(&gy.youmonst)) {
         You(_("are incapable of playing %s."), thesimpleoname(instr));
         return ECMD_OK;
     }

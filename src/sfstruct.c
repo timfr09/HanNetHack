@@ -420,10 +420,10 @@ bufon(int fd)
         bw_sticky[idx] = fd;
 #ifdef USE_BUFFERING
         if (bw_buffered[idx])
-            panic("buffering already enabled");
+            panic(_("buffering already enabled"));
         if (!bw_FILE[idx]) {
             if ((bw_FILE[idx] = fdopen(fd, "w")) == 0)
-                panic("buffering of file %d failed", fd);
+                panic(_("buffering of file %d failed"), fd);
         }
         bw_buffered[idx] = (bw_FILE[idx] != 0);
 #else
@@ -483,7 +483,7 @@ bflush(int fd)
 #ifdef USE_BUFFERING
         if (bw_FILE[idx]) {
            if (fflush(bw_FILE[idx]) == EOF)
-               panic("flush of savefile failed!");
+               panic(_("flush of savefile failed!"));
         }
 #endif
     }
@@ -537,10 +537,10 @@ bwrite(int fd, const genericptr_t loc, unsigned num)
                 nh_terminate(EXIT_FAILURE);
             else
 #endif
-                panic("cannot write %u bytes to file #%d", num, fd);
+                panic(_("cannot write %u bytes to file #%d"), num, fd);
         }
     } else
-        impossible("fd not in list (%d)?", fd);
+        impossible(_("fd not in list (%d)?"), fd);
 }
 
 /*  ===================================================== */
@@ -585,7 +585,7 @@ mread(int fd, genericptr_t buf, unsigned len)
                 (void) delete_savefile();
                 error("Error restoring old game.");
             }
-            panic("Error reading level file.");
+            panic(_("Error reading level file."));
 #else
             printf("Read %d instead of %u bytes.\n", (int) rlen, len);
 #endif

@@ -126,7 +126,7 @@ throw_obj(struct obj *obj, int shotlimit)
         goto unsplit_stack;
     }
     if ((is_art(obj, ART_MJOLLNIR) && ACURR(A_STR) < STR19(25))
-        || (obj->otyp == BOULDER && !throws_rocks(u.umonst->data))) {
+        || (obj->otyp == BOULDER && !throws_rocks(gy.youmonst.data))) {
         pline(_("It's too heavy."));
         res = ECMD_TIME;
         goto unsplit_stack;
@@ -300,10 +300,10 @@ ok_to_throw(int *shotlimit_p) /* (see dothrow()) */
     *shotlimit_p = LIMIT_TO_RANGE_INT(0, LARGEST_INT, gc.command_count);
     gm.multi = 0; /* reset; it's been used up */
 
-    if (notake(u.umonst->data)) {
+    if (notake(gy.youmonst.data)) {
         You(_("are physically incapable of throwing or shooting anything."));
         return FALSE;
-    } else if (nohands(u.umonst->data)) {
+    } else if (nohands(gy.youmonst.data)) {
         You_cant(_("throw or shoot without hands.")); /* not body_part(HAND) */
         return FALSE;
         /*[what about !freehand(), aside from cursed missile launcher?]*/
@@ -342,7 +342,7 @@ throw_ok(struct obj *obj)
     if (uslinging() && obj->oclass == GEM_CLASS)
         return GETOBJ_SUGGEST;
 
-    if (throws_rocks(u.umonst->data) && obj->otyp == BOULDER)
+    if (throws_rocks(gy.youmonst.data) && obj->otyp == BOULDER)
         return GETOBJ_SUGGEST;
 
     return GETOBJ_DOWNPLAY;
@@ -822,15 +822,14 @@ hurtle_step(genericptr_t arg, coordxy x, coordxy y)
             why = _("touching the edge of the universe");
             You(_("smack into something!"));
         } else if (diagonal
-                   && bad_rock(u.umonst->data, u.ux, y)
-                   && bad_rock(u.umonst->data, x, u.uy)) {
+                   && bad_rock(gy.youmonst.data, u.ux, y)
+                   && bad_rock(gy.youmonst.data, x, u.uy)) {
             boolean too_much = (gi.invent
                        && (inv_weight() + weight_cap() > WT_TOOMUCH_DIAGONAL));
 
-            if (bigmonst(u.umonst->data) || too_much) {
-                why = _("wedging into a narrow crevice");
-                You(_("%sget forcefully wedged into a crevice."),
-                    too_much ? _("and all your belongings ") : "");
+            if (bigmonst(gy.youmonst.data) || too_much) {
+                why = "wedging into a narrow crevice";
+                You(_("%sget forcefully wedged into a crevice."),                     too_much ? "and all your belongings " : "");
             }
         }
         if (why) {
@@ -876,7 +875,7 @@ hurtle_step(genericptr_t arg, coordxy x, coordxy y)
                     an(pmname(mon->data, NEUTRAL)));
             instapetrify(svk.killer.name);
         }
-        if (touch_petrifies(u.umonst->data)
+        if (touch_petrifies(gy.youmonst.data)
             && !which_armor(mon, W_ARMU | W_ARM | W_ARMC)) {
             minstapetrify(mon, TRUE);
         }
@@ -885,8 +884,8 @@ hurtle_step(genericptr_t arg, coordxy x, coordxy y)
     }
 
     if ((u.ux - x) && (u.uy - y)
-        && bad_rock(u.umonst->data, u.ux, y)
-        && bad_rock(u.umonst->data, x, u.uy)) {
+        && bad_rock(gy.youmonst.data, u.ux, y)
+        && bad_rock(gy.youmonst.data, x, u.uy)) {
         /* Move at a diagonal. */
         if (Sokoban) {
             You(_("come to an abrupt halt!"));
@@ -1047,7 +1046,7 @@ mhurtle_step(genericptr_t arg, coordxy x, coordxy y)
         pline(_("%s bumps into you."), Some_Monnam(mon));
         stop_occupation();
         /* check whether 'mon' is turned to stone by touching poly'd hero */
-        if (Upolyd && touch_petrifies(u.umonst->data)
+        if (Upolyd && touch_petrifies(gy.youmonst.data)
             && !which_armor(mon, W_ARMU | W_ARM | W_ARMC)) {
             /* give poly'd hero credit/blame despite a monster causing it */
             minstapetrify(mon, TRUE);
@@ -1289,14 +1288,14 @@ toss_up(struct obj *obj, boolean hitsroof)
     /* object now hits you */
 
     if (obj->oclass == POTION_CLASS) {
-        potionhit(u.umonst, obj, POTHIT_HERO_THROW);
+        potionhit(&gy.youmonst, obj, POTHIT_HERO_THROW);
     } else if (breaktest(obj)) {
         int blindinc;
 
         /* need to check for blindness result prior to destroying obj */
         blindinc = ((otyp == CREAM_PIE || otyp == BLINDING_VENOM)
                     /* AT_WEAP is ok here even if attack type was AT_SPIT */
-                    && can_blnd(u.umonst, u.umonst, AT_WEAP, obj))
+                    && can_blnd(&gy.youmonst, &gy.youmonst, AT_WEAP, obj))
                        ? rnd(25)
                        : 0;
         breakmsg(obj, !Blind);
@@ -1306,7 +1305,7 @@ toss_up(struct obj *obj, boolean hitsroof)
         switch (otyp) {
         case EGG:
             if (petrifier && !Stone_resistance
-                && !(poly_when_stoned(u.umonst->data)
+                && !(poly_when_stoned(gy.youmonst.data)
                      && polymon(PM_STONE_GOLEM))) {
                 /* egg ends up "all over your face"; perhaps
                    visored helmet should still save you here */
@@ -1346,13 +1345,13 @@ toss_up(struct obj *obj, boolean hitsroof)
                 less_damage = (hard_helmet(uarmh)
                                && (!is_silver || !Hate_silver)),
                 harmless = (stone_missile(obj)
-                            && passes_rocks(u.umonst->data)),
+                            && passes_rocks(gy.youmonst.data)),
                 artimsg = FALSE;
-        int dmg = dmgval(obj, u.umonst);
+        int dmg = dmgval(obj, &gy.youmonst);
 
         if (obj->oartifact && !harmless)
             /* need a fake die roll here; rn1(18,2) avoids 1 and 20 */
-            artimsg = artifact_hit((struct monst *) 0, u.umonst, obj,
+            artimsg = artifact_hit((struct monst *) 0, &gy.youmonst, obj,
                                    &dmg, rn1(18, 2));
 
         if (!dmg) { /* probably wasn't a weapon; base damage on weight */
@@ -1366,9 +1365,9 @@ toss_up(struct obj *obj, boolean hitsroof)
                dmgval()'s artifact light against gremlin or axe against
                woody creature since both involve weapons; hero-as-shade is
                hypothetical because hero can't polymorph into that form */
-            if (u.umonst->data == &mons[PM_SHADE] && !is_silver)
+            if (gy.youmonst.data == &mons[PM_SHADE] && !is_silver)
                 dmg = 0;
-            if (obj->blessed && mon_hates_blessings(u.umonst))
+            if (obj->blessed && mon_hates_blessings(&gy.youmonst))
                 dmg += rnd(4);
             if (is_silver && Hate_silver)
                 dmg += rnd(20);
@@ -1401,7 +1400,7 @@ toss_up(struct obj *obj, boolean hitsroof)
                harmless, but hitting a worn helmet negates that */
             harmless = FALSE;
         } else if (petrifier && !Stone_resistance
-                   && !(poly_when_stoned(u.umonst->data)
+                   && !(poly_when_stoned(gy.youmonst.data)
                         && polymon(PM_STONE_GOLEM))) {
  petrify:
             svk.killer.format = KILLED_BY;
@@ -1417,7 +1416,7 @@ toss_up(struct obj *obj, boolean hitsroof)
         if (is_silver && Hate_silver)
             pline_The(_("silver sears you!"));
         if (harmless)
-            hit(thesimpleoname(obj), u.umonst, _(" but doesn't hurt."));
+            hit(thesimpleoname(obj), &gy.youmonst, " but doesn't hurt.");
 
         hitfloor(obj, TRUE);
         gt.thrownobj = 0;
@@ -1606,7 +1605,7 @@ throwit(
             hurtle(-u.dx, -u.dy, 1, TRUE);
         mon = boomhit(obj, u.dx, u.dy);
         iflags.returning_missile = 0; /* has returned or isn't going to */
-        if (mon == u.umonst) { /* the thing was caught */
+        if (mon == &gy.youmonst) { /* the thing was caught */
             exercise(A_DEX, TRUE);
             obj = return_throw_to_inv(obj, wep_mask, twoweap, oldslot);
             throwit_return(TRUE);
@@ -1748,7 +1747,7 @@ throwit(
                               body_part(ARM));
                         if (obj->oartifact)
                             (void) artifact_hit((struct monst *) 0,
-                                                u.umonst, obj, &dmg, 0);
+                                                &gy.youmonst, obj, &dmg, 0);
                         losehp(Maybe_Half_Phys(dmg), killer_xname(obj),
                                KILLED_BY);
                     }
@@ -2040,7 +2039,7 @@ thitmonst(
      * Distance and monster size affect chance to hit.
      */
     tmp = -1 + Luck + find_mac(mon) + u.uhitinc
-          + maybe_polyd(u.umonst->data->mlevel, u.ulevel);
+          + maybe_polyd(gy.youmonst.data->mlevel, u.ulevel);
     if (ACURR(A_DEX) < 4)
         tmp -= 3;
     else if (ACURR(A_DEX) < 6)
@@ -2072,14 +2071,14 @@ thitmonst(
         case GAUNTLETS_OF_DEXTERITY:
             break;
         default:
-            impossible("Unknown type of gloves (%d)", uarmg->otyp);
+            impossible(_("Unknown type of gloves (%d)"), uarmg->otyp);
             break;
         }
     }
 
     tmp += omon_adj(mon, obj, TRUE);
     if (is_orc(mon->data)
-        && maybe_polyd(is_elf(u.umonst->data), Race_if(PM_ELF)))
+        && maybe_polyd(is_elf(gy.youmonst.data), Race_if(PM_ELF)))
         tmp++;
     if (guaranteed_hit) {
         tmp += 1000; /* Guaranteed hit */
@@ -2176,7 +2175,7 @@ thitmonst(
                  * Polymorphing won't make you a bow expert.
                  */
                 if ((Race_if(PM_ELF) || Role_if(PM_SAMURAI))
-                    && (!Upolyd || your_race(u.umonst->data))
+                    && (!Upolyd || your_race(gy.youmonst.data))
                     && objects[uwep->otyp].oc_skill == P_BOW) {
                     ++tmp;
                     if ((Race_if(PM_ELF) && uwep->otyp == ELVEN_BOW)
@@ -2507,16 +2506,16 @@ breakobj(
         if (obj->otyp == POT_OIL && obj->lamplit) {
             explode_oil(obj, x, y);
         } else if (next2u(x, y)) {
-            if (!breathless(u.umonst->data) || haseyes(u.umonst->data)) {
+            if (!breathless(gy.youmonst.data) || haseyes(gy.youmonst.data)) {
                 /* wet towel protects both eyes and breathing */
                 if (obj->otyp != POT_WATER && !Half_gas_damage) {
-                    if (!breathless(u.umonst->data)) {
+                    if (!breathless(gy.youmonst.data)) {
                         /* [what about "familiar odor" when known?] */
                         You(_("smell a peculiar odor..."));
                     } else {
                         const char *eyes = body_part(EYE);
 
-                        if (eyecount(u.umonst->data) != 1)
+                        if (eyecount(gy.youmonst.data) != 1)
                             eyes = makeplural(eyes);
                         Your(_("%s %s."), eyes, vtense(eyes, C_("eyes_water", "water")));
                     }
@@ -2627,7 +2626,7 @@ breakmsg(struct obj *obj, boolean in_view)
     switch (obj->oclass == POTION_CLASS ? POT_WATER : obj->otyp) {
     default: /* glass or crystal wand */
         if (obj->oclass != WAND_CLASS)
-            impossible("breaking odd object (%d)?", obj->otyp);
+            impossible(_("breaking odd object (%d)?"), obj->otyp);
         FALLTHROUGH;
         /*FALLTHRU*/
     case LENSES:

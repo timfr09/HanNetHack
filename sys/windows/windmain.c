@@ -344,9 +344,14 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
         && !symset_is_compatible(gs.symset[PRIMARYSET].handling,
                                  windowprocs.wincap2)) {
         /* current symset handling and windowtype are
-           not compatible, feature-wise. Use IBM defaults */
-            load_symset("IBMGraphics_2", PRIMARYSET);
-            load_symset("RogueEpyx", ROGUESET);
+           not compatible, feature-wise. */
+#if defined(ENABLE_NLS)
+        /* HanNetHack: UTF-8 gettext + IBMGraphics breaks Windows console text. */
+        load_symset("Enhanced1", PRIMARYSET);
+#else
+        load_symset("IBMGraphics_2", PRIMARYSET);
+#endif
+        load_symset("RogueEpyx", ROGUESET);
     }
     /* Has the callback for the symset been invoked? Config file processing to
        load a symset runs too early to accomplish that because
@@ -1067,12 +1072,12 @@ getlock(void)
      * prompt_result == -1 means willfully destroy the old game.
      * prompt_result == 0 should just exit.
      */
-    Sprintf(oops, "You chose to %s.",
+    Sprintf(oops, _("You chose to %s."),
                 (prompt_result == -1)
-                    ? "destroy the old game and start a new one"
+                    ? _("destroy the old game and start a new one")
                     : (prompt_result == 1)
-                        ? "recover the old game"
-                        : "not start a new game");
+                        ? _("recover the old game")
+                        : _("not start a new game"));
 #ifdef WIN32CON
     if (istty)
         term_clear_screen();
@@ -1090,7 +1095,7 @@ getlock(void)
 #if defined(CHDIR) && !defined(NOCWD_ASSUMPTIONS)
             chdirx(orgdir, 0);
 #endif
-            raw_print("Couldn't recover the old game.");
+            raw_print(_("Couldn't recover the old game."));
         }
     } else if (prompt_result < 0) {    /* destroy old game */
         if (eraseoldlocks()) {
@@ -1104,7 +1109,7 @@ getlock(void)
 #if defined(CHDIR) && !defined(NOCWD_ASSUMPTIONS)
             chdirx(orgdir, 0);
 #endif
-            raw_print("Couldn't destroy the old game.");
+            raw_print(_("Couldn't destroy the old game."));
             return 0;
         }
     } else {
@@ -1196,8 +1201,8 @@ tty_self_recover_prompt(void)
     raw_print("\n");
     raw_print("\n");
     raw_print("\n");
-    raw_print("There are files from a game in progress under your name. ");
-    raw_print("Recover? [yn] ");
+    raw_print(_("There are files from a game in progress under your name. "));
+    raw_print(_("Recover? [yn] "));
 
  tty_ask_again:
 
@@ -1219,8 +1224,8 @@ tty_self_recover_prompt(void)
 
     if (pl == 1 && (c == 'n' || c == 'N')) {
         /* no to recover */
-        raw_print("\n\nAre you sure you wish to destroy the old game rather than try to\n");
-        raw_print("recover it? [yn] ");
+        raw_print(_("\n\nAre you sure you wish to destroy the old game rather than try to\n"));
+        raw_print(_("recover it? [yn] "));
         c = 'n';
         ct = 0;
         pl = 2;
@@ -1256,13 +1261,13 @@ other_self_recover_prompt(void)
     c = 'n';
     ct = 0;
     if (iflags.window_inited || WINDOWPORT(curses)) {
-        c = y_n("There are files from a game in progress under your name. "
-               "Recover?");
+        c = y_n(_("There are files from a game in progress under your name. "
+                 "Recover?"));
     } else {
         c = 'n';
         ct = 0;
-        raw_print("There are files from a game in progress under your name. "
-              "Recover? [yn]");
+        raw_print(_("There are files from a game in progress under your name. "
+                    "Recover? [yn]"));
     }
 
  other_ask_again:
@@ -1283,8 +1288,8 @@ other_self_recover_prompt(void)
     }
     if (pl == 1 && (c == 'n' || c == 'N')) {
         /* no to recover */
-        c = y_n("Are you sure you wish to destroy the old game, rather than try to "
-                  "recover it? [yn] ");
+        c = y_n(_("Are you sure you wish to destroy the old game, rather than try to "
+                  "recover it? [yn] "));
         pl = 2;
         if (!ismswin && !iscurses) {
             c = 'n';

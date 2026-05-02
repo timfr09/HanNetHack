@@ -257,6 +257,32 @@
     <DlbList Include = "$(DatDir)license"/>
     <DlbList Include = "$(DatDir)*.lua"/>
   </ItemGroup>
+  <!-- HanNetHack: paths inside nhdat must use forward slashes (dlb_fopen).
+       VS afterdlb.proj could only emit %(filename)%(extension), which drops
+       locale/ko/ — so list Korean members explicitly here. -->
+  <ItemGroup>
+    <KoDlbLine Include="locale/ko/nethack.mo" Condition="Exists('$(DatDir)locale\ko\nethack.mo')" />
+    <KoDlbLine Include="locale/ko/help" Condition="Exists('$(DatDir)locale\ko\help')" />
+    <KoDlbLine Include="locale/ko/hh" Condition="Exists('$(DatDir)locale\ko\hh')" />
+    <KoDlbLine Include="locale/ko/cmdhelp" Condition="Exists('$(DatDir)locale\ko\cmdhelp')" />
+    <KoDlbLine Include="locale/ko/keyhelp" Condition="Exists('$(DatDir)locale\ko\keyhelp')" />
+    <KoDlbLine Include="locale/ko/history" Condition="Exists('$(DatDir)locale\ko\history')" />
+    <KoDlbLine Include="locale/ko/opthelp" Condition="Exists('$(DatDir)locale\ko\opthelp')" />
+    <KoDlbLine Include="locale/ko/optmenu" Condition="Exists('$(DatDir)locale\ko\optmenu')" />
+    <KoDlbLine Include="locale/ko/usagehlp" Condition="Exists('$(DatDir)locale\ko\usagehlp')" />
+    <KoDlbLine Include="locale/ko/wizhelp" Condition="Exists('$(DatDir)locale\ko\wizhelp')" />
+    <KoDlbLine Include="locale/ko/data.base" Condition="Exists('$(DatDir)locale\ko\data.base')" />
+    <KoDlbLine Include="locale/ko/bogusmon.txt" Condition="Exists('$(DatDir)locale\ko\bogusmon.txt')" />
+    <KoDlbLine Include="locale/ko/engrave.txt" Condition="Exists('$(DatDir)locale\ko\engrave.txt')" />
+    <KoDlbLine Include="locale/ko/epitaph.txt" Condition="Exists('$(DatDir)locale\ko\epitaph.txt')" />
+    <KoDlbLine Include="locale/ko/oracles.txt" Condition="Exists('$(DatDir)locale\ko\oracles.txt')" />
+    <KoDlbLine Include="locale/ko/rumors.tru" Condition="Exists('$(DatDir)locale\ko\rumors.tru')" />
+    <KoDlbLine Include="locale/ko/rumors.fal" Condition="Exists('$(DatDir)locale\ko\rumors.fal')" />
+  </ItemGroup>
+  <ItemGroup>
+    <KoLua Include="$(DatDir)locale\ko\*.lua" />
+    <KoDlbLine Include="@(KoLua->'locale/ko/%(Filename)%(Extension)')" />
+  </ItemGroup>
   <ItemGroup>
     <Lua Include="$(LuaDir)lapi.c"/>
     <Lua Include="$(LuaDir)lauxlib.c" />

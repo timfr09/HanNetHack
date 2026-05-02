@@ -511,7 +511,7 @@ should_query_disclose_option(int category, char *defquery)
             return TRUE;
         }
     }
-    impossible("should_query_disclose_option: bad category %c", category);
+    impossible(_("should_query_disclose_option: bad category %c"), category);
     return TRUE;
 }
 
@@ -746,7 +746,7 @@ savelife(int how)
         /* might drop hero onto a trap that kills her all over again */
         expels(u.ustuck, u.ustuck->data, TRUE);
     } else if (u.ustuck) {
-        if (Upolyd && sticks(u.umonst->data))
+        if (Upolyd && sticks(gy.youmonst.data))
             You(_("release %s."), mon_nam(u.ustuck));
         else
             pline(_("%s releases you."), Monnam(u.ustuck));
@@ -1762,7 +1762,7 @@ dealloc_killer(struct kinfo *kptr)
     }
 
     if (k == (struct kinfo *) 0) {
-        impossible("dealloc_killer (#%d) not on list", kptr->id);
+        impossible(_("dealloc_killer (#%d) not on list"), kptr->id);
     } else {
         prev->next = k->next;
         free((genericptr_t) k);
@@ -1847,7 +1847,7 @@ build_english_list(char *in)
 
     switch (words) {
     case 0:
-        impossible("no words in list");
+        impossible(_("no words in list"));
         break;
     case 1:
         /* "single" */

@@ -894,7 +894,7 @@ merged(struct obj **potmp, struct obj **pobj)
             } else if ((wmask & W_QUIVER) != 0L) {
                 wmask = W_QUIVER;
             } else {
-                impossible("merging strangely worn items (%lx)", wmask);
+                impossible(_("merging strangely worn items (%lx)"), wmask);
                 wmask = otmp->owornmask;
             }
             if ((otmp->owornmask & ~wmask) != 0L)
@@ -964,28 +964,28 @@ addinv_core1(struct obj *obj)
         disp.botl = TRUE;
     } else if (obj->otyp == AMULET_OF_YENDOR) {
         if (u.uhave.amulet)
-            impossible("already have amulet?");
+            impossible(_("already have amulet?"));
         u.uhave.amulet = 1;
         record_achievement(ACH_AMUL);
     } else if (obj->otyp == CANDELABRUM_OF_INVOCATION) {
         if (u.uhave.menorah)
-            impossible("already have candelabrum?");
+            impossible(_("already have candelabrum?"));
         u.uhave.menorah = 1;
         record_achievement(ACH_CNDL);
     } else if (obj->otyp == BELL_OF_OPENING) {
         if (u.uhave.bell)
-            impossible("already have silver bell?");
+            impossible(_("already have silver bell?"));
         u.uhave.bell = 1;
         record_achievement(ACH_BELL);
     } else if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
         if (u.uhave.book)
-            impossible("already have the book?");
+            impossible(_("already have the book?"));
         u.uhave.book = 1;
         record_achievement(ACH_BOOK);
     } else if (obj->oartifact) {
         if (is_quest_artifact(obj)) {
             if (u.uhave.questart)
-                impossible("already have quest artifact?");
+                impossible(_("already have quest artifact?"));
             u.uhave.questart = 1;
             artitouch(obj);
         }
@@ -1063,7 +1063,7 @@ addinv_core0(
     boolean obj_was_thrown;
 
     if (obj->where != OBJ_FREE)
-        panic("addinv: obj not free");
+        panic(_("addinv: obj not free"));
     if (obj->how_lost == LOST_EXPLODING)
         return (struct obj *) NULL;
 
@@ -1102,7 +1102,7 @@ addinv_core0(
     if (uquiver && merged(&uquiver, &obj)) {
         obj = uquiver;
         if (!obj)
-            panic("addinv: null obj after quiver merge otyp=%d", saved_otyp);
+            panic(_("addinv: null obj after quiver merge otyp=%d"), saved_otyp);
         goto added;
     }
     /* merge if possible; find end of chain in the process */
@@ -1110,7 +1110,7 @@ addinv_core0(
         if (merged(&otmp, &obj)) {
             obj = otmp;
             if (!obj)
-                panic("addinv: null obj after merge otyp=%d", saved_otyp);
+                panic(_("addinv: null obj after merge otyp=%d"), saved_otyp);
             goto added;
         }
     /* didn't merge, so insert into chain */
@@ -1225,7 +1225,7 @@ hold_another_object(
         /* in case touching this object turns out to be fatal */
         place_object(obj, u.ux, u.uy);
 
-        if (!touch_artifact(obj, u.umonst)) {
+        if (!touch_artifact(obj, &gy.youmonst)) {
             obj_extract_self(obj); /* remove it from the floor */
             dropy(obj);            /* now put it back again :-) */
             return obj;
@@ -1361,24 +1361,24 @@ freeinv_core(struct obj *obj)
         return;
     } else if (obj->otyp == AMULET_OF_YENDOR) {
         if (!u.uhave.amulet)
-            impossible("don't have amulet?");
+            impossible(_("don't have amulet?"));
         u.uhave.amulet = 0;
     } else if (obj->otyp == CANDELABRUM_OF_INVOCATION) {
         if (!u.uhave.menorah)
-            impossible("don't have candelabrum?");
+            impossible(_("don't have candelabrum?"));
         u.uhave.menorah = 0;
     } else if (obj->otyp == BELL_OF_OPENING) {
         if (!u.uhave.bell)
-            impossible("don't have silver bell?");
+            impossible(_("don't have silver bell?"));
         u.uhave.bell = 0;
     } else if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
         if (!u.uhave.book)
-            impossible("don't have the book?");
+            impossible(_("don't have the book?"));
         u.uhave.book = 0;
     } else if (obj->oartifact) {
         if (is_quest_artifact(obj)) {
             if (!u.uhave.questart)
-                impossible("don't have quest artifact?");
+                impossible(_("don't have quest artifact?"));
             u.uhave.questart = 0;
         }
         set_artifact_intrinsic(obj, 0, W_ART);
@@ -1497,7 +1497,7 @@ carrying(int type)
 {
     struct obj *otmp;
 
-    /* this could be replaced by 'return m_carrying(u.umonst, type);' */
+    /* this could be replaced by 'return m_carrying(&gy.youmonst, type);' */
     for (otmp = gi.invent; otmp; otmp = otmp->nobj)
         if (otmp->otyp == type)
             break;
@@ -1878,7 +1878,7 @@ getobj(
         if (&bp[suggested] == &buf[sizeof buf - 1]
             || ap == &altlets[sizeof altlets - 1]) {
             /* we must have a huge number of noinvsym items somehow */
-            impossible("getobj: inventory overflow");
+            impossible(_("getobj: inventory overflow"));
             break;
         }
 
@@ -1907,7 +1907,7 @@ getobj(
             break; /* adding otmp->invlet is all that's needed */
         case GETOBJ_EXCLUDE_NONINVENT: /* not applicable for invent items */
         default:
-            impossible("bad return from getobj callback");
+            impossible(_("bad return from getobj callback"));
         }
     }
     unsortloot(&sortedinvent);
@@ -3250,7 +3250,7 @@ display_pickinv(
         } else {
             any.a_obj = &wizid_fakeobj;
             Sprintf(prompt, _("select %s to permanently identify"),
-                    (unid_cnt == 1) ? _("it"): _("any or all of them"));
+                    (unid_cnt == 1) ? _("it") : _("any or all of them"));
             /* wiz_identify stuffed the wiz_identify command character (^I)
                into iflags.override_ID for our use as an accelerator;
                it could be ambiguous if player has assigned a letter to
@@ -4291,8 +4291,8 @@ look_here(
                       : (otmp->quan > 1L) ? _("They're")
                         : _("It's"),
                       corpse_xname(otmp, (const char *) 0, CXN_ARTICLE),
-                      poly_when_stoned(u.umonst->data) ? ""
-                      : _(", unfortunately"));
+                      poly_when_stoned(gy.youmonst.data) ? ""
+                      : ", unfortunately");
                 feel_cockatrice(otmp, FALSE);
                 break;
             }
@@ -4372,7 +4372,7 @@ feel_cockatrice(struct obj *otmp, boolean force_touch)
         /* "the <cockatrice> corpse" */
         Strcpy(kbuf, corpse_xname(otmp, (const char *) 0, CXN_PFX_THE));
 
-        if (poly_when_stoned(u.umonst->data))
+        if (poly_when_stoned(gy.youmonst.data))
             You(_("touched %s with your bare %s."), kbuf,
                 makeplural(body_part(HAND)));
         else
@@ -4802,8 +4802,8 @@ useupf(struct obj *obj, long numused)
             (void) stolen_value(otmp, otmp->ox, otmp->oy, FALSE, FALSE);
     }
     delobj(otmp);
-    if (at_u && u.uundetected && hides_under(u.umonst->data))
-        (void) hideunder(u.umonst);
+    if (at_u && u.uundetected && hides_under(gy.youmonst.data))
+        (void) hideunder(&gy.youmonst);
 }
 
 /*
@@ -4927,7 +4927,7 @@ check_invent_gold(const char *why) /* 'why' == caller in case of warning */
         }
 
     if (goldstacks > 1 || wrongslot > 0) {
-        impossible("%s: %s%s%s", why,
+        impossible(_("%s: %s%s%s"), why,
                    (wrongslot > 1) ? "gold in wrong slots"
                       : (wrongslot > 0) ? "gold in wrong slot"
                            : "",
@@ -5387,7 +5387,7 @@ display_minventory(
         /* Fool the 'weapon in hand' routine into
          * displaying 'weapon in claw', etc. properly.
          */
-        u.umonst->data = mon->data;
+        gy.youmonst.data = mon->data;
         /* in case inside a shop, don't append "for sale" prices */
         iflags.suppress_price++;
 
@@ -5398,7 +5398,7 @@ display_minventory(
 
         iflags.suppress_price--;
         /* was 'set_uasmon();' but that potentially has side-effects */
-        u.umonst->data = &mons[u.umonnum]; /* basic part of set_uasmon() */
+        gy.youmonst.data = &mons[u.umonnum]; /* basic part of set_uasmon() */
     } else {
         invdisp_nothing(title ? title : tmp, "(none)");
         n = 0;

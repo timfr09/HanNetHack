@@ -89,6 +89,7 @@ typedef struct {
     int color256idx;
     const char *bkcolorseq;
     const char *colorseq;
+    boolean utf8_wide_tail; /* continuation column of utf8_char_width>=2; flip skips emit */
 #endif /* VIRTUAL_TERMINAL_SEQUENCES */
 } cell_t;
 
@@ -104,7 +105,8 @@ cell_t clear_cell = {
                 0L,                              /* color24 */
                 0,                               /* color256idx */
                 "\x1b[0m",                       /* bkcolorseq */
-                0                                /* colorseq */
+                0,                               /* colorseq */
+                FALSE                            /* utf8_wide_tail */
 };
 cell_t undefined_cell = {
                { CONSOLE_UNDEFINED_CHARACTER, 0, 0, 0, 0, 0, 0 },
@@ -113,7 +115,8 @@ cell_t undefined_cell = {
                 0L,                              /* color24 */
                 0,                               /* color256idx */
                 (const char *) 0,                /* bkcolorseq */
-                (const char *) 0                 /* colorseq */
+                (const char *) 0,                /* colorseq */
+                FALSE                            /* utf8_wide_tail */
 };
 #if 0
 static const uint8 empty_utf8str[MAX_UTF8_SEQUENCE] = { 0 };
@@ -143,6 +146,9 @@ static BOOL CtrlHandler(DWORD);
 static void xputc_core(char);
 #else /* VIRTUAL_TERMINAL_SEQUENCES */
 static void xputc_core(int);
+#ifdef UTF8_FROM_CORE
+static boolean xputc_emit_utf8_sequence(unsigned char, cell_t *);
+#endif
 #endif /* VIRTUAL_TERMINAL_SEQUENCES */
 void cmov(int, int);
 void nocmov(int, int);
@@ -302,6 +308,11 @@ struct keyboard_handling_t {
 };
 
 static DWORD ccount;
+#if defined(VIRTUAL_TERMINAL_SEQUENCES) && defined(UTF8_FROM_CORE)
+/* Assemble UTF-8 text from putchar() byte stream (gettext/NLS or UTF-8 symset). */
+static uint8 xputc_u8acc[MAX_UTF8_SEQUENCE];
+static int xputc_u8cnt;
+#endif
 #if 0
 static DWORD acount;
 #endif
@@ -710,6 +721,25 @@ back_buffer_flip(void)
     for (pos.Y = 0; pos.Y < console.height; pos.Y++) {
         for (pos.X = 0; pos.X < console.width; pos.X++) {
             boolean pos_set = FALSE;
+            boolean sync_only;
+
+            if (back->utf8_wide_tail) {
+                sync_only = (front->utf8_wide_tail != back->utf8_wide_tail
+                             || front->attr != back->attr
+                             || front->color24 != back->color24
+                             || front->color256idx != back->color256idx
+                             || front->colorseq != back->colorseq
+                             || front->bkcolorseq != back->bkcolorseq
+                             || front->wcharacter != back->wcharacter
+                             || strcmp((char *) front->utf8str,
+                                       (char *) back->utf8str) != 0);
+                if (sync_only)
+                    *front = *back;
+                back++;
+                front++;
+                continue;
+            }
+
             do_anything = did_anything = 0U;
             if (back->color24 != front->color24)
                 do_anything |= do_color24;
@@ -720,18 +750,35 @@ back_buffer_flip(void)
             if (back->bkcolorseq != front->bkcolorseq)
                 do_anything |= do_bkcolorseq;
 #ifdef UTF8_FROM_CORE
-            if (!SYMHANDLING(H_UTF8)) {
+            /* IBMGraphics symset still receives gettext UTF-8 in utf8str[] */
+#if defined(ENABLE_NLS)
+            if (back->utf8_wide_tail != front->utf8_wide_tail)
+                do_anything |= do_utf8_content;
+            if ((back->utf8str[0] || front->utf8str[0])
+                && strcmp((const char *) back->utf8str,
+                          (const char *) front->utf8str) != 0)
+                do_anything |= do_utf8_content;
+            if (console.has_unicode
+                && (back->wcharacter != front->wcharacter))
+                do_anything |= do_wide_content;
+#else
+            if (SYMHANDLING(H_UTF8)) {
+                if (back->utf8_wide_tail != front->utf8_wide_tail)
+                    do_anything |= do_utf8_content;
+                if ((back->utf8str[0] || front->utf8str[0])
+                    && strcmp((const char *) back->utf8str,
+                              (const char *) front->utf8str) != 0)
+                    do_anything |= do_utf8_content;
+            } else {
                 if (console.has_unicode
                     && (back->wcharacter != front->wcharacter))
                     do_anything |= do_wide_content;
-            } else {
-#endif
-                if (back->utf8str[0] && front->utf8str[0]
-                    && strcmp((const char *) back->utf8str,
-                           (const char *) front->utf8str))
-                    do_anything |= do_utf8_content;
-#ifdef UTF8_FROM_CORE
             }
+#endif
+#else
+            if (console.has_unicode
+                && (back->wcharacter != front->wcharacter))
+                do_anything |= do_wide_content;
 #endif
             if (do_anything) {
                 SetConsoleCursorPosition(console.hConOut, pos);
@@ -782,7 +829,11 @@ back_buffer_flip(void)
                 if (did_anything
                     || (do_anything & (do_wide_content | do_utf8_content))) {
 #ifdef UTF8_FROM_CORE
-                    if (SYMHANDLING(H_UTF8) || !console.has_unicode) {
+                    if (SYMHANDLING(H_UTF8) || !console.has_unicode
+#if defined(ENABLE_NLS)
+                        || back->utf8str[0]
+#endif
+                        ) {
                         WriteConsoleA(console.hConOut, (LPCSTR) back->utf8str,
                                       (int) strlen((char *) back->utf8str),
                                       &unused, NULL);
@@ -892,6 +943,56 @@ void buffer_write(cell_t * buffer, cell_t * cell, COORD pos)
         back_buffer_flip();
 }
 
+#if defined(VIRTUAL_TERMINAL_SEQUENCES) && defined(UTF8_FROM_CORE)
+/* Reserve utf8_char_width-1 following columns so back_buffer_flip writes the
+ * UTF-8 sequence once (head cell only); continuation cells skip WriteConsole. */
+static void
+buffer_write_utf8_with_wide_tail(cell_t *cell, COORD pos)
+{
+    int dispw, i;
+    cell_t tail;
+
+    nhassert(pos.X >= 0 && pos.X < console.width);
+    nhassert(pos.Y >= 0 && pos.Y < console.height);
+
+    cell->utf8_wide_tail = FALSE;
+    dispw = utf8_char_width((const char *) cell->utf8str);
+    if (dispw < 1)
+        dispw = 1;
+
+    buffer_write(console.back_buffer, cell, pos);
+
+    if (dispw <= 1)
+        return;
+
+    memset(&tail, 0, sizeof tail);
+    tail.attr = cell->attr;
+    tail.colorseq = cell->colorseq;
+    tail.bkcolorseq = cell->bkcolorseq;
+    tail.color24 = cell->color24;
+    tail.color256idx = cell->color256idx;
+    tail.wcharacter = 0;
+    tail.utf8_wide_tail = TRUE;
+
+    for (i = 1; i < dispw && (int) pos.X + i < console.width; i++) {
+        COORD p;
+
+        p.X = (SHORT) ((int) pos.X + i);
+        p.Y = pos.Y;
+        buffer_write(console.back_buffer, &tail, p);
+    }
+}
+#endif /* VIRTUAL_TERMINAL_SEQUENCES && UTF8_FROM_CORE */
+
+#if defined(ENABLE_NLS) && defined(UTF8_FROM_CORE)
+static void
+consoletty_repair_ctype_utf8(void)
+{
+    if (!setlocale(LC_CTYPE, ".UTF8"))
+        (void) setlocale(LC_CTYPE, "C.UTF-8");
+}
+#endif
+
 /*
  * Called after returning from ! or ^Z
  */
@@ -986,10 +1087,8 @@ term_start_screen(void)
         tty_number_pad(1); /* make keypad send digits */
 #ifdef VIRTUAL_TERMINAL_SEQUENCES
     ibmgraphics_mode_callback = tty_ibmgraphics_fixup;
-#ifdef ENHANCED_SYMBOLS
 #ifdef UTF8_FROM_CORE
     utf8graphics_mode_callback = tty_utf8graphics_fixup;
-#endif
 #endif
 #endif /* VIRTUAL_TERMINAL_SEQUENCES */
 }
@@ -1147,9 +1246,8 @@ console_poskey(coordxy *x, coordxy *y, int *mod)
 
 static void set_console_cursor(int x, int y)
 {
-    nhassert(x >= 0 && x < console.width);
-    nhassert(y >= 0 && y < console.height);
-
+    /* Clamp instead of asserting: tty curx can exceed console.width when
+     * UTF-8/Korean display width differs from byte-oriented cursor tracking. */
     console.cursor.X = max(0, min(console.width - 1, x));
     console.cursor.Y = max(0, min(console.height - 1, y));
 }
@@ -1196,6 +1294,11 @@ cmov(int x, int y)
 void
 nocmov(int x, int y)
 {
+    if (x >= console.width)
+        x = console.width - 1;
+    if (y >= console.height)
+        y = console.height - 1;
+
     ttyDisplay->curx = x;
     ttyDisplay->cury = y;
 
@@ -1220,6 +1323,67 @@ xputs(const char *s)
 #endif
     }
 }
+
+#if defined(VIRTUAL_TERMINAL_SEQUENCES) && defined(UTF8_FROM_CORE)
+static boolean
+consoletty_wants_utf8_text(void)
+{
+#ifdef ENABLE_NLS
+    return TRUE;
+#else
+    return SYMHANDLING(H_UTF8);
+#endif
+}
+
+/* Assemble one UTF-8 code point from wintty putchar() bytes, then store raw
+ * UTF-8 in the back buffer. The old path passed each byte through cpMap and
+ * produced mojibake in the Windows console. */
+static boolean
+xputc_emit_utf8_sequence(unsigned char uc, cell_t *cell)
+{
+    int need;
+
+    if (xputc_u8cnt == 0) {
+        if ((uc & 0xC0u) == 0x80u) /* continuation without a lead */
+            return TRUE;           /* ignore */
+        need = utf8_char_len(uc);
+        if (need <= 1)
+            return FALSE; /* legacy IBMgraphics etc. */
+        xputc_u8acc[0] = uc;
+        xputc_u8cnt = 1;
+        if (xputc_u8cnt < need)
+            return TRUE;
+    } else {
+        if ((uc & 0xC0u) != 0x80u)
+            return xputc_emit_utf8_sequence(uc, cell);
+        xputc_u8acc[xputc_u8cnt++] = uc;
+        need = utf8_char_len(xputc_u8acc[0]);
+        if (xputc_u8cnt < need)
+            return TRUE;
+    }
+
+    nhassert(xputc_u8cnt > 0 && xputc_u8cnt < (int) sizeof cell->utf8str);
+    memcpy(cell->utf8str, xputc_u8acc, (size_t) xputc_u8cnt);
+    cell->utf8str[xputc_u8cnt] = '\0';
+
+    cell->colorseq = esc_seq_colors[console.current_nhcolor];
+    cell->bkcolorseq = esc_seq_bkcolors[console.current_nhbkcolor];
+    cell->attr = console.attr;
+    cell->color24 = 0L;
+    cell->color256idx = 0;
+    cell->wcharacter = 0;
+
+    /* ttyDisplay->curx is the column where this character begins (callers
+     * advance curx by utf8_char_width only after the whole UTF-8 sequence
+     * is emitted). Do not subtract display width here — that would rewrite
+     * column 0 for every wide glyph whose curx equals its width. */
+    set_console_cursor(ttyDisplay->curx, ttyDisplay->cury);
+    buffer_write_utf8_with_wide_tail(cell, console.cursor);
+
+    xputc_u8cnt = 0;
+    return TRUE;
+}
+#endif /* VIRTUAL_TERMINAL_SEQUENCES && UTF8_FROM_CORE */
 
 /* xputc_core() and g_putch() are the only routines that actually place output.
    same signature as 'putchar()' with potential failure result ignored */
@@ -1272,6 +1436,19 @@ xputc_core(int ch)
         break;
     default:
 #ifdef VIRTUAL_TERMINAL_SEQUENCES
+        memset(&cell, 0, sizeof cell);
+#ifdef UTF8_FROM_CORE
+        if (consoletty_wants_utf8_text()) {
+            unsigned char uc = (unsigned char) ch;
+
+            if (uc >= 0x80u) {
+                if (xputc_emit_utf8_sequence(uc, &cell))
+                    return;
+            } else {
+                xputc_u8cnt = 0;
+            }
+        }
+#endif
         /* this causes way too much performance degradation */
         /* cell.color24 = customcolors[console.current_nhcolor]; */
         cell.colorseq = esc_seq_colors[console.current_nhcolor];
@@ -1317,7 +1494,14 @@ xputc_core(int ch)
         cell.character = (console.has_unicode ? console.cpMap[ch] : ch);
 #endif
         if (ccount) {
-            buffer_write(console.back_buffer, &cell, console.cursor);
+#ifdef VIRTUAL_TERMINAL_SEQUENCES
+#ifdef UTF8_FROM_CORE
+            if (SYMHANDLING(H_UTF8)) {
+                buffer_write_utf8_with_wide_tail(&cell, console.cursor);
+            } else
+#endif
+#endif
+                buffer_write(console.back_buffer, &cell, console.cursor);
             if (console.cursor.X == console.width - 1) {
                 if (console.cursor.Y < console.height - 1) {
                     console.cursor.X = 1;
@@ -1365,6 +1549,7 @@ console_g_putch(int in_ch)
     cell.attribute = console.attr;
     cell.character = (console.has_unicode ? cp437[ch] : ch);
 #else
+    memset(&cell, 0, sizeof cell);
     cell.attr = console.attr;
     cell.colorseq = esc_seq_colors[console.current_nhcolor];
     cell.bkcolorseq = esc_seq_bkcolors[console.current_nhbkcolor];
@@ -1395,7 +1580,14 @@ console_g_putch(int in_ch)
         ccount = 2;
     }
 #endif /* VIRTUAL_TERMINAL_SEQUENCES */
-    buffer_write(console.back_buffer, &cell, console.cursor);
+#ifdef VIRTUAL_TERMINAL_SEQUENCES
+#ifdef UTF8_FROM_CORE
+    if (SYMHANDLING(H_UTF8) && cell.utf8str[0])
+        buffer_write_utf8_with_wide_tail(&cell, console.cursor);
+    else
+#endif
+#endif
+        buffer_write(console.back_buffer, &cell, console.cursor);
 }
 
 /*
@@ -1412,14 +1604,16 @@ g_pututf8(uint8 *sequence)
 #ifdef UTF8_FROM_CORE
     set_console_cursor(ttyDisplay->curx, ttyDisplay->cury);
     cell_t cell;
+
+    memset(&cell, 0, sizeof cell);
     cell.attr = console.attr;
     cell.colorseq = esc_seq_colors[console.current_nhcolor];
     cell.bkcolorseq = esc_seq_bkcolors[console.current_nhbkcolor];
     cell.color24 = console.color24 ? console.color24 : 0L;
-    cell.color256idx =console.color256idx ? console.color256idx : 0;
+    cell.color256idx = console.color256idx ? console.color256idx : 0;
     Snprintf((char *) cell.utf8str, sizeof cell.utf8str, "%s",
              (char *) sequence);
-    buffer_write(console.back_buffer, &cell, console.cursor);
+    buffer_write_utf8_with_wide_tail(&cell, console.cursor);
 #endif /* UTF8_FROM_CORE */
 #endif
 }
@@ -1961,6 +2155,9 @@ tty_ibmgraphics_fixup(void)
             free(console.localestr);
         console.localestr = dupstr(localestr);
     }
+#if defined(ENABLE_NLS) && defined(UTF8_FROM_CORE)
+    consoletty_repair_ctype_utf8();
+#endif
     set_known_good_console_font();
     /* the console mode */
     GetConsoleMode(console.hConOut, &console.out_cmode);
@@ -2285,10 +2482,17 @@ void set_cp_map(void)
         console.code_page = GetConsoleOutputCP();
 #endif
 
+        /*
+         * Internal glyph bytes from tty_print_glyph/g_putch follow CP437 for the
+         * non-UTF8sym path. CP 65001 only selects UTF-8 *output* encoding for
+         * WriteConsoleA — it is not the interpretation of those bytes.
+         * MultiByteToWideChar(65001, single-byte) mis-decodes 0x80–0xFF (often
+         * to U+FFFD), so walls/box-drawing show as replacement diamonds.
+         */
 #ifndef VIRTUAL_TERMINAL_SEQUENCES
-        if (codePage == 437) {
+        if (codePage == 437 || codePage == 65001) {
 #else
-        if (console.code_page == 437) {
+        if (console.code_page == 437 || console.code_page == 65001) {
 #endif
             memcpy(console.cpMap, cp437, sizeof(console.cpMap));
         } else {
@@ -2407,6 +2611,19 @@ DISABLE_WARNING_CONDEXPR_IS_CONSTANT
 void nethack_enter_consoletty(void)
 {
     int width;
+
+#ifdef ENABLE_NLS
+    /* UTF-8 gettext output before any other console setup (Explorer double-click). */
+    {
+        HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+        if (hOut && hOut != INVALID_HANDLE_VALUE) {
+            (void) SetConsoleOutputCP(65001);
+            (void) SetConsoleCP(65001);
+        }
+    }
+#endif
+
 #ifdef VIRTUAL_TERMINAL_SEQUENCES
     char buf[BUFSZ], *bp, *localestr;
     BOOL apisuccess;
@@ -2557,6 +2774,22 @@ void nethack_enter_consoletty(void)
     }
     console.code_page = GetConsoleOutputCP();
 #endif /* VIRTUAL_TERMINAL_SEQUENCES */
+
+#ifdef ENABLE_NLS
+    /* Translated strings are UTF-8; WriteConsoleA needs UTF-8 code page. */
+    if (SetConsoleOutputCP(65001))
+        console.code_page = GetConsoleOutputCP();
+    (void) SetConsoleCP(65001);
+#endif
+#if defined(ENABLE_NLS) && defined(UTF8_FROM_CORE)
+    /*
+     * Earlier we may set LC_ALL to a name with ".utf8" stripped for legacy
+     * console/font behavior. That breaks mbtowc() on UTF-8 bytes, so
+     * utf8_char_width() returns 1 for Hangul and wide-tail buffering never
+     * activates. Keep LC_CTYPE on UTF-8 for width calculations.
+     */
+    consoletty_repair_ctype_utf8();
+#endif
 
     /* check the font before we capture the code page map */
     check_and_set_font();
@@ -2950,6 +3183,59 @@ default_processkeystroke(
     KeyState[VK_CONTROL] =
         (shiftstate & (LEFT_CTRL_PRESSED | RIGHT_CTRL_PRESSED)) ? 0x81 : 0;
     KeyState[VK_CAPITAL] = (shiftstate & CAPSLOCK_ON) ? 0x81 : 0;
+
+#ifdef WIN32CON
+    /*
+     * CP65001 / Korean IME: AsciiChar is often 0 while UnicodeChar / VK carry
+     * the real key. Without this, tty prompts (e.g. name entry) never see
+     * Enter/Backspace or Hangul; ToAscii also fails on many layouts.
+     */
+    do {
+        static unsigned char u8pending[8];
+        static int u8plen, u8poff;
+
+        if (u8poff < u8plen) {
+            *valid = TRUE;
+            return u8pending[u8poff++];
+        }
+        u8plen = u8poff = 0;
+
+        if (!ch) {
+            WCHAR uw = ir->Event.KeyEvent.uChar.UnicodeChar;
+
+            if (vk == VK_RETURN || uw == L'\r' || uw == L'\n') {
+                *valid = TRUE;
+                return '\n';
+            }
+            if (vk == VK_BACK || uw == 8) {
+                *valid = TRUE;
+                return '\b';
+            }
+            if (vk == VK_ESCAPE) {
+                *valid = TRUE;
+                return '\033';
+            }
+            if (uw >= 32 && uw < 128) {
+                *valid = TRUE;
+                return (unsigned char) uw;
+            }
+            if (uw >= (WCHAR) 0x80) {
+                char mb[8];
+                int n;
+
+                n = WideCharToMultiByte(CP_UTF8, 0, &uw, 1,
+                                        mb, (int) sizeof mb, NULL, NULL);
+                if (n > 0) {
+                    memcpy(u8pending, mb, (size_t) n);
+                    u8plen = n;
+                    u8poff = 1;
+                    *valid = TRUE;
+                    return (unsigned char) mb[0];
+                }
+            }
+        }
+    } while (0);
+#endif /* WIN32CON */
 
     if (shiftstate & (LEFT_ALT_PRESSED | RIGHT_ALT_PRESSED)) {
         if (ch || inmap(keycode, vk))
@@ -3347,6 +3633,9 @@ static char author[] = "Ray Chason";
 
 int process_keystroke2(HANDLE hConIn, INPUT_RECORD *ir, boolean *valid);
 
+/* ray_checkinput Peeks; if ray did not ReadConsoleInput, caller must. */
+static boolean ray_removed_key_event_from_queue;
+
 /* Use ray_processkeystroke for key commands, process_keystroke2 for prompts */
 /* int ray_processkeystroke(INPUT_RECORD *ir, boolean *valid, int
  *                          portdebug);
@@ -3393,6 +3682,8 @@ int ray_processkeystroke(
     const struct pad *kpad;
     DWORD count;
 
+    ray_removed_key_event_from_queue = FALSE;
+
 #ifdef QWERTZ_SUPPORT
     if (numberpad & 0x10) {
         numberpad &= ~0x10;
@@ -3410,6 +3701,7 @@ int ray_processkeystroke(
     if (scan == 0 && vk == 0) {
         /* It's the bogus_key */
         ReadConsoleInput(hConIn, ir, 1, &count);
+        ray_removed_key_event_from_queue = TRUE;
         *valid = FALSE;
         return 0;
     }
@@ -3439,6 +3731,7 @@ int ray_processkeystroke(
      */
     if (iskeypad(scan)) {
         ReadConsoleInput(hConIn, ir, 1, &count);
+        ray_removed_key_event_from_queue = TRUE;
         kpad = numberpad ? numpad : keypad;
         if (shiftstate & SHIFT_PRESSED) {
             ch = kpad[scan - KEYPADLO].shift;
@@ -3457,15 +3750,45 @@ int ray_processkeystroke(
 #endif /*QWERTZ_SUPPORT*/
     } else if (altseq > 0) { /* ALT sequence */
         ReadConsoleInput(hConIn, ir, 1, &count);
+        ray_removed_key_event_from_queue = TRUE;
         if (vk == 0xBF)
             ch = M('?');
         else
             ch = M(tolower((uchar) keycode));
-    } else if (ch < 32 && !isnumkeypad(scan)) {
+    } else if (ch > 0 && ch < 32 && !isnumkeypad(scan)) {
         /* Control code; ReadConsole seems to filter some of these,
-         * including ESC */
+         * including ESC.  Do not treat AsciiChar==0 as control: CP65001
+         * leaves letters at 0 and they must be translated below. */
         ReadConsoleInput(hConIn, ir, 1, &count);
+        ray_removed_key_event_from_queue = TRUE;
+#ifdef WIN32CON
+    } else if (!ch && !iskeypad(scan) && altseq <= 0) {
+        /* UTF-8 console: same translation as process_keystroke2 (Unicode,
+         * ToAscii, hjkl VK fallback).  Legacy ReadConsole path leaves ch==0. */
+        boolean v2 = FALSE;
+        int tch = process_keystroke2(hConIn, ir, &v2);
+
+        if (v2 && tch > 0) {
+            ch = (unsigned char) tch;
+            *valid = TRUE;
+        }
+        if (!ch) {
+            CHAR ch2;
+            DWORD written;
+
+            WriteConsoleInput(hConIn, &bogus_key, 1, &written);
+            ReadConsole(hConIn, &ch2, 1, &count, NULL);
+            if (ch2 & 0x80)
+                *valid = FALSE;
+            else {
+                ch = (unsigned char) ch2;
+                *valid = TRUE;
+            }
+            if (ch == 0)
+                *valid = FALSE;
+        }
     }
+#endif
     /* Attempt to work better with international keyboards. */
     else {
         CHAR ch2;
@@ -3541,6 +3864,47 @@ process_keystroke2(
         return 0;
     }
 
+#ifdef WIN32CON
+    /* CP65001 / Korean: AsciiChar is often 0; same idea as default_processkeystroke.
+     * Must run before "ch < 32" control handling — (char)0 is < 32 and would
+     * consume the key without returning a character. */
+    if (!ch) {
+        WCHAR uw = ir->Event.KeyEvent.uChar.UnicodeChar;
+        int i;
+
+        if (vk == VK_RETURN || uw == L'\r' || uw == L'\n') {
+            *valid = TRUE;
+            return '\n';
+        }
+        if (vk == VK_BACK || uw == 8) {
+            *valid = TRUE;
+            return '\b';
+        }
+        if (vk == VK_ESCAPE) {
+            *valid = TRUE;
+            return '\033';
+        }
+        if (uw >= 32 && uw < 128) {
+            *valid = TRUE;
+            return (unsigned char) uw;
+        }
+        if (uw >= (WCHAR) 0x80) {
+            char mb[8];
+            int n = WideCharToMultiByte(CP_UTF8, 0, &uw, 1, mb,
+                                        (int) sizeof mb, NULL, NULL);
+
+            if (n > 0) {
+                for (i = 0; i < n && i < (int) sizeof pending_utf8; ++i)
+                    pending_utf8[i] = (unsigned char) mb[i];
+                pending_len = n;
+                pending_idx = 1;
+                *valid = TRUE;
+                return (unsigned char) mb[0];
+            }
+        }
+    }
+#endif /* WIN32CON */
+
     altseq = is_altseq(shiftstate);
     if (ch || (iskeypad(scan)) || altseq)
         *valid = TRUE;
@@ -3560,45 +3924,126 @@ process_keystroke2(
      *      left control key was pressed with the keystroke.
      */
     if (iskeypad(scan) && !altseq) {
-        ReadConsoleInput(hConIn, ir, 1, &count);
         ch = keypad_nums[scan - KEYPADLO];
-    } else if (ch < 32 && !isnumkeypad(scan)) {
-        /* Control code; ReadConsole seems to filter some of these,
-         * including ESC */
-        ReadConsoleInput(hConIn, ir, 1, &count);
+    } else if (ch > 0 && ch < 32 && !isnumkeypad(scan)) {
+        /* Control code in AsciiChar; INPUT_RECORD already consumed by caller. */
     }
-    /* Attempt to work better with international keyboards. */
-    else {
+    /* When AsciiChar is still 0: prefer ToAscii (matches default_processkeystroke)
+     * so hjkl works when UnicodeChar is empty after ReadConsoleInput (UTF-8
+     * console). ReadConsoleW alone often fails here because the KEY_EVENT was
+     * already consumed above (ray_checkinput ReadConsoleInput path). */
+    else if (!ch) {
         WCHAR wch2;
         char utf8[8];
-        int nbytes, i;
+        int nbytes, i, ta;
 
-        ReadConsoleW(hConIn, &wch2, 1, &count, NULL);
-        if (count == 0 || wch2 == 0) {
-            *valid = FALSE;
-            return 0;
-        }
+        if (!altseq) {
+            WORD chr[2];
 
-        /* Fast path for ASCII controls/characters. */
-        if (wch2 <= 0x7f) {
-            ch = (unsigned char) (wch2 & 0x7f);
-        } else {
-            nbytes = WideCharToMultiByte(CP_UTF8, 0, &wch2, 1,
-                                         utf8, (int) sizeof utf8,
-                                         NULL, NULL);
-            if (nbytes <= 0) {
-                *valid = FALSE;
-                return 0;
+            KeyState[VK_SHIFT] = (shiftstate & SHIFT_PRESSED) ? 0x81 : 0;
+            KeyState[VK_CONTROL] =
+                (shiftstate & (LEFT_CTRL_PRESSED | RIGHT_CTRL_PRESSED))
+                    ? 0x81 : 0;
+            KeyState[VK_CAPITAL] = (shiftstate & CAPSLOCK_ON) ? 0x81 : 0;
+            ta = ToAscii(vk, scan, KeyState, chr, 0);
+            if (ta == 1) {
+                ch = (unsigned char) chr[0];
+                *valid = TRUE;
+            } else if (ta == 2) {
+                ch = (unsigned char) chr[1];
+                *valid = TRUE;
             }
-            ch = (unsigned char) utf8[0];
-            if (nbytes > 1) {
-                pending_len = nbytes;
-                pending_idx = 1;
-                for (i = 0; i < nbytes && i < (int) sizeof pending_utf8; ++i)
-                    pending_utf8[i] = (unsigned char) utf8[i];
+            /* ToAscii often fails on UTF-8 consoles; ToUnicode + live key state */
+            if (!ch) {
+                BYTE ks[256];
+                WCHAR tu[8];
+                int rc;
+
+                memset(ks, 0, sizeof ks);
+                if (GetKeyboardState(ks)) {
+                    rc = ToUnicode(vk, scan, ks, tu, 8, 0);
+                    if (rc > 0 && tu[0] != 0) {
+                        if (tu[0] < 128 && rc == 1) {
+                            ch = (unsigned char) tu[0];
+                            *valid = TRUE;
+                        } else if (tu[0] >= (WCHAR) 0x80) {
+                            char mb[8];
+                            int n = WideCharToMultiByte(CP_UTF8, 0, tu, 1, mb,
+                                                        (int) sizeof mb, NULL,
+                                                        NULL);
+
+                            if (n > 0) {
+                                int j;
+
+                                for (j = 0; j < n && j < (int) sizeof pending_utf8;
+                                     ++j)
+                                    pending_utf8[j] = (unsigned char) mb[j];
+                                pending_len = n;
+                                pending_idx = 1;
+                                ch = (unsigned char) mb[0];
+                                *valid = TRUE;
+                                return ch;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (!ch) {
+            ReadConsoleW(hConIn, &wch2, 1, &count, NULL);
+            if (count == 0 || wch2 == 0) {
+                /* Last resort: US QWERTY positions when all translation fails */
+                if (!altseq && !iskeypad(scan)
+                    && !(shiftstate
+                         & (LEFT_CTRL_PRESSED | RIGHT_CTRL_PRESSED))) {
+                    switch (vk) {
+                    case 0x48:
+                        ch = 'h';
+                        break; /* VK_H */
+                    case 0x4A:
+                        ch = 'j';
+                        break; /* VK_J */
+                    case 0x4B:
+                        ch = 'k';
+                        break; /* VK_K */
+                    case 0x4C:
+                        ch = 'l';
+                        break; /* VK_L */
+                    default:
+                        break;
+                    }
+                }
+                if (!ch) {
+                    *valid = FALSE;
+                    return 0;
+                }
+            } else {
+                /* Fast path for ASCII controls/characters. */
+                if (wch2 <= 0x7f) {
+                    ch = (unsigned char) (wch2 & 0x7f);
+                } else {
+                    nbytes = WideCharToMultiByte(CP_UTF8, 0, &wch2, 1,
+                                                 utf8, (int) sizeof utf8,
+                                                 NULL, NULL);
+                    if (nbytes <= 0) {
+                        *valid = FALSE;
+                        return 0;
+                    }
+                    ch = (unsigned char) utf8[0];
+                    if (nbytes > 1) {
+                        pending_len = nbytes;
+                        pending_idx = 1;
+                        for (i = 0; i < nbytes && i < (int) sizeof pending_utf8;
+                             ++i)
+                            pending_utf8[i] = (unsigned char) utf8[i];
+                    }
+                }
             }
         }
     }
+    /* ray_checkinput uses done = valid; ensure set whenever we emit a key. */
+    if (ch)
+        *valid = TRUE;
     if (ch == '\r')
         ch = '\n';
     return ch;
@@ -3635,14 +4080,18 @@ ray_checkinput(
         if (dwWait == WAIT_FAILED)
             return '\033';
 #endif
-        PeekConsoleInput(hConIn, ir, 1, count);
         if (mode == 0) {
-            if ((ir->EventType == KEY_EVENT) && ir->Event.KeyEvent.bKeyDown) {
+            /* Like default_checkinput: consume before translating (Peek left CP65001
+             * keys stuck when AsciiChar was 0). */
+            ReadConsoleInput(hConIn, ir, 1, count);
+            if (*count > 0 && (ir->EventType == KEY_EVENT)
+                && ir->Event.KeyEvent.bKeyDown) {
                 ch = process_keystroke2(hConIn, ir, &valid);
                 done = valid;
-            } else
-                ReadConsoleInput(hConIn, ir, 1, count);
+            }
+            /* else: non-key or key-up already consumed; keep waiting */
         } else {
+            PeekConsoleInput(hConIn, ir, 1, count);
             ch = 0;
             if (*count > 0) {
                 if (ir->EventType == KEY_EVENT
@@ -3660,6 +4109,9 @@ ray_checkinput(
 #ifdef QWERTZ_SUPPORT
                     numberpad &= ~0x10;
 #endif
+                    /* Peek leaves KEY_EVENT in queue unless ray_read removed it. */
+                    if (!ray_removed_key_event_from_queue)
+                        ReadConsoleInput(hConIn, ir, 1, count);
                     if (valid)
                         return ch;
                 } else {

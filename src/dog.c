@@ -274,7 +274,7 @@ makedog(void)
         gn.notonhead = FALSE;
         see_monster_closeup(mtmp, carrying(EXPENSIVE_CAMERA) ? TRUE : FALSE);
     } else {
-        impossible("makedog() when startingpet_mid is already non-zero?");
+        impossible(_("makedog() when startingpet_mid is already non-zero?"));
     }
 
     if (!gp.petname_used++ && *petname)
@@ -564,7 +564,7 @@ mon_arrive(struct monst *mtmp, int when)
             break;
         } else if (!(u.uevent.qexpelled
                      && (Is_qstart(&u.uz0) || Is_qstart(&u.uz)))) {
-            impossible("mon_arrive: no corresponding portal?");
+            impossible(_("mon_arrive: no corresponding portal?"));
         }
         FALLTHROUGH;
         /*FALLTHRU*/
@@ -634,11 +634,11 @@ mon_catchup_elapsed_time(
 #if defined(DEBUG) || (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
 
     if (nmv < 0L) { /* crash likely... */
-        panic("catchup from future time?");
+        panic(_("catchup from future time?"));
         /*NOTREACHED*/
         return;
     } else if (nmv == 0L) { /* safe, but shouldn't happen */
-        impossible("catchup from now?");
+        impossible(_("catchup from now?"));
     } else
 #endif
         if (nmv >= LARGEST_INT) /* paranoia */
@@ -712,7 +712,7 @@ mon_catchup_elapsed_time(
     if (!mtmp->mtame && mtmp->mleashed) {
         /* leashed monsters should always be with hero, consequently
            never losing any time to be accounted for later */
-        impossible("catching up for leashed monster?");
+        impossible(_("catching up for leashed monster?"));
         m_unleash(mtmp, FALSE);
     }
 
@@ -852,7 +852,7 @@ keepdogs(
                 if (mtmp == u.usteed) {
                     /* can't happen unless someone makes a change
                        which scrambles the stay_behind logic above */
-                    impossible("steed left behind?");
+                    impossible(_("steed left behind?"));
                     dismount_steed(DISMOUNT_GENERIC);
                 }
                 continue;
@@ -1186,7 +1186,7 @@ tamedog(
     if (mtmp == u.ustuck) {
         if (u.uswallow)
             expels(mtmp, mtmp->data, TRUE);
-        else if (!(Upolyd && sticks(u.umonst->data)))
+        else if (!(Upolyd && sticks(gy.youmonst.data)))
             unstuck(mtmp);
     }
 
@@ -1244,7 +1244,7 @@ tamedog(
            with each other anymore] */
         || mtmp->isshk || mtmp->isgd || mtmp->ispriest || mtmp->isminion
         || is_covetous(mtmp->data) || is_human(mtmp->data)
-        || (is_demon(mtmp->data) && !is_demon(u.umonst->data))
+        || (is_demon(mtmp->data) && !is_demon(gy.youmonst.data))
         || (obj && dogfood(mtmp, obj) >= MANFOOD))
         return FALSE;
 
@@ -1314,7 +1314,7 @@ wary_dog(struct monst *mtmp, boolean was_dead)
             if (!rn2(edog->abuse + 1))
                 mtmp->mpeaceful = 1;
         if (!quietly && cansee(mtmp->mx, mtmp->my)) {
-            if (haseyes(u.umonst->data)) {
+            if (haseyes(gy.youmonst.data)) {
                 if (haseyes(mtmp->data))
                     pline_mon(mtmp,
                              _("%s %s to look you in the %s."), Monnam(mtmp),

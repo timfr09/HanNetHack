@@ -791,7 +791,7 @@ dipsink(struct obj *obj)
            breathless for this message */
         pline(_("A wisp of vapor rises up..."));
         /* NB: potionbreathe calls trycall or makeknown as appropriate */
-        if (!breathless(u.umonst->data) || haseyes(u.umonst->data))
+        if (!breathless(gy.youmonst.data) || haseyes(gy.youmonst.data))
             potionbreathe(obj);
         break;
     }

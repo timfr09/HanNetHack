@@ -22,7 +22,6 @@ staticfn struct fruit *loadfruitchn(NHFILE *);
 staticfn void freefruitchn(struct fruit *);
 staticfn void rest_levl(NHFILE *);
 staticfn void rest_stairs(NHFILE *);
-staticfn void rest_u(NHFILE *, boolean);
 #ifndef SFCTOOL
 staticfn void ghostfruit(struct obj *);
 staticfn boolean restgamestate(NHFILE *);
@@ -294,7 +293,7 @@ restobjchn(NHFILE *nhfp, boolean frozen)
         otmp2 = otmp;
     }
     if (first && otmp2->nobj) {
-        impossible("Restobjchn: error reading objchn.");
+        impossible(_("Restobjchn: error reading objchn."));
         otmp2->nobj = 0;
     }
 #ifdef SFCTOOL
@@ -440,7 +439,7 @@ restmonchn(NHFILE *nhfp)
                 mtmp->mw = obj;
             else {
                 MON_NOWEP(mtmp);
-                impossible("bad monster weapon restore");
+                impossible(_("bad monster weapon restore"));
             }
         }
 
@@ -458,7 +457,7 @@ restmonchn(NHFILE *nhfp)
     }
 #ifndef SFCTOOL
     if (first && mtmp2->nmon) {
-        impossible("Restmonchn: error reading monchn.");
+        impossible(_("Restmonchn: error reading monchn."));
         mtmp2->nmon = 0;
     }
 #endif
@@ -507,7 +506,7 @@ ghostfruit(struct obj *otmp)
             break;
 
     if (!oldf)
-        impossible("no old fruit?");
+        impossible(_("no old fruit?"));
     else
         otmp->spe = fruitadd(oldf->fname, (struct fruit *) 0);
 }
@@ -528,11 +527,11 @@ restgamestate(NHFILE *nhfp)
     int i;
     struct flag newgameflags;
     struct context_info newgamecontext; /* all 0, but has some pointers */
-    unsigned long uid = 0;
     struct obj *bc_obj;
-    boolean restoring_special = (wizard || discover);
+    char timebuf[15];
+    unsigned long uid = 0;
 #ifndef SFCTOOL
-    boolean defer_perm_invent;
+    boolean defer_perm_invent, restoring_special;
     struct obj *otmp;
 #endif
 
@@ -586,6 +585,7 @@ restgamestate(NHFILE *nhfp)
        in the discover case, we don't want to set that for a normal
        game until after the save file has been removed */
     iflags.deferred_X = (newgameflags.explore && !discover);
+    restoring_special = (wizard || discover);
     if (newgameflags.debug) {
         /* authorized by startup code; wizard mode exists and is allowed */
         wizard = TRUE, discover = iflags.deferred_X = FALSE;
@@ -598,9 +598,31 @@ restgamestate(NHFILE *nhfp)
     amii_setpens(amii_numcolors); /* use colors from save file */
 #endif
 #endif /* !SFCTOOL */
-    rest_u(nhfp, restoring_special);
+    Sfi_you(nhfp, &u, "gamestate-you");
+    gy.youmonst.cham = u.mcham;
 
 #ifndef SFCTOOL
+    if (restoring_special && iflags.explore_error_flag) {
+        /* savefile has wizard or explore mode, but player is no longer
+           authorized to access either; can't downgrade mode any further, so
+           fail restoration. */
+        u.uhp = 0;
+    }
+#endif
+
+    Sfi_char(nhfp, timebuf, "gamestate-ubirthday", 14);
+    timebuf[14] = '\0';
+    ubirthday = time_from_yyyymmddhhmmss(timebuf);
+    Sfi_long(nhfp, &urealtime.realtime, "gamestate-realtime");
+    Sfi_char(nhfp, timebuf, "gamestate-start_timing", 14);
+    timebuf[14] = '\0';
+#ifndef SFCTOOL
+    urealtime.start_timing = time_from_yyyymmddhhmmss(timebuf);
+
+    /* current time is the time to use for next urealtime.realtime update */
+    urealtime.start_timing = getnow();
+
+    set_uasmon();
 #ifdef CLIPPING
     cliparound(u.ux, u.uy);
 #endif
@@ -618,7 +640,7 @@ restgamestate(NHFILE *nhfp)
         iflags.perm_invent = defer_perm_invent;
         flags = newgameflags;
         svc.context = newgamecontext;
-        free((genericptr_t) u.umonst), u.umonst = 0;
+        gy.youmonst = cg.zeromonst;
         return FALSE;
     }
     /* in case hangup save occurred in midst of level change */
@@ -643,8 +665,7 @@ restgamestate(NHFILE *nhfp)
             setworn(bc_obj, bc_obj->owornmask);
         bc_obj = nobj;
     }
-#endif /* !SFCTOOL  */
-
+#endif
     gm.migrating_objs = restobjchn(nhfp, FALSE);
     gm.migrating_mons = restmonchn(nhfp);
 
@@ -712,43 +733,6 @@ restgamestate(NHFILE *nhfp)
     return TRUE;
 }
 
-void
-rest_u(NHFILE *nhfp, boolean restoring_special)
-{
-    char timebuf[15];
-
-    Sfi_you(nhfp, &u, "gamestate-you");
-#ifndef SFCTOOL
-    if (restoring_special && iflags.explore_error_flag) {
-        /* savefile has wizard or explore mode, but player is no longer
-           authorized to access either; can't downgrade mode any further, so
-           fail restoration. */
-        u.uhp = 0;
-    }
-#endif
-
-    Sfi_char(nhfp, timebuf, "gamestate-ubirthday", 14);
-    timebuf[14] = '\0';
-    ubirthday = time_from_yyyymmddhhmmss(timebuf);
-    Sfi_long(nhfp, &urealtime.realtime, "gamestate-realtime");
-    Sfi_char(nhfp, timebuf, "gamestate-start_timing", 14);
-    timebuf[14] = '\0';
-#ifndef SFCTOOL
-    urealtime.start_timing = time_from_yyyymmddhhmmss(timebuf);
-
-    /* current time is the time to use for next urealtime.realtime update */
-    urealtime.start_timing = getnow();
-
-    u.umonst = newmonst();
-    *u.umonst = cg.zeromonst;
-    u.umonst->cham = u.mcham;
-    set_uasmon();
-#else
-    nhUse(restoring_special);
-#endif /* !SFCTOOL */
-}
-
-
 #ifndef SFCTOOL
 /* update game state pointers to those valid for the current level (so we
    don't dereference a wild u.ustuck when saving game state, for instance) */
@@ -775,7 +759,7 @@ restlevelfile(xint8 ltmp)
     if (!nhfp) {
         /* failed to create a new file; don't attempt to make a panic save */
         program_state.something_worth_saving = 0;
-        panic("restlevelfile: %s", whynot);
+        panic(_("restlevelfile: %s"), whynot);
     }
     bufon(nhfp->fd);
     nhfp->mode = WRITING | FREEING;
@@ -922,7 +906,7 @@ dorecover(NHFILE *nhfp)
     max_rank_sz(); /* to recompute gm.mrank_sz (botl.c) */
 
     if ((uball && !uchain) || (uchain && !uball)) {
-        impossible("restgamestate: lost ball & chain");
+        impossible(_("restgamestate: lost ball & chain"));
         /* poor man's unpunish() */
         setworn((struct obj *) 0, W_CHAIN);
         setworn((struct obj *) 0, W_BALL);
@@ -1294,7 +1278,7 @@ getlev(NHFILE *nhfp, int pid, xint8 lev)
                     if (trap->ttyp == MAGIC_PORTAL)
                         break;
                 if (!trap)
-                    panic("getlev: need portal but none found");
+                    panic(_("getlev: need portal but none found"));
                 assign_level(&trap->dst, &ltmp);
                 break;
             }
@@ -1412,7 +1396,7 @@ restore_gamelog(NHFILE *nhfp)
         if (slen == -1)
             break;
         if (slen > ((BUFSZ*2) - 1))
-            panic("restore_gamelog: msg too big (%d)", slen);
+            panic(_("restore_gamelog: msg too big (%d)"), slen);
         Sfi_char(nhfp, msg, "gamelog-gamelog_text", slen);
         msg[slen] = '\0';
         Sfi_gamelog_line(nhfp, &tmp, "gamelog-gamelog_line");
@@ -1439,7 +1423,7 @@ restore_msghistory(NHFILE *nhfp)
         if (msgsize == -1)
             break;
         if (msgsize > BUFSZ - 1)
-            panic("restore_msghistory: msg too big (%d)", msgsize);
+            panic(_("restore_msghistory: msg too big (%d)"), msgsize);
         Sfi_char(nhfp, msg, "msghistory-msg", msgsize);
         msg[msgsize] = '\0';
 #ifndef SFCTOOL

@@ -24,13 +24,13 @@ enum explode_action {
 /* check if shield effects are needed for location affected by explosion */
 staticfn int
 explosionmask(
-    struct monst *m, /* target monster (might be u.umonst) */
+    struct monst *m, /* target monster (might be youmonst) */
     uchar adtyp,     /* damage type */
     char olet)       /* object class (only matters for AD_DISN) */
 {
     int res = EXPL_NONE;
 
-    if (m == u.umonst) {
+    if (m == &gy.youmonst) {
         switch (adtyp) {
         case AD_PHYS:
             /* leave 'res' with EXPL_NONE */
@@ -66,7 +66,7 @@ explosionmask(
                 res = EXPL_HERO;
             break;
         default:
-            impossible("explosion type %d?", adtyp);
+            impossible(_("explosion type %d?"), adtyp);
             break;
         }
 
@@ -107,7 +107,7 @@ explosionmask(
                 res = EXPL_MON;
             break;
         default:
-            impossible("explosion type %d?", adtyp);
+            impossible(_("explosion type %d?"), adtyp);
             break;
         }
     }
@@ -233,7 +233,7 @@ explode(
                 && type != WAN_DIGGING && type != WAN_SLEEP) {
                 type -= WAN_MAGIC_MISSILE;
                 if (type < 0 || type > 9) {
-                    impossible("explode: wand has bad zap type (%d).", type);
+                    impossible(_("explode: wand has bad zap type (%d)."), type);
                     type = 0;
                 }
             } else
@@ -274,7 +274,7 @@ explode(
        so might get hit by double damage */
     grabbed = grabbing = FALSE;
     if (u.ustuck && !u.uswallow) {
-        if (Upolyd && sticks(u.umonst->data))
+        if (Upolyd && sticks(gy.youmonst.data))
             grabbing = TRUE;
         else
             grabbed = TRUE;
@@ -344,7 +344,7 @@ explode(
             adtyp = AD_ACID;
             break;
         default:
-            impossible("explosion base type %d?", type);
+            impossible(_("explosion base type %d?"), type);
             return;
         }
         if (!str)
@@ -363,7 +363,7 @@ explode(
             explmask[i][j] = EXPL_NONE;
 
             if (u_at(xx, yy)) {
-                explmask[i][j] = explosionmask(u.umonst, adtyp, olet);
+                explmask[i][j] = explosionmask(&gy.youmonst, adtyp, olet);
             }
             /* can be both you and mtmp if you're swallowed or riding */
             mtmp = m_at(xx, yy);
@@ -611,10 +611,10 @@ explode(
         } else if (adtyp == AD_PHYS || adtyp == AD_ACID)
             damu = Maybe_Half_Phys(damu);
         if (adtyp == AD_FIRE) {
-            (void) burnarmor(u.umonst);
+            (void) burnarmor(&gy.youmonst);
             ignite_items(gi.invent);
         }
-        (void) destroy_items(u.umonst, (int) adtyp, dam);
+        (void) destroy_items(&gy.youmonst, (int) adtyp, dam);
 
         ugolemeffects((int) adtyp, damu);
         if (uhurt == 2) {
@@ -738,8 +738,7 @@ scatter(
     long total = 0L;
 
     if (individual_object && (obj->ox != sx || obj->oy != sy))
-        impossible("scattered object <%d,%d> not at scatter site <%d,%d>",
-                   obj->ox, obj->oy, sx, sy);
+        impossible(_("scattered object <%d,%d> not at scatter site <%d,%d>"),                    obj->ox, obj->oy, sx, sy);
 
     shop_origin = ((shkp = shop_keeper(*in_rooms(sx, sy, SHOPBASE))) != 0
                 && costly_spot(sx, sy));
@@ -869,9 +868,9 @@ scatter(
 
                         if (gm.multi)
                             nomul(0);
-                        dam = dmgval(stmp->obj, u.umonst);
+                        dam = dmgval(stmp->obj, &gy.youmonst);
                         hitvalu = 8 + stmp->obj->spe;
-                        if (bigmonst(u.umonst->data))
+                        if (bigmonst(gy.youmonst.data))
                             hitvalu++;
                         hitu = thitu(hitvalu, Maybe_Half_Phys(dam),
                                      &stmp->obj, (char *) 0);
@@ -936,8 +935,8 @@ scatter(
         newsym(x, y);
     }
     newsym(sx, sy);
-    if (u_at(sx, sy) && u.uundetected && hides_under(u.umonst->data))
-        (void) hideunder(u.umonst);
+    if (u_at(sx, sy) && u.uundetected && hides_under(gy.youmonst.data))
+        (void) hideunder(&gy.youmonst);
     if (((mtmp = m_at(sx, sy)) != 0) && mtmp->mtrapped)
         mtmp->mtrapped = 0;
     maybe_unhide_at(sx, sy);
@@ -976,7 +975,7 @@ explode_oil(struct obj *obj, coordxy x, coordxy y)
     boolean diluted_oil = obj->odiluted;
 
     if (!obj->lamplit)
-        impossible("exploding unlit oil");
+        impossible(_("exploding unlit oil"));
     end_burn(obj, TRUE);
     obj->how_lost = LOST_EXPLODING;
     splatter_burning_oil(x, y, diluted_oil);
@@ -1006,7 +1005,7 @@ adtyp_to_expltype(const int adtyp)
     case AD_PHYS: /* gas spore */
         return EXPL_NOXIOUS;
     default:
-        impossible("adtyp_to_expltype: bad explosion type %d", adtyp);
+        impossible(_("adtyp_to_expltype: bad explosion type %d"), adtyp);
         return EXPL_FIERY;
     }
 }
@@ -1042,7 +1041,7 @@ mon_explodes(
         type = -((mattk->adtyp - 1) + 20);
     }
     else {
-        impossible("unknown type for mon_explode %d", mattk->adtyp);
+        impossible(_("unknown type for mon_explode %d"), mattk->adtyp);
         return;
     }
 

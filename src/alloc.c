@@ -222,8 +222,7 @@ nhdupstr(const char *string, const char *file, int line)
     unsigned len = FITSuint_(strlen(string), file, line);
 
     if (FITSuint_(len + 1, file, line) < len)
-        panic("nhdupstr: string length overflow, line %d of %s",
-              line, file);
+        panic("nhdupstr: string length overflow, line %d of %s", line, file);
 
     return strcpy((char *) nhalloc(len + 1, file, line), string);
 }
@@ -255,7 +254,7 @@ dupstr_n(const char *string, unsigned int *lenout)
     size_t len = strlen(string);
 
     if (len >= LARGEST_INT)
-        panic("dupstr_n: string too long");
+        panic(_("dupstr_n: string too long"));
     *lenout = (unsigned int) len;
     return strcpy((char *) alloc(len + 1), string);
 }

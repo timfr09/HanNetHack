@@ -387,8 +387,8 @@ gold_detect(struct obj *sobj)
            adjust message if you have gold in your inventory */
         char buf[BUFSZ];
 
-        if (u.umonst->data == &mons[PM_GOLD_GOLEM])
-            Sprintf(buf, _("You feel like a million %s!"), currency(2L));
+        if (gy.youmonst.data == &mons[PM_GOLD_GOLEM])
+            Sprintf(buf, "You feel like a million %s!", currency(2L));
         else if (money_cnt(gi.invent) || hidden_gold(TRUE))
             Strcpy(buf,
                _("You feel worried about your future financial situation."));
@@ -616,7 +616,7 @@ object_detect(struct obj *detector, /* object doing the detecting */
     int sym, boulder = 0, ter_typ = TER_DETECT | TER_OBJ;
 
     if (class < 0 || class >= MAXOCLASSES) {
-        impossible("object_detect:  illegal class %d", class);
+        impossible(_("object_detect:  illegal class %d"), class);
         class = 0;
     }
 
@@ -1229,9 +1229,8 @@ use_crystal_ball(struct obj **optr)
             make_confused((HConfusion & TIMEOUT) + impair, FALSE);
             break;
         case 3:
-            if (!resists_blnd(u.umonst)) {
-                pline(_("%s your vision!"),
-                      Tobjnam(obj, C_("Tobjnam", "damage")));
+            if (!resists_blnd(&gy.youmonst)) {
+                pline(_("%s your vision!"), Tobjnam(obj, _("damage")));
                 make_blinded(BlindedTimeout + impair, FALSE);
                 if (!Blind)
                     Your1(vision_clears);
@@ -1780,7 +1779,7 @@ openone(coordxy zx, coordxy zy, genericptr_t num)
             newsym(zx, zy);
             (*num_p)++;
         }
-        mon = u_at(zx, zy) ? u.umonst : m_at(zx, zy);
+        mon = u_at(zx, zy) ? &gy.youmonst : m_at(zx, zy);
         if (openholdingtrap(mon, &dummy)
             || openfallingtrap(mon, TRUE, &dummy))
             (*num_p)++;

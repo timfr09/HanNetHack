@@ -592,7 +592,7 @@ maybe_gasp(struct monst *mon)
     case MS_VAMPIRE: /* vampire in its own form */
     case MS_WERE: /* lycanthrope in human form */
     case MS_SPELL: /* titan, barrow wight, Nazgul, nalfeshnee */
-        dogasp = (mptr->mlet == u.umonst->data->mlet);
+        dogasp = (mptr->mlet == gy.youmonst.data->mlet);
         break;
     /* capable of speech but don't care if you attack peacefuls */
     case MS_BRIBE:
@@ -704,7 +704,7 @@ domonnoise(struct monst *mtmp)
         msound = MS_SELL;
     /* some normally non-speaking types can/will speak if hero is similar */
     else if (msound == MS_ORC
-             && ((same_race(ptr, u.umonst->data)        /* current form, */
+             && ((same_race(ptr, gy.youmonst.data)        /* current form, */
                   || same_race(ptr, &mons[Race_switch])) /* unpoly'd form */
                  || Hallucination))
         msound = MS_HUMANOID;
@@ -787,16 +787,16 @@ domonnoise(struct monst *mtmp)
             int vampindex;
 
             if (kindred) {
-                verbl_msg = _("This is my hunting ground"
-                            " that you dare to prowl!");
-            } else if (u.umonst->data == &mons[PM_SILVER_DRAGON]
-                       || u.umonst->data == &mons[PM_BABY_SILVER_DRAGON]) {
+                verbl_msg = "This is my hunting ground"
+                            " that you dare to prowl!";
+            } else if (gy.youmonst.data == &mons[PM_SILVER_DRAGON]
+                       || gy.youmonst.data == &mons[PM_BABY_SILVER_DRAGON]) {
                 /* Silver dragons are silver in color, not made of silver */
                 Sprintf(verbuf,
-                        _("%s!  Your silver sheen does not frighten me!"),
-                        (u.umonst->data == &mons[PM_SILVER_DRAGON])
-                            ? _("Fool")
-                            : _("Young Fool"));
+                        "%s!  Your silver sheen"" does not frighten me!",
+                        (gy.youmonst.data == &mons[PM_SILVER_DRAGON])
+                            ? "Fool"
+                            : "Young Fool");
                 verbl_msg = verbuf;
             } else {
                 vampindex = rn2(2);
@@ -1104,7 +1104,7 @@ domonnoise(struct monst *mtmp)
 
         if (SYSOPT_SEDUCE) {
             if (ptr->mlet != S_NYMPH
-                && (could_seduce(mtmp, u.umonst, (struct attack *) 0)
+                && (could_seduce(mtmp, &gy.youmonst, (struct attack *) 0)
                     == 1)) {
                 (void) doseduce(mtmp);
                 break;
@@ -1261,9 +1261,8 @@ dochat(void)
     int tx, ty;
     struct obj *otmp;
 
-    if (is_silent(u.umonst->data)) {
-        pline(_("As %s, you cannot speak."),
-              an(pmname(u.umonst->data, flags.female ? FEMALE : MALE)));
+    if (is_silent(gy.youmonst.data)) {
+        pline(_("As %s, you cannot speak."),               an(pmname(gy.youmonst.data, flags.female ? FEMALE : MALE)));
         return ECMD_OK;
     }
     if (Strangled) {
@@ -1396,9 +1395,9 @@ dochat(void)
         return ECMD_OK;
     }
     if (Deaf) {
-        const char *xresponse = humanoid(u.umonst->data)
-                    ? _("falls on deaf ears")
-                    : _("is inaudible");
+        const char *xresponse = humanoid(gy.youmonst.data)
+                    ? "falls on deaf ears"
+                    : "is inaudible";
 
         pline(_("Any response%s%s %s."),
               canspotmon(mtmp) ? _(" from ") : "",
@@ -1782,7 +1781,7 @@ activate_chosen_soundlib(void)
     int idx = gc.chosen_soundlib;
 
     if (!IndexOk(idx, soundlib_choices))
-        panic("activate_chosen_soundlib: invalid soundlib (%d)", idx);
+        panic(_("activate_chosen_soundlib: invalid soundlib (%d)"), idx);
 
     if (ga.active_soundlib != soundlib_nosound || idx != soundlib_nosound) {
         if (soundprocs.sound_exit_nhsound)
@@ -1799,7 +1798,7 @@ void
 assign_soundlib(int idx)
 {
     if (!IndexOk(idx, soundlib_choices))
-        panic("assign_soundlib: invalid soundlib (%d)", idx);
+        panic(_("assign_soundlib: invalid soundlib (%d)"), idx);
 
     gc.chosen_soundlib
         = (uint32_t) soundlib_choices[idx].sndprocs->soundlib_id;
@@ -1869,7 +1868,7 @@ get_soundlib_name(char *dest, int maxlen)
 
     idx = ga.active_soundlib;
     if (!IndexOk(idx, soundlib_choices))
-        panic("get_soundlib_name: invalid active_soundlib (%d)", idx);
+        panic(_("get_soundlib_name: invalid active_soundlib (%d)"), idx);
 
     src = soundlib_choices[idx].sndprocs->soundname;
     for (count = 1; count < maxlen; count++) {

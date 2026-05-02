@@ -330,12 +330,12 @@
     <Exec Command="call &quot;$(RootDir)sys\windows\build-translations.cmd&quot;" WorkingDirectory="$(RootDir)" IgnoreExitCode="true" />
   </Target>
   <Target Name="AfterBuild">
-    <MSBuild Projects="afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
+    <MSBuild Projects="afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
   </Target>
   <Target Name="AfterClean">
-    <MSBuild Projects="afternethack.proj" Targets="Clean" Properties="Configuration=$(Configuration)" />
+    <MSBuild Projects="afternethack.proj" Targets="Clean" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
   </Target>
   <Target Name="AfterRebuild">
-    <MSBuild Projects="afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
+    <MSBuild Projects="afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
   </Target>
 </Project>

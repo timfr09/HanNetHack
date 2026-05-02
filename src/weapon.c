@@ -406,7 +406,7 @@ special_dmgval(
         }
 
     /* when no gloves we check for silver rings (blessed rings ignored) */
-    } else if ((left_ring || right_ring) && magr == u.umonst) {
+    } else if ((left_ring || right_ring) && magr == &gy.youmonst) {
         if (left_ring && uleft) {
             if (objects[uleft->otyp].oc_material == SILVER
                 && mon_hates_silver(mdef)) {
@@ -842,7 +842,7 @@ mon_wield_item(struct monst *mon)
         exclaim = FALSE;
         break;
     default:
-        impossible("weapon_check %d for %s?", mon->weapon_check,
+        impossible(_("weapon_check %d for %s?"), mon->weapon_check,
                    mon_nam(mon));
         return 0;
     }
@@ -1463,7 +1463,7 @@ lose_weapon_skill(int n) /* number of slots to lose; normally one */
         } else if (u.skills_advanced) {
             skill = u.skill_record[--u.skills_advanced];
             if (P_SKILL(skill) <= P_UNSKILLED)
-                panic("lose_weapon_skill (%d)", skill);
+                panic(_("lose_weapon_skill (%d)"), skill);
             P_SKILL(skill)--; /* drop skill one level */
             /* Lost skill might have taken more than one slot; refund rest. */
             u.weapon_slots = slots_required(skill) - 1;
@@ -1496,7 +1496,7 @@ drain_weapon_skill(int n) /* number of skills to drain */
             }
             u.skills_advanced--;
             if (P_SKILL(skill) <= P_UNSKILLED)
-                panic("drain_weapon_skill (%d)", skill);
+                panic(_("drain_weapon_skill (%d)"), skill);
             P_SKILL(skill)--;   /* drop skill one level */
             /* refund slots used for skill */
             u.weapon_slots += slots_required(skill);
@@ -1658,7 +1658,7 @@ weapon_dam_bonus(struct obj *weapon)
     } else if (type <= P_LAST_WEAPON) {
         switch (P_SKILL(type)) {
         default:
-            impossible("weapon_dam_bonus: bad skill %d", P_SKILL(type));
+            impossible(_("weapon_dam_bonus: bad skill %d"), P_SKILL(type));
             FALLTHROUGH;
         /* FALLTHRU */
         case P_ISRESTRICTED:
@@ -1797,7 +1797,7 @@ skill_init(const struct def_skill *class_skill)
     for (skill = 0; skill < P_NUM_SKILLS; skill++) {
         if (!P_RESTRICTED(skill)) {
             if (P_MAX_SKILL(skill) < P_SKILL(skill)) {
-                impossible("skill_init: curr > max: %s", P_NAME(skill));
+                impossible(_("skill_init: curr > max: %s"), P_NAME(skill));
                 P_MAX_SKILL(skill) = P_SKILL(skill);
             }
             P_ADVANCE(skill) = practice_needed_to_advance(P_SKILL(skill) - 1);

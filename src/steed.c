@@ -69,8 +69,8 @@ use_saddle(struct obj *otmp)
         char kbuf[BUFSZ];
 
         You(_("touch %s."), mon_nam(mtmp));
-        if (!(poly_when_stoned(u.umonst->data) && polymon(PM_STONE_GOLEM))) {
-            Sprintf(kbuf, _("attempting to saddle %s"),
+        if (!(poly_when_stoned(gy.youmonst.data) && polymon(PM_STONE_GOLEM))) {
+            Sprintf(kbuf, "attempting to saddle %s",
                     an(pmname(mtmp->data, Mgender(mtmp))));
             instapetrify(kbuf);
         }
@@ -144,7 +144,7 @@ put_saddle_on_mon(struct obj *saddle, struct monst *mtmp)
 {
     if (!can_saddle(mtmp) || which_armor(mtmp, W_SADDLE)) {
         if (saddle)
-            impossible("put_saddle_on_mon: saddle obj could get orphaned");
+            impossible(_("put_saddle_on_mon: saddle obj could get orphaned"));
         return;
     }
     if (!saddle) {
@@ -156,7 +156,7 @@ put_saddle_on_mon(struct obj *saddle, struct monst *mtmp)
         }
     }
     if (mpickobj(mtmp, saddle))
-        panic("merged saddle?");
+        panic(_("merged saddle?"));
     mtmp->misc_worn_check |= W_SADDLE;
     saddle->owornmask = W_SADDLE;
     saddle->leashmon = mtmp->m_id;
@@ -169,8 +169,8 @@ put_saddle_on_mon(struct obj *saddle, struct monst *mtmp)
 boolean
 can_ride(struct monst *mtmp)
 {
-    return (mtmp->mtame && humanoid(u.umonst->data)
-            && !verysmall(u.umonst->data) && !bigmonst(u.umonst->data)
+    return (mtmp->mtame && humanoid(gy.youmonst.data)
+            && !verysmall(gy.youmonst.data) && !bigmonst(gy.youmonst.data)
             && (!Underwater || is_swimmer(mtmp->data)));
 }
 
@@ -239,10 +239,10 @@ mount_steed(
             return (FALSE);
     }
 
-    if (Upolyd && (!humanoid(u.umonst->data)
-                   || verysmall(u.umonst->data)
-                   || bigmonst(u.umonst->data)
-                   || slithy(u.umonst->data))) {
+    if (Upolyd && (!humanoid(gy.youmonst.data)
+                   || verysmall(gy.youmonst.data)
+                   || bigmonst(gy.youmonst.data)
+                   || slithy(gy.youmonst.data))) {
         You(_("won't fit on a saddle."));
         return (FALSE);
     }
@@ -546,7 +546,7 @@ landing_spot(
                     kn_trap = i == 0 && ((t = t_at(x, y)) != 0 && t->tseen
                                          && t->ttyp != VIBRATING_SQUARE);
                     boulder = i <= 1 && (sobj_at(BOULDER, x, y)
-                                         && !throws_rocks(u.umonst->data));
+                                         && !throws_rocks(gy.youmonst.data));
                     if (!kn_trap && !boulder) {
                         spot->x = x;
                         spot->y = y;
@@ -567,7 +567,7 @@ landing_spot(
 
     /* If we didn't find a good spot and forceit is on, try enexto(). */
     if (forceit && !found)
-        found = enexto(spot, u.ux, u.uy, u.umonst->data);
+        found = enexto(spot, u.ux, u.uy, gy.youmonst.data);
 
     return found;
 }
@@ -907,16 +907,14 @@ place_monster(struct monst *mon, coordxy x, coordxy y)
        vault guards (either living or dead) are parked at <0,0> */
     if (!isok(x, y) && (x != 0 || y != 0 || !mon->isgd)) {
         describe_level(buf, 0);
-        impossible("trying to place %s at <%d,%d> mstate:%lx on %s",
-                   minimal_monnam(mon, TRUE), x, y, mon->mstate, buf);
+        impossible(_("trying to place %s at <%d,%d> mstate:%lx on %s"),                    minimal_monnam(mon, TRUE), x, y, mon->mstate, buf);
         x = y = 0;
     }
     if ((mon == u.usteed && !gi.in_steed_dismounting)
         /* special case is for convoluted vault guard handling */
         || (DEADMONSTER(mon) && !(mon->isgd && x == 0 && y == 0))) {
         describe_level(buf, 0);
-        impossible("placing %s onto map, mstate:%lx, on %s?",
-                   (mon == u.usteed) ? "steed" : "defunct monster",
+        impossible(_("placing %s onto map, mstate:%lx, on %s?"),                    (mon == u.usteed) ? "steed" : "defunct monster",
                    mon->mstate, buf);
         return;
     }
@@ -924,8 +922,7 @@ place_monster(struct monst *mon, coordxy x, coordxy y)
         describe_level(buf, 0);
         monnm = minimal_monnam(mon, FALSE);
         othnm = (mon != othermon) ? minimal_monnam(othermon, TRUE) : "itself";
-        impossible("placing %s over %s at <%d,%d>, mstates:%lx %lx on %s?",
-                   monnm, othnm, x, y, othermon->mstate, mon->mstate, buf);
+        impossible(_("placing %s over %s at <%d,%d>, mstates:%lx %lx on %s?"),                    monnm, othnm, x, y, othermon->mstate, mon->mstate, buf);
     }
     mon->mx = x, mon->my = y;
     svl.level.monsters[x][y] = mon;

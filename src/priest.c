@@ -548,7 +548,7 @@ forget_temple_entry(struct monst *priest)
     struct epri *epri_p = priest->ispriest ? EPRI(priest) : 0;
 
     if (!epri_p) {
-        impossible("attempting to manipulate shrine data for non-priest?");
+        impossible(_("attempting to manipulate shrine data for non-priest?"));
         return;
     }
     epri_p->intone_time = epri_p->enter_time = epri_p->peaceful_time =

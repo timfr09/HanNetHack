@@ -211,7 +211,7 @@ expulsion(boolean seal)
         if (t)
             deltrap(t); /* (display might be briefly out of sync) */
         else if (!reexpelled)
-            impossible("quest portal already gone?");
+            impossible(_("quest portal already gone?"));
     }
 }
 
@@ -487,7 +487,7 @@ quest_chat(struct monst *mtmp)
         chat_with_guardian();
         break;
     default:
-        impossible("quest_chat: Unknown quest character %s.", mon_nam(mtmp));
+        impossible(_("quest_chat: Unknown quest character %s."), mon_nam(mtmp));
     }
 }
 

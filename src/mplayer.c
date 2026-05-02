@@ -249,7 +249,7 @@ mk_mplayer(struct permonst *ptr, coordxy x, coordxy y, boolean special)
             shield = STRANGE_OBJECT;
             break;
         default:
-            impossible("bad mplayer monster");
+            impossible(_("bad mplayer monster"));
             weapon = 0;
             break;
         }

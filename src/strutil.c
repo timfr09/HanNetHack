@@ -93,7 +93,7 @@ Strlen_(
             break;
 
     if (len == LARGEST_INT)
-        panic("%s:%d string too long", file, line);
+        panic(_("%s:%d string too long"), file, line);
     return (unsigned) len;
 }
 

@@ -106,7 +106,7 @@ goodpos(
      * oh well.
      */
     if (!allow_u) {
-        if (u_at(x, y) && mtmp != u.umonst
+        if (u_at(x, y) && mtmp != &gy.youmonst
             && (mtmp != u.ustuck || !u.uswallow)
             && (!u.usteed || mtmp != u.usteed))
             return FALSE;
@@ -134,7 +134,7 @@ goodpos(
         mdat = mtmp->data;
         if (is_pool(x, y) && !ignorewater) {
             /* [what about Breathless?] */
-            if (mtmp == u.umonst)
+            if (mtmp == &gy.youmonst)
                 return (Swimming || Amphibious
                         || (!Is_waterlevel(&u.uz)
                             && !is_waterwall(x, y)
@@ -153,11 +153,11 @@ goodpos(
                that due the effect of the heat causing it to dry out */
             if (mdat == &mons[PM_FLOATING_EYE])
                 return FALSE;
-            else if (mtmp == u.umonst)
+            else if (mtmp == &gy.youmonst)
                 return (Levitation || Flying
                         || (Fire_resistance && Wwalking && uarmf
                             && uarmf->oerodeproof)
-                        || (Upolyd && likes_lava(u.umonst->data)));
+                        || (Upolyd && likes_lava(gy.youmonst.data)));
             else
                 return (m_in_air(mtmp) || likes_lava(mdat));
         }
@@ -436,7 +436,7 @@ teleok(coordxy x, coordxy y, boolean trapok)
         if (!trapok)
             return FALSE;
     }
-    if (!goodpos(x, y, u.umonst, 0))
+    if (!goodpos(x, y, &gy.youmonst, 0))
         return FALSE;
     if (!tele_jump_ok(u.ux, u.uy, x, y))
         return FALSE;
@@ -491,9 +491,9 @@ teleds(coordxy nux, coordxy nuy, int teleds_flags)
     u.ux0 = u.ux;
     u.uy0 = u.uy;
 
-    if (!hideunder(u.umonst) && u.umonst->data->mlet == S_MIMIC) {
+    if (!hideunder(&gy.youmonst) && gy.youmonst.data->mlet == S_MIMIC) {
         /* mimics stop being unnoticed */
-        u.umonst->m_ap_type = M_AP_NOTHING;
+        gy.youmonst.m_ap_type = M_AP_NOTHING;
     }
 
     if (was_swallowed) {
@@ -794,7 +794,7 @@ teleport_pet(struct monst *mtmp, boolean force_it)
     if (mtmp->mleashed) {
         otmp = get_mleash(mtmp);
         if (!otmp) {
-            impossible("%s is leashed, without a leash.", Monnam(mtmp));
+            impossible(_("%s is leashed, without a leash."), Monnam(mtmp));
             goto release_it;
         }
         if (otmp->cursed && !force_it) {
@@ -817,8 +817,8 @@ tele_to_rnd_pet(void)
     struct monst *mtmp, *pet = (struct monst *) 0;
     int cnt = 0;
 
-    if (noteleport_level(u.umonst)) {
-        impossible("%s", "attempt to teleport hero to be near a pet"
+    if (noteleport_level(&gy.youmonst)) {
+        impossible(_("%s"), "attempt to teleport hero to be near a pet"
                          " on no-teleport level");
         return;
     }
@@ -853,7 +853,7 @@ scrolltele(struct obj *scroll)
     coord cc;
 
     /* Disable teleportation in stronghold && Vlad's Tower */
-    if (noteleport_level(u.umonst) && !wizard) {
+    if (noteleport_level(&gy.youmonst) && !wizard) {
         pline(_("A mysterious force prevents you from teleporting!"));
         if (scroll)
             learnscroll(scroll); /* this is obviously a teleport scroll */
@@ -1074,7 +1074,7 @@ dotele(
         int energy = 0;
 
         if (!Teleportation || (u.ulevel < (Role_if(PM_WIZARD) ? 8 : 12)
-                               && !can_teleport(u.umonst->data))) {
+                               && !can_teleport(gy.youmonst.data))) {
             /* Try to use teleport away spell. */
             int knownsp = known_spell(SPE_TELEPORT_AWAY);
 
@@ -1258,8 +1258,7 @@ level_tele(void)
                 goto random_levtport;
             if (ynq(_("Go to Nowhere.  Are you sure?")) != 'y')
                 return;
-            You(_("%s in agony as your body begins to warp..."),
-                is_silent(u.umonst->data) ? _("writhe") : _("scream"));
+            You(_("%s in agony as your body begins to warp..."),                 is_silent(gy.youmonst.data) ? "writhe" : "scream");
             display_nhwindow(WIN_MESSAGE, FALSE);
             You(_("cease to exist."));
             if (gi.invent)
@@ -1501,7 +1500,7 @@ tele_trap(struct trap *trap)
         return;
 
     in_tele_trap = TRUE;
-    if (In_endgame(&u.uz) || Antimagic || noteleport_level(u.umonst)) {
+    if (In_endgame(&u.uz) || Antimagic || noteleport_level(&gy.youmonst)) {
         if (Antimagic)
             shieldeff(u.ux, u.uy);
         You_feel(_("a wrenching sensation."));
@@ -1886,7 +1885,7 @@ rloc(
     if (!backupcc.x) {
         /* level either full of monsters or somehow faulty */
         if ((rlocflags & RLOC_ERR) != 0)
-            impossible("rloc(): couldn't relocate monster");
+            impossible(_("rloc(): couldn't relocate monster"));
         return FALSE;
     }
     x = backupcc.x, y = backupcc.y;
@@ -2079,7 +2078,7 @@ mlevel_tele_trap(
                 get_level(&tolevel, nlev);
             }
         } else {
-            impossible("mlevel_tele_trap: unexpected trap type (%d)", tt);
+            impossible(_("mlevel_tele_trap: unexpected trap type (%d)"), tt);
             return Trap_Effect_Finished;
         }
 

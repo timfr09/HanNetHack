@@ -149,7 +149,7 @@ do_statusline2(void)
     dx = strstri(dloc, "\\G") ? 9 : 0;
 
     /* health and armor class (has trailing space for AC 0..9)
-     * Korean i18n: status abbreviations HP, Pw, AC, Xp, HD, T */
+     * Korean i18n: ko.po uses HP, AC as-is; Pw → 「마력」 */
     hp = Upolyd ? u.mh : u.uhp;
     hpmax = Upolyd ? u.mhmax : u.uhpmax;
     if (hp < 0)
@@ -243,8 +243,7 @@ do_statusline2(void)
                  expr, tmmv, cond, vers);
     } else {
         if (dln + 1 + hln + 1 + xln + 1 + tln + 1 + cln + vrn > MAXCO) {
-            panic("bot2: second status line exceeds MAXCO (%u > %d)",
-                  (unsigned) (dln + 1 + hln + 1 + xln + 1 + tln + 1 + cln
+            panic(_("bot2: second status line exceeds MAXCO (%u > %d)"),                   (unsigned) (dln + 1 + hln + 1 + xln + 1 + tln + 1 + cln
                               + vrn),
                   MAXCO);
         } else if ((dln - dx) + 1 + hln + 1 + xln + 1 + cln <= COLNO) {
@@ -270,7 +269,7 @@ bot(void)
         return;
     /* dosave() flags completion by setting u.uhp to -1; suppress_map_output()
        covers program_state.restoring and is used for status as well as map */
-    if (u.uhp != -1 && u.umonst->data
+    if (u.uhp != -1 && gy.youmonst.data
         && iflags.status_updates && !suppress_map_output()) {
         if (VIA_WINDOWPORT()) {
             bot_via_windowport();
@@ -506,7 +505,7 @@ weapon_status(char *outbuf)
         /* no weapon; gloves imply hands; humanoid also implies hands;
            otherwise make no assumptions */
         res = uarmg ? "Empty-hnd" /* empty handed means "gloves only" */
-              : humanoid(u.umonst->data) ? "Bare-hnds" /* bare hands */
+              : humanoid(gy.youmonst.data) ? "Bare-hnds" /* bare hands */
                 : "No-weapon";
     } else if (u.twoweap) {
         /* two-weaponing implies hands and a weapon or wep-tool
@@ -987,7 +986,7 @@ bot_via_windowport(void)
     long money;
 
     if (!gb.blinit)
-        panic("bot before init.");
+        panic(_("bot before init."));
 
     /* toggle from previous iteration */
     idx = 1 - gn.now_or_before_idx; /* 0 -> 1, 1 -> 0 */
@@ -1213,7 +1212,7 @@ bot_via_windowport(void)
 #else
             test_if_enabled(bl_held) = TRUE;
 #endif
-        } else if (Upolyd && sticks(u.umonst->data)) {
+        } else if (Upolyd && sticks(gy.youmonst.data)) {
             test_if_enabled(bl_holding) = TRUE;
         } else {
             /* grab == hero is held by sea monster and about to be drowned;
@@ -1724,12 +1723,12 @@ status_initialize(
 
     if (!reassessment) {
         if (gb.blinit)
-            impossible("2nd status_initialize with full init.");
+            impossible(_("2nd status_initialize with full init."));
         init_blstats();
         (*windowprocs.win_status_init)();
         gb.blinit = TRUE;
     } else if (!gb.blinit) {
-        panic("status 'reassess' before init");
+        panic(_("status 'reassess' before init"));
     }
     for (i = 0; i < MAXBLSTATS; ++i) {
         fld = initblstats[i].fld;
@@ -1752,6 +1751,19 @@ status_initialize(
     }
     gu.update_all = TRUE;
     disp.botlx = TRUE;
+}
+
+/* Pick localized Sprintf format for a bottom line field. Cached pointers in
+ * status_fieldfmt[] can still point at English if they were assigned before
+ * the message catalog finished loading; re-resolve known labels each render. */
+const char *
+status_fmt_for_bl(enum statusfields fld, const char *cached)
+{
+#ifdef ENABLE_NLS
+    if (fld == BL_ENE)
+        return _(" Pw:%s");
+#endif
+    return cached;
 }
 
 void
@@ -1797,7 +1809,7 @@ init_blstats(void)
     int i, j;
 
     if (initalready) {
-        impossible("init_blstats called more than once.");
+        impossible(_("init_blstats called more than once."));
         return;
     }
     for (i = 0; i <= 1; ++i) {
@@ -1848,16 +1860,14 @@ compare_blstats(struct istat_s *bl1, struct istat_s *bl2)
     int anytype, fld, result = 0;
 
     if (!bl1 || !bl2) {
-        panic("compare_blstat: bad istat pointer %s, %s",
-              fmt_ptr((genericptr_t) bl1), fmt_ptr((genericptr_t) bl2));
+        panic(_("compare_blstat: bad istat pointer %s, %s"),               fmt_ptr((genericptr_t) bl1), fmt_ptr((genericptr_t) bl2));
     }
 
     anytype = bl1->anytype;
     if ((!bl1->a.a_void || !bl2->a.a_void)
         && (anytype == ANY_IPTR || anytype == ANY_UPTR
             || anytype == ANY_LPTR || anytype == ANY_ULPTR)) {
-        panic("compare_blstat: invalid pointer %s, %s",
-              fmt_ptr((genericptr_t) bl1->a.a_void),
+        panic(_("compare_blstat: invalid pointer %s, %s"),               fmt_ptr((genericptr_t) bl1->a.a_void),
               fmt_ptr((genericptr_t) bl2->a.a_void));
     }
     /* cheat; terrain is highlighted as a string but we have a handy int
@@ -2021,8 +2031,7 @@ percentage(struct istat_s *bl, struct istat_s *maxbl)
     boolean use_rawval;
 
     if (!bl || !maxbl) {
-        impossible("percentage: bad istat pointer %s, %s",
-                   fmt_ptr((genericptr_t) bl), fmt_ptr((genericptr_t) maxbl));
+        impossible(_("percentage: bad istat pointer %s, %s"),                    fmt_ptr((genericptr_t) bl), fmt_ptr((genericptr_t) maxbl));
         return 0;
     }
 
@@ -3649,7 +3658,7 @@ status_hilite2str(struct hilite_s *hl)
         if (op)
             Sprintf(behavebuf, "%s%d%%", op, hl->value.a_int);
         else
-            impossible("hl->behavior=percentage, rel error");
+            impossible(_("hl->behavior=percentage, rel error"));
         break;
     case BL_TH_UPDOWN:
         /* i18n: status hilite threshold direction; C_("threshold")
@@ -3662,25 +3671,25 @@ status_hilite2str(struct hilite_s *hl)
         else if (hl->rel == EQ_VALUE)
             Sprintf(behavebuf, C_("threshold", "changed"));
         else
-            impossible("hl->behavior=updown, rel error");
+            impossible(_("hl->behavior=updown, rel error"));
         break;
     case BL_TH_VAL_ABSOLUTE:
         if (op)
             Sprintf(behavebuf, "%s%d", op, hl->value.a_int);
         else
-            impossible("hl->behavior=absolute, rel error");
+            impossible(_("hl->behavior=absolute, rel error"));
         break;
     case BL_TH_TEXTMATCH:
         if (hl->rel == TXT_VALUE && hl->textmatch[0])
             Sprintf(behavebuf, "%s", hl->textmatch);
         else
-            impossible("hl->behavior=textmatch, rel or textmatch error");
+            impossible(_("hl->behavior=textmatch, rel or textmatch error"));
         break;
     case BL_TH_CONDITION:
         if (hl->rel == EQ_VALUE)
             Sprintf(behavebuf, "%s", conditionbitmask2str(hl->value.a_ulong));
         else
-            impossible("hl->behavior=condition, rel error");
+            impossible(_("hl->behavior=condition, rel error"));
         break;
     case BL_TH_ALWAYS_HILITE:
         Sprintf(behavebuf, _("always"));
@@ -3972,7 +3981,7 @@ status_hilite_menu_add(int origfld)
 
  choose_value:
     if (retry++ > 5) {
-        pline("That's enough tries.");
+        pline(_("That's enough tries."));
         return FALSE;
     }
     if (behavior == BL_TH_VAL_PERCENTAGE

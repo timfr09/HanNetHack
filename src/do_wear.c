@@ -282,7 +282,7 @@ Boots_off(void)
         /* check for lava since fireproofed boots make it viable */
         if ((is_pool(u.ux, u.uy) || is_lava(u.ux, u.uy))
             && !Levitation && !Flying
-            && !(is_clinger(u.umonst->data) && has_ceiling(&u.uz))
+            && !(is_clinger(gy.youmonst.data) && has_ceiling(&u.uz))
             && !svc.context.takeoff.cancelled_don
             /* avoid recursive call to lava_effects() */
             && !iflags.in_lava_effects) {
@@ -1037,7 +1037,7 @@ Amulet_on(struct obj *amul)
     }
     case AMULET_OF_STRANGULATION:
         /* note: might already be Strangled (via #wizintrinsic) */
-        if (can_be_strangled(u.umonst) && !Strangled) {
+        if (can_be_strangled(&gy.youmonst) && !Strangled) {
             makeknown(AMULET_OF_STRANGULATION);
             Strangled = 6L;
             disp.botl = TRUE;
@@ -1120,9 +1120,8 @@ Amulet_off(void)
         early_off_msg = TRUE;
 
         if (Underwater) {
-            if (!cant_drown(u.umonst->data) && !Swimming) {
-                You(_("suddenly inhale an unhealthy amount of %s!"),
-                    hliquid("water"));
+            if (!cant_drown(gy.youmonst.data) && !Swimming) {
+                You(_("suddenly inhale an unhealthy amount of %s!"),                     hliquid("water"));
                 mkn = TRUE; /* in case of life-saving */
                 (void) drown();
             }
@@ -1353,7 +1352,7 @@ Ring_off_or_gone(struct obj *obj, boolean gone)
 
     svc.context.takeoff.mask &= ~mask;
     if (!(u.uprops[objects[obj->otyp].oc_oprop].extrinsic & mask))
-        impossible("Strange... I didn't know you had that ring.");
+        impossible(_("Strange... I didn't know you had that ring."));
     if (gone)
         setnotworn(obj);
     else
@@ -1502,7 +1501,7 @@ Blindf_off(struct obj *otmp)
     if (!otmp)
         otmp = ublindf;
     if (!otmp) {
-        impossible("Blindf_off without eyewear?");
+        impossible(_("Blindf_off without eyewear?"));
         return;
     }
     svc.context.takeoff.mask &= ~W_TOOL;
@@ -1822,8 +1821,7 @@ armor_or_accessory_off(struct obj *obj)
     } else if (obj == ublindf) {
         Blindf_off(obj); /* does its own off_msg */
     } else {
-        impossible("removing strange accessory: %s",
-                   safe_typename(obj->otyp));
+        impossible(_("removing strange accessory: %s"),                    safe_typename(obj->otyp));
         if (obj->owornmask)
             remove_worn_item(obj, FALSE);
     }
@@ -1895,7 +1893,7 @@ int
 cursed(struct obj *otmp)
 {
     if (!otmp) {
-        impossible("cursed without otmp");
+        impossible(_("cursed without otmp"));
         return 0;
     }
     /* Curses, like chickens, come home to roost. */
@@ -1962,8 +1960,7 @@ armoroff(struct obj *otmp)
             ga.afternmv = Shirt_off;
             break;
         default:
-            impossible("Taking off unknown armor (%d: %d), delay %d",
-                       otmp->otyp, objects[otmp->otyp].oc_armcat, delay);
+            impossible(_("Taking off unknown armor (%d: %d), delay %d"),                        otmp->otyp, objects[otmp->otyp].oc_armcat, delay);
             break;
         }
         if (what) {
@@ -1997,8 +1994,7 @@ armoroff(struct obj *otmp)
             (void) Shirt_off();
             break;
         default:
-            impossible("Taking off unknown armor (%d: %d), no delay",
-                       otmp->otyp, objects[otmp->otyp].oc_armcat);
+            impossible(_("Taking off unknown armor (%d: %d), no delay"),                        otmp->otyp, objects[otmp->otyp].oc_armcat);
             break;
         }
         /* We want off_msg() after removing the item to
@@ -2036,7 +2032,7 @@ canwearobj(struct obj *otmp, long *mask, boolean noisy)
 
     /* this is the same check as for 'W' (dowear), but different message,
        in case we get here via 'P' (doputon) */
-    if (verysmall(u.umonst->data) || nohands(u.umonst->data)) {
+    if (verysmall(gy.youmonst.data) || nohands(gy.youmonst.data)) {
         if (noisy)
             You(_("can't wear any armor in your current form."));
         return 0;
@@ -2046,13 +2042,13 @@ canwearobj(struct obj *otmp, long *mask, boolean noisy)
             : is_shirt(otmp) ? c_shirt
               : is_suit(otmp) ? c_suit
                 : 0;
-    if (which && cantweararm(u.umonst->data)
+    if (which && cantweararm(gy.youmonst.data)
         /* same exception for cloaks as used in m_dowear() */
         && (which != c_cloak
             || ((otmp->otyp != MUMMY_WRAPPING)
-                ? u.umonst->data->msize != MZ_SMALL
-                : !WrappingAllowed(u.umonst->data)))
-        && (racial_exception(u.umonst, otmp) < 1)) {
+                ? gy.youmonst.data->msize != MZ_SMALL
+                : !WrappingAllowed(gy.youmonst.data)))
+        && (racial_exception(&gy.youmonst, otmp) < 1)) {
         if (noisy)
             pline_The(_("%s will not fit on your body."), _(which));
         return 0;
@@ -2074,12 +2070,12 @@ canwearobj(struct obj *otmp, long *mask, boolean noisy)
             if (noisy)
                 already_wearing(an(helm_simple_name(uarmh)));
             err++;
-        } else if (Upolyd && has_horns(u.umonst->data) && !is_flimsy(otmp)) {
+        } else if (Upolyd && has_horns(gy.youmonst.data) && !is_flimsy(otmp)) {
             /* (flimsy exception matches polyself handling) */
             if (noisy)
                 pline_The(_("%s won't fit over your horn%s."),
                           helm_simple_name(otmp),
-                          plur(num_horns(u.umonst->data)));
+                          plur(num_horns(gy.youmonst.data)));
             err++;
         } else
             *mask = W_ARMH;
@@ -2106,11 +2102,11 @@ canwearobj(struct obj *otmp, long *mask, boolean noisy)
             if (noisy)
                 already_wearing(_(c_boots));
             err++;
-        } else if (Upolyd && slithy(u.umonst->data)) {
+        } else if (Upolyd && slithy(gy.youmonst.data)) {
             if (noisy)
                 You(_("have no feet...")); /* not body_part(FOOT) */
             err++;
-        } else if (Upolyd && u.umonst->data->mlet == S_CENTAUR) {
+        } else if (Upolyd && gy.youmonst.data->mlet == S_CENTAUR) {
             /* break_armor() pushes boots off for centaurs, so don't let
                dowear() put them back on;
                makeplural(body_part(FOOT)) would yield "rear hooves" here,
@@ -2253,13 +2249,12 @@ accessory_or_armor_on(struct obj *obj)
             char answer, qbuf[QBUFSZ];
             int res = 0;
 
-            if (nolimbs(u.umonst->data)) {
+            if (nolimbs(gy.youmonst.data)) {
                 You(_("cannot make the ring stick to your body."));
                 return ECMD_OK;
             }
             if (uleft && uright) {
-                There(_("are no more %s%s to fill."),
-                      humanoid(u.umonst->data) ? "ring-" : "",
+                There(_("are no more %s%s to fill."),                       humanoid(gy.youmonst.data) ? "ring-" : "",
                       fingers_or_gloves(FALSE));
                 return ECMD_OK;
             }
@@ -2269,8 +2264,8 @@ accessory_or_armor_on(struct obj *obj)
                 mask = LEFT_RING;
             } else {
                 do {
-                    Sprintf(qbuf, _("Which %s%s, Right or Left?"),
-                            humanoid(u.umonst->data) ? "ring-" : "",
+                    Sprintf(qbuf, "Which %s%s, Right or Left?",
+                            humanoid(gy.youmonst.data) ? "ring-" : "",
                             body_part(FINGER));
                     answer = yn_function(qbuf, rightleftchars, '\0', TRUE);
                     switch (answer) {
@@ -2323,7 +2318,7 @@ accessory_or_armor_on(struct obj *obj)
                 return ECMD_OK;
             }
         } else if (eyewear) {
-            if (!has_head(u.umonst->data)) {
+            if (!has_head(gy.youmonst.data)) {
                 You(_("have no head to wear %s on."), ansimpleoname(obj));
                 return ECMD_OK;
             }
@@ -2392,7 +2387,7 @@ accessory_or_armor_on(struct obj *obj)
         else if (obj == uarmu)
             ga.afternmv = Shirt_on;
         else
-            panic("wearing armor not worn as armor? [%08lx]", obj->owornmask);
+            panic(_("wearing armor not worn as armor? [%08lx]"), obj->owornmask);
 
         delay = -objects[obj->otyp].oc_delay;
         if (delay) {
@@ -2422,8 +2417,7 @@ accessory_or_armor_on(struct obj *obj)
             /* setworn() and on_msg() handled by Blindf_on() */
             Blindf_on(obj);
         } else {
-            impossible("putting on unexpected type of accessory: %s",
-                       safe_typename(obj->otyp));
+            impossible(_("putting on unexpected type of accessory: %s"),                        safe_typename(obj->otyp));
         }
     }
     return ECMD_TIME;
@@ -2437,7 +2431,7 @@ dowear(void)
 
     /* cantweararm() checks for suits of armor, not what we want here;
        verysmall() or nohands() checks for shields, gloves, etc... */
-    if (verysmall(u.umonst->data) || nohands(u.umonst->data)) {
+    if (verysmall(gy.youmonst.data) || nohands(gy.youmonst.data)) {
         pline(_("Don't even bother."));
         return ECMD_OK;
     }
@@ -2461,7 +2455,7 @@ doputon(void)
         && uarm && uarmu && uarmc && uarmh && uarms && uarmg && uarmf) {
         /* 'P' message doesn't mention armor */
         Your(_("%s%s are full, and you're already wearing an amulet and %s."),
-             humanoid(u.umonst->data) ? "ring-" : "",
+             humanoid(gy.youmonst.data) ? "ring-" : "",
              fingers_or_gloves(FALSE),
              (ublindf->otyp == LENSES) ? _("some lenses") : _("a blindfold"));
         return ECMD_OK;
@@ -2546,7 +2540,7 @@ glibr(void)
     rightfall = (uright && !uright->cursed && (!welded(uwep)));
 */
 
-    if (!uarmg && (leftfall || rightfall) && !nolimbs(u.umonst->data)) {
+    if (!uarmg && (leftfall || rightfall) && !nolimbs(gy.youmonst.data)) {
         /* changed so cursed rings don't fall off, GAN 10/30/86 */
         Your(_("%s off your %s."),
              (leftfall && rightfall) ? _("rings slip") : _("ring slips"),
@@ -2633,22 +2627,22 @@ some_armor(struct monst *victim)
 {
     struct obj *otmph, *otmp;
 
-    otmph = (victim == u.umonst) ? uarmc : which_armor(victim, W_ARMC);
+    otmph = (victim == &gy.youmonst) ? uarmc : which_armor(victim, W_ARMC);
     if (!otmph)
-        otmph = (victim == u.umonst) ? uarm : which_armor(victim, W_ARM);
+        otmph = (victim == &gy.youmonst) ? uarm : which_armor(victim, W_ARM);
     if (!otmph)
-        otmph = (victim == u.umonst) ? uarmu : which_armor(victim, W_ARMU);
+        otmph = (victim == &gy.youmonst) ? uarmu : which_armor(victim, W_ARMU);
 
-    otmp = (victim == u.umonst) ? uarmh : which_armor(victim, W_ARMH);
+    otmp = (victim == &gy.youmonst) ? uarmh : which_armor(victim, W_ARMH);
     if (otmp && (!otmph || !rn2(4)))
         otmph = otmp;
-    otmp = (victim == u.umonst) ? uarmg : which_armor(victim, W_ARMG);
+    otmp = (victim == &gy.youmonst) ? uarmg : which_armor(victim, W_ARMG);
     if (otmp && (!otmph || !rn2(4)))
         otmph = otmp;
-    otmp = (victim == u.umonst) ? uarmf : which_armor(victim, W_ARMF);
+    otmp = (victim == &gy.youmonst) ? uarmf : which_armor(victim, W_ARMF);
     if (otmp && (!otmph || !rn2(4)))
         otmph = otmp;
-    otmp = (victim == u.umonst) ? uarms : which_armor(victim, W_ARMS);
+    otmp = (victim == &gy.youmonst) ? uarms : which_armor(victim, W_ARMS);
     if (otmp && (!otmph || !rn2(4)))
         otmph = otmp;
     return otmph;
@@ -2659,14 +2653,14 @@ struct obj *
 stuck_ring(struct obj *ring, int otyp)
 {
     if (ring != uleft && ring != uright) {
-        impossible("stuck_ring: neither left nor right?");
+        impossible(_("stuck_ring: neither left nor right?"));
         return (struct obj *) 0;
     }
 
     if (ring && ring->otyp == otyp) {
         /* reasons ring can't be removed match those checked by select_off();
            limbless case has extra checks because ordinarily it's temporary */
-        if (nolimbs(u.umonst->data) && uamul
+        if (nolimbs(gy.youmonst.data) && uamul
             && uamul->otyp == AMULET_OF_UNCHANGING && uamul->cursed)
             return uamul;
         if (welded(uwep) && ((ring == RING_ON_PRIMARY) || bimanual(uwep)))
@@ -2708,7 +2702,7 @@ select_off(struct obj *otmp)
     if (otmp == uright || otmp == uleft) {
         struct obj glibdummy;
 
-        if (nolimbs(u.umonst->data)) {
+        if (nolimbs(gy.youmonst.data)) {
             pline_The(_("ring is stuck."));
             return 0;
         }
@@ -2817,7 +2811,7 @@ select_off(struct obj *otmp)
         svc.context.takeoff.mask |= W_QUIVER;
 
     else
-        impossible("select_off: %s???", doname(otmp));
+        impossible(_("select_off: %s???"), doname(otmp));
 
     return 0;
 }
@@ -2890,7 +2884,7 @@ do_takeoff(void)
         if (!cursed(ublindf))
             Blindf_off(ublindf);
     } else {
-        impossible("do_takeoff: taking off %lx", doff->what);
+        impossible(_("do_takeoff: taking off %lx"), doff->what);
     }
     svc.context.takeoff.mask &= ~I_SPECIAL; /* clear cancel_doff() flag */
 
@@ -2970,7 +2964,7 @@ take_off(void)
            remove a blindfold, so 'A' shouldn't have been requiring 2] */
         doff->delay = 1;
     } else {
-        impossible("take_off: taking off %lx", doff->what);
+        impossible(_("take_off: taking off %lx"), doff->what);
         return 0; /* force done */
     }
 

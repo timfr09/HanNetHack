@@ -167,8 +167,7 @@ add_mon_to_reg(NhRegion *reg, struct monst *mon)
        only include it once no matter how segments the region contains */
     if (mon_in_region(reg, mon)) {
         if (mon->data != &mons[PM_LONG_WORM])
-            impossible("add_mon_to_reg: %s [#%u] already in region.",
-                       m_monnam(mon), mon->m_id);
+            impossible(_("add_mon_to_reg: %s [#%u] already in region."),                        m_monnam(mon), mon->m_id);
         return;
     }
     if (reg->max_monst <= reg->n_monst) {
@@ -1092,7 +1091,7 @@ inside_gas_cloud(genericptr_t p1, genericptr_t p2)
 {
     NhRegion *reg = (NhRegion *) p1;
     struct monst *mtmp = (struct monst *) p2;
-    struct monst *umon = mtmp ? mtmp : u.umonst;
+    struct monst *umon = mtmp ? mtmp : &gy.youmonst;
     int dam = reg->arg.a_int;
 
     /*
@@ -1107,8 +1106,8 @@ inside_gas_cloud(genericptr_t p1, genericptr_t p2)
     if (dam < 1)
         return FALSE; /* if no damage then there's nothing to do here... */
 
-    if (!mtmp) { /* hero is indicated by Null rather than by u.umonst */
-        if (m_poisongas_ok(u.umonst) == M_POISONGAS_OK)
+    if (!mtmp) { /* hero is indicated by Null rather than by &youmonst */
+        if (m_poisongas_ok(&gy.youmonst) == M_POISONGAS_OK)
             return FALSE;
         if (!Blind) {
             Your(_("%s sting."), makeplural(body_part(EYE)));
@@ -1232,11 +1231,11 @@ create_gas_cloud(
        probably a natural cause of being polyed. don't message about it */
     if (!svc.context.mon_moving && u_at(x, y) && cloudsize == 1
         && (!damage
-            || (damage && m_poisongas_ok(u.umonst) == M_POISONGAS_OK)))
+            || (damage && m_poisongas_ok(&gy.youmonst) == M_POISONGAS_OK)))
         inside_cloud = TRUE;
 
     if (cloudsize > MAX_CLOUD_SIZE) {
-        impossible("create_gas_cloud: cloud too large (%d)!", cloudsize);
+        impossible(_("create_gas_cloud: cloud too large (%d)!"), cloudsize);
         cloudsize = MAX_CLOUD_SIZE;
     }
 
@@ -1350,7 +1349,7 @@ region_danger(void)
         /* the only type of region we understand is gas_cloud */
         if (f_indx == INSIDE_GAS_CLOUD) {
             /* completely harmless if you don't need to breathe */
-            if (nonliving(u.umonst->data) || Breathless)
+            if (nonliving(gy.youmonst.data) || Breathless)
                 continue;
             /* minor inconvenience if you're poison resistant;
                not harmful enough to be a prayer-level trouble */

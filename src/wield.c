@@ -157,8 +157,8 @@ cant_wield_corpse(struct obj *obj)
 const char *
 empty_handed(void)
 {
-    return uarmg ? _("empty handed") /* gloves imply hands */
-           : humanoid(u.umonst->data)
+    return uarmg ? "empty handed" /* gloves imply hands */
+           : humanoid(gy.youmonst.data)
              /* hands but no weapon and no gloves */
              ? _("bare handed")
                /* alternate phrasing for paws or lack of hands */
@@ -360,7 +360,7 @@ dowield(void)
 
     /* May we attempt this? */
     gm.multi = 0;
-    if (cantwield(u.umonst->data)) {
+    if (cantwield(gy.youmonst.data)) {
         pline(_("Don't be ridiculous!"));
         return ECMD_FAIL;
     }
@@ -461,7 +461,7 @@ doswapweapon(void)
 
     /* May we attempt this? */
     gm.multi = 0;
-    if (cantwield(u.umonst->data)) {
+    if (cantwield(gy.youmonst.data)) {
         pline(_("Don't be ridiculous!"));
         return ECMD_FAIL;
     }
@@ -705,8 +705,8 @@ wield_tool(struct obj *obj,
         }
         return FALSE;
     }
-    if (cantwield(u.umonst->data)) {
-        You_cant(_("hold %s strongly enough."), more_than_1 ? _("them") : _("it"));
+    if (cantwield(gy.youmonst.data)) {
+        You_cant(_("hold %s strongly enough."), more_than_1 ? "them" : "it");
         return FALSE;
     }
     /* check shield */
@@ -751,7 +751,7 @@ can_twoweapon(void)
 {
     struct obj *otmp;
 
-    if (!could_twoweap(u.umonst->data)) {
+    if (!could_twoweap(gy.youmonst.data)) {
         if (Upolyd)
             You_cant(_("use two weapons in your current form."));
         else

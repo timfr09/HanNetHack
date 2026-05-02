@@ -213,7 +213,9 @@ MAKEOBJS = makedefs.o $(OMONOBJ) $(ODATE) $(OALLOC)
 RECOVOBJS = recover.o recover-version.o
 
 # object files for the data librarian
-DLBOBJS = dlb_main.o $(OBJDIR)/dlb.o $(OALLOC)
+# dlb_host.o: ../src/dlb.c compiled with -DHOSTUTIL=1 so ENABLE_NLS is off;
+# the standalone dlb utility must not pull in i18n/ko_postpos (see dlb.c).
+DLBOBJS = dlb_main.o dlb_host.o $(OALLOC)
 
 # Distinguish between the build tools for the native host
 # and the build tools for the target environment in commands.
@@ -469,6 +471,9 @@ dlb:	$(DLBOBJS) $(HACKLIB)
 
 dlb_main.o: dlb_main.c $(CONFIG_H) ../include/dlb.h
 	$(CC) $(CFLAGS) $(CSTD) -c dlb_main.c -o $@
+
+dlb_host.o: ../src/dlb.c $(CONFIG_H) ../include/dlb.h
+	$(CC) $(CFLAGS) $(CSTD) -DHOSTUTIL=1 -c ../src/dlb.c -o $@
 
 stripbs: stripbs.o
 	$(CC) $(LFLAGS) -o stripbs stripbs.o

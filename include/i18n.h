@@ -18,8 +18,8 @@
 
 /*
  * HanNetHack uses its own gettext-compatible runtime (src/mo_reader.c)
- * driven by an XOR-obfuscated .mox catalog bundled inside the DLB.
- * The public helpers below keep the familiar gettext() / ngettext() /
+ * driven by a GNU gettext .mo catalog bundled inside the DLB.  The
+ * public helpers below keep the familiar gettext() / ngettext() /
  * pgettext() interface so the rest of the game source is unchanged.
  */
 extern const char *nh_gettext(const char *msgid);

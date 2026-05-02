@@ -61,8 +61,7 @@ po/
 └── ko_merged.po         # 빌드 시 자동 생성 (ko_manual.po + ko.po)
 
 dat/locale/ko/
-├── LC_MESSAGES/
-│   └── nethack.mo       # 컴파일된 gettext 번역
+├── nethack.mo           # 컴파일된 gettext 번역 (nhdat에 번들됨)
 ├── help                 # 메인 도움말
 ├── hh                   # 빠른 도움말
 ├── cmdhelp              # 명령어 도움말

@@ -82,8 +82,7 @@ HanNetHack/
 │   └── messages.mo         # Compiled translations
 ├── dat/locale/
 │   └── ko/                 # Korean locale data
-│       ├── LC_MESSAGES/
-│       │   └── nethack.mo  # Installed message catalog
+│       ├── nethack.mo      # Installed message catalog (bundled in nhdat)
 │       ├── help            # Localized help files
 │       ├── rumors.tru      # Localized rumors
 │       └── *.lua           # Localized Lua scripts
@@ -367,8 +366,7 @@ void init_i18n(void)
 
 ```
 dat/locale/ko/
-├── LC_MESSAGES/
-│   └── nethack.mo          # Compiled message catalog (638 KB)
+├── nethack.mo              # Compiled message catalog (bundled in nhdat)
 ├── help                    # General help
 ├── hh                      # Short help
 ├── cmdhelp                 # Command help
@@ -452,8 +450,8 @@ msgfmt -c -v -o ja.mo ja.po
 ### Step 4: Create Locale Directory
 
 ```bash
-mkdir -p dat/locale/ja/LC_MESSAGES
-cp ja.mo dat/locale/ja/LC_MESSAGES/nethack.mo
+mkdir -p dat/locale/ja
+cp ja.mo dat/locale/ja/nethack.mo
 ```
 
 ### Step 5: Add Language Support
@@ -491,7 +489,7 @@ msgmerge -U ko.po nethack.pot
 msgfmt -c -v -o messages.mo ko.po
 
 # Install to locale directory
-cp messages.mo ../dat/locale/ko/LC_MESSAGES/nethack.mo
+cp messages.mo ../dat/locale/ko/nethack.mo
 ```
 
 ### Compilation Flags
@@ -501,8 +499,8 @@ Required defines:
 - `LOCALEDIR` - Default locale directory path
 
 Runtime libraries (HanNetHack): **none** for gettext — the game uses
-`src/mo_reader.c` to load an XOR-obfuscated `.mox` catalog from nhdat
-instead of linking `libintl` / `libiconv`.
+`src/mo_reader.c` to load a plain GNU gettext `.mo` catalog from
+nhdat instead of linking `libintl` / `libiconv`.
 
 Build-time / translator tools still use the usual GNU gettext CLI
 (`msgfmt`, `msgcat`, `xgettext`, …) from a system package or
@@ -614,7 +612,7 @@ int codepoint_to_utf8(unsigned int codepoint, char *outbuf);
 ### Messages Not Translated
 
 1. Check MO file is compiled: `msgfmt -c ko.po`
-2. Verify locale directory: `ls dat/locale/ko/LC_MESSAGES/`
+2. Verify locale directory: `ls dat/locale/ko/`
 3. Check language setting: `OPTIONS=language:ko`
 4. Rebuild nhdat: `make`
 

@@ -446,7 +446,7 @@ dlb_init(void)
 
 #ifdef ENABLE_NLS
     /*
-     * The message catalog (locale/<lang>/nethack.mox) is read through
+     * The message catalog (locale/<lang>/nethack.mo) is read through
      * dlb_fopen, but init_i18n() runs in early_init() - long before
      * dlb_init() succeeds.  At that early call set_language() silently
      * fails to load the catalog and nh_gettext falls back to English.

@@ -3,7 +3,7 @@
 ## Cursor Cloud specific instructions
 
 ### Project Overview
-HanNetHack is a Korean-localized fork of NetHack 3.7. It's a C-based roguelike game with an in-tree message catalog (`src/mo_reader.c`, XOR `.mox` inside nhdat), GNU gettext *tools* for maintaining `po/*.po`, and a Korean postposition engine.
+HanNetHack is a Korean-localized fork of NetHack 3.7. It's a C-based roguelike game with an in-tree message catalog (`src/mo_reader.c` reads a plain GNU gettext `.mo` bundled inside nhdat), GNU gettext *tools* for maintaining `po/*.po`, and a Korean postposition engine.
 
 ### Build
 ```bash

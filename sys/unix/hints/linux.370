@@ -404,8 +404,8 @@ POSTINSTALL+= test -f $(TESTGDBPATH) || \
 POSTUPDATE+= test -f $(TESTGDBPATH) || \
 		sed -i -e 's;^GDBPATH=/usr/bin/gdb;\#GDBPATH=/usr/bin/gdb;' \
 		-e 's;PANICTRACE_GDB=1;PANICTRACE_GDB=0;' $(INSTDIR)/sysconf;
-# Korean translations are bundled inside nhdat as the obfuscated
-# nethack.mox catalog (see src/mo_reader.c); no system-wide
+# Korean translations are bundled inside nhdat as the GNU gettext
+# nethack.mo catalog (see src/mo_reader.c); no system-wide
 # nethack.mo install is needed.
 endif  #MAKEFILE_TOP
 
@@ -437,12 +437,12 @@ DLLIB = -ldl
 # Only needed for GLIBC stack trace:
 LFLAGS+=-rdynamic
 
-# i18n: HanNetHack reads the XOR-obfuscated message catalog
-# (dat/locale/<lang>/nethack.mox) directly through its custom
-# mo_reader (see src/mo_reader.c, include/mox_format.h) instead of
-# GNU gettext, so no libintl / -lintl linkage is needed on any
-# platform.  The po/Makefile helper still shells out to msgfmt and
-# msgcat from a system gettext install to generate the catalog.
+# i18n: HanNetHack reads the GNU gettext message catalog
+# (dat/locale/<lang>/nethack.mo) directly through its custom
+# mo_reader (see src/mo_reader.c) instead of linking against
+# libintl, so no libintl / -lintl linkage is needed on any platform.
+# The po/Makefile helper still shells out to msgfmt and msgcat from
+# a system gettext install to generate the catalog.
 
 # if TTY_TILES_ESCCODES
 #WINSRC += tile.c

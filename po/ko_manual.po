@@ -12492,7 +12492,7 @@ msgstr "100%"
 # 하와이안 셔츠 무늬 (read.c:121)
 # ============================================================
 #: ../src/read.c:122
-#, c-format
+#, no-c-format
 msgid "100% goblin hair - do not wash"
 msgstr "100% 고블린 털 - 세탁 금지"
 
@@ -23692,7 +23692,7 @@ msgstr "우르크하이 방패"
 
 #: ../src/cmd.c:1381
 msgid "Use #optionsfull to set any option instead."
-msgstr "대신 #optionsfull 로 모든 옵션을 설정할 수 있다."
+msgstr "다른 옵션은 #optionsfull 로도 설정할 수 있습니다."
 
 #: ../src/getpos.c:245
 #, c-format
@@ -23746,7 +23746,7 @@ msgstr "'%s'/'%s'{을/를} 눌러 %s%s%s."
 
 #: ../src/options.c:8606
 msgid "Use command '#optionsfull' to get the complete options list."
-msgstr "'#optionsfull' 명령어를 사용하여 전체 옵션 목록을 확인하라."
+msgstr "'#optionsfull' 명령으로 전체 옵션 목록을 볼 수 있습니다."
 
 #: ../src/pray.c:1341
 msgid "Use it wisely in my name!"

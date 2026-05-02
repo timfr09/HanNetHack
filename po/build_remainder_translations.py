@@ -29,7 +29,7 @@ FULL = {
     "Unrecognized gradient type! Defaulting to radial...": "인식할 수 없는 그라데이션 유형이다. 방사형으로 되돌린다…",
     "Unrecognized level init style.": "인식할 수 없는 층 초기화 방식이다.",
     "Unsupported damage type (%d) for mon_spell_hits_spot.": "mon_spell_hits_spot에서 지원하지 않는 피해 유형 (%d).",
-    "Use #optionsfull to set any option instead.": "대신 #optionsfull 로 모든 옵션을 설정할 수 있다.",
+    "Use #optionsfull to set any option instead.": "다른 옵션은 #optionsfull 로도 설정할 수 있습니다.",
     "Warning - Unclosed fieldlevel file being reinitialized": "경고 — 닫히지 않은 fieldlevel 파일을 다시 초기화한다",
     "Warning - Unclosed structlevel file being reinitialized": "경고 — 닫히지 않은 structlevel 파일을 다시 초기화한다",
     "Webbing over trap type %d?": "함정 유형 %d 위에 거미줄?",

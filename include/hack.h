@@ -710,6 +710,8 @@ enum nhcb_calls {
     NUM_NHCB
 };
 
+#define NHUUIDSZ 37
+
 struct plinemsg_type {
     xint16 msgtype;  /* one of MSGTYP_foo */
     struct nhregex *regex;
@@ -799,6 +801,7 @@ struct sinfo {
     int config_error_ready;     /* config_error_add is ready, available */
     int beyond_savefile_load;   /* set when past savefile loading */
     int savefile_completed;     /* savefile has completed writing */
+    int reading_bonesfile;      /* in the midst of trying to read bones file */
 #ifdef PANICLOG
     int in_paniclog;            /* writing a panicloc entry */
 #endif
@@ -1557,9 +1560,6 @@ typedef uint32_t mmflags_nht;     /* makemon MM_ flags */
 #if !defined(CROSSCOMPILE) || defined(CROSSCOMPILE_TARGET)
 #include "nhlua.h"
 #endif
-
-/* Internationalization support */
-#include "i18n.h"
 
 #if !defined(RECOVER_C)
 

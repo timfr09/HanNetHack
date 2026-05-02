@@ -225,7 +225,6 @@ get_localized_filename(const char *fname)
 
 #ifdef ENABLE_NLS
 
-#include "i18n.h"
 #include "ko_postpos.h"
 #include "dlb.h"
 #include "mo_reader.h"

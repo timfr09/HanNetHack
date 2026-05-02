@@ -64,6 +64,7 @@ enum m_ap_types {
 #define MON_ENDGAME_FREE 0x20
 #define MON_ENDGAME_MIGR 0x40
 #define MON_OBLITERATE   0x80
+#define MON_STILL_ARRIVING 0x100
 
 #define M_AP_TYPMASK  0x7
 #define M_AP_F_DKNOWN 0x8

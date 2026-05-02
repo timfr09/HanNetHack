@@ -97,6 +97,22 @@ voussoir
 barking spider
 frog cloud
 toothsayer
+third eye
+owlpug
+pugasus
+acorn
+red dot
+robot chicken
+doozer
+poison cackler
+lhurgoyf
+phelddagrif
+tiktaalik
+weremoustache
+rapier tapir
+choplet
+pommelbug
+quest sprout
 
 # Quendor (Zork, &c.)
 grue
@@ -301,6 +317,7 @@ wiki
 peer
 COBOL
 wire shark
+stray tab
 
 # bugs
 bohrbug
@@ -383,9 +400,6 @@ little green man
 
 # Portal
 weighted Companion Cube
-
-# /b/
-/b/tard
 
 # South Park
 manbearpig

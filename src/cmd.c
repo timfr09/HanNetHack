@@ -1736,8 +1736,8 @@ struct ext_func_tab extcmdlist[] = {
               dohelp, IFBURIED | GENERALCMD, NULL },
     { '\0',   "herecmdmenu", "show menu of commands you can do here",
               doherecmdmenu, IFBURIED | AUTOCOMPLETE | GENERALCMD, NULL },
-    { '\0',    "history", "show long version and game history",
-              dohistory, IFBURIED | GENERALCMD, NULL },
+    { '\0',    "history", "show a summary of the game's development",
+              dohistory, IFBURIED | AUTOCOMPLETE | GENERALCMD, NULL },
     { 'i',    "inventory", "show your inventory",
               ddoinv, IFBURIED | GENERALCMD, NULL },
     { 'I',    "inventtype", "show inventory of one specific item class",
@@ -2313,7 +2313,6 @@ handler_rebind_keys_add(boolean keyfirst)
     start_menu(win, MENU_BEHAVE_STANDARD);
     any = cg.zeroany;
 
-    /* Korean i18n: key binding messages */
     if (key) {
         struct Cmd_bind *bind = cmdbind_get(key);
 

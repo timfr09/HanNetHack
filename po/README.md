@@ -2,7 +2,7 @@
 
 ## 개요
 
-이 디렉토리는 NetHack의 한국어 번역 파일들을 관리합니다.
+이 디렉터리는 HanNetHack의 gettext 번역 소스와 빌드 규칙을 둡니다. 실무 규칙·조사·문체의 상세는 **[TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md)** 를 보고, 시스템 구조 참고는 **[I18N_SYSTEM.md](I18N_SYSTEM.md)** 를 쓰면 됩니다.
 
 ## 파일 구조
 
@@ -49,11 +49,11 @@ cd po
 # 1. ko_manual.po 편집 (수동 번역 추가/수정)
 vi ko_manual.po
 
-# 2. 병합 + 컴파일
+# 2. 병합 + 컴파일 → ../dat/locale/ko/nethack.mo 로 복사됨
 make compile
 
-# 3. 설치
-make install DESTDIR=../dat
+# 3. 게임 전체 다시 빌드(nhdat에 .mo 반영)
+cd .. && make all
 ```
 
 ### 소스에서 새 문자열 추출할 때
@@ -80,83 +80,9 @@ make compile
 make stats
 ```
 
-## 번역 규칙
+## 번역 규칙 (요약)
 
-### 조사 처리
-
-한국어의 조사는 앞 단어의 받침에 따라 달라집니다. 특수 패턴을 사용하세요:
-
-| 패턴 | 받침 O | 받침 X | 용도 |
-|------|--------|--------|------|
-| `{은/는}` | 은 | 는 | 주제격 |
-| `{이/가}` | 이 | 가 | 주격 |
-| `{을/를}` | 을 | 를 | 목적격 |
-| `{과/와}` | 과 | 와 | 접속 |
-| `{으로/로}` | 으로 | 로* | 방향/도구 |
-| `{아/야}` | 아 | 야 | 호격 |
-| `{이다/다}` | 이다 | 다 | 서술격 |
-
-*ㄹ받침은 "로" 사용
-
-**예시:**
-
-```
-msgid "You hit %s."
-msgstr "%s{을/를} 때렸다."
-```
-
-결과:
-- "고블린**을** 때렸다." (받침 있음)
-- "오크**를** 때렸다." (받침 없음)
-
-### 형식 지정자
-
-원문의 `%s`, `%d` 등은 반드시 번역문에도 포함해야 합니다:
-
-```
-msgid "You have %d gold pieces."
-msgstr "금화 %d개를 가지고 있다."
-```
-
-순서 변경이 필요한 경우 위치 지정:
-
-```
-msgid "%s hits %s."
-msgstr "%2$s{을/를} %1$s{이/가} 때렸다."
-```
-
-### 문체 가이드
-
-1. **'-다' 체 사용** (해요체 X)
-   - ✓ "때렸다", "죽였다"
-   - ✗ "때렸어요", "죽였습니다"
-
-2. **간결한 표현**
-   - ✓ "기분이 나아졌다."
-   - ✗ "당신의 기분이 좋아진 것 같습니다."
-
-3. **능동태 선호**
-   - ✓ "고블린을 죽였다."
-   - ✗ "고블린이 당신에 의해 죽임을 당했다."
-
-### 용어 통일
-
-| 영어 | 한국어 |
-|------|--------|
-| hit | 때리다 |
-| miss | 빗맞다 |
-| kill | 죽이다 |
-| destroy | 파괴하다 |
-| damage | 피해 |
-| gold (piece) | 금화 |
-| experience | 경험치 |
-| level | 레벨 |
-| dungeon | 던전 |
-| potion | 물약 |
-| scroll | 두루마리 |
-| wand | 지팡이 |
-| armor | 갑옷 |
-| weapon | 무기 |
+조사 마커 `{은/는}`, `{이/가}`, `{을/를}` 등과 문체·용어 통일·포맷 문자열 규칙은 모두 **[TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md)** 에 정리되어 있습니다. 이 README에서는 워크플로우만 다룹니다.
 
 ## 번역 관리 도구
 
@@ -190,35 +116,23 @@ msgstr "%2$s{을/를} %1$s{이/가} 때렸다."
 
 ## 기여 방법
 
-1. `ko_manual.po` 파일 편집 (ko.po가 아님!)
-2. `make compile`로 컴파일 테스트
-3. `make stats`로 통계 확인
-4. Pull Request 제출
-
-### ko_manual.po에 추가할 항목들
-
-- 몬스터 이름 (`newt` → `도롱뇽`)
-- 아이템 이름 (`long sword` → `장검`)
-- 역할/종족 이름
-- 포맷 문자열 어순 수정 (위치 지정자 사용)
-- ko.po의 잘못된 번역 수정 (덮어쓰기)
+1. `ko_manual.po` 만 편집합니다 (`ko.po`는 로컬 캐시).
+2. `make compile` 후 저장소 루트에서 `make all` 로 전체 빌드·`nhdat` 반영.
+3. `make stats` 로 통계 확인.
+4. 이 포크(`timfr09/HanNetHack`)로 Pull Request.
 
 ## 테스트
 
-번역 적용 테스트:
+개발 중 바이너리가 `./src/nethack` 인 경우:
 
 ```bash
-# 전체 빌드 후
-cd ../..
-make
-
-# 한국어로 실행
-LANG=ko_KR.UTF-8 ./nethack
-
-# 또는 심볼셋과 함께
-LANG=ko_KR.UTF-8 ./nethack -symset:Korean
+cd ../..   # 저장소 루트
+LANG=ko_KR.UTF-8 ./src/nethack
+# 또는 심볼: LANG=ko_KR.UTF-8 ./src/nethack -symset:Korean
 ```
+
+설치 경로(`make install`)로 실행할 때는 `HACKDIR` 등은 루트 [README.md](../README.md) 및 `AGENTS.md`를 참고합니다.
 
 ## 문의
 
-번역 관련 문의는 GitHub Issues를 이용해주세요.
+[GitHub Issues](https://github.com/timfr09/HanNetHack/issues)

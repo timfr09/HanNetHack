@@ -78,13 +78,7 @@ staticfn void maybe_finish_sokoban(void);
 static const char *const a_your[2] = { N_("a"), N_("your") };
 static const char *const A_Your[2] = { N_("A"), N_("Your") };
 
-/*
- * Korean i18n notes (HanNetHack):
- * - Removed static 'tower_of_flame', 'A_gush_of_water_hits', 'blindgas' arrays
- * - These strings need translation via _() macro which requires runtime evaluation
- * - Original static strings were for code reuse; now inlined with _() at each usage
- * - Killer names in losehp() remain untranslated (stored in bones files)
- */
+/* HanNetHack: blindgas[] etc. use runtime _() instead of static arrays. */
 
 /* returns a random gas adjective for when the player is blind
  * (replaces static blindgas[] array for i18n support) */
@@ -2722,9 +2716,6 @@ trapeffect_rolling_boulder_trap(
                     trap->tseen = TRUE;
                 if (DEADMONSTER(mtmp))
                     trapkilled = TRUE;
-            } else {
-                deltrap(trap);
-                newsym(mtmp->mx, mtmp->my);
             }
             return trapkilled ? Trap_Killed_Mon : mtmp->mtrapped
                 ? Trap_Caught_Mon : Trap_Effect_Finished;
@@ -7152,6 +7143,11 @@ trapname(
         N_("never-ending elevator"), N_("slime pit"), N_("warp zone"),
         N_("illusory floor"), N_("pile of poo"), N_("honey trap"),
         N_("tourist trap"),
+        N_("banana peel"), N_("garden rake"), N_("whoopie cushion"),
+        N_("box and stick trap"),
+        N_("fly trap"), N_("legal trap"), N_("pit of snakes"),
+        N_("pollywog trap"),
+        N_("slippery slope"), N_("thirst trap"), N_("suntrap"),
     };
     static char roletrap[33]; /* [17 + 5 + 1] should suffice */
 

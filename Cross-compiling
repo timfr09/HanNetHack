@@ -642,7 +642,7 @@ Cross-compiler url: https://emscripten.org/docs/getting_started/downloads.html
 
         sudo apt-get install python3 cmake default-jre
 
-    For macOS, you will need to install Xcode, git, cmake, Python 3.5 or new
+    For macOS, you will need to install Xcode, git, cmake, Python 3.5 or newer
     (at time of this writing).
 
     After installing the prerequisite packages above, obtain the cross-compiler

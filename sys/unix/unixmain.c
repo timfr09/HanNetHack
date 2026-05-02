@@ -842,19 +842,14 @@ sys_random_seed(void)
 }
 
 #if defined(MACOS) && defined(NHUUID)
-extern char *get_macos_uuid(char **); /* sys/unix/macuuid.m */
-extern void free_macos_uuid(void);  /* sys/unix/macuuid.m */
+extern void get_macos_uuid(char *); /* sys/unix/macuuid.m */
 #endif
 
 void
 get_nhuuid(void)
 {
-#if !defined(MACOS)
 #if defined(NHUUID)
-    char struuid[37] = { 0 };
-#endif
-#endif
-    char *struuidptr = NULL;
+    char struuid[NHUUIDSZ] = { 0 };
 #if defined(LINUX) && defined(NHUUID)
     uuid_t binuuid;
 #endif
@@ -862,20 +857,17 @@ get_nhuuid(void)
     if (svn.nhuuid[0])
         return;
 
-#if defined(MACOS) && defined(NHUUID)
-    get_macos_uuid(&struuidptr);
-#elif defined(LINUX) && defined(NHUUID)
+#if defined(MACOS)
+    get_macos_uuid(&struuid[0]);
+#elif defined(LINUX)
     uuid_generate_random(binuuid);
     uuid_unparse(binuuid, struuid);
-    struuidptr = &struuid[0];
 #endif /* MACOS || LINUX */
 
-    if (struuidptr)
-        Snprintf(svn.nhuuid, sizeof svn.nhuuid, "%s", struuidptr);
+    if (struuid[0])
+        Snprintf(svn.nhuuid, sizeof svn.nhuuid, "%s", struuid);
 
-#if defined(MACOS) && defined(NHUUID)
-    free_macos_uuid();
-#endif
+#endif  /* NHUUID */
 }
 
 void

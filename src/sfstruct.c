@@ -572,7 +572,8 @@ mread(int fd, genericptr_t buf, unsigned len)
         /* Not perfect, but we don't have ssize_t available. */
     rlen = (readLenType) read(fd, buf, (readLenType) len);
     if ((readLenType) rlen != (readLenType) len) {
-        if (restoreinfo.mread_flags == 1) { /* means "return anyway" */
+        if ((restoreinfo.mread_flags == 1) /* means "return anyway" */
+            || (program_state.reading_bonesfile == 1)) {
             restoreinfo.mread_flags = -1;
             return;
         } else {

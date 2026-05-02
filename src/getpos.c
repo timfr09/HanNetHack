@@ -852,7 +852,7 @@ getpos(coord *ccp, boolean force, const char *goal)
 #endif
     curs(WIN_MAP, cx, cy);
     flush_screen(0);
-#ifdef MAC
+#ifdef MACOS9
     lock_mouse_cursor(TRUE);
 #endif
     lock_mouse_buttons(TRUE);
@@ -1149,7 +1149,7 @@ getpos(coord *ccp, boolean force, const char *goal)
         flush_screen(0);
     }
  exitgetpos:
-#ifdef MAC
+#ifdef MACOS9
     lock_mouse_cursor(FALSE);
 #endif
     lock_mouse_buttons(FALSE);

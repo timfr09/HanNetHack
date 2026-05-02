@@ -1,5 +1,7 @@
 # HanNetHack Internationalization (i18n) System
 
+> **역할 구분:** 번역 작업·문체·조사 규칙은 **[TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md)** 가 단일 기준입니다. 이 문서는 아키텍처·매크로·빌드 흐름을 개발자 참고용으로 정리합니다. 업스트림 병합 시 워크플로는 **[../doc/i18n-upstream-merge.md](../doc/i18n-upstream-merge.md)** 를 보면 됩니다.
+
 ## Overview
 
 HanNetHack extends NetHack 3.7 with a comprehensive internationalization system that supports:

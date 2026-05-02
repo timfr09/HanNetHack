@@ -1603,6 +1603,7 @@ when starting a new game as a monk, newsym(0,0) was being called (adjabil ->
 	became level 1; seen 'monster' was the hero who hadn't been placed
 	on the map yet)
 incorporate a fix to prevent segfault due to rolling boulder trap
+wands of digging generate less often lategame
 
 
 Fixes to 3.7.0-x General Problems Exposed Via git Repository

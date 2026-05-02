@@ -86,8 +86,19 @@ Full data package (nmake, from src\)
 --------------------------------------
 
 To rebuild nhdat370 with the Korean locale bundle and .mo catalog
-(the same output as CI `nmake package`), run from src\ after
-nhsetup produces src\Makefile:
+(the same output as CI `nmake package`), run from src\ after nhsetup.
+
+HanNetHack `nhsetup.bat` defaults to a non-destructive install: it writes
+`src\Makefile.win` (and GNUmakefile.win) without overwriting `src\Makefile`,
+so a Unix `setup.sh` tree on the same clone stays intact. Build with:
+
+    nmake /f Makefile.win package
+
+CI and anyone who wants the classic NetHack layout (`src\Makefile`) should run:
+
+    sys\windows\nhsetup.bat /overwrite
+
+Then from src\:
 
     nmake package
 

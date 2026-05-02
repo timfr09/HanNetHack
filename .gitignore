@@ -30,6 +30,10 @@ core
 
 # We generate makefiles by shell script
 Makefile
+# Windows nhsetup non-destructive outputs (src\)
+Makefile.win
+GNUmakefile.win
+GNUmakefile.depend.win
 
 # Win32-specific ignores
 Debug/

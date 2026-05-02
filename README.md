@@ -1,15 +1,19 @@
 # HanNetHack — Korean NetHack
 
-![Version](https://img.shields.io/badge/version-3.7.0--ko.6-blue)
+![Version](https://img.shields.io/badge/version-5.0.0--ko.0-blue)
 ![License](https://img.shields.io/badge/license-NGPL-green)
 ![Translation](https://img.shields.io/badge/translation-WIP-yellow)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey)
 
 ## 처음 오시는 분께
 
-**HanNetHack**은 [NetHack](https://www.nethack.org/) 3.7을 바탕으로 한 **비공식 한국어 로컬라이즈 포크**입니다. NetHack DevTeam 공식 배포물이 아닙니다.
+**HanNetHack**은 [NetHack](https://www.nethack.org/)을 바탕으로 한 **비공식 한국어 로컬라이즈 포크**입니다. NetHack DevTeam 공식 배포물이 아닙니다.
 
-NetHack 3.7은 업스트림에서도 계속 개발·조정이 이루어지는 버전입니다. HanNetHack은 [NetHack/NetHack](https://github.com/NetHack/NetHack) 저장소의 **`NetHack-3.7`** 브랜치에 올라오는 변경을 가능할 때마다 가져와 이 포크에 병합합니다.
+### NetHack 5.0과 앞으로의 작업
+
+2026년 1월, 업스트림 NetHack이 **5.0.0**([`NetHack-5.0.0_Released`](https://github.com/NetHack/NetHack/releases))을 출시했습니다. HanNetHack은 이를 반영해 **`HanNetHack-5.0`** 브랜치에서 빌드·번역·개발을 이어갑니다. **기본 브랜치와 일상적인 기여·번역 작업의 기준은 5.0**입니다. (과거 3.7 기반 작업은 `HanNetHack-3.7` 브랜치에 보존됩니다.)
+
+업스트림 변경은 [NetHack/NetHack](https://github.com/NetHack/NetHack)의 **`NetHack-5.0`** 브랜치를 가능할 때마다 병합합니다. 유지보수자용 병합 절차는 [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md)를 참고하세요.
 
 - **버그·오역·문구 개선 제안**: [GitHub Issues](https://github.com/timfr09/HanNetHack/issues)에 올려 주세요. (영문·한국어 모두 가능합니다.)
 - **원본 게임**: 상위 프로젝트는 [NetHack on GitHub](https://github.com/NetHack/NetHack)입니다.
@@ -31,9 +35,9 @@ NetHack 3.7은 업스트림에서도 계속 개발·조정이 이루어지는 �
 
 ## Overview
 
-**HanNetHack** is an unofficial, community-maintained Korean localization of NetHack 3.7 for Linux and Windows. It is **not** affiliated with the NetHack DevTeam.
+**HanNetHack** is an unofficial, community-maintained Korean localization of NetHack **5.0** for Linux and Windows. It is **not** affiliated with the NetHack DevTeam.
 
-NetHack 3.7 is still under active upstream development. This fork periodically merges new commits from the upstream [`NetHack-3.7`](https://github.com/NetHack/NetHack/tree/NetHack-3.7) branch when practical. Maintainer-oriented merge workflow: [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md).
+Upstream NetHack **5.0.0** shipped in January 2026 ([release tag](https://github.com/NetHack/NetHack/releases)). This fork tracks [`NetHack-5.0`](https://github.com/NetHack/NetHack/tree/NetHack-5.0) on [NetHack/NetHack](https://github.com/NetHack/NetHack). **Use branch [`HanNetHack-5.0`](https://github.com/timfr09/HanNetHack/tree/HanNetHack-5.0) for ongoing development and translation** (repository default branch). Older 3.7-era history remains on [`HanNetHack-3.7`](https://github.com/timfr09/HanNetHack/tree/HanNetHack-3.7). Maintainer-oriented merge workflow: [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md).
 
 - **Bugs, translation mistakes, or wording feedback**: please file [GitHub Issues](https://github.com/timfr09/HanNetHack/issues).
 - **Upstream source**: [NetHack/NetHack](https://github.com/NetHack/NetHack).
@@ -66,7 +70,7 @@ The easiest way to try the game is a release build from the [Releases](https://g
 git clone https://github.com/timfr09/HanNetHack.git
 cd HanNetHack
 
-cd sys/unix && sh setup.sh hints/linux.370 && cd ../..
+cd sys/unix && sh setup.sh hints/linux.500 && cd ../..
 make fetch-lua          # one-time: download Lua 5.4.8 source
 make all                # do NOT use -j (Lua build can race)
 make install            # installs to ~/nh/install/
@@ -111,6 +115,8 @@ OPTIONS=language:en
 
 ### Translation workflow
 
+Work from the **`HanNetHack-5.0`** branch (same tree as upstream 5.0 plus Korean patches).
+
 1. Edit **`po/ko_manual.po`** only (the canonical file committed to git).
 2. `cd po && make compile` produces `dat/locale/ko/nethack.mo`.
 3. Rebuild so `nhdat` picks up the catalog (`make all` on Linux after Unix setup; Windows as above).
@@ -133,7 +139,7 @@ See **Korean translation system (brief)** above for architecture; [`po/I18N_SYST
 
 ### Versioning
 
-HanNetHack uses semantic versioning with a Korean-translation suffix, e.g. `v3.7.0-ko.6` (based on NetHack 3.7.0, Korean iteration 6).
+HanNetHack uses semantic versioning with a Korean-translation suffix, e.g. `v5.0.0-ko.0` (based on NetHack 5.0.0, Korean iteration 0). The badge at the top of this file tracks the current packaging snapshot.
 
 ### License
 

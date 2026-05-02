@@ -1,4 +1,4 @@
-/* NetHack 3.7	insight.c	$NHDT-Date: 1777004419 2026/04/23 20:20:19 $  $NHDT-Branch: NetHack-3.7 $:$NHDT-Revision: 1.134 $ */
+/* NetHack 5.0	insight.c	$NHDT-Date: 1777004419 2026/04/23 20:20:19 $  $NHDT-Branch: NetHack-3.7 $:$NHDT-Revision: 1.134 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -2034,21 +2034,6 @@ attributes_enlightenment(
         enl_msg(_("The made fruit flag "), _("is "), _("was "), buf, "");
     }
 #endif
-
-    /* saving-grace: show during final disclosure, hide during normal play */
-    if (final || wizard || discover) {
-        static const char *verbchoices[2][2] = {
-            { N_("might avoid"), N_("have avoided") },
-            { N_("could have avoided"), N_("avoided") },
-        };
-        /* u.usaving_grace will always be 0 or 1; final is 0 (game in
-           progress), 1 (game over, survived), or 2 (game over, died) */
-        const char *verb = _(verbchoices[!!final][u.usaving_grace]);
-
-        /* 'verb' has already been set for present or past but enl_msg()
-           needs it twice, one for in progress, the other for game over */
-        enl_msg(You_, verb, verb, _(" a one-shot death via saving-grace"), "");
-    }
 
     {
         const char *p;

@@ -1,4 +1,4 @@
-/* NetHack 3.7	allmain.c	$NHDT-Date: 1771213100 2026/02/15 19:38:20 $  $NHDT-Branch: NetHack-3.7 $:$NHDT-Revision: 1.286 $ */
+/* NetHack 5.0	allmain.c	$NHDT-Date: 1771213100 2026/02/15 19:38:20 $  $NHDT-Branch: NetHack-3.7 $:$NHDT-Revision: 1.286 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2012. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -209,7 +209,6 @@ moveloop_core(void)
             encumber_msg();
 
             svc.context.mon_moving = TRUE;
-            gu.uhp_at_start_of_monster_turn = u.uhp;
             do {
                 monscanmove = movemon();
                 if (u.umovement >= NORMAL_SPEED)
@@ -277,8 +276,6 @@ moveloop_core(void)
 
                 if (u.ublesscnt)
                     u.ublesscnt--;
-
-                gs.saving_grace_turn = FALSE;
 
                 /* One possible result of prayer is healing.  Whether or
                  * not you get healed depends on your current hit points.
@@ -430,8 +427,6 @@ moveloop_core(void)
         /* when/if hero escapes from lava, he can't just stay there */
         else if (!u.umoved)
             (void) pooleffects(FALSE);
-
-        gs.saving_grace_turn = FALSE;
 
         /* vision while buried or underwater is updated here */
         if (Underwater)

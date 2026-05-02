@@ -3343,7 +3343,7 @@ msgid "Commit suicide"
 msgstr "자살"
 
 msgid "Load which lua file?"
-msgstr "어떤 lua 파일을 불러올까요?"
+msgstr "어떤 Lua 스크립트를 불러올까요?"
 
 msgid "To what experience level do you want to be set?"
 msgstr "어떤 경험 레벨로 설정하겠습니까?"
@@ -3758,7 +3758,7 @@ msgid "Perform seppuku"
 msgstr "할복 자살"
 
 msgid "Load which des lua file?"
-msgstr "어떤 des lua 파일을 불러올까요?"
+msgstr "어떤 레벨 스크립트(.des)를 불러올까요?"
 
 msgid "Current memory statistics:"
 msgstr "현재 메모리 통계:"
@@ -11394,43 +11394,43 @@ msgstr "소코반에 들어갔다"
 # air.lua - 공기 원소 레벨
 #: ../dat/air.lua:12
 msgid "What a strange feeling!"
-msgstr "이상한 느낌이다!"
+msgstr "기묘한 감각이 온몸을 스친다!"
 
 #: ../dat/air.lua:13
 msgid "You notice that there is no gravity here."
-msgstr "여기에는 중력이 없다는 것을 알아챘다."
+msgstr "이곳에서는 중력이 느껴지지 않는다."
 
 # astral.lua - 아스트랄 계
 #: ../dat/astral.lua:10
 msgid "You arrive on the Astral Plane!"
-msgstr "아스트랄 계에 도착했다!"
+msgstr "아스트랄 평면에 발을 디뎠다!"
 
 #: ../dat/astral.lua:11
 #, c-format
 msgid "Here the High Temple of %d is located."
-msgstr "여기에 %d의 고등 사원이 있다."
+msgstr "이곳에는 %d의 대성전이 서 있다."
 
 #: ../dat/astral.lua:12
 msgid "You sense alarm, hostility, and excitement in the air!"
-msgstr "공기 중에서 경보, 적의, 흥분을 느낀다!"
+msgstr "공기 속에 긴장과 적의, 들뜬 기운이 감돈다!"
 
 # earth.lua - 대지 원소 레벨
 #: ../dat/earth.lua:17
 msgid "Well done, mortal!"
-msgstr "잘했다, 필멸자여!"
+msgstr "해냈구나, 필멸자여!"
 
 #: ../dat/earth.lua:18
 msgid "But now thou must face the final Test..."
-msgstr "하지만 이제 최후의 시험을 마주해야 한다..."
+msgstr "그러나 이제 최후의 시험이 기다린다..."
 
 #: ../dat/earth.lua:19
 msgid "Prove thyself worthy or perish!"
-msgstr "자격을 증명하라, 아니면 죽어라!"
+msgstr "자격을 증명하라. 그렇지 못하면 죽음뿐이다!"
 
 # water.lua - 물 원소 레벨
 #: ../dat/water.lua:10
 msgid "You find yourself suspended in an air bubble surrounded by water."
-msgstr "물에 둘러싸인 공기 방울 안에 떠 있다는 것을 알아챘다."
+msgstr "물로 둘러싸인 공기 방울 속에 몸이 둥실 떠 있다."
 
 # ============================================================
 # 신 분노 컨텍스트 (insight.c)
@@ -11586,7 +11586,7 @@ msgstr "떨어졌다"
 # ============================================================
 # Arc-loca.lua - 고고학자 퀘스트 각인
 msgid "X marks the spot."
-msgstr "X가 그 자리를 표시한다."
+msgstr "보물은 X가 가리키는 곳에 묻혀 있다."
 
 # ============================================================
 # 래핑 안 된 문자열 전체 현황 (2026-02-06 검토)
@@ -18716,7 +18716,7 @@ msgstr "재충전되었다."
 
 #: ../src/artifact.c:1893
 msgid "Open a portal to which dungeon?"
-msgstr "어느 던전으로 포탈을 열까요?"
+msgstr "어느 던전으로 포털을 열까요?"
 
 #: ../src/artifact.c:1925 ../src/teleport.c:1182
 msgid "very disoriented for a moment."
@@ -24981,7 +24981,7 @@ msgstr "다리"
 
 #: ../src/dungeon.c:2239 ../src/dungeon.c:3388
 msgid "Portal"
-msgstr "포탈"
+msgstr "포털"
 
 #: ../src/dungeon.c:2270
 #, c-format
@@ -25000,7 +25000,7 @@ msgstr "   %s에서 %s로"
 
 #: ../src/dungeon.c:2420
 msgid "No portal found."
-msgstr "포탈을 찾을 수 없다."
+msgstr "포털을 찾을 수 없다."
 
 #: ../src/dungeon.c:2488
 #, c-format
@@ -25027,7 +25027,7 @@ msgstr "(알 수 없음)"
 
 #: ../src/dungeon.c:3388
 msgid "Sealed portal"
-msgstr "봉인된 포탈"
+msgstr "봉인된 포털"
 
 #: ../src/dungeon.c:3394
 msgid "Stairs up"
@@ -53286,7 +53286,7 @@ msgstr "\"%s\"{을/를} 읽기용으로 열 수 없다!"
 #~ msgstr "고유 물품"
 
 # ============================================================
-# v3.7.0-ko.5 업스트림 머지로 새로 추가된 문자열
+# v3.7.0-ko.6 업스트림 머지로 새로 추가된 문자열
 # (insight.c rerolling block, options.c idlecheckpoint,
 #  trap.c lethargic aura, teleport.c stasis, hack.c rolling
 #  boulder, wizcmds.c NHUUID)
@@ -53346,45 +53346,68 @@ msgstr "이 던전 층을 뭐라고 부르겠습니까?"
 
 # windmain.c — 락/자가 복구(self-recover) 프롬프트
 msgid "There are files from a game in progress under your name. "
-msgstr "같은 이름으로 진행 중이던 게임에 쓰인 파일이 남아 있습니다. "
+msgstr "이 이름으로 진행 중이던 게임 기록이 아직 남아 있습니다. "
 
 msgid "Recover? [yn] "
-msgstr "복구하겠습니까? [yn] "
+msgstr "복구할까요? [yn] "
 
 msgid "\n\nAre you sure you wish to destroy the old game rather than try to\n"
-msgstr "\n\n이전 게임을 복구하지 않고 지우기로 하겠습니까? (되돌릴 수 없을 수 있습니다.)\n"
+msgstr "\n\n복구하지 않고 이전 세션을 지우고 새로 시작하시겠습니까?\n"
 
 msgid "recover it? [yn] "
-msgstr "지우겠습니까? [yn] "
+msgstr "그래도 지울까요? [yn] "
 
 msgid "There are files from a game in progress under your name. Recover?"
-msgstr "같은 이름으로 진행 중이던 게임에 쓰인 파일이 남아 있습니다. 복구하겠습니까?"
+msgstr "이 이름으로 진행 중이던 게임이 있습니다. 복구할까요?"
 
 msgid "There are files from a game in progress under your name. "
 "Recover? [yn]"
-msgstr "같은 이름으로 진행 중이던 게임에 쓰인 파일이 남아 있습니다. "
-"복구하겠습니까? [yn]"
+msgstr "이 이름으로 진행 중이던 게임이 있습니다. "
+"복구할까요? [yn]"
 
 msgid "Are you sure you wish to destroy the old game, rather than try to "
 "recover it? [yn] "
-msgstr "이전 게임을 복구하지 않고 지우기로 하겠습니까? (되돌릴 수 없을 수 있습니다.) "
-"정말 지우겠습니까? [yn] "
+msgstr "복구 대신 이전 게임을 버리고 새로 시작하시겠습니까? [yn] "
 
 #, c-format
 msgid "You chose to %s."
-msgstr "다음을 선택했습니다: %s."
+msgstr "선택한 동작: %s."
 
 msgid "destroy the old game and start a new one"
-msgstr "이전 게임을 지우고 새 게임을 시작하는 것"
+msgstr "이전 게임을 지우고 새로 시작"
 
 msgid "recover the old game"
-msgstr "이전 게임을 복구하는 것"
+msgstr "이전 게임 복구"
 
 msgid "not start a new game"
-msgstr "새 게임을 시작하지 않는 것"
+msgstr "새 게임 시작 안 함"
 
 msgid "Couldn't recover the old game."
-msgstr "이전 게임을 복구할 수 없습니다."
+msgstr "이전 게임을 복구하지 못했습니다."
 
 msgid "Couldn't destroy the old game."
-msgstr "이전 게임의 잠금/파일을 지울 수 없습니다."
+msgstr "이전 게임 데이터를 지우지 못했습니다."
+
+# windmain.c — 시작/복구 경로 메시지
+#, c-format
+msgid "%s\n%s\n%s\n%s\n\n"
+msgstr "%s\n%s\n%s\n%s\n\n"
+
+#, c-format
+msgid "NetHack was unable to open the required file \"%s\""
+msgstr "필수 파일 \"%s\"을(를) 열 수 없습니다."
+
+msgid "\nAre you perhaps trying to run NetHack within a zip utility?"
+msgstr "\n압축을 푼 폴더에서 실행해 보시겠어요? (zip 안에서 바로 실행하면 안 될 수 있습니다.)"
+
+msgid "Cannot create lock file"
+msgstr "잠금 파일을 만들지 못했습니다."
+
+msgid "Restoring save file..."
+msgstr "세이브를 불러오는 중..."
+
+msgid "are in non-scoring discovery mode."
+msgstr "탐험 모드입니다. (점수 기록 없음)"
+
+msgid "Do you want to keep the save file?"
+msgstr "세이브 파일을 남겨둘까요?"

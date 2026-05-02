@@ -309,13 +309,13 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
 #endif
 #ifdef DLB
     if (!dlb_init()) {
-        pline("%s\n%s\n%s\n%s\n\n", copyright_banner_line(1),
+        pline(_("%s\n%s\n%s\n%s\n\n"), copyright_banner_line(1),
               copyright_banner_line(2), copyright_banner_line(3),
               copyright_banner_line(4));
-        pline("NetHack was unable to open the required file \"%s\"", DLBFILE);
+        pline(_("NetHack was unable to open the required file \"%s\""), DLBFILE);
         if (file_exists(DLBFILE))
-            pline("\nAre you perhaps trying to run NetHack within a zip "
-                  "utility?");
+            pline(_("\nAre you perhaps trying to run NetHack within a zip "
+                    "utility?"));
         error("dlb_init failure.");
     }
 #endif
@@ -401,7 +401,7 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
      */
     nhfp = create_levelfile(0, (char *) 0);
     if (!nhfp) {
-        raw_print("Cannot create lock file");
+        raw_print(_("Cannot create lock file"));
     } else {
         svh.hackpid = GetCurrentProcessId();
         (void) write(nhfp->fd, (genericptr_t) &svh.hackpid, sizeof(svh.hackpid));
@@ -426,16 +426,16 @@ attempt_restore:
         }
 #endif
         if (ge.early_raw_messages)
-            raw_print("Restoring save file...");
+            raw_print(_("Restoring save file..."));
         else
-            pline("Restoring save file...");
+            pline(_("Restoring save file..."));
         mark_synch(); /* flush output */
         if (dorecover(nhfp)) {
             resuming = TRUE; /* not starting new game */
             if (discover)
-                You("are in non-scoring discovery mode.");
+                You(_("are in non-scoring discovery mode."));
             if (discover || wizard) {
-                if (y_n("Do you want to keep the save file?") == 'n')
+                if (y_n(_("Do you want to keep the save file?")) == 'n')
                     (void) delete_savefile();
                 else {
                     nh_compress(fqname(gs.SAVEF, SAVEPREFIX, 0));
@@ -464,7 +464,7 @@ attempt_restore:
         }
         newgame();
         if (discover)
-            You("are in non-scoring discovery mode.");
+            You(_("are in non-scoring discovery mode."));
     }
 
         // iflags.debug_fuzzer = TRUE;

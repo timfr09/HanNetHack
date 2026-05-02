@@ -43,7 +43,7 @@ The easiest way to try the game is a release build from the [Releases](https://g
 - Large-scale Korean UI and message translation (ongoing; `cd po && make stats`)
 - Runtime Korean grammar (topic/subject/object markers, etc.) via a small postposition engine
 - Speech-style-aware wording where the speaker warrants it
-- `symset:Korean`, emoji set, UTF-8 width handling on TTY and Windows GUI
+- UTF-8 display width handling on TTY and the Windows GUI
 - Localized text in the Windows GUI character picker
 
 ### Build from source — Linux
@@ -93,14 +93,6 @@ The game defaults to Korean. To switch language, edit `~/.nethackrc` or `%USERPR
 ```
 OPTIONS=language:ko
 OPTIONS=language:en
-```
-
-Symbol sets (examples):
-
-```
-OPTIONS=symset:Korean
-OPTIONS=symset:Emoji
-OPTIONS=symset:IBMgraphics_langstripped
 ```
 
 ### Translation workflow

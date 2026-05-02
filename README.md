@@ -9,6 +9,8 @@
 
 **HanNetHack**은 [NetHack](https://www.nethack.org/) 3.7을 바탕으로 한 **비공식 한국어 로컬라이즈 포크**입니다. NetHack DevTeam 공식 배포물이 아닙니다.
 
+NetHack 3.7은 업스트림에서도 계속 개발·조정이 이루어지는 버전입니다. HanNetHack은 [NetHack/NetHack](https://github.com/NetHack/NetHack) 저장소의 **`NetHack-3.7`** 브랜치에 올라오는 변경을 가능할 때마다 가져와 이 포크에 병합합니다.
+
 - **버그·오역·문구 개선 제안**: [GitHub Issues](https://github.com/timfr09/HanNetHack/issues)에 올려 주세요. (영문·한국어 모두 가능합니다.)
 - **원본 게임**: 상위 프로젝트는 [NetHack on GitHub](https://github.com/NetHack/NetHack)입니다.
 
@@ -21,18 +23,20 @@
 3. **`NetHackW.exe`** 를 실행하면 타일 GUI, **`NetHack.exe`** 는 콘솔(터미널) 버전입니다. 데이터와 번역은 ZIP 안에 포함되어 있습니다.
 4. 설정은 사용자별 `NetHack\.nethackrc`(또는 배포 문서에 안내된 경로)에서 할 수 있습니다. 기본 언어는 한국어입니다. 영어로 바꾸려면 `OPTIONS=language:en` 등을 사용합니다.
 
-자세한 빌드·개발 정보는 아래 **English** 섹션을 참고하세요.
+빌드·번역·개발 정보는 아래 **Overview**부터 이어지는 섹션을 참고하세요.
 
 ![HanNetHack on Windows](doc/screenshot-win.png)
 
 ---
 
-## English
+## Overview
 
 **HanNetHack** is an unofficial, community-maintained Korean localization of NetHack 3.7 for Linux and Windows. It is **not** affiliated with the NetHack DevTeam.
 
+NetHack 3.7 is still under active upstream development. This fork periodically merges new commits from the upstream [`NetHack-3.7`](https://github.com/NetHack/NetHack/tree/NetHack-3.7) branch when practical. Maintainer-oriented merge workflow: [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md).
+
 - **Bugs, translation mistakes, or wording feedback**: please file [GitHub Issues](https://github.com/timfr09/HanNetHack/issues).
-- **Upstream**: changes from [NetHack/NetHack](https://github.com/NetHack/NetHack) are merged when practical.
+- **Upstream source**: [NetHack/NetHack](https://github.com/NetHack/NetHack).
 
 ### Pre-built binaries
 

@@ -2,10 +2,10 @@
 
                          위협의 미로에 대한 가이드(NetHack 가이드북)
 
-                       원본 버전 - Eric S. Raymond(Mike Stephenson 등이 NetHack
-                       3.7.0용으로 편집하고 확장함)
+                       원본 버전 - Eric S. Raymond
+          (Mike Stephenson 등이 NetHack 5.0.0용으로 편집·확장)
 
-                                 2026년 4월 16일
+                                  2026년 5월 2일
 
      1. 소개
 

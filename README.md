@@ -5,10 +5,15 @@
 ![Translation](https://img.shields.io/badge/translation-WIP-yellow)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey)
 
-넷핵 3.7 버전을 기반으로 하는 한국어판 넷핵입니다. 비공식 개인 프로젝트로 진행중입니다.
-오리지널 3.7 버전은 현재 개발 중입니다. 원본 변경 내용을 주기적으로 이 저장소에 반영하고 있습니다.
+**HanNetHack**은 NetHack 3.7을 바탕으로 한 **비공식 한국어 로컬라이즈 포크**입니다. 게임 안의 영문 메시지는 GNU gettext 형식의 **`nethack.mo`** 번역 카탈로그로 빌드되어 `nhdat` 데이터 묶음 안에 포함되고, 실행 시에는 이 포크에 포함된 자체 리더(`src/mo_reader.c`)가 이를 읽습니다. (`libintl` 동적 라이브러리를 런타임에 의존하지 않습니다.)
 
-A personal Korean localization of NetHack 3.7.
+번역을 손으로 고치는 저장소 기준 파일은 **`po/ko_manual.po`** 하나입니다. `ko.po`는 로컬에서 `make update-po` 등으로 만들어 두는 **선택적 캐시**(자동 추출 문자열용)이며 git에는 올리지 않습니다. 한국어 도움말·루머·Lua 등은 `dat/locale/ko/` 아래 두고 `dlb_fopen()`이 언어별 경로를 우선합니다.
+
+원본 [NetHack](https://github.com/NetHack/NetHack) 저장소의 변경은 가능할 때마다 이쪽 브랜치로 가져와 병합합니다.
+
+---
+
+**English:** A personal, unofficial Korean localization of NetHack 3.7 for Linux and Windows. Message catalogs ship as `.mo` inside `nhdat`; runtime lookup uses the in-tree reader above, not GNU libintl.
 
 > **Note**: This is an unofficial fan translation project, not affiliated with the NetHack DevTeam.
 
@@ -21,7 +26,7 @@ A personal Korean localization of NetHack 3.7.
 ## Features
 
 ### Korean Translation
-- 11,000+ messages translated (work in progress)
+- 대규모 게임 메시지 번역 (계속 다듬는 중; 통계는 `cd po && make stats`)
 - Dynamic postposition system for natural Korean grammar (`{은/는}`, `{이/가}`, `{을/를}`, `{과/와}`, `{으로/로}`)
 - Speech-style distinction (polite / casual / semi-polite) following the in-game speaker
 - Consistent terminology across all game messages
@@ -145,14 +150,12 @@ consonant. HanNetHack picks the correct form at runtime:
 
 ### Translation Improvements
 
-1. Edit `po/ko_manual.po` (**not** `ko.po` — that file is auto-generated and
-   gets overwritten by `make update-po`).
-2. Compile the merged catalog: `cd po && make compile`.
-3. Run the game and verify the change in context.
-4. Submit a pull request against this fork.
+1. Edit **`po/ko_manual.po`** only (the canonical committed source).
+2. Build the catalog: `cd po && make compile` (writes `dat/locale/ko/nethack.mo`; optional local `ko.po` from `make update-po` acts as a merge fallback).
+3. Rebuild the game so `nhdat` picks up the new catalog: from the repo root, `make all` (after the usual `sys/unix` setup on Linux).
+4. Play-test and open a pull request against **this fork** (`timfr09/HanNetHack`).
 
-See [`po/README.md`](po/README.md) and `po/TRANSLATION_GUIDE_KO.md` for the
-full translation workflow and conventions.
+Quick reference: [`po/README.md`](po/README.md). Detailed Korean conventions: [`po/TRANSLATION_GUIDE_KO.md`](po/TRANSLATION_GUIDE_KO.md). Maintainer-oriented upstream merge notes: [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md).
 
 ### Reporting Issues
 

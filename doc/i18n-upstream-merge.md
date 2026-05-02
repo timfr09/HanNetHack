@@ -20,14 +20,14 @@ HanNetHack은 두 가지 번역 메커니즘을 사용합니다:
 ### 1. gettext (C 소스 코드)
 
 ```
-src/*.c의 _("메시지") → po/nethack.pot → po/ko.po + ko_manual.po → nethack.mo
+src/*.c의 _("메시지") → po/nethack.pot → (선택) ko.po 캐시 + ko_manual.po → ko_merged.po → dat/locale/ko/nethack.mo → nhdat 번들
 ```
 
-- 런타임에 `gettext()` 함수가 번역을 조회
-- **ko_manual.po**: 수동으로 관리하는 번역 (절대 자동 덮어쓰기 안 됨, 우선권)
-- **ko.po**: `xgettext`/`msgmerge`로 자동 관리되는 번역 (덮어쓰기 가능)
-- **ko_merged.po**: 빌드 시 `msgcat --use-first ko_manual.po ko.po`로 자동 생성
-- `ko_manual.po`의 번역이 항상 `ko.po`보다 우선
+- 런타임에는 GNU libintl 대신 **`src/mo_reader.c`** 가 DLB 안의 `nethack.mo`를 읽고, `_()` 는 **`nh_gettext()`** 로 조회됩니다.
+- **ko_manual.po**: 저장소에 커밋되는 유일한 한국어 번역 원본(우선권).
+- **ko.po**: `make update-po` 로 로컬에서만 재생성되는 선택적 캐시(gitignored). 없어도 `make compile` 은 `ko_manual.po` 만으로 동작.
+- **ko_merged.po**: 빌드 시 `msgcat --use-first ko_manual.po ko.po`(ko.po가 있을 때만 후자 참여)로 생성.
+- 동일 msgid는 항상 **ko_manual.po** 쪽이 이깁니다.
 
 ### 2. 파일 교체 (데이터 파일, Lua)
 
@@ -56,8 +56,8 @@ if (do_dlb_fopen(dp, locale_name, mode)) {  // 한국어 파일 시도
 po/
 ├── Makefile             # 번역 빌드 시스템 (make pot, make compile 등)
 ├── nethack.pot          # 번역 템플릿 (xgettext로 생성)
-├── ko.po                # 한국어 번역 (자동 관리, 덮어쓰기 가능!)
-├── ko_manual.po         # 한국어 수동 번역 (우선권, 안전)
+├── ko.po                # 로컬 전용 자동 병합 캐시 (gitignored, 선택)
+├── ko_manual.po         # 한국어 수동 번역 (커밋되는 유일 원본)
 └── ko_merged.po         # 빌드 시 자동 생성 (ko_manual.po + ko.po)
 
 dat/locale/ko/
@@ -78,7 +78,7 @@ dat/locale/ko/
 덮어쓰기될 수 있습니다. `ko_manual.po`에 넣은 번역은 이 과정에서 절대 영향받지 않으며,
 빌드 시 `msgcat --use-first`로 합칠 때 항상 우선권을 가집니다.
 
-**편집 규칙: `ko_manual.po`만 직접 편집. `ko.po`는 자동 관리 전용.**
+**편집 규칙: `ko_manual.po`만 직접 편집.** `ko.po`는 `make update-po` 등으로 로컬에만 두고, 저장소에는 올리지 않습니다.
 
 ---
 

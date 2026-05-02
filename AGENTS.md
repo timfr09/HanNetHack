@@ -27,5 +27,14 @@ Korean is the default language. Config goes in `~/.nethackrc`.
 - `scripts/check-i18n-wrapping.sh` checks for unwrapped `_()` strings in source.
 - See `po/TRANSLATION_GUIDE_KO.md` for full translation rules and conventions.
 
+### Documentation map (for humans / agents)
+| Doc | Audience |
+|-----|----------|
+| `README.md` | Players & contributors — overview, build, links |
+| `po/README.md` | Translators — short workflow |
+| `po/TRANSLATION_GUIDE_KO.md` | Translators — rules, tone, particles |
+| `po/I18N_SYSTEM.md` | Developers — architecture & APIs |
+| `doc/i18n-upstream-merge.md` | Maintainers — merging upstream NetHack into this fork |
+
 ### Lint / Test
 There is no dedicated test suite or linter beyond `make all` (compiler warnings as lint) and the `scripts/check-i18n-wrapping.sh` script.

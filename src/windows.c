@@ -1018,9 +1018,13 @@ genl_status_update(
                 Strcpy(nb = eos(nb), _(" Ride"));
             break;
         default:
-            Sprintf(status_vals[idx],
-                    status_fieldfmt[idx] ? status_fieldfmt[idx] : "%s",
-                    text ? text : "");
+            {
+                const char *sfmt = status_fmt_for_bl((enum statusfields) idx,
+                                                       status_fieldfmt[idx]);
+
+                Sprintf(status_vals[idx], sfmt ? sfmt : "%s",
+                        text ? text : "");
+            }
             break;
         }
         return; /* processed one field other than BL_FLUSH */

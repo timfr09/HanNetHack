@@ -654,7 +654,10 @@ tty_player_selection(void)
 void
 tty_askname(void)
 {
-    static const char who_are_you[] = "Who are you? ";
+    const char *prompt = _("Who are you?");
+    const char *retry_prompt = _("Enter a name for your character...");
+    /* 1-based column where typing starts (after prompt + separating space). */
+    int input_col = utf8_display_width(prompt) + utf8_display_width(" ") + 1;
     int c, ct, tryct = 0;
 
 #ifdef SELECTSAVED
@@ -677,13 +680,13 @@ tty_askname(void)
             if (tryct > 10)
                 bail("Giving up after 10 tries.\n");
             tty_curs(BASE_WINDOW, 1, wins[BASE_WINDOW]->cury - 1);
-            tty_putstr(BASE_WINDOW, 0, "Enter a name for your character...");
+            tty_putstr(BASE_WINDOW, 0, retry_prompt);
             /* erase previous prompt (in case of ESC after partial response) */
             tty_curs(BASE_WINDOW, 1, wins[BASE_WINDOW]->cury), cl_end();
         }
-        tty_putstr(BASE_WINDOW, 0, who_are_you);
-        tty_curs(BASE_WINDOW, (int) (sizeof who_are_you),
-                 wins[BASE_WINDOW]->cury - 1);
+        tty_putstr(BASE_WINDOW, 0, prompt);
+        tty_putstr(BASE_WINDOW, 0, " ");
+        tty_curs(BASE_WINDOW, input_col, wins[BASE_WINDOW]->cury - 1);
         ct = 0;
         while ((c = tty_nhgetch()) != '\n') {
             if (c == EOF)
@@ -1817,20 +1820,20 @@ process_text_window(winid window, struct WinDesc *cw)
                 ++ttyDisplay->curx;
             }
             term_start_attr(attr);
-            for (cp = &cw->data[i][1]; *cp; cp++) {
-                /* For UTF-8 continuation bytes (0x80-0xBF), don't check
-                 * column limit - we must output the complete character */
-                if (((unsigned char) *cp & 0xC0) != 0x80) {
-                    /* This is a new character (ASCII or UTF-8 start byte) */
-                    int charwidth = utf8_char_width(cp);
-                    if ((int) ttyDisplay->curx + charwidth > (int) ttyDisplay->cols)
-                        break;  /* stop before starting a new character */
-                    ttyDisplay->curx += charwidth;
-                }
-                /* Use putchar() directly for text windows - we've already
-                 * called end_glyphout() so graphics mode is off, and using
-                 * g_putch() would corrupt UTF-8 bytes when symset is not UTF-8 */
-                (void) putchar(*cp);
+            /* Full UTF-8 character at a time: advance curx after putchar(), like
+             * NHW_MAP/NHW_BASE. Pre-incrementing curx per lead byte shifted
+             * wide glyphs right (gaps, mojibake) on the Win32 console buffer. */
+            for (cp = &cw->data[i][1]; *cp;) {
+                int charlen = utf8_char_len((unsigned char) *cp);
+                int charwidth = utf8_char_width(cp);
+                int bi;
+
+                if ((int) ttyDisplay->curx + charwidth > (int) ttyDisplay->cols)
+                    break;
+                for (bi = 0; bi < charlen && cp[bi]; bi++)
+                    (void) putchar(cp[bi]);
+                cp += charlen;
+                ttyDisplay->curx += charwidth;
             }
             term_end_attr(attr);
         }
@@ -2343,10 +2346,16 @@ tty_putstr(winid window, int attr, const char *str)
     case NHW_MAP:
         tty_curs(window, cw->curx + 1, cw->cury);
         term_start_attr(attr);
-        while (*str && (int) ttyDisplay->curx < (int) ttyDisplay->cols - 1) {
-            (void) putchar(*str);
-            str++;
-            ttyDisplay->curx++;
+        while (*str) {
+            int charwidth = utf8_char_width(str);
+            int charlen = utf8_char_len((unsigned char) *str);
+
+            if ((int) ttyDisplay->curx + charwidth > (int) ttyDisplay->cols - 1)
+                break;
+            for (i = 0; i < charlen && str[i]; i++)
+                (void) putchar(str[i]);
+            str += charlen;
+            ttyDisplay->curx += charwidth;
         }
         cw->curx = 0;
         cw->cury++;
@@ -2356,14 +2365,18 @@ tty_putstr(winid window, int attr, const char *str)
         tty_curs(window, cw->curx + 1, cw->cury);
         term_start_attr(attr);
         while (*str) {
-            if ((int) ttyDisplay->curx >= (int) ttyDisplay->cols - 1) {
+            int charwidth = utf8_char_width(str);
+            int charlen = utf8_char_len((unsigned char) *str);
+
+            if ((int) ttyDisplay->curx + charwidth > (int) ttyDisplay->cols - 1) {
                 cw->curx = 0;
                 cw->cury++;
                 tty_curs(window, cw->curx + 1, cw->cury);
             }
-            (void) putchar(*str);
-            str++;
-            ttyDisplay->curx++;
+            for (i = 0; i < charlen && str[i]; i++)
+                (void) putchar(str[i]);
+            str += charlen;
+            ttyDisplay->curx += charwidth;
         }
         cw->curx = 0;
         cw->cury++;
@@ -4606,7 +4619,8 @@ tty_status_update(
         /*FALLTHRU*/
     default:
         attrmask = (color >> 8) & 0x00FF;
-        fmt = status_fieldfmt[fldidx];
+        fmt = status_fmt_for_bl((enum statusfields) fldidx,
+                                status_fieldfmt[fldidx]);
         if (!fmt)
             fmt = "%s";
         /* should be checking for first enabled field here rather than
@@ -4620,7 +4634,7 @@ tty_status_update(
         tty_status[NOW][fldidx].idx = fldidx;
         tty_status[NOW][fldidx].color = (color & 0x00FF);
         tty_status[NOW][fldidx].attr = term_attr_fixup(attrmask);
-        tty_status[NOW][fldidx].lth = strlen(status_vals[fldidx]);
+        tty_status[NOW][fldidx].lth = utf8_display_width(status_vals[fldidx]);
         tty_status[NOW][fldidx].valid = TRUE;
         tty_status[NOW][fldidx].dirty = TRUE;
         tty_status[NOW][fldidx].sanitycheck = TRUE;
@@ -4908,7 +4922,7 @@ status_sanity_check(void)
 static void
 tty_putstatusfield(const char *text, int x, int y)
 {
-    int i, n, ncols, nrows, lth = 0;
+    int ncols, nrows;
     struct WinDesc *cw = 0;
 
     if (WIN_STATUS == WIN_ERR
@@ -4917,22 +4931,40 @@ tty_putstatusfield(const char *text, int x, int y)
 
     ncols = cw->cols;
     nrows = cw->maxrow;
-    lth = (int) strlen(text);
 
     print_vt_code2(AVTC_SELECT_WINDOW, NHW_STATUS);
 
     if (x < ncols && y < nrows) {
+        const char *tp = text;
+        int col_disp = x; /* 1-based column, matches tty_curs */
+
         if (x != cw->curx || y != cw->cury)
             tty_curs(NHW_STATUS, x, y);
-        for (i = 0; i < lth; ++i) {
-            n = i + x;
-            if (n < ncols && *text) {
-                (void) putchar(*text);
-                ttyDisplay->curx++;
-                cw->curx++;
-                cw->data[y][n - 1] = *text;
-                text++;
+
+        while (*tp && col_disp <= ncols) {
+            int charlen = utf8_char_len((unsigned char) *tp);
+            int charwidth = utf8_char_width(tp);
+            int k;
+
+            if (col_disp + charwidth - 1 > ncols)
+                break;
+
+            for (k = 0; k < charlen && tp[k]; ++k)
+                (void) putchar(tp[k]);
+
+            ttyDisplay->curx += charwidth;
+            cw->curx += charwidth;
+
+            /* Legacy cw->data is one char per display column (approximation). */
+            for (k = 0; k < charwidth; ++k) {
+                int idx = col_disp + k - 1;
+
+                if (idx >= 0 && idx < ncols)
+                    cw->data[y][idx] = (k < charlen) ? tp[k] : ' ';
             }
+
+            tp += charlen;
+            col_disp += charwidth;
         }
     }
 #if 0
@@ -4956,7 +4988,7 @@ set_condition_length(void)
         for (c = 0; c < SIZE(conditions); ++c) {
             mask = conditions[c].mask;
             if ((tty_condition_bits & mask) == mask)
-                lth += 1 + (int) strlen(conditions[c].text[cond_shrinklvl]);
+                lth += 1 + utf8_display_width(conditions[c].text[cond_shrinklvl]);
         }
     }
     tty_status[NOW][BL_CONDITION].lth = lth;
@@ -4970,7 +5002,7 @@ shrink_enc(int lvl)
         enc_shrinklvl = lvl;
         Sprintf(status_vals[BL_CAP], " %s", encvals[lvl][enclev]);
     }
-    tty_status[NOW][BL_CAP].lth = strlen(status_vals[BL_CAP]);
+    tty_status[NOW][BL_CAP].lth = utf8_display_width(status_vals[BL_CAP]);
 }
 
 static void
@@ -4985,7 +5017,7 @@ shrink_dlvl(int lvl)
         Strcpy(buf, (lvl == 0) ? "Dlvl" : "Dl");
         Strcat(buf, levval);
         Strcpy(status_vals[BL_LEVELDESC], buf);
-        tty_status[NOW][BL_LEVELDESC].lth = strlen(status_vals[BL_LEVELDESC]);
+        tty_status[NOW][BL_LEVELDESC].lth = utf8_display_width(status_vals[BL_LEVELDESC]);
     }
 }
 

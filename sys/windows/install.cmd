@@ -43,9 +43,42 @@ REM Create install directory
 if not exist "%DSTDIR%" mkdir "%DSTDIR%"
 
 echo [1/2] Copying executables...
-copy /y "%SRCDIR%\NetHack.exe" "%DSTDIR%\" >nul
-copy /y "%SRCDIR%\NetHackW.exe" "%DSTDIR%\" >nul
-copy /y "%SRCDIR%\recover.exe" "%DSTDIR%\" >nul
+echo        Build output ^(before copy^):
+for %%I in ("%SRCDIR%\NetHack.exe") do echo          NetHack.exe   %%~tI  %%~zI bytes
+for %%I in ("%SRCDIR%\NetHackW.exe") do echo          NetHackW.exe  %%~tI  %%~zI bytes
+for %%A in ("%SRCDIR%\NetHack.exe") do set "NH_T=%%~tA"
+for %%B in ("%SRCDIR%\NetHackW.exe") do set "NHW_T=%%~tB"
+if not "%NH_T%"=="%NHW_T%" (
+    echo.
+    echo WARNING: NetHack.exe and NetHackW.exe have different modification times in %SRCDIR%
+    echo          This usually means only one project was rebuilt. For matching builds:
+    echo          Visual Studio -^> Build -^> Rebuild Solution, or:
+    echo          PowerShell: .\Build-HanNetHack.ps1 -Target Rebuild
+    echo.
+)
+copy /y "%SRCDIR%\NetHack.exe" "%DSTDIR%\"
+if errorlevel 1 (
+    echo ERROR: Could not copy NetHack.exe into install\HanNetHack\
+    echo        Close NetHack.exe / NetHackW.exe if they are running from that folder, then retry.
+    popd
+    exit /b 1
+)
+copy /y "%SRCDIR%\NetHackW.exe" "%DSTDIR%\"
+if errorlevel 1 (
+    echo ERROR: Could not copy NetHackW.exe.
+    popd
+    exit /b 1
+)
+copy /y "%SRCDIR%\recover.exe" "%DSTDIR%\"
+if errorlevel 1 (
+    echo ERROR: Could not copy recover.exe.
+    popd
+    exit /b 1
+)
+copy /y "sys\windows\NetHack-console.cmd" "%DSTDIR%\" >nul
+echo        Installed folder:
+for %%I in ("%DSTDIR%\NetHack.exe") do echo          NetHack.exe   %%~tI  %%~zI bytes
+for %%I in ("%DSTDIR%\NetHackW.exe") do echo          NetHackW.exe  %%~tI  %%~zI bytes
 
 echo [2/2] Copying game data...
 if exist "%SRCDIR%\nhdat370" copy /y "%SRCDIR%\nhdat370" "%DSTDIR%\" >nul
@@ -86,11 +119,13 @@ echo.
 echo Game installed to: %DSTDIR%\
 echo.
 echo To play:
-echo   GUI version:     %DSTDIR%\NetHackW.exe
-echo   Console version: %DSTDIR%\NetHack.exe
+echo   GUI:       double-click %DSTDIR%\NetHackW.exe
+echo   Console:   double-click %DSTDIR%\NetHack.exe ^(normal^)
+echo   Optional:  %DSTDIR%\NetHack-console.cmd — UTF-8 chcp fallback if console text garbles
 echo.
-echo Note: If NetHack.exe looks frozen or broken, run it from
-echo   Command Prompt or Windows Terminal - not from Git Bash.
+echo Note: Git Bash often breaks the console build; use cmd / Windows Terminal if stuck.
+echo Old nethackrc may still request IBMGraphics: delete %DSTDIR%\nethackrc once to take new defaults,
+echo   or edit OPTIONS symset to Enhanced1 ^(see nethackrc.template^).
 echo.
 echo You can move the %DSTDIR% folder anywhere you like.
 

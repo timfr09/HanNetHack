@@ -65,6 +65,10 @@ msgstr ""
 msgid "Who are you?"
 msgstr "당신의 이름은?"
 
+#: win/tty/wintty.c
+msgid "Enter a name for your character..."
+msgstr "캐릭터 이름을 입력하세요..."
+
 #: (manual addition for i18n)
 msgid "lichen"
 msgstr "이끼"

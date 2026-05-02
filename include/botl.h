@@ -301,4 +301,7 @@ struct istat_s {
 
 extern const char *status_fieldnames[]; /* in botl.c */
 
+/* Resolve gettext for status line format (may differ from cached status_fieldfmt). */
+extern const char *status_fmt_for_bl(enum statusfields, const char *);
+
 #endif /* BOTL_H */

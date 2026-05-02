@@ -344,9 +344,14 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
         && !symset_is_compatible(gs.symset[PRIMARYSET].handling,
                                  windowprocs.wincap2)) {
         /* current symset handling and windowtype are
-           not compatible, feature-wise. Use IBM defaults */
-            load_symset("IBMGraphics_2", PRIMARYSET);
-            load_symset("RogueEpyx", ROGUESET);
+           not compatible, feature-wise. */
+#if defined(ENABLE_NLS)
+        /* HanNetHack: UTF-8 gettext + IBMGraphics breaks Windows console text. */
+        load_symset("Enhanced1", PRIMARYSET);
+#else
+        load_symset("IBMGraphics_2", PRIMARYSET);
+#endif
+        load_symset("RogueEpyx", ROGUESET);
     }
     /* Has the callback for the symset been invoked? Config file processing to
        load a symset runs too early to accomplish that because

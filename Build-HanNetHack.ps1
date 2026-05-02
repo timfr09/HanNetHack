@@ -268,8 +268,20 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 $binExe = Join-Path $RepoRoot "binary\$Configuration\$Platform\NetHack.exe"
+$binExeW = Join-Path $RepoRoot "binary\$Configuration\$Platform\NetHackW.exe"
 if (-not (Test-Path -LiteralPath $binExe)) {
     Write-Warning "예상 출력이 없습니다: $binExe"
+}
+elseif (Test-Path -LiteralPath $binExeW) {
+    $t1 = (Get-Item -LiteralPath $binExe).LastWriteTimeUtc
+    $t2 = (Get-Item -LiteralPath $binExeW).LastWriteTimeUtc
+    $deltaMin = [math]::Abs(($t1 - $t2).TotalMinutes)
+    if ($deltaMin -gt 2) {
+        Write-Warning @"
+NetHack.exe와 NetHackW.exe의 빌드 시각이 약 $([math]::Round($deltaMin, 1))분 차이 납니다. 한쪽만 증분 빌드된 경우입니다.
+전체 솔루션 Rebuild (.\Build-HanNetHack.ps1 -Target Rebuild) 후 다시 설치하면 둘 다 같은 시각에 맞춰집니다.
+"@
+    }
 }
 
 if (-not $SkipInstall) {

@@ -1753,6 +1753,19 @@ status_initialize(
     disp.botlx = TRUE;
 }
 
+/* Pick localized Sprintf format for a bottom line field. Cached pointers in
+ * status_fieldfmt[] can still point at English if they were assigned before
+ * the message catalog finished loading; re-resolve known labels each render. */
+const char *
+status_fmt_for_bl(enum statusfields fld, const char *cached)
+{
+#ifdef ENABLE_NLS
+    if (fld == BL_ENE)
+        return _(" Pw:%s");
+#endif
+    return cached;
+}
+
 void
 status_finish(void)
 {

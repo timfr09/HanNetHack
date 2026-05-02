@@ -33,7 +33,11 @@ SUBMDIR=$(ROOTDIR)\$(SUBMSDIR)
 
 default: fetchall
 
-fetchall: libdir fetch-Lua fetch-pdcurses
+fetch-gettext:
+	@if exist $(LIBDIR)\gettext\bin\msgfmt.exe echo gettext tools already under $(LIBDIR)\gettext, skipping download
+	@if not exist $(LIBDIR)\gettext\bin\msgfmt.exe cd /d $(ROOTDIR) && sys\windows\setup-gettext.cmd
+
+fetchall: libdir fetch-gettext fetch-Lua fetch-pdcurses
 
 fetch-lua: fetch-actual-Lua
 

@@ -724,8 +724,11 @@ X11_status_update_tty(
             text = decode_mixed(goldbuf, text);
         xtra_space[fld] = 0;
         if (status_activefields[fld]) {
-            fmt = (fld == BL_TITLE && iflags.wc2_hitpointbar) ? "%-30s"
-                  : status_fieldfmt[fld] ? status_fieldfmt[fld] : "%s";
+            fmt = (fld == BL_TITLE && iflags.wc2_hitpointbar)
+                  ? "%-30s"
+                  : status_fmt_for_bl(
+                      fld,
+                      status_fieldfmt[fld] ? status_fieldfmt[fld] : "%s");
             if (*fmt == ' ') {
                 ++xtra_space[fld];
                 ++fmt;

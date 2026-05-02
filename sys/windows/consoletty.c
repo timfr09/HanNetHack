@@ -89,6 +89,7 @@ typedef struct {
     int color256idx;
     const char *bkcolorseq;
     const char *colorseq;
+    boolean utf8_wide_tail; /* continuation column of utf8_char_width>=2; flip skips emit */
 #endif /* VIRTUAL_TERMINAL_SEQUENCES */
 } cell_t;
 
@@ -104,7 +105,8 @@ cell_t clear_cell = {
                 0L,                              /* color24 */
                 0,                               /* color256idx */
                 "\x1b[0m",                       /* bkcolorseq */
-                0                                /* colorseq */
+                0,                               /* colorseq */
+                FALSE                            /* utf8_wide_tail */
 };
 cell_t undefined_cell = {
                { CONSOLE_UNDEFINED_CHARACTER, 0, 0, 0, 0, 0, 0 },
@@ -113,7 +115,8 @@ cell_t undefined_cell = {
                 0L,                              /* color24 */
                 0,                               /* color256idx */
                 (const char *) 0,                /* bkcolorseq */
-                (const char *) 0                 /* colorseq */
+                (const char *) 0,                /* colorseq */
+                FALSE                            /* utf8_wide_tail */
 };
 #if 0
 static const uint8 empty_utf8str[MAX_UTF8_SEQUENCE] = { 0 };
@@ -718,6 +721,25 @@ back_buffer_flip(void)
     for (pos.Y = 0; pos.Y < console.height; pos.Y++) {
         for (pos.X = 0; pos.X < console.width; pos.X++) {
             boolean pos_set = FALSE;
+            boolean sync_only;
+
+            if (back->utf8_wide_tail) {
+                sync_only = (front->utf8_wide_tail != back->utf8_wide_tail
+                             || front->attr != back->attr
+                             || front->color24 != back->color24
+                             || front->color256idx != back->color256idx
+                             || front->colorseq != back->colorseq
+                             || front->bkcolorseq != back->bkcolorseq
+                             || front->wcharacter != back->wcharacter
+                             || strcmp((char *) front->utf8str,
+                                       (char *) back->utf8str) != 0);
+                if (sync_only)
+                    *front = *back;
+                back++;
+                front++;
+                continue;
+            }
+
             do_anything = did_anything = 0U;
             if (back->color24 != front->color24)
                 do_anything |= do_color24;
@@ -730,6 +752,8 @@ back_buffer_flip(void)
 #ifdef UTF8_FROM_CORE
             /* IBMGraphics symset still receives gettext UTF-8 in utf8str[] */
 #if defined(ENABLE_NLS)
+            if (back->utf8_wide_tail != front->utf8_wide_tail)
+                do_anything |= do_utf8_content;
             if ((back->utf8str[0] || front->utf8str[0])
                 && strcmp((const char *) back->utf8str,
                           (const char *) front->utf8str) != 0)
@@ -739,6 +763,8 @@ back_buffer_flip(void)
                 do_anything |= do_wide_content;
 #else
             if (SYMHANDLING(H_UTF8)) {
+                if (back->utf8_wide_tail != front->utf8_wide_tail)
+                    do_anything |= do_utf8_content;
                 if ((back->utf8str[0] || front->utf8str[0])
                     && strcmp((const char *) back->utf8str,
                               (const char *) front->utf8str) != 0)
@@ -916,6 +942,56 @@ void buffer_write(cell_t * buffer, cell_t * cell, COORD pos)
         && buffer == console.back_buffer)
         back_buffer_flip();
 }
+
+#if defined(VIRTUAL_TERMINAL_SEQUENCES) && defined(UTF8_FROM_CORE)
+/* Reserve utf8_char_width-1 following columns so back_buffer_flip writes the
+ * UTF-8 sequence once (head cell only); continuation cells skip WriteConsole. */
+static void
+buffer_write_utf8_with_wide_tail(cell_t *cell, COORD pos)
+{
+    int dispw, i;
+    cell_t tail;
+
+    nhassert(pos.X >= 0 && pos.X < console.width);
+    nhassert(pos.Y >= 0 && pos.Y < console.height);
+
+    cell->utf8_wide_tail = FALSE;
+    dispw = utf8_char_width((const char *) cell->utf8str);
+    if (dispw < 1)
+        dispw = 1;
+
+    buffer_write(console.back_buffer, cell, pos);
+
+    if (dispw <= 1)
+        return;
+
+    memset(&tail, 0, sizeof tail);
+    tail.attr = cell->attr;
+    tail.colorseq = cell->colorseq;
+    tail.bkcolorseq = cell->bkcolorseq;
+    tail.color24 = cell->color24;
+    tail.color256idx = cell->color256idx;
+    tail.wcharacter = 0;
+    tail.utf8_wide_tail = TRUE;
+
+    for (i = 1; i < dispw && (int) pos.X + i < console.width; i++) {
+        COORD p;
+
+        p.X = (SHORT) ((int) pos.X + i);
+        p.Y = pos.Y;
+        buffer_write(console.back_buffer, &tail, p);
+    }
+}
+#endif /* VIRTUAL_TERMINAL_SEQUENCES && UTF8_FROM_CORE */
+
+#if defined(ENABLE_NLS) && defined(UTF8_FROM_CORE)
+static void
+consoletty_repair_ctype_utf8(void)
+{
+    if (!setlocale(LC_CTYPE, ".UTF8"))
+        (void) setlocale(LC_CTYPE, "C.UTF-8");
+}
+#endif
 
 /*
  * Called after returning from ! or ^Z
@@ -1265,7 +1341,7 @@ consoletty_wants_utf8_text(void)
 static boolean
 xputc_emit_utf8_sequence(unsigned char uc, cell_t *cell)
 {
-    int need, dispw;
+    int need;
 
     if (xputc_u8cnt == 0) {
         if ((uc & 0xC0u) == 0x80u) /* continuation without a lead */
@@ -1290,8 +1366,6 @@ xputc_emit_utf8_sequence(unsigned char uc, cell_t *cell)
     memcpy(cell->utf8str, xputc_u8acc, (size_t) xputc_u8cnt);
     cell->utf8str[xputc_u8cnt] = '\0';
 
-    dispw = utf8_char_width((const char *) xputc_u8acc);
-
     cell->colorseq = esc_seq_colors[console.current_nhcolor];
     cell->bkcolorseq = esc_seq_bkcolors[console.current_nhbkcolor];
     cell->attr = console.attr;
@@ -1299,9 +1373,12 @@ xputc_emit_utf8_sequence(unsigned char uc, cell_t *cell)
     cell->color256idx = 0;
     cell->wcharacter = 0;
 
-    set_console_cursor(ttyDisplay->curx - dispw, ttyDisplay->cury);
-    buffer_write(console.back_buffer, cell, console.cursor);
+    /* ttyDisplay->curx is the column where this character begins (callers
+     * advance curx by utf8_char_width only after the whole UTF-8 sequence
+     * is emitted). Do not subtract display width here — that would rewrite
+     * column 0 for every wide glyph whose curx equals its width. */
     set_console_cursor(ttyDisplay->curx, ttyDisplay->cury);
+    buffer_write_utf8_with_wide_tail(cell, console.cursor);
 
     xputc_u8cnt = 0;
     return TRUE;
@@ -1359,6 +1436,7 @@ xputc_core(int ch)
         break;
     default:
 #ifdef VIRTUAL_TERMINAL_SEQUENCES
+        memset(&cell, 0, sizeof cell);
 #ifdef UTF8_FROM_CORE
         if (consoletty_wants_utf8_text()) {
             unsigned char uc = (unsigned char) ch;
@@ -1416,7 +1494,14 @@ xputc_core(int ch)
         cell.character = (console.has_unicode ? console.cpMap[ch] : ch);
 #endif
         if (ccount) {
-            buffer_write(console.back_buffer, &cell, console.cursor);
+#ifdef VIRTUAL_TERMINAL_SEQUENCES
+#ifdef UTF8_FROM_CORE
+            if (SYMHANDLING(H_UTF8)) {
+                buffer_write_utf8_with_wide_tail(&cell, console.cursor);
+            } else
+#endif
+#endif
+                buffer_write(console.back_buffer, &cell, console.cursor);
             if (console.cursor.X == console.width - 1) {
                 if (console.cursor.Y < console.height - 1) {
                     console.cursor.X = 1;
@@ -1464,6 +1549,7 @@ console_g_putch(int in_ch)
     cell.attribute = console.attr;
     cell.character = (console.has_unicode ? cp437[ch] : ch);
 #else
+    memset(&cell, 0, sizeof cell);
     cell.attr = console.attr;
     cell.colorseq = esc_seq_colors[console.current_nhcolor];
     cell.bkcolorseq = esc_seq_bkcolors[console.current_nhbkcolor];
@@ -1494,7 +1580,14 @@ console_g_putch(int in_ch)
         ccount = 2;
     }
 #endif /* VIRTUAL_TERMINAL_SEQUENCES */
-    buffer_write(console.back_buffer, &cell, console.cursor);
+#ifdef VIRTUAL_TERMINAL_SEQUENCES
+#ifdef UTF8_FROM_CORE
+    if (SYMHANDLING(H_UTF8) && cell.utf8str[0])
+        buffer_write_utf8_with_wide_tail(&cell, console.cursor);
+    else
+#endif
+#endif
+        buffer_write(console.back_buffer, &cell, console.cursor);
 }
 
 /*
@@ -1511,14 +1604,16 @@ g_pututf8(uint8 *sequence)
 #ifdef UTF8_FROM_CORE
     set_console_cursor(ttyDisplay->curx, ttyDisplay->cury);
     cell_t cell;
+
+    memset(&cell, 0, sizeof cell);
     cell.attr = console.attr;
     cell.colorseq = esc_seq_colors[console.current_nhcolor];
     cell.bkcolorseq = esc_seq_bkcolors[console.current_nhbkcolor];
     cell.color24 = console.color24 ? console.color24 : 0L;
-    cell.color256idx =console.color256idx ? console.color256idx : 0;
+    cell.color256idx = console.color256idx ? console.color256idx : 0;
     Snprintf((char *) cell.utf8str, sizeof cell.utf8str, "%s",
              (char *) sequence);
-    buffer_write(console.back_buffer, &cell, console.cursor);
+    buffer_write_utf8_with_wide_tail(&cell, console.cursor);
 #endif /* UTF8_FROM_CORE */
 #endif
 }
@@ -2060,6 +2155,9 @@ tty_ibmgraphics_fixup(void)
             free(console.localestr);
         console.localestr = dupstr(localestr);
     }
+#if defined(ENABLE_NLS) && defined(UTF8_FROM_CORE)
+    consoletty_repair_ctype_utf8();
+#endif
     set_known_good_console_font();
     /* the console mode */
     GetConsoleMode(console.hConOut, &console.out_cmode);
@@ -2506,6 +2604,19 @@ DISABLE_WARNING_CONDEXPR_IS_CONSTANT
 void nethack_enter_consoletty(void)
 {
     int width;
+
+#ifdef ENABLE_NLS
+    /* UTF-8 gettext output before any other console setup (Explorer double-click). */
+    {
+        HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+        if (hOut && hOut != INVALID_HANDLE_VALUE) {
+            (void) SetConsoleOutputCP(65001);
+            (void) SetConsoleCP(65001);
+        }
+    }
+#endif
+
 #ifdef VIRTUAL_TERMINAL_SEQUENCES
     char buf[BUFSZ], *bp, *localestr;
     BOOL apisuccess;
@@ -2662,6 +2773,15 @@ void nethack_enter_consoletty(void)
     if (SetConsoleOutputCP(65001))
         console.code_page = GetConsoleOutputCP();
     (void) SetConsoleCP(65001);
+#endif
+#if defined(ENABLE_NLS) && defined(UTF8_FROM_CORE)
+    /*
+     * Earlier we may set LC_ALL to a name with ".utf8" stripped for legacy
+     * console/font behavior. That breaks mbtowc() on UTF-8 bytes, so
+     * utf8_char_width() returns 1 for Hangul and wide-tail buffering never
+     * activates. Keep LC_CTYPE on UTF-8 for width calculations.
+     */
+    consoletty_repair_ctype_utf8();
 #endif
 
     /* check the font before we capture the code page map */
@@ -3056,6 +3176,59 @@ default_processkeystroke(
     KeyState[VK_CONTROL] =
         (shiftstate & (LEFT_CTRL_PRESSED | RIGHT_CTRL_PRESSED)) ? 0x81 : 0;
     KeyState[VK_CAPITAL] = (shiftstate & CAPSLOCK_ON) ? 0x81 : 0;
+
+#ifdef WIN32CON
+    /*
+     * CP65001 / Korean IME: AsciiChar is often 0 while UnicodeChar / VK carry
+     * the real key. Without this, tty prompts (e.g. name entry) never see
+     * Enter/Backspace or Hangul; ToAscii also fails on many layouts.
+     */
+    do {
+        static unsigned char u8pending[8];
+        static int u8plen, u8poff;
+
+        if (u8poff < u8plen) {
+            *valid = TRUE;
+            return u8pending[u8poff++];
+        }
+        u8plen = u8poff = 0;
+
+        if (!ch) {
+            WCHAR uw = ir->Event.KeyEvent.uChar.UnicodeChar;
+
+            if (vk == VK_RETURN || uw == L'\r' || uw == L'\n') {
+                *valid = TRUE;
+                return '\n';
+            }
+            if (vk == VK_BACK || uw == 8) {
+                *valid = TRUE;
+                return '\b';
+            }
+            if (vk == VK_ESCAPE) {
+                *valid = TRUE;
+                return '\033';
+            }
+            if (uw >= 32 && uw < 128) {
+                *valid = TRUE;
+                return (unsigned char) uw;
+            }
+            if (uw >= (WCHAR) 0x80) {
+                char mb[8];
+                int n;
+
+                n = WideCharToMultiByte(CP_UTF8, 0, &uw, 1,
+                                        mb, (int) sizeof mb, NULL, NULL);
+                if (n > 0) {
+                    memcpy(u8pending, mb, (size_t) n);
+                    u8plen = n;
+                    u8poff = 1;
+                    *valid = TRUE;
+                    return (unsigned char) mb[0];
+                }
+            }
+        }
+    } while (0);
+#endif /* WIN32CON */
 
     if (shiftstate & (LEFT_ALT_PRESSED | RIGHT_ALT_PRESSED)) {
         if (ch || inmap(keycode, vk))
@@ -3647,6 +3820,47 @@ process_keystroke2(
         return 0;
     }
 
+#ifdef WIN32CON
+    /* CP65001 / Korean: AsciiChar is often 0; same idea as default_processkeystroke.
+     * Must run before "ch < 32" control handling — (char)0 is < 32 and would
+     * consume the key without returning a character. */
+    if (!ch) {
+        WCHAR uw = ir->Event.KeyEvent.uChar.UnicodeChar;
+        int i;
+
+        if (vk == VK_RETURN || uw == L'\r' || uw == L'\n') {
+            *valid = TRUE;
+            return '\n';
+        }
+        if (vk == VK_BACK || uw == 8) {
+            *valid = TRUE;
+            return '\b';
+        }
+        if (vk == VK_ESCAPE) {
+            *valid = TRUE;
+            return '\033';
+        }
+        if (uw >= 32 && uw < 128) {
+            *valid = TRUE;
+            return (unsigned char) uw;
+        }
+        if (uw >= (WCHAR) 0x80) {
+            char mb[8];
+            int n = WideCharToMultiByte(CP_UTF8, 0, &uw, 1, mb,
+                                        (int) sizeof mb, NULL, NULL);
+
+            if (n > 0) {
+                for (i = 0; i < n && i < (int) sizeof pending_utf8; ++i)
+                    pending_utf8[i] = (unsigned char) mb[i];
+                pending_len = n;
+                pending_idx = 1;
+                *valid = TRUE;
+                return (unsigned char) mb[0];
+            }
+        }
+    }
+#endif /* WIN32CON */
+
     altseq = is_altseq(shiftstate);
     if (ch || (iskeypad(scan)) || altseq)
         *valid = TRUE;
@@ -3666,15 +3880,13 @@ process_keystroke2(
      *      left control key was pressed with the keystroke.
      */
     if (iskeypad(scan) && !altseq) {
-        ReadConsoleInput(hConIn, ir, 1, &count);
         ch = keypad_nums[scan - KEYPADLO];
-    } else if (ch < 32 && !isnumkeypad(scan)) {
-        /* Control code; ReadConsole seems to filter some of these,
-         * including ESC */
-        ReadConsoleInput(hConIn, ir, 1, &count);
+    } else if (ch > 0 && ch < 32 && !isnumkeypad(scan)) {
+        /* Control code in AsciiChar; INPUT_RECORD already consumed by caller. */
     }
-    /* Attempt to work better with international keyboards. */
-    else {
+    /* When AsciiChar is still 0, layout-specific char may only appear via
+     * ReadConsoleW (legacy paths that Peek then read). */
+    else if (!ch) {
         WCHAR wch2;
         char utf8[8];
         int nbytes, i;
@@ -3741,14 +3953,18 @@ ray_checkinput(
         if (dwWait == WAIT_FAILED)
             return '\033';
 #endif
-        PeekConsoleInput(hConIn, ir, 1, count);
         if (mode == 0) {
-            if ((ir->EventType == KEY_EVENT) && ir->Event.KeyEvent.bKeyDown) {
+            /* Like default_checkinput: consume before translating (Peek left CP65001
+             * keys stuck when AsciiChar was 0). */
+            ReadConsoleInput(hConIn, ir, 1, count);
+            if (*count > 0 && (ir->EventType == KEY_EVENT)
+                && ir->Event.KeyEvent.bKeyDown) {
                 ch = process_keystroke2(hConIn, ir, &valid);
                 done = valid;
-            } else
-                ReadConsoleInput(hConIn, ir, 1, count);
+            }
+            /* else: non-key or key-up already consumed; keep waiting */
         } else {
+            PeekConsoleInput(hConIn, ir, 1, count);
             ch = 0;
             if (*count > 0) {
                 if (ir->EventType == KEY_EVENT

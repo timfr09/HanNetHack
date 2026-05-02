@@ -15,9 +15,11 @@
 
 # *** OPTIONS ***
 #
-# Use the IBM character set rather than just plain ascii characters
-# for tty window-port.
-OPTIONS=symset:IBMGraphics_2,roguesymset:RogueEpyx
+# HanNetHack: UTF-8 Korean conflicts with IBMGraphics on many consoles; Enhanced1 fits UTF-8.
+# Normal launch is double-click NetHack.exe (game sets UTF-8 code page early). For stubborn
+# terminals, optional NetHack-console.cmd runs chcp 65001 first.
+#OPTIONS=symset:IBMGraphics_2,roguesymset:RogueEpyx
+OPTIONS=symset:Enhanced1,roguesymset:RogueEpyx
 
 # Here is a suggested symbol set from Michael Feir, 
 # for use by blind NetHack players

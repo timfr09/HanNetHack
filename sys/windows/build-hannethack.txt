@@ -96,9 +96,9 @@ so a Unix `setup.sh` tree on the same clone stays intact. Build with:
 
 CI and anyone who wants the classic NetHack layout (`src\Makefile`) should run:
 
-    sys\windows\nhsetup.bat /overwrite
+    sys\windows\nhsetup.bat /install-makefile
 
-Then from src\:
+(`/im` is short. Legacy: `/overwrite`, `/o`.) Then from src\:
 
     nmake package
 

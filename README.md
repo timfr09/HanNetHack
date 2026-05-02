@@ -89,12 +89,12 @@ nmake /f Makefile.win package
 To use the traditional NetHack layout (`nmake` with default `Makefile`), run:
 
 ```cmd
-sys\windows\nhsetup.bat /overwrite
+sys\windows\nhsetup.bat /install-makefile
 cd src
 nmake package
 ```
 
-Continuous integration uses `/overwrite` so `nmake package` matches upstream expectations.
+(`nhsetup.bat /im` is the short form. Legacy: `/overwrite`, `/o`.) Continuous integration uses `/install-makefile` so plain `nmake package` matches upstream expectations.
 
 You can also open `sys\windows\vs\NetHack.sln` in Visual Studio. Optional gettext tools under `lib\gettext\bin` are only needed if you edit `po/*.po` or rebuild the `.mo` bundled into `nhdat` (`sys\windows\setup-gettext.cmd`).
 

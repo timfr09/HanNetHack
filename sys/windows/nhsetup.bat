@@ -5,17 +5,20 @@
 @REM
 @REM  HanNetHack: by default this script writes Makefile.win + GNUmakefile*.win
 @REM  in src\ without touching Makefile (avoids clobbering a Unix setup.sh
-@REM  tree).  Run "nhsetup.bat /overwrite" for classic behavior: copy into
-@REM  Makefile and GNUmakefile (renaming any existing Makefile to Makefile-orig).
+@REM  tree).  Run "nhsetup.bat /install-makefile" to copy into src\Makefile
+@REM  and src\GNUmakefile (NetHack's classic names; existing Makefile -> Makefile-orig).
+@REM  Aliases: /im  |  legacy: /overwrite, /o
 @REM
 @echo off
 pushd %~dp0
 set WIN32PATH=..\..\win\win32
 set BINPATH=..\..\binary
 set VCDir=
-set NH_OVERWRITE=0
-if /I "%~1"=="/overwrite" set NH_OVERWRITE=1
-if /I "%~1"=="/o" set NH_OVERWRITE=1
+set NH_INSTALL_MAKEFILE=0
+if /I "%~1"=="/install-makefile" set NH_INSTALL_MAKEFILE=1
+if /I "%~1"=="/im" set NH_INSTALL_MAKEFILE=1
+if /I "%~1"=="/overwrite" set NH_INSTALL_MAKEFILE=1
+if /I "%~1"=="/o" set NH_INSTALL_MAKEFILE=1
 
 goto :main
 
@@ -44,11 +47,12 @@ REM Some file movement for those that still want to use MAKE or NMAKE and a Make
 if NOT exist %BINPATH%\*.* mkdir %BINPATH%
 if not exist %BINPATH%\license copy ..\..\dat\license %BINPATH%\license >nul
 
-if "%NH_OVERWRITE%"=="1" goto :copy_default_names
+if "%NH_INSTALL_MAKEFILE%"=="1" goto :install_makefile
 
-echo [HanNetHack] Non-destructive mode: writing Makefile.win (not Makefile).
-echo           Use "nhsetup.bat /overwrite" to copy into Makefile / GNUmakefile
-echo           as classic NetHack Windows instructions expect.
+echo [HanNetHack] Side makefiles only: writing Makefile.win (leaving src\Makefile unchanged).
+echo           To install as src\Makefile so plain "nmake" works from src\, run:
+echo              nhsetup.bat /install-makefile
+echo           Short: /im    Legacy: /overwrite /o    prior Makefile -^> Makefile-orig.
 echo.
 copy /Y Makefile.nmake ..\..\src\Makefile.win >nul
 echo Copying Microsoft Makefile.nmake to ..\..\src\Makefile.win - done.
@@ -63,7 +67,8 @@ echo     nmake /f Makefile.win package
 echo.
 goto :aftercopy
 
-:copy_default_names
+:install_makefile
+echo [HanNetHack] Installing Makefile.nmake as ..\..\src\Makefile (classic layout^)
 echo Copying Microsoft Makefile - Makefile.nmake to ..\..\src\Makefile
 if NOT exist ..\..\src\Makefile goto donenmake
 copy ..\..\src\Makefile ..\..\src\Makefile-orig >nul
@@ -102,5 +107,5 @@ set _pause=N
 for %%x in (%cmdcmdline%) do if /i "%%~x"=="/c" set _pause=Y
 if "%_pause%"=="Y" pause
 set _pause=
-set NH_OVERWRITE=
+set NH_INSTALL_MAKEFILE=
 popd

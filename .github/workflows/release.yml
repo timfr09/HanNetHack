@@ -94,7 +94,7 @@ jobs:
         shell: cmd
         working-directory: sys\windows
         run: |
-          call nhsetup.bat /overwrite
+          call nhsetup.bat /install-makefile
           if not exist ..\..\src\Makefile (
               echo ERROR: nhsetup did not produce src\Makefile.
               exit /b 1

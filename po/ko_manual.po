@@ -53286,7 +53286,7 @@ msgstr "\"%s\"{을/를} 읽기용으로 열 수 없다!"
 #~ msgstr "고유 물품"
 
 # ============================================================
-# v3.7.0-ko.5 업스트림 머지로 새로 추가된 문자열
+# v3.7.0-ko.6 업스트림 머지로 새로 추가된 문자열
 # (insight.c rerolling block, options.c idlecheckpoint,
 #  trap.c lethargic aura, teleport.c stasis, hack.c rolling
 #  boulder, wizcmds.c NHUUID)

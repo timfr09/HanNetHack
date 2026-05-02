@@ -1,6 +1,6 @@
 # HanNetHack — Korean NetHack
 
-![Version](https://img.shields.io/badge/version-3.7.0--ko.4-blue)
+![Version](https://img.shields.io/badge/version-3.7.0--ko.6-blue)
 ![License](https://img.shields.io/badge/license-NGPL-green)
 ![Translation](https://img.shields.io/badge/translation-WIP-yellow)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey)
@@ -133,7 +133,7 @@ See **Korean translation system (brief)** above for architecture; [`po/I18N_SYST
 
 ### Versioning
 
-HanNetHack uses semantic versioning with a Korean-translation suffix, e.g. `v3.7.0-ko.4` (based on NetHack 3.7.0, Korean iteration 4).
+HanNetHack uses semantic versioning with a Korean-translation suffix, e.g. `v3.7.0-ko.6` (based on NetHack 3.7.0, Korean iteration 6).
 
 ### License
 

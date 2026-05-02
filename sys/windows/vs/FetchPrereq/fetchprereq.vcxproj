@@ -68,16 +68,11 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="Exists('$(LibDir)pdcursesmod') AND Exists('$(LibDir)lua-$(LUA_VERSION)')">
-    <NMakeBuildCommandLine>echo lib\pdcursesmod and lib\lua-$(LUA_VERSION) are already present</NMakeBuildCommandLine>
-    <NMakeCleanCommandLine>pushd $(vsDir)fetchprereq %26%26 nmake -F fetchprereq.nmake clean %26%26 popd</NMakeCleanCommandLine>
-    <NMakeReBuildCommandLine>echo rebuilding lib\pdcursesmod and lib\lua-$(LUA_VERSION)</NMakeReBuildCommandLine>
-    <NMakePreprocessorDefinitions>_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
-  </PropertyGroup>
-  <PropertyGroup Condition="!Exists('$(LibDir)pdcursesmod') OR !Exists('$(LibDir)lua-$(LUA_VERSION)')">
+  <!-- 항상 fetchprereq.nmake 실행: 조건부 echo 분기는 Rebuild 시 Clean 으로 lib 가 지워진 뒤 복구하지 않는 버그가 있음. nmake 는 이미 있으면 건너뜀. -->
+  <PropertyGroup>
     <NMakeBuildCommandLine>pushd $(vsDir)fetchprereq %26%26 nmake -F fetchprereq.nmake %26%26 popd</NMakeBuildCommandLine>
     <NMakeCleanCommandLine>pushd $(vsDir)fetchprereq %26%26 nmake -F fetchprereq.nmake clean %26%26 popd</NMakeCleanCommandLine>
-    <NMakeReBuildCommandLine>pushd $(vsDir)fetchprereq %26%26 nmake -F fetchprereq.nmake rebuild %26%26 popd</NMakeReBuildCommandLine>
+    <NMakeReBuildCommandLine>pushd $(vsDir)fetchprereq %26%26 nmake -F fetchprereq.nmake %26%26 popd</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

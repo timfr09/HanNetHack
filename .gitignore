@@ -39,6 +39,8 @@ GNUmakefile.depend.win
 Debug/
 Release/
 binary/
+# VS install.cmd 출력 (플레이 가능 트리); 저장소에 두지 않음
+install/
 package/*
 vspackage/
 vsbinary/

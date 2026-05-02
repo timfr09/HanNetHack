@@ -2,11 +2,15 @@
   <Import Project="..\dirs.props"/>
   <Import Project="$(vsDir)files.props"/>
   <Target Name="Build"
-	Inputs="$(ToolsDir)$(HostTools)dlb.exe;@(DlbList);$(SysWindDir)porthelp"
+	Inputs="$(ToolsDir)$(HostTools)dlb.exe;@(DlbList);@(KoDlbLine);$(SysWindDir)porthelp"
 	Outputs="$(BinDir)nhdat$(VERSION_MAJOR)$(VERSION_MINOR)$(PATCHLEVEL)">
 	<MakeDir Directories="$(BinDir)"/>
 	<Copy SourceFiles="$(SysWindDir)porthelp" DestinationFolder="$(DatDir)"/>
-	<WriteLinesToFile File="$(DatDir)dlb.lst" Lines="@(DlbList->'%(filename)%(extension)')" Overwrite="true"/>
+	<ItemGroup>
+	  <_DlbLstLine Include="@(DlbList->'%(filename)%(extension)')" />
+	  <_DlbLstLine Include="@(KoDlbLine)" />
+	</ItemGroup>
+	<WriteLinesToFile File="$(DatDir)dlb.lst" Lines="@(_DlbLstLine)" Overwrite="true"/>
 	<Exec Command="&quot;$(ToolsDir)$(HostTools)dlb.exe&quot; cIf dlb.lst &quot;$(BinDir)\nhdat&quot;" WorkingDirectory="$(DatDir)"/>
 	<Delete Files="$(DatDir)porthelp"/>
   </Target>

@@ -40,21 +40,12 @@ fetch-lua: fetch-actual-Lua
 fetch-Lua: fetch-actual-Lua
 
 fetch-actual-Lua:
-	cd $(LIBDIR)
-	curl --insecure -R -O $(CURLLUASRC)
-	tar zxf lua-$(LUA_VERSION).tar.gz
-	if exist lua-$(LUA_VERSION).tar.gz del lua-$(LUA_VERSION).tar.gz
-	cd ..\sys\windows\vs\fetchprereq
-	@echo Lua has been fetched into $(LIBDIR)\lua-$(LUA_VERSION)
+	@if exist $(LIBDIR)\lua-$(LUA_VERSION)\src\lapi.c echo Lua $(LUA_VERSION) already under $(LIBDIR), skipping download
+	@if not exist $(LIBDIR)\lua-$(LUA_VERSION)\src\lapi.c cd /d $(LIBDIR) && curl --insecure -R -O $(CURLLUASRC) && %%WINDIR%%\System32\tar.exe -xzf lua-$(LUA_VERSION).tar.gz && if exist lua-$(LUA_VERSION).tar.gz del lua-$(LUA_VERSION).tar.gz && echo Lua has been fetched into $(LIBDIR)\lua-$(LUA_VERSION)
 
 fetch-pdcurses:
-	cd $(LIBDIR)
-	curl --insecure -L -R $(PDCURL)$(PDCURSES_VERSION).zip -o $(PDCDIST).zip
-	if not exist $(PDCDIST)\*.* mkdir $(PDCDIST)
-	tar -zxC $(PDCDIST) --strip-components=1 -f $(CURLPDCDST).zip
-	if exist $(CURLPDCDST).zip del $(CURLPDCDST).zip
-	cd ..\sys\windows\vs\fetchprereq
-	@echo $(PDCDIST) has been fetched into $(LIBDIR)\$(PDCDIST)
+	@if exist $(LIBDIR)\$(PDCDIST)\pdcurses\addch.c echo PDCursesMod already under $(LIBDIR)\$(PDCDIST), skipping download
+	@if not exist $(LIBDIR)\$(PDCDIST)\pdcurses\addch.c cd /d $(LIBDIR) && curl --insecure -L -R $(PDCURL)$(PDCURSES_VERSION).zip -o $(PDCDIST).zip && if not exist $(PDCDIST)\*.* mkdir $(PDCDIST) && %%WINDIR%%\System32\tar.exe -xf $(PDCDIST).zip -C $(PDCDIST) --strip-components=1 && if exist $(PDCDIST).zip del $(PDCDIST).zip && echo $(PDCDIST) has been fetched into $(LIBDIR)\$(PDCDIST)
 
 libdir: 
 	@if not exist $(LIBDIR)\*.* echo creating directory $(LIB:\=/)

@@ -377,6 +377,29 @@ free_youbuf(void)
 #define YouMessage(pointer, prefix, text) \
     strcat((YouPrefix(pointer, prefix, text), pointer), text)
 
+/*
+ * Every English-specific prefix function below (You, Your,
+ * You_feel, You_see, ...) starts with the same conditional: in
+ * Korean locale the translated string already embeds its own
+ * subject clause, so the English prefix is dropped and the raw
+ * formatted text is emitted verbatim via vpline().  Factor that
+ * conditional into one place so each function keeps only the
+ * prefix logic that is actually unique to it.  With NLS off the
+ * macro is a no-op and the compiler drops the check entirely.
+ */
+#ifdef ENABLE_NLS
+#define KO_PASSTHROUGH_RETURN(line_, args_)         \
+    do {                                            \
+        if (is_korean_locale()) {                   \
+            vpline((line_), (args_));               \
+            va_end(args_);                          \
+            return;                                 \
+        }                                           \
+    } while (0)
+#else
+#define KO_PASSTHROUGH_RETURN(line_, args_) ((void) 0)
+#endif
+
 void
 You(const char *line, ...)
 {
@@ -384,15 +407,8 @@ You(const char *line, ...)
     char *tmp;
 
     va_start(the_args, line);
-#ifdef ENABLE_NLS
-    if (is_korean_locale()) {
-        /* Korean: no "You " prefix needed, sentence structure is different */
-        vpline(line, the_args);
-    } else
-#endif
-    {
-        vpline(YouMessage(tmp, "You ", line), the_args);
-    }
+    KO_PASSTHROUGH_RETURN(line, the_args);
+    vpline(YouMessage(tmp, "You ", line), the_args);
     va_end(the_args);
 }
 
@@ -403,15 +419,8 @@ Your(const char *line, ...)
     char *tmp;
 
     va_start(the_args, line);
-#ifdef ENABLE_NLS
-    if (is_korean_locale()) {
-        /* Korean: no "Your " prefix needed, sentence structure is different */
-        vpline(line, the_args);
-    } else
-#endif
-    {
-        vpline(YouMessage(tmp, "Your ", line), the_args);
-    }
+    KO_PASSTHROUGH_RETURN(line, the_args);
+    vpline(YouMessage(tmp, "Your ", line), the_args);
     va_end(the_args);
 }
 
@@ -422,18 +431,12 @@ You_feel(const char *line, ...)
     char *tmp;
 
     va_start(the_args, line);
-#ifdef ENABLE_NLS
-    if (is_korean_locale()) {
-        vpline(line, the_args);
-    } else
-#endif
-    {
-        if (Unaware)
-            YouPrefix(tmp, "You dream that you feel ", line);
-        else
-            YouPrefix(tmp, "You feel ", line);
-        vpline(strcat(tmp, line), the_args);
-    }
+    KO_PASSTHROUGH_RETURN(line, the_args);
+    if (Unaware)
+        YouPrefix(tmp, "You dream that you feel ", line);
+    else
+        YouPrefix(tmp, "You feel ", line);
+    vpline(strcat(tmp, line), the_args);
     va_end(the_args);
 }
 
@@ -444,14 +447,8 @@ You_cant(const char *line, ...)
     char *tmp;
 
     va_start(the_args, line);
-#ifdef ENABLE_NLS
-    if (is_korean_locale()) {
-        vpline(line, the_args);
-    } else
-#endif
-    {
-        vpline(YouMessage(tmp, "You can't ", line), the_args);
-    }
+    KO_PASSTHROUGH_RETURN(line, the_args);
+    vpline(YouMessage(tmp, "You can't ", line), the_args);
     va_end(the_args);
 }
 
@@ -462,14 +459,8 @@ pline_The(const char *line, ...)
     char *tmp;
 
     va_start(the_args, line);
-#ifdef ENABLE_NLS
-    if (is_korean_locale()) {
-        vpline(line, the_args);
-    } else
-#endif
-    {
-        vpline(YouMessage(tmp, "The ", line), the_args);
-    }
+    KO_PASSTHROUGH_RETURN(line, the_args);
+    vpline(YouMessage(tmp, "The ", line), the_args);
     va_end(the_args);
 }
 
@@ -480,14 +471,8 @@ There(const char *line, ...)
     char *tmp;
 
     va_start(the_args, line);
-#ifdef ENABLE_NLS
-    if (is_korean_locale()) {
-        vpline(line, the_args);
-    } else
-#endif
-    {
-        vpline(YouMessage(tmp, "There ", line), the_args);
-    }
+    KO_PASSTHROUGH_RETURN(line, the_args);
+    vpline(YouMessage(tmp, "There ", line), the_args);
     va_end(the_args);
 }
 
@@ -500,20 +485,14 @@ You_hear(const char *line, ...)
     if ((Deaf && !Unaware) || !flags.acoustics)
         return;
     va_start(the_args, line);
-#ifdef ENABLE_NLS
-    if (is_korean_locale()) {
-        vpline(line, the_args);
-    } else
-#endif
-    {
-        if (Underwater)
-            YouPrefix(tmp, "You barely hear ", line);
-        else if (Unaware)
-            YouPrefix(tmp, "You dream that you hear ", line);
-        else
-            YouPrefix(tmp, "You hear ", line);  /* Deaf-aware */
-        vpline(strcat(tmp, line), the_args);
-    }
+    KO_PASSTHROUGH_RETURN(line, the_args);
+    if (Underwater)
+        YouPrefix(tmp, "You barely hear ", line);
+    else if (Unaware)
+        YouPrefix(tmp, "You dream that you hear ", line);
+    else
+        YouPrefix(tmp, "You hear ", line);  /* Deaf-aware */
+    vpline(strcat(tmp, line), the_args);
     va_end(the_args);
 }
 
@@ -524,21 +503,14 @@ You_see(const char *line, ...)
     char *tmp;
 
     va_start(the_args, line);
-#ifdef ENABLE_NLS
-    if (is_korean_locale()) {
-        /* Korean: no prefix needed, sentence structure is different */
-        vpline(line, the_args);
-    } else
-#endif
-    {
-        if (Unaware)
-            YouPrefix(tmp, "You dream that you see ", line);
-        else if (Blind) /* caller should have caught this... */
-            YouPrefix(tmp, "You sense ", line);
-        else
-            YouPrefix(tmp, "You see ", line);
-        vpline(strcat(tmp, line), the_args);
-    }
+    KO_PASSTHROUGH_RETURN(line, the_args);
+    if (Unaware)
+        YouPrefix(tmp, "You dream that you see ", line);
+    else if (Blind) /* caller should have caught this... */
+        YouPrefix(tmp, "You sense ", line);
+    else
+        YouPrefix(tmp, "You see ", line);
+    vpline(strcat(tmp, line), the_args);
     va_end(the_args);
 }
 

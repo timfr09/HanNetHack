@@ -8,7 +8,7 @@ des.level_init({ style = "solidfill", fg = " " });
 
 des.level_flags("mazelevel", "noteleport", "hardfloor", "shortsighted")
 -- 물의 평면 도착 메시지
-des.message("물로 둘러싸인 공기 방울 안에 떠 있습니다.")
+des.message("물로 둘러싸인 공기 방울 속에 몸이 붕 떠 있다.")
 -- The player lands upon arrival to an air bubble
 -- within the leftmost third of the level.  The
 -- portal to the next level is randomly located in an air

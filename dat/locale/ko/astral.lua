@@ -7,10 +7,10 @@
 des.level_init({ style = "solidfill", fg = " " });
 
 des.level_flags("mazelevel", "noteleport", "hardfloor", "nommap", "shortsighted", "solidify")
--- 성계 평면 도착 메시지
-des.message("성계 평면에 도착했습니다!")
-des.message("이곳에 %d의 대성전이 있습니다.")
-des.message("공기 중에 경계심, 적대감, 그리고 흥분이 느껴집니다!")
+-- 아스트랄 평면 도착 메시지
+des.message("아스트랄 평면에 발을 디뎠다!")
+des.message("이곳에는 %d의 대성전이 서 있다.")
+des.message("공기 속에 긴장과 적의, 들뜬 기운이 감돈다!")
 des.map([[
                               ---------------                              
                               |.............|                              

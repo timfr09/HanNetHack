@@ -11,8 +11,8 @@ des.level_flags("mazelevel", "noteleport", "hardfloor", "shortsighted", "stormy"
 -- equally meaningful if the player can see or not.
 -- 다음 메시지들은 플레이어가 볼 수 있든 없든 똑같이 의미가 있도록
 -- 다소 모호하게 작성되었습니다.
-des.message("이상한 기분이 듭니다!")
-des.message("여기에는 중력이 없다는 것을 알아챘습니다.")
+des.message("기묘한 감각이 온몸을 스친다!")
+des.message("이곳에서는 중력이 느껴지지 않는다.")
 -- The player lands, upon arrival, in the
 -- lower-left area.  The location of the
 -- portal to the next level is randomly chosen.

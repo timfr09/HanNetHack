@@ -54,8 +54,8 @@ RECOVER(6)                       게임 매뉴얼                       RECOVER(
        사용하도록 개선되어야 합니다.
 
 저작권
-       이 파일은 NetHack-3.7:1.12 버전에 대한 Copyright (C) Kenneth Lorber,
-       2024입니다. NetHack은 자유롭게 재배포될 수 있습니다. 자세한 내용은
+       이 파일은 Copyright (C) Kenneth Lorber, 2024이며 NetHack-5:1.12
+       버전용입니다. NetHack은 자유롭게 재배포될 수 있습니다. 자세한 내용은
        license를 참조하세요.
 
-NETHACK                          2024년 12월 25일                          RECOVER(6)
+NETHACK                          2026년 4월 26일                          RECOVER(6)

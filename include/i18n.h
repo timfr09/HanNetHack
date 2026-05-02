@@ -89,8 +89,12 @@ extern char *apply_korean_postpositions(char *str);
 #endif /* ENABLE_NLS */
 
 /*
- * UTF-8 width functions are always available (defined in i18n.c)
- * These are needed for proper TTY rendering regardless of NLS setting.
+ * UTF-8 helpers.  Always available regardless of NLS setting so
+ * tty/curses rendering can walk UTF-8 glyph boundaries and compute
+ * column widths.
+ *
+ *   utf8_display_width / utf8_char_width - defined in src/i18n.c
+ *   utf8_char_len                         - defined in src/ko_postpos.c
  */
 extern int utf8_display_width(const char *utf8str);
 extern int utf8_char_width(const char *utf8str);

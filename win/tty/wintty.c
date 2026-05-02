@@ -13,8 +13,7 @@
 #define H2344_BROKEN
 
 #include "hack.h"
-#include "i18n.h"
-#include "ko_postpos.h"  /* for utf8_char_len */
+#include "i18n.h"  /* utf8_char_len / utf8_char_width / utf8_display_width */
 
 #ifdef TTY_GRAPHICS
 #include "dlb.h"

@@ -143,11 +143,14 @@ extern ko_batchim_type ko_english_batchim(const char *str);
 extern int ko_find_last_char(const char *str, const char **lastpos);
 
 /*
- * UTF-8 utility functions
+ * UTF-8 utility functions.
+ *
+ * Note: utf8_char_len() is declared in i18n.h (where it sits next
+ * to utf8_char_width / utf8_display_width) because it has to be
+ * visible even in NLS-disabled builds - wintty.c and rip.c use it
+ * just to walk UTF-8 glyph boundaries for rendering.  The function
+ * itself is implemented in src/ko_postpos.c.
  */
-
-/* Get the byte length of a UTF-8 character from its first byte */
-extern int utf8_char_len(unsigned char first_byte);
 
 /* Decode a UTF-8 character to Unicode codepoint */
 extern unsigned int utf8_to_codepoint(const char *utf8str, int *bytes_read);

@@ -26,7 +26,7 @@ After building, run the install script to set up the game directory:
 The game will be ready to play in the install\HanNetHack\ directory.
 
 Optional — only if you change po/*.po or need to regenerate the
-obfuscated catalog (dat/locale/ko/nethack.mox) for nmake package:
+message catalog (dat/locale/ko/nethack.mo) for nmake package:
 
     sys\windows\setup-gettext.cmd
 
@@ -52,7 +52,7 @@ Prerequisites
 
   4. gettext *tools* (optional — translators / nmake package only)
      msgfmt and msgcat must be on PATH or under lib\gettext\bin\ when
-     rebuilding .mo / .mox from .po.  One-shot setup:
+     rebuilding .mo from .po.  One-shot setup:
          sys\windows\setup-gettext.cmd
 
 
@@ -85,7 +85,7 @@ If you see errors about platform toolset (v145), add:
 Full data package (nmake, from src\)
 --------------------------------------
 
-To rebuild nhdat370 with the Korean locale bundle and .mox catalog
+To rebuild nhdat370 with the Korean locale bundle and .mo catalog
 (the same output as CI `nmake package`), run from src\ after
 nhsetup produces src\Makefile:
 

@@ -24,9 +24,9 @@ permissions:
 env:
   # Pin the gettext / iconv bundle so builds stay reproducible.
   # Only the CLI tools (msgfmt, msgcat, xgettext, msgmerge) are used -
-  # for building the XOR-obfuscated .mox catalog that ships inside
-  # nhdat.  No libintl dev libs or runtime DLLs are needed now that
-  # translations are read through src/mo_reader.c.
+  # for compiling the .mo catalog that ships inside nhdat.  No libintl
+  # dev libs or runtime DLLs are needed; translations are read through
+  # src/mo_reader.c.
   #   https://github.com/mlocati/gettext-iconv-windows/releases
   GETTEXT_VER: '1.0'
   ICONV_VER:   '1.19'
@@ -66,8 +66,8 @@ jobs:
         shell: pwsh
         run: |
           # Only the shared-64 bundle is needed: it provides the msgfmt,
-          # msgcat, msgmerge and xgettext binaries used by the .po->.mo->
-          # .mox pipeline inside sys\windows\Makefile.nmake.  No dev libs
+          # msgcat, msgmerge and xgettext binaries used by the .po->.mo
+          # pipeline inside sys\windows\Makefile.nmake.  No dev libs
           # or runtime DLLs are downloaded because HanNetHack no longer
           # links against libintl at all.
           $base   = "https://github.com/mlocati/gettext-iconv-windows/releases/download"
@@ -112,15 +112,15 @@ jobs:
         run: |
           # Korean translations now ride inside nhdat (see
           # src/mo_reader.c), so we only check for the core binaries,
-          # the DLB archive, and the obfuscated catalog that was fed
-          # into it.  The build should NOT ship libintl/iconv DLLs or
-          # a loose locale\ tree anymore - those are actively
-          # verified to be absent to catch regressions.
+          # the DLB archive, and the .mo catalog that was fed into
+          # it.  The build should NOT ship libintl/iconv DLLs or a
+          # loose locale\ tree anymore - those are actively verified
+          # to be absent to catch regressions.
           $required = @(
             'binary\NetHack.exe',
             'binary\NetHackW.exe',
             'binary\nhdat370',
-            'dat\locale\ko\nethack.mox'
+            'dat\locale\ko\nethack.mo'
           )
           $missing = $required | Where-Object { -not (Test-Path $_) }
           if ($missing) {

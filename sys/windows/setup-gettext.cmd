@@ -2,11 +2,11 @@
 REM Download gettext / iconv *command-line tools* for HanNetHack (Windows).
 REM
 REM HanNetHack no longer links libintl or ships gettext runtime DLLs.
-REM Translations load from nhdat via src/mo_reader.c (XOR .mox catalog).
+REM Translations load from nhdat via src/mo_reader.c (plain .mo catalog).
 REM This script only installs msgfmt, msgcat, xgettext, etc. under
 REM lib\gettext\bin\ — needed when you edit po/*.po, run
 REM sys\windows\build-translations.cmd, or run nmake package (which
-REM rebuilds dat\locale\ko\nethack.mox).
+REM rebuilds dat\locale\ko\nethack.mo).
 REM
 REM Pin matches .github/workflows/release.yml.
 

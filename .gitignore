@@ -124,9 +124,7 @@ dat/block.*
 dat/save/
 
 # Generated translation catalogs (built from po/ sources)
-dat/locale/*/LC_MESSAGES/nethack.mo
-dat/locale/*/nethack.mox
-po/*.mox
+dat/locale/*/nethack.mo
 po/ko.mo
 po/ko_merged.po
 po/messages.mo

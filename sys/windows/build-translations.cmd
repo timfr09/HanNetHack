@@ -9,7 +9,7 @@ setlocal enabledelayedexpansion
 
 set GETTEXT_DIR=lib\gettext\bin
 set PO_DIR=po
-set LOCALE_DIR=dat\locale\ko\LC_MESSAGES
+set LOCALE_DIR=dat\locale\ko
 
 REM Check if gettext tools are available
 if not exist "%GETTEXT_DIR%\msgfmt.exe" (

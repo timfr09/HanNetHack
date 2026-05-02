@@ -10,11 +10,6 @@ MSGINIT = msginit
 MSGCAT = msgcat
 PYTHON = python3
 
-# C compiler used to build the encode_mo helper.  Defaults to `cc`
-# which covers most Linux/macOS setups; override as needed.
-CC ?= cc
-CFLAGS_MOX ?= -O2 -Wall
-
 # Directories
 SRCDIR = ../src
 INCDIR = ../include
@@ -27,13 +22,6 @@ DOMAIN = nethack
 POTFILE = $(DOMAIN).pot
 LUA_POTFILE = lua_strings.pot
 LANGUAGES = ko
-
-# encode_mo helper (turns a .mo into an XOR-obfuscated .mox).
-# Named with an .exe suffix when building under MSYS2/Cygwin; the
-# Makefile consults both names transparently below.
-ENCODE_MO_BIN = $(UTILDIR)/encode_mo
-ENCODE_MO_SRC = $(UTILDIR)/encode_mo.c
-ENCODE_MO_DEPS = $(INCDIR)/mox_format.h
 
 # Source files to extract strings from (C files)
 SOURCES = $(wildcard $(SRCDIR)/*.c) \
@@ -57,7 +45,7 @@ XGETTEXT_OPTS = --keyword=_ --keyword=N_ --keyword=P_:1,2 \
                 --msgid-bugs-address=hannethack@example.com \
                 --copyright-holder="HanNetHack Project"
 
-.PHONY: all pot pot-lua update-po compile clean stats help merge migrate verify mox
+.PHONY: all pot pot-lua update-po compile clean stats help merge migrate verify
 
 all: compile
 
@@ -183,20 +171,15 @@ merge:
 
 # Compile PO files to MO files
 # Uses merged file if manual entries exist
-# Also copies to dat/locale for dlb archive
-# After the .mo is produced, also generates the shipping .mox
-# wrapper (XOR-obfuscated) next to it for the new in-house loader.
-compile: merge $(LANGUAGES:=.mo) mox
+# Copies the compiled catalog to ../dat/locale/<lang>/nethack.mo so
+# the nhdat DLB build can pick it up (src/mo_reader.c looks it up at
+# that path via dlb_fopen).
+compile: merge $(LANGUAGES:=.mo)
 	@for lang in $(LANGUAGES); do \
 		if [ -f $$lang.mo ]; then \
-			mkdir -p ../dat/locale/$$lang/LC_MESSAGES; \
-			cp $$lang.mo ../dat/locale/$$lang/LC_MESSAGES/nethack.mo; \
-			echo "Copied $$lang.mo to ../dat/locale/$$lang/LC_MESSAGES/nethack.mo"; \
-		fi; \
-		if [ -f $$lang.mox ]; then \
 			mkdir -p ../dat/locale/$$lang; \
-			cp $$lang.mox ../dat/locale/$$lang/nethack.mox; \
-			echo "Copied $$lang.mox to ../dat/locale/$$lang/nethack.mox"; \
+			cp $$lang.mo ../dat/locale/$$lang/nethack.mo; \
+			echo "Copied $$lang.mo to ../dat/locale/$$lang/nethack.mo"; \
 		fi \
 	done
 
@@ -210,36 +193,6 @@ compile: merge $(LANGUAGES:=.mo) mox
 		echo "Compiling $< -> $@..."; \
 		$(MSGFMT) -c -o $@ $<; \
 	fi
-
-# -----------------------------------------------------------------
-# .mox: XOR-obfuscated .mo, the format HanNetHack actually ships.
-# See include/mox_format.h and src/mo_reader.c for details.
-# -----------------------------------------------------------------
-
-mox: $(LANGUAGES:=.mox)
-
-# Build the encode_mo helper.  We search for a C compiler in a
-# couple of common spots; plain `cc` is tried first, then `gcc`.
-# The produced binary lives in ../util/ alongside other dev tools
-# and is not normally shipped.
-$(ENCODE_MO_BIN): $(ENCODE_MO_SRC) $(ENCODE_MO_DEPS)
-	@echo "Building encode_mo helper..."
-	@if command -v $(CC) >/dev/null 2>&1; then \
-		CC_USE=$(CC); \
-	elif command -v cc >/dev/null 2>&1; then \
-		CC_USE=cc; \
-	elif command -v gcc >/dev/null 2>&1; then \
-		CC_USE=gcc; \
-	else \
-		echo "ERROR: no C compiler found (tried $(CC), cc, gcc)" >&2; \
-		exit 1; \
-	fi; \
-	set -x; \
-	$$CC_USE $(CFLAGS_MOX) -I$(INCDIR) -o $@ $(ENCODE_MO_SRC)
-
-%.mox: %.mo $(ENCODE_MO_BIN)
-	@echo "Encoding $< -> $@..."
-	$(ENCODE_MO_BIN) $< $@
 
 # Translation statistics
 stats: merge
@@ -292,8 +245,7 @@ install: compile
 	done
 
 clean:
-	rm -f *.mo *.mox *_merged.po *.po~ $(LUA_POTFILE) $(POTFILE).c
-	rm -f $(ENCODE_MO_BIN) $(ENCODE_MO_BIN).exe
+	rm -f *.mo *_merged.po *.po~ $(LUA_POTFILE) $(POTFILE).c
 
 distclean: clean
 	rm -f $(POTFILE)

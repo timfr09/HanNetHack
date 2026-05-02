@@ -6,12 +6,11 @@
  * In-memory GNU gettext message catalog reader.
  *
  * HanNetHack replaces the runtime libintl dependency with this tiny
- * loader so that .mo catalogs can be shipped XOR-obfuscated (.mox)
- * and bundled inside the nhdat DLB.  See mox_format.h for the
- * on-disk format.
+ * loader so that .mo catalogs can be bundled inside the nhdat DLB
+ * and parsed directly in-process.
  *
  * Usage:
- *   mo_catalog *cat = mox_load(buf, len);   // buf is decoded in place
+ *   mo_catalog *cat = mo_load(buf, len);   // takes ownership of buf
  *   const char *tr  = mo_lookup(cat, "You die...");
  *   const char *ctx = mo_lookup_ctx(cat, "spell", "magic missile");
  *   mo_free(cat);
@@ -33,23 +32,13 @@ extern "C" {
 typedef struct mo_catalog mo_catalog;
 
 /*
- * Decode and parse a .mox buffer.  The buffer is modified in place
- * (XOR stream decoded) and must remain valid for the lifetime of
- * the returned catalog; ownership transfers to the catalog which
- * will free it in mo_free().
+ * Parse a .mo buffer.  Ownership of the buffer transfers to the
+ * returned catalog, which will free it in mo_free().
  *
  * Returns NULL on any error (bad magic, truncated file, malformed
  * catalog, allocation failure).  On failure the buffer is freed as
- * a courtesy so callers can treat mox_load() like a take-ownership
+ * a courtesy so callers can treat mo_load() like a take-ownership
  * constructor regardless of outcome.
- */
-mo_catalog *mox_load(uint8_t *mox_data, size_t len);
-
-/*
- * Parse an already-decoded .mo buffer.  Same ownership rules as
- * mox_load(): the buffer becomes owned by the returned catalog.
- * Primarily useful for tests and for callers who loaded a plain
- * .mo without the XOR wrapper.
  */
 mo_catalog *mo_load(uint8_t *mo_data, size_t len);
 

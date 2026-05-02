@@ -3,9 +3,8 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 /*
- * In-memory reader for GNU gettext .mo catalogs, with a thin XOR
- * wrapper (.mox) for the shipped catalog bytes.  See mo_reader.h
- * and mox_format.h for the external contract.
+ * In-memory reader for GNU gettext .mo catalogs.  See mo_reader.h
+ * for the external contract.
  *
  * Implementation notes:
  *   - The raw catalog buffer is retained after parsing so we can
@@ -26,7 +25,6 @@
 #include <string.h>
 
 #include "mo_reader.h"
-#include "mox_format.h"
 
 /* Standard GNU gettext .mo magic, little-endian on disk. */
 #define MO_MAGIC_LE 0x950412deU
@@ -210,54 +208,6 @@ mo_load(uint8_t *mo_data, size_t len)
         return NULL;
     }
     return cat;
-}
-
-mo_catalog *
-mox_load(uint8_t *mox_data, size_t len)
-{
-    uint32_t version, orig_size;
-    uint8_t nonce[MOX_NONCE_SIZE];
-    uint8_t *mo_bytes;
-
-    if (!mox_data)
-        return NULL;
-
-    if (len < MOX_HEADER_SIZE
-        || memcmp(mox_data, MOX_MAGIC, MOX_MAGIC_LEN) != 0) {
-        free(mox_data);
-        return NULL;
-    }
-
-    version = read_u32(mox_data + 4, 0);
-    if (version != MOX_VERSION) {
-        free(mox_data);
-        return NULL;
-    }
-
-    orig_size = read_u32(mox_data + 8, 0);
-    if (orig_size != len - MOX_HEADER_SIZE) {
-        free(mox_data);
-        return NULL;
-    }
-
-    memcpy(nonce, mox_data + 12, MOX_NONCE_SIZE);
-
-    /*
-     * Decode in place and then shift the decoded payload to the
-     * start of the buffer so the catalog owns a clean .mo image
-     * and downstream bounds checks can use offsets directly.
-     */
-    mox_xor_stream(mox_data + MOX_HEADER_SIZE, orig_size, nonce);
-
-    mo_bytes = (uint8_t *) malloc(orig_size ? orig_size : 1);
-    if (!mo_bytes) {
-        free(mox_data);
-        return NULL;
-    }
-    memcpy(mo_bytes, mox_data + MOX_HEADER_SIZE, orig_size);
-    free(mox_data);
-
-    return mo_load(mo_bytes, (size_t) orig_size);
 }
 
 const char *

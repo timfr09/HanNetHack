@@ -7,10 +7,9 @@
 #endif
 
 /*
- * Standalone smoke test for mo_reader + mox_format.
+ * Standalone smoke test for mo_reader.
  *
- *   test_mo_reader <catalog.mox>     - load a .mox and print a few stats
- *   test_mo_reader --mo <catalog.mo> - load a plain .mo (same, no XOR)
+ *   test_mo_reader <catalog.mo>
  *
  * Exits 0 on success, non-zero on any parsing or lookup failure.
  * Intended for CI / local dev; not shipped.
@@ -56,27 +55,22 @@ int
 main(int argc, char **argv)
 {
     const char *path;
-    int plain_mo = 0;
     uint8_t *buf;
     size_t len;
     mo_catalog *cat;
     const char *hdr;
 
-    if (argc == 3 && strcmp(argv[1], "--mo") == 0) {
-        plain_mo = 1;
-        path = argv[2];
-    } else if (argc == 2) {
-        path = argv[1];
-    } else {
-        fprintf(stderr, "Usage: %s [--mo] <catalog>\n", argv[0]);
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <catalog.mo>\n", argv[0]);
         return 2;
     }
+    path = argv[1];
 
     buf = slurp(path, &len);
     if (!buf)
         return 1;
 
-    cat = plain_mo ? mo_load(buf, len) : mox_load(buf, len);
+    cat = mo_load(buf, len);
     if (!cat) {
         fprintf(stderr, "FAIL: catalog did not parse\n");
         return 1;
@@ -101,9 +95,9 @@ main(int argc, char **argv)
 
     /*
      * Spot-check a handful of stable NetHack messages.  Any hit
-     * means hash-table lookup round-trips through XOR correctly.
-     * Misses are not fatal - the string may have been rephrased -
-     * but we expect at least one to succeed in a real catalog.
+     * means hash-table lookup works.  Misses are not fatal - the
+     * string may have been rephrased - but we expect at least one
+     * to succeed in a real catalog.
      */
     {
         static const char *const probes[] = {

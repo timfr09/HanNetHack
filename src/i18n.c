@@ -234,9 +234,9 @@ get_localized_filename(const char *fname)
  * ------------------------------------------------------------------
  * Message catalog runtime
  *
- * HanNetHack no longer links against libintl.  Instead an XOR-
- * obfuscated catalog (locale/<lang>/nethack.mox) is shipped inside
- * the nhdat DLB and decoded on the fly by src/mo_reader.c.
+ * HanNetHack does not link against libintl.  Instead a plain GNU
+ * gettext catalog (locale/<lang>/nethack.mo) is shipped inside the
+ * nhdat DLB and parsed on the fly by src/mo_reader.c.
  *
  * The public gettext-like helpers (nh_gettext, nh_ngettext,
  * nh_pgettext) replace the libintl exports; include/i18n.h maps the
@@ -352,7 +352,7 @@ slurp_dlb_file(const char *path, size_t *out_len)
 }
 
 /*
- * Attempt to load locale/<lang>/nethack.mox through the DLB layer.
+ * Attempt to load locale/<lang>/nethack.mo through the DLB layer.
  * On success installs the catalog as g_catalog and returns TRUE.
  * Any previously loaded catalog is freed regardless of outcome.
  */
@@ -373,14 +373,14 @@ load_catalog_for_lang(const char *lang)
     if (!lang || !*lang || strcmp(lang, "en") == 0)
         return FALSE;
 
-    Snprintf(path, sizeof path, "locale/%s/nethack.mox", lang);
+    Snprintf(path, sizeof path, "locale/%s/nethack.mo", lang);
     buf = slurp_dlb_file(path, &len);
     if (!buf)
         return FALSE;
 
-    cat = mox_load(buf, len);
+    cat = mo_load(buf, len);
     if (!cat) {
-        /* mox_load() frees the buffer on failure. */
+        /* mo_load() frees the buffer on failure. */
         return FALSE;
     }
     g_catalog = cat;
@@ -484,8 +484,8 @@ get_locale_for_lang(const char *lang)
  * We only need two side effects now:
  *   1. setlocale() so wcwidth/mbtowc behave sensibly for the target
  *      script (Korean TTY rendering leans on this).
- *   2. Load the obfuscated .mox catalog through the DLB so nh_gettext
- *      & friends start returning translated strings.
+ *   2. Load the .mo catalog through the DLB so nh_gettext & friends
+ *      start returning translated strings.
  */
 void
 set_language(const char *lang)
@@ -511,8 +511,8 @@ set_language(const char *lang)
     current_lang[sizeof(current_lang) - 1] = '\0';
     korean_locale = (strcmp(current_lang, "ko") == 0);
 
-    /* Load the obfuscated message catalog via DLB.  Failure is not
-     * fatal - nh_gettext will simply echo the English msgid back. */
+    /* Load the message catalog via DLB.  Failure is not fatal -
+     * nh_gettext will simply echo the English msgid back. */
     (void) load_catalog_for_lang(current_lang);
 }
 

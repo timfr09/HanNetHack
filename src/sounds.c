@@ -592,7 +592,7 @@ maybe_gasp(struct monst *mon)
     case MS_VAMPIRE: /* vampire in its own form */
     case MS_WERE: /* lycanthrope in human form */
     case MS_SPELL: /* titan, barrow wight, Nazgul, nalfeshnee */
-        dogasp = (mptr->mlet == u.umonst->data->mlet);
+        dogasp = (mptr->mlet == gy.youmonst.data->mlet);
         break;
     /* capable of speech but don't care if you attack peacefuls */
     case MS_BRIBE:
@@ -704,7 +704,7 @@ domonnoise(struct monst *mtmp)
         msound = MS_SELL;
     /* some normally non-speaking types can/will speak if hero is similar */
     else if (msound == MS_ORC
-             && ((same_race(ptr, u.umonst->data)        /* current form, */
+             && ((same_race(ptr, gy.youmonst.data)        /* current form, */
                   || same_race(ptr, &mons[Race_switch])) /* unpoly'd form */
                  || Hallucination))
         msound = MS_HUMANOID;
@@ -1104,7 +1104,7 @@ domonnoise(struct monst *mtmp)
 
         if (SYSOPT_SEDUCE) {
             if (ptr->mlet != S_NYMPH
-                && (could_seduce(mtmp, u.umonst, (struct attack *) 0)
+                && (could_seduce(mtmp, &gy.youmonst, (struct attack *) 0)
                     == 1)) {
                 (void) doseduce(mtmp);
                 break;

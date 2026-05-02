@@ -201,7 +201,7 @@ is_digging(void)
     return FALSE;
 }
 
-#define BY_YOU (u.umonst)
+#define BY_YOU (&gy.youmonst)
 #define BY_OBJECT ((struct monst *) 0)
 
 enum digcheck_result
@@ -393,7 +393,7 @@ dig(void)
         } else if (ttmp && ttmp->ttyp == BEAR_TRAP && u.utrap) {
             if (rnl(7) > (Fumbling ? 1 : 4)) {
                 char kbuf[BUFSZ];
-                int dmg = dmgval(uwep, u.umonst) + dbon();
+                int dmg = dmgval(uwep, &gy.youmonst) + dbon();
 
                 if (dmg < 1)
                     dmg = 1;
@@ -2182,8 +2182,8 @@ rot_corpse(anything *arg, long timeout)
             && hides_under(mtmp->data)) {
             mtmp->mundetected = 0;
         } else if (u_at(x, y)
-                   && u.uundetected && hides_under(u.umonst->data))
-            (void) hideunder(u.umonst);
+                   && u.uundetected && hides_under(gy.youmonst.data))
+            (void) hideunder(&gy.youmonst);
         newsym(x, y);
     } else if (in_invent)
         update_inventory();
@@ -2242,7 +2242,7 @@ void
 escape_tomb(void)
 {
     debugpline0("escape_tomb");
-    if ((Teleportation || can_teleport(u.umonst->data))
+    if ((Teleportation || can_teleport(gy.youmonst.data))
         && (Teleport_control || rn2(3) < Luck+2)) {
         You(_("attempt a teleport spell."));
         (void) dotele(FALSE);        /* calls unearth_you() */
@@ -2262,7 +2262,7 @@ escape_tomb(void)
                       : _("phase"),
                 surface(u.ux, u.uy));
 
-            good = (tunnels(u.umonst->data) && !needspick(u.umonst->data))
+            good = (tunnels(gy.youmonst.data) && !needspick(gy.youmonst.data))
                       ? dighole(TRUE, FALSE, (coord *) 0) : TRUE;
             if (good)
                 unearth_you();

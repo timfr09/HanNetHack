@@ -229,7 +229,7 @@ flooreffects(
                 }
                 mtmp->mtrapped = 0;
             } else {
-                if (!Passes_walls && !throws_rocks(u.umonst->data)) {
+                if (!Passes_walls && !throws_rocks(gy.youmonst.data)) {
                     losehp(Maybe_Half_Phys(rnd(15)),
                            _("squished under a boulder"), NO_KILLER_PREFIX);
                     goto deletedwithboulder;
@@ -1259,7 +1259,7 @@ dodown(void)
         const char *down_or_thru = trap->ttyp == HOLE ? _("down") : _("through");
         const char *actn = u_locomotion(_("jump"));
 
-        if (u.umonst->data->msize >= MZ_HUGE) {
+        if (gy.youmonst.data->msize >= MZ_HUGE) {
             char qbuf[QBUFSZ];
 
             You(_("don't fit %s easily."), down_or_thru);
@@ -1428,7 +1428,7 @@ u_collide_m(struct monst *mtmp)
        it was already here.  Randomly move you to an adjacent spot
        or else the monster to any nearby location.  Prior to 3.3.0
        the latter was done unconditionally. */
-    if (!rn2(2) && enexto(&cc, u.ux, u.uy, u.umonst->data)
+    if (!rn2(2) && enexto(&cc, u.ux, u.uy, gy.youmonst.data)
         && next2u(cc.x, cc.y))
         u_on_newpos(cc.x, cc.y); /*[maybe give message here?]*/
     else

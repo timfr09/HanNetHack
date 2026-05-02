@@ -79,7 +79,7 @@ stealgold(struct monst *mtmp)
             whose = s_suffix(y_monnam(who));
             what = makeplural(mbodypart(who, FOOT));
         } else {
-            who = u.umonst;
+            who = &gy.youmonst;
             whose = "your";
             what = makeplural(body_part(FOOT));
         }

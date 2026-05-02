@@ -165,7 +165,7 @@ awaken_soldiers(struct monst *bugler  /* monster that played instrument */)
     int distance, distm;
 
     /* distance of affected non-soldier monsters to bugler */
-    distance = ((bugler == u.umonst) ? u.ulevel
+    distance = ((bugler == &gy.youmonst) ? u.ulevel
                                          : bugler->data->mlevel) * 30;
 
     for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
@@ -301,7 +301,7 @@ do_pit(coordxy x, coordxy y, unsigned tu_pit)
             Your(_("chain breaks!"));
             reset_utrap(TRUE);
         }
-        if (Levitation || Flying || is_clinger(u.umonst->data)) {
+        if (Levitation || Flying || is_clinger(gy.youmonst.data)) {
             if (!tu_pit) { /* no pit here previously */
                 pline(_("A chasm opens up under you!"));
                 You(_("don't fall in!"));
@@ -653,7 +653,7 @@ do_improvisation(struct obj *instr)
         else
             You(_("blow into the bugle."));
         Hero_playnotes(obj_to_instr(&itmp), improvisation, 80);
-        awaken_soldiers(u.umonst);
+        awaken_soldiers(&gy.youmonst);
         exercise(A_WIS, FALSE);
         break;
     case MAGIC_HARP: /* Charm monsters */

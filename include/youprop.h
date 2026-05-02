@@ -67,7 +67,7 @@
 #define HSick_resistance u.uprops[SICK_RES].intrinsic
 #define ESick_resistance u.uprops[SICK_RES].extrinsic
 #define Sick_resistance (HSick_resistance || ESick_resistance \
-                         || defended(u.umonst, AD_DISE))
+                         || defended(&gy.youmonst, AD_DISE))
 
 /* Intrinsics only */
 #define Invulnerable u.uprops[INVULNERABLE].intrinsic /* [Tom] */
@@ -270,11 +270,11 @@
 #define HMagical_breathing u.uprops[MAGICAL_BREATHING].intrinsic
 #define EMagical_breathing u.uprops[MAGICAL_BREATHING].extrinsic
 #define Amphibious \
-    (HMagical_breathing || EMagical_breathing || amphibious(u.umonst->data))
+    (HMagical_breathing || EMagical_breathing || amphibious(gy.youmonst.data))
 /* Get wet, may go under surface */
 
 #define Breathless \
-    (HMagical_breathing || EMagical_breathing || breathless(u.umonst->data))
+    (HMagical_breathing || EMagical_breathing || breathless(gy.youmonst.data))
 
 #define Underwater (u.uinwater)
 /* Note that Underwater and u.uinwater are both used in code.
@@ -398,7 +398,7 @@
    redundant but allows the function calls to be skipped most of the time */
 #define Unaware (gm.multi < 0 && (unconscious() || is_fainted()))
 
-#define Hate_silver (u.ulycn >= LOW_PM || hates_silver(u.umonst->data))
+#define Hate_silver (u.ulycn >= LOW_PM || hates_silver(gy.youmonst.data))
 
 /* _The_Hitchhikers_Guide_to_the_Galaxy_ on uses for 'towel': "wrap it round
    your head to ward off noxious fumes" [we require it to be damp or wet] */

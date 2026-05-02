@@ -31,7 +31,6 @@ staticfn void save_gamelog(NHFILE *);
 staticfn void savegamestate(NHFILE *);
 staticfn void savelev_core(NHFILE *, xint8);
 staticfn void save_msghistory(NHFILE *);
-staticfn void save_u(NHFILE *);
 staticfn void save_adjust_levelflags(void);
 #if defined(HANGUPHANDLING)
 #define HUP if (!program_state.done_hup)
@@ -263,27 +262,6 @@ save_gamelog(NHFILE *nhfp)
 }
 
 staticfn void
-save_u(NHFILE *nhfp)
-{
-    struct monst *save_umonst;
-
-    urealtime.finish_time = getnow();
-    urealtime.realtime += timet_delta(urealtime.finish_time,
-                                      urealtime.start_timing);
-
-    save_umonst = u.umonst;
-    u.umonst = (struct monst *) 0;
-    Sfo_you(nhfp, &u, "gamestate-you");
-    u.umonst = save_umonst;
-
-    Sfo_char(nhfp, yyyymmddhhmmss(ubirthday), "gamestate-ubirthday", 14);
-    Sfo_long(nhfp, &urealtime.realtime, "gamestate-realtime");
-    Sfo_char(nhfp, yyyymmddhhmmss(urealtime.start_timing), "gamestate-start_timing", 14);
-    /* this is the value to use for the next update of urealtime.realtime */
-    urealtime.start_timing = urealtime.finish_time;
-}
-
-staticfn void
 savegamestate(NHFILE *nhfp)
 {
     int i;
@@ -299,8 +277,17 @@ savegamestate(NHFILE *nhfp)
     Sfo_context_info(nhfp, &svc.context, "gamestate-context");
     relative_time_to_moves(&svc.context.seer_turn);
     relative_time_to_moves(&svc.context.digging.lastdigtime);
+
     Sfo_flag(nhfp, &flags, "gamestate-flags");
-    save_u(nhfp);
+    urealtime.finish_time = getnow();
+    urealtime.realtime += timet_delta(urealtime.finish_time,
+                                      urealtime.start_timing);
+    Sfo_you(nhfp, &u, "gamestate-you");
+    Sfo_char(nhfp, yyyymmddhhmmss(ubirthday), "gamestate-ubirthday", 14);
+    Sfo_long(nhfp, &urealtime.realtime, "gamestate-realtime");
+    Sfo_char(nhfp, yyyymmddhhmmss(urealtime.start_timing), "gamestate-start_timing", 14);
+    /* this is the value to use for the next update of urealtime.realtime */
+    urealtime.start_timing = urealtime.finish_time;
     save_killers(nhfp);
 
     /* must come before gm.migrating_objs and gm.migrating_mons are freed */
@@ -1185,9 +1172,6 @@ freedynamicdata(void)
 
     if (options_set_window_colors_flag)
         options_free_window_colors();
-
-    if (u.umonst)
-        free((genericptr_t) u.umonst), u.umonst = 0;
 
     if (glyphid_cache_status())
         free_glyphid_cache();

@@ -270,7 +270,7 @@ bot(void)
         return;
     /* dosave() flags completion by setting u.uhp to -1; suppress_map_output()
        covers program_state.restoring and is used for status as well as map */
-    if (u.uhp != -1 && u.umonst->data
+    if (u.uhp != -1 && gy.youmonst.data
         && iflags.status_updates && !suppress_map_output()) {
         if (VIA_WINDOWPORT()) {
             bot_via_windowport();
@@ -506,7 +506,7 @@ weapon_status(char *outbuf)
         /* no weapon; gloves imply hands; humanoid also implies hands;
            otherwise make no assumptions */
         res = uarmg ? "Empty-hnd" /* empty handed means "gloves only" */
-              : humanoid(u.umonst->data) ? "Bare-hnds" /* bare hands */
+              : humanoid(gy.youmonst.data) ? "Bare-hnds" /* bare hands */
                 : "No-weapon";
     } else if (u.twoweap) {
         /* two-weaponing implies hands and a weapon or wep-tool
@@ -1213,7 +1213,7 @@ bot_via_windowport(void)
 #else
             test_if_enabled(bl_held) = TRUE;
 #endif
-        } else if (Upolyd && sticks(u.umonst->data)) {
+        } else if (Upolyd && sticks(gy.youmonst.data)) {
             test_if_enabled(bl_holding) = TRUE;
         } else {
             /* grab == hero is held by sea monster and about to be drowned;

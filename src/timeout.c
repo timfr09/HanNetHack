@@ -242,7 +242,7 @@ vomiting_dialogue(void)
         break;
     case 0:
         stop_occupation();
-        if (!cantvomit(u.umonst->data)) {
+        if (!cantvomit(gy.youmonst.data)) {
             morehungry(20);
             /* case 2 used to be "You suddenly vomit!" but it wasn't sudden
                since you've just been through the earlier messages of the
@@ -395,8 +395,8 @@ slime_dialogue(void)
         /* display as green slime during "You have become green slime."
            but don't worry about not being able to see self; if already
            mimicking something else at the time, implicitly be revealed */
-        u.umonst->m_ap_type = M_AP_MONSTER;
-        u.umonst->mappearance = PM_GREEN_SLIME;
+        gy.youmonst.m_ap_type = M_AP_MONSTER;
+        gy.youmonst.mappearance = PM_GREEN_SLIME;
         /* no message given when 't' is odd, so no automatic update of
            self; force one */
         newsym(u.ux, u.uy);
@@ -460,7 +460,7 @@ slimed_to_death(struct kinfo *kptr)
     uchar save_mvflags;
 
     /* redundant: polymon() cures sliming when polying into green slime */
-    if (Upolyd && u.umonst->data == &mons[PM_GREEN_SLIME]) {
+    if (Upolyd && gy.youmonst.data == &mons[PM_GREEN_SLIME]) {
         dealloc_killer(kptr);
         return;
     }
@@ -486,11 +486,11 @@ slimed_to_death(struct kinfo *kptr)
      * [formerly implicit] change of form; polymon() takes care of that.
      * Temporarily ungenocide if necessary.
      */
-    if (emits_light(u.umonst->data))
-        del_light_source(LS_MONSTER, monst_to_any(u.umonst));
+    if (emits_light(gy.youmonst.data))
+        del_light_source(LS_MONSTER, monst_to_any(&gy.youmonst));
     save_mvflags = svm.mvitals[PM_GREEN_SLIME].mvflags;
     svm.mvitals[PM_GREEN_SLIME].mvflags = save_mvflags & ~G_GENOD;
-    /* become a green slime; also resets u.umonst.m_ap_type+.mappearance */
+    /* become a green slime; also resets youmonst.m_ap_type+.mappearance */
     (void) polymon(PM_GREEN_SLIME);
     svm.mvitals[PM_GREEN_SLIME].mvflags = save_mvflags;
     done_timeout(TURNED_SLIME, SLIMED);
@@ -641,8 +641,8 @@ nh_timeout(void)
         sleep_dialogue();
     if (u.mtimedone && !--u.mtimedone) {
         if (Unchanging)
-            u.mtimedone = rnd(100 * u.umonst->data->mlevel + 1);
-        else if (is_were(u.umonst->data))
+            u.mtimedone = rnd(100 * gy.youmonst.data->mlevel + 1);
+        else if (is_were(gy.youmonst.data))
             you_unwere(FALSE); /* if polycontrl, asks whether to rehumanize */
         else
             rehumanize();

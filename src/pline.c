@@ -140,7 +140,7 @@ pline_mon(struct monst *mtmp, const char *line, ...)
 {
     va_list the_args;
 
-    if (mtmp == u.umonst)
+    if (mtmp == &gy.youmonst)
         set_msg_xy(0, 0);
     else
         set_msg_xy(mtmp->mx, mtmp->my);

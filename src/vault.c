@@ -466,7 +466,7 @@ invault(void)
         }
         if (U_AP_TYPE == M_AP_OBJECT || u.uundetected) {
             if (U_AP_TYPE == M_AP_OBJECT
-                && u.umonst->mappearance != GOLD_PIECE)
+                && gy.youmonst.mappearance != GOLD_PIECE)
                 if (!Deaf) {
                     SetVoice(guard, 0, 80, 0);
                     verbalize(_("Hey!  Who left that %s in here?"),
@@ -477,7 +477,7 @@ invault(void)
             mongone(guard);
             return;
         }
-        if (Strangled || is_silent(u.umonst->data) || gm.multi < 0) {
+        if (Strangled || is_silent(gy.youmonst.data) || gm.multi < 0) {
             /* [we ought to record whether this message has already
                been given in order to vary it upon repeat visits, but
                discarding the monster and its egd data renders that hard] */
@@ -1065,7 +1065,7 @@ gd_move(struct monst *grd)
     }
     if (um_dist(grd->mx, grd->my, 1) || egrd->gddone) {
         if (!egrd->gddone && !rn2(10) && !Deaf && !u.uswallow
-            && !(u.ustuck && !sticks(u.umonst->data))) {
+            && !(u.ustuck && !sticks(gy.youmonst.data))) {
             SetVoice(grd, 0, 80, 0);
             verbalize(_("Move along!"));
         }

@@ -909,7 +909,7 @@ wiz_smell(void)
             if (u.usteed) {
                 mptr = u.usteed->data;
             } else {
-                mptr = u.umonst->data;
+                mptr = gy.youmonst.data;
                 is_you = TRUE;
             }
         } else if ((mtmp = m_at(cc.x, cc.y)) != (struct monst *) 0) {

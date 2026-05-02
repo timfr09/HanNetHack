@@ -24,13 +24,13 @@ enum explode_action {
 /* check if shield effects are needed for location affected by explosion */
 staticfn int
 explosionmask(
-    struct monst *m, /* target monster (might be u.umonst) */
+    struct monst *m, /* target monster (might be youmonst) */
     uchar adtyp,     /* damage type */
     char olet)       /* object class (only matters for AD_DISN) */
 {
     int res = EXPL_NONE;
 
-    if (m == u.umonst) {
+    if (m == &gy.youmonst) {
         switch (adtyp) {
         case AD_PHYS:
             /* leave 'res' with EXPL_NONE */
@@ -274,7 +274,7 @@ explode(
        so might get hit by double damage */
     grabbed = grabbing = FALSE;
     if (u.ustuck && !u.uswallow) {
-        if (Upolyd && sticks(u.umonst->data))
+        if (Upolyd && sticks(gy.youmonst.data))
             grabbing = TRUE;
         else
             grabbed = TRUE;
@@ -363,7 +363,7 @@ explode(
             explmask[i][j] = EXPL_NONE;
 
             if (u_at(xx, yy)) {
-                explmask[i][j] = explosionmask(u.umonst, adtyp, olet);
+                explmask[i][j] = explosionmask(&gy.youmonst, adtyp, olet);
             }
             /* can be both you and mtmp if you're swallowed or riding */
             mtmp = m_at(xx, yy);
@@ -611,10 +611,10 @@ explode(
         } else if (adtyp == AD_PHYS || adtyp == AD_ACID)
             damu = Maybe_Half_Phys(damu);
         if (adtyp == AD_FIRE) {
-            (void) burnarmor(u.umonst);
+            (void) burnarmor(&gy.youmonst);
             ignite_items(gi.invent);
         }
-        (void) destroy_items(u.umonst, (int) adtyp, dam);
+        (void) destroy_items(&gy.youmonst, (int) adtyp, dam);
 
         ugolemeffects((int) adtyp, damu);
         if (uhurt == 2) {
@@ -869,9 +869,9 @@ scatter(
 
                         if (gm.multi)
                             nomul(0);
-                        dam = dmgval(stmp->obj, u.umonst);
+                        dam = dmgval(stmp->obj, &gy.youmonst);
                         hitvalu = 8 + stmp->obj->spe;
-                        if (bigmonst(u.umonst->data))
+                        if (bigmonst(gy.youmonst.data))
                             hitvalu++;
                         hitu = thitu(hitvalu, Maybe_Half_Phys(dam),
                                      &stmp->obj, (char *) 0);
@@ -936,8 +936,8 @@ scatter(
         newsym(x, y);
     }
     newsym(sx, sy);
-    if (u_at(sx, sy) && u.uundetected && hides_under(u.umonst->data))
-        (void) hideunder(u.umonst);
+    if (u_at(sx, sy) && u.uundetected && hides_under(gy.youmonst.data))
+        (void) hideunder(&gy.youmonst);
     if (((mtmp = m_at(sx, sy)) != 0) && mtmp->mtrapped)
         mtmp->mtrapped = 0;
     maybe_unhide_at(sx, sy);

@@ -157,7 +157,7 @@ throne_sit_effect(void)
                 if (!Blind) {
                     Your(_("vision becomes clear."));
                 } else {
-                    int num_of_eyes = eyecount(u.umonst->data);
+                    int num_of_eyes = eyecount(gy.youmonst.data);
                     const char *eye = body_part(EYE);
 
                     /* note: 1 eye case won't actually happen--can't
@@ -368,7 +368,7 @@ lay_an_egg(void)
     } else if (u.uhunger < (int) objects[EGG].oc_nutrition) {
         You(_("don't have enough energy to lay an egg."));
         return ECMD_OK;
-    } else if (eggs_in_water(u.umonst->data)) {
+    } else if (eggs_in_water(gy.youmonst.data)) {
         if (!(Underwater || Is_waterlevel(&u.uz))) {
             pline(_("A splash tetra you are not."));
             return ECMD_OK;
@@ -406,7 +406,7 @@ dosit(void)
         You(_("are already sitting on %s."), mon_nam(u.usteed));
         return ECMD_OK;
     }
-    if (u.uundetected && is_hider(u.umonst->data)
+    if (u.uundetected && is_hider(gy.youmonst.data)
         && u.umonnum != PM_TRAPPER) /* trapper can stay hidden on floor */
         u.uundetected = 0; /* no longer on the ceiling */
 
@@ -418,7 +418,7 @@ dosit(void)
         else
             You(_("are sitting on air."));
         return ECMD_OK;
-    } else if (u.ustuck && !sticks(u.umonst->data)) {
+    } else if (u.ustuck && !sticks(gy.youmonst.data)) {
         /* holding monster is next to hero rather than beneath, but
            hero is in no condition to actually sit at has/her own spot */
         if (humanoid(u.ustuck->data))
@@ -502,7 +502,7 @@ dosit(void)
             dotrap(trap, VIASITTING);
         }
     } else if ((Underwater || Is_waterlevel(&u.uz))
-                && !eggs_in_water(u.umonst->data)) {
+                && !eggs_in_water(gy.youmonst.data)) {
         if (Is_waterlevel(&u.uz))
             There(_("are no cushions floating nearby."));
         else
@@ -511,7 +511,7 @@ dosit(void)
  in_water:
         You(_("sit in the %s."), hliquid("water"));
         if (Upolyd && u.umonnum == PM_GREMLIN) {
-            if (split_mon(u.umonst, (struct monst *) 0)) {
+            if (split_mon(&gy.youmonst, (struct monst *) 0)) {
                 if (levl[u.ux][u.uy].typ == FOUNTAIN)
                     dryup(u.ux, u.uy, TRUE);
             }
@@ -555,7 +555,7 @@ dosit(void)
     } else if (IS_THRONE(typ)) {
         You(_("sit on the %s."), _(defsyms[S_throne].explanation));
         throne_sit_effect();
-    } else if (lays_eggs(u.umonst->data)) {
+    } else if (lays_eggs(gy.youmonst.data)) {
         return lay_an_egg();
     } else {
         pline(_("Having fun sitting on the %s?"), surface(u.ux, u.uy));

@@ -213,7 +213,7 @@ losexp(
        wizard mode request to reduce level; never fatal though */
     if (drainer && !strcmp(drainer, "#levelchange"))
         drainer = 0;
-    else if (resists_drli(u.umonst))
+    else if (resists_drli(&gy.youmonst))
         return;
 
     /* level-loss message; "Goodbye level 1." is fatal; divine anger
@@ -280,7 +280,7 @@ losexp(
         u.uexp = newuexp(u.ulevel) - 1;
 
     if (Upolyd) {
-        num = monhp_per_lvl(u.umonst);
+        num = monhp_per_lvl(&gy.youmonst);
         u.mhmax -= num;
         u.mh -= num;
         if (u.mh <= 0)
@@ -317,7 +317,7 @@ pluslvl(
     /* increase hit points (when polymorphed, do monster form first
        in order to retain normal human/whatever increase for later) */
     if (Upolyd) {
-        hpinc = monhp_per_lvl(u.umonst);
+        hpinc = monhp_per_lvl(&gy.youmonst);
         u.mh += hpinc;
         setuhpmax(u.mhmax, FALSE); /* acts as setmhmax() when Upolyd */
     }

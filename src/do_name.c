@@ -1311,7 +1311,7 @@ Mgender(struct monst *mtmp)
 {
     int mgender = MALE;
 
-    if (mtmp == u.umonst) {
+    if (mtmp == &gy.youmonst) {
         if (Upolyd ? u.mfemale : flags.female)
             mgender = FEMALE;
     } else if (mtmp->female) {

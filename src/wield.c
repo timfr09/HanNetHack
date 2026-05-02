@@ -751,7 +751,7 @@ can_twoweapon(void)
 {
     struct obj *otmp;
 
-    if (!could_twoweap(u.umonst->data)) {
+    if (!could_twoweap(gy.youmonst.data)) {
         if (Upolyd)
             You_cant(_("use two weapons in your current form."));
         else

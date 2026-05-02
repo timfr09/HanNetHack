@@ -296,7 +296,7 @@ demon_talk(struct monst *mtmp)
         }
         newsym(mtmp->mx, mtmp->my);
     }
-    if (u.umonst->data->mlet == S_DEMON) { /* Won't blackmail their own. */
+    if (gy.youmonst.data->mlet == S_DEMON) { /* Won't blackmail their own. */
         if (!Deaf)
             pline(_("%s says, \"Good hunting, %s.\""), Amonnam(mtmp),
                   flags.female ? _("Sister") : _("Brother"));

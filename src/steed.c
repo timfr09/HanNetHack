@@ -169,8 +169,8 @@ put_saddle_on_mon(struct obj *saddle, struct monst *mtmp)
 boolean
 can_ride(struct monst *mtmp)
 {
-    return (mtmp->mtame && humanoid(u.umonst->data)
-            && !verysmall(u.umonst->data) && !bigmonst(u.umonst->data)
+    return (mtmp->mtame && humanoid(gy.youmonst.data)
+            && !verysmall(gy.youmonst.data) && !bigmonst(gy.youmonst.data)
             && (!Underwater || is_swimmer(mtmp->data)));
 }
 
@@ -546,7 +546,7 @@ landing_spot(
                     kn_trap = i == 0 && ((t = t_at(x, y)) != 0 && t->tseen
                                          && t->ttyp != VIBRATING_SQUARE);
                     boulder = i <= 1 && (sobj_at(BOULDER, x, y)
-                                         && !throws_rocks(u.umonst->data));
+                                         && !throws_rocks(gy.youmonst.data));
                     if (!kn_trap && !boulder) {
                         spot->x = x;
                         spot->y = y;
@@ -567,7 +567,7 @@ landing_spot(
 
     /* If we didn't find a good spot and forceit is on, try enexto(). */
     if (forceit && !found)
-        found = enexto(spot, u.ux, u.uy, u.umonst->data);
+        found = enexto(spot, u.ux, u.uy, gy.youmonst.data);
 
     return found;
 }

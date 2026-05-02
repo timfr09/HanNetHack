@@ -5910,7 +5910,7 @@ cad(
 {
     const char *res = 0;
 
-    switch (is_demon(u.umonst->data) ? 3 : poly_gender()) {
+    switch (is_demon(gy.youmonst.data) ? 3 : poly_gender()) {
     case 0:
         res = "cad";
         break;
@@ -5929,7 +5929,7 @@ cad(
         break;
     }
     if (altusage) {
-        char *cadbuf = mon_nam(u.umonst); /* snag an output buffer */
+        char *cadbuf = mon_nam(&gy.youmonst); /* snag an output buffer */
 
         /* alternate usage adds a leading double quote and trailing
            exclamation point plus sentence separating spaces */

@@ -677,7 +677,7 @@ find_targ(
             break;
 
         if (curx == mtmp->mux && cury == mtmp->muy)
-            return u.umonst;
+            return &gy.youmonst;
 
         if ((targ = m_at(curx, cury)) != 0) {
             /* Is the monster visible to the pet? */
@@ -780,7 +780,7 @@ score_targ(struct monst *mtmp, struct monst *mtarg)
             return score;
         }
         /* Is the monster peaceful or tame? */
-        if (/*mtarg->mpeaceful ||*/ mtarg->mtame || mtarg == u.umonst) {
+        if (/*mtarg->mpeaceful ||*/ mtarg->mtame || mtarg == &gy.youmonst) {
             /* Pets will never be targeted */
             score -= 3000L;
             return score;
@@ -909,7 +909,7 @@ pet_ranged_attk(struct monst *mtmp, boolean forced)
     if (mtarg && (!hungry || !rn2(5))) {
         int mstatus = M_ATTK_MISS;
 
-        if (mtarg == u.umonst) {
+        if (mtarg == &gy.youmonst) {
             if (mattacku(mtmp))
                 return MMOVE_DIED;
             /* Treat this as the pet having initiated an attack even if it
@@ -933,7 +933,7 @@ pet_ranged_attk(struct monst *mtmp, boolean forced)
              * nothing will happen.
              */
             if ((mstatus & M_ATTK_HIT) && !(mstatus & M_ATTK_DEF_DIED)
-                && rn2(4) && mtarg != u.umonst) {
+                && rn2(4) && mtarg != &gy.youmonst) {
 
                 /* Can monster see?  If it can, it can retaliate
                  * even if the pet is invisible, since it'll see
@@ -1056,7 +1056,7 @@ dog_move(
     }
 #if 0 /* [this is now handled in dochug()] */
     if (!Conflict && !mtmp->mconf
-        && mtmp == u.ustuck && !sticks(u.umonst->data)) {
+        && mtmp == u.ustuck && !sticks(gy.youmonst.data)) {
         unstuck(mtmp); /* swallowed case handled above */
         You(_("get released!"));
     }

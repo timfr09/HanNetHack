@@ -5,8 +5,8 @@
 /*
  * Polymorph self routine.
  *
- * Note:  the light source handling code assumes that u.umonst->m_id
- * always remains 1 and u.umonst->mx will always remain 0 when it handles
+ * Note:  the light source handling code assumes that gy.youmonst.m_id
+ * always remains 1 and gy.youmonst.mx will always remain 0 when it handles
  * the case of the player polymorphed into a light-emitting monster.
  *
  * Transformation sequences:
@@ -34,24 +34,24 @@ staticfn void polysense(void);
 static const char no_longer_petrify_resistant[] =
     N_("No longer petrify-resistant, you");
 
-/* update the u.umonst->data structure pointer and intrinsics */
+/* update the gy.youmonst.data structure pointer and intrinsics */
 void
 set_uasmon(void)
 {
     struct permonst *mdat = &mons[u.umonnum];
-    boolean was_vampshifter = valid_vampshiftform(u.umonst->cham, u.umonnum);
+    boolean was_vampshifter = valid_vampshiftform(gy.youmonst.cham, u.umonnum);
 
-    set_mon_data(u.umonst, mdat);
-    u.umonst->m_id = 1;
+    set_mon_data(&gy.youmonst, mdat);
+    gy.youmonst.m_id = 1;
 
     if (Protection_from_shape_changers)
-        u.umonst->cham = NON_PM;
-    else if (is_vampire(u.umonst->data))
-        u.umonst->cham = u.umonst->mnum;
+        gy.youmonst.cham = NON_PM;
+    else if (is_vampire(gy.youmonst.data))
+        gy.youmonst.cham = gy.youmonst.mnum;
     /* assume hero-as-chameleon/doppelganger/sandestin doesn't change shape */
     else if (!was_vampshifter)
-        u.umonst->cham = NON_PM;
-    u.mcham = u.umonst->cham; /* for save/restore since u.umonst isn't */
+        gy.youmonst.cham = NON_PM;
+    u.mcham = gy.youmonst.cham; /* for save/restore since youmonst isn't */
 
 #define PROPSET(PropIndx, ON)                          \
     do {                                               \
@@ -60,7 +60,7 @@ set_uasmon(void)
         else                                           \
             u.uprops[PropIndx].intrinsic &= ~FROMFORM; \
     } while (0)
-#define resist_from_form(MRtyp) ((u.umonst->data->mresists & (MRtyp)) != 0)
+#define resist_from_form(MRtyp) ((gy.youmonst.data->mresists & (MRtyp)) != 0)
 
     PROPSET(FIRE_RES, resist_from_form(MR_FIRE));
     PROPSET(COLD_RES, resist_from_form( MR_COLD));
@@ -75,7 +75,7 @@ set_uasmon(void)
         struct obj *save_uwep = uwep;
 
         uwep = 0;
-        PROPSET(DRAIN_RES, resists_drli(u.umonst));
+        PROPSET(DRAIN_RES, resists_drli(&gy.youmonst));
         uwep = save_uwep;
     }
     /* resists_magm() takes wielded, worn, and carried equipment into
@@ -175,7 +175,7 @@ check_strangling(boolean on)
         /* when Strangled is already set, polymorphing from one
            vulnerable form into another causes the counter to be reset */
         if (uamul && uamul->otyp == AMULET_OF_STRANGULATION
-            && can_be_strangled(u.umonst)) {
+            && can_be_strangled(&gy.youmonst)) {
             Strangled = 6L;
             disp.botl = TRUE;
             Your(_("%s %s your %s!"), simpleonames(uamul),
@@ -186,7 +186,7 @@ check_strangling(boolean on)
 
     /* off -- maybe block strangling */
     } else {
-        if (Strangled && !can_be_strangled(u.umonst)) {
+        if (Strangled && !can_be_strangled(&gy.youmonst)) {
             Strangled = 0L;
             disp.botl = TRUE;
             You(_("are no longer being strangled."));
@@ -200,7 +200,7 @@ DISABLE_WARNING_FORMAT_NONLITERAL
 staticfn void
 polyman(const char *fmt, const char *arg)
 {
-    boolean sticking = (sticks(u.umonst->data) && u.ustuck && !u.uswallow),
+    boolean sticking = (sticks(gy.youmonst.data) && u.ustuck && !u.uswallow),
             was_mimicking = (U_AP_TYPE != M_AP_NOTHING);
     boolean was_blind = !!Blind,
             had_see_invis = !!See_invisible;
@@ -224,8 +224,8 @@ polyman(const char *fmt, const char *arg)
     if (was_mimicking) {
         if (gm.multi < 0)
             unmul("");
-        u.umonst->m_ap_type = M_AP_NOTHING;
-        u.umonst->mappearance = 0;
+        gy.youmonst.m_ap_type = M_AP_NOTHING;
+        gy.youmonst.mappearance = 0;
     }
 
     newsym(u.ux, u.uy);
@@ -250,7 +250,7 @@ polyman(const char *fmt, const char *arg)
     if (!!See_invisible ^ had_see_invis)
         set_mimic_blocking(); /* See_invisible just toggled */
 
-    if (u.twoweap && !could_twoweap(u.umonst->data))
+    if (u.twoweap && !could_twoweap(gy.youmonst.data))
         untwoweapon();
 
     if (u.utrap && u.utraptype == TT_PIT) {
@@ -280,8 +280,8 @@ change_sex(void)
      * may be true for certain roles
      */
     if (!Upolyd
-        || (!is_male(u.umonst->data) && !is_female(u.umonst->data)
-            && !is_neuter(u.umonst->data)))
+        || (!is_male(gy.youmonst.data) && !is_female(gy.youmonst.data)
+            && !is_neuter(gy.youmonst.data)))
         flags.female = !flags.female;
     if (Upolyd) /* poly'd: also change saved sex */
         u.mfemale = !u.mfemale;
@@ -477,8 +477,8 @@ polyself(int psflags)
             formrevert = ((psflags & POLY_REVERT) != 0),
             draconian = (uarm && Is_dragon_armor(uarm)),
             iswere = (ismnum(u.ulycn)),
-            isvamp = (is_vampire(u.umonst->data)
-                      || is_vampshifter(u.umonst)),
+            isvamp = (is_vampire(gy.youmonst.data)
+                      || is_vampshifter(&gy.youmonst)),
             controllable_poly = Polymorph_control && !(Stunned || Unaware);
 
     if (Unchanging) {
@@ -495,11 +495,11 @@ polyself(int psflags)
             return;
         }
     }
-    old_light = emits_light(u.umonst->data);
+    old_light = emits_light(gy.youmonst.data);
     mntmp = NON_PM;
 
     if (formrevert) {
-        mntmp = u.umonst->cham;
+        mntmp = gy.youmonst.cham;
         monsterpoly = TRUE;
         controllable_poly = FALSE;
     }
@@ -671,13 +671,13 @@ polyself(int psflags)
         } else if (isvamp) {
  do_vampyr:
             if (mntmp < LOW_PM || (mons[mntmp].geno & G_UNIQ)) {
-                mntmp = (u.umonst->data == &mons[PM_VAMPIRE_LEADER]
+                mntmp = (gy.youmonst.data == &mons[PM_VAMPIRE_LEADER]
                          && !rn2(10)) ? PM_WOLF
                                       : !rn2(4) ? PM_FOG_CLOUD
                                                 : PM_VAMPIRE_BAT;
-                if (ismnum(u.umonst->cham)
-                    && !is_vampire(u.umonst->data) && !rn2(2))
-                    mntmp = u.umonst->cham;
+                if (ismnum(gy.youmonst.cham)
+                    && !is_vampire(gy.youmonst.data) && !rn2(2))
+                    mntmp = gy.youmonst.cham;
             }
             if (controllable_poly) {
                 Sprintf(buf, _("Become %s?"),
@@ -719,15 +719,15 @@ polyself(int psflags)
     gs.sex_change_ok--; /* reset */
 
  made_change:
-    new_light = emits_light(u.umonst->data);
+    new_light = emits_light(gy.youmonst.data);
     if (old_light != new_light) {
         if (old_light)
-            del_light_source(LS_MONSTER, monst_to_any(u.umonst));
+            del_light_source(LS_MONSTER, monst_to_any(&gy.youmonst));
         if (new_light == 1)
             ++new_light; /* otherwise it's undetectable */
         if (new_light)
             new_light_source(u.ux, u.uy, new_light, LS_MONSTER,
-                             monst_to_any(u.umonst));
+                             monst_to_any(&gy.youmonst));
     }
 }
 
@@ -736,9 +736,9 @@ int
 polymon(int mntmp)
 {
     char buf[BUFSZ], ustuckNam[BUFSZ];
-    boolean sticking = sticks(u.umonst->data) && u.ustuck && !u.uswallow,
+    boolean sticking = sticks(gy.youmonst.data) && u.ustuck && !u.uswallow,
             was_blind = !!Blind, dochange = FALSE, was_expelled = FALSE,
-            was_hiding_under = u.uundetected && hides_under(u.umonst->data);
+            was_hiding_under = u.uundetected && hides_under(gy.youmonst.data);
     int mlvl, newMaxStr;
 
     if (svm.mvitals[mntmp].mvflags & G_GENOD) { /* allow G_EXTINCT */
@@ -775,13 +775,13 @@ polymon(int mntmp)
 
     /* if stuck mimicking gold, stop immediately */
     if (gm.multi < 0 && U_AP_TYPE == M_AP_OBJECT
-        && u.umonst->data->mlet != S_MIMIC)
+        && gy.youmonst.data->mlet != S_MIMIC)
         unmul("");
     /* if becoming a non-mimic, stop mimicking anything */
     if (mons[mntmp].mlet != S_MIMIC) {
         /* as in polyman() */
-        u.umonst->m_ap_type = M_AP_NOTHING;
-        u.umonst->mappearance = 0;
+        gy.youmonst.m_ap_type = M_AP_NOTHING;
+        gy.youmonst.mappearance = 0;
     }
     if (is_male(&mons[mntmp])) {
         if (flags.female)
@@ -849,7 +849,7 @@ polymon(int mntmp)
         }
     }
     check_strangling(FALSE); /* maybe stop strangling */
-    if (nohands(u.umonst->data))
+    if (nohands(gy.youmonst.data))
         make_glib(0);
 
     /*
@@ -858,9 +858,9 @@ polymon(int mntmp)
      * "experience level of you as a monster" for a polymorphed character.
      */
     mlvl = (int) mons[mntmp].mlevel;
-    if (u.umonst->data->mlet == S_DRAGON && mntmp >= PM_GRAY_DRAGON) {
+    if (gy.youmonst.data->mlet == S_DRAGON && mntmp >= PM_GRAY_DRAGON) {
         u.mhmax = In_endgame(&u.uz) ? (8 * mlvl) : (4 * mlvl + d(mlvl, 4));
-    } else if (is_golem(u.umonst->data)) {
+    } else if (is_golem(gy.youmonst.data)) {
         u.mhmax = golemhp(mntmp);
     } else {
         if (!mlvl)
@@ -892,7 +892,7 @@ polymon(int mntmp)
     /* if hiding under something and can't hide anymore, unhide now;
        but don't auto-hide when not already hiding-under */
     if (was_hiding_under)
-        (void) hideunder(u.umonst);
+        (void) hideunder(&gy.youmonst);
 
     if (u.utrap && u.utraptype == TT_PIT) {
         set_utrap(rn1(6, 2), TT_PIT); /* time to escape resets */
@@ -905,7 +905,7 @@ polymon(int mntmp)
 
     /* you now know what an egg of your type looks like; [moved from
        below in case expels() -> spoteffects() drops hero onto any eggs] */
-    if (lays_eggs(u.umonst->data)) {
+    if (lays_eggs(gy.youmonst.data)) {
         learn_egg_type(u.umonnum);
         /* make queen bees recognize killer bee eggs */
         learn_egg_type(egg_type_from_parent(u.umonnum, TRUE));
@@ -915,13 +915,13 @@ polymon(int mntmp)
         uchar usiz;
 
         /* if new form can't be swallowed, make engulfer expel hero */
-        if (unsolid(u.umonst->data)
+        if (unsolid(gy.youmonst.data)
             /* subset of engulf_target() */
-            || (usiz = u.umonst->data->msize) >= MZ_HUGE
+            || (usiz = gy.youmonst.data->msize) >= MZ_HUGE
             || (u.ustuck->data->msize < usiz && !is_whirly(u.ustuck->data))) {
             boolean expels_mesg = TRUE;
 
-            if (unsolid(u.umonst->data)) {
+            if (unsolid(gy.youmonst.data)) {
                 if (canspotmon(u.ustuck)) /* [see below for explanation] */
                     Strcpy(ustuckNam, Monnam(u.ustuck));
                 pline(_("%s can no longer contain you."), ustuckNam);
@@ -940,7 +940,7 @@ polymon(int mntmp)
                /* being held; if now capable of holding, make holder
                   release so that hero doesn't automagically start holding
                   it; or, release if no longer capable of being held */
-               && (sticks(u.umonst->data) || unsolid(u.umonst->data))) {
+               && (sticks(gy.youmonst.data) || unsolid(gy.youmonst.data))) {
         /* u.ustuck name was saved above in case we're changing from can-see
            to can't-see; but might have changed from can't-see to can-see so
            override here if hero knows who u.ustuck is */
@@ -983,13 +983,13 @@ polymon(int mntmp)
             buried_ball_to_freedom();
         }
         reset_utrap(TRUE);
-    } else if (likes_lava(u.umonst->data) && u.utrap
+    } else if (likes_lava(gy.youmonst.data) && u.utrap
                && u.utraptype == TT_LAVA) {
         pline_The(_("%s now feels soothing."), hliquid("lava"));
         reset_utrap(TRUE);
     }
-    if (amorphous(u.umonst->data) || is_whirly(u.umonst->data)
-        || unsolid(u.umonst->data)) {
+    if (amorphous(gy.youmonst.data) || is_whirly(gy.youmonst.data)
+        || unsolid(gy.youmonst.data)) {
         if (Punished) {
             You(_("slip out of the iron chain."));
             unpunish();
@@ -999,9 +999,9 @@ polymon(int mntmp)
         }
     }
     if (u.utrap && (u.utraptype == TT_WEB || u.utraptype == TT_BEARTRAP)
-        && (amorphous(u.umonst->data) || is_whirly(u.umonst->data)
-            || unsolid(u.umonst->data)
-            || (u.umonst->data->msize <= MZ_SMALL
+        && (amorphous(gy.youmonst.data) || is_whirly(gy.youmonst.data)
+            || unsolid(gy.youmonst.data)
+            || (gy.youmonst.data->msize <= MZ_SMALL
                 && u.utraptype == TT_BEARTRAP))) {
         You(_("are no longer stuck in the %s."),
             u.utraptype == TT_WEB ? _("web") : _("bear trap"));
@@ -1157,7 +1157,7 @@ staticfn void
 break_armor(void)
 {
     struct obj *otmp;
-    struct permonst *uptr = u.umonst->data;
+    struct permonst *uptr = gy.youmonst.data;
 
     if (breakarm(uptr)) {
         if ((otmp = uarm) != 0) {
@@ -1198,7 +1198,7 @@ break_armor(void)
             useup(uarmu);
         }
     } else if (sliparm(uptr)) {
-        if ((otmp = uarm) != 0 && racial_exception(u.umonst, otmp) < 1) {
+        if ((otmp = uarm) != 0 && racial_exception(&gy.youmonst, otmp) < 1) {
             if (donning(otmp))
                 cancel_don();
             Your(_("armor falls around you!"));
@@ -1315,7 +1315,7 @@ drop_weapon(int alone)
          * future it might not be so if there are monsters which cannot
          * wear gloves but can wield weapons
          */
-        if (!alone || cantwield(u.umonst->data)) {
+        if (!alone || cantwield(gy.youmonst.data)) {
             candropwep = canletgo(uwep, "");
             candropswapwep = !u.twoweap || canletgo(uswapwep, "");
             if (alone) {
@@ -1357,7 +1357,7 @@ drop_weapon(int alone)
 
             if (updateinv)
                 update_inventory();
-        } else if (!could_twoweap(u.umonst->data)) {
+        } else if (!could_twoweap(gy.youmonst.data)) {
             untwoweapon();
         }
     }
@@ -1438,7 +1438,7 @@ dobreathe(void)
     if (!getdir((char *) 0))
         return ECMD_CANCEL;
 
-    mattk = attacktype_fordmg(u.umonst->data, AT_BREA, AD_ANY);
+    mattk = attacktype_fordmg(gy.youmonst.data, AT_BREA, AD_ANY);
     if (!mattk)
         impossible("bad breath attack?"); /* mouthwash needed... */
     else if (!u.dx && !u.dy && !u.dz)
@@ -1456,7 +1456,7 @@ dospit(void)
 
     if (!getdir((char *) 0))
         return ECMD_CANCEL;
-    mattk = attacktype_fordmg(u.umonst->data, AT_SPIT, AD_ANY);
+    mattk = attacktype_fordmg(gy.youmonst.data, AT_SPIT, AD_ANY);
     if (!mattk) {
         impossible("bad spit attack?");
     } else {
@@ -1650,8 +1650,8 @@ dogaze(void)
     uchar adtyp = 0;
 
     for (i = 0; i < NATTK; i++) {
-        if (u.umonst->data->mattk[i].aatyp == AT_GAZE) {
-            adtyp = u.umonst->data->mattk[i].adtyp;
+        if (gy.youmonst.data->mattk[i].aatyp == AT_GAZE) {
+            adtyp = gy.youmonst.data->mattk[i].adtyp;
             break;
         }
     }
@@ -1778,8 +1778,8 @@ dogaze(void)
 int
 dohide(void)
 {
-    boolean ismimic = u.umonst->data->mlet == S_MIMIC,
-            on_ceiling = is_clinger(u.umonst->data) || Flying;
+    boolean ismimic = gy.youmonst.data->mlet == S_MIMIC,
+            on_ceiling = is_clinger(gy.youmonst.data) || Flying;
 
     /* can't hide while being held (or holding) or while trapped
        (except for floor hiders [trapper or mimic] in pits) */
@@ -1793,14 +1793,14 @@ dohide(void)
                                                    : _("holding that creature")));
         if (u.uundetected || (ismimic && U_AP_TYPE != M_AP_NOTHING)) {
             u.uundetected = 0;
-            u.umonst->m_ap_type = M_AP_NOTHING;
+            gy.youmonst.m_ap_type = M_AP_NOTHING;
             newsym(u.ux, u.uy);
         }
         return ECMD_OK;
     }
     /* note: hero-as-eel handling is incomplete but unnecessary;
        such critters aren't offered the option of hiding via #monster */
-    if (u.umonst->data->mlet == S_EEL && !is_pool(u.ux, u.uy)) {
+    if (gy.youmonst.data->mlet == S_EEL && !is_pool(u.ux, u.uy)) {
         if (IS_FOUNTAIN(levl[u.ux][u.uy].typ))
             pline_The(_("fountain is not deep enough to hide in."));
         else
@@ -1808,7 +1808,7 @@ dohide(void)
         u.uundetected = 0;
         return ECMD_OK;
     }
-    if (hides_under(u.umonst->data)) {
+    if (hides_under(gy.youmonst.data)) {
         long ct = 0L;
         struct obj *otmp, *otop = svl.level.objects[u.ux][u.uy];
 
@@ -1849,7 +1849,7 @@ dohide(void)
         u.uundetected = 0;
         return ECMD_OK;
     }
-    if ((is_hider(u.umonst->data) && !Flying) /* floor hider */
+    if ((is_hider(gy.youmonst.data) && !Flying) /* floor hider */
         && (Is_airlevel(&u.uz) || Is_waterlevel(&u.uz))) {
         There(_("is nowhere to hide beneath you."));
         u.uundetected = 0;
@@ -1866,8 +1866,8 @@ dohide(void)
 
     if (ismimic) {
         /* should bring up a dialog "what would you like to imitate?" */
-        u.umonst->m_ap_type = M_AP_OBJECT;
-        u.umonst->mappearance = STRANGE_OBJECT;
+        gy.youmonst.m_ap_type = M_AP_OBJECT;
+        gy.youmonst.mappearance = STRANGE_OBJECT;
     } else
         u.uundetected = 1;
     newsym(u.ux, u.uy);
@@ -1878,9 +1878,9 @@ dohide(void)
 int
 dopoly(void)
 {
-    struct permonst *savedat = u.umonst->data;
+    struct permonst *savedat = gy.youmonst.data;
 
-    if (is_vampire(u.umonst->data) || is_vampshifter(u.umonst)) {
+    if (is_vampire(gy.youmonst.data) || is_vampshifter(&gy.youmonst)) {
         polyself(POLY_MONSTER);
         if (savedat != u.umonst->data) {
             You(_("transform into %s."),
@@ -2144,7 +2144,7 @@ mbodypart(struct monst *mon, int part)
 const char *
 body_part(int part)
 {
-    return mbodypart(u.umonst, part);
+    return mbodypart(&gy.youmonst, part);
 }
 
 int
@@ -2153,7 +2153,7 @@ poly_gender(void)
     /* Returns gender of polymorphed player;
      * 0/1=same meaning as flags.female, 2=none.
      */
-    if (is_neuter(u.umonst->data) || !humanoid(u.umonst->data))
+    if (is_neuter(gy.youmonst.data) || !humanoid(gy.youmonst.data))
         return 2;
     return flags.female;
 }

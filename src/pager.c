@@ -122,7 +122,7 @@ self_lookat(char *outbuf)
         Sprintf(eos(outbuf), _(", mounted on %s"), y_monnam(u.usteed));
     if (u.uundetected || (Upolyd && U_AP_TYPE)
         || visible_region_at(u.ux, u.uy))
-        mhidden_description(u.umonst,
+        mhidden_description(&gy.youmonst,
                             MHID_PREFIX | MHID_ARTICLE | MHID_REGION,
                             eos(outbuf));
     if (Punished)
@@ -197,7 +197,7 @@ mhidden_description(
             incl_article = (mhid_flags & MHID_ARTICLE) != 0,
             show_altmon = (mhid_flags & MHID_ALTMON) != 0,
             force_region = (mhid_flags & MHID_REGION) != 0;
-    boolean fakeobj, isyou = (mon == u.umonst);
+    boolean fakeobj, isyou = (mon == &gy.youmonst);
     coordxy x = isyou ? u.ux : mon->mx, y = isyou ? u.uy : mon->my;
     int glyph = (svl.level.flags.hero_memory && !isyou) ? levl[x][y].glyph
                                                        : glyph_at(x, y);
@@ -1168,7 +1168,7 @@ add_cmap_descr(
 
         /* grab a scratch buffer we can safely return (via *firstmatch
            when applicable) */
-        mbuf = mon_nam(u.umonst);
+        mbuf = mon_nam(&gy.youmonst);
 
         if (absidx == S_pool) {
             levl[cc.x][cc.y].typ = (idx == S_pool) ? POOL : MOAT;

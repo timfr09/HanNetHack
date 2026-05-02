@@ -893,7 +893,7 @@ is_innate(int propidx)
            ignore innateness if equipment is going to claim responsibility */
         && !u.uprops[propidx].extrinsic)
         return FROM_ROLE;
-    if ((propidx == BLINDED && !haseyes(u.umonst->data))
+    if ((propidx == BLINDED && !haseyes(gy.youmonst.data))
         || (propidx == BLND_RES && (HBlnd_resist & FROMFORM) != 0))
         return FROM_FORM;
     return FROM_NONE;
@@ -1219,7 +1219,7 @@ acurr(int chridx)
                there would limit Str to 18/07 [18 + 7] */
             result = max(tmp, 3);
     } else if (chridx == A_CHA) {
-        if (tmp < 18 && (u.umonst->data->mlet == S_NYMPH
+        if (tmp < 18 && (gy.youmonst.data->mlet == S_NYMPH
                          || u.umonnum == PM_AMOROUS_DEMON))
             result = 18;
     } else if (chridx == A_CON) {

@@ -282,7 +282,7 @@ Boots_off(void)
         /* check for lava since fireproofed boots make it viable */
         if ((is_pool(u.ux, u.uy) || is_lava(u.ux, u.uy))
             && !Levitation && !Flying
-            && !(is_clinger(u.umonst->data) && has_ceiling(&u.uz))
+            && !(is_clinger(gy.youmonst.data) && has_ceiling(&u.uz))
             && !svc.context.takeoff.cancelled_don
             /* avoid recursive call to lava_effects() */
             && !iflags.in_lava_effects) {
@@ -1037,7 +1037,7 @@ Amulet_on(struct obj *amul)
     }
     case AMULET_OF_STRANGULATION:
         /* note: might already be Strangled (via #wizintrinsic) */
-        if (can_be_strangled(u.umonst) && !Strangled) {
+        if (can_be_strangled(&gy.youmonst) && !Strangled) {
             makeknown(AMULET_OF_STRANGULATION);
             Strangled = 6L;
             disp.botl = TRUE;
@@ -2036,7 +2036,7 @@ canwearobj(struct obj *otmp, long *mask, boolean noisy)
 
     /* this is the same check as for 'W' (dowear), but different message,
        in case we get here via 'P' (doputon) */
-    if (verysmall(u.umonst->data) || nohands(u.umonst->data)) {
+    if (verysmall(gy.youmonst.data) || nohands(gy.youmonst.data)) {
         if (noisy)
             You(_("can't wear any armor in your current form."));
         return 0;
@@ -2046,13 +2046,13 @@ canwearobj(struct obj *otmp, long *mask, boolean noisy)
             : is_shirt(otmp) ? c_shirt
               : is_suit(otmp) ? c_suit
                 : 0;
-    if (which && cantweararm(u.umonst->data)
+    if (which && cantweararm(gy.youmonst.data)
         /* same exception for cloaks as used in m_dowear() */
         && (which != c_cloak
             || ((otmp->otyp != MUMMY_WRAPPING)
-                ? u.umonst->data->msize != MZ_SMALL
-                : !WrappingAllowed(u.umonst->data)))
-        && (racial_exception(u.umonst, otmp) < 1)) {
+                ? gy.youmonst.data->msize != MZ_SMALL
+                : !WrappingAllowed(gy.youmonst.data)))
+        && (racial_exception(&gy.youmonst, otmp) < 1)) {
         if (noisy)
             pline_The(_("%s will not fit on your body."), _(which));
         return 0;
@@ -2074,12 +2074,12 @@ canwearobj(struct obj *otmp, long *mask, boolean noisy)
             if (noisy)
                 already_wearing(an(helm_simple_name(uarmh)));
             err++;
-        } else if (Upolyd && has_horns(u.umonst->data) && !is_flimsy(otmp)) {
+        } else if (Upolyd && has_horns(gy.youmonst.data) && !is_flimsy(otmp)) {
             /* (flimsy exception matches polyself handling) */
             if (noisy)
                 pline_The(_("%s won't fit over your horn%s."),
                           helm_simple_name(otmp),
-                          plur(num_horns(u.umonst->data)));
+                          plur(num_horns(gy.youmonst.data)));
             err++;
         } else
             *mask = W_ARMH;
@@ -2106,11 +2106,11 @@ canwearobj(struct obj *otmp, long *mask, boolean noisy)
             if (noisy)
                 already_wearing(_(c_boots));
             err++;
-        } else if (Upolyd && slithy(u.umonst->data)) {
+        } else if (Upolyd && slithy(gy.youmonst.data)) {
             if (noisy)
                 You(_("have no feet...")); /* not body_part(FOOT) */
             err++;
-        } else if (Upolyd && u.umonst->data->mlet == S_CENTAUR) {
+        } else if (Upolyd && gy.youmonst.data->mlet == S_CENTAUR) {
             /* break_armor() pushes boots off for centaurs, so don't let
                dowear() put them back on;
                makeplural(body_part(FOOT)) would yield "rear hooves" here,
@@ -2546,7 +2546,7 @@ glibr(void)
     rightfall = (uright && !uright->cursed && (!welded(uwep)));
 */
 
-    if (!uarmg && (leftfall || rightfall) && !nolimbs(u.umonst->data)) {
+    if (!uarmg && (leftfall || rightfall) && !nolimbs(gy.youmonst.data)) {
         /* changed so cursed rings don't fall off, GAN 10/30/86 */
         Your(_("%s off your %s."),
              (leftfall && rightfall) ? _("rings slip") : _("ring slips"),
@@ -2633,22 +2633,22 @@ some_armor(struct monst *victim)
 {
     struct obj *otmph, *otmp;
 
-    otmph = (victim == u.umonst) ? uarmc : which_armor(victim, W_ARMC);
+    otmph = (victim == &gy.youmonst) ? uarmc : which_armor(victim, W_ARMC);
     if (!otmph)
-        otmph = (victim == u.umonst) ? uarm : which_armor(victim, W_ARM);
+        otmph = (victim == &gy.youmonst) ? uarm : which_armor(victim, W_ARM);
     if (!otmph)
-        otmph = (victim == u.umonst) ? uarmu : which_armor(victim, W_ARMU);
+        otmph = (victim == &gy.youmonst) ? uarmu : which_armor(victim, W_ARMU);
 
-    otmp = (victim == u.umonst) ? uarmh : which_armor(victim, W_ARMH);
+    otmp = (victim == &gy.youmonst) ? uarmh : which_armor(victim, W_ARMH);
     if (otmp && (!otmph || !rn2(4)))
         otmph = otmp;
-    otmp = (victim == u.umonst) ? uarmg : which_armor(victim, W_ARMG);
+    otmp = (victim == &gy.youmonst) ? uarmg : which_armor(victim, W_ARMG);
     if (otmp && (!otmph || !rn2(4)))
         otmph = otmp;
-    otmp = (victim == u.umonst) ? uarmf : which_armor(victim, W_ARMF);
+    otmp = (victim == &gy.youmonst) ? uarmf : which_armor(victim, W_ARMF);
     if (otmp && (!otmph || !rn2(4)))
         otmph = otmp;
-    otmp = (victim == u.umonst) ? uarms : which_armor(victim, W_ARMS);
+    otmp = (victim == &gy.youmonst) ? uarms : which_armor(victim, W_ARMS);
     if (otmp && (!otmph || !rn2(4)))
         otmph = otmp;
     return otmph;
@@ -2666,7 +2666,7 @@ stuck_ring(struct obj *ring, int otyp)
     if (ring && ring->otyp == otyp) {
         /* reasons ring can't be removed match those checked by select_off();
            limbless case has extra checks because ordinarily it's temporary */
-        if (nolimbs(u.umonst->data) && uamul
+        if (nolimbs(gy.youmonst.data) && uamul
             && uamul->otyp == AMULET_OF_UNCHANGING && uamul->cursed)
             return uamul;
         if (welded(uwep) && ((ring == RING_ON_PRIMARY) || bimanual(uwep)))

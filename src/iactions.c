@@ -605,7 +605,7 @@ itemactions(struct obj *otmp)
 
     /* w: wield, hold in hands, works on everything but with different
        advice text; not mentioned for things that are already wielded */
-    if (otmp == uwep || cantwield(u.umonst->data)) {
+    if (otmp == uwep || cantwield(gy.youmonst.data)) {
         ; /* either already wielded or can't wield anything; skip 'w' */
     } else if (otmp->oclass == WEAPON_CLASS || is_weptool(otmp)
                || is_wet_towel(otmp) || otmp->otyp == HEAVY_IRON_BALL) {
@@ -674,7 +674,7 @@ itemactions(struct obj *otmp)
         /* if already two-weaponing, no special checks needed to toggle off */
         && (u.twoweap
         /* but if not, try to filter most "you can't do that" here */
-            || (could_twoweap(u.umonst->data) && !uarms
+            || (could_twoweap(gy.youmonst.data) && !uarms
                 && uwep && MAYBETWOWEAPON(uwep)
                 && uswapwep && MAYBETWOWEAPON(uswapwep)))) {
         Sprintf(buf, _("Toggle two-weapon combat %s"), u.twoweap ? C_("toggle", "off") : C_("toggle", "on"));

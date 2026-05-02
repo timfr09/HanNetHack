@@ -6,7 +6,7 @@
 
 #define is_bigfoot(x) ((x) == &mons[PM_SASQUATCH])
 #define martial()                                 \
-    (martial_bonus() || is_bigfoot(u.umonst->data) \
+    (martial_bonus() || is_bigfoot(gy.youmonst.data) \
      || (uarmf && uarmf->otyp == KICKING_BOOTS))
 
 /* gk.kickedobj (decl.c) tracks a kicked object until placed or destroyed */
@@ -57,7 +57,7 @@ kickdmg(struct monst *mon, boolean clumsy)
     if (mon->data == &mons[PM_SHADE])
         dmg = 0;
 
-    specialdmg = special_dmgval(u.umonst, mon, W_ARMF, (long *) 0);
+    specialdmg = special_dmgval(&gy.youmonst, mon, W_ARMF, (long *) 0);
 
     if (mon->data == &mons[PM_SHADE] && !specialdmg) {
         pline_The(_("%s."), _("kick passes harmlessly through"));
@@ -184,7 +184,7 @@ kick_monster(struct monst *mon, coordxy x, coordxy y)
      * normally, getting all your attacks _including_ all your kicks.
      * If you have >1 kick attack, you get all of them.
      */
-    if (Upolyd && attacktype(u.umonst->data, AT_KICK)) {
+    if (Upolyd && attacktype(gy.youmonst.data, AT_KICK)) {
         struct attack *uattk;
         int sum, kickdieroll, armorpenalty, specialdmg,
             attknum = 0,
@@ -198,13 +198,13 @@ kick_monster(struct monst *mon, coordxy x, coordxy y)
             if (gm.multi < 0)
                 break;
 
-            uattk = &u.umonst->data->mattk[i];
+            uattk = &gy.youmonst.data->mattk[i];
             /* we only care about kicking attacks here */
             if (uattk->aatyp != AT_KICK)
                 continue;
 
             kickdieroll = rnd(20);
-            specialdmg = special_dmgval(u.umonst, mon, W_ARMF,
+            specialdmg = special_dmgval(&gy.youmonst, mon, W_ARMF,
                                         (long *) 0);
             if (mon->data == &mons[PM_SHADE] && !specialdmg) {
                 /* doesn't matter whether it would have hit or missed,
@@ -549,7 +549,7 @@ really_kick_object(coordxy x, coordxy y)
         You(_("kick %s with your bare %s."),
             corpse_xname(gk.kickedobj, (const char *) 0, CXN_PFX_THE),
             makeplural(body_part(FOOT)));
-        if (poly_when_stoned(u.umonst->data) && polymon(PM_STONE_GOLEM)) {
+        if (poly_when_stoned(gy.youmonst.data) && polymon(PM_STONE_GOLEM)) {
             ; /* hero has been transformed but kick continues */
         } else {
             /* normalize body shape here; foot, not body_part(FOOT) */
@@ -930,7 +930,7 @@ kick_door(coordxy x, coordxy y, int avrg_attrib)
     }
 
     exercise(A_DEX, TRUE);
-    doorbuster = Upolyd && is_giant(u.umonst->data);
+    doorbuster = Upolyd && is_giant(gy.youmonst.data);
     /* door is known to be CLOSED or LOCKED */
     if (doorbuster
         || (rnl(35) < avrg_attrib + (!martial() ? 0 : ACURR(A_DEX)))) {
@@ -1435,7 +1435,7 @@ dokick(void)
             int range;
 
             range =
-                ((int) u.umonst->data->cwt + (weight_cap() + inv_weight()));
+                ((int) gy.youmonst.data->cwt + (weight_cap() + inv_weight()));
             if (range < 1)
                 range = 1; /* divide by zero avoidance */
             range = (3 * (int) mdat->cwt) / range;

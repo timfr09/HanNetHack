@@ -501,7 +501,7 @@ use_magic_whistle(struct obj *obj)
         You(_("produce a %shigh-%s."), Underwater ? _("very ") : "",
             Deaf ? _("frequency vibration") : _("pitched humming noise"));
         wake_nearby(TRUE);
-        if (!rn2(2) && !noteleport_level(u.umonst))
+        if (!rn2(2) && !noteleport_level(&gy.youmonst))
             tele_to_rnd_pet();
     } else {
         /* it's magic!  it works underwater too (at a higher pitch) */
@@ -1894,7 +1894,7 @@ check_jump(genericptr arg, coordxy x, coordxy y)
     /* let giants jump over boulders (what about Flying?
        and is there really enough head room for giants to jump
        at all, let alone over something tall?) */
-    if (sobj_at(BOULDER, x, y) && !throws_rocks(u.umonst->data))
+    if (sobj_at(BOULDER, x, y) && !throws_rocks(gy.youmonst.data))
         return FALSE;
     return TRUE;
 }
@@ -2003,7 +2003,7 @@ jump(int magic) /* 0=Physical, otherwise skill level */
     if (!magic && !Jumping && known_spell(SPE_JUMPING) >= spe_Fresh)
         return spelleffects(SPE_JUMPING, FALSE, FALSE);
 
-    if (!magic && (nolimbs(u.umonst->data) || slithy(u.umonst->data))) {
+    if (!magic && (nolimbs(gy.youmonst.data) || slithy(gy.youmonst.data))) {
         /* normally (nolimbs || slithy) implies !Jumping,
            but that isn't necessarily the case for knights */
         You_cant(_("jump; you have no legs!"));
@@ -2644,7 +2644,7 @@ use_grease(struct obj *obj)
         if (otmp != &hands_obj) {
             You(_("cover %s with a thick layer of grease."), yname(otmp));
             otmp->greased = 1;
-            if (obj->cursed && !nohands(u.umonst->data)) {
+            if (obj->cursed && !nohands(gy.youmonst.data)) {
                 make_glib(oldglib + rn1(6, 10)); /* + 10..15 */
                 pline(_("Some of the grease gets all over your %s."),
                       fingers_or_gloves(TRUE));
@@ -3204,7 +3204,7 @@ use_whip(struct obj *obj)
                            so proficient at catching weapons */
                         int dam, hitvalu, hitu;
 
-                        dam = dmgval(otmp, u.umonst);
+                        dam = dmgval(otmp, &gy.youmonst);
                         hitvalu = 8 + otmp->spe;
                         hitu = thitu(hitvalu, Maybe_Half_Phys(dam),
                                      &otmp, (char *) 0);
@@ -3222,7 +3222,7 @@ use_whip(struct obj *obj)
                     if (otmp->otyp == CORPSE
                         && touch_petrifies(&mons[otmp->corpsenm]) && !uarmg
                         && !Stone_resistance
-                        && !(poly_when_stoned(u.umonst->data)
+                        && !(poly_when_stoned(gy.youmonst.data)
                              && polymon(PM_STONE_GOLEM))) {
                         char kbuf[BUFSZ];
 
@@ -3593,7 +3593,7 @@ use_cream_pie(struct obj *obj)
         You(_("immerse your %s in %s%s."), body_part(FACE),
               several ? _("one of ") : "",
               several ? makeplural(the(xname(obj))) : the(xname(obj)));
-    if (can_blnd((struct monst *) 0, u.umonst, AT_WEAP, obj)) {
+    if (can_blnd((struct monst *) 0, &gy.youmonst, AT_WEAP, obj)) {
         int blindinc = rnd(25);
 
         u.ucreamed += blindinc;

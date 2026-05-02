@@ -318,7 +318,7 @@ autokey(boolean opening) /* True: key, pick, or card; False: key or pick */
         } else {
             switch (o->otyp) {
             case SKELETON_KEY:
-                if (!key || is_magic_key(u.umonst, o))
+                if (!key || is_magic_key(&gy.youmonst, o))
                     key = o;
                 break;
             case LOCK_PICK:
@@ -514,7 +514,7 @@ pick_lock(
                              an(simple_typename(picktyp)));
                     return PICKLOCK_LEARNED_SOMETHING;
                 } else if (autounlock
-                           && !touch_artifact(pick, u.umonst)) {
+                           && !touch_artifact(pick, &gy.youmonst)) {
                     /* note: for !autounlock, apply already did touch check */
                     return PICKLOCK_DID_SOMETHING;
                 }
@@ -627,7 +627,7 @@ pick_lock(
                 return PICKLOCK_DID_NOTHING;
 
             /* note: for !autounlock, 'apply' already did touch check */
-            if (autounlock && !touch_artifact(pick, u.umonst))
+            if (autounlock && !touch_artifact(pick, &gy.youmonst))
                 return PICKLOCK_DID_SOMETHING;
 
             switch (picktyp) {
@@ -650,7 +650,7 @@ pick_lock(
     svc.context.move = 0;
     gx.xlock.chance = ch;
     gx.xlock.picktyp = picktyp;
-    gx.xlock.magic_key = is_magic_key(u.umonst, pick);
+    gx.xlock.magic_key = is_magic_key(&gy.youmonst, pick);
     gx.xlock.usedtime = 0;
     set_occupation(picklock, lock_action(), 0);
     return PICKLOCK_DID_SOMETHING;

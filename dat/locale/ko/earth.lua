@@ -15,9 +15,9 @@ des.level_init({ style = "solidfill", fg = " " });
 des.level_flags("mazelevel", "noteleport", "hardfloor", "shortsighted")
 
 -- 종말 게임 시작 메시지
-des.message("잘 했다, 인간이여!")
-des.message("하지만 이제 마지막 시험에 직면해야 하느니라...")
-des.message("네 가치를 증명하거나 죽어라!")
+des.message("해냈구나, 필멸자여!")
+des.message("그러나 이제 최후의 시험이 기다린다...")
+des.message("자격을 증명하라. 그렇지 못하면 죽음뿐이다!")
 
 -- The player lands, upon arrival, in the
 -- lower-right cavern.  The location of the

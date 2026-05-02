@@ -88,10 +88,10 @@ des.object()
 des.object()
 -- Treasure?
 -- 보물 힌트 각인
-des.engraving({ type="engrave", text="X가 그 자리를 표시한다." })
-des.engraving({ type="engrave", text="X가 그 자리를 표시한다." })
-des.engraving({ type="engrave", text="X가 그 자리를 표시한다." })
-des.engraving({ type="engrave", text="X가 그 자리를 표시한다." })
+des.engraving({ type="engrave", text="보물은 X가 가리키는 자리에 묻혀 있다." })
+des.engraving({ type="engrave", text="보물은 X가 가리키는 자리에 묻혀 있다." })
+des.engraving({ type="engrave", text="보물은 X가 가리키는 자리에 묻혀 있다." })
+des.engraving({ type="engrave", text="보물은 X가 가리키는 자리에 묻혀 있다." })
 -- Random traps
 des.trap("spiked pit",24,02)
 des.trap("spiked pit",37,00)

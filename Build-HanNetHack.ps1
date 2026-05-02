@@ -190,16 +190,27 @@ function Invoke-CompilePo {
 
     $wsl = Get-Command wsl -ErrorAction SilentlyContinue
     if ($wsl) {
-        $wslp = & wsl.exe wslpath -a $Root 2>$null | Select-Object -First 1
-        $unixRoot = if ($wslp) { $wslp.Trim() } else { $null }
-        if (-not $unixRoot) {
-            $drive = $Root.Substring(0, 1).ToLowerInvariant()
-            $rest = $Root.Substring(2).Replace('\', '/')
-            $unixRoot = "/mnt/$drive$rest"
+        # Avoid wslpath dependency/quoting pitfalls; convert C:\... directly.
+        $unixRoot = $null
+        if ($Root -match '^([A-Za-z]):\\(.*)$') {
+            $drive = $Matches[1].ToLowerInvariant()
+            $rest = $Matches[2].Replace('\', '/')
+            $unixRoot = "/mnt/$drive/$rest"
         }
-        Write-Host '==> po: WSL make compile' -ForegroundColor Cyan
-        wsl.exe -e bash -lc "set -e; cd '$unixRoot/po' && make compile"
-        return
+
+        if ($unixRoot) {
+            try {
+                # Use WSL path only when make is available there.
+                $hasMake = (wsl.exe -e bash -lc "command -v make >/dev/null 2>&1; echo `$?") | Select-Object -First 1
+                if ($hasMake -eq '0') {
+                    Write-Host '==> po: WSL make compile' -ForegroundColor Cyan
+                    wsl.exe -e bash -lc "set -e; cd '$unixRoot/po' && make compile"
+                    if ($LASTEXITCODE -eq 0) { return }
+                }
+            } catch {
+                Write-Warning "WSL make compile 실패, 다른 경로로 재시도합니다: $($_.Exception.Message)"
+            }
+        }
     }
 
     $make = Get-Command make -ErrorAction SilentlyContinue
@@ -213,6 +224,17 @@ function Invoke-CompilePo {
             Pop-Location
         }
         return
+    }
+
+    # Final fallback for Windows-only environments:
+    # generate nethack.mo directly from canonical ko_manual.po.
+    if (Test-Path (Join-Path $gettextBinDir 'msgfmt.exe')) {
+        Write-Host '==> po: msgfmt direct compile fallback' -ForegroundColor Yellow
+        $msgfmtExe = Join-Path $gettextBinDir 'msgfmt.exe'
+        $srcPo = Join-Path $poDir 'ko_manual.po'
+        $dstMo = Join-Path $Root 'dat\locale\ko\nethack.mo'
+        & $msgfmtExe -o $dstMo $srcPo
+        if ($LASTEXITCODE -eq 0) { return }
     }
 
     throw @'

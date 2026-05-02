@@ -91,8 +91,7 @@ append_str(char *buf, const char *new_str)
     oldlen = strlen(buf);
     if (oldlen >= BUFSZ - 1) {
         if (oldlen > BUFSZ - 1)
-            impossible(_("append_str: 'buf' contains %lu characters.",
-                       (unsigned long) oldlen);
+            impossible(_("append_str: 'buf' contains %lu characters."),                        (unsigned long) oldlen);
         return 0; /* no space available */
     }
 
@@ -146,7 +145,7 @@ monhealthdescr(struct monst *mon, boolean addspace, char *outbuf)
         Strcpy(outbuf, _("uninjured"));
     else if (mon->mhp <= 1 || pct < 5)
         Sprintf(outbuf, "%s%s", (mon->mhp > 0) ? _("nearly ") : "",
-                !nonliving(mon->data) ? _("deceased") : _("defunct"));
+                !nonliving(mon->data) ? _("deceased") : _("defunct");
     else
         Sprintf(outbuf, _("%swounded"),
                 (pct >= 95) ? _("barely ")
@@ -566,7 +565,7 @@ waterbody_name(coordxy x, coordxy y)
     boolean hallucinate = Hallucination && !program_state.gameover;
 
     if (!isok(x, y))
-        return _("drink")); /* should never happen */
+        return _("drink"); /* should never happen */
     ltyp = SURFACE_AT(x, y);
 
     if (ltyp == LAVAPOOL) {
@@ -574,7 +573,7 @@ waterbody_name(coordxy x, coordxy y)
         return pooltype;
     } else if (ltyp == ICE) {
         if (!hallucinate)
-            return _("ice"));
+            return _("ice");
         Snprintf(pooltype, sizeof pooltype, _("frozen %s"), hliquid("water"));
         return pooltype;
     } else if (ltyp == POOL) {
@@ -588,19 +587,19 @@ waterbody_name(coordxy x, coordxy y)
         } else if (Is_medusa_level(&u.uz)) {
             /* somewhat iffy since ordinary stairs can take you beneath,
                but previous generic "water" was rather anti-climactic */
-            return _("shallow sea"));
+            return _("shallow sea");
         } else if (Is_juiblex_level(&u.uz)) {
-            return _("swamp"));
+            return _("swamp");
         } else if (Role_if(PM_SAMURAI) && Is_qstart(&u.uz)) {
             /* samurai quest home level has two isolated moat spots;
                they sound silly if farlook describes them as such */
-            return _("pond"));
+            return _("pond");
         } else {
-            return _("moat"));
+            return _("moat");
         }
     } else if (IS_WATERWALL(ltyp)) {
         if (Is_waterlevel(&u.uz))
-            return _("limitless water")); /* even if hallucinating */
+            return _("limitless water"); /* even if hallucinating */
         Snprintf(pooltype, sizeof pooltype, _("wall of %s"), hliquid("water"));
         return pooltype;
     } else if (ltyp == LAVAWALL) {
@@ -608,7 +607,7 @@ waterbody_name(coordxy x, coordxy y)
         return pooltype;
     }
     /* default; should be unreachable */
-    return _("water")); /* don't hallucinate this as some other liquid */
+    return _("water"); /* don't hallucinate this as some other liquid */
 }
 
 char *
@@ -851,8 +850,7 @@ checkfile(
     }
     /* If someone passed us garbage, prevent fault. */
     if (!inp || strlen(inp) > (BUFSZ - 1)) {
-        impossible(_("bad do_look buffer passed (%s)!",
-                   !inp ? "null" : "too long");
+        impossible(_("bad do_look buffer passed (%s)!"),                    !inp ? "null" : "too long");
         goto checkfile_done;
     }
 
@@ -1153,10 +1151,10 @@ add_cmap_descr(
         if (!strcmp(x_str, "water")) {
             /* duplicate some transformations performed by waterbody_name() */
             if (idx == S_pool)
-                x_str = _("pool of water"));
+                x_str = _("pool of water");
             else if (idx == S_water)
                 x_str = !Is_waterlevel(&u.uz) ? _("wall of water")
-                                              : _("limitless water"));
+                                              : _("limitless water");
         }
         if (absidx == S_pool)
             idx = S_pool;
@@ -1252,7 +1250,7 @@ do_screen_description(
     struct permonst **for_supplement)
 {
     const char *mon_interior = _("the interior of a monster"),
-               *unreconnoitered = _("unreconnoitered"));
+               *unreconnoitered = _("unreconnoitered");
     static char look_buf[BUFSZ];
     char prefix[BUFSZ];
     int i, j, alt_i, glyph = NO_GLYPH,
@@ -1420,7 +1418,7 @@ do_screen_description(
     }
     if ((glyph && glyph_is_nothing(glyph))
         || (looked && sym == gs.showsyms[SYM_NOTHING + SYM_OFF_X])) {
-        x_str = _("the dark part of a room"));
+        x_str = _("the dark part of a room");
         if (!found) {
             Sprintf(out_str, "%s%s", prefix, x_str);
             *firstmatch = x_str;
@@ -1431,7 +1429,7 @@ do_screen_description(
     }
     if ((glyph && glyph_is_unexplored(glyph))
         || (looked && sym == gs.showsyms[SYM_UNEXPLORED + SYM_OFF_X])) {
-        x_str = _("unexplored"));
+        x_str = _("unexplored");
         if (submerged)
             x_str = C_("terrain", "land"); /* replace "unexplored" */
         if (!found) {

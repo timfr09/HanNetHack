@@ -178,7 +178,7 @@ init_objects(void)
          * number after having moved on to one or more other classes.
          */
         if ((int) oclass < prevoclass)
-            panic(_("objects[%d] class #%d not in order!", first, oclass);
+            panic(_("objects[%d] class #%d not in order!"), first, oclass);
 
         last = first + 1;
         while (last < NUM_OBJECTS && objects[last].oc_class == oclass)
@@ -253,8 +253,7 @@ init_oclass_probs(void)
         }
         if (sum <= 0 && oclass != ILLOBJ_CLASS
             && svb.bases[oclass] != svb.bases[oclass + 1]) {
-            impossible(_("%s (%d) probability total for oclass %d",
-                       !sum ? "zero" : "negative", sum, oclass);
+            impossible(_("%s (%d) probability total for oclass %d"),                        !sum ? "zero" : "negative", sum, oclass);
             /* gracefully fail by setting all members of this class to 1 */
             for (i = svb.bases[oclass]; i < svb.bases[oclass + 1]; ++i) {
                 objects[i].oc_prob = 1;
@@ -1078,7 +1077,7 @@ doclassdisco(void)
         oclass = def_char_to_objclass(c);
         /* this should never happen but has been observed via the fuzzer */
         if (oclass == MAXOCLASSES)
-            impossible(_("doclassdisco: invalid object class '%s'", visctrl(c));
+            impossible(_("doclassdisco: invalid object class '%s'"), visctrl(c));
         Sprintf(buf, _("Discovered %s in %s"), let_to_name(oclass, FALSE, FALSE),
                 (flags.discosort == 'o') ? _("order of discovery")
                 : (flags.discosort == 's') ? _("'sortloot' order")

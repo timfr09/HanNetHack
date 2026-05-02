@@ -96,7 +96,7 @@ rn2(int x)
 {
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
     if (x <= 0) {
-        impossible(_("rn2(%d) attempted", x);
+        impossible(_("rn2(%d) attempted"), x);
         return 0;
     }
     x = RND(x);
@@ -115,7 +115,7 @@ rnl(int x)
 
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
     if (x <= 0) {
-        impossible(_("rnl(%d) attempted", x);
+        impossible(_("rnl(%d) attempted"), x);
         return 0;
     }
 #endif
@@ -156,7 +156,7 @@ rnd(int x)
 {
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
     if (x <= 0) {
-        impossible(_("rnd(%d) attempted", x);
+        impossible(_("rnd(%d) attempted"), x);
         return 1;
     }
 #endif
@@ -178,7 +178,7 @@ d(int n, int x)
 
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
     if (x < 0 || n < 0 || (x == 0 && n != 0)) {
-        impossible(_("d(%d,%d) attempted", n, x);
+        impossible(_("d(%d,%d) attempted"), n, x);
         return 1;
     }
 #endif

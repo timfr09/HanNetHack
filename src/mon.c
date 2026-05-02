@@ -64,7 +64,7 @@ pet_sanity_check(
 
         if (edog->droptime > svm.moves)
             impossible(_("insane pet #%u has droptime (%ld)"
-                       " in the future (%ld) (%s)",
+                       " in the future (%ld) (%s)"),
                        mtmp->m_id, edog->droptime, svm.moves, msgarg);
         /* TODO: verify some of the other edog fields */
     }
@@ -82,15 +82,13 @@ sanity_check_single_mon(
     if (!mptr || mptr < &mons[LOW_PM] || mptr > &mons[HIGH_PM]) {
         /* most sanity checks issue warnings if they detect a problem,
            but this would be too extreme to keep going */
-        panic(_("illegal mon data %s; mnum=%d (%s)",
-              fmt_ptr((genericptr_t) mptr), mtmp->mnum, msg);
+        panic(_("illegal mon data %s; mnum=%d (%s)"),               fmt_ptr((genericptr_t) mptr), mtmp->mnum, msg);
         /*NOTREACHED*/
     } else {
         int mndx = monsndx(mptr);
 
         if (mtmp->mnum != mndx) {
-            impossible(_("monster mnum=%d, monsndx=%d (%s)",
-                       mtmp->mnum, mndx, msg);
+            impossible(_("monster mnum=%d, monsndx=%d (%s)"),                        mtmp->mnum, mndx, msg);
             mtmp->mnum = mndx;
         }
         /* check before DEADMONSTER() because dead monsters should still
@@ -103,38 +101,34 @@ sanity_check_single_mon(
             || mtmp->mhpmax < (int) mtmp->m_lev
              */
             || mtmp->mhp > mtmp->mhpmax)
-            impossible(_("%s: level %d %s #%u [%s] has %d cur HP, %d max HP",
-                       msg, (int) mtmp->m_lev, mptr->pmnames[NEUTRAL],
+            impossible(_("%s: level %d %s #%u [%s] has %d cur HP, %d max HP"),                        msg, (int) mtmp->m_lev, mptr->pmnames[NEUTRAL],
                        mtmp->m_id, fmt_ptr((genericptr_t) mtmp),
                        mtmp->mhp, mtmp->mhpmax);
         if (DEADMONSTER(mtmp)) {
 #if 0
             /* bad if not fmon list or if not vault guard */
             if (strcmp(msg, "fmon") || !mtmp->isgd)
-                impossible(_("dead monster on %s; %s at <%d,%d>",
-                           msg, mptr->pmnames[NEUTRAL], mx, my);
+                impossible(_("dead monster on %s; %s at <%d,%d>"),                            msg, mptr->pmnames[NEUTRAL], mx, my);
 #endif
             return;
         }
         if (chk_geno && (svm.mvitals[mndx].mvflags & G_GENOD) != 0)
-            impossible(_("genocided %s in play (%s)",
-                       pmname(mptr, Mgender(mtmp)), msg);
+            impossible(_("genocided %s in play (%s)"),                        pmname(mptr, Mgender(mtmp)), msg);
         if (mtmp->mtame && !mtmp->mpeaceful)
-            impossible(_("tame %s is not peaceful (%s)",
-                       pmname(mptr, Mgender(mtmp)), msg);
+            impossible(_("tame %s is not peaceful (%s)"),                        pmname(mptr, Mgender(mtmp)), msg);
     }
     if (mtmp->isshk && !has_eshk(mtmp))
-        impossible(_("shk without eshk (%s)", msg);
+        impossible(_("shk without eshk (%s)"), msg);
     if (mtmp->ispriest && !has_epri(mtmp))
-        impossible(_("priest without epri (%s)", msg);
+        impossible(_("priest without epri (%s)"), msg);
     if (mtmp->isgd && !has_egd(mtmp))
-        impossible(_("guard without egd (%s)", msg);
+        impossible(_("guard without egd (%s)"), msg);
     if (mtmp->isminion && !has_emin(mtmp))
-        impossible(_("minion without emin (%s)", msg);
+        impossible(_("minion without emin (%s)"), msg);
     /* guardian angel on astral level is tame but has emin rather than edog */
     if (mtmp->mtame) {
         if (!has_edog(mtmp) && !mtmp->isminion)
-            impossible(_("pet without edog (%s)", msg);
+            impossible(_("pet without edog (%s)"), msg);
         else
             pet_sanity_check(mtmp, msg);
     }
@@ -146,8 +140,7 @@ sanity_check_single_mon(
              : !which_armor(mtmp, W_SADDLE) ? "saddle not worn"
                : 0;
         if (ns || nt)
-            impossible(_("steed: %s%s%s (%s)",
-                       ns ? ns : "", (ns && nt) ? ", " : "", nt ? nt : "",
+            impossible(_("steed: %s%s%s (%s)"),                        ns ? ns : "", (ns && nt) ? ", " : "", nt ? nt : "",
                        msg);
     }
 
@@ -155,15 +148,14 @@ sanity_check_single_mon(
         if (mtmp->wormno) {
             ; /* TODO: how to check worm in trap? */
         } else if (!t_at(mx, my))
-            impossible(_("trapped without a trap (%s)", msg);
+            impossible(_("trapped without a trap (%s)"), msg);
     }
     /* monst->mfrozen is difficult to deal with--it's used for paralysis,
        for temporary sleep, and for being busy (usually donning armor);
        code that sets mfrozen needs to also clear mcanmove, otherwise the
        helpless() test will be unreliable */
     if (mtmp->mfrozen && mtmp->mcanmove)
-        impossible(_("frozen monster [%s%s] is able to move (%s)",
-                   mtmp->mtame ? "tame " : mtmp->mpeaceful ? "peaceful " : "",
+        impossible(_("frozen monster [%s%s] is able to move (%s)"),                    mtmp->mtame ? "tame " : mtmp->mpeaceful ? "peaceful " : "",
                    pmname(mptr, Mgender(mtmp)), msg);
 
     /* monster is hiding? */
@@ -173,13 +165,12 @@ sanity_check_single_mon(
         if (!isok(mx, my)) /* caller will have checked this but not fixed it */
             mx = my = 0;
         if (mtmp == u.ustuck)
-            impossible(_("hiding monster stuck to you (%s)", msg);
+            impossible(_("hiding monster stuck to you (%s)"), msg);
         if (m_at(mx, my) == mtmp && hides_under(mptr) && !OBJ_AT(mx, my))
-            impossible(_("mon hiding under nonexistent obj (%s)", msg);
+            impossible(_("mon hiding under nonexistent obj (%s)"), msg);
         if (mptr->mlet == S_EEL
             && !(is_pool(mx, my) && !Is_waterlevel(&u.uz)))
-            impossible(_("eel hiding %s (%s)",
-                       !Is_waterlevel(&u.uz) ? "out of water"
+            impossible(_("eel hiding %s (%s)"),                        !Is_waterlevel(&u.uz) ? "out of water"
                                              : "on Plane of Water", msg);
         if (ceiling_hider(mptr)
             /* normally !accessible would be overridable with passes_walls,
@@ -191,12 +182,11 @@ sanity_check_single_mon(
                      || levl[mx][my].typ == LAVAPOOL
                      || levl[mx][my].typ == LAVAWALL
                      || accessible(mx, my))))
-            impossible(_("ceiling hider hiding %s (%s)",
-                       !has_ceiling(&u.uz) ? "without ceiling"
+            impossible(_("ceiling hider hiding %s (%s)"),                        !has_ceiling(&u.uz) ? "without ceiling"
                                            : "in solid stone",
                        msg);
         if (mtmp->mtrapped && (t = t_at(mx, my)) != 0 && !is_pit(t->ttyp))
-            impossible(_("hiding while trapped in a non-pit (%s)", msg);
+            impossible(_("hiding while trapped in a non-pit (%s)"), msg);
     } else if (M_AP_TYPE(mtmp) != M_AP_NOTHING) {
         boolean is_mimic = (mptr->mlet == S_MIMIC);
         const char *what = (M_AP_TYPE(mtmp) == M_AP_FURNITURE) ? "furniture"
@@ -206,8 +196,7 @@ sanity_check_single_mon(
 
         if (!strcmp(msg, "migr")) {
             if (M_AP_TYPE(mtmp) != M_AP_MONSTER)
-                impossible(_("migrating %s mimicking %s %s",
-                           is_mimic ? "mimic" : "monster", what, msg);
+                impossible(_("migrating %s mimicking %s %s"),                            is_mimic ? "mimic" : "monster", what, msg);
         } else if (Protection_from_shape_changers) {
             impossible(
                 "mimic%s concealed as %s despite Prot-from-shape-changers %s",
@@ -219,8 +208,7 @@ sanity_check_single_mon(
            finishes eating a mimic corpse */
         if (!(is_mimic || mtmp->meating
               || (mtmp->iswiz && M_AP_TYPE(mtmp) == M_AP_MONSTER)))
-            impossible(_("non-mimic (%s) posing as %s (%s)",
-                       mptr->pmnames[NEUTRAL], what, msg);
+            impossible(_("non-mimic (%s) posing as %s (%s)"),                        mptr->pmnames[NEUTRAL], what, msg);
 #if 0   /* mimics who end up in strange locations do still hide while there */
         if (!(accessible(mx, my) || passes_walls(mptr))) {
             char buf[BUFSZ];
@@ -230,18 +218,15 @@ sanity_check_single_mon(
                 Sprintf(buf, "[%d]", levl[mx][my].typ);
                 typnam = buf;
             }
-            impossible(_("mimic%s concealed in inaccessible location: %s (%s)",
-                       is_mimic ? "" : "ker", typnam, msg);
+            impossible(_("mimic%s concealed in inaccessible location: %s (%s)"),                        is_mimic ? "" : "ker", typnam, msg);
         }
 #endif
     }
     if (mtmp->mleashed) {
         if (!get_mleash(mtmp))
-            impossible(_("monst %u: leashed but no leash for %s",
-                       mtmp->m_id, mon_pmname(mtmp));
+            impossible(_("monst %u: leashed but no leash for %s"),                        mtmp->m_id, mon_pmname(mtmp));
         else if (!mtmp->mtame)
-            impossible(_("monst %u: leashed but not tame %s",
-                       mtmp->m_id, mon_pmname(mtmp));
+            impossible(_("monst %u: leashed but not tame %s"),                        mtmp->m_id, mon_pmname(mtmp));
 #if 0
         /* after hero moves, leashed mon won't necessarily pass 'm_next2u()'
            test; 90 is farthest observed distance with expert jumping spell
@@ -249,8 +234,7 @@ sanity_check_single_mon(
            opposite direction (if hero teleports, leashed mon moves adjacent
            immediately; knockback has shorter range than magical jumping) */
         else if (distu(mtmp->mx, mtmp->my) > 90) /*if (!m_next2u(mtmp))*/
-            impossible(_("monst %u: leashed but not next to you (%d)",
-                       mtmp->m_id, distu(mtmp->mx, mtmp->my));
+            impossible(_("monst %u: leashed but not next to you (%d)"),                        mtmp->m_id, distu(mtmp->mx, mtmp->my));
 #endif
     }
 }
@@ -269,25 +253,21 @@ mon_sanity_check(void)
 
         x = mtmp->mx, y = mtmp->my;
         if (!isok(x, y) && !(mtmp->isgd && x == 0 && y == 0)) {
-            impossible(_("mon (%s) claims to be at <%d,%d>?",
-                       fmt_ptr((genericptr_t) mtmp), x, y);
+            impossible(_("mon (%s) claims to be at <%d,%d>?"),                        fmt_ptr((genericptr_t) mtmp), x, y);
         } else if (mtmp == u.usteed) {
             /* steed is in fmon list but not on the map; its
                <mx,my> coordinates should match hero's location */
             if (x != u.ux || y != u.uy)
-                impossible(_("steed (%s) claims to be at <%d,%d>?",
-                           fmt_ptr((genericptr_t) mtmp), x, y);
+                impossible(_("steed (%s) claims to be at <%d,%d>?"),                            fmt_ptr((genericptr_t) mtmp), x, y);
         } else if (svl.level.monsters[x][y] != mtmp) {
-            impossible(_("mon (%s) at <%d,%d> is not there!",
-                       fmt_ptr((genericptr_t) mtmp), x, y);
+            impossible(_("mon (%s) at <%d,%d> is not there!"),                        fmt_ptr((genericptr_t) mtmp), x, y);
         } else if (mtmp->wormno) {
             sanity_check_worm(mtmp);
 
         /* some temp mstate bits can be expected for a mon on fmon, as part of
            removing it, but DEADMONSTER check above should skip those. */
         } else if (mon_offmap(mtmp)) {
-            impossible(_("floor mon (%s) with mstate set to 0x%08lx",
-                       fmt_ptr((genericptr_t) mtmp), mtmp->mstate);
+            impossible(_("floor mon (%s) with mstate set to 0x%08lx"),                        fmt_ptr((genericptr_t) mtmp), mtmp->mstate);
         }
     }
 
@@ -298,15 +278,12 @@ mon_sanity_check(void)
                     if (m == mtmp)
                         break;
                 if (!m)
-                    impossible(_("map mon (%s) at <%d,%d> not in fmon list!",
-                               fmt_ptr((genericptr_t) mtmp), x, y);
+                    impossible(_("map mon (%s) at <%d,%d> not in fmon list!"),                                fmt_ptr((genericptr_t) mtmp), x, y);
                 else if (mtmp == u.usteed)
-                    impossible(_("steed (%s) is on the map at <%d,%d>!",
-                               fmt_ptr((genericptr_t) mtmp), x, y);
+                    impossible(_("steed (%s) is on the map at <%d,%d>!"),                                fmt_ptr((genericptr_t) mtmp), x, y);
                 else if ((mtmp->mx != x || mtmp->my != y)
                          && mtmp->data != &mons[PM_LONG_WORM])
-                    impossible(_("map mon (%s) at <%d,%d> is found at <%d,%d>?",
-                               fmt_ptr((genericptr_t) mtmp),
+                    impossible(_("map mon (%s) at <%d,%d> is found at <%d,%d>?"),                                fmt_ptr((genericptr_t) mtmp),
                                mtmp->mx, mtmp->my, x, y);
             }
 
@@ -317,8 +294,7 @@ mon_sanity_check(void)
              & ~(MON_MIGRATING | MON_LIMBO | MON_ENDGAME_MIGR | MON_OFFMAP))
             != 0L
             || !(mtmp->mstate & MON_MIGRATING))
-            impossible(_("migrating mon (%s) with mstate set to 0x%08lx",
-                       fmt_ptr((genericptr_t) mtmp), mtmp->mstate);
+            impossible(_("migrating mon (%s) with mstate set to 0x%08lx"),                        fmt_ptr((genericptr_t) mtmp), mtmp->mstate);
     }
 
     wormno_sanity_check(); /* test for bogus worm tail */
@@ -1734,22 +1710,22 @@ mon_give_prop(struct monst *mtmp, int prop)
        teleport control or whatever, ignore it. */
     switch (prop) {
     case FIRE_RES:
-        msg = _("%s shivers slightly."));
+        msg = _("%s shivers slightly.");
         break;
     case COLD_RES:
-        msg = _("%s looks quite warm."));
+        msg = _("%s looks quite warm.");
         break;
     case SLEEP_RES:
-        msg = _("%s looks wide awake."));
+        msg = _("%s looks wide awake.");
         break;
     case DISINT_RES:
-        msg = _("%s looks very firm."));
+        msg = _("%s looks very firm.");
         break;
     case SHOCK_RES:
-        msg = _("%s crackles with static electricity."));
+        msg = _("%s crackles with static electricity.");
         break;
     case POISON_RES:
-        msg = _("%s looks healthy."));
+        msg = _("%s looks healthy.");
         break;
     default:
         return; /* can't give it */
@@ -2354,7 +2330,7 @@ mfndpos(
                 if ((ttmp = t_at(nx, ny)) != 0) {
                     if (ttmp->ttyp >= TRAPNUM || ttmp->ttyp == 0) {
                         impossible(_("A monster looked at a very strange trap"
-                                   " of type %d.",
+                                   " of type %d."),
                                    ttmp->ttyp);
                             continue;
                     }
@@ -2505,8 +2481,7 @@ dmonsfree(void)
 
     if (count != iflags.purge_monsters) {
         describe_level(buf, 2);
-        impossible(_("dmonsfree: %d removed doesn't match %d pending on %s",
-                   count, iflags.purge_monsters, buf);
+        impossible(_("dmonsfree: %d removed doesn't match %d pending on %s"),                    count, iflags.purge_monsters, buf);
     }
     iflags.purge_monsters = 0;
 }
@@ -2681,7 +2656,7 @@ dealloc_monst(struct monst *mon)
     buf[0] = '\0';
     if (mon->nmon) {
         describe_level(buf, 2);
-        panic(_("dealloc_monst with nmon on %s", buf);
+        panic(_("dealloc_monst with nmon on %s"), buf);
     }
     if (mon->mextra)
         dealloc_mextra(mon);
@@ -2790,8 +2765,7 @@ m_detach(
         mtmp->mstate |= MON_ENDGAME_FREE;
 
     if ((mtmp->mstate & MON_DETACH) != 0) {
-        impossible(_("m_detach: %s is already detached?",
-                   minimal_monnam(mtmp, FALSE));
+        impossible(_("m_detach: %s is already detached?"),                    minimal_monnam(mtmp, FALSE));
     } else {
         mtmp->mstate |= MON_DETACH;
         iflags.purge_monsters++;
@@ -2950,7 +2924,7 @@ vamprises(struct monst *mtmp)
         if (closed_door(x, y)) {
             const char
                 *door_smashed = _("a door being smashed"),
-                *door_go_boom = _("a door exploding"));
+                *door_go_boom = _("a door exploding");
             struct rm *door = &levl[x][y];
             boolean trapped = (door->doormask & D_TRAPPED) != 0,
                     seeit = cansee(x, y);
@@ -3054,7 +3028,7 @@ logdeadmon(struct monst *mtmp, int mndx)
             if (howmany > 1) /* "(2nd time)" or "(50th time)" */
                 Sprintf(xtra, _(" (%d%s time)"), howmany, ordin(howmany));
 
-            mkilled = nonliving(mtmp->data) ? _("destroyed") : _("killed"));
+            mkilled = nonliving(mtmp->data) ? _("destroyed") : _("killed");
             /* hero is responsible: "killed <monst>" */
             if (herodidit)
                 livelog_printf(llevent_type, "%s %s%s%s",
@@ -3211,7 +3185,7 @@ corpse_chance(
                 /* mdef is a gas spore (AT_BOOM) that is exploding inside an
                    engulfer; suppress usual explosion since it's contained */
                 if (magr == &gy.youmonst) {
-                    There(_("is an explosion in your %s!", body_part(STOMACH));
+                    There(_("is an explosion in your %s!"), body_part(STOMACH));
                     Sprintf(svk.killer.name, "%s explosion",
                             s_suffix(pmname(mdat, Mgender(mon))));
                     losehp(Maybe_Half_Phys(tmp), svk.killer.name,
@@ -3423,8 +3397,7 @@ set_ustuck(struct monst *mtmp)
 {
     if (iflags.sanity_check || iflags.debug_fuzzer) {
         if (mtmp && !m_next2u(mtmp))
-            impossible(_("Sticking to %s at distu %d?",
-                       mon_nam(mtmp), mdistu(mtmp));
+            impossible(_("Sticking to %s at distu %d?"),                        mon_nam(mtmp), mdistu(mtmp));
     }
 
     disp.botl = TRUE;
@@ -3760,7 +3733,7 @@ mon_to_stone(struct monst *mtmp)
                 pline(_("... and returns to normal."));
         }
     } else
-        impossible(_("Can't polystone %s!", a_monnam(mtmp));
+        impossible(_("Can't polystone %s!"), a_monnam(mtmp));
 }
 
 boolean

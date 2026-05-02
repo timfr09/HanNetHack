@@ -771,7 +771,7 @@ angrygods(aligntyp resp_god)
                       ? _("scorn")
                       : _("call upon"));
         /* [why isn't this using verbalize()?] */
-        pline(_("\"Then die, %s!\"",
+        pline(_("\"Then die, %s!\""),
               (gy.youmonst.data->mlet == S_HUMAN) ? "mortal" : "creature");
         summon_minion(resp_god, FALSE);
         break;
@@ -1229,7 +1229,7 @@ pleased(aligntyp g_align)
                 if (u.uevent.uheard_tune < 1) {
                     godvoice(g_align, (char *) 0);
                     SetVoice((struct monst *) 0, 0, 80, voice_deity);
-                    verbalize(_("Hark, %s!", is_human(gy.youmonst.data)
+                    verbalize(_("Hark, %s!"), is_human(gy.youmonst.data)
                                                ? "mortal"
                                                : "creature");
                     SetVoice((struct monst *) 0, 0, 80, voice_deity);
@@ -1760,7 +1760,7 @@ sacrifice_your_race(
                 dmon->mpeaceful = TRUE;
             You(_("are terrified, and unable to move."));
             nomul(-3);
-            gm.multi_reason = _("being terrified of a demon"));
+            gm.multi_reason = _("being terrified of a demon");
             gn.nomovemsg = 0;
         } else
             pline_The(_("%s."), demonless_msg);
@@ -2262,8 +2262,8 @@ dopray(void)
         }
     }
     nomul(-3);
-    gm.multi_reason = _("praying"));
-    gn.nomovemsg = _("You finish your prayer."));
+    gm.multi_reason = _("praying");
+    gn.nomovemsg = _("You finish your prayer.");
     ga.afternmv = prayer_done;
 
     if (gp.p_type == 3 && !Inhell) {
@@ -2485,7 +2485,7 @@ doturn(void)
      *  the brief paralysis?]
      */
     nomul(-(5 - ((u.ulevel - 1) / 6))); /* -5 .. -1 */
-    gm.multi_reason = _("trying to turn the monsters"));
+    gm.multi_reason = _("trying to turn the monsters");
     gn.nomovemsg = You_can_move_again;
     return ECMD_TIME;
 }

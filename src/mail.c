@@ -526,7 +526,7 @@ readmail(struct obj *otmp UNUSED)
             recipient = DEVTEAM_URL;
             delivery = subst_delivery;
         } else {
-            impossible(_("fake mail #%d has undefined substitution", i);
+            impossible(_("fake mail #%d has undefined substitution"), i);
             delivery = faulty_delivery;
         }
     }

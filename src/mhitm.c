@@ -611,7 +611,7 @@ failed_grab(
             boolean tailmiss = gn.notonhead;
             const char *verb = (mattk->adtyp == AD_DGST) ? _("gulp")
                                : (mattk->adtyp == AD_STCK) ? _("adhere")
-                                 : _("grab"));
+                                 : _("grab");
 
             /* beware of "Foo's grab passes through Bar's ghost";
                mon_nam(x_monnam) calls s_suffix() for named ghosts and
@@ -1171,15 +1171,16 @@ mon_poly(struct monst *magr, struct monst *mdef, int dmg)
             if (gv.vis) { /* either seen or adjacent */
                 boolean was_seen = !!strcmpi("It", Before),
                         verbosely = flags.verbose || !was_seen;
+                const char *freaky = _("freakishly ");
 
                 if (canspotmon(mdef))
-                    pline(_("%s%s%s turns into %s.", Before,
+                    pline(_("%s%s%s turns into %s."), Before,
                           verbosely ? freaky : "", verbosely ? " and" : "",
                           x_monnam(mdef, ARTICLE_A, (char *) 0,
                                    (SUPPRESS_NAME | SUPPRESS_IT
                                     | SUPPRESS_INVISIBLE), FALSE));
                 else if (was_seen || magr == &gy.youmonst)
-                    pline(_("%s%s%s.", Before, freaky,
+                    pline(_("%s%s%s."), Before, freaky,
                           !was_seen ? "" : " and disappears");
             }
             dmg = 0;

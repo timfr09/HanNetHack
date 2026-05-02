@@ -388,7 +388,7 @@ lay_an_egg(void)
     set_corpsenm(uegg, egg_type_from_parent(u.umonnum, FALSE));
     uegg->known = 1;
     observe_object(uegg);
-    You(_("%s an egg.", eggs_in_water(gy.youmonst.data) ? "spawn" : "lay");
+    You(_("%s an egg."), eggs_in_water(gy.youmonst.data) ? "spawn" : "lay");
     dropy(uegg);
     stackobj(uegg);
     morehungry((int) objects[EGG].oc_nutrition);
@@ -440,14 +440,13 @@ dosit(void)
 
         obj = svl.level.objects[u.ux][u.uy];
         if (gy.youmonst.data->mlet == S_DRAGON && obj->oclass == COIN_CLASS) {
-            You(_("coil up around your %shoard.",
-                (obj->quan + money_cnt(gi.invent) < u.ulevel * 1000)
+            You(_("coil up around your %shoard."),                 (obj->quan + money_cnt(gi.invent) < u.ulevel * 1000)
                 ? "meager " : "");
         } else if (obj->otyp == TOWEL) {
             pline(_("It's probably not a good time for a picnic..."));
         } else {
             if (slithy(gy.youmonst.data))
-                You(_("coil up around %s.", the(xname(obj)));
+                You(_("coil up around %s."), the(xname(obj)));
             else
                 You(_("sit on %s."), the(xname(obj)));
             if (obj->otyp == CORPSE && amorphous(&mons[obj->corpsenm]))
@@ -523,9 +522,9 @@ dosit(void)
                 (void) water_damage(uarm, _("armor"), TRUE);
         }
     } else if (IS_SINK(typ)) {
-        You(sit_message, defsyms[S_sink].explanation);
-        Your(_("%s gets wet.",
-             humanoid(gy.youmonst.data) ? "rump" : "underside");
+        You(_("sit on the %s."), _(defsyms[S_sink].explanation));
+        Your(_("%s gets wet."),
+             humanoid(gy.youmonst.data) ? _("rump") : _("underside"));
     } else if (IS_ALTAR(typ)) {
         You(_("sit on the %s."), _(defsyms[S_altar].explanation));
         altar_wrath(u.ux, u.uy);
@@ -540,7 +539,7 @@ dosit(void)
         You(_("sit on the %s."), hliquid("lava"));
         burn_away_slime();
         if (likes_lava(gy.youmonst.data)) {
-            pline_The("%s feels warm.", hliquid("lava"));
+            pline_The(_("%s feels warm."), hliquid("lava"));
             return ECMD_TIME;
         }
         pline_The(_("%s burns you!"), hliquid("lava"));

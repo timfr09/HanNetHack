@@ -1347,7 +1347,7 @@ rolefilterstring(char *outbuf, int which)
         }
         break;
     default:
-        impossible(_("rolefilterstring: bad role aspect (%d)", which);
+        impossible(_("rolefilterstring: bad role aspect (%d)"), which);
         Strcpy(outbuf, " ?");
         break;
     }
@@ -1585,7 +1585,7 @@ build_plselection_prompt(
     char *buf, int buflen,
     int rolenum, int racenum, int gendnum, int alignnum)
 {
-    const char *defprompt = _("Shall I pick a character for you? [ynaq] "));
+    const char *defprompt = _("Shall I pick a character for you? [ynaq] ");
     int num_post_attribs = 0;
     char tmpbuf[BUFSZ], *p;
 
@@ -1766,7 +1766,7 @@ role_selection_prolog(int which, winid where)
 {
     const char *choosing = _(" choosing now"),
                *not_yet = _(" not yet specified"),
-               *rand_choice = _(" random"));
+               *rand_choice = _(" random");
     char buf[BUFSZ];
     int r, c, gend, a, allowmask;
 
@@ -1994,7 +1994,7 @@ role_menu_extra(int which, winid where, boolean preselect)
                  ATR_NONE, clr, _("Quit"),
                  preselect ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     } else {
-        impossible(_("role_menu_extra: bad arg (%d)", which);
+        impossible(_("role_menu_extra: bad arg (%d)"), which);
     }
 }
 
@@ -2160,21 +2160,21 @@ Hello(struct monst *mtmp)
 {
     switch (Role_switch) {
     case PM_KNIGHT:
-        return _("Salutations")); /* Olde English */
+        return _("Salutations"); /* Olde English */
     case PM_SAMURAI:
         return (mtmp && mtmp->data == &mons[PM_SHOPKEEPER])
                     ? _("Irasshaimase")
-                    : _("Konnichi wa")); /* Japanese */
+                    : _("Konnichi wa"); /* Japanese */
     case PM_TOURIST:
-        return _("Aloha")); /* Hawaiian */
+        return _("Aloha"); /* Hawaiian */
     case PM_VALKYRIE:
         return
 #ifdef MAIL_STRUCTURES
                (mtmp && mtmp->data == &mons[PM_MAIL_DAEMON]) ? _("Hallo") :
 #endif
-               _("Velkommen")); /* Norse */
+               _("Velkommen"); /* Norse */
     default:
-        return _("Hello"));
+        return _("Hello");
     }
 }
 
@@ -2183,15 +2183,15 @@ Goodbye(void)
 {
     switch (Role_switch) {
     case PM_KNIGHT:
-        return _("Fare thee well")); /* Olde English */
+        return _("Fare thee well"); /* Olde English */
     case PM_SAMURAI:
-        return _("Sayonara")); /* Japanese */
+        return _("Sayonara"); /* Japanese */
     case PM_TOURIST:
-        return _("Aloha")); /* Hawaiian */
+        return _("Aloha"); /* Hawaiian */
     case PM_VALKYRIE:
-        return _("Farvel")); /* Norse */
+        return _("Farvel"); /* Norse */
     default:
-        return _("Goodbye"));
+        return _("Goodbye");
     }
 }
 

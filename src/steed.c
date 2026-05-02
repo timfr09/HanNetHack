@@ -68,7 +68,7 @@ use_saddle(struct obj *otmp)
     if (touch_petrifies(ptr) && !uarmg && !Stone_resistance) {
         char kbuf[BUFSZ];
 
-        You(_("touch %s.", mon_nam(mtmp));
+        You(_("touch %s."), mon_nam(mtmp));
         if (!(poly_when_stoned(gy.youmonst.data) && polymon(PM_STONE_GOLEM))) {
             Sprintf(kbuf, "attempting to saddle %s",
                     an(pmname(mtmp->data, Mgender(mtmp))));
@@ -601,7 +601,7 @@ dismount_steed(
     otmp = which_armor(mtmp, W_SADDLE);
     switch (reason) {
     case DISMOUNT_THROWN:
-        verb = _("are thrown"));
+        verb = _("are thrown");
         FALLTHROUGH;
         /*FALLTHRU*/
     case DISMOUNT_KNOCKED:
@@ -907,16 +907,14 @@ place_monster(struct monst *mon, coordxy x, coordxy y)
        vault guards (either living or dead) are parked at <0,0> */
     if (!isok(x, y) && (x != 0 || y != 0 || !mon->isgd)) {
         describe_level(buf, 0);
-        impossible(_("trying to place %s at <%d,%d> mstate:%lx on %s",
-                   minimal_monnam(mon, TRUE), x, y, mon->mstate, buf);
+        impossible(_("trying to place %s at <%d,%d> mstate:%lx on %s"),                    minimal_monnam(mon, TRUE), x, y, mon->mstate, buf);
         x = y = 0;
     }
     if ((mon == u.usteed && !gi.in_steed_dismounting)
         /* special case is for convoluted vault guard handling */
         || (DEADMONSTER(mon) && !(mon->isgd && x == 0 && y == 0))) {
         describe_level(buf, 0);
-        impossible(_("placing %s onto map, mstate:%lx, on %s?",
-                   (mon == u.usteed) ? "steed" : "defunct monster",
+        impossible(_("placing %s onto map, mstate:%lx, on %s?"),                    (mon == u.usteed) ? "steed" : "defunct monster",
                    mon->mstate, buf);
         return;
     }
@@ -924,8 +922,7 @@ place_monster(struct monst *mon, coordxy x, coordxy y)
         describe_level(buf, 0);
         monnm = minimal_monnam(mon, FALSE);
         othnm = (mon != othermon) ? minimal_monnam(othermon, TRUE) : "itself";
-        impossible(_("placing %s over %s at <%d,%d>, mstates:%lx %lx on %s?",
-                   monnm, othnm, x, y, othermon->mstate, mon->mstate, buf);
+        impossible(_("placing %s over %s at <%d,%d>, mstates:%lx %lx on %s?"),                    monnm, othnm, x, y, othermon->mstate, mon->mstate, buf);
     }
     mon->mx = x, mon->my = y;
     svl.level.monsters[x][y] = mon;

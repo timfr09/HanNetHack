@@ -542,7 +542,7 @@ outrumor(
             return;
         } else if (Blind) {
             if (mechanism == BY_COOKIE)
-                pline(_("%s", _(fortune_msg));
+                pline(_("%s"), _(fortune_msg));
             pline(_("What a pity that you cannot read it!"));
             return;
         }
@@ -550,7 +550,7 @@ outrumor(
 
     line = getrumor(truth, buf, reading ? FALSE : TRUE);
     if (!*line)
-        line = _("NetHack rumors file closed for renovation."));
+        line = _("NetHack rumors file closed for renovation.");
     switch (mechanism) {
     case BY_ORACLE:
         /* Oracle delivers the rumor */
@@ -563,7 +563,7 @@ outrumor(
         /* [WIS exercised by getrumor()] */
         return;
     case BY_COOKIE:
-        pline(_("%s", _(fortune_msg));
+        pline(_("%s"), _(fortune_msg));
         FALLTHROUGH;
     /* FALLTHRU */
     case BY_PAPER:
@@ -777,7 +777,7 @@ couldnt_open_file(const char *filename)
     if (!iflags.debug_fuzzer)
         program_state.something_worth_saving = 0;
 
-    impossible(_("Can't open '%s' file.", filename);
+    impossible(_("Can't open '%s' file."), filename);
     program_state.something_worth_saving = save_something;
 }
 

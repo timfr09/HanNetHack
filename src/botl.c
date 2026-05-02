@@ -243,8 +243,7 @@ do_statusline2(void)
                  expr, tmmv, cond, vers);
     } else {
         if (dln + 1 + hln + 1 + xln + 1 + tln + 1 + cln + vrn > MAXCO) {
-            panic(_("bot2: second status line exceeds MAXCO (%u > %d)",
-                  (unsigned) (dln + 1 + hln + 1 + xln + 1 + tln + 1 + cln
+            panic(_("bot2: second status line exceeds MAXCO (%u > %d)"),                   (unsigned) (dln + 1 + hln + 1 + xln + 1 + tln + 1 + cln
                               + vrn),
                   MAXCO);
         } else if ((dln - dx) + 1 + hln + 1 + xln + 1 + cln <= COLNO) {
@@ -373,7 +372,7 @@ rank_of(int lev, short monnum, boolean female)
         return _(role->name.f);
     else if (role->name.m)
         return _(role->name.m);
-    return _("Player"));
+    return _("Player");
 }
 
 staticfn const char *
@@ -1021,7 +1020,7 @@ bot_via_windowport(void)
     {
         /* TRANSLATORS: %s the %s -> player name, rank/monster name
            Korean example: "%s (%s)" for "Name (Rank)" format */
-        const char *title_fmt = _("%s the %s"));
+        const char *title_fmt = _("%s the %s");
         char titlebuf[MAXVALWIDTH];
 
         if (Upolyd) {
@@ -1848,16 +1847,14 @@ compare_blstats(struct istat_s *bl1, struct istat_s *bl2)
     int anytype, fld, result = 0;
 
     if (!bl1 || !bl2) {
-        panic(_("compare_blstat: bad istat pointer %s, %s",
-              fmt_ptr((genericptr_t) bl1), fmt_ptr((genericptr_t) bl2));
+        panic(_("compare_blstat: bad istat pointer %s, %s"),               fmt_ptr((genericptr_t) bl1), fmt_ptr((genericptr_t) bl2));
     }
 
     anytype = bl1->anytype;
     if ((!bl1->a.a_void || !bl2->a.a_void)
         && (anytype == ANY_IPTR || anytype == ANY_UPTR
             || anytype == ANY_LPTR || anytype == ANY_ULPTR)) {
-        panic(_("compare_blstat: invalid pointer %s, %s",
-              fmt_ptr((genericptr_t) bl1->a.a_void),
+        panic(_("compare_blstat: invalid pointer %s, %s"),               fmt_ptr((genericptr_t) bl1->a.a_void),
               fmt_ptr((genericptr_t) bl2->a.a_void));
     }
     /* cheat; terrain is highlighted as a string but we have a handy int
@@ -2021,8 +2018,7 @@ percentage(struct istat_s *bl, struct istat_s *maxbl)
     boolean use_rawval;
 
     if (!bl || !maxbl) {
-        impossible(_("percentage: bad istat pointer %s, %s",
-                   fmt_ptr((genericptr_t) bl), fmt_ptr((genericptr_t) maxbl));
+        impossible(_("percentage: bad istat pointer %s, %s"),                    fmt_ptr((genericptr_t) bl), fmt_ptr((genericptr_t) maxbl));
         return 0;
     }
 

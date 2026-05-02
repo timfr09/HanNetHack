@@ -93,7 +93,7 @@ picklock(void)
     }
 
     if (gx.xlock.usedtime++ >= 50 || nohands(gy.youmonst.data)) {
-        You(_("give up your attempt at %s.", lock_action());
+        You(_("give up your attempt at %s."), lock_action());
         exercise(A_DEX, TRUE); /* even if you don't succeed */
         return ((gx.xlock.usedtime = 0));
     }
@@ -120,12 +120,12 @@ picklock(void)
             /* disarming while using magic key always succeeds */
             if (gx.xlock.door) {
                 gx.xlock.door->doormask &= ~D_TRAPPED;
-                what = _("door"));
+                what = _("door");
                 alreadyunlocked = !(gx.xlock.door->doormask & D_LOCKED);
             } else {
                 gx.xlock.box->otrapped = 0;
                 gx.xlock.box->tknown = 0;
-                what = (gx.xlock.box->otyp == CHEST) ? _("chest") : _("box"));
+                what = (gx.xlock.box->otyp == CHEST) ? _("chest") : _("box");
                 alreadyunlocked = !gx.xlock.box->olocked;
             }
             You(_("succeed in disarming the trap.  The %s is still %slocked."),
@@ -387,7 +387,7 @@ pick_lock(
             const char *what = (picktyp == LOCK_PICK) ? "pick" : "key";
 
             if (picktyp == CREDIT_CARD)
-                what = _("card"));
+                what = _("card");
             pline(_("Unfortunately, you can no longer %s %s."), _("hold the"), what);
             reset_pick();
             return PICKLOCK_LEARNED_SOMETHING;
@@ -398,7 +398,7 @@ pick_lock(
         } else {
             const char *action = lock_action();
 
-            You(_("resume your attempt at %s.", action);
+            You(_("resume your attempt at %s."), action);
             gx.xlock.magic_key = is_magic_key(&gy.youmonst, pick);
             set_occupation(picklock, action, 0);
             return PICKLOCK_DID_SOMETHING;
@@ -406,7 +406,7 @@ pick_lock(
     }
 
     if (nohands(gy.youmonst.data)) {
-        You_cant(_("hold %s -- you have no hands!", doname(pick));
+        You_cant(_("hold %s -- you have no hands!"), doname(pick));
         return PICKLOCK_DID_NOTHING;
     } else if (u.uswallow) {
         You_cant(_("%sunlock %s."), (picktyp == CREDIT_CARD) ? "" : "lock or ",
@@ -416,7 +416,7 @@ pick_lock(
 
     if (pick != &dummypick && picktyp != SKELETON_KEY
         && picktyp != LOCK_PICK && picktyp != CREDIT_CARD) {
-        impossible(_("picking lock with object %d?", picktyp);
+        impossible(_("picking lock with object %d?"), picktyp);
         return PICKLOCK_DID_NOTHING;
     }
     ch = 0; /* lint suppression */
@@ -463,7 +463,7 @@ pick_lock(
                 }
                 it = 0;
                 if (otmp->obroken)
-                    verb = _("fix"));
+                    verb = _("fix");
                 else if (!otmp->olocked)
                     verb = C_("lock_verb", "lock"), it = 1;
                 else if (picktyp != LOCK_PICK)
@@ -795,7 +795,7 @@ doopen_indir(coordxy x, coordxy y)
 
     dirprompt = NULL; /* have get_adjacent_loc() -> getdir() use default */
     if (u.utrap && u.utraptype == TT_PIT && container_at(u.ux, u.uy, FALSE))
-        dirprompt = _("Open where? [.>]"));
+        dirprompt = _("Open where? [.>]");
 
     if (x > 0 && y >= 0) {
         /* nonzero <x,y> is used when hero in amorphous form tries to
@@ -1107,8 +1107,8 @@ doorlock(struct obj *otmp, coordxy x, coordxy y)
     boolean res = TRUE;
     int loudness = 0;
     const char *msg = (const char *) 0;
-    const char *dustcloud = _("A cloud of dust"));
-    const char *quickly_dissipates = _("quickly dissipates"));
+    const char *dustcloud = _("A cloud of dust");
+    const char *quickly_dissipates = _("quickly dissipates");
     boolean mysterywand = (otmp->oclass == WAND_CLASS && !otmp->dknown);
 
     if (door->typ == SDOOR) {
@@ -1171,17 +1171,17 @@ doorlock(struct obj *otmp, coordxy x, coordxy y)
 
         switch (door->doormask & ~D_TRAPPED) {
         case D_CLOSED:
-            msg = _("The door locks!"));
+            msg = _("The door locks!");
             break;
         case D_ISOPEN:
-            msg = _("The door swings shut, and locks!"));
+            msg = _("The door swings shut, and locks!");
             break;
         case D_BROKEN:
-            msg = _("The broken door reassembles and locks!"));
+            msg = _("The broken door reassembles and locks!");
             break;
         case D_NODOOR:
             msg =
-               _("A cloud of dust springs up and assembles itself into a door!"));
+               _("A cloud of dust springs up and assembles itself into a door!");
             break;
         default:
             res = FALSE;
@@ -1194,7 +1194,7 @@ doorlock(struct obj *otmp, coordxy x, coordxy y)
     case WAN_OPENING:
     case SPE_KNOCK:
         if (door->doormask & D_LOCKED) {
-            msg = _("The door unlocks!"));
+            msg = _("The door unlocks!");
             door->doormask = D_CLOSED | (door->doormask & D_TRAPPED);
         } else
             res = FALSE;
@@ -1253,7 +1253,7 @@ doorlock(struct obj *otmp, coordxy x, coordxy y)
             res = FALSE;
         break;
     default:
-        impossible(_("magic (%d) attempted on door.", otmp->otyp);
+        impossible(_("magic (%d) attempted on door."), otmp->otyp);
         break;
     }
     if (msg && cansee(x, y))
@@ -1281,7 +1281,7 @@ chest_shatter_msg(struct obj *otmp)
     long save_HBlinded, save_BBlinded;
 
     if (otmp->oclass == POTION_CLASS) {
-        You(_("%s %s shatter!", Blind ? "hear" : "see", an(bottlename()));
+        You(_("%s %s shatter!"), Blind ? "hear" : "see", an(bottlename()));
         if (!breathless(gy.youmonst.data) || haseyes(gy.youmonst.data))
             potionbreathe(otmp);
         return;
@@ -1294,25 +1294,25 @@ chest_shatter_msg(struct obj *otmp)
     HBlinded = save_HBlinded,  BBlinded = save_BBlinded;
     switch (objects[otmp->otyp].oc_material) {
     case PAPER:
-        disposition = _("is torn to shreds"));
+        disposition = _("is torn to shreds");
         break;
     case WAX:
-        disposition = _("is crushed"));
+        disposition = _("is crushed");
         break;
     case VEGGY:
-        disposition = _("is pulped"));
+        disposition = _("is pulped");
         break;
     case FLESH:
-        disposition = _("is mashed"));
+        disposition = _("is mashed");
         break;
     case GLASS:
-        disposition = _("shatters"));
+        disposition = _("shatters");
         break;
     case WOOD:
-        disposition = _("splinters to fragments"));
+        disposition = _("splinters to fragments");
         break;
     default:
-        disposition = _("is destroyed"));
+        disposition = _("is destroyed");
         break;
     }
     pline(_("%s %s!"), An(thing), disposition);

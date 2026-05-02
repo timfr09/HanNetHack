@@ -398,7 +398,7 @@ cutworm(struct monst *worm, coordxy x, coordxy y,
     while ((curr->wx != x) || (curr->wy != y)) {
         curr = curr->nseg;
         if (!curr) {
-            impossible(_("cutworm: no segment at (%d,%d)", (int) x, (int) y);
+            impossible(_("cutworm: no segment at (%d,%d)"), (int) x, (int) y);
             return;
         }
     }
@@ -623,9 +623,9 @@ place_wsegs(struct monst *worm, struct monst *oldworm)
         if (oldworm && mtmp == oldworm)
             remove_monster(x, y);
         else if (mtmp)
-            impossible(_("placing worm seg <%d,%d> over another mon", x, y);
+            impossible(_("placing worm seg <%d,%d> over another mon"), x, y);
         else if (oldworm)
-            impossible(_("replacing worm seg <%d,%d> on empty spot", x, y);
+            impossible(_("replacing worm seg <%d,%d> on empty spot"), x, y);
 
         place_worm_seg(worm, x, y);
         curr = curr->nseg;
@@ -656,7 +656,7 @@ sanity_check_worm(struct monst *worm)
 
     wnum = worm->wormno;
     if (!wtails[wnum] || !wheads[wnum]) {
-        impossible(_("wormno %d is set without proper tail", wnum);
+        impossible(_("wormno %d is set without proper tail"), wnum);
         return;
     }
     /* if worm is migrating, we can't check its segments against the map */
@@ -667,10 +667,9 @@ sanity_check_worm(struct monst *worm)
     while (curr != wheads[wnum]) {
         x = curr->wx, y = curr->wy;
         if (!isok(x, y))
-            impossible(_("worm seg not isok <%d,%d>", x, y);
+            impossible(_("worm seg not isok <%d,%d>"), x, y);
         else if (svl.level.monsters[x][y] != worm)
-            impossible(_("mon (%s) at seg location is not worm (%s)",
-                       fmt_ptr((genericptr_t) svl.level.monsters[x][y]),
+            impossible(_("mon (%s) at seg location is not worm (%s)"),                        fmt_ptr((genericptr_t) svl.level.monsters[x][y]),
                        fmt_ptr((genericptr_t) worm));
 
         curr = curr->nseg;

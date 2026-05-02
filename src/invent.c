@@ -894,7 +894,7 @@ merged(struct obj **potmp, struct obj **pobj)
             } else if ((wmask & W_QUIVER) != 0L) {
                 wmask = W_QUIVER;
             } else {
-                impossible(_("merging strangely worn items (%lx)", wmask);
+                impossible(_("merging strangely worn items (%lx)"), wmask);
                 wmask = otmp->owornmask;
             }
             if ((otmp->owornmask & ~wmask) != 0L)
@@ -1102,7 +1102,7 @@ addinv_core0(
     if (uquiver && merged(&uquiver, &obj)) {
         obj = uquiver;
         if (!obj)
-            panic(_("addinv: null obj after quiver merge otyp=%d", saved_otyp);
+            panic(_("addinv: null obj after quiver merge otyp=%d"), saved_otyp);
         goto added;
     }
     /* merge if possible; find end of chain in the process */
@@ -1110,7 +1110,7 @@ addinv_core0(
         if (merged(&otmp, &obj)) {
             obj = otmp;
             if (!obj)
-                panic(_("addinv: null obj after merge otyp=%d", saved_otyp);
+                panic(_("addinv: null obj after merge otyp=%d"), saved_otyp);
             goto added;
         }
     /* didn't merge, so insert into chain */
@@ -1548,7 +1548,7 @@ currency(long amount)
 {
     const char *res;
 
-    res = Hallucination ? _(ROLL_FROM(currencies)) : _("zorkmid"));
+    res = Hallucination ? _(ROLL_FROM(currencies)) : _("zorkmid");
     if (amount != 1L)
         res = makeplural(res);
     return res;
@@ -2039,7 +2039,7 @@ getobj(
             }
         }
         if (cntgiven && !strcmp(word, "throw")) {
-            const char *only_one = _("can only throw one at a time"));
+            const char *only_one = _("can only throw one at a time");
             boolean coins;
 
             /* permit counts for throwing gold, but don't accept counts
@@ -3250,7 +3250,7 @@ display_pickinv(
         } else {
             any.a_obj = &wizid_fakeobj;
             Sprintf(prompt, _("select %s to permanently identify"),
-                    (unid_cnt == 1) ? _("it"): _("any or all of them"));
+                    (unid_cnt == 1) ? _("it") : _("any or all of them"));
             /* wiz_identify stuffed the wiz_identify command character (^I)
                into iflags.override_ID for our use as an accelerator;
                it could be ambiguous if player has assigned a letter to
@@ -3782,7 +3782,7 @@ dounpaid(
                door/doorway") */
             *where = (buriedcount == 0) ? _("on the floor")
                      : (floorcount == 0) ? _("under the floor")
-                       : _("on or under the floor"));
+                       : _("on or under the floor");
 
         if (!count) {
             You(_("aren't carrying any unpaid items but there %s %d %s."),
@@ -4120,7 +4120,7 @@ look_here(
 {
     struct obj *otmp;
     struct trap *trap;
-    const char *verb = Blind ? _("feel") : _("see"));
+    const char *verb = Blind ? _("feel") : _("see");
     const char *dfeature = (char *) 0;
     char fbuf[BUFSZ], fbuf2[BUFSZ];
     winid tmpwin;
@@ -4373,7 +4373,7 @@ feel_cockatrice(struct obj *otmp, boolean force_touch)
         Strcpy(kbuf, corpse_xname(otmp, (const char *) 0, CXN_PFX_THE));
 
         if (poly_when_stoned(gy.youmonst.data))
-            You(_("touched %s with your bare %s.", kbuf,
+            You(_("touched %s with your bare %s."), kbuf,
                 makeplural(body_part(HAND)));
         else
             pline(_("Touching %s is a fatal mistake..."), kbuf);
@@ -4927,7 +4927,7 @@ check_invent_gold(const char *why) /* 'why' == caller in case of warning */
         }
 
     if (goldstacks > 1 || wrongslot > 0) {
-        impossible(_("%s: %s%s%s", why,
+        impossible(_("%s: %s%s%s"), why,
                    (wrongslot > 1) ? "gold in wrong slots"
                       : (wrongslot > 0) ? "gold in wrong slot"
                            : "",
@@ -5207,7 +5207,7 @@ doorganize_core(struct obj *obj)
     /* change the inventory and print the resulting item */
     adj_type = collect ? _("Collecting:")
                : !splitting ? _("Moving:")
-                 : _("Splitting:"));
+                 : _("Splitting:");
 
     /*
      * don't use freeinv/addinv to avoid double-touching artifacts,
@@ -5240,7 +5240,7 @@ doorganize_core(struct obj *obj)
             /* Merging: when from and to are compatible */
             if ((!otmpname || (objname && !strcmp(objname, otmpname)))
                 && merged(&otmp, &obj)) {
-                adj_type = _("Merging:"));
+                adj_type = _("Merging:");
                 obj = otmp;
                 otmp = otmp->nobj;
                 extract_nobj(obj, &gi.invent);
@@ -5250,7 +5250,7 @@ doorganize_core(struct obj *obj)
                Found 'otmp' in destination slot; merge if compatible,
                otherwise bump whatever is there to an open slot. */
             if (!splitting) {
-                adj_type = _("Swapping:"));
+                adj_type = _("Swapping:");
                 otmp->invlet = obj->invlet;
             } else {
                 /* strip 'from' name if it has one */
@@ -5267,7 +5267,7 @@ doorganize_core(struct obj *obj)
                 }
 
                 if (merged(&otmp, &obj)) {
-                    adj_type = _("Splitting and merging:"));
+                    adj_type = _("Splitting and merging:");
                     obj = otmp;
                     extract_nobj(obj, &gi.invent);
                 } else if (inv_cnt(FALSE) >= invlet_basic) {
@@ -5432,7 +5432,7 @@ cinv_doname(struct obj *obj)
         if (is_korean_locale()) {
             /* Korean item names have no English articles or keywords;
                prepend translated "trapped " directly */
-            const char *trapped_str = _("trapped "));
+            const char *trapped_str = _("trapped ");
             if (strlen(result) + strlen(trapped_str) + 1 <= QBUFSZ) {
                 char tmp[QBUFSZ];
                 Sprintf(tmp, "%s%s", trapped_str, result);
@@ -5533,7 +5533,7 @@ display_binventory(coordxy x, coordxy y, boolean as_if_seen)
 {
     struct obj *obj;
     char qbuf[QBUFSZ];
-    const char *underwhat = _("here"));
+    const char *underwhat = _("here");
     menu_item *selected = 0;
     int n, n2 = 0;
 
@@ -5555,7 +5555,7 @@ display_binventory(coordxy x, coordxy y, boolean as_if_seen)
             /* "pair of boots" is singular but "beneath it" sounds strange */
             if (pair_of(obj))
                 more_than_1 = TRUE;
-            underwhat = more_than_1 ? _("under them") : _("beneath it"));
+            underwhat = more_than_1 ? _("under them") : _("beneath it");
         } else {
             Sprintf(qbuf, _("Things that are under the %s here:"), seen_liquid);
             if (query_objlist(qbuf, &svl.level.objects[x][y], BY_NEXTHERE,
@@ -5563,7 +5563,7 @@ display_binventory(coordxy x, coordxy y, boolean as_if_seen)
                 free((genericptr_t) selected), selected = 0;
             for (n2 = 0; obj; obj = obj->nexthere)
                 ++n2;
-            underwhat = _("beneath them"));
+            underwhat = _("beneath them");
         }
     }
 

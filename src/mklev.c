@@ -1232,7 +1232,7 @@ mklev_sanity_check(void)
     for (y = 0; y < ROWNO; y++) {
         for (x = 1; x < COLNO; x++) {
             if (!chk_okdoor(x,y))
-                impossible(_("levl[%i][%i] door not ok", x, y);
+                impossible(_("levl[%i][%i] door not ok"), x, y);
         }
     }
 
@@ -1242,7 +1242,7 @@ mklev_sanity_check(void)
         if (rmno == -1)
             rmno = gs.smeq[i];
         if (rmno != -1 && gs.smeq[i] != rmno)
-            impossible(_("room %i not connected?", i);
+            impossible(_("room %i not connected?"), i);
     }
 }
 
@@ -2166,7 +2166,7 @@ mkstairs(
     d_level dest;
 
     if (!x || !isok(x, y)) {
-        impossible(_("mkstairs:  bogus stair attempt at <%d,%d>", x, y);
+        impossible(_("mkstairs:  bogus stair attempt at <%d,%d>"), x, y);
         return;
     }
     if (force)
@@ -2176,8 +2176,7 @@ mkstairs(
         int glyph = back_to_glyph(x, y),
             sidx = glyph_to_cmap(glyph);
 
-        impossible(_("mkstairs:  placing stairs %s on %s at <%d,%d>",
-                   up ? "up" : "down", defsyms[sidx].explanation, x, y);
+        impossible(_("mkstairs:  placing stairs %s on %s at <%d,%d>"),                    up ? "up" : "down", defsyms[sidx].explanation, x, y);
     }
 
     /*
@@ -2573,7 +2572,7 @@ mkinvpos(coordxy x, coordxy y, int dist)
         /* No kelp! */
         break;
     default:
-        impossible(_("mkinvpos called with dist %d", dist);
+        impossible(_("mkinvpos called with dist %d"), dist);
         break;
     }
 

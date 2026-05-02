@@ -271,8 +271,7 @@ Placebc(const char *funcnm, int linenum)
     }
     if ((uchain && uchain->where != OBJ_FREE)
                    && bcpbreadcrumbs.in_effect) {
-        impossible(_("Placebc collision at %s:%d, already placed by %s:%d",
-                   funcnm, linenum,
+        impossible(_("Placebc collision at %s:%d, already placed by %s:%d"),                    funcnm, linenum,
                    bcpbreadcrumbs.funcnm, bcpbreadcrumbs.linenum);
         return;
     }
@@ -1036,13 +1035,11 @@ bc_sanity_check(void)
     const char *onam;
 
     if (Punished && (!uball || !uchain)) {
-        impossible(_("Punished without %s%s%s?",
-                   !uball ? "iron ball" : "",
+        impossible(_("Punished without %s%s%s?"),                    !uball ? "iron ball" : "",
                    (!uball && !uchain) ? " and " : "",
                    !uchain ? "attached chain" : "");
     } else if (!Punished && (uball || uchain)) {
-        impossible(_("Attached %s%s%s without being Punished?",
-                   uchain ? "chain" : "",
+        impossible(_("Attached %s%s%s without being Punished?"),                    uchain ? "chain" : "",
                    (uchain && uball) ? " and " : "",
                    uball ? "iron ball" : "");
     }
@@ -1062,8 +1059,7 @@ bc_sanity_check(void)
                   || (uball->owornmask & ~(W_BALL | W_WEAPONS)) != 0L)) {
         otyp = uball->otyp;
         onam = safe_typename(otyp);
-        impossible(_("uball: type %d (%s), where %d, wornmask=0x%08lx",
-                   otyp, onam, uball->where, uball->owornmask);
+        impossible(_("uball: type %d (%s), where %d, wornmask=0x%08lx"),                    otyp, onam, uball->where, uball->owornmask);
     }
     /* similar check to ball except can't be in inventory */
     if (uchain && (uchain->otyp != IRON_CHAIN
@@ -1075,8 +1071,7 @@ bc_sanity_check(void)
                    || (uchain->owornmask & ~W_CHAIN) != 0L)) {
         otyp = uchain->otyp;
         onam = safe_typename(otyp);
-        impossible(_("uchain: type %d (%s), where %d, wornmask=0x%08lx",
-                   otyp, onam, uchain->where, uchain->owornmask);
+        impossible(_("uchain: type %d (%s), where %d, wornmask=0x%08lx"),                    otyp, onam, uchain->where, uchain->owornmask);
     }
     if (uball && uchain && !(freeball && freechain)) {
         int bx, by, cx, cy, bdx, bdy, cdx, cdy;

@@ -1880,8 +1880,7 @@ vconfig_error_add(const char *str, va_list the_args)
     vlen = nh_vsnprintf(buf, sizeof buf, str, the_args);
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED) && defined(DEBUG)
     if (vlen >= (int) sizeof buf)
-        panic(_("%s: truncation of buffer at %zu of %d bytes",
-              "config_error_add", sizeof buf, vlen);
+        panic(_("%s: truncation of buffer at %zu of %d bytes"),               "config_error_add", sizeof buf, vlen);
 #else
     nhUse(vlen);
 #endif

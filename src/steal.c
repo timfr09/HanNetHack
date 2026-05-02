@@ -325,7 +325,7 @@ worn_item_removal(
        to suppress the message for that case */
     verb = ((obj->owornmask & W_WEAPONS) != 0L) ? _("disarms")
            : ((obj->owornmask & W_ACCESSORY) != 0L) ? _("removes")
-             : _("takes off"));
+             : _("takes off");
     pline(C_("steal_disarm", "%s %s %s."), Some_Monnam(mon), verb, objbuf);
     iflags.last_msg = PLNMSG_MON_TAKES_OFF_ITEM;
     /* removal might trigger more messages (due to loss of Lev|Fly;
@@ -386,7 +386,7 @@ steal(struct monst *mtmp, char *objnambuf)
 
             /* buried ball is not tracked via 'uball' and there is no chain
                at all (hence no uchain to take off) */
-            pline(_("%s takes off your unseen chain.", Monnambuf);
+            pline(_("%s takes off your unseen chain."), Monnambuf);
             (void) openholdingtrap(&gy.youmonst, &dummy);
         } else if (Blind) {
             pline(_("Somebody tries to rob you, but finds nothing to steal."));
@@ -547,7 +547,7 @@ steal(struct monst *mtmp, char *objnambuf)
                 named++;
                 /* the following is to set multi for later on */
                 nomul(-armordelay);
-                gm.multi_reason = _("taking off clothes"));
+                gm.multi_reason = _("taking off clothes");
                 gn.nomovemsg = 0;
                 remove_worn_item(otmp, TRUE);
                 otmp->cursed = curssv;
@@ -560,8 +560,7 @@ steal(struct monst *mtmp, char *objnambuf)
             }
             break;
         default:
-            impossible(_("Tried to steal a strange worn thing. [%d]",
-                       otmp->oclass);
+            impossible(_("Tried to steal a strange worn thing. [%d]"),                        otmp->oclass);
         }
         /* hero's blindfold might have just been stolen; if so, replace
            cached "Someone" or "Something" with Monnam */
@@ -621,12 +620,10 @@ mpickobj(struct monst *mtmp, struct obj *otmp)
     boolean snuff_otmp = FALSE;
 
     if (!otmp) {
-        impossible(_("monster (%s) taking or picking up nothing?",
-                   pmname(mtmp->data, Mgender(mtmp)));
+        impossible(_("monster (%s) taking or picking up nothing?"),                    pmname(mtmp->data, Mgender(mtmp)));
         return 1;
     } else if (otmp == uball || otmp == uchain) {
-        impossible(_("monster (%s) taking or picking up attached %s (%s)?",
-                   pmname(mtmp->data, Mgender(mtmp)),
+        impossible(_("monster (%s) taking or picking up attached %s (%s)?"),                    pmname(mtmp->data, Mgender(mtmp)),
                    (otmp == uchain) ? "chain" : "ball", simpleonames(otmp));
         return 0;
     }

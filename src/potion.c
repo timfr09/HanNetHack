@@ -122,7 +122,7 @@ make_stunned(long xtime, boolean talk)
             if (u.usteed)
                 You(_("wobble in the saddle."));
             else
-                You(_("%s...", stagger(gy.youmonst.data, "stagger"));
+                You(_("%s..."), stagger(gy.youmonst.data, "stagger"));
         }
     }
     if ((!xtime && old) || (xtime && !old))
@@ -377,8 +377,8 @@ make_hallucinated(
         talk = FALSE;
 
     message = (!xtime) ? _("Everything %s SO boring now.")
-                       : _("Oh wow!  Everything %s so cosmic!"));
-    verb = (!Blind) ? _("looks") : _("feels"));
+                       : _("Oh wow!  Everything %s so cosmic!");
+    verb = (!Blind) ? _("looks") : _("feels");
 
     if (mask) {
         if (HHallucination)
@@ -493,8 +493,8 @@ ghost_from_bottle(void)
     if (flags.verbose)
         You(_("are frightened to death, and unable to move."));
     nomul(-3);
-    gm.multi_reason = _("being frightened to death"));
-    gn.nomovemsg = _("You regain your composure."));
+    gm.multi_reason = _("being frightened to death");
+    gn.nomovemsg = _("You regain your composure.");
 }
 
 /* getobj callback for object to drink from, which also does double duty as
@@ -785,7 +785,7 @@ peffect_booze(struct obj *otmp)
     if (otmp->cursed) {
         You(_("pass out."));
         gm.multi = -rnd(15);
-        gn.nomovemsg = _("You awake with a headache."));
+        gn.nomovemsg = _("You awake with a headache.");
     }
 }
 
@@ -889,7 +889,7 @@ peffect_paralysis(struct obj *otmp)
             Your(_("%s are frozen to the %s!"), makeplural(body_part(FOOT)),
                  surface(u.ux, u.uy));
         nomul(-(rn1(10, 25 - 12 * bcsign(otmp))));
-        gm.multi_reason = _("frozen by a potion"));
+        gm.multi_reason = _("frozen by a potion");
         gn.nomovemsg = You_can_move_again;
         exercise(A_DEX, FALSE);
     }
@@ -1416,7 +1416,7 @@ peffects(struct obj *otmp)
         peffect_polymorph(otmp);
         break;
     default:
-        impossible(_("What a funny potion! (%u)", otmp->otyp);
+        impossible(_("What a funny potion! (%u)"), otmp->otyp);
         return 0;
     }
     return -1;
@@ -2041,7 +2041,7 @@ potionbreathe(struct obj *obj)
         if (!Free_action) {
             pline(_("%s seems to be holding you."), Something);
             nomul(-rnd(5));
-            gm.multi_reason = _("frozen by a potion"));
+            gm.multi_reason = _("frozen by a potion");
             gn.nomovemsg = You_can_move_again;
             exercise(A_DEX, FALSE);
         } else
@@ -2052,7 +2052,7 @@ potionbreathe(struct obj *obj)
         if (!Free_action && !Sleep_resistance) {
             You_feel(_("rather tired."));
             nomul(-rnd(5));
-            gm.multi_reason = _("sleeping off a magical draught"));
+            gm.multi_reason = _("sleeping off a magical draught");
             gn.nomovemsg = You_can_move_again;
             exercise(A_DEX, FALSE);
         } else {

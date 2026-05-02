@@ -423,7 +423,7 @@ bufon(int fd)
             panic(_("buffering already enabled"));
         if (!bw_FILE[idx]) {
             if ((bw_FILE[idx] = fdopen(fd, "w")) == 0)
-                panic(_("buffering of file %d failed", fd);
+                panic(_("buffering of file %d failed"), fd);
         }
         bw_buffered[idx] = (bw_FILE[idx] != 0);
 #else
@@ -537,10 +537,10 @@ bwrite(int fd, const genericptr_t loc, unsigned num)
                 nh_terminate(EXIT_FAILURE);
             else
 #endif
-                panic(_("cannot write %u bytes to file #%d", num, fd);
+                panic(_("cannot write %u bytes to file #%d"), num, fd);
         }
     } else
-        impossible(_("fd not in list (%d)?", fd);
+        impossible(_("fd not in list (%d)?"), fd);
 }
 
 /*  ===================================================== */

@@ -1375,7 +1375,7 @@ obj_pmname(struct obj *obj)
 
         return pmname(&mons[mndx], mgend);
     }
-    impossible(_("obj_pmname otyp:%i,corpsenm:%i", obj->otyp, obj->corpsenm);
+    impossible(_("obj_pmname otyp:%i,corpsenm:%i"), obj->otyp, obj->corpsenm);
     return "two-legged glorkum-seeker";
 }
 

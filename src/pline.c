@@ -208,7 +208,7 @@ vpline(const char *line, va_list the_args)
            the extremely-too-long panic then 'ln' will be actual length */
     }
     if (ln > (int) sizeof pbuf - 1) /* extremely too long */
-        panic(_("pline attempting to print %d characters!", ln);
+        panic(_("pline attempting to print %d characters!"), ln);
 
     if (ln > BUFSZ - 1) {
         /* too long but modestly so; allow but truncate, preserving final
@@ -642,7 +642,7 @@ impossible(const char *s, ...)
     pbuf[BUFSZ - 1] = '\0'; /* sanity */
     paniclog("impossible", pbuf);
     if (iflags.debug_fuzzer == fuzzer_impossible_panic)
-        panic(_("%s", pbuf);
+        panic(_("%s"), pbuf);
 
     gp.pline_flags = URGENT_MESSAGE;
     pline(_("%s"), pbuf);
@@ -657,7 +657,7 @@ impossible(const char *s, ...)
     Strcpy(pbuf2, _("Program in disorder!"));
     if (program_state.something_worth_saving)
         Strcat(pbuf2, _("  (Saving and reloading may fix this problem.)"));
-    pline(_("%s", pbuf2);
+    pline(_("%s"), pbuf2);
     pline(_("Please report these messages to %s."), DEVTEAM_EMAIL);
     if (sysopt.support) {
         pline(_("Alternatively, contact local support: %s"), sysopt.support);
@@ -757,8 +757,7 @@ nhassert_failed(const char *expression, const char *filepath, int line)
         filename = p + 1;
 #endif
 
-    impossible(_("nhassert(%s) failed in file '%s' at line %d",
-               expression, filename, line);
+    impossible(_("nhassert(%s) failed in file '%s' at line %d"),                expression, filename, line);
 }
 
 /*pline.c*/

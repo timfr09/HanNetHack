@@ -246,15 +246,15 @@ wiz_kill(void)
     coord cc;
     int ans;
     char c, qbuf[QBUFSZ];
-    const char *prompt = _("Pick first monster to slay"));
+    const char *prompt = _("Pick first monster to slay");
     boolean save_verbose = flags.verbose,
             save_autodescribe = iflags.autodescribe;
     d_level uarehere = u.uz;
 
     cc.x = u.ux, cc.y = u.uy;
     for (;;) {
-        pline(_("%s:", prompt);
-        prompt = _("Next monster"));
+        pline(_("%s:"), prompt);
+        prompt = _("Next monster");
 
         flags.verbose = FALSE;
         iflags.autodescribe = TRUE;
@@ -818,7 +818,7 @@ wiz_map_levltyp(void)
             const char *brname = _(svd.dungeons[u.uz.dnum].dname);
 
             if (!brname || !*brname)
-                brname = _("unknown"));
+                brname = _("unknown");
             if (!strncmpi(brname, "the ", 4))
                 brname += 4;
             Sprintf(eos(dsc), " %s", brname);
@@ -1420,8 +1420,7 @@ you_sanity_check(void)
     /* [should we also check for (u.uhp < 1), (Upolyd && u.mh < 1),
        and (u.uen < 0) here?] */
     if (u.uhp > u.uhpmax) {
-        impossible(_("current hero health (%d) better than maximum? (%d)",
-                   u.uhp, u.uhpmax);
+        impossible(_("current hero health (%d) better than maximum? (%d)"),                    u.uhp, u.uhpmax);
         u.uhp = u.uhpmax;
     }
     if (Upolyd && u.mh > u.mhmax) {
@@ -1431,8 +1430,7 @@ you_sanity_check(void)
         u.mh = u.mhmax;
     }
     if (u.uen > u.uenmax) {
-        impossible(_("current hero energy (%d) better than maximum? (%d)",
-                   u.uen, u.uenmax);
+        impossible(_("current hero energy (%d) better than maximum? (%d)"),                    u.uen, u.uenmax);
         u.uen = u.uenmax;
     }
 
@@ -1451,7 +1449,7 @@ levl_sanity_check(void)
     for (y = 0; y < ROWNO; y++) {
         for (x = 1; x < COLNO; x++) {
             if ((does_block(x, y, &levl[x][y]) ? 1 : 0) != get_viz_clear(x, y))
-                impossible(_("levl[%i][%i] vision blocking", x, y);
+                impossible(_("levl[%i][%i] vision blocking"), x, y);
         }
     }
 }

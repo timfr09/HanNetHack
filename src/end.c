@@ -236,7 +236,7 @@ done_in_by(struct monst *mtmp, int how)
                    && !strcmp(fakenm, "vampire bat")) {
             /* special case: use "vampire in bat form" in preference
                to redundant looking "vampire in vampire bat form" */
-            fakenm = _("bat"));
+            fakenm = _("bat");
         }
         /* for the alternate format, always suppress any article;
            pname and the_unique should also have s_suffix() applied,
@@ -265,7 +265,7 @@ done_in_by(struct monst *mtmp, int how)
     } else if (mtmp->isshk) {
         const char *shknm = shkname(mtmp),
                    *honorific = shkname_is_pname(mtmp) ? ""
-                                   : mtmp->female ? _("Ms. ") : _("Mr. "));
+                                   : mtmp->female ? _("Ms. ") : _("Mr. ");
 
         Sprintf(eos(buf), _("%s%s, the shopkeeper"), honorific, shknm);
         svk.killer.format = KILLED_BY;
@@ -511,7 +511,7 @@ should_query_disclose_option(int category, char *defquery)
             return TRUE;
         }
     }
-    impossible(_("should_query_disclose_option: bad category %c", category);
+    impossible(_("should_query_disclose_option: bad category %c"), category);
     return TRUE;
 }
 
@@ -723,7 +723,7 @@ savelife(int how)
     if ((Sick & TIMEOUT) == 1L) {
         make_sick(0L, (char *) 0, FALSE, SICK_ALL);
     }
-    gn.nomovemsg = _("You survived that attempt on your life."));
+    gn.nomovemsg = _("You survived that attempt on your life.");
     svc.context.move = 0;
 
     gm.multi = -1; /* can't move again during the current turn */
@@ -732,7 +732,7 @@ savelife(int how)
           "killed by <something>, while "
        in high scores entry, if any, and in logfile (but not on tombstone) */
     gm.multi_reason = Role_if(PM_TOURIST) ? _("being toyed with by Fate")
-                                          : _("attempting to cheat Death"));
+                                          : _("attempting to cheat Death");
 
     if (u.utrap && u.utraptype == TT_LAVA)
         reset_utrap(FALSE);
@@ -747,7 +747,7 @@ savelife(int how)
         expels(u.ustuck, u.ustuck->data, TRUE);
     } else if (u.ustuck) {
         if (Upolyd && sticks(gy.youmonst.data))
-            You(_("release %s.", mon_nam(u.ustuck));
+            You(_("release %s."), mon_nam(u.ustuck));
         else
             pline(_("%s releases you."), Monnam(u.ustuck));
         unstuck(u.ustuck);
@@ -1534,7 +1534,7 @@ really_done(int how)
             const char *death_action = _(ends[how]);
 
             if (Is_astralevel(&u.uz))
-                where = _("The Astral Plane"));
+                where = _("The Astral Plane");
 
             if (!In_endgame(&u.uz) && !single_level_branch(&u.uz)) {
                 /* Positional params: %1$s=action, %2$s=location, %3$d=level, %4$ld=points, %5$s=plural */
@@ -1762,7 +1762,7 @@ dealloc_killer(struct kinfo *kptr)
     }
 
     if (k == (struct kinfo *) 0) {
-        impossible(_("dealloc_killer (#%d) not on list", kptr->id);
+        impossible(_("dealloc_killer (#%d) not on list"), kptr->id);
     } else {
         prev->next = k->next;
         free((genericptr_t) k);

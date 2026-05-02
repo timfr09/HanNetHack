@@ -164,7 +164,7 @@ stoned_dialogue(void)
     case 3: /* limbs turned to stone */
         stop_occupation();
         nomul(-3); /* can't move anymore */
-        gm.multi_reason = _("getting stoned"));
+        gm.multi_reason = _("getting stoned");
         gn.nomovemsg = You_can_move_again; /* not unconscious */
         /* "your limbs have turned to stone" so terminate wounded legs */
         if (Wounded_legs && !u.usteed)
@@ -540,7 +540,7 @@ phaze_dialogue(void)
         return;
 
     if (((HPasses_walls & TIMEOUT) % 2L) && i > 0L && i <= SIZE(phaze_texts))
-        pline(_("%s", _(phaze_texts[SIZE(phaze_texts) - i]));
+        pline(_("%s"), _(phaze_texts[SIZE(phaze_texts) - i]));
 }
 
 /* Similar to Passes_walls, if prayer tries to save hero from a poison
@@ -566,7 +566,7 @@ region_dialogue(void)
         return;
 
     if ((r % 2L) && i > 0L && i <= SIZE(region_texts))
-        pline(_("%s", _(region_texts[SIZE(region_texts) - i]));
+        pline(_("%s"), _(region_texts[SIZE(region_texts) - i]));
 }
 
 /* when a status timeout is fatal, keep the status line indicator shown
@@ -906,7 +906,7 @@ nh_timeout(void)
                 if (u.umoved && !(Levitation || Flying)) {
                     slip_or_trip();
                     nomul(-2);
-                    gm.multi_reason = _("fumbling"));
+                    gm.multi_reason = _("fumbling");
                     gn.nomovemsg = "";
                     /* The more you are carrying the more likely you
                      * are to make noise when you fumble.  Adjustments
@@ -953,7 +953,7 @@ fall_asleep(int how_long, boolean wakeup_msg)
 {
     stop_occupation();
     nomul(how_long);
-    gm.multi_reason = _("sleeping"));
+    gm.multi_reason = _("sleeping");
 #if 0   /* this was broken; the fix for 'how_long' will result in changed
          * behavior for sounds that don't go through You_hear() so needs
          * testing */
@@ -1159,7 +1159,7 @@ hatch_egg(anything *arg, long timeout)
             break;
 #endif
         default:
-            impossible(_("egg hatched where? (%d)", (int) egg->where);
+            impossible(_("egg hatched where? (%d)"), (int) egg->where);
             break;
         }
 
@@ -1671,7 +1671,7 @@ burn_object(anything *arg, long timeout)
         break; /* case [otyp ==] candelabrum|tallow_candle|wax_candle */
 
     default:
-        impossible(_("burn_object: unexpected obj %s", xname(obj));
+        impossible(_("burn_object: unexpected obj %s"), xname(obj));
         break;
     }
     if (need_newsym)
@@ -1767,7 +1767,7 @@ begin_burn(struct obj *obj, boolean already_lit)
             do_timer = FALSE;
             radius = arti_light_radius(obj);
         } else {
-            impossible(_("begin burn: unexpected %s", xname(obj));
+            impossible(_("begin burn: unexpected %s"), xname(obj));
             turns = obj->age;
         }
         break;
@@ -1805,7 +1805,7 @@ void
 end_burn(struct obj *obj, boolean timer_attached)
 {
     if (!obj->lamplit) {
-        impossible(_("end_burn: obj %s not lit", xname(obj));
+        impossible(_("end_burn: obj %s not lit"), xname(obj));
         return;
     }
 
@@ -1819,7 +1819,7 @@ end_burn(struct obj *obj, boolean timer_attached)
         if (obj->where == OBJ_INVENT)
             update_inventory();
     } else if (!stop_timer(BURN_OBJECT, obj_to_any(obj)))
-        impossible(_("end_burn: obj %s not timed!", xname(obj));
+        impossible(_("end_burn: obj %s not timed!"), xname(obj));
 }
 
 /*
@@ -1831,7 +1831,7 @@ cleanup_burn(anything *arg, long expire_time)
     struct obj *obj = arg->a_obj;
 
     if (!obj->lamplit) {
-        impossible(_("cleanup_burn: obj %s not lit", xname(obj));
+        impossible(_("cleanup_burn: obj %s not lit"), xname(obj));
         return;
     }
 
@@ -1885,7 +1885,7 @@ do_storms(void)
         if (!u.uinvulnerable) {
             stop_occupation();
             nomul(-3);
-            gm.multi_reason = _("hiding from thunderstorm"));
+            gm.multi_reason = _("hiding from thunderstorm");
             gn.nomovemsg = 0;
         }
     } else
@@ -2145,8 +2145,7 @@ timer_sanity_check(void)
             int owhere = obj->where;
 
             if (obj->timed == 0) {
-                impossible(_("timer sanity: untimed obj %s, timer %lu",
-                           obj_adr, t_id);
+                impossible(_("timer sanity: untimed obj %s, timer %lu"),                            obj_adr, t_id);
             }
             x = y = 0;
             /* if obj is in a container, possibly a nested one, figure out
@@ -2173,7 +2172,7 @@ timer_sanity_check(void)
             break;
         }
         case TIMER_MONSTER:
-            impossible(_("timer sanity: unexpected monster timer %lu", t_id);
+            impossible(_("timer sanity: unexpected monster timer %lu"), t_id);
             break;
         case TIMER_LEVEL: {
             long lwhere = curr->arg.a_long;
@@ -2199,17 +2198,15 @@ timer_sanity_check(void)
                          "timer sanity: melt timer %lu on non-ice %d <%d,%d>",
                                t_id, levl[x][y].typ, x, y);
             } else {
-                impossible(_("timer sanity: spot timer %lu at <%d,%d>",
-                           t_id, x, y);
+                impossible(_("timer sanity: spot timer %lu at <%d,%d>"),                            t_id, x, y);
             }
             break;
         }
         case TIMER_GLOBAL:
-            impossible(_("timer sanity: unexpected global timer %lu", t_id);
+            impossible(_("timer sanity: unexpected global timer %lu"), t_id);
             break;
         default:
-            impossible(_("timer sanity: unknown timer %lu, type: %d",
-                       t_id, curr->kind);
+            impossible(_("timer sanity: unknown timer %lu, type: %d"),                        t_id, curr->kind);
             break;
         }
     }
@@ -2255,7 +2252,7 @@ start_timer(
 
     if (kind <= TIMER_NONE || kind >= NUM_TIMER_KINDS
         || func_index < 0 || func_index >= NUM_TIME_FUNCS)
-        panic(_("start_timer (%s: %d)", kind_name(kind), (int) func_index);
+        panic(_("start_timer (%s: %d)"), kind_name(kind), (int) func_index);
 
     /* fail if <arg> already has a <func_index> timer running */
     for (dup = gt.timer_base; dup; dup = dup->next)
@@ -2271,7 +2268,7 @@ start_timer(
 #else
         Sprintf(idbuf, "%s timer (%d)", kind_name(kind), (int) func_index);
 #endif
-        impossible(_("Attempted to start duplicate %s, aborted.", idbuf);
+        impossible(_("Attempted to start duplicate %s, aborted."), idbuf);
         return FALSE;
     }
 
@@ -2764,7 +2761,7 @@ relink_timers(boolean ghostly)
                     nid = curr->arg.a_uint;
                 curr->arg.a_obj = find_oid(nid);
                 if (!curr->arg.a_obj)
-                    panic(_("can't find o_id %d", nid);
+                    panic(_("can't find o_id %d"), nid);
                 curr->needs_fixup = 0;
             } else if (curr->kind == TIMER_MONSTER) {
                 panic(_("relink_timers: no monster timer implemented"));

@@ -164,7 +164,7 @@ Resists_Elem(struct monst *mon, int propindx)
         return resists_blnd(mon);
 
     default:
-        impossible(_("Resists_Elem(%d), unexpected property type", propindx);
+        impossible(_("Resists_Elem(%d), unexpected property type"), propindx);
         return FALSE;
     }
 
@@ -1417,16 +1417,16 @@ on_fire(struct permonst *mptr, struct attack *mattk)
     case PM_FIRE_VORTEX:
     case PM_FIRE_ELEMENTAL:
     case PM_SALAMANDER:
-        what = _("already on fire"));
+        what = _("already on fire");
         break;
     case PM_WATER_ELEMENTAL:
     case PM_FOG_CLOUD:
     case PM_STEAM_VORTEX:
-        what = _("boiling"));
+        what = _("boiling");
         break;
     case PM_ICE_VORTEX:
     case PM_GLASS_GOLEM:
-        what = _("melting"));
+        what = _("melting");
         break;
     case PM_STONE_GOLEM:
     case PM_CLAY_GOLEM:
@@ -1435,10 +1435,10 @@ on_fire(struct permonst *mptr, struct attack *mattk)
     case PM_EARTH_ELEMENTAL:
     case PM_DUST_VORTEX:
     case PM_ENERGY_VORTEX:
-        what = _("heating up"));
+        what = _("heating up");
         break;
     default:
-        what = (mattk->aatyp == AT_HUGS) ? _("being roasted") : _("on fire"));
+        what = (mattk->aatyp == AT_HUGS) ? _("being roasted") : _("on fire");
         break;
     }
     return what;
@@ -1453,7 +1453,7 @@ msummon_environ(struct permonst *mptr, const char **cloud)
                 : (mptr->mlet == S_LIGHT) ? PM_YELLOW_LIGHT
                   : monsndx(mptr));
 
-    *cloud = _("cloud")); /* default is "cloud of <something>" */
+    *cloud = _("cloud"); /* default is "cloud of <something>" */
     switch (mndx) {
     case PM_WATER_DEMON:
     case PM_AIR_ELEMENTAL:
@@ -1461,34 +1461,34 @@ msummon_environ(struct permonst *mptr, const char **cloud)
     case PM_FOG_CLOUD:
     case PM_ICE_VORTEX:
     case PM_FREEZING_SPHERE:
-        what = _("vapor"));
+        what = _("vapor");
         break;
     case PM_STEAM_VORTEX:
-        what = _("steam"));
+        what = _("steam");
         break;
     case PM_ENERGY_VORTEX:
     case PM_SHOCKING_SPHERE:
-        *cloud = _("shower")); /* "shower of sparks" instead of "cloud of..." */
-        what = _("sparks"));
+        *cloud = _("shower"); /* "shower of sparks" instead of "cloud of..." */
+        what = _("sparks");
         break;
     case PM_EARTH_ELEMENTAL:
     case PM_DUST_VORTEX:
-        what = _("dust"));
+        what = _("dust");
         break;
     case PM_FIRE_ELEMENTAL:
     case PM_FIRE_VORTEX:
     case PM_FLAMING_SPHERE:
     /*case PM_SALAMANDER:*/
-        *cloud = _("ball")); /* "ball of flame" instead of "cloud of..." */
-        what = _("flame"));
+        *cloud = _("ball"); /* "ball of flame" instead of "cloud of..." */
+        what = _("flame");
         break;
     case PM_ANGEL: /* actually any 'A'-class */
     case PM_YELLOW_LIGHT: /* any 'y'-class */
-        *cloud = _("flash")); /* "flash of light" instead of "cloud of..." */
+        *cloud = _("flash"); /* "flash of light" instead of "cloud of..." */
         what = C_("radiance", "light");
         break;
     default:
-        what = _("smoke"));
+        what = _("smoke");
         break;
     }
     return what;

@@ -180,8 +180,7 @@ awaken_soldiers(struct monst *bugler  /* monster that played instrument */)
             if (canseemon(mtmp))
                 pline(_("%s is now ready for battle!"), Monnam(mtmp));
             else if (!Deaf)
-                Norep(_("%s the rattle of battle gear being readied.",
-                      "You hear");  /* Deaf-aware */
+                Norep(_("%s the rattle of battle gear being readied."),                       "You hear");  /* Deaf-aware */
         } else if ((distm = ((bugler == &gy.youmonst)
                                  ? mdistu(mtmp)
                                  : dist2(bugler->mx, bugler->my, mtmp->mx,
@@ -343,7 +342,7 @@ do_pit(coordxy x, coordxy y, unsigned tu_pit)
 staticfn void
 do_earthquake(int force)
 {
-    const char *into_a_chasm = _(" into a chasm"));
+    const char *into_a_chasm = _(" into a chasm");
     coordxy x, y;
     struct monst *mtmp;
     struct trap *trap_at_u = t_at(u.ux, u.uy);
@@ -478,17 +477,17 @@ staticfn const char *
 generic_lvl_desc(void)
 {
     if (Is_astralevel(&u.uz))
-        return _("astral plane"));
+        return _("astral plane");
     else if (In_endgame(&u.uz))
-        return _("plane"));
+        return _("plane");
     else if (Is_sanctum(&u.uz))
-        return _("sanctum"));
+        return _("sanctum");
     else if (In_sokoban(&u.uz))
-        return _("puzzle"));
+        return _("puzzle");
     else if (In_V_tower(&u.uz))
-        return _("tower"));
+        return _("tower");
     else
-        return _("dungeon"));
+        return _("dungeon");
 }
 
 static const char *beats[] = {
@@ -722,7 +721,7 @@ do_improvisation(struct obj *instr)
         disp.botl = TRUE;
         break;
     default:
-        impossible(_("What a weird instrument (%d)!", instr->otyp);
+        impossible(_("What a weird instrument (%d)!"), instr->otyp);
         return 0;
     }
     nhUse(improvisation);
@@ -770,7 +769,7 @@ do_play_instrument(struct obj *instr)
                 || instr->otyp == TOOLED_HORN || instr->otyp == FROST_HORN
                 || instr->otyp == FIRE_HORN || instr->otyp == BUGLE)
                && !can_blow(&gy.youmonst)) {
-        You(_("are incapable of playing %s.", thesimpleoname(instr));
+        You(_("are incapable of playing %s."), thesimpleoname(instr));
         return ECMD_OK;
     }
     if (instr->otyp != LEATHER_DRUM && instr->otyp != DRUM_OF_EARTHQUAKE

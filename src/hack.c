@@ -119,7 +119,7 @@ revive_nasty(coordxy x, coordxy y, const char *msg)
             if ((mtmp = m_at(x, y)) && enexto(&cc, x, y, mtmp->data))
                 rloc_to(mtmp, cc.x, cc.y);
             if (msg)
-                Norep(_("%s", msg);
+                Norep(_("%s"), msg);
             revived = revive_corpse(otmp);
         }
     }
@@ -785,14 +785,14 @@ still_chewing(coordxy x, coordxy y)
         }
         digtxt = u_at(x, y)
                  ? _("devour the iron bars.")
-                 : _("eat through the bars."));
+                 : _("eat through the bars.");
         dissolve_bars(x, y);
     } else if (lev->typ == SDOOR) {
         if (lev->doormask & D_TRAPPED) {
             lev->doormask = D_NODOOR;
             b_trapped(_("secret door"), NO_PART);
         } else {
-            digtxt = _("chew through the secret door."));
+            digtxt = _("chew through the secret door.");
             lev->doormask = D_BROKEN;
         }
         lev->typ = DOOR;
@@ -840,7 +840,7 @@ movobj(struct obj *obj, coordxy ox, coordxy oy)
 staticfn void
 dosinkfall(void)
 {
-    const char *fell_on_sink = _("fell onto a sink"));
+    const char *fell_on_sink = _("fell onto a sink");
     struct obj *obj;
     int dmg;
     boolean lev_boots = (uarmf && uarmf->otyp == LEVITATION_BOOTS),
@@ -1098,7 +1098,7 @@ test_move(
                 if (mode == DO_MOVE) {
                     if (amorphous(gy.youmonst.data))
                         You(_("try to ooze under the door,"
-                            " but can't squeeze your possessions through.");
+                            " but can't squeeze your possessions through."));
                     if (flags.autoopen && !svc.context.run
                         && !Confusion && !Stunned && !Fumbling) {
                         int tmp = doopen_indir(x, y);
@@ -1570,7 +1570,7 @@ trapmove(
     switch (u.utraptype) {
     case TT_BEARTRAP:
         if (flags.verbose) {
-            predicament = _("caught in a bear trap"));
+            predicament = _("caught in a bear trap");
             if (u.usteed)
                 Norep(_("%s is %s."), upstart(steedname), predicament);
             else
@@ -1598,7 +1598,7 @@ trapmove(
         }
         if (--u.utrap) {
             if (flags.verbose) {
-                predicament = _("stuck to the web"));
+                predicament = _("stuck to the web");
                 if (u.usteed)
                     Norep(_("%s is %s."), upstart(steedname), predicament);
                 else
@@ -1688,8 +1688,7 @@ trapmove(
         impossible(_("trapmove: trapped in nothing?"));
         break;
     default:
-        impossible(_("trapmove: stuck in unknown trap? (%d)",
-                   (int) u.utraptype);
+        impossible(_("trapmove: stuck in unknown trap? (%d)"),                    (int) u.utraptype);
         break;
     }
     return FALSE;
@@ -1699,8 +1698,7 @@ boolean
 u_rooted(void)
 {
     if (!gy.youmonst.data->mmove) {
-        You(_("are rooted %s.",
-            Levitation || Is_airlevel(&u.uz) || Is_waterlevel(&u.uz)
+        You(_("are rooted %s."),             Levitation || Is_airlevel(&u.uz) || Is_waterlevel(&u.uz)
                 ? _("in place")
                 : _("to the ground"));
         nomul(0);
@@ -1877,7 +1875,7 @@ handle_tip(int tip)
             l_nhcore_call(NHCORE_GETPOS_TIP);
             break;
         default:
-            impossible(_("Unknown tip in handle_tip(%i)", tip);
+            impossible(_("Unknown tip in handle_tip(%i)"), tip);
             break;
         }
         return TRUE;
@@ -2146,7 +2144,7 @@ domove_swap_with_pet(
     } else if (mtmp->mpeaceful && mtmp->mtrapped) {
         /* all mtame are also mpeaceful, so this affects pets too */
         assert(trap != NULL); /* implied by mtrapped */
-        const char *what = trapname(trap->ttyp, FALSE), *which = _("that "));
+        const char *what = trapname(trap->ttyp, FALSE), *which = _("that ");
         char anbuf[10];
 
         if (!trap->tseen) {
@@ -3002,7 +3000,7 @@ domove_core(void)
     /* must come after we finished picking up, in spoteffects() */
     if (cause_delay) {
         nomul(-2);
-        gm.multi_reason = _("dragging an iron ball"));
+        gm.multi_reason = _("dragging an iron ball");
         gn.nomovemsg = "";
     }
 
@@ -3428,7 +3426,7 @@ spoteffects(boolean pick)
         long time_left = spot_time_left(u.ux, u.uy, MELT_ICE_AWAY);
 
         if (time_left && time_left < 15L)
-            pline(_("%s", _(icewarnings[(time_left < 5L) ? 2
+            pline(_("%s"), _(icewarnings[(time_left < 5L) ? 2
                                     : (time_left < 10L) ? 1
                                       : 0]));
     }
@@ -3825,8 +3823,7 @@ pickup_checks(void)
     if (is_pool(u.ux, u.uy)) {
         if (Wwalking || is_floater(gy.youmonst.data)
             || is_clinger(gy.youmonst.data) || (Flying && !Breathless)) {
-            You(_("cannot dive into the %s to pick things up.",
-                hliquid("water"));
+            You(_("cannot dive into the %s to pick things up."),                 hliquid("water"));
             return 0;
         } else if (!Underwater) {
             You_cant(_("even see the bottom, let alone pick up %s."), something);
@@ -4242,7 +4239,7 @@ maybe_wail(void)
         int i, powercnt;
 
         who = (Role_if(PM_WIZARD) || Role_if(PM_VALKYRIE)) ? gu.urole.name.m
-                                                           : _("Elf"));
+                                                           : _("Elf");
         if (u.uhp == 1) {
             pline(_("%s is about to die."), who);
         } else {
@@ -4267,7 +4264,7 @@ int
 saving_grace(int dmg)
 {
     if (dmg < 0) {
-        impossible(_("saving_grace check for negative damage? (%d)", dmg);
+        impossible(_("saving_grace check for negative damage? (%d)"), dmg);
         return 0;
     }
 #if 0   /* saving grace _does_ protect hero during own actions */

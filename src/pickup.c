@@ -407,9 +407,9 @@ describe_decor(void)
             Sprintf(outbuf, _("%s."), upstart(fbuf));
         }
         if (ltyp == ICE && flags.mention_decor)
-            Norep(_("%s", outbuf);
+            Norep(_("%s"), outbuf);
         else
-            pline(_("%s", outbuf);
+            pline(_("%s"), outbuf);
     } else if (!Underwater) {
         if (IS_POOL(iflags.prev_decor)
             || IS_LAVA(iflags.prev_decor)
@@ -1665,10 +1665,10 @@ carry_count(struct obj *obj,            /* object to pick up... */
         Strcpy(obj_nambuf, doname(obj));
         if (container) {
             Sprintf(where, _("in %s"), the(xname(container)));
-            verb = _("carry"));
+            verb = _("carry");
         } else {
             Strcpy(where, _("lying here"));
-            verb = telekinesis ? _("acquire") : _("lift"));
+            verb = telekinesis ? _("acquire") : _("lift");
         }
     } else {
         /* lint suppression */
@@ -1687,12 +1687,12 @@ carry_count(struct obj *obj,            /* object to pick up... */
     if (!container)
         Strcpy(where, _("here")); /* slightly shorter form */
     if (gi.invent || umoney) {
-        prefx1 = _("you cannot "));
+        prefx1 = _("you cannot ");
         prefx2 = "";
-        suffx = _(" any more"));
+        suffx = _(" any more");
     } else {
-        prefx1 = (obj->quan == 1L) ? _("it ") : _("even one "));
-        prefx2 = _("is too heavy for you to "));
+        prefx1 = (obj->quan == 1L) ? _("it ") : _("even one ");
+        prefx2 = _("is too heavy for you to ");
         suffx = "";
     }
     There(_("%s %s %s, but %s%s%s%s."), otense(obj, _("are")), obj_nambuf, where,
@@ -1810,7 +1810,7 @@ pickup_object(
     int res;
 
     if (obj->quan < count) {
-        impossible(_("pickup_object: count %ld > quan %ld?", count, obj->quan);
+        impossible(_("pickup_object: count %ld > quan %ld?"), count, obj->quan);
         return 0;
     }
 
@@ -1990,8 +1990,7 @@ encumber_msg(void)
             You(_("rebalance your load.  Movement is difficult."));
             break;
         case 3:
-            You(_("%s under your heavy load.  Movement is very hard.",
-                stagger(gy.youmonst.data, "stagger"));
+            You(_("%s under your heavy load.  Movement is very hard."),                 stagger(gy.youmonst.data, "stagger"));
             break;
         default:
             You(_("%s move a handspan with this load!"),
@@ -2011,8 +2010,7 @@ encumber_msg(void)
             You(_("rebalance your load.  Movement is still difficult."));
             break;
         case 3:
-            You(_("%s under your load.  Movement is still very hard.",
-                stagger(gy.youmonst.data, "stagger"));
+            You(_("%s under your load.  Movement is still very hard."),                 stagger(gy.youmonst.data, "stagger"));
             break;
         }
         disp.botl = TRUE;
@@ -2044,7 +2042,7 @@ able_to_loot(
     coordxy x, coordxy y,
     boolean looting) /* loot vs tip */
 {
-    const char *verb = looting ? _("loot") : _("tip"));
+    const char *verb = looting ? _("loot") : _("tip");
     struct trap *t = t_at(x, y);
 
     if (!can_reach_floor(t && is_pit(t->ttyp))) {
@@ -2060,7 +2058,7 @@ able_to_loot(
             hliquid(is_lava(x, y) ? _("lava") : _("water")));
         return FALSE;
     } else if (nolimbs(gy.youmonst.data)) {
-        pline(_("Without limbs, you cannot %s anything.", verb);
+        pline(_("Without limbs, you cannot %s anything."), verb);
         return FALSE;
     } else if (looting && !freehand()) {
         pline(_("Without a free %s, you cannot loot anything."),
@@ -2102,7 +2100,7 @@ do_loot_cont(
 #if 0
         if (ccount < 2 && (svl.level.objects[cobj->ox][cobj->oy] == cobj))
             pline(_("%s locked."),
-                  cobj->lknown ? _("It is") : _("Hmmm, it turns out to be"));
+                  cobj->lknown ? _("It is") : _("Hmmm, it turns out to be");
         else
 #endif
         if (cobj->lknown)
@@ -3007,7 +3005,7 @@ use_container(
         /* even if the trap fails, you've used up this turn */
         if (gm.multi >= 0) { /* in case we didn't become paralyzed */
             nomul(-1);
-            gm.multi_reason = _("opening a container"));
+            gm.multi_reason = _("opening a container");
             gn.nomovemsg = "";
         }
         ga.abort_looting = TRUE;
@@ -3270,7 +3268,7 @@ menu_loot(int retry, boolean put_in)
     boolean all_categories = TRUE, loot_everything = FALSE, autopick = FALSE;
     char buf[BUFSZ];
     boolean loot_justpicked = FALSE;
-    const char *action = put_in ? _("Put in") : _("Take out"));
+    const char *action = put_in ? _("Put in") : _("Take out");
     struct obj *otmp, *otmp2;
     menu_item *pick_list;
     int mflags, res;
@@ -3987,7 +3985,7 @@ tipcontainer_checks(
         /* even if the trap fails, you've used up this turn */
         if (gm.multi >= 0) { /* in case we didn't become paralyzed */
             nomul(-1);
-            gm.multi_reason = _("tipping a container"));
+            gm.multi_reason = _("tipping a container");
             gn.nomovemsg = "";
         }
         return TIPCHECK_TRAPPED;

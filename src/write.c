@@ -103,7 +103,7 @@ dowrite(struct obj *pen)
        spellbook), but we want messages saying so to avoid "spellbook" */
     typeword = (paper->otyp == SPE_NOVEL) ? _("book")
                : (paper->oclass == SPBOOK_CLASS) ? _("spellbook")
-                 : _("scroll"));
+                 : _("scroll");
     if (Blind) {
         if (!paper->dknown) {
             You(_("don't know whether that %s is blank or not."), typeword);

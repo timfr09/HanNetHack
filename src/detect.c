@@ -616,7 +616,7 @@ object_detect(struct obj *detector, /* object doing the detecting */
     int sym, boulder = 0, ter_typ = TER_DETECT | TER_OBJ;
 
     if (class < 0 || class >= MAXOCLASSES) {
-        impossible(_("object_detect:  illegal class %d", class);
+        impossible(_("object_detect:  illegal class %d"), class);
         class = 0;
     }
 
@@ -1149,38 +1149,38 @@ level_distance(d_level *where)
     if (ll < 0) {
         if (ll < (-8 - rn2(3)))
             if (!indun)
-                res = _("far away"));
+                res = _("far away");
             else
-                res = _("far below"));
+                res = _("far below");
         else if (ll < -1)
             if (!indun)
-                res = _("away below you"));
+                res = _("away below you");
             else
-                res = _("below you"));
+                res = _("below you");
         else if (!indun)
-            res = _("in the distance"));
+            res = _("in the distance");
         else
-            res = _("just below"));
+            res = _("just below");
     } else if (ll > 0) {
         if (ll > (8 + rn2(3)))
             if (!indun)
-                res = _("far away"));
+                res = _("far away");
             else
-                res = _("far above"));
+                res = _("far above");
         else if (ll > 1)
             if (!indun)
-                res = _("away above you"));
+                res = _("away above you");
             else
-                res = _("above you"));
+                res = _("above you");
         else if (!indun)
-            res = _("in the distance"));
+            res = _("in the distance");
         else
-            res = _("just above"));
+            res = _("just above");
     } else { /* l1 == 0 */
         if (!indun)
-            res = _("in the distance"));
+            res = _("in the distance");
         else
-            res = _("near you"));
+            res = _("near you");
     }
     return res;
 }
@@ -1230,7 +1230,7 @@ use_crystal_ball(struct obj **optr)
             break;
         case 3:
             if (!resists_blnd(&gy.youmonst)) {
-                pline(_("%s your vision!", Tobjnam(obj, "damage"));
+                pline(_("%s your vision!"), Tobjnam(obj, _("damage")));
                 make_blinded(BlindedTimeout + impair, FALSE);
                 if (!Blind)
                     Your1(vision_clears);
@@ -1261,7 +1261,7 @@ use_crystal_ball(struct obj **optr)
 
     if (Hallucination) {
         nomul(-rnd(charged ? 4 : 2));
-        gm.multi_reason = _("gazing into a Magic 8-Ball (tm)"));
+        gm.multi_reason = _("gazing into a Magic 8-Ball (tm)");
         gn.nomovemsg = "";
 
         if (!charged) {
@@ -1314,7 +1314,7 @@ use_crystal_ball(struct obj **optr)
 
     You(_("peer into %s..."), the(xname(obj)));
     nomul(-rnd(charged ? 10 : 2));
-    gm.multi_reason = _("gazing into a crystal ball"));
+    gm.multi_reason = _("gazing into a crystal ball");
     gn.nomovemsg = "";
 
     if (!charged) {

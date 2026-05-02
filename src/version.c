@@ -381,7 +381,7 @@ check_version(
 #ifdef EXTRA_SANITY_CHECKS
         if (complain)
             impossible(_("check_version() called with"
-                       " 'complain'=True but 'filename'=Null");
+                       " 'complain'=True but 'filename'=Null"));
 #endif
         complain = FALSE; /* 'complain' requires 'filename' for pline(_("%s")) */
     }

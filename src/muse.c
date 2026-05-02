@@ -169,7 +169,7 @@ mzapwand(
     boolean self)
 {
     if (otmp->spe < 1) {
-        impossible(_("Mon zapping wand with %d charges?", otmp->spe);
+        impossible(_("Mon zapping wand with %d charges?"), otmp->spe);
         return;
     }
     if (!canseemon(mtmp)) {
@@ -1211,7 +1211,7 @@ use_defensive(struct monst *mtmp)
     case 0:
         return 0; /* i.e. an exploded wand */
     default:
-        impossible(_("%s wanted to perform action %d?", Monnam(mtmp),
+        impossible(_("%s wanted to perform action %d?"), Monnam(mtmp),
                    gm.m.has_defense);
         break;
     }
@@ -2025,7 +2025,7 @@ use_offensive(struct monst *mtmp)
     case 0:
         return 0; /* i.e. an exploded wand */
     default:
-        impossible(_("%s wanted to perform action %d?", Monnam(mtmp),
+        impossible(_("%s wanted to perform action %d?"), Monnam(mtmp),
                    gm.m.has_offense);
         break;
     }
@@ -2550,7 +2550,7 @@ use_misc(struct monst *mtmp)
     case MUSE_BULLWHIP:
         /* attempt to disarm hero */
         {
-            const char *The_whip = vismon ? _("The bullwhip") : _("A whip"));
+            const char *The_whip = vismon ? _("The bullwhip") : _("A whip");
             int where_to = rn2(4);
             struct obj *obj = uwep;
             const char *hand;
@@ -2619,7 +2619,7 @@ use_misc(struct monst *mtmp)
     case 0:
         return 0; /* i.e. an exploded wand */
     default:
-        impossible(_("%s wanted to perform action %d?", Monnam(mtmp),
+        impossible(_("%s wanted to perform action %d?"), Monnam(mtmp),
                    gm.m.has_misc);
         break;
     }
@@ -2644,7 +2644,7 @@ you_aggravate(struct monst *mtmp)
     docrt();
     if (unconscious()) {
         gm.multi = -1;
-        gn.nomovemsg = _("Aggravated, you are jolted into full consciousness."));
+        gn.nomovemsg = _("Aggravated, you are jolted into full consciousness.");
     }
     newsym(mtmp->mx, mtmp->my);
     if (!canspotmon(mtmp))

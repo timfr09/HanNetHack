@@ -759,7 +759,7 @@ restlevelfile(xint8 ltmp)
     if (!nhfp) {
         /* failed to create a new file; don't attempt to make a panic save */
         program_state.something_worth_saving = 0;
-        panic(_("restlevelfile: %s", whynot);
+        panic(_("restlevelfile: %s"), whynot);
     }
     bufon(nhfp->fd);
     nhfp->mode = WRITING | FREEING;
@@ -1396,7 +1396,7 @@ restore_gamelog(NHFILE *nhfp)
         if (slen == -1)
             break;
         if (slen > ((BUFSZ*2) - 1))
-            panic(_("restore_gamelog: msg too big (%d)", slen);
+            panic(_("restore_gamelog: msg too big (%d)"), slen);
         Sfi_char(nhfp, msg, "gamelog-gamelog_text", slen);
         msg[slen] = '\0';
         Sfi_gamelog_line(nhfp, &tmp, "gamelog-gamelog_line");
@@ -1423,7 +1423,7 @@ restore_msghistory(NHFILE *nhfp)
         if (msgsize == -1)
             break;
         if (msgsize > BUFSZ - 1)
-            panic(_("restore_msghistory: msg too big (%d)", msgsize);
+            panic(_("restore_msghistory: msg too big (%d)"), msgsize);
         Sfi_char(nhfp, msg, "msghistory-msg", msgsize);
         msg[msgsize] = '\0';
 #ifndef SFCTOOL

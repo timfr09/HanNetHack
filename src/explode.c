@@ -66,7 +66,7 @@ explosionmask(
                 res = EXPL_HERO;
             break;
         default:
-            impossible(_("explosion type %d?", adtyp);
+            impossible(_("explosion type %d?"), adtyp);
             break;
         }
 
@@ -107,7 +107,7 @@ explosionmask(
                 res = EXPL_MON;
             break;
         default:
-            impossible(_("explosion type %d?", adtyp);
+            impossible(_("explosion type %d?"), adtyp);
             break;
         }
     }
@@ -122,56 +122,56 @@ engulfer_explosion_msg(uchar adtyp, char olet)
     if (digests(u.ustuck->data)) {
         switch (adtyp) {
         case AD_FIRE:
-            adj = _("heartburn"));
+            adj = _("heartburn");
             break;
         case AD_COLD:
-            adj = _("chilly"));
+            adj = _("chilly");
             break;
         case AD_DISN:
             if (olet == WAND_CLASS)
-                adj = _("irradiated by pure energy"));
+                adj = _("irradiated by pure energy");
             else
-                adj = _("perforated"));
+                adj = _("perforated");
             break;
         case AD_ELEC:
-            adj = _("shocked"));
+            adj = _("shocked");
             break;
         case AD_DRST:
-            adj = _("poisoned"));
+            adj = _("poisoned");
             break;
         case AD_ACID:
-            adj = _("an upset stomach"));
+            adj = _("an upset stomach");
             break;
         default:
-            adj = _("fried"));
+            adj = _("fried");
             break;
         }
         pline(_("%s gets %s!"), Monnam(u.ustuck), adj);
     } else {
         switch (adtyp) {
         case AD_FIRE:
-            adj = _("toasted"));
+            adj = _("toasted");
             break;
         case AD_COLD:
-            adj = _("chilly"));
+            adj = _("chilly");
             break;
         case AD_DISN:
             if (olet == WAND_CLASS)
-                adj = _("overwhelmed by pure energy"));
+                adj = _("overwhelmed by pure energy");
             else
-                adj = _("perforated"));
+                adj = _("perforated");
             break;
         case AD_ELEC:
-            adj = _("shocked"));
+            adj = _("shocked");
             break;
         case AD_DRST:
-            adj = _("intoxicated"));
+            adj = _("intoxicated");
             break;
         case AD_ACID:
-            adj = _("burned"));
+            adj = _("burned");
             break;
         default:
-            adj = _("fried"));
+            adj = _("fried");
             break;
         }
         pline(_("%s gets slightly %s!"), Monnam(u.ustuck), adj);
@@ -233,7 +233,7 @@ explode(
                 && type != WAN_DIGGING && type != WAN_SLEEP) {
                 type -= WAN_MAGIC_MISSILE;
                 if (type < 0 || type > 9) {
-                    impossible(_("explode: wand has bad zap type (%d).", type);
+                    impossible(_("explode: wand has bad zap type (%d)."), type);
                     type = 0;
                 }
             } else
@@ -313,38 +313,38 @@ explode(
 
         switch (abs(type) % 10) {
         case 0:
-            adstr = _("magical blast"));
+            adstr = _("magical blast");
             adtyp = AD_MAGM;
             break;
         case 1:
             adstr = (olet == BURNING_OIL) ? _("burning oil")
-                     : (olet == SCROLL_CLASS) ? _("tower of flame") : _("fireball"));
+                     : (olet == SCROLL_CLASS) ? _("tower of flame") : _("fireball");
             /* fire damage, not physical damage */
             adtyp = AD_FIRE;
             break;
         case 2:
-            adstr = _("ball of cold"));
+            adstr = _("ball of cold");
             adtyp = AD_COLD;
             break;
         case 4:
             adstr = (olet == WAND_CLASS) ? _("death field")
-                                         : _("disintegration field"));
+                                         : _("disintegration field");
             adtyp = AD_DISN;
             break;
         case 5:
-            adstr = _("ball of lightning"));
+            adstr = _("ball of lightning");
             adtyp = AD_ELEC;
             break;
         case 6:
-            adstr = _("poison gas cloud"));
+            adstr = _("poison gas cloud");
             adtyp = AD_DRST;
             break;
         case 7:
-            adstr = _("splash of acid"));
+            adstr = _("splash of acid");
             adtyp = AD_ACID;
             break;
         default:
-            impossible(_("explosion base type %d?", type);
+            impossible(_("explosion base type %d?"), type);
             return;
         }
         if (!str)
@@ -738,8 +738,7 @@ scatter(
     long total = 0L;
 
     if (individual_object && (obj->ox != sx || obj->oy != sy))
-        impossible(_("scattered object <%d,%d> not at scatter site <%d,%d>",
-                   obj->ox, obj->oy, sx, sy);
+        impossible(_("scattered object <%d,%d> not at scatter site <%d,%d>"),                    obj->ox, obj->oy, sx, sy);
 
     shop_origin = ((shkp = shop_keeper(*in_rooms(sx, sy, SHOPBASE))) != 0
                 && costly_spot(sx, sy));
@@ -1006,7 +1005,7 @@ adtyp_to_expltype(const int adtyp)
     case AD_PHYS: /* gas spore */
         return EXPL_NOXIOUS;
     default:
-        impossible(_("adtyp_to_expltype: bad explosion type %d", adtyp);
+        impossible(_("adtyp_to_expltype: bad explosion type %d"), adtyp);
         return EXPL_FIERY;
     }
 }
@@ -1042,7 +1041,7 @@ mon_explodes(
         type = -((mattk->adtyp - 1) + 20);
     }
     else {
-        impossible(_("unknown type for mon_explode %d", mattk->adtyp);
+        impossible(_("unknown type for mon_explode %d"), mattk->adtyp);
         return;
     }
 

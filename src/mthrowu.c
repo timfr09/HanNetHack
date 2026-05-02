@@ -721,8 +721,7 @@ m_throw(
             switch (singleobj->otyp) {
             case EGG:
                 if (!touch_petrifies(&mons[singleobj->corpsenm])) {
-                    impossible(_("monster throwing egg type %d",
-                               singleobj->corpsenm);
+                    impossible(_("monster throwing egg type %d"),                                singleobj->corpsenm);
                     hitu = 0;
                     break;
                 }
@@ -1160,7 +1159,7 @@ breamm(struct monst *mtmp, struct attack *mattk, struct monst *mtarg)
                     if (dog->hungrytime >= 10)
                         dog->hungrytime -= 10;
                 }
-            } else impossible(_("Breath weapon %d used", typ-1);
+            } else impossible(_("Breath weapon %d used"), typ-1);
         } else
             return M_ATTK_MISS;
     }

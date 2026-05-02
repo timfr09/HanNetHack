@@ -947,7 +947,7 @@ polymon(int mntmp)
         if (canspotmon(u.ustuck))
             Strcpy(ustuckNam, Monnam(u.ustuck));
         set_ustuck((struct monst *) 0);
-        pline(_("%s loses its grip on you.", ustuckNam);
+        pline(_("%s loses its grip on you."), ustuckNam);
     } else if (sticking && !sticks(gy.youmonst.data)) {
         /* was holding onto u.ustuck but no longer capable of that */
         uunstick();
@@ -1321,13 +1321,13 @@ drop_weapon(int alone)
             candropwep = canletgo(uwep, "");
             candropswapwep = !u.twoweap || canletgo(uswapwep, "");
             if (alone) {
-                what = (candropwep && candropswapwep) ? _("drop") : _("release"));
+                what = (candropwep && candropswapwep) ? _("drop") : _("release");
                 which = is_sword(uwep) ? _("sword") : weapon_descr(uwep);
                 if (u.twoweap) {
                     whichtoo =
                         is_sword(uswapwep) ? _("sword") : weapon_descr(uswapwep);
                     if (strcmp(which, whichtoo))
-                        which = _("weapon"));
+                        which = _("weapon");
                 }
                 if (uwep->quan != 1L || u.twoweap)
                     which = makeplural(which);
@@ -1604,7 +1604,7 @@ dospinweb(void)
             dotrap(ttmp, NO_TRAP_FLAGS);
             return ECMD_TIME;
         default:
-            impossible(_("Webbing over trap type %d?", ttmp->ttyp);
+            impossible(_("Webbing over trap type %d?"), ttmp->ttyp);
             return ECMD_OK;
         }
     } else if (On_stairs(x, y)) {
@@ -1658,7 +1658,7 @@ dogaze(void)
         }
     }
     if (adtyp != AD_CONF && adtyp != AD_FIRE) {
-        impossible(_("gaze attack %d?", adtyp);
+        impossible(_("gaze attack %d?"), adtyp);
         return ECMD_OK;
     }
 
@@ -1746,7 +1746,7 @@ dogaze(void)
                                   ? -d((int) mtmp->m_lev + 1,
                                        (int) mtmp->data->mattk[0].damd)
                                   : -200);
-                        gm.multi_reason = _("frozen by a monster's gaze"));
+                        gm.multi_reason = _("frozen by a monster's gaze");
                         gn.nomovemsg = 0;
                         return ECMD_TIME;
                     } else
@@ -1786,8 +1786,7 @@ dohide(void)
     /* can't hide while being held (or holding) or while trapped
        (except for floor hiders [trapper or mimic] in pits) */
     if (u.ustuck || (u.utrap && (u.utraptype != TT_PIT || on_ceiling))) {
-        You_cant(_("hide while you're %s.",
-                 !u.ustuck ? "trapped"
+        You_cant(_("hide while you're %s."),                  !u.ustuck ? "trapped"
                    : u.uswallow ? (digests(u.ustuck->data) ? "swallowed"
                                                            : "engulfed")
                      : !sticks(gy.youmonst.data) ? "being held"
@@ -1885,8 +1884,7 @@ dopoly(void)
     if (is_vampire(gy.youmonst.data) || is_vampshifter(&gy.youmonst)) {
         polyself(POLY_MONSTER);
         if (savedat != gy.youmonst.data) {
-            You(_("transform into %s.",
-                an(pmname(gy.youmonst.data, Ugender)));
+            You(_("transform into %s."),                 an(pmname(gy.youmonst.data, Ugender)));
             newsym(u.ux, u.uy);
         }
     }
@@ -2059,8 +2057,8 @@ mbodypart(struct monst *mon, int part)
     struct permonst *mptr = mon->data;
 
     if (part <= NO_PART) {
-        impossible(_("mbodypart: bad part %d", part);
-        return _("mystery part"));
+        impossible(_("mbodypart: bad part %d"), part);
+        return _("mystery part");
     }
 
     /* some special cases */
@@ -2068,11 +2066,11 @@ mbodypart(struct monst *mon, int part)
         || mptr->mlet == S_RODENT || mptr == &mons[PM_OWLBEAR]) {
         switch (part) {
         case HAND:
-            return _("paw"));
+            return _("paw");
         case HANDED:
-            return _("pawed"));
+            return _("pawed");
         case FOOT:
-            return _("rear paw"));
+            return _("rear paw");
         case ARM:
         case LEG:
             return _(horse_parts[part]); /* "foreleg", "rear leg" */
@@ -2087,18 +2085,18 @@ mbodypart(struct monst *mon, int part)
         && (humanoid(mptr) && attacktype(mptr, AT_CLAW)
             && !strchr(not_claws, mptr->mlet) && mptr != &mons[PM_STONE_GOLEM]
             && mptr != &mons[PM_AMOROUS_DEMON]))
-        return (part == HAND) ? _("claw") : _("clawed"));
+        return (part == HAND) ? _("claw") : _("clawed");
     if ((mptr == &mons[PM_MUMAK] || mptr == &mons[PM_MASTODON])
         && part == NOSE)
-        return _("trunk"));
+        return _("trunk");
     if (mptr == &mons[PM_SHARK] && part == HAIR)
-        return _("skin")); /* sharks don't have scales */
+        return _("skin"); /* sharks don't have scales */
     if ((mptr == &mons[PM_JELLYFISH] || mptr == &mons[PM_KRAKEN])
         && (part == ARM || part == FINGER || part == HAND || part == FOOT
             || part == TOE))
-        return _("tentacle"));
+        return _("tentacle");
     if (mptr == &mons[PM_FLOATING_EYE] && part == EYE)
-        return _("cornea"));
+        return _("cornea");
     if (humanoid(mptr) && (part == ARM || part == FINGER || part == FINGERTIP
                            || part == HAND || part == HANDED))
         return _(humanoid_parts[part]);
@@ -2112,15 +2110,15 @@ mbodypart(struct monst *mon, int part)
         return _(horse_parts[part]);
     if (mptr->mlet == S_LIGHT) {
         if (part == HANDED)
-            return _("rayed"));
+            return _("rayed");
         else if (part == ARM || part == FINGER || part == FINGERTIP
                  || part == HAND)
-            return _("ray"));
+            return _("ray");
         else
-            return _("beam"));
+            return _("beam");
     }
     if (mptr == &mons[PM_STALKER] && part == HEAD)
-        return _("head"));
+        return _("head");
     if (mptr->mlet == S_EEL && mptr != &mons[PM_JELLYFISH])
         return _(fish_parts[part]);
     if (mptr->mlet == S_WORM)

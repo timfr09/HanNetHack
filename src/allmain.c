@@ -988,7 +988,7 @@ interrupt_multi(const char *msg)
     if (gm.multi > 0 && !svc.context.travel && !svc.context.run) {
         nomul(0);
         if (flags.verbose && msg)
-            Norep(_("%s", msg);
+            Norep("%s", msg);
     }
 }
 

@@ -86,7 +86,7 @@ do_mkroom(int roomtype)
             mkzoo(ANTHOLE);
             break;
         default:
-            impossible(_("Tried to make a room of type %d.", roomtype);
+            impossible(_("Tried to make a room of type %d."), roomtype);
         }
     }
 }

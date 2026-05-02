@@ -141,7 +141,7 @@ itemactions_pushkeys(struct obj *otmp, int act)
 {
     switch (act) {
     default:
-        impossible(_("Unknown item action %d", act);
+        impossible(_("Unknown item action %d"), act);
         break;
     case IA_NONE:
         break;
@@ -282,7 +282,7 @@ itemactions(struct obj *otmp)
     char buf[BUFSZ], buf2[BUFSZ];
     menu_item *selected;
     struct monst *mtmp;
-    const char *light = otmp->lamplit ? _("Extinguish") : _("Light"));
+    const char *light = otmp->lamplit ? _("Extinguish") : _("Light");
     boolean already_worn = (otmp->owornmask & (W_ARMOR | W_ACCESSORY)) != 0;
 
     win = create_nhwindow(NHW_MENU);
@@ -351,7 +351,7 @@ itemactions(struct obj *otmp)
         ia_addmenu(win, IA_APPLY_OBJ, 'a', buf);
     } else if (otmp->otyp == WAX_CANDLE || otmp->otyp == TALLOW_CANDLE) {
         boolean multiple = (otmp->quan == 1L) ? FALSE : TRUE;
-        const char *s = multiple ? _("these") : _("this"));
+        const char *s = multiple ? _("these") : _("this");
         struct obj *o = carrying(CANDELABRUM_OF_INVOCATION);
 
         if (o && o->spe < 7)

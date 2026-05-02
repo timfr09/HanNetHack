@@ -487,7 +487,7 @@ quest_chat(struct monst *mtmp)
         chat_with_guardian();
         break;
     default:
-        impossible(_("quest_chat: Unknown quest character %s.", mon_nam(mtmp));
+        impossible(_("quest_chat: Unknown quest character %s."), mon_nam(mtmp));
     }
 }
 

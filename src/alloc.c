@@ -73,7 +73,7 @@ alloc(unsigned int lth)
     ptr = malloc(lth);
 #ifndef MONITOR_HEAP
     if (!ptr)
-        panic(_("Memory allocation failure; cannot get %u bytes", lth);
+        panic("Memory allocation failure; cannot get %u bytes", lth);
 #else
     /* for #if MONITOR_HEAP, failure is handled in nhalloc() */
 #endif
@@ -91,7 +91,7 @@ re_alloc(long *oldptr, unsigned int newlth)
 #ifndef MONITOR_HEAP
     /* "extend to":  assume it won't ever fail if asked to shrink */
     if (newlth && !newptr)
-        panic(_("Memory allocation failure; cannot extend to %u bytes", newlth);
+        panic("Memory allocation failure; cannot extend to %u bytes", newlth);
 #else
     /* for #if MONITOR_HEAP, failure is handled in nhrealloc() */
 #endif
@@ -160,7 +160,7 @@ nhalloc(unsigned int lth, const char *file, int line)
                        fmt_ptr((genericptr_t) ptr), line, file);
     /* potential panic in alloc() was deferred til here */
     if (!ptr)
-        panic(_("Cannot get %u bytes, line %d of %s", lth, line, file);
+        panic("Cannot get %u bytes, line %d of %s", lth, line, file);
 
     return ptr;
 }
@@ -196,7 +196,7 @@ nhrealloc(
        even if that assumption happens to be wrong, we lack access to
        the old size so can't use alternate phrasing for that case */
     if (newlth && !newptr)
-        panic(_("Cannot extend to %u bytes, line %d of %s", newlth, line, file);
+        panic("Cannot extend to %u bytes, line %d of %s", newlth, line, file);
 
     return newptr;
 }
@@ -222,8 +222,7 @@ nhdupstr(const char *string, const char *file, int line)
     unsigned len = FITSuint_(strlen(string), file, line);
 
     if (FITSuint_(len + 1, file, line) < len)
-        panic(_("nhdupstr: string length overflow, line %d of %s",
-              line, file);
+        panic("nhdupstr: string length overflow, line %d of %s", line, file);
 
     return strcpy((char *) nhalloc(len + 1, file, line), string);
 }
@@ -241,7 +240,7 @@ dupstr(const char *string)
 
     /* make sure len+1 doesn't overflow plain unsigned (for alloc()) */
     if (len > (unsigned) (~0U - 1U))
-        panic(_("dupstr: string length overflow"));
+        panic("dupstr: string length overflow");
 
     return strcpy((char *) alloc(len + 1), string);
 }
@@ -268,7 +267,7 @@ FITSint_(LUA_INTEGER i, const char *file, int line)
     int iret = (int) i;
 
     if (iret != i)
-        panic(_("Overflow at %s:%d", file, line);
+        panic("Overflow at %s:%d", file, line);
     return iret;
 }
 
@@ -278,7 +277,7 @@ FITSuint_(unsigned long long ull, const char *file, int line)
     unsigned uret = (unsigned) ull;
 
     if (uret != ull)
-        panic(_("Overflow at %s:%d", file, line);
+        panic("Overflow at %s:%d", file, line);
     return uret;
 }
 

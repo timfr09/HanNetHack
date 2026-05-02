@@ -1113,8 +1113,7 @@ u_stuck_cannot_go(const char *updn)
 {
     if (u.ustuck) {
         if (u.uswallow || !sticks(gy.youmonst.data)) {
-            You(_("are %s, and cannot go %s.",
-                !u.uswallow ? "being held"
+            You(_("are %s, and cannot go %s."),                 !u.uswallow ? "being held"
                 : digests(u.ustuck->data) ? "swallowed"
                 : "engulfed", updn);
             return TRUE;
@@ -1256,7 +1255,7 @@ dodown(void)
     }
 
     if (trap) {
-        const char *down_or_thru = trap->ttyp == HOLE ? _("down") : _("through"));
+        const char *down_or_thru = trap->ttyp == HOLE ? _("down") : _("through");
         const char *actn = u_locomotion(_("jump"));
 
         if (gy.youmonst.data->msize >= MZ_HUGE) {
@@ -1266,7 +1265,7 @@ dodown(void)
             Sprintf(qbuf, _("Try to squeeze %s?"), down_or_thru);
             if (y_n(qbuf) == 'y') {
                 if (!rn2(3)) {
-                    actn = _("manage to squeeze"));
+                    actn = _("manage to squeeze");
                     losehp(Maybe_Half_Phys(rnd(4)),
                            _("contusion from a small passage"), KILLED_BY);
                 } else {
@@ -1416,8 +1415,7 @@ u_collide_m(struct monst *mtmp)
     coord cc;
 
     if (!mtmp || mtmp == u.usteed || mtmp != m_at(u.ux, u.uy)) {
-        impossible(_("level arrival collision: %s?",
-                   !mtmp ? "no monster"
+        impossible(_("level arrival collision: %s?"),                    !mtmp ? "no monster"
                      : (mtmp == u.usteed) ? "steed is on map"
                        : "monster not co-located");
         return;
@@ -1799,7 +1797,7 @@ goto_level(
             } else { /* ordinary descent */
                 if (flags.verbose)
                     You(_("%s."), ga.at_ladder ? _("climb down the ladder")
-                                         : _("descend the stairs"));
+                                             : _("descend the stairs"));
             }
         }
     } else { /* trap door or level_tele or In_endgame */
@@ -2009,8 +2007,7 @@ hellish_smoke_mesg(void)
               svl.level.flags.temperature > 0 ? _("hot") : _("cold"));
 
     if (In_hell(&u.uz) && svl.level.flags.temperature > 0)
-        You(_("%s smoke...",
-              olfaction(gy.youmonst.data) ? "smell" : "sense");
+        You(_("%s smoke..."),               olfaction(gy.youmonst.data) ? "smell" : "sense");
 }
 
 /* give a message when the level temperature is different from previous */
@@ -2165,11 +2162,11 @@ revive_corpse(struct obj *corpse)
                 const char *effect = "";
 
                 if (mtmp->data == &mons[PM_DEATH])
-                    effect = _(" in a whirl of spectral skulls"));
+                    effect = _(" in a whirl of spectral skulls");
                 else if (mtmp->data == &mons[PM_PESTILENCE])
-                    effect = _(" in a churning pillar of flies"));
+                    effect = _(" in a churning pillar of flies");
                 else if (mtmp->data == &mons[PM_FAMINE])
-                    effect = _(" in a ring of withered crops"));
+                    effect = _(" in a ring of withered crops");
 
                 if (canseemon(mtmp)) {
                     pline(_("%s rises from the dead%s!"),
@@ -2239,7 +2236,7 @@ revive_corpse(struct obj *corpse)
             /*FALLTHRU*/
         default:
             /* we should be able to handle the other cases... */
-            impossible(_("revive_corpse: lost corpse @ %d", where);
+            impossible(_("revive_corpse: lost corpse @ %d"), where);
             break;
         }
         return TRUE;

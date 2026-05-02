@@ -628,7 +628,7 @@ m_initinv(struct monst *mtmp)
                 mac = -2;
                 break;
             default:
-                impossible(_("odd mercenary %d?", monsndx(ptr));
+                impossible(_("odd mercenary %d?"), monsndx(ptr));
                 mac = 0;
                 break;
             }
@@ -856,8 +856,7 @@ clone_mon(
         mm.y = y;
     }
     if (!isok(mm.x, mm.y)) { /* paranoia */
-        impossible(_("clone_mon trying to create a monster at <%d,%d>?",
-                   mm.x, mm.y);
+        impossible(_("clone_mon trying to create a monster at <%d,%d>?"),                    mm.x, mm.y);
         return (struct monst *) 0;
     }
     if (MON_AT(mm.x, mm.y)) { /* (always True for the x==0 case) */
@@ -1188,7 +1187,7 @@ makemon(
 
     /* sanity check */
     if (!isok(x, y)) {
-        impossible(_("makemon trying to create a monster at <%d,%d>?", x, y);
+        impossible(_("makemon trying to create a monster at <%d,%d>?"), x, y);
         return (struct monst *) 0;
     }
 
@@ -1708,7 +1707,7 @@ rndmonst_adj(int minadj, int maxadj)
         weight = (int) (ptr->geno & G_FREQ) + align_shift(ptr);
         weight += temperature_shift(ptr);
         if (weight < 0 || weight > 127) {
-            impossible(_("bad weight in rndmonst for mndx %d", mndx);
+            impossible(_("bad weight in rndmonst for mndx %d"), mndx);
             weight = 0;
         }
         /* was unconditional, but if weight==0, rn2() < 0 will always fail;
@@ -1906,7 +1905,7 @@ mkclass_aligned(char class, int spc, /* special mons[].geno handling */
         if (mons[MONSi(first)].mlet == class)
             break;
     if (first == SPECIAL_PM) {
-        impossible(_("mkclass found no class %d monsters", class);
+        impossible(_("mkclass found no class %d monsters"), class);
         return (struct permonst *) 0;
     }
 

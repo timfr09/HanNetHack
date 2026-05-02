@@ -268,8 +268,7 @@ schar
 mapfrag_get(struct mapfragment *mf, int x, int y)
 {
     if (y < 0 || x < 0 || y > mf->hei - 1 || x > mf->wid - 1)
-        panic(_("outside mapfrag (%i,%i), wanted (%i,%i)",
-              mf->wid, mf->hei, x, y);
+        panic(_("outside mapfrag (%i,%i), wanted (%i,%i)"),               mf->wid, mf->hei, x, y);
     return splev_chr2typ(mf->data[y * (mf->wid + 1) + x]);
 }
 
@@ -1940,7 +1939,7 @@ create_monster(monster *m, struct mkroom *croom)
         class = 0;
 
     if (class == MAXMCLASSES)
-        panic(_("create_monster: unknown monster class '%c'", m->class);
+        panic(_("create_monster: unknown monster class '%c'"), m->class);
 
     amask = sp_amask_to_amask(m->sp_amask);
 
@@ -2020,7 +2019,7 @@ create_monster(monster *m, struct mkroom *croom)
                     if (!strcmp(defsyms[i].explanation, m->appear_as.str))
                         break;
                 if (i == MAXPCHARS) {
-                    impossible(_("create_monster: can't find feature \"%s\"",
+                    impossible(_("create_monster: can't find feature \"%s\""),
                                m->appear_as.str);
                 } else {
                     mtmp->m_ap_type = M_AP_FURNITURE;
@@ -2034,7 +2033,7 @@ create_monster(monster *m, struct mkroom *croom)
                         && !strcmp(OBJ_NAME(objects[i]), m->appear_as.str))
                         break;
                 if (i == NUM_OBJECTS) {
-                    impossible(_("create_monster: can't find object \"%s\"",
+                    impossible(_("create_monster: can't find object \"%s\""),
                                m->appear_as.str);
                 } else {
                     mtmp->m_ap_type = M_AP_OBJECT;
@@ -2072,7 +2071,7 @@ create_monster(monster *m, struct mkroom *croom)
 
                 if (mndx == NON_PM || (is_vampshifter(mtmp)
                                        && !validvamp(mtmp, &mndx, S_HUMAN))) {
-                    impossible(_("create_monster: invalid %s (\"%s\")",
+                    impossible(_("create_monster: invalid %s (\"%s\")"),
                                (mtmp->data->mlet == S_MIMIC)
                                  ? "mimic appearance"
                                  : (mtmp->data == &mons[PM_WIZARD_OF_YENDOR])
@@ -2220,7 +2219,7 @@ create_object(object *o, struct mkroom *croom)
         char oclass = (char) def_char_to_objclass(c);
 
         if (oclass == MAXOCLASSES)
-            panic(_("create_object:  unexpected object class '%c'", c);
+            panic(_("create_object:  unexpected object class '%c'"), c);
 
         /* KMH -- Create piles of gold properly */
         if (oclass == COIN_CLASS)
@@ -2416,7 +2415,7 @@ create_object(object *o, struct mkroom *croom)
             char lbuf[QBUFSZ];
 
             (void) describe_level(lbuf, 1 | 2);
-            impossible(_("create_object: unknown achievement (%s\"%s\")",
+            impossible(_("create_object: unknown achievement (%s\"%s\")"),
                        lbuf, simpleonames(otmp));
         }
     }
@@ -3993,7 +3992,7 @@ get_mkroom_name(int rtype)
         if (room_types[i].type == rtype)
             return room_types[i].name;
 
-    impossible(_("get_mkroom_name unknown rtype %d", rtype);
+    impossible(_("get_mkroom_name unknown rtype %d"), rtype);
     return "unknown"; /* not NULL */
 }
 
@@ -4010,7 +4009,7 @@ get_table_roomtype_opt(lua_State *L, const char *name, int defval)
                 break;
             }
         if (!room_types[i].name)
-            impossible(_("Unknown room type '%s'", roomstr);
+            impossible(_("Unknown room type '%s'"), roomstr);
     }
     Free(roomstr);
     return res;
@@ -4631,7 +4630,7 @@ sel_set_feature(coordxy x, coordxy y, genericptr_t arg)
 {
     if (!isok(x, y)) {
 #ifdef EXTRA_SANITY_CHECKS
-        impossible(_("sel_set_feature(%i,%i,%i) !isok", x, y, (*(int *) arg));
+        impossible(_("sel_set_feature(%i,%i,%i) !isok"), x, y, (*(int *) arg));
 #endif /*EXTRA_SANITY_CHECKS*/
         return;
     }

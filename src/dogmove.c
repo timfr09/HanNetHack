@@ -320,8 +320,7 @@ dog_eat(struct monst *mtmp,
             edog->apport += (int) (200L / ((long) edog->dropdist + svm.moves
                                            - edog->droptime));
             if (edog->apport <= 0) {
-                impossible(_("dog_eat: pet apport <= 0 (%d, %d, %ld, %ld, %d, %u, %u)",
-                            edog->apport, edog->dropdist, edog->droptime,
+                impossible(_("dog_eat: pet apport <= 0 (%d, %d, %ld, %ld, %d, %u, %u)"),                             edog->apport, edog->dropdist, edog->droptime,
                             svm.moves,
                             prior_apport,
                            /* check whether edog struct got clobbered;

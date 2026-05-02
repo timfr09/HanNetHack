@@ -615,7 +615,7 @@ hitfloor(
     if (IS_ALTAR(levl[u.ux][u.uy].typ)) {
         doaltarobj(obj);
     } else if (verbosely) {
-        const char *verb = (obj->otyp == WAN_STRIKING) ? _("strike") : _("hit"));
+        const char *verb = (obj->otyp == WAN_STRIKING) ? _("strike") : _("hit");
         const char *surf = surface(u.ux, u.uy);
         struct trap *t = t_at(u.ux, u.uy);
 
@@ -624,14 +624,14 @@ hitfloor(
         if (t && t->tseen) {
             switch (t->ttyp) {
             case TRAPDOOR:
-                surf = _("trap door"));
+                surf = _("trap door");
                 break;
             case HOLE:
-                surf = _("edge of the hole"));
+                surf = _("edge of the hole");
                 break;
             case PIT:
             case SPIKED_PIT:
-                surf = _("edge of the pit"));
+                surf = _("edge of the pit");
                 break;
             default:
                 break;
@@ -807,19 +807,19 @@ hurtle_step(genericptr_t arg, coordxy x, coordxy y)
             why = IS_TREE(ltyp) ? _("bumping into a tree")
                   : IS_OBSTRUCTED(ltyp) ? _("bumping into a wall")
                     : odoor_diag ? _("bumping into a door frame")
-                      : _("bumping into a closed door"));
+                      : _("bumping into a closed door");
             if (odoor_diag)
                 You(_("hit the door frame!"));
             pline(_("Ouch!"));
         } else if (ltyp == IRONBARS) {
-            why = _("crashing into iron bars"));
+            why = _("crashing into iron bars");
             You(_("crash into some iron bars.  Ouch!"));
         } else if ((obj = sobj_at(BOULDER, x, y)) != 0) {
-            why = _("bumping into a boulder"));
+            why = _("bumping into a boulder");
             You(_("bump into a %s.  Ouch!"), xname(obj));
         }  else if (!may_pass) {
             /* did we hit a no-dig non-wall position? */
-            why = _("touching the edge of the universe"));
+            why = _("touching the edge of the universe");
             You(_("smack into something!"));
         } else if (diagonal
                    && bad_rock(gy.youmonst.data, u.ux, y)
@@ -829,8 +829,7 @@ hurtle_step(genericptr_t arg, coordxy x, coordxy y)
 
             if (bigmonst(gy.youmonst.data) || too_much) {
                 why = "wedging into a narrow crevice";
-                You(_("%sget forcefully wedged into a crevice.",
-                    too_much ? "and all your belongings " : "");
+                You(_("%sget forcefully wedged into a crevice."),                     too_much ? "and all your belongings " : "");
             }
         }
         if (why) {
@@ -1112,7 +1111,7 @@ hurtle(int dx, int dy, int range, boolean verbose)
         return; /* paranoia */
 
     nomul(-range);
-    gm.multi_reason = _("moving through the air"));
+    gm.multi_reason = _("moving through the air");
     gn.nomovemsg = ""; /* it just happens */
     if (verbose)
         You(_("%s in the opposite direction."),
@@ -1265,7 +1264,7 @@ toss_up(struct obj *obj, boolean hitsroof)
     /* note: obj->quan == 1 */
 
     if (!has_ceiling(&u.uz)) {
-        action = _("flies up into")); /* into "the sky" or "the water above" */
+        action = _("flies up into"); /* into "the sky" or "the water above" */
     } else if (hitsroof) {
         if (breaktest(obj)) {
             pline(_("%s hits the %s."), Doname2(obj), ceiling(u.ux, u.uy));
@@ -1279,9 +1278,9 @@ toss_up(struct obj *obj, boolean hitsroof)
             }
             return FALSE;
         }
-        action = _("hits"));
+        action = _("hits");
     } else {
-        action = _("almost hits"));
+        action = _("almost hits");
     }
     pline(_("%s %s the %s, then falls back on top of your %s."), Doname2(obj),
           action, ceiling(u.ux, u.uy), body_part(HEAD));
@@ -2072,7 +2071,7 @@ thitmonst(
         case GAUNTLETS_OF_DEXTERITY:
             break;
         default:
-            impossible(_("Unknown type of gloves (%d)", uarmg->otyp);
+            impossible(_("Unknown type of gloves (%d)"), uarmg->otyp);
             break;
         }
     }
@@ -2623,18 +2622,18 @@ breakmsg(struct obj *obj, boolean in_view)
     if (is_crackable(obj)) /* breakobj() will call erode_obj() for message */
         return;
 
-    to_pieces = _(""));
+    to_pieces = _("");
     switch (obj->oclass == POTION_CLASS ? POT_WATER : obj->otyp) {
     default: /* glass or crystal wand */
         if (obj->oclass != WAND_CLASS)
-            impossible(_("breaking odd object (%d)?", obj->otyp);
+            impossible(_("breaking odd object (%d)?"), obj->otyp);
         FALLTHROUGH;
         /*FALLTHRU*/
     case LENSES:
     case MIRROR:
     case CRYSTAL_BALL:
     case EXPENSIVE_CAMERA:
-        to_pieces = _(" into a thousand pieces"));
+        to_pieces = _(" into a thousand pieces");
         FALLTHROUGH;
     /*FALLTHRU*/
     case POT_WATER: /* really, all potions */

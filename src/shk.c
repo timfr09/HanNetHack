@@ -160,11 +160,11 @@ money2mon(struct monst *mon, long amount)
     struct obj *ygold = findgold(gi.invent);
 
     if (amount <= 0) {
-        impossible(_("%s payment in money2mon!", amount ? "negative" : "zero");
+        impossible(_("%s payment in money2mon!"), amount ? "negative" : "zero");
         return 0L;
     }
     if (!ygold || ygold->quan < amount) {
-        impossible(_("Paying without %s gold?", ygold ? "enough" : "");
+        impossible(_("Paying without %s gold?"), ygold ? "enough" : "");
         return 0L;
     }
 
@@ -189,11 +189,11 @@ money2u(struct monst *mon, long amount)
     struct obj *mongold = findgold(mon->minvent);
 
     if (amount <= 0) {
-        impossible(_("%s payment in money2u!", amount ? "negative" : "zero");
+        impossible(_("%s payment in money2u!"), amount ? "negative" : "zero");
         return;
     }
     if (!mongold || mongold->quan < amount) {
-        impossible(_("%s paying without %s gold?", a_monnam(mon),
+        impossible(_("%s paying without %s gold?"), a_monnam(mon),
                    mongold ? "enough" : "");
         return;
     }
@@ -645,11 +645,11 @@ credit_report(struct monst *shkp, int idx, boolean silent)
 
     if (idx && !silent) {
         long amt = 0L;
-        const char *msg = _("debt has increased"));
+        const char *msg = _("debt has increased");
 
         if (credit_snap[NOW][0] < credit_snap[BEFORE][0]) {
             amt = credit_snap[BEFORE][0] - credit_snap[NOW][0];
-            msg = _("credit has been reduced"));
+            msg = _("credit has been reduced");
         } else if (credit_snap[NOW][1] > credit_snap[BEFORE][1]) {
             amt = credit_snap[NOW][1] - credit_snap[BEFORE][1];
         } else if (credit_snap[NOW][2] > credit_snap[BEFORE][2]) {
@@ -1063,7 +1063,7 @@ shop_keeper(char rmno)
             }
         } else {
             /* would have segfaulted on ESHK dereference previously */
-            impossible(_("%s? (rmno=%d, rtype=%d, mnum=%d, \"%s\")",
+            impossible(_("%s? (rmno=%d, rtype=%d, mnum=%d, \"%s\")"),
                        shkp->isshk ? "shopkeeper career change"
                                    : "shop resident not shopkeeper",
                        (int) rmno,
@@ -1150,8 +1150,7 @@ onbill(struct obj *obj, struct monst *shkp, boolean silent)
         }
     }
     if (obj->unpaid && !silent)
-        impossible(_("onbill: unpaid obj %s?",
-                   !shkp ? "without shopkeeper" : "not on shk's bill");
+        impossible(_("onbill: unpaid obj %s?"),                    !shkp ? "without shopkeeper" : "not on shk's bill");
     return (struct bill_x *) 0;
 }
 
@@ -1265,7 +1264,7 @@ obfree(struct obj *obj, struct obj *merge)
             merge->o_id = obj->o_id;
     }
     if (obj->owornmask) {
-        impossible(_("obfree: deleting worn obj (%d: %ld)", obj->otyp,
+        impossible(_("obfree: deleting worn obj (%d: %ld)"), obj->otyp,
                    obj->owornmask);
         /* unfortunately at this point we don't know whether worn mask
            applied to hero or a monster or perhaps something bogus, so
@@ -1571,7 +1570,7 @@ make_itemized_bill(
         /* find the object on the bill */
         otmp = bp_to_obj(bp);
         if (!otmp) {
-            impossible(_("Can't find shop bill entry for #%d", bp->bo_id);
+            impossible(_("Can't find shop bill entry for #%d"), bp->bo_id);
             continue;
         }
         bidx = i; /* index into bill_p[], except for hero-owner container */
@@ -2338,8 +2337,7 @@ buy_container(
         bp = &eshkp->bill_p[i];
         otmp = bp_to_obj(bp); /* ibill[bidx].obj is the container */
         if (!otmp) {
-            impossible(_("Can't find contained item on shop bill (#%d).",
-                       bp->bo_id);
+            impossible(_("Can't find contained item on shop bill (#%d)."),                        bp->bo_id);
             return 2; /* failure; have caller give a generic message */
         }
         if (otmp->where != OBJ_CONTAINED && !Has_contents(otmp))
@@ -2372,16 +2370,14 @@ buy_container(
             if (bp->bo_id == boid)
                 break;
         if (i == ebillct) {
-            impossible(_("Buying %s contents: item #%u disappeared from bill.",
-                       simpleonames(container), boid);
+            impossible(_("Buying %s contents: item #%u disappeared from bill."),                        simpleonames(container), boid);
             return 2;
         }
         otmp = bp_to_obj(bp);
 
         buy = dopayobj(shkp, bp, otmp, 1, FALSE, sightunseen);
         if (buy != PAY_BUY) {
-            impossible(_("Buying %s contents failed unexpectedly (#%u %d).",
-                       simpleonames(container), otmp->o_id, buy);
+            impossible(_("Buying %s contents failed unexpectedly (#%u %d)."),                        simpleonames(container), otmp->o_id, buy);
             continue;
         }
         /* [updating cost here is not necessary but useful when debugging] */
@@ -2735,7 +2731,7 @@ finish_paybill(void)
         /* this used to be suppressed as "don't bother" (too late to matter)
            but that led to "place_object: \"<item>\" off map <0,0>" warning */
         if (shkp)
-            impossible(_("finish_paybill: bad location <%d,%d>.", ox, oy);
+            impossible(_("finish_paybill: bad location <%d,%d>."), ox, oy);
         /* force a valid location */
         ox = u.ux ? u.ux : u.ux0;
         oy = u.ux ? u.uy : u.uy0; /* [note: testing u.ux when setting oy
@@ -2933,7 +2929,7 @@ get_cost(
                 i = pseudorand ? AMETHYST : FLUORITE;
                 break;
             default:
-                impossible(_("bad glass gem %d?", obj->otyp);
+                impossible(_("bad glass gem %d?"), obj->otyp);
                 i = STRANGE_OBJECT;
                 break;
             }
@@ -3840,7 +3836,7 @@ stolen_value(
                     You(_("have no credit remaining."));
                     return 0;
                 }
-                still = _("still "));
+                still = _("still ");
             }
             Sprintf(buf, _("%sowe %s %ld %s"), still, shkname(shkp),
                     value, currency(value));
@@ -4182,9 +4178,9 @@ sellobj(
             shk_names_obj(shkp, obj,
                           (gs.sell_how != SELL_NORMAL)
                            ? ((!ltmp && cltmp && only_partially_your_contents)
-                         ? _("sold some items inside %s for %ld gold piece%s.%s")
-                         : _("sold %s for %ld gold piece%s.%s"))
-            : _("relinquish %s and receive %ld gold piece%s in compensation.%s"),
+                              ? _("sold some items inside %s for %ld gold piece%s.%s")
+                              : _("sold %s for %ld gold piece%s.%s"))
+                           : _("relinquish %s and receive %ld gold piece%s in compensation.%s"),
                           offer, "");
             break;
         default:
@@ -5703,25 +5699,25 @@ check_unpaid_usage(struct obj *otmp, boolean altusage)
 
     arg1 = arg2 = "";
     if (otmp->oclass == SPBOOK_CLASS) {
-        fmt = _("%sYou owe%s %ld %s."));
+        fmt = _("%sYou owe%s %ld %s.");
         Sprintf(buf, _("This is no free library, %s!  "), cad(FALSE));
         arg1 = rn2(2) ? buf : "";
         arg2 = ESHK(shkp)->debit > 0L ? _(" an additional") : "";
     } else if (otmp->otyp == POT_OIL) {
-        fmt = _("%s%sThat will cost you %ld %s (Yendorian Fuel Tax)."));
+        fmt = _("%s%sThat will cost you %ld %s (Yendorian Fuel Tax).");
     } else if (altusage && (otmp->otyp == BAG_OF_TRICKS
                             || otmp->otyp == HORN_OF_PLENTY)) {
-        fmt = _("%s%sEmptying that will cost you %ld %s."));
+        fmt = _("%s%sEmptying that will cost you %ld %s.");
         if (!rn2(3))
-            arg1 = _("Whoa!  "));
+            arg1 = _("Whoa!  ");
         if (!rn2(3))
-            arg1 = _("Watch it!  "));
+            arg1 = _("Watch it!  ");
     } else {
-        fmt = _("%s%sUsage fee, %ld %s."));
+        fmt = _("%s%sUsage fee, %ld %s.");
         if (!rn2(3))
-            arg1 = _("Hey!  "));
+            arg1 = _("Hey!  ");
         if (!rn2(3))
-            arg2 = _("Ahem.  "));
+            arg2 = _("Ahem.  ");
     }
 
     if (!Deaf && !muteshk(shkp)) {

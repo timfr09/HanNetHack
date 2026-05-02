@@ -862,8 +862,7 @@ extcmd_via_menu(void)
             if (matchlevel > (QBUFSZ - 2)) {
                 free((genericptr_t) pick_list);
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
-                impossible(_("Too many chars (%d) entered in extcmd_via_menu()",
-                           matchlevel);
+                impossible(_("Too many chars (%d) entered in extcmd_via_menu()"),                            matchlevel);
 #endif
                 ret = -1;
             } else {
@@ -955,7 +954,7 @@ enter_explore_mode(void)
     if (discover) {
         You(_("are already in explore mode."));
     } else {
-        const char *oldmode = !wizard ? _("normal game") : _("debug mode"));
+        const char *oldmode = !wizard ? _("normal game") : _("debug mode");
 
         if (!authorize_explore_mode()) {
             if (!wizard) {
@@ -4083,8 +4082,7 @@ getdir(const char *s)
                 /* could plug in bound values for spkeys[NHKF_GETPOS_PICK],&c
                    but that feels like overkill for something which should
                    never happen; just show their default values */
-                impossible(_("getpos successful but not one of [.,;:] (%d)",
-                           pos);
+                impossible(_("getpos successful but not one of [.,;:] (%d)"),                            pos);
                 mod = 0; /* neither CLICK_1 nor CLICK_2 */
                 pos = -1; /* return failure */
                 break;
@@ -4207,7 +4205,7 @@ help_dir(
         Sprintf(buf, _("You can't %s %s."), dothat,
                 /* was "upwards" and "downwards", but they're considered
                    to be variants of canonical "upward" and "downward" */
-                (sym == '<') ? _("upward") : _("downward"));
+                (sym == '<') ? _("upward") : _("downward");
     }
 
     /* if '!cmdassist', display via pline() and we're done (note: asking
@@ -4217,7 +4215,7 @@ help_dir(
             if (!*buf)
                 Sprintf(buf, _("Invalid direction for '%s' prefix."),
                         visctrl(spkey));
-            pline(_("%s", buf);
+            pline(_("%s"), buf);
             return TRUE;
         }
         /* when 'cmdassist' is off and caller doesn't insist, do nothing */
@@ -5572,8 +5570,7 @@ yn_function(
             paniclog("yn debug", dbg_buf);
 /*TEMP*/    /* don't let this known problem kill the fuzzer */
 /*TEMP*/    iflags.debug_fuzzer = fuzzer_impossible_continue;
-            impossible(_("yn_function() returned '%s'; using '%s' instead",
-                       visctrl(res), visctrl(altres));
+            impossible(_("yn_function() returned '%s'; using '%s' instead"),                        visctrl(res), visctrl(altres));
 /*TEMP*/    iflags.debug_fuzzer = fuzzing;
         }
         res = altres;
@@ -5635,7 +5632,7 @@ paranoid_ynq(
                 break;
             }
             /* we don't bother adding "or \"Quit\"" for the accept_q case */
-            promptprefix = _("\"Yes\" or \"No\": "));
+            promptprefix = _("\"Yes\" or \"No\": ");
             /* for empty input, return value c will already be 'n' */
         } while (ParanoidConfirm && strcmpi(ans, "no") && --trylimit);
     } else if (accept_q) {

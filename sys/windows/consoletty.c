@@ -143,6 +143,9 @@ static BOOL CtrlHandler(DWORD);
 static void xputc_core(char);
 #else /* VIRTUAL_TERMINAL_SEQUENCES */
 static void xputc_core(int);
+#ifdef UTF8_FROM_CORE
+static boolean xputc_emit_utf8_sequence(unsigned char, cell_t *);
+#endif
 #endif /* VIRTUAL_TERMINAL_SEQUENCES */
 void cmov(int, int);
 void nocmov(int, int);
@@ -302,6 +305,11 @@ struct keyboard_handling_t {
 };
 
 static DWORD ccount;
+#if defined(VIRTUAL_TERMINAL_SEQUENCES) && defined(UTF8_FROM_CORE)
+/* Assemble UTF-8 text from putchar() byte stream (gettext/NLS or UTF-8 symset). */
+static uint8 xputc_u8acc[MAX_UTF8_SEQUENCE];
+static int xputc_u8cnt;
+#endif
 #if 0
 static DWORD acount;
 #endif
@@ -720,18 +728,31 @@ back_buffer_flip(void)
             if (back->bkcolorseq != front->bkcolorseq)
                 do_anything |= do_bkcolorseq;
 #ifdef UTF8_FROM_CORE
-            if (!SYMHANDLING(H_UTF8)) {
+            /* IBMGraphics symset still receives gettext UTF-8 in utf8str[] */
+#if defined(ENABLE_NLS)
+            if ((back->utf8str[0] || front->utf8str[0])
+                && strcmp((const char *) back->utf8str,
+                          (const char *) front->utf8str) != 0)
+                do_anything |= do_utf8_content;
+            if (console.has_unicode
+                && (back->wcharacter != front->wcharacter))
+                do_anything |= do_wide_content;
+#else
+            if (SYMHANDLING(H_UTF8)) {
+                if ((back->utf8str[0] || front->utf8str[0])
+                    && strcmp((const char *) back->utf8str,
+                              (const char *) front->utf8str) != 0)
+                    do_anything |= do_utf8_content;
+            } else {
                 if (console.has_unicode
                     && (back->wcharacter != front->wcharacter))
                     do_anything |= do_wide_content;
-            } else {
-#endif
-                if (back->utf8str[0] && front->utf8str[0]
-                    && strcmp((const char *) back->utf8str,
-                           (const char *) front->utf8str))
-                    do_anything |= do_utf8_content;
-#ifdef UTF8_FROM_CORE
             }
+#endif
+#else
+            if (console.has_unicode
+                && (back->wcharacter != front->wcharacter))
+                do_anything |= do_wide_content;
 #endif
             if (do_anything) {
                 SetConsoleCursorPosition(console.hConOut, pos);
@@ -782,7 +803,11 @@ back_buffer_flip(void)
                 if (did_anything
                     || (do_anything & (do_wide_content | do_utf8_content))) {
 #ifdef UTF8_FROM_CORE
-                    if (SYMHANDLING(H_UTF8) || !console.has_unicode) {
+                    if (SYMHANDLING(H_UTF8) || !console.has_unicode
+#if defined(ENABLE_NLS)
+                        || back->utf8str[0]
+#endif
+                        ) {
                         WriteConsoleA(console.hConOut, (LPCSTR) back->utf8str,
                                       (int) strlen((char *) back->utf8str),
                                       &unused, NULL);
@@ -986,10 +1011,8 @@ term_start_screen(void)
         tty_number_pad(1); /* make keypad send digits */
 #ifdef VIRTUAL_TERMINAL_SEQUENCES
     ibmgraphics_mode_callback = tty_ibmgraphics_fixup;
-#ifdef ENHANCED_SYMBOLS
 #ifdef UTF8_FROM_CORE
     utf8graphics_mode_callback = tty_utf8graphics_fixup;
-#endif
 #endif
 #endif /* VIRTUAL_TERMINAL_SEQUENCES */
 }
@@ -1221,6 +1244,66 @@ xputs(const char *s)
     }
 }
 
+#if defined(VIRTUAL_TERMINAL_SEQUENCES) && defined(UTF8_FROM_CORE)
+static boolean
+consoletty_wants_utf8_text(void)
+{
+#ifdef ENABLE_NLS
+    return TRUE;
+#else
+    return SYMHANDLING(H_UTF8);
+#endif
+}
+
+/* Assemble one UTF-8 code point from wintty putchar() bytes, then store raw
+ * UTF-8 in the back buffer. The old path passed each byte through cpMap and
+ * produced mojibake in the Windows console. */
+static boolean
+xputc_emit_utf8_sequence(unsigned char uc, cell_t *cell)
+{
+    int need, dispw;
+
+    if (xputc_u8cnt == 0) {
+        if ((uc & 0xC0u) == 0x80u) /* continuation without a lead */
+            return TRUE;           /* ignore */
+        need = utf8_char_len(uc);
+        if (need <= 1)
+            return FALSE; /* legacy IBMgraphics etc. */
+        xputc_u8acc[0] = uc;
+        xputc_u8cnt = 1;
+        if (xputc_u8cnt < need)
+            return TRUE;
+    } else {
+        if ((uc & 0xC0u) != 0x80u)
+            return xputc_emit_utf8_sequence(uc, cell);
+        xputc_u8acc[xputc_u8cnt++] = uc;
+        need = utf8_char_len(xputc_u8acc[0]);
+        if (xputc_u8cnt < need)
+            return TRUE;
+    }
+
+    nhassert(xputc_u8cnt > 0 && xputc_u8cnt < (int) sizeof cell->utf8str);
+    memcpy(cell->utf8str, xputc_u8acc, (size_t) xputc_u8cnt);
+    cell->utf8str[xputc_u8cnt] = '\0';
+
+    dispw = utf8_char_width((const char *) xputc_u8acc);
+
+    cell->colorseq = esc_seq_colors[console.current_nhcolor];
+    cell->bkcolorseq = esc_seq_bkcolors[console.current_nhbkcolor];
+    cell->attr = console.attr;
+    cell->color24 = 0L;
+    cell->color256idx = 0;
+    cell->wcharacter = 0;
+
+    set_console_cursor(ttyDisplay->curx - dispw, ttyDisplay->cury);
+    buffer_write(console.back_buffer, cell, console.cursor);
+    set_console_cursor(ttyDisplay->curx, ttyDisplay->cury);
+
+    xputc_u8cnt = 0;
+    return TRUE;
+}
+#endif /* VIRTUAL_TERMINAL_SEQUENCES && UTF8_FROM_CORE */
+
 /* xputc_core() and g_putch() are the only routines that actually place output.
    same signature as 'putchar()' with potential failure result ignored */
 int
@@ -1272,6 +1355,18 @@ xputc_core(int ch)
         break;
     default:
 #ifdef VIRTUAL_TERMINAL_SEQUENCES
+#ifdef UTF8_FROM_CORE
+        if (consoletty_wants_utf8_text()) {
+            unsigned char uc = (unsigned char) ch;
+
+            if (uc >= 0x80u) {
+                if (xputc_emit_utf8_sequence(uc, &cell))
+                    return;
+            } else {
+                xputc_u8cnt = 0;
+            }
+        }
+#endif
         /* this causes way too much performance degradation */
         /* cell.color24 = customcolors[console.current_nhcolor]; */
         cell.colorseq = esc_seq_colors[console.current_nhcolor];
@@ -2557,6 +2652,13 @@ void nethack_enter_consoletty(void)
     }
     console.code_page = GetConsoleOutputCP();
 #endif /* VIRTUAL_TERMINAL_SEQUENCES */
+
+#ifdef ENABLE_NLS
+    /* Translated strings are UTF-8; WriteConsoleA needs UTF-8 code page. */
+    if (SetConsoleOutputCP(65001))
+        console.code_page = GetConsoleOutputCP();
+    (void) SetConsoleCP(65001);
+#endif
 
     /* check the font before we capture the code page map */
     check_and_set_font();

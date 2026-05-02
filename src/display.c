@@ -532,8 +532,7 @@ display_monster(
     if (mon_mimic && (sightflags == PHYSICALLY_SEEN)) {
         switch (M_AP_TYPE(mon)) {
         default:
-            impossible(_("display_monster:  bad m_ap_type value [ = %d ]",
-                       (int) mon->m_ap_type);
+            impossible(_("display_monster:  bad m_ap_type value [ = %d ]"),                        (int) mon->m_ap_type);
             FALLTHROUGH;
             /*FALLTHRU*/
         case M_AP_NOTHING:
@@ -1990,13 +1989,11 @@ show_glyph(coordxy x, coordxy y, int glyph)
         } else if ((offset = (glyph - GLYPH_MON_MALE_OFF)) >= 0) {
             text = "male monster";
         }
-        impossible(_("show_glyph:  bad pos <%d,%d> with glyph %d [%s %d].",
-                   x, y, glyph, text, offset);
+        impossible(_("show_glyph:  bad pos <%d,%d> with glyph %d [%s %d]."),                    x, y, glyph, text, offset);
         return;
     } else if (glyph < 0 || glyph >= MAX_GLYPH) {
         /* valid location but invalid glyph */
-        impossible(_("show_glyph:  bad glyph %d [max %d] at <%d,%d>.",
-                   glyph, MAX_GLYPH, x, y);
+        impossible(_("show_glyph:  bad glyph %d [max %d] at <%d,%d>."),                    glyph, MAX_GLYPH, x, y);
         return;
     }
 #ifndef UNBUFFERED_GLYPHINFO
@@ -2408,8 +2405,7 @@ back_to_glyph(coordxy x, coordxy y)
             idx = S_room;
             break;
         default:
-            impossible(_("Strange db-under: %d",
-                       ptr->drawbridgemask & DB_UNDER);
+            impossible(_("Strange db-under: %d"),                        ptr->drawbridgemask & DB_UNDER);
             idx = S_room; /* something is better than nothing */
             break;
         }
@@ -2418,7 +2414,7 @@ back_to_glyph(coordxy x, coordxy y)
         idx = (ptr->horizontal) ? S_hodbridge : S_vodbridge;
         break;
     default:
-        impossible(_("back_to_glyph:  unknown level type [ = %d ]", ptr->typ);
+        impossible(_("back_to_glyph:  unknown level type [ = %d ]"), ptr->typ);
         idx = S_room;
         break;
     }
@@ -3588,8 +3584,7 @@ wall_angle(struct rm *lev)
 
             break;
         default:
-            impossible(_("wall_angle: unknown T wall mode %d",
-                       lev->wall_info & WM_MASK);
+            impossible(_("wall_angle: unknown T wall mode %d"),                        lev->wall_info & WM_MASK);
             col = T_stone;
             break;
         }
@@ -3617,8 +3612,7 @@ wall_angle(struct rm *lev)
             idx = seenv & (SV0 | SV1 | SV5 | SV6 | SV7) ? S_vwall : S_stone;
             break;
         default:
-            impossible(_("wall_angle: unknown vwall mode %d",
-                       lev->wall_info & WM_MASK);
+            impossible(_("wall_angle: unknown vwall mode %d"),                        lev->wall_info & WM_MASK);
             idx = S_stone;
             break;
         }
@@ -3637,8 +3631,7 @@ wall_angle(struct rm *lev)
             idx = seenv & (SV0 | SV1 | SV2 | SV3 | SV7) ? S_hwall : S_stone;
             break;
         default:
-            impossible(_("wall_angle: unknown hwall mode %d",
-                       lev->wall_info & WM_MASK);
+            impossible(_("wall_angle: unknown hwall mode %d"),                        lev->wall_info & WM_MASK);
             idx = S_stone;
             break;
         }
@@ -3656,7 +3649,7 @@ wall_angle(struct rm *lev)
         idx = seenv & ~(inner) ? which : S_stone;          \
         break;                                             \
     default:                                               \
-        impossible(_("wall_angle: unknown %s mode %d", name, \
+        impossible(_("wall_angle: unknown %s mode %d"), name, \
                    (lev)->wall_info &WM_MASK);             \
         idx = S_stone;                                     \
         break;                                             \
@@ -3780,7 +3773,7 @@ wall_angle(struct rm *lev)
         break;
 
     default:
-        impossible(_("wall_angle: unexpected wall type %d", lev->typ);
+        impossible(_("wall_angle: unexpected wall type %d"), lev->typ);
         idx = S_stone;
     }
     return idx;

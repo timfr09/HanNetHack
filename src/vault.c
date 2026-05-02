@@ -469,8 +469,7 @@ invault(void)
                 && gy.youmonst.mappearance != GOLD_PIECE)
                 if (!Deaf) {
                     SetVoice(guard, 0, 80, 0);
-                    verbalize(_("Hey!  Who left that %s in here?",
-                              mimic_obj_name(&gy.youmonst));
+                    verbalize(_("Hey!  Who left that %s in here?"),                               mimic_obj_name(&gy.youmonst));
                 }
             /* You're mimicking some object or you're hidden. */
             pline(_("Puzzled, %s turns around and leaves."), mhe(guard));

@@ -1816,7 +1816,7 @@ m_move(struct monst *mtmp, int after)
             mmoved = MMOVE_NOTHING; /* shk follow hero outside shop */
             break;
         default:
-            impossible(_("unknown shk/gd/pri_move return value (%d)", xm);
+            impossible(_("unknown shk/gd/pri_move return value (%d)"), xm);
             FALLTHROUGH;
             /*FALLTHRU*/
         case 0:

@@ -370,7 +370,7 @@ fqname(const char *basenam,
     if (!gf.fqn_prefix[whichprefix])
         return basenam;
     if (buffnum < 0 || buffnum >= FQN_NUMBUF) {
-        impossible(_("Invalid fqn_filename_buffer specified: %d", buffnum);
+        impossible(_("Invalid fqn_filename_buffer specified: %d"), buffnum);
         buffnum = 0;
     }
     bufptr = gf.fqn_prefix[whichprefix];
@@ -380,7 +380,7 @@ fqname(const char *basenam,
         bufptr = translate_path_variables(gf.fqn_prefix[whichprefix], tmpbuf);
 #endif
     if (strlen(bufptr) + strlen(basenam) >= FQN_MAX_FILENAME) {
-        impossible(_("fqname too long: %s + %s", bufptr, basenam);
+        impossible(_("fqname too long: %s + %s"), bufptr, basenam);
         return basenam; /* XXX */
     }
     Strcpy(fqn_filename_buffer[buffnum], bufptr);
@@ -953,7 +953,7 @@ open_bonesfile(d_level *lev, char **bonesid)
     if (nhfp) {
 #if defined(WIN32) && defined(DEBUG)
         if (nhfp->fd >= 0)
-            impossible(_("bones file NHFILE * has odd fd (%d)", nhfp->fd);
+            impossible(_("bones file NHFILE * has odd fd (%d)"), nhfp->fd);
 #endif
         nhfp->structlevel = TRUE;
         nhfp->fieldlevel = FALSE;
@@ -1117,7 +1117,7 @@ set_savefile_name(boolean regularize_it)
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
     if (overflow)
         impossible(_("set_savefile_name() couldn't complete"
-                   " without overflow %d",
+                   " without overflow %d"),
                    overflow);
 #endif
 }
@@ -1866,7 +1866,7 @@ docompress_file(const char *filename, boolean uncomp)
             if (errno == 0) {
                 pline(_("zlib failed to allocate memory"));
             } else {
-                panic(_("Error in docompress_file %d", errno);
+                panic(_("Error in docompress_file %d"), errno);
             }
 #ifdef SFCTOOL
             free(cfn);
@@ -1925,7 +1925,7 @@ docompress_file(const char *filename, boolean uncomp)
             if (errno == 0) {
                 pline(_("zlib failed to allocate memory"));
             } else if (errno != ENOENT) {
-                panic(_("Error in zlib docompress_file %s, %d", filename,
+                panic(_("Error in zlib docompress_file %s, %d"), filename,
                       errno);
             }
 #ifdef SFCTOOL

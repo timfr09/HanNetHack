@@ -225,7 +225,7 @@ losestr(int num, const char *knam, schar k_format)
     boolean waspolyd = Upolyd;
 
     if (num <= 0 || ABASE(A_STR) < ATTRMIN(A_STR)) {
-        impossible(_("losestr: %d - %d", ABASE(A_STR), num);
+        impossible(_("losestr: %d - %d"), ABASE(A_STR), num);
         return;
     }
     dmg = 0;
@@ -305,9 +305,9 @@ poisontell(int typ,         /* which attribute */
      * (dunce cap) is such that we don't need message fixups for them.
      */
     if (typ == A_STR && ACURR(A_STR) == STR19(25))
-        msg_txt = _("innately weaker"));
+        msg_txt = _("innately weaker");
     else if (typ == A_CON && ACURR(A_CON) == 25)
-        msg_txt = _("sick inside"));
+        msg_txt = _("sick inside");
 
     (*func)("%s%c", msg_txt, exclaim ? '!' : '.');
 }
@@ -912,7 +912,7 @@ from_what(
      * Restrict the source of the attributes just to debug mode for now
      */
     if (wizard) {
-        const char *because_of = _(" because of %s"));
+        const char *because_of = _(" because of %s");
 
         if (propidx >= 0) {
             char *p;

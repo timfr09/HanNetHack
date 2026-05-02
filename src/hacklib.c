@@ -888,8 +888,7 @@ nh_snprintf(
 #if 0
 TODO: add set_impossible(), impossible -> func pointer,
  test funcpointer before call
-        impossible(_("snprintf %s: func %s, file line %d",
-                   (n < 0) ? "format error" : "overflow",
+        impossible(_("snprintf %s: func %s, file line %d"),                    (n < 0) ? "format error" : "overflow",
                    func, line);
 #endif
         str[size - 1] = '\0'; /* make sure it is nul terminated */

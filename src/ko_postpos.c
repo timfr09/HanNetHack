@@ -321,61 +321,88 @@ ko_get_postposition(ko_batchim_type batchim, ko_postpos_type pp_type)
 }
 
 /*
- * Parse a postposition pattern from a string
+ * Parse a postposition pattern from a string.
+ *
+ * All currently recognised markers ({은/는} {이/가} {을/를}
+ * {과/와} {으로/로}) fit within a tight byte budget - the longest
+ * is "{으로/로}" at 11 UTF-8 bytes - so we cap the scan at
+ * KO_PP_MAX_BYTES.  This keeps us from walking the whole
+ * remaining message when translated text happens to contain a
+ * standalone '{' (e.g. Lua table debug output echoed back into a
+ * message), and makes mismatched / malformed markers a fast FALSE.
+ *
+ * We also treat '}' before '/' and a nested '{' after '/' as a
+ * non-marker so those shapes degrade to plain text rather than
+ * being absorbed by a partial match.
  */
+#define KO_PP_MAX_BYTES 16
+
 boolean
 ko_parse_postposition_pattern(const char *pattern,
                               ko_postpos_type *pp_type,
                               int *pattern_len)
 {
-    const char *slash_pos;
-    const char *end_pos;
+    const char *slash_pos = NULL;
+    const char *end_pos = NULL;
+    size_t k, first_len, second_len;
     int i;
-    size_t first_len, second_len;
 
-    if (!pattern || *pattern != KO_PP_START) {
+    if (pp_type)
         *pp_type = KO_PP_NONE;
+    if (pattern_len)
         *pattern_len = 0;
+
+    if (!pattern || *pattern != KO_PP_START)
         return FALSE;
-    }
 
-    /* Find '/' separator */
-    slash_pos = strchr(pattern + 1, KO_PP_SEP);
-    if (!slash_pos) {
-        *pp_type = KO_PP_NONE;
-        *pattern_len = 0;
+    /* Locate '/' separator within the size budget.  A stray '}'
+     * or NUL before the '/' means this isn't a marker. */
+    for (k = 1; k < KO_PP_MAX_BYTES; k++) {
+        char c = pattern[k];
+
+        if (c == '\0' || c == KO_PP_END)
+            return FALSE;
+        if (c == KO_PP_SEP) {
+            slash_pos = pattern + k;
+            break;
+        }
+    }
+    if (!slash_pos)
         return FALSE;
-    }
 
-    /* Find '}' end */
-    end_pos = strchr(slash_pos + 1, KO_PP_END);
-    if (!end_pos) {
-        *pp_type = KO_PP_NONE;
-        *pattern_len = 0;
+    /* Locate '}' end within the remaining budget.  A nested '{'
+     * disqualifies the whole thing so "{X/{Y}}" stays literal. */
+    for (k = 1; (slash_pos - pattern) + k < KO_PP_MAX_BYTES; k++) {
+        char c = slash_pos[k];
+
+        if (c == '\0' || c == KO_PP_START)
+            return FALSE;
+        if (c == KO_PP_END) {
+            end_pos = slash_pos + k;
+            break;
+        }
+    }
+    if (!end_pos)
         return FALSE;
-    }
 
-    first_len = slash_pos - (pattern + 1);
-    second_len = end_pos - (slash_pos + 1);
+    first_len = (size_t) (slash_pos - (pattern + 1));
+    second_len = (size_t) (end_pos - (slash_pos + 1));
 
-    /* Match against known patterns */
+    /* Match against known patterns. */
     for (i = 1; i < KO_PP_COUNT; i++) {
         if (!pattern_strings[i][0] || !pattern_strings[i][1])
             continue;
 
-        if (strlen(pattern_strings[i][0]) == first_len &&
-            strlen(pattern_strings[i][1]) == second_len &&
-            strncmp(pattern + 1, pattern_strings[i][0], first_len) == 0 &&
-            strncmp(slash_pos + 1, pattern_strings[i][1], second_len) == 0) {
-            *pp_type = (ko_postpos_type)i;
-            *pattern_len = (int)(end_pos - pattern + 1);
+        if (strlen(pattern_strings[i][0]) == first_len
+            && strlen(pattern_strings[i][1]) == second_len
+            && memcmp(pattern + 1, pattern_strings[i][0], first_len) == 0
+            && memcmp(slash_pos + 1, pattern_strings[i][1], second_len) == 0) {
+            *pp_type = (ko_postpos_type) i;
+            *pattern_len = (int) (end_pos - pattern + 1);
             return TRUE;
         }
     }
 
-    /* No match found */
-    *pp_type = KO_PP_NONE;
-    *pattern_len = 0;
     return FALSE;
 }
 

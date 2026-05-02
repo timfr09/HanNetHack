@@ -8,8 +8,8 @@
 
 ```
 po/
-├── ko_manual.po       # ⭐ 수동 번역 (이 파일을 편집!)
-├── ko.po              # 자동 추출 (편집 금지!)
+├── ko_manual.po       # ⭐ 수동 번역 (유일한 편집 대상, 저장소에 커밋됨)
+├── ko.po              # 로컬 캐시 (update-po가 생성; 저장소에 없음)
 ├── ko_merged.po       # 병합 결과 (자동 생성)
 ├── ko.mo              # 컴파일된 바이너리 (자동 생성)
 ├── nethack.pot        # 원문 템플릿 (자동 생성)
@@ -19,24 +19,20 @@ po/
 
 ## ⚠️ 중요: 번역 파일 정책
 
-### 반드시 `ko_manual.po`를 편집하세요!
+### 편집 대상은 오직 `ko_manual.po`
 
-| 파일 | 역할 | 편집 | 위험성 |
-|------|------|------|--------|
-| `ko_manual.po` | 수동 번역 | ⭐ **O** | 없음 (안전) |
-| `ko.po` | 자동 추출 | ❌ **X** | `update-po` 시 덮어쓰기 가능 |
-| `ko_merged.po` | 병합 결과 | ❌ X | 자동 생성됨 |
+| 파일 | 역할 | 편집 | 저장소 커밋 |
+|------|------|------|-------------|
+| `ko_manual.po` | 한국어 번역의 단일 소스 | ⭐ **O** | **O** |
+| `ko.po` | `update-po`가 POT에서 만드는 로컬 캐시 | ❌ X | X (gitignored) |
+| `ko_merged.po` | 병합 결과 | ❌ X | X (gitignored) |
 
-### 왜 ko.po를 편집하면 안 되나요?
-
-1. `make update-po` 실행 시 소스에서 문자열을 다시 추출
-2. 기존 번역이 보존되지만, 구조가 바뀌면 손실 가능
-3. `ko_manual.po`는 절대 덮어쓰이지 않음!
+`ko.po`는 빌드에 꼭 필요하지 않습니다 — `make compile`은 `ko_manual.po`만으로도 정상 동작합니다. `update-po`를 실행해 로컬에 ko.po가 존재하면, 거기에 들어 있는 자동 추출 엔트리가 `ko_manual.po`가 아직 번역하지 않은 항목의 fallback으로 사용됩니다.
 
 ### 병합 우선순위
 
 ```
-ko_manual.po (우선) + ko.po (보조) → ko_merged.po → ko.mo
+ko_manual.po (우선) + ko.po (선택, 로컬 캐시) → ko_merged.po → ko.mo
 ```
 
 동일한 msgid가 있으면 `ko_manual.po`의 번역이 사용됩니다.

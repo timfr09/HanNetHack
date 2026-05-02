@@ -148,10 +148,11 @@ all:    $(ALLDEP)
 	true; $(MOREALL)
 	@echo "Done."
 
-# Korean message catalog (merge ko_manual.po + ko.po, then compile)
-# po/Makefile produces nethack.mo at dat/locale/ko/nethack.mo, which
-# gets bundled inside nhdat and loaded at runtime by src/mo_reader.c.
-$(LOCALE_KO_MO): po/ko.po po/ko_manual.po
+# Korean message catalog (compile ko_manual.po, optionally merging
+# with the local ko.po cache if it exists).  po/Makefile produces
+# nethack.mo at dat/locale/ko/nethack.mo, which gets bundled inside
+# nhdat and loaded at runtime by src/mo_reader.c.
+$(LOCALE_KO_MO): po/ko_manual.po
 	( cd po && $(MAKE) compile )
 
 $(GAME): lua_support

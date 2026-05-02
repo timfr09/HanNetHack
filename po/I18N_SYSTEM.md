@@ -78,7 +78,8 @@ HanNetHack/
 │   └── obj_descr_i18n.c    # Object description markers
 ├── po/
 │   ├── nethack.pot         # Translation template
-│   ├── ko.po               # Korean translations (source)
+│   ├── ko_manual.po        # Korean translations (canonical, committed)
+│   ├── ko.po               # Local cache rebuilt by update-po (gitignored)
 │   └── messages.mo         # Compiled translations
 ├── dat/locale/
 │   └── ko/                 # Korean locale data

@@ -57,7 +57,8 @@ NetHack 3.7의 한국어 번역 프로젝트입니다. GNU gettext 기반 i18n �
 │   ├── i18n.h                    # _(), N_() 매크로
 │   └── ko_postpos.h              # 조사 처리 헤더
 ├── po/
-│   ├── ko.po                     # 한국어 번역 (편집 대상)
+│   ├── ko_manual.po              # 한국어 번역 (편집 대상, 저장소 커밋)
+│   ├── ko.po                     # 로컬 캐시 (update-po가 생성, gitignored)
 │   ├── nethack.pot               # 번역 템플릿 (자동 생성)
 │   ├── messages.mo               # 컴파일된 번역
 │   ├── Makefile                  # 번역 빌드

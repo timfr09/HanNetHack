@@ -151,21 +151,30 @@ verify: merge
 		fi \
 	done
 
-# Merge auto-extracted and manual entries
-# Creates ko_merged.po from ko.po + ko_manual.po
-# IMPORTANT: ko_manual.po is listed FIRST so manual entries take priority!
-# NOTE: msgcat ignores empty msgstr, so empty translations in ko_manual.po
-#       won't override ko.po translations. For items that need empty strings,
-#       modify ko.po directly or use a special marker.
+# Merge auto-extracted and manual entries into <lang>_merged.po.
+#
+# ko_manual.po is the canonical source of Korean translations and is
+# the only PO file committed to the repository.  ko.po is treated as
+# a local cache: `make update-po` (or `make safe-update`) regenerates
+# it from the POT template so translators can inspect/fill untranslated
+# strings, but it is *not* required for a build.  If ko.po happens to
+# exist locally, its entries fill gaps that ko_manual.po hasn't covered
+# (ko_manual.po always wins when both define the same msgid).
 merge:
 	@for lang in $(LANGUAGES); do \
-		if [ -f $${lang}_manual.po ]; then \
+		if [ -f $${lang}_manual.po ] && [ -f $$lang.po ]; then \
 			echo "Merging $${lang}_manual.po + $$lang.po -> $${lang}_merged.po"; \
 			echo "(Manual entries take priority over auto-extracted)"; \
 			$(MSGCAT) --use-first -o $${lang}_merged.po $${lang}_manual.po $$lang.po; \
-		else \
+		elif [ -f $${lang}_manual.po ]; then \
+			echo "Using $${lang}_manual.po directly -> $${lang}_merged.po"; \
+			cp $${lang}_manual.po $${lang}_merged.po; \
+		elif [ -f $$lang.po ]; then \
 			echo "No manual file found, using $$lang.po directly"; \
 			cp $$lang.po $${lang}_merged.po; \
+		else \
+			echo "ERROR: neither $${lang}_manual.po nor $$lang.po exist" >&2; \
+			exit 1; \
 		fi \
 	done
 
@@ -254,14 +263,15 @@ help:
 	@echo "NetHack Translation Makefile"
 	@echo ""
 	@echo "File Structure:"
-	@echo "  ko.po           - Auto-extracted strings (CAN BE OVERWRITTEN!)"
-	@echo "  ko_manual.po    - Manual entries (SAFE, never overwritten)"
-	@echo "  ko_merged.po    - Combined file (auto-generated)"
+	@echo "  ko_manual.po    - Canonical Korean translations (SAFE, committed)"
+	@echo "  ko.po           - Local cache of auto-extracted POT entries"
+	@echo "                    (NOT committed; regenerate with update-po)"
+	@echo "  ko_merged.po    - Combined file (auto-generated, never edit)"
 	@echo "  lua_strings.pot - Strings from Lua files (auto-generated)"
 	@echo ""
-	@echo "IMPORTANT: Edit ko_manual.po, NOT ko.po!"
-	@echo "  - ko_manual.po entries always take priority"
-	@echo "  - ko.po can be overwritten by update-po"
+	@echo "IMPORTANT: Only edit ko_manual.po."
+	@echo "  - ko.po is a throwaway, rebuilt from nethack.pot"
+	@echo "  - ko_manual.po entries always win the merge"
 	@echo ""
 	@echo "Targets:"
 	@echo "  pot          - Generate POT from C + Lua files (merged)"

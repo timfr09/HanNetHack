@@ -2203,11 +2203,17 @@ MSGCAT_EXE = msgcat
 
 PO = ..\po$(BACKSLASH)
 
-# Merge auto-extracted + hand-curated translations.  ko_manual.po
-# takes priority (matches po/Makefile's `merge` target).
-$(PO)ko_merged.po: $(PO)ko.po $(PO)ko_manual.po
+# Build the merged catalog from ko_manual.po (the canonical Korean
+# translations, committed to the repo) plus ko.po if it exists
+# (update-po's local cache, gitignored).  This mirrors the logic
+# in po/Makefile's `merge` target.
+$(PO)ko_merged.po: $(PO)ko_manual.po
 	@echo Merging Korean translation sources
-	@$(MSGCAT_EXE) --use-first -o $@ $(PO)ko_manual.po $(PO)ko.po
+	@if exist $(PO)ko.po ( \
+		$(MSGCAT_EXE) --use-first -o $@ $(PO)ko_manual.po $(PO)ko.po \
+	) else ( \
+		copy /y $(PO)ko_manual.po $@ >nul \
+	)
 
 $(PO)ko.mo: $(PO)ko_merged.po
 	@echo Compiling $(@:\=/)

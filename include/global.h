@@ -185,7 +185,7 @@ typedef uchar nhsym;
 #ifdef AMIGA
 #define PORT_ID "Amiga"
 #endif
-#ifdef MAC
+#ifdef MACOS9
 #define PORT_ID "Mac"
 #endif
 #ifdef __APPLE__

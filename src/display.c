@@ -1505,6 +1505,8 @@ see_monsters(void)
     for (mon = fmon; mon; mon = mon->nmon) {
         if (DEADMONSTER(mon))
             continue;
+        if ((mon->mstate & MON_STILL_ARRIVING) != 0)
+            continue;
         newsym(mon->mx, mon->my);
         if (mon->wormno)
             see_wsegs(mon);

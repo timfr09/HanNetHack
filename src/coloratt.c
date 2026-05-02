@@ -77,7 +77,7 @@ const struct nethack_color colortable[] = {
     { NOC,    8,   0, "nocolor", 0x00, 0x00, 0x00 },    /*         NO_COLOR */
     { NHC,    9,   0, "orange", 0xFF, 0xA5, 0x00 },     /*       CLR_ORANGE */
     { NHC,   10,   0, "bright-green",
-	              0x00, 0x80, 0x00 },               /* CLR_BRIGHT_GREEN */
+                      0x00, 0x80, 0x00 },               /* CLR_BRIGHT_GREEN */
     { NHC,   11,   0, "yellow", 0xFF, 0xFF, 0x00 },     /*       CLR_YELLOW */
     { NHC,   12,   0, "bright-blue", 0xAD, 0xD8, 0xE6 }, /* CLR_BRIGHT_BLUE */
     { NHC,   13,   0, "bright-magenta",

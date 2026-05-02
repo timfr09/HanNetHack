@@ -21,6 +21,7 @@
  *		set "Prefix File" to include/mac-carbon.h
  */
 
+#define MACOS9
 #define MAC
 #undef UNIX
 

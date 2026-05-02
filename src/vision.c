@@ -822,7 +822,18 @@ vision_recalc(int control)
                 if ((old_row[col] & IN_SIGHT)
                     || ((next_row[col] & COULD_SEE)
                         ^ (old_row[col] & COULD_SEE)))
+                {
+                    /*
+                     * TEMPORARY?  Sometimes we get here with col==0 and
+                     * newsym()'s impossible() for !isok() is being
+                     * triggered, so avoid calling it for <0,y>; other bad
+                     * coordinates will produce a panic() as they should.
+                     */
+                    if (col != 0)
+                    /*
+                     */
                     newsym(col, row);
+                }
             }
 
         } /* end for col . . */

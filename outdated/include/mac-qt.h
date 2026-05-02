@@ -22,6 +22,7 @@
  */
 
 #undef MAC
+#undef MACOS9
 #define UNIX
 #define BSD
 

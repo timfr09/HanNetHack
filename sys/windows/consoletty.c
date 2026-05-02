@@ -3120,17 +3120,17 @@ default_checkinput(
         if (dwWait == WAIT_FAILED)
             return '\033';
 #endif
-#ifdef INSURANCE
         if (iflags.idlecheckpoint
             && dwWait == WAIT_TIMEOUT && !done_a_checkpoint) {
             /* no input for 30 seconds, so let's take
              * advantage and do a game checkpoint,
              * then resume the wait.
              */
+#ifdef INSURANCE
             save_currentstate();
+#endif  /* INSURANCE */
             done_a_checkpoint = TRUE;
         } else
-#endif  /* INSURANCE */
         {
             ReadConsoleInput(hConIn, ir, 1, count);
             if (mode == 0) {

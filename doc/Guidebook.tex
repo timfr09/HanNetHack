@@ -25,7 +25,7 @@
 \author{Original version - Eric S. Raymond\\
 (Edited and expanded for 3.7.0 by Mike Stephenson and others)}
 %DO NOT REMOVE NH_DATESUB \date{Date(%B %-d, %Y)}
-\date{April 16, 2026}
+\date{May 1, 2026}
 
 \maketitle
 
@@ -97,7 +97,8 @@ will vary with your background and training:
 \item[Archeologists]
 understand dungeons pretty well; this enables them
 to move quickly and sneak up on the local nasties.  They start equipped
-with the tools for a proper scientific expedition.
+with the tools for a proper scientific expedition, and are able to read
+ancient languages.
 %.pg
 %
 \item[Barbarians]
@@ -1066,10 +1067,20 @@ choices but will accept an item of armor and attempt to take it off.)
 Teleport, if you have the ability.
 %.lp
 \item[v]
-Display version number.
+Display a list of significant events in the current game, also shown by
+\texttt{\#chronicle}.
+\\
+%.lp ""
+`\texttt{v}' used to display the game's version number.
+Use `\texttt{V}' for that now.
+
 %.lp
 \item[V]
-Display the game history.
+Display version number.
+\\
+%.lp ""
+`\texttt{V}' used to display a summary of the game's history.
+Still available via \texttt{\#history}.
 %.lp
 \item[w]
 Wield weapon.\\
@@ -1429,7 +1440,7 @@ option is On, clicking on the hero (or steed when mounted) will
 execute this command.
 %.lp
 \item[\#history]
-Show long version and game history.
+Show a summary of the game's development.
 %.lp
 \item[\#inventory]
 Show your inventory. Default key is `\texttt{i}'.
@@ -5069,6 +5080,16 @@ name (on single-user systems) or it might be disabled entirely.  Requesting
 it when not allowed or not possible results in explore mode instead.
 Default is normal play.
 %.lp
+\item[price\textunderscore quotes]
+Whenever the game mentions the name of an object you haven't identified yet,
+it also mentions the range of buy and sell prices you have seen for that
+item (to help narrow down what it could be).
+The price shown is the unit price for one item (even when you are looking at
+a stack of multiple items).
+Many players may want to turn this on while identifying objects, and then
+turn it back off again for general play.
+Default is off.
+%.lp
 \item[pushweapon]
 Using the `\texttt{w}' (wield) command when already wielding
 something pushes the old item into your alternate weapon slot (default off).
@@ -5096,8 +5117,19 @@ for a description of how to use negation to exclude choices.
 \\
 If \texttt{race} is not specified, there is no default value;
 player will be prompted unless role forces a choice for race.
-unless role forces a choice for race.
 Cannot be set with the `\texttt{O}' command.  Persistent.
+%.lp
+\item[reroll]
+Allows rerolling your character's starting inventory and attributes (default
+false).  Persistent.
+%.lp ""
+\\
+Note that rerolling your character is not a recommended way to play if aiming
+merely to win (a lucky start has a much smaller influence on whether or not
+you win the game than your actions later in the game).  This option exists
+partly as an acknowledgement that some players will insist on doing so anyway,
+and partly because rerolling may be necessary for certain types of challenge
+games.
 %.lp
 \item[rest\textunderscore on\textunderscore space]
 Make the space bar a synonym for the `\texttt{.}' (\#wait) command (default off).
@@ -5212,6 +5244,11 @@ option is recommended so that there will be more room available for
 status information, unless you're using NetHack's \textit{Qt} interface
 or your terminal emulator window displays fewer than 25 lines.
 Persistent.
+\\
+%.lp ""
+The \textit{versinfo}
+option provides limited control over what information
+\textit{showvers} displays.
 %.lp
 \item[silent]
 Suppress terminal beeps (default on).  Persistent.
@@ -5375,6 +5412,9 @@ Setting this option on or off in the config file will skip the query.
 %.lp
 \item[verbose]
 Provide more commentary during the game (default on).  Persistent.
+%.lp
+\item[versinfo]
+Controls what the \textit{showvers} option displays on the status lines.
 %.lp
 \item[weaponstatus]
 Display an extra status condition which describes currently wielded weapon
@@ -7533,48 +7573,49 @@ of these miscreants in this, the list of Dungeoneers:
 \begin{center}
 \begin{tabular}{llll}
 %TABLE_START
-Adam Aronow & J. Ali Harlow & Mikko Juola\\
-Alex Kompel & Janet Walz & Nathan Eady\\
-Alex Smith & Janne Salmij\"{a}rvi & Norm Meluch\\
-Andreas Dorn & Jean-Christophe Collet & Olaf Seibert\\
-Andy Church & Jeff Bailey & Pasi Kallinen\\
-Andy Swanson & Jochen Erwied & Pat Rankin\\
-Andy Thomson & John Kallen & Patric Mueller\\
-Ari Huttunen & John Rupley & Paul Winner\\
-Bart House & John S. Bien & Pierre Martineau\\
-Benson I. Margulies & Johnny Lee & Ralf Brown\\
-Bill Dyer & Jon W\textbraceleft tte & Ray Chason\\
-Boudewijn Waijers & Jonathan Handler & Richard Addison\\
-Bruce Cox & Joshua Delahunty & Richard Beigel\\
-Bruce Holloway & Karl Garrison & Richard P. Hughey\\
-Bruce Mewborne & Keizo Yamamoto & Rob Menke\\
-Carl Schelin & Keith Simpson & Robin Bandy\\
-Chris Russo & Ken Arnold & Robin Johnson\\
-David Cohrs & Ken Arromdee & Roderick Schertler\\
-David Damerell & Ken Lorber & Roland McGrath\\
-David Gentzel & Ken Washikita & Ron Van Iwaarden\\
-David Hairston & Kevin Darcy & Ronnen Miller\\
-Dean Luick & Kevin Hugo & Ross Brown\\
-Del Lamb & Kevin Sitze & Sascha Wostmann\\
-Derek S. Ray & Kevin Smolkowski & Scott Bigham\\
-Deron Meranda & Kevin Sweet & Scott R. Turner\\
-Dion Nicolaas & Lars Huttar & Sean Hunt\\
-Dylan O'Donnell & Leon Arnott & Stephen Spackman\\
-Eric Backus & M. Drew Streib & Stefan Thielscher\\
-Eric Hendrickson & Malcolm Ryan & Stephen White\\
-Eric R. Smith & Mark Gooderum & Steve Creps\\
-Eric S. Raymond & Mark Modrall & Steve Linhart\\
-Erik Andersen & Marvin Bressler & Steve VanDevender\\
-Fredrik Ljungdahl & Matthew Day & Teemu Suikki\\
-Frederick Roeber & Merlyn LeRoy & Tim Lennan\\
-Gil Neiger & Michael Allison & Timo Hakulinen\\
-Greg Laskin & Michael Feir & Tom Almy\\
-Greg Olson & Michael Hamel & Tom West\\
-Gregg Wonderly & Michael Sokolov & Warren Cheung\\
-Hao-yang Wang & Mike Engber & Warwick Allison\\
-Helge Hafting & Mike Gallop & Yitzhak Sapir\\
-Irina Rempt-Drijfhout & Mike Passaretti\\
-Izchak Miller & Mike Stephenson
+Adam Aronow & Irina Rempt-Drijfhout & Mike Gallop\\
+Alex Kompel & Izchak Miller & Mike Passaretti\\
+Alex Smith & J. Ali Harlow & Mike Stephenson\\
+Andreas Dorn & Janet Walz & Mikko Juola\\
+Andy Church & Janne Salmij\"{a}rvi & Nathan Eady\\
+Andy Swanson & Jean-Christophe Collet & Norm Meluch\\
+Andy Thomson & Jeff Bailey & Olaf Seibert\\
+Ari Huttunen & Jochen Erwied & Pasi Kallinen\\
+Bart House & John Kallen & Pat Rankin\\
+Benson I. Margulies & John Rupley & Patric Mueller\\
+Bill Dyer & John S. Bien & Paul Winner\\
+Boudewijn Waijers & Johnny Lee & Pierre Martineau\\
+Bruce Cox & Jon W\{tte & Ralf Brown\\
+Bruce Holloway & Jonathan Handler & Ray Chason\\
+Bruce Mewborne & Joshua Delahunty & Richard Addison\\
+Cameron Root & Karl Garrison & Richard Beigel\\
+Carl Schelin & Keizo Yamamoto & Richard P. Hughey\\
+Chris Russo & Keith Simpson & Rob Menke\\
+David Cohrs & Ken Arnold & Robin Bandy\\
+David Damerell & Ken Arromdee & Robin Johnson\\
+David Gentzel & Ken Lorber & Roderick Schertler\\
+David Hairston & Ken Washikita & Roland McGrath\\
+Dean Luick & Kestrel Gregorich-Trevor & Ron Van Iwaarden\\
+Del Lamb & Kevin Darcy & Ronnen Miller\\
+Derek S. Ray & Kevin Hugo & Ross Brown\\
+Deron Meranda & Kevin Sitze & Sascha Wostmann\\
+Dion Nicolaas & Kevin Smolkowski & Scott Bigham\\
+Dylan O'Donnell & Kevin Sweet & Scott R. Turner\\
+Eric Backus & Lars Huttar & Sean Hunt\\
+Eric Hendrickson & Leon Arnott & Stephen Spackman\\
+Eric R. Smith & M. Drew Streib & Stefan Thielscher\\
+Eric S. Raymond & Malcolm Ryan & Stephen White\\
+Erik Andersen & Mark Gooderum & Steve Creps\\
+Fredrik Ljungdahl & Mark Modrall & Steve Linhart\\
+Frederick Roeber & Marvin Bressler & Steve VanDevender\\
+G. Branden Robinson & Matthew Day & Teemu Suikki\\
+Gil Neiger & Merlyn LeRoy & Tim Lennan\\
+Greg Laskin & Michael Allison & Timo Hakulinen\\
+Greg Olson & Michael Feir & Tom Almy\\
+Gregg Wonderly & Michael Hamel & Tom West\\
+Hao-yang Wang & Michael Meyer & Warren Cheung\\
+Helge Hafting & Michael Sokolov & Warwick Allison\\
+Ingo Paschke & Mike Engber & Yitzhak Sapir
 %TABLE_END  Do not delete this line.
 \end{tabular}
 \end{center}

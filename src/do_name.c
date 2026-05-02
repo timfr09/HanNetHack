@@ -1525,7 +1525,8 @@ static NEARDATA const char *const hliquids[] = {
     N_("mineral water"),
     N_("cough syrup"), N_("quicksilver"), N_("sweet vitriol"),
     N_("grey goo"), N_("pink slime"),
-    N_("cosmic latte"),
+    N_("cosmic latte"), N_("bone oil"), N_("custard"), N_("lard"),
+    N_("vinegar"), N_("creosote"),
     /* "new coke (tm)", --better not */
 };
 

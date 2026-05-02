@@ -2141,9 +2141,10 @@ rloco(struct obj *obj)
                                            svd.dndest.nhx, svd.dndest.nhy)));
 
     if (flooreffects(obj, tx, ty, _("fall"))) {
-        /* update old location since flooreffects() couldn't;
+        /* update old location (if any) since flooreffects() couldn't;
            unblock_point() for boulder handled by obj_extract_self() */
-        newsym(otx, oty);
+        if (!(otx == 0 && oty == 0))
+            newsym(otx, oty);
         return FALSE;
     } else if (otx == 0 && oty == 0) {
         ; /* fell through a trap door; no update of old loc needed */

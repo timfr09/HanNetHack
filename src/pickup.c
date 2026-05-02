@@ -1899,27 +1899,17 @@ struct obj *
 pick_obj(struct obj *otmp)
 {
     struct obj *result;
-    int ox, oy;
-    boolean robshop = FALSE;
+    coordxy ox, oy;
+    boolean robshop, fromfloor = otmp->where == OBJ_FLOOR;
 
-    if (otmp->ox == 0 && otmp->oy == 0) {
-        if (u.uswallow && u.ustuck && otmp->where == OBJ_MINVENT
-            && otmp->ocarry == u.ustuck) {
-            otmp->ox = u.ustuck->mx;
-            otmp->oy = u.ustuck->my;
-        } else {
-            /* this will be a problem for newsym below */
-            impossible("otmp has no location coordinates <%d, %d> where=%d.",
-                       otmp->ox, otmp->oy, otmp->where);
-        }
-    }
+    /* otmp is either on the floor or in an engulfer's inventory; for the
+       latter, its <ox,oy> probably won't be set */
+    (void) get_obj_location(otmp, &ox, &oy, 0);
 
-    ox = otmp->ox;
-    oy = otmp->oy;
     robshop = (!u.uswallow && otmp != uball && costly_spot(ox, oy));
-
     obj_extract_self(otmp);
-    newsym(ox, oy);
+    if (fromfloor)
+        newsym(ox, oy);
 
     /* for shop items, addinv() needs to be after addtobill() (so that
        object merger can take otmp->unpaid into account) but before

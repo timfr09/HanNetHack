@@ -216,11 +216,19 @@ LFLAGS += -framework AVFoundation
 endif
 
 ifdef MAKEFILE_SRC
+ifndef NO_NHUUID
+# macOS doesn't need any extra prerequisite libraries
+# so do this unconditionally, unless NO_NHUUID=1 is
+# passed on the Make command line.
+WANT_NHUUID=1
+endif  #NO_NHUUID
+
 ifdef WANT_NHUUID
 CFLAGS += -DNHUUID
 UUIDOBJ = macuuid.o
+LFLAGS += -framework Foundation
 endif
-endif
+endif  #MAKEFILE_SRC
 
 #
 #-INCLUDE multisnd1-pre.370

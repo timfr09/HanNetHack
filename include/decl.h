@@ -1175,7 +1175,7 @@ struct instance_globals_saved_n {
     /* dungeon.c */
     int n_dgns; /* number of dungeons (also used in mklev.c and do.c) */
     /* files.c */
-    char nhuuid[37];
+    char nhuuid[NHUUIDSZ];
     /* mkroom.c */
     int nroom;
     /* region.c */

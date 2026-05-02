@@ -659,19 +659,19 @@ getbones(void)
         return 0;
     }
 
-    restoreinfo.mread_flags = 1; /* return despite error for a bones file */
+    program_state.reading_bonesfile = 1;
     if (validate(nhfp, gb.bones, FALSE) != SF_UPTODATE) {
         if (!wizard)
             pline(_("Discarding unusable bones; no need to panic..."));
         ok = FALSE;
-        restoreinfo.mread_flags = 0;
+        program_state.reading_bonesfile = 0;
     } else {
         ok = TRUE;
         if (wizard) {
             if (y_n("Get bones?") == 'n') {
                 close_nhfile(nhfp);
                 compress_bonesfile();
-                restoreinfo.mread_flags = 0;
+                program_state.reading_bonesfile = 0;
                 return 0;
             }
         }
@@ -687,7 +687,7 @@ getbones(void)
                 close_nhfile(nhfp);
                 compress_bonesfile();
                 /* ToDo: maybe unlink these problematic bones? */
-                restoreinfo.mread_flags = 0;
+                program_state.reading_bonesfile = 0;
                 return 0;
             }
         if (strcmp(bonesid, oldbonesid) != 0) {
@@ -699,7 +699,7 @@ getbones(void)
                 pline1(errbuf);
                 ok = FALSE; /* won't die of trickery */
             }
-            restoreinfo.mread_flags = 0;
+            program_state.reading_bonesfile = 0;
             trickery(errbuf);
         } else {
             struct monst *mtmp;
@@ -731,8 +731,8 @@ getbones(void)
             fix_shop_damage();
         }
     }
-    restoreinfo.mread_flags = 0;
     close_nhfile(nhfp);
+    program_state.reading_bonesfile = 0;
     sanitize_engravings();
     u.uroleplay.numbones++;
 

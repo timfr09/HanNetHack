@@ -2722,9 +2722,6 @@ trapeffect_rolling_boulder_trap(
                     trap->tseen = TRUE;
                 if (DEADMONSTER(mtmp))
                     trapkilled = TRUE;
-            } else {
-                deltrap(trap);
-                newsym(mtmp->mx, mtmp->my);
             }
             return trapkilled ? Trap_Killed_Mon : mtmp->mtrapped
                 ? Trap_Caught_Mon : Trap_Effect_Finished;
@@ -7152,6 +7149,11 @@ trapname(
         N_("never-ending elevator"), N_("slime pit"), N_("warp zone"),
         N_("illusory floor"), N_("pile of poo"), N_("honey trap"),
         N_("tourist trap"),
+        N_("banana peel"), N_("garden rake"), N_("whoopie cushion"),
+        N_("box and stick trap"),
+        N_("fly trap"), N_("legal trap"), N_("pit of snakes"),
+        N_("pollywog trap"),
+        N_("slippery slope"), N_("thirst trap"), N_("suntrap"),
     };
     static char roletrap[33]; /* [17 + 5 + 1] should suffice */
 

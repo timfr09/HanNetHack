@@ -1690,7 +1690,7 @@ nh_terminate(int status)
     program_state.in_moveloop = 0; /* won't be returning to normal play */
 
     l_nhcore_call(NHCORE_GAME_EXIT);
-#ifdef MAC
+#ifdef MACOS9
     getreturn("to exit");
 #endif
     /* don't bother to try to release memory if we're in panic mode, to

@@ -105,7 +105,7 @@ des.door({ coord = { 5,10 }, state = "locked" });
 tut_key_help(6, 8);
 
 
-des.engraving({ coord = { 5,12 }, type = "engrave", text = "'" .. tut_key("glance") .. "'로 지도를 둘러보세요. 끝내려면 ESC", degrade = false });
+des.engraving({ coord = { 5,12 }, type = "engrave", text = "'" .. tut_key("glance") .. "'로 지도를 둘러보세요. 끝내려면 ESC를 누르세요", degrade = false });
 
 --
 
@@ -148,7 +148,7 @@ des.engraving({ coord = { 19,15 }, type = "engrave", text = "'" .. tut_key("wear
 
 des.object({ id = "dagger", spe = 0, buc = "not-cursed", coord = { 21,15} });
 
-des.engraving({ coord = { 21,14 }, type = "engrave", text = "'" .. tut_key("wield") .. "'로 무기를 드세요", degrade = false });
+des.engraving({ coord = { 21,14 }, type = "engrave", text = "'" .. tut_key("wield") .. "'로 무기를 장착하세요", degrade = false });
 
 
 des.engraving({ coord = { 22,13 }, type = "engrave", text = "몬스터에게 다가가면 자동으로 공격합니다", degrade = false });
@@ -179,7 +179,7 @@ des.engraving({ coord = { 23,11 }, type = "engrave", text = "두루마리를 주
 
 --
 
-des.engraving({ coord = { 19,10 }, type = "engrave", text = "또 다른 마법 포털입니다. 튜토리얼을 나갈 수 있습니다", degrade = false });
+des.engraving({ coord = { 19,10 }, type = "engrave", text = "또 다른 마법 포털입니다. 여기로도 튜토리얼을 나갈 수 있습니다", degrade = false });
 des.trap({ type = "magic portal", coord = { 19,11 }, seen = true });
 
 --
@@ -216,7 +216,7 @@ des.object({ coord = { 37,3 }, id = "sling", buc = "not-cursed", spe = 9 });
 des.engraving({ coord = { 37,3 }, type = "engrave", text = "새총을 장착하세요", degrade = false });
 des.engraving({ coord = { 36,1 }, type = "engrave", text = "'" .. tut_key("fire") .. "'로 장착한 발사기에서 발사하세요", degrade = false });
 
-des.engraving({ coord = { 35,4 }, type = "engrave", text = "쏠 탄은 화살통에 둡니다. '" .. tut_key("quiver") .. "'로 넣으세요", degrade = false });
+des.engraving({ coord = { 35,4 }, type = "engrave", text = "발사할 탄은 화살통에 둡니다. '" .. tut_key("quiver") .. "'로 넣으세요", degrade = false });
 
 des.engraving({ coord = { 33,4 }, type = "engrave", text = "'" .. tut_key("wait") .. "'로 한 턴 대기하세요", degrade = false });
 

@@ -12074,16 +12074,16 @@ msgstr "(미지불 물건이 %s %d개 더 %s%s.)"
 
 #: ../src/hack.c:1872
 msgid "(Tip: perhaps #untrap would help?)"
-msgstr "(팁: #untrap이 도움이 될 수 있다?)"
+msgstr "(알림: 함정을 풀려면 #untrap을 써 보는 건 어떨까?)"
 
 #: ../src/hack.c:1868
 #, c-format
 msgid "(Tip: use '%s' prefix to step in if you really want to.)"
-msgstr "(팁: 정말 들어가려면 '%s' 접두어를 사용하라.)"
+msgstr "(알림: 정말 들어가려면 이동 키 앞에 '%s'를 붙여 한 칸씩 들어갈 수 있다.)"
 
 #: ../src/hack.c:1865
 msgid "(Tip: use the #enhance command to advance them.)"
-msgstr "(팁: #enhance 명령으로 향상시킬 수 있다.)"
+msgstr "(알림: 숙련도를 올리려면 #enhance 명령을 사용한다.)"
 
 #: ../src/invent.c:3248
 msgid "(all items are permanently identified already)"

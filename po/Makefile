@@ -50,7 +50,8 @@ XGETTEXT_OPTS = --keyword=_ --keyword=N_ \
                 --msgid-bugs-address=hannethack@example.com \
                 --copyright-holder="HanNetHack Project"
 
-.PHONY: all pot pot-lua update-po compile clean stats help merge migrate verify
+.PHONY: all pot pot-lua update-po compile clean stats help merge migrate verify \
+        translation-ci
 
 all: compile
 
@@ -223,6 +224,19 @@ stats: merge
 		fi \
 	done
 
+# PR/CI: validate canonical manual PO, then merged file, print stats
+translation-ci:
+	@echo "=== translation-ci ==="
+	@test -f ko_manual.po || (echo "ko_manual.po missing" >&2; exit 1)
+	@echo "msgfmt --check on ko_manual.po"
+	@$(MSGFMT) -c -o /dev/null ko_manual.po
+	@$(MAKE) merge
+	@echo "msgfmt --check on ko_merged.po"
+	@$(MSGFMT) -c -o /dev/null ko_merged.po
+	@echo ""
+	@$(MSGFMT) --statistics ko_merged.po 2>&1 || true
+	@echo "translation-ci: OK"
+
 # Check for common translation issues
 check: merge
 	@echo "=== Checking translations ==="
@@ -288,6 +302,7 @@ help:
 	@echo "  compile      - Compile merged PO to MO file"
 	@echo "  stats        - Show translation statistics"
 	@echo "  check        - Check for translation errors"
+	@echo "  translation-ci - msgfmt -c on manual+merged; stats (for PR/CI)"
 	@echo "  untranslated - List untranslated strings"
 	@echo "  fuzzy        - List fuzzy translations"
 	@echo "  migrate      - Auto-migrate ALL translations to ko_manual.po"

@@ -53,7 +53,7 @@ if not "%NH_T%"=="%NHW_T%" (
     echo WARNING: NetHack.exe and NetHackW.exe have different modification times in %SRCDIR%
     echo          This usually means only one project was rebuilt. For matching builds:
     echo          Visual Studio -^> Build -^> Rebuild Solution, or:
-    echo          PowerShell: .\Build-HanNetHack.ps1 -Target Rebuild
+    echo          PowerShell: .\sys\windows\Build-HanNetHack.ps1 -Target Rebuild
     echo.
 )
 copy /y "%SRCDIR%\NetHack.exe" "%DSTDIR%\"

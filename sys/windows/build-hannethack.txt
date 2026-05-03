@@ -78,6 +78,11 @@ Open "Developer Command Prompt for VS 2022" and run:
     cd <HanNetHack source directory>
     msbuild sys\windows\vs\NetHack.sln /p:Configuration=Release /p:Platform=x64 /m
 
+Or use the PowerShell helper (optional fetch, optional po compile, MSBuild,
+then sys\windows\install.cmd by default):
+
+    pwsh -File sys\windows\Build-HanNetHack.ps1
+
 If you see errors about platform toolset (v145), add:
     /p:PlatformToolset=v143
 

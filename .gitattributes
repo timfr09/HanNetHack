@@ -5,6 +5,7 @@
 Porting NHSUBST
 README NHSUBST
 * text=auto
+sys/unix/hints/** text eol=lf
 *.hqx -text
 *.sln -text
 *.vcxproj -text

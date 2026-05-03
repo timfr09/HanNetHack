@@ -40,6 +40,26 @@ wcwidth(wchar_t wc)
         return 2;
     return 1;
 }
+#elif defined(__MINGW32__)
+#include <unistd.h>
+/*
+ * MinGW: <wchar.h> does not declare wcwidth(); match MSVC minimal logic.
+ */
+static int
+wcwidth(wchar_t wc)
+{
+    if (wc == 0)
+        return 0;
+    if (wc < 0x20 || (wc >= 0x7f && wc < 0xa0))
+        return -1;
+    if ((wc >= 0x1100 && wc <= 0x115f) || wc == 0x2329 || wc == 0x232a
+        || (wc >= 0x2e80 && wc <= 0xa4cf && wc != 0x303f)
+        || (wc >= 0xac00 && wc <= 0xd7a3) || (wc >= 0xf900 && wc <= 0xfaff)
+        || (wc >= 0xfe10 && wc <= 0xfe19) || (wc >= 0xfe30 && wc <= 0xfe6f)
+        || (wc >= 0xff00 && wc <= 0xff60) || (wc >= 0xffe0 && wc <= 0xffe6))
+        return 2;
+    return 1;
+}
 #else
 #include <unistd.h>
 #endif

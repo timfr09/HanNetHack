@@ -55171,22 +55171,22 @@ msgstr "알 수 없는 armor category (%s => %u)"
 #: ../src/mhitu.c:1652
 #, c-format
 msgid "unknown exploder damage type %d"
-msgstr "알 수 없는 exploder damage type %d"
+msgstr "unknown exploder damage type %d"
 
 #: ../src/were.c:109
 #, c-format
 msgid "unknown lycanthrope %s."
-msgstr "알 수 없는 lycanthrope %s."
+msgstr "unknown lycanthrope %s."
 
 #: ../src/dungeon.c:3430
 #, c-format
 msgid "unknown plane #%d"
-msgstr "알 수 없는 차원 #%d"
+msgstr "unknown plane #%d"
 
 #: ../src/monmove.c:1819
 #, c-format
 msgid "unknown shk/gd/pri_move return value (%d)"
-msgstr "알 수 없는 shk/gd/pri_move return value (%d)"
+msgstr "unknown shk/gd/pri_move return value (%d)"
 
 # insight.c:3252 - 크기 오류
 #: ../src/insight.c:3298

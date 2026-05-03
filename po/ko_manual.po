@@ -59676,3 +59676,31 @@ msgstr "낑낑거린다"
 
 msgid "yumi"
 msgstr "유미"
+
+#: ../win/tty/wintty.c:1740
+msgid "Search for:"
+msgstr "검색:"
+
+#: ../sys/share/pcsys.c:150
+#, c-format
+msgid "Hit <Return> %s."
+msgstr "<Return>을 눌러 %s."
+
+#: ../sys/share/pcsys.c:155
+#, c-format
+msgid "Hit <Enter> %s."
+msgstr "<Enter>를 눌러 %s."
+
+#: ../sys/vms/vmsunix.c:524
+#, c-format
+msgid "  Spawn failed.  (%%x%08lX) "
+msgstr "  Spawn 실패.  (%%x%08lX) "
+
+#: ../sys/vms/vmsunix.c:544
+msgid "  No parent process.  Use '!' to Spawn, 'S' to Save, or '#quit' to Quit. "
+msgstr "  부모 프로세스가 없다. '!'로 Spawn, 'S'로 저장, 또는 '#quit'으로 종료하라. "
+
+#: ../sys/vms/vmsunix.c:559
+#, c-format
+msgid "  Unable to attach to parent.  (%%x%08lX) "
+msgstr "  부모에 붙을 수 없다.  (%%x%08lX) "

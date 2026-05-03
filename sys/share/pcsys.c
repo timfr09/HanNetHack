@@ -147,12 +147,12 @@ void
 getreturn(const char *str)
 {
 #ifdef TOS
-    msmsg("Hit <Return> %s.", str);
+    msmsg(_("Hit <Return> %s."), str);
 #else
 #ifdef CROSS_TO_AMIGA
     (void) printf("Hit <Enter> %s.", str);
 #else
-    msmsg("Hit <Enter> %s.", str);
+    msmsg(_("Hit <Enter> %s."), str);
 #endif
 #endif
     while (pgetchar() != '\n')

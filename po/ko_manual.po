@@ -57963,9 +57963,10 @@ msgstr "{영웅 이름}"
 #~ msgstr ", 불행히도"
 
 # Object names extracted from include/objects.h
+# 가짜 라틴 스크롤 표기(대문자)는 게임 내 표기와 맞추기 위해 msgstr=msgid(알파벳 유지)
 # 
 #~ msgid "ANDOVA BEGARIN"
-#~ msgstr "안도바 베가린"
+#~ msgstr "ANDOVA BEGARIN"
 
 #~ msgid "An "
 #~ msgstr " "
@@ -58002,22 +58003,22 @@ msgstr "{영웅 이름}"
 #~ msgstr "이전 게임을 복구하지 못했습니다."
 
 #~ msgid "DAIYEN FOOELS"
-#~ msgstr "다이엔 풀스"
+#~ msgstr "DAIYEN FOOELS"
 
 #~ msgid "DUAM XNAHT"
-#~ msgstr "두암 크나트"
+#~ msgstr "DUAM XNAHT"
 
 #~ msgid "DYWYPI?"
-#~ msgstr "정말 죽기 직전의 소지품을 볼까요?"
+#~ msgstr "DYWYPI?"
 
 #~ msgid "Death's door"
 #~ msgstr "당신은 죽음의 문턱에 있다."
 
 #~ msgid "ELAM EBOW"
-#~ msgstr "엘람 에보우"
+#~ msgstr "ELAM EBOW"
 
 #~ msgid "ELBIB YLOH"
-#~ msgstr "엘빕 일로"
+#~ msgstr "ELBIB YLOH"
 
 # selftouch messages
 #~ msgid "Falling down, you"
@@ -58031,23 +58032,23 @@ msgstr "{영웅 이름}"
 #~ msgstr "게임 오버."
 
 #~ msgid "HACKEM MUCHE"
-#~ msgstr "하켐 무체"
+#~ msgstr "HACKEM MUCHE"
 
 #, c-format
 #~ msgid "Here the High Temple of %d is located."
 #~ msgstr "이곳에는 %d의 대성전이 서 있다."
 
 #~ msgid "JUYED AWK YACC"
-#~ msgstr "주예드 아우크 야크"
+#~ msgstr "JUYED AWK YACC"
 
 #~ msgid "KERNOD WEL"
-#~ msgstr "케르노드 웰"
+#~ msgstr "KERNOD WEL"
 
 #~ msgid "KIRJE"
-#~ msgstr "키르제"
+#~ msgstr "KIRJE"
 
 #~ msgid "LEP GEX VEN ZEA"
-#~ msgstr "렙 겍스 벤 제아"
+#~ msgstr "LEP GEX VEN ZEA"
 
 #~ msgid "Mmm, tripe... not bad!"
 #~ msgstr "음, 내장... 나쁘지 않은데!"
@@ -58069,10 +58070,10 @@ msgstr "{영웅 이름}"
 #~ msgstr "NetHack, 저작권 1985-2026"
 
 #~ msgid "PRATYAVAYAH"
-#~ msgstr "프라챠바야"
+#~ msgstr "PRATYAVAYAH"
 
 #~ msgid "PRIRUTSENIE"
-#~ msgstr "프리루체니에"
+#~ msgstr "PRIRUTSENIE"
 
 #~ msgid "Prove thyself worthy or perish!"
 #~ msgstr "자격을 증명하라. 그렇지 못하면 죽음뿐이다!"
@@ -58104,7 +58105,7 @@ msgstr "{영웅 이름}"
 #~ msgstr "근력:%s 민첩:%-1d 체력:%-1d 지능:%-1d 지혜:%-1d 매력:%-1d"
 
 #~ msgid "THARR"
-#~ msgstr "타르"
+#~ msgstr "THARR"
 
 #~ msgid "Tastes great!  Less filling!"
 #~ msgstr "맛있다! 양도 적당하고!"
@@ -58175,16 +58176,16 @@ msgstr "{영웅 이름}"
 #~ msgstr "비명을 지르려면 #monster 명령을 사용해라."
 
 #~ msgid "VE FORBRYDERNE"
-#~ msgstr "베 포르브리데르네"
+#~ msgstr "VE FORBRYDERNE"
 
 #~ msgid "VELOX NEB"
-#~ msgstr "벨록스 네브"
+#~ msgstr "VELOX NEB"
 
 #~ msgid "VENZAR BORGAVVE"
-#~ msgstr "벤자르 보르가베"
+#~ msgstr "VENZAR BORGAVVE"
 
 #~ msgid "VERR YED HORRE"
-#~ msgstr "베르 예드 호레"
+#~ msgstr "VERR YED HORRE"
 
 # mklev.c:723 - 함정 표시
 #~ msgid "Vlad was here"
@@ -58327,14 +58328,14 @@ msgstr "{영웅 이름}"
 #~ msgstr "보물은 X가 가리키는 곳에 묻혀 있다."
 
 #~ msgid "XIXAXA XOXAXA XUXAXA"
-#~ msgstr "시샤샤 소샤샤 수샤샤"
+#~ msgstr "XIXAXA XOXAXA XUXAXA"
 
 #, c-format
 #~ msgid "Xp:%d/%-1ld"
 #~ msgstr "Lv:%d/%-1ld"
 
 #~ msgid "YUM YUM"
-#~ msgstr "냠냠"
+#~ msgstr "YUM YUM"
 
 # ============================================================
 # uhitm.c - 플레이어 공격 미끄러짐
@@ -58514,7 +58515,7 @@ msgstr "{영웅 이름}"
 #~ msgstr "주변이 매우 불확실해 보인다..."
 
 #~ msgid "ZELGO MER"
-#~ msgstr "젤고 메르"
+#~ msgstr "ZELGO MER"
 
 #~ msgid "aggravate monster"
 #~ msgstr "몬스터 자극의 반지"

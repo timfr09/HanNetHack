@@ -164,7 +164,7 @@ dosuspend(void)
     /* NB: check_user_string() is port-specific. */
     if (!sysopt.shellers || !sysopt.shellers[0]
         || !check_user_string(sysopt.shellers)) {
-        Norep("Suspend command not available.");
+        Norep(_("Suspend command not available."));
         return 0;
     }
 #endif

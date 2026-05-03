@@ -106,6 +106,95 @@ msgstr "셸에 작업 제어 기능이 없는 것 같다."
 msgid "Sorry, it seems we have no SIGTSTP here.  Try ! or S."
 msgstr "미안하지만 여기서는 SIGTSTP가 없다. ! 또는 S를 시도하라."
 
+#: ../sys/share/ioctl.c:167
+msgid "Suspend command not available."
+msgstr "일시 정지 명령을 사용할 수 없다."
+
+#: ../sys/unix/unixunix.c:352 ../sys/vms/vmsunix.c:456
+msgid "Unavailable command '!'."
+msgstr "'!'(셸) 명령을 사용할 수 없다."
+
+#: ../sys/unix/unixmain.c ../sys/libnh/libnhmain.c ../sys/share/pcmain.c ../sys/vms/vmsmain.c
+msgid "Restoring save file..."
+msgstr "세이브 파일을 불러오는 중..."
+
+#: ../sys/unix/unixmain.c ../sys/libnh/libnhmain.c
+#, c-format
+msgid "The following may access debug (wizard) mode: %s"
+msgstr "디버그(마법사) 모드에 접근할 수 있는 계정: %s"
+
+#: ../sys/unix/unixmain.c ../sys/libnh/libnhmain.c
+msgid "cannot access debug (wizard) mode."
+msgstr "디버그(마법사) 모드에 접근할 수 없다."
+
+#: ../sys/unix/unixmain.c ../sys/libnh/libnhmain.c ../sys/vms/vmsmain.c
+msgid "Entering explore/discovery mode instead."
+msgstr "대신 탐험·발견 모드로 들어간다."
+
+#: ../sys/unix/unixmain.c ../sys/libnh/libnhmain.c ../sys/vms/vmsmain.c
+msgid "are in non-scoring explore/discovery mode."
+msgstr "점수에 영향 없는 탐험·발견 모드이다."
+
+#: ../sys/share/pcmain.c
+msgid "are in non-scoring discovery mode."
+msgstr "점수에 영향 없는 발견 모드이다."
+
+#: ../sys/unix/unixmain.c ../sys/libnh/libnhmain.c ../sys/share/pcmain.c ../sys/vms/vmsmain.c
+msgid "Do you want to keep the save file?"
+msgstr "세이브 파일을 유지할까요?"
+
+#: ../sys/vms/vmsmain.c
+#, c-format
+msgid "Only user \"%s\" may access debug (wizard) mode."
+msgstr "디버그(마법사) 모드에 접근할 수 있는 사용자는 \"%s\"뿐이다."
+
+#: ../sys/share/pcunix.c
+msgid ""
+"There are files from a game in progress under your name. Recover?"
+msgstr ""
+"같은 이름으로 진행 중인 게임 파일이 있다. 복구할까요?"
+
+#: ../sys/share/pcunix.c
+msgid "There is already a game in progress under your name."
+msgstr "같은 이름으로 진행 중인 게임이 이미 있다."
+
+#: ../sys/share/pcunix.c
+#, c-format
+msgid "You may be able to use \"recover %s\" to get it back.\n"
+msgstr "\"recover %s\"로 되살릴 수 있을지도 모른다.\n"
+
+#: ../sys/share/pcunix.c
+msgid "Do you want to destroy the old game?"
+msgstr "기존 게임을 폐기할까요?"
+
+#: ../sys/share/pcunix.c
+msgid ""
+"There are files from a game in progress under your name. Recover? [yn]"
+msgstr ""
+"같은 이름으로 진행 중인 게임 파일이 있다. 복구할까요? [yn]"
+
+#: ../sys/share/pcunix.c
+msgid "\nThere is already a game in progress under your name.\n"
+msgstr "\n같은 이름으로 진행 중인 게임이 이미 있다.\n"
+
+#: ../sys/share/pcunix.c
+msgid "If this is unexpected, you may be able to use \n"
+msgstr "예상 밖이라면 다음 경로로 되살릴 수 있을지도 모른다:\n"
+
+#: ../sys/share/pcunix.c
+#, c-format
+msgid "\"recover %s\" to get it back."
+msgstr "\"recover %s\"를 사용해 보라."
+
+#: ../sys/share/pcunix.c
+msgid "\nDo you want to destroy the old game? [yn] "
+msgstr "\n기존 게임을 폐기할까요? [yn] "
+
+#: ../sys/share/pcsys.c
+#, c-format
+msgid "Can't find %s."
+msgstr "%s을(를) 찾을 수 없다."
+
 #: ../src/uhitm.c:1285
 msgid " "
 msgstr ", "
@@ -57924,9 +58013,6 @@ msgstr "{영웅 이름}"
 #~ msgid "Death's door"
 #~ msgstr "당신은 죽음의 문턱에 있다."
 
-#~ msgid "Do you want to keep the save file?"
-#~ msgstr "세이브 파일을 남겨둘까요?"
-
 #~ msgid "ELAM EBOW"
 #~ msgstr "엘람 에보우"
 
@@ -58001,9 +58087,6 @@ msgstr "{영웅 이름}"
 #~ msgid "Recover? [yn] "
 #~ msgstr "복구할까요? [yn] "
 
-#~ msgid "Restoring save file..."
-#~ msgstr "세이브를 불러오는 중..."
-
 # 지진으로 흔들린 후 행동
 #~ msgid "Shaken, you"
 #~ msgstr "흔들리며, 당신은"
@@ -58052,12 +58135,6 @@ msgstr "{영웅 이름}"
 # windmain.c — 락/자가 복구(self-recover) 프롬프트
 #~ msgid "There are files from a game in progress under your name. "
 #~ msgstr "이 이름으로 진행 중이던 게임 기록이 아직 남아 있습니다. "
-
-#~ msgid "There are files from a game in progress under your name. Recover?"
-#~ msgstr "이 이름으로 진행 중이던 게임이 있습니다. 복구할까요?"
-
-#~ msgid "There are files from a game in progress under your name. Recover? [yn]"
-#~ msgstr "이 이름으로 진행 중이던 게임이 있습니다. 복구할까요? [yn]"
 
 #~ msgid "There is a ladder down here."
 #~ msgstr "여기에 아래로 가는 사다리가 있다."
@@ -58497,9 +58574,6 @@ msgstr "{영웅 이름}"
 
 #~ msgid "aquamarine"
 #~ msgstr "아쿠아마린"
-
-#~ msgid "are in non-scoring discovery mode."
-#~ msgstr "탐험 모드입니다. (점수 기록 없음)"
 
 # mhitu.c:1438 - 불/에너지가 꺼지는 상태. 화염 공격 후 등
 #~ msgid "are smoldering out!"

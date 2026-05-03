@@ -31,6 +31,9 @@ core
 # Local Python venv (polib 등 번역 스크립트용)
 .venv-po/
 
+# Local scratch (not in upstream; keep out of commits)
+src/NOPE
+
 # We generate makefiles by shell script
 Makefile
 # Windows nhsetup non-destructive outputs (src\)

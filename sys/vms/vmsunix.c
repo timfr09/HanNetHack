@@ -453,7 +453,7 @@ dosh(void)
     if (!sysopt.shellers || !sysopt.shellers[0]
         || !check_user_string(sysopt.shellers)) {
         /* FIXME: should no longer assume a particular command keystroke */
-        Norep("Unavailable command '!'.");
+        Norep(_("Unavailable command '!'."));
         return 0;
     }
 #endif

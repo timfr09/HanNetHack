@@ -460,15 +460,15 @@ attempt_restore:
             iflags.news = FALSE;
         }
 #endif
-        pline("Restoring save file...");
+        pline(_("Restoring save file..."));
         mark_synch(); /* flush output */
 
         if (dorecover(nhfp)) {
             resuming = TRUE; /* not starting new game */
             if (discover)
-                You("are in non-scoring discovery mode.");
+                You(_("are in non-scoring discovery mode."));
             if (discover || wizard) {
-                if (y_n("Do you want to keep the save file?") == 'n')
+                if (y_n(_("Do you want to keep the save file?")) == 'n')
                     (void) delete_savefile();
                 else {
                     nh_compress(fqname(gs.SAVEF, SAVEPREFIX, 0));
@@ -497,7 +497,7 @@ attempt_restore:
         }
         newgame();
         if (discover)
-            You("are in non-scoring discovery mode.");
+            You(_("are in non-scoring discovery mode."));
     }
 
 #ifndef NO_SIGNAL

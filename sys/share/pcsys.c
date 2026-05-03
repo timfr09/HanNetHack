@@ -118,7 +118,7 @@ dosh(void)
 #endif
         resume_nhwindows();
     } else
-        pline("Can't find %s.", COMSPEC);
+        pline(_("Can't find %s."), COMSPEC);
     return 0;
 }
 #endif /* SHELL */

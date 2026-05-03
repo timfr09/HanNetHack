@@ -30,7 +30,8 @@ SOURCES = $(wildcard $(SRCDIR)/*.c) \
           $(wildcard $(WINDIR)/curses/*.c) \
           $(wildcard $(WINDIR)/win32/*.c) \
           $(wildcard ../sys/unix/*.c) \
-          $(wildcard ../sys/share/*.c)
+          $(wildcard ../sys/share/*.c) \
+          $(wildcard ../sys/vms/*.c)
 
 # Lua files that have Korean locale versions (dat/locale/ko/*.lua)
 # These are translated directly in the locale files, not via PO

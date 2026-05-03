@@ -35,6 +35,15 @@ MESSAGE_FUNCTIONS=(
     "selftouch"
     "getlin"
 )
+# 추가 디렉터리 (기본은 src/*.c 만): win 포트, Unix/VMS/sys 공유 코드
+EXTRA_CHECK_DIRS=(
+    "$PROJECT_ROOT/win/tty"
+    "$PROJECT_ROOT/win/curses"
+    "$PROJECT_ROOT/win/win32"
+    "$PROJECT_ROOT/sys/unix"
+    "$PROJECT_ROOT/sys/share"
+    "$PROJECT_ROOT/sys/vms"
+)
 
 # 디버그/내부용 함수 (번역 불필요)
 # - impossible(): 내부 오류 메시지
@@ -146,6 +155,15 @@ main() {
         for file in "$SRC_DIR"/*.c; do
             [ -f "$file" ] || continue
             check_file "$file"
+        done
+
+        # win/sys 포트 및 공유 코드
+        for dir in "${EXTRA_CHECK_DIRS[@]}"; do
+            [ -d "$dir" ] || continue
+            for file in "$dir"/*.c; do
+                [ -f "$file" ] || continue
+                check_file "$file"
+            done
         done
 
         # role.c 데이터 구조 검사

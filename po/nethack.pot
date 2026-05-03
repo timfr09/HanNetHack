@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-05-03 09:02+0900\n"
+"POT-Creation-Date: 2026-05-03 09:18+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4298,7 +4298,7 @@ msgstr ""
 msgid "debug mode"
 msgstr ""
 
-#: ../src/cmd.c:961
+#: ../src/cmd.c:961 ../sys/unix/unixmain.c:669
 msgid "cannot access explore mode."
 msgstr ""
 
@@ -51695,6 +51695,33 @@ msgstr ""
 msgid "Cannot open \"%s\" for reading!"
 msgstr ""
 
+#: ../sys/unix/unixmain.c:259 ../sys/unix/unixmain.c:261
+#: ../sys/share/pcmain.c:463 ../sys/vms/vmsmain.c:209
+msgid "Restoring save file..."
+msgstr ""
+
+#: ../sys/unix/unixmain.c:268 ../sys/share/pcmain.c:471
+#: ../sys/vms/vmsmain.c:215
+msgid "Do you want to keep the save file?"
+msgstr ""
+
+#: ../sys/unix/unixmain.c:660
+#, c-format
+msgid "The following may access debug (wizard) mode: %s"
+msgstr ""
+
+#: ../sys/unix/unixmain.c:663
+msgid "cannot access debug (wizard) mode."
+msgstr ""
+
+#: ../sys/unix/unixmain.c:667 ../sys/vms/vmsmain.c:494
+msgid "Entering explore/discovery mode instead."
+msgstr ""
+
+#: ../sys/unix/unixmain.c:672 ../sys/vms/vmsmain.c:497
+msgid "are in non-scoring explore/discovery mode."
+msgstr ""
+
 #: ../sys/unix/unixunix.c:266
 msgid "Start a new game instead?"
 msgstr ""
@@ -51707,8 +51734,16 @@ msgstr ""
 msgid "It might be recoverable with demi-divine intervention."
 msgstr ""
 
+#: ../sys/unix/unixunix.c:352 ../sys/vms/vmsunix.c:456
+msgid "Unavailable command '!'."
+msgstr ""
+
 #: ../sys/unix/unixunix.c:390
 msgid "Fork failed.  Try again."
+msgstr ""
+
+#: ../sys/share/ioctl.c:167
+msgid "Suspend command not available."
 msgstr ""
 
 #: ../sys/share/ioctl.c:194
@@ -51717,4 +51752,60 @@ msgstr ""
 
 #: ../sys/share/ioctl.c:197
 msgid "Sorry, it seems we have no SIGTSTP here.  Try ! or S."
+msgstr ""
+
+#: ../sys/share/pcmain.c:469 ../sys/share/pcmain.c:500
+msgid "are in non-scoring discovery mode."
+msgstr ""
+
+#: ../sys/share/pcsys.c:121
+#, c-format
+msgid "Can't find %s."
+msgstr ""
+
+#: ../sys/share/pcunix.c:101
+msgid "There are files from a game in progress under your name. Recover?"
+msgstr ""
+
+#: ../sys/share/pcunix.c:104
+msgid "There is already a game in progress under your name."
+msgstr ""
+
+#: ../sys/share/pcunix.c:105
+#, c-format
+msgid "You may be able to use \"recover %s\" to get it back.\n"
+msgstr ""
+
+#: ../sys/share/pcunix.c:107
+msgid "Do you want to destroy the old game?"
+msgstr ""
+
+#: ../sys/share/pcunix.c:118
+msgid "There are files from a game in progress under your name. Recover? [yn]"
+msgstr ""
+
+#: ../sys/share/pcunix.c:121
+msgid ""
+"\n"
+"There is already a game in progress under your name.\n"
+msgstr ""
+
+#: ../sys/share/pcunix.c:122
+msgid "If this is unexpected, you may be able to use \n"
+msgstr ""
+
+#: ../sys/share/pcunix.c:123
+#, c-format
+msgid "\"recover %s\" to get it back."
+msgstr ""
+
+#: ../sys/share/pcunix.c:124
+msgid ""
+"\n"
+"Do you want to destroy the old game? [yn] "
+msgstr ""
+
+#: ../sys/vms/vmsmain.c:492
+#, c-format
+msgid "Only user \"%s\" may access debug (wizard) mode."
 msgstr ""

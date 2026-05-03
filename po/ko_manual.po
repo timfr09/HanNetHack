@@ -58534,35 +58534,46 @@ msgstr "{영웅 이름}"
 #~ msgid "amethyst"
 #~ msgstr "자수정"
 
-#~ msgid "amulet of ESP"
-#~ msgstr "투시의 부적"
+# include/objects.h AMULET() — 매크로라 xgettext에 안 잡힐 수 있어 수동 유지
+#: include/objects.h
+msgid "amulet of ESP"
+msgstr "투시의 부적"
 
-#~ msgid "amulet of change"
-#~ msgstr "변화의 부적"
+#: include/objects.h
+msgid "amulet of change"
+msgstr "변화의 부적"
 
-#~ msgid "amulet of flying"
-#~ msgstr "비행의 부적"
+#: include/objects.h
+msgid "amulet of flying"
+msgstr "비행의 부적"
 
-#~ msgid "amulet of guarding"
-#~ msgstr "수호의 부적"
+#: include/objects.h
+msgid "amulet of guarding"
+msgstr "수호의 부적"
 
-#~ msgid "amulet of life saving"
-#~ msgstr "생명 구원의 부적"
+#: include/objects.h
+msgid "amulet of life saving"
+msgstr "생명 구원의 부적"
 
-#~ msgid "amulet of reflection"
-#~ msgstr "반사의 부적"
+#: include/objects.h
+msgid "amulet of reflection"
+msgstr "반사의 부적"
 
-#~ msgid "amulet of restful sleep"
-#~ msgstr "안식의 수면 부적"
+#: include/objects.h
+msgid "amulet of restful sleep"
+msgstr "안식의 수면 부적"
 
-#~ msgid "amulet of strangulation"
-#~ msgstr "질식의 부적"
+#: include/objects.h
+msgid "amulet of strangulation"
+msgstr "질식의 부적"
 
-#~ msgid "amulet of unchanging"
-#~ msgstr "불변의 부적"
+#: include/objects.h
+msgid "amulet of unchanging"
+msgstr "불변의 부적"
 
-#~ msgid "amulet versus poison"
-#~ msgstr "독 방호의 부적"
+#: include/objects.h
+msgid "amulet versus poison"
+msgstr "독 방호의 부적"
 
 #~ msgid "and all your belongings "
 #~ msgstr "와 모든 소지품 "

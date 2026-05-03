@@ -107,6 +107,19 @@ obj_descr_strings_for_extraction(void)
     (void) N_("cubical");
     (void) N_("perforated");
 
+    /* === Amulet names (first arg of AMULET() in include/objects.h) === */
+    (void) N_("amulet of ESP");
+    (void) N_("amulet of life saving");
+    (void) N_("amulet of strangulation");
+    (void) N_("amulet of restful sleep");
+    (void) N_("amulet versus poison");
+    (void) N_("amulet of change");
+    (void) N_("amulet of unchanging");
+    (void) N_("amulet of reflection");
+    (void) N_("amulet of magical breathing");
+    (void) N_("amulet of guarding");
+    (void) N_("amulet of flying");
+
     /* === Common item name parts === */
     (void) N_("potion");
     (void) N_("scroll");

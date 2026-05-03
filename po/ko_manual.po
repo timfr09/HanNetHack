@@ -58534,44 +58534,48 @@ msgstr "{영웅 이름}"
 #~ msgid "amethyst"
 #~ msgstr "자수정"
 
-# include/objects.h AMULET() — 매크로라 xgettext에 안 잡힐 수 있어 수동 유지
-#: include/objects.h
+# AMULET 이름: 런타임은 include/objects.h, 추출은 src/obj_descr_i18n.c 의 N_()
+#: src/obj_descr_i18n.c
 msgid "amulet of ESP"
 msgstr "투시의 부적"
 
-#: include/objects.h
+#: src/obj_descr_i18n.c
 msgid "amulet of change"
 msgstr "변화의 부적"
 
-#: include/objects.h
+#: src/obj_descr_i18n.c
 msgid "amulet of flying"
 msgstr "비행의 부적"
 
-#: include/objects.h
+#: src/obj_descr_i18n.c
 msgid "amulet of guarding"
 msgstr "수호의 부적"
 
-#: include/objects.h
+#: src/obj_descr_i18n.c
 msgid "amulet of life saving"
 msgstr "생명 구원의 부적"
 
-#: include/objects.h
+#: src/obj_descr_i18n.c
 msgid "amulet of reflection"
 msgstr "반사의 부적"
 
-#: include/objects.h
+#: src/obj_descr_i18n.c
+msgid "amulet of magical breathing"
+msgstr "마법 호흡의 부적"
+
+#: src/obj_descr_i18n.c
 msgid "amulet of restful sleep"
 msgstr "안식의 수면 부적"
 
-#: include/objects.h
+#: src/obj_descr_i18n.c
 msgid "amulet of strangulation"
 msgstr "질식의 부적"
 
-#: include/objects.h
+#: src/obj_descr_i18n.c
 msgid "amulet of unchanging"
 msgstr "불변의 부적"
 
-#: include/objects.h
+#: src/obj_descr_i18n.c
 msgid "amulet versus poison"
 msgstr "독 방호의 부적"
 

@@ -24,17 +24,19 @@ Korean is the default language. Config goes in `~/.nethackrc`.
 - `po/ko.po` is a local cache rebuilt by `make update-po` from `nethack.pot`; it is gitignored and never edited by hand. `make compile` works without it (uses `ko_manual.po` directly).
 - `cd po && make compile` to merge + compile translations.
 - `cd po && make stats` to see translation statistics.
-- `scripts/check-i18n-wrapping.sh` checks for unwrapped `_()` strings in source.
-- See `po/TRANSLATION_GUIDE_KO.md` for full translation rules and conventions.
+- **`./scripts/translation-preflight.sh`** (from repo root) runs `po`’s `make translation-ci` (msgfmt checks) then `scripts/check-i18n-wrapping.sh`. Use before PRs that touch `po` or translatable source.
+- `cd po && make translation-ci` alone validates `ko_manual.po` + merged PO without the wrapping script.
+- See `po/TRANSLATION_PROCESS.md` for the full operational workflow, and `po/TRANSLATION_GUIDE_KO.md` for rules and tone.
 
 ### Documentation map (for humans / agents)
 | Doc | Audience |
 |-----|----------|
 | `README.md` | Visitors — what the fork is, upstream merges, issues; Windows ZIP (KO); overview + build & i18n notes |
 | `po/README.md` | Translators — short workflow |
+| `po/TRANSLATION_PROCESS.md` | Translators & maintainers — when to run `pot` / `safe-update` / `translation-ci` |
 | `po/TRANSLATION_GUIDE_KO.md` | Translators — rules, tone, particles |
 | `po/I18N_SYSTEM.md` | Developers — architecture & APIs |
 | `doc/i18n-upstream-merge.md` | Maintainers — merging upstream NetHack into this fork |
 
 ### Lint / Test
-There is no dedicated test suite or linter beyond `make all` (compiler warnings as lint) and the `scripts/check-i18n-wrapping.sh` script.
+There is no full test suite. For i18n changes, run **`./scripts/translation-preflight.sh`** (or at least `cd po && make translation-ci` plus `scripts/check-i18n-wrapping.sh`). `make all` is the main compile check (treat compiler warnings as lint).

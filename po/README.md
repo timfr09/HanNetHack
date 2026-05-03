@@ -2,7 +2,7 @@
 
 ## 개요
 
-이 디렉터리는 HanNetHack의 gettext 번역 소스와 빌드 규칙을 둡니다. 실무 규칙·조사·문체의 상세는 **[TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md)** 를 보고, 시스템 구조 참고는 **[I18N_SYSTEM.md](I18N_SYSTEM.md)** 를 쓰면 됩니다.
+이 디렉터리는 HanNetHack의 gettext 번역 소스와 빌드 규칙을 둡니다. **전체 작업 순서(언제 `make pot`을 돌릴지, PR 전에 무엇을 할지)** 는 **[TRANSLATION_PROCESS.md](TRANSLATION_PROCESS.md)** 를 먼저 보면 됩니다. 문체·조사·용어 규칙은 **[TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md)**, 시스템 구조는 **[I18N_SYSTEM.md](I18N_SYSTEM.md)** 를 쓰면 됩니다.
 
 ## 파일 구조
 
@@ -13,8 +13,9 @@ po/
 ├── ko_merged.po       # 병합 결과 (자동 생성)
 ├── ko.mo              # 컴파일된 바이너리 (자동 생성)
 ├── nethack.pot        # 원문 템플릿 (자동 생성)
-├── Makefile           # 번역 빌드 규칙
-└── README.md          # 이 문서
+├── Makefile                 # 번역 빌드 규칙
+├── TRANSLATION_PROCESS.md   # 운영 절차 (워크플로·PR 점검)
+└── README.md                # 이 문서
 ```
 
 ## ⚠️ 중요: 번역 파일 정책
@@ -36,6 +37,18 @@ ko_manual.po (우선) + ko.po (선택, 로컬 캐시) → ko_merged.po → ko.mo
 ```
 
 동일한 msgid가 있으면 `ko_manual.po`의 번역이 사용됩니다.
+
+---
+
+## PR / 품질 게이트 (권장)
+
+저장소 루트에서:
+
+```bash
+./scripts/translation-preflight.sh
+```
+
+`po`에서 `msgfmt -c`로 **수동 PO·병합 PO**를 검사하고, 이어서 `check-i18n-wrapping.sh`로 **소스 래핑**을 확인한다. `cd po && make translation-ci`만 쓰고 래핑은 생략할 수도 있다. 자세한 결정 절차는 [TRANSLATION_PROCESS.md](TRANSLATION_PROCESS.md)를 본다.
 
 ---
 
@@ -116,10 +129,10 @@ make stats
 
 ## 기여 방법
 
-1. `ko_manual.po` 만 편집합니다 (`ko.po`는 로컬 캐시).
+1. `ko_manual.po` 만 편집합니다 (`ko.po`는 로컬 캐시). 데이터·Lua는 `dat/locale/ko/` 등을 따로 맞춥니다.
 2. `make compile` 후 저장소 루트에서 `make all` 로 전체 빌드·`nhdat` 반영.
-3. `make stats` 로 통계 확인.
-4. 이 포크(`timfr09/HanNetHack`)로 Pull Request.
+3. `make stats` 로 통계 확인. 가능하면 `./scripts/translation-preflight.sh` 도 통과시킵니다.
+4. 이 포크로 Pull Request.
 
 ## 테스트
 

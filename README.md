@@ -120,8 +120,9 @@ Work from the **`HanNetHack-5.0`** branch (same tree as upstream 5.0 plus Korean
 1. Edit **`po/ko_manual.po`** only (the canonical file committed to git).
 2. `cd po && make compile` produces `dat/locale/ko/nethack.mo`.
 3. Rebuild so `nhdat` picks up the catalog (`make all` on Linux after Unix setup; Windows as above).
+4. Before opening a PR: **`./scripts/translation-preflight.sh`** (gettext checks + `_()` wrapping audit).
 
-Quick reference: [`po/README.md`](po/README.md). Korean style guide: [`po/TRANSLATION_GUIDE_KO.md`](po/TRANSLATION_GUIDE_KO.md). Maintainer merge notes: [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md).
+Operational workflow (when to run `pot`, `safe-update`, etc.): [`po/TRANSLATION_PROCESS.md`](po/TRANSLATION_PROCESS.md). Quick reference: [`po/README.md`](po/README.md). Style guide: [`po/TRANSLATION_GUIDE_KO.md`](po/TRANSLATION_GUIDE_KO.md). Maintainer merge notes: [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md).
 
 ### Implementation notes (developers)
 

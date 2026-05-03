@@ -57727,7 +57727,7 @@ msgstr "         자세한 내용은 라이선스를 참조하세요."
 
 #, c-format
 msgid "  %s %s inviting you in."
-msgstr "%s{이/가} %s 당신을 무시한다."
+msgstr "  %s %s 당신을 안으로 초대한다."
 
 #, c-format
 msgid " (%d times)"

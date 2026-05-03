@@ -24,9 +24,14 @@ LUA_POTFILE = lua_strings.pot
 LANGUAGES = ko
 
 # Source files to extract strings from (C files)
+# sys/unix, sys/share: portability shell/panic/suspend messages (not under src/)
 SOURCES = $(wildcard $(SRCDIR)/*.c) \
           $(wildcard $(WINDIR)/tty/*.c) \
-          $(wildcard $(WINDIR)/curses/*.c)
+          $(wildcard $(WINDIR)/curses/*.c) \
+          $(wildcard $(WINDIR)/win32/*.c) \
+          $(wildcard ../sys/unix/*.c) \
+          $(wildcard ../sys/share/*.c) \
+          $(wildcard ../sys/vms/*.c)
 
 # Lua files that have Korean locale versions (dat/locale/ko/*.lua)
 # These are translated directly in the locale files, not via PO

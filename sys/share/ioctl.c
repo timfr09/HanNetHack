@@ -164,7 +164,7 @@ dosuspend(void)
     /* NB: check_user_string() is port-specific. */
     if (!sysopt.shellers || !sysopt.shellers[0]
         || !check_user_string(sysopt.shellers)) {
-        Norep("Suspend command not available.");
+        Norep(_("Suspend command not available."));
         return 0;
     }
 #endif
@@ -191,10 +191,10 @@ dosuspend(void)
 #endif
         resume_nhwindows();
     } else {
-        pline("I don't think your shell has job control.");
+        pline(_("I don't think your shell has job control."));
     }
 #else
-    pline("Sorry, it seems we have no SIGTSTP here.  Try ! or S.");
+    pline(_("Sorry, it seems we have no SIGTSTP here.  Try ! or S."));
 #endif
     return (0);
 }

@@ -1737,7 +1737,7 @@ process_menu_window(winid window, struct WinDesc *cw)
                 boolean on_curr_page = FALSE;
                 int lineno = 0;
 
-                tty_getlin("Search for:", tmpbuf);
+                tty_getlin(_("Search for:"), tmpbuf);
                 if (!tmpbuf[0] || tmpbuf[0] == '\033')
                     break;
                 Sprintf(searchbuf, "*%s*", tmpbuf);

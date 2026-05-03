@@ -1831,7 +1831,7 @@ mswin_get_ext_cmd(void)
                         break;
 
                 if (extcmdlist[i].ef_txt == (char *) 0) {
-                    pline("%s%s: unknown extended command.",
+                    pline(_("%s%s: unknown extended command."),
                           visctrl(extcmd_initiator()), cmd);
                     i = -1;
                 }

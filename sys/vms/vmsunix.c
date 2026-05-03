@@ -453,7 +453,7 @@ dosh(void)
     if (!sysopt.shellers || !sysopt.shellers[0]
         || !check_user_string(sysopt.shellers)) {
         /* FIXME: should no longer assume a particular command keystroke */
-        Norep("Unavailable command '!'.");
+        Norep(_("Unavailable command '!'."));
         return 0;
     }
 #endif
@@ -521,7 +521,7 @@ vms_doshell(const char *execstring, boolean screenoutput)
     hack_resume(screenoutput);
 
     if (!vms_ok(status)) {
-        pline("  Spawn failed.  (%%x%08lX) ", status);
+        pline(_("  Spawn failed.  (%%x%08lX) "), status);
         mark_synch();
     }
     return 0;
@@ -541,8 +541,8 @@ dosuspend(void)
     if (owner_pid == -1) /* need to check for parent */
         owner_pid = getppid();
     if (owner_pid == 0) {
-        pline(
- "  No parent process.  Use '!' to Spawn, 'S' to Save, or '#quit' to Quit. ");
+        pline(_(
+            "  No parent process.  Use '!' to Spawn, 'S' to Save, or '#quit' to Quit. "));
         mark_synch();
         return 0;
     }
@@ -556,7 +556,7 @@ dosuspend(void)
     hack_resume(1); /* resume game tty environment & refresh screen */
 
     if (!vms_ok(status)) {
-        pline("  Unable to attach to parent.  (%%x%08lX) ", status);
+        pline(_("  Unable to attach to parent.  (%%x%08lX) "), status);
         mark_synch();
     }
     return 0;

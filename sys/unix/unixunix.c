@@ -263,15 +263,15 @@ void
 ask_about_panic_save(void)
 {
 #ifdef CHECK_PANIC_SAVE
-    static const char Instead_prompt[] = "Start a new game instead?";
+    const char *instead_prompt = _("Start a new game instead?");
     int c = '\0';
 
-    pline("There is no regular save file but there is a panic one.");
-    pline("It might be recoverable with demi-divine intervention.");
+    pline(_("There is no regular save file but there is a panic one."));
+    pline(_("It might be recoverable with demi-divine intervention."));
     if (iflags.window_inited) {
-        c = yn_function(Instead_prompt, "yn\033q", 'n', FALSE);
+        c = yn_function(instead_prompt, "yn\033q", 'n', FALSE);
     } else {
-        raw_printf("%s [yn] (n) ", Instead_prompt);
+        raw_printf("%s [yn] (n) ", instead_prompt);
         (void) fflush(stdout);
         do {
             c = getchar();
@@ -349,7 +349,7 @@ dosh(void)
     if (!sysopt.shellers || !sysopt.shellers[0]
         || !check_user_string(sysopt.shellers)) {
         /* FIXME: should no longer assume a particular command keystroke */
-        Norep("Unavailable command '!'.");
+        Norep(_("Unavailable command '!'."));
         return 0;
     }
 #endif
@@ -387,7 +387,7 @@ child(int wt)
         return 1;
     }
     if (f == -1) { /* cannot fork */
-        pline("Fork failed.  Try again.");
+        pline(_("Fork failed.  Try again."));
         return 0;
     }
     /* fork succeeded; wait for child to exit */

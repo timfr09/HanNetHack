@@ -33,7 +33,17 @@ MESSAGE_FUNCTIONS=(
     "Norep"
     "verbalize"
     "selftouch"
-    "getlin"
+)
+# getlin 은 아래 check_file 에서 tty_getlin / hooked_tty_getlin 만 검사
+# msmsg 는 제어·순수 포맷 호출을 제외하고 별도 검사
+# 추가 디렉터리 (기본은 src/*.c 만): win 포트, Unix/VMS/sys 공유 코드
+EXTRA_CHECK_DIRS=(
+    "$PROJECT_ROOT/win/tty"
+    "$PROJECT_ROOT/win/curses"
+    "$PROJECT_ROOT/win/win32"
+    "$PROJECT_ROOT/sys/unix"
+    "$PROJECT_ROOT/sys/share"
+    "$PROJECT_ROOT/sys/vms"
 )
 
 # 디버그/내부용 함수 (번역 불필요)
@@ -53,6 +63,7 @@ check_file() {
         #   - func(_(" 또는 func(N_(" 또는 func(C_(" - 이미 래핑됨
         #   - func("%s" - 변수 전달만 하는 경우
         #   - func("%d" - 숫자만 출력
+        # 블록 주석 줄(/* ...)은 오탐이 많음 — 줄 시작이 공백+/* 인 매치 제외
         local matches=$(grep -n "${func}(\"" "$file" 2>/dev/null \
             | grep -v "${func}(_(" \
             | grep -v "${func}(N_(" \
@@ -61,6 +72,7 @@ check_file() {
             | grep -v "${func}(\"%d\"" \
             | grep -v "${func}(\"%ld\"" \
             | grep -v "${func}(\"%u\"" \
+            | grep -vE '^[^:]+:[[:space:]]*/\*' \
             || true)
 
         if [ -n "$matches" ]; then
@@ -77,6 +89,52 @@ check_file() {
             done <<< "$matches"
         fi
     done
+
+    # tty_getlin / hooked_tty_getlin — 접두 getlin(" 오탐(hooked_tty_getlin) 방지
+    local gl_matches=$(grep -nE '(tty_getlin|hooked_tty_getlin)\("' "$file" 2>/dev/null \
+        | grep -vE '(tty_getlin|hooked_tty_getlin)\(_\("' \
+        | grep -vE '(tty_getlin|hooked_tty_getlin)\(N_\("' \
+        | grep -vE '(tty_getlin|hooked_tty_getlin)\(C_\("' \
+        | grep -vE '^[^:]+:[[:space:]]*\*' \
+        | grep -vE '^[^:]+:[[:space:]]*/\*' \
+        || true)
+    if [ -n "$gl_matches" ]; then
+        if [ $file_issues -eq 0 ]; then
+            echo -e "${YELLOW}=== $(basename $file) ===${NC}"
+        fi
+        file_issues=$((file_issues + 1))
+        while IFS= read -r line; do
+            local linenum=$(echo "$line" | cut -d: -f1)
+            local content=$(echo "$line" | cut -d: -f2-)
+            echo -e "  ${RED}Line $linenum:${NC} tty_getlin/hooked_tty_getlin missing _()"
+            echo "    $content"
+        done <<< "$gl_matches"
+    fi
+
+    # msmsg — 제어 문자·순수 포맷만 넘기는 호출은 번역 불필요
+    local msm_matches=$(grep -n 'msmsg("' "$file" 2>/dev/null \
+        | grep -v 'msmsg(_("' \
+        | grep -v 'msmsg(N_("' \
+        | grep -v 'msmsg(C_("' \
+        | grep -v 'msmsg("%s"' \
+        | grep -v 'msmsg("%s\\n"' \
+        | grep -v 'msmsg("%c"' \
+        | grep -v 'msmsg("\\n"' \
+        | grep -v 'msmsg("\\b \\b")' \
+        | grep -vE '^[^:]+:[[:space:]]*/\*' \
+        || true)
+    if [ -n "$msm_matches" ]; then
+        if [ $file_issues -eq 0 ]; then
+            echo -e "${YELLOW}=== $(basename $file) ===${NC}"
+        fi
+        file_issues=$((file_issues + 1))
+        while IFS= read -r line; do
+            local linenum=$(echo "$line" | cut -d: -f1)
+            local content=$(echo "$line" | cut -d: -f2-)
+            echo -e "  ${RED}Line $linenum:${NC} msmsg() missing _()"
+            echo "    $content"
+        done <<< "$msm_matches"
+    fi
 
     # Tobjnam 체크
     local tobjnam_matches=$(grep -n 'Tobjnam([^,]*, "' "$file" 2>/dev/null | grep -v 'Tobjnam([^,]*, _(' || true)
@@ -146,6 +204,15 @@ main() {
         for file in "$SRC_DIR"/*.c; do
             [ -f "$file" ] || continue
             check_file "$file"
+        done
+
+        # win/sys 포트 및 공유 코드
+        for dir in "${EXTRA_CHECK_DIRS[@]}"; do
+            [ -d "$dir" ] || continue
+            for file in "$dir"/*.c; do
+                [ -f "$file" ] || continue
+                check_file "$file"
+            done
         done
 
         # role.c 데이터 구조 검사

@@ -45,10 +45,10 @@ des.map([[
 |----.-| -+-   #  |.....---.|######+..|.......S...|....|.....|............|
 |----+----.----+---.|.--|.|.|#     ------------...|....|.....F............|
 |........|.|......|.|...F...|#  ........|.....+...|....|.....|............|
-|.P......-S|......|------.---# .........|.....|LLL|..................|..| |
-|..........|......+.|...|.|.S# ..--S-----.....|LLL|..................|..--|
-|.W......---......|.|.|.|.|.|# ..|......|.....|...|..................|..|.|
-|....Z.L.S.F......|.|.|.|.---#   |......+.....|...+..................||...|
+|.P......-S|......|------.---# .........|.....|...|....-------........----|
+|..........|......+.|...|.|.S# ..--S-----.....|LLL|..................|..| |
+|.W......---......|.|.|.|.|.|# ..|......|.....|LLL|..................|..--|
+|....Z.L.S.F......|.|.|.|.---#   |......+.....|...|..................|..|.|
 |........|--......|...|.....|####+......|.....|...+..................||...|
 ---------------------------------------------------------------------------
 ]]);
@@ -59,6 +59,10 @@ des.region(selection.area(01,01, 73, 16), "lit");
 des.non_diggable();
 
 des.teleport_region({ region = { 9,3, 9,3 } });
+
+-- TODO:
+--  - save (more of) hero state when entering
+--  - quit-command should maybe exit the tutorial?
 
 -- turn on some newbie-friendly options
 nh.parse_config("OPTIONS=mention_walls");
@@ -312,6 +316,8 @@ des.trap({ type = "trap door", coord = { 73,15 } });
 
 des.engraving({ coord = { 60,2 }, type = "engrave", text = "주문 시전", degrade = false });
 if (u.uenmax < 5) then
+   -- TODO: make sure hero has enough Pw to cast the spell (5 pw) instead?
+   -- TODO: ensure the first cast of this spell succeeds?
    des.engraving({ coord = { 59,2 }, type = "engrave", text = "주문을 시전할 마나가 부족합니다.", degrade = false });
 end
 des.engraving({ coord = { 57,2 }, type = "engrave", text = "'" .. tut_key("pickup") .. "'로 마법서를 주우세요", degrade = false });
@@ -324,3 +330,20 @@ des.region(selection.area(53,01, 59, 3), "unlit");
 
 des.engraving({ coord = { 72,2 }, type = "engrave", text = "'" .. tut_key("quaff") .. "'로 물약을 마시세요", degrade = false });
 des.object({ coord = { 72,2 }, id = "potion of object detection", buc = "blessed" });
+
+
+----------------
+
+-- entering and leaving tutorial _branch_ now handled by core
+-- // nh.callback("cmd_before", "tutorial_cmd_before");
+-- // nh.callback("level_enter", "tutorial_enter");
+-- // nh.callback("level_leave", "tutorial_leave");
+-- // nh.callback("end_turn", "tutorial_turn");
+
+----------------
+
+-- temporary stuff here
+-- des.trap({ type = "magic portal", coord = { 9,5 }, seen = true });
+-- des.trap({ type = "magic portal", coord = { 9,1 }, seen = true });
+-- des.object({ id = "leather armor", spe = 0, coord = { 9,2} });
+

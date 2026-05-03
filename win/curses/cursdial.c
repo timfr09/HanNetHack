@@ -512,7 +512,7 @@ curses_ext_cmd(void)
         char extcmd_char = extcmd_initiator();
 
         if (*cur_choice)
-            pline("%s%s: unknown extended command.",
+            pline(_("%s%s: unknown extended command."),
                   visctrl(extcmd_char), cur_choice);
     }
     return ret;

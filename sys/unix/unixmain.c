@@ -256,16 +256,16 @@ main(int argc, char *argv[])
         /* if there are early trouble-messages issued, let's
          * not go overtop of them with a pline just yet */
         if (ge.early_raw_messages)
-            raw_print("Restoring save file...");
+            raw_print(_("Restoring save file..."));
         else
-            pline("Restoring save file...");
+            pline(_("Restoring save file..."));
         mark_synch(); /* flush output */
         if (dorecover(nhfp)) {
             resuming = TRUE; /* not starting new game */
             wd_message();
             if (discover || wizard) {
                 /* this seems like a candidate for paranoid_confirmation... */
-                if (y_n("Do you want to keep the save file?") == 'n') {
+                if (y_n(_("Do you want to keep the save file?")) == 'n') {
                     (void) delete_savefile();
                 } else {
                     (void) chmod(fq_save, FCMASK); /* back to readable */
@@ -657,20 +657,19 @@ wd_message(void)
     if (iflags.wiz_error_flag) {
         if (sysopt.wizards && sysopt.wizards[0]) {
             char *tmp = build_english_list(sysopt.wizards);
-            pline("Only user%s %s may access debug (wizard) mode.",
-                  strchr(sysopt.wizards, ' ') ? "s" : "", tmp);
+            pline(_("The following may access debug (wizard) mode: %s"), tmp);
             free(tmp);
         } else {
-            You("cannot access debug (wizard) mode.");
+            You(_("cannot access debug (wizard) mode."));
         }
         wizard = FALSE; /* (paranoia) */
         if (!iflags.explore_error_flag)
-            pline("Entering explore/discovery mode instead.");
+            pline(_("Entering explore/discovery mode instead."));
     } else if (iflags.explore_error_flag) {
-        You("cannot access explore mode."); /* same as enter_explore_mode */
+        You(_("cannot access explore mode.")); /* same as enter_explore_mode */
         discover = iflags.deferred_X = FALSE; /* (more paranoia) */
     } else if (discover)
-        You("are in non-scoring explore/discovery mode.");
+        You(_("are in non-scoring explore/discovery mode."));
 }
 
 /*

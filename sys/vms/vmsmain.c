@@ -206,13 +206,13 @@ attempt_restore:
             iflags.news = FALSE; /* in case dorecover() fails */
         }
 #endif
-        pline("Restoring save file...");
+        pline(_("Restoring save file..."));
         mark_synch(); /* flush output */
         if (dorecover(nhfp)) {
             resuming = TRUE; /* not starting new game */
             wd_message();
             if (discover || wizard) {
-                if (y_n("Do you want to keep the save file?") == 'n')
+                if (y_n(_("Do you want to keep the save file?")) == 'n')
                     (void) delete_savefile();
                 else
                     (void) chmod(fq_save, FCMASK); /* back to readable */
@@ -489,12 +489,12 @@ static void
 wd_message(void)
 {
     if (wiz_error_flag) {
-        pline("Only user \"%s\" may access debug (wizard) mode.",
+        pline(_("Only user \"%s\" may access debug (wizard) mode."),
               WIZARD_NAME);
-        pline("Entering explore/discovery mode instead.");
+        pline(_("Entering explore/discovery mode instead."));
         wizard = 0, discover = 1; /* (paranoia) */
     } else if (discover)
-        You("are in non-scoring explore/discovery mode.");
+        You(_("are in non-scoring explore/discovery mode."));
 }
 
 unsigned long

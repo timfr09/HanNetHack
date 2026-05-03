@@ -118,7 +118,7 @@ dosh(void)
 #endif
         resume_nhwindows();
     } else
-        pline("Can't find %s.", COMSPEC);
+        pline(_("Can't find %s."), COMSPEC);
     return 0;
 }
 #endif /* SHELL */
@@ -147,12 +147,12 @@ void
 getreturn(const char *str)
 {
 #ifdef TOS
-    msmsg("Hit <Return> %s.", str);
+    msmsg(_("Hit <Return> %s."), str);
 #else
 #ifdef CROSS_TO_AMIGA
     (void) printf("Hit <Enter> %s.", str);
 #else
-    msmsg("Hit <Enter> %s.", str);
+    msmsg(_("Hit <Enter> %s."), str);
 #endif
 #endif
     while (pgetchar() != '\n')

@@ -23688,42 +23688,42 @@ msgstr "알 수 없는 방향: '%s' (%s)."
 #: ../src/artifact.c:2176
 #, c-format
 msgid "Unknown invoke power %d."
-msgstr "알 수 없는 발동 능력 %d."
+msgstr "Unknown invoke power %d."
 
 #: ../src/iactions.c:144
 #, c-format
 msgid "Unknown item action %d"
-msgstr "알 수 없는 아이템 동작 %d"
+msgstr "Unknown item action %d"
 
 #: ../src/sp_lev.c:4012
 #, c-format
 msgid "Unknown room type '%s'"
-msgstr "알 수 없는 방 유형 '%s'"
+msgstr "Unknown room type '%s'"
 
 #: ../src/spell.c:1581
 #, c-format
 msgid "Unknown spell %d attempted."
-msgstr "알 수 없는 주문 %d를 시도했다."
+msgstr "Unknown spell %d attempted."
 
 #: ../src/spell.c:849
 #, c-format
 msgid "Unknown spell skill, %d;"
-msgstr "알 수 없는 주문 숙련도, %d;"
+msgstr "Unknown spell skill, %d;"
 
 #: ../src/spell.c:557
 #, c-format
 msgid "Unknown spellbook level %d, book %d;"
-msgstr "알 수 없는 마법서 단계 %d, 책 %d;"
+msgstr "Unknown spellbook level %d, book %d;"
 
 #: ../src/hack.c:1878
 #, c-format
 msgid "Unknown tip in handle_tip(%i)"
-msgstr "handle_tip(%i)에서 알 수 없는 팁"
+msgstr "Unknown tip in handle_tip(%i)"
 
 #: ../src/dothrow.c:2074
 #, c-format
 msgid "Unknown type of gloves (%d)"
-msgstr "알 수 없는 장갑 유형 (%d)"
+msgstr "Unknown type of gloves (%d)"
 
 #: ../src/lock.c:624
 msgid "Unlock"
@@ -55161,12 +55161,12 @@ msgstr "알 수 없음"
 
 #: ../src/pray.c:2552
 msgid "unknown alignment."
-msgstr "알 수 없는 alignment."
+msgstr "unknown alignment."
 
 #: ../src/objnam.c:5571
 #, c-format
 msgid "unknown armor category (%s => %u)"
-msgstr "알 수 없는 armor category (%s => %u)"
+msgstr "unknown armor category (%s => %u)"
 
 #: ../src/mhitu.c:1652
 #, c-format
@@ -55192,12 +55192,12 @@ msgstr "unknown shk/gd/pri_move return value (%d)"
 #: ../src/insight.c:3298
 #, c-format
 msgid "unknown size (%d)"
-msgstr "알 수 없는 크기 (%d)"
+msgstr "unknown size (%d)"
 
 #: ../src/explode.c:1044
 #, c-format
 msgid "unknown type for mon_explode %d"
-msgstr "알 수 없는 type for mon_explode %d"
+msgstr "unknown type for mon_explode %d"
 
 #: ../src/apply.c:784
 #, c-format

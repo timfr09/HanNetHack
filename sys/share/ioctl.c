@@ -191,10 +191,10 @@ dosuspend(void)
 #endif
         resume_nhwindows();
     } else {
-        pline("I don't think your shell has job control.");
+        pline(_("I don't think your shell has job control."));
     }
 #else
-    pline("Sorry, it seems we have no SIGTSTP here.  Try ! or S.");
+    pline(_("Sorry, it seems we have no SIGTSTP here.  Try ! or S."));
 #endif
     return (0);
 }

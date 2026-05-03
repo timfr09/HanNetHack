@@ -1,13 +1,7 @@
-# #-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR HanNetHack Project
 # This file is distributed under the same license as the NetHack package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-# #-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#
-# Translatable strings extracted from NetHack Lua files.
-# Copyright (C) 2026 HanNetHack Project
-# This file is distributed under the same license as NetHack.
 #
 #: ../src/dokick.c:268 ../src/dokick.c:285 ../src/dokick.c:326
 #: ../src/dokick.c:337 ../src/dokick.c:1606 ../src/dothrow.c:2299
@@ -15,24 +9,12 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-05-03 02:55+0900\n"
+"POT-Creation-Date: 2026-05-03 09:02+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
-"Project-Id-Version: NetHack 3.7\n"
-"Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-05-03 02:55\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: HanNetHack Project\n"
-"Language-Team: Korean\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36633,7 +36615,6 @@ msgid "=^.^="
 msgstr ""
 
 #: ../src/read.c:122
-#, c-format
 msgid "100% goblin hair - do not wash"
 msgstr ""
 
@@ -51671,7 +51652,12 @@ msgstr ""
 msgid "blast of %s"
 msgstr ""
 
-#: ../win/tty/wintty.c:657
+#: ../win/tty/getline.c:320
+#, c-format
+msgid "%s%.60s: unknown extended command."
+msgstr ""
+
+#: ../win/tty/wintty.c:657 ../win/win32/mswproc.c:702
 msgid "Who are you?"
 msgstr ""
 
@@ -51699,13 +51685,36 @@ msgid ""
 "tty perm_invent needs a terminal that is at least %dx%d, yours is %dx%d."
 msgstr ""
 
+#: ../win/curses/cursdial.c:515 ../win/win32/mswproc.c:1834
+#, c-format
+msgid "%s%s: unknown extended command."
+msgstr ""
+
 #: ../win/curses/cursmisc.c:674
 #, c-format
 msgid "Cannot open \"%s\" for reading!"
 msgstr ""
 
-#. text field
-#: dat/Mon-loca.lua:67 dat/castle.lua:151 dat/soko1-1.lua:110
-#: dat/soko1-2.lua:112
-msgid "Elbereth"
+#: ../sys/unix/unixunix.c:266
+msgid "Start a new game instead?"
+msgstr ""
+
+#: ../sys/unix/unixunix.c:269
+msgid "There is no regular save file but there is a panic one."
+msgstr ""
+
+#: ../sys/unix/unixunix.c:270
+msgid "It might be recoverable with demi-divine intervention."
+msgstr ""
+
+#: ../sys/unix/unixunix.c:390
+msgid "Fork failed.  Try again."
+msgstr ""
+
+#: ../sys/share/ioctl.c:194
+msgid "I don't think your shell has job control."
+msgstr ""
+
+#: ../sys/share/ioctl.c:197
+msgid "Sorry, it seems we have no SIGTSTP here.  Try ! or S."
 msgstr ""

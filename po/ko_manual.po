@@ -72,6 +72,40 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../win/tty/getline.c:320
+#, c-format
+msgid "%s%.60s: unknown extended command."
+msgstr "%s%.60s: 알 수 없는 확장 명령이다."
+
+#: ../win/curses/cursdial.c:515 ../win/win32/mswproc.c:1834
+#, c-format
+msgid "%s%s: unknown extended command."
+msgstr "%s%s: 알 수 없는 확장 명령이다."
+
+#: ../sys/unix/unixunix.c:269
+msgid "There is no regular save file but there is a panic one."
+msgstr "일반 세이브 파일은 없지만 패닉 세이브가 있다."
+
+#: ../sys/unix/unixunix.c:270
+msgid "It might be recoverable with demi-divine intervention."
+msgstr "반신반인의 개입으로 복구할 수 있을지도 모른다."
+
+#: ../sys/unix/unixunix.c:266
+msgid "Start a new game instead?"
+msgstr "대신 새 게임을 시작할까요?"
+
+#: ../sys/unix/unixunix.c:390
+msgid "Fork failed.  Try again."
+msgstr "포크에 실패했다. 다시 시도하라."
+
+#: ../sys/share/ioctl.c:194
+msgid "I don't think your shell has job control."
+msgstr "셸에 작업 제어 기능이 없는 것 같다."
+
+#: ../sys/share/ioctl.c:197
+msgid "Sorry, it seems we have no SIGTSTP here.  Try ! or S."
+msgstr "미안하지만 여기서는 SIGTSTP가 없다. ! 또는 S를 시도하라."
+
 #: ../src/uhitm.c:1285
 msgid " "
 msgstr ", "

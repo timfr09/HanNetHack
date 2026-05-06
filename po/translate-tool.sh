@@ -36,6 +36,7 @@ usage() {
     echo "  validate           Validate translation format"
     echo "  postpos-check      Check Korean postposition patterns"
     echo "  build              Build translations (merge + compile)"
+    echo "  preflight          Run make translation-ci (msgfmt checks + stats)"
     echo "  backup             Create backup of current translations"
     echo "  help               Show this help"
     echo ""
@@ -307,6 +308,13 @@ build() {
     echo "Run 'make install' from project root to install."
 }
 
+# Same as: cd po && make translation-ci
+preflight() {
+    cd "$SCRIPT_DIR"
+    echo -e "${BLUE}=== translation-ci (ko_manual + merged msgfmt -c) ===${NC}"
+    make translation-ci
+}
+
 # Create backup
 backup() {
     timestamp=$(date +%Y%m%d_%H%M%S)
@@ -407,6 +415,9 @@ case "${1:-help}" in
         ;;
     build)
         build
+        ;;
+    preflight)
+        preflight
         ;;
     backup)
         backup

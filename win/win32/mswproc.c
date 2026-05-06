@@ -358,8 +358,15 @@ prompt_for_player_selection(void)
 
         /* tty_putstr(BASE_WINDOW, 0, ""); */
         /* echoline = wins[BASE_WINDOW]->cury; */
-        box_result = NHMessageBox(NULL, prompt, MB_YESNOCANCEL | MB_DEFBUTTON1
-                                                    | MB_ICONQUESTION);
+        /* prompt is UTF-8 (gettext); MessageBoxW needs wide-char under _UNICODE */
+        {
+            TCHAR wprompt[QBUFSZ * 4];
+
+            NH_A2W(prompt, wprompt, QBUFSZ * 4);
+            box_result = NHMessageBox(NULL, wprompt,
+                                      MB_YESNOCANCEL | MB_DEFBUTTON1
+                                          | MB_ICONQUESTION);
+        }
         pick4u =
             (box_result == IDYES) ? 'y' : (box_result == IDNO) ? 'n' : '\033';
         /* tty_putstr(BASE_WINDOW, 0, prompt); */
@@ -1563,17 +1570,28 @@ mswin_yn_function(const char *question, const char *choices, char def)
     logDebug("mswin_yn_function(%s, %s, %d)\n", question, choices, def);
 
     if (WIN_MESSAGE == WIN_ERR && choices == ynchars) {
+        const char *saved = GetNHApp()->saved_text ? GetNHApp()->saved_text : "";
         char *text =
-            realloc(strdup(GetNHApp()->saved_text),
-                    strlen(question) + strlen(GetNHApp()->saved_text) + 1);
-        DWORD box_result;
+            realloc(strdup(saved),
+                    strlen(question) + strlen(saved) + 1);
+        DWORD box_result = IDCANCEL;
+        int wlen;
+        TCHAR *wbuf;
+
         strcat(text, question);
-        box_result =
-            NHMessageBox(NULL, NH_W2A(text, message, sizeof(message)),
-                         MB_ICONQUESTION | MB_YESNOCANCEL
-                             | ((def == 'y') ? MB_DEFBUTTON1
-                                             : (def == 'n') ? MB_DEFBUTTON2
-                                                            : MB_DEFBUTTON3));
+        /* UTF-8 -> UTF-16 may need up to 2 WCHARs per code point */
+        wlen = (int) strlen(text) * 2 + 2;
+        wbuf = (TCHAR *) alloc((size_t) wlen * sizeof(TCHAR));
+        if (wbuf != NULL) {
+            NH_A2W(text, wbuf, wlen);
+            box_result =
+                NHMessageBox(NULL, wbuf,
+                             MB_ICONQUESTION | MB_YESNOCANCEL
+                                 | ((def == 'y') ? MB_DEFBUTTON1
+                                                 : (def == 'n') ? MB_DEFBUTTON2
+                                                                : MB_DEFBUTTON3));
+            free(wbuf);
+        }
         free(text);
         GetNHApp()->saved_text = strdup("");
         return box_result == IDYES ? 'y' : box_result == IDNO ? 'n' : '\033';
@@ -2844,12 +2862,19 @@ int
 NHMessageBox(HWND hWnd, LPCTSTR text, UINT type)
 {
     TCHAR title[MAX_LOADSTRING];
-    if (program_state.exiting && !strcmp(text, "\n"))
-        text = "Press Enter to exit";
+    LPCTSTR msg = text;
+
+#ifdef _UNICODE
+    if (program_state.exiting && text && text[0] == L'\n' && text[1] == L'\0')
+        msg = TEXT("Press Enter to exit");
+#else
+    if (program_state.exiting && text && !strcmp((const char *) text, "\n"))
+        msg = TEXT("Press Enter to exit");
+#endif
 
     LoadString(GetNHApp()->hApp, IDS_APP_TITLE_SHORT, title, MAX_LOADSTRING);
 
-    return MessageBox(hWnd, text, title, type);
+    return MessageBox(hWnd, msg, title, type);
 }
 
 static mswin_status_lines _status_lines;

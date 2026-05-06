@@ -977,7 +977,7 @@ ODLB = $(O)dlb
 DLBOBJS = $(addprefix $(ODLB)/, alloc.o dlb.o dlb_main.o panic.o)
 DAT_CLEAN = $(addprefix $(DAT)/, data oracles options porthelp rumors engrave epitaph bogusmon)
 DAT_NOCLEAN = $(addprefix $(DAT)/, help hh cmdhelp keyhelp history opthelp optmenu \
-	      wizhelp license engrave epitaph bogusmon tribute)
+	      usagehlp wizhelp license engrave epitaph bogusmon tribute)
 DLBLST = $(DAT)/dlb.lst
 DLB = $(GAMEDIR)/nhdat$(NHV)
 DTARGETS = $(U)dlb.exe $(DAT_CLEAN) $(DLBLST) $(DLB)
@@ -992,6 +992,10 @@ $(ODLB)/%.o: $(SRC)/%.c $(NHLUAH) | $(ODLB)
 
 $(ODLB)/%.o: $(U)%.c $(NHLUAH) | $(ODLB)
 	$(cc) $(CFLAGSU) $< -o$@
+
+# Same as Unix Makefile.utl: host dlb.exe must not pull ENABLE_NLS / i18n globals.
+$(ODLB)/dlb.o: $(SRC)/dlb.c $(NHLUAH) | $(ODLB)
+	$(cc) $(CFLAGSU) -DHOSTUTIL=1 $(SRC)/dlb.c -o$@
 
 $(ODLB):
 	@mkdir -p $@
@@ -1033,6 +1037,7 @@ $(DLBLST): $(LUAFILES) | $(DAT_CLEAN) $(DAT_NOCLEAN)
 	echo history >> $(DLBLST)
 	echo opthelp >> $(DLBLST)
 	echo optmenu >> $(DLBLST)
+	echo usagehlp >> $(DLBLST)
 	echo wizhelp >> $(DLBLST)
 	echo license >> $(DLBLST)
 	echo engrave >> $(DLBLST)
@@ -1040,6 +1045,15 @@ $(DLBLST): $(LUAFILES) | $(DAT_CLEAN) $(DAT_NOCLEAN)
 	echo bogusmon >> $(DLBLST)
 	echo tribute >> $(DLBLST)
 	cd $(DAT) ; ls -1 *.lua >> $(DLBLST)
+# HanNetHack: bundle Korean like sys/unix/Makefile.top (build mo: cd po && make compile).
+	@for k in nethack.mo help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp \
+	    data.base bogusmon.txt engrave.txt epitaph.txt oracles.txt rumors.tru rumors.fal; do \
+	    test -f "$(DAT)/locale/ko/$$k" && echo "locale/ko/$$k" >> $(DLBLST); \
+	done
+	@for f in "$(DAT)"/locale/ko/*.lua; do \
+	    test -f "$$f" || continue; \
+	    echo "locale/ko/$$(basename "$$f")" >> $(DLBLST); \
+	done
 
 $(DLB): $(U)dlb.exe $(DLBLST) | $(GAMEDIR)
 	$(U)dlb.exe CcIf $(dir $(DLBLST)) $(notdir $(DLBLST)) $(SRC)/nhdat
@@ -1243,7 +1257,7 @@ COREOBJS = $(addsuffix .o, allmain alloc apply artifact attrib ball bones botl \
 	   spell stairs steal steed strutil \
 	   symbols sys teleport timeout topten track trap u_init uhitm utf8map \
 	   vault version vision weapon were wield windmain windows windsys wizard \
-	   wizcmds worm worn write zap $(SOUNDLIBOBJS))
+	   wizcmds worm worn write zap i18n ko_postpos mo_reader $(SOUNDLIBOBJS))
 
 CFLAGSW = $(CFLAGS) $(CFLAGSXTRA) $(SOUNDLIBINCL) $(COMMONDEF) $(DLBFLG) -DTILES -D_WINDOWS -DMSWIN_GRAPHICS -DNOTTYGRAPHICS $(SOUNDLIBDEFS)
 CPPFLAGSW = $(CFLAGS) $(CPPFLAGSXTRA) $(COMMONDEF) $(DLBFLG) -DTILES -D_WINDOWS -DMSWIN_GRAPHICS -DNOTTYGRAPHICS $(SOUNDLIBDEFS)

@@ -12074,16 +12074,17 @@ msgstr "(미지불 물건이 %s %d개 더 %s%s.)"
 
 #: ../src/hack.c:1872
 msgid "(Tip: perhaps #untrap would help?)"
-msgstr "(팁: #untrap이 도움이 될 수 있다?)"
+msgstr "(팁: 함정을 풀 때는 #untrap을 써 보세요.)"
 
 #: ../src/hack.c:1868
 #, c-format
 msgid "(Tip: use '%s' prefix to step in if you really want to.)"
-msgstr "(팁: 정말 들어가려면 '%s' 접두어를 사용하라.)"
+msgstr "(팁: 정말 들어가시려면 이동 키 앞에 '%s'를 붙이면 한 칸씩 들어가실 수 있습니"
+"다.)"
 
 #: ../src/hack.c:1865
 msgid "(Tip: use the #enhance command to advance them.)"
-msgstr "(팁: #enhance 명령으로 향상시킬 수 있다.)"
+msgstr "(팁: 숙련도를 올리시려면 #enhance 명령을 쓰세요.)"
 
 #: ../src/invent.c:3248
 msgid "(all items are permanently identified already)"
@@ -32234,7 +32235,7 @@ msgstr "몬스터 매혹"
 #: ../src/version.c:383
 msgid "check_version() called with 'complain'=True but 'filename'=Null"
 msgstr ""
-"〔점검〕 check_version() called with 'complain'=True but 'filename'=Null"
+"〔점검〕 check_version(): complain은 참인데 filename이 NULL이다."
 
 #: ../src/do_name.c:1470 ../src/obj_descr_i18n.c:1200
 msgid "checkered"
@@ -46757,7 +46758,7 @@ msgstr "파이"
 #: ../src/zap.c:6177
 msgid "pieces\"), although that aspect of your wish might not be granted."
 msgstr ""
-"〔점검〕 pieces\"), although that aspect of your wish might not be granted."
+"개\"), 다만 소원의 그 부분이 반드시 이루어지지는 않을 수도 있다.)"
 
 #: ../src/polyself.c:1240
 msgid "pierce"
@@ -57709,15 +57710,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"복구하지 않고 이전 세션을 지우고 새로 시작하시겠습니까?\n"
+"정말 기존 게임을 삭제하시고, 그 대신\n"
 
 msgid ""
 "\n"
 "Are you perhaps trying to run NetHack within a zip utility?"
 msgstr ""
 "\n"
-"압축을 푼 폴더에서 실행해 보시겠어요? (zip 안에서 바로 실행하면 안 될 수 있습"
-"니다.)"
+"ZIP 묶음 안에서 바로 실행하고 계신 건 아닌지요? 압축을 풀어 둔 폴더에서 실행해 "
+"주세요."
 
 msgid "         By Stichting Mathematisch Centrum and M. Stephenson."
 msgstr "         Stichting Mathematisch Centrum 및 M. Stephenson 제작."
@@ -59203,7 +59204,7 @@ msgid "reconstitutes"
 msgstr "재구성되었다"
 
 msgid "recover it? [yn] "
-msgstr "그래도 지울까요? [yn] "
+msgstr "복구를 시도하지 않으시겠습니까? [yn] "
 
 msgid "recover the old game"
 msgstr "이전 게임 복구"

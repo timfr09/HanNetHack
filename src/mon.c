@@ -2931,9 +2931,13 @@ vamprises(struct monst *mtmp)
 
             set_msg_xy(x, y); /* You()/pline() will reset this */
             if (!seeit)
-                You_hear(_("%s."), trapped ? _("an explosion") : door_smashed);
+                You_hear(
+                    C_("hear_revive_door", "%s."),
+                    trapped ? _("an explosion") : door_smashed);
             else if (!canspotmon(mtmp))
-                You_see(_("%s."), trapped ? door_go_boom : door_smashed);
+                You_see(
+                    C_("see_revive_door", "%s."),
+                    trapped ? door_go_boom : door_smashed);
             else if (!Unaware)
                 pline_The(_("door is smashed%s"),
                           trapped ? _(" and it explodes!") : _("."));

@@ -2333,9 +2333,15 @@ domove_fight_empty(coordxy x, coordxy y)
         }
 
  futile:
-        You(_("%s%s %s."),
-            !(boulder || solid) ? "" : !explo ? _("harmlessly ") : _("futilely "),
-            explo ? _("explode at") : _("attack"), buf);
+        /* Korean needs object–verb order; explode-at differs from attack */
+        if (explo)
+            You(C_("hack_ff_expl", "%s%s %s."),
+                !(boulder || solid) ? "" : _("futilely "), _("explode at"),
+                buf);
+        else
+            You(C_("hack_ff_atk", "%s%s %s."),
+                !(boulder || solid) ? "" : _("harmlessly "), _("attack"),
+                buf);
 
         nomul(0);
         if (explo) {

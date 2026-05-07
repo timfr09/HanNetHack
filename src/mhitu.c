@@ -75,7 +75,8 @@ hitmsg(struct monst *mtmp, struct attack *mattk)
                  && gh.hitmsg_prev != NULL
                  && mattk == gh.hitmsg_prev + 1
                  && mattk->aatyp == gh.hitmsg_prev->aatyp) ? _(" again") : "";
-        pline_mon(mtmp, _("%s %s%s%s"), Monst_name, verb, again, punct);
+        pline_mon(mtmp, C_("mhitu", "%s %s%s%s"), Monst_name, verb, again,
+                 punct);
     }
     gh.hitmsg_mid = mtmp->m_id;
     gh.hitmsg_prev = mattk;

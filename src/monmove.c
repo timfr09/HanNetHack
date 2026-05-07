@@ -1568,9 +1568,9 @@ postmov(
                             pline_mon(mtmp, _("%s unlocks and opens a door."),
                                   Monnam(mtmp));
                         } else if (canseeit) {
-                            You_see(_("a door unlock and open."));
+                            You_see(C_("You_see", "a door unlock and open."));
                         } else if (!Deaf) {
-                            You_hear(_("a door unlock and open."));
+                            You_hear(C_("You_hear", "a door unlock and open."));
                         }
                     }
                 }
@@ -1585,9 +1585,9 @@ postmov(
                         if (canseeit && canspotmon(mtmp)) {
                             pline_mon(mtmp, _("%s opens a door."), Monnam(mtmp));
                         } else if (canseeit) {
-                            You_see(_("a door open."));
+                            You_see(C_("You_see", "a door open."));
                         } else if (!Deaf) {
-                            You_hear(_("a door open."));
+                            You_hear(C_("You_hear", "a door open."));
                         }
                     }
                 }
@@ -1610,9 +1610,9 @@ postmov(
                             pline_mon(mtmp, _("%s smashes down a door."),
                                       Monnam(mtmp));
                         } else if (canseeit) {
-                            You_see(_("a door crash open."));
+                            You_see(C_("You_see", "a door crash open."));
                         } else if (!Deaf) {
-                            You_hear(_("a door crash open."));
+                            You_hear(C_("You_hear", "a door crash open."));
                         }
                     }
                 }

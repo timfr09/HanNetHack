@@ -1584,8 +1584,8 @@ config_erradd(const char *buf)
     } else
         lineno[0] = '\0';
 
-    pline(_("%s %s%s%s"), config_error_data->secure ? "Error:" : " *",
-          lineno, buf, punct);
+    pline(C_("config_error", "%s %s%s%s"),
+          config_error_data->secure ? "Error:" : " *", lineno, buf, punct);
 }
 
 int

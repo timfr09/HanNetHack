@@ -3804,7 +3804,7 @@ msgstr "%1$s{이/가} 기름진 느낌이다.%2$.0s"
 #: ../src/trap.c:1680
 #, c-format
 msgid "%s %s on the %s!"
-msgstr "%s %s의 %s에!"
+msgstr "%1$s %2$s의 %3$s{을/를} 맞혔다!"
 
 # [리뷰 완료] do.c:388 — Doname2+otense(land), 제단에 물건 떨어짐
 # %1$s = Doname2(obj), %2$s = otense(land) (억제)
@@ -4386,10 +4386,8 @@ msgid "%s %s!"
 msgstr "%1$s %2$s{으로/로} 다시 일어났다!"
 
 # trap.c:1701 - 물줄기가 몬스터를 맞힘 C_("water_hit", "%s %s!")
-# %1$s = action phrase("A gush of water hits" → "물줄기가"), %2$s = mon_nam(대상)
-# 영어 조합: "A gush of water hits the orc!"
-# 한국어 조합: "물줄기가 오크를 맞혔다!"
-# 주의: %1$s에 동작+주어가 이미 포함되어 Subject+Verb 패턴과 다름
+# %1$s = _("A gush of water hits")→"물줄기가", %2$s = mon_nam
+# 영어: "A gush of water hits the orc!" — 한국어: 맞혔다로 서술어 완결
 #: ../src/trap.c:1709
 #, c-format
 msgctxt "water_hit"
@@ -4516,10 +4514,17 @@ msgstr "%s %s%s!"
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
-#: ../src/cfgfiles.c:1587 ../src/mhitu.c:78
+#: ../src/mhitu.c:78
 #, c-format
+msgctxt "mhitu"
 msgid "%s %s%s%s"
-msgstr "%s{이/가} %s%s%s"
+msgstr "%1$s{이/가} 당신을%3$s %2$s%4$s"
+
+#: ../src/cfgfiles.c:1587
+#, c-format
+msgctxt "config_error"
+msgid "%s %s%s%s"
+msgstr "%s%s%s%s"
 
 #: ../src/sounds.c:1524
 #, c-format
@@ -4587,12 +4592,12 @@ msgstr "약탈할 %s%s %s{이/가} 여기 있다."
 #: ../src/trap.c:1688
 #, c-format
 msgid "%s %s's left %s!"
-msgstr "%s %s의 왼쪽 %s에!"
+msgstr "%1$s %2$s의 왼쪽 %3$s{을/를} 맞혔다!"
 
 #: ../src/trap.c:1703
 #, c-format
 msgid "%s %s's right %s!"
-msgstr "%s %s의 오른쪽 %s에!"
+msgstr "%1$s %2$s의 오른쪽 %3$s{을/를} 맞혔다!"
 
 #: ../src/dokick.c:275
 #, c-format
@@ -6913,7 +6918,7 @@ msgstr "%s 투구가 %s{으로/로} 떨어졌다!"
 #: ../src/invent.c:4304
 #, c-format
 msgid "%s here %s."
-msgstr "여기에 %2$s{이/가} 있다%1$.0s."
+msgstr "%.0s여기에 %s{이/가} 있다."
 
 #: ../src/trap.c:6887
 #, c-format
@@ -10763,9 +10768,9 @@ msgstr "%s 거미줄에 얽혀있는 동안 %s할 수 없다."
 #: ../src/trap.c:1625
 #, c-format
 msgid "%s you on the %s!"
-msgstr "당신의 %s{을/를} %s!"
+msgstr "%1$s 당신의 %2$s{을/를} 맞혔다!"
 
-# [리뷰 완료] trap.c:1634 — 물줄기 맞힘
+# [리뷰 완료] trap.c:1642 — 물줄기 맞힘
 # %s = _("A gush of water hits") = "물줄기가"
 # 한국어: "물줄기가 당신을 맞혔다!"
 #: ../src/trap.c:1642
@@ -10820,7 +10825,7 @@ msgstr "%s 손아귀에서 벗어났다!"
 #: ../src/trap.c:1629
 #, c-format
 msgid "%s your left %s!"
-msgstr "%s{이/가} 왼쪽 %s{을/를}!"
+msgstr "%1$s 당신의 왼쪽 %2$s{을/를} 맞혔다!"
 
 #: ../src/eat.c:2945
 #, c-format
@@ -10839,7 +10844,7 @@ msgstr "%s 당신의 정신을 공격했다!"
 #: ../src/trap.c:1638
 #, c-format
 msgid "%s your right %s!"
-msgstr "당신의 오른쪽 %s{을/를} %s!"
+msgstr "%1$s 당신의 오른쪽 %2$s{을/를} 맞혔다!"
 
 # 런타임: "당신의 시야를 부적이 피해를 주었다!" ✓
 #: ../src/detect.c:1233
@@ -11066,8 +11071,15 @@ msgstr "%1$s%2$s{이/가}%4$s %3$s%5$c"
 # ============================================================
 #: ../src/hack.c:2336
 #, c-format
+msgctxt "hack_ff_atk"
 msgid "%s%s %s."
-msgstr "%s%s %s."
+msgstr "%1$s%3$s{을/를} %2$s."
+
+#: ../src/hack.c:2336
+#, c-format
+msgctxt "hack_ff_expl"
+msgid "%s%s %s."
+msgstr "%1$s%3$s에서 %2$s."
 
 # [리뷰 완료] hack.c:556 — Tobjnam+trigger/fall, 바위→함정문/구멍 막기
 # %1$s = Tobjnam(otmp, C_("Tobjnam","trigger"/"fall")) = "바위{이/가}" (계사 억제)
@@ -11497,14 +11509,14 @@ msgstr "%s 전용 도움말과 명령어."
 #: ../src/dokick.c:63 ../src/eat.c:1084 ../src/eat.c:1091 ../src/eat.c:1258
 #: ../src/eat.c:3473 ../src/explode.c:795 ../src/getpos.c:986
 #: ../src/invent.c:2058 ../src/invent.c:3154 ../src/invent.c:4552
-#: ../src/mail.c:375 ../src/mhitu.c:1648 ../src/mon.c:2934 ../src/mon.c:2936
-#: ../src/muse.c:2936 ../src/muse.c:3145 ../src/music.c:615
+#: ../src/mail.c:375 ../src/mhitu.c:1648
+#: ../src/muse.c:3146 ../src/music.c:615
 #: ../src/objnam.c:3742 ../src/objnam.c:3791 ../src/objnam.c:3922
 #: ../src/pickup.c:407 ../src/potion.c:1679 ../src/pray.c:578
 #: ../src/pray.c:1495 ../src/pray.c:1766 ../src/read.c:1357 ../src/read.c:2665
 #: ../src/read.c:2869 ../src/sit.c:500 ../src/teleport.c:1084
 #: ../src/teleport.c:1380 ../src/trap.c:4657 ../src/uhitm.c:2996
-#: ../src/vault.c:871 ../src/wield.c:235 ../src/wield.c:664 ../src/wield.c:898
+#: ../src/wield.c:235 ../src/wield.c:664 ../src/wield.c:898
 #: ../src/wield.c:996
 #, c-format
 msgid "%s."
@@ -12922,7 +12934,7 @@ msgstr "얼어붙는 안개가 %s에서 올라와 검을 감싼다."
 msgid "A greasy liquid sprays all over you!"
 msgstr "기름진 액체가 온몸에 뿌려졌다!"
 
-# trap.c:1617+ - 물줄기(기=no받침→가)
+# trap.c 녹 함정 물줄기 — 조합 문자열에서 "맞혔다" 등으로 서술어 처리
 #: ../src/trap.c:1625 ../src/trap.c:1629 ../src/trap.c:1638 ../src/trap.c:1642
 #: ../src/trap.c:1680 ../src/trap.c:1688 ../src/trap.c:1703 ../src/trap.c:1709
 msgid "A gush of water hits"
@@ -13954,7 +13966,7 @@ msgstr "도적"
 #: ../src/dig.c:355
 #, c-format
 msgid "Bang!  You hit with the broad side of %s!"
-msgstr "쾅! %s의 넓은 면으로 때렸다!"
+msgstr "쾅! %s의 넓은 면으로 쳤다!"
 
 #: ../src/read.c:460
 msgid "Bank of Gehennom - 99% Interest Card"
@@ -21215,7 +21227,7 @@ msgstr "철퍽! %s{이/가} %s 알에 맞았다!"
 #: ../src/uhitm.c:1203
 #, c-format
 msgid "Splat!  You hit %s with %s %s egg%s!"
-msgstr "철퍽! %2$s %3$s 알%4$s{으로/로} %1$s{을/를} 때렸다!"
+msgstr "철퍽! %2$s %3$s 알%4$s{으로/로} %1$s{을/를} 맞혔다!"
 
 #: ../src/engrave.c:703
 msgid "Splinters fly up from the bridge."
@@ -26675,22 +26687,68 @@ msgstr "문"
 msgid "a door being smashed"
 msgstr "문이 부서지는 소리"
 
-#: ../src/monmove.c:1613 ../src/monmove.c:1615
+# monmove.c — 한국어 KO 패스스루: You_see/You_hear 접두 없음 → 문장 완결
+#: ../src/monmove.c:1613
+msgctxt "You_see"
 msgid "a door crash open."
-msgstr "문이 쾅 열리는 소리."
+msgstr "문이 쾅 하고 열렸다."
+
+#: ../src/monmove.c:1615
+msgctxt "You_hear"
+msgid "a door crash open."
+msgstr "문이 쾅 열리는 소리가 들렸다."
 
 # trap.c - 문 폭발음. 효과음
 #: ../src/mon.c:2927
 msgid "a door exploding"
 msgstr "문이 폭발하는 소리"
 
-#: ../src/monmove.c:1588 ../src/monmove.c:1590
+#: ../src/monmove.c:1588
+msgctxt "You_see"
 msgid "a door open."
-msgstr "문이 열리는 소리."
+msgstr "문이 열렸다."
 
-#: ../src/monmove.c:1571 ../src/monmove.c:1573
+#: ../src/monmove.c:1590
+msgctxt "You_hear"
+msgid "a door open."
+msgstr "문이 열리는 소리가 들렸다."
+
+#: ../src/monmove.c:1571
+msgctxt "You_see"
 msgid "a door unlock and open."
-msgstr "문이 열리는 소리."
+msgstr "문 잠금이 풀리며 열렸다."
+
+#: ../src/monmove.c:1573
+msgctxt "You_hear"
+msgid "a door unlock and open."
+msgstr "문 잠금이 풀리고 열리는 소리가 들렸다."
+
+# mon.c — 뱀파이어 등 부활 후 문 처리: 청각/시각 별 패스스루 문장 분리(C_ msgctxt)
+#: ../src/mon.c:2934
+#, c-format
+msgctxt "hear_revive_door"
+msgid "%s."
+msgstr "%1$s{이/가} 들렸다."
+
+#: ../src/mon.c:2938
+#, c-format
+msgctxt "see_revive_door"
+msgid "%s."
+msgstr "%1$s{을/를} 보았다."
+
+# muse.c — 시야 밖에서 몬스터가 포션/음식 처리할 때
+#: ../src/muse.c:2936
+#, c-format
+msgctxt "hear_vmunch_far"
+msgid "%s."
+msgstr "%1$s 소리가 들렸다."
+
+# vault.c — 금고 경비, 시야 없을 때 접근 소리만
+#: ../src/vault.c:871
+#, c-format
+msgctxt "hear_guard_far"
+msgid "%s."
+msgstr "%1$s{이/가} 들렸다."
 
 #: ../src/dig.c:1526
 msgid "a draft."
@@ -31694,7 +31752,7 @@ msgstr "그것을 %s할 수 없다!"
 #: ../src/dig.c:267
 #, c-format
 msgid "cannot %s thin air."
-msgstr "허공을 %s할 수 없다."
+msgstr "%.0s허공에는 파거나 찍을 수 없다."
 
 #: ../src/pickup.c:2057
 #, c-format
@@ -32264,7 +32322,7 @@ msgstr "비밀문을 씹어서 통과했다."
 # bird_parts
 #: ../src/muse.c:2937
 msgid "chewing"
-msgstr "씹는 중"
+msgstr "씹는"
 
 #: ../src/monster_i18n.c:28 ../src/obj_descr_i18n.c:889
 msgid "chickatrice"
@@ -35285,7 +35343,7 @@ msgstr "마실"
 
 #: ../src/muse.c:2937
 msgid "drinking"
-msgstr "마실"
+msgstr "마시는"
 
 #: ../src/sounds.c:899
 msgid "drones."
@@ -36401,7 +36459,7 @@ msgstr "스스로 위에 화염구를 폭발시켰다!"
 
 #: ../src/hack.c:2338
 msgid "explode at"
-msgstr "폭발을 시도한다"
+msgstr "폭발한다"
 
 #: ../src/mhitu.c:2526 ../src/uhitm.c:5761
 msgid "explode!"
@@ -40572,7 +40630,7 @@ msgstr "%s{으로/로} 스스로를 맞았다."
 
 #: ../src/do.c:552 ../src/dothrow.c:1281 ../src/mhitu.c:71
 msgid "hits"
-msgstr "맞혔다"
+msgstr "때렸다"
 
 #: ../src/artifact.c:1506
 msgctxt "artifact_cold"
@@ -44396,7 +44454,7 @@ msgstr "빗나갔다."
 # "You miss wildly and stumble forwards."
 #: ../src/uhitm.c:558
 msgid "miss wildly and stumble forwards."
-msgstr "크게 빗나가며 앞으로 비틀거렸다."
+msgstr "세차게 빗나가며 앞으로 비틀거렸다."
 
 #: ../src/apply.c:2995
 msgid "miss."
@@ -52781,7 +52839,7 @@ msgstr "%s{을/를} 휘두르지만, 잔해가 갈 곳이 없다."
 
 #: ../src/dig.c:360
 msgid "swing misses its mark."
-msgstr "휘두름이 빗나갔다."
+msgstr "휘두른 일격이 빗나갔다."
 
 # bird_parts
 #: ../src/dig.c:1276
@@ -57722,14 +57780,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"정말 기존 게임을 삭제하시고, 그 대신\n"
+"복구 대신 이전 게임을\n"
 
 msgid ""
 "\n"
 "Are you perhaps trying to run NetHack within a zip utility?"
 msgstr ""
 "\n"
-"ZIP 묶음 안에서 바로 실행하고 계신 건 아닌지요? 압축을 풀어 둔 폴더에서 실행해 주세요."
+"ZIP 유틸리티 안에서 NetHack을 실행하려는 것은 아닌지요?"
 
 msgid "         By Stichting Mathematisch Centrum and M. Stephenson."
 msgstr "         Stichting Mathematisch Centrum 및 M. Stephenson 제작."
@@ -58186,7 +58244,7 @@ msgstr "물이 시원하고 상쾌하다."
 
 # windmain.c — 락/자가 복구(self-recover) 프롬프트
 msgid "There are files from a game in progress under your name. "
-msgstr "이 이름으로 진행 중이던 게임 기록이 아직 남아 있습니다. "
+msgstr "같은 이름으로 진행 중인 게임 파일이 있다. "
 
 msgid "There is a ladder down here."
 msgstr "여기에 아래로 가는 사다리가 있다."
@@ -59064,7 +59122,7 @@ msgid "nominally aligned"
 msgstr "명목상 정렬됨"
 
 msgid "not start a new game"
-msgstr "새 게임 시작 안 함"
+msgstr "새 게임을 시작하지 않음"
 
 msgid "nymph"
 msgstr "님프"
@@ -59215,7 +59273,7 @@ msgid "reconstitutes"
 msgstr "재구성되었다"
 
 msgid "recover it? [yn] "
-msgstr "복구를 시도하지 않으시겠습니까? [yn] "
+msgstr "버리고 새로 시작하시겠습니까? [yn] "
 
 msgid "recover the old game"
 msgstr "이전 게임 복구"
@@ -59706,14 +59764,15 @@ msgstr "<Enter>를 눌러 %s."
 #: ../sys/vms/vmsunix.c:524
 #, c-format
 msgid "  Spawn failed.  (%%x%08lX) "
-msgstr "  Spawn 실패.  (%%x%08lX) "
+msgstr "  Spawn failed.  (%%x%08lX) "
 
 #: ../sys/vms/vmsunix.c:544
 msgid ""
 "  No parent process.  Use '!' to Spawn, 'S' to Save, or '#quit' to Quit. "
-msgstr "  부모 프로세스가 없다. '!'로 Spawn, 'S'로 저장, 또는 '#quit'으로 종료하라. "
+msgstr ""
+"  No parent process.  Use '!' to Spawn, 'S' to Save, or '#quit' to Quit. "
 
 #: ../sys/vms/vmsunix.c:559
 #, c-format
 msgid "  Unable to attach to parent.  (%%x%08lX) "
-msgstr "  부모에 붙을 수 없다.  (%%x%08lX) "
+msgstr "  Unable to attach to parent.  (%%x%08lX) "

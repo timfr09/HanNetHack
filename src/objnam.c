@@ -1288,7 +1288,7 @@ doname_base(
     prefix[0] = '\0';
     if (obj->quan != 1L) {
         if (dknown || !vague_quan)
-            Sprintf(prefix, "%ld ", obj->quan);
+            Sprintf(prefix, is_korean_locale() ? "+%ld " : "%ld ", obj->quan);
         else
             Strcpy(prefix, _("some "));
     } else if (obj->otyp == CORPSE) {
@@ -1300,9 +1300,9 @@ doname_base(
             bp += 4; /* doesn't affect bp_eos or bpspaceleft */
         Strcpy(prefix, _("the "));
     } else if (!fake_arti) {
-        /* default prefix: "a " for English, "1 " for Korean */
+        /* default prefix: "a " for English, "+1 " for Korean (quantity style) */
         if (is_korean_locale())
-            Strcpy(prefix, "1 ");
+            Strcpy(prefix, "+1 ");
         else
             Strcpy(prefix, _("a "));
     }
@@ -2297,7 +2297,7 @@ aobjnam(struct obj *otmp, const char *verb)
     char *bp = cxname(otmp);
 
     if (otmp->quan != 1L) {
-        Sprintf(prefix, "%ld ", otmp->quan);
+        Sprintf(prefix, is_korean_locale() ? "+%ld " : "%ld ", otmp->quan);
         bp = strprepend(bp, prefix);
     }
     if (verb) {

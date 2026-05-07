@@ -1267,12 +1267,12 @@ msgstr " 뒤로"
 
 # ============================================================
 # [조합 메시지] from_what() 원인 표시 - attrib.c:912-945
-#
+# 
 # 사용 위치: insight.c의 enl_msg() 조합 메시지 끝에 추가됨
 # 조합 구조: You_ + verb + suffix + from_what()
 # 영어 예: "You hunger rapidly because of the ring"
 # 한국어 예: "당신은 배고픔이 빠르게 증가합니다 (반지의 영향)"
-#
+# 
 # 괄호 형식 사용 이유: 한국어 어순과 무관하게 문장 끝에 추가 가능
 # 주의: 이 문자열들은 항상 다른 문장 뒤에 붙음
 # ============================================================
@@ -1856,7 +1856,7 @@ msgstr "어떤 종류의 괴물이 되겠습니까? [이름을 입력하세요]"
 
 #: ../src/obj_descr_i18n.c:528 ../src/objnam.c:868
 msgid " labeled "
-msgstr " "
+msgstr " labeled "
 
 # objnam.c:986 - 캔디바 라벨
 #: ../src/objnam.c:993
@@ -1922,7 +1922,8 @@ msgid " monsters when hitting them"
 msgstr "몬스터를 공격할 때 "
 
 # " more" 번역 수정 (기존 "개 더" → " 더")
-#: ../src/apply.c:1438 ../src/invent.c:4286 ../src/shk.c:3120 ../src/zap.c:6210
+#: ../src/apply.c:1438 ../src/invent.c:4286 ../src/shk.c:3120
+#: ../src/zap.c:6210
 msgid " more"
 msgstr " 더"
 
@@ -1998,7 +1999,7 @@ msgstr " o -- 꺼내기: 물건 꺼내기"
 
 #: ../src/eat.c:1450 ../src/obj_descr_i18n.c:524 ../src/priest.c:364
 msgid " of "
-msgstr " "
+msgstr " of "
 
 # objnam.c - 물체 이름
 #: ../src/end.c:264 ../src/objnam.c:287
@@ -2288,7 +2289,7 @@ msgstr "에 갇힌"
 # pager.c - 설명 연결. "the door"
 #: ../src/botl.c:76 ../src/do_name.c:932 ../src/mplayer.c:90
 msgid " the "
-msgstr " "
+msgstr " the "
 
 # suffix - 앞 공백 제거, 뒤 공백 추가
 #: ../src/insight.c:2434
@@ -2873,13 +2874,13 @@ msgstr "%ld%s"
 #: ../src/engrave.c:1246 ../src/hack.c:122 ../src/hack.c:3429
 #: ../src/hack.c:4202 ../src/nhlua.c:624 ../src/nhlua.c:638 ../src/nhlua.c:654
 #: ../src/pager.c:2699 ../src/pickup.c:410 ../src/pickup.c:412
-#: ../src/pline.c:645 ../src/pline.c:648 ../src/pline.c:660 ../src/potion.c:208
-#: ../src/potion.c:235 ../src/questpgr.c:439 ../src/rumors.c:545
-#: ../src/rumors.c:566 ../src/spell.c:2053 ../src/teleport.c:821
-#: ../src/timeout.c:343 ../src/timeout.c:543 ../src/timeout.c:569
-#: ../src/trap.c:5294 ../src/vault.c:958 ../src/version.c:163
-#: ../src/windows.c:456 ../src/windows.c:514 ../src/zap.c:5064
-#: ../src/zap.c:5208
+#: ../src/pline.c:645 ../src/pline.c:648 ../src/pline.c:660
+#: ../src/potion.c:208 ../src/potion.c:235 ../src/questpgr.c:439
+#: ../src/rumors.c:545 ../src/rumors.c:566 ../src/spell.c:2053
+#: ../src/teleport.c:821 ../src/timeout.c:343 ../src/timeout.c:543
+#: ../src/timeout.c:569 ../src/trap.c:5294 ../src/vault.c:958
+#: ../src/version.c:163 ../src/windows.c:456 ../src/windows.c:514
+#: ../src/zap.c:5064 ../src/zap.c:5208
 #, c-format
 msgid "%s"
 msgstr "%s"
@@ -2947,7 +2948,7 @@ msgstr "%s %s %s"
 #, c-format
 msgctxt "action_item"
 msgid "%s %s %s"
-msgstr "%2$s %3$s{을/를} %1$s"
+msgstr "%s %s %s"
 
 # combat_hit: invrt=FALSE (to hit)
 # args: %1$s=modif(약간의), %2$s=bonus(보너스), %3$s=tr_inctyp(명중)
@@ -2957,7 +2958,7 @@ msgstr "%2$s %3$s{을/를} %1$s"
 #, c-format
 msgctxt "combat_hit"
 msgid "%s %s %s"
-msgstr "%3$s에 %1$s %2$s가 있다"
+msgstr "%s %s %s"
 
 # combat_type: invrt=TRUE (damage/defense)
 # args: %1$s=modif(약간의), %2$s=tr_inctyp(피해), %3$s=bonus(보너스)
@@ -2967,7 +2968,7 @@ msgstr "%3$s에 %1$s %2$s가 있다"
 #, c-format
 msgctxt "combat_type"
 msgid "%s %s %s"
-msgstr "%2$s에 %1$s %3$s가 있다"
+msgstr "%s %s %s"
 
 # skill_are: you_are() 패턴 - 기술 수준 표시
 # args: %1$s=기술수준(미숙련/숙련), %2$s="in"(억제), %3$s=무기이름
@@ -2977,7 +2978,7 @@ msgstr "%2$s에 %1$s %3$s가 있다"
 #, c-format
 msgctxt "skill_are"
 msgid "%s %s %s"
-msgstr "%3$s에 %1$s{이다/다}%2$.0s"
+msgstr "%s %s %s"
 
 # ============================================================
 # insight.c:1276-1445 - 무기 기술 (weapon_insight) 서술어 보완
@@ -2990,7 +2991,7 @@ msgstr "%3$s에 %1$s{이다/다}%2$.0s"
 #, c-format
 msgctxt "skill_have"
 msgid "%s %s %s"
-msgstr "%3$s에 %1$s 기술이 있다%2$.0s"
+msgstr "%s %s %s"
 
 # ============================================================
 # C_("subj_is_pred") - 주어+계사+서술어 패턴
@@ -3005,7 +3006,7 @@ msgstr "%3$s에 %1$s 기술이 있다%2$.0s"
 #, c-format
 msgctxt "subj_is_pred"
 msgid "%s %s %s"
-msgstr "%1$s{이/가} %3$s%2$.0s"
+msgstr "%s %s %s"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -4057,7 +4058,7 @@ msgstr "%3$s %2$s %1$s."
 # ============================================================
 # 조합 패턴 전수 리뷰 (2026-02-22)
 # ============================================================
-#
+# 
 # === 수정 완료 (이번 리뷰에서 발견/수정) ===
 # [FIX] muse.c:297 "%s drinks %s!" — 동사 "마셨다" 누락
 # [FIX] dokick.c:309 "%s harmlessly %s %s." — SVO 어순
@@ -4070,7 +4071,7 @@ msgstr "%3$s %2$s %1$s."
 # [FIX] dothrow.c:2643 "%s shatter%s%s!" — 산산조각 이중 + 복수접미 미억제
 # [FIX] zap.c:3956 "%s %s over %s." — SVO 어순
 # [FIX] uhitm.c:1288 "%s %s over %s!" — SVO 어순
-#
+# 
 # === 확인 완료 (기존 번역 정상) ===
 # [OK] steal.c:192 "%s steals %s!" → SOV 어순 정상
 # [OK] steal.c:806 "%s absorbs %s!" → SOV 어순 정상
@@ -4083,7 +4084,7 @@ msgstr "%3$s %2$s %1$s."
 # [OK] trap.c:6107 "%s released from %s%s." → SOV 정상
 # [OK] trap.c:1518 "%s bear trap closes on %s %s!" → 정상
 # [OK] potion.c:2621 "%s forms a coating on %s." → 정상
-#
+# 
 # === Known Issues (구조적 한계, 이번 리뷰에서 확인) ===
 # - pray.c:1409 %1 = "The"/"Some of the"/"One of the": 한국어 관사 매핑 어색
 #   ("그"/"일부의"/"중 하나의" → "제단의 그 물약" 등)
@@ -4092,7 +4093,7 @@ msgstr "%3$s %2$s %1$s."
 # [해결됨] zap.c:3556/3563 → C_("hit")/C_("miss") 컨텍스트 추가
 # [해결됨] apply.c:1555 → 3 pline 분기 + C_("lantern") 컨텍스트
 # [해결됨] apply.c:1684 → Blind 분기 + C_("candle") 컨텍스트
-#
+# 
 # ============================================================
 # dothrow.c:640 — 물체가 바닥/표면을 맞힘
 # %1$s=Doname2(obj), %2$s=verb(land/step/fall/hit 등), %3$s=surface
@@ -4618,12 +4619,12 @@ msgstr "%s %s, NetHack에 오신 것을 환영한다! 당신은 %s이다."
 #: ../src/engrave.c:862 ../src/engrave.c:870 ../src/hack.c:1723
 #: ../src/mcastu.c:700 ../src/mhitu.c:1714 ../src/mkobj.c:1603
 #: ../src/mon.c:1005 ../src/mon.c:1785 ../src/mthrowu.c:792 ../src/muse.c:282
-#: ../src/music.c:604 ../src/music.c:674 ../src/music.c:715 ../src/potion.c:471
-#: ../src/potion.c:1555 ../src/read.c:1289 ../src/read.c:1483 ../src/shk.c:1386
-#: ../src/shk.c:1864 ../src/shk.c:5323 ../src/sounds.c:508
-#: ../src/teleport.c:1125 ../src/trap.c:4538 ../src/trap.c:4546
-#: ../src/trap.c:4659 ../src/trap.c:4799 ../src/trap.c:4823 ../src/trap.c:4855
-#: ../src/uhitm.c:5022 ../src/uhitm.c:5656
+#: ../src/music.c:604 ../src/music.c:674 ../src/music.c:715
+#: ../src/potion.c:471 ../src/potion.c:1555 ../src/read.c:1289
+#: ../src/read.c:1483 ../src/shk.c:1386 ../src/shk.c:1864 ../src/shk.c:5323
+#: ../src/sounds.c:508 ../src/teleport.c:1125 ../src/trap.c:4538
+#: ../src/trap.c:4546 ../src/trap.c:4659 ../src/trap.c:4799 ../src/trap.c:4823
+#: ../src/trap.c:4855 ../src/uhitm.c:5022 ../src/uhitm.c:5656
 #, c-format
 msgid "%s %s."
 msgstr "%s %s."
@@ -6041,7 +6042,8 @@ msgstr "당신이 공격하자 %1$s{이/가} 분열했다%2$s!"
 msgid "%s does not notice."
 msgstr "%s{이/가} 알아채지 못했다."
 
-#: ../src/ball.c:62 ../src/dothrow.c:1397 ../src/read.c:2327 ../src/trap.c:1374
+#: ../src/ball.c:62 ../src/dothrow.c:1397 ../src/read.c:2327
+#: ../src/trap.c:1374
 #, c-format
 msgid "%s does not protect you."
 msgstr "%s{이/가} 당신을 보호하지 않는다."
@@ -6998,7 +7000,7 @@ msgstr "%s{이/가} %s 뒤집힌 %s{을/를} 내민다."
 # "feel" → "느껴진다" (피동 자동사) 변경에 맞춰
 # Tobjnam/Yobjnam2 패턴은 부사를 %s 앞으로 이동,
 # You() 지각 패턴은 %.0s로 동사를 억제하고 한국어 직접 서술
-#
+# 
 # [런타임 검증 갱신 — 2026-02-14]
 # A. Tobjnam 패턴: "뜨겁게 부적이 느껴진다!" — {이/가} 삽입으로 해결됨 ✓
 # B. Yobjnam2 패턴: "따뜻하게 당신의 검이 느껴진다." — {이/가} 삽입으로 해결됨 ✓
@@ -7231,8 +7233,9 @@ msgstr "%s{이/가} %s %s{을/를} %s하기로 결정한 것에 %s!"
 # 패턴: "%s is %s!" (Monnam, regurgitated/released/expelled)
 # 영어 조합: "The gnome is regurgitated!"
 # 한국어 조합: "노움이 토해졌다!"
-#: ../src/do.c:217 ../src/explode.c:572 ../src/mhitm.c:950 ../src/mthrowu.c:473
-#: ../src/uhitm.c:2531 ../src/uhitm.c:2590 ../src/uhitm.c:5112
+#: ../src/do.c:217 ../src/explode.c:572 ../src/mhitm.c:950
+#: ../src/mthrowu.c:473 ../src/uhitm.c:2531 ../src/uhitm.c:2590
+#: ../src/uhitm.c:5112
 #, c-format
 msgid "%s is %s!"
 msgstr "%1$s{이/가} %2$s!"
@@ -10874,12 +10877,12 @@ msgid "%s zaps you with a %s!"
 msgstr "%s{이/가} %s{으로/로} 당신을 공격한다!"
 
 #: ../src/attrib.c:1052 ../src/attrib.c:1058 ../src/detect.c:1249
-#: ../src/detect.c:1325 ../src/dig.c:1068 ../src/dig.c:1074 ../src/dokick.c:708
-#: ../src/dothrow.c:1531 ../src/eat.c:2121 ../src/mcastu.c:786
-#: ../src/mon.c:3775 ../src/mthrowu.c:1485 ../src/muse.c:219 ../src/pray.c:701
-#: ../src/shk.c:3851 ../src/shk.c:5448 ../src/sit.c:608 ../src/sit.c:712
-#: ../src/spell.c:248 ../src/steed.c:430 ../src/timeout.c:256
-#: ../src/trap.c:6378
+#: ../src/detect.c:1325 ../src/dig.c:1068 ../src/dig.c:1074
+#: ../src/dokick.c:708 ../src/dothrow.c:1531 ../src/eat.c:2121
+#: ../src/mcastu.c:786 ../src/mon.c:3775 ../src/mthrowu.c:1485
+#: ../src/muse.c:219 ../src/pray.c:701 ../src/shk.c:3851 ../src/shk.c:5448
+#: ../src/sit.c:608 ../src/sit.c:712 ../src/spell.c:248 ../src/steed.c:430
+#: ../src/timeout.c:256 ../src/trap.c:6378
 #, c-format
 msgid "%s!"
 msgstr "%s!"
@@ -12079,8 +12082,7 @@ msgstr "(팁: 함정을 풀 때는 #untrap을 써 보세요.)"
 #: ../src/hack.c:1868
 #, c-format
 msgid "(Tip: use '%s' prefix to step in if you really want to.)"
-msgstr "(팁: 정말 들어가시려면 이동 키 앞에 '%s'를 붙이면 한 칸씩 들어가실 수 있습니"
-"다.)"
+msgstr "(팁: 정말 들어가시려면 이동 키 앞에 '%s'를 붙이면 한 칸씩 들어가실 수 있습니다.)"
 
 #: ../src/hack.c:1865
 msgid "(Tip: use the #enhance command to advance them.)"
@@ -12738,7 +12740,7 @@ msgstr "하나"
 # "A <monster>" prefix for messages - 한국어에는 부정관사가 없으므로 공백으로 처리
 #: ../src/trap.c:4707
 msgid "A "
-msgstr " "
+msgstr "A "
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -13217,7 +13219,7 @@ msgstr "NetHack 정보 (버전 정보)."
 
 # == Menu Control Help (메뉴 조작 도움말) ==
 # From src/options.c - hardcoded menu control descriptions
-#
+# 
 #: ../src/options.c:9111
 msgid "Accept current choice(s) and dismiss menu"
 msgstr "현재 선택을 확정하고 메뉴 닫기"
@@ -13682,7 +13684,8 @@ msgstr "%1$s{이/가} 안으로 굴러 들어가자, 마법 폭발에 휩싸였�
 
 #: ../src/muse.c:1077
 #, c-format
-msgid "As %s climbs the stairs, a mysterious force momentarily surrounds %s..."
+msgid ""
+"As %s climbs the stairs, a mysterious force momentarily surrounds %s..."
 msgstr "%s{이/가} 계단을 오르자, 신비로운 힘이 잠시 %s{을/를} 둘러싼다..."
 
 #: ../src/makemon.c:2127
@@ -14316,7 +14319,7 @@ msgstr "하지만 %s충분한 금화가%s 없다."
 # ============================================================
 # 아이템 메시지 (Item Messages)
 # ============================================================
-#
+# 
 #: ../src/shk.c:1887
 msgid "But you have hidden gold!"
 msgstr "하지만 숨긴 금화가 있다!"
@@ -14909,7 +14912,7 @@ msgstr "내용물: "
 # ============================================================
 # 사전형 동사 수정 — 보류/잔여 사항
 # ============================================================
-#
+# 
 # [보류] dokick.c:1932 " %s %s object%s" — Sprintf 조각 (hit는 이미 과거형)
 # [보류] dokick.c:1935 " %s your chain" — Sprintf 조각 (rattle 활용형 전환 완료)
 # [보류] dokick.c:1940 " and %s %s." — Sprintf 조각 (fall 활용형 전환 완료)
@@ -15162,7 +15165,7 @@ msgstr "맛있다! 매킨토시임에 틀림없다!"
 
 # == Crystal Ball Level Detection (수정구 레벨 탐지) ==
 # From src/detect.c - level_detects[] array
-#
+# 
 #: ../src/detect.c:1200
 msgid "Delphi"
 msgstr "델피"
@@ -16214,7 +16217,8 @@ msgstr "다행히, %s{이/가} 살도록 허락한다..."
 msgid "Fortunately, you are wearing %s!"
 msgstr "다행히, %s{을/를} 입고 있다!"
 
-#: ../src/ball.c:59 ../src/dothrow.c:1388 ../src/read.c:2323 ../src/trap.c:1371
+#: ../src/ball.c:59 ../src/dothrow.c:1388 ../src/read.c:2323
+#: ../src/trap.c:1371
 msgid "Fortunately, you are wearing a hard helmet."
 msgstr "다행히 단단한 투구를 쓰고 있다."
 
@@ -17350,7 +17354,7 @@ msgstr "그것"
 # ============================================================
 # 조합: enl_msg("It ", "is ", "was ", "nighttime/the midnight hour", "")
 # 결과: "It " + "is " + "nighttime" = "It is nighttime"
-#
+# 
 # 한국어 목표: "지금은 밤이다" / "지금은 자정이다"
 # - "It " → "지금은 " (시간 맥락)
 # - "is " → "​" (제로 폭 공백으로 생략)
@@ -17664,7 +17668,7 @@ msgstr "%s{으로/로} 변했다."
 # ============================================================
 # 물약 메시지 (Potion Messages)
 # ============================================================
-#
+# 
 #: ../src/eat.c:1553 ../src/potion.c:2820
 msgid "It turns out to be empty."
 msgstr "비어 있었다."
@@ -18708,7 +18712,8 @@ msgstr "양 "
 # Discworld (Terry Pratchett) 참조
 #: ../src/read.c:150
 msgid ""
-"Ms. Palm's House of Negotiable Affection--A Very Reputable House Of Disrepute"
+"Ms. Palm's House of Negotiable Affection--A Very Reputable House Of "
+"Disrepute"
 msgstr "팜 여사의 협상 가능한 애정의 집--매우 평판 좋은 불명예의 집"
 
 #: ../src/fountain.c:810
@@ -20100,7 +20105,7 @@ msgstr "셔츠의 슬로건을 읽다"
 # ============================================================
 # 두루마리 (Scrolls)
 # ============================================================
-#
+# 
 #: ../src/iactions.c:108
 #, c-format
 msgid "Read this scroll%s"
@@ -20729,7 +20734,8 @@ msgstr "산라이칭"
 msgid "Sharpshooter"
 msgstr "명사수"
 
-#: ../src/mhitu.c:2009 ../src/steal.c:533 ../src/steal.c:541 ../src/steal.c:602
+#: ../src/mhitu.c:2009 ../src/steal.c:533 ../src/steal.c:541
+#: ../src/steal.c:602
 msgid "She"
 msgstr "그"
 
@@ -20923,7 +20929,7 @@ msgstr "몇몇"
 # 한국어에는 부정관사가 없으므로 빈 문자열로 처리
 #: ../src/trap.c:4707
 msgid "Some "
-msgstr " "
+msgstr "Some "
 
 #: ../src/pickup.c:3658
 #, c-format
@@ -21725,8 +21731,8 @@ msgstr "팁 고마워, %s."
 msgid "Thanks, scum!"
 msgstr "고마워, 쓰레기!"
 
-#: ../src/apply.c:288 ../src/apply.c:437 ../src/do_name.c:746 ../src/read.c:389
-#: ../src/trap.c:5534 ../src/uhitm.c:6234
+#: ../src/apply.c:288 ../src/apply.c:437 ../src/do_name.c:746
+#: ../src/read.c:389 ../src/trap.c:5534 ../src/uhitm.c:6234
 msgid "That"
 msgstr "그것"
 
@@ -21892,7 +21898,7 @@ msgstr "그"
 
 #: ../src/attrib.c:335 ../src/eat.c:2003 ../src/end.c:929
 msgid "The "
-msgstr " "
+msgstr "The "
 
 # [조합 메시지] apply.c - 잠깐 떨림
 # %2$s = 동사 (한국어에서 고정 동사 사용, 억제)
@@ -22974,12 +22980,13 @@ msgstr "이것이 당신의 %s{을/를} 채웠다!"
 msgid ""
 "This save or bones file does not match this program (upgrades change "
 "internal layouts). On Windows 3.7+, delete *.NetHack-saved-game under "
-"%LOCALAPPDATA%\\NetHack\\3.7\\ and bones bon* under %PROGRAMDATA%"
-"\\NetHack\\3.7\\ (HanNetHack: sys/windows/cleanup-incompatible-saves.cmd).\n"
+"%LOCALAPPDATA%\\NetHack\\3.7\\ and bones bon* under "
+"%PROGRAMDATA%\\NetHack\\3.7\\ (HanNetHack: sys/windows/cleanup-incompatible-"
+"saves.cmd).\n"
 msgstr ""
-"이 세이브나 bones는 지금 실행 중인 프로그램과 맞지 않습니다(내부 구조 변경). "
-"Windows 3.7+에서는 %%LOCALAPPDATA%%\\NetHack\\3.7\\ 안의 *.NetHack-saved-game"
-"과 %%PROGRAMDATA%%\\NetHack\\3.7\\ 안의 bon* bones를 지우거나, HanNetHack의 "
+"이 세이브나 bones는 지금 실행 중인 프로그램과 맞지 않습니다(내부 구조 변경). Windows 3.7+에서는 "
+"%%LOCALAPPDATA%%\\NetHack\\3.7\\ 안의 *.NetHack-saved-game과 "
+"%%PROGRAMDATA%%\\NetHack\\3.7\\ 안의 bon* bones를 지우거나, HanNetHack의 "
 "sys\\windows\\cleanup-incompatible-saves.cmd 를 실행하세요.\n"
 
 #: ../src/version.c:743
@@ -22988,9 +22995,8 @@ msgid ""
 "internal layouts). Remove files in your playground \"save\" folder and any "
 "\"bon*\" bones files, then start a new game.\n"
 msgstr ""
-"이 세이브나 bones 파일은 지금 실행 중인 프로그램과 맞지 않습니다(업그레이드 "
-"시 내부 구조가 바뀝니다). 플레이그라운드의 \"save\" 폴더 안 파일과 이름이 bon"
-"으로 시작하는 bones 파일을 지운 뒤 새 게임을 시작하세요.\n"
+"이 세이브나 bones 파일은 지금 실행 중인 프로그램과 맞지 않습니다(업그레이드 시 내부 구조가 바뀝니다). 플레이그라운드의 "
+"\"save\" 폴더 안 파일과 이름이 bon으로 시작하는 bones 파일을 지운 뒤 새 게임을 시작하세요.\n"
 
 #: ../src/read.c:2169
 #, c-format
@@ -23689,42 +23695,42 @@ msgstr "알 수 없는 방향: '%s' (%s)."
 #: ../src/artifact.c:2176
 #, c-format
 msgid "Unknown invoke power %d."
-msgstr "Unknown invoke power %d."
+msgstr "알 수 없는 발동 능력 %d."
 
 #: ../src/iactions.c:144
 #, c-format
 msgid "Unknown item action %d"
-msgstr "Unknown item action %d"
+msgstr "알 수 없는 아이템 동작 %d"
 
 #: ../src/sp_lev.c:4012
 #, c-format
 msgid "Unknown room type '%s'"
-msgstr "Unknown room type '%s'"
+msgstr "알 수 없는 방 유형 '%s'"
 
 #: ../src/spell.c:1581
 #, c-format
 msgid "Unknown spell %d attempted."
-msgstr "Unknown spell %d attempted."
+msgstr "알 수 없는 주문 %d를 시도했다."
 
 #: ../src/spell.c:849
 #, c-format
 msgid "Unknown spell skill, %d;"
-msgstr "Unknown spell skill, %d;"
+msgstr "알 수 없는 주문 숙련도, %d;"
 
 #: ../src/spell.c:557
 #, c-format
 msgid "Unknown spellbook level %d, book %d;"
-msgstr "Unknown spellbook level %d, book %d;"
+msgstr "알 수 없는 마법서 단계 %d, 책 %d;"
 
 #: ../src/hack.c:1878
 #, c-format
 msgid "Unknown tip in handle_tip(%i)"
-msgstr "Unknown tip in handle_tip(%i)"
+msgstr "handle_tip(%i)에서 알 수 없는 팁"
 
 #: ../src/dothrow.c:2074
 #, c-format
 msgid "Unknown type of gloves (%d)"
-msgstr "Unknown type of gloves (%d)"
+msgstr "알 수 없는 장갑 유형 (%d)"
 
 #: ../src/lock.c:624
 msgid "Unlock"
@@ -24319,7 +24325,7 @@ msgstr "안타깝다 - %s{이/가} 미래의 예술 작품을 망쳤다!"
 # ============================================================
 # 프롬프트 (Prompts)
 # ============================================================
-#
+# 
 #: ../src/cmd.c:4108
 msgid "What a strange direction!"
 msgstr "이상한 방향이다!"
@@ -24802,7 +24808,7 @@ msgstr "경험치:%d/%ld"
 # 공백 하나로 번역 (msgcat이 빈 문자열을 무시하므로)
 #: ../src/lock.c:237
 msgid "Y"
-msgstr " "
+msgstr "Y"
 
 #: ../src/eat.c:2466
 msgid "Yabba-dabba delicious!"
@@ -25250,7 +25256,7 @@ msgstr "죽었다..."
 # ============================================================
 # 사망 메시지 (Death Messages)
 # ============================================================
-#
+# 
 #: ../src/trap.c:2566
 msgid "You discover"
 msgstr "발견했다"
@@ -25459,7 +25465,7 @@ msgstr "극도로 힘들게"
 # ============================================================
 # 아이템 메시지 (Item Messages)
 # ============================================================
-#
+# 
 #: ../src/vault.c:567
 msgid "You have hidden gold."
 msgstr "하지만 숨긴 금화가 있다!"
@@ -25628,7 +25634,7 @@ msgstr "상위 %3$d위 목록에서 %1$d%2$s위에 올랐다."
 # ============================================================
 # 두루마리 (Scrolls)
 # ============================================================
-#
+# 
 #: ../src/read.c:626
 msgid "You read the scroll."
 msgstr "두루마리를 읽었다."
@@ -25664,7 +25670,7 @@ msgstr "당신은 재생한다"
 # ============================================================
 # 사망 메시지 (Death Messages)
 # ============================================================
-#
+# 
 #: ../src/eat.c:3356
 msgid "You revive."
 msgstr "부활했다."
@@ -25739,7 +25745,7 @@ msgstr "생선 냄새를 맡았다."
 # ============================================================
 # 아이템 메시지 (Item Messages)
 # ============================================================
-#
+# 
 #: ../src/dokick.c:366
 msgid "You still have hidden gold.  Drop it now."
 msgstr "아직 숨긴 금화가 있군. 지금 당장 떨어뜨려."
@@ -25800,7 +25806,8 @@ msgstr "깨어났다."
 # 한국어: "14레벨, 최대 100HP로, 죽었다."
 #: ../src/end.c:1561
 #, c-format
-msgid "You were level %1$d with a maximum of %2$d hit point%3$s when you %4$s."
+msgid ""
+"You were level %1$d with a maximum of %2$d hit point%3$s when you %4$s."
 msgstr "%1$d레벨, 최대 %2$dHP%3$.0s로, %4$s."
 
 #: ../src/timeout.c:350
@@ -26441,9 +26448,9 @@ msgstr "_여신"
 msgid "_Venus"
 msgstr "_베누스"
 
-#: ../src/apply.c:911 ../src/dungeon.c:3371 ../src/hack.c:526 ../src/mon.c:1623
-#: ../src/muse.c:3127 ../src/muse.c:3139 ../src/priest.c:483 ../src/read.c:1444
-#: ../src/region.c:469 ../src/trap.c:78 ../src/uhitm.c:1205
+#: ../src/apply.c:911 ../src/dungeon.c:3371 ../src/hack.c:526
+#: ../src/mon.c:1623 ../src/muse.c:3127 ../src/muse.c:3139 ../src/priest.c:483
+#: ../src/read.c:1444 ../src/region.c:469 ../src/trap.c:78 ../src/uhitm.c:1205
 msgid "a"
 msgstr "하나의"
 
@@ -27265,7 +27272,7 @@ msgstr "매캐한"
 #: ../src/sounds.c:1784
 #, c-format
 msgid "activate_chosen_soundlib: invalid soundlib (%d)"
-msgstr "activate_chosen_soundlib: 유효하지 않은 soundlib (%d)"
+msgstr "activate_chosen_soundlib: invalid soundlib (%d)"
 
 #: ../src/teleport.c:1464
 msgid "activated a magic portal!"
@@ -27328,41 +27335,41 @@ msgstr "add_mon_to_reg: %s [#%u] already in region."
 
 #: ../src/shk.c:3365
 msgid "add_to_billobjs: obj not free"
-msgstr "add_to_billobjs: 객체가 자유 상태가 아니다"
+msgstr "add_to_billobjs: obj not free"
 
 #: ../src/mkobj.c:2719
 #, c-format
 msgid "add_to_buried: obj where=%d, not free"
-msgstr "add_to_buried: 객체 where=%d, 자유 상태가 아니다"
+msgstr "add_to_buried: obj where=%d, not free"
 
 #: ../src/mkobj.c:2678
 #, c-format
 msgid "add_to_container: obj where=%d, not free"
-msgstr "add_to_container: 객체 where=%d, 자유 상태가 아니다"
+msgstr "add_to_container: obj where=%d, not free"
 
 #: ../src/mkobj.c:2698
 #, c-format
 msgid "add_to_migration: obj where=%d, not free"
-msgstr "add_to_migration: 객체 where=%d, 자유 상태가 아니다"
+msgstr "add_to_migration: obj where=%d, not free"
 
 #: ../src/mkobj.c:2650
 #, c-format
 msgid "add_to_minv: obj where=%d, not free"
-msgstr "add_to_minv: 객체 where=%d, 자유 상태가 아니다"
+msgstr "add_to_minv: obj where=%d, not free"
 
 #: ../src/invent.c:1113
 #, c-format
 msgid "addinv: null obj after merge otyp=%d"
-msgstr "addinv: null 객체 after merge otyp=%d"
+msgstr "addinv: null obj after merge otyp=%d"
 
 #: ../src/invent.c:1105
 #, c-format
 msgid "addinv: null obj after quiver merge otyp=%d"
-msgstr "addinv: null 객체 after quiver merge otyp=%d"
+msgstr "addinv: null obj after quiver merge otyp=%d"
 
 #: ../src/invent.c:1066
 msgid "addinv: obj not free"
-msgstr "addinv: 객체가 자유 상태가 아니다"
+msgstr "addinv: obj not free"
 
 #: ../src/shk.c:4068
 msgid "additional "
@@ -27413,7 +27420,7 @@ msgstr "장식"
 #: ../src/explode.c:1008
 #, c-format
 msgid "adtyp_to_expltype: bad explosion type %d"
-msgstr "adtyp_to_expltype: 잘못된 explosion type %d"
+msgstr "adtyp_to_expltype: bad explosion type %d"
 
 #: ../src/potion.c:730
 #, c-format
@@ -27616,11 +27623,11 @@ msgstr "이미"
 
 #: ../src/invent.c:967
 msgid "already have amulet?"
-msgstr "이미 가지고 있다 amulet?"
+msgstr "부적을(를) 이미 가지고 있는가?"
 
 #: ../src/invent.c:972
 msgid "already have candelabrum?"
-msgstr "이미 가지고 있다 candelabrum?"
+msgstr "일곱 양초 샹들리에을(를) 이미 가지고 있는가?"
 
 #: ../src/wield.c:540
 msgid "already have no ammunition readied!"
@@ -27628,15 +27635,15 @@ msgstr "이미 탄약이 준비되지 않았다!"
 
 #: ../src/invent.c:988
 msgid "already have quest artifact?"
-msgstr "이미 가지고 있다 quest artifact?"
+msgstr "퀘스트 성물을(를) 이미 가지고 있는가?"
 
 #: ../src/invent.c:977
 msgid "already have silver bell?"
-msgstr "이미 가지고 있다 silver bell?"
+msgstr "은종을(를) 이미 가지고 있는가?"
 
 #: ../src/invent.c:982
 msgid "already have the book?"
-msgstr "이미 가지고 있다 the book?"
+msgstr "그 책을(를) 이미 가지고 있는가?"
 
 # 몬스터 상태 - 이미 불타고 있음
 #: ../src/mondata.c:1420
@@ -28095,9 +28102,9 @@ msgstr "고고학자"
 #: ../src/pickup.c:3669 ../src/potion.c:2670 ../src/potion.c:2704
 #: ../src/pray.c:1183 ../src/read.c:1146 ../src/read.c:1651 ../src/steal.c:796
 #: ../src/timeout.c:341 ../src/timeout.c:1614 ../src/trap.c:269
-#: ../src/trap.c:278 ../src/trap.c:5933 ../src/uhitm.c:1918 ../src/uhitm.c:6235
-#: ../src/weapon.c:870 ../src/wield.c:768 ../src/wield.c:1062 ../src/worn.c:996
-#: ../src/zap.c:2234 ../src/zap.c:2239
+#: ../src/trap.c:278 ../src/trap.c:5933 ../src/uhitm.c:1918
+#: ../src/uhitm.c:6235 ../src/weapon.c:870 ../src/wield.c:768
+#: ../src/wield.c:1062 ../src/worn.c:996 ../src/zap.c:2234 ../src/zap.c:2239
 msgid "are"
 msgstr "이다"
 
@@ -28670,7 +28677,8 @@ msgstr "분해되지 않았다."
 
 #: ../src/engrave.c:1091
 #, c-format
-msgid "are not going to get anywhere trying to write in the %s with your dust."
+msgid ""
+"are not going to get anywhere trying to write in the %s with your dust."
 msgstr "먼지로 %s에 쓰려고 해봤자 소용없다."
 
 #: ../src/muse.c:1979
@@ -29151,7 +29159,7 @@ msgstr "화살"
 
 #: ../src/artifact.c:2139
 msgid "arti_invoke without obj"
-msgstr "〔점검〕 arti_invoke without obj"
+msgstr "arti_invoke without obj"
 
 #: ../src/insight.c:2274 ../src/o_init.c:894
 msgid "artifacts"
@@ -29208,7 +29216,7 @@ msgstr "이다"
 #: ../src/sounds.c:1801
 #, c-format
 msgid "assign_soundlib: invalid soundlib (%d)"
-msgstr "assign_soundlib: 유효하지 않은 soundlib (%d)"
+msgstr "assign_soundlib: invalid soundlib (%d)"
 
 # ============================================================
 # 환각 시 브레스 종류 (Hallucination Breath Types)
@@ -29284,7 +29292,7 @@ msgstr "공격 주문"
 
 #: ../src/artifact.c:1474
 msgid "attacking yourself with weapon?"
-msgstr "〔점검〕 attacking yourself with weapon?"
+msgstr "attacking yourself with weapon?"
 
 #: ../src/insight.c:2454
 #, c-format
@@ -29318,7 +29326,7 @@ msgstr "주문을 외우려 시도 중"
 
 #: ../src/priest.c:551
 msgid "attempting to manipulate shrine data for non-priest?"
-msgstr "〔점검〕 attempting to manipulate shrine data for non-priest?"
+msgstr "attempting to manipulate shrine data for non-priest?"
 
 #: ../src/steed.c:293
 #, c-format
@@ -29496,7 +29504,7 @@ msgstr "몸과 다시 조화를 이루었다"
 #: ../src/display.c:2417
 #, c-format
 msgid "back_to_glyph:  unknown level type [ = %d ]"
-msgstr "back_to_glyph: 알 수 없는 level type [ = %d ]"
+msgstr "back_to_glyph:  unknown level type [ = %d ]"
 
 #: ../src/polyself.c:2005
 msgid "backbone"
@@ -29508,23 +29516,23 @@ msgstr "뒤로"
 
 #: ../src/polyself.c:1471
 msgid "bad attack type in dospit"
-msgstr "잘못된 attack type in dospit"
+msgstr "bad attack type in dospit"
 
 #: ../src/mthrowu.c:1060
 msgid "bad attack type in spitmm"
-msgstr "잘못된 attack type in spitmm"
+msgstr "bad attack type in spitmm"
 
 #: ../src/makemon.c:2562
 msgid "bad bag o' tricks"
-msgstr "잘못된 bag o' tricks"
+msgstr "bad bag o' tricks"
 
 #: ../src/polyself.c:1445
 msgid "bad breath attack?"
-msgstr "잘못된 breath attack?"
+msgstr "bad breath attack?"
 
 #: ../src/ball.c:765
 msgid "bad chain movement"
-msgstr "잘못된 chain movement"
+msgstr "bad chain movement"
 
 #: ../src/trap.c:6505
 msgid "bad chest trap"
@@ -29532,52 +29540,52 @@ msgstr "죽음 광선"
 
 #: ../src/dbridge.c:258
 msgid "bad direction in create_drawbridge"
-msgstr "잘못된 direction in create_drawbridge"
+msgstr "bad direction in create_drawbridge"
 
 #: ../src/options.c:1519
 #, c-format
 msgid "bad disclosure index %d %c"
-msgstr "잘못된 disclosure index %d %c"
+msgstr "bad disclosure index %d %c"
 
 #: ../src/pager.c:853
 #, c-format
 msgid "bad do_look buffer passed (%s)!"
-msgstr "잘못된 do_look buffer passed (%s)!"
+msgstr "bad do_look buffer passed (%s)!"
 
 #: ../src/worn.c:1036
 msgid "bad flag in which_armor"
-msgstr "잘못된 flag in which_armor"
+msgstr "bad flag in which_armor"
 
 #: ../src/shk.c:2932
 #, c-format
 msgid "bad glass gem %d?"
-msgstr "잘못된 glass gem %d?"
+msgstr "bad glass gem %d?"
 
 #: ../src/mkobj.c:2850
 msgid "bad horn o' plenty"
-msgstr "잘못된 horn o' plenty"
+msgstr "bad horn o' plenty"
 
 #: ../src/options.c:752
 #, c-format
 msgid "bad index roleoptvals[%d][%d]"
-msgstr "잘못된 index roleoptvals[%d][%d]"
+msgstr "bad index roleoptvals[%d][%d]"
 
 #: ../src/topten.c:113
 #, c-format
 msgid "bad killer format? (%d)"
-msgstr "잘못된 killer format? (%d)"
+msgstr "bad killer format? (%d)"
 
 #: ../src/restore.c:442
 msgid "bad monster weapon restore"
-msgstr "잘못된 monster weapon restore"
+msgstr "bad monster weapon restore"
 
 #: ../src/mplayer.c:252
 msgid "bad mplayer monster"
-msgstr "잘못된 mplayer monster"
+msgstr "bad mplayer monster"
 
 #: ../src/invent.c:1910
 msgid "bad return from getobj callback"
-msgstr "잘못된 return from getobj callback"
+msgstr "bad return from getobj callback"
 
 #: ../src/uhitm.c:3990
 msgid "bad shade attack function flow?"
@@ -29585,16 +29593,16 @@ msgstr "잘못된 그림자 공격 함수 흐름?"
 
 #: ../src/polyself.c:1463
 msgid "bad spit attack?"
-msgstr "잘못된 spit attack?"
+msgstr "bad spit attack?"
 
 #: ../src/makemon.c:1709
 #, c-format
 msgid "bad weight in rndmonst for mndx %d"
-msgstr "잘못된 weight in rndmonst for mndx %d"
+msgstr "bad weight in rndmonst for mndx %d"
 
 #: ../src/mcastu.c:418
 msgid "bad wizard cloning?"
-msgstr "잘못된 wizard cloning?"
+msgstr "bad wizard cloning?"
 
 #: ../src/obj_descr_i18n.c:338 ../src/potion.c:1479
 msgid "bag"
@@ -29635,7 +29643,7 @@ msgstr "바나나"
 
 #: ../src/trap.c:7141
 msgid "banana peel"
-msgstr "〔점검〕 banana peel"
+msgstr "바나나 껍질"
 
 #: ../src/obj_descr_i18n.c:155
 msgid "banded mail"
@@ -29754,11 +29762,11 @@ msgstr "전투 도끼"
 
 #: ../src/ball.c:205 ../src/ball.c:250 ../src/ball.c:341
 msgid "bc already placed?"
-msgstr "〔점검〕 bc already placed?"
+msgstr "bc already placed?"
 
 #: ../src/ball.c:368
 msgid "bc_order:  ball&chain not in same location!"
-msgstr "bc_order: ball&chain not in same location!"
+msgstr "bc_order:  ball&chain not in same location!"
 
 # 음식/배고픔 관련
 #: ../src/eat.c:1013
@@ -29877,7 +29885,7 @@ msgstr "%s{으로/로} 몬스터를 때리기 시작했다."
 #: ../src/timeout.c:1770
 #, c-format
 msgid "begin burn: unexpected %s"
-msgstr "begin burn: 예기치 않은 %s"
+msgstr "begin burn: unexpected %s"
 
 # eat.c - 먹기 메뉴. "begin eating the apple"
 #: ../src/eat.c:3043
@@ -29911,7 +29919,7 @@ msgstr "이도류 전투를 시작한다."
 
 #: ../src/timeout.c:1796
 msgid "begin_burn: can't get obj position"
-msgstr "begin_burn: can't get 객체 position"
+msgstr "begin_burn: can't get obj position"
 
 # uhitm.c - 조이기 공격. "The snake begins constricting you"
 #: ../src/polyself.c:182
@@ -30050,7 +30058,7 @@ msgstr "사이에"
 
 #: ../src/zap.c:2180
 msgid "bhito: obj is not floor or Stone To Flesh spell"
-msgstr "bhito: 객체 is not floor or Stone To Flesh spell"
+msgstr "bhito: obj is not floor or Stone To Flesh spell"
 
 #: ../src/polyself.c:2000
 msgid "bill"
@@ -30081,7 +30089,7 @@ msgstr "물었다"
 # ============================================================
 # 사망 메시지 (Death Messages)
 # ============================================================
-#
+# 
 #: ../src/do.c:2131 ../src/do.c:2173 ../src/do.c:2190
 msgid "bite-covered"
 msgstr "물린 자국 투성이"
@@ -30324,7 +30332,7 @@ msgstr "푸른 주황색"
 
 #: ../src/mkmaze.c:1896
 msgid "bmask size is larger than MAX_BMASK"
-msgstr "〔점검〕 bmask size is larger than MAX_BMASK"
+msgstr "bmask size is larger than MAX_BMASK"
 
 #: ../src/polyself.c:2008 ../src/polyself.c:2010 ../src/polyself.c:2011
 #: ../src/potion.c:1665
@@ -30451,12 +30459,12 @@ msgstr "뼈 악마"
 
 #: ../src/do_name.c:1528
 msgid "bone oil"
-msgstr "〔점검〕 bone oil"
+msgstr "뼈 기름"
 
 #: ../src/files.c:956
 #, c-format
 msgid "bones file NHFILE * has odd fd (%d)"
-msgstr "〔점검〕 bones file NHFILE * has odd fd (%d)"
+msgstr "bones file NHFILE * has odd fd (%d)"
 
 #: ../src/insight.c:209
 msgid "bonus"
@@ -30529,7 +30537,7 @@ msgstr "부츠가 젖었다."
 
 #: ../src/botl.c:989
 msgid "bot before init."
-msgstr "〔점검〕 bot before init."
+msgstr "init 전 bot."
 
 #: ../src/botl.c:246
 #, c-format
@@ -30609,7 +30617,7 @@ msgstr "바위가 %s구덩이에 안착한다."
 # ============================================================
 # 조합 패턴 전수 검토 결과 (2026-02-14)
 # ============================================================
-#
+# 
 # === 계사 억제 ("이다") — PO-only (Tobjnam 전용 동사) ===
 # [OK] slip: 계사 억제 → Oops/throw/wield 포맷에서 직접 동사 제공
 # [OK] weld: 계사 억제 → wield.c/weapon.c 포맷에서 "녹아붙었다" 제공
@@ -30622,7 +30630,7 @@ msgstr "바위가 %s구덩이에 안착한다."
 # [OK] issue: 계사 억제 → apply.c 포맷에서 "소리를 냈다" 제공
 # [OK] radiate: 계사 억제 → apply.c 포맷에서 "발산한다" 제공
 # [OK] return: 계사 억제 → dothrow/mthrowu 포맷에서 "돌아왔다" 제공
-#
+# 
 # === C_() 컨텍스트 분리 패턴 ===
 # [OK] C_("light", stop/begin/shine): 빛 시작/멈춤 동사 (wield/do_wear/worn/weapon)
 # [OK] C_("autocurse", glow): 던바스캡 자동저주 (do_wear.c)
@@ -30639,7 +30647,7 @@ msgstr "바위가 %s구덩이에 안착한다."
 # [OK] C_("Tobjnam", hit): 맞히다 (dothrow.c 부메랑)
 # [OK] C_("Tobjnam", fly): 날다 (dothrow.c/mthrowu.c 부메랑)
 # [OK] C_("crystal_ball", "%s you!"): 수정구 혼란 포맷 분리
-#
+# 
 # === C_("Tobjnam") 이중 사용 동사 (2차 → 3차 수정) ===
 # [OK] C_("Tobjnam", vibrate): "이다"→"진동했다" 활용형 전환 (3차)
 # [OK] C_("Tobjnam", evaporate): "이다"→"증발했다" 활용형 전환 (3차)
@@ -30649,7 +30657,7 @@ msgstr "바위가 %s구덩이에 안착한다."
 # [OK] C_("Tobjnam", trigger): 계사 억제 → 포맷에서 "작동시켰다" 제공
 # [OK] C_("Tobjnam", fade): "이다"→"바랬다" 활용형 전환 (3차)
 # [OK] C_("Tobjnam", glow): 계사 억제 유지 → 포맷에서 동사 제공
-#
+# 
 # === PO-only 활용형 수정 — Tobjnam 전용 동사 (2차 수정) ===
 # [OK] implode: "내파하다"→"내파했다" (detect.c 수정구)
 # [OK] stop(bare): "멈추다"→"멈췄다" (dog.c 조각상)
@@ -30658,14 +30666,14 @@ msgstr "바위가 %s구덩이에 안착한다."
 # [OK] misfire: "오발"→"오발했다" (dothrow.c 발사 오류)
 # [OK] heat: 계사 억제 + 포맷에서 "뜨거워졌다" 제공 (do.c 뜨거운 땅)
 # [OK] produce: 계사 억제 + 포맷에서 "연주했다" 제공 (music.c 하프)
-#
+# 
 # === 포맷 수정 (2차) ===
 # [OK] "%s your %s!": 이중 {이/가} 제거 (dothrow.c Blind 부메랑)
 # [OK] "%s apart.": "떨어졌다"→"산산이 부서졌다" (explode.c 바위)
 # [OK] "%s out!"/"out.": "가다 나갔다"→"꺼졌다" (read.c/steal.c 소등)
 # [OK] "%s, then %s.": 빛남+바래짐 통합 번역 (engrave.c)
 # [OK] "%s with a strange light!": "빛나다 함께"→"빛으로 빛났다" (apply.c)
-#
+# 
 # === Yobjnam2 고유 포맷 오버라이드 (3차 수정) ===
 # [OK] "%s briefly.": 어순 교정 "잠깐 %s." (read.c 충전)
 # [OK] "%s%s%s for a moment.": 어순 교정 (read.c p_glow2)
@@ -30676,7 +30684,7 @@ msgstr "바위가 %s구덩이에 안착한다."
 # [OK] "%s %s for a while and then %s.": 어순 교정 (wield.c 과인챈트)
 # [OK] "%s violently %s%s%s for a while, then %s.": 어순 교정 (read.c 과인챈트)
 # [OK] "%s %s%s%s%s for a %s.": 어순 교정 (read.c 갑옷 인챈트)
-#
+# 
 # === 사전형→활용형 전환 (3차 수정) ===
 # [OK] bare "vibrate": "진동하다"→"진동했다" (read.c Yobjnam2/otense)
 # [OK] bare "evaporate": "증발하다"→"증발했다" (wield.c Yobjnam2/otense)
@@ -30685,7 +30693,7 @@ msgstr "바위가 %s구덩이에 안착한다."
 # [OK] "violently glow": "격렬하게 빛나다"→"격렬하게 빛났다"
 # [OK] "faintly glow": "빛나기 시작한다"→"희미하게 빛났다" (오역 수정)
 # [OK] "suddenly vibrate": "떨리는 진동."→"갑자기 진동했다" (오역 수정)
-#
+# 
 # === 기존 패턴 확인 ===
 # [OK] feel 피동: {이/가} 삽입으로 주격조사 누락 해결
 # [OK] 색상+glow: 기존 %.0s 억제 패턴 유지
@@ -30702,7 +30710,7 @@ msgstr "바위가 %s구덩이에 안착한다."
 # [OK] worn.c:985 "%s %s shining %s.": %2$s(are="이다") 억제, {이/가} 포맷 삽입
 # [OK] trap.c:1634 "%s you!": 물줄기 맞힘 동사 제공
 # [OK] 부메랑 귀환/타격: return/hit/fly 계사 억제 + 포맷에서 동사 제공
-#
+# 
 # [Known Issues — low priority]
 # - _("burn") transitive/intransitive 충돌
 # [해결됨] mhitu.c:2570 → C_("stun") 컨텍스트 추가
@@ -30711,14 +30719,14 @@ msgstr "바위가 %s구덩이에 안착한다."
 # [해결됨] "resist" sit.c → C_("Tobjnam", "resist") 컨텍스트 추가
 # - "shatter" 이중 사용 (Yobjnam2+otense, 해당 포맷에 고정 동사)
 # - "flicker" 이중 사용 (Tobjnam+vtense, 해당 포맷에 ko_manual 조합)
-#
+# 
 # [해결됨] invent.c fbuf[12] → mon_stomach 분리로 UTF-8 안전하게 수정
 # [해결됨] potion.c:1720 aobjnam(saddle, "get") → _("get") 래핑
 # [해결됨] potion.c:2590 wrinkled/hcolor → C_("condition") 분리
 # [해결됨] "%s with %s aura." 동사 누락 → "아우라를 내뿜었다" 제공
 # [해결됨] steal.c "your" / steed.c "new" / do_wear.c "dust+falls" → 실제 이슈 아님
 # [해결됨] light.c ConcatF1 → 현재 코드에서 찾을 수 없음
-#
+# 
 # [Known Issues — Yobjnam2 glow 사전형 (3차)]
 # - "%s %s." 46건 공유: Yobjnam2+glow 사전형 잔여
 #   (sit.c:625, apply.c:4317, read.c:1539, wield.c:975, pray.c:595/1298)
@@ -30756,7 +30764,7 @@ msgstr "상자"
 
 #: ../src/trap.c:7142
 msgid "box and stick trap"
-msgstr "〔점검〕 box and stick trap"
+msgstr "상자·막대 함정"
 
 #: ../src/uhitm.c:4647
 msgid "brags about the goods some dungeon explorer provided"
@@ -30855,7 +30863,7 @@ msgstr "쿠키를 부수고 조각들을 버렸다."
 #: ../src/dothrow.c:2629
 #, c-format
 msgid "breaking odd object (%d)?"
-msgstr "〔점검〕 breaking odd object (%d)?"
+msgstr "breaking odd object (%d)?"
 
 # zap.c - 부서져 폭발. "The wand breaks apart and explodes"
 #: ../src/zap.c:5786
@@ -31039,12 +31047,12 @@ msgstr "친구"
 
 #: ../src/sfstruct.c:423
 msgid "buffering already enabled"
-msgstr "〔점검〕 buffering already enabled"
+msgstr "buffering already enabled"
 
 #: ../src/sfstruct.c:426
 #, c-format
 msgid "buffering of file %d failed"
-msgstr "〔점검〕 buffering of file %d failed"
+msgstr "buffering of file %d failed"
 
 #: ../src/monster_i18n.c:66 ../src/obj_descr_i18n.c:883
 msgid "bugbear"
@@ -31057,7 +31065,7 @@ msgstr "나팔"
 #: ../src/dungeon.c:1489
 #, c-format
 msgid "builds_up: can't find branch for dungeon %d"
-msgstr "builds_up: 찾을 수 없다: branch for dungeon %d"
+msgstr "builds_up: can't find branch for dungeon %d"
 
 # 무기 - 채찍
 #: ../src/obj_descr_i18n.c:257
@@ -31191,7 +31199,7 @@ msgstr "%s{을/를} 태웠다."
 #: ../src/timeout.c:1674
 #, c-format
 msgid "burn_object: unexpected obj %s"
-msgstr "burn_object: 예기치 않은 obj %s"
+msgstr "burn_object: unexpected obj %s"
 
 #: ../src/end.c:56 ../src/engrave.c:347 ../src/explode.c:171
 msgid "burned"
@@ -31357,7 +31365,7 @@ msgstr "카베르네"
 
 #: ../src/shk.c:5923
 msgid "cad: unknown gender"
-msgstr "cad: 알 수 없는 gender"
+msgstr "cad: unknown gender"
 
 #: ../src/eat.c:1941
 msgid "cadaver"
@@ -31394,13 +31402,13 @@ msgstr "라고 불리는"
 # ============================================================
 # ============================================================
 # [조합 메시지] 동사 접두어 - insight.c:44-52
-#
+# 
 # 사용 위치: you_are(), you_have(), you_can() 등의 매크로
 # 조합 구조: You_ + are/have/can + 동사/형용사 + suffix
-#
+# 
 # 영어 예: "You are swimming" → You_ + "are " + "swimming"
 # 한국어: "당신은 수영 중" → "당신은 " + "" + "수영 중"
-#
+# 
 # 한국어는 동사가 문장 끝에 오므로 접두어가 불필요
 # 제로 폭 공백 사용 (빈 문자열은 영어로 폴백됨!)
 # ============================================================
@@ -31546,7 +31554,7 @@ msgstr "~조차 할 수 없다"
 #: ../src/timeout.c:2764
 #, c-format
 msgid "can't find o_id %d"
-msgstr "할 수 없다 find o_id %d"
+msgstr "can't find o_id %d"
 
 #: ../src/potion.c:2451
 #, c-format
@@ -31555,7 +31563,7 @@ msgstr "%s{을/를} 병 입구에 넣을 수 없다!"
 
 #: ../src/pager.c:997
 msgid "can't get to start of 'data' file"
-msgstr "할 수 없다 get to start of 'data' file"
+msgstr "can't get to start of 'data' file"
 
 #: ../src/cmd.c:1302
 #, c-format
@@ -31564,7 +31572,7 @@ msgstr "%s 지역의 크기를 추측할 수 없다."
 
 #: ../src/nhlua.c:2927
 msgid "can't hook io.open"
-msgstr "할 수 없다 hook io.open"
+msgstr "can't hook io.open"
 
 #: ../src/apply.c:3288
 msgid "can't reach that spot from here."
@@ -31572,7 +31580,7 @@ msgstr "여기서 그 지점에 닿을 수 없다."
 
 #: ../src/pager.c:1002
 msgid "can't read 'data' file"
-msgstr "할 수 없다 read 'data' file"
+msgstr "can't read 'data' file"
 
 #: ../src/wield.c:552
 msgid "can't ready only part of your gold."
@@ -31904,7 +31912,7 @@ msgstr "여기 %s에 %s되어 있는 메시지를 지울 수 없다."
 #: ../src/sfstruct.c:540
 #, c-format
 msgid "cannot write %u bytes to file #%d"
-msgstr "〔점검〕 cannot write %u bytes to file #%d"
+msgstr "cannot write %u bytes to file #%d"
 
 #: ../src/engrave.c:1480
 msgid "cannot write any more."
@@ -31976,7 +31984,7 @@ msgstr "너무 많이 들고 있다"
 
 #: ../src/engrave.c:1314
 msgid "carving with non-bladed weapon"
-msgstr "〔점검〕 carving with non-bladed weapon"
+msgstr "carving with non-bladed weapon"
 
 #: ../src/zap.c:4569
 msgid "cast"
@@ -31985,7 +31993,7 @@ msgstr "시전하다"
 #: ../src/mcastu.c:809
 #, c-format
 msgid "cast directed wizard spell (%d) with dmg=0?"
-msgstr "〔점검〕 cast directed wizard spell (%d) with dmg=0?"
+msgstr "cast directed wizard spell (%d) with dmg=0?"
 
 #: ../src/obj_descr_i18n.c:729
 msgid "cat"
@@ -32011,15 +32019,15 @@ msgstr "불이 붙어 탔다"
 
 #: ../src/dog.c:715
 msgid "catching up for leashed monster?"
-msgstr "〔점검〕 catching up for leashed monster?"
+msgstr "catching up for leashed monster?"
 
 #: ../src/dog.c:637
 msgid "catchup from future time?"
-msgstr "〔점검〕 catchup from future time?"
+msgstr "catchup from future time?"
 
 #: ../src/dog.c:641
 msgid "catchup from now?"
-msgstr "〔점검〕 catchup from now?"
+msgstr "catchup from now?"
 
 #: ../src/polyself.c:2048
 msgid "caudal fin"
@@ -32073,7 +32081,7 @@ msgstr "천장"
 #: ../src/mon.c:185
 #, c-format
 msgid "ceiling hider hiding %s (%s)"
-msgstr "〔점검〕 ceiling hider hiding %s (%s)"
+msgstr "ceiling hider hiding %s (%s)"
 
 #: ../src/polyself.c:2024 ../src/polyself.c:2026
 msgid "center"
@@ -32234,8 +32242,7 @@ msgstr "몬스터 매혹"
 
 #: ../src/version.c:383
 msgid "check_version() called with 'complain'=True but 'filename'=Null"
-msgstr ""
-"〔점검〕 check_version(): complain은 참인데 filename이 NULL이다."
+msgstr "check_version() called with 'complain'=True but 'filename'=Null"
 
 #: ../src/do_name.c:1470 ../src/obj_descr_i18n.c:1200
 msgid "checkered"
@@ -32331,17 +32338,17 @@ msgstr "%s 음식에 질식했다"
 #: ../src/windows.c:1696
 #, c-format
 msgid "choose_classes_menu: invalid category %d"
-msgstr "choose_classes_menu: 유효하지 않은 category %d"
+msgstr "choose_classes_menu: invalid category %d"
 
 #: ../src/windows.c:1678
 #, c-format
 msgid "choose_classes_menu: invalid monclass '%c'"
-msgstr "choose_classes_menu: 유효하지 않은 monclass '%c'"
+msgstr "choose_classes_menu: invalid monclass '%c'"
 
 #: ../src/windows.c:1688
 #, c-format
 msgid "choose_classes_menu: invalid objclass '%c'"
-msgstr "choose_classes_menu: 유효하지 않은 objclass '%c'"
+msgstr "choose_classes_menu: invalid objclass '%c'"
 
 #: ../src/dig.c:260 ../src/dig.c:1111
 msgid "chop"
@@ -32464,7 +32471,7 @@ msgstr "점토 골렘"
 #: ../src/timeout.c:1834
 #, c-format
 msgid "cleanup_burn: obj %s not lit"
-msgstr "cleanup_burn: 객체 %s not lit"
+msgstr "cleanup_burn: obj %s not lit"
 
 #: ../src/obj_descr_i18n.c:45
 msgid "clear"
@@ -32531,7 +32538,7 @@ msgstr "보호의 망토"
 #: ../src/makemon.c:858
 #, c-format
 msgid "clone_mon trying to create a monster at <%d,%d>?"
-msgstr "〔점검〕 clone_mon trying to create a monster at <%d,%d>?"
+msgstr "clone_mon trying to create a monster at <%d,%d>?"
 
 #: ../src/lock.c:966
 msgid "close anything -- you have no hands!"
@@ -32798,12 +32805,12 @@ msgstr "소동"
 #: ../src/botl.c:1863
 #, c-format
 msgid "compare_blstat: bad istat pointer %s, %s"
-msgstr "compare_blstat: 잘못된 istat pointer %s, %s"
+msgstr "compare_blstat: bad istat pointer %s, %s"
 
 #: ../src/botl.c:1870
 #, c-format
 msgid "compare_blstat: invalid pointer %s, %s"
-msgstr "compare_blstat: 유효하지 않은 pointer %s, %s"
+msgstr "compare_blstat: invalid pointer %s, %s"
 
 # savefile header / struct layout mismatch (not a gettext bug)
 #: ../src/version.c:730
@@ -33079,7 +33086,7 @@ msgstr "시체가 완전히 썩었다."
 
 #: ../src/dungeon.c:452
 msgid "correct_branch_type: unknown branch type"
-msgstr "correct_branch_type: 알 수 없는 branch type"
+msgstr "correct_branch_type: unknown branch type"
 
 #: ../src/vault.c:108
 msgid "corridor disappears."
@@ -33088,7 +33095,7 @@ msgstr "복도가 사라졌다."
 #: ../src/extralev.c:134
 #, c-format
 msgid "corridor in direction %d?"
-msgstr "〔점검〕 corridor in direction %d?"
+msgstr "corridor in direction %d?"
 
 #: ../src/hack.c:4043
 msgid "corridor widens here."
@@ -33206,7 +33213,7 @@ msgstr "일어날 수 있었다"
 
 #: ../src/role.c:2877
 msgid "could not create role selection window"
-msgstr "〔점검〕 could not create role selection window"
+msgstr "could not create role selection window"
 
 # ============================================================
 # 투명 물약 효과 (Invisibility potion effect)
@@ -33222,11 +33229,11 @@ msgstr "자신을 완전히 투시할 수 있었다"
 #: ../src/artifact.c:1127
 #, c-format
 msgid "couldn't discover artifact (%d)"
-msgstr "〔점검〕 couldn't discover artifact (%d)"
+msgstr "couldn't discover artifact (%d)"
 
 #: ../src/mklev.c:1074
 msgid "couldn't generate supply chest item"
-msgstr "〔점검〕 couldn't generate supply chest item"
+msgstr "couldn't generate supply chest item"
 
 #: ../src/files.c:936
 #, c-format
@@ -33253,7 +33260,7 @@ msgstr "자신을 볼 수 없다"
 #: ../src/light.c:437
 #, c-format
 msgid "counted %d light sources, wrote %d! [range=%d]"
-msgstr "〔점검〕 counted %d light sources, wrote %d! [range=%d]"
+msgstr "counted %d light sources, wrote %d! [range=%d]"
 
 #: ../src/read.c:820
 msgid "counter"
@@ -33351,11 +33358,11 @@ msgstr "몬스터 소환"
 
 #: ../src/sp_lev.c:2686
 msgid "create_corridor to/from a random wall"
-msgstr "〔점검〕 create_corridor to/from a random wall"
+msgstr "create_corridor to/from a random wall"
 
 #: ../src/sp_lev.c:1801
 msgid "create_door: Can't find a proper place!"
-msgstr "create_door: 찾을 수 없다: a proper place!"
+msgstr "create_door: Can't find a proper place!"
 
 #: ../src/region.c:1238
 #, c-format
@@ -33365,27 +33372,27 @@ msgstr "create_gas_cloud: cloud too large (%d)!"
 #: ../src/sp_lev.c:2022
 #, c-format
 msgid "create_monster: can't find feature \"%s\""
-msgstr "create_monster: 찾을 수 없다: feature \"%s\""
+msgstr "create_monster: can't find feature \"%s\""
 
 #: ../src/sp_lev.c:2036
 #, c-format
 msgid "create_monster: can't find object \"%s\""
-msgstr "create_monster: 찾을 수 없다: object \"%s\""
+msgstr "create_monster: can't find object \"%s\""
 
 #: ../src/sp_lev.c:2074
 #, c-format
 msgid "create_monster: invalid %s (\"%s\")"
-msgstr "create_monster: 유효하지 않은 %s (\"%s\")"
+msgstr "create_monster: invalid %s (\"%s\")"
 
 #: ../src/sp_lev.c:1942
 #, c-format
 msgid "create_monster: unknown monster class '%c'"
-msgstr "create_monster: 알 수 없는 monster class '%c'"
+msgstr "create_monster: unknown monster class '%c'"
 
 #: ../src/sp_lev.c:2222
 #, c-format
 msgid "create_object:  unexpected object class '%c'"
-msgstr "create_object: 예기치 않은 object class '%c'"
+msgstr "create_object:  unexpected object class '%c'"
 
 #: ../src/sp_lev.c:2350
 msgid "create_object: too deeply nested containers."
@@ -33394,7 +33401,7 @@ msgstr "create_object: too deeply nested containers."
 #: ../src/sp_lev.c:2418
 #, c-format
 msgid "create_object: unknown achievement (%s\"%s\")"
-msgstr "create_object: 알 수 없는 achievement (%s\"%s\")"
+msgstr "create_object: unknown achievement (%s\"%s\")"
 
 #: ../src/dig.c:102
 msgid "creates a"
@@ -33436,7 +33443,7 @@ msgstr "%ld %s의 크레딧이 쇼핑 비용으로 사용되었다."
 
 #: ../src/do_name.c:1529
 msgid "creosote"
-msgstr "〔점검〕 creosote"
+msgstr "크리오소트"
 
 #: ../src/obj_descr_i18n.c:223
 msgid "crested helmet"
@@ -33567,12 +33574,12 @@ msgstr "현재 "
 #: ../src/wizcmds.c:1433
 #, c-format
 msgid "current hero energy (%d) better than maximum? (%d)"
-msgstr "〔점검〕 current hero energy (%d) better than maximum? (%d)"
+msgstr "current hero energy (%d) better than maximum? (%d)"
 
 #: ../src/wizcmds.c:1423
 #, c-format
 msgid "current hero health (%d) better than maximum? (%d)"
-msgstr "〔점검〕 current hero health (%d) better than maximum? (%d)"
+msgstr "current hero health (%d) better than maximum? (%d)"
 
 #: ../src/wizcmds.c:1550
 msgid "current level"
@@ -33604,7 +33611,7 @@ msgstr "저주받은 "
 
 #: ../src/do_wear.c:1896
 msgid "cursed without otmp"
-msgstr "〔점검〕 cursed without otmp"
+msgstr "cursed without otmp"
 
 #: ../src/sounds.c:1519
 msgid "curses"
@@ -33620,7 +33627,7 @@ msgstr "휜"
 
 #: ../src/do_name.c:1528
 msgid "custard"
-msgstr "〔점검〕 custard"
+msgstr "커스터드"
 
 # 무기 동작 동사
 #: ../src/hack.c:2087
@@ -33664,7 +33671,7 @@ msgstr "나무를 베는 중"
 #: ../src/worm.c:401
 #, c-format
 msgid "cutworm: no segment at (%d,%d)"
-msgstr "cutworm: segment at (%d,%d)이(가) 없다"
+msgstr "cutworm: no segment at (%d,%d)"
 
 #: ../src/obj_descr_i18n.c:26
 msgid "cyan"
@@ -33682,7 +33689,7 @@ msgstr "​"
 #: ../src/rnd.c:181
 #, c-format
 msgid "d(%d,%d) attempted"
-msgstr "〔점검〕 d(%d,%d) attempted"
+msgstr "d(%d,%d) attempted"
 
 # NetHack에서 'd'는 개 심볼
 #: ../src/read.c:127
@@ -33804,11 +33811,11 @@ msgstr "눈부신"
 #: ../src/mon.c:111
 #, c-format
 msgid "dead monster on %s; %s at <%d,%d>"
-msgstr "〔점검〕 dead monster on %s; %s at <%d,%d>"
+msgstr "dead monster on %s; %s at <%d,%d>"
 
 #: ../src/insight.c:2052
 msgid "dead without dying?"
-msgstr "〔점검〕 dead without dying?"
+msgstr "dead without dying?"
 
 # objnam.c: 사인 슬라임 몰드 (killer name용, %s는 복수형 접미사)
 #: ../src/objnam.c:1997
@@ -33834,34 +33841,34 @@ msgstr "귀머거리"
 #: ../src/end.c:1765
 #, c-format
 msgid "dealloc_killer (#%d) not on list"
-msgstr "〔점검〕 dealloc_killer (#%d) not on list"
+msgstr "dealloc_killer (#%d) not on list"
 
 #: ../src/mon.c:2659
 #, c-format
 msgid "dealloc_monst with nmon on %s"
-msgstr "〔점검〕 dealloc_monst with nmon on %s"
+msgstr "dealloc_monst with nmon on %s"
 
 #: ../src/mkobj.c:2754
 msgid "dealloc_obj with cobj"
-msgstr "〔점검〕 dealloc_obj with cobj"
+msgstr "dealloc_obj with cobj"
 
 #: ../src/mkobj.c:2756
 msgid "dealloc_obj with hands_obj"
-msgstr "〔점검〕 dealloc_obj with hands_obj"
+msgstr "dealloc_obj with hands_obj"
 
 #: ../src/mkobj.c:2752
 msgid "dealloc_obj with nobj"
-msgstr "〔점검〕 dealloc_obj with nobj"
+msgstr "dealloc_obj with nobj"
 
 #: ../src/mkobj.c:2746
 #, c-format
 msgid "dealloc_obj: obj already deleted (type=%d)"
-msgstr "dealloc_obj: 객체 already deleted (type=%d)"
+msgstr "dealloc_obj: obj already deleted (type=%d)"
 
 #: ../src/mkobj.c:2749
 #, c-format
 msgid "dealloc_obj: obj not free (type=%d, where=%d)"
-msgstr "dealloc_obj: 객체 자유 상태가 아니다 (type=%d, where=%d)"
+msgstr "dealloc_obj: obj not free (type=%d, where=%d)"
 
 #: ../src/mhitu.c:2327
 msgid "dear"
@@ -33992,12 +33999,12 @@ msgstr "del_light_source: not found type=%d, id=%s"
 
 #: ../src/light.c:110
 msgid "del_light_source:type=none"
-msgstr "〔점검〕 del_light_source:type=none"
+msgstr "del_light_source:type=none"
 
 #: ../src/light.c:162
 #, c-format
 msgid "delete_ls not found, ls=%s"
-msgstr "〔점검〕 delete_ls not found, ls=%s"
+msgstr "delete_ls not found, ls=%s"
 
 #: ../src/insight.c:1104
 msgid "deliberately"
@@ -34037,11 +34044,11 @@ msgstr "전달했다"
 
 #: ../src/pickup.c:1560
 msgid "delta_cwt: obj not inside container?"
-msgstr "delta_cwt: 객체 not inside container?"
+msgstr "delta_cwt: obj not inside container?"
 
 #: ../src/trap.c:6557
 msgid "deltrap: no preceding trap!"
-msgstr "deltrap: preceding trap!이(가) 없다"
+msgstr "deltrap: no preceding trap!"
 
 #: ../src/monster_i18n.c:203 ../src/obj_descr_i18n.c:896
 msgid "demilich"
@@ -34094,8 +34101,9 @@ msgstr "운명"
 
 # read.c - getobj() 프롬프트 (destroy armor scroll)
 # "What do you want to destroy?"
-#: ../src/dig.c:1751 ../src/explode.c:685 ../src/mkobj.c:747 ../src/read.c:1377
-#: ../src/vault.c:936 ../src/wizcmds.c:314 ../src/zap.c:4131 ../src/zap.c:5035
+#: ../src/dig.c:1751 ../src/explode.c:685 ../src/mkobj.c:747
+#: ../src/read.c:1377 ../src/vault.c:936 ../src/wizcmds.c:314
+#: ../src/zap.c:4131 ../src/zap.c:5035
 msgid "destroy"
 msgstr "파괴할"
 
@@ -34226,7 +34234,7 @@ msgstr "민첩"
 #: ../src/dungeon.c:1881
 #, c-format
 msgid "dgn_entrance: can't find entrance to %s"
-msgstr "dgn_entrance: 찾을 수 없다: entrance to %s"
+msgstr "dgn_entrance: can't find entrance to %s"
 
 #: ../src/obj_descr_i18n.c:61
 msgid "diamond"
@@ -34275,7 +34283,7 @@ msgstr "굶주림으로 죽었다."
 # ============================================================
 # 사망 메시지 (Death Messages)
 # ============================================================
-#
+# 
 #: ../src/eat.c:286 ../src/end.c:196
 msgid "die..."
 msgstr "죽었다..."
@@ -34468,7 +34476,7 @@ msgstr "방전되었다."
 # ============================================================
 # 사망 메시지 (Death Messages)
 # ============================================================
-#
+# 
 #: ../src/topten.c:748
 msgid "discover"
 msgstr "발견"
@@ -34568,11 +34576,11 @@ msgstr "전이수"
 #: ../src/display.c:535
 #, c-format
 msgid "display_monster:  bad m_ap_type value [ = %d ]"
-msgstr "display_monster: 잘못된 m_ap_type value [ = %d ]"
+msgstr "display_monster:  bad m_ap_type value [ = %d ]"
 
 #: ../src/display.c:646
 msgid "display_warning did not match warning type?"
-msgstr "〔점검〕 display_warning did not match warning type?"
+msgstr "display_warning did not match warning type?"
 
 #: ../src/pray.c:734
 msgid "displeased"
@@ -34670,7 +34678,7 @@ msgstr "예언 주문"
 
 #: ../src/hack.c:4573
 msgid "division by zero in rounddiv"
-msgstr "〔점검〕 division by zero in rounddiv"
+msgstr "division by zero in rounddiv"
 
 #: ../src/teleport.c:1471
 msgid "dizzy for a moment, but nothing happens..."
@@ -34736,7 +34744,7 @@ msgstr "그렇게 한다."
 #: ../src/vision.c:2129
 #, c-format
 msgid "do_clear_area:  illegal range %d"
-msgstr "do_clear_area: illegal range %d"
+msgstr "do_clear_area:  illegal range %d"
 
 #: ../src/do_wear.c:2887
 #, c-format
@@ -34746,12 +34754,12 @@ msgstr "do_takeoff: taking off %lx"
 #: ../src/mkobj.c:2834
 #, c-format
 msgid "dobjsfree: obj where=%d, not OBJ_DELETED"
-msgstr "dobjsfree: 객체 where=%d, not OBJ_DELETED"
+msgstr "dobjsfree: obj where=%d, not OBJ_DELETED"
 
 #: ../src/o_init.c:1080
 #, c-format
 msgid "doclassdisco: invalid object class '%s'"
-msgstr "doclassdisco: 유효하지 않은 object class '%s'"
+msgstr "doclassdisco: invalid object class '%s'"
 
 #: ../src/insight.c:1985 ../src/insight.c:1987
 msgid "does"
@@ -34807,11 +34815,11 @@ msgstr "dog_eat: pet apport <= 0 (%d, %d, %ld, %ld, %d, %u, %u)"
 
 #: ../src/dogmove.c:1006
 msgid "dog_move for non-pet?"
-msgstr "〔점검〕 dog_move for non-pet?"
+msgstr "dog_move for non-pet?"
 
 #: ../src/shk.c:4207
 msgid "doinvbill: no shopkeeper?"
-msgstr "doinvbill: shopkeeper?이(가) 없다"
+msgstr "doinvbill: no shopkeeper?"
 
 #: ../src/wizard.c:827
 msgid "dolt"
@@ -34891,7 +34899,7 @@ msgstr "정상적인 형태에서는 특수 능력이 없다!"
 
 #: ../src/invent.c:1364
 msgid "don't have amulet?"
-msgstr "〔점검〕 don't have amulet?"
+msgstr "부적이(가) 없는가?"
 
 #: ../src/invent.c:2354
 #, c-format
@@ -34910,7 +34918,7 @@ msgstr "%s할 것이 %s 없다."
 
 #: ../src/invent.c:1368
 msgid "don't have candelabrum?"
-msgstr "〔점검〕 don't have candelabrum?"
+msgstr "일곱 양초 샹들리에이(가) 없는가?"
 
 #: ../src/apply.c:59
 msgid "don't have enough elbow-room to maneuver."
@@ -34959,11 +34967,11 @@ msgstr "점프할 충분한 견인력이 없다."
 
 #: ../src/invent.c:1381
 msgid "don't have quest artifact?"
-msgstr "〔점검〕 don't have quest artifact?"
+msgstr "퀘스트 성물이(가) 없는가?"
 
 #: ../src/invent.c:1372
 msgid "don't have silver bell?"
-msgstr "〔점검〕 don't have silver bell?"
+msgstr "은종이(가) 없는가?"
 
 #: ../src/invent.c:2077
 #, c-format
@@ -34976,7 +34984,7 @@ msgstr "그 물건을 가지고 있지 않다."
 
 #: ../src/invent.c:1376
 msgid "don't have the book?"
-msgstr "〔점검〕 don't have the book?"
+msgstr "그 책이(가) 없는가?"
 
 #: ../src/apply.c:3942
 #, c-format
@@ -35071,8 +35079,8 @@ msgstr "완료"
 #: ../src/dig.c:555 ../src/dig.c:1396 ../src/dokick.c:945 ../src/dokick.c:994
 #: ../src/hack.c:705 ../src/hack.c:720 ../src/hack.c:807 ../src/lock.c:123
 #: ../src/lock.c:144 ../src/lock.c:909 ../src/objnam.c:3920
-#: ../src/objnam.c:3925 ../src/pager.c:2357 ../src/shk.c:5148 ../src/shk.c:5152
-#: ../src/shk.c:5159 ../src/shk.c:5163 ../src/trap.c:6090
+#: ../src/objnam.c:3925 ../src/pager.c:2357 ../src/shk.c:5148
+#: ../src/shk.c:5152 ../src/shk.c:5159 ../src/shk.c:5163 ../src/trap.c:6090
 msgid "door"
 msgstr "문"
 
@@ -35176,12 +35184,12 @@ msgstr "하락"
 #: ../src/extralev.c:68
 #, c-format
 msgid "down door from %d,%d going nowhere?"
-msgstr "〔점검〕 down door from %d,%d going nowhere?"
+msgstr "down door from %d,%d going nowhere?"
 
 #: ../src/extralev.c:62 ../src/extralev.c:104
 #, c-format
 msgid "down: no wall at %d,%d?"
-msgstr "down: wall at %d,%d?이(가) 없다"
+msgstr "down: no wall at %d,%d?"
 
 #: ../src/cmd.c:4208
 msgid "downward"
@@ -35219,7 +35227,7 @@ msgstr "배수구가 덜 막힌 것 같다."
 #: ../src/weapon.c:1499
 #, c-format
 msgid "drain_weapon_skill (%d)"
-msgstr "〔점검〕 drain_weapon_skill (%d)"
+msgstr "drain_weapon_skill (%d)"
 
 #: ../src/mhitu.c:2183
 msgid "drained of energy."
@@ -35332,7 +35340,7 @@ msgstr "금화를 떨어뜨리고 따라오세요."
 # ============================================================
 # 아이템 메시지 (Item Messages)
 # ============================================================
-#
+# 
 #: ../src/vault.c:951
 msgid "drop that hidden gold and "
 msgstr "하지만 숨긴 금화가 있다!"
@@ -35418,32 +35426,32 @@ msgstr "던전"
 
 #: ../src/dungeon.c:1254
 msgid "dungeon is not a lua table"
-msgstr "〔점검〕 dungeon is not a lua table"
+msgstr "dungeon is not a lua table"
 
 #: ../src/dungeon.c:1279
 #, c-format
 msgid "dungeon[%i] is not a lua table"
-msgstr "〔점검〕 dungeon[%i] is not a lua table"
+msgstr "dungeon[%i] is not a lua table"
 
 #: ../src/dungeon.c:1045
 #, c-format
 msgid "dungeon[%i].branches is not an array of hashes"
-msgstr "〔점검〕 dungeon[%i].branches is not an array of hashes"
+msgstr "dungeon[%i].branches is not an array of hashes"
 
 #: ../src/dungeon.c:922
 #, c-format
 msgid "dungeon[%i].branches[%i] is not a hash"
-msgstr "〔점검〕 dungeon[%i].branches[%i] is not a hash"
+msgstr "dungeon[%i].branches[%i] is not a hash"
 
 #: ../src/dungeon.c:1036
 #, c-format
 msgid "dungeon[%i].levels is not an array of hashes"
-msgstr "〔점검〕 dungeon[%i].levels is not an array of hashes"
+msgstr "dungeon[%i].levels is not an array of hashes"
 
 #: ../src/dungeon.c:857
 #, c-format
 msgid "dungeon[%i].levels[%i] is not a hash"
-msgstr "〔점검〕 dungeon[%i].levels[%i] is not a hash"
+msgstr "dungeon[%i].levels[%i] is not a hash"
 
 #: ../src/alloc.c:257
 msgid "dupstr_n: string too long"
@@ -35648,7 +35656,7 @@ msgstr "바닥의 모서리가 부드러워진다."
 #: ../src/mon.c:173
 #, c-format
 msgid "eel hiding %s (%s)"
-msgstr "〔점검〕 eel hiding %s (%s)"
+msgstr "eel hiding %s (%s)"
 
 #: ../src/sounds.c:345
 msgid "eep"
@@ -35665,7 +35673,7 @@ msgstr "알"
 #: ../src/timeout.c:1162
 #, c-format
 msgid "egg hatched where? (%d)"
-msgstr "〔점검〕 egg hatched where? (%d)"
+msgstr "egg hatched where? (%d)"
 
 # ===== uhitm.c =====
 # 알 상태 메시지
@@ -35876,12 +35884,12 @@ msgstr "뼈 레벨 %1$ld개를 만났다%2$.0s"
 #: ../src/timeout.c:1808
 #, c-format
 msgid "end_burn: obj %s not lit"
-msgstr "end_burn: 객체 %s not lit"
+msgstr "end_burn: obj %s not lit"
 
 #: ../src/timeout.c:1822
 #, c-format
 msgid "end_burn: obj %s not timed!"
-msgstr "end_burn: 객체 %s not timed!"
+msgstr "end_burn: obj %s not timed!"
 
 # 스탯 관련 용어
 #: ../src/obj_descr_i18n.c:1306
@@ -36217,7 +36225,7 @@ msgstr "돈을 내지 않고 가게를 빠져나왔다!"
 
 #: ../src/vault.c:260
 msgid "escaping vault without guard?"
-msgstr "〔점검〕 escaping vault without guard?"
+msgstr "escaping vault without guard?"
 
 #: ../src/eat.c:1051
 msgid "especially healthy."
@@ -36382,8 +36390,8 @@ msgid "expires"
 msgstr "만료된다"
 
 # trap.c:4622 - 폭발
-#: ../src/detect.c:1249 ../src/read.c:810 ../src/trap.c:4693 ../src/trap.c:4709
-#: ../src/trap.c:6378
+#: ../src/detect.c:1249 ../src/read.c:810 ../src/trap.c:4693
+#: ../src/trap.c:4709 ../src/trap.c:6378
 msgid "explode"
 msgstr "폭발했다"
 
@@ -36402,7 +36410,7 @@ msgstr "폭발했다!"
 #: ../src/explode.c:236
 #, c-format
 msgid "explode: wand has bad zap type (%d)."
-msgstr "explode: wand has 잘못된 zap type (%d)."
+msgstr "explode: wand has bad zap type (%d)."
 
 #: ../src/mhitu.c:68
 msgid "explodes"
@@ -36444,7 +36452,7 @@ msgstr "폭발하는 룬"
 
 #: ../src/explode.c:978
 msgid "exploding unlit oil"
-msgstr "〔점검〕 exploding unlit oil"
+msgstr "exploding unlit oil"
 
 #: ../src/read.c:2456 ../src/zap.c:2613 ../src/zap.c:5786
 msgid "exploding wand"
@@ -36465,12 +36473,12 @@ msgstr "폭발."
 #: ../src/explode.c:347
 #, c-format
 msgid "explosion base type %d?"
-msgstr "〔점검〕 explosion base type %d?"
+msgstr "explosion base type %d?"
 
 #: ../src/explode.c:69 ../src/explode.c:110
 #, c-format
 msgid "explosion type %d?"
-msgstr "〔점검〕 explosion type %d?"
+msgstr "explosion type %d?"
 
 #: ../src/trap.c:6331
 msgid "explosive charge is a dud"
@@ -36521,7 +36529,7 @@ msgstr "%s에서 이상한 소리를 뽑아낸다!"
 
 #: ../src/worn.c:1405
 msgid "extract_from_minvent called on object not in minvent"
-msgstr "〔점검〕 extract_from_minvent called on object not in minvent"
+msgstr "extract_from_minvent called on object not in minvent"
 
 #: ../src/mkobj.c:2635
 msgid "extract_nexthere: object lost"
@@ -36648,11 +36656,11 @@ msgstr "충실한 나체주의자였다"
 #: ../src/mail.c:529
 #, c-format
 msgid "fake mail #%d has undefined substitution"
-msgstr "〔점검〕 fake mail #%d has undefined substitution"
+msgstr "fake mail #%d has undefined substitution"
 
 #: ../src/vault.c:1167
 msgid "fakecorr overflow"
-msgstr "〔점검〕 fakecorr overflow"
+msgstr "fakecorr overflow"
 
 # read.c - flooreffects() 동사
 # "The boulder falls into the water/lava."
@@ -36761,8 +36769,8 @@ msgstr "사다리에서 떨어지다"
 msgid "falling rock"
 msgstr "떨어지는 바위"
 
-#: ../src/muse.c:962 ../src/trap.c:1728 ../src/uhitm.c:2289 ../src/uhitm.c:2315
-#: ../src/uhitm.c:2369 ../src/uhitm.c:2395
+#: ../src/muse.c:962 ../src/trap.c:1728 ../src/uhitm.c:2289
+#: ../src/uhitm.c:2315 ../src/uhitm.c:2369 ../src/uhitm.c:2395
 msgid "falls"
 msgstr "무너져"
 
@@ -36829,7 +36837,7 @@ msgstr "포샤드"
 #: ../src/sfstruct.c:543
 #, c-format
 msgid "fd not in list (%d)?"
-msgstr "〔점검〕 fd not in list (%d)?"
+msgstr "fd not in list (%d)?"
 
 #: ../src/polyself.c:1999
 msgid "feathers"
@@ -36837,7 +36845,7 @@ msgstr "가죽"
 
 #: ../src/sp_lev.c:4890
 msgid "feature has unknown type param."
-msgstr "feature has 알 수 없는 type param."
+msgstr "feature has unknown type param."
 
 #: ../src/obj_descr_i18n.c:168
 msgid "fedora"
@@ -36858,9 +36866,9 @@ msgstr "약한 발차기가 효과가 없다."
 #: ../src/apply.c:1607 ../src/do.c:2467 ../src/eat.c:3493 ../src/hack.c:3817
 #: ../src/insight.c:1010 ../src/invent.c:4123 ../src/lock.c:592
 #: ../src/lock.c:594 ../src/lock.c:854 ../src/lock.c:1016 ../src/potion.c:2667
-#: ../src/potion.c:2670 ../src/pray.c:567 ../src/pray.c:1218 ../src/read.c:1143
-#: ../src/read.c:1155 ../src/read.c:1659 ../src/trap.c:360 ../src/trap.c:6067
-#: ../src/wizard.c:78 ../src/wizard.c:80 ../src/wizard.c:82
+#: ../src/potion.c:2670 ../src/pray.c:567 ../src/pray.c:1218
+#: ../src/read.c:1143 ../src/read.c:1155 ../src/read.c:1659 ../src/trap.c:360
+#: ../src/trap.c:6067 ../src/wizard.c:78 ../src/wizard.c:80 ../src/wizard.c:82
 msgid "feel"
 msgstr "느껴진다"
 
@@ -37025,7 +37033,7 @@ msgstr "조각상이 %s움직인다!"
 #: ../src/apply.c:2504
 #, c-format
 msgid "figurine came to life where? (%d)"
-msgstr "〔점검〕 figurine came to life where? (%d)"
+msgstr "figurine came to life where? (%d)"
 
 # ============================================================
 # dog.c - 조각상 관련 메시지
@@ -37152,7 +37160,7 @@ msgstr "같은 %s줄을 계속 반복해서 읽고 있는 자신을 발견했다
 #: ../src/dungeon.c:322
 #, c-format
 msgid "find_branch: can't find %s"
-msgstr "find_branch: 찾을 수 없다: %s"
+msgstr "find_branch: can't find %s"
 
 #: ../src/mklev.c:179
 msgid "finddpos: illegal dir"
@@ -37202,7 +37210,7 @@ msgstr "%s{을/를} 벗기를 마쳤다."
 #: ../src/shk.c:2734
 #, c-format
 msgid "finish_paybill: bad location <%d,%d>."
-msgstr "finish_paybill: 잘못된 location <%d,%d>."
+msgstr "finish_paybill: bad location <%d,%d>."
 
 # 물고기 신체 부위 형용사
 #: ../src/polyself.c:2046
@@ -37336,12 +37344,12 @@ msgstr "대형 술잔"
 
 #: ../src/dungeon.c:774
 msgid "flags is not an array or string"
-msgstr "〔점검〕 flags is not an array or string"
+msgstr "flags is not an array or string"
 
 #: ../src/dungeon.c:769
 #, c-format
 msgid "flags[%i] is not a string"
-msgstr "〔점검〕 flags[%i] is not a string"
+msgstr "flags[%i] is not a string"
 
 #: ../src/obj_descr_i18n.c:270
 msgid "flail"
@@ -37515,7 +37523,7 @@ msgstr "바닥"
 #: ../src/mon.c:270
 #, c-format
 msgid "floor mon (%s) with mstate set to 0x%08lx"
-msgstr "〔점검〕 floor mon (%s) with mstate set to 0x%08lx"
+msgstr "floor mon (%s) with mstate set to 0x%08lx"
 
 #: ../src/zap.c:3672
 msgid "floor runs like butter!"
@@ -37527,12 +37535,12 @@ msgstr "바닥이 격렬하게 흔들린다!"
 
 #: ../src/do.c:176
 msgid "flooreffects: obj not free"
-msgstr "flooreffects: 객체가 자유 상태가 아니다"
+msgstr "flooreffects: obj not free"
 
 #: ../src/eat.c:3717
 #, c-format
 msgid "floorfood: unknown request (%s)"
-msgstr "floorfood: 알 수 없는 request (%s)"
+msgstr "floorfood: unknown request (%s)"
 
 #: ../src/timeout.c:1313
 msgid "flounder."
@@ -37575,7 +37583,7 @@ msgstr "형광"
 
 #: ../src/sfstruct.c:486
 msgid "flush of savefile failed!"
-msgstr "〔점검〕 flush of savefile failed!"
+msgstr "flush of savefile failed!"
 
 #: ../src/obj_descr_i18n.c:345
 msgid "flute"
@@ -37621,7 +37629,7 @@ msgstr "%s에서 날아 나왔다."
 
 #: ../src/trap.c:7143
 msgid "fly trap"
-msgstr "〔점검〕 fly trap"
+msgstr "파리지옥"
 
 # timeout.c/attrib.c - "flying" (목록/레이블 용도)
 # timeout.c:99 - propertynames[] 배열에서 N_("flying")로 사용
@@ -37832,7 +37840,7 @@ msgstr "found_artifact: artifact doesn't exist yet? (%d)"
 #: ../src/artifact.c:413
 #, c-format
 msgid "found_artifact: invalid artifact index! (%d)"
-msgstr "found_artifact: 유효하지 않은 artifact index! (%d)"
+msgstr "found_artifact: invalid artifact index! (%d)"
 
 #: ../src/dig.c:1402 ../src/dig.c:1818 ../src/dungeon.c:1775
 #: ../src/dungeon.c:3617 ../src/fountain.c:250 ../src/fountain.c:400
@@ -37885,55 +37893,55 @@ msgstr "허약한"
 # ============================================================
 # 래핑 안 된 문자열 전체 현황 (2026-02-06 검토)
 # ============================================================
-#
+# 
 # [Lua 파일] - 총 330개+
-#
+# 
 # quest.lua: 274개 (text= 86개 + synopsis= 188개)
 #   - 퀘스트 대화/설명 텍스트
 #   - 포맷 플레이스홀더: %l(leader), %p(player), %n(nemesis), %o(artifact)
 #   - extract_lua_strings.py로 POT에 추출됨
 #   - 예: "You again sense %l pleading for help."
-#
+# 
 # tut-1.lua: 47개 text= 문자열
 #   - 튜토리얼 각인 메시지
 #   - 동적 키 연결: .. tut_key("jump") 형태
 #   - 런타임 변수 포함으로 래핑 복잡
 #   - 예: "Move around with " .. movekeys
-#
+# 
 # tut-2.lua: 1개
 #   - "Use '" .. nh.eckey("up") .. "' to go up the stairs"
-#
+# 
 # 기타 Lua: soko*.lua, castle.lua, Mon-loca.lua, Arc-loca.lua
 #   - "Elbereth" (고유명사, 번역 불필요)
 #   - "X marks the spot." (번역 완료)
-#
+# 
 # [헤더 파일] - 총 150개+
-#
+# 
 # include/defsym.h: 115개 PCHAR/PCHAR2 매크로
 #   - 지형/심볼 설명 ("vertical wall", "iron bars", "tree" 등)
 #   - 매크로 구조상 N_() 래핑 필요
 #   - 게임 내 look 명령(;)에서 표시됨
 #   - 예: PCHAR(17, '#', S_bars, "iron bars", HI_METAL)
-#
+# 
 # include/artilist.h: 36개 아티팩트명
 #   - "Excalibur", "Mjollnir", "Stormbringer" 등
 #   - 고유명사로 번역 불필요 (음차 가능)
-#
+# 
 # [C 소스 파일]
-#
+# 
 # 대부분 래핑 완료, 아래는 미래핑:
-#
+# 
 # ★ 사용자 대면 (래핑 권장):
 #   - src/mthrowu.c:24-28 breathwep[] - 브레스 무기 유형
 #     "fragments", "fire", "frost", "sleep gas", "disintegration blast",
 #     "lightning", "poison gas", "acid"
 #     → 드래곤 브레스 메시지에서 표시됨
-#
+# 
 #   - src/music.c:494-497 beats[] - 드럼 박자 유형
 #     "stepper", "one drop", "slow two", "triple stroke roll",
 #     "double shuffle", "half-time shuffle", "second line", "train"
 #     → 드럼 연주 시 표시됨
-#
+# 
 # ★ 개발자/디버그용 (래핑 불필요):
 #   - src/glyphs.c:1014 altar_text[] - "unaligned", "chaotic", "neutral"
 #   - src/glyphs.c:1032 zap_texts[] - "missile", "fire", "frost", "sleep"
@@ -37947,13 +37955,13 @@ msgstr "허약한"
 #   - src/coloratt.c:577 "Menucolor regex error"
 #   - src/options.c:7783 "MSGTYPE regex error"
 #   - src/options.c:7923 "NHregex error"
-#
+# 
 # ★ 상점 주인 이름 (고유명사, 래핑 불필요):
 #   - src/shknam.c:32-181 shkliquors[], shkbooks[], shkarmors[],
 #     shkwands[], shkrings[], shkfoods[], shkweapons[], shktools[],
 #     shklight[], shkgeneral[], shkhealthfoods[]
 #     → 실제 지명 기반 고유명사
-#
+# 
 # ★ 퀘스트 장소 (role.c) - 래핑 필요! (21개):
 #   - "the College of Archeology", "the Tomb of the Toltec Kings"
 #   - "the Camp of the Duali Tribe", "the Duali Oasis"
@@ -37968,34 +37976,34 @@ msgstr "허약한"
 #   - "Ankh-Morpork", "the Shrine of Destiny", "the cave of Surtur"
 #   - "the Lonely Tower", "the Tower of Darkness"
 #   → 게임 내 look 명령이나 퀘스트 메시지에서 표시됨
-#
+# 
 # ★ 던전 이름 (dungeon.lua) - Lua 래핑 필요:
 #   - "The Dungeons of Doom", "The Gnomish Mines", "Sokoban"
 #   - "The Quest", "Fort Ludios", "Gehennom"
 #   - "The Elemental Planes", "Vlad's Tower"
 #   → Lua 문자열 추출 파이프라인 확장 필요
-#
+# 
 # ★ 상태 하이라이팅 (botl.c:2571-2576) - 내부 비교용:
 #   - aligntxt[] = { "chaotic", "neutral", "lawful" }
 #   - hutxt[] = { "Satiated", "Hungry", "Weak", "Fainting", "Fainted",
 # "Starved" }
 #   → 옵션 파싱용, 래핑 시 호환성 문제 가능
-#
+# 
 # ============================================================
-#
+# 
 # [몬스터 이름] - include/monsters.h
 #   - NAM("giant ant") 형태로 정의, N_() 래핑 없음
 #   - ko_manual.po에 수동 번역 추가됨 (이 파일 상단 참조)
 #   - 별도 monster_i18n.c 파일 필요 (obj_descr_i18n.c 참조)
-#
+# 
 # [아이템 설명] - src/obj_descr_i18n.c (1023개 N_() 호출)
 #   - 포션/반지/지팡이/책/갑옷/무기 설명어 추출용 파일 존재
 #   - xgettext 전용 (런타임에는 포함 안 됨)
-#
+# 
 # ============================================================
-#
+# 
 # 검토 완료 (2026-02-06): 대부분 래핑됨
-#
+# 
 # 래핑이 이미 잘 되어 있는 배열:
 #   - end.c: deaths[], ends[] ✓
 #   - timeout.c: stoned_texts[], vomiting_texts[], choke_texts[],
@@ -38013,7 +38021,7 @@ msgstr "허약한"
 #   - options.c: burdentype[], runmodes[], sortltype[] 등 ✓
 #   - mthrowu.c: breathwep[] ✓ (2026-02-06 래핑 완료)
 #   - music.c: beats[] ✓ (2026-02-06 래핑 완료)
-#
+# 
 # ============================================================
 # ============================================================
 # breathwep[] - 드래곤 브레스 유형 (mthrowu.c)
@@ -38024,7 +38032,7 @@ msgstr "파편"
 
 #: ../src/mhitm.c:1174
 msgid "freakishly "
-msgstr "〔점검〕 freakishly "
+msgstr "freakishly "
 
 #: ../src/do_wear.c:2712
 #, c-format
@@ -38188,7 +38196,7 @@ msgstr "함정에 의해 얼어붙음"
 #: ../src/mon.c:158
 #, c-format
 msgid "frozen monster [%s%s] is able to move (%s)"
-msgstr "〔점검〕 frozen monster [%s%s] is able to move (%s)"
+msgstr "frozen monster [%s%s] is able to move (%s)"
 
 # "smooth shield"는 이미 line 1602에 존재
 #: ../src/objnam.c:753
@@ -38336,7 +38344,7 @@ msgstr "감마선"
 
 #: ../src/trap.c:7141
 msgid "garden rake"
-msgstr "〔점검〕 garden rake"
+msgstr "정원 갈퀴"
 
 #: ../src/sounds.c:348
 msgid "gargle"
@@ -38405,7 +38413,7 @@ msgstr "특별한 곳을 응시하지 않았다."
 #: ../src/polyself.c:1661
 #, c-format
 msgid "gaze attack %d?"
-msgstr "〔점검〕 gaze attack %d?"
+msgstr "gaze attack %d?"
 
 #: ../src/polyself.c:1713
 #, c-format
@@ -38506,7 +38514,7 @@ msgstr "%1$d종의 몬스터를 학살했다%2$.0s%3$.0s"
 #: ../src/mon.c:116
 #, c-format
 msgid "genocided %s in play (%s)"
-msgstr "〔점검〕 genocided %s in play (%s)"
+msgstr "genocided %s in play (%s)"
 
 #: ../src/insight.c:2228
 msgid "genocided any monsters"
@@ -38605,29 +38613,29 @@ msgstr "get_count: cmdcount_nht"
 
 #: ../src/sp_lev.c:1402
 msgid "get_free_room_loc:  can't find a place!"
-msgstr "get_free_room_loc: 찾을 수 없다: a place!"
+msgstr "get_free_room_loc:  can't find a place!"
 
 #: ../src/dungeon.c:1831
 msgid "get_level: can't find parent dungeon"
-msgstr "get_level: 찾을 수 없다: parent dungeon"
+msgstr "get_level: can't find parent dungeon"
 
 #: ../src/sp_lev.c:1252
 msgid "get_location:  can't find a place!"
-msgstr "get_location: 찾을 수 없다: a place!"
+msgstr "get_location:  can't find a place!"
 
 #: ../src/sp_lev.c:3995
 #, c-format
 msgid "get_mkroom_name unknown rtype %d"
-msgstr "get_mkroom_name 알 수 없는 rtype %d"
+msgstr "get_mkroom_name unknown rtype %d"
 
 #: ../src/sp_lev.c:1370
 msgid "get_room_loc : can't find a place!"
-msgstr "get_room_loc : 찾을 수 없다: a place!"
+msgstr "get_room_loc : can't find a place!"
 
 #: ../src/sounds.c:1871
 #, c-format
 msgid "get_soundlib_name: invalid active_soundlib (%d)"
-msgstr "get_soundlib_name: 유효하지 않은 active_soundlib (%d)"
+msgstr "get_soundlib_name: invalid active_soundlib (%d)"
 
 #: ../src/cmd.c:3977
 msgid "getdir: command queue had no dir?"
@@ -38644,7 +38652,7 @@ msgstr "getobj: inventory overflow"
 #: ../src/cmd.c:4085
 #, c-format
 msgid "getpos successful but not one of [.,;:] (%d)"
-msgstr "〔점검〕 getpos successful but not one of [.,;:] (%d)"
+msgstr "getpos successful but not one of [.,;:] (%d)"
 
 # shk.c - 화남. "The shopkeeper gets angry"
 #: ../src/shk.c:1487
@@ -38829,7 +38837,7 @@ msgstr "반짝이는"
 
 #: ../src/shk.c:5982
 msgid "globby_bill_fixup called for non-globby object"
-msgstr "〔점검〕 globby_bill_fixup called for non-globby object"
+msgstr "globby_bill_fixup called for non-globby object"
 
 #: ../src/invent.c:1728 ../src/invent.c:3328
 msgid "gloved"
@@ -38846,8 +38854,8 @@ msgstr "장갑"
 
 #: ../src/potion.c:1611 ../src/potion.c:2460 ../src/read.c:670
 #: ../src/read.c:676 ../src/read.c:684 ../src/read.c:1149 ../src/read.c:1183
-#: ../src/read.c:1256 ../src/read.c:1654 ../src/wield.c:920 ../src/wield.c:1004
-#: ../src/worn.c:964
+#: ../src/read.c:1256 ../src/read.c:1654 ../src/wield.c:920
+#: ../src/wield.c:1004 ../src/worn.c:964
 msgid "glow"
 msgstr "빛나다"
 
@@ -38906,11 +38914,11 @@ msgstr "이상한 빛으로 빛나다"
 
 #: ../src/glyphs.c:391
 msgid "glyphid_cache full"
-msgstr "〔점검〕 glyphid_cache full"
+msgstr "glyphid_cache full"
 
 #: ../src/mkobj.c:3001
 msgid "gm.mydogs sanity [not empty]"
-msgstr "〔점검〕 gm.mydogs sanity [not empty]"
+msgstr "gm.mydogs sanity [not empty]"
 
 #: ../src/eat.c:2009
 msgid "gnarly"
@@ -39022,8 +39030,8 @@ msgstr "간다"
 msgid "going"
 msgstr "가는"
 
-#: ../src/detect.c:472 ../src/detect.c:1001 ../src/eat.c:2492 ../src/mon.c:1816
-#: ../src/obj_descr_i18n.c:69
+#: ../src/detect.c:472 ../src/detect.c:1001 ../src/eat.c:2492
+#: ../src/mon.c:1816 ../src/obj_descr_i18n.c:69
 msgid "gold"
 msgstr "금"
 
@@ -39114,7 +39122,7 @@ msgstr "공짜로 얻었다!"
 
 #: ../src/do.c:1739
 msgid "goto_level: no corresponding portal!"
-msgstr "goto_level: corresponding portal!이(가) 없다"
+msgstr "goto_level: no corresponding portal!"
 
 #: ../src/do.c:1696
 msgid "goto_level: returning to discarded level?"
@@ -39342,7 +39350,8 @@ msgstr "백열하는 용암 덩어리를 느낀다."
 msgid "groovy"
 msgstr "멋지다"
 
-#: ../src/dig.c:677 ../src/dungeon.c:1785 ../src/trap.c:3976 ../src/trap.c:4064
+#: ../src/dig.c:677 ../src/dungeon.c:1785 ../src/trap.c:3976
+#: ../src/trap.c:4064
 msgid "ground"
 msgstr "땅"
 
@@ -39398,7 +39407,7 @@ msgstr "경비병"
 #: ../src/mon.c:125
 #, c-format
 msgid "guard without egd (%s)"
-msgstr "〔점검〕 guard without egd (%s)"
+msgstr "guard without egd (%s)"
 
 # ===== mon.c =====
 # 경비병 (buf로 사용 - vtense에 전달됨)
@@ -39962,7 +39971,7 @@ msgstr "자유로운 %s{이/가} 없다."
 # ============================================================
 # 아이템 메시지 (Item Messages)
 # ============================================================
-#
+# 
 #: ../src/rumors.c:713
 msgid "have no gold."
 msgstr "금화가 없다."
@@ -39983,7 +39992,7 @@ msgstr "찰 다리가 없다."
 # ============================================================
 # 아이템 메시지 (Item Messages)
 # ============================================================
-#
+# 
 #: ../src/invent.c:4558
 msgid "have no money."
 msgstr "돈이 없다."
@@ -40314,7 +40323,7 @@ msgstr "여기"
 #: ../src/hack.c:4277
 #, c-format
 msgid "hero losing %d hit points due to \"%s\"?"
-msgstr "〔점검〕 hero losing %d hit points due to \"%s\"?"
+msgstr "hero losing %d hit points due to \"%s\"?"
 
 #: ../src/insight.c:85
 msgid "hero never wore armor"
@@ -40390,7 +40399,7 @@ msgstr "천둥번개를 피하는 중"
 #: ../src/mon.c:168
 #, c-format
 msgid "hiding monster stuck to you (%s)"
-msgstr "〔점검〕 hiding monster stuck to you (%s)"
+msgstr "hiding monster stuck to you (%s)"
 
 # ===== polyself.c =====
 # 석화 사망 원인
@@ -40402,12 +40411,12 @@ msgstr "%1$s 아래에 숨다%2$.0s"
 
 #: ../src/mhitu.c:655
 msgid "hiding under nothing?"
-msgstr "〔점검〕 hiding under nothing?"
+msgstr "hiding under nothing?"
 
 #: ../src/mon.c:189
 #, c-format
 msgid "hiding while trapped in a non-pit (%s)"
-msgstr "〔점검〕 hiding while trapped in a non-pit (%s)"
+msgstr "hiding while trapped in a non-pit (%s)"
 
 #: ../src/apply.c:487
 msgid "high"
@@ -40586,23 +40595,23 @@ msgstr "hitum_cleave: 알 수 없는 목표 방향 [%d,%d,%d]?"
 
 #: ../src/botl.c:3680
 msgid "hl->behavior=absolute, rel error"
-msgstr "hl->behavior=absolute, rel 오류"
+msgstr "hl->behavior=absolute, rel error"
 
 #: ../src/botl.c:3692
 msgid "hl->behavior=condition, rel error"
-msgstr "hl->behavior=condition, rel 오류"
+msgstr "hl->behavior=condition, rel error"
 
 #: ../src/botl.c:3661
 msgid "hl->behavior=percentage, rel error"
-msgstr "hl->behavior=percentage, rel 오류"
+msgstr "hl->behavior=percentage, rel error"
 
 #: ../src/botl.c:3686
 msgid "hl->behavior=textmatch, rel or textmatch error"
-msgstr "hl->behavior=textmatch, rel or textmatch 오류"
+msgstr "hl->behavior=textmatch, rel or textmatch error"
 
 #: ../src/botl.c:3674
 msgid "hl->behavior=updown, rel error"
-msgstr "hl->behavior=updown, rel 오류"
+msgstr "hl->behavior=updown, rel error"
 
 #: ../src/monster_i18n.c:64 ../src/obj_descr_i18n.c:962
 msgid "hobbit"
@@ -40969,7 +40978,7 @@ msgstr "이구아나"
 #: ../src/mon.c:85
 #, c-format
 msgid "illegal mon data %s; mnum=%d (%s)"
-msgstr "〔점검〕 illegal mon data %s; mnum=%d (%s)"
+msgstr "illegal mon data %s; mnum=%d (%s)"
 
 #: ../src/insight.c:2216
 msgid "illiterate"
@@ -41056,7 +41065,7 @@ msgstr "내파했다"
 
 #: ../src/pline.c:637
 msgid "impossible called impossible"
-msgstr "〔점검〕 impossible called impossible"
+msgstr "impossible called impossible"
 
 #: ../src/attrib.c:184
 msgid "improved"
@@ -41069,7 +41078,7 @@ msgstr "안에"
 
 #: ../src/insight.c:541
 msgid "in "
-msgstr " "
+msgstr "in "
 
 #: ../src/topten.c:1061
 #, c-format
@@ -41170,7 +41179,7 @@ msgstr "물에 들어가 있다"
 
 #: ../src/pickup.c:2690
 msgid "in_container:  bag not found."
-msgstr "in_container: bag not found."
+msgstr "in_container:  bag not found."
 
 #: ../src/do_name.c:1476
 msgid "incandescent"
@@ -41295,11 +41304,11 @@ msgstr "고 있다"
 
 #: ../src/botl.c:1812
 msgid "init_blstats called more than once."
-msgstr "〔점검〕 init_blstats called more than once."
+msgstr "init_blstats called more than once."
 
 #: ../src/dungeon.c:1291
 msgid "init_dungeon:  couldn't place levels"
-msgstr "init_dungeon: couldn't place levels"
+msgstr "init_dungeon:  couldn't place levels"
 
 #: ../src/dungeon.c:927
 msgid "init_dungeon: too many branches"
@@ -41337,26 +41346,26 @@ msgstr "본래 약해졌다"
 #: ../src/light.c:624
 #, c-format
 msgid "insane light source: bad ls type %d"
-msgstr "insane light source: 잘못된 ls type %d"
+msgstr "insane light source: bad ls type %d"
 
 #: ../src/light.c:622
 #, c-format
 msgid "insane light source: can't find mon #%u!"
-msgstr "insane light source: 찾을 수 없다: mon #%u!"
+msgstr "insane light source: can't find mon #%u!"
 
 #: ../src/light.c:617
 #, c-format
 msgid "insane light source: can't find obj #%u!"
-msgstr "insane light source: 찾을 수 없다: obj #%u!"
+msgstr "insane light source: can't find obj #%u!"
 
 #: ../src/light.c:612
 msgid "insane light source: no id!"
-msgstr "insane light source: id!이(가) 없다"
+msgstr "insane light source: no id!"
 
 #: ../src/mon.c:66
 #, c-format
 msgid "insane pet #%u has droptime (%ld) in the future (%ld) (%s)"
-msgstr "〔점검〕 insane pet #%u has droptime (%ld) in the future (%ld) (%s)"
+msgstr "insane pet #%u has droptime (%ld) in the future (%ld) (%s)"
 
 #: ../src/mcastu.c:677 ../src/mthrowu.c:45
 msgid "insects"
@@ -41432,7 +41441,7 @@ msgstr "직감하다"
 #: ../src/mkobj.c:762
 #, c-format
 msgid "invalid alteration type (%d)"
-msgstr "〔점검〕 invalid alteration type (%d)"
+msgstr "invalid alteration type (%d)"
 
 #: ../src/artifact.c:512
 #, c-format
@@ -41441,11 +41450,11 @@ msgstr "invalid artifact origin: %4o"
 
 #: ../src/shk.c:4187
 msgid "invalid sell response"
-msgstr "〔점검〕 invalid sell response"
+msgstr "invalid sell response"
 
 #: ../src/mkroom.c:1070
 msgid "invalid_shop_shape: no squares inside door?"
-msgstr "invalid_shop_shape: squares inside door?이(가) 없다"
+msgstr "invalid_shop_shape: no squares inside door?"
 
 # ============================================================
 # 게임 종료 시 공개 옵션 카테고리 (Disclosure Options)
@@ -41918,8 +41927,8 @@ msgstr "이다"
 #: ../src/pickup.c:1858 ../src/pickup.c:3082 ../src/pickup.c:3593
 #: ../src/role.c:692 ../src/shk.c:3436 ../src/shk.c:3849 ../src/shk.c:4148
 #: ../src/steal.c:789 ../src/timeout.c:1242 ../src/trap.c:2575
-#: ../src/trap.c:2635 ../src/trap.c:5934 ../src/wield.c:689 ../src/wield.c:1028
-#: ../src/zap.c:3568 ../src/zap.c:3576 ../src/zap.c:4970
+#: ../src/trap.c:2635 ../src/trap.c:5934 ../src/wield.c:689
+#: ../src/wield.c:1028 ../src/zap.c:3568 ../src/zap.c:3576 ../src/zap.c:4970
 msgid "it"
 msgstr "그것"
 
@@ -41952,7 +41961,7 @@ msgstr "아이템"
 #: ../src/shknam.c:369
 #, c-format
 msgid "item probabilities total to %d for %s shops!"
-msgstr "〔점검〕 item probabilities total to %d for %s shops!"
+msgstr "item probabilities total to %d for %s shops!"
 
 #: ../src/cmd.c:4485 ../src/o_init.c:990
 msgid "items"
@@ -42073,7 +42082,7 @@ msgstr "매우 멀리 점프할 수 없다."
 # ============================================================
 # 아이템 메시지 (Item Messages)
 # ============================================================
-#
+# 
 #: ../src/apply.c:2009
 msgid "jump; you have no legs!"
 msgstr "다리가 없어서 뛸 수 없다!"
@@ -42123,16 +42132,16 @@ msgstr "방금 섞었다"
 # ============================================================
 # insight.c 조합 패턴 종합 검토 (2026-02-06)
 # ============================================================
-#
+# 
 # 검토 방법: insight.c의 모든 enl_msg/you_* 호출을 추적하여
 # 한국어 조합 결과를 확인하고, 번역이 자연스러운지 점검.
-#
+# 
 # 핵심 포맷: " %1$s%3$s%2$s%4$s."
 #   %1$s = prefix (당신은 )
 #   %2$s = verb (​, 제로폭 공백)
 #   %3$s = suffix (한국어 서술어 포함)
 #   %4$s = ps (from_what 등)
-#
+# 
 # ============================================================
 # ============================================================
 # [조합 검토] Section A: Background (insight.c:430-720)
@@ -42456,7 +42465,7 @@ msgstr "크라켄"
 
 #: ../src/nhlua.c:155
 msgid "l_nhcore_init failed"
-msgstr "〔점검〕 l_nhcore_init failed"
+msgstr "l_nhcore_init failed"
 
 #: ../src/polyself.c:2044
 msgid "labrum"
@@ -42572,7 +42581,7 @@ msgstr "랜턴의 전원이 다 됐다."
 
 #: ../src/do_name.c:1528
 msgid "lard"
-msgstr "〔점검〕 lard"
+msgstr "라드"
 
 #: ../src/insight.c:3289 ../src/obj_descr_i18n.c:1134 ../src/objnam.c:787
 msgid "large"
@@ -42773,7 +42782,7 @@ msgstr "목줄이 느슨해졌다."
 
 #: ../src/apply.c:942
 msgid "leash in use isn't attached to anything?"
-msgstr "〔점검〕 leash in use isn't attached to anything?"
+msgstr "leash in use isn't attached to anything?"
 
 #: ../src/do.c:704
 #, c-format
@@ -42793,16 +42802,16 @@ msgstr "줄이 풀렸다.%.0s%.0s"
 #: ../src/objnam.c:1447
 #, c-format
 msgid "leashed %s #%u is dead"
-msgstr "〔점검〕 leashed %s #%u is dead"
+msgstr "leashed %s #%u is dead"
 
 #: ../src/objnam.c:1449
 #, c-format
 msgid "leashed monster #%u not found"
-msgstr "〔점검〕 leashed monster #%u not found"
+msgstr "leashed monster #%u not found"
 
 #: ../src/apply.c:901
 msgid "leashed-unleashed mon?"
-msgstr "〔점검〕 leashed-unleashed mon?"
+msgstr "leashed-unleashed mon?"
 
 #: ../src/mhitu.c:1351
 msgid "leashes"
@@ -42875,12 +42884,12 @@ msgstr "%s{을/를} 떨어뜨렸다"
 #: ../src/extralev.c:270
 #, c-format
 msgid "left end of %d, %d never connected?"
-msgstr "〔점검〕 left end of %d, %d never connected?"
+msgstr "left end of %d, %d never connected?"
 
 #: ../src/extralev.c:126
 #, c-format
 msgid "left: no wall at %d,%d?"
-msgstr "left: wall at %d,%d?이(가) 없다"
+msgstr "left: no wall at %d,%d?"
 
 #: ../src/polyself.c:1979 ../src/polyself.c:1998 ../src/polyself.c:2042
 msgid "leg"
@@ -42888,7 +42897,7 @@ msgstr "다리"
 
 #: ../src/trap.c:7143
 msgid "legal trap"
-msgstr "〔점검〕 legal trap"
+msgstr "합법 함정"
 
 #: ../src/dokick.c:1292
 msgid "legs cannot kick effectively."
@@ -43012,21 +43021,21 @@ msgstr "level arrival collision: %s?"
 
 #: ../src/mklev.c:311
 msgid "level has too many rooms"
-msgstr "〔점검〕 level has too many rooms"
+msgstr "level has too many rooms"
 
 #: ../src/mklev.c:331
 msgid "level has too many subrooms"
-msgstr "〔점검〕 level has too many subrooms"
+msgstr "level has too many subrooms"
 
 #: ../src/dungeon.c:244
 #, c-format
 msgid "level information count larger (%d) than allocated size"
-msgstr "〔점검〕 level information count larger (%d) than allocated size"
+msgstr "level information count larger (%d) than allocated size"
 
 #: ../src/dungeon.c:1411
 #, c-format
 msgid "level number out of range [ledger_to_dnum(%d)]"
-msgstr "〔점검〕 level number out of range [ledger_to_dnum(%d)]"
+msgstr "level number out of range [ledger_to_dnum(%d)]"
 
 # insight.c:1528 - "You are level-drain resistant"
 #: ../src/insight.c:1606
@@ -43087,12 +43096,12 @@ msgstr "부유 장화"
 #: ../src/mklev.c:1235
 #, c-format
 msgid "levl[%i][%i] door not ok"
-msgstr "〔점검〕 levl[%i][%i] door not ok"
+msgstr "levl[%i][%i] door not ok"
 
 #: ../src/wizcmds.c:1452
 #, c-format
 msgid "levl[%i][%i] vision blocking"
-msgstr "〔점검〕 levl[%i][%i] vision blocking"
+msgstr "levl[%i][%i] vision blocking"
 
 #: ../src/monster_i18n.c:202 ../src/obj_descr_i18n.c:987
 msgid "lich"
@@ -43476,7 +43485,7 @@ msgstr "%s처럼 보인다."
 
 #: ../src/pager.c:550
 msgid "lookat: unknown method of seeing monster"
-msgstr "lookat: 알 수 없는 method of seeing monster"
+msgstr "lookat: unknown method of seeing monster"
 
 #: ../src/do.c:1470 ../src/hack.c:3691 ../src/potion.c:381
 msgid "looks"
@@ -43519,7 +43528,7 @@ msgstr "철구에 대한 손아귀가 풀렸다."
 #: ../src/weapon.c:1466
 #, c-format
 msgid "lose_weapon_skill (%d)"
-msgstr "〔점검〕 lose_weapon_skill (%d)"
+msgstr "lose_weapon_skill (%d)"
 
 #: ../src/attrib.c:228
 #, c-format
@@ -43684,7 +43693,7 @@ msgstr "마법 "
 #: ../src/lock.c:1256
 #, c-format
 msgid "magic (%d) attempted on door."
-msgstr "〔점검〕 magic (%d) attempted on door."
+msgstr "magic (%d) attempted on door."
 
 #: ../src/obj_descr_i18n.c:1266
 msgid "magic flute"
@@ -43792,11 +43801,11 @@ msgstr "거미줄을 더 두껍게 만들었다."
 
 #: ../src/dog.c:277
 msgid "makedog() when startingpet_mid is already non-zero?"
-msgstr "〔점검〕 makedog() when startingpet_mid is already non-zero?"
+msgstr "makedog() when startingpet_mid is already non-zero?"
 
 #: ../src/mklev.c:1261
 msgid "makelevel() called when dungeon not yet initialized."
-msgstr "〔점검〕 makelevel() called when dungeon not yet initialized."
+msgstr "makelevel() called when dungeon not yet initialized."
 
 #: ../src/wizcmds.c:147
 msgid "makemap_remove_mons: 'fmon' did not get emptied?"
@@ -43805,7 +43814,7 @@ msgstr "makemap_remove_mons: 'fmon' did not get emptied?"
 #: ../src/makemon.c:1189
 #, c-format
 msgid "makemon trying to create a monster at <%d,%d>?"
-msgstr "〔점검〕 makemon trying to create a monster at <%d,%d>?"
+msgstr "makemon trying to create a monster at <%d,%d>?"
 
 #: ../src/shk.c:617
 msgid "makes it clear"
@@ -43818,7 +43827,7 @@ msgstr "요즘 도둑질이 얼마나 어려운지에 대해 한마디 한다"
 #: ../src/mkobj.c:2075
 #, c-format
 msgid "making corpstat type %d"
-msgstr "〔점검〕 making corpstat type %d"
+msgstr "making corpstat type %d"
 
 #: ../src/trap.c:585
 msgid "making fixed-dest tele trap pointing to itself"
@@ -43826,7 +43835,7 @@ msgstr "자기 자신을 가리키는 고정 목적지 순간이동 함정 생�
 
 #: ../src/engrave.c:1316
 msgid "making graffiti with non-marker stylus"
-msgstr "〔점검〕 making graffiti with non-marker stylus"
+msgstr "making graffiti with non-marker stylus"
 
 #: ../src/role.c:690
 msgid "male"
@@ -43895,12 +43904,12 @@ msgstr "지도가 이미 모든 관련 위치를 보여주고 있다."
 #: ../src/mon.c:286
 #, c-format
 msgid "map mon (%s) at <%d,%d> is found at <%d,%d>?"
-msgstr "〔점검〕 map mon (%s) at <%d,%d> is found at <%d,%d>?"
+msgstr "map mon (%s) at <%d,%d> is found at <%d,%d>?"
 
 #: ../src/mon.c:281
 #, c-format
 msgid "map mon (%s) at <%d,%d> not in fmon list!"
-msgstr "〔점검〕 map mon (%s) at <%d,%d> not in fmon list!"
+msgstr "map mon (%s) at <%d,%d> not in fmon list!"
 
 #: ../src/options.c:6280
 #, c-format
@@ -44021,45 +44030,45 @@ msgstr "물건을 소원할 수 있다."
 #: ../src/zap.c:5883
 #, c-format
 msgid "maybe_destroy_item with unexpected dmgtyp %d"
-msgstr "〔점검〕 maybe_destroy_item with unexpected dmgtyp %d"
+msgstr "maybe_destroy_item with unexpected dmgtyp %d"
 
 #: ../src/light.c:587
 #, c-format
 msgid "maybe_write_ls: bad type (%d) [range=%d]"
-msgstr "maybe_write_ls: 잘못된 type (%d) [range=%d]"
+msgstr "maybe_write_ls: bad type (%d) [range=%d]"
 
 #: ../src/light.c:575
 #, c-format
 msgid "maybe_write_ls: no id! [range=%d]"
-msgstr "maybe_write_ls: id! [range=%d]이(가) 없다"
+msgstr "maybe_write_ls: no id! [range=%d]"
 
 #: ../src/sp_lev.c:5829
 msgid "mazewalk: Bad direction"
-msgstr "mazewalk: 잘못된 direction"
+msgstr "mazewalk: Bad direction"
 
 #: ../src/mkmaze.c:1345
 msgid "mazexy: can't find a place!"
-msgstr "mazexy: 찾을 수 없다: a place!"
+msgstr "mazexy: can't find a place!"
 
 #: ../src/polyself.c:2060
 #, c-format
 msgid "mbodypart: bad part %d"
-msgstr "mbodypart: 잘못된 part %d"
+msgstr "mbodypart: bad part %d"
 
 #: ../src/mcastu.c:890
 #, c-format
 msgid "mcastu: invalid magic spell (%d)"
-msgstr "mcastu: 유효하지 않은 magic spell (%d)"
+msgstr "mcastu: invalid magic spell (%d)"
 
 #: ../src/mhitu.c:1904
 #, c-format
 msgid "mdamageu for negative damage? (%d)"
-msgstr "〔점검〕 mdamageu for negative damage? (%d)"
+msgstr "mdamageu for negative damage? (%d)"
 
 #: ../src/dig.c:1459
 #, c-format
 msgid "mdig_tunnel:  %s at (%d,%d) is undiggable"
-msgstr "mdig_tunnel: %s at (%d,%d) is undiggable"
+msgstr "mdig_tunnel:  %s at (%d,%d) is undiggable"
 
 #: ../src/eat.c:2490
 msgid "meal"
@@ -44126,7 +44135,7 @@ msgstr "안으로"
 
 #: ../src/zap.c:5071
 msgid "melt_ice: no pool?"
-msgstr "melt_ice: pool?이(가) 없다"
+msgstr "melt_ice: no pool?"
 
 #: ../src/engrave.c:347
 msgid "melted"
@@ -44179,16 +44188,16 @@ msgstr "비늘 갑옷과 합쳐진다."
 
 #: ../src/steed.c:159
 msgid "merged saddle?"
-msgstr "〔점검〕 merged saddle?"
+msgstr "merged saddle?"
 
 #: ../src/minion.c:553
 msgid "merged weapon?"
-msgstr "〔점검〕 merged weapon?"
+msgstr "merged weapon?"
 
 #: ../src/invent.c:897
 #, c-format
 msgid "merging strangely worn items (%lx)"
-msgstr "〔점검〕 merging strangely worn items (%lx)"
+msgstr "merging strangely worn items (%lx)"
 
 # 창 이름
 #: ../src/options.c:5643
@@ -44242,12 +44251,12 @@ msgstr "중간"
 #: ../src/mon.c:199
 #, c-format
 msgid "migrating %s mimicking %s %s"
-msgstr "〔점검〕 migrating %s mimicking %s %s"
+msgstr "migrating %s mimicking %s %s"
 
 #: ../src/mon.c:297
 #, c-format
 msgid "migrating mon (%s) with mstate set to 0x%08lx"
-msgstr "〔점검〕 migrating mon (%s) with mstate set to 0x%08lx"
+msgstr "migrating mon (%s) with mstate set to 0x%08lx"
 
 #: ../src/potion.c:982
 msgid "mildly "
@@ -44334,7 +44343,7 @@ msgstr "미네랄 워터"
 #: ../src/mon.c:127
 #, c-format
 msgid "minion without emin (%s)"
-msgstr "〔점검〕 minion without emin (%s)"
+msgstr "minion without emin (%s)"
 
 #: ../src/polyself.c:2022
 msgid "minor current"
@@ -44457,41 +44466,41 @@ msgstr "혼합물이 %s 보인다."
 #: ../src/dig.c:84
 #, c-format
 msgid "mkcavepos called with dist %d"
-msgstr "〔점검〕 mkcavepos called with dist %d"
+msgstr "mkcavepos called with dist %d"
 
 #: ../src/makemon.c:1892
 msgid "mkclass called with bad class!"
-msgstr "mkclass called with 잘못된 class!"
+msgstr "mkclass called with bad class!"
 
 #: ../src/makemon.c:1910
 #, c-format
 msgid "mkclass found no class %d monsters"
-msgstr "〔점검〕 mkclass found no class %d monsters"
+msgstr "mkclass found no class %d monsters"
 
 #: ../src/mklev.c:2575
 #, c-format
 msgid "mkinvpos called with dist %d"
-msgstr "〔점검〕 mkinvpos called with dist %d"
+msgstr "mkinvpos called with dist %d"
 
 #: ../src/mkobj.c:1168
 #, c-format
 msgid "mksobj tried to make type %d, class %d."
-msgstr "〔점검〕 mksobj tried to make type %d, class %d."
+msgstr "mksobj tried to make type %d, class %d."
 
 #: ../src/mklev.c:2169
 #, c-format
 msgid "mkstairs:  bogus stair attempt at <%d,%d>"
-msgstr "mkstairs: bogus stair attempt at <%d,%d>"
+msgstr "mkstairs:  bogus stair attempt at <%d,%d>"
 
 #: ../src/mklev.c:2179
 #, c-format
 msgid "mkstairs:  placing stairs %s on %s at <%d,%d>"
-msgstr "mkstairs: placing stairs %s on %s at <%d,%d>"
+msgstr "mkstairs:  placing stairs %s on %s at <%d,%d>"
 
 #: ../src/teleport.c:2081
 #, c-format
 msgid "mlevel_tele_trap: unexpected trap type (%d)"
-msgstr "mlevel_tele_trap: 예기치 않은 trap type (%d)"
+msgstr "mlevel_tele_trap: unexpected trap type (%d)"
 
 #: ../src/sounds.c:1034
 msgid "moans."
@@ -44578,26 +44587,26 @@ msgstr "엄마"
 #: ../src/mon.c:263
 #, c-format
 msgid "mon (%s) at <%d,%d> is not there!"
-msgstr "〔점검〕 mon (%s) at <%d,%d> is not there!"
+msgstr "mon (%s) at <%d,%d> is not there!"
 
 #: ../src/worm.c:672
 #, c-format
 msgid "mon (%s) at seg location is not worm (%s)"
-msgstr "〔점검〕 mon (%s) at seg location is not worm (%s)"
+msgstr "mon (%s) at seg location is not worm (%s)"
 
 #: ../src/mon.c:256
 #, c-format
 msgid "mon (%s) claims to be at <%d,%d>?"
-msgstr "〔점검〕 mon (%s) claims to be at <%d,%d>?"
+msgstr "mon (%s) claims to be at <%d,%d>?"
 
 #: ../src/mon.c:170
 #, c-format
 msgid "mon hiding under nonexistent obj (%s)"
-msgstr "〔점검〕 mon hiding under nonexistent obj (%s)"
+msgstr "mon hiding under nonexistent obj (%s)"
 
 #: ../src/dog.c:567
 msgid "mon_arrive: no corresponding portal?"
-msgstr "mon_arrive: corresponding portal?이(가) 없다"
+msgstr "mon_arrive: no corresponding portal?"
 
 #: ../src/mon.c:1816
 msgid "money"
@@ -44638,12 +44647,12 @@ msgstr "monst (%s: %u) wielding %s (%u) not in %s inventory"
 #: ../src/steal.c:626
 #, c-format
 msgid "monster (%s) taking or picking up attached %s (%s)?"
-msgstr "〔점검〕 monster (%s) taking or picking up attached %s (%s)?"
+msgstr "monster (%s) taking or picking up attached %s (%s)?"
 
 #: ../src/steal.c:623
 #, c-format
 msgid "monster (%s) taking or picking up nothing?"
-msgstr "〔점검〕 monster (%s) taking or picking up nothing?"
+msgstr "monster (%s) taking or picking up nothing?"
 
 #: ../src/timeout.c:95
 msgid "monster aggravation"
@@ -44652,7 +44661,7 @@ msgstr "몬스터 자극"
 #: ../src/mcastu.c:805
 #, c-format
 msgid "monster cast spell (%d) with negative dmg (%d)?"
-msgstr "〔점검〕 monster cast spell (%d) with negative dmg (%d)?"
+msgstr "monster cast spell (%d) with negative dmg (%d)?"
 
 #: ../src/obj_descr_i18n.c:632 ../src/pager.c:523 ../src/pager.c:701
 #: ../src/timeout.c:51
@@ -44662,7 +44671,7 @@ msgstr "몬스터 탐지"
 #: ../src/mon.c:91
 #, c-format
 msgid "monster mnum=%d, monsndx=%d (%s)"
-msgstr "〔점검〕 monster mnum=%d, monsndx=%d (%s)"
+msgstr "monster mnum=%d, monsndx=%d (%s)"
 
 # detect.c:856 - 탐지 결과 표시. "monster of interest"
 #: ../src/detect.c:856
@@ -44672,7 +44681,7 @@ msgstr "관심 있는 몬스터"
 #: ../src/mthrowu.c:724
 #, c-format
 msgid "monster throwing egg type %d"
-msgstr "〔점검〕 monster throwing egg type %d"
+msgstr "monster throwing egg type %d"
 
 #: ../src/pager.c:2026 ../src/pager.c:2070
 msgid "monsters"
@@ -44803,7 +44812,7 @@ msgstr "%s{을/를} 움직일 수 없다!"
 #: ../src/mkmaze.c:1576
 #, c-format
 msgid "movebubbles: bad pos (%d,%d)"
-msgstr "movebubbles: 잘못된 pos (%d,%d)"
+msgstr "movebubbles: bad pos (%d,%d)"
 
 #: ../src/mkmaze.c:1571
 msgid "movebubbles: cons != null"
@@ -44958,7 +44967,7 @@ msgstr "이게 숫돌이라고 생각하는 거야?"
 
 #: ../src/mkmaze.c:2075
 msgid "mv_bubble: unknown bubble contents"
-msgstr "mv_bubble: 알 수 없는 bubble contents"
+msgstr "mv_bubble: unknown bubble contents"
 
 #: ../src/pray.c:1338
 msgid "my protection"
@@ -44983,21 +44992,21 @@ msgstr "신비한 룬 문자"
 #: ../src/mkmaze.c:39
 #, c-format
 msgid "mz_move: bad direction %d"
-msgstr "mz_move: 잘못된 direction %d"
+msgstr "mz_move: bad direction %d"
 
 # mon.c: pony일 때 "n" → "an odor", 한국어에서는 관사 불필요
 # 공백 하나로 번역 (포맷 "는%s냄새"에서 간격 역할)
 #: ../src/mon.c:5860
 msgid "n"
-msgstr " "
+msgstr "n"
 
 #: ../src/mkmaze.c:1892
 msgid "n too large (mk_bubble)"
-msgstr "〔점검〕 n too large (mk_bubble)"
+msgstr "n too large (mk_bubble)"
 
 #: ../src/rect.c:164
 msgid "n_rects may be too small."
-msgstr "〔점검〕 n_rects may be too small."
+msgstr "n_rects may be too small."
 
 #: ../src/monster_i18n.c:312 ../src/obj_descr_i18n.c:1007
 msgid "nalfeshnee"
@@ -45021,7 +45030,7 @@ msgstr "이름:"
 
 #: ../src/o_init.c:515
 msgid "named object not in disco"
-msgstr "〔점검〕 named object not in disco"
+msgstr "named object not in disco"
 
 #: ../src/invent.c:1535
 msgid "nanite"
@@ -45193,7 +45202,7 @@ msgstr "새 %1$s{이/가} 마법처럼 %2$s!"
 #: ../src/light.c:76
 #, c-format
 msgid "new_light_source:  illegal range %d"
-msgstr "new_light_source: illegal range %d"
+msgstr "new_light_source:  illegal range %d"
 
 #: ../src/monster_i18n.c:335 ../src/obj_descr_i18n.c:735
 msgid "newt"
@@ -45214,20 +45223,20 @@ msgstr "다음 층"
 
 #: ../src/nhlua.c:1227 ../src/nhlua.c:1301 ../src/nhlua.c:1672
 msgid "nh luacore not inited"
-msgstr "〔점검〕 nh luacore not inited"
+msgstr "nh luacore not inited"
 
 #: ../src/nhlua.c:1695
 msgid "nh.callback counts are wrong"
-msgstr "〔점검〕 nh.callback counts are wrong"
+msgstr "nh.callback counts are wrong"
 
 #: ../src/nhlua.c:1234
 msgid "nh_lua_variables is not a lua table"
-msgstr "〔점검〕 nh_lua_variables is not a lua table"
+msgstr "nh_lua_variables is not a lua table"
 
 #: ../src/pline.c:760
 #, c-format
 msgid "nhassert(%s) failed in file '%s' at line %d"
-msgstr "〔점검〕 nhassert(%s) failed in file '%s' at line %d"
+msgstr "nhassert(%s) failed in file '%s' at line %d"
 
 #: ../src/nhlua.c:1796
 #, c-format
@@ -45319,7 +45328,7 @@ msgstr "일치하는 항목 없음"
 
 #: ../src/restore.c:509
 msgid "no old fruit?"
-msgstr "〔점검〕 no old fruit?"
+msgstr "no old fruit?"
 
 #: ../src/options.c:226
 msgid "no permanent inventory window"
@@ -45327,11 +45336,11 @@ msgstr "영구 인벤토리 창 없음"
 
 #: ../src/mcastu.c:743
 msgid "no reason for monster to cast blindness spell?"
-msgstr "〔점검〕 no reason for monster to cast blindness spell?"
+msgstr "no reason for monster to cast blindness spell?"
 
 #: ../src/mcastu.c:501
 msgid "no reason for monster to cast disappear spell?"
-msgstr "〔점검〕 no reason for monster to cast disappear spell?"
+msgstr "no reason for monster to cast disappear spell?"
 
 # weapon.c - 스킬 없음. "You have no skill"
 #: ../src/weapon.c:54
@@ -45340,11 +45349,11 @@ msgstr "스킬 없음"
 
 #: ../src/timeout.c:2000
 msgid "no timer type"
-msgstr "〔점검〕 no timer type"
+msgstr "no timer type"
 
 #: ../src/end.c:1850
 msgid "no words in list"
-msgstr "〔점검〕 no words in list"
+msgstr "no words in list"
 
 #: ../src/mthrowu.c:51
 msgid "noise"
@@ -45365,7 +45374,7 @@ msgstr "명목상 "
 #: ../src/mon.c:211
 #, c-format
 msgid "non-mimic (%s) posing as %s (%s)"
-msgstr "〔점검〕 non-mimic (%s) posing as %s (%s)"
+msgstr "non-mimic (%s) posing as %s (%s)"
 
 #: ../src/shk.c:5540
 msgid "non-paying"
@@ -45384,9 +45393,10 @@ msgid "nonesuch"
 msgstr "알 수 없음"
 
 #: ../src/apply.c:509 ../src/artifact.c:2226 ../src/dbridge.c:430
-#: ../src/eat.c:2306 ../src/muse.c:2457 ../src/potion.c:293 ../src/potion.c:319
-#: ../src/potion.c:407 ../src/potion.c:628 ../src/potion.c:1318
-#: ../src/potion.c:1463 ../src/potion.c:1688 ../src/timeout.c:881
+#: ../src/eat.c:2306 ../src/muse.c:2457 ../src/potion.c:293
+#: ../src/potion.c:319 ../src/potion.c:407 ../src/potion.c:628
+#: ../src/potion.c:1318 ../src/potion.c:1463 ../src/potion.c:1688
+#: ../src/timeout.c:881
 msgid "normal"
 msgstr "정상적인"
 
@@ -45548,7 +45558,7 @@ msgstr "%s 사이에 금화가 있는 것을 발견했다."
 # ============================================================
 # 아이템 메시지 (Item Messages)
 # ============================================================
-#
+# 
 #: ../src/sit.c:30
 msgid "notice you have no gold!"
 msgstr "금화가 없다는 것을 알아챘다!"
@@ -45593,11 +45603,11 @@ msgstr "유독 가스"
 
 #: ../src/apply.c:2419
 msgid "null figurine in fig_transform()"
-msgstr "〔점검〕 null figurine in fig_transform()"
+msgstr "null figurine in fig_transform()"
 
 #: ../src/display.c:2566
 msgid "null framecolor passed to get_bkglyph_and_framecolor"
-msgstr "〔점검〕 null framecolor passed to get_bkglyph_and_framecolor"
+msgstr "null framecolor passed to get_bkglyph_and_framecolor"
 
 #: ../src/uhitm.c:6032
 msgid "numb"
@@ -45614,7 +45624,7 @@ msgstr "참나무"
 #: ../src/shk.c:1267
 #, c-format
 msgid "obfree: deleting worn obj (%d: %ld)"
-msgstr "obfree: deleting worn 객체 (%d: %ld)"
+msgstr "obfree: deleting worn obj (%d: %ld)"
 
 #: ../src/mkobj.c:3746
 msgid "obj_absorb: not called with two actual objects"
@@ -45623,16 +45633,16 @@ msgstr "obj_absorb: not called with two actual objects"
 #: ../src/light.c:832
 #, c-format
 msgid "obj_adjust_light_radius: can't find %s"
-msgstr "obj_adjust_light_radius: 찾을 수 없다: %s"
+msgstr "obj_adjust_light_radius: can't find %s"
 
 #: ../src/mkobj.c:2586
 #, c-format
 msgid "obj_extract_self, where=%d"
-msgstr "〔점검〕 obj_extract_self, where=%d"
+msgstr "obj_extract_self, where=%d"
 
 #: ../src/timeout.c:2572
 msgid "obj_is_local"
-msgstr "〔점검〕 obj_is_local"
+msgstr "obj_is_local"
 
 #: ../src/mkobj.c:3805
 msgid "obj_meld: not called with two actual objects"
@@ -45640,7 +45650,7 @@ msgstr "obj_meld: not called with two actual objects"
 
 #: ../src/timeout.c:2349
 msgid "obj_move_timers"
-msgstr "〔점검〕 obj_move_timers"
+msgstr "obj_move_timers"
 
 #: ../src/mkobj.c:3640
 msgid "obj_nexto: wasn't given an object to check"
@@ -45649,11 +45659,11 @@ msgstr "obj_nexto: wasn't given an object to check"
 #: ../src/do_name.c:1378
 #, c-format
 msgid "obj_pmname otyp:%i,corpsenm:%i"
-msgstr "〔점검〕 obj_pmname otyp:%i,corpsenm:%i"
+msgstr "obj_pmname otyp:%i,corpsenm:%i"
 
 #: ../src/o_init.c:357
 msgid "objdescr_is: null obj"
-msgstr "objdescr_is: null 객체"
+msgstr "objdescr_is: null obj"
 
 # pager.c - 메뉴 옵션. 단독
 #: ../src/artifact.c:1701 ../src/detect.c:786
@@ -45671,7 +45681,7 @@ msgstr "물체가 떨어진다"
 #: ../src/detect.c:619
 #, c-format
 msgid "object_detect:  illegal class %d"
-msgstr "object_detect: illegal class %d"
+msgstr "object_detect:  illegal class %d"
 
 #: ../src/pager.c:2026 ../src/pager.c:2070
 msgid "objects"
@@ -45693,7 +45703,7 @@ msgstr "%s 위의 물체가 구멍으로 굴러 떨어졌다!"
 #: ../src/o_init.c:181
 #, c-format
 msgid "objects[%d] class #%d not in order!"
-msgstr "〔점검〕 objects[%d] class #%d not in order!"
+msgstr "objects[%d] class #%d not in order!"
 
 #: ../src/trap.c:4389
 msgid "obvious"
@@ -45702,7 +45712,7 @@ msgstr "명백한"
 #: ../src/options.c:8103
 #, c-format
 msgid "oc_to_str:  illegal object class %d"
-msgstr "oc_to_str: illegal object class %d"
+msgstr "oc_to_str:  illegal object class %d"
 
 #: ../src/monster_i18n.c:77 ../src/obj_descr_i18n.c:1011
 msgid "ochre jelly"
@@ -45723,7 +45733,7 @@ msgstr "이상한"
 #: ../src/makemon.c:630
 #, c-format
 msgid "odd mercenary %d?"
-msgstr "〔점검〕 odd mercenary %d?"
+msgstr "odd mercenary %d?"
 
 #: ../src/do.c:1864
 msgid "odor of burnt flesh and decay pervades the air."
@@ -45828,12 +45838,12 @@ msgstr "위"
 # 토글 on/off 컨텍스트 번역
 # ============================================================
 # 소스 코드에서 C_("toggle", "on/off") 사용으로 컨텍스트 구분
-#
+# 
 # 사용처:
 # - insight.c:785,799 - Autopickup on/off
 # - getpos.c:966 - Automatic description on/off
 # - iactions.c:680 - Two-weapon combat on/off
-#
+# 
 # 물리적 위치의 "on"(위)과 토글 상태의 "on"(켜짐)을 구분
 #: ../src/getpos.c:966 ../src/iactions.c:680 ../src/insight.c:846
 msgctxt "toggle"
@@ -45907,12 +45917,12 @@ msgstr "청구서의"
 
 #: ../src/shk.c:1147
 msgid "onbill: paid obj on bill?"
-msgstr "onbill: paid 객체 on bill?"
+msgstr "onbill: paid obj on bill?"
 
 #: ../src/shk.c:1153
 #, c-format
 msgid "onbill: unpaid obj %s?"
-msgstr "onbill: unpaid 객체 %s?"
+msgstr "onbill: unpaid obj %s?"
 
 # insight.c:1992-2001, 2243-2252 - 사망/소코반 횟수
 # suffix로 사용되므로 뒤 공백 추가 (verb와 연결)
@@ -45934,7 +45944,8 @@ msgid "one drop"
 msgstr "원 드롭"
 
 #: ../src/apply.c:2726 ../src/apply.c:3593 ../src/fountain.c:740
-#: ../src/mhitu.c:139 ../src/potion.c:2533 ../src/uhitm.c:903 ../src/zap.c:1038
+#: ../src/mhitu.c:139 ../src/potion.c:2533 ../src/uhitm.c:903
+#: ../src/zap.c:1038
 msgid "one of "
 msgstr "하나의 "
 
@@ -46154,7 +46165,7 @@ msgstr "거미줄 위에서 방향을 잡았다."
 # ============================================================
 # 프롬프트 (Prompts)
 # ============================================================
-#
+# 
 #: ../src/cmd.c:4112
 msgid "orient yourself that direction."
 msgstr "그 방향으로 몸을 돌릴 수 없다."
@@ -46208,7 +46219,7 @@ msgstr "안장에서 떨어졌다"
 #: ../src/sp_lev.c:271
 #, c-format
 msgid "outside mapfrag (%i,%i), wanted (%i,%i)"
-msgstr "〔점검〕 outside mapfrag (%i,%i), wanted (%i,%i)"
+msgstr "outside mapfrag (%i,%i), wanted (%i,%i)"
 
 #: ../src/obj_descr_i18n.c:102
 msgid "oval"
@@ -46233,7 +46244,7 @@ msgstr "과적"
 
 #: ../src/engrave.c:1397
 msgid "overly dry marker valid for graffiti?"
-msgstr "〔점검〕 overly dry marker valid for graffiti?"
+msgstr "overly dry marker valid for graffiti?"
 
 #: ../src/potion.c:847
 msgid "overripe"
@@ -46312,7 +46323,7 @@ msgstr "배낭이 격렬하게 흔들린다!"
 
 #: ../src/nhlua.c:2080
 msgid "package not a table in nhl_set_package_path"
-msgstr "〔점검〕 package not a table in nhl_set_package_path"
+msgstr "package not a table in nhl_set_package_path"
 
 #: ../src/obj_descr_i18n.c:236
 msgid "padded gloves"
@@ -46625,7 +46636,7 @@ msgstr "퍼센트 "
 #: ../src/botl.c:2034
 #, c-format
 msgid "percentage: bad istat pointer %s, %s"
-msgstr "percentage: 잘못된 istat pointer %s, %s"
+msgstr "percentage: bad istat pointer %s, %s"
 
 # ============================================================
 # PR#61 — 번역 품질 개선
@@ -46661,7 +46672,7 @@ msgstr "사람"
 #: ../src/mon.c:131
 #, c-format
 msgid "pet without edog (%s)"
-msgstr "〔점검〕 pet without edog (%s)"
+msgstr "pet without edog (%s)"
 
 # insight.c:1531-1535 - "You are [temporarily] petrification resistant"
 # 기존: 번역 없음
@@ -46734,12 +46745,12 @@ msgstr "스스로를 주웠다!"
 
 #: ../src/dungeon.c:640
 msgid "pick_level:  ran out of valid levels"
-msgstr "pick_level: ran out of valid levels"
+msgstr "pick_level:  ran out of valid levels"
 
 #: ../src/lock.c:419
 #, c-format
 msgid "picking lock with object %d?"
-msgstr "〔점검〕 picking lock with object %d?"
+msgstr "picking lock with object %d?"
 
 #: ../src/lock.c:45
 msgid "picking the lock"
@@ -46757,8 +46768,7 @@ msgstr "파이"
 
 #: ../src/zap.c:6177
 msgid "pieces\"), although that aspect of your wish might not be granted."
-msgstr ""
-"개\"), 다만 소원의 그 부분이 반드시 이루어지지는 않을 수도 있다.)"
+msgstr "pieces\"), although that aspect of your wish might not be granted."
 
 #: ../src/polyself.c:1240
 msgid "pierce"
@@ -46817,7 +46827,7 @@ msgstr "구덩이 악귀"
 
 #: ../src/trap.c:7143
 msgid "pit of snakes"
-msgstr "〔점검〕 pit of snakes"
+msgstr "뱀이 우글거리는 구덩이"
 
 #: ../src/monster_i18n.c:235 ../src/obj_descr_i18n.c:1021
 msgid "pit viper"
@@ -46838,7 +46848,7 @@ msgstr "픽셀"
 #: ../src/mkobj.c:2321
 #, c-format
 msgid "place_object: obj \"%s\" [%d] not free"
-msgstr "place_object: 객체 \"%s\" [%d] 자유 상태가 아니다"
+msgstr "place_object: obj \"%s\" [%d] not free"
 
 #: ../src/worm.c:745
 msgid "place_worm_tail_randomly: wormno is set without a tail!"
@@ -46847,17 +46857,17 @@ msgstr "place_worm_tail_randomly: wormno is set without a tail!"
 #: ../src/steed.c:917
 #, c-format
 msgid "placing %s onto map, mstate:%lx, on %s?"
-msgstr "〔점검〕 placing %s onto map, mstate:%lx, on %s?"
+msgstr "placing %s onto map, mstate:%lx, on %s?"
 
 #: ../src/steed.c:925
 #, c-format
 msgid "placing %s over %s at <%d,%d>, mstates:%lx %lx on %s?"
-msgstr "〔점검〕 placing %s over %s at <%d,%d>, mstates:%lx %lx on %s?"
+msgstr "placing %s over %s at <%d,%d>, mstates:%lx %lx on %s?"
 
 #: ../src/worm.c:626
 #, c-format
 msgid "placing worm seg <%d,%d> over another mon"
-msgstr "〔점검〕 placing worm seg <%d,%d> over another mon"
+msgstr "placing worm seg <%d,%d> over another mon"
 
 #: ../src/do_name.c:1469 ../src/obj_descr_i18n.c:1190
 msgid "plaid"
@@ -46925,7 +46935,7 @@ msgstr "매우 기쁨"
 #: ../src/pline.c:211
 #, c-format
 msgid "pline attempting to print %d characters!"
-msgstr "〔점검〕 pline attempting to print %d characters!"
+msgstr "pline attempting to print %d characters!"
 
 #: ../src/mthrowu.c:823
 msgid "plop"
@@ -46970,7 +46980,7 @@ msgstr "폐"
 
 #: ../src/objnam.c:2930
 msgid "plural of null?"
-msgstr "〔점검〕 plural of null?"
+msgstr "plural of null?"
 
 # pager.c:3844, shk.c:558,2388 - 지적/알림
 # pager.c: 안내자가 물리적으로 가리킴
@@ -47069,7 +47079,7 @@ msgstr "물방울 무늬"
 
 #: ../src/trap.c:7144
 msgid "pollywog trap"
-msgstr "〔점검〕 pollywog trap"
+msgstr "올챙이 함정"
 
 #: ../src/wizard.c:829
 msgid "poltroon"
@@ -47189,7 +47199,7 @@ msgstr "코르크처럼 %s에서 튀어나왔다!"
 
 #: ../src/mkmaze.c:1469
 msgid "portal on top of portal?"
-msgstr "〔점검〕 portal on top of portal?"
+msgstr "portal on top of portal?"
 
 #: ../src/dbridge.c:577
 msgid "portcullis"
@@ -47328,7 +47338,7 @@ msgstr "사제"
 #: ../src/mon.c:123
 #, c-format
 msgid "priest without epri (%s)"
-msgstr "〔점검〕 priest without epri (%s)"
+msgstr "priest without epri (%s)"
 
 #: ../src/monster_i18n.c:430 ../src/monster_i18n.c:442 ../src/priest.c:321
 msgid "priestess"
@@ -47377,7 +47387,7 @@ msgstr "%s{을/를} 향해 탐침한다."
 #: ../src/mkobj.c:297
 #, c-format
 msgid "probtype error, oclass=%d i=%d"
-msgstr "probtype 오류, oclass=%d i=%d"
+msgstr "probtype error, oclass=%d i=%d"
 
 #: ../src/artifact.c:1245
 msgid "prod"
@@ -47672,7 +47682,7 @@ msgstr "%s에게 안장을 씌웠다."
 
 #: ../src/steed.c:147
 msgid "put_saddle_on_mon: saddle obj could get orphaned"
-msgstr "put_saddle_on_mon: saddle 객체 could get orphaned"
+msgstr "put_saddle_on_mon: saddle obj could get orphaned"
 
 #: ../src/do_wear.c:1713
 msgid "putting on"
@@ -47752,17 +47762,17 @@ msgstr "query_category: too many categories"
 
 #: ../src/quest.c:214
 msgid "quest portal already gone?"
-msgstr "〔점검〕 quest portal already gone?"
+msgstr "quest portal already gone?"
 
 #: ../src/quest.c:490
 #, c-format
 msgid "quest_chat: Unknown quest character %s."
-msgstr "quest_chat: 알 수 없는 quest character %s."
+msgstr "quest_chat: Unknown quest character %s."
 
 #: ../src/questpgr.c:44
 #, c-format
 msgid "quest_info(%d)"
-msgstr "〔점검〕 quest_info(%d)"
+msgstr "quest_info(%d)"
 
 # attrib.c - quick/slow 수정 (잘못된 번역: "간단한 간식", "더 느리다")
 #: ../src/attrib.c:29 ../src/attrib.c:33 ../src/attrib.c:37 ../src/attrib.c:45
@@ -47967,7 +47977,7 @@ msgstr "재충전되었다."
 
 #: ../src/trap.c:2518
 msgid "re-equipping iron shoes destroyed them?"
-msgstr "〔점검〕 re-equipping iron shoes destroyed them?"
+msgstr "re-equipping iron shoes destroyed them?"
 
 #: ../src/lock.c:461
 #, c-format
@@ -48043,7 +48053,7 @@ msgstr "읽거나 새긴 횟수 %1$ld회%2$.0s"
 # ============================================================
 # 두루마리 (Scrolls)
 # ============================================================
-#
+# 
 #: ../src/spell.c:503
 msgid "read the novel"
 msgstr "두루마리를 읽었다."
@@ -48137,7 +48147,7 @@ msgstr "짐을 재정렬한다. 이동이 여전히 어렵다."
 
 #: ../src/eat.c:298
 msgid "recalc_wt without piece"
-msgstr "〔점검〕 recalc_wt without piece"
+msgstr "recalc_wt without piece"
 
 #: ../src/spell.c:1267
 msgid "recall of this spell is gradually fading."
@@ -48282,7 +48292,7 @@ msgstr "영역"
 
 #: ../src/sp_lev.c:5691
 msgid "region as subroom"
-msgstr "〔점검〕 region as subroom"
+msgstr "region as subroom"
 
 #: ../src/trap.c:890
 #, c-format
@@ -48291,7 +48301,7 @@ msgstr "%s{을/를} 후회한다."
 
 #: ../src/mkmap.c:395
 msgid "regular room in joined map"
-msgstr "〔점검〕 regular room in joined map"
+msgstr "regular room in joined map"
 
 # uhitm.c:4944 - you_expel 패턴용 "regurgitate"
 # you_expel 조합: "노움{을/를} 토해냈다!"
@@ -48339,7 +48349,7 @@ msgstr "%s{을/를} 빼냈다."
 
 #: ../src/zap.c:584
 msgid "release_hold when not held?"
-msgstr "〔점검〕 release_hold when not held?"
+msgstr "release_hold when not held?"
 
 # mhitm.c:952 - 감싸는 몬스터가 풀어줌
 #: ../src/mhitm.c:952 ../src/mhitu.c:1578
@@ -48349,28 +48359,28 @@ msgstr "풀려났다"
 #: ../src/light.c:555
 #, c-format
 msgid "relink_light_sources: bad type (%d)"
-msgstr "relink_light_sources: 잘못된 type (%d)"
+msgstr "relink_light_sources: bad type (%d)"
 
 #: ../src/light.c:553
 #, c-format
 msgid "relink_light_sources: can't find %c_id %u"
-msgstr "relink_light_sources: 찾을 수 없다: %c_id %u"
+msgstr "relink_light_sources: can't find %c_id %u"
 
 #: ../src/light.c:542
 msgid "relink_light_sources: no id mapping"
-msgstr "relink_light_sources: id mapping이(가) 없다"
+msgstr "relink_light_sources: no id mapping"
 
 #: ../src/timeout.c:2759
 msgid "relink_timers 1"
-msgstr "〔점검〕 relink_timers 1"
+msgstr "relink_timers 1"
 
 #: ../src/timeout.c:2769
 msgid "relink_timers 2"
-msgstr "〔점검〕 relink_timers 2"
+msgstr "relink_timers 2"
 
 #: ../src/timeout.c:2767
 msgid "relink_timers: no monster timer implemented"
-msgstr "relink_timers: monster timer implemented이(가) 없다"
+msgstr "relink_timers: no monster timer implemented"
 
 #: ../src/shk.c:4067
 #, c-format
@@ -48389,7 +48399,7 @@ msgstr "relmon: mon not in list."
 
 #: ../src/mon.c:2542
 msgid "relmon: no fmon available."
-msgstr "relmon: fmon available.이(가) 없다"
+msgstr "relmon: no fmon available."
 
 #: ../src/wield.c:434 ../src/wield.c:596 ../src/wield.c:632
 msgid "remain"
@@ -48445,7 +48455,7 @@ msgstr "%s{을/를} 움직일 수 없다!"
 #: ../src/mkobj.c:2511
 #, c-format
 msgid "remove_object: obj where=%d, not on floor"
-msgstr "remove_object: 객체 where=%d, not on floor"
+msgstr "remove_object: obj where=%d, not on floor"
 
 #: ../src/dokick.c:1618
 #, c-format
@@ -48485,12 +48495,12 @@ msgstr "삐걱거리는 판자를 수리했다."
 
 #: ../src/mkobj.c:676
 msgid "replace_object: obj position"
-msgstr "replace_object: 객체 position"
+msgstr "replace_object: obj position"
 
 #: ../src/worm.c:628
 #, c-format
 msgid "replacing worm seg <%d,%d> on empty spot"
-msgstr "〔점검〕 replacing worm seg <%d,%d> on empty spot"
+msgstr "replacing worm seg <%d,%d> on empty spot"
 
 #: ../src/mon.c:2498
 msgid "replmon: minvent inconsistency"
@@ -48651,7 +48661,7 @@ msgstr "건강하지 않은 %s 형태로 되돌아감"
 #: ../src/zap.c:1137
 #, c-format
 msgid "revive default case %d"
-msgstr "〔점검〕 revive default case %d"
+msgstr "revive default case %d"
 
 #: ../src/do.c:2239
 #, c-format
@@ -48661,14 +48671,14 @@ msgstr "revive_corpse: lost corpse @ %d"
 # ============================================================
 # 사망 메시지 (Death Messages)
 # ============================================================
-#
+# 
 #: ../src/do.c:2187
 msgid "revives"
 msgstr "부활하다"
 
 #: ../src/do.c:2202
 msgid "reviving corpse from non-existent container"
-msgstr "〔점검〕 reviving corpse from non-existent container"
+msgstr "reviving corpse from non-existent container"
 
 #: ../src/trap.c:7128
 msgid "revolving wall"
@@ -48756,7 +48766,7 @@ msgstr "오른쪽 %s{이/가} %s 아프다!"
 #: ../src/extralev.c:110
 #, c-format
 msgid "right door from %d,%d going nowhere?"
-msgstr "〔점검〕 right door from %d,%d going nowhere?"
+msgstr "right door from %d,%d going nowhere?"
 
 #: ../src/eat.c:2260 ../src/iactions.c:551 ../src/mhitu.c:2034
 #: ../src/mhitu.c:2065 ../src/obj_descr_i18n.c:114 ../src/objnam.c:243
@@ -48791,7 +48801,7 @@ msgstr "%s의 반지"
 
 #: ../src/mhitu.c:2106
 msgid "ring replacement"
-msgstr "〔점검〕 ring replacement"
+msgstr "반지 교체"
 
 # ============================================================
 # 물약 (Potions)
@@ -48835,26 +48845,26 @@ msgstr "%s{을/를} 통해 떠오른다!"
 
 #: ../src/teleport.c:1888
 msgid "rloc(): couldn't relocate monster"
-msgstr "rloc(): couldn't relocate 몬스터"
+msgstr "rloc(): couldn't relocate monster"
 
 #: ../src/pray.c:2620
 msgid "rn2 broken in halu_gname?!?"
-msgstr "〔점검〕 rn2 broken in halu_gname?!?"
+msgstr "rn2 broken in halu_gname?!?"
 
 #: ../src/rnd.c:99
 #, c-format
 msgid "rn2(%d) attempted"
-msgstr "〔점검〕 rn2(%d) attempted"
+msgstr "rn2(%d) attempted"
 
 #: ../src/rnd.c:159
 #, c-format
 msgid "rnd(%d) attempted"
-msgstr "〔점검〕 rnd(%d) attempted"
+msgstr "rnd(%d) attempted"
 
 #: ../src/rnd.c:118
 #, c-format
 msgid "rnl(%d) attempted"
-msgstr "〔점검〕 rnl(%d) attempted"
+msgstr "rnl(%d) attempted"
 
 #: ../src/trap.c:7131
 msgid "roach motel (tm)"
@@ -48945,12 +48955,12 @@ msgstr "역할:"
 #: ../src/role.c:1997
 #, c-format
 msgid "role_menu_extra: bad arg (%d)"
-msgstr "role_menu_extra: 잘못된 arg (%d)"
+msgstr "role_menu_extra: bad arg (%d)"
 
 #: ../src/role.c:1350
 #, c-format
 msgid "rolefilterstring: bad role aspect (%d)"
-msgstr "rolefilterstring: 잘못된 role aspect (%d)"
+msgstr "rolefilterstring: bad role aspect (%d)"
 
 #: ../src/do_name.c:1475
 msgid "romantic"
@@ -48963,15 +48973,15 @@ msgstr "방"
 #: ../src/mklev.c:1245
 #, c-format
 msgid "room %i not connected?"
-msgstr "〔점검〕 room %i not connected?"
+msgstr "room %i not connected?"
 
 #: ../src/mklev.c:333
 msgid "room has too many subrooms"
-msgstr "〔점검〕 room has too many subrooms"
+msgstr "room has too many subrooms"
 
 #: ../src/mkroom.c:166
 msgid "rooms[] not closed by -1?"
-msgstr "〔점검〕 rooms[] not closed by -1?"
+msgstr "rooms[] not closed by -1?"
 
 #: ../src/polyself.c:2015 ../src/polyself.c:2018
 msgid "root"
@@ -49104,7 +49114,8 @@ msgstr "소문에 접근할 수 없다."
 msgid "rump"
 msgstr "엉덩이"
 
-#: ../src/cmd.c:2578 ../src/cmd.c:2585 ../src/options.c:218 ../src/uhitm.c:4684
+#: ../src/cmd.c:2578 ../src/cmd.c:2585 ../src/options.c:218
+#: ../src/uhitm.c:4684
 msgid "run"
 msgstr "달리다"
 
@@ -49378,7 +49389,7 @@ msgstr "sanity_check: swallowed by nothing?"
 
 #: ../src/wizcmds.c:1418
 msgid "sanity_check: you over monster"
-msgstr "sanity_check: you over 몬스터"
+msgstr "sanity_check: you over monster"
 
 #: ../src/obj_descr_i18n.c:60
 msgid "sapphire"
@@ -49395,12 +49406,12 @@ msgstr "만족함"
 #: ../src/light.c:456
 #, c-format
 msgid "save_light_sources: bad type (%d) [range=%d]"
-msgstr "save_light_sources: 잘못된 type (%d) [range=%d]"
+msgstr "save_light_sources: bad type (%d) [range=%d]"
 
 #: ../src/light.c:444
 #, c-format
 msgid "save_light_sources: no id! [range=%d]"
-msgstr "save_light_sources: id! [range=%d]이(가) 없다"
+msgstr "save_light_sources: no id! [range=%d]"
 
 #: ../src/save.c:440
 msgid "savelev: where are we?"
@@ -49469,7 +49480,7 @@ msgstr "동전을 흩뿌리다"
 #: ../src/explode.c:741
 #, c-format
 msgid "scattered object <%d,%d> not at scatter site <%d,%d>"
-msgstr "〔점검〕 scattered object <%d,%d> not at scatter site <%d,%d>"
+msgstr "scattered object <%d,%d> not at scatter site <%d,%d>"
 
 #: ../src/obj_descr_i18n.c:291
 msgid "scimitar"
@@ -49598,7 +49609,7 @@ msgstr "지졌다"
 
 #: ../src/sp_lev.c:2527
 msgid "search_door: Bad wall!"
-msgstr "search_door: 잘못된 wall!"
+msgstr "search_door: Bad wall!"
 
 #: ../src/timeout.c:91
 msgid "searching"
@@ -49880,7 +49891,7 @@ msgstr "체절이 있는"
 #: ../src/sp_lev.c:4633
 #, c-format
 msgid "sel_set_feature(%i,%i,%i) !isok"
-msgstr "〔점검〕 sel_set_feature(%i,%i,%i) !isok"
+msgstr "sel_set_feature(%i,%i,%i) !isok"
 
 #: ../src/invent.c:3252
 #, c-format
@@ -50032,12 +50043,12 @@ msgstr "조각상을 땅에 놓다"
 #: ../src/mkmaze.c:114
 #, c-format
 msgid "set_levltyp(%d,%d,%d)%s%s"
-msgstr "〔점검〕 set_levltyp(%d,%d,%d)%s%s"
+msgstr "set_levltyp(%d,%d,%d)%s%s"
 
 #: ../src/mkmaze.c:132
 #, c-format
 msgid "set_levltyp_lit(%d,%d,%d,%d)"
-msgstr "〔점검〕 set_levltyp_lit(%d,%d,%d,%d)"
+msgstr "set_levltyp_lit(%d,%d,%d,%d)"
 
 #: ../src/options.c:9895
 #, c-format
@@ -50047,7 +50058,7 @@ msgstr "set_option_mod_status: status out of range %d."
 #: ../src/files.c:1119
 #, c-format
 msgid "set_savefile_name() couldn't complete without overflow %d"
-msgstr "〔점검〕 set_savefile_name() couldn't complete without overflow %d"
+msgstr "set_savefile_name() couldn't complete without overflow %d"
 
 #: ../src/display.c:3112
 #, c-format
@@ -50070,7 +50081,7 @@ msgstr "set_wc_option_mod_status: status out of range %d."
 
 #: ../src/mkmaze.c:1805
 msgid "set_wportal(): no portal!"
-msgstr "set_wportal(): portal!이(가) 없다"
+msgstr "set_wportal(): no portal!"
 
 #: ../src/polyself.c:2035 ../src/polyself.c:2038
 msgid "setae"
@@ -50201,8 +50212,8 @@ msgstr "반짝이는"
 # Phase 6: burn_dmg()/water_damage()/thitu() 인자 일관성
 # ============================================================
 # burn_dmg() - "shirt" (trap.c)
-#: ../src/do_wear.c:12 ../src/mhitu.c:2127 ../src/trap.c:150 ../src/trap.c:1656
-#: ../src/trap.c:1722
+#: ../src/do_wear.c:12 ../src/mhitu.c:2127 ../src/trap.c:150
+#: ../src/trap.c:1656 ../src/trap.c:1722
 msgid "shirt"
 msgstr "셔츠"
 
@@ -50213,7 +50224,7 @@ msgstr "셔츠가 갈기갈기 찢어졌다!"
 #: ../src/mon.c:121
 #, c-format
 msgid "shk without eshk (%s)"
-msgstr "〔점검〕 shk without eshk (%s)"
+msgstr "shk without eshk (%s)"
 
 #: ../src/shknam.c:866
 #, c-format
@@ -50227,12 +50238,12 @@ msgstr "shkname: shopkeeper \"%s\" lacks 'eshk' data."
 
 #: ../src/shknam.c:425
 msgid "shkveg no veggy objects"
-msgstr "〔점검〕 shkveg no veggy objects"
+msgstr "shkveg no veggy objects"
 
 #: ../src/shknam.c:436
 #, c-format
 msgid "shkveg probtype error, oclass=%d i=%d"
-msgstr "shkveg probtype 오류, oclass=%d i=%d"
+msgstr "shkveg probtype error, oclass=%d i=%d"
 
 #: ../src/timeout.c:78
 msgid "shock resistance"
@@ -50273,7 +50284,7 @@ msgstr "상점"
 #: ../src/shknam.c:372
 #, c-format
 msgid "shop probabilities total to %d!"
-msgstr "〔점검〕 shop probabilities total to %d!"
+msgstr "shop probabilities total to %d!"
 
 #: ../src/dungeon.c:1725
 msgid "shop's ceiling"
@@ -50304,7 +50315,7 @@ msgstr "죽음의 광선으로 %s자신을 쐈다"
 #: ../src/end.c:514
 #, c-format
 msgid "should_query_disclose_option: bad category %c"
-msgstr "should_query_disclose_option: 잘못된 category %c"
+msgstr "should_query_disclose_option: bad category %c"
 
 #: ../src/sounds.c:1014
 msgid "shouts \"Fee Fie Foe Foo!\" and guffaws."
@@ -50338,12 +50349,12 @@ msgstr "헤더에 기호 표시, 헤더 없으면 항목에"
 #: ../src/display.c:1996
 #, c-format
 msgid "show_glyph:  bad glyph %d [max %d] at <%d,%d>."
-msgstr "show_glyph: 잘못된 glyph %d [max %d] at <%d,%d>."
+msgstr "show_glyph:  bad glyph %d [max %d] at <%d,%d>."
 
 #: ../src/display.c:1992
 #, c-format
 msgid "show_glyph:  bad pos <%d,%d> with glyph %d [%s %d]."
-msgstr "show_glyph: 잘못된 pos <%d,%d> with glyph %d [%s %d]."
+msgstr "show_glyph:  bad pos <%d,%d> with glyph %d [%s %d]."
 
 #: ../src/mondata.c:1471
 msgid "shower"
@@ -50482,7 +50493,7 @@ msgstr "시몰레온"
 
 #: ../src/pickup.c:84
 msgid "simple_look(null)"
-msgstr "〔점검〕 simple_look(null)"
+msgstr "simple_look(null)"
 
 #: ../src/sounds.c:343
 msgid "sing"
@@ -50494,7 +50505,7 @@ msgstr "노래하는"
 
 #: ../src/objnam.c:3143
 msgid "singular of null?"
-msgstr "〔점검〕 singular of null?"
+msgstr "singular of null?"
 
 #: ../src/trap.c:7133
 msgid "singularity"
@@ -50901,7 +50912,7 @@ msgstr "미끄러운 손가락"
 
 #: ../src/trap.c:7145
 msgid "slippery slope"
-msgstr "〔점검〕 slippery slope"
+msgstr "미끄러운 비탈"
 
 # do_wear.c, mhitu.c - 미끄러짐. "The ring slips off of your finger"
 # 주의: "%s %s your %s %s!" 패턴에서 "%4$s에서 %2$s"로 사용됨
@@ -50995,13 +51006,13 @@ msgstr "작은"
 # ============================================================
 # insight.c:185-213 - enlght_combatinc 전투 보너스/페널티 조합
 # ============================================================
-#
+# 
 # 영어 조합 결과 예시:
 #   you_have("a small bonus to hit") → " You have a small bonus to hit."
 #   you_have("a small damage bonus") → " You have a small damage bonus."
 #   you_have("a moderate defense penalty") → " You have a moderate defense
 # penalty."
-#
+# 
 # 한국어 조합 결과 (개선):
 #   "당신은 명중에 약간의 보너스가 있다."
 #   "당신은 피해에 약간의 보너스가 있다."
@@ -51662,7 +51673,7 @@ msgstr "나눌"
 
 #: ../src/shk.c:3627
 msgid "splitbill: no resident shopkeeper??"
-msgstr "splitbill: resident shopkeeper??이(가) 없다"
+msgstr "splitbill: no resident shopkeeper??"
 
 #: ../src/shk.c:3632
 msgid "splitbill: not on bill?"
@@ -51671,7 +51682,7 @@ msgstr "splitbill: not on bill?"
 #: ../src/mkobj.c:464
 #, c-format
 msgid "splitobj [cobj=%s num=%ld quan=%ld]"
-msgstr "〔점검〕 splitobj [cobj=%s num=%ld quan=%ld]"
+msgstr "splitobj [cobj=%s num=%ld quan=%ld]"
 
 # 스포어 게임
 #: ../src/invent.c:1540
@@ -51936,7 +51947,7 @@ msgstr "상태"
 
 #: ../src/botl.c:1731
 msgid "status 'reassess' before init"
-msgstr "〔점검〕 status 'reassess' before init"
+msgstr "status 'reassess' before init"
 
 #: ../src/pager.c:619
 msgid "steady"
@@ -51945,16 +51956,16 @@ msgstr "안정적인"
 # ============================================================
 # 도둑질 동사 (Stealing verbs)
 # how[] 배열: steal, snatch, grab, take (steal.c:477)
-#
+# 
 # 문제 1: 한국어 활용 - 받침 유무에 따라 "려"/"으려" 다름
 #         훔치+려=훔치려 ✓, 잡+으려=잡으려 ✓
-#
+# 
 # 문제 2: "take"는 insight.c에서 "받는다"(피해를 받다)로 번역됨
 #         steal.c에서는 "빼앗다"(아이템을 빼앗다) 의미
-#
+# 
 # 해결: 동사(%2$s)를 무시하고 일반적인 "빼앗으려"를 사용
 #       뉘앙스 차이(steal vs grab)는 손실되지만 의미 전달됨
-#
+# 
 # 조합 예시:
 #   영어: "The monkey tries to steal your armor but gives up."
 #   한국어: "원숭이가 당신의 갑옷을 빼앗으려 하지만 포기했다."
@@ -51973,7 +51984,7 @@ msgstr "steal_it: multiple worn suits"
 
 #: ../src/steal.c:179
 msgid "stealarm(): dead monster stealing"
-msgstr "stealarm(): dead 몬스터 stealing"
+msgstr "stealarm(): dead monster stealing"
 
 # timeout.c/attrib.c - "stealthy" (목록/레이블 용도)
 # timeout.c:94 - propertynames[] 배열에서 N_("stealthy")로 사용
@@ -52002,12 +52013,12 @@ msgstr "증기 소용돌이"
 #: ../src/mon.c:261
 #, c-format
 msgid "steed (%s) claims to be at <%d,%d>?"
-msgstr "〔점검〕 steed (%s) claims to be at <%d,%d>?"
+msgstr "steed (%s) claims to be at <%d,%d>?"
 
 #: ../src/mon.c:283
 #, c-format
 msgid "steed (%s) is on the map at <%d,%d>!"
-msgstr "〔점검〕 steed (%s) is on the map at <%d,%d>!"
+msgstr "steed (%s) is on the map at <%d,%d>!"
 
 #: ../src/trap.c:3132
 msgid "steed hit by non-existent arrow?"
@@ -52019,7 +52030,7 @@ msgstr "존재하지 않는 다트에 맞은 탈것?"
 
 #: ../src/dog.c:855
 msgid "steed left behind?"
-msgstr "〔점검〕 steed left behind?"
+msgstr "steed left behind?"
 
 #: ../src/mon.c:143
 #, c-format
@@ -52062,7 +52073,7 @@ msgstr "밟았다"
 
 #: ../src/nhlua.c:3082
 msgid "steps and perpcall both non-zero"
-msgstr "〔점검〕 steps and perpcall both non-zero"
+msgstr "steps and perpcall both non-zero"
 
 #: ../src/obj_descr_i18n.c:1256
 msgid "stethoscope"
@@ -52308,7 +52319,7 @@ msgstr "이상한"
 
 #: ../src/rumors.c:163
 msgid "strange truth value for rumor"
-msgstr "〔점검〕 strange truth value for rumor"
+msgstr "strange truth value for rumor"
 
 #: ../src/apply.c:510
 msgid "strange, high-pitched"
@@ -52371,7 +52382,7 @@ msgstr "%s{을/를} 뒤에서 쳤다!"
 
 #: ../src/hacklib.c:234
 msgid "string too long"
-msgstr "〔점검〕 string too long"
+msgstr "string too long"
 
 # ============================================================
 # 환각 무늬 (Hallucination Patterns)
@@ -52611,7 +52622,7 @@ msgstr "%s{을/를} 소환한다!"
 
 #: ../src/trap.c:7145
 msgid "suntrap"
-msgstr "〔점검〕 suntrap"
+msgstr "햇빛 함정"
 
 #: ../src/apply.c:2582
 msgid "supposedly "
@@ -52671,7 +52682,7 @@ msgstr "벽"
 
 #: ../src/display.c:2438
 msgid "swallow_to_glyph: bad swallow location"
-msgstr "swallow_to_glyph: 잘못된 swallow location"
+msgstr "swallow_to_glyph: bad swallow location"
 
 # insight.c - 기타 잘못된 번역
 #: ../src/insight.c:1149 ../src/trap.c:4082
@@ -52988,7 +52999,7 @@ msgstr "길들인 "
 #: ../src/mon.c:118
 #, c-format
 msgid "tame %s is not peaceful (%s)"
-msgstr "〔점검〕 tame %s is not peaceful (%s)"
+msgstr "tame %s is not peaceful (%s)"
 
 #: ../src/obj_descr_i18n.c:600
 msgid "taming"
@@ -53225,8 +53236,8 @@ msgstr "텍스트"
 
 #: ../src/apply.c:278 ../src/cmd.c:1298 ../src/cmd.c:1303 ../src/do_name.c:749
 #: ../src/do_wear.c:16 ../src/eat.c:3112 ../src/invent.c:2133
-#: ../src/invent.c:5500 ../src/pager.c:1662 ../src/shk.c:2270 ../src/shk.c:4055
-#: ../src/shk.c:4151 ../src/trap.c:6003 ../src/wield.c:702
+#: ../src/invent.c:5500 ../src/pager.c:1662 ../src/shk.c:2270
+#: ../src/shk.c:4055 ../src/shk.c:4151 ../src/trap.c:6003 ../src/wield.c:702
 msgid "that"
 msgstr "그것"
 
@@ -53268,22 +53279,22 @@ msgstr "옳은 일을 했다."
 
 #: ../src/hack.c:2233
 msgid "that's strange, unknown mintrap result!"
-msgstr "that's strange, 알 수 없는 mintrap result!"
+msgstr "that's strange, unknown mintrap result!"
 
 #: ../src/apply.c:911 ../src/iactions.c:63 ../src/mhitm.c:232
 #: ../src/mhitm.c:260 ../src/muse.c:3127 ../src/muse.c:3139
-#: ../src/polyself.c:1513 ../src/shk.c:4139 ../src/shk.c:5866 ../src/trap.c:276
-#: ../src/uhitm.c:1205 ../src/zap.c:5460
+#: ../src/polyself.c:1513 ../src/shk.c:4139 ../src/shk.c:5866
+#: ../src/trap.c:276 ../src/uhitm.c:1205 ../src/zap.c:5460
 msgid "the"
 msgstr "그"
 
 # 한국어에는 정관사가 없으므로 빈 문자열로 처리
 #: ../src/do_name.c:926 ../src/do_name.c:1031 ../src/do_name.c:1201
-#: ../src/dokick.c:1606 ../src/end.c:205 ../src/end.c:215 ../src/insight.c:2958
-#: ../src/objnam.c:1301 ../src/objnam.c:1884 ../src/objnam.c:2245
-#: ../src/priest.c:328 ../src/read.c:2955
+#: ../src/dokick.c:1606 ../src/end.c:205 ../src/end.c:215
+#: ../src/insight.c:2958 ../src/objnam.c:1301 ../src/objnam.c:1884
+#: ../src/objnam.c:2245 ../src/priest.c:328 ../src/read.c:2955
 msgid "the "
-msgstr " "
+msgstr "the "
 
 #: ../src/apply.c:3806 ../src/end.c:247
 #, c-format
@@ -53315,7 +53326,7 @@ msgstr "옌도르 중앙은행"
 
 # == Quest Location Strings (역할별 퀘스트 위치) ==
 # From src/role.c - homebase and intermed locations for each role
-#
+# 
 # Archeologist quest locations
 #: ../src/role.c:44
 msgid "the College of Archeology"
@@ -53834,7 +53845,7 @@ msgstr "갈증이 해소되었다."
 
 #: ../src/trap.c:7145
 msgid "thirst trap"
-msgstr "〔점검〕 thirst trap"
+msgstr "갈증 함정"
 
 #: ../src/apply.c:278 ../src/cmd.c:1298 ../src/cmd.c:1303 ../src/do_name.c:303
 #: ../src/iactions.c:296 ../src/iactions.c:354 ../src/iactions.c:374
@@ -53876,7 +53887,7 @@ msgstr "이 깡통"
 
 #: ../src/mthrowu.c:106
 msgid "thitu: name & obj both null?"
-msgstr "thitu: name & 객체 both null?"
+msgstr "thitu: name & obj both null?"
 
 # ============================================================
 # 아이템 상태 설명 (objnam.c)
@@ -53940,7 +53951,7 @@ msgstr "왕좌가 힘을 다하고 분해됐다."
 
 #: ../src/sit.c:207
 msgid "throne effect"
-msgstr "〔점검〕 throne effect"
+msgstr "왕좌 효과"
 
 #: ../src/music.c:437
 #, c-format
@@ -54065,26 +54076,26 @@ msgstr "timer sanity: spot timer %lu at <%d,%d>"
 #: ../src/timeout.c:2206
 #, c-format
 msgid "timer sanity: unexpected global timer %lu"
-msgstr "timer sanity: 예기치 않은 global timer %lu"
+msgstr "timer sanity: unexpected global timer %lu"
 
 #: ../src/timeout.c:2175
 #, c-format
 msgid "timer sanity: unexpected monster timer %lu"
-msgstr "timer sanity: 예기치 않은 monster timer %lu"
+msgstr "timer sanity: unexpected monster timer %lu"
 
 #: ../src/timeout.c:2209
 #, c-format
 msgid "timer sanity: unknown timer %lu, type: %d"
-msgstr "timer sanity: 알 수 없는 timer %lu, type: %d"
+msgstr "timer sanity: unknown timer %lu, type: %d"
 
 #: ../src/timeout.c:2148
 #, c-format
 msgid "timer sanity: untimed obj %s, timer %lu"
-msgstr "timer sanity: untimed 객체 %s, timer %lu"
+msgstr "timer sanity: untimed obj %s, timer %lu"
 
 #: ../src/timeout.c:2613
 msgid "timer_is_local"
-msgstr "〔점검〕 timer_is_local"
+msgstr "timer_is_local"
 
 # ============================================================
 # Phase 5: b_trapped(), flooreffects() 인자 일관성
@@ -54445,7 +54456,7 @@ msgstr "크게 어긋났다"
 #: ../src/light.c:287
 #, c-format
 msgid "transient light %s %s %s not %s?"
-msgstr "〔점검〕 transient light %s %s %s not %s?"
+msgstr "transient light %s %s %s not %s?"
 
 #: ../src/do_name.c:1480
 msgid "translucent"
@@ -54513,7 +54524,7 @@ msgstr "함정이 있는 문"
 #: ../src/mon.c:151
 #, c-format
 msgid "trapped without a trap (%s)"
-msgstr "〔점검〕 trapped without a trap (%s)"
+msgstr "trapped without a trap (%s)"
 
 #: ../src/monster_i18n.c:117 ../src/obj_descr_i18n.c:1078
 msgid "trapper"
@@ -54672,7 +54683,8 @@ msgid "try to move %s, but in vain."
 msgstr "%s{을/를} 옮기려 했지만 소용없다."
 
 #: ../src/hack.c:1100
-msgid "try to ooze under the door, but can't squeeze your possessions through."
+msgid ""
+"try to ooze under the door, but can't squeeze your possessions through."
 msgstr "문 아래로 스며들려 하지만, 소지품을 통과시킬 수 없다."
 
 #: ../src/trap.c:5741
@@ -54687,7 +54699,7 @@ msgstr "%s{을/를} 속이려 했지만, 실수했다."
 
 #: ../src/mklev.c:1163
 msgid "trycnt overflow4"
-msgstr "〔점검〕 trycnt overflow4"
+msgstr "trycnt overflow4"
 
 #: ../src/trap.c:5758
 #, c-format
@@ -54697,7 +54709,7 @@ msgstr "%s{을/를} 구덩이에서 구하려고"
 #: ../src/steed.c:910
 #, c-format
 msgid "trying to place %s at <%d,%d> mstate:%lx on %s"
-msgstr "〔점검〕 trying to place %s at <%d,%d> mstate:%lx on %s"
+msgstr "trying to place %s at <%d,%d> mstate:%lx on %s"
 
 #: ../src/apply.c:2216
 #, c-format
@@ -54994,7 +55006,7 @@ msgstr "무성향"
 
 #: ../src/minion.c:215
 msgid "unaligned player?"
-msgstr "〔점검〕 unaligned player?"
+msgstr "unaligned player?"
 
 #: ../src/attrib.c:53
 msgid "unaware"
@@ -55246,7 +55258,7 @@ msgstr "미지불"
 #: ../src/mkobj.c:2701
 #, c-format
 msgid "unpaid object migrating to another level? [%s]"
-msgstr "〔점검〕 unpaid object migrating to another level? [%s]"
+msgstr "unpaid object migrating to another level? [%s]"
 
 #: ../src/shk.c:3299
 msgid "unpaid_cost: object wasn't on any bill."
@@ -55254,16 +55266,16 @@ msgstr "unpaid_cost: object wasn't on any bill."
 
 #: ../src/ball.c:215
 msgid "unplacebc denied, restriction in place"
-msgstr "〔점검〕 unplacebc denied, restriction in place"
+msgstr "unplacebc denied, restriction in place"
 
 #: ../src/ball.c:227
 msgid "unplacebc_and_covet_placebc denied, already restricted"
-msgstr "〔점검〕 unplacebc_and_covet_placebc denied, already restricted"
+msgstr "unplacebc_and_covet_placebc denied, already restricted"
 
 #: ../src/nhlua.c:2997
 #, c-format
 msgid "unprotected error in call to Lua API (%s)\n"
-msgstr "unprotected 오류 in call to Lua API (%s)\n"
+msgstr "unprotected error in call to Lua API (%s)\n"
 
 #: ../src/pager.c:1253
 msgid "unreconnoitered"
@@ -55344,12 +55356,12 @@ msgstr "상승"
 #: ../src/extralev.c:272
 #, c-format
 msgid "up end of %d, %d never connected?"
-msgstr "〔점검〕 up end of %d, %d never connected?"
+msgstr "up end of %d, %d never connected?"
 
 #: ../src/extralev.c:84
 #, c-format
 msgid "up: no wall at %d,%d?"
-msgstr "up: wall at %d,%d?이(가) 없다"
+msgstr "up: no wall at %d,%d?"
 
 #: ../src/cmd.c:4208
 msgid "upward"
@@ -55390,7 +55402,7 @@ msgstr "방패를 착용한 채 두 무기를 사용할 수 없다."
 #: ../src/apply.c:2389
 #, c-format
 msgid "use_unicorn_horn: bad trouble? (%d)"
-msgstr "use_unicorn_horn: 잘못된 trouble? (%d)"
+msgstr "use_unicorn_horn: bad trouble? (%d)"
 
 # 더 많은 conduct 관련
 # [조합 메시지] insight.c - 소원 사용 횟수
@@ -55421,7 +55433,7 @@ msgstr "마법 뿔피리를 %s에게 사용함"
 
 #: ../src/polyself.c:1948
 msgid "uunstick: no ustuck?"
-msgstr "uunstick: ustuck?이(가) 없다"
+msgstr "uunstick: no ustuck?"
 
 #: ../src/trap.c:7121
 msgid "vacillating triangle"
@@ -55502,7 +55514,7 @@ msgstr "꽃병"
 
 #: ../src/vault.c:765
 msgid "vault guard: no gold at hero's feet?"
-msgstr "vault guard: gold at hero's feet?이(가) 없다"
+msgstr "vault guard: no gold at hero's feet?"
 
 #: ../src/dungeon.c:1721
 msgid "vault's ceiling"
@@ -55691,7 +55703,7 @@ msgstr "진동."
 #: ../src/vision.c:2048
 #, c-format
 msgid "view_from called with range %d"
-msgstr "〔점검〕 view_from called with range %d"
+msgstr "view_from called with range %d"
 
 #: ../src/wizard.c:831
 msgid "villein"
@@ -55703,7 +55715,7 @@ msgstr "비네그렛"
 
 #: ../src/do_name.c:1529
 msgid "vinegar"
-msgstr "〔점검〕 vinegar"
+msgstr "식초"
 
 #: ../src/do_name.c:1487
 msgid "violant"
@@ -55939,41 +55951,41 @@ msgstr "wall_angle: bottom of crwall check"
 #: ../src/display.c:3776
 #, c-format
 msgid "wall_angle: unexpected wall type %d"
-msgstr "wall_angle: 예기치 않은 wall type %d"
+msgstr "wall_angle: unexpected wall type %d"
 
 #: ../src/display.c:3652
 #, c-format
 msgid "wall_angle: unknown %s mode %d"
-msgstr "wall_angle: 알 수 없는 %s mode %d"
+msgstr "wall_angle: unknown %s mode %d"
 
 #: ../src/display.c:3587
 #, c-format
 msgid "wall_angle: unknown T wall mode %d"
-msgstr "wall_angle: 알 수 없는 T wall mode %d"
+msgstr "wall_angle: unknown T wall mode %d"
 
 #: ../src/display.c:3769
 msgid "wall_angle: unknown crosswall mode"
-msgstr "wall_angle: 알 수 없는 crosswall mode"
+msgstr "wall_angle: unknown crosswall mode"
 
 #: ../src/display.c:3634
 #, c-format
 msgid "wall_angle: unknown hwall mode %d"
-msgstr "wall_angle: 알 수 없는 hwall mode %d"
+msgstr "wall_angle: unknown hwall mode %d"
 
 #: ../src/display.c:3615
 #, c-format
 msgid "wall_angle: unknown vwall mode %d"
-msgstr "wall_angle: 알 수 없는 vwall mode %d"
+msgstr "wall_angle: unknown vwall mode %d"
 
 #: ../src/mkmaze.c:204
 #, c-format
 msgid "wall_cleanup: bad bounds (%d,%d) to (%d,%d)"
-msgstr "wall_cleanup: 잘못된 bounds (%d,%d) to (%d,%d)"
+msgstr "wall_cleanup: bad bounds (%d,%d) to (%d,%d)"
 
 #: ../src/mkmaze.c:248
 #, c-format
 msgid "wall_extends: bad bounds (%d,%d) to (%d,%d)"
-msgstr "wall_extends: 잘못된 bounds (%d,%d) to (%d,%d)"
+msgstr "wall_extends: bad bounds (%d,%d) to (%d,%d)"
 
 #: ../src/mklev.c:2453
 msgid "walls around you begin to bend and crumble!"
@@ -56262,12 +56274,12 @@ msgstr "무기 위치"
 #: ../src/weapon.c:845
 #, c-format
 msgid "weapon_check %d for %s?"
-msgstr "〔점검〕 weapon_check %d for %s?"
+msgstr "weapon_check %d for %s?"
 
 #: ../src/weapon.c:1661
 #, c-format
 msgid "weapon_dam_bonus: bad skill %d"
-msgstr "weapon_dam_bonus: 잘못된 skill %d"
+msgstr "weapon_dam_bonus: bad skill %d"
 
 #: ../src/obj_descr_i18n.c:409
 msgid "wear"
@@ -56295,7 +56307,7 @@ msgstr "눈가리개를 쓰고 있다"
 #: ../src/do_wear.c:2390
 #, c-format
 msgid "wearing armor not worn as armor? [%08lx]"
-msgstr "〔점검〕 wearing armor not worn as armor? [%08lx]"
+msgstr "wearing armor not worn as armor? [%08lx]"
 
 # 조합 패턴: "You are already %s." (You are already wearing lenses.)
 #: ../src/apply.c:4266
@@ -56345,7 +56357,7 @@ msgstr "눈물 가스 함정"
 
 #: ../src/zap.c:3468
 msgid "weffects: unexpected spell or wand"
-msgstr "weffects: 예기치 않은 spell or wand"
+msgstr "weffects: unexpected spell or wand"
 
 #: ../src/artifact.c:1928
 msgid "weightless for a moment."
@@ -56575,7 +56587,7 @@ msgstr "흰손 방패"
 
 #: ../src/trap.c:7141
 msgid "whoopie cushion"
-msgstr "〔점검〕 whoopie cushion"
+msgstr "방귀 방석"
 
 #: ../src/pager.c:1662
 msgid "whose headstone"
@@ -56890,7 +56902,7 @@ msgstr "벌레"
 #: ../src/worm.c:670
 #, c-format
 msgid "worm seg not isok <%d,%d>"
-msgstr "〔점검〕 worm seg not isok <%d,%d>"
+msgstr "worm seg not isok <%d,%d>"
 
 #: ../src/obj_descr_i18n.c:306
 msgid "worm tooth"
@@ -56898,7 +56910,7 @@ msgstr "벌레 이빨"
 
 #: ../src/worm.c:913
 msgid "worm_cross checking for non-adjacent location?"
-msgstr "〔점검〕 worm_cross checking for non-adjacent location?"
+msgstr "worm_cross checking for non-adjacent location?"
 
 #: ../src/worm.c:653
 msgid "worm_sanity: not a worm!"
@@ -56906,7 +56918,7 @@ msgstr "worm_sanity: not a worm!"
 
 #: ../src/worm.c:645
 msgid "worm_sanity: null monster!"
-msgstr "worm_sanity: null 몬스터!"
+msgstr "worm_sanity: null monster!"
 
 #: ../src/worm.c:313
 msgid "wormgone: wormno is 0"
@@ -56915,7 +56927,7 @@ msgstr "wormgone: wormno is 0"
 #: ../src/worm.c:659
 #, c-format
 msgid "wormno %d is set without proper tail"
-msgstr "〔점검〕 wormno %d is set without proper tail"
+msgstr "wormno %d is set without proper tail"
 
 #: ../src/attrib.c:955
 msgid "worn equipment"
@@ -57137,21 +57149,21 @@ msgstr "쓸"
 #: ../src/light.c:695
 #, c-format
 msgid "write_ls: bad type (%d)"
-msgstr "write_ls: 잘못된 type (%d)"
+msgstr "write_ls: bad type (%d)"
 
 #: ../src/light.c:674
 #, c-format
 msgid "write_ls: can't find mon%s #%u!"
-msgstr "write_ls: 찾을 수 없다: mon%s #%u!"
+msgstr "write_ls: can't find mon%s #%u!"
 
 #: ../src/light.c:648
 #, c-format
 msgid "write_ls: can't find obj #%u!"
-msgstr "write_ls: 찾을 수 없다: obj #%u!"
+msgstr "write_ls: can't find obj #%u!"
 
 #: ../src/timeout.c:2546
 msgid "write_timer"
-msgstr "〔점검〕 write_timer"
+msgstr "write_timer"
 
 #: ../src/apply.c:2042
 #, c-format
@@ -57326,7 +57338,7 @@ msgstr "깽깽거린다."
 #: ../src/cmd.c:5573
 #, c-format
 msgid "yn_function() returned '%s'; using '%s' instead"
-msgstr "〔점검〕 yn_function() returned '%s'; using '%s' instead"
+msgstr "yn_function() returned '%s'; using '%s' instead"
 
 #: ../src/sounds.c:346
 msgid "yodel"
@@ -57580,7 +57592,7 @@ msgstr "스스로를 발사했지만, 다치지 않은 것 같다."
 
 #: ../src/display.c:2460
 msgid "zapdir_to_glyph:  illegal beam type"
-msgstr "zapdir_to_glyph: illegal beam type"
+msgstr "zapdir_to_glyph:  illegal beam type"
 
 #: ../src/zap.c:3051 ../src/zap.c:4568
 msgid "zapped"
@@ -57717,8 +57729,7 @@ msgid ""
 "Are you perhaps trying to run NetHack within a zip utility?"
 msgstr ""
 "\n"
-"ZIP 묶음 안에서 바로 실행하고 계신 건 아닌지요? 압축을 풀어 둔 폴더에서 실행해 "
-"주세요."
+"ZIP 묶음 안에서 바로 실행하고 계신 건 아닌지요? 압축을 풀어 둔 폴더에서 실행해 주세요."
 
 msgid "         By Stichting Mathematisch Centrum and M. Stephenson."
 msgstr "         Stichting Mathematisch Centrum 및 M. Stephenson 제작."
@@ -58004,12 +58015,12 @@ msgstr ", 불행히도"
 
 # Object names extracted from include/objects.h
 # 가짜 라틴 스크롤 표기(대문자)는 게임 내 표기와 맞추기 위해 msgstr=msgid(알파벳 유지)
-#
+# 
 msgid "ANDOVA BEGARIN"
 msgstr "ANDOVA BEGARIN"
 
 msgid "An "
-msgstr " "
+msgstr "An "
 
 msgid "And just how do you expect to do that?"
 msgstr "대체 어떻게 그걸 하려고 하는가?"
@@ -58240,23 +58251,23 @@ msgstr "해냈구나, 필멸자여!"
 # ============================================================
 # [조합 검토] 공유 문자열 충돌 확인
 # ============================================================
-#
+# 
 # 1. "once"/"twice"/"thrice" — 사망 횟수 + 소코반 위반 횟수
 #    결론: "한 번 "/"두 번 "/"세 번 " → 두 맥락 모두 자연스러움 ✓
 #    C_() 분리 불필요.
-#
+# 
 # 2. "have"/"had" — 업적 아이템 소유 vs 보조동사
 #    "have" (공백 없음) = "가지고 있다" → 업적용
 #    "have " (공백 있음) = "​" → you_have() 매크로용
 #    다른 msgid이므로 충돌 없음 ✓
-#
+# 
 # 3. " if surroundings permitted" — 부유/비행 차단
 #    동일 번역 "주변 환경이 허락한다면 " → 두 맥락 모두 동일 의미 ✓
-#
+# 
 # 4. "have gone"/"went" — 음식 없이 + 갑옷 없이
 #    "지냈다" → 두 맥락 모두 OK ✓
 #    (suffix가 다르므로: " without food" vs " without any armor")
-#
+# 
 # ============================================================
 # ============================================================
 # Endgame Lua 레벨 메시지 (dat/*.lua)
@@ -58279,87 +58290,87 @@ msgstr "어느 %s%s에, 오른쪽 아니면 왼쪽?"
 # ============================================================
 # insight.c 조합 패턴 검토 요약 (enl_msg)
 # ============================================================
-#
+# 
 # 포맷: enl_msg(prefix, present, past, suffix, ps)
 # 영어:  " %s%s%s%s." = " [prefix][present/past][suffix][ps]."
 # 한국어: " %1$s%3$s%2$s%4$s." = " [prefix][suffix][present/past][ps]."
-#
+# 
 # 번역 전략:
 # 1. 동사(present/past)가 suffix에 포함된 경우: 동사를 "​"(제로폭 공백)로
 # 2. suffix에 목적어만 있는 경우: 동사를 문장 끝에 오도록 suffix 뒤 공백 추가
 # 3. prefix가 완전한 문장인 경우: 나머지를 "​"(제로폭 공백)로
-#
+# 
 # 주요 매크로 번역:
 # - You_ = "당신은 "
 # - are/were = "​" (suffix에 동사 포함 전략)
 # - have/had = "​"
 # - can/could = "​"
 # - have_been/have_never/never = "​" 또는 ""
-#
+# 
 # 조합 예시:
 # enl_msg(You_, "have gone", "went", " without food", "")
 # → " 당신은 음식 없이 지냈다."
-#
+# 
 # enl_msg(You_, "could be", "could have been", " clairvoyant", buf)
 # → " 당신은 천리안 능력자가 될 수 있었다 (원인)."
-#
+# 
 # enl_msg("You aggravate", "", "d", " monsters", from_what())
 # → " 당신은 몬스터들을 자극한다 (원인)."
-#
+# 
 # ============================================================
 # ============================================================
 # 조합 패턴 전체 검토 결과 (2026-02-06)
 # ============================================================
-#
+# 
 # 검토 대상: insight.c의 모든 enl_msg() 패턴 (65개)
 # 검토 결과: 모든 주요 패턴이 번역됨
-#
+# 
 # [완료된 패턴 카테고리]
-#
+# 
 # 1. 기본 상태 패턴 (you_are, you_have, you_can)
 #    - "are "/"were " → "​" (제로폭 공백)
 #    - "have "/"had " → "​"
 #    - "can "/"could " → "​"
 #    - suffix에 완전한 술어 포함
-#
+# 
 # 2. 조건부 동사 패턴
 #    - "will see"/"would have seen" + " invisible" → "투명한 것을 볼 것이다"
 #    - "could be"/"could have been" + " clairvoyant" → "천리안 능력자가 될 수 있다"
 #    - "would fly"/"would have flown" + conditions → "날 것이다"
-#
+# 
 # 3. 과거형 접미사 패턴
 #    - "You aggravate" + ""/"d" + " monsters" → "몬스터들을 자극한다"
 #    - "You cause" + ""/"d" + " conflict" → "분쟁을 일으킨다"
 #    - "You regenerate" + ""/"d" → "재생한다"
-#
+# 
 # 4. 아이템 저항 패턴
 #    - "Your items " + "are"/"were" + " somewhat%s" → "어느 정도 %s"
 #    - " protected from fire/cold/acid/..." → "화염/냉기/산성에 대해 보호 상태"
-#
+# 
 # 5. 업적/행실 패턴
 #    - "have"/"had" vs "have handled"/"handled" → 소유 vs 다룸 구분
 #    - "have gone"/"went" + " without food" → "음식 없이 지냈다"
 #    - "started"/"started out" + " without possessions" → "소유물 없이 시작했다"
-#
+# 
 # 6. 특수 접두어 패턴
 #    - "Bad luck "/"Good luck " + "does"/"did" → 행운/불운 시간 경과
 #    - "Your life " + "will be"/"would have been" + " saved" → "생명이 보존될 것이다"
 #    - "Your alignment " + "is"/"was" → "성향은"
-#
+# 
 # ============================================================
 # 다른 소스 파일의 조합 패턴 검토 결과
 # ============================================================
-#
+# 
 # Tobjnam/Yobjnam 패턴:
 #   - pline(_("%s %s."), Tobjnam(obj, _("verb")), ...) 형태
 #   - Tobjnam()이 객체명+동사를 결합하므로 개별 동사 번역 필요
 #   - "slip", "slam", "weld", "evaporate" 등 → ko.po에서 번역됨
-#
+# 
 # 삼항 연산자 패턴:
 #   - condition ? _("option1") : _("option2")
 #   - 한국어 문법에 맞게 각 옵션 개별 번역
 #   - "tangy"/"sour", "cut"/"punch" 등 → ko.po에서 번역됨
-#
+# 
 # ============================================================
 # Lua 파일 번역 추가
 # ============================================================
@@ -59363,7 +59374,7 @@ msgstr "천천히"
 # action[] - 동사 (현재형)
 # msg[] - 상태 형용사
 # bythe[] - 원인 명사
-#
+# 
 # action[] 배열 - 침식 동사
 # 주의: "corrode"는 다른 컨텍스트에서도 사용되므로 C_() 컨텍스트 사용
 msgctxt "erosion_action"
@@ -59698,7 +59709,8 @@ msgid "  Spawn failed.  (%%x%08lX) "
 msgstr "  Spawn 실패.  (%%x%08lX) "
 
 #: ../sys/vms/vmsunix.c:544
-msgid "  No parent process.  Use '!' to Spawn, 'S' to Save, or '#quit' to Quit. "
+msgid ""
+"  No parent process.  Use '!' to Spawn, 'S' to Save, or '#quit' to Quit. "
 msgstr "  부모 프로세스가 없다. '!'로 Spawn, 'S'로 저장, 또는 '#quit'으로 종료하라. "
 
 #: ../sys/vms/vmsunix.c:559

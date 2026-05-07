@@ -85,6 +85,11 @@ CI가 없을 때는 이 한 줄이 **최소 품질 게이트** 역할을 한다.
 - [TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md) — 문장 규칙
 - [I18N_SYSTEM.md](I18N_SYSTEM.md) — `_()` / `mo_reader` / 조사 API
 - `po/translate-tool.sh` — 검색·CSV·검증 보조
+- `scripts/apply_ko_translations.py` — TR + remainder → `ko_manual.po`; 빈 칸만 기본. 정책 변경 일괄 반영: `--sync-all-in-catalog`
+- `po/build_remainder_translations.py` — remainder JSON; **내부 진단·시스템 메시지는 영어 msgid 유지**, 플레이어 대면만 한국어(FULL/짧은 고유명·퀘스트 질문 등). `--refresh-all`
+- `po/remainder_quality_patch.json` — 수동 덮어쓰기(선택, 보통 비움)
+- `po/sync_new_msgids_to_manual.py` — 로컬 `ko.po`의 신규 블록을 `ko_manual.po`로 스텁 복사
+- `po/extract_lua_strings.py` — `dat/*.lua`에서 POT 보조 추출(선택)
 - `scripts/translation-preflight.sh` — PR 전 통합 검사
 - `scripts/i18n-check.sh` — 업스트림 병합 후 diff 스타일 점검(선택)
 

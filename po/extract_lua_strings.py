@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
 """
 Extract translatable strings from NetHack Lua files.
-Generates a POT file that can be merged with the main nethack.pot.
+Writes POT fragments for review or manual merge into po/nethack.pot (xgettext가 잡지 못하는 패턴 보조).
 
 Patterns extracted:
 - text = "..." or text = [[...]]
 - synopsis = "..."
 - des.message("...")
-- des.engraving({ ... text = "..." ... })
 - String arrays (angel_cuss, demon_cuss, etc.)
 
 Usage:
-    python3 extract_lua_strings.py [lua_files...] > lua_strings.pot
+    python3 extract_lua_strings.py > lua_strings.pot
+    python3 extract_lua_strings.py ../dat/foo.lua > fragment.pot
 """
 
 import re
 import sys
-import os
-from datetime import datetime
+from datetime import datetime, timezone
+from pathlib import Path
 
 def escape_string(s):
     """Escape string for PO file format."""
@@ -188,7 +188,7 @@ def extract_from_lua(filepath):
 
 def generate_pot(strings, output=sys.stdout):
     """Generate POT file from extracted strings."""
-    now = datetime.now().strftime('%Y-%m-%d %H:%M%z')
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M+0000")
 
     header = f'''# Translatable strings extracted from NetHack Lua files.
 # Copyright (C) 2026 HanNetHack Project
@@ -198,7 +198,7 @@ def generate_pot(strings, output=sys.stdout):
 msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\\n"
-"Report-Msgid-Bugs-To: hannethack@example.com\\n"
+"Report-Msgid-Bugs-To: \\n"
 "POT-Creation-Date: {now}\\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n"
 "Last-Translator: HanNetHack Project\\n"
@@ -220,10 +220,16 @@ msgstr ""
             seen[msgid] = []
         seen[msgid].append(s)
 
+    repo_root = Path(__file__).resolve().parent.parent
+
     for msgid, occurrences in seen.items():
         # Write references
         for occ in occurrences:
-            rel_path = os.path.relpath(occ['file'], start=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            fp = Path(occ["file"]).resolve()
+            try:
+                rel_path = fp.relative_to(repo_root)
+            except ValueError:
+                rel_path = fp
             output.write(f"#: {rel_path}:{occ['line']}\n")
 
         # Write context as comment
@@ -246,23 +252,30 @@ msgstr ""
         output.write('msgstr ""\n\n')
 
 def main():
+    script_dir = Path(__file__).resolve().parent
+    dat_dir = script_dir.parent / "dat"
+
     if len(sys.argv) < 2:
-        # Default: process all Lua files in dat/
-        import glob
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        dat_dir = os.path.join(os.path.dirname(script_dir), 'dat')
-        lua_files = glob.glob(os.path.join(dat_dir, '*.lua'))
+        lua_files = sorted(dat_dir.glob("*.lua"))
+        lua_files = [str(p) for p in lua_files]
     else:
         lua_files = sys.argv[1:]
 
     all_strings = []
     for filepath in lua_files:
-        if os.path.exists(filepath):
+        p = Path(filepath)
+        if p.is_file():
             strings = extract_from_lua(filepath)
             all_strings.extend(strings)
-            print(f"# Extracted {len(strings)} strings from {os.path.basename(filepath)}", file=sys.stderr)
+            print(
+                f"# Extracted {len(strings)} strings from {p.name}",
+                file=sys.stderr,
+            )
 
-    print(f"# Total: {len(all_strings)} strings from {len(lua_files)} files", file=sys.stderr)
+    print(
+        f"# Total: {len(all_strings)} strings from {len(lua_files)} files",
+        file=sys.stderr,
+    )
 
     generate_pot(all_strings)
 

@@ -30,6 +30,10 @@ core
 
 # Local Python venv (polib 등 번역 스크립트용)
 .venv-po/
+# Python bytecode (po 번역 등 스크립트 실행 시 생성)
+__pycache__/
+*.py[cod]
+*.pyo
 
 # Local scratch (not in upstream; keep out of commits)
 src/NOPE

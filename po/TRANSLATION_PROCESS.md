@@ -39,6 +39,35 @@
 
 - `dat/*.lua`는 `xgettext` 대상이지만, 한국어는 보통 `dat/locale/ko/동일파일.lua`에 **전체 복제·번역**하는 패턴이 있다. EN과 KO의 `pline` / `nh.text` 호출 수를 맞추는지 [scripts/i18n-check.sh](../scripts/i18n-check.sh)로 가끔 확인할 수 있다.
 
+### D. 기존 번역 **품질 다듬기** (신규 채움이 아님)
+
+미번역 채우기와 달리, **이미 들어 있는 `msgstr`를 고치는 작업**은 PO 안에서만 예쁜 문장이 되면 끝이 아니라, **빌드된 게임 안에서 실제로 출력될 때** 읽기 좋은지가 기준이다.
+
+#### 절차 (권장 순서)
+
+1. **범위 정하기** — 어떤 플레이 구간(초반·전투·상점·튜토리얼·종료 화면 등) 또는 어떤 파일/기능 주변인지 정한다.
+2. **맥락 확인** — 해당 `msgid`가 소스에서 어떻게 쓰이는지 본다. 저장소 루트에서 예:
+   ```bash
+   rg -n 'msgid_here' src dat win include
+   ```
+   `pline` 지문인지, `yn`/메뉴 질문인지, 조합 문자열의 일부인지에 따라 문체·존댓말이 달라질 수 있다. ([TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md) §4.2·**기존 번역 다듬기 원칙**)
+3. **`ko_manual.po`만 수정** — 원칙·용어는 가이드를 따르고, **`%` 서식·`%n$s` 위치·조사 마커 `{을/를}` 등은 절대 깨지 않게** 한다.
+4. **`cd po && make compile`** → 필요 시 루트에서 **`make all`** 로 `nhdat`에 반영.
+5. **게임 내 확인 (필수)** — 같은 문자열이라도 출력 위치가 다르면 어색할 수 있으므로, 고친 문구가 나오는 동작을 **직접 재현**한다 (메시지 영역 한 줄·두 줄로 읽히는지, 상단/하단 로그 흐름과 어울리는지).
+6. **자동 보조 점검** — `./po/translate-tool.sh postpos-check` 등 ([translate-tool help](./translate-tool.sh)).
+7. **PR 전** — `./scripts/translation-preflight.sh`.
+
+#### 다듬기 작업 체크리스트 (기계 검사 + 사람 검사)
+
+| 구분 | 확인 내용 |
+|------|-----------|
+| 형식 | `make translation-ci` 통과, `%` 개수·순서 유지 |
+| 문체 | 안내/지문/질문/대화 구분이 가이드와 맞는지 ([TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md) §4.2) |
+| 출력감 | 실제 플레이에서 **한 줄로 읽었을 때** 자연스러운지 (어색한 한자어 나열·영어식 어순 지양) |
+| 조사 | `{은/는}` 등 치환 후 실제 몬스터·아이템 이름이 들어가도 읽히는지 |
+| 길이 | 좁은 폭·메시지 줄 수 제한에서 잘리거나 과하게 줄 바뀌지 않는지 |
+| 회귀 | 같은 `msgid`가 다른 코드 경로에서도 쓰이면 **가장 까다로운 경로**까지 확인 |
+
 ---
 
 ## 3. PR / 커밋 전에 한 번에
@@ -66,6 +95,7 @@ CI가 없을 때는 이 한 줄이 **최소 품질 게이트** 역할을 한다.
 | 통계 | `cd po && make stats` 또는 `./po/translate-tool.sh stats` |
 | 미번역/퍼지 목록 | `cd po && make untranslated` / `make fuzzy` |
 | 수동 점검 (조사·접두어 등) | `./po/translate-tool.sh postpos-check` 등 ( `./po/translate-tool.sh help` ) |
+| 소스에서 문자열 용례 검색 | 저장소 루트에서 `rg '패턴' src dat win` |
 | PO만 빠르게 유효성 | `cd po && make translation-ci` |
 | 래핑만 | `./scripts/check-i18n-wrapping.sh` |
 

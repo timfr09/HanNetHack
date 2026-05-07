@@ -16,10 +16,11 @@
 2. `cd po && make translation-ci` 실행 결과를 저장해 현재 경고/오류 유형 분류
 3. 자주 깨지는 줄바꿈 패턴을 `scripts/check-i18n-wrapping.sh` 결과 기준으로 목록화
 
-### 2) 용어/톤 일관성 정비
+### 2) 용어/톤 일관성 정비 (신규 + **기존 번역 다듬기**)
 1. `po/TRANSLATION_GUIDE_KO.md`에 핵심 용어 50~100개를 우선 정리
-2. `ko_manual.po`에서 동일 source string의 번역 변형을 찾아 통일
+2. `ko_manual.po`에서 동일 source string의 번역 변형을 찾아 통일 (**일괄 치환보다 항목별 검토** — [TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md) §4.2 기존 번역 다듬기 원칙)
 3. 존댓말/평서체/명령형 사용 기준을 메시지 유형별(안내/오류/튜토리얼/전투)로 명시
+4. 기존 문구를 고칠 때는 [TRANSLATION_PROCESS.md](TRANSLATION_PROCESS.md) §2.D 절차·체크리스트를 따르고, **게임 내 출력 확인**을 완료 기준에 포함한다
 
 ### 3) 조사(은/는/이/가) 품질 강화
 1. 조사 처리 함수가 적용되는 메시지와 미적용 메시지를 분리해 목록화
@@ -45,3 +46,4 @@
 - `ko_manual.po` 기준 untranslated/fuzzy 감소 추세 확인
 - `translation-ci`와 wrapping 점검 연속 통과
 - 대표 플레이 로그 3종(초반/전투/튜토리얼)에서 어색한 조사/톤 이슈 미발견
+- **기존 번역을 수정하는 PR**에는 변경 줄이 게임에서 어떻게 보였는지를 근거로 남기거나(설명/스크린샷/재현 절차), 리뷰어가 동일 절차로 재확인할 수 있게 한다

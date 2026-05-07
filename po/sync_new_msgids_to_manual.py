@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """
-Sync new msgid entries from ko.po into ko_manual.po.
+`make safe-update` 등으로 갱신된 로컬 ko.po 에만 있는 msgid 블록을 ko_manual.po 끝에 덧붙인다.
 
-This script appends entries that exist in ko.po but not in ko_manual.po,
-preserving their original PO block content as stubs for manual translation.
+자동 추출 스텁을 한 번에 옮길 때 사용. 이미 manual 에 있는 항목은 건드리지 않는다.
+
+Usage:
+  cd po && python3 sync_new_msgids_to_manual.py
+  python3 sync_new_msgids_to_manual.py --manual ko_manual.po --auto ko.po
 """
 
 from __future__ import annotations

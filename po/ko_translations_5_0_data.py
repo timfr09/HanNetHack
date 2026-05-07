@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
-"""msgid -> 한국어 msgstr (NetHack 5.0 미번역 채움). 게임 로그체 '-다'형 유지."""
+"""
+msgid → 한국어 msgstr (대량 일괄 번역 데이터).
+
+`scripts/apply_ko_translations.py` 및 `po/build_remainder_translations.py`에서 로드한다.
+게임 로그체 '-다'형 유지. 편집 시 `po/ko_manual.po`와 서식 플레이스홀더(%s 등) 일치를 확인할 것.
+"""
 # ruff: noqa: E501
 
 TR = {

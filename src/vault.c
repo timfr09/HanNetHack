@@ -868,10 +868,10 @@ staticfn void
 gd_letknow(struct monst *grd)
 {
     if (!cansee(grd->mx, grd->my) || !mon_visible(grd))
-        You_hear(_("%s."),
-                    m_carrying(grd, TIN_WHISTLE)
-                        ? _("the shrill sound of a guard's whistle")
-                        : _("angry shouting"));
+        You_hear(C_("hear_guard_far", "%s."),
+                 m_carrying(grd, TIN_WHISTLE)
+                     ? _("the shrill sound of a guard's whistle")
+                     : _("angry shouting"));
     else
         You(um_dist(grd->mx, grd->my, 2)
                 ? _("see %s approaching.")

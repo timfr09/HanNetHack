@@ -2933,8 +2933,9 @@ mon_consume_unstone(
               distant_name(obj, doname));
         obj->quan = save_quan;
     } else if (!Deaf)
-        You_hear(_("%s."),
-                 (obj->oclass == POTION_CLASS) ? _("drinking") : _("chewing"));
+        You_hear(
+            C_("hear_vmunch_far", "%s."),
+            (obj->oclass == POTION_CLASS) ? _("drinking") : _("chewing"));
 
     m_useup(mon, obj);
     /* obj is now gone */

@@ -1,21 +1,104 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-578개 미번역 문자열용 한국어 생성.
-- 플레이어에게 보일 수 있는 문장은 자연스러운 게임체('-다')로 번역.
-- 내부 impossible()류는 '함수명: 한국어 설명' 형태로 로그 가독성 유지.
+TR(ko_translations_5_0_data)에 없는 msgid에 대해 ko_translations_remainder.json 을 만든다.
+
+기본 정책(TRANSLATION_GUIDE_KO.md):
+- **플레이어가 통상 보는** UI·질문·짧은 게임 텍스트만 한국어로 둔다.
+- `impossible()`·내부 진단·시스템 오류에 가까운 문자열은 **번역하지 않고 영어 msgid를 그대로** 넣는다
+  (apply 시 msgstr==msgid → 런타임에서도 영어와 동일).
+
+한국어를 넣는 경우: 아래 FULL / _SHORT_LITERAL_KO / 퀘스트용 질문, 그리고 remainder_quality_patch.json 수동 항목뿐.
+
+다음: scripts/apply_ko_translations.py (빈 칸 또는 --sync-all-in-catalog)
+
+의존성: polib
+
+Usage:
+  python3 build_remainder_translations.py
+  python3 build_remainder_translations.py --refresh-all
+  python3 build_remainder_translations.py --keys-json _keys.json
 """
+from __future__ import annotations
+
+import argparse
+import importlib.util
 import json
 import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-sys.path.insert(0, str(ROOT))
+try:
+    import polib
+except ImportError:
+    print(
+        "Install polib: python3 -m venv .venv-po && .venv-po/bin/pip install polib",
+        file=sys.stderr,
+    )
+    sys.exit(1)
 
-from ko_translations_5_0_data import TR  # noqa: E402
 
-# --- 플레이어·UI에 가까운 문구 (전체 문장 번역) ---
+def load_tr(root: Path) -> dict:
+    spec = importlib.util.spec_from_file_location(
+        "ko_translations_5_0_data", root / "ko_translations_5_0_data.py"
+    )
+    mod = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(mod)
+    return dict(mod.TR)
+
+
+def load_optional_patch(root: Path) -> dict[str, str]:
+    p = root / "remainder_quality_patch.json"
+    if not p.is_file():
+        return {}
+    raw = json.loads(p.read_text(encoding="utf-8"))
+    return {str(k): str(v) for k, v in raw.items()}
+
+
+def patch_translate(msgid: str, patch: dict[str, str]) -> str | None:
+    if not patch:
+        return None
+    for k in (msgid, msgid.rstrip(), msgid.strip(), msgid.lstrip()):
+        if k in patch:
+            return patch[k]
+    return None
+
+
+# 퀘스트·소지품 점검(플레이어에게 보일 수 있음)
+_ITEM_TAIL_KO = {
+    "amulet": "부적",
+    "the book": "그 책",
+    "candelabrum": "일곱 양초 샹들리에",
+    "quest artifact": "퀘스트 성물",
+    "silver bell": "은종",
+}
+
+# 짧은 게임 내 표기(재료·함정 이름 등) — 화면에 나올 수 있음
+_SHORT_LITERAL_KO = {
+    "banana peel": "바나나 껍질",
+    "bone oil": "뼈 기름",
+    "custard": "커스터드",
+    "lard": "라드",
+    "creosote": "크리오소트",
+    "fly trap": "파리지옥",
+    "garden rake": "정원 갈퀴",
+    "vinegar": "식초",
+    "suntrap": "햇빛 함정",
+    "thirst trap": "갈증 함정",
+    "slippery slope": "미끄러운 비탈",
+    "pit of snakes": "뱀이 우글거리는 구덩이",
+    "pollywog trap": "올챙이 함정",
+    "whoopie cushion": "방귀 방석",
+    "legal trap": "합법 함정",
+    "throne effect": "왕좌 효과",
+    "ring replacement": "반지 교체",
+    "box and stick trap": "상자·막대 함정",
+    "bot before init.": "init 전 bot.",
+    "freakishly ": "기이하게 ",
+}
+
+# UI·플레이어 대면에 가깝다고 판단되는 전체 문장만
 FULL = {
     "Two-weapon insanity: %s.": "쌍수 무기 처리가 이상하다: %s.",
     "Unknown invoke power %d.": "알 수 없는 발동 능력 %d.",
@@ -48,69 +131,127 @@ FULL = {
     "Zero quantity on bill??": "청구서 수량이 0??",
 }
 
-# --- 자주 나오는 영문 꼬리 → 한국어 ---
-TAIL_SUB = [
-    (re.compile(r"^obj not free$", re.I), "객체가 자유 상태가 아니다"),
-    (re.compile(r"^can't find (.+)$", re.I), r"찾을 수 없다: \1"),
-    (re.compile(r"^unexpected (.+)$", re.I), r"예기치 않은 \1"),
-    (re.compile(r"^unknown (.+)$", re.I), r"알 수 없는 \1"),
-    (re.compile(r"^bad (.+)$", re.I), r"잘못된 \1"),
-    (re.compile(r"^invalid (.+)$", re.I), r"유효하지 않은 \1"),
-    (re.compile(r"^no (.+)$", re.I), r"\1이(가) 없다"),
-]
+
+def translate_inventory_question(msgid: str) -> str | None:
+    if not msgid.endswith("?"):
+        return None
+    core = msgid[:-1].strip()
+
+    m = re.match(r"already have (.+)$", core, re.I)
+    if m:
+        phrase = m.group(1).strip()
+        ko = _ITEM_TAIL_KO.get(phrase.lower(), phrase)
+        return f"{ko}을(를) 이미 가지고 있는가?"
+
+    m = re.match(r"don'?t have (.+)$", core, re.I)
+    if m:
+        phrase = m.group(1).strip()
+        ko = _ITEM_TAIL_KO.get(phrase.lower(), phrase)
+        return f"{ko}이(가) 없는가?"
+
+    return None
 
 
-def translate_tail(tail: str) -> str:
-    s = tail.strip()
-    for rx, rep in TAIL_SUB:
-        m = rx.match(s)
-        if m:
-            return rx.sub(rep, s, count=1)
-    # 일반 규칙
-    s = re.sub(r"\bobj\b", "객체", s, flags=re.I)
-    s = re.sub(r"\bmonster\b", "몬스터", s, flags=re.I)
-    s = re.sub(r"\bnot free\b", "자유 상태가 아니다", s, flags=re.I)
-    s = re.sub(r"\bbad\b", "잘못된", s, flags=re.I)
-    return s
+def translate_one(msgid: str, patch: dict[str, str]) -> str:
+    """한국어가 필요 없으면 msgid(영어)를 그대로 반환."""
+    hit = patch_translate(msgid, patch)
+    if hit is not None:
+        return hit
+    m = msgid.rstrip()
+    if m in FULL:
+        return FULL[m]
+    if m in _SHORT_LITERAL_KO:
+        return _SHORT_LITERAL_KO[m]
+
+    inv = translate_inventory_question(m)
+    if inv is not None:
+        return inv
+
+    return msgid
 
 
-def translate_one(msgid: str) -> str:
-    if msgid in FULL:
-        return FULL[msgid]
-
-    # 함수명: 설명
-    if ": " in msgid and not msgid.startswith("%"):
-        head, tail = msgid.split(": ", 1)
-        # 코드 식별자는 유지
-        return f"{head}: {translate_tail(tail)}"
-
-    # 짧은 구호형
-    if msgid.endswith("?"):
-        core = msgid[:-1].strip()
-        if core.lower().startswith("already have"):
-            return core.replace("already have", "이미 가지고 있다") + "?"
-        if "can't" in core.lower():
-            return translate_tail(core) + "?"
-
-    # 패턴 치환
-    out = msgid
-    out = re.sub(r"\bbad\b", "잘못된", out, flags=re.I)
-    out = re.sub(r"\bcan't\b", "할 수 없다", out, flags=re.I)
-    out = re.sub(r"\bunknown\b", "알 수 없는", out, flags=re.I)
-    out = re.sub(r"\berror\b", "오류", out, flags=re.I)
-    if out == msgid and len(msgid) < 90:
-        return f"〔점검〕 {msgid}"
+def msgids_empty_in_manual(po_path: Path) -> list[str]:
+    po = polib.pofile(str(po_path))
+    out: list[str] = []
+    for entry in po:
+        if entry.obsolete:
+            continue
+        mid = entry.msgid
+        if not mid:
+            continue
+        if entry.msgstr and entry.msgstr.strip():
+            continue
+        out.append(mid)
     return out
 
 
-def main():
-    keys = json.load(open(ROOT / "_keys.json", encoding="utf-8"))
-    missing = [k for k in keys if k not in TR]
-    rem = {k: translate_one(k) for k in missing}
-    out = ROOT / "ko_translations_remainder.json"
-    json.dump(rem, open(out, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
-    print(f"Wrote {len(rem)} entries to {out}")
+def main() -> int:
+    root = Path(__file__).resolve().parent
+    p = argparse.ArgumentParser(
+        description="Generate ko_translations_remainder.json (Korean only where justified; else English msgid)."
+    )
+    p.add_argument(
+        "--manual",
+        type=Path,
+        default=root / "ko_manual.po",
+        help="Source PO with empty msgstr entries to fill (default: ko_manual.po)",
+    )
+    p.add_argument(
+        "--out",
+        type=Path,
+        default=root / "ko_translations_remainder.json",
+        help="Output JSON mapping msgid -> msgstr suggestion",
+    )
+    p.add_argument(
+        "--keys-json",
+        type=Path,
+        default=None,
+        help="Optional JSON array of msgids (legacy). If set, manual empty-scan is skipped.",
+    )
+    p.add_argument(
+        "--refresh-all",
+        action="store_true",
+        help="Rebuild every msgid in output JSON (plus manual empties) not in TR.",
+    )
+    args = p.parse_args()
+
+    tr = load_tr(root)
+    patch = load_optional_patch(root)
+
+    prev: dict[str, str] = {}
+    if args.out.is_file():
+        try:
+            prev = json.loads(args.out.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            prev = {}
+
+    if args.keys_json is not None:
+        if not args.keys_json.is_file():
+            print(f"Keys file not found: {args.keys_json}", file=sys.stderr)
+            return 1
+        keys = json.loads(args.keys_json.read_text(encoding="utf-8"))
+        missing = [k for k in keys if k not in tr]
+    else:
+        if not args.manual.is_file():
+            print(f"Manual PO not found: {args.manual}", file=sys.stderr)
+            return 1
+        keys = msgids_empty_in_manual(args.manual)
+        missing = [k for k in keys if k not in tr]
+
+    if args.refresh_all:
+        todo = set(prev.keys()) | set(missing)
+        todo = {k for k in todo if k not in tr}
+        rem = {k: translate_one(k, patch) for k in sorted(todo)}
+    else:
+        rem = dict(prev)
+        for k in missing:
+            rem[k] = translate_one(k, patch)
+    args.out.write_text(
+        json.dumps(rem, ensure_ascii=False, indent=0) + "\n", encoding="utf-8"
+    )
+    print(f"Wrote {len(rem)} entries to {args.out}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

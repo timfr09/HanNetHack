@@ -6,6 +6,20 @@ a cross-compiler running on one platform (the "host" platform of the build)
 to produce a binary NetHack package that can execute on an entirely different
 platform.
 
+---------------------------------------------------------------------------
+ HanNetHack 포크: 일상적인 "본기 ↔ 본기" 빌드
+---------------------------------------------------------------------------
+Cross-compiling 본문 Part B는 HOST에서 돌리는 도구(makedefs, dlb 등)와
+TARGET용 바이너리를 분리하는 일반 이론입니다. HanNetHack 저장소에서 매일
+쓰는 것은 대부분 HOST = TARGET 인 **네이티브 빌드**입니다.
+
+  - Linux/WSL(Unix 힌트):  `scripts/build-linux-unix.sh`
+  - Windows MinGW(MSYS2 등): `scripts/build-windows-mingw.sh`
+  - Windows MSVC/nmake: `sys/windows/nhsetup.bat` + `src`에서 `nmake`
+
+상세 표와 전제 조건: `doc/build-environments.md`
+---------------------------------------------------------------------------
+
 Part A Contents:
     A1. Why cross-compile?
     A2. Building NetHack 3.6 (before)

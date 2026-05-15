@@ -7,8 +7,9 @@ from or not transferred to your system if you wish.
 
 .:
 (files in top directory)
-.clang-format        Cross-compiling      Files
-Porting              README               azure-pipelines.yml
+.clang-format        Contributing.md      Cross-compiling
+Files                Porting              README
+azure-pipelines.yml
 
 DEVEL:
 (files for people developing changes to NetHack)
@@ -76,11 +77,11 @@ fixes3-2-2.txt     fixes3-2-3.txt     fixes3-3-0.txt     fixes3-3-1.txt
 fixes3-4-0.txt     fixes3-4-1.txt     fixes3-4-2.txt     fixes3-4-3.txt
 fixes3-5-0.txt     fixes3-6-0.txt     fixes3-6-1.txt     fixes3-6-2.txt
 fixes3-6-3.txt     fixes3-6-4.txt     fixes3-6-5.txt     fixes3-6-6.txt
-fixes3-6-7.txt     fixes5-0-0.txt     fixesX-X-X.txt     lua.adoc
-makedefs.6         makedefs.txt       mn.7               mn.txt
-mnh.7              mnh.txt            nethack.6          nethack.txt
-options.txt        recover.6          recover.txt        sound.txt
-tmac.n             tmac.nh            window.txt
+fixes3-6-7.txt     fixes5-0-0.txt     fixes5-0-1.txt     fixesX-X-X.txt
+lua.adoc           makedefs.6         makedefs.txt       mn.7
+mn.txt             mnh.7              mnh.txt            nethack.6
+nethack.txt        options.txt        recover.6          recover.txt
+sound.txt          tmac.n             tmac.nh            window.txt
 
 include:
 (files for X versions)
@@ -130,11 +131,6 @@ wceconf.h
 (files for various Macintosh versions)
 mac-carbon.h  mac-qt.h      mac-term.h    macconf.h     macpopup.h
 mactty.h      macwin.h      mttypriv.h
-
-outdated/sys/amiga:
-(files for Amiga versions - untested for 5.0)
-Build.ami     Install.ami   Makefile.agc  Makefile.ami  NetHack.cnf
-ifchange      mkdmake       txt2iff.c     xpm2iff.c
 
 outdated/sys/atari:
 (files for Atari version - untested for 5.0)
@@ -308,14 +304,14 @@ CHKSUMS      lua          pdcurses     pdcursesmod
 
 sys/amiga:
 (files for Amiga versions)
-README.amiga    amidos.c        amidos.p        amifont.uu
-amifont8.uu     amigst.c        amii.hlp        amimenu.c
-amirip.c        amistack.c      amitty.c        amiwind.c
-amiwind.p       bmp2iff_host.c  clipwin.c       colorwin.c
-grave16.xpm     nethack.cnf     winamenu.c      winami.c
-winami.p        winchar.c       windefs.h       winext.h
-winfuncs.c      winkey.c        winproto.h      winreq.c
-winstr.c        xpm2iff_host.c
+NHinfo.uu        README.amiga     amidos.c         amifont.uu
+amifont8.uu      amii.hlp         amimenu.c        amirip.c
+amistack.c       amiwind.c        bmp2iff_host.c   clipwin.c
+cnf-info.uu      colorwin.c       drawer-info.uu   grave16.xpm
+license-info.uu  nethack.cnf      readme-info.uu   txt-info.uu
+winamenu.c       winami.c         winchar.c        windefs.h
+winext.h         winfuncs.c       winkey.c         winproto.h
+winreq.c         winstr.c         xpm2iff_host.c
 
 sys/libnh:
 (files in top directory)
@@ -406,8 +402,8 @@ NetHack.xcscheme   makedefs.xcscheme  recover.xcscheme
 sys/unix/hints:
 (files for configuring UNIX NetHack versions)
 linux-minimal       linux.500           macOS.500
-macosx.sh           solaris             solaris-playground
-unix
+macosx.sh           netbsd.500          solaris
+solaris-playground  unix
 
 sys/unix/hints/include:
 (files for configuring UNIX NetHack versions)

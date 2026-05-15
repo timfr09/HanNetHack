@@ -4,7 +4,7 @@ if [ ! -d lib ]; then
 mkdir -p lib
 fi
 
-if [ $1 == "lua" ]; then
+if [ "$1" = "lua" ]; then
  if [ -z "$LUA_VERSION" ]; then
  export LUA_VERSION=5.4.8
  export LUASRC=../lib/lua
@@ -13,15 +13,21 @@ if [ $1 == "lua" ]; then
  export CURLLUASRC=http://www.lua.org/ftp/lua-5.4.8.tar.gz
  export CURLLUADST=lua-5.4.8.tar.gz
 
- if [ ! -f lib/lua.h ] ;then
+ # Extracted layout: lib/lua-$(LUA_VERSION)/src/lua.h (matches GNUmakefile LUATOP)
+ _LUA_TOP="lib/lua-${LUA_VERSION}"
+ if [ ! -f "${_LUA_TOP}/src/lua.h" ]; then
 	cd lib
-	curl -L $CURLLUASRC -o $CURLLUADST
-	/c/Windows/System32/tar -xvf $CURLLUADST
+	curl -L "$CURLLUASRC" -o "$CURLLUADST"
+	if [ -x /c/Windows/System32/tar.exe ]; then
+		/c/Windows/System32/tar.exe -xvf "$CURLLUADST"
+	else
+		tar -xvf "$CURLLUADST"
+	fi
 	cd ..
  fi
 fi
 
-if [ $1 == "pdcursesmod" ]; then
+if [ "$1" = "pdcursesmod" ]; then
  export CURLPDCSRC=https://github.com/Bill-Gray/PDCursesMod/archive/refs/tags/v4.4.0.zip
  export CURLPDCDST=pdcursesmod.zip
 

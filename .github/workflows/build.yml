@@ -1,0 +1,156 @@
+# PR/푸시마다 리눅스·윈도우 표준 설정으로 전체 컴파일이 깨지지 않는지 확인합니다.
+# (AGENTS.md·README — Linux: sys/unix/setup.sh hints/linux.500 + make all;
+#  Windows: nhsetup /install-makefile + nmake package)
+
+name: Build
+
+on:
+  push:
+    branches:
+      - HanNetHack-5.0
+      - 'merge/**'
+  pull_request:
+    branches:
+      - HanNetHack-5.0
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  linux-unix-hints:
+    name: Linux (hints/linux.500, make all)
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            build-essential flex bison \
+            libbz2-dev zlib1g-dev \
+            libfl-dev \
+            libncurses-dev \
+            pkg-config \
+            uuid-dev \
+            gettext \
+            python3
+
+      - name: Configure (Unix hints) and build
+        run: |
+          set -euo pipefail
+          cd sys/unix
+          sh setup.sh hints/linux.500
+          cd ../..
+          make fetch-lua
+          make all
+
+      - name: Verify outputs
+        run: |
+          set -euo pipefail
+          test -x src/nethack
+          test -f dat/nhdat
+          test -f dat/locale/ko/nethack.mo
+
+  windows-nmake-package:
+    name: Windows (nhsetup + nmake package)
+    runs-on: windows-latest
+    timeout-minutes: 120
+
+    env:
+      GETTEXT_VER: '1.0'
+      ICONV_VER: '1.19'
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up MSVC (x64)
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: Download gettext / iconv CLI tools
+        shell: pwsh
+        run: |
+          $base   = "https://github.com/mlocati/gettext-iconv-windows/releases/download"
+          $bundle = "v${env:GETTEXT_VER}-v${env:ICONV_VER}"
+          $rt     = "gettext${env:GETTEXT_VER}-iconv${env:ICONV_VER}-shared-64.zip"
+
+          New-Item -ItemType Directory -Force -Path lib\gettext | Out-Null
+
+          Invoke-WebRequest "$base/$bundle/$rt" -OutFile gettext-rt.zip
+          Expand-Archive gettext-rt.zip -DestinationPath lib\gettext -Force
+
+          foreach ($p in @('lib\gettext\bin\msgfmt.exe', 'lib\gettext\bin\msgcat.exe')) {
+            if (-not (Test-Path $p)) {
+              throw "Required tool missing: $p"
+            }
+          }
+
+      - name: Set up src\Makefile (nhsetup)
+        shell: cmd
+        working-directory: sys\windows
+        run: |
+          call nhsetup.bat /install-makefile
+          if not exist ..\..\src\Makefile (
+            echo ERROR: nhsetup did not produce src\Makefile.
+            exit /b 1
+          )
+
+      - name: Compile Korean catalog (ko_manual.po → nethack.mo)
+        shell: pwsh
+        run: |
+          & "lib\gettext\bin\msgfmt.exe" -o "dat\locale\ko\nethack.mo" "po\ko_manual.po"
+          if ($LASTEXITCODE -ne 0) { throw "msgfmt failed" }
+
+      - name: nmake package
+        shell: cmd
+        working-directory: src
+        run: |
+          nmake package
+          if errorlevel 1 exit /b %ERRORLEVEL%
+
+      - name: Verify outputs
+        shell: pwsh
+        run: |
+          $binary = @{
+            Required = @(
+              'binary\NetHack.exe',
+              'binary\NetHackW.exe',
+              'dat\locale\ko\nethack.mo'
+            )
+            Forbidden = @(
+              'binary\intl-8.dll',
+              'binary\iconv-2.dll',
+              'binary\locale'
+            )
+          }
+
+          $missing = @($binary.Required | Where-Object { -not (Test-Path $_) })
+          if ($missing.Count -gt 0) {
+            throw "Missing: $($missing -join ', ')"
+          }
+
+          # nhdat name is versioned (e.g. nhdat500 for 5.0.0); avoid hard-coded 370.
+          $dat = @(Get-ChildItem -LiteralPath binary -Filter 'nhdat*' -File)
+          if ($dat.Count -eq 0) {
+            throw "No nhdat* file found under binary directory."
+          }
+
+          foreach ($bad in $binary.Forbidden) {
+            if (Test-Path $bad) {
+              throw "Unexpected bundled item: $bad"
+            }
+          }

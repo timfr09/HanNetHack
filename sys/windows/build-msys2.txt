@@ -1,5 +1,8 @@
 Building NetHack using MSYS2
 
+HanNetHack: MSYS2 MinGW 반복 빌드를 자동화하려면 저장소 루트에서
+`sh scripts/build-windows-mingw.sh` (전제 조건·주의점은 `doc/build-environments.md`).
+
 Prerequisite Requirements:
 
   o  MSYS2

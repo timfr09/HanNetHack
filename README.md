@@ -70,6 +70,9 @@ The easiest way to try the game is a release build from the [Releases](https://g
 git clone https://github.com/timfr09/HanNetHack.git
 cd HanNetHack
 
+# One-shot Unix build (recommended): cleans stray Win32 GNUmakefile, then hints/linux.500 + make all
+# sh scripts/build-linux-unix.sh
+
 cd sys/unix && sh setup.sh hints/linux.500 && cd ../..
 make fetch-lua          # one-time: download Lua 5.4.8 source
 make all                # do NOT use -j (Lua build can race)
@@ -81,6 +84,8 @@ HACKDIR=~/nh/install/games/lib/nethackdir TERM=xterm-256color ./src/nethack
 ### Build from source — Windows (Visual Studio)
 
 The Windows GUI build (`NetHackW.exe`) and console build (`NetHack.exe`) are supported.
+
+**Build matrix (Unix / MinGW / MSVC) and GNUmakefile gotchas:** [`doc/build-environments.md`](doc/build-environments.md)
 
 Prerequisite fetch steps (Lua, PDCursesMod, etc.) are unchanged; see [`sys/windows/build-hannethack.txt`](sys/windows/build-hannethack.txt).
 

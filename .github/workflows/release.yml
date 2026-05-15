@@ -120,21 +120,24 @@ jobs:
       - name: Verify build output
         shell: pwsh
         run: |
-          # Korean translations now ride inside nhdat (see
-          # src/mo_reader.c), so we only check for the core binaries,
-          # the DLB archive, and the .mo catalog that was fed into
-          # it.  The build should NOT ship libintl/iconv DLLs or a
-          # loose locale\ tree anymore - those are actively verified
-          # to be absent to catch regressions.
+          # Korean translations ride inside nhdat (mo_reader); verify core binaries,
+          # the versioned DLB file (e.g. nhdat500 for 5.0.0), and the .mo that was
+          # fed into the archive. Builds must NOT ship libintl/iconv DLLs or a loose
+          # locale\ tree.
           $required = @(
             'binary\NetHack.exe',
             'binary\NetHackW.exe',
-            'binary\nhdat370',
             'dat\locale\ko\nethack.mo'
           )
-          $missing = $required | Where-Object { -not (Test-Path $_) }
-          if ($missing) {
+          $missing = @($required | Where-Object { -not (Test-Path $_) })
+          if ($missing.Count -gt 0) {
             Write-Error ("Missing files:`n  " + ($missing -join "`n  "))
+            exit 1
+          }
+
+          $dat = @(Get-ChildItem -LiteralPath binary -Filter 'nhdat*' -File)
+          if ($dat.Count -eq 0) {
+            Write-Error "No nhdat* file found under binary directory."
             exit 1
           }
 
@@ -143,13 +146,13 @@ jobs:
             'binary\iconv-2.dll',
             'binary\locale'
           )
-          $leaked = $forbidden | Where-Object { Test-Path $_ }
+          $leaked = @($forbidden | Where-Object { Test-Path $_ })
           if ($leaked) {
             Write-Error ("Unexpected files shipped alongside binary:`n  " + ($leaked -join "`n  "))
             exit 1
           }
 
-          Write-Host "All required files present, no libintl/locale leakage."
+          Write-Host "All required files present, DLB =" $dat.Name "; no libintl/locale leakage."
 
       - name: Compute SHA256 sums
         shell: pwsh
@@ -184,14 +187,14 @@ jobs:
 
             | File | Description |
             |---|---|
-            | `nethack-370-win-x64.zip` | Portable build — unzip anywhere and run `NetHackW.exe` (GUI) or `NetHack.exe` (console). |
-            | `nethack-370-win-x64-debugsymbols.zip` | Debug symbols (`.PDB`). Only needed for crash report analysis — regular players can ignore this. |
+            | `nethack-500-win-x64.zip` | Portable build — unzip anywhere and run `NetHackW.exe` (GUI) or `NetHack.exe` (console). |
+            | `nethack-500-win-x64-debugsymbols.zip` | Debug symbols (`.PDB`). Only needed for crash report analysis — regular players can ignore this. |
             | `SHA256SUMS.txt` | SHA-256 checksums for verifying downloads. |
 
             ### Verifying the download (PowerShell)
 
             ```powershell
-            Get-FileHash nethack-370-win-x64.zip -Algorithm SHA256
+            Get-FileHash nethack-500-win-x64.zip -Algorithm SHA256
             ```
 
             Compare the printed hash with the matching line in `SHA256SUMS.txt`.

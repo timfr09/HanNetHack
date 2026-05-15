@@ -29408,6 +29408,7 @@ msgstr "속성"
 msgid "aureolin"
 msgstr "금빛 노란색"
 
+# S.M. Stirling, Draka 시리즈 등의 허구 화폐
 #: ../src/invent.c:1525
 msgid "auric"
 msgstr "아우릭"
@@ -38162,6 +38163,7 @@ msgstr "선명하다"
 msgid "freshly picked"
 msgstr "갓 딴 것처럼"
 
+# 쥘 베른 세계관 등에서 회자되는 가공 화폐 이름
 #: ../src/invent.c:1531
 msgid "fretzer"
 msgstr "프레처"
@@ -51312,6 +51314,7 @@ msgctxt "glow_color"
 msgid "softly glow"
 msgstr "이다"
 
+# 영화 스페이스볼즈(스타워즈 패러디 등장 화폐)
 #: ../src/invent.c:1538
 msgid "solari"
 msgstr "솔라리"

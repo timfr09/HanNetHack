@@ -1,6 +1,8 @@
 #!/bin/sh
 # Linux/Unix full build: HOST = TARGET (native). See Cross-compiling Part B for theory.
 #
+# All repository *.sh scripts should use LF line endings; CRLF breaks W/Linux sh.
+#
 # Problem: GNU make prefers src/GNUmakefile over Makefile. A leftover Windows
 # MinGW file (gitignored) forces Win32 compile in WSL and breaks (e.g. io.h).
 #

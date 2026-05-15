@@ -1,6 +1,6 @@
 *.[ch] NHSUBST
 *.cpp NHSUBST
-*.sh NHSUBST
+*.sh NHSUBST text eol=lf
 *.pl NHSUBST
 *.md NHSUBST
 Porting NHSUBST

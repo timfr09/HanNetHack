@@ -1,18 +1,17 @@
 #!/bin/sh
 # Windows MinGW-w64 full build (GNU make + gcc). Typical shell: MSYS2 UCRT64 or MINGW64.
 #
-# Cross-compiling 문서 Part B와 달리, 여기서는 HOST=TARGET 인 Windows 네이티브 빌드입니다.
+# Cross-compiling Part B is for HOST!=TARGET; here HOST=TARGET (Windows native).
 #
-# Prerequisites (MSYS2 예시):
+# Prerequisites (MSYS2 example):
 #   pacman -S mingw-w64-ucrt-x86_64-gcc git make curl tar gettext
 #
 # Usage (from repo root, inside MSYS2 MinGW shell):
 #   sh scripts/build-windows-mingw.sh
 #
-# HanNetHack: src/GNUmakefile 이름만 있으면 Linux/WSL에서 Unix make가 깨지므로,
-# 본 스크립트는 sys/windows/GNUmakefile 을 src/GNUmakefile.win 으로 두고
-# `make -f GNUmakefile.win` 으로 빌드합니다. GNUmakefile.depend 은 include 경로상
-# src/GNUmakefile.depend 이어야 합니다.
+# HanNetHack: GNU make prefers plain src/GNUmakefile and breaks Linux/WSL builds.
+# This script uses sys/windows/GNUmakefile as src/GNUmakefile.win and runs
+# make -f GNUmakefile.win. Include file must be src/GNUmakefile.depend .
 
 set -eu
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -40,10 +39,8 @@ command -v make >/dev/null 2>&1 || {
 LUA_VER="${LUA_VERSION:-5.4.8}"
 export LUA_VERSION="$LUA_VER"
 
-# Lua (fetch.sh fixes: correct path guard in repo)
 sh sys/windows/fetch.sh lua
 
-# Korean .mo inside nhdat (GNUmakefile 경로에서도 필요)
 mkdir -p dat/locale/ko
 if command -v msgfmt >/dev/null 2>&1; then
 	msgfmt -o dat/locale/ko/nethack.mo po/ko_manual.po
@@ -51,7 +48,6 @@ else
 	echo "WARNING: msgfmt not found — install gettext; build may fail if .mo missing." >&2
 fi
 
-# Sidecar 이름: Unix top-level make는 GNUmakefile을 자동 선택하지 않도록 비우거나 .win만 둠
 rm -f src/GNUmakefile
 cp -f sys/windows/GNUmakefile src/GNUmakefile.win
 cp -f sys/windows/GNUmakefile.depend src/GNUmakefile.depend

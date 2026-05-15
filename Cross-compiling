@@ -18,6 +18,10 @@ TARGET용 바이너리를 분리하는 일반 이론입니다. HanNetHack 저장
   - Windows MSVC/nmake: `sys/windows/nhsetup.bat` + `src`에서 `nmake`
 
 상세 표와 전제 조건: `doc/build-environments.md`
+
+저장소의 `*.sh` 는 **LF 줄바꿈**(Unix)로 두는 것을 전제로 합니다. Windows에서 CRLF 체크아웃 때문에
+`sh ...` 실행이 `set: Illegal option` 같은 오류를 내면 그 문서의 “문제 해결” 절을 보세요.
+
 ---------------------------------------------------------------------------
 
 Part A Contents:

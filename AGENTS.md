@@ -10,6 +10,8 @@ HanNetHack is a Korean-localized fork of NetHack 5.0 (default branch `HanNetHack
 (`src/GNUmakefile` 우선순위, `GNUmakefile.depend` 이름). 이론적 HOST/TARGET 분리는
 루트 `Cross-compiling` Part B 참고.
 
+**Shell (`*.sh`):** LF 줄바꿈 유지(WSL/Linux에서 `sh` 실패 방지); `.gitattributes`·세부 확인은 같은 문서.
+
 **Linux / WSL (권장 일괄):**
 ```bash
 sh scripts/build-linux-unix.sh

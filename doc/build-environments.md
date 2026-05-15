@@ -42,3 +42,34 @@ pacman -S mingw-w64-ucrt-x86_64-gcc git make curl tar gettext
 
 GitHub Actions `.github/workflows/build.yml`은 Linux(Unix 힌트)와 Windows(MSVC+nmake)
 를 검증합니다. MinGW는 로컬/MSYS2에서 위 스크립트로 확인합니다.
+
+## 문제 해결: `sh` / `set: Illegal option` / `^M`
+
+Windows 또는 “줄바꿈 CRLF로 체크아웃”이 섞인 복사본에서 `scripts/*.sh`, `sys/unix/setup.sh`,
+`sys/windows/fetch.sh`, `po/*.sh` 같은 **POSIX 셸 스크립트**가 깨지는 경우가 있습니다.
+첫 줄 `set`(또는 `set -eu`) 바로 위에 숨어 있는 `\r`(캐리지 리턴) 때문에 `sh`가 옵션을
+잘못 읽거나 `Illegal option - ...` 같은 메시지를 냅니다.
+
+**저장소 쪽 대응:** `.gitattributes`의 `*.sh NHSUBST text eol=lf` 때문에 **새로 clone/checkout**
+되는 `*.sh`는 가능한 한 LF를 유지합니다. 편집기는 저장소 루트 `.editorconfig`도 참고하세요.
+
+**이미 깨져 있는 워킹 트리만 고칠 때** (WSL·Git Bash 등):
+
+```bash
+find . -path './.git' -prune -o -name '*.sh' -type f -print0 \
+  | xargs -0 sed -i 's/\r$//'
+```
+
+(맥/BSD `sed`는 `-i ''` 형태가 필요할 수 있습니다.)
+
+`.gitattributes`를 바꾼 뒤 이미 버전 관리되는 파일의 줄바꿈을 다시 고정하려면:
+
+```bash
+git add --renormalize ':(glob)**/*.sh'
+```
+
+작업 후 `git diff`로 의도치 않은 내용 변경이 없는지 확인합니다.
+
+개발 중에만이라도 Windows에서 줄바꿈을 맞추고 싶다면:
+`git config core.autocrlf false` (이 저장소 한정으로 `git config core.autocrlf false` 또는
+워크트리별 설정) 후 위 `sed`/renormalize 흐름을 쓰는 편이 안전합니다.

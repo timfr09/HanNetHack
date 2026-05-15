@@ -1,0 +1,26 @@
+# Translatable strings extracted from NetHack Lua files.
+# Copyright (C) 2026 HanNetHack Project
+# This file is distributed under the same license as NetHack.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: NetHack 3.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-15 05:47+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: HanNetHack Project\n"
+"Language-Team: Korean\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: dat/Mon-loca.lua:67
+#: dat/castle.lua:151
+#: dat/soko1-1.lua:110
+#: dat/soko1-2.lua:112
+#. text field
+msgid "Elbereth"
+msgstr ""
+

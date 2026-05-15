@@ -16085,8 +16085,8 @@ msgstr "지팡이에서 불꽃이 튀어 나온다."
 
 # 은하수를 여행하는 히치하이커 참조
 #: ../src/invent.c:1530
-msgid "Flanian Pobble Bead"
-msgstr "플라니안 포블 비드"
+msgid "Flainian Pobble Bead"
+msgstr "플레이니언 포블 비드"
 
 #: ../src/mthrowu.c:1471
 msgid "Flapp"

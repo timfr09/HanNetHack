@@ -13425,12 +13425,12 @@ msgid "Alphabet soup: 'the(%s)'."
 msgstr "알파벳 수프: 'the(%s)'."
 
 # ============================================================
-# 허구의 화폐 이름 (환각 효과)
-# SF/판타지 작품에서 가져온 화폐 단위들
+# 허구의 화폐 이름 (환각 시 currency() 문자열)
+# 작품 속 통화 단위: 외래어 표기 + 한국 독자에게 읽히는 차용; 직역 화폐 단위명보다 관용 우선.
 # ============================================================
 #: ../src/invent.c:1523
 msgid "Altarian Dollar"
-msgstr "알타이어 달러"
+msgstr "알테이리언 달러"
 
 #: ../src/pline.c:663
 #, c-format
@@ -16083,10 +16083,10 @@ msgstr "오메가 제일은행"
 msgid "Flames fly from the wand."
 msgstr "지팡이에서 불꽃이 튀어 나온다."
 
-# 은하수를 여행하는 히치하이커 참조
+# 은하수를 여행하는 히치하이커 참조 (POBBLE bead: 장식용 알갱이 단위)
 #: ../src/invent.c:1530
 msgid "Flainian Pobble Bead"
-msgstr "플레이니언 포블 비드"
+msgstr "플레이니언 포블 비즈"
 
 #: ../src/mthrowu.c:1471
 msgid "Flapp"
@@ -16768,7 +16768,7 @@ msgstr "호그파더"
 msgid "Home %d"
 msgstr "집 %d"
 
-# The Moon is a Harsh Mistress 참조
+# R. 헤인라인 SF, The Moon Is a Harsh Mistress 참조
 #: ../src/invent.c:1533
 msgid "Hong Kong Luna Dollar"
 msgstr "홍콩 루나 달러"
@@ -32455,7 +32455,7 @@ msgstr "진사색"
 
 #: ../src/invent.c:1527
 msgid "cirbozoid"
-msgstr "서보조이드"
+msgstr "커보조이드"
 
 #: ../src/obj_descr_i18n.c:99
 msgid "circular"
@@ -33479,7 +33479,7 @@ msgstr "신용카드"
 
 #: ../src/invent.c:1528
 msgid "credit chit"
-msgstr "크레딧 칩"
+msgstr "크레딧 교환권"
 
 #: ../src/shk.c:652
 msgid "credit has been reduced"
@@ -41108,7 +41108,7 @@ msgstr "제국 함대"
 # shk.c - 명령. "by imperious order"
 #: ../src/read.c:2979
 msgid "imperious order"
-msgstr "권위있는 명령"
+msgstr "권위 있는 명령"
 
 # ============================================================
 # PO-only 활용형 수정 — Tobjnam 전용 동사 (사전형→활용형)
@@ -47797,7 +47797,7 @@ msgstr "육척봉"
 msgid "quasit"
 msgstr "콰짓"
 
-# 스타트렉
+# SF(스타 트렉 등)에 나오는 가상 화폐 단위 이름
 #: ../src/invent.c:1536
 msgid "quatloo"
 msgstr "콰틀루"
@@ -50544,10 +50544,10 @@ msgstr "은이 살을 지진다!"
 msgid "silver spear"
 msgstr "은 창"
 
-# The Sims 게임 참조
+# 심스(The Sims) 시리즈 가상 화폐 Simoleon
 #: ../src/invent.c:1537
 msgid "simoleon"
-msgstr "시몰레온"
+msgstr "시뮬레온"
 
 #: ../src/pickup.c:84
 msgid "simple_look(null)"

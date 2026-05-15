@@ -45,6 +45,12 @@ jobs:
             gettext \
             python3
 
+      - name: Compile Korean catalog (ko_manual.po → nethack.mo)
+        run: |
+          set -euo pipefail
+          mkdir -p dat/locale/ko
+          msgfmt -o dat/locale/ko/nethack.mo po/ko_manual.po
+
       - name: Configure (Unix hints) and build
         run: |
           set -euo pipefail

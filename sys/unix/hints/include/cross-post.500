@@ -232,10 +232,8 @@ endif  # CROSS_TO_MIPS
 
 ifdef CROSS_TO_AMIGA
 $(TARGETPFX)amidos.o : ../sys/amiga/amidos.c $(HACK_H)
-$(TARGETPFX)amigst.o : ../sys/amiga/amigst.c $(HACK_H)
 $(TARGETPFX)amirip.o : ../sys/amiga/amirip.c $(HACK_H)
 $(TARGETPFX)amistack.o : ../sys/amiga/amistack.c $(HACK_H)
-$(TARGETPFX)amitty.o : ../sys/amiga/amitty.c $(HACK_H)
 $(TARGETPFX)amiwind.o : ../sys/amiga/amiwind.c \
 		../sys/amiga/amimenu.c $(HACK_H)
 $(TARGETPFX)winami.o : ../sys/amiga/winami.c $(HACK_H)
@@ -309,7 +307,7 @@ UUDECODE = ../util/uudecode
 ../util/uudecode: ../sys/share/uudecode.c
 	$(CC) $(CFLAGS) -o $@ $<
 
-amigapkg: $(AMITILES) ../util/uudecode
+amigapkg: $(GAMEBIN) $(AMITILES) ../util/uudecode
 	mkdir -p $(TARGETPFX)pkg/NetHack/tiles $(TARGETPFX)pkg/NetHack/hack
 	cp $(GAMEBIN) $(TARGETPFX)pkg/NetHack/nethack
 	cp ../dat/nhdat $(TARGETPFX)pkg/NetHack/nhdat
@@ -323,6 +321,7 @@ amigapkg: $(AMITILES) ../util/uudecode
 	( cd $(TARGETPFX)pkg/NetHack && ../../../../util/uudecode ../../../../sys/amiga/amifont.uu )
 	cp $(AMISRC)/nethack.cnf $(TARGETPFX)pkg/NetHack/nethack.cnf
 	cp $(AMISRC)/README.amiga $(TARGETPFX)pkg/NetHack/README.amiga
+	cp $(AMISRC)/amii.hlp $(TARGETPFX)pkg/NetHack/amii.hlp
 	( cd $(TARGETPFX)pkg/NetHack && ../../../../util/uudecode ../../../../sys/amiga/NHinfo.uu )
 	( cd $(TARGETPFX)pkg/NetHack && ../../../../util/uudecode ../../../../sys/amiga/cnf-info.uu )
 	( cd $(TARGETPFX)pkg/NetHack && ../../../../util/uudecode ../../../../sys/amiga/license-info.uu )
@@ -330,8 +329,8 @@ amigapkg: $(AMITILES) ../util/uudecode
 	( cd $(TARGETPFX)pkg/NetHack && ../../../../util/uudecode ../../../../sys/amiga/readme-info.uu )
 	( cd $(TARGETPFX)pkg && ../../../util/uudecode ../../../sys/amiga/drawer-info.uu )
 	touch $(TARGETPFX)pkg/NetHack/record
-	( cd $(TARGETPFX)pkg && zip -9r ../NH$(NHV)AMI.ZIP NetHack NetHack.info )
-	@echo amiga package zip file $(TARGETPFX)NH$(NHV)AMI.ZIP
+	( cd $(TARGETPFX)pkg && zip -9r ../NH$(NHV)AMI$(AMIPKGSEQ).ZIP NetHack NetHack.info )
+	@echo amiga package zip file $(TARGETPFX)NH$(NHV)AMI$(AMIPKGSEQ).ZIP
 endif  # CROSS_TO_AMIGA
 
 ifdef CROSS_SHARED

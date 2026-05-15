@@ -1527,7 +1527,7 @@ static const char *const currencies[] = {
     N_("cirbozoid"),             /* Starslip */
     N_("credit chit"),           /* Deus Ex */
     N_("cubit"),                 /* Battlestar Galactica */
-    N_("Flanian Pobble Bead"),   /* The Hitchhiker's Guide to the Galaxy */
+    N_("Flainian Pobble Bead"),  /* The Hitchhiker's Guide to the Galaxy */
     N_("fretzer"),               /* Jules Verne */
     N_("imperial credit"),       /* Star Wars */
     N_("Hong Kong Luna Dollar"), /* The Moon is a Harsh Mistress */

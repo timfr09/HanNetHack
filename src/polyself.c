@@ -1333,7 +1333,7 @@ drop_weapon(int alone)
                     which = makeplural(which);
 
                 You(_("find you must %s %s %s!"), what,
-                    the_your[!!strncmp(which, "corpse", 6)], which);
+                    _(the_your[!!strncmp(which, "corpse", 6)]), which);
             }
             /* if either uwep or wielded uswapwep is flagged as 'in_use'
                then don't drop it or explicitly update inventory; leave

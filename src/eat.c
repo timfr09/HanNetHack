@@ -1426,8 +1426,6 @@ tin_variety_txt(char *s, int *tinvariety)
 void
 tin_details(struct obj *obj, int mnum, char *buf)
 {
-    char buf2[BUFSZ];
-
     if (!obj || !buf)
         return;
 
@@ -1438,21 +1436,29 @@ tin_details(struct obj *obj, int mnum, char *buf)
     else if (mnum == NON_PM)
         Strcpy(buf, _("empty tin"));
     else {
+        char tinword[BUFSZ];
+        char meatbuf[BUFSZ];
+
+        Strcpy(tinword, buf);
+        if (vegetarian(&mons[mnum]))
+            Sprintf(meatbuf, "%s", mons[mnum].pmnames[NEUTRAL]);
+        else
+            Sprintf(meatbuf, _("%s meat"), mons[mnum].pmnames[NEUTRAL]);
+
         if ((obj->cknown || iflags.override_ID) && obj->spe < 0) {
+            const char *qualtxt = tintxts[r].txt;
+
             if (r == ROTTEN_TIN || r == HOMEMADE_TIN) {
-                /* put these before the word tin */
-                Sprintf(buf2, _("%s %s of "), tintxts[r].txt, buf);
-                Strcpy(buf, buf2);
+                /* put quality before the word tin */
+                Sprintf(buf, C_("tin_with_quality", "%s %s of %s"),
+                        qualtxt, tinword, meatbuf);
             } else {
-                Sprintf(eos(buf), _(" of %s "), tintxts[r].txt);
+                Sprintf(buf, C_("tin_with_quality", "%s of %s %s"),
+                        tinword, qualtxt, meatbuf);
             }
         } else {
-            Strcpy(eos(buf), _(" of "));
+            Sprintf(buf, C_("tin_of_meat", "%s of %s"), tinword, meatbuf);
         }
-        if (vegetarian(&mons[mnum]))
-            Sprintf(eos(buf), "%s", mons[mnum].pmnames[NEUTRAL]);
-        else
-            Sprintf(eos(buf), _("%s meat"), mons[mnum].pmnames[NEUTRAL]);
     }
 }
 

@@ -283,8 +283,13 @@ obj_typename(int otyp)
     if (nn) {
         if (ocl->oc_unique)
             Strcpy(buf, _(actualn)); /* avoid spellbook of Book of the Dead */
-        else
-            Sprintf(eos(buf), _(" of %s"), tr_effect_name(actualn));
+        else {
+            char base[BUFSZ];
+            const char *effect = tr_effect_name(actualn);
+
+            Strcpy(base, buf);
+            Sprintf(buf, C_("item_of_effect", "%s of %s"), base, effect);
+        }
     }
     if (un) /* 3: length of " (" + ")" which will enclose 'dn' */
         xcalled(buf, BUFSZ - (dn ? (int) strlen(dn) + 3 : 0), "", un);
@@ -708,10 +713,11 @@ xname_flags(
         ConcUpdate(buf);
 
         if (typ == FIGURINE && omndx != NON_PM) {
-            char anbuf[10]; /* [4] would be enough: 'a','n',' ','\0' */
+            char base[BUFSZ];
             const char *pm_name = obj_pmname(obj);
 
-            ConcatF2(buf, 0, _(" of %s%s"), just_an(anbuf, pm_name), pm_name);
+            Strcpy(base, buf);
+            Sprintf(buf, C_("figurine_of_monster", "%s of %s"), base, pm_name);
         } else if (is_wet_towel(obj)) {
             if (wizard)
                 ConcatF1(buf, 0, " (%d)", obj->spe);
@@ -864,9 +870,7 @@ xname_flags(
             Strcpy(buf, _("scroll"));
             xcalled(buf, BUFSZ - PREFIX, "", un);
         } else if (ocl->oc_magic) {
-            Strcpy(buf, _("scroll"));
-            Strcat(buf, _(" labeled "));
-            Strcat(buf, _(dn));
+            Sprintf(buf, C_("scroll_item", "scroll labeled %s"), _(dn));
         } else {
             Strcpy(buf, _(dn));
             Strcat(buf, _(" scroll"));

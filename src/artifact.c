@@ -2006,16 +2006,16 @@ invoke_banish(struct obj *obj UNUSED)
     }
 
     if (nvanished) {
-        char subject[] = "demons";
+        /* TRANSLATORS: invoke demon vanish; subject is translated demon(s), not English literal. */
+        const char *subj = (nvanished == 1) ? _("demon") : _("demons");
+        const char *verb = vtense(subj, _("disappear"));
 
-        if (nvanished == 1)
-            *(eos(subject) - 1) = '\0'; /* remove 's' */
-        pline(_("%s %s %s in a cloud of brimstone!"),
-              nstayed ? ((nvanished > nstayed)
-                         ? _("Most of the")
-                         : _("Some of the"))
-              : _("The"),
-              subject, vtense(subject, _("disappear")));
+        if (!nstayed)
+            pline(_("The %s %s in a cloud of brimstone!"), subj, verb);
+        else if (nvanished > nstayed)
+            pline(_("Most of the %s %s in a cloud of brimstone!"), subj, verb);
+        else
+            pline(_("Some of the %s %s in a cloud of brimstone!"), subj, verb);
     }
     return ECMD_TIME;
 }

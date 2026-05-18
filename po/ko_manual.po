@@ -37,6 +37,13 @@
 #    - gold → 금화
 #    - experience → 경험치
 #
+# 5. HanNetHack 구조·플랫폼 (재수정 방지):
+#    - 관사 조각(" the ", "The ", "a ")은 빈 문자열·공백·ZWSP만 쓴다. 문장은 소스에서 통째로.
+#    - "X of Y"는 msgctxt+"%s of %s" 통합(item_of_effect, priest_of_deity 등). " of " 조각 이어붙이지 말 것.
+#    - zap.c 파괴·pray.c 제단·dokick.c 낙기·lock.c 부러짐: 조각("One of ")+이름 조립 대신 C_() 완전 문장.
+#    - MinGW/MSVC: 다인자 포맷은 msgstr에 %1$s… 위치 지정자 필수(scripts/fix-po-positional.py).
+#    - " labeled " 조각: 소원/파서용. 화면 표시는 scroll_item "scroll labeled %s" 사용.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
@@ -1856,7 +1863,7 @@ msgstr "어떤 종류의 괴물이 되겠습니까? [이름을 입력하세요]"
 
 #: ../src/obj_descr_i18n.c:528 ../src/objnam.c:868
 msgid " labeled "
-msgstr " labeled "
+msgstr " (라벨: "
 
 # objnam.c:986 - 캔디바 라벨
 #: ../src/objnam.c:993
@@ -1997,9 +2004,189 @@ msgstr " 아직 지정되지 않음"
 msgid " o -- Out: take things out"
 msgstr " o -- 꺼내기: 물건 꺼내기"
 
-#: ../src/eat.c:1450 ../src/obj_descr_i18n.c:524 ../src/priest.c:364
 msgid " of "
-msgstr " of "
+msgstr " "
+
+# objnam.c - ring/scroll/potion/wand (item_of_effect)
+#: ../src/objnam.c:291
+msgctxt "item_of_effect"
+msgid "%s of %s"
+msgstr "%2$s의 %1$s"
+
+# objnam.c - figurine (figurine_of_monster)
+#: ../src/objnam.c:718
+msgctxt "figurine_of_monster"
+msgid "%s of %s"
+msgstr "%2$s %1$s"
+
+# priest.c - deity title (priest_of_deity)
+# %1$s=직함(대사제 등), %2$s=신 이름 — "몰록 신의 대사제"
+#: ../src/priest.c:373
+msgctxt "priest_of_deity"
+msgid "%s of %s"
+msgstr "%2$s 신의 %1$s"
+
+# priest.c - hallucinated high priest title
+#: ../src/priest.c:325
+msgid "grand poohbah"
+msgstr "위대한 푸바"
+
+# objnam.c - magic scroll with bogus label (scroll_item)
+#: ../src/objnam.c:873
+msgctxt "scroll_item"
+msgid "scroll labeled %s"
+msgstr "라벨이 %s인 두루마리"
+
+# --- zap.c destroy_items (zap_destroy*): %1$s=물건명(yname), %2$s=동사구 ---
+#: ../src/zap.c:5909
+msgctxt "zap_destroy"
+msgid "%1$s %2$s!"
+msgstr "%1$s %2$s!"
+
+#: ../src/zap.c:5911
+msgctxt "zap_destroy_one_of_n"
+msgid "%1$s %2$s!"
+msgstr "%1$s 중 하나가 %2$s!"
+
+#: ../src/zap.c:5913
+msgctxt "zap_destroy_some_of_n"
+msgid "%1$s %2$s!"
+msgstr "%1$s 일부가 %2$s!"
+
+#: ../src/zap.c:5915
+msgctxt "zap_destroy_both"
+msgid "%1$s %2$s!"
+msgstr "%1$s 둘 다 %2$s!"
+
+#: ../src/zap.c:5917
+msgctxt "zap_destroy_all"
+msgid "%1$s %2$s!"
+msgstr "%1$s 모두 %2$s!"
+
+# zap.c unturn_dead corpse revive (revive_one_of_corpse / revive_corpse*)
+# %1$s/%2$s in revive_one_of_corpse: shk_your prefix + corpse name
+#: ../src/zap.c:1183
+msgctxt "revive_one_of_corpse"
+msgid "one of %s%s"
+msgstr "당신의 %2$s 중 하나%1$.0s"
+
+#: ../src/zap.c:1215
+msgctxt "revive_corpse"
+msgid "%s suddenly %s!"
+msgstr "%1$s{이/가} 갑자기 %2$s!"
+
+#: ../src/zap.c:1212
+msgctxt "revive_corpse_as"
+msgid "%s suddenly %s as %s!"
+msgstr "%1$s{이/가} 갑자기 %2$s, %3$s{이/가} 되었다!"
+
+# lock.c - force lock breaks pick (replaces "%sour %s broke!" / One of y)
+#: ../src/lock.c:239
+#, c-format
+msgid "One of your %s broke!"
+msgstr "당신의 %1$s 중 하나가 부러졌다!"
+
+#: ../src/lock.c:241
+#, c-format
+msgid "Your %s broke!"
+msgstr "당신의 %1$s{이/가} 부러졌다!"
+
+# pray.c water_prayer (replaces potion+s+glow+s glue)
+#: ../src/pray.c:1413
+#, c-format
+msgid "The potion on the altar glows %s for a moment."
+msgstr "제단 위 물약이 잠시 %1$s 빛을 낸다."
+
+#: ../src/pray.c:1415
+#, c-format
+msgid "One of the potions on the altar glows %s for a moment."
+msgstr "제단 위 물약 중 하나가 잠시 %1$s 빛을 낸다."
+
+#: ../src/pray.c:1417
+#, c-format
+msgid "Some of the potions on the altar glow %s for a moment."
+msgstr "제단 위 물약 일부가 잠시 %1$s 빛을 낸다."
+
+#: ../src/pray.c:1419
+#, c-format
+msgid "The potions on the altar glow %s for a moment."
+msgstr "제단 위 물약들이 잠시 %1$s 빛을 낸다."
+
+# artifact.c - demon vanish (subject: existing msgid demon/demons)
+#: ../src/artifact.c:2013
+#, c-format
+msgid "The %s %s in a cloud of brimstone!"
+msgstr "%1$s{이/가} 유황 구름 속으로 %2$s!"
+
+#: ../src/artifact.c:2015
+#, c-format
+msgid "Most of the %s %s in a cloud of brimstone!"
+msgstr "대부분의 %1$s{이/가} 유황 구름 속으로 %2$s!"
+
+#: ../src/artifact.c:2017
+#, c-format
+msgid "Some of the %s %s in a cloud of brimstone!"
+msgstr "일부 %1$s{이/가} 유황 구름 속으로 %2$s!"
+
+# dokick.c - gate kick fall (replaces adjacent fragment glue)
+#: ../src/dokick.c:1607
+#, c-format
+msgid "From the impact, the other %s."
+msgstr "충격으로 다른 %1$s."
+
+#: ../src/dokick.c:1609
+#, c-format
+msgid "From the impact, another %s."
+msgstr "충격으로 또 다른 %1$s."
+
+#: ../src/dokick.c:1611
+#, c-format
+msgid "From the impact, other %s."
+msgstr "충격으로 나머지 %1$s."
+
+#: ../src/dokick.c:1614
+#, c-format
+msgid "The adjacent %s %s."
+msgstr "인접한 %1$s{이/가} %2$s."
+
+#: ../src/dokick.c:1616
+#, c-format
+msgid "All the adjacent %s %s."
+msgstr "인접한 %1$s 모두 %2$s."
+
+#: ../src/dokick.c:1618
+#, c-format
+msgid "One of the adjacent objects falls %s."
+msgstr "인접한 물건 중 하나가 %1$s."
+
+#: ../src/dokick.c:1620
+#, c-format
+msgid "Some of the adjacent %s %s."
+msgstr "인접한 %1$s 일부가 %2$s."
+
+# end.c - named ghost (ghost_of)
+#: ../src/end.c:266
+msgctxt "ghost_of"
+msgid "%s of %s"
+msgstr "%2$s의 %1$s"
+
+# eat.c - tin contents (tin_of_meat)
+#: ../src/eat.c:1460
+msgctxt "tin_of_meat"
+msgid "%s of %s"
+msgstr "%2$s %1$s"
+
+# eat.c - tin with quality prefix (tin_with_quality)
+#: ../src/eat.c:1453 ../src/eat.c:1456
+msgctxt "tin_with_quality"
+msgid "%s %s of %s"
+msgstr "%1$s %3$s %2$s"
+
+#: ../src/eat.c:1456
+msgctxt "tin_with_quality"
+msgid "%s of %s %s"
+msgstr "%1$s %2$s %3$s"
+
 
 # objnam.c - 물체 이름
 #: ../src/end.c:264 ../src/objnam.c:287
@@ -2289,7 +2476,7 @@ msgstr "에 갇힌"
 # pager.c - 설명 연결. "the door"
 #: ../src/botl.c:76 ../src/do_name.c:932 ../src/mplayer.c:90
 msgid " the "
-msgstr " the "
+msgstr " "
 
 # suffix - 앞 공백 제거, 뒤 공백 추가
 #: ../src/insight.c:2434
@@ -19288,7 +19475,7 @@ msgstr "옴놈"
 
 #: ../src/zap.c:1181 ../src/zap.c:5905
 msgid "One of "
-msgstr "하나의 "
+msgstr " "
 
 #: ../src/potion.c:2619
 #, c-format
@@ -19308,7 +19495,7 @@ msgstr "중 하나의"
 # 복수일 때 "One of y"+"our"="One of your"
 #: ../src/lock.c:237
 msgid "One of y"
-msgstr "하나의 "
+msgstr ""
 
 # 포맷팅 된 계단 설명
 #: ../src/dungeon.c:2246
@@ -20996,7 +21183,7 @@ msgstr "일부 얼음이 녹아 사라졌다."
 
 #: ../src/zap.c:5906
 msgid "Some of "
-msgstr "하나의 "
+msgstr "일부 "
 
 #: ../src/artifact.c:2016 ../src/dokick.c:1612 ../src/pray.c:1410
 msgid "Some of the"
@@ -21910,7 +22097,7 @@ msgstr "그"
 
 #: ../src/attrib.c:335 ../src/eat.c:2003 ../src/end.c:929
 msgid "The "
-msgstr "The "
+msgstr ""
 
 # [조합 메시지] apply.c - 잠깐 떨림
 # %2$s = 동사 (한국어에서 고정 동사 사용, 억제)
@@ -22761,7 +22948,7 @@ msgstr "이"
 
 #: ../src/eat.c:2003
 msgid "This "
-msgstr "이"
+msgstr "이 "
 
 #: ../src/fountain.c:681
 #, c-format
@@ -26470,7 +26657,7 @@ msgstr "하나의"
 #: ../src/priest.c:347 ../src/role.c:1637 ../src/timeout.c:1563
 #: ../src/timeout.c:1581
 msgid "a "
-msgstr "하나의"
+msgstr " "
 
 #: ../src/invent.c:4189
 #, c-format
@@ -34123,7 +34310,7 @@ msgstr "악마 먹이"
 
 #: ../src/insight.c:1645 ../src/insight.c:1656
 msgid "demons"
-msgstr "악마"
+msgstr "악마들"
 
 #: ../src/obj_descr_i18n.c:167
 msgid "dented pot"
@@ -41138,7 +41325,7 @@ msgstr "안에"
 
 #: ../src/insight.c:541
 msgid "in "
-msgstr "in "
+msgstr " "
 
 #: ../src/topten.c:1061
 #, c-format
@@ -53355,7 +53542,7 @@ msgstr "그"
 #: ../src/insight.c:2958 ../src/objnam.c:1301 ../src/objnam.c:1884
 #: ../src/objnam.c:2245 ../src/priest.c:328 ../src/read.c:2955
 msgid "the "
-msgstr "the "
+msgstr ""
 
 #: ../src/apply.c:3806 ../src/end.c:247
 #, c-format

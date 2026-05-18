@@ -695,7 +695,9 @@ typedef unsigned char uchar;
 #ifdef NHL_SANDBOX
 #ifdef CHRONICLE
     /* LIVELOG (and therefore CHRONICLE)  is needed for --loglua */
+#ifndef LIVELOG
 #define LIVELOG
+#endif
 #endif
 #endif
 
@@ -723,15 +725,16 @@ typedef unsigned char uchar;
 #include "global.h" /* Define everything else according to choices above */
 
 /*
- * On MSVC, vsnprintf/sprintf do not support positional format specifiers
- * like %1$s, %2$s (used in gettext translations to reorder arguments).
- * MSVC provides _vsprintf_p/_sprintf_p which do support them.
+ * MSVC and MinGW-linked UCRT vsnprintf do not implement POSIX positional
+ * format specifiers like %1$s, %2$s (used in gettext translations to reorder
+ * arguments).  Use _vsprintf_p/_sprintf_p on Windows toolchains that provide
+ * them so Korean (and other) msgstr strings format correctly.
  *
  * nh_sprintf_p must use BUFSZ, not an arbitrary large size: Sprintf targets are
  * often char[BUFSZ] or smaller (e.g. tilemap[].name); claiming a 4096-byte
  * buffer causes buffer overruns and FastFail (0xc0000409) under /GS.
  */
-#if defined(ENABLE_NLS) && defined(_MSC_VER)
+#if defined(ENABLE_NLS) && (defined(_MSC_VER) || defined(__MINGW32__))
 #include <stdio.h>
 #include <stdarg.h>
 #define nh_vsnprintf(buf, size, fmt, args) _vsprintf_p((buf), (size), (fmt), (args))

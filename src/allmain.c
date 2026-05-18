@@ -22,15 +22,9 @@ staticfn void regen_pw(int);
 staticfn void regen_hp(int);
 staticfn void interrupt_multi(const char *);
 
-#ifdef CRASHREPORT
-#define USED_FOR_CRASHREPORT
-#else
-#define USED_FOR_CRASHREPORT UNUSED
-#endif
-
 /*ARGSUSED*/
 void
-early_init(int argc USED_FOR_CRASHREPORT, char *argv[] USED_FOR_CRASHREPORT)
+early_init(int argc, char *argv[])
 {
     program_state_init();
 #ifdef CRASHREPORT
@@ -43,6 +37,8 @@ early_init(int argc USED_FOR_CRASHREPORT, char *argv[] USED_FOR_CRASHREPORT)
     sys_early_init();
     runtime_info_init();
     init_i18n();
+    nhUse(argc);
+    nhUse(argv[0]);
 }
 
 staticfn void

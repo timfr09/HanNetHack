@@ -5567,7 +5567,7 @@ staticfn int
 disarm_holdingtrap(struct trap *ttmp)
 {
     struct monst *mtmp;
-    const char *which = the_your[ttmp->madeby_u];
+    const char *which = _(the_your[ttmp->madeby_u]);
     int fails = try_disarm(ttmp, FALSE);
 
     if (fails < 2)
@@ -6137,7 +6137,7 @@ openholdingtrap(
             (void) memset(t, 0, sizeof *t), t->ntrap = NULL;
             /* fallback 't' is now nonNull, t->tseen and t->madeby_u are 0 */
         }
-        which = the_your[(!t || !t->tseen || !t->madeby_u) ? 0 : 1];
+        which = _(the_your[(!t || !t->tseen || !t->madeby_u) ? 0 : 1]);
 
         switch (u.utraptype) {
         case TT_LAVA:
@@ -6172,7 +6172,7 @@ openholdingtrap(
     }
     assert(t != NULL);
     if (!which)
-        which = t->tseen ? the_your[t->madeby_u]
+        which = t->tseen ? _(the_your[t->madeby_u])
                          : strchr(vowels, *trapdescr) ? "an" : "a";
     assert(which != 0);
     if (*which)

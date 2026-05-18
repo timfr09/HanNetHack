@@ -267,7 +267,9 @@ update_topl(const char *bp)
     n0 = utf8_display_width(bp);
     if ((ttyDisplay->toplin == TOPLINE_NEED_MORE || skip)
         && cw->cury == 0
-        && n0 + utf8_display_width(gt.toplines) + 3 < CO - 8 /* room for --More-- */
+        /* room for --More-- */
+        && n0 + utf8_display_width(gt.toplines) + 3 < CO - 8
+        && strlen(bp) + strlen(gt.toplines) + 3 < TBUFSZ
         && (notdied = strncmp(bp, "You die", 7)) != 0) {
         Strcat(gt.toplines, "  ");
         Strcat(gt.toplines, bp);

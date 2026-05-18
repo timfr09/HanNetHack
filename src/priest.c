@@ -315,10 +315,17 @@ priestname(
     if (!mon->ispriest && !mon->isminion) /* should never happen...  */
         return strcpy(pname, what);       /* caller must be confused */
 
-    /* for high priest(ess), "high" (or "grand" for poohbah) will be inserted
-       [this was done near the end but we want 'what' to be updated sooner] */
-    if (mon->ispriest || aligned_priest || high_priest)
-        what = do_hallu ? _("poohbah") : mon->female ? _("priestess") : _("priest");
+    /* for high priest(ess), use a single role name (not "high " + "priest")
+       so translators can supply one natural phrase (e.g. Korean "대사제"). */
+    if (mon->ispriest || aligned_priest || high_priest) {
+        if (high_priest && !do_hallu)
+            what = mon->female ? _("high priestess") : _("high priest");
+        else if (high_priest && do_hallu)
+            what = _("grand poohbah");
+        else
+            what = do_hallu ? _("poohbah")
+                             : mon->female ? _("priestess") : _("priest");
+    }
 
     *pname = '\0';
     if (article != ARTICLE_NONE && (!do_hallu || !bogon_is_pname(whatcode))) {
@@ -348,10 +355,7 @@ priestname(
         Strcat(pname, _("renegade "));
     }
 
-    if (mon->ispriest || aligned_priest) {
-        if (high_priest)
-            Strcat(pname, do_hallu ? _("grand ") : _("high "));
-    } else {
+    if (!(mon->ispriest || aligned_priest)) {
         if (mon->mtame && !strcmpi(what, "Angel"))
             Strcat(pname, _("guardian "));
     }
@@ -361,8 +365,11 @@ priestname(
     if (do_hallu || !high_priest || reveal_high_priest
         || !Is_astralevel(&u.uz)
         || m_next2u(mon) || program_state.gameover) {
-        Strcat(pname, _(" of "));
-        Strcat(pname, halu_gname(mon_aligntyp(mon)));
+        char title[BUFSZ];
+        const char *gname = halu_gname(mon_aligntyp(mon));
+
+        Strcpy(title, pname);
+        Sprintf(pname, C_("priest_of_deity", "%s of %s"), title, gname);
     }
     return pname;
 }

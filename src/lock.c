@@ -234,8 +234,11 @@ forcelock(void)
             /* for a +0 weapon, probability that it survives an unsuccessful
              * attempt to force the lock is (.992)^50 = .67
              */
-            pline(_("%sour %s broke!"), (uwep->quan > 1L) ? _("One of y") : _("Y"),
-                  xname(uwep));
+            /* TRANSLATORS: lock.c force-lock failure; do not split "your" (see decl.c the_your). */
+            if (uwep->quan > 1L)
+                pline(_("One of your %s broke!"), xname(uwep));
+            else
+                pline(_("Your %s broke!"), xname(uwep));
             useup(uwep);
             You(_("give up your attempt to force the lock."));
             exercise(A_DEX, TRUE);
@@ -620,10 +623,15 @@ pick_lock(
                 return PICKLOCK_LEARNED_SOMETHING;
             }
 
-            Sprintf(qbuf, _("%s it%s%s?"),
-                    (door->doormask & D_LOCKED) ? _("Unlock") : _("Lock"),
-                    autounlock ? _(" with ") : "",
-                    autounlock ? yname(pick) : "");
+            if (autounlock) {
+                Sprintf(qbuf,
+                        (door->doormask & D_LOCKED) ? _("Unlock it with %s?")
+                                                    : _("Lock it with %s?"),
+                        yname(pick));
+            } else {
+                Strcpy(qbuf, (door->doormask & D_LOCKED) ? _("Unlock it?")
+                                                         : _("Lock it?"));
+            }
             c = ynq(qbuf);
             if (c != 'y')
                 return PICKLOCK_DID_NOTHING;

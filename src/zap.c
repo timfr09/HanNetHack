@@ -1158,14 +1158,14 @@ unturn_dead(struct monst *mon)
 {
     struct obj *otmp, *otmp2;
     struct monst *mtmp2;
-    char owner[BUFSZ], corpse[BUFSZ];
+    char corpse[BUFSZ];
     unsigned save_norevive;
     boolean youseeit, different_type, is_u = (mon == &gy.youmonst);
     int corpsenm, res = 0;
 
     youseeit = is_u ? TRUE : canseemon(mon);
     otmp2 = is_u ? gi.invent : mon->minvent;
-    owner[0] = corpse[0] = '\0'; /* lint suppression */
+    corpse[0] = '\0'; /* lint suppression */
 
     while ((otmp = otmp2) != 0) {
         otmp2 = otmp->nobj;
@@ -1175,13 +1175,18 @@ unturn_dead(struct monst *mon)
             continue;
         /* save the name; the object is liable to go away */
         if (youseeit) {
-            Strcpy(corpse, corpse_xname(otmp, (const char *) 0, CXN_NORMAL));
-            /* shk_your/Shk_Your produces a value with a trailing space */
+            const char *cnam = corpse_xname(otmp, (const char *) 0, CXN_NORMAL);
+
+            /* TRANSLATORS: undead turning revive; one phrase (no "One of "+"your "+name). */
             if (otmp->quan > 1L) {
-                Strcpy(owner, _("One of "));
-                (void) shk_your(eos(owner), otmp);
-            } else
-                (void) Shk_Your(owner, otmp);
+                char ybuf[40];
+
+                (void) shk_your(ybuf, otmp);
+                Sprintf(corpse, C_("revive_one_of_corpse", "one of %s%s"), ybuf, cnam);
+            } else {
+                (void) Shk_Your(corpse, otmp);
+                Strcat(corpse, cnam);
+            }
         }
         /* for a stack, only one is revived; if is_u, revive() calls
            useup() which calls update_inventory() but not encumber_msg() */
@@ -1202,13 +1207,17 @@ unturn_dead(struct monst *mon)
                    earlier setup because corpse gets used up but need to
                    do the override here after revive() sets 'last_msg'] */
                 Strcpy(corpse, _("It"));
-                owner[0] = '\0';
             }
-            if (youseeit)
-                pline(_("%s%s suddenly %s%s%s!"), owner, corpse,
-                      nonliving(mtmp2->data) ? _("reanimates") : _("comes alive"),
-                      different_type ? _(" as ") : "",
-                      different_type ? an(mon_pmname(mtmp2)) : "");
+            if (youseeit) {
+                const char *verb = nonliving(mtmp2->data) ? _("reanimates")
+                                                          : _("comes alive");
+
+                if (different_type)
+                    pline(C_("revive_corpse_as", "%s suddenly %s as %s!"),
+                          corpse, verb, an(mon_pmname(mtmp2)));
+                else
+                    pline(C_("revive_corpse", "%s suddenly %s!"), corpse, verb);
+            }
             else if (canseemon(mtmp2))
                 pline(_("%s suddenly appears!"), Amonnam(mtmp2));
         } else {
@@ -5901,14 +5910,20 @@ maybe_destroy_item(
             return 0;
 
         if (u_carry || vis) {
-            mult = (cnt == 1L) ? ((quan == 1L) ? "" /* 1 of 1 */
-                                  : _("One of "))      /* 1 of N */
-                   : ((cnt < quan) ? _("Some of ")     /* n of N */
-                      : (quan == 2L) ? _("Both of ")   /* 2 of 2 */
-                        : _("All of "));               /* N of N */
-            pline(_("%s%s %s!"), mult,
-                  (cnt == 1L && quan == 1L) ? Yname2(obj) : yname(obj),
-                  _(destroy_strings[dindx][(cnt > 1L)]));
+            /* TRANSLATORS: destroy_items; one msgctxt per quantity case (no "One of "+yname). */
+            const char *objnm = (cnt == 1L && quan == 1L) ? Yname2(obj) : yname(obj);
+            const char *verb = _(destroy_strings[dindx][(cnt > 1L)]);
+
+            if (cnt == 1L && quan == 1L)
+                pline(C_("zap_destroy", "%1$s %2$s!"), objnm, verb);
+            else if (cnt == 1L)
+                pline(C_("zap_destroy_one_of_n", "%1$s %2$s!"), objnm, verb);
+            else if (cnt < quan)
+                pline(C_("zap_destroy_some_of_n", "%1$s %2$s!"), objnm, verb);
+            else if (quan == 2L)
+                pline(C_("zap_destroy_both", "%1$s %2$s!"), objnm, verb);
+            else
+                pline(C_("zap_destroy_all", "%1$s %2$s!"), objnm, verb);
         }
         if (u_carry) { /* effects that happen only to the player */
             if (osym == POTION_CLASS && dmgtyp != AD_COLD

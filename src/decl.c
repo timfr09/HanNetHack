@@ -47,7 +47,7 @@ const struct c_common_strings c_common_strings =
       N_("You can move again."),
       N_("Never mind."),
       N_("vision quickly clears."),
-      { "the", "your" },
+      { N_("the"), N_("your") },
       { "mon", "you" }
 };
 

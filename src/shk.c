@@ -5865,7 +5865,7 @@ shk_your(char *buf, struct obj *obj)
     else if (chk_pm && the_unique_pm(&mons[obj->corpsenm]))
         Strcpy(buf, _("the")); /* override ownership: "the Oracle's corpse" */
     else if (!shk_owns(buf, obj) && !mon_owns(buf, obj))
-        Strcpy(buf, the_your[carried(obj) ? 1 : 0]);
+        Strcpy(buf, _(the_your[carried(obj) ? 1 : 0]));
     return strcat(buf, " ");
 }
 
@@ -5887,7 +5887,7 @@ shk_owns(char *buf, struct obj *obj)
         && (obj->unpaid || (obj->where == OBJ_FLOOR && !obj->no_charge
                             && costly_spot(x, y)))) {
         shkp = shop_keeper(inside_shop(x, y));
-        return strcpy(buf, shkp ? s_suffix(shkname(shkp)) : the_your[0]);
+        return strcpy(buf, shkp ? s_suffix(shkname(shkp)) : _(the_your[0]));
     }
     return (char *) 0;
 }

@@ -1406,11 +1406,17 @@ water_prayer(boolean bless_water)
             other = TRUE;
     }
     if (!Blind && changed) {
-        pline(_("%s potion%s on the altar glow%s %s for a moment."),
-              ((other && changed > 1L) ? _("Some of the")
-                                       : (other ? _("One of the") : _("The"))),
-              ((other || changed > 1L) ? _("s") : ""), (changed > 1L ? "" : _("s")),
-              (bless_water ? hcolor(NH_LIGHT_BLUE) : hcolor(NH_BLACK)));
+        /* TRANSLATORS: water_prayer; four full sentences (English used "The"+potion+"s"+glow+"s"). */
+        const char *glow = bless_water ? hcolor(NH_LIGHT_BLUE) : hcolor(NH_BLACK);
+
+        if (!other && changed <= 1L)
+            pline(_("The potion on the altar glows %s for a moment."), glow);
+        else if (other && changed <= 1L)
+            pline(_("One of the potions on the altar glows %s for a moment."), glow);
+        else if (other && changed > 1L)
+            pline(_("Some of the potions on the altar glow %s for a moment."), glow);
+        else
+            pline(_("The potions on the altar glow %s for a moment."), glow);
     }
     return (boolean) (changed > 0L);
 }

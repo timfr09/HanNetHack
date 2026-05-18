@@ -1599,18 +1599,26 @@ impact_drop(
     }
 
     if (dct && cansee(x, y)) { /* at least one object fell */
+        /* TRANSLATORS: gate/shop kick; full sentences (old code glued "the "+"other "+verb). */
         const char *what = (dct == 1L ? _("object falls") : _("objects fall"));
 
-        if (missile)
-            pline(_("From the impact, %sother %s."),
-                  dct == oct ? _("the ") : dct == 1L ? _("an") : _(""), what);
-        else if (oct == dct)
-            pline(_("%s adjacent %s %s."), dct == 1L ? _("The") : _("All the"), what,
-                  gg.gate_str);
-        else
-            pline(_("%s adjacent %s %s."),
-                  dct == 1L ? _("One of the") : _("Some of the"),
-                  dct == 1L ? _("objects falls") : what, gg.gate_str);
+        if (missile) {
+            if (dct == oct)
+                pline(_("From the impact, the other %s."), what);
+            else if (dct == 1L)
+                pline(_("From the impact, another %s."), what);
+            else
+                pline(_("From the impact, other %s."), what);
+        } else if (oct == dct) {
+            if (dct == 1L)
+                pline(_("The adjacent %s %s."), what, gg.gate_str);
+            else
+                pline(_("All the adjacent %s %s."), what, gg.gate_str);
+        } else if (dct == 1L) {
+            pline(_("One of the adjacent objects falls %s."), gg.gate_str);
+        } else {
+            pline(_("Some of the adjacent %s %s."), what, gg.gate_str);
+        }
     }
 
     if (costly && shkp && price) {

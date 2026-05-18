@@ -295,7 +295,7 @@ flooreffects(
             } else {
                 pline(_("%s into %s pit."),
                       Tobjnam(obj, C_("Tobjnam", "tumble")),
-                      the_your[t->madeby_u]);
+                      _(the_your[t->madeby_u]));
             }
         } else if (ship_object(obj, x, y, FALSE)) {
             /* ship_object will print an appropriate "the item falls

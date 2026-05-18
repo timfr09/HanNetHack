@@ -262,9 +262,12 @@ done_in_by(struct monst *mtmp, int how)
         Strcpy(buf, m_monnam(mtmp));
 #endif
     } else if (mptr == &mons[PM_GHOST]) {
-        Strcat(buf, _("ghost"));
-        if (has_mgivenname(mtmp))
-            Sprintf(eos(buf), _(" of %s"), MGIVENNAME(mtmp));
+        if (has_mgivenname(mtmp)) {
+            Sprintf(buf, C_("ghost_of", "%s of %s"), _("ghost"),
+                    MGIVENNAME(mtmp));
+        } else {
+            Strcpy(buf, _("ghost"));
+        }
     } else if (mtmp->isshk) {
         const char *shknm = shkname(mtmp),
                    *honorific = shkname_is_pname(mtmp) ? ""

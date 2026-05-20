@@ -7491,7 +7491,7 @@ msgstr "%s{은/는} 금화가 아닌 피를 원한다!"
 #: ../src/shk.c:1924
 #, c-format
 msgid "%s is after your hide, not your gold!"
-msgstr "%s{은/는} 금화가 아닌 네 가죽을 원한다!"
+msgstr "%s{은/는} 금화가 아닌 당신의 가죽을 원한다!"
 
 #: ../src/trap.c:6747
 #, c-format
@@ -13084,7 +13084,7 @@ msgstr "시체가 소생했다."
 
 #: ../src/sit.c:138
 msgid "A curse upon thee for sitting upon this most holy throne!"
-msgstr "이 가장 신성한 왕좌에 앉은 너에게 저주가 내리리라!"
+msgstr "이 가장 신성한 왕좌에 앉은 당신에게 저주가 내리리라!"
 
 #: ../src/lock.c:1124
 msgid "A door appears in the wall!"
@@ -16000,7 +16000,7 @@ msgstr "에테르날리 파미시이스"
 #: ../src/wizard.c:859
 #, c-format
 msgid "Even now thy life force ebbs, %s!"
-msgstr "지금도 네 생명력이 빠져나가고 있다, %s!"
+msgstr "지금도 당신의 생명력이 빠져나가고 있다, %s!"
 
 #: ../src/do_name.c:1566
 msgid "Evereadii Eatibus"
@@ -16739,7 +16739,7 @@ msgstr "멈춰! 체포한다!"
 
 #: ../src/dokick.c:844 ../src/monmove.c:187
 msgid "Halt, thief!  You're under arrest!"
-msgstr "멈춰라, 도둑! 너를 체포한다!"
+msgstr "멈춰라, 도둑! 당신을 체포한다!"
 
 #: ../src/dig.c:1390 ../src/dokick.c:858
 msgid "Halt, vandal!  You're under arrest!"
@@ -16803,7 +16803,7 @@ msgstr "안-녕, 간호사!"
 
 #: ../src/wizard.c:836
 msgid "Hell shall soon claim thy remains,"
-msgstr "지옥이 곧 네 시체를 가져갈 것이다,"
+msgstr "지옥이 곧 당신의 시체를 가져갈 것이다,"
 
 #: ../src/role.c:2177
 msgid "Hello"
@@ -16990,7 +16990,7 @@ msgstr "얼마를 제안하시겠습니까?"
 
 #: ../src/sounds.c:782
 msgid "How nice to hear you, child of the night!"
-msgstr "밤의 아이여, 네 목소리를 들으니 반갑구나!"
+msgstr "밤의 아이여, 당신의 목소리를 들으니 반갑구나!"
 
 #: ../src/trap.c:1912 ../src/trap.c:2010
 msgid "How pitiful.  Isn't that the pits?"
@@ -17115,7 +17115,7 @@ msgstr "내가 이길 수 없다면, 너도 못 이겨!"
 
 #: ../src/wizard.c:836
 msgid "I chortle at thee, thou pathetic"
-msgstr "나는 너를 비웃노라, 이 불쌍한"
+msgstr "나는 당신을 비웃노라, 이 불쌍한"
 
 #: ../src/read.c:167
 msgid "I couldn't afford this T-shirt so I stole it!"
@@ -17145,11 +17145,11 @@ msgstr "죽음의 던전 탐험했는데 얻은 건 이 구린 티셔츠뿐!"
 
 #: ../src/sounds.c:773
 msgid "I find myself growing a little weary."
-msgstr "조금 지쳐가는 것 같다."
+msgstr "조금 지쳐 가는 것 같다."
 
 #: ../src/files.c:2309 ../src/files.c:2329 ../src/files.c:2399
 msgid "I give up.  Sorry."
-msgstr "포기한다. 죄송한다."
+msgstr "포기한다. 미안하다."
 
 #: ../src/sounds.c:1159
 msgid "I hate this job!"
@@ -17196,7 +17196,7 @@ msgstr "%s{이/가} 싫어할 것 같다."
 #: ../src/sounds.c:804
 #, c-format
 msgid "I vant to suck your %s!"
-msgstr "네 %s{을/를} 빨아먹겠다!"
+msgstr "당신의 %s{을/를} 빨아먹겠다!"
 
 #: ../src/sounds.c:807
 #, c-format
@@ -18738,7 +18738,7 @@ msgstr "마인드 플레이어는 최악이야"
 
 #: ../src/mplayer.c:363
 msgid "Mine should be the honor, not yours!"
-msgstr "그 영광은 내 것이어야 해, 네 것이 아니라!"
+msgstr "그 영광은 내 것이어야 해, 당신의 것이 아니라!"
 
 #: ../src/cmd.c:1002
 msgid "Mine's-end"
@@ -19451,7 +19451,7 @@ msgstr "오, 그래! 대가를 치르겠어!"
 
 #: ../src/vault.c:521
 msgid "Oh, yes, of course.  Sorry to have disturbed you."
-msgstr "아, 네, 물론이죠. 방해해서 죄송한다."
+msgstr "아, 네, 물론이죠. 방해해서 미안하다."
 
 #: ../src/pickup.c:2387
 msgid "Ok, now there is loot here."
@@ -20672,7 +20672,7 @@ msgstr "저장 중:"
 #: ../src/wizard.c:860
 #, c-format
 msgid "Savor thy breath, %s, it be thy last!"
-msgstr "네 숨을 음미하라, %s, 그것이 마지막이 될 것이다!"
+msgstr "당신의 숨을 음미하라, %s, 그것이 마지막이 될 것이다!"
 
 #: ../src/muse.c:1942
 msgid "Say cheese!"
@@ -21114,7 +21114,7 @@ msgstr "소코반"
 
 #: ../src/hack.c:1060
 msgid "Sokoban walls resist your ability."
-msgstr "소코반의 벽은 너의 능력에 끄떡도 하지 않는다."
+msgstr "소코반의 벽은 당신의 능력에 끄떡도 하지 않는다."
 
 #: ../src/dungeon.c:3640
 msgid "Solved"
@@ -21976,7 +21976,7 @@ msgstr "그 탄약은 이미 준비되어 있다!"
 
 #: ../src/shk.c:1993
 msgid "That debt is partially offset by your credit."
-msgstr "그 빚은 너의 외상으로 일부 상쇄됐다."
+msgstr "그 빚은 당신의 외상으로 일부 상쇄됐다."
 
 #: ../src/hack.c:1137
 msgid "That door is closed."
@@ -22887,11 +22887,11 @@ msgstr "그것들이 비명을 지른다!"
 #: ../src/sounds.c:1306
 #, c-format
 msgid "They won't hear you %s there."
-msgstr "%s쪽에 있는 자들은 너의 말을 듣지 못할 것이다."
+msgstr "%s쪽에 있는 자들은 당신의 말을 듣지 못할 것이다."
 
 #: ../src/sounds.c:1273
 msgid "They won't hear you out there."
-msgstr "그들은 저 밖에서 당신을 듣지 못할 것이다."
+msgstr "그들은 저 밖에서 당신의 말을 듣지 못할 것이다."
 
 # zap.c - "They're too high up". 대명사 복수
 #: ../src/invent.c:4291
@@ -23315,7 +23315,7 @@ msgstr "나의 영광을 위해 %s하도록 선택되었노라!"
 # priest.c - 저주. NPC 대화
 #: ../src/wizard.c:840
 msgid "Thou art doomed,"
-msgstr "너는 저주받았다,"
+msgstr "당신은 저주받았다,"
 
 #: ../src/teleport.c:1338
 msgid "Thou art early, but we'll admit thee."
@@ -23350,11 +23350,11 @@ msgstr "나에게 합당한 자였도다!"
 # pray.c divine gift messages
 #: ../src/pray.c:1319
 msgid "Thou hast pleased me with thy progress,"
-msgstr "네 진보에 기뻐하노라,"
+msgstr "당신의 진보에 기뻐하노라,"
 
 #: ../src/pray.c:745
 msgid "Thou must relearn thy lessons!"
-msgstr "너의 교훈을 다시 배워야 하리라!"
+msgstr "당신의 교훈을 다시 배워야 하리라!"
 
 #: ../src/pray.c:857
 msgid "Thou shalt be my Envoy of Balance!"
@@ -23370,11 +23370,11 @@ msgstr "불신자여, 대가를 치르리라!"
 
 #: ../src/priest.c:657
 msgid "Thou shalt regret thine action!"
-msgstr "너의 행동을 후회하게 될 것이다!"
+msgstr "당신의 행동을 후회하게 될 것이다!"
 
 #: ../src/wizard.c:839
 msgid "Thou shalt repent of thy cunning,"
-msgstr "너의 행동을 후회하게 될 것이다!"
+msgstr "당신의 행동을 후회하게 될 것이다!"
 
 #: ../src/priest.c:587
 msgid "Thou wouldst have words, eh?  I'll give thee a word or two!"
@@ -23429,7 +23429,7 @@ msgstr "충돌에 대한 갈망이 이루어지리라!"
 
 #: ../src/wizard.c:840
 msgid "Thy fate is sealed,"
-msgstr "네 운명은 정해졌다,"
+msgstr "당신의 운명은 정해졌다,"
 
 #: ../src/priest.c:705 ../src/priest.c:709
 msgid "Thy selfless generosity is deeply appreciated."
@@ -24096,55 +24096,55 @@ msgstr "이 캔으로 아이템에 기름칠하기"
 
 #: ../src/polyself.c:1059
 msgid "Use the command #monster to emit a mental blast."
-msgstr "정신 폭발을 방출하려면 #monster 명령을 사용해라."
+msgstr "정신 폭발을 방출하려면 #monster 명령을 사용하세요."
 
 #: ../src/polyself.c:1045
 msgid "Use the command #monster to gaze at monsters."
-msgstr "몬스터를 응시하려면 #monster 명령을 사용해라."
+msgstr "몬스터를 응시하려면 #monster 명령을 사용하세요."
 
 #: ../src/polyself.c:1047
 msgid "Use the command #monster to hide or to spin a web."
-msgstr "숨거나 거미줄을 치려면 #monster 명령을 사용해라."
+msgstr "숨거나 거미줄을 치려면 #monster 명령을 사용하세요."
 
 #: ../src/polyself.c:1049
 msgid "Use the command #monster to hide."
-msgstr "숨으려면 #monster 명령을 사용해라."
+msgstr "숨으려면 #monster 명령을 사용하세요."
 
 #: ../src/polyself.c:1055
 msgid "Use the command #monster to multiply in a fountain."
-msgstr "분수에서 번식하려면 #monster 명령을 사용해라."
+msgstr "분수에서 번식하려면 #monster 명령을 사용하세요."
 
 #: ../src/polyself.c:1043
 msgid "Use the command #monster to remove an iron ball."
-msgstr "쇠구슬을 제거하려면 #monster 명령을 사용해라."
+msgstr "쇠구슬을 제거하려면 #monster 명령을 사용하세요."
 
 #: ../src/polyself.c:1051
 msgid "Use the command #monster to spin a web."
-msgstr "거미줄을 치려면 #monster 명령을 사용해라."
+msgstr "거미줄을 치려면 #monster 명령을 사용하세요."
 
 #: ../src/polyself.c:1041
 msgid "Use the command #monster to spit venom."
-msgstr "독을 뱉으려면 #monster 명령을 사용해라."
+msgstr "독을 뱉으려면 #monster 명령을 사용하세요."
 
 #: ../src/polyself.c:1053
 msgid "Use the command #monster to summon help."
-msgstr "도움을 소환하려면 #monster 명령을 사용해라."
+msgstr "도움을 소환하려면 #monster 명령을 사용하세요."
 
 #: ../src/polyself.c:1039
 msgid "Use the command #monster to use your breath weapon."
-msgstr "브레스 공격을 사용하려면 #monster 명령을 사용해라."
+msgstr "브레스 공격을 사용하려면 #monster 명령을 사용하세요."
 
 #: ../src/polyself.c:1057
 msgid "Use the command #monster to use your horn."
-msgstr "뿔을 사용하려면 #monster 명령을 사용해라."
+msgstr "뿔을 사용하려면 #monster 명령을 사용하세요."
 
 #: ../src/polyself.c:1070
 msgid "Use the command #sit to lay an egg."
-msgstr "알을 낳으려면 #sit 명령을 사용해라."
+msgstr "알을 낳으려면 #sit 명령을 사용하세요."
 
 #: ../src/polyself.c:1069
 msgid "Use the command #sit to spawn in the water."
-msgstr "물에서 산란하려면 #sit 명령을 사용해라."
+msgstr "물에서 산란하려면 #sit 명령을 사용하세요."
 
 #: ../src/iactions.c:333
 msgid "Use this kit to tin a corpse"
@@ -24241,7 +24241,7 @@ msgstr "독"
 
 #: ../src/wizard.c:841
 msgid "Verily, thou shalt be one dead"
-msgstr "진실로, 너는 하나의 죽은"
+msgstr "진실로, 당신은 하나의 죽은"
 
 #: ../src/version.c:402
 #, c-format
@@ -25819,7 +25819,7 @@ msgstr "%s에게 %ld %s{을/를} 빚졌다."
 #: ../src/shk.c:6082
 #, c-format
 msgid "You owe me %ld %s for my %s that you %s with your%s"
-msgstr "네%5$s{으로/로} 내 %3$s{을/를} %4$s한 대가로 %1$ld %2$s{을/를} 빚졌다"
+msgstr "당신의%5$s{으로/로} 내 %3$s{을/를} %4$s한 대가로 %1$ld %2$s{을/를} 빚졌다"
 
 #: ../src/dig.c:1220
 msgid "You pull free."
@@ -28172,11 +28172,11 @@ msgstr "%s{과/와} 함께 순간이동한다."
 
 #: ../src/mcastu.c:77
 msgid "and curses at your displaced image"
-msgstr "네 허상을 향해 저주한다"
+msgstr "당신의 허상을 향해 저주한다"
 
 #: ../src/mcastu.c:75
 msgid "and curses in your general direction"
-msgstr "대충 네 방향으로 저주한다"
+msgstr "당신 쪽을 향해 저주한다"
 
 #: ../src/timeout.c:1310
 msgid "and nearly fall"
@@ -29492,7 +29492,7 @@ msgstr "준비됨"
 
 #: ../src/mcastu.c:79
 msgid "at you, then curses"
-msgstr "너를 보고 저주한다"
+msgstr "당신을 보고 저주한다"
 
 #: ../src/hack.c:729
 #, c-format
@@ -42763,7 +42763,7 @@ msgstr "사다리"
 
 #: ../src/dig.c:276
 msgid "ladder resists your effort."
-msgstr "사다리는 너의 노력에 끄떡도 하지 않는다."
+msgstr "사다리는 당신의 노력에 끄떡도 하지 않는다."
 
 #: ../src/dokick.c:402
 msgid "lady"
@@ -53807,7 +53807,7 @@ msgstr "이름을 붙일 몬스터"
 
 #: ../src/trap.c:4403
 msgid "the moon howling at you."
-msgstr "달이 너를 향해 울부짖는 소리가 들린다."
+msgstr "달이 당신을 향해 울부짖는 듯한 소리가 들린다."
 
 #: ../src/read.c:2863
 msgid "the name of a type of monster, or '?'"
@@ -58228,7 +58228,7 @@ msgstr "%s{이/가} 기괴한 변이를 겪었다."
 
 #, c-format
 msgid "%s!  Your silver sheen does not frighten me!"
-msgstr "%s!  네 은빛 광채는 나를 두렵게 하지 못한다!"
+msgstr "%s!  당신의 은빛 광채는 나를 두렵게 하지 못한다!"
 
 #, c-format
 msgid "%slike the prodigal son."
@@ -58469,10 +58469,10 @@ msgid "Unique items"
 msgstr "고유 물품"
 
 msgid "Use the command #monster to change shape."
-msgstr "변신하려면 #monster 명령을 사용해라."
+msgstr "변신하려면 #monster 명령을 사용하세요."
 
 msgid "Use the command #monster to shriek."
-msgstr "비명을 지르려면 #monster 명령을 사용해라."
+msgstr "비명을 지르려면 #monster 명령을 사용하세요."
 
 msgid "VE FORBRYDERNE"
 msgstr "VE FORBRYDERNE"

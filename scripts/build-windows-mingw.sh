@@ -47,6 +47,7 @@ if command -v msgfmt >/dev/null 2>&1; then
 else
 	echo "WARNING: msgfmt not found — install gettext; build may fail if .mo missing." >&2
 fi
+sh scripts/build-locale-rnddata.sh
 
 rm -f src/GNUmakefile
 cp -f sys/windows/GNUmakefile src/GNUmakefile.win

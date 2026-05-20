@@ -2027,7 +2027,7 @@ shade_miss(
     if (verbose
         && ((youdef || cansee(mdef->mx, mdef->my) || sensemon(mdef))
             || (magr == &gy.youmonst && m_next2u(mdef)))) {
-        static const char harmlessly_thru[] = " harmlessly through ";
+        const char *harmlessly_thru = _(" harmlessly through ");
 
         what = (!obj || shade_aware(obj)) ? _("attack") : cxname(obj);
         target = youdef ? _("you") : mon_nam(mdef);

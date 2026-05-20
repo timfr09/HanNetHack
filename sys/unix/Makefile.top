@@ -95,11 +95,12 @@ DATHELP = help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp
 # Korean message catalog shipped inside nhdat.  src/mo_reader.c
 # looks this up through dlb_fopen() as "locale/ko/nethack.mo".
 LOCALE_KO_MO = dat/locale/ko/nethack.mo
+LOCALE_KO_RND = dat/locale/ko/epitaph dat/locale/ko/engrave dat/locale/ko/bogusmon
 # Korean localized files (in locale/ko/ directory)
 LOCALE_KO = locale/ko/nethack.mo \
 	locale/ko/help locale/ko/hh locale/ko/cmdhelp locale/ko/keyhelp \
 	locale/ko/history locale/ko/opthelp locale/ko/optmenu locale/ko/usagehlp locale/ko/wizhelp \
-	locale/ko/bogusmon.txt locale/ko/engrave.txt locale/ko/epitaph.txt \
+	locale/ko/bogusmon locale/ko/engrave locale/ko/epitaph \
 	locale/ko/oracles.txt locale/ko/rumors.tru locale/ko/rumors.fal \
 	locale/ko/quest.lua locale/ko/themerms.lua locale/ko/tut-1.lua locale/ko/tut-2.lua \
 	locale/ko/air.lua locale/ko/astral.lua locale/ko/earth.lua locale/ko/water.lua \
@@ -141,7 +142,9 @@ LUA2NHTOP = ../../..
 LUABASELIB = liblua-$(LUA_VERSION).a
 TOPLUALIB = lib/lua/$(LUABASELIB)
 
-ALLDEP = $(PRECHECK) $(GAME) recover Guidebook $(VARDAT) spec_levs check-dlb $(LOCALE_KO_MO)
+# LOCALE_KO_* must precede check-dlb: dlb packs locale/ko/bogusmon et al.
+ALLDEP = $(PRECHECK) $(GAME) recover Guidebook $(VARDAT) spec_levs \
+	$(LOCALE_KO_MO) $(LOCALE_KO_RND) check-dlb
 
 # first target is also the default target for 'make' without any arguments
 all:    $(ALLDEP)
@@ -154,6 +157,10 @@ all:    $(ALLDEP)
 # nhdat and loaded at runtime by src/mo_reader.c.
 $(LOCALE_KO_MO): po/ko_manual.po
 	( cd po && $(MAKE) compile )
+
+$(LOCALE_KO_RND): dat/locale/ko/epitaph.txt dat/locale/ko/engrave.txt \
+		dat/locale/ko/bogusmon.txt util/makedefs
+	sh scripts/build-locale-rnddata.sh
 
 $(GAME): lua_support
 	( cd src ; $(MAKE) LUA_VERSION=$(LUA_VERSION) $(GAME) )
@@ -289,7 +296,7 @@ GEM_RSC.RSC:
 title.img:
 	( cd dat ; $(MAKE) title.img )
 
-check-dlb: options
+check-dlb: options $(LOCALE_KO_MO) $(LOCALE_KO_RND)
 	@if egrep -s librarian dat/options ; then $(MAKE) dlb ; else true ; fi
 
 dlb:

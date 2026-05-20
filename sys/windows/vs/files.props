@@ -272,9 +272,9 @@
     <KoDlbLine Include="locale/ko/usagehlp" Condition="Exists('$(DatDir)locale\ko\usagehlp')" />
     <KoDlbLine Include="locale/ko/wizhelp" Condition="Exists('$(DatDir)locale\ko\wizhelp')" />
     <KoDlbLine Include="locale/ko/data.base" Condition="Exists('$(DatDir)locale\ko\data.base')" />
-    <KoDlbLine Include="locale/ko/bogusmon.txt" Condition="Exists('$(DatDir)locale\ko\bogusmon.txt')" />
-    <KoDlbLine Include="locale/ko/engrave.txt" Condition="Exists('$(DatDir)locale\ko\engrave.txt')" />
-    <KoDlbLine Include="locale/ko/epitaph.txt" Condition="Exists('$(DatDir)locale\ko\epitaph.txt')" />
+    <KoDlbLine Include="locale/ko/bogusmon" Condition="Exists('$(DatDir)locale\ko\bogusmon')" />
+    <KoDlbLine Include="locale/ko/engrave" Condition="Exists('$(DatDir)locale\ko\engrave')" />
+    <KoDlbLine Include="locale/ko/epitaph" Condition="Exists('$(DatDir)locale\ko\epitaph')" />
     <KoDlbLine Include="locale/ko/oracles.txt" Condition="Exists('$(DatDir)locale\ko\oracles.txt')" />
     <KoDlbLine Include="locale/ko/rumors.tru" Condition="Exists('$(DatDir)locale\ko\rumors.tru')" />
     <KoDlbLine Include="locale/ko/rumors.fal" Condition="Exists('$(DatDir)locale\ko\rumors.fal')" />

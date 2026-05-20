@@ -21,6 +21,7 @@ sh setup.sh hints/linux.500
 cd "$ROOT"
 
 make fetch-lua
+sh scripts/build-locale-rnddata.sh
 make all
 
 echo "Done: ./src/nethack (install optional: make install)."

@@ -1243,7 +1243,7 @@ msgstr " 해당 종류의 각 물건에 y/n 묻기]"
 
 #: ../src/mthrowu.c:310
 msgid " at "
-msgstr " ~에서 "
+msgstr "에게 "
 
 # mon.c - 공격 위치. "attacks at a spot near you"
 #: ../src/mcastu.c:223
@@ -3485,7 +3485,7 @@ msgstr "%1$s %2$s{이/가}%4$s %3$s!"
 #: ../src/mthrowu.c:308
 #, c-format
 msgid "%s %s %s%s%s!"
-msgstr "%s %s %s%s%s!"
+msgstr "%1$s{이/가} %3$s{을/를}%5$s%4$s %2$s!"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -3493,7 +3493,7 @@ msgstr "%s %s %s%s%s!"
 #: ../src/uhitm.c:2036
 #, c-format
 msgid "%s %s %s%s%s."
-msgstr "%s %s %s%s%s."
+msgstr "%1$s %2$s %3$.0s%4$.0s%5$s{을/를} 해치지 않고 통과했다."
 
 # [리뷰 완료] mkobj.c:1728 — buf+otense(shine)+much+brighter, 빛 세기 변화
 # %1$s = buf (광원 이름), %2$s = otense(shine) (억제)
@@ -4747,7 +4747,7 @@ msgstr "%6$s %1$s{이/가} %2$s%5$s%4$s%3$s."
 #: ../src/uhitm.c:2039
 #, c-format
 msgid "%s %s%s%s."
-msgstr "%s %s%s%s."
+msgstr "%1$s{이/가} %2$.0s%3$.0s%4$s{을/를} 해치지 않고 통과했다."
 
 # ============================================================
 # 어순 조정이 필요한 문장 패턴
@@ -7125,7 +7125,7 @@ msgstr "여기의 %s{은/는} 너무 단단해서 팔 수 없다."
 #: ../src/fountain.c:49 ../src/uhitm.c:4223
 #, c-format
 msgid "%s hissing!"
-msgstr "%s 쉭 소리!"
+msgstr "%s{이/가} 쉭쉭 거리는 소리를 낸다!"
 
 #: ../src/mthrowu.c:936
 #, c-format
@@ -11730,7 +11730,7 @@ msgstr "%s:"
 #: ../src/engrave.c:396
 #, c-format
 msgid "%s: \"%s\"%s"
-msgstr "%s: \"%s\"%s"
+msgstr "%1$s \"%2$s\"%3$s"
 
 #: ../src/invent.c:4930
 #, c-format
@@ -12400,7 +12400,7 @@ msgstr "**무료 완전 회복 물약**"
 
 #: ../src/sounds.c:150
 msgid "*a strident plea for donations."
-msgstr "*기부를 간절히 요청하는 소리."
+msgstr "*기부를 간절히 요청하는 목소리가 들린다."
 
 #: ../src/sounds.c:148
 #, c-format
@@ -12411,7 +12411,7 @@ msgstr "*누군가가 %s에게 간청하고 있다."
 #: ../src/sounds.c:148
 #, c-format
 msgid "*someone praising %s."
-msgstr "*누군가 %s{을/를} 찬양하는 소리."
+msgstr "*누군가 %s{을/를} 찬양하는 소리가 들린다."
 
 #: ../src/cmd.c:2934
 msgid "+<direction> will run in specified direction until you encounter"
@@ -26755,7 +26755,7 @@ msgstr "공기 방울"
 
 #: ../src/muse.c:846
 msgid "a bugle playing reveille!"
-msgstr "기상 나팔 소리!"
+msgstr "기상 나팔 소리가 울린다!"
 
 #: ../src/timeout.c:1456
 msgid "a burning potion of oil go out."
@@ -26786,15 +26786,15 @@ msgstr "변화가 다가오고 있다."
 
 #: ../src/muse.c:301
 msgid "a chugging sound."
-msgstr "쿵쿵거리는 소리."
+msgstr "쿵쿵거리는 소리가 들린다."
 
 #: ../src/read.c:2379
 msgid "a clanging sound."
-msgstr "쨍그랑 소리."
+msgstr "쨍그랑 울리는 소리가 들린다."
 
 #: ../src/worn.c:1294 ../src/worn.c:1306
 msgid "a clank."
-msgstr "쨍그랑 소리."
+msgstr "쨍그랑 소리가 난다."
 
 #: ../src/pickup.c:3593 ../src/trap.c:5928
 msgid "a container"
@@ -26803,35 +26803,35 @@ msgstr "용기"
 #: ../src/uhitm.c:4215
 #, c-format
 msgid "a cough from %s!"
-msgstr "%s에게서 기침 소리!"
+msgstr "%s에게서 기침 소리가 난다!"
 
 #: ../src/mthrowu.c:1122
 msgid "a cough."
-msgstr "기침 소리."
+msgstr "기침 소리가 들린다."
 
 #: ../src/worn.c:1210
 msgid "a cracking sound."
-msgstr "금이 가는 소리."
+msgstr "금이 가는 소리가 들린다."
 
 #: ../src/zap.c:5292
 msgid "a crackling sound."
-msgstr "딱딱거리는 소리."
+msgstr "딱딱거리는 소리가 난다."
 
 #: ../src/lock.c:1245
 msgid "a crashing sound."
-msgstr "쾅 하는 소리."
+msgstr "쾅 하고 부딪히는 소리가 들린다."
 
 #: ../src/zap.c:2286 ../src/zap.c:2296
 msgid "a crumbling sound."
-msgstr "부서지는 소리."
+msgstr "부서지는 소리가 들린다."
 
 #: ../src/mon.c:1490
 msgid "a crunching sound."
-msgstr "바삭거리는 소리."
+msgstr "바삭거리는 소리가 난다."
 
 #: ../src/dbridge.c:625 ../src/dbridge.c:1006
 msgid "a crushing sound."
-msgstr "짓눌리는 소리."
+msgstr "짓눌리는 소리가 들린다."
 
 #: ../src/trap.c:4354
 msgid "a deafening roar!"
@@ -26839,7 +26839,7 @@ msgstr "귀를 먹먹하게 하는 포효!"
 
 #: ../src/zap.c:5427
 msgid "a deep cracking sound."
-msgstr "금이 가는 소리."
+msgstr "금이 가는 소리가 들린다."
 
 #: ../src/zap.c:2380
 msgid "a defibrillator."
@@ -26855,7 +26855,7 @@ msgstr "분해 폭발"
 
 #: ../src/vault.c:724
 msgid "a distant chant."
-msgstr "먼 곳에서 들리는 노랫소리."
+msgstr "먼 곳에서 노랫소리가 들린다."
 
 #: ../src/pray.c:1242
 msgid "a divine music..."
@@ -26872,7 +26872,7 @@ msgstr "문"
 # trap.c - 문 파괴음. 효과음
 #: ../src/mon.c:2926
 msgid "a door being smashed"
-msgstr "문이 부서지는 소리"
+msgstr "문이 부서지는 소리가 난다"
 
 # monmove.c — 한국어 KO 패스스루: You_see/You_hear 접두 없음 → 문장 완결
 #: ../src/monmove.c:1613
@@ -26888,7 +26888,7 @@ msgstr "문이 쾅 열리는 소리가 들렸다."
 # trap.c - 문 폭발음. 효과음
 #: ../src/mon.c:2927
 msgid "a door exploding"
-msgstr "문이 폭발하는 소리"
+msgstr "문이 폭발하는 소리가 난다"
 
 #: ../src/monmove.c:1588
 msgctxt "You_see"
@@ -26953,7 +26953,7 @@ msgstr "도개교가 %s 올라가는 것을!"
 
 #: ../src/mthrowu.c:1044
 msgid "a dry rattle nearby."
-msgstr "근처에서 메마른 덜컥거림."
+msgstr "근처에서 메마른 덜컥거리는 소리가 들린다."
 
 #: ../src/spell.c:258
 msgid "a faint chime..."
@@ -26961,11 +26961,11 @@ msgstr "희미한 종소리..."
 
 #: ../src/mkobj.c:3841
 msgid "a faint sloshing sound."
-msgstr "희미한 출렁거리는 소리."
+msgstr "희미한 출렁거리는 소리가 들린다."
 
 #: ../src/apply.c:389
 msgid "a faint typing noise."
-msgstr "희미한 타이핑 소리."
+msgstr "희미한 타이핑 소리가 들린다."
 
 #: ../src/invent.c:4283
 msgid "a few"
@@ -26995,11 +26995,11 @@ msgstr "경비병의"
 
 #: ../src/sounds.c:223
 msgid "a gurgling noise."
-msgstr "꼴꼴거리는 소리."
+msgstr "꼴꼴거리는 소리가 들린다."
 
 #: ../src/dokick.c:1220
 msgid "a gushing sound."
-msgstr "콸콸 흐르는 소리."
+msgstr "콸콸 흐르는 소리가 난다."
 
 #: ../src/detect.c:1864
 msgid "a hidden monster"
@@ -27007,7 +27007,7 @@ msgstr "괴물"
 
 #: ../src/mthrowu.c:1458
 msgid "a hissing noise."
-msgstr "쉬익거리는 소리."
+msgstr "쉬익거리는 소리가 들린다."
 
 #: ../src/hack.c:696
 msgid "a hole in the"
@@ -27024,7 +27024,7 @@ msgstr "텅 빈 소리가 들린다. 비밀 %s임에 틀림없다!"
 #: ../src/muse.c:208
 #, c-format
 msgid "a horn being played %s."
-msgstr "%s에서 뿔피리 연주 소리."
+msgstr "%s에서 뿔피리를 연주하는 소리가 들린다."
 
 #: ../src/music.c:565
 msgid "a jarring vibration."
@@ -27073,11 +27073,11 @@ msgstr "큰 *첨벙*!"
 
 #: ../src/sounds.c:195
 msgid "a loud ZOT!"
-msgstr "큰 딱 소리!"
+msgstr "큰 ZOT 소리가 울린다!"
 
 #: ../src/trap.c:1216
 msgid "a loud click!"
-msgstr "큰 찰칵 소리!"
+msgstr "크게 찰칵 하는 소리가 났다!"
 
 #: ../src/trap.c:3536
 #, c-format
@@ -27086,11 +27086,11 @@ msgstr "큰 충돌음%s!"
 
 #: ../src/fountain.c:114
 msgid "a loud pop."
-msgstr "펑 하는 큰 소리."
+msgstr "펑 하고 터지는 큰 소리가 났다."
 
 #: ../src/mthrowu.c:947
 msgid "a loud snap!"
-msgstr "큰 딱 소리!"
+msgstr "크게 딱 하는 소리가 났다!"
 
 #: ../src/dokick.c:1147 ../src/sounds.c:72
 msgid "a low buzzing."
@@ -27098,11 +27098,11 @@ msgstr "낮은 윙윙거림."
 
 #: ../src/trap.c:4375
 msgid "a low hum."
-msgstr "낮은 윙윙거리는 소리."
+msgstr "낮게 윙윙거리는 소리가 들린다."
 
 #: ../src/mon.c:1683
 msgid "a masticating sound."
-msgstr "씹는 소리."
+msgstr "쩝쩝 씹는 소리가 들린다."
 
 #: ../src/engrave.c:363
 msgid "a message scrawled in blood here."
@@ -27203,7 +27203,7 @@ msgstr "그 속에서 반지가 빛나고 있다."
 
 #: ../src/worn.c:1228 ../src/worn.c:1237
 msgid "a ripping sound."
-msgstr "찢어지는 소리."
+msgstr "찢어지는 소리가 들린다."
 
 #: ../src/timeout.c:1248 ../src/trap.c:5097
 msgid "a rock"
@@ -27215,7 +27215,7 @@ msgstr "굴러가는 바위 함정"
 
 #: ../src/timeout.c:1892
 msgid "a rumbling noise."
-msgstr "우르릉거리는 소리."
+msgstr "우르릉거리는 소리가 들린다."
 
 #: ../src/trap.c:3488
 msgid "a rumbling stop abruptly."
@@ -27251,7 +27251,7 @@ msgstr "함정에 빠지는 것 같은 감각!"
 
 #: ../src/do.c:352
 msgid "a shattering noise."
-msgstr "산산이 부서지는 소리."
+msgstr "산산이 부서지는 소리가 들린다."
 
 #: ../src/mhitu.c:1036
 msgid "a slight illness."
@@ -27259,11 +27259,11 @@ msgstr "약간의 질병."
 
 #: ../src/sounds.c:223
 msgid "a slow drip."
-msgstr "천천히 떨어지는 물방울 소리."
+msgstr "물방울이 천천히 떨어지는 소리가 들린다."
 
 #: ../src/mon.c:1604
 msgid "a slurping sound."
-msgstr "후루룩 소리."
+msgstr "후루룩 들이켜는 소리가 들린다."
 
 #: ../src/sounds.c:217
 msgid "a soda fountain!"
@@ -27271,11 +27271,11 @@ msgstr "탄산수 분수!"
 
 #: ../src/trap.c:1279
 msgid "a soft click."
-msgstr "작은 찰칵 소리."
+msgstr "작게 찰칵 하는 소리가 났다."
 
 #: ../src/zap.c:5252
 msgid "a soft crackling."
-msgstr "부드러운 딱딱거리는 소리."
+msgstr "부드럽게 딱딱거리는 소리가 난다."
 
 #: ../src/minion.c:519
 msgid "a soft voice:"
@@ -27284,12 +27284,12 @@ msgstr "부드러운 목소리:"
 # detect.c - 바다표범 소리. 효과음
 #: ../src/sounds.c:123
 msgid "a sound reminiscent of a seal barking."
-msgstr "바다표범이 짖는 듯한 소리."
+msgstr "바다표범이 짖는 듯한 소리가 들린다."
 
 # sounds.c:122 - zoo에서 들리는 동물 소리. "냄새"가 아니라 "소리"!
 #: ../src/sounds.c:122
 msgid "a sound reminiscent of an elephant stepping on a peanut."
-msgstr "코끼리가 땅콩을 밟는 듯한 소리."
+msgstr "코끼리가 땅콩을 밟는 듯한 소리가 들린다."
 
 #: ../src/dbridge.c:732
 msgid "a splash."
@@ -27319,11 +27319,11 @@ msgstr "%s 아래에서 이상한 진동이."
 
 #: ../src/sounds.c:191
 msgid "a strange wind."
-msgstr "이상한 바람 소리."
+msgstr "이상한 바람 소리가 들린다."
 
 #: ../src/fountain.c:761
 msgid "a sucking sound."
-msgstr "빨아들이는 소리."
+msgstr "빨아들이는 소리가 들린다."
 
 #: ../src/fountain.c:499
 msgid "a sudden chill."
@@ -27339,15 +27339,15 @@ msgstr "힘이 급증하는 듯하지만, 아무 일도 일어나지 않는 것 
 
 #: ../src/lock.c:1147
 msgid "a swoosh."
-msgstr "휙 소리."
+msgstr "휙 스치는 소리가 들린다."
 
 #: ../src/worn.c:1250
 msgid "a thud."
-msgstr "쿵 하는 소리."
+msgstr "쿵 하고 부딪히는 소리가 났다."
 
 #: ../src/music.c:378
 msgid "a thump."
-msgstr "쿵 하는 소리."
+msgstr "쿵 하고 울리는 소리가 났다."
 
 # pager.c - 함정 탐지
 #: ../src/detect.c:1849 ../src/pager.c:1219
@@ -37180,7 +37180,7 @@ msgstr "충격을 느꼈다"
 
 #: ../src/engrave.c:396
 msgid "feel the words"
-msgstr "돋을새김된 단어를 느꼈다:"
+msgstr "손으로 더듬어 읽으니"
 
 #: ../src/fountain.c:339
 msgid "feel transparent."
@@ -48275,12 +48275,12 @@ msgid "read"
 msgstr "읽을"
 
 # engrave.c:396 - 각인 읽기 동작
-# "You read: \"Elbereth\"." → "읽었다: \"엘베레스\"."
+# "You read: \"Elbereth\"." → "읽으니 \"엘베레스\"."
 # 기존 "read"→"읽을"(관형형)은 getobj 프롬프트용
 #: ../src/engrave.c:396
 msgctxt "engrave_read"
 msgid "read"
-msgstr "읽었다"
+msgstr "읽으니"
 
 #: ../src/insight.c:92
 msgid "read a Discworld novel"
@@ -50521,7 +50521,7 @@ msgstr "쏘았다"
 # mthrowu.c:292 - 몬스터 발사 동사. "The goblin shoots an arrow"
 #: ../src/mthrowu.c:309
 msgid "shoots"
-msgstr "쏜다"
+msgstr "쏘았다"
 
 #: ../src/dungeon.c:3594 ../src/shk.c:5148 ../src/shk.c:5152 ../src/shk.c:5159
 #: ../src/shk.c:5163
@@ -54271,7 +54271,7 @@ msgstr "표창"
 
 #: ../src/mthrowu.c:309
 msgid "throws"
-msgstr "던진다"
+msgstr "던졌다"
 
 # 조합: 몬스터 공격 동사 - 찌르다
 #: ../src/mhitu.c:121
@@ -58046,7 +58046,7 @@ msgid " from %s heat"
 msgstr " %s 열기로"
 
 msgid " harmlessly through "
-msgstr "발길질{이/가} 해를 끼치지 않고 통과한다"
+msgstr ""
 
 msgid " hir"
 msgstr " 히르"

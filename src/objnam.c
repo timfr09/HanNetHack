@@ -428,7 +428,8 @@ fruitname(
     else
         fruit_nam = svp.pl_fruit; /* use it as is */
 
-    Sprintf(buf, "%s%s", makesingular(fruit_nam), juice ? " juice" : "");
+    Sprintf(buf, "%s%s", makesingular(tr_food_name(fruit_nam)),
+            juice ? " juice" : "");
     return buf;
 }
 
@@ -761,7 +762,7 @@ xname_flags(
                 /* fruit name is limited in length to PL_FSIZ; converting
                    to/from singular/plural might increase the length a
                    little but not enough to pose a risk of overflowing buf */
-                Strcpy(buf, f->fname);
+                Strcpy(buf, tr_food_name(f->fname));
                 if (pluralize) {
                     /* ick: already pluralized fruit names are allowed--we
                        want to try to avoid adding a redundant plural suffix;

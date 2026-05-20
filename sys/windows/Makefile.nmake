@@ -2263,7 +2263,7 @@ nhdat$(NHV):	$(U)dlb.exe $(DAT)data $(DAT)oracles $(OPTIONS_FILE) $(LUA_FILES) \
 #	Paths stored with forward slashes so dlb_fopen() can look them
 #	up consistently on every platform.
 	@if exist locale\ko\nethack.mo @echo locale/ko/nethack.mo >>dlb.lst
-	@for %%N in (help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp data.base bogusmon.txt engrave.txt epitaph.txt oracles.txt rumors.tru rumors.fal) do @if exist locale\ko\%%N @echo locale/ko/%%N >>dlb.lst
+	@for %%N in (help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp data.base bogusmon engrave epitaph oracles.txt rumors.tru rumors.fal) do @if exist locale\ko\%%N @echo locale/ko/%%N >>dlb.lst
 	@for %%N in (locale\ko\*.lua) do @echo locale/ko/%%~nxN >>dlb.lst
 	@$(U)dlb cIf dlb.lst $(SRC)nhdat
 	@cd $(SRC)

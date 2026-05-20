@@ -979,6 +979,7 @@ DAT_CLEAN = $(addprefix $(DAT)/, data oracles options porthelp rumors engrave ep
 DAT_NOCLEAN = $(addprefix $(DAT)/, help hh cmdhelp keyhelp history opthelp optmenu \
 	      usagehlp wizhelp license engrave epitaph bogusmon tribute)
 DLBLST = $(DAT)/dlb.lst
+LOCALE_KO_RND = $(DAT)/locale/ko/epitaph $(DAT)/locale/ko/engrave $(DAT)/locale/ko/bogusmon
 DLB = $(GAMEDIR)/nhdat$(NHV)
 DTARGETS = $(U)dlb.exe $(DAT_CLEAN) $(DLBLST) $(DLB)
 
@@ -1022,7 +1023,11 @@ $(DAT)/epitaph: $(DAT)/bogusmon
 $(DAT)/bogusmon: $(U)makedefs.exe $(DAT)/bogusmon.txt $(DAT)/engrave.txt $(DAT)/epitaph.txt
 	$< -s
 
-$(DLBLST): $(LUAFILES) | $(DAT_CLEAN) $(DAT_NOCLEAN)
+$(LOCALE_KO_RND): $(DAT)/locale/ko/epitaph.txt $(DAT)/locale/ko/engrave.txt \
+		$(DAT)/locale/ko/bogusmon.txt $(U)makedefs.exe
+	sh scripts/build-locale-rnddata.sh
+
+$(DLBLST): $(LUAFILES) | $(DAT_CLEAN) $(DAT_NOCLEAN) $(LOCALE_KO_RND)
 	echo data > $(DLBLST)
 	echo oracles >> $(DLBLST)
 	echo options >> $(DLBLST)
@@ -1047,7 +1052,7 @@ $(DLBLST): $(LUAFILES) | $(DAT_CLEAN) $(DAT_NOCLEAN)
 	cd $(DAT) ; ls -1 *.lua >> $(DLBLST)
 # HanNetHack: bundle Korean like sys/unix/Makefile.top (build mo: cd po && make compile).
 	@for k in nethack.mo help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp \
-	    data.base bogusmon.txt engrave.txt epitaph.txt oracles.txt rumors.tru rumors.fal; do \
+	    data.base bogusmon engrave epitaph oracles.txt rumors.tru rumors.fal; do \
 	    test -f "$(DAT)/locale/ko/$$k" && echo "locale/ko/$$k" >> $(DLBLST); \
 	done
 	@for f in "$(DAT)"/locale/ko/*.lua; do \

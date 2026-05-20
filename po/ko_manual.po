@@ -19451,7 +19451,7 @@ msgstr "오, 그래! 대가를 치르겠어!"
 
 #: ../src/vault.c:521
 msgid "Oh, yes, of course.  Sorry to have disturbed you."
-msgstr "아, 네, 물론이죠. 방해해서 미안하다."
+msgstr "아, 네, 물론이죠. 방해해서 미안하오."
 
 #: ../src/pickup.c:2387
 msgid "Ok, now there is loot here."
@@ -20672,7 +20672,7 @@ msgstr "저장 중:"
 #: ../src/wizard.c:860
 #, c-format
 msgid "Savor thy breath, %s, it be thy last!"
-msgstr "네 숨을 음미하라, %s, 그것이 마지막이 될 것이다!"
+msgstr "네 숨을 음미하라, %s. 그것이 마지막이 될 것이다!"
 
 #: ../src/muse.c:1942
 msgid "Say cheese!"
@@ -22891,7 +22891,7 @@ msgstr "%s쪽에 있는 자들은 당신의 말을 듣지 못할 것이다."
 
 #: ../src/sounds.c:1273
 msgid "They won't hear you out there."
-msgstr "그들은 저 밖에서 당신의 말을 듣지 못할 것이다."
+msgstr "저 밖에서는 당신의 말을 듣지 못할 것이다."
 
 # zap.c - "They're too high up". 대명사 복수
 #: ../src/invent.c:4291
@@ -25819,7 +25819,7 @@ msgstr "%s에게 %ld %s{을/를} 빚졌다."
 #: ../src/shk.c:6082
 #, c-format
 msgid "You owe me %ld %s for my %s that you %s with your%s"
-msgstr "당신의%5$s{으로/로} 내 %3$s{을/를} %4$s한 대가로 %1$ld %2$s{을/를} 빚졌다"
+msgstr "당신의 %5$s{으로/로} 내 %3$s{을/를} %4$s한 대가로 %1$ld %2$s{을/를} 빚졌다"
 
 #: ../src/dig.c:1220
 msgid "You pull free."
@@ -28176,7 +28176,7 @@ msgstr "당신의 허상을 향해 저주한다"
 
 #: ../src/mcastu.c:75
 msgid "and curses in your general direction"
-msgstr "당신 쪽을 향해 저주한다"
+msgstr "당신이 있는 쪽을 향해 저주한다"
 
 #: ../src/timeout.c:1310
 msgid "and nearly fall"

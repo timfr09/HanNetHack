@@ -3635,7 +3635,7 @@ msgstr "%s{이/가} 최근 강도 사건에 대해 %s."
 #: ../src/shk.c:2647
 #, c-format
 msgid "%s %s all your possessions."
-msgstr "%s{이/가} 당신의 모든 소지품을 %s."
+msgstr "%1$s{이/가} %2$s당신의 모든 소지품을 가져간다."
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -4221,7 +4221,7 @@ msgstr "%1$s{이/가} 청구서가 %3$ld %4$s라고 %2$s."
 #: ../src/shk.c:2653
 #, c-format
 msgid "%s %s the %ld %s %sowed %s."
-msgstr "%s{이/가} %s에게 빚진 %ld %s{을/를} %s %s."
+msgstr "%1$s{이/가} %2$s밀린 외상 %3$ld %4$s{을/를} 가져간다.%5$.0s%6$.0s"
 
 # [FIX] dothrow.c:1285 — 천장에 맞고 떨어짐
 # %1$s = Doname2(obj), %2$s = "hits"/"almost hits" (맞혔다/거의 맞을 뻔했다)
@@ -13951,7 +13951,7 @@ msgstr "%s{을/를} 안에 넣자, 마법 폭발에 휩싸였다!"
 #: ../src/spell.c:175
 #, c-format
 msgid "As you read the book, it %s in your %s!"
-msgstr "책을 읽는 동안, 그것이 당신의 %s에서 %s!"
+msgstr "책을 읽는 순간, 책이 %2$s 앞에서 %1$s!"
 
 #: ../src/read.c:627
 msgid "As you read the scroll, it disappears."
@@ -17075,7 +17075,7 @@ msgstr "나는 연금술사야. 내가 뛰는 걸 보면, 따라잡아 봐..."
 
 #: ../src/potion.c:2842
 msgid "I am in your debt.  I will grant one wish!"
-msgstr "당신에게 빚졌다. 소원 하나를 들어주겠다!"
+msgstr "그대에게 빚을 졌다. 소원 하나를 들어주마!"
 
 #: ../src/read.c:137
 msgid "I am not a pack rat - I am a collector"
@@ -17523,7 +17523,7 @@ msgstr "주머니에 묠니르가 있는 건가요, 아니면 날 보고 기쁜 
 
 #: ../src/botl.c:4044
 msgid "Is that an invisible number?"
-msgstr "그것이 보이지 않는 숫자인가?"
+msgstr "보이지 않는 숫자라도 있는 건가?"
 
 #: ../src/role.c:2712
 #, c-format
@@ -17586,12 +17586,12 @@ msgstr "전부 알아들을 수 없는 소리 같다."
 
 #: ../src/dothrow.c:1323
 msgid "It blinds you!"
-msgstr "그것이 당신의 눈을 멀게 했다!"
+msgstr "눈앞이 멀었다!"
 
 #: ../src/mcastu.c:574
 #, c-format
 msgid "It bounces off your %s%s."
-msgstr "그것이 당신의 %s%s에서 튕겨졌다."
+msgstr "%s%s에 맞고 튕겨 나갔다."
 
 #: ../src/uhitm.c:2775
 #, c-format
@@ -17604,7 +17604,7 @@ msgstr "불탄다!"
 
 #: ../src/mon.c:5110
 msgid "It can't become that."
-msgstr "그것이 될 수 없다."
+msgstr "그런 모습으로는 변할 수 없다."
 
 #: ../src/dokick.c:631
 msgid "It comes loose."
@@ -17667,7 +17667,7 @@ msgstr "비를 피하니 기분이 좋다."
 
 #: ../src/mhitu.c:670
 msgid "It gets stuck on you."
-msgstr "그것이 당신에게 달라붙었다."
+msgstr "몸에 달라붙었다."
 
 #: ../src/apply.c:1446
 msgid "It goes"
@@ -17740,12 +17740,12 @@ msgstr "세면대에 기름막이 남았다."
 #: ../src/monmove.c:640
 #, c-format
 msgid "It locks on to %s."
-msgstr "그것이 %s에 달라붙었다."
+msgstr "%s에 단단히 달라붙었다."
 
 #: ../src/monmove.c:616
 #, c-format
 msgid "It locks on to your %s!"
-msgstr "그것이 %s에 달라붙었다!"
+msgstr "%s에 단단히 달라붙었다!"
 
 #: ../src/mthrowu.c:126
 msgid "It misses."
@@ -17808,11 +17808,11 @@ msgstr "\"%s\"의 %s인 것 같다!"
 
 #: ../src/do.c:350
 msgid "It shatters"
-msgstr "그것이 산산조각났다"
+msgstr "산산조각났다"
 
 #: ../src/timeout.c:1629
 msgid "It shrieks!"
-msgstr "그것이 비명을 지른다!"
+msgstr "날카로운 비명이 터져 나온다!"
 
 #: ../src/do.c:144
 msgid "It sinks without a trace!"
@@ -17836,7 +17836,7 @@ msgstr "이렇게 들린다: \"%s\"."
 #: ../src/apply.c:1163
 #, c-format
 msgid "It steals your %s!"
-msgstr "그것이 당신의 %s{을/를} 훔쳤다!"
+msgstr "%s{을/를} 훔쳐 갔다!"
 
 #: ../src/pray.c:620
 #, c-format
@@ -17853,11 +17853,11 @@ msgstr "맛이 나빴다."
 
 #: ../src/mhitu.c:617
 msgid "It tries to move where you are hiding."
-msgstr "그것이 당신이 숨어 있는 곳으로 이동하려 한다."
+msgstr "숨어 있는 자리로 파고들려 한다."
 
 #: ../src/apply.c:4547
 msgid "It tumbles away."
-msgstr "그것이 굴러갔다."
+msgstr "저만치 굴러갔다."
 
 #: ../src/mhitm.c:878 ../src/uhitm.c:4997
 #, c-format
@@ -33025,11 +33025,11 @@ msgstr "살아난다"
 
 #: ../src/shk.c:2635
 msgid "comes and "
-msgstr "살아난다"
+msgstr "다가와 "
 
 #: ../src/sounds.c:1120
 msgid "comes on to you."
-msgstr "당신에게 접근한다."
+msgstr "추파를 던진다."
 
 #: ../src/trap.c:835
 msgid "comes to life"
@@ -53199,7 +53199,7 @@ msgstr "take_off: taking off %lx"
 
 #: ../src/shk.c:2636
 msgid "takes"
-msgstr "벗을"
+msgstr "​"
 
 # steal.c:328 - steal_disarm 패턴용 (ko.po "벗을"→과거형)
 #: ../src/steal.c:328

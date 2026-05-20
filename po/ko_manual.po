@@ -2347,7 +2347,7 @@ msgstr "보존될 것이다"
 
 #: ../src/pray.c:2671
 msgid " say"
-msgstr " 말하다"
+msgstr "{이/가} 말하는 듯하다"
 
 # Item type format strings (note: scroll, wand, spellbook, ring, amulet,
 # stone, gem are already defined elsewhere)
@@ -13334,7 +13334,7 @@ msgstr "%s 아래 흙더미에서 방아쇠가 나타났다."
 
 #: ../src/pray.c:2668
 msgid "A voice (could it be"
-msgstr "목소리가 울려 퍼진다:"
+msgstr "목소리가 들린다 (혹시"
 
 #: ../src/wizard.c:775
 msgid "A voice booms out..."
@@ -14212,7 +14212,7 @@ msgstr "어떤 종류의 괴물이 되겠습니까? [이름을 입력하세요]"
 
 #: ../src/priest.c:609
 msgid "Begone!  Thou desecratest this holy place with thy presence."
-msgstr "당신의 존재로 이 장소를 모독하고 있다!"
+msgstr "물러가라! 네 존재가 이 성소를 더럽히고 있다!"
 
 #: ../src/options.c:115
 msgid "Behavior"
@@ -14344,7 +14344,7 @@ msgstr "통통!"
 # read.c - 책 무시. "The Book seems to be ignoring you"
 #: ../src/spell.c:249
 msgid "Book seems to be ignoring you"
-msgstr "책이 당신을 무시하는 것 같다"
+msgstr "책은 너를 외면하는 듯하다"
 
 #: ../src/options.c:8866
 msgid "Booleans (selecting will toggle value):"
@@ -15388,7 +15388,7 @@ msgstr "NetHack 명령줄 설명."
 
 #: ../src/pray.c:2669
 msgid "Despite your deafness, you seem to hear"
-msgstr "청각 장애에도 불구하고 들리는 것 같다"
+msgstr "귀가 들리지 않는데도"
 
 #: ../src/do_wear.c:1909
 #, c-format
@@ -17642,11 +17642,11 @@ msgstr "아프지 않다."
 
 #: ../src/eat.c:1904
 msgid "It doesn't seem at all sickening, though..."
-msgstr "하지만, 전혀 역겹지 않은 것 같다..."
+msgstr "하지만 이상하게도 전혀 역겹지 않다..."
 
 #: ../src/mthrowu.c:141
 msgid "It doesn't seem to hurt you."
-msgstr "당신에게는 별 피해가 없는 것 같다."
+msgstr "별다른 고통은 느껴지지 않는다."
 
 #: ../src/dig.c:1594
 #, c-format
@@ -17659,7 +17659,7 @@ msgstr "몸이 조금 가벼워진 것 같다."
 
 #: ../src/monmove.c:597
 msgid "It feels quite soothing."
-msgstr "꽤 편안하게 느껴진다."
+msgstr "묘하게 마음이 가라앉는다."
 
 #: ../src/steed.c:649
 msgid "It felt good to get out of the rain."
@@ -17675,7 +17675,7 @@ msgstr "그것이 간다"
 
 #: ../src/spell.c:1252
 msgid "It invokes nightmarish images in your mind..."
-msgstr "악몽같은 이미지가 마음속에 떠오른다..."
+msgstr "악몽 같은 환영이 머릿속에 피어오른다..."
 
 #: ../src/apply.c:1357 ../src/apply.c:3180 ../src/do_wear.c:1912
 #: ../src/muse.c:2583 ../src/pickup.c:2103
@@ -17764,12 +17764,12 @@ msgstr "%s엄청나게 무거울 것이다!"
 
 #: ../src/trap.c:1377
 msgid "It passes harmlessly through you."
-msgstr "그것이 해를 끼치지 않고 당신을 통과했다."
+msgstr "그것은 아무 해도 끼치지 못한 채 몸을 스쳐 지나갔다."
 
 #: ../src/mail.c:650 ../src/read.c:413 ../src/read.c:472 ../src/read.c:510
 #: ../src/rumors.c:570
 msgid "It reads:"
-msgstr "적혀있기를:"
+msgstr "이렇게 적혀 있다:"
 
 #: ../src/mail.c:518
 msgid "It reads:  \""
@@ -25426,7 +25426,7 @@ msgstr "%s의 라벨을 해독했다."
 
 #: ../src/priest.c:460
 msgid "You desecrate this place by your presence!"
-msgstr "당신의 존재로 이 장소를 모독하고 있다!"
+msgstr "네 존재만으로도 이곳은 더럽혀지고 있다!"
 
 #: ../src/topten.c:810
 #, c-format
@@ -26012,7 +26012,7 @@ msgstr "%1$d레벨, 최대 %2$dHP%3$.0s로, %4$s."
 #: ../src/timeout.c:350
 #, c-format
 msgid "You wobble unsteadily %s the %s."
-msgstr "당신은 불안정하게 %s %s{을/를} 흔들거린다."
+msgstr "몸이 위태롭게 흔들린다.%1$.0s%2$.0s"
 
 # 촛불 안내 (이자크)
 # %d=개수, %s=" more"/"", %s=plur()
@@ -26124,7 +26124,7 @@ msgstr "아직도 익사하고 있다."
 #: ../src/mhitu.c:2142
 #, c-format
 msgid "You're such a %s; I wish..."
-msgstr "당신은 정말 %s이네요; 저는 바랍니다..."
+msgstr "정말 %s이군요. 조금만 더..."
 
 #: ../src/lock.c:900
 msgid "You're too small to pull the door open."
@@ -36625,7 +36625,7 @@ msgstr "경험치"
 #: ../src/priest.c:482
 #, c-format
 msgid "experience %s sense of peace."
-msgstr "%s{이/가} 당신의 존재를 감지했다."
+msgstr "평온한 기운이 감돈다.%1$.0s"
 
 #: ../src/obj_descr_i18n.c:1310
 msgid "experience level"
@@ -41495,7 +41495,7 @@ msgstr "인큐버스"
 #: ../src/shk.c:5539 ../src/shk.c:5564 ../src/shk.c:5569 ../src/shk.c:5580
 #: ../src/shk.c:5585 ../src/shk.c:5589
 msgid "indicates"
-msgstr "남색 연두"
+msgstr "알린다"
 
 # 상점 주인 대화 - 우려 표시
 #: ../src/shk.c:5577
@@ -48671,7 +48671,7 @@ msgstr "기억된 글자"
 
 #: ../src/shk.c:5569
 msgid "reminds you"
-msgstr "독액이 당신의 눈을 멀게 했다."
+msgstr "일러준다"
 
 #: ../src/obj_descr_i18n.c:420
 msgid "remove"
@@ -49677,7 +49677,7 @@ msgstr "볼 수 있었다"
 
 #: ../src/shk.c:5564 ../src/shk.c:5589
 msgid "says"
-msgstr "말하다"
+msgstr "말한다"
 
 #: ../src/eat.c:2491
 msgid "scale"
@@ -50108,7 +50108,7 @@ msgstr "일어나지 않은 것 같다"
 
 #: ../src/mhitu.c:2114
 msgid "seems to murmur into your ear"
-msgstr "당신 귀에 속삭이는 것 같다"
+msgstr "귓가에 속삭이는 듯하다"
 
 #: ../src/sounds.c:1156
 msgid "seems to mutter a cantrip."
@@ -59555,7 +59555,7 @@ msgstr "제물이 춤추는 입자 구름으로 무너지며 사라졌다!"
 
 # mon.c - 말해도 안 들림. 단독 문장
 msgid "says something but you can't hear it"
-msgstr "뭔가 말하지만 들을 수 없다"
+msgstr "뭔가 말하지만 들리지 않는다"
 
 msgid "scroll of amnesia"
 msgstr "기억상실 두루마리"

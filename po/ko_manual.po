@@ -6708,7 +6708,7 @@ msgstr "%s 흐름이 배수구를 %s."
 #: ../src/do.c:540 ../src/do.c:545
 #, c-format
 msgid "%s flow seems %ser now."
-msgstr "%s 흐름이 이제 더 %s 것 같다."
+msgstr "%s 흐름이 이제 더 %s 보인다."
 
 #: ../src/do.c:537
 #, c-format
@@ -10410,7 +10410,7 @@ msgstr "%1$s{이/가} %3$s{을/를} 들고 달아나려 한다.%2$.0s"
 #: ../src/uhitm.c:4656
 #, c-format
 msgid "%s tries to %s you, but you seem %s."
-msgstr "%s{이/가} %s하려 하지만, %s 것 같다."
+msgstr "%1$s{이/가} 당신을 %2$s하려 하지만, 당신은 %3$s 보인다."
 
 #: ../src/mhitm.c:231
 #, c-format
@@ -43529,7 +43529,7 @@ msgstr "누군가가 당신을 돕고 있는 것 같다."
 #: ../src/dig.c:1519
 #, c-format
 msgid "like you are %s."
-msgstr "%s 것 같다."
+msgstr "마치 %s한 것 같다."
 
 #: ../src/priest.c:510
 msgid "like you are being watched."
@@ -56466,7 +56466,7 @@ msgstr "수상 보행 장화"
 #: ../src/do.c:555
 #, c-format
 msgid "water's force seems %ser now."
-msgstr "물의 힘이 이제 더 %s 것 같다."
+msgstr "물의 힘이 이제 더 %s 보인다."
 
 #: ../src/dungeon.c:1737
 msgid "water's surface"

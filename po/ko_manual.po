@@ -5007,7 +5007,7 @@ msgstr "%s 이상한 따뜻함을 발산한다!"
 #: ../src/read.c:3101
 #, c-format
 msgid "%s a whiff of rotten eggs."
-msgstr "%s 썩은 달걀 냄새."
+msgstr "%s 썩은 달걀 냄새를 맡았다."
 
 # timeout.c:1501 — 곧 꺼질 것 같다
 #: ../src/timeout.c:1501
@@ -22587,7 +22587,7 @@ msgstr "이 병은 비어 있었다."
 #: ../src/timeout.c:290
 #, c-format
 msgid "The pressure on your %s increases."
-msgstr "%s의 힘이 증가한다."
+msgstr "%s에 가해지는 압박이 더 심해진다."
 
 #: ../src/artifact.c:1555
 msgid "The razor-sharp blade"
@@ -25489,7 +25489,7 @@ msgstr "%s 하나를 떨어뜨렸다!"
 
 #: ../src/trap.c:5185
 msgid "You drown."
-msgstr "당신은 익사했다."
+msgstr "익사했다."
 
 # apply.c - 통조림 열기. "You easily open the tin"
 #: ../src/eat.c:1748
@@ -25533,7 +25533,7 @@ msgstr "%s 재정 상황에 관심이 생겼다."
 
 #: ../src/read.c:439
 msgid "You feel lettering"
-msgstr "열이 나는 것 같다."
+msgstr "글자가 손끝에 느껴진다"
 
 # polyself.c:440 - 새 사람 느낌
 #: ../src/polyself.c:444
@@ -25593,11 +25593,11 @@ msgstr "미래 재정 상황이 걱정된다."
 
 #: ../src/timeout.c:280
 msgid "You find it hard to breathe."
-msgstr "왕좌는 너무 단단해서 부술 수 없다."
+msgstr "숨쉬기가 힘들다."
 
 #: ../src/pickup.c:2362
 msgid "You find old loot:"
-msgstr "정신을 차리니"
+msgstr "예전 전리품을 발견했다:"
 
 #: ../src/trap.c:5016
 msgid "You find yourself"
@@ -25758,7 +25758,7 @@ msgstr "벽에 구멍을 뚫었다."
 #: ../src/apply.c:2262
 #, c-format
 msgid "You make, but cannot pick up, %s."
-msgstr "당신은 %s{을/를} 만들었지만, 집을 수 없다."
+msgstr "%s{을/를} 만들었지만 집을 수 없다."
 
 #: ../src/teleport.c:1428
 msgid "You materialize on a different level!"
@@ -25910,7 +25910,7 @@ msgstr "용암 속으로 더 깊이 가라앉는다."
 
 #: ../src/read.c:3103
 msgid "You smell"
-msgstr "생선 냄새를 맡았다."
+msgstr "냄새를 맡았다"
 
 #: ../src/zap.c:2109
 msgid "You smell a delicious smell."
@@ -25924,7 +25924,7 @@ msgstr "고기 냄새를 맡는다."
 #: ../src/uhitm.c:2242
 #, c-format
 msgid "You snatched but dropped %s."
-msgstr "당신은 %s{을/를} 낚아챘지만 떨어뜨렸다."
+msgstr "%s{을/를} 낚아챘지만 떨어뜨렸다."
 
 # shk.c:878-879 - 곡괭이 들고 나가라
 #: ../src/shk.c:937
@@ -25939,7 +25939,7 @@ msgstr "배가 불러오기 시작한다."
 
 #: ../src/uhitm.c:2243
 msgid "You steal: "
-msgstr "생선 냄새를 맡았다."
+msgstr "훔쳤다: "
 
 # ============================================================
 # 아이템 메시지 (Item Messages)
@@ -26089,7 +26089,7 @@ msgstr "드디어 끝났다."
 # ============================================================
 #: ../src/timeout.c:281
 msgid "You're gasping for air."
-msgstr "헐떡이며 공기를 찾고 있다."
+msgstr "숨을 헐떡이고 있다."
 
 #: ../src/eat.c:3313
 msgid "You're having a hard time getting all of it down."
@@ -26142,7 +26142,7 @@ msgstr "문을 닫기에 너무 작다."
 #: ../src/timeout.c:283
 #, c-format
 msgid "You're turning %s."
-msgstr "당신은 %s{으로/로} 변하고 있다."
+msgstr "%s{으로/로} 변하고 있다."
 
 #: ../src/sounds.c:1134
 msgid "You're under arrest!"
@@ -26267,7 +26267,7 @@ msgstr "%s{이/가} 분해되었다!"
 #: ../src/timeout.c:288
 #, c-format
 msgid "Your %s is becoming constricted."
-msgstr "%s{이/가} 더 이상 조이지 않는다!"
+msgstr "%s{이/가} 조여 온다."
 
 #: ../src/trap.c:5285
 #, c-format
@@ -26320,7 +26320,7 @@ msgstr "당신의 AC는 "
 
 #: ../src/timeout.c:289
 msgid "Your blood is having trouble reaching your brain."
-msgstr "피가 뇌에 도달하는 데 문제가 있다."
+msgstr "피가 뇌까지 제대로 올라가지 않는다."
 
 # pray.c - 뼈 가려움. 단독 문장
 #: ../src/read.c:1335
@@ -26337,7 +26337,7 @@ msgstr "그렇게 많은 짐을 들고는 그렇게 할 수 없다."
 
 #: ../src/timeout.c:291
 msgid "Your consciousness is fading."
-msgstr "다시 의식이 돌아왔다."
+msgstr "의식이 흐려진다."
 
 #: ../src/files.c:3324
 msgid "Your end-of-game disclosure file:"

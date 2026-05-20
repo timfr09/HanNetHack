@@ -19451,7 +19451,7 @@ msgstr "오, 그래! 대가를 치르겠어!"
 
 #: ../src/vault.c:521
 msgid "Oh, yes, of course.  Sorry to have disturbed you."
-msgstr "아, 네, 물론이죠. 방해해서 미안하오."
+msgstr "아, 네, 물론이죠. 실례했소."
 
 #: ../src/pickup.c:2387
 msgid "Ok, now there is loot here."
@@ -22887,7 +22887,7 @@ msgstr "그것들이 비명을 지른다!"
 #: ../src/sounds.c:1306
 #, c-format
 msgid "They won't hear you %s there."
-msgstr "%s쪽에 있는 자들은 당신의 말을 듣지 못할 것이다."
+msgstr "%s쪽에 있는 이들은 당신의 말을 듣지 못할 것이다."
 
 #: ../src/sounds.c:1273
 msgid "They won't hear you out there."

@@ -9308,7 +9308,7 @@ msgstr "%1$s{이/가} %3$s %4$s에 돌아온 것에 대해 %2$s해 보인다!"
 #: ../src/shk.c:3110
 #, c-format
 msgid "%s seems %s that you want to sell that."
-msgstr "%s{은/는} 당신이 그것을 팔고 싶어하는 것에 %s 같다."
+msgstr "%s{은/는} 당신이 그걸 팔려는 게 %s."
 
 #: ../src/dog.c:1171 ../src/pray.c:2043 ../src/pray.c:2049
 #, c-format
@@ -9420,7 +9420,7 @@ msgstr "%s{이/가} %s더 느리게 움직이는 것 같다."
 #: ../src/trap.c:2071
 #, c-format
 msgid "%s seems to be yanked down!"
-msgstr "%s{이/가} 뭔가를 요구하는 것 같다."
+msgstr "%s{이/가} 아래로 홱 잡아당겨진 것 같다!"
 
 #: ../src/monmove.c:494
 #, c-format
@@ -17582,7 +17582,7 @@ msgstr "그것이 %s."
 
 #: ../src/mail.c:679
 msgid "It appears to be all gibberish."
-msgstr "전부 헛소리인 것 같다."
+msgstr "전부 알아들을 수 없는 소리 같다."
 
 #: ../src/dothrow.c:1323
 msgid "It blinds you!"
@@ -17646,7 +17646,7 @@ msgstr "하지만, 전혀 역겹지 않은 것 같다..."
 
 #: ../src/mthrowu.c:141
 msgid "It doesn't seem to hurt you."
-msgstr "당신에게 상처를 주지 못하는 것 같다."
+msgstr "당신에게는 별 피해가 없는 것 같다."
 
 #: ../src/dig.c:1594
 #, c-format
@@ -17655,7 +17655,7 @@ msgstr "%s 위에 떨어졌다!"
 
 #: ../src/trap.c:3987
 msgid "It feels as though you've lost some weight."
-msgstr "무게가 줄어든 것 같다."
+msgstr "몸이 조금 가벼워진 것 같다."
 
 #: ../src/monmove.c:597
 msgid "It feels quite soothing."

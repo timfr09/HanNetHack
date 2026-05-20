@@ -17145,7 +17145,7 @@ msgstr "죽음의 던전 탐험했는데 얻은 건 이 구린 티셔츠뿐!"
 
 #: ../src/sounds.c:773
 msgid "I find myself growing a little weary."
-msgstr "조금 지쳐 가는 것 같다."
+msgstr "조금씩 지쳐 가는 것 같다."
 
 #: ../src/files.c:2309 ../src/files.c:2329 ../src/files.c:2399
 msgid "I give up.  Sorry."
@@ -19451,7 +19451,7 @@ msgstr "오, 그래! 대가를 치르겠어!"
 
 #: ../src/vault.c:521
 msgid "Oh, yes, of course.  Sorry to have disturbed you."
-msgstr "아, 네, 물론이죠. 실례했소."
+msgstr "아, 네, 물론이죠. 방해해서 미안해요."
 
 #: ../src/pickup.c:2387
 msgid "Ok, now there is loot here."
@@ -22887,11 +22887,11 @@ msgstr "그것들이 비명을 지른다!"
 #: ../src/sounds.c:1306
 #, c-format
 msgid "They won't hear you %s there."
-msgstr "%s쪽에 있는 이들은 당신의 말을 듣지 못할 것이다."
+msgstr "%s쪽에서는 당신의 말을 듣지 못할 것이다."
 
 #: ../src/sounds.c:1273
 msgid "They won't hear you out there."
-msgstr "저 밖에서는 당신의 말을 듣지 못할 것이다."
+msgstr "저 밖에서는 당신의 말이 닿지 않을 것이다."
 
 # zap.c - "They're too high up". 대명사 복수
 #: ../src/invent.c:4291
@@ -28176,7 +28176,7 @@ msgstr "당신의 허상을 향해 저주한다"
 
 #: ../src/mcastu.c:75
 msgid "and curses in your general direction"
-msgstr "당신이 있는 쪽을 향해 저주한다"
+msgstr "당신이 있는 쪽을 향해 저주를 퍼붓는다"
 
 #: ../src/timeout.c:1310
 msgid "and nearly fall"

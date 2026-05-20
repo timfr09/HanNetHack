@@ -16803,7 +16803,7 @@ msgstr "안-녕, 간호사!"
 
 #: ../src/wizard.c:836
 msgid "Hell shall soon claim thy remains,"
-msgstr "지옥이 곧 당신의 시체를 가져갈 것이다,"
+msgstr "지옥이 곧 네 시체를 가져갈 것이다,"
 
 #: ../src/role.c:2177
 msgid "Hello"
@@ -16990,7 +16990,7 @@ msgstr "얼마를 제안하시겠습니까?"
 
 #: ../src/sounds.c:782
 msgid "How nice to hear you, child of the night!"
-msgstr "밤의 아이여, 당신의 목소리를 들으니 반갑구나!"
+msgstr "밤의 아이여, 네 목소리를 들으니 반갑구나!"
 
 #: ../src/trap.c:1912 ../src/trap.c:2010
 msgid "How pitiful.  Isn't that the pits?"
@@ -17115,7 +17115,7 @@ msgstr "내가 이길 수 없다면, 너도 못 이겨!"
 
 #: ../src/wizard.c:836
 msgid "I chortle at thee, thou pathetic"
-msgstr "나는 당신을 비웃노라, 이 불쌍한"
+msgstr "나는 너를 비웃노라, 이 불쌍한"
 
 #: ../src/read.c:167
 msgid "I couldn't afford this T-shirt so I stole it!"
@@ -17196,7 +17196,7 @@ msgstr "%s{이/가} 싫어할 것 같다."
 #: ../src/sounds.c:804
 #, c-format
 msgid "I vant to suck your %s!"
-msgstr "당신의 %s{을/를} 빨아먹겠다!"
+msgstr "네 %s{을/를} 빨아먹겠다!"
 
 #: ../src/sounds.c:807
 #, c-format
@@ -18738,7 +18738,7 @@ msgstr "마인드 플레이어는 최악이야"
 
 #: ../src/mplayer.c:363
 msgid "Mine should be the honor, not yours!"
-msgstr "그 영광은 내 것이어야 해, 당신의 것이 아니라!"
+msgstr "그 영광은 내 것이어야 해, 네 것이 아니라!"
 
 #: ../src/cmd.c:1002
 msgid "Mine's-end"
@@ -20672,7 +20672,7 @@ msgstr "저장 중:"
 #: ../src/wizard.c:860
 #, c-format
 msgid "Savor thy breath, %s, it be thy last!"
-msgstr "당신의 숨을 음미하라, %s, 그것이 마지막이 될 것이다!"
+msgstr "네 숨을 음미하라, %s, 그것이 마지막이 될 것이다!"
 
 #: ../src/muse.c:1942
 msgid "Say cheese!"
@@ -23315,7 +23315,7 @@ msgstr "나의 영광을 위해 %s하도록 선택되었노라!"
 # priest.c - 저주. NPC 대화
 #: ../src/wizard.c:840
 msgid "Thou art doomed,"
-msgstr "당신은 저주받았다,"
+msgstr "너는 저주받았다,"
 
 #: ../src/teleport.c:1338
 msgid "Thou art early, but we'll admit thee."
@@ -23350,11 +23350,11 @@ msgstr "나에게 합당한 자였도다!"
 # pray.c divine gift messages
 #: ../src/pray.c:1319
 msgid "Thou hast pleased me with thy progress,"
-msgstr "당신의 진보에 기뻐하노라,"
+msgstr "네 진보에 기뻐하노라,"
 
 #: ../src/pray.c:745
 msgid "Thou must relearn thy lessons!"
-msgstr "당신의 교훈을 다시 배워야 하리라!"
+msgstr "너의 교훈을 다시 배워야 하리라!"
 
 #: ../src/pray.c:857
 msgid "Thou shalt be my Envoy of Balance!"
@@ -23370,11 +23370,11 @@ msgstr "불신자여, 대가를 치르리라!"
 
 #: ../src/priest.c:657
 msgid "Thou shalt regret thine action!"
-msgstr "당신의 행동을 후회하게 될 것이다!"
+msgstr "너의 행동을 후회하게 될 것이다!"
 
 #: ../src/wizard.c:839
 msgid "Thou shalt repent of thy cunning,"
-msgstr "당신의 행동을 후회하게 될 것이다!"
+msgstr "너의 행동을 후회하게 될 것이다!"
 
 #: ../src/priest.c:587
 msgid "Thou wouldst have words, eh?  I'll give thee a word or two!"
@@ -23429,7 +23429,7 @@ msgstr "충돌에 대한 갈망이 이루어지리라!"
 
 #: ../src/wizard.c:840
 msgid "Thy fate is sealed,"
-msgstr "당신의 운명은 정해졌다,"
+msgstr "네 운명은 정해졌다,"
 
 #: ../src/priest.c:705 ../src/priest.c:709
 msgid "Thy selfless generosity is deeply appreciated."
@@ -58228,7 +58228,7 @@ msgstr "%s{이/가} 기괴한 변이를 겪었다."
 
 #, c-format
 msgid "%s!  Your silver sheen does not frighten me!"
-msgstr "%s!  당신의 은빛 광채는 나를 두렵게 하지 못한다!"
+msgstr "%s!  네 은빛 광채는 나를 두렵게 하지 못한다!"
 
 #, c-format
 msgid "%slike the prodigal son."

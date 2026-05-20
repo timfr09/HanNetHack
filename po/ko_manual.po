@@ -25462,11 +25462,11 @@ msgstr "발견했다"
 
 #: ../src/potion.c:2862
 msgid "You disturbed me, fool!"
-msgstr "방해하다니, 이 바보야!"
+msgstr "날 건드리다니, 이 멍청한 것!"
 
 #: ../src/mplayer.c:362
 msgid "You don't deserve to win!"
-msgstr "넌 이길 자격이 없어!"
+msgstr "너 따위가 이길 자격은 없다!"
 
 #: ../src/pager.c:1115
 msgid "You don't have any information on those things."
@@ -25580,7 +25580,7 @@ msgstr "지팡이가 뜨거워지는 것을 느꼈다."
 # detect.c:821 - 위협을 느낌
 #: ../src/detect.c:821
 msgid "You feel threatened."
-msgstr "위협을 느꼈다."
+msgstr "불길한 위협이 느껴진다."
 
 #: ../src/engrave.c:696
 msgid "You feel tremors."
@@ -25627,7 +25627,7 @@ msgstr "조금 더 낮게 떠 있다."
 
 #: ../src/muse.c:119 ../src/potion.c:2851
 msgid "You freed me!"
-msgstr "나를 풀어줬다!"
+msgstr "나를 풀어 줬구나!"
 
 #: ../src/detect.c:820
 msgid "You get the heebie jeebies."
@@ -25667,7 +25667,7 @@ msgstr "극도로 힘들게"
 # 
 #: ../src/vault.c:567
 msgid "You have hidden gold."
-msgstr "하지만 숨긴 금화가 있다!"
+msgstr "네가 금화를 숨겨 뒀군."
 
 #: ../src/pickup.c:69
 msgid "You have much trouble"
@@ -25692,7 +25692,7 @@ msgstr "들린다"
 #: ../src/mkmaze.c:1511
 #, c-format
 msgid "You hear a %swhoosh!"
-msgstr "%s휘익 소리가 들린다!"
+msgstr "%s휘익, 하는 소리가 들린다!"
 
 # ============================================================
 # 추가 메시지 패턴
@@ -25700,7 +25700,7 @@ msgstr "%s휘익 소리가 들린다!"
 # mcastu.c:70 - 저주 소리
 #: ../src/mcastu.c:84
 msgid "You hear a mumbled curse."
-msgstr "중얼거리는 저주 소리가 들린다."
+msgstr "웅얼거리는 저주가 들린다."
 
 #: ../src/shk.c:3861
 msgid "You hear a scream, \"Thief!\""
@@ -25709,21 +25709,21 @@ msgstr "\"도둑이야!\"라는 비명이 들린다."
 # fountain.c:812 - 물 소리
 #: ../src/fountain.c:812
 msgid "You hear a sloshing sound"
-msgstr "철벅거리는 소리가 들린다"
+msgstr "찰박거리는 소리가 들린다"
 
 # engrave.c:730 - 균열 소리
 #: ../src/engrave.c:731
 msgid "You hear crackling!"
-msgstr "파직거리는 소리가 들린다!"
+msgstr "파직파직 타는 소리가 들린다!"
 
 # engrave.c:693-695 - 드릴 소리/진동
 #: ../src/engrave.c:694
 msgid "You hear drilling!"
-msgstr "드릴 소리가 들린다!"
+msgstr "드르륵 파고드는 소리가 들린다!"
 
 #: ../src/zap.c:5179
 msgid "You hear hissing gas."
-msgstr "쉬익거리는 가스 소리가 들린다."
+msgstr "가스가 쉬익 새는 소리가 들린다."
 
 #: ../src/zap.c:2899
 msgid "You irradiate yourself with pure energy!"

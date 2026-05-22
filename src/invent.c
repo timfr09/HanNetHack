@@ -2553,7 +2553,6 @@ askchain(
     return cnt;
 }
 
-
 /* The menu for rerolling attributes and inventory.
 
    This is similar to the other inventory menus, but simpler to help it fit on
@@ -2570,7 +2569,7 @@ reroll_menu(void)
     struct obj *otmp;
     int tmpglyph;
     glyph_info tmpglyphinfo;
-    char option;
+    char option = 'n';
     char buf[BUFSZ];
 
     win = create_nhwindow(NHW_MENU);
@@ -2582,9 +2581,9 @@ reroll_menu(void)
              ATR_NONE, NO_COLOR, _("start the game with this character"),
              MENU_ITEMFLAGS_NONE);
     any.a_char = 'y';
+    Strcpy(buf, _("reroll another character"));
     add_menu(win, &nul_glyphinfo, &any, flags.lootabc ? 0 : 'r', 0,
-             ATR_NONE, NO_COLOR, _("reroll another character"),
-             MENU_ITEMFLAGS_NONE);
+             ATR_NONE, NO_COLOR, buf, MENU_ITEMFLAGS_NONE);
     any.a_char = 0;
     add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE, NO_COLOR, "",
              MENU_ITEMFLAGS_NONE);
@@ -2621,11 +2620,7 @@ reroll_menu(void)
     }
     destroy_nhwindow(win);
 
-    if (option == 'y') {
-        ++u.uroleplay.numrerolls;
-        return TRUE;
-    }
-    return FALSE;
+    return option == 'y';
 }
 
 /*

@@ -180,7 +180,7 @@ awaken_soldiers(struct monst *bugler  /* monster that played instrument */)
             if (canseemon(mtmp))
                 pline(_("%s is now ready for battle!"), Monnam(mtmp));
             else if (!Deaf)
-                Norep(_("%s the rattle of battle gear being readied."),                       "You hear");  /* Deaf-aware */
+                Norep(_("You hear the rattle of battle gear being readied."));
         } else if ((distm = ((bugler == &gy.youmonst)
                                  ? mdistu(mtmp)
                                  : dist2(bugler->mx, bugler->my, mtmp->mx,

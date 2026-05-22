@@ -3454,7 +3454,7 @@ launch_obj(
                             set_msg_xy(x, y);
                         pline(_("KAABLAMM!!!%s"),
                               cansee(x, y)
-                               ? "  The rolling boulder triggers a land mine."
+                               ? _("  The rolling boulder triggers a land mine.")
                                : "");
                         deltrap(t);
                         del_engr_at(x, y);
@@ -5533,7 +5533,7 @@ try_disarm(
             pline(_("%s %s is difficult to %s."),
                   ttmp->madeby_u ? _("Your") : under_u ? _("This") : _("That"),
                   trapname(ttype, FALSE),
-                  (ttype == WEB) ? C_("trap_action", "remove") : _("disarm"));
+                  (ttype == WEB) ? C_("trap_action", "remove") : C_("trap_action", "disarm"));
         }
         return 1;
     }

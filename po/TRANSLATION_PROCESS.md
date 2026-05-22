@@ -68,6 +68,24 @@
 | 길이 | 좁은 폭·메시지 줄 수 제한에서 잘리거나 과하게 줄 바뀌지 않는지 |
 | 회귀 | 같은 `msgid`가 다른 코드 경로에서도 쓰이면 **가장 까다로운 경로**까지 확인 |
 
+#### 조합 메시지 추가 체크리스트 (§2.D에서 조각·`enl_msg` 건드릴 때)
+
+상세 설명·패턴 표는 **[TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md) §7.4** 를 본다. 요약만 적어 둔다.
+
+| 단계 | 할 일 |
+|------|--------|
+| 1. 용례 | `rg -n 'msgid|enl_msg|Sprintf.*_\(' src` 로 **포맷 + 인자** 확인 |
+| 2. 시뮬 | 조각 `msgstr`을 넣어 **게임에 나올 한 줄**을 분기별로 손으로 작성 |
+| 3. 충돌 | 동일 영문·다른 조합이면 `msgctxt` 분리 또는 포맷 `%n$s` 재배치 (소스 수정 포함) |
+| 4. 주석 | `ko_manual.po`에 `# [조합]` / `# [조합 조각]` + 소스 줄 + 시뮬 2~4줄 + 혼동 금지 |
+| 5. 검증 | `msgfmt -c` → 가능하면 인게임 → `translation-preflight.sh` |
+
+**대표 사례** (파일 내 주석과 동기화 유지):
+
+- `trap.c` — `"%s %s in a pile of soil below you."` + `There is` / `You discover` / `a trigger`
+- `trap.c` / `eat.c` — `disarm`: `trap_action`(해제**하기**) vs `bear_trap_eat`(해제**하지 못하고 삼켰다**)
+- `insight.c` — `enl_msg` + ` %1$s%3$s%2$s%4$s.` + `You regenerate` / `You cause` / `You aggravate`
+
 ---
 
 ## 3. PR / 커밋 전에 한 번에

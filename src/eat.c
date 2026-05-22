@@ -3624,7 +3624,8 @@ floorfood(
                     reset_utrap(TRUE);
                 beartrap = mksobj(BEARTRAP, TRUE, FALSE);
                 Sprintf(qbuf, _("You only manage to %s the bear trap."),
-                        u_in_beartrap ? _("free yourself from") : _("disarm"));
+                        u_in_beartrap ? C_("bear_trap_eat", "free yourself from")
+                                      : C_("bear_trap_eat", "disarm"));
                 if (check_capacity(qbuf) && beartrap) {
                     obj_extract_self(beartrap);
                     dropy(beartrap);           /* put it on the floor */

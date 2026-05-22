@@ -3454,7 +3454,7 @@ launch_obj(
                             set_msg_xy(x, y);
                         pline(_("KAABLAMM!!!%s"),
                               cansee(x, y)
-                               ? "  The rolling boulder triggers a land mine."
+                               ? _("  The rolling boulder triggers a land mine.")
                                : "");
                         deltrap(t);
                         del_engr_at(x, y);

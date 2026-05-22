@@ -1870,9 +1870,10 @@ msgstr " (라벨: "
 msgid " labeled \"%s\""
 msgstr " \"%s\" 라벨이 붙은"
 
+# [조합 조각] trap.c:2575 — … off! 의 %3$s (already_seen). 앞 공백은 영문 msgid 유지
 #: ../src/trap.c:2575
 msgid " land mine"
-msgstr " 지뢰"
+msgstr "지뢰"
 
 #: ../src/shk.c:2063
 msgid " left"
@@ -16506,6 +16507,7 @@ msgstr "솔 음"
 msgid "G sharp"
 msgstr "솔♯"
 
+# hack.c:524 — Deaf 시 KAABLAMM!! 대신 %s! %s land mine 의 의성어 조각
 #: ../src/hack.c:524
 msgid "Gadzooks"
 msgstr "이런"
@@ -18098,20 +18100,27 @@ msgstr "콰광!!"
 msgid "KAABLAMM!!!  "
 msgstr "콰광!!! "
 
+# [조합] trap.c:2571 — pline(KAABLAMM!!! %s %s%s off!, 기류/서투름, a_your, land mine|it)
+# 시뮬: 콰광!!! 기류가 당신의 지뢰를 작동시켰다! / …서투른 시도가 그것을 …
 #: ../src/trap.c:2571
 #, c-format
 msgid "KAABLAMM!!!  %s %s%s off!"
-msgstr "콰광!!! %s{이/가} %s%s 날아갔다!"
+msgstr "콰광!!! %1$s%2$s%3$s{을/를} 작동시켰다!"
 
 #: ../src/trap.c:2586
 #, c-format
 msgid "KAABLAMM!!!  You triggered %s land mine!"
-msgstr "콰광!!! %s 지뢰를 밟았다!"
+msgstr "콰광!!! %s지뢰를 밟았다!"
 
+# [조합] trap.c:3455 — 콰광!!! + (선택) 굴러오는 바위 지뢰 문장
 #: ../src/trap.c:3455
 #, c-format
 msgid "KAABLAMM!!!%s"
 msgstr "콰광!!!%s"
+
+#: ../src/trap.c:3457
+msgid "  The rolling boulder triggers a land mine."
+msgstr " 굴러오는 바위가 지뢰를 작동시켰다."
 
 #: ../src/trap.c:6714
 msgid "KABOOM!!  %s was booby-trapped!"
@@ -22312,10 +22321,10 @@ msgstr "작은 자유인들"
 msgid "The Werewolves"
 msgstr "늑대인간들"
 
-# trap.c - 기류 작동. "The air currents set off the trap"
+# [조합 조각] trap.c:2573 — KAABLAMM!!! … off! 의 %1$s
 #: ../src/trap.c:2573
 msgid "The air currents set"
-msgstr "기류가 작동시켰다"
+msgstr "기류가 "
 
 #: ../src/timeout.c:551
 msgid "The air here seems foul."
@@ -26399,10 +26408,10 @@ msgstr "병이 더 악화된 것 같다."
 msgid "Your illness is severe."
 msgstr "병이 심각하다."
 
-# lock.c - 서투른 시도. "Your inept attempt sets off the alarm"
+# [조합 조각] trap.c:2572 — KAABLAMM!!! … off! 의 %1$s
 #: ../src/trap.c:2572
 msgid "Your inept attempt sets"
-msgstr "서투른 시도가"
+msgstr "서투른 시도가 "
 
 # insight.c:1456 - "Your items are X" 조합
 # "Your items are somewhat cursed" → "당신의 아이템은 어느 정도 저주받았다"
@@ -27110,9 +27119,11 @@ msgstr "큰 *쾅*!"
 msgid "a loud *SPLASH*!"
 msgstr "큰 *첨벙*!"
 
+# sounds.c:195 — You_hear1, 신탁 맵·환각 유머. ZOT=전기/마법 타격음(§4.6) → 찌릿!
+# 시뮬: (들림) 큰 찌릿! 소리가 들린다.
 #: ../src/sounds.c:195
 msgid "a loud ZOT!"
-msgstr "큰 ZOT 소리가 울린다!"
+msgstr "큰 찌릿! 소리가 들린다!"
 
 #: ../src/trap.c:1216
 msgid "a loud click!"
@@ -33312,10 +33323,10 @@ msgstr "좁은 통로에서 생긴 타박상"
 msgid "convert_line: overflow"
 msgstr "convert_line: overflow"
 
-# sounds.c:192 - 던전 소리. 들리는 무서운 소리 묘사
+# sounds.c:192 — You_hear1 단독
 #: ../src/sounds.c:192
 msgid "convulsive ravings."
-msgstr "경련적인 헛소리."
+msgstr "경련하듯 헛소리가 들린다."
 
 #: ../src/sounds.c:346
 msgid "coo"
@@ -51510,9 +51521,10 @@ msgstr "낄낄거린다."
 msgid "sniffle"
 msgstr "훌쩍거리다"
 
+# sounds.c:193 — You_hear1 단독
 #: ../src/sounds.c:193
 msgid "snoring snakes."
-msgstr "코 고는 뱀 소리."
+msgstr "뱀이 코 고는 소리가 들린다."
 
 #: ../src/obj_descr_i18n.c:244
 msgid "snow boots"
@@ -58757,13 +58769,13 @@ msgid "You faint."
 msgstr "기절했다."
 
 msgid "You feel better."
-msgstr "기분이 나아졌다."
+msgstr "몸이 나아진다."
 
 msgid "You feel confused."
-msgstr "혼란스럽다."
+msgstr "머리가 혼란스럽다."
 
 msgid "You feel dizzy."
-msgstr "어지럽다."
+msgstr "머리가 어지럽다."
 
 msgid "You feel healthy."
 msgstr "건강해진 것 같다."
@@ -58784,19 +58796,19 @@ msgstr "훨씬 나아졌다."
 # ============================================================
 # Note: "Nothing happens.", "Never mind." already defined earlier
 msgid "You feel nothing."
-msgstr "아무것도 느끼지 못했다."
+msgstr "아무 감각도 없다."
 
 msgid "You feel sick."
-msgstr "몸이 아프다."
+msgstr "몸이 메스껍다."
 
 msgid "You feel sleepy."
-msgstr "졸립다."
+msgstr "눈이 감긴다."
 
 msgid "You feel strong."
-msgstr "힘이 세진 것 같다."
+msgstr "힘이 넘친다."
 
 msgid "You feel tired."
-msgstr "피곤하다."
+msgstr "기운이 빠진다."
 
 msgid "You feel very sick."
 msgstr "매우 아프다."

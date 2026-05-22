@@ -1873,7 +1873,7 @@ msgstr " \"%s\" 라벨이 붙은"
 # [조합 조각] trap.c:2575 — … off! 의 %3$s (already_seen). 앞 공백은 영문 msgid 유지
 #: ../src/trap.c:2575
 msgid " land mine"
-msgstr "지뢰"
+msgstr " 지뢰"
 
 #: ../src/shk.c:2063
 msgid " left"
@@ -18110,7 +18110,7 @@ msgstr "콰광!!! %1$s%2$s%3$s{을/를} 작동시켰다!"
 #: ../src/trap.c:2586
 #, c-format
 msgid "KAABLAMM!!!  You triggered %s land mine!"
-msgstr "콰광!!! %s지뢰를 밟았다!"
+msgstr "콰광!!! %s 지뢰를 밟았다!"
 
 # [조합] trap.c:3455 — 콰광!!! + (선택) 굴러오는 바위 지뢰 문장
 #: ../src/trap.c:3455
@@ -27317,7 +27317,7 @@ msgstr "후루룩 들이켜는 소리가 들린다."
 
 #: ../src/sounds.c:217
 msgid "a soda fountain!"
-msgstr "탄산수 분수!"
+msgstr "탄산수가 솟구치는 소리가 들린다!"
 
 #: ../src/trap.c:1279
 msgid "a soft click."
@@ -31318,7 +31318,7 @@ msgstr "거품"
 # === Sound descriptions (sounds.c) ===
 #: ../src/sounds.c:216
 msgid "bubbling water."
-msgstr "물이 부글거리는 소리."
+msgstr "물이 부글거리는 소리가 들린다."
 
 #: ../src/obj_descr_i18n.c:34
 msgid "bubbly"
@@ -34808,7 +34808,7 @@ msgstr "몸을 빼냈다."
 
 #: ../src/sounds.c:223
 msgid "dishes being washed!"
-msgstr "설거지하는 소리!"
+msgstr "설거지하는 소리가 들린다!"
 
 #: ../src/uhitm.c:342
 msgid "dishonorably attack the innocent!"
@@ -51683,7 +51683,7 @@ msgstr "누군가 \"더 이상 우드척은 없어!\"라고 외치는 소리가 
 
 #: ../src/sounds.c:262
 msgid "someone searching."
-msgstr "누군가 수색하는 소리가 들린다."
+msgstr "누군가 뒤지는 소리가 들린다."
 
 #: ../src/mcastu.c:686
 #, c-format

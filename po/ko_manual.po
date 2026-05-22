@@ -1877,7 +1877,7 @@ msgstr "지뢰"
 
 #: ../src/shk.c:2063
 msgid " left"
-msgstr "왼쪽"
+msgstr " 하나도"
 
 #: ../src/potion.c:1305
 msgid " like acid"
@@ -2248,7 +2248,7 @@ msgstr " 또는 "
 # [조합 조각] shk.c:1972·2472 — 금화/신용 부족 pline. 다른 파일에서 쓰이지 않음
 #: ../src/shk.c:2472
 msgid " or credit"
-msgstr "나 신용이 "
+msgstr " 및 신용"
 
 #: ../src/insight.c:3142
 msgid " or extinct"
@@ -2367,7 +2367,7 @@ msgstr " 투시할"
 # [조합 조각] shk.c — stashed gold 힌트. pline 끝에 붙는 절
 #: ../src/shk.c:2471
 msgid " seem to"
-msgstr " (있는 것 같지도 않다)"
+msgstr "겉보기엔 "
 
 # mhitu.c - 감지. "The monster senses your motion and attacks"
 #: ../src/shk.c:5813 ../src/shk.c:5850
@@ -12050,7 +12050,7 @@ msgstr "%1$s물약%2$.0s{이/가} %3$s."
 #: ../src/music.c:591
 #, c-format
 msgid "%sproduce %s%s music."
-msgstr "%s%s 음악을 %s연주한다."
+msgstr "%1$s%3$s%2$s 음악을 연주한다."
 
 #: ../src/write.c:224
 #, c-format
@@ -12577,7 +12577,7 @@ msgstr ", 아래층에서 진입"
 # 조합: 음악 수식 - 익숙한 (주의: familiar creature와 다름)
 #: ../src/music.c:593 ../src/music.c:651
 msgid ", familiar"
-msgstr ", 익숙한"
+msgstr "익숙한 "
 
 #: ../src/insight.c:3419 ../src/insight.c:3529
 msgid ", fast"
@@ -14524,11 +14524,11 @@ msgstr "하지만 닿을 수 없다!"
 # 아이템 메시지 (Item Messages)
 # ============================================================
 # [조합] shk.c:1971 — %1=seem to %2=or credit (조각은 위 msgid). 시뮬:
-#   …금화가 충분하지 않다. / …충분하지 않은 것 같다. / …금화나 신용이 가 …
+#   …보유 자금이 충분하지 않다. / …충분하지 않은 듯하다. / …보유 자금 및 신용이 …
 #: ../src/shk.c:1971
 #, c-format
 msgid "But you don't%s have enough gold%s."
-msgstr "그러나 금화%2$s가 충분하지 않다.%1$s"
+msgstr "그러나 %1$s보유 자금%2$s이 충분하지 않다."
 
 # ============================================================
 # 아이템 메시지 (Item Messages)
@@ -18870,10 +18870,10 @@ msgstr "\"에 대한 추가 정보"
 #: ../src/shk.c:1492
 #, c-format
 # [조합] shk.c:1904 — %s = seem to 조각(끝에 붙음)
-# 시뮬: 게다가, 금화가 없다. / …없다. (있는 것 같지도 않다)
+# 시뮬: 게다가, 금화가 없다. / …없는 듯하다.
 #: ../src/shk.c:1904
 msgid "Moreover, you%s have no gold."
-msgstr "게다가, 금화가 없다.%1$s"
+msgstr "게다가, %1$s금화가 없다."
 
 #: ../src/pray.c:2572
 msgid "Morgoth"
@@ -31829,7 +31829,7 @@ msgstr "수 없다"
 
 #: ../src/timeout.c:229
 msgid "can't "
-msgstr "수 없다"
+msgstr "도저히 "
 
 #: ../src/shk.c:1833
 #, c-format
@@ -35363,11 +35363,11 @@ msgid "don't want to get the pages even more soggy, do you?"
 msgstr "페이지를 더 젖게 하고 싶지 않잖아?"
 
 # [조합] shk.c:2470 — %1=seem %2=credit %3=item
-# 시뮬: 검을 사기에 금화가 부족하다. / …부족한 것 같다. / …금화나 신용이 가 …
+# 시뮬: 검을 사기에 보유 자금이 부족하다. / …부족한 듯하다. / …보유 자금 및 신용이 …
 #: ../src/shk.c:2470
 #, c-format
 msgid "don't%s have gold%s enough to pay for %s."
-msgstr "%3$s{을/를} 사기에 금화%2$s가 충분하지 않다.%1$s"
+msgstr "%1$s%3$s{을/를} 사기에 보유 자금%2$s이 충분하지 않다."
 
 #: ../src/objnam.c:1739
 msgid "doname: long object description overflow."
@@ -47118,7 +47118,7 @@ msgstr "경건하게"
 
 #: ../src/music.c:592
 msgid "piped"
-msgstr "연주했다"
+msgstr "삐이익거리는"
 
 #: ../src/fountain.c:584
 msgid "pipes break!  Water spurts out!"
@@ -50092,7 +50092,7 @@ msgstr "더 느린 것 같다."
 # 조합: "You seem to produce" - 연주 결과 수식
 #: ../src/music.c:591 ../src/shk.c:1874 ../src/shk.c:2063 ../src/shk.c:2465
 msgid "seem to "
-msgstr "것 같이 "
+msgstr "겉보기엔 "
 
 #: ../src/apply.c:2196
 msgid "seem to be out of tins."

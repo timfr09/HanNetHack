@@ -708,6 +708,7 @@ typedef unsigned char uchar;
  * Currently has support in:
  *     WIN32CON
  *     Qt
+ *     curses
  */
 
 /* #define IDLECHECKPOINT */

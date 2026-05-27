@@ -1617,13 +1617,24 @@ msgstr "환각에 "
 msgid " has "
 msgstr " ~을 갖고 있다 "
 
-# pickup.c:3587 - 컨테이너 기울이기 질문
-# 기존: 완전 오역 → 올바른 번역
-# 조합: "There is " + [아이템 이름] + " here, tip it?"
-# {이/가}는 아이템 이름의 마지막 글자에 따라 자동 선택됨
-#: ../src/pickup.c:3607
-msgid " here, tip it?"
-msgstr "{이/가} 여기 있다. 기울일까?"
+# pickup.c - 컨테이너 기울이기 확인 (safe_qbuf 조합)
+# "There is " + [아이템 이름] + prompt_part2
+# prompt_part2: 인벤 대상이 있으면 " here, tip it?" / 바닥(지면)만이면 " here, tip it onto the floor?"
+# %2$s%1$s 로 지면 이름·"위로" 순서를 맞춤
+#: ../src/pickup.c:3624
+#, c-format
+msgid " here, tip it%s%s?"
+msgstr "{이/가} 여기에 있다. %2$s%1$s 기울이시겠습니까?"
+
+#: ../src/pickup.c:3625
+msgid " onto the "
+msgstr " 위로 "
+
+# pickup.c:3948 - 기울이기 대상 메뉴 (바닥/지면)
+#: ../src/pickup.c:3948
+#, c-format
+msgid "on the %s"
+msgstr "%s 위에"
 
 # trap.c:5936 - 상자 함정 확인. "There's a box here. Check it for traps?"
 #: ../src/trap.c:6023
@@ -24756,10 +24767,10 @@ msgstr "어디로 이동하시겠습니까?"
 msgid "Where is shopdoor?"
 msgstr "상점 문은 어디 있는가?"
 
-#: ../src/pickup.c:3930
+#: ../src/pickup.c:3985
 #, c-format
 msgid "Where to tip the contents of %s"
-msgstr "%s의 내용물을 어디에 쏟으시겠습니까"
+msgstr "%s의 내용물을 어디에 쏟으시겠습니까?"
 
 #: ../src/cmd.c:2481
 msgid "Which commands autocomplete?"

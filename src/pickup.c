@@ -3536,7 +3536,7 @@ choose_tip_container_menu(void)
            containers that it's already being used */
         i = (i <= 'i' - 'a' && !flags.lootabc) ? 'i' : 0;
         add_menu(win, &nul_glyphinfo, &any, i, 0, ATR_NONE,
-                 clr, "tip something being carried",
+                 clr, _("tip something being carried"),
                  MENU_ITEMFLAGS_SELECTED);
     }
     end_menu(win, _("Tip which container?"));

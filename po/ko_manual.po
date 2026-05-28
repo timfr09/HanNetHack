@@ -1618,23 +1618,23 @@ msgid " has "
 msgstr " ~을 갖고 있다 "
 
 # pickup.c - 컨테이너 기울이기 확인 (safe_qbuf 조합)
-# "There is " + [아이템 이름] + prompt_part2
-# prompt_part2: 인벤 대상이 있으면 " here, tip it?" / 바닥(지면)만이면 " here, tip it onto the floor?"
+# "There is " + [아이템 이름] + prompt_part2  (접두 "여기에 "와 중복되지 않게 suffix는 '있다'부터)
+# prompt_part2: 인벤 대상 있음 → " here, tip it?" / 바닥(지면)만 → " here, tip it onto the floor?"
 # %2$s%1$s 로 지면 이름·"위로" 순서를 맞춤
 #: ../src/pickup.c:3624
 #, c-format
 msgid " here, tip it%s%s?"
-msgstr "{이/가} 여기에 있다. %2$s%1$s 기울이시겠습니까?"
+msgstr "{이/가} 있다.%2$s%1$s 기울이시겠습니까?"
 
 #: ../src/pickup.c:3625
 msgid " onto the "
 msgstr " 위로 "
 
-# pickup.c:3948 - 기울이기 대상 메뉴 (바닥/지면)
+# pickup.c:3948 - 기울이기 대상 메뉴 (바닥/지면 등, 내용물을 쏟을 곳)
 #: ../src/pickup.c:3948
 #, c-format
 msgid "on the %s"
-msgstr "%s 위에"
+msgstr "%s에"
 
 # trap.c:5936 - 상자 함정 확인. "There's a box here. Check it for traps?"
 #: ../src/trap.c:6023
@@ -23520,13 +23520,17 @@ msgid "Tip all the contents out of this container"
 msgstr "이 용기에서 모든 내용물 쏟아내기"
 
 # pickup.c:3516 - 기울일 용기 선택 질문
-#: ../src/pickup.c:3536
+#: ../src/pickup.c:3542
 msgid "Tip which container?"
-msgstr "어떤 용기를 기울일까?"
+msgstr "어떤 용기를 기울이시겠습니까?"
+
+#: ../src/pickup.c:3539
+msgid "tip something being carried"
+msgstr "소지품에서 기울이기"
 
 #: ../src/pickup.c:3890
 msgid "Tipping contents to floor only..."
-msgstr "바닥에만 내용물을 쏟는다..."
+msgstr "담을 다른 용기가 없어 바닥(지면)에만 쏟습니다."
 
 #: ../src/vault.c:1230
 #, c-format
@@ -24767,10 +24771,15 @@ msgstr "어디로 이동하시겠습니까?"
 msgid "Where is shopdoor?"
 msgstr "상점 문은 어디 있는가?"
 
-#: ../src/pickup.c:3985
+#: ../src/pickup.c:3981
 #, c-format
 msgid "Where to tip the contents of %s"
-msgstr "%s의 내용물을 어디에 쏟으시겠습니까?"
+msgstr "%s 내용물을 어디에 쏟으시겠습니까?"
+
+# invent.c getobj - #tip 전용 (일반 "What do you want to %s?" 조합과 분리)
+#: ../src/invent.c:1933
+msgid "What do you want to tip?"
+msgstr "무엇을 기울이시겠습니까?"
 
 #: ../src/cmd.c:2481
 msgid "Which commands autocomplete?"
@@ -25409,7 +25418,7 @@ msgstr "%s에 손이 닿지 않는다."
 #: ../src/pickup.c:3592
 #, c-format
 msgid "You can't tip %s while carrying so much."
-msgstr "너무 많이 들고 있어서 %s{을/를} 기울일 수 없다."
+msgstr "짐이 너무 많아 %s{을/를} 기울일 수 없습니다."
 
 #: ../src/write.c:55
 msgid "You can't write such a weird scroll!"
@@ -54488,9 +54497,10 @@ msgstr "아주 작은"
 msgid "tiny snowflakes spinning around a miniature farmhouse."
 msgstr "미니어처 농가 주위를 맴도는 작은 눈송이를."
 
-#: ../src/obj_descr_i18n.c:428 ../src/pickup.c:2045
+# pickup.c able_to_loot() 동사 — getobj 전용은 msgctxt "getobj"/"tip"
+#: ../src/pickup.c:2045
 msgid "tip"
-msgstr "기울일"
+msgstr "기울이다"
 
 #: ../src/muse.c:827
 #, c-format
@@ -59564,6 +59574,11 @@ msgstr "보이지 않는 생물"
 msgctxt "getobj"
 msgid "remove"
 msgstr "벗을"
+
+# invent.c getobj - "don't have anything to tip" 등
+msgctxt "getobj"
+msgid "tip"
+msgstr "기울일"
 
 # [조합 메시지] insight.c - 캐릭터 재굴림 횟수
 # %2$s = plur() 복수형 억제

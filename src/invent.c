@@ -1929,7 +1929,10 @@ getobj(
     for (;;) {
         cnt = 0L;
         cntgiven = FALSE;
-        Sprintf(qbuf, _("What do you want to %s?"), getobj_word(word));
+        if (!strcmp(word, "tip"))
+            Sprintf(qbuf, _("What do you want to tip?"));
+        else
+            Sprintf(qbuf, _("What do you want to %s?"), getobj_word(word));
         if (gi.in_doagain) {
             ilet = readchar();
         } else if (iflags.force_invmenu) {

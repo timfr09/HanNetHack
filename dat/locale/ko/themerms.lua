@@ -935,8 +935,8 @@ function themerooms_generate()
          if is_eligible(themerooms[debug_rm_idx]) then
             actualrm = debug_rm_idx
          else
-            pline("Warning: themeroom '"..themerooms[debug_rm_idx].name
-                  .."' is ineligible")
+            pline("경고: 테마 방 '"..themerooms[debug_rm_idx].name
+                  .."'은(는) 조건을 만족하지 않음")
          end
       end
       themerooms[actualrm].contents();
@@ -987,17 +987,17 @@ function pre_themerooms_generate()
    debug_fill_idx = lookup_by_name(debug_fill, true)
    if debug_themerm ~= nil and debug_rm_idx == nil then
       if lookup_by_name(debug_themerm, true) ~= nil then
-         xtrainfo = "; it is a fill type"
+         xtrainfo = "; 채우기 유형임"
       end
-      pline("Warning: themeroom '"..debug_themerm
-            .."' not found in themerooms"..xtrainfo, true)
+      pline("경고: 테마 방 '"..debug_themerm
+            .."'을(를) themerooms에서 찾을 수 없음"..xtrainfo, true)
    end
    if debug_fill ~= nil and debug_fill_idx == nil then
       if lookup_by_name(debug_fill, false) ~= nil then
-         xtrainfo = "; it is a room type"
+         xtrainfo = "; 방 유형임"
       end
-      pline("Warning: themeroom fill '"..debug_fill
-            .."' not found in themeroom_fills"..xtrainfo, true)
+      pline("경고: 테마 방 채우기 '"..debug_fill
+            .."'을(를) themeroom_fills에서 찾을 수 없음"..xtrainfo, true)
    end
 end
 
@@ -1015,8 +1015,8 @@ function themeroom_fill(rm)
          -- some more context on whether it failed because of difficulty or
          -- because of eligible function returning false; the warning doesn't
          -- necessarily mean anything.
-         pline("Warning: fill '"..themeroom_fills[debug_fill_idx].name
-               .."' is not eligible in room that generated it")
+         pline("경고: 채우기 '"..themeroom_fills[debug_fill_idx].name
+               .."'이(가) 생성된 방에서는 조건을 만족하지 않음")
       end
       return
    end

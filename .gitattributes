@@ -6,10 +6,60 @@
 Porting NHSUBST
 README NHSUBST
 * text=auto
+
+# Line endings: keep Unix/build/source/catalog files LF across Windows and WSL.
+*.c text eol=lf
+*.h text eol=lf
+*.cpp text eol=lf
+*.sh text eol=lf
+*.pl text eol=lf
+*.pm text eol=lf
+*.awk text eol=lf
+*.lua text eol=lf
+*.mk text eol=lf
+*.mak text eol=lf
+Makefile text eol=lf
+GNUmakefile text eol=lf
+GNUmakefile.* text eol=lf
+*.po text eol=lf
+*.pot text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.rc text eol=lf
+*.manifest text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Windows command files are intentionally CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.sln text eol=crlf
+*.vcxproj text eol=crlf
+*.vcxproj.filters text eol=crlf
+
+# Binary assets and packed/generated artifacts must not be normalized.
+*.bmp binary
+*.gif binary
+*.ico binary
+*.icns binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.tif binary
+*.tiff binary
+*.wav binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.exe binary
+*.dll binary
+*.mo binary
+*.o binary
+*.a binary
 sys/unix/hints/** text eol=lf
 *.hqx -text
-*.sln -text
-*.vcxproj -text
 *.doc !diff
 *.DOC !diff
 *.uu NH_header=no

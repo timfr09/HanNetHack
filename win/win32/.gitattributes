@@ -1,6 +1,6 @@
 *.mak NHSUBST
-*.sln -text
-*.vcxproj -text
+*.sln text eol=crlf
+*.vcxproj text eol=crlf
 *.def NH_header=no
 *.sln NH_header=no
 *.vcxproj NH_header=no

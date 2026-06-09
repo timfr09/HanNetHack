@@ -49990,7 +49990,7 @@ msgstr "플래시백으로부터 안전"
 
 #: ../src/wield.c:225
 msgid "secure the tether."
-msgstr "끈을 고정한다."
+msgstr "줄을 고정한다."
 
 #: ../src/dothrow.c:1694 ../src/dothrow.c:1714 ../src/dothrow.c:1813
 #, c-format
@@ -50000,7 +50000,7 @@ msgstr "줄이 %s에서 빠졌다."
 #: ../src/dothrow.c:1764
 #, c-format
 msgid "Your tethered %s snaps back but the tether slips from your %s."
-msgstr "줄에 매인 %s가 되돌아왔지만 줄이 %s에서 빠졌다."
+msgstr "줄에 매인 %s가 되돌아왔지만 %s에서 줄이 풀렸다."
 
 #: ../src/dothrow.c:1777
 #, c-format
@@ -50010,7 +50010,7 @@ msgstr "줄에 매인 %s가 되돌아와 %s{을/를} 때렸다!"
 #: ../src/dothrow.c:1802
 #, c-format
 msgid "%s tether comes off your %s."
-msgstr "%s 줄이 %s에서 빠졌다."
+msgstr "%s의 줄이 %s에서 빠졌다."
 
 #: ../src/uhitm.c:4658
 msgid "seduce"

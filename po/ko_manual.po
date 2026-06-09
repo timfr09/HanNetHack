@@ -23986,6 +23986,19 @@ msgstr "열기"
 msgid "Unlock it with %s?"
 msgstr "%s{으로/로} 열겠습니까?"
 
+#: ../src/lock.c:629
+#, c-format
+msgid "Lock it with %s?"
+msgstr "%s{으로/로} 잠그겠습니까?"
+
+#: ../src/lock.c:632
+msgid "Unlock it?"
+msgstr "열겠습니까?"
+
+#: ../src/lock.c:633
+msgid "Lock it?"
+msgstr "잠그겠습니까?"
+
 #: ../src/pray.c:1691
 #, c-format
 msgid "Unluckily, you feel the power of %s decrease."
@@ -49978,6 +49991,26 @@ msgstr "플래시백으로부터 안전"
 #: ../src/wield.c:225
 msgid "secure the tether."
 msgstr "끈을 고정한다."
+
+#: ../src/dothrow.c:1694 ../src/dothrow.c:1714 ../src/dothrow.c:1813
+#, c-format
+msgid "The tether comes off your %s."
+msgstr "줄이 %s에서 빠졌다."
+
+#: ../src/dothrow.c:1764
+#, c-format
+msgid "Your tethered %s snaps back but the tether slips from your %s."
+msgstr "줄에 매인 %s가 되돌아왔지만 줄이 %s에서 빠졌다."
+
+#: ../src/dothrow.c:1777
+#, c-format
+msgid "tethered %s returns and hits your %s!"
+msgstr "줄에 매인 %s가 되돌아와 %s{을/를} 때렸다!"
+
+#: ../src/dothrow.c:1802
+#, c-format
+msgid "%s tether comes off your %s."
+msgstr "%s 줄이 %s에서 빠졌다."
 
 #: ../src/uhitm.c:4658
 msgid "seduce"

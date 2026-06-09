@@ -1086,6 +1086,7 @@ shop_keeper(char rmno)
                         level_status.making, level_status.loading,
                         level_status.shkready, level_status.ready);
 #endif
+            nhUse(hmm);
         }
     }
     return shkp;

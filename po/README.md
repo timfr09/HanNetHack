@@ -2,7 +2,7 @@
 
 ## 개요
 
-이 디렉터리는 HanNetHack의 gettext 번역 소스와 빌드 규칙을 둡니다. **전체 작업 순서(언제 `make pot`을 돌릴지, PR 전에 무엇을 할지)** 는 **[TRANSLATION_PROCESS.md](TRANSLATION_PROCESS.md)** 를 먼저 보면 됩니다. **미번역 채우기**뿐 아니라 **기존 번역 다듬기**(게임 안에서 읽혔을 때 자연스러운지)도 같은 문서 §2.D와 **[TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md)** 의 「기존 번역을 다듬을 때의 원칙」을 따른다. 문체·조사·용어 규칙은 **[TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md)**, 시스템 구조는 **[I18N_SYSTEM.md](I18N_SYSTEM.md)** 를 쓰면 됩니다.
+이 디렉터리는 HanNetHack의 gettext 번역 소스와 빌드 규칙을 둡니다. **전체 작업 순서(언제 `make pot`을 돌릴지, PR 전에 무엇을 할지)** 는 **[TRANSLATION_PROCESS.md](TRANSLATION_PROCESS.md)** 를 먼저 보면 됩니다. **미번역 채우기**뿐 아니라 **기존 번역 다듬기**(게임 안에서 읽혔을 때 자연스러운지)도 같은 문서 §2.D와 **[TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md)** 의 「기존 번역을 다듬을 때의 원칙」을 따른다. **`enl_msg`·`Sprintf` 조합문**은 가이드 **§7.4**·프로세스 **§2.D(조합 체크리스트)**·`ko_manual.po`의 `# [조합]` 주석을 함께 본다. **의성어(KAABLAMM 등)** 는 [TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md) **§4.6**. 문체·조사·용어 규칙은 **[TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md)**, 시스템 구조는 **[I18N_SYSTEM.md](I18N_SYSTEM.md)** 를 쓰면 됩니다.
 
 ## 파일 구조
 

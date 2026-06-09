@@ -1076,6 +1076,18 @@ shop_keeper(char rmno)
                correct the underlying svr.rooms[].resident issue but... */
             return (struct monst *) 0;
         }
+    } else {
+        if (!level_status.shkready) {
+            int hmm UNUSED = 1;
+#if (NH_DEVEL_STATUS != NH_STATUS_RELEASED \
+     && NH_DEVEL_STATUS != NH_STATUS_POSTRELEASE)
+            impossible("untrustworthy null shkp; level_status.shkready"
+                        " is FALSE (%d, %d, %d, &d)",
+                        level_status.making, level_status.loading,
+                        level_status.shkready, level_status.ready);
+#endif
+            nhUse(hmm);
+        }
     }
     return shkp;
 }
@@ -1675,7 +1687,8 @@ menu_pick_pay_items(
     menu_item *pick_list = (menu_item *) 0;
     char *p, buf[BUFSZ];
     long amt, largest_amt, save_quan;
-    int i, j, n, amt_width;
+    int i, j, n, amt_width, tmpglyph;
+    glyph_info tmpglyphinfo;
 
     any = cg.zeroany;
     win = create_nhwindow(NHW_MENU);
@@ -1716,7 +1729,9 @@ menu_pick_pay_items(
            isn't hallucinating; also, that would mess up the alignment */
         Snprintf(buf, sizeof buf, "%*ld Zm, %s", amt_width, amt, p);
         any.a_int = i + 1; /* +1: avoid 0 */
-        add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE, NO_COLOR, buf,
+        tmpglyph = obj_to_glyph(otmp, rn2_on_display_rng);
+        map_glyphinfo(0, 0, tmpglyph, 0U, &tmpglyphinfo);
+        add_menu(win, &tmpglyphinfo, &any, 0, 0, ATR_NONE, NO_COLOR, buf,
                  MENU_ITEMFLAGS_NONE);
     }
 

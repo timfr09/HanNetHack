@@ -1377,6 +1377,11 @@ save_currentstate(void)
 {
     NHFILE *nhfp;
 
+    if (!program_state.something_worth_saving
+        || program_state.in_self_recover
+        || program_state.in_checkpoint)
+        return;
+
     program_state.in_checkpoint++;
     if (flags.ins_chkpt) {
         /* write out just-attained level, with pets and everything */

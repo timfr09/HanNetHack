@@ -1,5 +1,5 @@
-NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.5 $ $NHDT-Date: 1778535648 2026/05/11 21:40:48 $
-
+NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.20 $ $NHDT-Date: 1779581008 2026/05/24 00:03:28 $
+	
 General Fixes and Modified Features
 -----------------------------------
 fix some cross-compile package filenames that still referenced 370 instead
@@ -26,6 +26,39 @@ fix buffer overflow in update_topl when handling multiple items in a
 	container
 fix random attended shrines in irregular rooms
 fix experience-level up/down hilighting
+cherry-pick a pair of core fixes from the m68k-wip branch to add menu
+	glyphs to shop bills and container tip/loot menus (pr #1539
+	by ingpaschke)
+tiles: make the tile for magic flute and mundane flute be exactly the
+	same; do the same thing for drum of earthquake and leather drum
+fix a buffer overflow in reroll processing that was introduced in a
+	post-release 5.0.0 commit
+ensure a checkpoint, aka a save_currentstate() call, isn't done before
+	the game is ready
+add ANY_INT16 to any_types and use it for u.ux/uy/tx/ty and uz dlevel/dnum;
+	those are coordxy (int16_t) but the Lua bindings were treating them
+	as 1-byte fields, so on big-endian m68k Lua read the high byte (0)
+	instead of the actual value. Symptom: place_object off map <0,0>
+	win the tutorial.
+fix an off-by-one in glyph_is_normal_piletop_obj (pr #1547 by ingpaschke)
+replace the hashtable used for parsing glyphnames with sorted indices and
+	reduce the string allocation load during that processing (cherry-pick
+	of pr #1548 by ingpaschke)
+for SELECTSAVE, allow utd flags for uptodate() to be passed down through
+	the small set of callers that eventually call uptodate()
+avoid calling costly_spot(), costly_adjacent(), find_byowner(), which
+	all rely on shop_keeper() under the hood, in the midst of the level
+	loading process before all the required data structures have
+	been finalized
+if the hero has already been told that an engraving vanished, ensure that
+	the engraving marker isn't still showing when prompted for a
+	new engraving
+aklys path shouldn't be shown for locations that the hero cannot see
+keep the player better-informed about status of the tether on their weapon
+don't overflow svp.plname on restore (pr #1570 by chasonr)
+monsters (including pets) aren't scared of the Sokoban rolling boulder traps
+fix a bug in which steeds would continuously gain movement points while
+        being ridden
 
 
 Platform- and/or Interface-Specific Fixes
@@ -99,6 +132,9 @@ curses on Windows: some early data is alloc'd for the windows console
 	settings in both tty and curses (pdcursesmod) prior to the
 	window port initialization, but only tty was freeing it; call
 	console_exit() in nethack_exit if window port is curses
+curses on Windows: dialogs pertaining to the need for self-recover
+	were not visible and therefore the player had no idea that
+	answers were expected or why
 gcc-16: tiletext.c [-Wdiscarded-qualifiers] warning suppression
 libnh: update get_nhuuid() for libnhmain
 libnh: sys/libnh/libnhmain.c: drop `static` on `whoami()`
@@ -118,6 +154,11 @@ libnh: sys/unix/hints/macOS.500 in the WANT_LIBNH block, add an explicit
 	$(GAME) is overridden to empty, the regular `recover: $(GAME)` chain
 	no longer triggers `lua_support`, so include/nhlua.h never gets
 	generated and recover.c's transitive #include of hack.h fails
+libnh: export GLYPH_PILETOP_OFF constant (pr #1562 by avgas3)
+Linux: add WANT_SYSTEM_LUA=1 support to the linux.500 hints files and
+	its included files, making it possible to avoid the 'fetch-lua'
+	step and the subsequent compiling of Lua; it tries to use use
+	the Lua5.4 package that is already installed on the system
 macOS: fix ncurses build with Homebrew
 musl: musl libc does not have __sighandler_t so don't use it in the
 	macro definition for SIG_RET_TYPE with musl
@@ -128,12 +169,27 @@ Windows: correct a NetHack 5.0.0 packaging error if visual studio was
 	used; a remnant hard-coded 370 was in package.nmake
 Windows: setting any map_mode option in the config file could trigger
 	an app failure on launch by dereferencing a null pointer
+Windows: a Windows console debug line began showing up after the sources
+	switched patchlevel.h NH_DEVEL_STATUS from NH_STATUS_RELEASED to 
+	NH_STATUS_POSTRELEASE; make it only ever show if (wizard) is true
+Windows: with SELECTSAVE don't display error messages to a regular player
+	about out-of-date save files encountered while building the
+	saved-game list to select from; the game doesn't offer any
+	action to assist with them presently, and they would have to be
+	dealt with external to the game, so try not to annoy
 tty: allow custom glyph colors if they're basic 16 nethack colors
 	on terminals with less than 256 colors
+X11: obey timed_delay
 
 
 General New Features
 --------------------
+sysconf option MAX_REROLL_RATE to limit rate at which rerolls are performed
+idlecheckpoint config file option to update checkpoint files whenever an
+	input request isn't responded to within IDLECHECKPOINT_WAIT_TIME
+	seconds; helps ensure that a recover operation, if it turns out
+	to be needed, is much more current than the last level change;
+	support added for Windows console, Qt, and curses
 
 
 Platform- and/or Interface-Specific New Features
@@ -175,3 +231,12 @@ unix hints: consolidate all the bsd flavours into a single sys/unix/bsd.500
 	hints file to ease maintenance going forward; use bsd make
 	conditional logic to carry out steps unique to NetBSD, OpenBSD,
 	FreeBSD, GhostBSD
+unix hints: the Makefiles distributed by sys/unix/setup.sh will now check
+	for the presence of a make.prefs at the top of the NetHack tree,
+	and will include it if it exists; make.prefs must contain valid 
+	Makefile syntax and can be used to set preferences instead of
+	placing them on the make command line; Use GNU make syntax for GNU
+	make, and use bsd make syntax for bsd make
+share a single copy of nhuuid generation code between Amiga, Atari, and msdos
+	by way of sys/share/pcmain.c (cherry-pick from pr #1541 by ingpaschke)
+

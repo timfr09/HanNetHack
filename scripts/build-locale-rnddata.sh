@@ -29,15 +29,24 @@ build_rnd() {
         ( cd "$ROOT/util" && make makedefs )
     fi
 
-    saved=""
+    saved_txt=""
     if [ -f "$DAT/${name}.txt" ]; then
         cp "$DAT/${name}.txt" "$DAT/${name}.txt.__saved__"
-        saved=1
+        saved_txt=1
+    fi
+    saved_bin=""
+    if [ -f "$DAT/${name}" ]; then
+        cp "$DAT/${name}" "$DAT/${name}.__saved__"
+        saved_bin=1
     fi
     cp "$src" "$DAT/${name}.txt"
     ( cd "$DAT" && "$MAKEDEFS" -"$opt" )
-    mv "$DAT/$name" "$out"
-    if [ -n "$saved" ]; then
+    cp "$DAT/$name" "$out"
+    rm -f "$DAT/$name"
+    if [ -n "$saved_bin" ]; then
+        mv "$DAT/${name}.__saved__" "$DAT/${name}"
+    fi
+    if [ -n "$saved_txt" ]; then
         mv "$DAT/${name}.txt.__saved__" "$DAT/${name}.txt"
     else
         rm -f "$DAT/${name}.txt"

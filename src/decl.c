@@ -313,6 +313,7 @@ static const struct instance_globals_d g_init_d = {
     FALSE, /* decor_levitate_override */
     FALSE, /* deferred_showpaths */
     NULL,  /* deferred_showpaths_dir  */
+    FALSE, /* disable_glyphname_hash_indices_prefill */
     TRUE, /* havestate*/
 };
 
@@ -769,6 +770,8 @@ static const struct instance_globals_u g_init_u = {
     FALSE, /* update_all */
     /* decl.c */
     FALSE, /* unweapon */
+    /* revision.c */
+    0, /* uplift_needed_rev0_to_rev1 */
     /* role.c */
     UNDEFINED_ROLE, /* urole */
     UNDEFINED_RACE, /* urace */
@@ -999,6 +1002,7 @@ static const struct instance_globals_saved_y init_svy = {
 };
 
 static const struct sinfo init_program_state = { 0 };
+static const struct levelstatus init_level_status = { 0 };
 
 #if 0
 struct instance_globals g;
@@ -1051,6 +1055,7 @@ struct instance_globals_saved_w svw;
 struct instance_globals_saved_x svx;
 struct instance_globals_saved_y svy;
 struct sinfo program_state;
+struct levelstatus level_status;
 
 const struct const_globals cg = {
     DUMMY, /* zeroobj */
@@ -1074,6 +1079,12 @@ void
 program_state_init(void)
 {
     program_state = init_program_state;
+}
+
+void
+level_status_init(void)
+{
+    level_status = init_level_status;
 }
 
 void
@@ -1184,6 +1195,9 @@ decl_globals_init(void)
 
     gu.urole = urole_init_data;
     gu.urace = urace_init_data;
+#ifdef DISABLE_GLYPHID_CACHE_PREFILL
+    gd.disable_glyphname_hash_indices_prefill = TRUE;
+#endif
 }
 
 /* fields in 'hands_obj' don't matter, just its distinct address */

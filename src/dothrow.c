@@ -1438,7 +1438,8 @@ throwing_weapon(struct obj *obj)
                       || obj->otyp == WAR_HAMMER || obj->otyp == AKLYS);
 }
 
-/* the currently thrown object is returning to you (not for boomerangs) */
+/* the currently thrown object is returning to you (not for boomerangs
+   or tethered weapons) */
 staticfn void
 sho_obj_return_to_u(struct obj *obj)
 {
@@ -1521,7 +1522,8 @@ throwit(
     boolean crossbowing,
             impaired = (Confusion || Stunned || Blind
                         || Hallucination || Fumbling),
-            tethered_weapon = (arw && arw->tethered && (wep_mask & W_WEP) != 0);
+            tethered_weapon = (arw && arw->tethered && (wep_mask & W_WEP) != 0),
+            tether_released_msg = FALSE;
 
     gn.notonhead = FALSE; /* reset potentially stale value */
     if ((obj->cursed || obj->greased) && (u.dx || u.dy) && !rn2(7)) {
@@ -1687,8 +1689,14 @@ throwit(
             /* bhit display cleanup was left with this caller
                for tethered_weapon, but clean it up now since
                we're about to return */
-            if (tethered_weapon)
+            if (tethered_weapon) {
+                if (!tether_released_msg) {
+                    pline(_("The tether comes off your %s."),
+                           body_part(ARM));
+                    tether_released_msg = TRUE;
+                }
                 tmp_at(DISP_END, 0);
+            }
             throwit_return(FALSE);
             return;
         }
@@ -1701,8 +1709,14 @@ throwit(
 
     if (!gt.thrownobj) {
         /* missile has already been handled */
-        if (tethered_weapon)
+        if (tethered_weapon) {
+            if (!tether_released_msg) {
+                pline(_("The tether comes off your %s."),
+                       body_part(ARM));
+                tether_released_msg = TRUE;
+            }
             tmp_at(DISP_END, 0);
+        }
     } else if (u.uswallow && !iflags.returning_missile) {
         swallowit(obj);
         return;
@@ -1731,49 +1745,88 @@ throwit(
                 } else {
                     int dmg = rn2(2);
 
+                    if (tethered_weapon) {
+                        /* It's tethered, so it usually returns to your
+                         * inventory, despite impairment */
+                        obj = addinv_before(obj, oldslot);
+                        encumber_msg();
+                        /* addinv autoquivers an aklys if quiver is empty;
+                          if obj is quivered, remove it before wielding */
+                        if (obj->owornmask & W_QUIVER)
+                           setuqwep((struct obj *) 0);
+                        if (cansee(gb.bhitpos.x, gb.bhitpos.y))
+                           newsym(gb.bhitpos.x, gb.bhitpos.y);
+                    }
                     if (!dmg) {
-                        pline(Blind ? _("%s lands %s your %s.")
-                                    : _("%s back to you, landing %s your %s."),
-                              Blind ? Something : Tobjnam(obj, _("return")),
-                              Levitation ? _("beneath") : _("at"),
-                              makeplural(body_part(FOOT)));
+                        if (tethered_weapon) {
+                            /* Blind mods unnecessary; you know what you threw,
+                             * and it is tethered to your arm */
+                            pline(_("Your tethered %s snaps back but the tether slips from your %s."),
+                                  simpleonames(obj), body_part(ARM));
+                            tether_released_msg = TRUE;
+                        } else {
+                            pline(Blind ? _("%s lands %s your %s.")
+                                        : _("%s back to you, landing %s your %s."),
+                                  Blind ? Something : Tobjnam(obj, _("return")),
+                                  Levitation ? _("beneath") : _("at"),
+                                  makeplural(body_part(FOOT)));
+                        }
                     } else {
                         dmg += rnd(3);
-                        pline(Blind ? _("%s your %s!")
-                                    : _("%s back toward you, hitting your %s!"),
-                              Tobjnam(obj, Blind
-                                        ? C_("Tobjnam", "hit")
-                                        : C_("Tobjnam", "fly")),
-                              body_part(ARM));
+                        if (tethered_weapon) {
+                            Your(_("tethered %s returns and hits your %s!"),
+                                 simpleonames(obj), body_part(ARM));
+                        } else {
+                            pline(Blind ? _("%s your %s!")
+                                        : _("%s back toward you, hitting your %s!"),
+                                  Tobjnam(obj, Blind
+                                            ? C_("Tobjnam", "hit")
+                                            : C_("Tobjnam", "fly")),
+                                  body_part(ARM));
+                        }
                         if (obj->oartifact)
                             (void) artifact_hit((struct monst *) 0,
                                                 &gy.youmonst, obj, &dmg, 0);
                         losehp(Maybe_Half_Phys(dmg), killer_xname(obj),
                                KILLED_BY);
                     }
-
-                    if (u.uswallow) {
-                        swallowit(obj);
-                        return;
+                    if (!tethered_weapon) {
+                        if (u.uswallow) {
+                            swallowit(obj);
+                            return;
+                        }
+                        if (!ship_object(obj, u.ux, u.uy, FALSE))
+                            dropy(obj);
+                    } else {
+                        if (!tether_released_msg) {
+                            pline_The(_("%s tether comes off your %s."),
+                                  s_suffix(simpleonames(obj)), body_part(ARM));
+                            tether_released_msg = TRUE;
+                        }
                     }
-                    if (!ship_object(obj, u.ux, u.uy, FALSE))
-                        dropy(obj);
                 }
                 throwit_return(TRUE);
                 return;
             } else {
-                if (tethered_weapon)
+                if (tethered_weapon) {
+                   if (!tether_released_msg) {
+                       pline(_("The tether comes off your %s."),
+                              body_part(ARM));
+                       tether_released_msg = TRUE;
+                    }
                     tmp_at(DISP_END, 0);
-                /* when this location is stepped on, the weapon will be
-                   auto-picked up due to 'obj->how_lost' of LOST_THROWN;
-                   addinv() prevents thrown Mjollnir from being placed
-                   into the quiver slot, but an aklys will end up there if
-                   that slot is empty at the time; since hero will need to
-                   explicitly rewield the weapon to get throw-and-return
-                   capability back anyway, quivered or not shouldn't matter */
-                pline(_("%s to return!"),
-                      Tobjnam(obj, C_("Tobjnam", "fail")));
-
+                    /* when this location is stepped on, the weapon will be
+                       auto-picked up due to 'obj->how_lost' of LOST_THROWN;
+                       addinv() prevents thrown Mjollnir from being placed
+                       into the quiver slot, but an aklys will end up there if
+                       that slot is empty at the time; since hero will need to
+                       explicitly rewield the weapon to get throw-and-return
+                       capability back anyway, quivered or not shouldn't
+                       matter */
+                } else {
+                    pline(_("%s to return!"),
+                          Tobjnam(obj, C_("Tobjnam", "fail")));
+                }
                 if (u.uswallow) {
                     swallowit(obj);
                     return;

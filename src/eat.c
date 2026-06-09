@@ -2181,7 +2181,7 @@ fprefx(struct obj *otmp)
         } else if (otmp->otyp == APPLE && otmp->cursed && !Sleep_resistance) {
             ; /* skip core joke; feedback deferred til fpostfx() */
 
-#if defined(MACOS9) || defined(MACOS)
+#if defined(MAC68K) || defined(MACOS)
         /* KMH -- Why should Unix have all the fun?
            We check MACOS before UNIX to get the Apple-specific apple
            message; the '#if UNIX' code will still kick in for pear. */
@@ -3624,7 +3624,8 @@ floorfood(
                     reset_utrap(TRUE);
                 beartrap = mksobj(BEARTRAP, TRUE, FALSE);
                 Sprintf(qbuf, _("You only manage to %s the bear trap."),
-                        u_in_beartrap ? _("free yourself from") : _("disarm"));
+                        u_in_beartrap ? C_("bear_trap_eat", "free yourself from")
+                                      : C_("bear_trap_eat", "disarm"));
                 if (check_capacity(qbuf) && beartrap) {
                     obj_extract_self(beartrap);
                     dropy(beartrap);           /* put it on the floor */

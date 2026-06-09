@@ -107,7 +107,7 @@ msgstr "포크에 실패했다. 다시 시도하라."
 
 #: ../sys/share/ioctl.c:194
 msgid "I don't think your shell has job control."
-msgstr "셸에 작업 제어 기능이 없는 것 같다."
+msgstr "셸에 작업 제어 기능이 없는 듯하다."
 
 #: ../sys/share/ioctl.c:197
 msgid "Sorry, it seems we have no SIGTSTP here.  Try ! or S."
@@ -429,12 +429,11 @@ msgstr " %s!"
 # ============================================================
 # insight.c - 래핑 누락 수정 및 조합 패턴 번역 (2026-02-05)
 # ============================================================
-# [중요] insight.c:156 - 핵심 enl_msg 조합 포맷 문자열
-# 이 번역은 ko.po에만 있었으나, safe-update로 덮어쓰기 방지를 위해
-# ko_manual.po에도 추가함.
-# 영어: " %1$s(prefix) %2$s(verb) %3$s(suffix) %4$s(postscript)."
-# 한국어 SOV 어순: " %1$s(prefix) %3$s(suffix) %2$s(verb) %4$s(postscript)."
+# [중요·조합] insight.c:167 — enl_msg / you_have 공통 포맷 (safe-update 시 유지)
+# 영어: " %1$s %2$s %3$s %4$s."  →  ko: " %1$s%3$s%2$s%4$s." (SOV)
+# 조합 수정 시 TRANSLATION_GUIDE_KO.md §7.4 체크리스트·시뮬 필수.
 # 예: " You are fire resistant." → " 당신은 화염 저항​."
+# 접두만 짧게 두면 enlightenment 에서 주어/서술 누락 — You regenerate/cause/aggravate 주석 참고.
 #: ../src/insight.c:167
 #, c-format
 msgid " %s%s%s%s."
@@ -1026,7 +1025,7 @@ msgstr " 그리고 %s"
 #: ../src/insight.c:1009
 #, c-format
 msgid " and %s %s inside"
-msgstr ", 안에서 %2$s 것 같다고 %1$s"
+msgstr ", 안에서 %2$s 듯하다고 %1$s"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -1075,7 +1074,7 @@ msgstr ", "
 # trap.c - 불타기 직전. "and are about to be immolated"
 #: ../src/trap.c:6987
 msgid " and are about to be immolated"
-msgstr " 불타버릴 것 같다"
+msgstr " 불타버릴 듯하다"
 
 # insight.c:1100-1101 - 소화 진행 상태 (분리된 문자열)
 # 영어: "swallowed by X and are being digested" → you_are() 호출
@@ -1318,7 +1317,7 @@ msgstr " 밝게!"
 # 조합: 호흡이 필요 없는 몬스터가 목 졸림에 신경 쓰지 않을 때
 #: ../src/uhitm.c:5738
 msgid " but doesn't seem concerned"
-msgstr " 하지만 신경 쓰지 않는 것 같다"
+msgstr " 하지만 신경 쓰지 않는 듯하다"
 
 #: ../src/trap.c:6757
 msgid " but is not harmed."
@@ -1618,13 +1617,24 @@ msgstr "환각에 "
 msgid " has "
 msgstr " ~을 갖고 있다 "
 
-# pickup.c:3587 - 컨테이너 기울이기 질문
-# 기존: 완전 오역 → 올바른 번역
-# 조합: "There is " + [아이템 이름] + " here, tip it?"
-# {이/가}는 아이템 이름의 마지막 글자에 따라 자동 선택됨
-#: ../src/pickup.c:3607
-msgid " here, tip it?"
-msgstr "{이/가} 여기 있다. 기울일까?"
+# pickup.c - 컨테이너 기울이기 확인 (safe_qbuf 조합)
+# "There is " + [아이템 이름] + prompt_part2  (접두 "여기에 "와 중복되지 않게 suffix는 '있다'부터)
+# prompt_part2: 인벤 대상 있음 → " here, tip it?" / 바닥(지면)만 → " here, tip it onto the floor?"
+# %2$s%1$s 로 지면 이름·"위로" 순서를 맞춤
+#: ../src/pickup.c:3624
+#, c-format
+msgid " here, tip it%s%s?"
+msgstr "{이/가} 있다.%2$s%1$s 기울이시겠습니까?"
+
+#: ../src/pickup.c:3625
+msgid " onto the "
+msgstr " 위로 "
+
+# pickup.c:3948 - 기울이기 대상 메뉴 (바닥/지면 등, 내용물을 쏟을 곳)
+#: ../src/pickup.c:3948
+#, c-format
+msgid "on the %s"
+msgstr "%s에"
 
 # trap.c:5936 - 상자 함정 확인. "There's a box here. Check it for traps?"
 #: ../src/trap.c:6023
@@ -1871,13 +1881,14 @@ msgstr " (라벨: "
 msgid " labeled \"%s\""
 msgstr " \"%s\" 라벨이 붙은"
 
+# [조합 조각] trap.c:2575 — … off! 의 %3$s (already_seen). 앞 공백은 영문 msgid 유지
 #: ../src/trap.c:2575
 msgid " land mine"
 msgstr " 지뢰"
 
 #: ../src/shk.c:2063
 msgid " left"
-msgstr "왼쪽"
+msgstr " 하나도"
 
 #: ../src/potion.c:1305
 msgid " like acid"
@@ -2245,9 +2256,10 @@ msgstr " 공개적으로 보관된"
 msgid " or "
 msgstr " 또는 "
 
+# [조합 조각] shk.c:1972·2472 — 금화/신용 부족 pline. 다른 파일에서 쓰이지 않음
 #: ../src/shk.c:2472
 msgid " or credit"
-msgstr "개 더"
+msgstr " 및 신용"
 
 #: ../src/insight.c:3142
 msgid " or extinct"
@@ -2347,7 +2359,7 @@ msgstr "보존될 것이다"
 
 #: ../src/pray.c:2671
 msgid " say"
-msgstr " 말하다"
+msgstr "{이/가} 말하는 듯하다"
 
 # Item type format strings (note: scroll, wand, spellbook, ring, amulet,
 # stone, gem are already defined elsewhere)
@@ -2363,9 +2375,10 @@ msgstr " 쓰레기;"
 msgid " see through"
 msgstr " 투시할"
 
+# [조합 조각] shk.c — stashed gold 힌트. pline 끝에 붙는 절
 #: ../src/shk.c:2471
 msgid " seem to"
-msgstr "같다"
+msgstr "겉보기엔 "
 
 # mhitu.c - 감지. "The monster senses your motion and attacks"
 #: ../src/shk.c:5813 ../src/shk.c:5850
@@ -2437,9 +2450,10 @@ msgstr " 마법서"
 msgid " stealthy%s"
 msgstr "은밀해질 것이다%s"
 
+# [조합 조각] shk.c:6085 — your%s (화남). %5$s 앞 공백은 영문 그대로
 #: ../src/shk.c:6085
 msgid " stinking batch!"
-msgstr " 악취 나는 무리!"
+msgstr "악취 나는 뭉텅이와"
 
 #: ../src/obj_descr_i18n.c:721 ../src/objnam.c:267 ../src/objnam.c:276
 #: ../src/objnam.c:933
@@ -3287,7 +3301,7 @@ msgstr "%s{이/가} %s %s하지만 %s%s에 닿을 수 없다."
 #: ../src/trap.c:362
 #, c-format
 msgid "%s %s %s completely %s."
-msgstr "%1$s %2$s{이/가} 완전히 %4$s 것 같다.%3$.0s"
+msgstr "%1$s %2$s{이/가} 완전히 %4$s 듯하다.%3$.0s"
 
 #: ../src/muse.c:226
 #, c-format
@@ -3635,7 +3649,7 @@ msgstr "%s{이/가} 최근 강도 사건에 대해 %s."
 #: ../src/shk.c:2647
 #, c-format
 msgid "%s %s all your possessions."
-msgstr "%s{이/가} 당신의 모든 소지품을 %s."
+msgstr "%1$s{이/가} %2$s당신의 모든 소지품을 가져간다."
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -3690,7 +3704,7 @@ msgstr "%s %s에는 유형 이름을 할당할 수 없다."
 #: ../src/trap.c:359
 #, c-format
 msgid "%s %s completely %s."
-msgstr "%1$s{이/가} 완전히 %3$s 것 같다.%2$.0s"
+msgstr "%1$s{이/가} 완전히 %3$s 듯하다.%2$.0s"
 
 # 양초 소모됨 (인벤토리/몬스터)
 # %s=Yname2(obj), %s="are"/"is"
@@ -3844,10 +3858,18 @@ msgstr "%s{이/가} %s 고객을 얼마나 싫어하는지 %s %s."
 msgid "%s %s in %s %s!"
 msgstr "%3$s %4$s에서 %2$s %1$s 빛났다!"
 
+# [조합] trap.c:2565 — pline("%s %s in a pile of soil below you.", A, B)
+#   A = already_seen ? _("There is") : _("You discover")   ← msgid "There is"(공백 없음) 과 혼동 금지
+#   B = madeby_u ? _("the trigger of your mine") : _("a trigger")
+# 시뮬레이션 (포맷 msgstr 순서 %2$s=방아쇠 주어, %1$s=있다/발견):
+#   You discover + a trigger        → 아래 흙더미 속에 방아쇠가 있음을 발견했다.
+#   There is + a trigger            → 아래 흙더미 속에 방아쇠가 있다.
+#   There is + the trigger of your mine → 아래 흙더미 속에 당신이 묻어 둔 지뢰 방아쇠가 있다.
+# A·B 조각만 바꿀 때는 반드시 위 네 줄을 다시 읽을 것. "There is "(띄어쓰기) 는 다른 msgid.
 #: ../src/trap.c:2565
 #, c-format
 msgid "%s %s in a pile of soil below you."
-msgstr "%s{이/가} 아래의 흙더미에서 %s."
+msgstr "아래 흙더미 속에 %2$s %1$s."
 
 #: ../src/potion.c:1833 ../src/potion.c:1870
 #, c-format
@@ -3883,6 +3905,10 @@ msgstr "%s{이/가} %s 구덩이에 %s!"
 msgid "%s %s into a %s!"
 msgstr "%s{이/가} %s{으로/로} %s!"
 
+# [조합] trap.c:5533 — pline("%s %s is difficult to %s.", Your|This|That, trapname, verb)
+#   verb = WEB ? C_("trap_action","remove") : C_("trap_action","disarm")
+# 시뮬: Your + bear trap + disarm → 당신의 곰 덫을 해제하기 어렵다.
+#   disarm 은 eat.c 곰 덫 먹기(C_("bear_trap_eat")) 와 msgid 같지만 msgctxt 다름 — 합치지 말 것.
 #: ../src/trap.c:5533
 #, c-format
 msgid "%s %s is difficult to %s."
@@ -3923,7 +3949,7 @@ msgstr "%s %s{이/가} 끈에 매였다!"
 #: ../src/potion.c:2669
 #, c-format
 msgid "%s %s less %s."
-msgstr "%1$s{이/가} 덜 %3$s 것 같다.%2$.0s"
+msgstr "%1$s{이/가} 덜 %3$s 듯하다.%2$.0s"
 
 # [리뷰 완료] dokick.c:633+mhitu.c:1349 — otense(come)/vtense(snap), 풀림
 # dokick: %1$s = The(distant_name), %2$s = otense(come) (억제)
@@ -4221,7 +4247,7 @@ msgstr "%1$s{이/가} 청구서가 %3$ld %4$s라고 %2$s."
 #: ../src/shk.c:2653
 #, c-format
 msgid "%s %s the %ld %s %sowed %s."
-msgstr "%s{이/가} %s에게 빚진 %ld %s{을/를} %s %s."
+msgstr "%1$s{이/가} %2$s밀린 외상 %3$ld %4$s{을/를} 가져간다.%5$.0s%6$.0s"
 
 # [FIX] dothrow.c:1285 — 천장에 맞고 떨어짐
 # %1$s = Doname2(obj), %2$s = "hits"/"almost hits" (맞혔다/거의 맞을 뻔했다)
@@ -4347,7 +4373,7 @@ msgstr "%3$s %4$s에 %1$s 녹아붙었다!%2$.0s"
 #: ../src/mon.c:4130
 #, c-format
 msgid "%s %s to be angry too..."
-msgstr "%s{이/가} %s 화가 난 것 같다..."
+msgstr "%s{이/가} %s 화가 난 듯하다..."
 
 #: ../src/do_name.c:741
 #, c-format
@@ -5013,7 +5039,7 @@ msgstr "%s 썩은 달걀 냄새를 맡았다."
 #: ../src/timeout.c:1501
 #, c-format
 msgid "%s about to go out."
-msgstr "%s{이/가} 곧 꺼질 것 같다."
+msgstr "%s{이/가} 곧 꺼질 듯하다."
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -5167,12 +5193,12 @@ msgstr "%s{이/가} %s에 나타났다."
 #: ../src/uhitm.c:4220
 #, c-format
 msgid "%s appears to be blowing you a kiss..."
-msgstr "%s{이/가} 키스를 보내는 것 같다..."
+msgstr "%s{이/가} 키스를 보내는 듯하다..."
 
 #: ../src/mhitu.c:2158
 #, c-format
 msgid "%s appears to sigh."
-msgstr "%s{이/가} 한숨을 쉬는 것 같다."
+msgstr "%s{이/가} 한숨을 쉬는 듯하다."
 
 #: ../src/mon.c:5444 ../src/potion.c:1796
 #, c-format
@@ -6273,7 +6299,7 @@ msgstr "%s{은/는} 다른 것이 필요하지 않다."
 #: ../src/do.c:2339
 #, c-format
 msgid "%s doesn't feel like a good idea right now."
-msgstr "지금 %s{은/는} 좋은 생각이 아닌 것 같다."
+msgstr "지금 %s{은/는} 좋은 생각이 아닌 듯하다."
 
 #: ../src/apply.c:1132
 #, c-format
@@ -6318,22 +6344,22 @@ msgstr "%s{은/는} 반응하지 않는다."
 #: ../src/uhitm.c:3186 ../src/uhitm.c:3274
 #, c-format
 msgid "%s doesn't seem harmed."
-msgstr "%s{은/는} 해를 입지 않은 것 같다."
+msgstr "%s{은/는} 해를 입지 않은 듯하다."
 
 #: ../src/uhitm.c:503
 #, c-format
 msgid "%s doesn't seem to move!"
-msgstr "%s{은/는} 움직이지 않는 것 같다!"
+msgstr "%s{은/는} 움직이지 않는 듯하다!"
 
 #: ../src/apply.c:1193
 #, c-format
 msgid "%s doesn't seem to notice %s reflection."
-msgstr "%s{은/는} %s 반사를 눈치채지 못하는 것 같다."
+msgstr "%s{은/는} %s 반사를 눈치채지 못하는 듯하다."
 
 #: ../src/mhitm.c:776 ../src/mhitu.c:1733
 #, c-format
 msgid "%s doesn't seem to notice that %s gaze was reflected."
-msgstr "%s{은/는} %s 시선이 반사된 것을 알아채지 못한 것 같다."
+msgstr "%s{은/는} %s 시선이 반사된 것을 알아채지 못한 듯하다."
 
 #: ../src/priest.c:579
 #, c-format
@@ -6635,12 +6661,12 @@ msgstr "%s{이/가} 이제 깨끗해진 느낌이다."
 #: ../src/pray.c:412
 #, c-format
 msgid "%s feels content."
-msgstr "%s{이/가} 만족해하는 것 같다."
+msgstr "%s{이/가} 흡족해진다."
 
 #: ../src/sit.c:542
 #, c-format
 msgid "%s feels warm."
-msgstr "%s{이/가} 따뜻하게 느껴진다."
+msgstr "%s{이/가} 따뜻해진다."
 
 #: ../src/hack.c:1678
 #, c-format
@@ -6713,7 +6739,7 @@ msgstr "%s 흐름이 이제 더 %s 보인다."
 #: ../src/do.c:537
 #, c-format
 msgid "%s flow seems fixed."
-msgstr "%s 흐름이 고정된 것 같다."
+msgstr "%s 흐름이 굳어진 듯하다."
 
 #: ../src/trap.c:1021
 #, c-format
@@ -7629,7 +7655,7 @@ msgstr "%s{이/가} %s에 뒤덮였다!"
 #: ../src/uhitm.c:2770
 #, c-format
 msgid "%s is covered in %s, but it seems harmless."
-msgstr "%s{이/가} %s{으로/로} 뒤덮였지만, 해롭지 않은 것 같다."
+msgstr "%s{이/가} %s{으로/로} 뒤덮였지만, 해롭지 않은 듯하다."
 
 #: ../src/uhitm.c:2635 ../src/uhitm.c:2667
 #, c-format
@@ -7844,7 +7870,7 @@ msgstr "%s{이/가} 잠겨 있다."
 #: ../src/mhitm.c:1395 ../src/mhitu.c:2562
 #, c-format
 msgid "%s is mildly chilly."
-msgstr "%s{이/가} 약간 추워하는 것 같다."
+msgstr "%s{이/가} 약간 오싹한 듯하다."
 
 # mhitm.c:1431 - 전기 공격 약한 효과. 몬스터가 전기에 약간 저릴 때
 #: ../src/mhitm.c:1431
@@ -8196,7 +8222,7 @@ msgstr "%s의 목줄이 갑자기 풀렸다."
 #: ../src/uhitm.c:3638 ../src/uhitm.c:6179
 #, c-format
 msgid "%s less effective."
-msgstr "%s 덜 효과적인 것 같다."
+msgstr "%s 덜 효과적인 듯하다."
 
 #: ../src/invent.c:5082
 #, c-format
@@ -8249,12 +8275,12 @@ msgstr "%1$s - 독이 들어있을 수도 있다. %2$.0s"
 #: ../src/lock.c:851
 #, c-format
 msgid "%s like something lootable over there."
-msgstr "저기에 약탈할 만한 것이 있는 것 같다%.0s."
+msgstr "저기에 약탈할 만한 것이 있는 듯하다%.0s."
 
 #: ../src/music.c:154
 #, c-format
 msgid "%s listens cheerfully to the music, then seems quieter."
-msgstr "%s{이/가} 음악을 즐겁게 듣고, 조용해진 것 같다."
+msgstr "%s{이/가} 음악을 즐겁게 듣고, 조용해진 듯하다."
 
 # ============================================================
 # C_("light") 컨텍스트 — 아티팩트 빛 시작/멈춤 동사
@@ -8297,7 +8323,7 @@ msgstr "%s{이/가} 좋아 보인다."
 #: ../src/muse.c:1200
 #, c-format
 msgid "%s looks completely healed."
-msgstr "%s{이/가} 완전히 회복된 것 같다."
+msgstr "%s{이/가} 완전히 회복된 듯하다."
 
 #: ../src/uhitm.c:3695 ../src/uhitm.c:3718
 #, c-format
@@ -8539,7 +8565,7 @@ msgstr "%s{이/가} 민첩하게%s %s{을/를} 잡는다."
 #: ../src/lock.c:594 ../src/lock.c:854 ../src/lock.c:1016 ../src/trap.c:6067
 #, c-format
 msgid "%s no door there."
-msgstr "거기에 문이 없는 것 같다%.0s."
+msgstr "거기에 문이 없는 듯하다%.0s."
 
 # lock.c:590 - 도개교 자물쇠 없음 탐지
 # You("%s no lock on the drawbridge.", feel/see) — %s 억제
@@ -8547,7 +8573,7 @@ msgstr "거기에 문이 없는 것 같다%.0s."
 #: ../src/lock.c:592
 #, c-format
 msgid "%s no lock on the drawbridge."
-msgstr "도개교에 자물쇠가 없는 것 같다%.0s."
+msgstr "도개교에 자물쇠가 없는 듯하다%.0s."
 
 #: ../src/uhitm.c:6331
 #, c-format
@@ -9328,7 +9354,7 @@ msgstr "%s{이/가} 꺼지려 한다."
 #: ../src/mhitu.c:1999
 #, c-format
 msgid "%s seems dismayed at your lack of response."
-msgstr "%s{이/가} 당신의 무반응에 실망한 것 같다."
+msgstr "%s{이/가} 당신의 무반응에 실망한 듯하다."
 
 #: ../src/muse.c:399
 #, c-format
@@ -9338,12 +9364,12 @@ msgstr "%s{이/가} 잠시 매우 혼란스러워 보인다."
 #: ../src/teleport.c:1997
 #, c-format
 msgid "%s seems disoriented."
-msgstr "%s{이/가} 방향 감각을 잃은 것 같다."
+msgstr "%s{이/가} 방향 감각을 잃은 듯하다."
 
 #: ../src/sounds.c:540
 #, c-format
 msgid "%s seems famished."
-msgstr "%s{이/가} 굶주린 것 같다."
+msgstr "%s{이/가} 굶주려 보인다."
 
 #: ../src/mon.c:5678
 #, c-format
@@ -9364,33 +9390,33 @@ msgstr "%s{이/가} 무기력해 보인다."
 #: ../src/muse.c:2963
 #, c-format
 msgid "%s seems limber!"
-msgstr "%s{이/가} 유연해진 것 같다!"
+msgstr "%s{이/가} 몸이 유연해진 듯하다!"
 
 #: ../src/uhitm.c:5152
 #, c-format
 msgid "%s seems mildly chilly."
-msgstr "%s{이/가} 약간 추워하는 것 같다."
+msgstr "%s{이/가} 살짝 오싹해한다."
 
 #: ../src/uhitm.c:5163
 #, c-format
 msgid "%s seems mildly hot."
-msgstr "%s{이/가} 약간 더워하는 것 같다."
+msgstr "%s{이/가} 살짝 달아오른 듯하다."
 
 #: ../src/muse.c:2434
 #, c-format
 msgid "%s seems more experienced."
-msgstr "%s{이/가} 더 숙련된 것 같다."
+msgstr "%s{이/가} 더 숙련된 듯하다."
 
 #: ../src/sounds.c:1299 ../src/sounds.c:1337 ../src/sounds.c:1384
 #: ../src/sounds.c:1499
 #, c-format
 msgid "%s seems not to notice you."
-msgstr "%s{이/가} 당신을 알아채지 못하는 것 같다."
+msgstr "%s{은/는} 이쪽을 알아채지 못한 듯하다."
 
 #: ../src/polyself.c:1685
 #, c-format
 msgid "%s seems not to notice your gaze."
-msgstr "%s{이/가} 당신의 응시를 알아차리지 못한 것 같다."
+msgstr "%s{은/는} 시선을 알아차리지 못한 듯하다."
 
 #: ../src/dog.c:1272
 #, c-format
@@ -9405,42 +9431,42 @@ msgstr "%s{이/가} 이제 더 안정적이다."
 #: ../src/minion.c:333
 #, c-format
 msgid "%s seems to be demanding something."
-msgstr "%s{이/가} 뭔가를 요구하는 것 같다."
+msgstr "%s{이/가} 무언가를 요구하는 듯하다."
 
 #: ../src/potion.c:2042
 #, c-format
 msgid "%s seems to be holding you."
-msgstr "%s{이/가} 잡고 있는 것 같다."
+msgstr "%s{이/가} 붙잡고 있는 듯하다."
 
 #: ../src/worn.c:558
 #, c-format
 msgid "%s seems to be moving %sslower."
-msgstr "%s{이/가} %s더 느리게 움직이는 것 같다."
+msgstr "%s{이/가} %s더 느리게 움직이는 듯하다."
 
 #: ../src/trap.c:2071
 #, c-format
 msgid "%s seems to be yanked down!"
-msgstr "%s{이/가} 아래로 홱 잡아당겨진 것 같다!"
+msgstr "%s{이/가} 아래로 홱 잡아당겨진 듯하다!"
 
 #: ../src/monmove.c:494
 #, c-format
 msgid "%s seems to flinch."
-msgstr "%s{이/가} 찡그리는 것 같다."
+msgstr "%s{이/가} 움찔한다."
 
 #: ../src/uhitm.c:4225
 #, c-format
 msgid "%s seems to grimace."
-msgstr "%s{이/가} 찡그리는 것 같다."
+msgstr "%s{이/가} 움찔한다."
 
 #: ../src/mhitu.c:2179
 #, c-format
 msgid "%s seems to have enjoyed it more than you..."
-msgstr "%s{이/가} 당신보다 더 즐긴 것 같다..."
+msgstr "%s 쪽이 더 즐긴 듯하다..."
 
 #: ../src/mon.c:3202
 #, c-format
 msgid "%s seems to have indigestion."
-msgstr "%s{이/가} 소화불량인 것 같다."
+msgstr "%s{이/가} 소화가 안 되는 듯하다."
 
 # 순간이동 시도할 때 어른거림
 #: ../src/teleport.c:2040
@@ -9451,17 +9477,17 @@ msgstr "%s{이/가} 잠시 어른거린다."
 #: ../src/pray.c:630 ../src/pray.c:659
 #, c-format
 msgid "%s seems unaffected."
-msgstr "%s{은/는} 영향을 받지 않은 것 같다."
+msgstr "%s{은/는} 영향을 받지 않은 듯하다."
 
 #: ../src/uhitm.c:5109
 #, c-format
 msgid "%s seems unharmed."
-msgstr "%s{은/는} 해를 입지 않은 것 같다."
+msgstr "%s{은/는} 해를 입지 않은 듯하다."
 
 #: ../src/uhitm.c:5142
 #, c-format
 msgid "%s seems unhurt."
-msgstr "%s{은/는} 다치지 않은 것 같다."
+msgstr "%s{은/는} 다치지 않은 듯하다."
 
 #: ../src/shk.c:4034
 #, c-format
@@ -9906,7 +9932,7 @@ msgstr "%s{이/가} 질주를 멈췄다."
 #: ../src/trap.c:1470
 #, c-format
 msgid "%s stops momentarily and appears to cringe."
-msgstr "%s{이/가} 잠시 멈추고 움츠리는 것 같다."
+msgstr "%s{이/가} 잠시 멈추고 움츠린다."
 
 #: ../src/eat.c:2838
 #, c-format
@@ -9987,7 +10013,7 @@ msgstr "%s{이/가} 갑자기 더 생기 있어 보인다."
 #: ../src/zap.c:542
 #, c-format
 msgid "%s suddenly seems weaker!"
-msgstr "%s{이/가} 갑자기 약해진 것 같다!"
+msgstr "%s{이/가} 갑자기 약해진 듯하다!"
 
 #: ../src/apply.c:2472
 #, c-format
@@ -10161,10 +10187,10 @@ msgstr "%1$s(%2$s)의 속성:"
 msgid "%s the candelabrum"
 msgstr "촛대를 %s"
 
+# music.c:183 — 단독 pline (구형 %s+You hear 조합 폐기). trap.c "You hear" 조각과 혼동 금지
 #: ../src/music.c:183
-#, c-format
-msgid "%s the rattle of battle gear being readied."
-msgstr "전투 장비가 준비되는 달그락 소리 %s."
+msgid "You hear the rattle of battle gear being readied."
+msgstr "전투 장비를 채비하는 달그락 소리가 들린다."
 
 #: ../src/iactions.c:76
 #, c-format
@@ -10256,7 +10282,7 @@ msgstr "%3$s 안에 뭐가 있는지 살핀다%1$.0s%2$.0s."
 #: ../src/apply.c:2659
 #, c-format
 msgid "%s to be empty."
-msgstr "%s 비어있는 것 같다."
+msgstr "%s 비어 있는 듯하다."
 
 # zap.c:2668 — Tobjnam(obj, "turn")
 # 런타임: "먼지로 검이 변했다."
@@ -10273,7 +10299,7 @@ msgstr "%s에 약탈할 %s{이/가} 있다."
 #: ../src/wizcmds.c:928
 #, c-format
 msgid "%s to not give off any smell."
-msgstr "%s{은/는} 냄새가 나지 않는 것 같다."
+msgstr "%s{은/는} 냄새가 나지 않는 듯하다."
 
 # 런타임: "부메랑이 돌아오지 못한다!" ✓
 #: ../src/dothrow.c:1774
@@ -11037,12 +11063,12 @@ msgstr "%1$s 당신의 오른쪽 %2$s{을/를} 맞혔다!"
 #: ../src/detect.c:1233
 #, c-format
 msgid "%s your vision!"
-msgstr "당신의 시야를 %s 피해를 주었다!"
+msgstr "%s 시야를 해쳤다!"
 
 #: ../src/detect.c:1238
 #, c-format
 msgid "%s your vision."
-msgstr "당신의 시야를 %s 공격했다."
+msgstr "%s 시야를 공격했다."
 
 #: ../src/uhitm.c:3349
 #, c-format
@@ -11079,11 +11105,8 @@ msgstr "%s{이/가} %s{으로/로} 당신을 공격한다!"
 msgid "%s!"
 msgstr "%s!"
 
-# [리뷰 완료] hack.c:515 — Tobjnam+trigger, 바위→지뢰 작동
-# %1$s = exclamation ("쾅!!" 등), %2$s = Tobjnam(otmp, C_("Tobjnam","trigger"))
-# %3$s = "your"/"a"
-# 영어: "KAABLAMM!!  The boulder triggers your land mine."
-# 한국어: "쾅!! 바위가 당신의 지뢰를 작동시켰다."
+# [조합·의성어] hack.c:515 — %1$s = _("KAABLAMM!!") → 콰광!! (§4.6)
+# 시뮬: 콰광!! 바위가 당신의 지뢰를 작동시켰다.
 #: ../src/hack.c:515
 #, c-format
 msgid "%s!  %s %s land mine."
@@ -12038,7 +12061,7 @@ msgstr "%1$s물약%2$.0s{이/가} %3$s."
 #: ../src/music.c:591
 #, c-format
 msgid "%sproduce %s%s music."
-msgstr "%s%s 음악을 %s연주한다."
+msgstr "%1$s%3$s%2$s 음악을 연주한다."
 
 #: ../src/write.c:224
 #, c-format
@@ -12235,7 +12258,7 @@ msgstr "(사실, 9층 구름 위에 있다!)"
 
 #: ../src/eat.c:1915
 msgid "(It must have died too long ago to be safe to eat.)"
-msgstr "(먹기에 안전하기엔 너무 오래 전에 죽은 것 같다.)"
+msgstr "(먹기에 안전하기엔 너무 오래 전에 죽은 듯하다.)"
 
 #: ../src/options.c:464
 msgid "(Please choose 'y' or 'n'.)"
@@ -12565,7 +12588,7 @@ msgstr ", 아래층에서 진입"
 # 조합: 음악 수식 - 익숙한 (주의: familiar creature와 다름)
 #: ../src/music.c:593 ../src/music.c:651
 msgid ", familiar"
-msgstr ", 익숙한"
+msgstr "익숙한 "
 
 #: ../src/insight.c:3419 ../src/insight.c:3529
 msgid ", fast"
@@ -13334,7 +13357,7 @@ msgstr "%s 아래 흙더미에서 방아쇠가 나타났다."
 
 #: ../src/pray.c:2668
 msgid "A voice (could it be"
-msgstr "목소리가 울려 퍼진다:"
+msgstr "목소리가 들린다 (혹시"
 
 #: ../src/wizard.c:775
 msgid "A voice booms out..."
@@ -13951,7 +13974,7 @@ msgstr "%s{을/를} 안에 넣자, 마법 폭발에 휩싸였다!"
 #: ../src/spell.c:175
 #, c-format
 msgid "As you read the book, it %s in your %s!"
-msgstr "책을 읽는 동안, 그것이 당신의 %s에서 %s!"
+msgstr "책을 읽는 순간, 책이 %2$s 앞에서 %1$s!"
 
 #: ../src/read.c:627
 msgid "As you read the scroll, it disappears."
@@ -14086,6 +14109,7 @@ msgstr "시♭"
 msgid "B note"
 msgstr "시 음"
 
+# potion.c:2425 — 연쇄 폭발 접두 (§4.6 소형=펑)
 #: ../src/potion.c:2425
 msgid "BOOM!  "
 msgstr "펑!  "
@@ -14212,7 +14236,7 @@ msgstr "어떤 종류의 괴물이 되겠습니까? [이름을 입력하세요]"
 
 #: ../src/priest.c:609
 msgid "Begone!  Thou desecratest this holy place with thy presence."
-msgstr "당신의 존재로 이 장소를 모독하고 있다!"
+msgstr "물러가라! 네 존재가 이 성소를 더럽히고 있다!"
 
 #: ../src/options.c:115
 msgid "Behavior"
@@ -14344,7 +14368,7 @@ msgstr "통통!"
 # read.c - 책 무시. "The Book seems to be ignoring you"
 #: ../src/spell.c:249
 msgid "Book seems to be ignoring you"
-msgstr "책이 당신을 무시하는 것 같다"
+msgstr "책은 너를 외면하는 듯하다"
 
 #: ../src/options.c:8866
 msgid "Booleans (selecting will toggle value):"
@@ -14468,7 +14492,7 @@ msgstr "하지만 다행히 %s!"
 
 #: ../src/shk.c:530
 msgid "But no one seems to respond to it."
-msgstr "하지만 아무도 반응하지 않는 것 같다."
+msgstr "하지만 아무도 반응하지 않는 듯하다."
 
 #: ../src/polyself.c:1641
 msgid "But none arrive."
@@ -14510,10 +14534,12 @@ msgstr "하지만 닿을 수 없다!"
 # ============================================================
 # 아이템 메시지 (Item Messages)
 # ============================================================
+# [조합] shk.c:1971 — %1=seem to %2=or credit (조각은 위 msgid). 시뮬:
+#   …보유 자금이 충분하지 않다. / …충분하지 않은 듯하다. / …보유 자금 및 신용이 …
 #: ../src/shk.c:1971
 #, c-format
 msgid "But you don't%s have enough gold%s."
-msgstr "하지만 %s충분한 금화가%s 없다."
+msgstr "그러나 %1$s보유 자금%2$s이 충분하지 않다."
 
 # ============================================================
 # 아이템 메시지 (Item Messages)
@@ -15388,7 +15414,7 @@ msgstr "NetHack 명령줄 설명."
 
 #: ../src/pray.c:2669
 msgid "Despite your deafness, you seem to hear"
-msgstr "청각 장애에도 불구하고 들리는 것 같다"
+msgstr "귀가 들리지 않는데도"
 
 #: ../src/do_wear.c:1909
 #, c-format
@@ -16348,7 +16374,7 @@ msgstr "어떤 이유로, %s 존재를 알게 됐다."
 #: ../src/pray.c:2449
 #, c-format
 msgid "For some reason, %s seems to ignore you."
-msgstr "어떤 이유로, %s{이/가} 당신을 무시하는 것 같다."
+msgstr "어떤 이유로, %s{이/가} 당신을 무시하는 듯하다."
 
 #: ../src/eat.c:1289
 msgid "For some reason, that tasted bland."
@@ -16492,6 +16518,7 @@ msgstr "솔 음"
 msgid "G sharp"
 msgstr "솔♯"
 
+# hack.c:524 — Deaf 시 KAABLAMM!! 대신 %s! %s land mine 의 의성어 조각
 #: ../src/hack.c:524
 msgid "Gadzooks"
 msgstr "이런"
@@ -16794,7 +16821,7 @@ msgstr "치료사"
 
 #: ../src/eat.c:2587
 msgid "Heigh-ho, ho-hum, I think I'll skip work today."
-msgstr "하이호, 호험, 오늘은 일을 안 할 것 같다."
+msgstr "하이호, 호험, 오늘은 일을 쉬어야겠다."
 
 # Animaniacs 만화 대사
 #: ../src/read.c:120
@@ -17075,7 +17102,7 @@ msgstr "나는 연금술사야. 내가 뛰는 걸 보면, 따라잡아 봐..."
 
 #: ../src/potion.c:2842
 msgid "I am in your debt.  I will grant one wish!"
-msgstr "당신에게 빚졌다. 소원 하나를 들어주겠다!"
+msgstr "그대에게 빚을 졌다. 소원 하나를 들어주마!"
 
 #: ../src/read.c:137
 msgid "I am not a pack rat - I am a collector"
@@ -17136,7 +17163,7 @@ msgstr "너 같은 쓰레기에게 뇌물을 받지 않아!"
 #: ../src/lock.c:570
 #, c-format
 msgid "I don't think %s would appreciate that."
-msgstr "%s{이/가} 그것을 좋아할 것 같지 않다."
+msgstr "%s{이/가} 그것을 좋아할 듯하지 않다."
 
 # 관광지 티셔츠 클리셰 ("I went to X and all I got was this lousy T-shirt!")
 #: ../src/read.c:105
@@ -17145,7 +17172,7 @@ msgstr "죽음의 던전 탐험했는데 얻은 건 이 구린 티셔츠뿐!"
 
 #: ../src/sounds.c:773
 msgid "I find myself growing a little weary."
-msgstr "조금씩 지쳐 가는 것 같다."
+msgstr "조금씩 지쳐 가는 듯하다."
 
 #: ../src/files.c:2309 ../src/files.c:2329 ../src/files.c:2399
 msgid "I give up.  Sorry."
@@ -17191,7 +17218,7 @@ msgstr "헌금에 감사드린다."
 #: ../src/steed.c:85 ../src/steed.c:298
 #, c-format
 msgid "I think %s would mind."
-msgstr "%s{이/가} 싫어할 것 같다."
+msgstr "%s{이/가} 싫어할 듯하다."
 
 #: ../src/sounds.c:804
 #, c-format
@@ -17523,7 +17550,7 @@ msgstr "주머니에 묠니르가 있는 건가요, 아니면 날 보고 기쁜 
 
 #: ../src/botl.c:4044
 msgid "Is that an invisible number?"
-msgstr "그것이 보이지 않는 숫자인가?"
+msgstr "보이지 않는 숫자라도 있는 건가?"
 
 #: ../src/role.c:2712
 #, c-format
@@ -17586,12 +17613,12 @@ msgstr "전부 알아들을 수 없는 소리 같다."
 
 #: ../src/dothrow.c:1323
 msgid "It blinds you!"
-msgstr "그것이 당신의 눈을 멀게 했다!"
+msgstr "눈앞이 멀었다!"
 
 #: ../src/mcastu.c:574
 #, c-format
 msgid "It bounces off your %s%s."
-msgstr "그것이 당신의 %s%s에서 튕겨졌다."
+msgstr "%s%s에 맞고 튕겨 나갔다."
 
 #: ../src/uhitm.c:2775
 #, c-format
@@ -17604,7 +17631,7 @@ msgstr "불탄다!"
 
 #: ../src/mon.c:5110
 msgid "It can't become that."
-msgstr "그것이 될 수 없다."
+msgstr "그런 모습으로는 변할 수 없다."
 
 #: ../src/dokick.c:631
 msgid "It comes loose."
@@ -17642,11 +17669,11 @@ msgstr "아프지 않다."
 
 #: ../src/eat.c:1904
 msgid "It doesn't seem at all sickening, though..."
-msgstr "하지만, 전혀 역겹지 않은 것 같다..."
+msgstr "하지만 이상하게도 전혀 역겹지 않다..."
 
 #: ../src/mthrowu.c:141
 msgid "It doesn't seem to hurt you."
-msgstr "당신에게는 별 피해가 없는 것 같다."
+msgstr "별다른 고통은 느껴지지 않는다."
 
 #: ../src/dig.c:1594
 #, c-format
@@ -17655,11 +17682,11 @@ msgstr "%s 위에 떨어졌다!"
 
 #: ../src/trap.c:3987
 msgid "It feels as though you've lost some weight."
-msgstr "몸이 조금 가벼워진 것 같다."
+msgstr "몸이 조금 가벼워진 듯하다."
 
 #: ../src/monmove.c:597
 msgid "It feels quite soothing."
-msgstr "꽤 편안하게 느껴진다."
+msgstr "묘하게 마음이 가라앉는다."
 
 #: ../src/steed.c:649
 msgid "It felt good to get out of the rain."
@@ -17667,7 +17694,7 @@ msgstr "비를 피하니 기분이 좋다."
 
 #: ../src/mhitu.c:670
 msgid "It gets stuck on you."
-msgstr "그것이 당신에게 달라붙었다."
+msgstr "몸에 달라붙었다."
 
 #: ../src/apply.c:1446
 msgid "It goes"
@@ -17675,7 +17702,7 @@ msgstr "그것이 간다"
 
 #: ../src/spell.c:1252
 msgid "It invokes nightmarish images in your mind..."
-msgstr "악몽같은 이미지가 마음속에 떠오른다..."
+msgstr "악몽 같은 환영이 머릿속에 피어오른다..."
 
 #: ../src/apply.c:1357 ../src/apply.c:3180 ../src/do_wear.c:1912
 #: ../src/muse.c:2583 ../src/pickup.c:2103
@@ -17740,12 +17767,12 @@ msgstr "세면대에 기름막이 남았다."
 #: ../src/monmove.c:640
 #, c-format
 msgid "It locks on to %s."
-msgstr "그것이 %s에 달라붙었다."
+msgstr "%s에 단단히 달라붙었다."
 
 #: ../src/monmove.c:616
 #, c-format
 msgid "It locks on to your %s!"
-msgstr "그것이 %s에 달라붙었다!"
+msgstr "%s에 단단히 달라붙었다!"
 
 #: ../src/mthrowu.c:126
 msgid "It misses."
@@ -17764,12 +17791,12 @@ msgstr "%s엄청나게 무거울 것이다!"
 
 #: ../src/trap.c:1377
 msgid "It passes harmlessly through you."
-msgstr "그것이 해를 끼치지 않고 당신을 통과했다."
+msgstr "그것은 아무 해도 끼치지 못한 채 몸을 스쳐 지나갔다."
 
 #: ../src/mail.c:650 ../src/read.c:413 ../src/read.c:472 ../src/read.c:510
 #: ../src/rumors.c:570
 msgid "It reads:"
-msgstr "적혀있기를:"
+msgstr "이렇게 적혀 있다:"
 
 #: ../src/mail.c:518
 msgid "It reads:  \""
@@ -17781,21 +17808,21 @@ msgstr "벨이 울린다! ... 하지만 아무도 대답하지 않는다."
 
 #: ../src/read.c:2541
 msgid "It seems even darker in here than before."
-msgstr "여기가 이전보다 더 어두워진 것 같다."
+msgstr "여기가 이전보다 더 어두워진 듯하다."
 
 #: ../src/zap.c:4909
 msgid "It seems even stronger than before."
-msgstr "이전보다 더 강해진 것 같다."
+msgstr "이전보다 더 강해진 듯하다."
 
 # uhitm.c:5122 - 해롭지 않음
 #: ../src/uhitm.c:5120
 #, c-format
 msgid "It seems harmless to %s."
-msgstr "%s에게 해롭지 않은 것 같다."
+msgstr "%s에게 해롭지 않은 듯하다."
 
 #: ../src/pray.c:642
 msgid "It seems not to affect you."
-msgstr "영향이 없는 것 같다."
+msgstr "영향이 없는 듯하다."
 
 #: ../src/fountain.c:614
 msgid "It seems quite tasty."
@@ -17804,15 +17831,15 @@ msgstr "꽤 맛있어 보인다."
 #: ../src/files.c:3642
 #, c-format
 msgid "It seems to be %s of \"%s\"!"
-msgstr "\"%s\"의 %s인 것 같다!"
+msgstr "\"%s\"의 %s인 듯하다!"
 
 #: ../src/do.c:350
 msgid "It shatters"
-msgstr "그것이 산산조각났다"
+msgstr "산산조각났다"
 
 #: ../src/timeout.c:1629
 msgid "It shrieks!"
-msgstr "그것이 비명을 지른다!"
+msgstr "날카로운 비명이 터져 나온다!"
 
 #: ../src/do.c:144
 msgid "It sinks without a trace!"
@@ -17836,7 +17863,7 @@ msgstr "이렇게 들린다: \"%s\"."
 #: ../src/apply.c:1163
 #, c-format
 msgid "It steals your %s!"
-msgstr "그것이 당신의 %s{을/를} 훔쳤다!"
+msgstr "%s{을/를} 훔쳐 갔다!"
 
 #: ../src/pray.c:620
 #, c-format
@@ -17853,11 +17880,11 @@ msgstr "맛이 나빴다."
 
 #: ../src/mhitu.c:617
 msgid "It tries to move where you are hiding."
-msgstr "그것이 당신이 숨어 있는 곳으로 이동하려 한다."
+msgstr "숨어 있는 자리로 파고들려 한다."
 
 #: ../src/apply.c:4547
 msgid "It tumbles away."
-msgstr "그것이 굴러갔다."
+msgstr "저만치 굴러갔다."
 
 #: ../src/mhitm.c:878 ../src/uhitm.c:4997
 #, c-format
@@ -17935,7 +17962,7 @@ msgstr "서비스다!"
 
 #: ../src/sit.c:446
 msgid "It's probably not a good time for a picnic..."
-msgstr "피크닉 하기 좋은 때가 아닌 것 같다..."
+msgstr "피크닉 하기 좋은 때가 아닌 듯하다..."
 
 #: ../src/sit.c:453
 msgid "It's squishy..."
@@ -18072,40 +18099,47 @@ msgstr "사실만, %s."
 msgid "K-ration"
 msgstr "K-레이션"
 
-# trap.c - 폭발 효과음. 단독
+# ============================================================
+# 의성어 (만화체 폭발·낙하) — TRANSLATION_GUIDE_KO.md §4.6
+#   콰광 = 지뢰·대폭발(KAABLAMM/Kaablamm)  쾅 = 타격·울림  펑 = 소폭발  쿵 = 낙하
+# ============================================================
 #: ../src/hack.c:520
 msgid "KAABLAMM!!"
-msgstr "쾅!!"
+msgstr "콰광!!"
 
-# trap.c - 폭발음 변형. 효과음
 #: ../src/trap.c:2641
 msgid "KAABLAMM!!!  "
-msgstr "쾅!!! "
+msgstr "콰광!!! "
 
+# [조합] trap.c:2571 — pline(KAABLAMM!!! %s %s%s off!, 기류/서투름, a_your, land mine|it)
+# 시뮬: 콰광!!! 기류가 당신의 지뢰를 작동시켰다! / …서투른 시도가 그것을 …
 #: ../src/trap.c:2571
 #, c-format
 msgid "KAABLAMM!!!  %s %s%s off!"
-msgstr "쾅!!! %s{이/가} %s%s 날아갔다!"
+msgstr "콰광!!! %1$s%2$s%3$s{을/를} 작동시켰다!"
 
 #: ../src/trap.c:2586
 #, c-format
 msgid "KAABLAMM!!!  You triggered %s land mine!"
-msgstr "쾅!!! %s 지뢰를 밟았다!"
+msgstr "콰광!!! %s 지뢰를 밟았다!"
 
+# [조합] trap.c:3455 — 콰광!!! + (선택) 굴러오는 바위 지뢰 문장
 #: ../src/trap.c:3455
 #, c-format
 msgid "KAABLAMM!!!%s"
-msgstr "쾅!!!%s"
+msgstr "콰광!!!%s"
+
+#: ../src/trap.c:3457
+msgid "  The rolling boulder triggers a land mine."
+msgstr " 굴러오는 바위가 지뢰를 작동시켰다."
 
 #: ../src/trap.c:6714
-#, c-format
 msgid "KABOOM!!  %s was booby-trapped!"
 msgstr "펑!! %s에 부비트랩이 있었다!"
 
-# monmove.c:59 - 문 폭발
 #: ../src/lock.c:1224 ../src/monmove.c:59
 msgid "KABOOM!!  You see a door explode."
-msgstr "콰쾅!! 문이 폭발하는 것을 보았다."
+msgstr "콰광!! 문이 폭발하는 것을 보았다."
 
 #: ../src/dig.c:954
 msgid "KADOOM!  The boulder falls in!"
@@ -18116,11 +18150,14 @@ msgstr "쿵! 바위가 떨어졌다!"
 msgid "KADOOM!  The boulder falls into a chasm%s!"
 msgstr "쿵! 바위가 틈새로 떨어진다%s!"
 
+# [조합] trap.c:2645 — 멀리 들리는 약한 폭발(Kaablamm). 쾅(타격) 말고 콰광
+# 시뮬: 콰광! 멀리서 폭발하는 소리가 들린다.
 #: ../src/trap.c:2645
 #, c-format
 msgid "Kaablamm!  %s an explosion in the distance!"
-msgstr "쾅! 멀리서 폭발이 %s!"
+msgstr "콰광! 멀리서 폭발%s"
 
+# timeout.c:1882 — 천둥: 첫 소리 콰광, 울림 쾅
 #: ../src/timeout.c:1882
 msgid "Kaboom!!!  Boom!!  Boom!!"
 msgstr "콰광!!! 쾅!! 쾅!!"
@@ -18462,7 +18499,7 @@ msgstr "감시자"
 
 #: ../src/pray.c:591
 msgid "Looks like you are back in Kansas."
-msgstr "캔자스로 돌아온 것 같다."
+msgstr "캔자스로 돌아온 듯하다."
 
 # ============================================================
 # 전투 메시지 (Combat Messages)
@@ -18843,8 +18880,11 @@ msgstr "\"에 대한 추가 정보"
 
 #: ../src/shk.c:1492
 #, c-format
+# [조합] shk.c:1904 — %s = seem to 조각(끝에 붙음)
+# 시뮬: 게다가, 금화가 없다. / …없는 듯하다.
+#: ../src/shk.c:1904
 msgid "Moreover, you%s have no gold."
-msgstr "게다가, 당신은 금이%s 없다."
+msgstr "게다가, %1$s금화가 없다."
 
 #: ../src/pray.c:2572
 msgid "Morgoth"
@@ -19309,7 +19349,7 @@ msgstr "흥미로운 일이 일어나지 않았다."
 # decl.c의 c_common_strings에 N_() 추가로 추출 가능해짐
 #: ../src/decl.c:41
 msgid "Nothing seems to happen."
-msgstr "아무 일도 일어나지 않은 것 같다."
+msgstr "아무 일도 일어나지 않은 듯하다."
 
 #: ../src/role.c:237
 msgid "Novice"
@@ -19799,11 +19839,11 @@ msgstr "근처 %s 농장에서 흘러나온 것일지도 모른다."
 #: ../src/hack.c:475
 #, c-format
 msgid "Perhaps that's why %s cannot move it."
-msgstr "아마 그래서 %s{이/가} 그것을 움직일 수 없는 것 같다."
+msgstr "아마 그래서 %s{이/가} 그것을 움직일 수 없는 듯하다."
 
 #: ../src/hack.c:478
 msgid "Perhaps that's why you cannot move it."
-msgstr "아마 그래서 당신이 그것을 움직일 수 없는 것 같다."
+msgstr "아마 그래서 당신이 그것을 움직일 수 없는 듯하다."
 
 #: ../src/files.c:2330
 #, c-format
@@ -21279,7 +21319,7 @@ msgstr "다른 누군가가 금고에 들어왔다."
 
 #: ../src/mhitu.c:1712
 msgid "Someone seems overdue for a serpent cut."
-msgstr "누군가가 뱀 머리를 자를 때가 된 것 같다."
+msgstr "누군가가 뱀 머리를 자를 때가 된 듯하다."
 
 #: ../src/sounds.c:39
 #, c-format
@@ -22020,7 +22060,7 @@ msgstr "저것은 함정이 있는 %s{이다/다}."
 
 #: ../src/zap.c:5181
 msgid "That seemed remarkably uneventful."
-msgstr "놀랍도록 아무 일도 일어나지 않은 것 같다."
+msgstr "놀랍도록 아무 일도 일어나지 않은 듯하다."
 
 #: ../src/dokick.c:398
 msgid "That should do.  Now beat it!"
@@ -22292,14 +22332,14 @@ msgstr "작은 자유인들"
 msgid "The Werewolves"
 msgstr "늑대인간들"
 
-# trap.c - 기류 작동. "The air currents set off the trap"
+# [조합 조각] trap.c:2573 — KAABLAMM!!! … off! 의 %1$s
 #: ../src/trap.c:2573
 msgid "The air currents set"
-msgstr "기류가 작동시켰다"
+msgstr "기류가 "
 
 #: ../src/timeout.c:551
 msgid "The air here seems foul."
-msgstr "여기 공기가 탁한 것 같다."
+msgstr "여기 공기가 탁한 듯하다."
 
 #: ../src/do_name.c:325
 msgid "The artifact"
@@ -22503,11 +22543,11 @@ msgstr "얼음이 딱딱거리며 녹았다."
 
 #: ../src/hack.c:3422
 msgid "The ice seems very soft and slushy."
-msgstr "얼음이 매우 부드럽고 녹아 있는 것 같다."
+msgstr "얼음이 매우 부드럽고 녹아 있는 듯하다."
 
 #: ../src/hack.c:3424
 msgid "The ice, is gonna BREAK!"
-msgstr "얼음이 깨질 것 같다!"
+msgstr "얼음이 깨질 듯하다!"
 
 #: ../src/dig.c:1812
 msgid "The ladder is unaffected."
@@ -22738,10 +22778,11 @@ msgstr "여기에 금화 %ld닢이 있다; 먹겠습니까?"
 msgid "There are iron bars here"
 msgstr "여기에 철창이 있다"
 
-# 공백 없는 버전
+# [조합 조각] trap.c:2566 전용 — msgid "There is "(띄어쓰기·여기에) 와 다름
+#   "%s %s in a pile of soil below you." 의 %1$s — B(방아쇠 주어) 뒤에 온다 → "…방아쇠가 있다."
 #: ../src/trap.c:2566
 msgid "There is"
-msgstr "여기에"
+msgstr "있다"
 
 # ============================================================
 # fuzzy 매칭으로 인한 형식 지정자 오류 수정
@@ -22790,9 +22831,10 @@ msgstr "이 빌드에는 'idlecheckpoint' 지원이 컴파일되어 있지 않�
 
 # read.c:438 - 글씨가 있다
 # 기존: 잘못된 형식 지정자 → 올바른 번역
+# read.c:439 — !Blind pline (You feel lettering 과 대칭)
 #: ../src/read.c:439
 msgid "There is writing"
-msgstr "글씨가 있다"
+msgstr "글씨가 새겨져 있다"
 
 #: ../src/wizard.c:838
 msgid "There shall be no mercy, thou"
@@ -23141,7 +23183,7 @@ msgstr "이 끈은 그 생물에 연결되어 있지 않다."
 
 #: ../src/apply.c:4520
 msgid "This looks like it might be interesting to read."
-msgstr "읽으면 흥미로울 것 같다."
+msgstr "읽으면 흥미로울 듯하다."
 
 #: ../src/mail.c:500
 msgid "This mail complies with the Yendorian Anti-Spam Act (YASA)"
@@ -23204,12 +23246,12 @@ msgstr "이 두루마리에는 \"%s\"라고 적혀 있다."
 
 #: ../src/read.c:2013
 msgid "This scroll seems to be blank."
-msgstr "이 두루마리는 비어 있는 것 같다."
+msgstr "이 두루마리는 비어 있는 듯하다."
 
 #: ../src/read.c:2176
 #, c-format
 msgid "This seems to be %s."
-msgstr "이것은 %s인 것 같다."
+msgstr "이것은 %s인 듯하다."
 
 #: ../src/shk.c:746
 #, c-format
@@ -23277,7 +23319,7 @@ msgstr "이 왕좌는 너 같은 자를 위한 것이 아니다!"
 
 #: ../src/dig.c:327
 msgid "This tree seems to be petrified."
-msgstr "이 나무는 석화된 것 같다."
+msgstr "이 나무는 석화된 듯하다."
 
 #: ../src/eat.c:2132
 msgid "This tripe ration is surprisingly good!"
@@ -23337,7 +23379,7 @@ msgstr "감히 나를 %s하겠다고?"
 # 신이 분노했을 때 (divine anger)
 #: ../src/pray.c:1435
 msgid "Thou hast angered me."
-msgstr "네가 나를 분노케 하였다."
+msgstr "네가 나를 노하게 했다."
 
 #: ../src/priest.c:703
 msgid "Thou hast been rewarded for thy devotion."
@@ -23478,13 +23520,17 @@ msgid "Tip all the contents out of this container"
 msgstr "이 용기에서 모든 내용물 쏟아내기"
 
 # pickup.c:3516 - 기울일 용기 선택 질문
-#: ../src/pickup.c:3536
+#: ../src/pickup.c:3542
 msgid "Tip which container?"
-msgstr "어떤 용기를 기울일까?"
+msgstr "어떤 용기를 기울이시겠습니까?"
+
+#: ../src/pickup.c:3539
+msgid "tip something being carried"
+msgstr "소지품에서 기울이기"
 
 #: ../src/pickup.c:3890
 msgid "Tipping contents to floor only..."
-msgstr "바닥에만 내용물을 쏟는다..."
+msgstr "담을 다른 용기가 없어 바닥(지면)에만 쏟습니다."
 
 #: ../src/vault.c:1230
 #, c-format
@@ -23939,6 +23985,19 @@ msgstr "열기"
 #, c-format
 msgid "Unlock it with %s?"
 msgstr "%s{으로/로} 열겠습니까?"
+
+#: ../src/lock.c:629
+#, c-format
+msgid "Lock it with %s?"
+msgstr "%s{으로/로} 잠그겠습니까?"
+
+#: ../src/lock.c:632
+msgid "Unlock it?"
+msgstr "열겠습니까?"
+
+#: ../src/lock.c:633
+msgid "Lock it?"
+msgstr "잠그겠습니까?"
 
 #: ../src/pray.c:1691
 #, c-format
@@ -24725,10 +24784,15 @@ msgstr "어디로 이동하시겠습니까?"
 msgid "Where is shopdoor?"
 msgstr "상점 문은 어디 있는가?"
 
-#: ../src/pickup.c:3930
+#: ../src/pickup.c:3981
 #, c-format
 msgid "Where to tip the contents of %s"
-msgstr "%s의 내용물을 어디에 쏟으시겠습니까"
+msgstr "%s 내용물을 어디에 쏟으시겠습니까?"
+
+# invent.c getobj - #tip 전용 (일반 "What do you want to %s?" 조합과 분리)
+#: ../src/invent.c:1933
+msgid "What do you want to tip?"
+msgstr "무엇을 기울이시겠습니까?"
 
 #: ../src/cmd.c:2481
 msgid "Which commands autocomplete?"
@@ -25203,11 +25267,9 @@ msgstr "당신은 %s..."
 # ============================================================
 # fuzzy 매칭 오류 수정 - Part 4 (insight.c 조합 메시지)
 # ============================================================
-# insight.c:1662 - enl_msg("You aggravate", "", "d", " monsters", from_what())
-# 포맷: " %1$s%3$s%2$s%4$s."
-# 영어: "You aggravate monsters" / "You aggravated monsters"
-# 한국어: prefix에 완전한 문장 포함, suffix/verb는 제로폭 공백
-# 조합: " 당신은 몬스터들을 자극한다​ (원인)."
+# insight.c:1736 — enl_msg("You aggravate", "", "d", " monsters", from_what())
+# 포맷: " %1$s%3$s%2$s%4$s." — suffix msgid " monsters" 는 ko 에서 ZWSP(​)
+# 조합: " 당신은 몬스터들을 자극한다 (원인)." — 접두에 완전한 문장, 조각만 고치지 말 것
 #: ../src/insight.c:1736
 msgid "You aggravate"
 msgstr "당신은 몬스터들을 자극한다"
@@ -25281,7 +25343,7 @@ msgstr "완전히 건강하다."
 
 #: ../src/vault.c:501
 msgid "You are required to supply your name. -"
-msgstr "돌로 변했다..."
+msgstr "이름을 알려 주셔야 합니다. -"
 
 # timeout.c - 속도 감소. 단독 문장
 #: ../src/timeout.c:130
@@ -25300,7 +25362,7 @@ msgstr "꼬불꼬불한 작은 통로들로 둘러싸여 있다, 모두 비슷�
 #: ../src/timeout.c:382
 #, c-format
 msgid "You are turning a little %s."
-msgstr "당신은 약간 %s{으로/로} 변하고 있다."
+msgstr "조금씩 %s{으로/로} 변해 간다."
 
 # ============================================================
 # 전투 메시지 (Combat Messages)
@@ -25308,7 +25370,7 @@ msgstr "당신은 약간 %s{으로/로} 변하고 있다."
 #: ../src/timeout.c:385
 #, c-format
 msgid "You are turning into %s."
-msgstr "%s 안으로 곧장 들어갔다."
+msgstr "%s{으로/로} 변해 간다."
 
 #: ../src/wield.c:575
 #, c-format
@@ -25369,7 +25431,7 @@ msgstr "%s에 손이 닿지 않는다."
 #: ../src/pickup.c:3592
 #, c-format
 msgid "You can't tip %s while carrying so much."
-msgstr "너무 많이 들고 있어서 %s{을/를} 기울일 수 없다."
+msgstr "짐이 너무 많아 %s{을/를} 기울일 수 없습니다."
 
 #: ../src/write.c:55
 msgid "You can't write such a weird scroll!"
@@ -25404,10 +25466,9 @@ msgstr "%s{을/를} 잡았지만 떨어뜨렸다."
 msgid "You catch:"
 msgstr "잡았다:"
 
-# insight.c:1665 - enl_msg("You cause", "", "d", " conflict", from_what())
-# 포맷: " %1$s%3$s%2$s%4$s."
-# " conflict"가 제로폭 공백이므로 prefix에 완전한 문장 포함
-# 조합: " 당신은 분쟁을 일으킨다​ (원인)."
+# insight.c:1739 — enl_msg("You cause", "", "d", " conflict", from_what())
+# 포맷: " %1$s%3$s%2$s%4$s." — suffix msgid " conflict" 는 ko 에서 ZWSP(​)
+# 조합: " 당신은 분쟁을 일으킨다 (원인)." — You aggravate 와 동일 패턴
 #: ../src/insight.c:1739
 msgid "You cause"
 msgstr "당신은 분쟁을 일으킨다"
@@ -25426,7 +25487,7 @@ msgstr "%s의 라벨을 해독했다."
 
 #: ../src/priest.c:460
 msgid "You desecrate this place by your presence!"
-msgstr "당신의 존재로 이 장소를 모독하고 있다!"
+msgstr "네 존재만으로도 이곳은 더럽혀지고 있다!"
 
 #: ../src/topten.c:810
 #, c-format
@@ -25456,9 +25517,11 @@ msgstr "죽었다..."
 # 사망 메시지 (Death Messages)
 # ============================================================
 # 
+# [조합 조각] trap.c:2566 — 위 지뢰·흙더미 pline 의 %1$s (발견 시)
+#   msgstr "발견했다" 단독이면 "발견했다{이/가} …에서 방아쇠를" 처럼 깨짐 → "있음을 발견했다" 유지
 #: ../src/trap.c:2566
 msgid "You discover"
-msgstr "발견했다"
+msgstr "있음을 발견했다"
 
 #: ../src/potion.c:2862
 msgid "You disturbed me, fool!"
@@ -25496,14 +25559,16 @@ msgstr "익사했다."
 msgid "You easily open the tin."
 msgstr "통조림을 쉽게 열었다."
 
+# [조합 조각] invent.c:4175 — Blind 시 minvent 프롬프트: fbuf="You feel" + ":"
+# 시뮬: 느낀다: (목록 헤더)
 #: ../src/invent.c:4175
 msgid "You feel"
 msgstr "느낀다"
 
-# detect.c:690 - 뭔가 부족함
+# detect.c:690 - 단독 pline
 #: ../src/detect.c:690
 msgid "You feel a lack of something."
-msgstr "뭔가 부족함을 느꼈다."
+msgstr "무언가가 모자란 느낌이다."
 
 # 순간이동 제어 실패 시 느낌
 #: ../src/teleport.c:1485
@@ -25513,40 +25578,41 @@ msgstr "더 어지럽다."
 # sit.c:297 - 장소 이질감
 #: ../src/sit.c:297
 msgid "You feel extremely out of place."
-msgstr "극도로 장소가 어울리지 않는 느낌이다."
+msgstr "이곳이 몹시 낯설다."
 
 # uhitm.c:4258 - 열이 남
 #: ../src/uhitm.c:4279
 msgid "You feel feverish."
-msgstr "열이 나는 것 같다."
+msgstr "열이 나는 듯하다."
 
 # You_see and interrupt_multi messages
 #: ../src/allmain.c:618
 msgid "You feel full of energy."
 msgstr "기운이 넘친다."
 
-# detect.c:396 - 타인 재정 상황 관심
+# detect.c:396 - 단독 pline (%s = 몬스터 이름)
 #: ../src/detect.c:396
 #, c-format
 msgid "You feel interested in %s financial situation."
-msgstr "%s 재정 상황에 관심이 생겼다."
+msgstr "%s{의} 재정이 궁금해진다."
 
+# read.c:439 — !Blind 시 pline (There is writing / You feel lettering 중 택일, 단독 문장)
 #: ../src/read.c:439
 msgid "You feel lettering"
-msgstr "글자가 손끝에 느껴진다"
+msgstr "손끝으로 새겨진 글자가 느껴진다"
 
-# polyself.c:440 - 새 사람 느낌
+# polyself.c:444 - 단독 pline
 #: ../src/polyself.c:444
 #, c-format
 msgid "You feel like a new %s!"
-msgstr "새로운 %s{이/가} 된 기분이다!"
+msgstr "새 %s{이/가} 된 듯하다!"
 
 # "You sense movement on the other side."는 이미 정의됨 (line 4166)
 # "You seem to have some trouble breathing."은 이미 정의됨 (line 4639)
-# do.c:1453 - 데자뷰
+# do.c:1452 - 단독 pline
 #: ../src/do.c:1452
 msgid "You feel like you've been here before."
-msgstr "전에 여기 와본 것 같은 느낌이 든다."
+msgstr "전에 이곳에 와 본 듯하다."
 
 # eat.c:876 - 유연해짐
 #: ../src/eat.c:874
@@ -25556,7 +25622,7 @@ msgstr "몸이 유연해졌다!"
 # detect.c:403 - 물질적 빈곤
 #: ../src/detect.c:403
 msgid "You feel materially poor."
-msgstr "물질적으로 가난하게 느껴진다."
+msgstr "유물이 부족한 듯하다."
 
 # pray.c:384 - 더 유연해짐 (석화 해제)
 #: ../src/pray.c:386
@@ -25567,15 +25633,15 @@ msgstr "몸이 더 유연해졌다."
 msgid "You feel slightly dizzy."
 msgstr "약간 어지럽다."
 
-# hack.c:3309 - 얼음 움직임
+# hack.c:3423 - 단독 pline
 #: ../src/hack.c:3423
 msgid "You feel the ice shift beneath you!"
-msgstr "발 밑의 얼음이 움직이는 것을 느꼈다!"
+msgstr "발밑 얼음이 움직이는 것이 느껴진다!"
 
-# engrave.c:714 - 지팡이 과열
+# engrave.c:715 - 단독 pline
 #: ../src/engrave.c:715
 msgid "You feel the wand heat up."
-msgstr "지팡이가 뜨거워지는 것을 느꼈다."
+msgstr "지팡이가 뜨거워지는 것이 느껴진다."
 
 # detect.c:821 - 위협을 느낌
 #: ../src/detect.c:821
@@ -25589,7 +25655,7 @@ msgstr "진동이 느껴진다."
 # detect.c:394 - 미래 재정 걱정
 #: ../src/detect.c:394
 msgid "You feel worried about your future financial situation."
-msgstr "미래 재정 상황이 걱정된다."
+msgstr "앞날 재정이 걱정된다."
 
 #: ../src/timeout.c:280
 msgid "You find it hard to breathe."
@@ -25685,14 +25751,16 @@ msgstr "어렵게"
 msgid "You have turned to stone."
 msgstr "돌로 변했다."
 
+# [조합 조각] trap.c:2646 — Kaablamm… 의 %s (위 포맷과 쌍). music.c 는 완전 문장 msgid(별도)
 #: ../src/trap.c:2646
 msgid "You hear"
-msgstr "들린다"
+msgstr "하는 소리가 들린다"
 
+# mkmaze.c:1511 - 단독 pline (%s = 크기 접두)
 #: ../src/mkmaze.c:1511
 #, c-format
 msgid "You hear a %swhoosh!"
-msgstr "%s휘익, 하는 소리가 들린다!"
+msgstr "%s휘익—하는 소리가 들린다!"
 
 # ============================================================
 # 추가 메시지 패턴
@@ -25706,10 +25774,10 @@ msgstr "웅얼거리는 저주가 들린다."
 msgid "You hear a scream, \"Thief!\""
 msgstr "\"도둑이야!\"라는 비명이 들린다."
 
-# fountain.c:812 - 물 소리
+# fountain.c:812 - 단독 pline
 #: ../src/fountain.c:812
 msgid "You hear a sloshing sound"
-msgstr "찰박거리는 소리가 들린다"
+msgstr "물이 찰박거리는 소리가 들린다"
 
 # engrave.c:730 - 균열 소리
 #: ../src/engrave.c:731
@@ -25758,11 +25826,11 @@ msgstr "벽에 구멍을 뚫었다."
 #: ../src/apply.c:2262
 #, c-format
 msgid "You make, but cannot pick up, %s."
-msgstr "%s{을/를} 만들었지만 집을 수 없다."
+msgstr "%s{을/를} 만들었지만 들 수는 없다."
 
 #: ../src/teleport.c:1428
 msgid "You materialize on a different level!"
-msgstr "다른 층에서 실체화되었다!"
+msgstr "다른 층에 나타났다!"
 
 #: ../src/zap.c:6179
 msgid "You may also specify various prefix values which might be used to"
@@ -25799,27 +25867,36 @@ msgstr "%s에서 미지불 물건을 꺼내 따로 구매해야 합니다."
 
 #: ../src/polyself.c:836
 msgid "You no longer seem to be petrifying."
-msgstr "더 이상 석화되지 않는 것 같다."
+msgstr "더는 석화되는 듯하지 않다."
 
 #: ../src/eat.c:192
 msgid "You now prefer mimicking yourself."
-msgstr "이제 자신을 흉내내고 싶어진다."
+msgstr "이제는 자기 모습을 흉내 내고 싶어진다."
 
+# [조합] eat.c:3626 — Sprintf(qbuf, "You only manage to %s the bear trap.", fragment)
+#   fragment = C_("bear_trap_eat","disarm") | C_("bear_trap_eat","free yourself from")
+# 시뮬: …disarm → 곰 덫을 해제하지 못하고 삼켰다.
+#       …free  → 곰 덫을 빠져 나오지 못하고 삼켰다.
+#   trap.c "…difficult to %s" 에 쓰는 C_("trap_action","disarm")="해제하기" 와 혼동 금지.
 #: ../src/eat.c:3620
 #, c-format
 msgid "You only manage to %s the bear trap."
-msgstr "곰 덫을 %s하는 데 그쳤다."
+msgstr "곰 덫을 %s."
 
-# shk.c:1900 - 빚 안내
+# [조합] shk.c:1958 — Sprintf(You owe…) + Strcat(아래 suffix 중 하나). pline 한 줄로 읽을 것
+# 시뮬: %s에게 %ld %s{을/를} 빚졌다. + suffix → 예) …빚졌다. 상품 사용분이다.
 #: ../src/shk.c:1958
 #, c-format
 msgid "You owe %s %ld %s "
-msgstr "%s에게 %ld %s{을/를} 빚졌다."
+msgstr "%s에게 %ld %s{을/를} 빚졌다. "
 
+# [조합] shk.c:6082 — verbalize(상점 주인). %4$s·%5$s 는 아래 조각과 이어 붙음
+# 시뮬(화남): 네가 내 potion을 감히 섞어 놓고, 네 악취 나는 뭉텅이와 섞었군 — 100 zm은 갚아!
+# 시뮬(보통): 네가 내 potion을 막 섞어 놓고, 네 것과 섞었군 — …
 #: ../src/shk.c:6082
 #, c-format
 msgid "You owe me %ld %s for my %s that you %s with your%s"
-msgstr "당신의 %5$s{으로/로} 내 %3$s{을/를} %4$s한 대가로 %1$ld %2$s{을/를} 빚졌다"
+msgstr "네가 내 %3$s{을/를} %4$s네 %5$s— %1$ld %2$s{은/는} 갚아!"
 
 #: ../src/dig.c:1220
 msgid "You pull free."
@@ -25860,11 +25937,14 @@ msgstr "침착함을 되찾았다."
 # 참고: "take", "took"는 3332, 4303에 정의됨
 # 참고: "You aggravate", "You cause"는 4241, 4315에 정의됨
 # 참고: "would have seen"은 3961에 정의됨
-# insight.c:1747 - "You regenerate/regenerated"
-# 조합: "You regenerate" + ""(빈 suffix) + from_what()
+# insight.c:1828 — enl_msg("You regenerate", "", "d", "", from_what(REGENERATION))
+# 포맷 msgid " %s%s%s%s." → ko msgstr " %1$s%3$s%2$s%4$s." (insight.c:167)
+#   present: start+end+ps → " 당신은 재생할 수 있다 (원인)."
+#   past: start+"d"(ko는 msgid "d"→ZWSP)+end+ps → 과거는 접두 문장에 포함·"d"는 비움
+#   "You "(띄어쓰기) / you_have("slower digestion") 와 혼동 금지
 #: ../src/insight.c:1828
 msgid "You regenerate"
-msgstr "당신은 재생한다"
+msgstr "당신은 재생할 수 있다"
 
 # ============================================================
 # 사망 메시지 (Death Messages)
@@ -25874,14 +25954,15 @@ msgstr "당신은 재생한다"
 msgid "You revive."
 msgstr "부활했다."
 
+# zap.c:2891 - 단독 pline
 #: ../src/zap.c:2891
 msgid "You seem no deader than before."
-msgstr "이전보다 더 죽지 않은 것 같다."
+msgstr "전보다 더 죽은 기색은 없다."
 
-# polyself.c - 호흡 곤란. 단독 문장
+# timeout.c:550 - 단독 pline
 #: ../src/timeout.c:550
 msgid "You seem to have some trouble breathing."
-msgstr "호흡에 문제가 있는 것 같다."
+msgstr "숨쉬기가 거칠어진 듯하다."
 
 # detect.c - 문 너머 탐지. 단독 문장
 #: ../src/hack.c:452
@@ -26012,7 +26093,7 @@ msgstr "%1$d레벨, 최대 %2$dHP%3$.0s로, %4$s."
 #: ../src/timeout.c:350
 #, c-format
 msgid "You wobble unsteadily %s the %s."
-msgstr "당신은 불안정하게 %s %s{을/를} 흔들거린다."
+msgstr "몸이 위태롭게 흔들린다.%1$.0s%2$.0s"
 
 # 촛불 안내 (이자크)
 # %d=개수, %s=" more"/"", %s=plur()
@@ -26057,7 +26138,7 @@ msgstr "%s{으로/로} 뒤덮였다! 타오른다!"
 #: ../src/uhitm.c:2751
 #, c-format
 msgid "You're covered in %s, but it seems harmless."
-msgstr "%s{으로/로} 뒤덮였지만, 해롭지 않은 것 같다."
+msgstr "%s{으로/로} 뒤덮였지만, 해롭지 않은 듯하다."
 
 #: ../src/uhitm.c:2648
 msgid "You're covered in frost!"
@@ -26124,7 +26205,7 @@ msgstr "아직도 익사하고 있다."
 #: ../src/mhitu.c:2142
 #, c-format
 msgid "You're such a %s; I wish..."
-msgstr "당신은 정말 %s이네요; 저는 바랍니다..."
+msgstr "정말 %s이군요. 조금만 더..."
 
 #: ../src/lock.c:900
 msgid "You're too small to pull the door open."
@@ -26211,7 +26292,7 @@ msgstr "당신의 %s "
 #: ../src/pray.c:567
 #, c-format
 msgid "Your %s %s better"
-msgstr "%s{이/가} 나아진 것 같다%.0s"
+msgstr "%s{이/가} 나아진 듯하다%.0s"
 
 # ============================================================
 # do_wear.c - 방어구 파괴 관련
@@ -26272,7 +26353,7 @@ msgstr "%s{이/가} 조여 온다."
 #: ../src/trap.c:5285
 #, c-format
 msgid "Your %s seem to be too busy for that."
-msgstr "당신의 %s{이/가} 그러기에는 너무 바쁜 것 같다."
+msgstr "당신의 %s{이/가} 그러기에는 너무 바쁜 듯하다."
 
 #: ../src/detect.c:1082
 #, c-format
@@ -26354,16 +26435,16 @@ msgstr "머리카락이 곤두섭니다!"
 
 #: ../src/timeout.c:318
 msgid "Your illness feels worse."
-msgstr "병이 더 악화된 것 같다."
+msgstr "병이 더 악화된 듯하다."
 
 #: ../src/timeout.c:319
 msgid "Your illness is severe."
 msgstr "병이 심각하다."
 
-# lock.c - 서투른 시도. "Your inept attempt sets off the alarm"
+# [조합 조각] trap.c:2572 — KAABLAMM!!! … off! 의 %1$s
 #: ../src/trap.c:2572
 msgid "Your inept attempt sets"
-msgstr "서투른 시도가"
+msgstr "서투른 시도가 "
 
 # insight.c:1456 - "Your items are X" 조합
 # "Your items are somewhat cursed" → "당신의 아이템은 어느 정도 저주받았다"
@@ -26418,7 +26499,7 @@ msgstr "당신의 행운은 "
 
 #: ../src/polyself.c:427
 msgid "Your new form doesn't seem healthy enough to survive."
-msgstr "새 형태가 생존하기에 충분히 건강하지 않은 것 같다."
+msgstr "새 형태가 생존하기에 충분히 건강하지 않은 듯하다."
 
 # ============================================================
 # wield.c - 손 관련
@@ -27071,9 +27152,11 @@ msgstr "큰 *쾅*!"
 msgid "a loud *SPLASH*!"
 msgstr "큰 *첨벙*!"
 
+# sounds.c:195 — You_hear1, 신탁 맵·환각 유머. ZOT=전기/마법 타격음(§4.6) → 찌릿!
+# 시뮬: (들림) 큰 찌릿! 소리가 들린다.
 #: ../src/sounds.c:195
 msgid "a loud ZOT!"
-msgstr "큰 ZOT 소리가 울린다!"
+msgstr "큰 찌릿! 소리가 들린다!"
 
 #: ../src/trap.c:1216
 msgid "a loud click!"
@@ -27247,7 +27330,7 @@ msgstr "유혹적인 목소리가 들린다."
 
 #: ../src/dig.c:2216
 msgid "a sensation like falling into a trap!"
-msgstr "함정에 빠지는 것 같은 감각!"
+msgstr "함정에 빠지는 듯한 감각!"
 
 #: ../src/do.c:352
 msgid "a shattering noise."
@@ -27267,7 +27350,7 @@ msgstr "후루룩 들이켜는 소리가 들린다."
 
 #: ../src/sounds.c:217
 msgid "a soda fountain!"
-msgstr "탄산수 분수!"
+msgstr "탄산수가 솟구치는 소리가 들린다!"
 
 #: ../src/trap.c:1279
 msgid "a soft click."
@@ -27335,7 +27418,7 @@ msgstr "갑작스러운 공기의 돌진!"
 
 #: ../src/artifact.c:1766
 msgid "a surge of power, but nothing seems to happen."
-msgstr "힘이 급증하는 듯하지만, 아무 일도 일어나지 않는 것 같다."
+msgstr "힘이 급증하는 듯하지만, 아무 일도 일어나지 않는 듯하다."
 
 #: ../src/lock.c:1147
 msgid "a swoosh."
@@ -27358,9 +27441,10 @@ msgstr "함정"
 msgid "a tree"
 msgstr "나무"
 
+# [조합 조각] trap.c:2567 — 지뢰 pline 의 %2$s (주어·종결 어미 포함). "%s in a pile of soil…" 참고
 #: ../src/trap.c:2567
 msgid "a trigger"
-msgstr "방아쇠를"
+msgstr "방아쇠가"
 
 #: ../src/ball.c:790 ../src/dothrow.c:1092
 msgid "a tug from the iron ball."
@@ -27945,7 +28029,7 @@ msgstr "놀래키다"
 
 #: ../src/read.c:2539
 msgid "ambient light seems dimmer."
-msgstr "주변광이 더 어두워진 것 같다."
+msgstr "주변광이 더 어두워진 듯하다."
 
 #: ../src/apply.c:1007
 msgid "amiable"
@@ -28281,7 +28365,7 @@ msgstr "나타난다"
 
 #: ../src/shk.c:1783
 msgid "appears to be no shopkeeper here to receive your payment."
-msgstr "지불을 받을 상점 주인이 여기 없는 것 같다."
+msgstr "지불을 받을 상점 주인이 여기 없는 듯하다."
 
 #: ../src/pager.c:94
 #, c-format
@@ -28405,18 +28489,18 @@ msgstr "%s."
 
 #: ../src/end.c:1029
 msgid "are a very tricky wizard, it seems."
-msgstr "매우 교활한 마법사인 것 같다."
+msgstr "매우 교활한 마법사인 듯하다."
 
 # timeout.c:241 - 구토 상태. 음식/물약 부작용 등
 # "hurl" = 토하다, 구토하다 (비속어)
 #: ../src/timeout.c:241
 msgid "are about to hurl!"
-msgstr "토할 것 같다!"
+msgstr "토할 듯하다!"
 
 # eat.c - 구토 직전. "You are about to vomit"
 #: ../src/timeout.c:194
 msgid "are about to vomit."
-msgstr "토할 것 같다."
+msgstr "메스꺼운 듯하다."
 
 #: ../src/hack.c:3446
 #, c-format
@@ -28674,7 +28758,7 @@ msgstr "%s에 떠 있다."
 # ============================================================
 #: ../src/mhitu.c:1648
 msgid "are freaked out"
-msgstr "겁에 질린 것 같다"
+msgstr "겁에 질린 듯하다"
 
 #: ../src/mhitu.c:1510
 msgid "are freezing to death!"
@@ -29412,7 +29496,7 @@ msgstr "아티팩트"
 
 #: ../src/mcastu.c:832
 msgid "as if you need some help."
-msgstr "도움이 필요한 것 같다."
+msgstr "도움이 필요한 듯하다."
 
 #: ../src/wield.c:633
 msgid "as secondary weapon"
@@ -29506,7 +29590,7 @@ msgstr "아타메"
 #: ../src/shk.c:830
 #, c-format
 msgid "atmosphere at %s %s seems unwelcoming."
-msgstr "%s %s의 분위기가 환영하지 않는 것 같다."
+msgstr "%s %s의 분위기가 환영하지 않는 듯하다."
 
 #: ../src/apply.c:1438
 #, c-format
@@ -30188,7 +30272,7 @@ msgstr "%s"
 
 #: ../src/potion.c:496
 msgid "being frightened to death"
-msgstr "무서워서 죽을 것 같음"
+msgstr "무서워 죽을 지경"
 
 #: ../src/dothrow.c:1058
 #, c-format
@@ -30618,7 +30702,7 @@ msgstr "몸이 다시 보이기 시작%s."
 
 #: ../src/artifact.c:2228
 msgid "body seems to unfade..."
-msgstr "몸이 다시 나타나는 것 같다..."
+msgstr "몸이 다시 나타나는 듯하다..."
 
 #: ../src/artifact.c:2225 ../src/eat.c:2305
 #, c-format
@@ -31267,7 +31351,7 @@ msgstr "거품"
 # === Sound descriptions (sounds.c) ===
 #: ../src/sounds.c:216
 msgid "bubbling water."
-msgstr "물이 부글거리는 소리."
+msgstr "물이 부글거리는 소리가 들린다."
 
 #: ../src/obj_descr_i18n.c:34
 msgid "bubbly"
@@ -31778,7 +31862,7 @@ msgstr "수 없다"
 
 #: ../src/timeout.c:229
 msgid "can't "
-msgstr "수 없다"
+msgstr "도저히 "
 
 #: ../src/shk.c:1833
 #, c-format
@@ -31862,7 +31946,7 @@ msgstr "그럴 수 없다. 안장이 %s 저주받았다."
 #: ../src/pickup.c:2454
 #, c-format
 msgid "can't.  The saddle seems to be stuck to %s."
-msgstr "안 된다. 안장이 %s에 붙어있는 것 같다."
+msgstr "안 된다. 안장이 %s에 붙어있는 듯하다."
 
 #: ../src/steed.c:642
 msgid "can't.  There isn't anywhere for you to stand."
@@ -33025,11 +33109,11 @@ msgstr "살아난다"
 
 #: ../src/shk.c:2635
 msgid "comes and "
-msgstr "살아난다"
+msgstr "다가와 "
 
 #: ../src/sounds.c:1120
 msgid "comes on to you."
-msgstr "당신에게 접근한다."
+msgstr "추파를 던진다."
 
 #: ../src/trap.c:835
 msgid "comes to life"
@@ -33272,10 +33356,10 @@ msgstr "좁은 통로에서 생긴 타박상"
 msgid "convert_line: overflow"
 msgstr "convert_line: overflow"
 
-# sounds.c:192 - 던전 소리. 들리는 무서운 소리 묘사
+# sounds.c:192 — You_hear1 단독
 #: ../src/sounds.c:192
 msgid "convulsive ravings."
-msgstr "경련적인 헛소리."
+msgstr "경련하듯 헛소리가 들린다."
 
 #: ../src/sounds.c:346
 msgid "coo"
@@ -34678,9 +34762,17 @@ msgstr "사라지다"
 msgid "disappears out of sight"
 msgstr "시야에서 사라졌다"
 
-#: ../src/eat.c:3621 ../src/trap.c:5536
+# [조합 조각] trap.c:5536 — "%s %s is difficult to %s." 의 세 번째 인자 (명사형·~하기)
+#: ../src/trap.c:5536
+msgctxt "trap_action"
 msgid "disarm"
-msgstr "해제했다!"
+msgstr "해제하기"
+
+# [조합 조각] eat.c:3627 — "You only manage to %s the bear trap." 의 %s (완료형 절)
+#: ../src/eat.c:3627
+msgctxt "bear_trap_eat"
+msgid "disarm"
+msgstr "해제하지 못하고 삼켰다"
 
 #: ../src/trap.c:5586
 #, c-format
@@ -34749,7 +34841,7 @@ msgstr "몸을 빼냈다."
 
 #: ../src/sounds.c:223
 msgid "dishes being washed!"
-msgstr "설거지하는 소리!"
+msgstr "설거지하는 소리가 들린다!"
 
 #: ../src/uhitm.c:342
 msgid "dishonorably attack the innocent!"
@@ -35032,15 +35124,15 @@ msgstr "반응하지 않는다"
 #: ../src/do_name.c:706
 #, c-format
 msgid "doesn't seem to be any object %s."
-msgstr "%s 물체가 없는 것 같다."
+msgstr "%s 물체가 없는 듯하다."
 
 #: ../src/lock.c:546
 msgid "doesn't seem to be any sort of lock here."
-msgstr "여기에는 어떤 종류의 자물쇠도 없는 것 같다."
+msgstr "여기에는 어떤 종류의 자물쇠도 없는 듯하다."
 
 #: ../src/sounds.c:1362
 msgid "doesn't seem to be interested."
-msgstr "관심이 없는 것 같다."
+msgstr "관심이 없는 듯하다."
 
 #: ../src/shk.c:905
 msgid "doesn't want"
@@ -35088,7 +35180,7 @@ msgstr "오른 "
 #: ../src/hack.c:3816
 #, c-format
 msgid "don't %s anything in here to pick up."
-msgstr "여기에 주울 만한 것이 없는 것 같다%.0s."
+msgstr "여기에 주울 만한 것이 없는 듯하다%.0s."
 
 #: ../src/rumors.c:725
 msgid "don't even have enough gold for that!"
@@ -35277,19 +35369,19 @@ msgstr "여기에 빚진 금화가 없다."
 
 #: ../src/read.c:2011
 msgid "don't remember there being any magic words on this scroll."
-msgstr "이 두루마리에 마법 단어가 있었던 것 같지 않다."
+msgstr "이 두루마리에 마법 단어가 있었던 듯하지 않다."
 
 #: ../src/do.c:604
 msgid "don't see anything happen to the sink."
-msgstr "싱크대에 아무 일도 일어나지 않는 것 같다."
+msgstr "싱크대에 아무 일도 일어나지 않는 듯하다."
 
 #: ../src/uhitm.c:3222
 msgid "don't seem harmed."
-msgstr "해를 입지 않은 것 같다."
+msgstr "해를 입지 않은 듯하다."
 
 #: ../src/trap.c:6462
 msgid "don't seem to be affected."
-msgstr "영향을 받지 않은 것 같다."
+msgstr "영향을 받지 않은 듯하다."
 
 #: ../src/options.c:274
 msgid "don't show object symbols in menus"
@@ -35303,10 +35395,12 @@ msgstr "거기서 괴물 냄새가 나지 않는다."
 msgid "don't want to get the pages even more soggy, do you?"
 msgstr "페이지를 더 젖게 하고 싶지 않잖아?"
 
+# [조합] shk.c:2470 — %1=seem %2=credit %3=item
+# 시뮬: 검을 사기에 보유 자금이 부족하다. / …부족한 듯하다. / …보유 자금 및 신용이 …
 #: ../src/shk.c:2470
 #, c-format
 msgid "don't%s have gold%s enough to pay for %s."
-msgstr "%s{을/를} 지불하기에 충분한 금화%s{이/가} 없다%s."
+msgstr "%1$s%3$s{을/를} 사기에 보유 자금%2$s이 충분하지 않다."
 
 #: ../src/objnam.c:1739
 msgid "doname: long object description overflow."
@@ -35468,7 +35562,7 @@ msgstr "흡수 저항"
 
 #: ../src/fountain.c:759
 msgid "drain seems less clogged."
-msgstr "배수구가 덜 막힌 것 같다."
+msgstr "배수구가 덜 막힌 듯하다."
 
 #: ../src/weapon.c:1499
 #, c-format
@@ -35514,7 +35608,7 @@ msgstr "도개교는 영향을 받지 않았다."
 
 #: ../src/dig.c:933
 msgid "drawbridge seems too hard to dig through."
-msgstr "도개교는 너무 단단해서 뚫을 수 없는 것 같다."
+msgstr "도개교는 너무 단단해서 뚫을 수 없는 듯하다."
 
 #: ../src/mhitm.c:339
 #, c-format
@@ -36625,7 +36719,7 @@ msgstr "경험치"
 #: ../src/priest.c:482
 #, c-format
 msgid "experience %s sense of peace."
-msgstr "%s{이/가} 당신의 존재를 감지했다."
+msgstr "평온한 기운이 감돈다.%1$.0s"
 
 #: ../src/obj_descr_i18n.c:1310
 msgid "experience level"
@@ -37488,7 +37582,7 @@ msgstr "불이 %s{을/를} 데우지 못한다!"
 #: ../src/uhitm.c:2611
 #, c-format
 msgid "fire doesn't seem to burn %s!"
-msgstr "불이 %s{을/를} 태우지 못하는 것 같다!"
+msgstr "불이 %s{을/를} 태우지 못하는 듯하다!"
 
 #: ../src/monster_i18n.c:175 ../src/obj_descr_i18n.c:914
 msgid "fire elemental"
@@ -37978,10 +38072,10 @@ msgstr "%s{을/를} 위해)"
 msgid "for a teleport spell"
 msgstr "순간이동 주문을 위해"
 
-# shk.c - 상점 청구 + 금. "for gold picked up and the use of merchandise."
+# [조합 조각] shk.c:1965 — You owe %s %ld… Strcat
 #: ../src/shk.c:1965
 msgid "for gold picked up and the use of merchandise."
-msgstr "주운 금과 상품 사용료"
+msgstr "줍은 금화와 상품 사용분이다."
 
 #: ../src/objnam.c:1680
 msgid "for sale"
@@ -37991,10 +38085,10 @@ msgstr "판매용"
 msgid "for the contents of this"
 msgstr "그 내용물이 쏟아졌다."
 
-# shk.c - 상점 청구. "You owe X gold for the use of merchandise."
+# [조합 조각] shk.c:1967 — You owe %s %ld… Strcat
 #: ../src/shk.c:1967
 msgid "for the use of merchandise."
-msgstr "상품 사용료"
+msgstr "상품 사용분이다."
 
 #: ../src/shk.c:3578
 msgid "for this"
@@ -38303,9 +38397,11 @@ msgstr "자유 행동"
 msgid "free your %s."
 msgstr "%s{을/를} 빼냈다."
 
-#: ../src/eat.c:3621
+# [조합 조각] eat.c:3627 — 곰 덫에 끼었을 때 먹기 실패 메시지 (위 disarm 과 쌍)
+#: ../src/eat.c:3627
+msgctxt "bear_trap_eat"
 msgid "free yourself from"
-msgstr "에서 빠져나오기"
+msgstr "빠져 나오지 못하고 삼켰다"
 
 #: ../src/zap.c:5780
 msgid "freeze and shatter"
@@ -38409,7 +38505,7 @@ msgstr "서리가 차갑게 느껴지지 않는다!"
 #: ../src/uhitm.c:2670
 #, c-format
 msgid "frost doesn't seem to chill %s!"
-msgstr "서리가 %s{을/를} 차갑게 하지 못하는 것 같다!"
+msgstr "서리가 %s{을/를} 차갑게 하지 못하는 듯하다!"
 
 #: ../src/monster_i18n.c:191 ../src/obj_descr_i18n.c:923
 msgid "frost giant"
@@ -39698,7 +39794,7 @@ msgstr "건지 반점"
 #: ../src/cmd.c:1297
 #, c-format
 msgid "guess %s to be %s %s."
-msgstr "%s{이/가} %s %s인 것 같다."
+msgstr "%s{이/가} %s %s인 듯하다."
 
 #: ../src/sounds.c:1359
 msgid "guffaws merrily!"
@@ -39776,9 +39872,10 @@ msgstr "해가 뜨기를 기다리는 게 좋겠다."
 msgid "had obtained"
 msgstr "얻었다"
 
+# [조합 조각] shk.c:6084 — You owe me… 의 %4$s (화난 상점 주인)
 #: ../src/shk.c:6084
 msgid "had the audacity to mix"
-msgstr "대담하게 섞었다"
+msgstr "감히 섞어 놓고 "
 
 #: ../src/apply.c:3152
 msgid "hadn't noticed"
@@ -41495,7 +41592,7 @@ msgstr "인큐버스"
 #: ../src/shk.c:5539 ../src/shk.c:5564 ../src/shk.c:5569 ../src/shk.c:5580
 #: ../src/shk.c:5585 ../src/shk.c:5589
 msgid "indicates"
-msgstr "남색 연두"
+msgstr "알린다"
 
 # 상점 주인 대화 - 우려 표시
 #: ../src/shk.c:5577
@@ -41751,7 +41848,7 @@ msgstr "투명한 "
 
 #: ../src/apply.c:449
 msgid "invisible monster must have moved."
-msgstr "투명 괴물이 이동한 것 같다."
+msgstr "투명 괴물이 이동한 듯하다."
 
 # ============================================================
 # [조합 검토] Section F: Resistances (insight.c:1542-1584)
@@ -42306,8 +42403,7 @@ msgstr "항아리"
 msgid "juices"
 msgstr "체액"
 
-# insight.c:1662 - "You can jump"
-# 기존: "점프" → "당신은 점프" (불완전)
+# [조합] you_can — insight.c:1743. can/could=msgid "can "→ZWSP. 시뮬: 당신은 점프할 수 있다.
 #: ../src/do.c:1259 ../src/insight.c:1743 ../src/mon.c:3345 ../src/muse.c:1049
 #: ../src/muse.c:1146 ../src/muse.c:2527 ../src/teleport.c:1068
 msgid "jump"
@@ -42372,9 +42468,10 @@ msgstr "바로 위"
 msgid "just below"
 msgstr "바로 아래"
 
+# [조합 조각] shk.c:6084 — You owe me… 의 %4$s (보통 톤)
 #: ../src/shk.c:6084
 msgid "just mixed"
-msgstr "방금 섞었다"
+msgstr "막 섞어 놓고 "
 
 # ============================================================
 # insight.c 조합 패턴 종합 검토 (2026-02-06)
@@ -42609,7 +42706,7 @@ msgstr "악한"
 
 #: ../src/potion.c:2065
 msgid "knees seem more flexible now."
-msgstr "무릎이 이제 더 유연해진 것 같다."
+msgstr "무릎이 이제 더 몸이 유연해진 듯하다."
 
 #: ../src/obj_descr_i18n.c:276
 msgid "knife"
@@ -43521,7 +43618,7 @@ msgstr "구석에 앉아 있고 싶다"
 
 #: ../src/read.c:1501
 msgid "like someone is helping you."
-msgstr "누군가가 당신을 돕고 있는 것 같다."
+msgstr "누군가가 당신을 돕고 있는 듯하다."
 
 # ============================================================
 # 두루마리 (Scrolls)
@@ -43529,19 +43626,19 @@ msgstr "누군가가 당신을 돕고 있는 것 같다."
 #: ../src/dig.c:1519
 #, c-format
 msgid "like you are %s."
-msgstr "마치 %s한 것 같다."
+msgstr "마치 %s한 듯하다."
 
 #: ../src/priest.c:510
 msgid "like you are being watched."
-msgstr "누군가 지켜보는 것 같다."
+msgstr "누군가 지켜보는 듯하다."
 
 #: ../src/pray.c:2303
 msgid "like you are falling apart."
-msgstr "무너지는 것 같다."
+msgstr "무너지는 듯하다."
 
 #: ../src/read.c:1502
 msgid "like you need some help."
-msgstr "도움이 필요한 것 같다."
+msgstr "도움이 필요한 듯하다."
 
 #: ../src/pager.c:602 ../src/pager.c:1157
 msgid "limitless water"
@@ -44201,7 +44298,7 @@ msgstr "마커가 너무 말라서 쓸 수 없다!"
 
 #: ../src/read.c:864
 msgid "marker seems permanently dried out."
-msgstr "마커가 영구적으로 말라버린 것 같다."
+msgstr "마커가 영구적으로 말라버린 듯하다."
 
 #: ../src/weapon.c:61
 msgid "martial arts"
@@ -47015,7 +47112,7 @@ msgstr "파이"
 
 #: ../src/zap.c:6177
 msgid "pieces\"), although that aspect of your wish might not be granted."
-msgstr "pieces\"), although that aspect of your wish might not be granted."
+msgstr "조각\"처럼 수량을 지정할 수 있지만, 그 부분은 허락되지 않을 수 있다."
 
 #: ../src/polyself.c:1240
 msgid "pierce"
@@ -47054,7 +47151,7 @@ msgstr "경건하게"
 
 #: ../src/music.c:592
 msgid "piped"
-msgstr "연주했다"
+msgstr "삐이익거리는"
 
 #: ../src/fountain.c:584
 msgid "pipes break!  Water spurts out!"
@@ -47242,11 +47339,11 @@ msgstr "알린다"
 #: ../src/uhitm.c:3130
 #, c-format
 msgid "poison doesn't seem to affect %s."
-msgstr "독이 %s에게 효과가 없는 것 같다."
+msgstr "독이 %s에게 효과가 없는 듯하다."
 
 #: ../src/attrib.c:341
 msgid "poison doesn't seem to affect you."
-msgstr "독이 영향을 미치지 않는 것 같다."
+msgstr "독이 영향을 미치지 않는 듯하다."
 
 #: ../src/hack.c:2561 ../src/insight.c:3554 ../src/invent.c:4190
 #: ../src/mthrowu.c:27 ../src/pager.c:277
@@ -47465,7 +47562,7 @@ msgstr "도개교의 성문이 %s{으로/로} 떨어졌다!"
 #: ../src/uhitm.c:2889
 #, c-format
 msgid "position suddenly seems %suncertain!"
-msgstr "위치가 갑자기 %s불확실해진 것 같다!"
+msgstr "위치가 갑자기 %s불확실해진 듯하다!"
 
 # invent.c:5361 - 인벤토리 카테고리. "your possessions"
 #: ../src/invent.c:5384
@@ -47874,7 +47971,7 @@ msgstr "그르렁거린다."
 
 #: ../src/uhitm.c:2802
 msgid "purse feels heavier."
-msgstr "지갑이 무거워진 것 같다."
+msgstr "지갑이 무거워진 듯하다."
 
 #: ../src/steal.c:110
 msgid "purse feels lighter."
@@ -48671,7 +48768,7 @@ msgstr "기억된 글자"
 
 #: ../src/shk.c:5569
 msgid "reminds you"
-msgstr "독액이 당신의 눈을 멀게 했다."
+msgstr "일러준다"
 
 #: ../src/obj_descr_i18n.c:420
 msgid "remove"
@@ -48683,7 +48780,7 @@ msgstr "벗다"
 #: ../src/trap.c:5536
 msgctxt "trap_action"
 msgid "remove"
-msgstr "제거하다"
+msgstr "제거하기"
 
 #: ../src/obj_descr_i18n.c:575
 msgid "remove curse"
@@ -49160,7 +49257,7 @@ msgstr "바위 피어서"
 
 #: ../src/polyself.c:980
 msgid "rock seems to no longer trap you."
-msgstr "바위가 더 이상 가두지 않는 것 같다."
+msgstr "바위가 더 이상 가두지 않는 듯하다."
 
 #: ../src/monster_i18n.c:239 ../src/obj_descr_i18n.c:1040
 msgid "rock troll"
@@ -49476,9 +49573,10 @@ msgid "s'"
 msgstr "의"
 
 # various - 복수형+마침표. 문법 요소
+# [조합 조각] shk.c:6085 — your%s (보통). 영문 yours. → 네 것과
 #: ../src/shk.c:6085
 msgid "s."
-msgstr "."
+msgstr "것과"
 
 #: ../src/weapon.c:55
 msgid "saber"
@@ -49677,7 +49775,7 @@ msgstr "볼 수 있었다"
 
 #: ../src/shk.c:5564 ../src/shk.c:5589
 msgid "says"
-msgstr "말하다"
+msgstr "말한다"
 
 #: ../src/eat.c:2491
 msgid "scale"
@@ -49892,7 +49990,27 @@ msgstr "플래시백으로부터 안전"
 
 #: ../src/wield.c:225
 msgid "secure the tether."
-msgstr "끈을 고정한다."
+msgstr "줄을 고정한다."
+
+#: ../src/dothrow.c:1694 ../src/dothrow.c:1714 ../src/dothrow.c:1813
+#, c-format
+msgid "The tether comes off your %s."
+msgstr "줄이 %s에서 빠졌다."
+
+#: ../src/dothrow.c:1764
+#, c-format
+msgid "Your tethered %s snaps back but the tether slips from your %s."
+msgstr "줄에 매인 %s가 되돌아왔지만 %s에서 줄이 풀렸다."
+
+#: ../src/dothrow.c:1777
+#, c-format
+msgid "tethered %s returns and hits your %s!"
+msgstr "줄에 매인 %s가 되돌아와 %s{을/를} 때렸다!"
+
+#: ../src/dothrow.c:1802
+#, c-format
+msgid "%s tether comes off your %s."
+msgstr "%s의 줄이 %s에서 빠졌다."
 
 #: ../src/uhitm.c:4658
 msgid "seduce"
@@ -50010,53 +50128,53 @@ msgstr "이다"
 
 #: ../src/eat.c:1233
 msgid "seem faster."
-msgstr "더 빠른 것 같다."
+msgstr "더 빠른 듯하다."
 
 #: ../src/steed.c:666
 msgid "seem less noisy now."
-msgstr "이제 덜 시끄러워진 것 같다."
+msgstr "이제 덜 시끄러워진 듯하다."
 
 #: ../src/mcastu.c:394
 msgid "seem no deader than before."
-msgstr "이전보다 더 죽지 않은 것 같다."
+msgstr "이전보다 더 죽지 않은 듯하다."
 
 #: ../src/eat.c:1230
 msgid "seem slower."
-msgstr "더 느린 것 같다."
+msgstr "더 느린 듯하다."
 
 # 조합: "You seem to produce" - 연주 결과 수식
 #: ../src/music.c:591 ../src/shk.c:1874 ../src/shk.c:2063 ../src/shk.c:2465
 msgid "seem to "
-msgstr "것 같이 "
+msgstr "겉보기엔 "
 
 #: ../src/apply.c:2196
 msgid "seem to be out of tins."
-msgstr "통조림이 다 떨어진 것 같다."
+msgstr "통조림이 다 떨어진 듯하다."
 
 #: ../src/mhitu.c:2225
 #, c-format
 msgid "seem to have enjoyed it more than %s..."
-msgstr "%s보다 더 즐긴 것 같다..."
+msgstr "%s보다 더 즐긴 듯하다..."
 
 #: ../src/mhitu.c:1648
 msgid "seem unaffected"
-msgstr "영향을 받지 않은 것 같다."
+msgstr "영향을 받지 않은 듯하다."
 
 #: ../src/mhitu.c:1656
 msgid "seem unaffected by it."
-msgstr "그것에 영향을 받지 않은 것 같다."
+msgstr "그것에 영향을 받지 않은 듯하다."
 
 #: ../src/eat.c:1935 ../src/eat.c:2799
 msgid "seem unaffected by the poison."
-msgstr "독의 영향을 받지 않는 것 같다."
+msgstr "독의 영향을 받지 않는 듯하다."
 
 #: ../src/zap.c:4496
 msgid "seem unaffected."
-msgstr "영향을 받지 않은 것 같다."
+msgstr "영향을 받지 않은 듯하다."
 
 #: ../src/mhitu.c:1491
 msgid "seem unhurt."
-msgstr "다치지 않은 것 같다."
+msgstr "다치지 않은 듯하다."
 
 #: ../src/mon.c:2891
 msgid "seemingly dead"
@@ -50069,59 +50187,59 @@ msgstr "같다"
 #: ../src/read.c:1717
 msgctxt "neighborhood"
 msgid "seems"
-msgstr "진 것 같다"
+msgstr "진 듯하다"
 
 #: ../src/zap.c:501
 msgid "seems fleshier..."
-msgstr "더 살이 붙은 것 같다..."
+msgstr "더 살이 붙은 듯하다..."
 
 # various - ~인 것 같다. "It seems to be locked"
 #: ../src/shk.c:746 ../src/steed.c:637
 msgid "seems to be"
-msgstr "~인 것 같다"
+msgstr "~인 듯하다"
 
 #: ../src/save.c:117
 msgid "seems to be an old save file."
-msgstr "오래된 저장 파일인 것 같다."
+msgstr "오래된 저장 파일인 듯하다."
 
 # dog.c - 낮잠 상태. "Your pet seems to be napping"
 #: ../src/shk.c:1865
 msgid "seems to be napping"
-msgstr "낮잠을 자는 것 같다"
+msgstr "낮잠을 자는 듯하다"
 
 #: ../src/dog.c:133
 msgid "seems to be nothing available for a familiar."
-msgstr "사역마에게 사용할 수 있는 것이 없는 것 같다."
+msgstr "사역마에게 사용할 수 있는 것이 없는 듯하다."
 
 #: ../src/detect.c:1120
 msgid "seems to be nothing of interest on this level."
-msgstr "이 층에는 관심 있는 것이 없는 것 같다."
+msgstr "이 층에는 관심 있는 것이 없는 듯하다."
 
 # invent.c - 깜빡임. "The lamp seems to flicker"
 #: ../src/mon.c:1787
 msgid "seems to flicker"
-msgstr "깜빡이는 것 같다"
+msgstr "깜빡이는 듯하다"
 
 #: ../src/read.c:1713
 msgid "seems to happen"
-msgstr "일어나지 않은 것 같다"
+msgstr "일어나지 않은 듯하다"
 
 #: ../src/mhitu.c:2114
 msgid "seems to murmur into your ear"
-msgstr "당신 귀에 속삭이는 것 같다"
+msgstr "귓가에 속삭이는 듯하다"
 
 #: ../src/sounds.c:1156
 msgid "seems to mutter a cantrip."
-msgstr "주문을 중얼거리는 것 같다."
+msgstr "주문을 중얼거리는 듯하다."
 
 # mon.c - 사라짐. "The monster seems to vanish"
 #: ../src/steal.c:884
 msgid "seems to vanish"
-msgstr "사라지는 것 같다"
+msgstr "사라지는 듯하다"
 
 #: ../src/dog.c:1321
 msgid "seems unable"
-msgstr "할 수 없는 것 같다"
+msgstr "할 수 없는 듯하다"
 
 #: ../src/polyself.c:1226
 msgid "seep right through your shirt!"
@@ -50821,7 +50939,7 @@ msgstr "싱크대가 꽤 더러워 보인다."
 
 #: ../src/do.c:614
 msgid "sink seems to blend into the floor for a moment."
-msgstr "싱크대가 잠시 바닥과 섞이는 것 같다."
+msgstr "싱크대가 잠시 바닥과 섞이는 듯하다."
 
 #: ../src/do.c:453
 #, c-format
@@ -51208,9 +51326,8 @@ msgstr "슬로우 투"
 # ============================================================
 # 추가 you_have() 조합 수정
 # ============================================================
-# insight.c - "You have slower digestion"
-# 기존: "더 느린 소화" → "당신은 더 느린 소화" (불완전)
-# 수정: "소화가 느리다"
+# [조합] insight.c:1830 — you_have(attr). have/had=msgid "have "→ZWSP, 포맷 %1$s%3$s%2$s%4$s.
+# 시뮬: 당신은 소화가 느리다 (원인).
 #: ../src/insight.c:1830
 msgid "slower digestion"
 msgstr "소화가 느리다"
@@ -51457,9 +51574,10 @@ msgstr "낄낄거린다."
 msgid "sniffle"
 msgstr "훌쩍거리다"
 
+# sounds.c:193 — You_hear1 단독
 #: ../src/sounds.c:193
 msgid "snoring snakes."
-msgstr "코 고는 뱀 소리."
+msgstr "뱀이 코 고는 소리가 들린다."
 
 #: ../src/obj_descr_i18n.c:244
 msgid "snow boots"
@@ -51618,7 +51736,7 @@ msgstr "누군가 \"더 이상 우드척은 없어!\"라고 외치는 소리가 
 
 #: ../src/sounds.c:262
 msgid "someone searching."
-msgstr "누군가 수색하는 소리가 들린다."
+msgstr "누군가 뒤지는 소리가 들린다."
 
 #: ../src/mcastu.c:686
 #, c-format
@@ -51727,7 +51845,7 @@ msgstr "불꽃"
 
 #: ../src/sounds.c:1269
 msgid "speak.  You're choking!"
-msgstr "말하다. 숨이 막힌다!"
+msgstr "말할 수 없다. 숨이 막힌다!"
 
 # 무기 - 창
 #: ../src/obj_descr_i18n.c:298
@@ -52045,7 +52163,7 @@ msgstr "노움 광산으로 내려가는 계단 근처에서."
 
 #: ../src/zap.c:3280
 msgid "stairs seem to ripple momentarily."
-msgstr "계단이 잠시 파문치는 것 같다."
+msgstr "계단이 잠시 파문치는 듯하다."
 
 #: ../src/objnam.c:1534
 msgid "stale "
@@ -52278,7 +52396,7 @@ msgstr "존재하지 않는 다트에 맞은 탈것?"
 
 #: ../src/dog.c:855
 msgid "steed left behind?"
-msgstr "steed left behind?"
+msgstr "탈것이 뒤에 남았다?"
 
 #: ../src/mon.c:143
 #, c-format
@@ -52993,7 +53111,7 @@ msgid "sweetheart"
 msgstr "자기야"
 
 # insight.c:1737 - "You can swim"
-# 기존: "수영" → "당신은 수영" (불완전)
+# [조합] you_can — insight.c:1818
 #: ../src/insight.c:1818
 msgid "swim"
 msgstr "수영할 수 있다"
@@ -53199,7 +53317,7 @@ msgstr "take_off: taking off %lx"
 
 #: ../src/shk.c:2636
 msgid "takes"
-msgstr "벗을"
+msgstr "​"
 
 # steal.c:328 - steal_disarm 패턴용 (ko.po "벗을"→과거형)
 #: ../src/steal.c:328
@@ -53280,7 +53398,7 @@ msgstr "%s 고기를 맛보는 중"
 
 #: ../src/sit.c:712
 msgid "tawt you taw a puttie tat"
-msgstr "고양이 본 것 같아"
+msgstr "고양이 본 듯해"
 
 #: ../src/do_name.c:1516
 msgid "tea"
@@ -53941,9 +54059,10 @@ msgstr "주변의 긴장이 줄어든다."
 msgid "the tones of courtly conversation."
 msgstr "궁정 대화의 톤."
 
+# [조합 조각] trap.c:2567 — 자작 지뢰. 위와 같이 %2$s 주어 ("…방아쇠가 있다/발견")
 #: ../src/trap.c:2567
 msgid "the trigger of your mine"
-msgstr "당신 지뢰의 방아쇠를"
+msgstr "당신이 묻어 둔 지뢰 방아쇠가"
 
 # do_name.c 관련
 #: ../src/do_name.c:535
@@ -54085,7 +54204,7 @@ msgstr "물건"
 #: ../src/pickup.c:2853 ../src/pray.c:2115
 #, c-format
 msgid "think %s brushed your %s."
-msgstr "%s{이/가} 당신의 %s{을/를} 스친 것 같다."
+msgstr "%s{이/가} 당신의 %s{을/를} 스친 듯하다."
 
 #: ../src/fountain.c:127
 msgid "thirst is quenched."
@@ -54158,7 +54277,7 @@ msgstr "%s{이/가} 싱크대에서 잃어버린 줄 알았는데, 있다!"
 # pager.c - 뭔가 봄. "You thought you saw something"
 #: ../src/sit.c:713
 msgid "thought you saw something"
-msgstr "뭔가 본 것 같다"
+msgstr "뭔가 본 듯하다"
 
 #: ../src/hack.c:2082 ../src/sounds.c:459
 msgid "thrash"
@@ -54212,11 +54331,11 @@ msgstr "왕좌는 너무 단단해서 부술 수 없다."
 
 #: ../src/sit.c:304
 msgid "throne seeems to be calling for help!"
-msgstr "왕좌가 도움을 요청하는 것 같다!"
+msgstr "왕좌가 도움을 요청하는 듯하다!"
 
 #: ../src/sit.c:284
 msgid "throne somehow seems to be amused."
-msgstr "왕좌가 어쩐지 즐거워하는 것 같다."
+msgstr "왕좌가 어쩐지 즐거워하는 듯하다."
 
 # 조합: 로프 골렘 등의 손으로 목 조르기 공격
 #: ../src/uhitm.c:5736
@@ -54411,9 +54530,10 @@ msgstr "아주 작은"
 msgid "tiny snowflakes spinning around a miniature farmhouse."
 msgstr "미니어처 농가 주위를 맴도는 작은 눈송이를."
 
-#: ../src/obj_descr_i18n.c:428 ../src/pickup.c:2045
+# pickup.c able_to_loot() 동사 — getobj 전용은 msgctxt "getobj"/"tip"
+#: ../src/pickup.c:2045
 msgid "tip"
-msgstr "기울일"
+msgstr "기울이다"
 
 #: ../src/muse.c:827
 #, c-format
@@ -54566,7 +54686,7 @@ msgstr "던져주었다"
 
 #: ../src/eat.c:1034
 msgid "totally together, man."
-msgstr "완전히 하나가 된 것 같다, 친구."
+msgstr "완전히 하나가 된 듯하다, 친구."
 
 #: ../src/read.c:197
 msgid "toucan"
@@ -55783,7 +55903,7 @@ msgstr "송아지 가죽"
 
 #: ../src/eat.c:1227
 msgid "velocity suddenly seems very uncertain!"
-msgstr "속도가 갑자기 매우 불확실해진 것 같다!"
+msgstr "속도가 갑자기 매우 불확실해진 듯하다!"
 
 #: ../src/obj_descr_i18n.c:1180
 msgid "velvet"
@@ -57650,10 +57770,10 @@ msgstr "꿈속에서 "
 msgid "you lose control of"
 msgstr "통제력을 잃다"
 
-# shk.c - 상점 경고. "for items you picked up in the store."
+# [조합 조각] shk.c:1962 — loan==dtmp 일 때 Strcat
 #: ../src/shk.c:1962
 msgid "you picked up in the store."
-msgstr "상점에서 집어들은 물건들"
+msgstr "상점에서 집어 들인 것이다."
 
 #: ../src/eat.c:1838
 msgid "you slap against the"
@@ -57836,7 +57956,7 @@ msgstr "전기 충격이 효과가 없다!"
 
 #: ../src/zap.c:2741
 msgid "zap yourself, but seem unharmed."
-msgstr "스스로를 발사했지만, 다치지 않은 것 같다."
+msgstr "스스로를 발사했지만, 다치지 않은 듯하다."
 
 #: ../src/display.c:2460
 msgid "zapdir_to_glyph:  illegal beam type"
@@ -58232,7 +58352,7 @@ msgstr "%s!  네 은빛 광채는 나를 두렵게 하지 못한다!"
 
 #, c-format
 msgid "%slike the prodigal son."
-msgstr "%s탕자가 된 것 같다."
+msgstr "%s탕자가 된 듯하다."
 
 msgid ", being digested by "
 msgstr ", 에게 소화되고 있다 "
@@ -58703,16 +58823,16 @@ msgid "You faint."
 msgstr "기절했다."
 
 msgid "You feel better."
-msgstr "기분이 나아졌다."
+msgstr "몸이 나아진다."
 
 msgid "You feel confused."
-msgstr "혼란스럽다."
+msgstr "머리가 혼란스럽다."
 
 msgid "You feel dizzy."
-msgstr "어지럽다."
+msgstr "머리가 어지럽다."
 
 msgid "You feel healthy."
-msgstr "건강해진 것 같다."
+msgstr "건강해진 듯하다."
 
 # ============================================================
 # 감각 관련 (detect.c, etc.)
@@ -58730,19 +58850,19 @@ msgstr "훨씬 나아졌다."
 # ============================================================
 # Note: "Nothing happens.", "Never mind." already defined earlier
 msgid "You feel nothing."
-msgstr "아무것도 느끼지 못했다."
+msgstr "아무 감각도 없다."
 
 msgid "You feel sick."
-msgstr "몸이 아프다."
+msgstr "몸이 메스껍다."
 
 msgid "You feel sleepy."
-msgstr "졸립다."
+msgstr "눈이 감긴다."
 
 msgid "You feel strong."
-msgstr "힘이 세진 것 같다."
+msgstr "힘이 넘친다."
 
 msgid "You feel tired."
-msgstr "피곤하다."
+msgstr "기운이 빠진다."
 
 msgid "You feel very sick."
 msgstr "매우 아프다."
@@ -58778,7 +58898,7 @@ msgstr "이곳에서는 중력이 느껴지지 않는다."
 # eat.c:1213 - 비환각 상태에서 미믹 형태 복귀
 #, c-format
 msgid "You now prefer mimicking %s again."
-msgstr "다시 %s{을/를} 흉내내고 싶어진다."
+msgstr "다시 %s{을/를} 흉내 내고 싶어진다."
 
 #, c-format
 msgid "You return to %s form!"
@@ -59488,6 +59608,11 @@ msgctxt "getobj"
 msgid "remove"
 msgstr "벗을"
 
+# invent.c getobj - "don't have anything to tip" 등
+msgctxt "getobj"
+msgid "tip"
+msgstr "기울일"
+
 # [조합 메시지] insight.c - 캐릭터 재굴림 횟수
 # %2$s = plur() 복수형 억제
 #, c-format
@@ -59555,7 +59680,7 @@ msgstr "제물이 춤추는 입자 구름으로 무너지며 사라졌다!"
 
 # mon.c - 말해도 안 들림. 단독 문장
 msgid "says something but you can't hear it"
-msgstr "뭔가 말하지만 들을 수 없다"
+msgstr "뭔가 말하지만 들리지 않는다"
 
 msgid "scroll of amnesia"
 msgstr "기억상실 두루마리"

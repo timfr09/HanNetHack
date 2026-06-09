@@ -42,7 +42,7 @@ staticfn int traditional_loot(boolean);
 staticfn int menu_loot(int, boolean);
 staticfn int tip_ok(struct obj *);
 staticfn int choose_tip_container_menu(void);
-staticfn struct obj *tipcontainer_gettarget(struct obj *, boolean *);
+staticfn struct obj *tipcontainer_gettarget(struct obj *, boolean *, int *);
 staticfn int tipcontainer_checks(struct obj *, struct obj *, boolean);
 staticfn char in_or_out_menu(const char *, struct obj *, boolean, boolean,
                            boolean, boolean);
@@ -2236,7 +2236,8 @@ doloot_core(void)
 
         if (num_conts > 1) {
             /* use a menu to loot many containers */
-            int n, i;
+            int n, i, tmpglyph;
+            glyph_info tmpglyphinfo;
             winid win;
             anything any;
             menu_item *pick_list = (menu_item *) 0;
@@ -2249,7 +2250,9 @@ doloot_core(void)
                  cobj = cobj->nexthere)
                 if (Is_container(cobj)) {
                     any.a_obj = cobj;
-                    add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE, clr,
+                    tmpglyph = obj_to_glyph(cobj, rn2_on_display_rng);
+                    map_glyphinfo(0, 0, tmpglyph, 0U, &tmpglyphinfo);
+                    add_menu(win, &tmpglyphinfo, &any, 0, 0, ATR_NONE, clr,
                              doname(cobj), MENU_ITEMFLAGS_NONE);
                 }
             end_menu(win, _("Loot which containers?"));
@@ -3504,7 +3507,8 @@ tip_ok(struct obj *obj)
 staticfn int
 choose_tip_container_menu(void)
 {
-    int n, i;
+    int n, i, tmpglyph;
+    glyph_info tmpglyphinfo;
     winid win;
     anything any;
     menu_item *pick_list = (menu_item *) 0;
@@ -3520,7 +3524,9 @@ choose_tip_container_menu(void)
         if (Is_container(otmp)) {
             ++i;
             any.a_obj = otmp;
-            add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE,
+            tmpglyph = obj_to_glyph(otmp, rn2_on_display_rng);
+            map_glyphinfo(0, 0, tmpglyph, 0U, &tmpglyphinfo);
+            add_menu(win, &tmpglyphinfo, &any, 0, 0, ATR_NONE,
                      clr, doname(otmp), MENU_ITEMFLAGS_NONE);
         }
     if (gi.invent) {
@@ -3530,7 +3536,7 @@ choose_tip_container_menu(void)
            containers that it's already being used */
         i = (i <= 'i' - 'a' && !flags.lootabc) ? 'i' : 0;
         add_menu(win, &nul_glyphinfo, &any, i, 0, ATR_NONE,
-                 clr, "tip something being carried",
+                 clr, _("tip something being carried"),
                  MENU_ITEMFLAGS_SELECTED);
     }
     end_menu(win, _("Tip which container?"));
@@ -3601,10 +3607,25 @@ dotip(void)
             } else {
                 for (cobj = svl.level.objects[cc.x][cc.y]; cobj;
                      cobj = nobj) {
+                    int target_count = 0;
+                    boolean dum; /* argument placeholder, not actually used */
+                    char prompt_part2[BUFSZ];
+
                     nobj = cobj->nexthere;
                     if (!Is_container(cobj))
                         continue;
-                    c = ynq(safe_qbuf(qbuf, _("There is "), _(" here, tip it?"),
+                    /*
+                     * Calling tipcontainer_gettarget with a non-zero int ptr
+                     * as the 3rd argument just obtains the count of eligible
+                     * tip targets. No menu is displayed and no tip-target pick
+                     * is carried out.
+                     */
+                    (void) tipcontainer_gettarget(cobj, &dum, &target_count);
+                    Sprintf(prompt_part2, _(" here, tip it%s%s?"),
+                            (target_count == 0) ? _(" onto the ") : "",
+                            (target_count == 0) ? surface(cobj->ox, cobj->oy)
+                                                : "");
+                    c = ynq(safe_qbuf(qbuf, _("There is "), prompt_part2,
                                       cobj,
                                       doname, ansimpleoname, _("container")));
                     if (c == 'q')
@@ -3703,7 +3724,7 @@ tipcontainer(struct obj *box) /* or bag */
      *  if 'box' is known to be empty or known to be locked, give up
      *  before choosing 'targetbox'.
      */
-    targetbox = tipcontainer_gettarget(box, &cancelled);
+    targetbox = tipcontainer_gettarget(box, &cancelled, (int *) 0);
     if (cancelled)
         return;
 
@@ -3870,15 +3891,17 @@ count_target_containers(
 staticfn struct obj *
 tipcontainer_gettarget(
     struct obj *box,
-    boolean *cancelled)
+    boolean *cancelled,
+    int *only_count_targets)
 {
-    int n, n_conts;
-    winid win;
+    int n, n_conts = 0, tmpglyph, looppass, count_tiptargets = 0;
+    glyph_info tmpglyphinfo;
+    winid win = WIN_ERR;
     anything any;
-    char buf[BUFSZ];
+    char buf[BUFSZ], on_the_surface[BUFSZ];
     menu_item *pick_list = (menu_item *) 0;
     struct obj dummyobj, *otmp;
-    boolean hands_available = TRUE, exclude_it;
+    boolean hands_available = TRUE, exclude_it, skip_targetmenu = FALSE;
     int clr = NO_COLOR;
 
 #if 0   /* [skip potential early return so that menu response is needed
@@ -3892,56 +3915,88 @@ tipcontainer_gettarget(
         return (struct obj *) 0;
     }
 #endif
+    /*
+     * looppass 0 : count the elligible drop targets
+     * looppass 1 : if there are elligible tip targets, besides the floor,
+     *              then build and present a menu of those targets, including
+     *              the floor.
+     */
+    for (looppass = 0; looppass < 2; looppass++) {
+        if (looppass == 1) {
+            if (only_count_targets) {
+                *only_count_targets = count_tiptargets;
+                skip_targetmenu = TRUE;
+                break;
+            }
+            if (count_tiptargets == 0) {
+                /* nothing but the floor */
+                skip_targetmenu = TRUE;
+                break;
+            }
+            win = create_nhwindow(NHW_MENU);
+            start_menu(win, MENU_BEHAVE_STANDARD);
 
-    win = create_nhwindow(NHW_MENU);
-    start_menu(win, MENU_BEHAVE_STANDARD);
+            dummyobj = cg.zeroobj; /* lint suppression; only its address
+                                      matters */
+            any = cg.zeroany;
+            any.a_obj = &dummyobj;
+            /* tip to floor does not require free hands */
+            Sprintf(on_the_surface, _("on the %s"), surface(u.ux, u.uy));
+            add_menu(win, &nul_glyphinfo, &any, '-', 0, ATR_NONE, clr,
+                     on_the_surface, MENU_ITEMFLAGS_SELECTED);
+            add_menu_str(win, "");
 
-    dummyobj = cg.zeroobj; /* lint suppression; only its address matters */
-    any = cg.zeroany;
-    any.a_obj = &dummyobj;
-    /* tip to floor does not require free hands */
-    add_menu(win, &nul_glyphinfo, &any, '-', 0, ATR_NONE, clr,
-             /* [TODO? vary destination string depending on surface()] */
-             _("on the floor"), MENU_ITEMFLAGS_SELECTED);
-    add_menu_str(win, "");
-
-    n_conts = 0;
-    for (otmp = gi.invent; otmp; otmp = otmp->nobj) {
-        if (otmp == box)
-            continue;
-        /* skip non-containers; bag of tricks passes Is_container() test,
-           only include it if it isn't known to be a bag of tricks */
-        if (!Is_container(otmp)
-            || (otmp->otyp == BAG_OF_TRICKS && otmp->dknown
-                && objects[otmp->otyp].oc_name_known))
-            continue;
-        if (!n_conts++)
-            hands_available = u_handsy(); /* might issue message */
-        /* container-to-container tip requires free hands;
-           exclude container as possible target when known to be locked */
-        exclude_it = !hands_available || (otmp->olocked && otmp->lknown);
-        any = cg.zeroany;
-        any.a_obj = !exclude_it ? otmp : 0;
-        Sprintf(buf, "%s%s", !exclude_it ? "" : "    ", doname(otmp));
-        add_menu(win, &nul_glyphinfo, &any, !exclude_it ? otmp->invlet : 0, 0,
-                 ATR_NONE, clr, buf, MENU_ITEMFLAGS_NONE);
+            n_conts = 0;
+        }
+        for (otmp = gi.invent; otmp; otmp = otmp->nobj) {
+            if (otmp == box)
+                continue;
+            /* skip non-containers; bag of tricks passes Is_container() test,
+               only include it if it isn't known to be a bag of tricks */
+            if (!Is_container(otmp)
+                || (otmp->otyp == BAG_OF_TRICKS && otmp->dknown
+                    && objects[otmp->otyp].oc_name_known))
+                continue;
+            if (!n_conts++)
+                hands_available = u_handsy(); /* might issue message */
+            /* container-to-container tip requires free hands;
+               exclude container as possible target when known to be locked */
+            exclude_it = !hands_available || (otmp->olocked && otmp->lknown);
+            if (looppass == 0) {
+                if (!exclude_it)
+                    count_tiptargets++;
+            } else {
+                any = cg.zeroany;
+                any.a_obj = !exclude_it ? otmp : 0;
+                Sprintf(buf, "%s%s", !exclude_it ? "" : "    ", doname(otmp));
+                tmpglyph = obj_to_glyph(otmp, rn2_on_display_rng);
+                map_glyphinfo(0, 0, tmpglyph, 0U, &tmpglyphinfo);
+                add_menu(win, &tmpglyphinfo, &any,
+                         !exclude_it ? otmp->invlet : 0, 0, ATR_NONE, clr,
+                         buf, MENU_ITEMFLAGS_NONE);
+            }
+        }
     }
+    if (!skip_targetmenu) {
+        Sprintf(buf, _("Where to tip the contents of %s"), doname(box));
+        end_menu(win, buf);
+        n = select_menu(win, PICK_ONE, &pick_list);
+        destroy_nhwindow(win);
 
-    Sprintf(buf, _("Where to tip the contents of %s"), doname(box));
-    end_menu(win, buf);
-    n = select_menu(win, PICK_ONE, &pick_list);
-    destroy_nhwindow(win);
-
-    otmp = 0;
-    if (pick_list) {
-        otmp = pick_list[0].item.a_obj;
-        /* PICK_ONE with a preselected item might return 2;
-           if so, choose the one that wasn't preselected */
-        if (n > 1 && otmp == &dummyobj)
-            otmp = pick_list[1].item.a_obj;
-        if (otmp == &dummyobj)
-            otmp = 0;
-        free((genericptr_t) pick_list);
+        otmp = 0;
+        if (pick_list) {
+            otmp = pick_list[0].item.a_obj;
+            /* PICK_ONE with a preselected item might return 2;
+               if so, choose the one that wasn't preselected */
+            if (n > 1 && otmp == &dummyobj)
+                otmp = pick_list[1].item.a_obj;
+            if (otmp == &dummyobj)
+                otmp = 0;
+            free((genericptr_t) pick_list);
+        }
+    } else {
+        otmp = 0;
+        n = 0;  /* don't flag as having been cancelled */
     }
     *cancelled = (boolean) (n == -1);
     return otmp;

@@ -103,7 +103,7 @@ msgstr "대신 새 게임을 시작할까요?"
 
 #: ../sys/unix/unixunix.c:390
 msgid "Fork failed.  Try again."
-msgstr "포크에 실패했다. 다시 시도하라."
+msgstr "포크 실행에 실패했습니다. 다시 시도하세요."
 
 #: ../sys/share/ioctl.c:194
 msgid "I don't think your shell has job control."
@@ -111,7 +111,7 @@ msgstr "셸에 작업 제어 기능이 없는 듯하다."
 
 #: ../sys/share/ioctl.c:197
 msgid "Sorry, it seems we have no SIGTSTP here.  Try ! or S."
-msgstr "미안하지만 여기서는 SIGTSTP가 없다. ! 또는 S를 시도하라."
+msgstr "여기서는 SIGTSTP를 쓸 수 없습니다. ! 또는 S를 사용하세요."
 
 #: ../sys/share/ioctl.c:167
 msgid "Suspend command not available."
@@ -193,7 +193,7 @@ msgstr "예상 밖이라면 다음 경로로 되살릴 수 있을지도 모른�
 #: ../sys/share/pcunix.c
 #, c-format
 msgid "\"recover %s\" to get it back."
-msgstr "\"recover %s\"를 사용해 보라."
+msgstr "\"recover %s\""
 
 #: ../sys/share/pcunix.c
 msgid ""
@@ -206,7 +206,7 @@ msgstr ""
 #: ../sys/share/pcsys.c
 #, c-format
 msgid "Can't find %s."
-msgstr "%s을(를) 찾을 수 없다."
+msgstr "%s{을/를} 찾을 수 없다."
 
 #: ../src/uhitm.c:1285
 msgid " "
@@ -290,7 +290,7 @@ msgstr "  (자동줍기용)"
 #: ../src/eat.c:2725
 #, c-format
 msgid "  Eat %s anyway?"
-msgstr "  그래도 %s 먹겠는가?"
+msgstr "  그래도 %s{을/를} 먹겠습니까?"
 
 #: ../src/sounds.c:1207
 msgid "  I may have been misquoted there."
@@ -308,7 +308,7 @@ msgstr "  도끼 자루가 격렬하게 진동한다!"
 #: ../src/do.c:2332
 #, c-format
 msgid "  Use '%s' prefix to force %s."
-msgstr "  '%s' 접두사를 사용하여 %s{을/를} 강제하라."
+msgstr "  %2$s{을/를} 강제하려면 '%1$s' 접두사를 사용하세요."
 
 # insight.c:1494 - 점수 표시
 #: ../src/insight.c:1571
@@ -1185,7 +1185,7 @@ msgstr "이나 큰 돌"
 
 #: ../src/role.c:2794
 msgid " and/or unpick any that no longer apply"
-msgstr " 그리고/또는 더 이상 해당하지 않는 것을 선택 해제하라"
+msgstr " (더 이상 해당하지 않는 항목은 선택 해제)"
 
 #: ../src/role.c:1975
 msgid " another"
@@ -5357,7 +5357,7 @@ msgstr "%s{이/가} 불꽃 시선으로 당신을 공격한다!"
 #: ../src/mhitu.c:189
 #, c-format
 msgid "%s attacks you without knowing your location?"
-msgstr "위치도 모르면서 %s이(가) 공격했다?"
+msgstr "위치도 모르면서 %s{이/가} 공격했다?"
 
 #: ../src/mhitm.c:512
 #, c-format
@@ -6865,7 +6865,7 @@ msgstr "응시가 %s{을/를} 혼란시켰다!"
 #: ../src/mhitu.c:1725 ../src/uhitm.c:6023
 #, c-format
 msgid "%s gaze is reflected by your %s."
-msgstr "%s 시선이 당신의 %s에 의해 반사되었다."
+msgstr "%s 시선이 당신의 %s에 반사되어 튕겨 나갔다."
 
 #: ../src/mhitu.c:1862
 #, c-format
@@ -7860,7 +7860,7 @@ msgstr "%s{이/가} 습기로 젖었다."
 #: ../src/teleport.c:797
 #, c-format
 msgid "%s is leashed, without a leash."
-msgstr "목줄도 없는데 %s이(가) 매여 있다."
+msgstr "목줄도 없는데 %s{이/가} 매여 있다."
 
 #: ../src/pickup.c:2107 ../src/pickup.c:3979
 #, c-format
@@ -8809,7 +8809,7 @@ msgstr "%s{이/가} %s{을/를} 통과한다!"
 #: ../src/shk.c:196
 #, c-format
 msgid "%s paying without %s gold?"
-msgstr "%1$s이(가) %2$s 금화도 없이 지급?"
+msgstr "%1$s{이/가} %2$s 금화도 없이 지급?"
 
 #: ../src/shk.c:163
 #, c-format
@@ -10718,7 +10718,7 @@ msgstr "%s 마법봉"
 #: ../src/muse.c:1214 ../src/muse.c:2028 ../src/muse.c:2622
 #, c-format
 msgid "%s wanted to perform action %d?"
-msgstr "%s이(가) 행동 %d를 하려 했다?"
+msgstr "%s{이/가} 행동 %d를 하려 했다?"
 
 # [리뷰 완료] read.c:1142 — Yobjnam2(otmp, "feel"), 인챈트 효과
 # 런타임: "잠시 따뜻하게 당신의 검이 느껴진다." — {이/가} 삽입으로 해결됨 ✓
@@ -11444,7 +11444,7 @@ msgstr "잠깐 %1$s%2$s%3$s."
 #: ../src/mhitm.c:1177
 #, c-format
 msgid "%s%s%s turns into %s."
-msgstr "%s%s%s이(가) %s(으)로 변했다."
+msgstr "%s%s%s{이/가} %s{으로/로} 변했다."
 
 #: ../src/invent.c:2900
 #, c-format
@@ -11674,7 +11674,7 @@ msgstr "%s{이/가} 혼란스러워하며 사라졌다."
 #: ../src/shk.c:5048
 #, c-format
 msgid "%s, do not damage the floor here!"
-msgstr "%s, 여기 바닥을 손상시키지 마!"
+msgstr "%s, 여기 바닥을 망가뜨리지 마!"
 
 # insight.c:503-507 - 레벨 및 직업 표시
 # 조합: "%s, level %d %s%s"
@@ -14037,7 +14037,7 @@ msgstr "%s{을/를} 촛대에 붙이거나, %s %s"
 #: ../src/ball.c:1042
 #, c-format
 msgid "Attached %s%s%s without being Punished?"
-msgstr "형벌 상태도 아닌데 %s%s%s이(가) 붙었다?"
+msgstr "형벌 상태도 아닌데 %s%s%s{이/가} 붙었다?"
 
 #: ../src/cmd.c:4612
 #, c-format
@@ -15674,7 +15674,7 @@ msgstr "날 탓하지 마, 난 이즈착에게 투표했어!"
 
 #: ../src/do_wear.c:2435
 msgid "Don't even bother."
-msgstr "귀찮게 하지 마라."
+msgstr "시도할 필요도 없다."
 
 #: ../src/apply.c:3488
 msgid "Don't know what to hit."
@@ -16899,11 +16899,11 @@ msgstr "이봐, 검은 용! 이거나 분해해봐!"
 #: ../src/dig.c:1403
 #, c-format
 msgid "Hey, stop damaging that %s!"
-msgstr "이봐, 그 %s{을/를} 손상시키지 마라!"
+msgstr "이봐, 그 %s{을/를} 그만 망가뜨려!"
 
 #: ../src/dokick.c:861
 msgid "Hey, stop damaging that door!"
-msgstr "이봐, 그 문을 손상시키지 마라!"
+msgstr "이봐, 그 문 그만 망가뜨려!"
 
 # shk.c - 상점 경비. NPC 대화
 #: ../src/monmove.c:190
@@ -19038,7 +19038,7 @@ msgstr "묻지 않고 항상 비공개"
 
 #: ../src/decl.c:48
 msgid "Never mind."
-msgstr "신경 쓰지 마라."
+msgstr "그만두었다."
 
 #: ../src/sounds.c:883
 msgid "Nevermore!"
@@ -19898,7 +19898,7 @@ msgstr "%s%s%s 선택"
 #: ../src/pager.c:1907
 #, c-format
 msgid "Pick %s."
-msgstr "%s{을/를} 선택하라."
+msgstr "%s{을/를} 선택하세요."
 
 #: ../src/coloratt.c:498
 msgid "Pick a color"
@@ -19910,11 +19910,11 @@ msgstr "성별 선택"
 
 #: ../src/wizcmds.c:503
 msgid "Pick a monster to hurtle."
-msgstr "내던질 몬스터를 선택하라."
+msgstr "내던질 몬스터를 선택하세요."
 
 #: ../src/wizcmds.c:902
 msgid "Pick a monster to smell."
-msgstr "냄새 맡을 몬스터를 선택하라."
+msgstr "냄새 맡을 몬스터를 선택하세요."
 
 #: ../src/role.c:2456
 msgid "Pick a race or species"
@@ -20047,7 +20047,7 @@ msgstr "따라오세요."
 #: ../src/pager.c:1904
 #, c-format
 msgid "Please move the cursor to %s."
-msgstr "커서를 %s{으로/로} 이동하라."
+msgstr "커서를 %s{으로/로} 이동하세요."
 
 #: ../src/shk.c:2436
 msgid "Please pay"
@@ -20056,7 +20056,7 @@ msgstr "지불해 줘"
 #: ../src/pline.c:661
 #, c-format
 msgid "Please report these messages to %s."
-msgstr "%s에게 이 메시지를 보고해 줘."
+msgstr "이 메시지를 %s에게 보고해 주세요."
 
 #: ../src/mail.c:503
 msgid "Please return to sender (Asmodeus)"
@@ -20190,7 +20190,7 @@ msgstr "바위 밀기"
 #: ../src/options.c:446
 #, c-format
 msgid "Put \"OPTIONS=!tutorial\" in %s to skip this query."
-msgstr "이 질문을 건너뛰려면 %s에 \"OPTIONS=!tutorial\"을 추가하라."
+msgstr "이 질문을 건너뛰려면 %s에 \"OPTIONS=!tutorial\"을 추가하세요."
 
 # 용기 조작 메뉴
 #: ../src/pickup.c:3271
@@ -20386,7 +20386,7 @@ msgstr "정말 %2$s{을/를} %1$s하시겠습니까?"
 #: ../src/uhitm.c:316
 #, c-format
 msgid "Really attack %s?"
-msgstr "정말로 %s{을/를} 공격할까?"
+msgstr "정말로 %s{을/를} 공격하시겠습니까?"
 
 #: ../src/pickup.c:1467
 msgid "Really autoselect All?"
@@ -20828,7 +20828,7 @@ msgstr "현재 페이지의 모든 항목 선택"
 
 #: ../src/invent.c:5203
 msgid "Select an inventory slot letter."
-msgstr "인벤토리 슬롯 문자를 선택하라."
+msgstr "인벤토리 슬롯 문자를 선택하세요."
 
 #: ../src/options.c:6298
 msgid "Select coordinate display when auto-describing a map position:"
@@ -20869,7 +20869,7 @@ msgstr "항목을 선택하세요:"
 
 #: ../src/restore.c:1562
 msgid "Select one of your saved games"
-msgstr "저장된 게임 중 하나를 선택하라"
+msgstr "저장된 게임 중 하나를 선택하세요"
 
 # options.c - 옵션 메뉴 문자열
 #: ../src/options.c:6188
@@ -21401,7 +21401,7 @@ msgstr "동굴학자"
 #: ../src/spell.c:2341
 #, c-format
 msgid "Spell %s already known."
-msgstr "주문 %s은(는) 이미 알고 있다."
+msgstr "주문 %s{은/는} 이미 알고 있다."
 
 #: ../src/invent.c:4816 ../src/obj_descr_i18n.c:1300
 msgid "Spellbooks"
@@ -22505,12 +22505,12 @@ msgstr "퍼즈 테스터가 NetHack이 무작위 키 입력을 실행하게 한�
 #: ../src/apply.c:1134 ../src/mhitu.c:1728
 #, c-format
 msgid "The gaze is reflected away by %s %s!"
-msgstr "%s의 %s에 의해 시선이 반사되었다!"
+msgstr "시선이 %s의 %s에 반사되어 튕겨 나갔다!"
 
 #: ../src/mhitm.c:765 ../src/mhitm.c:770
 #, c-format
 msgid "The gaze is reflected away by %s %s."
-msgstr "%s의 %s에 의해 시선이 반사되었다."
+msgstr "시선이 %s의 %s에 반사되어 튕겨 나갔다."
 
 #: ../src/dig.c:1069
 msgid "The grave's owner is very upset"
@@ -23534,7 +23534,7 @@ msgstr "크로이소스에게: %s %s{으로/로}부터 회수한 금이다."
 #: ../src/apply.c:1339
 #, c-format
 msgid "To attach candles, apply them instead of the %s."
-msgstr "양초를 붙이려면, %s 대신 양초를 적용하라."
+msgstr "양초를 붙이려면 %s 대신 양초를 사용하세요."
 
 #: ../src/pager.c:2724
 #, c-format
@@ -23712,7 +23712,7 @@ msgstr "다시 시도..."
 
 #: ../src/trap.c:5998
 msgid "Try filling the pit instead."
-msgstr "대신 구덩이를 메워 보라."
+msgstr "대신 구덩이를 메워 보세요."
 
 #: ../src/iactions.c:604
 msgid "Try to invoke a unique power of this object"
@@ -23757,7 +23757,7 @@ msgstr "올바른 위치에서 %s{을/를} 입력하세요."
 #: ../src/read.c:2666
 msgid ""
 "Type letter (or punctuation) or name used for a class of monsters or 'none'"
-msgstr "괴물 종류의 문자(또는 구두점)나 이름을 입력하거나 'none'을 입력하라"
+msgstr "몬스터 부류의 문자(또는 기호)나 이름, 혹은 'none'을 입력하세요"
 
 #: ../src/read.c:2870
 msgid "Type the name of a type of monster or 'none'"
@@ -23810,7 +23810,7 @@ msgstr "\"%s\" 파일에 접근할 수 없다."
 #: ../src/report.c:464
 #, c-format
 msgid "Unable to send bug report.  Please visit %s instead."
-msgstr "버그 리포트를 보낼 수 없다. 대신 %s{을/를} 방문하라."
+msgstr "버그 리포트를 보낼 수 없습니다. 대신 %s{을/를} 방문해 주세요."
 
 #: ../src/role.c:2790
 msgid "Unacceptable alignments"
@@ -24135,7 +24135,7 @@ msgstr "내 이름으로 현명하게 사용하라!"
 
 #: ../src/pray.c:1821
 msgid "Use my gift wisely!"
-msgstr "내 이름으로 현명하게 사용하라!"
+msgstr "내 선물을 현명하게 사용하라!"
 
 #: ../src/invent.c:2132
 #, c-format
@@ -24465,7 +24465,7 @@ msgstr "나그네"
 #: ../src/dothrow.c:2132
 #, c-format
 msgid "We will guard it in case it is ever needed again, %s forbid."
-msgstr "다시 필요할 경우를 대비해 보관하겠습니다, %s께서 허락하시면."
+msgstr "다시 필요해질 경우를 대비해 보관하겠습니다. 부디 %s께서 그런 일을 막아 주시기를."
 
 #: ../src/sounds.c:1152
 msgid "We're all doomed."
@@ -26414,7 +26414,7 @@ msgstr "게임 종료 공개 파일:"
 #: ../src/mhitu.c:2545
 #, c-format
 msgid "Your gaze is reflected by %s %s."
-msgstr "당신의 시선이 %s의 %s에 의해 반사되었다."
+msgstr "당신의 시선이 %s의 %s에 반사되어 튕겨 나갔다."
 
 #: ../src/engrave.c:732
 msgid "Your hair stands up!"
@@ -27939,11 +27939,11 @@ msgstr "이미"
 
 #: ../src/invent.c:967
 msgid "already have amulet?"
-msgstr "부적을(를) 이미 가지고 있는가?"
+msgstr "부적을 이미 가지고 있는가?"
 
 #: ../src/invent.c:972
 msgid "already have candelabrum?"
-msgstr "일곱 양초 샹들리에을(를) 이미 가지고 있는가?"
+msgstr "일곱 양초 샹들리에를 이미 가지고 있는가?"
 
 #: ../src/wield.c:540
 msgid "already have no ammunition readied!"
@@ -27951,15 +27951,15 @@ msgstr "이미 탄약이 준비되지 않았다!"
 
 #: ../src/invent.c:988
 msgid "already have quest artifact?"
-msgstr "퀘스트 성물을(를) 이미 가지고 있는가?"
+msgstr "퀘스트 성물을 이미 가지고 있는가?"
 
 #: ../src/invent.c:977
 msgid "already have silver bell?"
-msgstr "은종을(를) 이미 가지고 있는가?"
+msgstr "은종을 이미 가지고 있는가?"
 
 #: ../src/invent.c:982
 msgid "already have the book?"
-msgstr "그 책을(를) 이미 가지고 있는가?"
+msgstr "그 책을 이미 가지고 있는가?"
 
 # 몬스터 상태 - 이미 불타고 있음
 #: ../src/mondata.c:1420
@@ -35175,7 +35175,7 @@ msgstr "그것을 살 금화조차 없다!"
 
 #: ../src/music.c:306 ../src/trap.c:1873
 msgid "don't fall in!"
-msgstr "떨어지지 마라!"
+msgstr "떨어지지 않았다!"
 
 #: ../src/zap.c:4445
 msgid "don't feel cold."
@@ -35224,7 +35224,7 @@ msgstr "정상적인 형태에서는 특수 능력이 없다!"
 
 #: ../src/invent.c:1364
 msgid "don't have amulet?"
-msgstr "부적이(가) 없는가?"
+msgstr "부적이 없는가?"
 
 #: ../src/invent.c:2354
 #, c-format
@@ -35243,7 +35243,7 @@ msgstr "%s할 것이 %s 없다."
 
 #: ../src/invent.c:1368
 msgid "don't have candelabrum?"
-msgstr "일곱 양초 샹들리에이(가) 없는가?"
+msgstr "일곱 양초 샹들리에가 없는가?"
 
 #: ../src/apply.c:59
 msgid "don't have enough elbow-room to maneuver."
@@ -35292,11 +35292,11 @@ msgstr "점프할 충분한 견인력이 없다."
 
 #: ../src/invent.c:1381
 msgid "don't have quest artifact?"
-msgstr "퀘스트 성물이(가) 없는가?"
+msgstr "퀘스트 성물이 없는가?"
 
 #: ../src/invent.c:1372
 msgid "don't have silver bell?"
-msgstr "은종이(가) 없는가?"
+msgstr "은종이 없는가?"
 
 #: ../src/invent.c:2077
 #, c-format
@@ -35309,7 +35309,7 @@ msgstr "그 물건을 가지고 있지 않다."
 
 #: ../src/invent.c:1376
 msgid "don't have the book?"
-msgstr "그 책이(가) 없는가?"
+msgstr "그 책이 없는가?"
 
 #: ../src/apply.c:3942
 #, c-format
@@ -39801,7 +39801,7 @@ msgstr "유죄 %s."
 
 #: ../src/zap.c:5599
 msgid "guilty about damaging such a historic statue."
-msgstr "그런 역사적인 조각상을 손상시킨 것에 대해 죄책감."
+msgstr "유서 깊은 조각상을 망가뜨린 것에 죄책감이 들었다."
 
 #: ../src/hack.c:2227
 msgid "guilty about losing your pet like this."
@@ -58464,7 +58464,7 @@ msgstr "NR 9"
 
 #, c-format
 msgid "NetHack was unable to open the required file \"%s\""
-msgstr "필수 파일 \"%s\"을(를) 열 수 없습니다."
+msgstr "필수 파일을 열 수 없습니다: \"%s\""
 
 # ============================================================
 # 아이템 이름 (Item Names) - 샘플
@@ -59140,7 +59140,7 @@ msgid "disturbs you"
 msgstr "당신을 방해한다"
 
 msgid "don't fall in."
-msgstr "떨어지지 마라!"
+msgstr "떨어지지 않았다."
 
 # hack.c - 통과 불가. "You don't fit through the doorway"
 msgid "don't fit through."
@@ -59547,7 +59547,7 @@ msgid "pronged polearm"
 msgstr "갈래형 장창"
 
 msgid "protected by the layer of grease!"
-msgstr "기름 층에 의해 보호되었다!"
+msgstr "기름 층 덕분에 무사했다!"
 
 msgid "pruning hook"
 msgstr "갈고리"

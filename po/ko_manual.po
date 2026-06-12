@@ -3507,7 +3507,7 @@ msgstr "%1$s{이/가} %3$s{을/를}%5$s%4$s %2$s!"
 #: ../src/uhitm.c:2036
 #, c-format
 msgid "%s %s %s%s%s."
-msgstr "%1$s %2$s %3$.0s%4$.0s%5$s{을/를} 해치지 않고 통과했다."
+msgstr "%1$s %2$s{이/가} %3$.0s%4$.0s%5$s{을/를} 해치지 않고 통과했다."
 
 # [리뷰 완료] mkobj.c:1728 — buf+otense(shine)+much+brighter, 빛 세기 변화
 # %1$s = buf (광원 이름), %2$s = otense(shine) (억제)
@@ -11283,7 +11283,7 @@ msgstr "%1$s%2$s{이/가}%4$s %3$s%5$c"
 #, c-format
 msgctxt "hack_ff_atk"
 msgid "%s%s %s."
-msgstr "%1$s%3$s{을/를} %2$s."
+msgstr "%1$s%3$s{을/를} %2$s한다."
 
 #: ../src/hack.c:2336
 #, c-format
@@ -19531,12 +19531,6 @@ msgstr "%s 중 하나가 무뎌졌다."
 msgid "One of the"
 msgstr "중 하나의"
 
-# lock.c: 위와 같은 컨텍스트
-# 복수일 때 "One of y"+"our"="One of your"
-#: ../src/lock.c:237
-msgid "One of y"
-msgstr ""
-
 # 포맷팅 된 계단 설명
 #: ../src/dungeon.c:2246
 msgid "One way stair"
@@ -20386,7 +20380,7 @@ msgstr "정말 저 %3$s %2$s%1$.0s 가시겠습니까?"
 #: ../src/polyself.c:1696
 #, c-format
 msgid "Really %s %s?"
-msgstr "정말 %s{을/를} %s하시겠습니까?"
+msgstr "정말 %2$s{을/를} %1$s하시겠습니까?"
 
 # uhitm.c:315 - 정말로 공격할지 확인 질문
 #: ../src/uhitm.c:316
@@ -22137,7 +22131,7 @@ msgstr "그"
 
 #: ../src/attrib.c:335 ../src/eat.c:2003 ../src/end.c:929
 msgid "The "
-msgstr ""
+msgstr " "
 
 # [조합 메시지] apply.c - 잠깐 떨림
 # %2$s = 동사 (한국어에서 고정 동사 사용, 억제)
@@ -25065,13 +25059,6 @@ msgstr "Lv:%d"
 #, c-format
 msgid "Xp:%d/%ld"
 msgstr "경험치:%d/%ld"
-
-# lock.c: pline("%sour %s broke!", (quan>1) ? "One of y" : "Y", xname)
-# 단수일 때 "Y"+"our"="Your" → 한국어에서는 소유격 생략
-# 공백 하나로 번역 (msgcat이 빈 문자열을 무시하므로)
-#: ../src/lock.c:237
-msgid "Y"
-msgstr "Y"
 
 #: ../src/eat.c:2466
 msgid "Yabba-dabba delicious!"
@@ -29608,7 +29595,7 @@ msgstr "묻힌 공에 연결되어 있다"
 #: ../src/hack.c:2338 ../src/mhitu.c:154 ../src/polyself.c:1697
 #: ../src/spell.c:835 ../src/uhitm.c:2032
 msgid "attack"
-msgstr "공격한다"
+msgstr "공격"
 
 #: ../src/polyself.c:1721
 #, c-format
@@ -33215,7 +33202,7 @@ msgstr "갈등"
 
 #: ../src/polyself.c:1697
 msgid "confuse"
-msgstr "혼란시키다"
+msgstr "혼란시키"
 
 # [리뷰 완료] detect.c:1228 — "confuse" Tobjnam 계사 억제
 #: ../src/detect.c:1228
@@ -53660,7 +53647,7 @@ msgstr "그"
 #: ../src/insight.c:2958 ../src/objnam.c:1301 ../src/objnam.c:1884
 #: ../src/objnam.c:2245 ../src/priest.c:328 ../src/read.c:2955
 msgid "the "
-msgstr ""
+msgstr " "
 
 #: ../src/apply.c:3806 ../src/end.c:247
 #, c-format
@@ -58166,7 +58153,7 @@ msgid " from %s heat"
 msgstr " %s 열기로"
 
 msgid " harmlessly through "
-msgstr ""
+msgstr " "
 
 msgid " hir"
 msgstr " 히르"

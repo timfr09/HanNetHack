@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-06-09 21:48+0900\n"
+"POT-Creation-Date: 2026-06-12 18:11+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-09 12:48+0000\n"
+"POT-Creation-Date: 2026-06-12 09:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -505,7 +505,7 @@ msgstr ""
 msgid "several"
 msgstr ""
 
-#: ../src/apply.c:643 ../src/dungeon.c:3375 ../src/invent.c:4283
+#: ../src/apply.c:643 ../src/dungeon.c:3386 ../src/invent.c:4283
 #: ../src/pickup.c:824
 msgid "many"
 msgstr ""
@@ -675,7 +675,7 @@ msgstr ""
 msgid "%s leash go slack."
 msgstr ""
 
-#: ../src/apply.c:911 ../src/dungeon.c:3371 ../src/hack.c:526 ../src/mon.c:1628
+#: ../src/apply.c:911 ../src/dungeon.c:3382 ../src/hack.c:526 ../src/mon.c:1628
 #: ../src/muse.c:3128 ../src/muse.c:3140 ../src/priest.c:490 ../src/read.c:1444
 #: ../src/region.c:469 ../src/trap.c:78 ../src/uhitm.c:1205
 msgid "a"
@@ -2759,7 +2759,7 @@ msgid "%s slices through your %s."
 msgstr ""
 
 #: ../src/artifact.c:1639 ../src/dbridge.c:354 ../src/do.c:101
-#: ../src/dungeon.c:3712 ../src/pager.c:1352 ../src/pager.c:2032
+#: ../src/dungeon.c:3723 ../src/pager.c:1352 ../src/pager.c:2032
 #: ../src/sit.c:582 ../src/teleport.c:881 ../src/topten.c:1343
 #: ../src/uhitm.c:2033 ../src/uhitm.c:5359
 msgid "you"
@@ -4706,7 +4706,7 @@ msgstr ""
 
 #: ../src/cmd.c:4459 ../src/cmd.c:4464 ../src/dig.c:1590 ../src/dig.c:1825
 #: ../src/do.c:1199 ../src/do.c:1328 ../src/do.c:1769 ../src/do.c:1787
-#: ../src/dungeon.c:1777 ../src/polyself.c:1613 ../src/sit.c:534
+#: ../src/dungeon.c:1788 ../src/polyself.c:1613 ../src/sit.c:534
 #: ../src/stairs.c:198
 msgid "stairs"
 msgstr ""
@@ -5047,7 +5047,7 @@ msgid "%s the %s and disappears."
 msgstr ""
 
 #: ../src/dbridge.c:749 ../src/dig.c:865 ../src/dig.c:924 ../src/dokick.c:1455
-#: ../src/dothrow.c:1098 ../src/dungeon.c:3623 ../src/hack.c:2508
+#: ../src/dothrow.c:1098 ../src/dungeon.c:3634 ../src/hack.c:2508
 #: ../src/insight.c:280 ../src/insight.c:1037 ../src/invent.c:5544
 #: ../src/obj_descr_i18n.c:1170 ../src/pager.c:1193 ../src/pickup.c:2058
 #: ../src/trap.c:4066 ../src/zap.c:5259
@@ -5643,7 +5643,7 @@ msgstr ""
 msgid "another"
 msgstr ""
 
-#: ../src/detect.c:1876 ../src/dungeon.c:3371 ../src/invent.c:4277
+#: ../src/detect.c:1876 ../src/dungeon.c:3382 ../src/invent.c:4277
 #: ../src/trap.c:3047 ../src/uhitm.c:1224
 msgid "an"
 msgstr ""
@@ -5838,7 +5838,7 @@ msgstr ""
 msgid "This %s is too hard to %s."
 msgstr ""
 
-#: ../src/dig.c:333 ../src/dig.c:555 ../src/dig.c:1400 ../src/dungeon.c:1779
+#: ../src/dig.c:333 ../src/dig.c:555 ../src/dig.c:1400 ../src/dungeon.c:1790
 #: ../src/objnam.c:3770
 msgid "wall"
 msgstr ""
@@ -5935,7 +5935,7 @@ msgstr ""
 msgid "rock"
 msgstr ""
 
-#: ../src/dig.c:549 ../src/dig.c:1398 ../src/dungeon.c:3620 ../src/hack.c:670
+#: ../src/dig.c:549 ../src/dig.c:1398 ../src/dungeon.c:3631 ../src/hack.c:670
 #: ../src/hack.c:700 ../src/hack.c:715
 msgid "tree"
 msgstr ""
@@ -5955,11 +5955,11 @@ msgstr ""
 msgid "digactualhole: can't dig %s on this level."
 msgstr ""
 
-#: ../src/dig.c:677 ../src/dungeon.c:1783 ../src/trap.c:3979
+#: ../src/dig.c:677 ../src/dungeon.c:1794 ../src/trap.c:3979
 msgid "floor"
 msgstr ""
 
-#: ../src/dig.c:677 ../src/dungeon.c:1785 ../src/trap.c:3979 ../src/trap.c:4067
+#: ../src/dig.c:677 ../src/dungeon.c:1796 ../src/trap.c:3979 ../src/trap.c:4067
 msgid "ground"
 msgstr ""
 
@@ -6038,7 +6038,7 @@ msgid "Insane liquid_flow(%d,%d,%s,%s)."
 msgstr ""
 
 #: ../src/dig.c:865 ../src/dig.c:924 ../src/dig.c:1321 ../src/dokick.c:1455
-#: ../src/dungeon.c:3622 ../src/hack.c:2508 ../src/insight.c:1036
+#: ../src/dungeon.c:3633 ../src/hack.c:2508 ../src/insight.c:1036
 #: ../src/invent.c:5544 ../src/mthrowu.c:63 ../src/pager.c:610
 #: ../src/pickup.c:2058 ../src/spell.c:1158 ../src/trap.c:5043
 #: ../src/trap.c:5055 ../src/zap.c:5259
@@ -6297,8 +6297,8 @@ msgstr ""
 msgid "Halt, vandal!  You're under arrest!"
 msgstr ""
 
-#: ../src/dig.c:1402 ../src/dig.c:1818 ../src/dungeon.c:1775
-#: ../src/dungeon.c:3617 ../src/fountain.c:250 ../src/fountain.c:400
+#: ../src/dig.c:1402 ../src/dig.c:1818 ../src/dungeon.c:1786
+#: ../src/dungeon.c:3628 ../src/fountain.c:250 ../src/fountain.c:400
 msgid "fountain"
 msgstr ""
 
@@ -6419,11 +6419,11 @@ msgstr ""
 msgid "The ladder is unaffected."
 msgstr ""
 
-#: ../src/dig.c:1820 ../src/dungeon.c:3616
+#: ../src/dig.c:1820 ../src/dungeon.c:3627
 msgid "throne"
 msgstr ""
 
-#: ../src/dig.c:1822 ../src/dungeon.c:1771 ../src/dungeon.c:3608
+#: ../src/dig.c:1822 ../src/dungeon.c:1782 ../src/dungeon.c:3619
 #: ../src/pray.c:1529
 msgid "altar"
 msgstr ""
@@ -6924,7 +6924,7 @@ msgstr ""
 msgid "oxygen molecules"
 msgstr ""
 
-#: ../src/do.c:611 ../src/dungeon.c:1760 ../src/spell.c:1162
+#: ../src/do.c:611 ../src/dungeon.c:1771 ../src/spell.c:1162
 #: ../src/timeout.c:374
 msgid "air"
 msgstr ""
@@ -7554,7 +7554,7 @@ msgstr ""
 msgid "I see no monster there."
 msgstr ""
 
-#: ../src/do_name.c:250 ../src/dungeon.c:2538
+#: ../src/do_name.c:250 ../src/dungeon.c:2549
 #, c-format
 msgid "What do you want to call %s?"
 msgstr ""
@@ -10936,415 +10936,415 @@ msgstr ""
 msgid "dungeon[%i].branches is not an array of hashes"
 msgstr ""
 
-#: ../src/dungeon.c:1254
+#: ../src/dungeon.c:1265
 msgid "dungeon is not a lua table"
 msgstr ""
 
-#: ../src/dungeon.c:1270
+#: ../src/dungeon.c:1281
 msgid "init_dungeons: too many dungeons"
 msgstr ""
 
-#: ../src/dungeon.c:1279
+#: ../src/dungeon.c:1290
 #, c-format
 msgid "dungeon[%i] is not a lua table"
 msgstr ""
 
-#: ../src/dungeon.c:1291
+#: ../src/dungeon.c:1302
 msgid "init_dungeon:  couldn't place levels"
 msgstr ""
 
-#: ../src/dungeon.c:1411
+#: ../src/dungeon.c:1422
 #, c-format
 msgid "level number out of range [ledger_to_dnum(%d)]"
 msgstr ""
 
-#: ../src/dungeon.c:1489
+#: ../src/dungeon.c:1500
 #, c-format
 msgid "builds_up: can't find branch for dungeon %d"
 msgstr ""
 
-#: ../src/dungeon.c:1560
+#: ../src/dungeon.c:1571
 #, c-format
 msgid "sense something below your %s."
 msgstr ""
 
-#: ../src/dungeon.c:1721
+#: ../src/dungeon.c:1732
 msgid "vault's ceiling"
 msgstr ""
 
-#: ../src/dungeon.c:1723
+#: ../src/dungeon.c:1734
 msgid "temple's ceiling"
 msgstr ""
 
-#: ../src/dungeon.c:1725
+#: ../src/dungeon.c:1736
 msgid "shop's ceiling"
 msgstr ""
 
-#: ../src/dungeon.c:1728
+#: ../src/dungeon.c:1739
 msgid "water above"
 msgstr ""
 
-#: ../src/dungeon.c:1730
+#: ../src/dungeon.c:1741
 msgid "sky"
 msgstr ""
 
-#: ../src/dungeon.c:1732
+#: ../src/dungeon.c:1743
 msgid "flames above"
 msgstr ""
 
-#: ../src/dungeon.c:1735
+#: ../src/dungeon.c:1746
 msgid "expanse above"
 msgstr ""
 
-#: ../src/dungeon.c:1737
+#: ../src/dungeon.c:1748
 msgid "water's surface"
 msgstr ""
 
-#: ../src/dungeon.c:1740 ../src/pager.c:253
+#: ../src/dungeon.c:1751 ../src/pager.c:253
 msgid "ceiling"
 msgstr ""
 
-#: ../src/dungeon.c:1742
+#: ../src/dungeon.c:1753
 msgid "rock cavern"
 msgstr ""
 
-#: ../src/dungeon.c:1755 ../src/spell.c:1156
+#: ../src/dungeon.c:1766 ../src/spell.c:1156
 msgid "maw"
 msgstr ""
 
-#: ../src/dungeon.c:1756
+#: ../src/dungeon.c:1767
 msgid "husk"
 msgstr ""
 
-#: ../src/dungeon.c:1757
+#: ../src/dungeon.c:1768
 msgid "nonesuch"
 msgstr ""
 
-#: ../src/dungeon.c:1759
+#: ../src/dungeon.c:1770
 msgid "air bubble"
 msgstr ""
 
-#: ../src/dungeon.c:1760 ../src/mondata.c:1456 ../src/spell.c:1159
+#: ../src/dungeon.c:1771 ../src/mondata.c:1456 ../src/spell.c:1159
 msgid "cloud"
 msgstr ""
 
-#: ../src/dungeon.c:1763 ../src/options.c:5635
+#: ../src/dungeon.c:1774 ../src/options.c:5635
 msgid "bottom"
 msgstr ""
 
-#: ../src/dungeon.c:1765 ../src/dungeon.c:3624 ../src/pager.c:576
+#: ../src/dungeon.c:1776 ../src/dungeon.c:3635 ../src/pager.c:576
 msgid "ice"
 msgstr ""
 
-#: ../src/dungeon.c:1769
+#: ../src/dungeon.c:1780
 msgid "bridge"
 msgstr ""
 
-#: ../src/dungeon.c:1773
+#: ../src/dungeon.c:1784
 msgid "headstone"
 msgstr ""
 
-#: ../src/dungeon.c:1781 ../src/obj_descr_i18n.c:1160 ../src/pager.c:762
+#: ../src/dungeon.c:1792 ../src/obj_descr_i18n.c:1160 ../src/pager.c:762
 msgid "doorway"
 msgstr ""
 
-#: ../src/dungeon.c:1831
+#: ../src/dungeon.c:1842
 msgid "get_level: can't find parent dungeon"
 msgstr ""
 
-#: ../src/dungeon.c:1881
+#: ../src/dungeon.c:1892
 #, c-format
 msgid "dgn_entrance: can't find entrance to %s"
 msgstr ""
 
-#: ../src/dungeon.c:1926
+#: ../src/dungeon.c:1937
 msgid "No boundary for Wizard's Tower?"
 msgstr ""
 
-#: ../src/dungeon.c:2242 ../src/dungeon.c:3391
+#: ../src/dungeon.c:2253 ../src/dungeon.c:3402
 msgid "Portal"
 msgstr ""
 
-#: ../src/dungeon.c:2244 ../src/dungeon.c:3393
+#: ../src/dungeon.c:2255 ../src/dungeon.c:3404
 msgid "Connection"
 msgstr ""
 
-#: ../src/dungeon.c:2246
+#: ../src/dungeon.c:2257
 msgid "One way stair"
 msgstr ""
 
-#: ../src/dungeon.c:2248
+#: ../src/dungeon.c:2259
 msgid "Stair"
 msgstr ""
 
-#: ../src/dungeon.c:2250
+#: ../src/dungeon.c:2261
 msgid " (unknown)"
 msgstr ""
 
-#: ../src/dungeon.c:2273
+#: ../src/dungeon.c:2284
 #, c-format
 msgid "%c %s to %s: %d"
 msgstr ""
 
-#: ../src/dungeon.c:2311 ../src/dungeon.c:3545
+#: ../src/dungeon.c:2322 ../src/dungeon.c:3556
 #, c-format
 msgid "%s: levels %d to %d"
 msgstr ""
 
-#: ../src/dungeon.c:2315
+#: ../src/dungeon.c:2326
 #, c-format
 msgid "%s: level %d"
 msgstr ""
 
-#: ../src/dungeon.c:2321
+#: ../src/dungeon.c:2332
 msgid ", entrance from below"
 msgstr ""
 
-#: ../src/dungeon.c:2365
+#: ../src/dungeon.c:2376
 msgid "Level teleport to where:"
 msgstr ""
 
-#: ../src/dungeon.c:2385
+#: ../src/dungeon.c:2396
 msgid "Floating branches"
 msgstr ""
 
-#: ../src/dungeon.c:2388
+#: ../src/dungeon.c:2399
 #, c-format
 msgid "   %s to %s"
 msgstr ""
 
-#: ../src/dungeon.c:2422
+#: ../src/dungeon.c:2433
 msgid "No portal found."
 msgstr ""
 
-#: ../src/dungeon.c:2465
+#: ../src/dungeon.c:2476
 msgid "Two branches on the same level?"
 msgstr ""
 
-#: ../src/dungeon.c:2468
+#: ../src/dungeon.c:2479
 #, c-format
 msgid "Can't note branch for unseen level (%d, %d)"
 msgstr ""
 
-#: ../src/dungeon.c:2489
+#: ../src/dungeon.c:2500
 #, c-format
 msgid "remember this level as %s."
 msgstr ""
 
-#: ../src/dungeon.c:2513
+#: ../src/dungeon.c:2524
 #, c-format
 msgid "Replace annotation \"%.30s%s\" with?"
 msgstr ""
 
-#: ../src/dungeon.c:2522
+#: ../src/dungeon.c:2533
 msgid "this dungeon level"
 msgstr ""
 
-#: ../src/dungeon.c:3368 ../src/insight.c:208 ../src/insight.c:1356
+#: ../src/dungeon.c:3379 ../src/insight.c:208 ../src/insight.c:1356
 msgid "no"
 msgstr ""
 
-#: ../src/dungeon.c:3373 ../src/pickup.c:1682 ../src/region.c:469
+#: ../src/dungeon.c:3384 ../src/pickup.c:1682 ../src/region.c:469
 #: ../src/uhitm.c:1205 ../src/uhitm.c:1224
 msgid "some"
 msgstr ""
 
-#: ../src/dungeon.c:3378 ../src/dungeon.c:3400
+#: ../src/dungeon.c:3389 ../src/dungeon.c:3411
 msgid "(unknown)"
 msgstr ""
 
-#: ../src/dungeon.c:3391
+#: ../src/dungeon.c:3402
 msgid "Sealed portal"
 msgstr ""
 
-#: ../src/dungeon.c:3395
+#: ../src/dungeon.c:3406
 msgid "One way stairs up"
 msgstr ""
 
-#: ../src/dungeon.c:3395
+#: ../src/dungeon.c:3406
 msgid "One way stairs down"
 msgstr ""
 
-#: ../src/dungeon.c:3397
+#: ../src/dungeon.c:3408
 msgid "Stairs up"
 msgstr ""
 
-#: ../src/dungeon.c:3397
+#: ../src/dungeon.c:3408
 msgid "Stairs down"
 msgstr ""
 
-#: ../src/dungeon.c:3412
+#: ../src/dungeon.c:3423
 msgid "Astral Plane"
 msgstr ""
 
-#: ../src/dungeon.c:3415 ../src/topten.c:1036
+#: ../src/dungeon.c:3426 ../src/topten.c:1036
 msgid "Water"
 msgstr ""
 
-#: ../src/dungeon.c:3418 ../src/topten.c:1040
+#: ../src/dungeon.c:3429 ../src/topten.c:1040
 msgid "Fire"
 msgstr ""
 
-#: ../src/dungeon.c:3421 ../src/topten.c:1044
+#: ../src/dungeon.c:3432 ../src/topten.c:1044
 msgid "Air"
 msgstr ""
 
-#: ../src/dungeon.c:3424 ../src/topten.c:1048
+#: ../src/dungeon.c:3435 ../src/topten.c:1048
 msgid "Earth"
 msgstr ""
 
-#: ../src/dungeon.c:3428
+#: ../src/dungeon.c:3439
 #, c-format
 msgid "Plane of %s"
 msgstr ""
 
-#: ../src/dungeon.c:3430
+#: ../src/dungeon.c:3441
 #, c-format
 msgid "unknown plane #%d"
 msgstr ""
 
-#: ../src/dungeon.c:3440
+#: ../src/dungeon.c:3451
 msgid "shop?"
 msgstr ""
 
-#: ../src/dungeon.c:3443
+#: ../src/dungeon.c:3454
 msgid "untended shop"
 msgstr ""
 
-#: ../src/dungeon.c:3465
+#: ../src/dungeon.c:3476
 #, c-format
 msgid "notes \"%s\""
 msgstr ""
 
-#: ../src/dungeon.c:3467
+#: ../src/dungeon.c:3478
 msgid "5-note tune"
 msgstr ""
 
-#: ../src/dungeon.c:3468
+#: ../src/dungeon.c:3479
 #, c-format
 msgid " (play %s to open or close drawbridge)"
 msgstr ""
 
-#: ../src/dungeon.c:3492
+#: ../src/dungeon.c:3503
 #, c-format
 msgid "%s%s %s%s"
 msgstr ""
 
-#: ../src/dungeon.c:3501
+#: ../src/dungeon.c:3512
 #, c-format
 msgid "%s%s %s%s and %s %s%s"
 msgstr ""
 
-#: ../src/dungeon.c:3540
+#: ../src/dungeon.c:3551
 #, c-format
 msgid "%s: levels %d up to %d"
 msgstr ""
 
-#: ../src/dungeon.c:3558
+#: ../src/dungeon.c:3569
 #, c-format
 msgid "%sLevel %d:"
 msgstr ""
 
-#: ../src/dungeon.c:3594 ../src/shk.c:5163 ../src/shk.c:5167 ../src/shk.c:5174
+#: ../src/dungeon.c:3605 ../src/shk.c:5163 ../src/shk.c:5167 ../src/shk.c:5174
 #: ../src/shk.c:5178
 msgid "shop"
 msgstr ""
 
-#: ../src/dungeon.c:3607
+#: ../src/dungeon.c:3618
 msgid "temple"
 msgstr ""
 
-#: ../src/dungeon.c:3614
+#: ../src/dungeon.c:3625
 #, c-format
 msgid " to %s"
 msgstr ""
 
-#: ../src/dungeon.c:3618 ../src/fountain.c:601
+#: ../src/dungeon.c:3629 ../src/fountain.c:601
 msgid "sink"
 msgstr ""
 
-#: ../src/dungeon.c:3619 ../src/pager.c:2169
+#: ../src/dungeon.c:3630 ../src/pager.c:2169
 msgid "grave"
 msgstr ""
 
-#: ../src/dungeon.c:3637
+#: ../src/dungeon.c:3648
 #, c-format
 msgid "%sOracle of Delphi."
 msgstr ""
 
-#: ../src/dungeon.c:3639 ../src/fountain.c:815 ../src/objnam.c:3688
+#: ../src/dungeon.c:3650 ../src/fountain.c:815 ../src/objnam.c:3688
 #, c-format
 msgid "%s%s."
 msgstr ""
 
-#: ../src/dungeon.c:3640
+#: ../src/dungeon.c:3651
 msgid "Solved"
 msgstr ""
 
-#: ../src/dungeon.c:3640
+#: ../src/dungeon.c:3651
 msgid "Unsolved"
 msgstr ""
 
-#: ../src/dungeon.c:3642
+#: ../src/dungeon.c:3653
 #, c-format
 msgid "%sA very big room."
 msgstr ""
 
-#: ../src/dungeon.c:3644
+#: ../src/dungeon.c:3655
 #, c-format
 msgid "%sA primitive area."
 msgstr ""
 
-#: ../src/dungeon.c:3646
+#: ../src/dungeon.c:3657
 #, c-format
 msgid "%sHome%s."
 msgstr ""
 
-#: ../src/dungeon.c:3647
+#: ../src/dungeon.c:3658
 msgid " (no way back...)"
 msgstr ""
 
-#: ../src/dungeon.c:3649
+#: ../src/dungeon.c:3660
 #, c-format
 msgid "%sCompleted quest for %s."
 msgstr ""
 
-#: ../src/dungeon.c:3651
+#: ../src/dungeon.c:3662
 #, c-format
 msgid "%sGiven quest by %s."
 msgstr ""
 
-#: ../src/dungeon.c:3656
+#: ../src/dungeon.c:3667
 #, c-format
 msgid "%sFort Ludios."
 msgstr ""
 
-#: ../src/dungeon.c:3658
+#: ../src/dungeon.c:3669
 #, c-format
 msgid "%sThe castle%s."
 msgstr ""
 
-#: ../src/dungeon.c:3661
+#: ../src/dungeon.c:3672
 #, c-format
 msgid "%sValley of the Dead."
 msgstr ""
 
-#: ../src/dungeon.c:3663
+#: ../src/dungeon.c:3674
 #, c-format
 msgid "%sGateway to Moloch's Sanctum."
 msgstr ""
 
-#: ../src/dungeon.c:3665
+#: ../src/dungeon.c:3676
 #, c-format
 msgid "%sMoloch's Sanctum."
 msgstr ""
 
-#: ../src/dungeon.c:3672
+#: ../src/dungeon.c:3683
 #, c-format
 msgid "%sSummoned by %s."
 msgstr ""
 
-#: ../src/dungeon.c:3700
+#: ../src/dungeon.c:3711
 msgid "Final resting place for"
 msgstr ""
 
@@ -23912,7 +23912,7 @@ msgstr ""
 msgid "A foul stench makes you feel a little nauseated."
 msgstr ""
 
-#: ../src/mon.c:6046 ../src/steed.c:138
+#: ../src/mon.c:6047 ../src/steed.c:138
 #, c-format
 msgid "%s resists!"
 msgstr ""

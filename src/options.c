@@ -7465,7 +7465,7 @@ allopt_array_init(void)
                 if (allopt[i].opttyp == BoolOpt && i != opt_ascii_map)
                     allopt[i].initval = allopt[i].opt_in_out;
 #endif
-		*(allopt[i].addr) = allopt[i].initval;
+                *(allopt[i].addr) = allopt[i].initval;
             }
         }
         heed_all_options();

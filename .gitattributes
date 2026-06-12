@@ -30,6 +30,8 @@ GNUmakefile.* text eol=lf
 *.json text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
+# fetch-Lua greps this into a shasum -c input; CRLF breaks the filename match.
+submodules/CHKSUMS text eol=lf
 
 # Windows command files are intentionally CRLF.
 *.bat text eol=crlf

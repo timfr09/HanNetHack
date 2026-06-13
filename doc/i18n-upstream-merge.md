@@ -193,15 +193,18 @@ dat/locale/ko/
 **업스트림 변경 시 처리:**
 
 ```bash
-# 1. 변경된 파일 확인
-git diff upstream/master --name-only -- dat/help dat/hh dat/cmdhelp \
-  dat/keyhelp dat/opthelp dat/optmenu
+# 1. 동기화 백로그 (어디가 어긋났는지)
+./scripts/check-locale-dat-sync.sh
 
-# 2. 변경 내용 비교
-diff -u dat/help dat/locale/ko/help
+# 2. 변경된 파일 확인
+git diff upstream/NetHack-5.0 --name-only -- dat/help dat/hh dat/cmdhelp \
+  dat/keyhelp dat/opthelp dat/optmenu dat/history dat/oracles.txt
 
-# 3. 한국어 파일에 변경 반영
-# 수동으로 새 내용 번역 추가
+# 3. 변경 내용 비교
+diff -u dat/opthelp dat/locale/ko/opthelp
+
+# 4. 한국어 파일에 변경 반영 (문단·옵션·항목 단위 — 줄 1:1 번역 금지)
+#    절차: po/TRANSLATION_PROCESS.md §2.E
 ```
 
 ---

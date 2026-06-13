@@ -100,8 +100,52 @@
 
 1. `cd po && make translation-ci` — `ko_manual.po` / 병합본 `msgfmt -c`로 **형식 오류** 조기 차단, 통계 출력.
 2. `scripts/check-i18n-wrapping.sh` — 플레이어 메시지에 `_()` 누락이 없는지 검사.
+3. `scripts/check-locale-dat-sync.sh` — `dat/locale/ko/` 도움말·TXT가 영어 `dat/`와 얼마나 어긋났는지 **경고 목록** 출력 (기본 exit 0; `--strict`면 HARD 이슈 시 실패).
 
-CI가 없을 때는 이 한 줄이 **최소 품질 게이트** 역할을 한다.
+CI가 없을 때는 이 한 줄이 **최소 품질 게이트** 역할을 한다. locale TXT 동기화는 자동 번역이 아니라 **점검 → 수동 반영** 워크플로(§2.E)를 따른다.
+
+---
+
+## 2.E. `dat/locale/ko/` 도움말·TXT 동기화 (PO 밖)
+
+`help`, `opthelp`, `history`, `rumors.*` 등은 **gettext PO가 아니라 파일 교체**로 한국어를 제공한다. 업스트림에서 `dat/`만 바뀌고 `dat/locale/ko/`를 안 고치면, 게임은 옛 한국어(또는 누락된 옵션 설명)를 계속 보여 준다.
+
+### 언제 돌리나
+
+- `upstream/NetHack-5.0` 머지 직후
+- `dat/help`, `dat/opthelp`, `dat/*.txt` 등을 건드린 PR 전·후
+
+### 점검
+
+```bash
+./scripts/check-locale-dat-sync.sh          # 목록만 (권장)
+./scripts/check-locale-dat-sync.sh --strict # HARD(옵션 누락 등) 있으면 exit 1
+./scripts/check-locale-lua-sync.sh        # Lua 짝 (별도)
+python3 scripts/report-locale-ko-coverage.py  # KO 파일 안 영어 잔존 휴리스틱
+```
+
+**HARD** — 반드시 손댈 것 (예: `opthelp` 옵션 키 누락, `cmdhelp` `&?` 블록 수 불일치).  
+**SOFT** — 영어 쪽이 더 최근 커밋, 줄 수 차이 큼 → `diff`로 확인 후 필요 시 반영.
+
+### 반영 절차 (자동 merge 아님)
+
+1. `git diff upstream/NetHack-5.0 -- dat/opthelp dat/history …` 로 **바뀐 파일** 확인.
+2. `diff -u dat/opthelp dat/locale/ko/opthelp` — 변경 **의미 단위**(옵션 한 덩어리, 문단, 신탁 블록) 파악.
+3. `dat/locale/ko/` 편집 — **영어 한 줄 = 한국어 한 줄**로 맞추지 말고, 같은 화면에서 읽히게 줄 재배치 ([TRANSLATION_GUIDE_KO.md](TRANSLATION_GUIDE_KO.md) §12).
+4. 게임 `?` 메뉴에서 해당 항목 확인.
+5. `./scripts/check-locale-dat-sync.sh` 재실행.
+
+### 파일 유형별 기준
+
+| 유형 | 동기화 기준 | 번역 단위 |
+|------|-------------|-----------|
+| `opthelp`, `optmenu` | 옵션 **키** 집합 일치 | 옵션 설명 통째로 → 열 맞춰 1~2줄 |
+| `cmdhelp` | `&?` / `&:` / `&.` 개수 | 조건 블록 + 설명 줄 |
+| `oracles.txt` | `-----` 블록 수 | 블록(신탁) 단위 |
+| `history`, `help` | 버전·줄 수·diff | 문단 단위 |
+| `rumors.*`, `epitaph.txt` | 항목 줄 수(근사) | 항목 단위 |
+
+완전 자동 동기화는 하지 않는다. 스크립트는 **백로그 우선순위**를 정하고, 번역은 사람(또는 에이전트)이 의미 단위로 한다.
 
 ---
 
@@ -116,6 +160,8 @@ CI가 없을 때는 이 한 줄이 **최소 품질 게이트** 역할을 한다.
 | 소스에서 문자열 용례 검색 | 저장소 루트에서 `rg '패턴' src dat win` |
 | PO만 빠르게 유효성 | `cd po && make translation-ci` |
 | 래핑만 | `./scripts/check-i18n-wrapping.sh` |
+| locale TXT 동기화 점검 | `./scripts/check-locale-dat-sync.sh` |
+| locale Lua 짝 점검 | `./scripts/check-locale-lua-sync.sh` |
 
 ---
 
@@ -138,7 +184,9 @@ CI가 없을 때는 이 한 줄이 **최소 품질 게이트** 역할을 한다.
 - `po/remainder_quality_patch.json` — 수동 덮어쓰기(선택, 보통 비움)
 - `po/sync_new_msgids_to_manual.py` — 로컬 `ko.po`의 신규 블록을 `ko_manual.po`로 스텁 복사
 - `po/extract_lua_strings.py` — `dat/*.lua`에서 POT 보조 추출(선택)
-- `scripts/translation-preflight.sh` — PR 전 통합 검사
-- `scripts/i18n-check.sh` — 업스트림 병합 후 diff 스타일 점검(선택)
+- `scripts/translation-preflight.sh` — PR 전 통합 검사 (PO + 래핑 + locale TXT 점검)
+- `scripts/check-locale-dat-sync.sh` — `dat/locale/ko/` 도움말·TXT 동기화 백로그
+- `scripts/check-locale-lua-sync.sh` — `dat/locale/ko/*.lua` 줄 수·API 패턴
+- `scripts/report-locale-ko-coverage.py` — KO 경로 영어 잔존 휴리스틱
 
 프로세스를 바꾸면(새 Makefile 타깃, 새 스크립트) **이 문서와 `po/README.md`, `AGENTS.md`의 링크**를 함께 맞추는 것이 좋다.

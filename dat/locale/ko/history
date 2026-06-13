@@ -1,4 +1,4 @@
-NetHack 역사 파일 - 3.7 릴리스용
+NetHack 역사 파일 - 5.0 릴리스용
 
 보라, 필멸자여, NetHack의 기원을...
 
@@ -269,6 +269,59 @@ NetHack 3.6.6은 2020년 3월 8일에 보안 수정과 일부 버그 수정을 �
 NetHack 3.6.7은 2023년 2월 16일에 보안 수정과 일부 버그 수정을 포함하여
 릴리스되었다.
 
+NetHack 3.6에 이어올 메이저 릴리스를 위한 개발 작업은 2015년, NetHack 3.6.0이
+릴리스되던 무렵부터 시작되었다. 그 개발은 2015년부터 2023년까지 NetHack 3.6
+각 릴리스와 병행하여 계속되었고, 2026년 4월 말까지 이어졌다. 처음으로 그
+개발 과정이 GitHub와 SourceForge에 공개되었다. NetHack-3.7 작업 중(WIP)이라는
+명칭 아래 진행되었지만, 다음 릴리스의 버전 번호는 아직 확정되지 않았다.
+
+개발을 공개한 것은 많은 좋은 점을 가져왔고, 어려움도 있었다. 사람들은
+변경 사항과 새 기능을 거의 즉시 관찰하고 비판할 수 있었고, 실제로 그렇게
+했다. GitHub 풀 리퀘스트 시스템 덕분에 사람들이 개발에 직접 기여하기
+쉬웠다. 기여 덕분에 수많은 버그가 해결되었으며, 모든 기여자에게
+감사드린다.
+
+2026년 초, 공식 릴리스를 시작할 만큼 개발이 안정화되자, 개발팀은 게임
+변경의 성격과 규모를 검토하였다. 메이저 릴리스에 걸맞은 깊이와 폭이
+분명하여 버전 5.0으로 결정되었다. 4.0으로 내면 기존 변형판과 혼동될
+수 있었을 텐데, 3.x를 넘어서는 새 메이저 릴리스로 번호를 열어두었다.
+
+NetHack 5.0.0은 2026년 5월 2일에 릴리스되었다.
+
+NetHack 5.0.0 소스 코드는 C99 표준을 따르도록 현대화·수정되었다. 5.0.0
+릴리스에는 3100건 이상의 수정, 변경, 기능 갱신이 포함되었다.
+
+NetHack 5.0은 예전 버전의 lex·yacc 기반 레벨·던전 컴파일러를 Lua
+인터프리터 방식으로 대체한 첫 버전이다. NetHack 5.0.0에서 퀘스트
+텍스트에도 Lua가 쓰인다. 개발팀 전체는 이를 가능하게 한 Pasi Kallinen의
+업적을 기립한다.
+
+NetHack 5.0 릴리스 당시, 현역·전직을 망라한 핵심 개발팀에는 Warwick Allison,
+Michael Allison, Ken Arromdee, David Cohrs, Jessie Collet, Bart House,
+Kevin Hugo, Pasi Kallinen, Ken Lorber, Dean Luick, Pat Rankin, Derek S. Ray,
+Alex Smith, Patric Mueller, Mike Stephenson, Janet Walz, Paul Winner가
+포함되었다.
+
+Ken Lorber, Pat Rankin, Patrick Mueller, Michael Allison은 NetHack 5.0이
+macOS에서 실행되도록 보장하는 데 도움을 주었다.
+
+Ingo Paschke는 현대 플랫폼의 크로스 컴파일러로 Amiga용 NetHack 5.0 포트를
+어떻게든 되살렸다. 그의 작업이 공유되어, 그 덕분에 다른 이들도 Amiga용
+NetHack 5.0을 손쉽게 만들 수 있다.
+
+Ray Chason은 curses 인터페이스 이식을 포함하여 NetHack 5.0 MS-DOS 포트
+유지보수의 대부분을 맡았다. Michael Allison은 NetHack 5.0 핵심 변경이
+msdos 포트와 맞도록 하고 포트를 살려 두었다. MS-DOS 포트를 크로스
+컴파일하는 것이 대부분 수월하게 가능하게 하는 데 도움이 되었다.
+
+NetHack 5.0 개발이 시작된 지 11년이 넘은 뒤 Windows 포트에 기여한 이들에는
+Michael Allison, David Cohrs, Bart House, Pasi Kallinen, Alex Kompel,
+Dion Nicolaas, Derek S. Ray, Yitzhak Sapir가 포함된다.
+
+개발팀은 슬픔을 담아, 과거 여러 NetHack 릴리스 동안 OS/2용 NetHack의
+유일한 유지 관리자였던 고 Ron Van Iwaarden의 기여를 기억하고 싶다.
+Ron을 그리워한다.
+
 공식 NetHack 웹 사이트는 Ken Lorber에 의해 https://www.nethack.org/에서
 유지 관리되고 있다.
 
@@ -285,45 +338,46 @@ The November NetHack Tournament, 그리고 과거의 devnull.net(지금은
 흥미로운 수정 사항을 보내온다. NetHack 개발팀은 때때로 이 최악의
 악당들의 이름을 이 던전 탐험가 목록에 기록한다:
 
-    Adam Aronow               J. Ali Harlow             Mikko Juola
-    Alex Kompel               Janet Walz                Nathan Eady
-    Alex Smith                Janne Salmijarvi          Norm Meluch
-    Andreas Dorn              Jean-Christophe Collet    Olaf Seibert
-    Andy Church               Jeff Bailey               Pasi Kallinen
-    Andy Swanson              Jochen Erwied             Pat Rankin
-    Andy Thomson              John Kallen               Patric Mueller
-    Ari Huttunen              John Rupley               Paul Winner
-    Bart House                John S. Bien              Pierre Martineau
-    Benson I. Margulies       Johnny Lee                Ralf Brown
-    Bill Dyer                 Jon W{tte                 Ray Chason
-    Boudewijn Waijers         Jonathan Handler          Richard Addison
-    Bruce Cox                 Joshua Delahunty          Richard Beigel
-    Bruce Holloway            Karl Garrison             Richard P. Hughey
-    Bruce Mewborne            Keizo Yamamoto            Rob Menke
-    Carl Schelin              Keith Simpson             Robin Bandy
-    Chris Russo               Ken Arnold                Robin Johnson
-    David Cohrs               Ken Arromdee              Roderick Schertler
-    David Damerell            Ken Lorber                Roland McGrath
-    David Gentzel             Ken Washikita             Ron Van Iwaarden
-    David Hairston            Kevin Darcy               Ronnen Miller
-    Dean Luick                Kevin Hugo                Ross Brown
-    Del Lamb                  Kevin Sitze               Sascha Wostmann
-    Derek S. Ray              Kevin Smolkowski          Scott Bigham
-    Deron Meranda             Kevin Sweet               Scott R. Turner
-    Dion Nicolaas             Lars Huttar               Sean Hunt
-    Dylan O'Donnell           Leon Arnott               Stephen Spackman
-    Eric Backus               M. Drew Streib            Stefan Thielscher
-    Eric Hendrickson          Malcolm Ryan              Stephen White
-    Eric R. Smith             Mark Gooderum             Steve Creps
-    Eric S. Raymond           Mark Modrall              Steve Linhart
-    Erik Andersen             Marvin Bressler           Steve VanDevender
-    Fredrik Ljungdahl         Matthew Day               Teemu Suikki
-    Frederick Roeber          Merlyn LeRoy              Tim Lennan
-    Gil Neiger                Michael Allison           Timo Hakulinen
-    Greg Laskin               Michael Feir              Tom Almy
-    Greg Olson                Michael Hamel             Tom West
-    Gregg Wonderly            Michael Sokolov           Warren Cheung
-    Hao-yang Wang             Mike Engber               Warwick Allison
-    Helge Hafting             Mike Gallop               Yitzhak Sapir
-    Irina Rempt-Drijfhout     Mike Passaretti
-    Izchak Miller             Mike Stephenson
+    Adam Aronow               Irina Rempt-Drijfhout     Mike Gallop
+    Alex Kompel               Izchak Miller             Mike Passaretti
+    Alex Smith                J. Ali Harlow             Mike Stephenson
+    Andreas Dorn              Janet Walz                Mikko Juola
+    Andy Church               Janne Salmijarvi          Nathan Eady
+    Andy Swanson              Jean-Christophe Collet    Norm Meluch
+    Andy Thomson              Jeff Bailey               Olaf Seibert
+    Ari Huttunen              Jochen Erwied             Pasi Kallinen
+    Bart House                John Kallen               Pat Rankin
+    Benson I. Margulies       John Rupley               Patric Mueller
+    Bill Dyer                 John S. Bien              Paul Winner
+    Boudewijn Waijers         Johnny Lee                Pierre Martineau
+    Bruce Cox                 Jon W{tte                 Ralf Brown
+    Bruce Holloway            Jonathan Handler          Ray Chason
+    Bruce Mewborne            Joshua Delahunty          Richard Addison
+    Cameron Root              Karl Garrison             Richard Beigel
+    Carl Schelin              Keizo Yamamoto            Richard P. Hughey
+    Chris Russo               Keith Simpson             Rob Menke
+    David Cohrs               Ken Arnold                Robin Bandy
+    David Damerell            Ken Arromdee              Robin Johnson
+    David Gentzel             Ken Lorber                Roderick Schertler
+    David Hairston            Ken Washikita             Roland McGrath
+    Dean Luick                Kestrel Gregorich-Trevor  Ron Van Iwaarden
+    Del Lamb                  Kevin Darcy               Ronnen Miller
+    Derek S. Ray              Kevin Hugo                Ross Brown
+    Deron Meranda             Kevin Sitze               Sascha Wostmann
+    Dion Nicolaas             Kevin Smolkowski          Scott Bigham
+    Dylan O'Donnell           Kevin Sweet               Scott R. Turner
+    Eric Backus               Lars Huttar               Sean Hunt
+    Eric Hendrickson          Leon Arnott               Stephen Spackman
+    Eric R. Smith             M. Drew Streib            Stefan Thielscher
+    Eric S. Raymond           Malcolm Ryan              Stephen White
+    Erik Andersen             Mark Gooderum             Steve Creps
+    Fredrik Ljungdahl         Mark Modrall              Steve Linhart
+    Frederick Roeber          Marvin Bressler           Steve VanDevender
+    G. Branden Robinson       Matthew Day               Teemu Suikki
+    Gil Neiger                Merlyn LeRoy              Tim Lennan
+    Greg Laskin               Michael Allison           Timo Hakulinen
+    Greg Olson                Michael Feir              Tom Almy
+    Gregg Wonderly            Michael Hamel             Tom West
+    Hao-yang Wang             Michael Meyer             Warren Cheung
+    Helge Hafting             Michael Sokolov           Warwick Allison
+    Ingo Paschke              Mike Engber               Yitzhak Sapir

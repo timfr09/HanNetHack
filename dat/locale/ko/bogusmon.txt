@@ -1,4 +1,4 @@
-# NetHack 3.7  bogusmon.txt.ko
+# NetHack 5.0  bogusmon.txt.ko
 # Copyright (c) 2016 by Pasi Kallinen
 # NetHack may be freely redistributed.  See license for details.
 #
@@ -97,9 +97,25 @@ _세미고르곤
 짖는 거미
 개구리 구름
 이빨점쟁이
+제3의 눈
+올퍼그
+퍼가수스
+도토리
+빨간 점
+로봇 치킨
+두저
+독 웃음꾼
+러고이프
+펠드다그리프
+틱타알릭
+늑대수염
+레이피어 타이어
+초플릿
+폼멜벌레
+퀘스트 새싹
 
 # Quendor (Zork, &c.)
-그루
+제록
 크리스마스트리 괴물
 운 빨아먹는 놈
 파스칼드
@@ -119,7 +135,7 @@ _세미고르곤
 그리핀
 에뮤
 황조롱이
-제록
+복사수
 파리지옥풀
 
 # Wizardry

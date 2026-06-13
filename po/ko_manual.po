@@ -8598,7 +8598,7 @@ msgstr "%s{이/가} 이제 편안하게 느껴진다."
 #: ../src/apply.c:1459
 #, c-format
 msgid "%s now has seven%s candles attached."
-msgstr "%s에 이제 일곱%s 양초가 붙어있다."
+msgstr "%s에 이제 일곱%s 양초가 붙어 있다."
 
 #: ../src/potion.c:117
 #, c-format
@@ -10785,12 +10785,12 @@ msgstr "%1$s 무기가 %3$s%2$.0s"
 #: ../src/weapon.c:869
 #, c-format
 msgid "%s welded to %s %s"
-msgstr "%s{이/가} %s %s에 붙어있다"
+msgstr "%s{이/가} %s %s에 붙어 있다"
 
 #: ../src/apply.c:3179
 #, c-format
 msgid "%s welded to %s %s%c"
-msgstr "%s{이/가} %s %s에 붙어있다%c"
+msgstr "%s{이/가} %s %s에 붙어 있다%c"
 
 # wield.c:1052 — Yobjnam2(obj, "are")
 # 런타임: "당신의 검이 손에 융합되었다!"
@@ -11839,7 +11839,7 @@ msgstr "%s집%s."
 #: ../src/mail.c:516
 #, c-format
 msgid "%sInvitation: Visit the NetHack web site at %s%s"
-msgstr "%s초대: %s%s 넷핵 웹사이트를 방문하라"
+msgstr "%s초대: %s%s 넷핵 웹사이트를 방문하세요"
 
 #: ../src/dungeon.c:3558
 #, c-format
@@ -11860,12 +11860,12 @@ msgstr "%s델포이의 신탁."
 #: ../src/mail.c:493
 #, c-format
 msgid "%sReport bugs to <%s>.%s"
-msgstr "%s버그는 <%s>로 보고해주세요.%s"
+msgstr "%s버그는 <%s>로 보고해 주세요.%s"
 
 #: ../src/dungeon.c:3672
 #, c-format
 msgid "%sSummoned by %s."
-msgstr "%s%s에 의해 소환됨."
+msgstr "%s%s에 의해 소환되었다."
 
 #: ../src/dungeon.c:3658
 #, c-format
@@ -12262,7 +12262,7 @@ msgstr "(먹기에 안전하기엔 너무 오래 전에 죽은 듯하다.)"
 
 #: ../src/options.c:464
 msgid "(Please choose 'y' or 'n'.)"
-msgstr "('y' 또는 'n'을 선택하라.)"
+msgstr "('y' 또는 'n'을 선택하세요.)"
 
 #: ../src/getpos.c:262
 #, c-format
@@ -12286,7 +12286,7 @@ msgstr "(\"*\" 표시된 기술%s %s 향상시킬 수 있다.)"
 
 #: ../src/zap.c:6191
 msgid "(Suppress this assistance with !cmdassist in your config file.)"
-msgstr "(이 도움말을 끄려면 설정 파일에 !cmdassist를 추가하라.)"
+msgstr "(이 도움말을 끄려면 설정 파일에 !cmdassist를 추가하세요.)"
 
 #: ../src/cmd.c:4290
 msgid "(Suppress this message with !cmdassist in config file.)"
@@ -14799,7 +14799,7 @@ msgstr "여참사회원"
 #: ../src/zap.c:6416
 #, c-format
 msgid "Careful! %s on the floor!"
-msgstr "조심하라! %s{이/가} 바닥에 있다!"
+msgstr "조심하세요! %s{이/가} 바닥에 있다!"
 
 # ============================================================
 # Looney Tunes 가짜 라틴어 코요테 이름 (환각 효과)
@@ -15164,7 +15164,7 @@ msgstr "%s의 내용물:"
 
 #: ../src/eat.c:3323
 msgid "Continue eating?"
-msgstr "계속 먹으겠습니까?"
+msgstr "계속 먹겠습니까?"
 
 #: ../src/apply.c:2898
 #, c-format
@@ -15546,7 +15546,7 @@ msgstr "출발 지점을 지나지 마라. 200 %s{을/를} 받지 마라."
 # apply.c - 행동 프롬프트. "Do what with the key?"
 #: ../src/pickup.c:3081
 msgid "Do what with "
-msgstr "~로 무엇을 할까요 "
+msgstr "무엇을 하시겠습니까? "
 
 # iactions.c:698 - 아이템 동작 메뉴. "Do what with this item?"
 #: ../src/iactions.c:698
@@ -15565,7 +15565,7 @@ msgstr "이 물에 무엇이 사는지 아니?"
 #: ../src/insight.c:3103
 #, c-format
 msgid "Do you want a list of %sspecies%s%s?"
-msgstr "%s종족%s%s 목록을 원합니까?"
+msgstr "%s종족%s%s 목록을 원하시겠습니까?"
 
 #: ../src/options.c:466
 msgid "Do you want a tutorial?"
@@ -15624,15 +15624,15 @@ msgstr "행동 수칙을 보겠습니까?"
 
 #: ../src/lock.c:116
 msgid "Do you want to try to disarm it?"
-msgstr "튜토리얼을 진행하시겠습니까?"
+msgstr "함정을 해제해 보시겠습니까?"
 
 #: ../src/end.c:633
 msgid "Do you want your possessions identified?"
-msgstr "소지품을 확인하겠습니까?"
+msgstr "소지품을 식별하시겠습니까?"
 
 #: ../src/sounds.c:1164 ../src/uhitm.c:4370
 msgid "Doc, I can't help you unless you cooperate."
-msgstr "선생님, 협조해주시지 않으면 도와드릴 수 없어요."
+msgstr "선생님, 협조해 주시지 않으면 도와드릴 수 없어요."
 
 #: ../src/sounds.c:123
 msgid "Doctor Dolittle!"
@@ -15810,7 +15810,7 @@ msgstr "%s 먹기"
 
 #: ../src/eat.c:1584 ../src/eat.c:1656
 msgid "Eat it?"
-msgstr "먹으겠습니까?"
+msgstr "먹겠습니까?"
 
 #: ../src/do_name.c:1559
 msgid "Eatibus Almost Anythingus"
@@ -16637,7 +16637,7 @@ msgstr "개미 팀 파이팅!"
 
 #: ../src/teleport.c:1259
 msgid "Go to Nowhere.  Are you sure?"
-msgstr "무(無)로 가시겠습니까. 정말입니까?"
+msgstr "무(無)로 가시겠습니까? 정말이겠습니까?"
 
 #: ../src/options.c:317
 msgid "Go to first page"
@@ -20030,7 +20030,7 @@ msgstr "플레이어"
 
 #: ../src/mail.c:494
 msgid "Please disregard previous letter."
-msgstr "이전 편지는 무시해 줘."
+msgstr "이전 편지는 무시해 주세요."
 
 #: ../src/sounds.c:1173 ../src/vault.c:581
 msgid "Please drop that gold and follow me."
@@ -20390,7 +20390,7 @@ msgstr "정말로 %s{을/를} 공격하시겠습니까?"
 
 #: ../src/pickup.c:1467
 msgid "Really autoselect All?"
-msgstr "정말로 전체 자동선택?"
+msgstr "정말 전체를 자동 선택하시겠습니까?"
 
 # ============================================================
 # 게임 UI 메시지 (Game UI Messages)
@@ -31933,7 +31933,7 @@ msgstr "그럴 수 없다. 안장이 %s 저주받았다."
 #: ../src/pickup.c:2454
 #, c-format
 msgid "can't.  The saddle seems to be stuck to %s."
-msgstr "안 된다. 안장이 %s에 붙어있는 듯하다."
+msgstr "그럴 수 없다. 안장이 %s에 붙어 있는 듯하다."
 
 #: ../src/steed.c:642
 msgid "can't.  There isn't anywhere for you to stand."
@@ -50066,7 +50066,7 @@ msgstr "투명 감지"
 #: ../src/pager.c:2735
 #, c-format
 msgid "see the 'Contact' form on our website or email <%s>."
-msgstr "웹사이트의 '문의' 양식을 보거나 <%s>{으로/로} 이메일하세요."
+msgstr "웹사이트의 '문의' 양식을 보거나 <%s>{으로/로} 이메일을 보내세요."
 
 #: ../src/apply.c:3604
 #, c-format
@@ -52786,7 +52786,7 @@ msgstr "%s %s에 달라붙었다"
 # hack.c:1581 - 거미줄에 붙음
 #: ../src/hack.c:1601
 msgid "stuck to the web"
-msgstr "거미줄에 붙어있다"
+msgstr "거미줄에 붙어 있다"
 
 #: ../src/do_wear.c:2656
 msgid "stuck_ring: neither left nor right?"

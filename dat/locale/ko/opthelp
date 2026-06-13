@@ -3,6 +3,7 @@
 알 수 있습니다.)
 
 acoustics      캐릭터가 소리를 들을 수 있는지                         [True]
+armorstatus    착용 중인 갑옷을 요약하는 추가 상태 줄 표시             [False]
 autodescribe   커서 아래 지형 설명                                   [False]
 autodig        이동 시 땅파기 도구 장비 중이면 자동으로 파기          [False]
 autoopen       문으로 걸어가면 열기 시도                              [True]
@@ -48,9 +49,11 @@ nudist         갑옷 없이 캐릭터 시작                                 [F
 null           터미널에 널 전송 허용                                   [True]
                움직이는 물건이 방을 가로질러 순간이동하는 것처럼
                보이면 이 옵션을 끄세요 (자체 지연 코드 사용 강제)
+pauper         소지품 없이 캐릭터 시작                                 [False]
 perm_invent    영구 창에 인벤토리 유지                               [False]
 pickup_stolen  훔친 물건에 대해 pickup_types 무시                      [True]
 pickup_thrown  던진 물건에 대해 pickup_types 무시                      [True]
+price_quotes   미식별 물건에 기억된 가격 견적 표시                     [False]
 pushweapon     새 무기 장비 시 이전 무기를                           [False]
                보조 무기 슬롯에 넣기
 quick_farsight 무작위로 발동된 천리안 시 맵 탐색                     [False]
@@ -71,6 +74,7 @@ sparkle        저항된 마법 공격에 반짝임 효과 표시               
                (예: 화염 저항 괴물에 대한 화염 공격)
 standout       메시지의 --더 보기--에 강조 모드 사용                 [False]
 status_updates 상태 줄 업데이트                                        [True]
+terrainstatus  현재 위치를 설명하는 추가 상태 줄 표시                 [False]
 time           경과 게임 시간(턴 수) 표시                            [False]
 tips           게임 플레이 중 도움말 팁 표시                           [True]
 tombstone      죽을 때 묘비 출력                                       [True]
@@ -81,6 +85,7 @@ travel         지원되면 마우스 클릭으로 이동 활성화;            
 use_darkgray   검은 글리프에 파란색 대신 굵은 검정 사용               [True]
 use_inverse    감지된 괴물을 강조 방식으로 표시                      [False]
 verbose        게임 중 더 많은 설명 출력                               [True]
+weaponstatus   장비 중인 무기를 나열하는 추가 상태 줄 표시             [False]
 whatis_menu    맵 위치 얻을 때 메뉴 표시                             [False]
 whatis_moveskip 맵 위치 얻을 때 같은 글리프 건너뛰기                  [False]
 

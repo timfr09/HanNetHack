@@ -39,7 +39,7 @@ Korean is the default language. Config goes in `~/.nethackrc`.
 - `po/ko.po` is a local cache rebuilt by `make update-po` from `nethack.pot`; it is gitignored and never edited by hand. `make compile` works without it (uses `ko_manual.po` directly).
 - `cd po && make compile` to merge + compile translations.
 - `cd po && make stats` to see translation statistics.
-- **`./scripts/translation-preflight.sh`** (from repo root) runs `po`’s `make translation-ci` (msgfmt checks) then `scripts/check-i18n-wrapping.sh`. Use before PRs that touch `po` or translatable source.
+- **`./scripts/translation-preflight.sh`** (from repo root) runs `po`’s `make translation-ci` (msgfmt checks), `scripts/check-i18n-wrapping.sh`, and **`scripts/check-locale-dat-sync.sh`** (warn-only backlog for `dat/locale/ko/` help·TXT vs `dat/`). Use before PRs that touch `po` or translatable source. After upstream merges touching `dat/help`, `dat/opthelp`, etc., also run `./scripts/check-locale-dat-sync.sh --strict` and follow `po/TRANSLATION_PROCESS.md` §2.E.
 - `cd po && make translation-ci` alone validates `ko_manual.po` + merged PO without the wrapping script.
 - See `po/TRANSLATION_PROCESS.md` for the full operational workflow, and `po/TRANSLATION_GUIDE_KO.md` for rules and tone.
 

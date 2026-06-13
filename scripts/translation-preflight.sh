@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# translation-preflight.sh — PR 전에 gettext + 래핑 검사를 한 번에 실행
+# translation-preflight.sh — PR 전에 gettext + 래핑 + locale dat 점검
 #
 # 사용: 저장소 루트에서
 #   ./scripts/translation-preflight.sh
@@ -12,4 +12,6 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT/po"
 make translation-ci
 cd "$ROOT"
-exec bash scripts/check-i18n-wrapping.sh
+bash scripts/check-i18n-wrapping.sh
+echo ""
+bash scripts/check-locale-dat-sync.sh

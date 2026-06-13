@@ -20030,7 +20030,7 @@ msgstr "플레이어"
 
 #: ../src/mail.c:494
 msgid "Please disregard previous letter."
-msgstr "이전 편지는 무시해 줘."
+msgstr "이전 편지는 무시해 주세요."
 
 #: ../src/sounds.c:1173 ../src/vault.c:581
 msgid "Please drop that gold and follow me."
@@ -31933,7 +31933,7 @@ msgstr "그럴 수 없다. 안장이 %s 저주받았다."
 #: ../src/pickup.c:2454
 #, c-format
 msgid "can't.  The saddle seems to be stuck to %s."
-msgstr "안 된다. 안장이 %s에 붙어있는 듯하다."
+msgstr "그럴 수 없다. 안장이 %s에 붙어 있는 듯하다."
 
 #: ../src/steed.c:642
 msgid "can't.  There isn't anywhere for you to stand."

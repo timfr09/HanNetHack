@@ -11860,7 +11860,7 @@ msgstr "%s델포이의 신탁."
 #: ../src/mail.c:493
 #, c-format
 msgid "%sReport bugs to <%s>.%s"
-msgstr "%s버그는 <%s>로 보고해주세요.%s"
+msgstr "%s버그는 <%s>로 보고해 주세요.%s"
 
 #: ../src/dungeon.c:3672
 #, c-format
@@ -15164,7 +15164,7 @@ msgstr "%s의 내용물:"
 
 #: ../src/eat.c:3323
 msgid "Continue eating?"
-msgstr "계속 먹으겠습니까?"
+msgstr "계속 먹겠습니까?"
 
 #: ../src/apply.c:2898
 #, c-format
@@ -15632,7 +15632,7 @@ msgstr "소지품을 확인하겠습니까?"
 
 #: ../src/sounds.c:1164 ../src/uhitm.c:4370
 msgid "Doc, I can't help you unless you cooperate."
-msgstr "선생님, 협조해주시지 않으면 도와드릴 수 없어요."
+msgstr "선생님, 협조해 주시지 않으면 도와드릴 수 없어요."
 
 #: ../src/sounds.c:123
 msgid "Doctor Dolittle!"
@@ -15810,7 +15810,7 @@ msgstr "%s 먹기"
 
 #: ../src/eat.c:1584 ../src/eat.c:1656
 msgid "Eat it?"
-msgstr "먹으겠습니까?"
+msgstr "먹겠습니까?"
 
 #: ../src/do_name.c:1559
 msgid "Eatibus Almost Anythingus"
@@ -16637,7 +16637,7 @@ msgstr "개미 팀 파이팅!"
 
 #: ../src/teleport.c:1259
 msgid "Go to Nowhere.  Are you sure?"
-msgstr "무(無)로 가시겠습니까. 정말입니까?"
+msgstr "무(無)로 가시겠습니까? 정말입니까?"
 
 #: ../src/options.c:317
 msgid "Go to first page"
@@ -50066,7 +50066,7 @@ msgstr "투명 감지"
 #: ../src/pager.c:2735
 #, c-format
 msgid "see the 'Contact' form on our website or email <%s>."
-msgstr "웹사이트의 '문의' 양식을 보거나 <%s>{으로/로} 이메일하세요."
+msgstr "웹사이트의 '문의' 양식을 보거나 <%s>{으로/로} 이메일을 보내세요."
 
 #: ../src/apply.c:3604
 #, c-format

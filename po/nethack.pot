@@ -15914,23 +15914,28 @@ msgstr ""
 msgid "Use this kit to tin a corpse"
 msgstr ""
 
-#: ../src/iactions.c:335
-msgid "Tie a pet to this leash"
+#: ../src/iactions.c:336
+msgid "Attach this leash to a pet"
 msgstr ""
 
-#: ../src/iactions.c:337
+#: ../src/iactions.c:341
+#, c-format
+msgid "Detach this leash from %s"
+msgstr ""
+
+#: ../src/iactions.c:345
 msgid "Place this saddle on a pet"
 msgstr ""
 
-#: ../src/iactions.c:340
+#: ../src/iactions.c:348
 msgid "Blow this whistle"
 msgstr ""
 
-#: ../src/iactions.c:342
+#: ../src/iactions.c:350
 msgid "Use this leaf as a whistle"
 msgstr ""
 
-#: ../src/iactions.c:344
+#: ../src/iactions.c:352
 msgid "Listen through the stethoscope"
 msgstr ""
 

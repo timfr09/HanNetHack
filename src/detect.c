@@ -346,7 +346,7 @@ gold_detect(struct obj *sobj)
 
     /* look for gold carried by monsters (might be in a container) */
     for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
-        if (DEADMONSTER(mtmp) || (mtmp->isgd && !mtmp->mx))
+        if (DEADMONSTER(mtmp) || PARKEDMONSTER(mtmp))
             continue;
         if (findgold(mtmp->minvent) || monsndx(mtmp->data) == PM_GOLD_GOLEM) {
             if (mtmp == u.usteed) {
@@ -434,7 +434,7 @@ gold_detect(struct obj *sobj)
             ugold = TRUE;
     }
     for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
-        if (DEADMONSTER(mtmp) || (mtmp->isgd && !mtmp->mx))
+        if (DEADMONSTER(mtmp) || PARKEDMONSTER(mtmp))
             continue;
         temp = 0;
         if (findgold(mtmp->minvent) || monsndx(mtmp->data) == PM_GOLD_GOLEM) {
@@ -498,7 +498,7 @@ food_detect(struct obj *sobj)
                 ct++;
         }
     for (mtmp = fmon; mtmp && (!ct || !ctu); mtmp = mtmp->nmon) {
-        if (DEADMONSTER(mtmp) || (mtmp->isgd && !mtmp->mx))
+        if (DEADMONSTER(mtmp) || PARKEDMONSTER(mtmp))
             continue;
         for (obj = mtmp->minvent; obj; obj = obj->nobj)
             if (o_in(obj, oclass)) {
@@ -562,7 +562,7 @@ food_detect(struct obj *sobj)
                 map_object(temp, 1);
             }
         for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
-            if (DEADMONSTER(mtmp) || (mtmp->isgd && !mtmp->mx))
+            if (DEADMONSTER(mtmp) || PARKEDMONSTER(mtmp))
                 continue;
             for (obj = mtmp->minvent; obj; obj = obj->nobj)
                 if ((temp = o_in(obj, oclass)) != 0) {
@@ -667,7 +667,7 @@ object_detect(struct obj *detector, /* object doing the detecting */
         u.usteed->mx = u.ux, u.usteed->my = u.uy;
 
     for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
-        if (DEADMONSTER(mtmp) || (mtmp->isgd && !mtmp->mx))
+        if (DEADMONSTER(mtmp) || PARKEDMONSTER(mtmp))
             continue;
         for (obj = mtmp->minvent; obj; obj = obj->nobj) {
             if ((!class && !boulder) || o_in(obj, class)
@@ -737,7 +737,7 @@ object_detect(struct obj *detector, /* object doing the detecting */
 
     /* Objects in the monster's inventory override floor objects. */
     for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
-        if (DEADMONSTER(mtmp) || (mtmp->isgd && !mtmp->mx))
+        if (DEADMONSTER(mtmp) || PARKEDMONSTER(mtmp))
             continue;
         for (obj = mtmp->minvent; obj; obj = obj->nobj)
             if ((!class && !boulder) || (otmp = o_in(obj, class)) != 0
@@ -808,7 +808,7 @@ monster_detect(struct obj *otmp, /* detecting object (if any) */
      * with positive hit-points to know for sure.
      */
     for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
-        if (DEADMONSTER(mtmp) || (mtmp->isgd && !mtmp->mx))
+        if (DEADMONSTER(mtmp) || PARKEDMONSTER(mtmp))
             continue;
         ++mcnt;
         break; /* no need for full count, just 1 or more vs 0 */
@@ -827,7 +827,7 @@ monster_detect(struct obj *otmp, /* detecting object (if any) */
         cls();
         unconstrained = unconstrain_map();
         for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
-            if (DEADMONSTER(mtmp) || (mtmp->isgd && !mtmp->mx))
+            if (DEADMONSTER(mtmp) || PARKEDMONSTER(mtmp))
                 continue;
             if (!mclass || mtmp->data->mlet == mclass
                 || (mtmp->data == &mons[PM_LONG_WORM]
@@ -970,7 +970,7 @@ display_trap_map(int cursed_src)
     (void) detect_obj_traps(svl.level.buriedobjlist, TRUE, cursed_src, NULL);
     (void) detect_obj_traps(fobj, TRUE, cursed_src, NULL);
     for (mon = fmon; mon; mon = mon->nmon) {
-        if (DEADMONSTER(mon) || (mon->isgd && !mon->mx))
+        if (DEADMONSTER(mon) || PARKEDMONSTER(mon))
             continue;
         (void) detect_obj_traps(mon->minvent, TRUE, cursed_src, NULL);
     }
@@ -1047,7 +1047,7 @@ trap_detect(
         found = TRUE;
     }
     for (mon = fmon; mon; mon = mon->nmon) {
-        if (DEADMONSTER(mon) || (mon->isgd && !mon->mx))
+        if (DEADMONSTER(mon) || PARKEDMONSTER(mon))
             continue;
         if ((tr = detect_obj_traps(mon->minvent, FALSE, 0, NULL))
             != OTRAP_NONE) {
@@ -1646,7 +1646,7 @@ findone(coordxy zx, coordxy zy, genericptr_t whatfound)
     struct monst *mtmp = m_at(zx, zy);
     struct found_things *found_p = (struct found_things *) whatfound;
 
-    if (mtmp && (DEADMONSTER(mtmp) || (mtmp->isgd && !mtmp->mx)))
+    if (mtmp && (DEADMONSTER(mtmp) || PARKEDMONSTER(mtmp)))
         mtmp = (struct monst *) NULL;
     found_p->ft_cc.x = zx; /* needed by detect_obj_traps() */
     found_p->ft_cc.y = zy;

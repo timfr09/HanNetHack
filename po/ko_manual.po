@@ -23472,8 +23472,13 @@ msgid "Thy selfless generosity is deeply appreciated."
 msgstr "무욕의 관대함에 깊이 감사하노라."
 
 #: ../src/iactions.c:335
-msgid "Tie a pet to this leash"
-msgstr "이 끈에 애완동물 묶기"
+msgid "Attach this leash to a pet"
+msgstr "이 목줄을 애완동물에게 매기"
+
+#: ../src/iactions.c:340
+#, c-format
+msgid "Detach this leash from %s"
+msgstr "이 목줄을 %s에게서 풀기"
 
 # mhitu.c:2165 - 로맨틱 만남
 # %s = noit_mon_nam(): 몬스터 이름 가변종성

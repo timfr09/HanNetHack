@@ -9230,15 +9230,15 @@ msgstr "%s 안장"
 msgid "%s saddle falls off."
 msgstr "%s 안장이 떨어졌다."
 
-#: ../src/wield.c:265
+#: ../src/wield.c:267
 #, c-format
-msgid "%s says \"You be careful with my %s!\""
-msgstr "%s{이/가} \"내 %s 조심해서 다뤄!\"라고 말했다."
+msgid "%s %s \"You be careful with my %s!\""
+msgstr "%s{이/가} %s \"내 %s 조심해서 다뤄!\""
 
-#: ../src/minion.c:304
+#: ../src/minion.c:302
 #, c-format
-msgid "%s says something."
-msgstr "%s{이/가} 뭔가 말한다."
+msgid "%s %s something."
+msgstr "%s{이/가} 뭔가를 %s."
 
 #: ../src/shk.c:5509
 #, c-format
@@ -12811,6 +12811,27 @@ msgstr "... 먼지 더미 속으로."
 #: ../src/read.c:183
 msgid "/Valar morghulis/ -- /Valar dohaeris/"
 msgstr "/발라르 모르굴리스/ -- /발라르 도하에리스/"
+
+#: ../src/read.c:184
+msgid "Asidonhopo once said: the namesake of my enemy is my enemy"
+msgstr "아시돈호포가 말했듯: 내 적의 이름을 가진 자가 내 적이다"
+
+#: ../src/rumors.c:558
+msgid "offhandedly "
+msgstr "무심코 "
+
+#: ../src/rumors.c:559
+msgid "casually "
+msgstr "담담하게 "
+
+#: ../src/rumors.c:560
+msgid "nonchalantly "
+msgstr "태연하게 "
+
+#: ../src/wield.c:270
+#, c-format
+msgid "%s looks apprehensive about your wielding %s %s."
+msgstr "%s{이/가} 당신이 %s %s{을/를} 휘두르는 것을 불안해하는 듯 보인다."
 
 # options.c - 옵션 값
 #: ../src/options.c:4080
@@ -23704,8 +23725,8 @@ msgstr "혈거인"
 
 #: ../src/rumors.c:557
 #, c-format
-msgid "True to her word, the Oracle %ssays: "
-msgstr "약속대로, 오라클이 %s말한다: "
+msgid "True to her word, the Oracle %s%s: "
+msgstr "약속대로, 오라클이 %s%s: "
 
 #: ../src/read.c:3397
 msgid "Try again (type * for random, ESC to cancel)."
@@ -49765,9 +49786,14 @@ msgstr "savelev: where are we?"
 msgid "saw"
 msgstr "볼 수 있었다"
 
-#: ../src/shk.c:5564 ../src/shk.c:5589
+#: ../src/shk.c:5564 ../src/shk.c:5589 ../src/minion.c:302 ../src/rumors.c:561
+#: ../src/wield.c:267
 msgid "says"
 msgstr "말한다"
+
+#: ../src/shk.c:2055 ../src/minion.c:302 ../src/rumors.c:561 ../src/wield.c:267
+msgid "signs"
+msgstr "손짓한다"
 
 #: ../src/eat.c:2491
 msgid "scale"

@@ -429,7 +429,7 @@ use_stethoscope(struct obj *obj)
                 what = pmname(&mons[mtmp->mappearance], Mgender(mtmp));
                 break;
             case M_AP_FURNITURE:
-                what = defsyms[mtmp->mappearance].explanation;
+                what = tr_defsym_explanation(mtmp->mappearance);
                 break;
             }
             seemimic(mtmp);
@@ -3563,7 +3563,7 @@ use_pole(struct obj *obj, boolean autohit)
                  || levl[gb.bhitpos.x][gb.bhitpos.y].typ == SCORR)
                 ? _("stone")
                 : glyph_is_cmap(glyph)
-                  ? the(defsyms[glyph_to_cmap(glyph)].explanation)
+                  ? the(tr_defsym_explanation(glyph_to_cmap(glyph)))
                   : (const char *) _("an unknown obstacle"));
         } else {
             You(_("miss; there is no one there to hit."));

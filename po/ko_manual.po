@@ -29499,6 +29499,75 @@ msgstr "화살"
 msgid "arrows"
 msgstr "화살"
 
+# defsym trap names (trapname() / defsyms[].explanation)
+#: ../src/trap.c:7174
+msgid "arrow trap"
+msgstr "화살 함정"
+
+#: ../src/trap.c:7174
+msgid "dart trap"
+msgstr "다트 함정"
+
+#: ../src/trap.c:7174
+msgid "falling rock trap"
+msgstr "낙석 함정"
+
+#: ../src/trap.c:7174
+msgid "squeaky board"
+msgstr "삐걱거리는 판"
+
+#: ../src/trap.c:7174
+msgid "rolling boulder trap"
+msgstr "구르는 바위 함정"
+
+#: ../src/trap.c:7174
+msgid "sleeping gas trap"
+msgstr "수면 가스 함정"
+
+#: ../src/trap.c:7174
+msgid "rust trap"
+msgstr "부식 함정"
+
+#: ../src/trap.c:7174
+msgid "fire trap"
+msgstr "화염 함정"
+
+#: ../src/trap.c:7174
+msgid "spiked pit"
+msgstr "가시 구덩이"
+
+#: ../src/trap.c:7174
+msgid "teleportation trap"
+msgstr "순간이동 함정"
+
+#: ../src/trap.c:7174
+msgid "level teleporter"
+msgstr "층 순간이동 장치"
+
+#: ../src/trap.c:7174
+msgid "magic portal"
+msgstr "마법 포털"
+
+#: ../src/trap.c:7174
+msgid "statue trap"
+msgstr "석상 함정"
+
+#: ../src/trap.c:7174
+msgid "magic trap"
+msgstr "마법 함정"
+
+#: ../src/trap.c:7174
+msgid "anti-magic field"
+msgstr "반마법 장"
+
+#: ../src/trap.c:7174
+msgid "polymorph trap"
+msgstr "변형 함정"
+
+#: ../src/trap.c:7174
+msgid "vibrating square"
+msgstr "진동하는 사각형"
+
 #: ../src/artifact.c:2139
 msgid "arti_invoke without obj"
 msgstr "arti_invoke without obj"
@@ -59367,6 +59436,31 @@ msgstr "아래로 가는 사다리"
 
 msgid "ladder up"
 msgstr "위로 가는 사다리"
+
+# defsym branch stairs/ladders (include/defsym.h)
+#: ../src/i18n.c:203
+msgid "branch staircase up"
+msgstr "분기 위층 계단"
+
+#: ../src/i18n.c:203
+msgid "branch staircase down"
+msgstr "분기 아래층 계단"
+
+#: ../src/i18n.c:203
+msgid "branch ladder up"
+msgstr "분기 위로 가는 사다리"
+
+#: ../src/i18n.c:203
+msgid "branch ladder down"
+msgstr "분기 아래로 가는 사다리"
+
+#: ../src/i18n.c:203
+msgid "poison cloud"
+msgstr "독 구름"
+
+#: ../src/i18n.c:203
+msgid "valid position"
+msgstr "유효한 위치"
 
 msgid "lay"
 msgstr "점토"

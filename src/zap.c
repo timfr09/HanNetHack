@@ -5361,13 +5361,13 @@ zap_over_floor(
             if ((lev->wall_info & W_NONDIGGABLE) != 0) {
                 if (see_it)
                     Norep(_("The %s %s somewhat but remain intact."),
-                          defsyms[S_bars].explanation,
+                          tr_defsym_explanation(S_bars),
                           (damgtype == ZT_ACID) ? _("corrode") : _("melt"));
                 /* but nothing actually happens... */
             } else {
                 rangemod -= 3;
                 if (see_it)
-                    Norep(_("The %s %s."), defsyms[S_bars].explanation,
+                    Norep(_("The %s %s."), tr_defsym_explanation(S_bars),
                           (damgtype == ZT_ACID) ? _("corrode away") : _("melt"));
                 dissolve_bars(x, y);
                 if (*in_rooms(x, y, SHOPBASE)) {

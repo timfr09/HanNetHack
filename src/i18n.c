@@ -196,6 +196,24 @@ tr_obj_name(const char *name)
 }
 
 /*
+ * Translate a defsym explanation string (terrain, trap, furniture).
+ * symidx is a cmap index (S_arrow_trap, S_fountain, &c).
+ */
+const char *
+tr_defsym_explanation(int symidx)
+{
+    if (symidx < 0 || symidx > MAXPCHARS)
+        return "";
+    if (!defsyms[symidx].explanation || !*defsyms[symidx].explanation)
+        return "";
+#ifdef ENABLE_NLS
+    return gettext(defsyms[symidx].explanation);
+#else
+    return defsyms[symidx].explanation;
+#endif
+}
+
+/*
  * Translate a spell name with disambiguation.
  *
  * Tries msgctxt "spell" first (for names like "light" and "knock" that

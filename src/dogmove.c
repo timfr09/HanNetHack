@@ -1510,7 +1510,7 @@ quickmimic(struct monst *mtmp)
     if (spotted || seeloc || canspotmon(mtmp)) {
         int prev_glyph = glyph_at(mtmp->mx, mtmp->my);
         const char *what = (M_AP_TYPE(mtmp) == M_AP_FURNITURE)
-                           ? defsyms[mtmp->mappearance].explanation
+                           ? tr_defsym_explanation(mtmp->mappearance)
                            : (M_AP_TYPE(mtmp) == M_AP_OBJECT
                               && OBJ_DESCR(objects[mtmp->mappearance]))
                              ? OBJ_DESCR(objects[mtmp->mappearance])

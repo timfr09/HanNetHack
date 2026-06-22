@@ -207,7 +207,7 @@ mhidden_description(
         if (incl_prefix)
             Strcpy(outbuf, _(", mimicking "));
         if (M_AP_TYPE(mon) == M_AP_FURNITURE) {
-            what = _(defsyms[mon->mappearance].explanation);
+            what = tr_defsym_explanation(mon->mappearance);
             if (incl_article)
                 what = an(what);
             Strcat(outbuf, what);
@@ -792,7 +792,7 @@ lookat(coordxy x, coordxy y, char *buf, char *monbuf)
             FALLTHROUGH;
             /*FALLTHRU*/
         default:
-            Strcpy(buf, _(defsyms[symidx].explanation));
+            Strcpy(buf, tr_defsym_explanation(symidx));
             break;
         }
     } else { /* not mon, obj, trap, or cmap */
@@ -1128,6 +1128,17 @@ checkfile(
 }
 
 /* extracted from do_screen_description() */
+static const char *
+cmap_descr_display(int idx, const char *x_str)
+{
+    int absidx = abs(idx);
+
+    if (absidx >= 0 && absidx <= MAXPCHARS && defsyms[absidx].explanation
+        && x_str == defsyms[absidx].explanation)
+        return tr_defsym_explanation(absidx);
+    return x_str;
+}
+
 staticfn int
 add_cmap_descr(
     int found,          /* number of matching descriptions so far */
@@ -1144,6 +1155,7 @@ add_cmap_descr(
 {
     char *mbuf = NULL;
     const char *p;
+    const char *disp_str;
     int absidx = abs(idx);
 
     if (glyph == NO_GLYPH) {
@@ -1213,17 +1225,19 @@ add_cmap_descr(
                     );
     }
 
+    disp_str = cmap_descr_display(idx, x_str);
+
     if (!found) {
         /* this is the first match */
         if (is_cmap_trap(idx) && idx != S_vibrating_square) {
             Sprintf(out_str, "%s%s", prefix, _("a trap"));
             *hit_trap = TRUE;
         } else {
-            Sprintf(out_str, "%s%s", prefix, (article == 2) ? the(x_str)
-                                             : (article == 1) ? an(x_str)
-                                               : x_str);
+            Sprintf(out_str, "%s%s", prefix, (article == 2) ? the(disp_str)
+                                             : (article == 1) ? an(disp_str)
+                                               : disp_str);
         }
-        *firstmatch = x_str;
+        *firstmatch = disp_str;
         found = 1;
     } else if (!(*hit_trap && is_cmap_trap(idx))
                && !(found >= 3 && is_cmap_drawbridge(idx))
@@ -1233,9 +1247,9 @@ add_cmap_descr(
                    || (glyph_is_trap(glyph)
                        && glyph_to_trap(glyph) == VIBRATING_SQUARE))) {
         /* append unless out_str already contains the string to append */
-        found += append_str(out_str, (article == 2) ? the(x_str)
-                                     : (article == 1) ? an(x_str)
-                                       : x_str);
+        found += append_str(out_str, (article == 2) ? the(disp_str)
+                                     : (article == 1) ? an(disp_str)
+                                       : disp_str);
         if (is_cmap_trap(idx) && idx != S_vibrating_square)
             *hit_trap = TRUE;
     }

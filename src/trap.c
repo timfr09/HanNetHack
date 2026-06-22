@@ -7171,7 +7171,7 @@ trapname(
         if (nameidx != NO_TRAP)
             ttyp = nameidx;
     }
-    return defsyms[trap_to_defsym(ttyp)].explanation;
+    return tr_defsym_explanation(trap_to_defsym(ttyp));
 }
 
 /* Ignite ignitable items (limited to light sources) in the given object

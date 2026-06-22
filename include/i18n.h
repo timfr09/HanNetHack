@@ -107,6 +107,9 @@ extern const char *tr_spell_name(const char *name);
 extern const char *tr_effect_name(const char *name);
 extern const char *tr_food_name(const char *name);
 
+/* Translate defsyms[].explanation (terrain, traps, furniture names). */
+extern const char *tr_defsym_explanation(int symidx);
+
 /*
  * Get localized filename for help/data files
  * If a non-English locale is active, returns "locale/<lang>/<filename>".

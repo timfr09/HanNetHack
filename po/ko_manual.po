@@ -59462,6 +59462,187 @@ msgstr "독 구름"
 msgid "valid position"
 msgstr "유효한 위치"
 
+# def_warnsyms / def_monsyms / def_oc_syms (farlook, i18n.c)
+#: ../src/i18n.c:223
+msgid "unknown creature causing you worry"
+msgstr "당신을 불안하게 만드는 정체불명의 존재"
+
+#: ../src/i18n.c:223
+msgid "unknown creature causing you concern"
+msgstr "당신을 걱정시키는 정체불명의 존재"
+
+#: ../src/i18n.c:223
+msgid "unknown creature causing you anxiety"
+msgstr "당신을 초조하게 만드는 정체불명의 존재"
+
+#: ../src/i18n.c:223
+msgid "unknown creature causing you disquiet"
+msgstr "당신을 불쾌하게 만드는 정체불명의 존재"
+
+#: ../src/i18n.c:223
+msgid "unknown creature causing you alarm"
+msgstr "당신을 경계하게 만드는 정체불명의 존재"
+
+#: ../src/i18n.c:223
+msgid "unknown creature causing you dread"
+msgstr "당신을 공포에 떨게 하는 정체불명의 존재"
+
+#: ../src/i18n.c:241
+msgid "ant or other insect"
+msgstr "개미 또는 그 밖의 곤충"
+
+#: ../src/i18n.c:241
+msgid "blob"
+msgstr "슬라임"
+
+#: ../src/i18n.c:241
+msgid "dog or other canine"
+msgstr "개 또는 그 밖의 개과 동물"
+
+#: ../src/i18n.c:241
+msgid "eye or sphere"
+msgstr "눈알 또는 구체"
+
+#: ../src/i18n.c:241
+msgid "cat or other feline"
+msgstr "고양이 또는 그 밖의 고양잇과"
+
+#: ../src/i18n.c:241
+msgid "humanoid"
+msgstr "인간형"
+
+#: ../src/i18n.c:241
+msgid "imp or minor demon"
+msgstr "임프 또는 하급 악마"
+
+#: ../src/i18n.c:241
+msgid "jelly"
+msgstr "젤리"
+
+#: ../src/i18n.c:241
+msgid "mimic"
+msgstr "미믹"
+
+#: ../src/i18n.c:241
+msgid "piercer"
+msgstr "피어서"
+
+#: ../src/i18n.c:241
+msgid "quadruped"
+msgstr "네 발 동물"
+
+#: ../src/i18n.c:241
+msgid "rodent"
+msgstr "설치류"
+
+#: ../src/i18n.c:241
+msgid "arachnid or centipede"
+msgstr "거미류 또는 지네"
+
+#: ../src/i18n.c:241
+msgid "trapper or lurker above"
+msgstr "트래퍼 또는 천장 잠복자"
+
+#: ../src/i18n.c:241
+msgid "unicorn or horse"
+msgstr "유니콘 또는 말"
+
+#: ../src/i18n.c:241
+msgid "vortex"
+msgstr "소용돌이"
+
+#: ../src/i18n.c:241
+msgid "xan or other mythical/fantastic insect"
+msgstr "잔 또는 그 밖의 환상 곤충"
+
+#: ../src/i18n.c:241
+msgid "angelic being"
+msgstr "천사"
+
+#: ../src/i18n.c:241
+msgid "bat or bird"
+msgstr "박쥐 또는 새"
+
+#: ../src/i18n.c:241
+msgid "elemental"
+msgstr "정령"
+
+#: ../src/i18n.c:241
+msgid "fungus or mold"
+msgstr "버섯 또는 곰팡이"
+
+#: ../src/i18n.c:241
+msgid "giant humanoid"
+msgstr "거인형"
+
+#: ../src/i18n.c:241
+msgid "invisible monster"
+msgstr "투명한 몬스터"
+
+#: ../src/i18n.c:241
+msgid "naga"
+msgstr "나가"
+
+#: ../src/i18n.c:241
+msgid "pudding or ooze"
+msgstr "푸딩 또는 슬라임"
+
+#: ../src/i18n.c:241
+msgid "rust monster or disenchanter"
+msgstr "녹슨 괴물 또는 디스인챈터"
+
+#: ../src/i18n.c:241
+msgid "apelike creature"
+msgstr "유인원 같은 존재"
+
+#: ../src/i18n.c:241
+msgid "human or elf"
+msgstr "인간 또는 엘프"
+
+#: ../src/i18n.c:241
+msgid "golem"
+msgstr "골렘"
+
+#: ../src/i18n.c:241
+msgid "major demon"
+msgstr "상급 악마"
+
+#: ../src/i18n.c:241
+msgid "sea monster"
+msgstr "바다 괴물"
+
+#: ../src/i18n.c:259
+msgid "suit or piece of armor"
+msgstr "갑옷 한 벌 또는 한 부위"
+
+#: ../src/i18n.c:259
+msgid "useful item (pick-axe, key, lamp...)"
+msgstr "유용한 물건 (곡괭이, 열쇠, 랜턴 등)"
+
+#: ../src/i18n.c:259
+msgid "piece of food"
+msgstr "음식 한 덩이"
+
+#: ../src/i18n.c:259
+msgid "pile of coins"
+msgstr "동전 더미"
+
+#: ../src/i18n.c:259
+msgid "gem or rock"
+msgstr "보석 또는 돌"
+
+#: ../src/i18n.c:259
+msgid "boulder or statue"
+msgstr "바위 또는 석상"
+
+#: ../src/i18n.c:259
+msgid "iron ball"
+msgstr "쇠구슬"
+
+#: ../src/i18n.c:259
+msgid "splash of venom"
+msgstr "독액 웅덩이"
+
 msgid "lay"
 msgstr "점토"
 

@@ -722,7 +722,7 @@ lookat(coordxy x, coordxy y, char *buf, char *monbuf)
     } else if (glyph_is_warning(glyph)) {
         int warnindx = glyph_to_warning(glyph);
 
-        Strcpy(buf, def_warnsyms[warnindx].explanation);
+        Strcpy(buf, tr_warnsym_explanation(warnindx));
     } else if (glyph_is_invisible(glyph)) {
         Strcpy(buf, _(invisexplain)); /* redundant; handled by caller */
     } else if (glyph_is_nothing(glyph)) {
@@ -1348,11 +1348,11 @@ do_screen_description(
                 need_to_look = TRUE;
                 if (!found) {
                     Sprintf(out_str, "%s%s",
-                            prefix, an(def_monsyms[i].explain));
-                    *firstmatch = def_monsyms[i].explain;
+                            prefix, an(tr_monsym_explain(i)));
+                    *firstmatch = tr_monsym_explain(i);
                     found++;
                 } else {
-                    found += append_str(out_str, an(def_monsyms[i].explain));
+                    found += append_str(out_str, an(tr_monsym_explain(i)));
                 }
             }
         }
@@ -1402,7 +1402,7 @@ do_screen_description(
                     continue;
                 }
                 if (!found) {
-                    Sprintf(out_str, "%s%s", prefix, an(oc_ptr));
+                    Sprintf(out_str, "%s%s", prefix, an(_(oc_ptr)));
                     /* note: if the value assigned to *firstmatch ever
                        becomes dynamically constructed, it will need to be
                        copied into a static buffer; as of now, all alternate
@@ -1410,7 +1410,7 @@ do_screen_description(
                     *firstmatch = oc_ptr;
                     found++;
                 } else {
-                    found += append_str(out_str, an(oc_ptr));
+                    found += append_str(out_str, an(_(oc_ptr)));
                 }
             }
         }
@@ -1525,12 +1525,14 @@ do_screen_description(
     for (i = 1; i < WARNCOUNT; i++) {
         x_str = def_warnsyms[i].explanation;
         if (sym == (looked ? gw.warnsyms[i] : def_warnsyms[i].sym)) {
+            const char *warn_disp = tr_warnsym_explanation(i);
+
             if (!found) {
-                Sprintf(out_str, "%s%s", prefix, x_str);
-                *firstmatch = x_str;;
+                Sprintf(out_str, "%s%s", prefix, warn_disp);
+                *firstmatch = warn_disp;;
                 found++;
             } else {
-                found += append_str(out_str, x_str);
+                found += append_str(out_str, warn_disp);
             }
             /* Kludge: warning trumps boulders on the display.
                Reveal the boulder too or player can get confused */
@@ -1544,11 +1546,11 @@ do_screen_description(
     if (skipped_venom && found < 2) {
         x_str = def_oc_syms[VENOM_CLASS].explain;
         if (!found) {
-            Sprintf(out_str, "%s%s", prefix, an(x_str));
+            Sprintf(out_str, "%s%s", prefix, an(tr_oclass_explain(VENOM_CLASS)));
             *firstmatch = x_str;
             found++;
         } else {
-            found += append_str(out_str, an(x_str));
+            found += append_str(out_str, an(tr_oclass_explain(VENOM_CLASS)));
         }
     }
 
@@ -2022,7 +2024,7 @@ look_all(
                 } else if (glyph_is_warning(glyph)) {
                     int warnindx = glyph_to_warning(glyph);
 
-                    Strcpy(lookbuf, def_warnsyms[warnindx].explanation);
+                    Strcpy(lookbuf, tr_warnsym_explanation(warnindx));
                     ++count;
                 }
             } else { /* !do_mons */

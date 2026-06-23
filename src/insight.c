@@ -2941,7 +2941,7 @@ list_vanquished(char defquery, boolean ask)
                 if (class_header
                     && (mlet != prev_mlet || (special_hdr && !Rider))) {
                     if (!Rider) {
-                        Strcpy(buf, _(def_monsyms[(int) mlet].explain));
+                        Strcpy(buf, tr_monsym_explain((int) mlet));
                         special_hdr = FALSE;
                     } else {
                         Strcpy(buf, _("Rider"));
@@ -3148,7 +3148,7 @@ list_genocided(char defquery, boolean ask)
                 mndx = mindx[i];
                 mlet = mons[mndx].mlet;
                 if (class_header && mlet != prev_mlet) {
-                    Strcpy(buf, _(def_monsyms[(int) mlet].explain));
+                    Strcpy(buf, tr_monsym_explain((int) mlet));
                     /* 'ask' implies final disclosure, where highlighting
                        of various header lines is suppressed */
                     putstr(klwin, ask ? ATR_NONE : iflags.menu_headings.attr,

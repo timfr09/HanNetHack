@@ -1678,7 +1678,7 @@ choose_classes_menu(const char *prompt,
                 panic(_("choose_classes_menu: invalid monclass '%c'"),                       *class_list);
                 /*NOTREACHED*/
             }
-            text = def_monsyms[idx].explain;
+            text = tr_monsym_explain(idx);
             accelerator = *class_list;
             Sprintf(buf, "%s", text);
             break;
@@ -1688,7 +1688,7 @@ choose_classes_menu(const char *prompt,
                 panic(_("choose_classes_menu: invalid objclass '%c'"),                       *class_list);
                 /*NOTREACHED*/
             }
-            text = def_oc_syms[idx].explain;
+            text = tr_oclass_explain(idx);
             accelerator = next_accelerator;
             Sprintf(buf, "%c  %s", *class_list, text);
             break;

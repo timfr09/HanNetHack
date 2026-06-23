@@ -110,6 +110,11 @@ extern const char *tr_food_name(const char *name);
 /* Translate defsyms[].explanation (terrain, traps, furniture names). */
 extern const char *tr_defsym_explanation(int symidx);
 
+/* Translate def_warnsyms[], def_monsyms[], def_oc_syms[] farlook strings. */
+extern const char *tr_warnsym_explanation(int warnidx);
+extern const char *tr_monsym_explain(int monidx);
+extern const char *tr_oclass_explain(int ocidx);
+
 /*
  * Get localized filename for help/data files
  * If a non-English locale is active, returns "locale/<lang>/<filename>".

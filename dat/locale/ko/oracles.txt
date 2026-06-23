@@ -1,3 +1,6 @@
+# NetHack 5.0  oracles.txt.ko       $NHDT-Branch: NetHack-5.0 $
+# Korean translation of oracles
+#
 -----
 그대의 지팡이가 충전을 다했다면, 다시 또 다시 휘두를지니;
 처음에는 아무 일도 일어나지 않으나, 진실로, 그대의 끈기는 보상받으리라,

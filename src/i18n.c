@@ -214,6 +214,58 @@ tr_defsym_explanation(int symidx)
 }
 
 /*
+ * Translate a warning-glyph description (def_warnsyms[]).
+ */
+const char *
+tr_warnsym_explanation(int warnidx)
+{
+    if (warnidx < 0 || warnidx >= WARNCOUNT)
+        return "";
+    if (!def_warnsyms[warnidx].explanation
+        || !*def_warnsyms[warnidx].explanation)
+        return "";
+#ifdef ENABLE_NLS
+    return gettext(def_warnsyms[warnidx].explanation);
+#else
+    return def_warnsyms[warnidx].explanation;
+#endif
+}
+
+/*
+ * Translate a monster class description (def_monsyms[]).
+ */
+const char *
+tr_monsym_explain(int monidx)
+{
+    if (monidx < 0 || monidx >= MAXMCLASSES)
+        return "";
+    if (!def_monsyms[monidx].explain || !*def_monsyms[monidx].explain)
+        return "";
+#ifdef ENABLE_NLS
+    return gettext(def_monsyms[monidx].explain);
+#else
+    return def_monsyms[monidx].explain;
+#endif
+}
+
+/*
+ * Translate an object class description (def_oc_syms[]).
+ */
+const char *
+tr_oclass_explain(int ocidx)
+{
+    if (ocidx < 0 || ocidx >= MAXOCLASSES)
+        return "";
+    if (!def_oc_syms[ocidx].explain || !*def_oc_syms[ocidx].explain)
+        return "";
+#ifdef ENABLE_NLS
+    return gettext(def_oc_syms[ocidx].explain);
+#else
+    return def_oc_syms[ocidx].explain;
+#endif
+}
+
+/*
  * Translate a spell name with disambiguation.
  *
  * Tries msgctxt "spell" first (for names like "light" and "knock" that

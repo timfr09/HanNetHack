@@ -1385,32 +1385,39 @@ do_screen_description(
                    monster they depict rather than as S_rock; boulders might
                    be displayed as a custom symbol rather than as S_rock */
                 : (glyph_is_statue(glyph) || sym == bouldersym)) {
-                oc_ptr = def_oc_syms[i].explain;
-                /* for added fun, engravings are shown with the same symbol
-                   as S_rock which is why we want to shorten this */
-                if (i == ROCK_CLASS && !strcmp(oc_ptr, "boulder or statue")) {
-                    if (sym == bouldersym)
-                        oc_ptr = "boulder"; /* discard "or statue" */
-                    else if (glyph_is_statue(glyph))
-                        oc_ptr = "statue"; /* discard "boulder or" */
-                    else if (looked)
-                        continue; /* discard both */
-                }
-                need_to_look = TRUE;
-                if (looked && i == VENOM_CLASS) {
-                    skipped_venom++;
-                    continue;
-                }
-                if (!found) {
-                    Sprintf(out_str, "%s%s", prefix, an(_(oc_ptr)));
-                    /* note: if the value assigned to *firstmatch ever
-                       becomes dynamically constructed, it will need to be
-                       copied into a static buffer; as of now, all alternate
-                       values are string literals and implicitly static */
-                    *firstmatch = oc_ptr;
-                    found++;
-                } else {
-                    found += append_str(out_str, an(_(oc_ptr)));
+                {
+                    const char *oc_disp;
+                    boolean full_oclass;
+
+                    oc_ptr = def_oc_syms[i].explain;
+                    /* for added fun, engravings are shown with the same symbol
+                       as S_rock which is why we want to shorten this */
+                    full_oclass = TRUE;
+                    if (i == ROCK_CLASS && !strcmp(oc_ptr, "boulder or statue")) {
+                        if (sym == bouldersym)
+                            oc_ptr = "boulder", full_oclass = FALSE;
+                        else if (glyph_is_statue(glyph))
+                            oc_ptr = "statue", full_oclass = FALSE;
+                        else if (looked)
+                            continue; /* discard both */
+                    }
+                    oc_disp = full_oclass ? tr_oclass_explain(i) : _(oc_ptr);
+                    need_to_look = TRUE;
+                    if (looked && i == VENOM_CLASS) {
+                        skipped_venom++;
+                        continue;
+                    }
+                    if (!found) {
+                        Sprintf(out_str, "%s%s", prefix, an(oc_disp));
+                        /* note: if the value assigned to *firstmatch ever
+                           becomes dynamically constructed, it will need to be
+                           copied into a static buffer; as of now, all alternate
+                           values are string literals and implicitly static */
+                        *firstmatch = oc_disp;
+                        found++;
+                    } else {
+                        found += append_str(out_str, an(oc_disp));
+                    }
                 }
             }
         }
@@ -1547,7 +1554,7 @@ do_screen_description(
         x_str = def_oc_syms[VENOM_CLASS].explain;
         if (!found) {
             Sprintf(out_str, "%s%s", prefix, an(tr_oclass_explain(VENOM_CLASS)));
-            *firstmatch = x_str;
+            *firstmatch = tr_oclass_explain(VENOM_CLASS);
             found++;
         } else {
             found += append_str(out_str, an(tr_oclass_explain(VENOM_CLASS)));

@@ -6416,10 +6416,13 @@ makewish(void)
     if (otmp->otyp == CORPSE && !u_safe_from_fatal_corpse(otmp, st_all))
         otmp->wishedfor = 1;
 
+    /* C_("wish_fall"): Korean translates these as the copula sentinel so
+       aobjnam() drops the verb; the oops_msg formats carry it instead */
     const char *verb = ((Is_airlevel(&u.uz) || u.uinwater)
                         ? _("slip")
                         : (otmp->otyp == CORPSE && otmp->wishedfor)
-                          ? _("materialize") : _("drop")),
+                          ? C_("wish_fall", "materialize")
+                          : C_("wish_fall", "drop")),
                *oops_msg = (u.uswallow
                             ? _("Oops!  %s out of your reach!")
                             : (Is_airlevel(&u.uz) || Is_waterlevel(&u.uz)

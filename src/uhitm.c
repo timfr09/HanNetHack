@@ -5355,7 +5355,9 @@ mhitm_knockback(
 
     /* give the message */
     if (u_def || canseemon(mdef)) {
-        Strcpy(magrbuf, u_agr ? _("You") : Monnam(magr));
+        /* C_("subject"): bare "당신" so the format's {이/가} attaches
+           cleanly (plain "You" is translated with a built-in particle) */
+        Strcpy(magrbuf, u_agr ? C_("subject", "You") : Monnam(magr));
         Strcpy(mdefbuf, (u_def || was_u) ? _("you") : y_monnam(mdef));
         if (was_u)
             Snprintf(eos(mdefbuf), sizeof mdefbuf - strlen(mdefbuf),

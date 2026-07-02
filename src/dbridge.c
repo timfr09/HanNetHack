@@ -363,7 +363,9 @@ E_phrase(struct entity *etmp, const char *verb)
 {
     static char wholebuf[80];
 
-    Strcpy(wholebuf, is_u(etmp) ? _("You") : Monnam(etmp->emon));
+    /* C_("subject"): bare "당신" so outer formats' {이/가} attach
+       cleanly (plain "You" is translated with a built-in particle) */
+    Strcpy(wholebuf, is_u(etmp) ? C_("subject", "You") : Monnam(etmp->emon));
     if (!verb || !*verb)
         return wholebuf;
     /* Korean format strings embed their own verbs; skip English verb */

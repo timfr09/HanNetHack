@@ -785,9 +785,11 @@ msgstr " 환각"
 msgid " In:%s"
 msgstr " 지능:%s"
 
+# mon.c wake_msg() - "%s wakes up%s%s"의 %3$s (살덩이 골렘, 프랑켄슈타인 인용)
+# 조합: "살덩이 골렘이 깨어났다! 살아있다!"
 #: ../src/mon.c:4301
 msgid " It's alive!"
-msgstr "살아난다"
+msgstr " 살아있다!"
 
 #: ../src/botl.c:215 ../src/windows.c:1014
 msgid " Lev"
@@ -3339,7 +3341,7 @@ msgstr "%1$.0s%2$s{이/가} 유황 구름 속에서 사라졌다!%3$.0s"
 #: ../src/do.c:104
 #, c-format
 msgid "%s %s %s into the %s."
-msgstr "%1$s{이/가} %3$s{을/를} %4$s 속으로 %2$s"
+msgstr "%1$s{이/가} %3$s{을/를} %4$s 속으로 %2$s."
 
 # 조합 패턴: 알에서 부화한 몬스터의 울음 소리
 # "%s %s %s like \"%s%s\""
@@ -3381,10 +3383,12 @@ msgstr "%s %s{이/가} 정말로 %s %s."
 msgid "%s %s %s spider web!"
 msgstr "%1$s{이/가} %3$.0s거미줄을 %2$s!"
 
+# timeout.c 빙판 미끄러짐: %1$s="당신은"/탈것 이름, %2$s=slip("이다" 계사 억제)/slide, %3$s=C_("ice_slip","on"/"off")
+# 조합: "당신은 얼음 위에서 미끄러졌다." / "당신은 얼음을 벗어나다가 미끄러졌다."
 #: ../src/timeout.c:1267
 #, c-format
 msgid "%s %s %s the ice."
-msgstr "%s{이/가} %s 얼음을 %s."
+msgstr "%1$s %3$s 미끄러졌다.%2$.0s"
 
 # monmove.c:1636 — 철창
 #: ../src/monmove.c:1638
@@ -3404,8 +3408,10 @@ msgstr "%s{이/가} %s 철창을 %s."
 # ============================================================
 #: ../src/dogmove.c:1533
 #, c-format
+# %1$s=볼 수 있다/느꼈다(억제), %2$s=물체명, %3$s="나타난다"/"나타난 것 같다", %4$s=펫 이름
+# 조합: "피도가 있던 곳에 금화가 나타난다!" / "…나타난 것 같다!"
 msgid "%s %s %s where %s was!"
-msgstr "%4$s가 있던 곳에서 %2$s{이/가} %3$s 것을 %1$s"
+msgstr "%4$s{이/가} 있던 곳에 %2$s{이/가} %3$s!%1$.0s"
 
 # --- 조합 포맷 오버라이드 ---
 # potion.c:2518 - 물약끼리 혼합
@@ -3888,10 +3894,12 @@ msgstr "아래 흙더미 속에 %2$s %1$s."
 msgid "%s %s in pain!"
 msgstr "%s %s{이/가} 고통스럽다!"
 
+# %1$s="휘두르게 되었다"/"휘두르고 있다"(동사), %2$s=시체 이름, %3$s=손
+# 조합: "맨 손으로 코카트리스 시체를 휘두르게 되었다."
 #: ../src/do_wear.c:625
 #, c-format
 msgid "%s %s in your bare %s."
-msgstr "%s{이/가} 맨 %s{으로/로} %s."
+msgstr "맨 %3$s{으로/로} %2$s{을/를} %1$s."
 
 # [조합 메시지] pray.c:795 - 선물이 몬스터 위장으로 떨어짐
 # 조합 요소:
@@ -4144,7 +4152,7 @@ msgstr "%s %s{이/가} %s에서 빼앗겼다!"
 #: ../src/dogmove.c:1308
 #, c-format
 msgid "%s %s reluctantly %s %s."
-msgstr "%1$s{이/가} 마지못해 %4$s %3$s %2$s"
+msgstr "%1$s{이/가} 마지못해 %4$s %3$s %2$s."
 
 #: ../src/zap.c:5406
 #, c-format
@@ -4704,8 +4712,9 @@ msgstr "%2$s{을/를}%3$s %1$s"
 # → "당신의 다른 검이 왼손에서 또한 미끄러졌다."
 #: ../src/do_wear.c:2612
 #, c-format
+# %5$s=otense("slip")="이다"(계사 억제 표기)이므로 동사는 msgstr에 직접 기재
 msgid "%s %s%s %s%s from your %s%s."
-msgstr "%1$s %2$s%3$s{이/가} %6$s%7$s에서 %4$s%5$s"
+msgstr "%1$s %2$s%3$s{이/가} %6$s%7$s에서 %4$s미끄러졌다.%5$.0s"
 
 # ============================================================
 # 무기 미끄러짐 메시지 (Weapon slipping message)
@@ -4717,8 +4726,9 @@ msgstr "%1$s %2$s%3$s{이/가} %6$s%7$s에서 %4$s%5$s"
 # ============================================================
 #: ../src/do_wear.c:2576
 #, c-format
+# %3$s=otense("slip")="이다"(계사 억제 표기)이므로 동사는 msgstr에 직접 기재
 msgid "%s %s%s from your %s%s."
-msgstr "%1$s{이/가} %4$s%5$s에서 %2$s%3$s"
+msgstr "%1$s{이/가} %4$s%5$s에서 %2$s미끄러졌다.%3$.0s"
 
 #: ../src/mkobj.c:1630
 #, c-format
@@ -5859,10 +5869,11 @@ msgstr "%s{은/는} 점자를 만들 수 없다."
 msgid "%s can't lay eggs!"
 msgstr "%s 알을 낳을 수 없다!"
 
+# %1$s="당신은"(You) 또는 "…지팡이 끝이" — 슬롯이 자체 조사를 포함하므로 여기서는 붙이지 않음
 #: ../src/engrave.c:221
 #, c-format
 msgid "%s can't reach the %s."
-msgstr "%s{이/가} %s에 닿을 수 없다."
+msgstr "%s %s에 닿을 수 없다."
 
 #: ../src/apply.c:1119
 #, c-format
@@ -5969,7 +5980,7 @@ msgstr "%s{이/가} %s{으로/로} 변했다."
 #: ../src/steal.c:532
 #, c-format
 msgid "%s charms you.  You gladly %s your %s."
-msgstr "%1$s{이/가} 매혹한다. 기꺼이 %3$s{을/를} %2$s"
+msgstr "%1$s{이/가} 매혹한다. 기꺼이 %3$s{을/를} %2$s."
 
 #: ../src/hack.c:710
 #, c-format
@@ -10391,10 +10402,11 @@ msgstr "%s{이/가} 당신을 완전히 소화시켰다!"
 msgid "%s touch %s."
 msgstr "%s{이/가} %s{을/를} 만졌다."
 
+# %1$s="당신은"/"떨어지며"/"장갑을 잃은 후" 등 — 부사구가 올 수 있어 조사를 붙이지 않음
 #: ../src/trap.c:3905 ../src/trap.c:3917
 #, c-format
 msgid "%s touch the %s corpse."
-msgstr "%s{이/가} %s 시체를 만졌다."
+msgstr "%1$s %2$s 시체를 만졌다."
 
 #: ../src/mhitm.c:685
 #, c-format
@@ -14839,10 +14851,23 @@ msgstr "참사회원"
 msgid "Canoness"
 msgstr "여참사회원"
 
+# %s = The(aobjnam(obj, materialize)) = "name{이/가}" (wish_fall 계사 억제)
+# 조합: "조심하세요! 코카트리스 시체가 바닥에 나타났다!"
 #: ../src/zap.c:6416
 #, c-format
 msgid "Careful! %s on the floor!"
-msgstr "조심하세요! %s{이/가} 바닥에 있다!"
+msgstr "조심하세요! %s 바닥에 나타났다!"
+
+# zap.c 소원 아이템 낙하 동사 — 한국어는 계사로 억제하고 바깥 포맷이 동사를 가짐
+#: ../src/zap.c:6424
+msgctxt "wish_fall"
+msgid "materialize"
+msgstr "이다"
+
+#: ../src/zap.c:6425
+msgctxt "wish_fall"
+msgid "drop"
+msgstr "이다"
 
 # ============================================================
 # Looney Tunes 가짜 라틴어 코요테 이름 (환각 효과)
@@ -15479,7 +15504,7 @@ msgstr "도둑을 처치해라, 내 애완동물이여!%.0s"
 
 #: ../src/end.c:1111
 msgid "Die?"
-msgstr "죽으겠습니까?"
+msgstr "죽겠습니까?"
 
 #: ../src/iactions.c:398
 msgid "Dig with this digging tool"
@@ -16210,10 +16235,10 @@ msgstr "기절    "
 msgid "Fainting"
 msgstr "기절 중 "
 
-# selftouch messages
+# selftouch messages — "%s%s touches %s."의 접두 부사구 (뒤에 몬스터 이름이 붙으므로 공백 필요)
 #: ../src/music.c:273 ../src/trap.c:2013
 msgid "Falling, "
-msgstr "떨어지며"
+msgstr "떨어지며 "
 
 # selftouch messages
 #: ../src/do.c:1796 ../src/do.c:1808 ../src/eat.c:3430 ../src/hack.c:871
@@ -19418,10 +19443,12 @@ msgstr "수치 임계값"
 msgid "OFF"
 msgstr "끔"
 
+# %s = "죽음"/"질식" (명사 슬롯)
+# 조합: "좋다, 그럼 죽음은 없던 일로 한다."
 #: ../src/end.c:1112
 #, c-format
 msgid "OK, so you don't %s."
-msgstr "좋아, 그래서 %s하지 않는다."
+msgstr "좋다, 그럼 %s{은/는} 없던 일로 한다."
 
 #: ../src/options.c:9298
 #, c-format
@@ -19631,12 +19658,12 @@ msgstr "이런! %s 손아귀에서 미끄러졌다!"
 msgid "Oops!  %s out of your reach!"
 msgstr "이런! %s 손이 닿지 않는 곳으로 갔다!"
 
-# [리뷰 완료] mkobj.c:2903 — The(aobjnam)+slip, 바닥 미끄러짐
-# %s = The(aobjnam(obj, "slip")) = "name{이/가}" (계사 억제)
+# [리뷰 완료] mkobj.c:2903 — The(aobjnam)+slip/drop, 바닥 낙하 (동사는 계사 억제)
+# %s = The(aobjnam(obj, verb)) = "name{이/가}"
 #: ../src/mkobj.c:2900 ../src/zap.c:6415
 #, c-format
 msgid "Oops!  %s to the floor!"
-msgstr "이런! %s 바닥으로 미끄러졌다!"
+msgstr "이런! %s 바닥에 떨어졌다!"
 
 #: ../src/rumors.c:164 ../src/teleport.c:1218
 msgid "Oops..."
@@ -21070,7 +21097,7 @@ msgstr "충돌을 원하니, 더 받아라!"
 #: ../src/topten.c:747
 #, c-format
 msgid "Since you were in %s mode, the score list will not be checked."
-msgstr "%s 모드였기 때문에, 점수 목록이 확인되지 않다."
+msgstr "%s 모드였기 때문에 점수 목록에는 기록되지 않는다."
 
 #: ../src/wield.c:701
 #, c-format
@@ -21911,7 +21938,7 @@ msgstr "이 갑옷 벗기"
 #: ../src/do_wear.c:3001
 #, c-format
 msgid "Take off your %s despite carrying a dead %s?"
-msgstr "죽은 %2$s 시체를 들고 있는데도 %1$s{을/를} 벗으시겠습니까?"
+msgstr "%2$s 시체를 든 채로 %1$s{을/를} 벗으시겠습니까?"
 
 #: ../src/mhitu.c:2336
 #, c-format
@@ -25206,11 +25233,17 @@ msgstr "이크! 스스로를 얼렸다!"
 msgid "Yo' mama"
 msgstr "엄마 이름"
 
-#: ../src/dbridge.c:366 ../src/do.c:1761 ../src/do_wear.c:3248
+#: ../src/do.c:1761 ../src/do_wear.c:3248
 #: ../src/end.c:1452 ../src/engrave.c:224 ../src/pray.c:575
-#: ../src/timeout.c:1270 ../src/uhitm.c:5358
+#: ../src/timeout.c:1270
 msgid "You"
 msgstr "당신은"
+
+# 조합 포맷이 {이/가} 조사를 직접 붙이는 자리용 (dbridge.c, uhitm.c 밀쳐내기)
+#: ../src/dbridge.c:366 ../src/uhitm.c:5360
+msgctxt "subject"
+msgid "You"
+msgstr "당신"
 
 # ============================================================
 # [조합 메시지] 동사 접두어 - have/had
@@ -29363,6 +29396,7 @@ msgstr "해를 입지 않았다!"
 msgid "are uninjured."
 msgstr "다치지 않았다."
 
+# "%s %s in your bare %s." 문장 종결 동사 슬롯
 #: ../src/do_wear.c:626
 msgid "are wielding"
 msgstr "휘두르고 있다"
@@ -40142,10 +40176,10 @@ msgstr "하프"
 msgid "has"
 msgstr "가지고 있다"
 
-# 조합: 시각적으로 볼 수 없을 때 (과거형)
+# 조합: 시각적으로 볼 수 없을 때 — "%s where %s was!" 문장 종결형
 #: ../src/dogmove.c:1536
 msgid "has appeared"
-msgstr "나타난"
+msgstr "나타난 것 같다"
 
 #: ../src/dog.c:1337
 msgid "has become feral"
@@ -46056,9 +46090,10 @@ msgstr "허기가 약간 줄었다."
 msgid "now have no ammunition readied."
 msgstr "이제 탄약이 준비되지 않았다."
 
+# "%s %s in your bare %s." 문장 종결 동사 슬롯
 #: ../src/do_wear.c:626
 msgid "now wield"
-msgstr "이제 휘두르다"
+msgstr "휘두르게 되었다"
 
 #: ../src/wield.c:733
 #, c-format
@@ -46226,6 +46261,17 @@ msgstr "커서 아래 지형의 "
 #: ../src/timeout.c:1277
 msgid "off"
 msgstr "꺼짐"
+
+# timeout.c 빙판 미끄러짐 조합: "%s the ice" 위치 구
+#: ../src/timeout.c:1278
+msgctxt "ice_slip"
+msgid "on"
+msgstr "얼음 위에서"
+
+#: ../src/timeout.c:1279
+msgctxt "ice_slip"
+msgid "off"
+msgstr "얼음을 벗어나다가"
 
 #: ../src/getpos.c:966 ../src/iactions.c:680 ../src/insight.c:860
 msgctxt "toggle"
@@ -50662,6 +50708,41 @@ msgstr "방패"
 #: ../src/obj_descr_i18n.c:195
 msgid "shield of reflection"
 msgstr "반사 방패"
+
+# ============================================================
+# objnam.c *_simple_name() - 방어구 간이 명칭 (메시지 조합용)
+# ============================================================
+#: ../src/objnam.c:5620
+msgid "dragon mail"
+msgstr "용 비늘 갑옷"
+
+#: ../src/objnam.c:5622
+msgid "dragon scales"
+msgstr "용 비늘"
+
+#: ../src/objnam.c:5628
+msgid "jacket"
+msgstr "재킷"
+
+#: ../src/objnam.c:5642
+msgid "wrapping"
+msgstr "붕대"
+
+#: ../src/objnam.c:5645
+msgid "smock"
+msgstr "작업복"
+
+#: ../src/objnam.c:5687
+msgid "gauntlets"
+msgstr "건틀릿"
+
+#: ../src/objnam.c:5706
+msgid "shoes"
+msgstr "신발"
+
+#: ../src/objnam.c:5718
+msgid "silver shield"
+msgstr "은 방패"
 
 # Item type names (note: "potion" is already defined elsewhere)
 #: ../src/shk.c:5324
@@ -58636,9 +58717,15 @@ msgstr "정말 종료하겠습니까?"
 msgid "Recover? [yn] "
 msgstr "복구할까요? [yn] "
 
-# 지진으로 흔들린 후 행동
+# 지진으로 흔들린 후 행동 (music.c:331 selftouch)
+#: ../src/music.c:331
 msgid "Shaken, you"
 msgstr "흔들리며, 당신은"
+
+# mon.c:5470 mselftouch - "%s%s touches %s."의 접두 부사구
+#: ../src/mon.c:5470
+msgid "No longer petrify-resistant, "
+msgstr "더 이상 석화에 저항하지 못하는 "
 
 msgid "Some monster"
 msgstr "괴물이"

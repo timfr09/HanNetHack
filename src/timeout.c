@@ -1274,7 +1274,8 @@ slip_or_trip(void)
               vtense(u.usteed ? "steed" : "you", rn2(2) ? _("slip") : _("slide")),
               /* sometimes slipping due to ice occurs during turn that hero
                  has just moved off the ice; phrase things differently then */
-              is_ice(u.ux, u.uy) ? _("on") : _("off"));
+              is_ice(u.ux, u.uy) ? C_("ice_slip", "on")
+                                 : C_("ice_slip", "off"));
         /* fumbling outside of ice while mounted always causes the hero to
            fall from the saddle (unless it is cursed), so to avoid a
            counterintuitive effect where ice makes riding _less_ hazardous,

@@ -5617,18 +5617,18 @@ suit_simple_name(struct obj *suit)
 
     if (suit) {
         if (Is_dragon_mail(suit))
-            return "dragon mail"; /* <color> dragon scale mail */
+            return _("dragon mail"); /* <color> dragon scale mail */
         else if (Is_dragon_scales(suit))
-            return "dragon scales";
+            return _("dragon scales");
         suitnm = OBJ_NAME(objects[suit->otyp]);
         esuitp = eos((char *) suitnm);
         if (strlen(suitnm) > 5 && !strcmp(esuitp - 5, " mail"))
-            return "mail"; /* most suits fall into this category */
+            return _("mail"); /* most suits fall into this category */
         else if (strlen(suitnm) > 7 && !strcmp(esuitp - 7, " jacket"))
-            return "jacket"; /* leather jacket */
+            return _("jacket"); /* leather jacket */
     }
     /* "suit" is lame but "armor" is ambiguous and "body armor" is absurd */
-    return "suit";
+    return _("suit");
 }
 
 const char *
@@ -5637,18 +5637,18 @@ cloak_simple_name(struct obj *cloak)
     if (cloak) {
         switch (cloak->otyp) {
         case ROBE:
-            return "robe";
+            return _("robe");
         case MUMMY_WRAPPING:
-            return "wrapping";
+            return _("wrapping");
         case ALCHEMY_SMOCK:
             return (objects[cloak->otyp].oc_name_known && cloak->dknown)
-                       ? "smock"
-                       : "apron";
+                       ? _("smock")
+                       : _("apron");
         default:
             break;
         }
     }
-    return "cloak";
+    return _("cloak");
 }
 
 /* helm vs hat for messages */
@@ -5684,9 +5684,9 @@ gloves_simple_name(struct obj *gloves)
 
         if (strstri(objects[otyp].oc_name_known ? actualn : descrpn,
                     gauntlets))
-            return gauntlets;
+            return _("gauntlets");
     }
-    return "gloves";
+    return _("gloves");
 }
 
 /* boots vs shoes; depends upon discovery state */
@@ -5703,9 +5703,9 @@ boots_simple_name(struct obj *boots)
 
         if (strstri(descrpn, shoes)
             || (objects[otyp].oc_name_known && strstri(actualn, shoes)))
-            return shoes;
+            return _("shoes");
     }
-    return "boots";
+    return _("boots");
 }
 
 /* simplified shield for messages */
@@ -5715,7 +5715,7 @@ shield_simple_name(struct obj *shield)
     if (shield) {
         /* xname() describes unknown (unseen) reflection as smooth */
         if (shield->otyp == SHIELD_OF_REFLECTION)
-            return shield->dknown ? "silver shield" : "smooth shield";
+            return shield->dknown ? _("silver shield") : _("smooth shield");
         /*
          * We might distinguish between wooden vs metallic or
          * light vs heavy to give small benefit to spell casters.
@@ -5735,14 +5735,14 @@ shield_simple_name(struct obj *shield)
                : "light shield";
 #endif
     }
-    return "shield";
+    return _("shield");
 }
 
 /* for completeness */
 const char *
 shirt_simple_name(struct obj *shirt UNUSED)
 {
-    return "shirt";
+    return _("shirt");
 }
 
 const char *

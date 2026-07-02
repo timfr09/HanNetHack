@@ -731,7 +731,8 @@ angrygods(aligntyp resp_god)
     case 0:
     case 1:
         You_feel(_("that %s is %s."), align_gname(resp_god),
-                 Hallucination ? _("bummed") : _("displeased"));
+                 Hallucination ? C_("god_mood", "bummed")
+                               : C_("god_mood", "displeased"));
         break;
     case 2:
     case 3:
@@ -1081,10 +1082,13 @@ pleased(aligntyp g_align)
 
     You_feel(_("that %s is %s."), align_gname(g_align),
              (u.ualign.record >= DEVOUT)
-                 ? Hallucination ? _("pleased as punch") : _("well-pleased")
+                 ? Hallucination ? C_("god_mood", "pleased as punch")
+                                 : C_("god_mood", "well-pleased")
                  : (u.ualign.record >= STRIDENT)
-                       ? Hallucination ? _("ticklish") : _("pleased")
-                       : Hallucination ? _("full") : _("satisfied"));
+                       ? Hallucination ? C_("god_mood", "ticklish")
+                                       : C_("god_mood", "pleased")
+                       : Hallucination ? C_("god_mood", "full")
+                                       : C_("god_mood", "satisfied"));
 
     /* not your deity */
     if (on_altar() && gp.p_aligntyp != u.ualign.type) {
@@ -2217,7 +2221,7 @@ dopray(void)
      */
     if (ParanoidPray) {
         ok = paranoid_query(ParanoidConfirm,
-                            "Are you sure you want to pray?");
+                            _("Are you sure you want to pray?"));
 #if 0
         /* clear command recall buffer; otherwise ^A to repeat p(ray) would
            do so without confirmation (if 'ok') or do nothing (if '!ok') */

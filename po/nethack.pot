@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-07-02 12:43+0000\n"
+"POT-Creation-Date: 2026-07-02 13:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-02 12:43+0000\n"
+"POT-Creation-Date: 2026-07-02 13:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -273,7 +273,7 @@ msgstr ""
 #: ../src/invent.c:4314 ../src/invent.c:5620 ../src/mon.c:5733
 #: ../src/pickup.c:1702 ../src/pickup.c:2599 ../src/pickup.c:3004
 #: ../src/pickup.c:3694 ../src/potion.c:2670 ../src/potion.c:2704
-#: ../src/pray.c:1183 ../src/read.c:1147 ../src/read.c:1652 ../src/steal.c:796
+#: ../src/pray.c:1187 ../src/read.c:1147 ../src/read.c:1652 ../src/steal.c:796
 #: ../src/timeout.c:341 ../src/timeout.c:1615 ../src/trap.c:269
 #: ../src/trap.c:278 ../src/trap.c:5936 ../src/uhitm.c:1918 ../src/uhitm.c:6237
 #: ../src/weapon.c:870 ../src/wield.c:773 ../src/wield.c:1067 ../src/worn.c:996
@@ -552,7 +552,7 @@ msgstr ""
 #: ../src/mhitu.c:1649 ../src/muse.c:3146 ../src/music.c:615
 #: ../src/objnam.c:3778 ../src/objnam.c:3827 ../src/objnam.c:3958
 #: ../src/pickup.c:407 ../src/potion.c:1679 ../src/pray.c:578
-#: ../src/pray.c:1501 ../src/pray.c:1772 ../src/read.c:1358 ../src/read.c:2666
+#: ../src/pray.c:1505 ../src/pray.c:1776 ../src/read.c:1358 ../src/read.c:2666
 #: ../src/read.c:2870 ../src/sit.c:500 ../src/teleport.c:1084
 #: ../src/teleport.c:1380 ../src/trap.c:4660 ../src/uhitm.c:2996
 #: ../src/wield.c:235 ../src/wield.c:669 ../src/wield.c:903 ../src/wield.c:1001
@@ -1226,7 +1226,7 @@ msgstr ""
 #: ../src/apply.c:1607 ../src/do.c:2472 ../src/eat.c:3499 ../src/hack.c:3823
 #: ../src/insight.c:1010 ../src/invent.c:4175 ../src/lock.c:595
 #: ../src/lock.c:597 ../src/lock.c:862 ../src/lock.c:1024 ../src/potion.c:2667
-#: ../src/potion.c:2670 ../src/pray.c:567 ../src/pray.c:1218 ../src/read.c:1144
+#: ../src/potion.c:2670 ../src/pray.c:567 ../src/pray.c:1222 ../src/read.c:1144
 #: ../src/read.c:1156 ../src/read.c:1660 ../src/trap.c:360 ../src/trap.c:6070
 #: ../src/wizard.c:78 ../src/wizard.c:80 ../src/wizard.c:82
 msgid "feel"
@@ -1661,7 +1661,7 @@ msgstr ""
 #: ../src/apply.c:2462 ../src/apply.c:2465 ../src/apply.c:2494 ../src/do.c:829
 #: ../src/mkobj.c:2922 ../src/mthrowu.c:823 ../src/mthrowu.c:961
 #: ../src/obj_descr_i18n.c:425 ../src/pickup.c:3841 ../src/polyself.c:1324
-#: ../src/pray.c:799 ../src/timeout.c:1115 ../src/timeout.c:1118
+#: ../src/pray.c:800 ../src/timeout.c:1115 ../src/timeout.c:1118
 #: ../src/timeout.c:1154 ../src/weapon.c:772 ../src/wield.c:819
 msgid "drop"
 msgstr ""
@@ -5569,7 +5569,7 @@ msgstr ""
 msgid "see"
 msgstr ""
 
-#: ../src/detect.c:1759 ../src/pray.c:2294
+#: ../src/detect.c:1759 ../src/pray.c:2298
 msgid "hear"
 msgstr ""
 
@@ -6422,7 +6422,7 @@ msgid "throne"
 msgstr ""
 
 #: ../src/dig.c:1822 ../src/dungeon.c:1782 ../src/dungeon.c:3619
-#: ../src/pray.c:1529
+#: ../src/pray.c:1533
 msgid "altar"
 msgstr ""
 
@@ -6789,7 +6789,7 @@ msgid "%s %s on the altar."
 msgstr ""
 
 #: ../src/do.c:388 ../src/do_wear.c:1171 ../src/explode.c:910
-#: ../src/obj_descr_i18n.c:1155 ../src/pray.c:803 ../src/trap.c:1929
+#: ../src/obj_descr_i18n.c:1155 ../src/pray.c:804 ../src/trap.c:1929
 msgid "land"
 msgstr ""
 
@@ -7603,7 +7603,7 @@ msgstr ""
 msgid "%s leash goes slack."
 msgstr ""
 
-#: ../src/dog.c:1173 ../src/pray.c:2049 ../src/pray.c:2055
+#: ../src/dog.c:1173 ../src/pray.c:2053 ../src/pray.c:2059
 #, c-format
 msgid "%s seems %s."
 msgstr ""
@@ -7717,7 +7717,7 @@ msgstr ""
 msgid "%s for a moment."
 msgstr ""
 
-#: ../src/dogmove.c:357 ../src/pray.c:734
+#: ../src/dogmove.c:357
 msgid "bummed"
 msgstr ""
 
@@ -7766,7 +7766,7 @@ msgid "step"
 msgstr ""
 
 #: ../src/dogmove.c:1310 ../src/hack.c:403 ../src/muse.c:3139
-#: ../src/pray.c:1872 ../src/timeout.c:373 ../src/trap.c:4995
+#: ../src/pray.c:1876 ../src/timeout.c:373 ../src/trap.c:4995
 msgid "over"
 msgstr ""
 
@@ -7785,7 +7785,7 @@ msgid "sense that"
 msgstr ""
 
 #: ../src/dogmove.c:1536 ../src/makemon.c:1495 ../src/mcastu.c:698
-#: ../src/mcastu.c:700 ../src/mon.c:4140 ../src/pray.c:803
+#: ../src/mcastu.c:700 ../src/mon.c:4140 ../src/pray.c:804
 msgid "appear"
 msgstr ""
 
@@ -8716,7 +8716,7 @@ msgstr ""
 msgid "Murphy"
 msgstr ""
 
-#: ../src/do_name.c:884 ../src/pray.c:2559
+#: ../src/do_name.c:884 ../src/pray.c:2563
 msgid "someone"
 msgstr ""
 
@@ -9816,13 +9816,13 @@ msgstr ""
 msgid "%s back to you, landing %s your %s."
 msgstr ""
 
-#: ../src/dothrow.c:1771 ../src/mthrowu.c:923 ../src/pray.c:804
+#: ../src/dothrow.c:1771 ../src/mthrowu.c:923 ../src/pray.c:805
 #: ../src/steal.c:93 ../src/zap.c:3383
 msgid "beneath"
 msgstr ""
 
 #: ../src/dothrow.c:1771 ../src/mcastu.c:441 ../src/mhitm.c:750
-#: ../src/mthrowu.c:923 ../src/pray.c:804 ../src/zap.c:3383
+#: ../src/mthrowu.c:923 ../src/pray.c:805 ../src/zap.c:3383
 msgid "at"
 msgstr ""
 
@@ -18650,12 +18650,12 @@ msgstr ""
 msgid "chaotic"
 msgstr ""
 
-#: ../src/insight.c:3264 ../src/pray.c:2145 ../src/questpgr.c:307
+#: ../src/insight.c:3264 ../src/pray.c:2149 ../src/questpgr.c:307
 #: ../src/role.c:700
 msgid "neutral"
 msgstr ""
 
-#: ../src/insight.c:3266 ../src/pray.c:2145 ../src/questpgr.c:310
+#: ../src/insight.c:3266 ../src/pray.c:2149 ../src/questpgr.c:310
 #: ../src/role.c:699
 msgid "lawful"
 msgstr ""
@@ -19478,7 +19478,7 @@ msgid "a few"
 msgstr ""
 
 #: ../src/invent.c:4353 ../src/mhitu.c:2114 ../src/monmove.c:42
-#: ../src/pray.c:1187 ../src/zap.c:3960
+#: ../src/pray.c:1191 ../src/zap.c:3960
 #, c-format
 msgid "%s %s%s."
 msgstr ""
@@ -26030,7 +26030,7 @@ msgstr ""
 msgid "champagne"
 msgstr ""
 
-#: ../src/mthrowu.c:34 ../src/pray.c:1937 ../src/role.c:701
+#: ../src/mthrowu.c:34 ../src/pray.c:1941 ../src/role.c:701
 msgid "chaos"
 msgstr ""
 
@@ -31124,7 +31124,7 @@ msgstr ""
 msgid "loot"
 msgstr ""
 
-#: ../src/options.c:221 ../src/pray.c:1087
+#: ../src/options.c:221
 msgid "full"
 msgstr ""
 
@@ -32944,7 +32944,7 @@ msgstr ""
 msgid "Schroedinger's Cat"
 msgstr ""
 
-#: ../src/pickup.c:2860 ../src/pray.c:2121
+#: ../src/pickup.c:2860 ../src/pray.c:2125
 #, c-format
 msgid "think %s brushed your %s."
 msgstr ""
@@ -35499,13 +35499,13 @@ msgstr ""
 msgid "fix_curse_trouble: nothing to uncurse."
 msgstr ""
 
-#: ../src/pray.c:363 ../src/pray.c:597 ../src/pray.c:1302
+#: ../src/pray.c:363 ../src/pray.c:597 ../src/pray.c:1306
 #, c-format
 msgctxt "softglow_color"
 msgid "%s %s."
 msgstr ""
 
-#: ../src/pray.c:366 ../src/pray.c:598 ../src/pray.c:1304
+#: ../src/pray.c:366 ../src/pray.c:598 ../src/pray.c:1308
 msgctxt "glow_color"
 msgid "softly glow"
 msgstr ""
@@ -35676,823 +35676,843 @@ msgstr ""
 msgid "the wrath of %s"
 msgstr ""
 
-#: ../src/pray.c:733 ../src/pray.c:1082
+#: ../src/pray.c:733 ../src/pray.c:1083
 #, c-format
 msgid "that %s is %s."
 msgstr ""
 
 #: ../src/pray.c:734
+msgctxt "god_mood"
+msgid "bummed"
+msgstr ""
+
+#: ../src/pray.c:735
+msgctxt "god_mood"
 msgid "displeased"
 msgstr ""
 
-#: ../src/pray.c:739
+#: ../src/pray.c:740
 #, c-format
 msgid "\"Thou %s, %s.\""
 msgstr ""
 
-#: ../src/pray.c:745
+#: ../src/pray.c:746
 msgid "Thou must relearn thy lessons!"
 msgstr ""
 
-#: ../src/pray.c:761
+#: ../src/pray.c:762
 #, c-format
 msgid "%s glow surrounds you."
 msgstr ""
 
-#: ../src/pray.c:769
+#: ../src/pray.c:770
 #, c-format
 msgid "Thou durst %s me?"
 msgstr ""
 
-#: ../src/pray.c:771
+#: ../src/pray.c:772
 msgid "scorn"
 msgstr ""
 
-#: ../src/pray.c:772
+#: ../src/pray.c:773
 msgid "call upon"
 msgstr ""
 
-#: ../src/pray.c:774
+#: ../src/pray.c:775
 #, c-format
 msgid "\"Then die, %s!\""
 msgstr ""
 
-#: ../src/pray.c:799
+#: ../src/pray.c:800
 #, c-format
 msgid "%s %s into %s %s."
 msgstr ""
 
-#: ../src/pray.c:802
+#: ../src/pray.c:803
 #, c-format
 msgid "%s %s %s your %s!"
 msgstr ""
 
-#: ../src/pray.c:846
+#: ../src/pray.c:847
 msgid "I crown thee...  The Hand of Elbereth!"
 msgstr ""
 
-#: ../src/pray.c:857
+#: ../src/pray.c:858
 msgid "Thou shalt be my Envoy of Balance!"
 msgstr ""
 
-#: ../src/pray.c:867
+#: ../src/pray.c:868
 msgid "take lives"
 msgstr ""
 
-#: ../src/pray.c:868
+#: ../src/pray.c:869
 msgid "steal souls"
 msgstr ""
 
-#: ../src/pray.c:870
+#: ../src/pray.c:871
 #, c-format
 msgid "Thou art chosen to %s for My Glory!"
 msgstr ""
 
-#: ../src/pray.c:911
+#: ../src/pray.c:912
 msgid "sword shines brightly for a moment."
 msgstr ""
 
-#: ../src/pray.c:930
+#: ../src/pray.c:931
 #, c-format
 msgid "%s goes snicker-snack!"
 msgstr ""
 
-#: ../src/pray.c:937
+#: ../src/pray.c:938
 msgid "A sword"
 msgstr ""
 
-#: ../src/pray.c:952
+#: ../src/pray.c:953
 #, c-format
 msgid "%s sword"
 msgstr ""
 
-#: ../src/pray.c:956
+#: ../src/pray.c:957
 #, c-format
 msgid "%s hums ominously!"
 msgstr ""
 
-#: ../src/pray.c:993 ../src/sit.c:329
+#: ../src/pray.c:994 ../src/sit.c:329
 msgid "unworthy."
 msgstr ""
 
-#: ../src/pray.c:1050
+#: ../src/pray.c:1051
 #, c-format
 msgid "Divine knowledge of %s fills your mind!  Spell '%c'."
 msgstr ""
 
-#: ../src/pray.c:1053
+#: ../src/pray.c:1054
 #, c-format
 msgid "knowledge of spell '%c' - %s is %s."
 msgstr ""
 
-#: ../src/pray.c:1055 ../src/spell.c:410
+#: ../src/pray.c:1056 ../src/spell.c:410
 msgid "restored"
 msgstr ""
 
-#: ../src/pray.c:1056
+#: ../src/pray.c:1057
 msgid "refreshed"
 msgstr ""
 
-#: ../src/pray.c:1084
+#: ../src/pray.c:1085
+msgctxt "god_mood"
 msgid "pleased as punch"
 msgstr ""
 
-#: ../src/pray.c:1084
+#: ../src/pray.c:1086
+msgctxt "god_mood"
 msgid "well-pleased"
 msgstr ""
 
-#: ../src/pray.c:1086
+#: ../src/pray.c:1088
+msgctxt "god_mood"
 msgid "ticklish"
 msgstr ""
 
-#: ../src/pray.c:1086
+#: ../src/pray.c:1089
+msgctxt "god_mood"
 msgid "pleased"
 msgstr ""
 
-#: ../src/pray.c:1087
+#: ../src/pray.c:1090
+msgctxt "god_mood"
+msgid "full"
+msgstr ""
+
+#: ../src/pray.c:1091
+msgctxt "god_mood"
 msgid "satisfied"
 msgstr ""
 
-#: ../src/pray.c:1182
+#: ../src/pray.c:1186
 #, c-format
 msgid " and %s now as good as new"
 msgstr ""
 
-#: ../src/pray.c:1187 ../src/pray.c:1199
+#: ../src/pray.c:1191 ../src/pray.c:1203
 msgid "softly glow"
 msgstr ""
 
-#: ../src/pray.c:1191
+#: ../src/pray.c:1195
 #, c-format
 msgid "the power of %s over %s."
 msgstr ""
 
-#: ../src/pray.c:1198
+#: ../src/pray.c:1202
 #, c-format
 msgid "%s with %s aura%s."
 msgstr ""
 
-#: ../src/pray.c:1203
+#: ../src/pray.c:1207
 #, c-format
 msgid "the blessing of %s over %s."
 msgstr ""
 
-#: ../src/pray.c:1217 ../src/read.c:1155 ../src/read.c:1659
+#: ../src/pray.c:1221 ../src/read.c:1155 ../src/read.c:1659
 #, c-format
 msgid "%s as good as new!"
 msgstr ""
 
-#: ../src/pray.c:1218 ../src/read.c:1156 ../src/read.c:1660 ../src/trap.c:360
+#: ../src/pray.c:1222 ../src/read.c:1156 ../src/read.c:1660 ../src/trap.c:360
 #: ../src/trap.c:364
 msgid "look"
 msgstr ""
 
-#: ../src/pray.c:1232
+#: ../src/pray.c:1236
 #, c-format
 msgid "Hark, %s!"
 msgstr ""
 
-#: ../src/pray.c:1237
+#: ../src/pray.c:1241
 msgid "To enter the castle, thou must play the right tune!"
 msgstr ""
 
-#: ../src/pray.c:1242
+#: ../src/pray.c:1246
 msgid "a divine music..."
 msgstr ""
 
-#: ../src/pray.c:1243
+#: ../src/pray.c:1247
 #, c-format
 msgid "It sounds like:  \"%s\"."
 msgstr ""
 
-#: ../src/pray.c:1253
+#: ../src/pray.c:1257
 #, c-format
 msgid "are surrounded by %s glow."
 msgstr ""
 
-#: ../src/pray.c:1293
+#: ../src/pray.c:1297
 #, c-format
 msgid "the power of %s."
 msgstr ""
 
-#: ../src/pray.c:1295
+#: ../src/pray.c:1299
 #, c-format
 msgid "are surrounded by %s aura."
 msgstr ""
 
-#: ../src/pray.c:1319
+#: ../src/pray.c:1323
 msgid "Thou hast pleased me with thy progress,"
 msgstr ""
 
-#: ../src/pray.c:1322 ../src/pray.c:1327 ../src/pray.c:1330 ../src/pray.c:1338
+#: ../src/pray.c:1326 ../src/pray.c:1331 ../src/pray.c:1334 ../src/pray.c:1342
 #, c-format
 msgid "\"and thus I grant thee the gift of %s!\""
 msgstr ""
 
-#: ../src/pray.c:1322
+#: ../src/pray.c:1326
 msgid "Telepathy"
 msgstr ""
 
-#: ../src/pray.c:1327
+#: ../src/pray.c:1331
 msgid "Speed"
 msgstr ""
 
-#: ../src/pray.c:1330
+#: ../src/pray.c:1334
 msgid "Stealth"
 msgstr ""
 
-#: ../src/pray.c:1338
+#: ../src/pray.c:1342
 msgid "my protection"
 msgstr ""
 
-#: ../src/pray.c:1341
+#: ../src/pray.c:1345
 msgid "Use it wisely in my name!"
 msgstr ""
 
-#: ../src/pray.c:1356
+#: ../src/pray.c:1360
 msgid "Confused deity!"
-msgstr ""
-
-#: ../src/pray.c:1413
-#, c-format
-msgid "The potion on the altar glows %s for a moment."
-msgstr ""
-
-#: ../src/pray.c:1415
-#, c-format
-msgid "One of the potions on the altar glows %s for a moment."
 msgstr ""
 
 #: ../src/pray.c:1417
 #, c-format
-msgid "Some of the potions on the altar glow %s for a moment."
+msgid "The potion on the altar glows %s for a moment."
 msgstr ""
 
 #: ../src/pray.c:1419
 #, c-format
+msgid "One of the potions on the altar glows %s for a moment."
+msgstr ""
+
+#: ../src/pray.c:1421
+#, c-format
+msgid "Some of the potions on the altar glow %s for a moment."
+msgstr ""
+
+#: ../src/pray.c:1423
+#, c-format
 msgid "The potions on the altar glow %s for a moment."
 msgstr ""
 
-#: ../src/pray.c:1434
+#: ../src/pray.c:1438
 #, c-format
 msgid "voice of %s %s: %s%s%s"
 msgstr ""
 
-#: ../src/pray.c:1441
+#: ../src/pray.c:1445
 msgid "Thou hast angered me."
 msgstr ""
 
-#: ../src/pray.c:1461
+#: ../src/pray.c:1465
 msgid "sacrifice sprouts wings and a propeller and roars away!"
 msgstr ""
 
-#: ../src/pray.c:1464
+#: ../src/pray.c:1468
 msgid "sacrifice puffs up, swelling bigger and bigger, and pops!"
 msgstr ""
 
-#: ../src/pray.c:1468
+#: ../src/pray.c:1472
 msgid "sacrifice collapses into a cloud of dancing particles and fades away!"
 msgstr ""
 
-#: ../src/pray.c:1472
+#: ../src/pray.c:1476
 msgid "sacrifice disappears!"
 msgstr ""
 
-#: ../src/pray.c:1474
+#: ../src/pray.c:1478
 #, c-format
 msgid "sacrifice is consumed in a %s!"
 msgstr ""
 
-#: ../src/pray.c:1476
+#: ../src/pray.c:1480
 msgid "flash of light"
 msgstr ""
 
-#: ../src/pray.c:1478
+#: ../src/pray.c:1482
 msgid "plume of smoke"
 msgstr ""
 
-#: ../src/pray.c:1479
+#: ../src/pray.c:1483
 msgid "burst of flame"
 msgstr ""
 
-#: ../src/pray.c:1502
+#: ../src/pray.c:1506
 msgid "homesick"
 msgstr ""
 
-#: ../src/pray.c:1505
+#: ../src/pray.c:1509
 msgid "an urge to return to the surface"
 msgstr ""
 
-#: ../src/pray.c:1507
+#: ../src/pray.c:1511
 msgid "ashamed"
 msgstr ""
 
-#: ../src/pray.c:1525
+#: ../src/pray.c:1529
 msgid "the air around you grow charged..."
 msgstr ""
 
-#: ../src/pray.c:1526
+#: ../src/pray.c:1530
 #, c-format
 msgid "Suddenly, you realize that %s has noticed you..."
 msgstr ""
 
-#: ../src/pray.c:1528
+#: ../src/pray.c:1532
 #, c-format
 msgid "So, mortal!  You dare desecrate my %s!"
 msgstr ""
 
-#: ../src/pray.c:1529
+#: ../src/pray.c:1533
 msgid "High Temple"
 msgstr ""
 
-#: ../src/pray.c:1542
+#: ../src/pray.c:1546
 #, c-format
 msgid "A cloud of %s smoke surrounds you..."
 msgstr ""
 
-#: ../src/pray.c:1552
+#: ../src/pray.c:1556
 #, c-format
 msgid "offer the Amulet of Yendor to %s..."
 msgstr ""
 
-#: ../src/pray.c:1558
+#: ../src/pray.c:1562
 msgid "An invisible choir chants, and you are bathed in darkness..."
 msgstr ""
 
-#: ../src/pray.c:1560
+#: ../src/pray.c:1564
 #, c-format
 msgid "%s shrugs and retains dominion over %s,"
 msgstr ""
 
-#: ../src/pray.c:1561
+#: ../src/pray.c:1565
 msgid "then mercilessly snuffs out your life."
-msgstr ""
-
-#: ../src/pray.c:1562
-#, c-format
-msgid "%s indifference"
 msgstr ""
 
 #: ../src/pray.c:1566
 #, c-format
+msgid "%s indifference"
+msgstr ""
+
+#: ../src/pray.c:1570
+#, c-format
 msgid "%s snarls and tries again..."
 msgstr ""
 
-#: ../src/pray.c:1576
+#: ../src/pray.c:1580
 #, c-format
 msgid "%s accepts your gift, and gains dominion over %s..."
 msgstr ""
 
-#: ../src/pray.c:1578
+#: ../src/pray.c:1582
 #, c-format
 msgid "%s is enraged..."
 msgstr ""
 
-#: ../src/pray.c:1579
+#: ../src/pray.c:1583
 #, c-format
 msgid "Fortunately, %s permits you to live..."
 msgstr ""
 
-#: ../src/pray.c:1587
+#: ../src/pray.c:1591
 msgid "An invisible choir sings, and you are bathed in radiance..."
 msgstr ""
 
-#: ../src/pray.c:1588
+#: ../src/pray.c:1592
 msgid "Mortal, thou hast done well!"
 msgstr ""
 
-#: ../src/pray.c:1592
+#: ../src/pray.c:1596
 msgid "In return for thy service, I grant thee the gift of Immortality!"
 msgstr ""
 
-#: ../src/pray.c:1593
+#: ../src/pray.c:1597
 #, c-format
 msgid "ascend to the status of Demigod%s..."
 msgstr ""
 
-#: ../src/pray.c:1594 ../src/topten.c:998
+#: ../src/pray.c:1598 ../src/topten.c:998
 msgid "dess"
 msgstr ""
 
-#: ../src/pray.c:1622
+#: ../src/pray.c:1626
 msgid "a nearby thunderclap."
 msgstr ""
 
-#: ../src/pray.c:1624
+#: ../src/pray.c:1628
 #, c-format
 msgid "realize you have made a %s."
 msgstr ""
 
-#: ../src/pray.c:1625
+#: ../src/pray.c:1629
 msgid "boo-boo"
 msgstr ""
 
-#: ../src/pray.c:1625
+#: ../src/pray.c:1629
 msgid "mistake"
 msgstr ""
 
-#: ../src/pray.c:1631
+#: ../src/pray.c:1635
 msgid "Oh, no."
 msgstr ""
 
-#: ../src/pray.c:1650
+#: ../src/pray.c:1654
 #, c-format
 msgid "have a strong feeling that %s is angry..."
 msgstr ""
 
-#: ../src/pray.c:1652
+#: ../src/pray.c:1656
 #, c-format
 msgid "%s accepts your allegiance."
 msgstr ""
 
-#: ../src/pray.c:1661
+#: ../src/pray.c:1665
 #, c-format
 msgid "%s rejects your sacrifice!"
 msgstr ""
 
-#: ../src/pray.c:1662
+#: ../src/pray.c:1666
 msgid "Suffer, infidel!"
 msgstr ""
 
-#: ../src/pray.c:1670
+#: ../src/pray.c:1674
 #, c-format
 msgid "sense a conflict between %s and %s."
 msgstr ""
 
-#: ../src/pray.c:1675
+#: ../src/pray.c:1679
 #, c-format
 msgid "the power of %s increase."
 msgstr ""
 
-#: ../src/pray.c:1684
+#: ../src/pray.c:1688
 #, c-format
 msgid "altar glows %s."
 msgstr ""
 
-#: ../src/pray.c:1697
+#: ../src/pray.c:1701
 #, c-format
 msgid "Unluckily, you feel the power of %s decrease."
 msgstr ""
 
-#: ../src/pray.c:1716
+#: ../src/pray.c:1720
 msgid "find the idea very satisfying."
 msgstr ""
 
-#: ../src/pray.c:1719
+#: ../src/pray.c:1723
 msgid "You'll regret this infamous offense!"
 msgstr ""
 
-#: ../src/pray.c:1729
+#: ../src/pray.c:1733
 #, c-format
 msgid "altar is stained with %s blood."
 msgstr ""
 
-#: ../src/pray.c:1741
+#: ../src/pray.c:1745
 #, c-format
 msgid "The blood floods the altar, which vanishes in %s cloud!"
 msgstr ""
 
-#: ../src/pray.c:1750
+#: ../src/pray.c:1754
 msgid "blood covers the altar!"
 msgstr ""
 
-#: ../src/pray.c:1761
+#: ../src/pray.c:1765
 msgid "something dreadful"
 msgstr ""
 
-#: ../src/pray.c:1764
+#: ../src/pray.c:1768
 #, c-format
 msgid "have summoned %s!"
 msgstr ""
 
-#: ../src/pray.c:1767
+#: ../src/pray.c:1771
 msgid "are terrified, and unable to move."
 msgstr ""
 
-#: ../src/pray.c:1769
+#: ../src/pray.c:1773
 msgid "being terrified of a demon"
 msgstr ""
 
-#: ../src/pray.c:1819
+#: ../src/pray.c:1823
 msgid "a doodad"
 msgstr ""
 
-#: ../src/pray.c:1820
+#: ../src/pray.c:1824
 msgid "an object"
 msgstr ""
 
-#: ../src/pray.c:1823 ../src/uhitm.c:1975
+#: ../src/pray.c:1827 ../src/uhitm.c:1975
 #, c-format
 msgid " named %s"
 msgstr ""
 
-#: ../src/pray.c:1827
+#: ../src/pray.c:1831
 msgid "Use my gift wisely!"
 msgstr ""
 
-#: ../src/pray.c:1871
+#: ../src/pray.c:1875
 #, c-format
 msgid "are not %s an altar."
 msgstr ""
 
-#: ../src/pray.c:1872 ../src/trap.c:4995 ../src/trap.c:5055
+#: ../src/pray.c:1876 ../src/trap.c:4995 ../src/trap.c:5055
 msgid "on"
 msgstr ""
 
-#: ../src/pray.c:1875
+#: ../src/pray.c:1879
 msgid "are too impaired to perform the rite."
 msgstr ""
 
-#: ../src/pray.c:1936
+#: ../src/pray.c:1940
 #, c-format
 msgid "Such an action is an insult to %s!"
 msgstr ""
 
-#: ../src/pray.c:1938 ../src/role.c:699
+#: ../src/pray.c:1942 ../src/role.c:699
 msgid "law"
 msgstr ""
 
-#: ../src/pray.c:1938 ../src/role.c:700
+#: ../src/pray.c:1942 ../src/role.c:700
 msgid "balance"
 msgstr ""
 
-#: ../src/pray.c:1946
+#: ../src/pray.c:1950
 #, c-format
 msgid "appropriately %s."
 msgstr ""
 
-#: ../src/pray.c:1948
+#: ../src/pray.c:1952
 msgid "you are thoroughly on the right path."
 msgstr ""
 
-#: ../src/pray.c:2012
+#: ../src/pray.c:2016
 msgid "So this is how you repay loyalty?"
 msgstr ""
 
-#: ../src/pray.c:2050
+#: ../src/pray.c:2054
 msgid "groovy"
 msgstr ""
 
-#: ../src/pray.c:2050
+#: ../src/pray.c:2054
 msgid "slightly mollified"
 msgstr ""
 
-#: ../src/pray.c:2056
+#: ../src/pray.c:2060
 msgid "cosmic (not a new fact)"
 msgstr ""
 
-#: ../src/pray.c:2057
+#: ../src/pray.c:2061
 msgid "mollified"
 msgstr ""
 
-#: ../src/pray.c:2064
+#: ../src/pray.c:2068
 msgid "gods seem tall."
 msgstr ""
 
-#: ../src/pray.c:2066
+#: ../src/pray.c:2070
 msgid "have a feeling of inadequacy."
 msgstr ""
 
-#: ../src/pray.c:2074
+#: ../src/pray.c:2078
 msgid "partially absolved."
 msgstr ""
 
-#: ../src/pray.c:2084
+#: ../src/pray.c:2088
 msgid "realize that the gods are not like you and I."
 msgstr ""
 
-#: ../src/pray.c:2086
+#: ../src/pray.c:2090
 msgid "have a hopeful feeling."
 msgstr ""
 
-#: ../src/pray.c:2091
+#: ../src/pray.c:2095
 msgid "Overall, there is a smell of fried onions."
 msgstr ""
 
-#: ../src/pray.c:2093
+#: ../src/pray.c:2097
 msgid "have a feeling of reconciliation."
 msgstr ""
 
-#: ../src/pray.c:2125
+#: ../src/pray.c:2129
 #, c-format
 msgid "see crabgrass at your %s.  A funny thing in a dungeon."
 msgstr ""
 
-#: ../src/pray.c:2126
+#: ../src/pray.c:2130
 #, c-format
 msgid "glimpse a four-leaf clover at your %s."
 msgstr ""
 
-#: ../src/pray.c:2144
+#: ../src/pray.c:2148
 #, c-format
 msgid "very idea of praying to a %s god is repugnant to you."
 msgstr ""
 
-#: ../src/pray.c:2150
+#: ../src/pray.c:2154
 #, c-format
 msgid "begin praying to %s."
 msgstr ""
 
-#: ../src/pray.c:2244
+#: ../src/pray.c:2224
+msgid "Are you sure you want to pray?"
+msgstr ""
+
+#: ../src/pray.c:2248
 msgid "Force the gods to be pleased?"
 msgstr ""
 
-#: ../src/pray.c:2271
+#: ../src/pray.c:2275
 msgid "praying"
 msgstr ""
 
-#: ../src/pray.c:2272
+#: ../src/pray.c:2276
 msgid "You finish your prayer."
 msgstr ""
 
-#: ../src/pray.c:2278
+#: ../src/pray.c:2282
 msgid "are surrounded by a shimmering light."
 msgstr ""
 
-#: ../src/pray.c:2293
+#: ../src/pray.c:2297
 #, c-format
 msgid "%s diabolical laughter all around you..."
 msgstr ""
 
-#: ../src/pray.c:2294
+#: ../src/pray.c:2298
 msgid "intuit"
 msgstr ""
 
-#: ../src/pray.c:2300
+#: ../src/pray.c:2304
 msgid "Nothing else happens."
 msgstr ""
 
-#: ../src/pray.c:2307
+#: ../src/pray.c:2311
 msgid "Vile creature, thou durst call upon me?"
 msgstr ""
 
-#: ../src/pray.c:2308
+#: ../src/pray.c:2312
 msgid "Walk no more, perversion of nature!"
 msgstr ""
 
-#: ../src/pray.c:2309
+#: ../src/pray.c:2313
 msgid "like you are falling apart."
 msgstr ""
 
-#: ../src/pray.c:2313
+#: ../src/pray.c:2317
 msgid "residual undead turning effect"
 msgstr ""
 
-#: ../src/pray.c:2318
+#: ../src/pray.c:2322
 #, c-format
 msgid "Since you are in Gehennom, %s can't help you."
 msgstr ""
 
-#: ../src/pray.c:2372
+#: ../src/pray.c:2376
 msgid "Unfortunately, your voice falters."
 msgstr ""
 
-#: ../src/pray.c:2433
+#: ../src/pray.c:2437
 msgid "don't know how to turn undead!"
 msgstr ""
 
-#: ../src/pray.c:2444
+#: ../src/pray.c:2448
 #, c-format
 msgid "are %s upon %s to turn aside evilness."
 msgstr ""
 
-#: ../src/pray.c:2445
+#: ../src/pray.c:2449
 msgid "not able to call"
 msgstr ""
 
-#: ../src/pray.c:2445
+#: ../src/pray.c:2449
 msgid "incapable of calling"
 msgstr ""
 
-#: ../src/pray.c:2455
+#: ../src/pray.c:2459
 #, c-format
 msgid "For some reason, %s seems to ignore you."
 msgstr ""
 
-#: ../src/pray.c:2461
+#: ../src/pray.c:2465
 #, c-format
 msgid "Since you are in Gehennom, %s %s help you."
 msgstr ""
 
-#: ../src/pray.c:2464
+#: ../src/pray.c:2468
 msgid "won't"
 msgstr ""
 
-#: ../src/pray.c:2464
+#: ../src/pray.c:2468
 msgid "can't"
 msgstr ""
 
-#: ../src/pray.c:2468
+#: ../src/pray.c:2472
 #, c-format
 msgid "Calling upon %s, you chant an arcane formula."
 msgstr ""
 
-#: ../src/pray.c:2494
+#: ../src/pray.c:2498
 msgid "trying to turn the monsters"
 msgstr ""
 
-#: ../src/pray.c:2558
+#: ../src/pray.c:2562
 msgid "unknown alignment."
 msgstr ""
 
-#: ../src/pray.c:2569
+#: ../src/pray.c:2573
 msgid "the Flying Spaghetti Monster"
 msgstr ""
 
-#: ../src/pray.c:2570
+#: ../src/pray.c:2574
 msgid "Eris"
 msgstr ""
 
-#: ../src/pray.c:2571
+#: ../src/pray.c:2575
 msgid "the Martians"
 msgstr ""
 
-#: ../src/pray.c:2572
+#: ../src/pray.c:2576
 msgid "Xom"
 msgstr ""
 
-#: ../src/pray.c:2573
+#: ../src/pray.c:2577
 msgid "AnDoR dRaKoN"
 msgstr ""
 
-#: ../src/pray.c:2574
+#: ../src/pray.c:2578
 msgid "the Central Bank of Yendor"
 msgstr ""
 
-#: ../src/pray.c:2575
+#: ../src/pray.c:2579
 msgid "Tooth Fairy"
 msgstr ""
 
-#: ../src/pray.c:2576
+#: ../src/pray.c:2580
 msgid "Om"
 msgstr ""
 
-#: ../src/pray.c:2577
+#: ../src/pray.c:2581
 msgid "Yawgmoth"
 msgstr ""
 
-#: ../src/pray.c:2578
+#: ../src/pray.c:2582
 msgid "Morgoth"
 msgstr ""
 
-#: ../src/pray.c:2579
+#: ../src/pray.c:2583
 msgid "Cthulhu"
 msgstr ""
 
-#: ../src/pray.c:2580
+#: ../src/pray.c:2584
 msgid "the Ori"
 msgstr ""
 
-#: ../src/pray.c:2581
+#: ../src/pray.c:2585
 msgid "destiny"
 msgstr ""
 
-#: ../src/pray.c:2582 ../src/pray.c:2630
+#: ../src/pray.c:2586 ../src/pray.c:2634
 msgid "your Friend the Computer"
 msgstr ""
 
-#: ../src/pray.c:2626
+#: ../src/pray.c:2630
 msgid "rn2 broken in halu_gname?!?"
 msgstr ""
 
-#: ../src/pray.c:2629
+#: ../src/pray.c:2633
 msgid "No random god name?"
 msgstr ""
 
-#: ../src/pray.c:2642
+#: ../src/pray.c:2646
 msgid "god"
 msgstr ""
 
-#: ../src/pray.c:2659
+#: ../src/pray.c:2663
 msgid "goddess"
 msgstr ""
 
-#: ../src/pray.c:2669
+#: ../src/pray.c:2673
 msgid "How darest thou desecrate my altar!"
 msgstr ""
 
-#: ../src/pray.c:2673
+#: ../src/pray.c:2677
 #, c-format
 msgid "%s %s%s:"
 msgstr ""
 
-#: ../src/pray.c:2674
+#: ../src/pray.c:2678
 msgid "A voice (could it be"
 msgstr ""
 
-#: ../src/pray.c:2675
+#: ../src/pray.c:2679
 msgid "Despite your deafness, you seem to hear"
 msgstr ""
 
-#: ../src/pray.c:2677
+#: ../src/pray.c:2681
 msgid "?) whispers"
 msgstr ""
 
-#: ../src/pray.c:2677
+#: ../src/pray.c:2681
 msgid " say"
 msgstr ""
 
-#: ../src/pray.c:2679
+#: ../src/pray.c:2683
 msgid "Thou shalt pay, infidel!"
 msgstr ""
 

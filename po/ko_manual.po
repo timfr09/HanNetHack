@@ -10191,7 +10191,7 @@ msgstr "%1$s %2$s{을/를} 맞추고 당신의 손으로 돌아왔다!"
 #: ../src/engrave.c:1175
 #, c-format
 msgid "%s the %s with %s%s."
-msgstr "%3$s%4$s{으로/로} %2$s{을/를} %1$s"
+msgstr "%3$s%4$s{으로/로} %2$s에 %1$s."
 
 # 조합 패턴: "%s the %s with your %s."
 #   %1$s = 동사, %2$s = 표면, %3$s = 신체 부위 (손가락 끝)
@@ -10200,7 +10200,7 @@ msgstr "%3$s%4$s{으로/로} %2$s{을/를} %1$s"
 #: ../src/engrave.c:1182
 #, c-format
 msgid "%s the %s with your %s."
-msgstr "%3$s{으로/로} %2$s{을/를} %1$s"
+msgstr "%3$s{으로/로} %2$s에 %1$s."
 
 # insight.c:385 - 속성 표시 제목
 # 영어: "Conan the Archeologist's attributes:"
@@ -24688,10 +24688,12 @@ msgstr "어떤 명령을 연결하시겠습니까?"
 msgid "What do you look for?"
 msgstr "무엇을 찾겠습니까?"
 
+# %1$s=각인 동사(종결형이라 질문에는 부적합 — 억제), %2$s=표면
+# 조합: "여기 먼지에 무엇을 남기시겠습니까?"
 #: ../src/engrave.c:1186
 #, c-format
 msgid "What do you want to %s the %s here?"
-msgstr "여기 %s에 무엇을 %s하시겠습니까?"
+msgstr "여기 %2$s에 무엇을 남기시겠습니까?%1$.0s"
 
 #: ../src/invent.c:1932 ../src/invent.c:1988
 #, c-format
@@ -27695,37 +27697,37 @@ msgstr "%s{을/를} '%c'{으로/로} 레퍼토리에 추가했다."
 
 #: ../src/engrave.c:911
 msgid "add to the engraving in"
-msgstr "더 이상 새길 수 없다."
+msgstr "글씨를 덧새긴다"
 
 #: ../src/engrave.c:908
 msgid "add to the epitaph on"
-msgstr "비문에 추가하다"
+msgstr "비문을 덧붙인다"
 
 #: ../src/engrave.c:919
 msgid "add to the graffiti on"
-msgstr "낙서에 추가하다"
+msgstr "낙서를 덧붙인다"
 
 # engrave.c:921 - 기존 낙서에 추가하기. "add to the scrawl on the floor"
 #: ../src/engrave.c:922
 msgid "add to the scrawl on"
-msgstr "낙서에 추가"
+msgstr "갈겨 쓴 글씨를 덧붙인다"
 
 #: ../src/engrave.c:915
 msgid "add to the text burned into"
-msgstr "탄 글씨에 추가하다"
+msgstr "글씨를 태워 덧붙인다"
 
 #: ../src/engrave.c:914
 msgid "add to the text melted into"
-msgstr "녹아든 글씨에 추가하다"
+msgstr "글씨를 녹여 덧붙인다"
 
 #: ../src/engrave.c:900
 msgid "add to the weird writing on"
-msgstr "이상한 글씨에 추가하다"
+msgstr "이상한 글씨를 덧붙인다"
 
 # add to the writing in 수정
 #: ../src/engrave.c:904
 msgid "add to the writing in"
-msgstr "에 추가로 쓰기"
+msgstr "글씨를 덧붙인다"
 
 #: ../src/region.c:170
 #, c-format
@@ -30366,6 +30368,11 @@ msgstr "먹기 시작하다"
 
 # pray.c:2144 - 기도 시작
 # %s = align_gname() (신 이름)
+# paranoid_confirmation:pray 확인 질문
+#: ../src/pray.c:2220
+msgid "Are you sure you want to pray?"
+msgstr "정말 기도하시겠습니까?"
+
 #: ../src/pray.c:2144
 #, c-format
 msgid "begin praying to %s."
@@ -31551,7 +31558,7 @@ msgstr "채찍이 %s에서 미끄러져 나갔다."
 
 #: ../src/dogmove.c:357 ../src/pray.c:734
 msgid "bummed"
-msgstr "우울한"
+msgstr "시무룩해졌다"
 
 # ============================================================
 # 전투 메시지 (Combat Messages)
@@ -31657,7 +31664,7 @@ msgstr "불타 사라지다"
 
 #: ../src/engrave.c:916
 msgid "burn into"
-msgstr "탄 "
+msgstr "글씨를 태워 새긴다"
 
 #: ../src/trap.c:6948
 msgid "burn to a crisp"
@@ -35065,7 +35072,7 @@ msgstr "display_warning did not match warning type?"
 
 #: ../src/pray.c:734
 msgid "displeased"
-msgstr "죽음"
+msgstr "불쾌한"
 
 #: ../src/do_wear.c:1932
 msgid "disrobing"
@@ -36408,11 +36415,11 @@ msgstr "삼키다"
 
 #: ../src/engrave.c:911
 msgid "engrave in"
-msgstr "새겨진 글씨"
+msgstr "새긴다"
 
 #: ../src/engrave.c:908
 msgid "engrave on"
-msgstr "새겨진 글씨"
+msgstr "새긴다"
 
 #: ../src/engrave.c:770
 msgid "engrave with such a large object!"
@@ -44633,7 +44640,7 @@ msgstr "녹지만"
 
 #: ../src/engrave.c:916
 msgid "melt into"
-msgstr "안으로"
+msgstr "글씨를 녹여 새긴다"
 
 #: ../src/zap.c:5071
 msgid "melt_ice: no pool?"
@@ -47440,7 +47447,7 @@ msgstr "연주한다"
 
 #: ../src/pray.c:1086
 msgid "pleased"
-msgstr "기름칠된 "
+msgstr "흡족한"
 
 #: ../src/pray.c:1084
 msgid "pleased as punch"
@@ -49787,7 +49794,7 @@ msgstr "제물이 날개와 프로펠러를 달고 날아갔다!"
 
 #: ../src/dogmove.c:357
 msgid "sad"
-msgstr "슬픈"
+msgstr "슬퍼졌다"
 
 #: ../src/read.c:1483
 msgid "sad wailing"
@@ -50020,7 +50027,7 @@ msgstr "긁는 소리."
 
 #: ../src/engrave.c:922
 msgid "scrawl on"
-msgstr "갈겨 쓰다"
+msgstr "갈겨 쓴다"
 
 #: ../src/engrave.c:1138
 msgid "scrawled in blood"
@@ -50059,7 +50066,7 @@ msgstr "화면: 좌상단: [%02d,%02d], 우하단: [%d,%d]%s"
 
 #: ../src/engrave.c:919
 msgid "scribble on"
-msgstr "휘갈겨 쓰다"
+msgstr "휘갈겨 쓴다"
 
 #: ../src/obj_descr_i18n.c:112 ../src/obj_descr_i18n.c:526 ../src/objnam.c:229
 #: ../src/objnam.c:858 ../src/objnam.c:864 ../src/objnam.c:867
@@ -53830,10 +53837,45 @@ msgstr "저 "
 msgid "that %s %s ignoring you."
 msgstr "%s{이/가} %s 당신을 무시한다."
 
+# %1$s=신 이름, %2$s=C_("god_mood") 서술어
+# 조합: "튀르가 흡족해하고 있다."
 #: ../src/pray.c:733 ../src/pray.c:1082
 #, c-format
 msgid "that %s is %s."
-msgstr "%s{이/가} %s{이다/다}."
+msgstr "%1$s{이/가} %2$s."
+
+# 기도 후 신의 기분 서술어 (You_feel "that %s is %s." 전용)
+msgctxt "god_mood"
+msgid "displeased"
+msgstr "불쾌해하고 있다"
+
+msgctxt "god_mood"
+msgid "bummed"
+msgstr "시무룩해 있다"
+
+msgctxt "god_mood"
+msgid "well-pleased"
+msgstr "매우 흡족해하고 있다"
+
+msgctxt "god_mood"
+msgid "pleased as punch"
+msgstr "더할 나위 없이 신나 있다"
+
+msgctxt "god_mood"
+msgid "pleased"
+msgstr "흡족해하고 있다"
+
+msgctxt "god_mood"
+msgid "ticklish"
+msgstr "간지러워하고 있다"
+
+msgctxt "god_mood"
+msgid "satisfied"
+msgstr "만족해하고 있다"
+
+msgctxt "god_mood"
+msgid "full"
+msgstr "배불러하고 있다"
 
 #: ../src/eat.c:821
 #, c-format
@@ -56949,7 +56991,7 @@ msgstr "이다"
 
 #: ../src/pray.c:1084
 msgid "well-pleased"
-msgstr "죽음"
+msgstr "매우 흡족한"
 
 #: ../src/insight.c:2195 ../src/insight.c:2362
 msgid "went"
@@ -57691,7 +57733,7 @@ msgstr "여기에 글을 쓴다."
 # engrave.c - "You write in the dust". 메뉴 옵션
 #: ../src/engrave.c:904
 msgid "write in"
-msgstr "~에 쓰다"
+msgstr "쓴다"
 
 #: ../src/engrave.c:525
 #, c-format
@@ -57702,10 +57744,10 @@ msgstr "%s에 글을 쓴다!"
 msgid "write in your best handwriting:  \"My Diary\", but it quickly fades."
 msgstr "최선을 다해 \"나의 일기\"라고 썼지만 금세 사라졌다."
 
-# engrave.c - 쓰기. "You write on the floor"
+# write.c getobj 프롬프트: "글을 쓸 것이 무엇입니까?"
 #: ../src/write.c:99
 msgid "write on"
-msgstr "에 쓰다"
+msgstr "글을 쓸"
 
 #: ../src/engrave.c:518 ../src/engrave.c:521
 #, c-format
@@ -57714,7 +57756,7 @@ msgstr "%s에 쓸 수 없다!"
 
 #: ../src/engrave.c:901
 msgid "write strangely on"
-msgstr "이상하게 슬픈"
+msgstr "이상한 글씨를 쓴다"
 
 #: ../src/write.c:213
 msgid "write that!"

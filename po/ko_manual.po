@@ -4481,10 +4481,12 @@ msgstr "%s %s 올라갔다!"
 # 예: "You climb up the stairs." → "당신이 계단 위로 올라간다."
 # 예: "You fly up along the ladder." → "당신이 사다리를 따라 위로 날아간다."
 # ============================================================
+# %1$s="당신은"/"당신은 힘겹게", %2$s=이동 동사("올라갔다"), %3$s=" 따라"/"", %4$s=계단/사다리
+# 조합: "당신은 계단 위로 올라갔다."
 #: ../src/do.c:1760
 #, c-format
 msgid "%s %s up%s the %s."
-msgstr "%1$s{이/가} %4$s%3$s 위로 %2$s"
+msgstr "%1$s %4$s%3$s 위로 %2$s."
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -6821,10 +6823,13 @@ msgstr "%s{이/가} 바삭하게 튀겨졌다!"
 msgid "%s from nowhere!"
 msgstr "어디선가 %s!"
 
+# trap.c:4221 You("%s from the %s.") - 구덩이 탈출
+# %1$s=이동 동사("올라갔다"), %2$s=구덩이 이름
+# 조합: "구덩이에서 올라갔다."
 #: ../src/trap.c:4218
 #, c-format
 msgid "%s from the %s."
-msgstr "%s{이/가} %s에서."
+msgstr "%2$s에서 %1$s."
 
 # dbridge.c:711 - 다리에서 떨어짐
 #: ../src/dbridge.c:737
@@ -24993,9 +24998,11 @@ msgstr "해외의 마녀들"
 msgid "With %s effort you move %s."
 msgstr "%s 노력으로 %s{을/를} 옮겼다."
 
+# do.c:1765 "%s %s up%s the %s." 조합의 %1$s 슬롯 ("You" 대체)
+# 조합: "당신은 힘겹게 계단 위로 올라갔다."
 #: ../src/do.c:1761
 msgid "With great effort, you"
-msgstr "큰 노력으로, 당신"
+msgstr "당신은 힘겹게"
 
 #: ../src/pickup.c:2064
 #, c-format
@@ -27956,9 +27963,11 @@ msgstr "모든 종류"
 msgid "almost hits"
 msgstr "거의 맞을 뻔했다"
 
+# do.c "fly down %s." 조합의 %s 슬롯 — msgstr에서 {을/를}이 뒤따르므로 명사로 번역
+# 조합: "사다리를 날아 내려갔다."
 #: ../src/do.c:1779
 msgid "along the ladder"
-msgstr "사다리를 따라"
+msgstr "사다리"
 
 #: ../src/o_init.c:601
 msgid "alphabetical across all classes"
@@ -32926,13 +32935,14 @@ msgstr "성직"
 msgid "clerical spells"
 msgstr "사제 주문"
 
+# 문장 끝 동사 슬롯: do.c "…위로 %s." / trap.c "%s에서 %s." 둘 다 종결형 필요
 #: ../src/do.c:1762 ../src/trap.c:4218
 msgid "climb"
-msgstr "오르다"
+msgstr "올라갔다"
 
 #: ../src/do.c:1799
 msgid "climb down the ladder"
-msgstr "사다리를 내려가다"
+msgstr "사다리를 내려갔다"
 
 # insight.c:1721 - "You can cling to the ceiling"
 # 기존: "천장에 매달리기" → "당신은 천장에 매달리기" (불완전)
@@ -34505,7 +34515,7 @@ msgstr "당신의 탐험 노력을 비하한다."
 
 #: ../src/do.c:1800
 msgid "descend the stairs"
-msgstr "계단을 내려가다"
+msgstr "계단을 내려갔다"
 
 #: ../src/sounds.c:1092
 msgid "describes a recent article in \"Spelunker Today\" magazine."
@@ -37146,7 +37156,7 @@ msgstr "잠들었다."
 #: ../src/do.c:1782
 #, c-format
 msgid "fall down the %s."
-msgstr "%s{을/를} 따라 떨어진다."
+msgstr "%s{을/를} 따라 굴러떨어졌다."
 
 #: ../src/mhitu.c:560
 #, c-format
@@ -39445,9 +39455,10 @@ msgstr "이다"
 msgid "go down here%s."
 msgstr "여기서 내려갈 수%s 없다."
 
+# do.c:1315 You_cant("go up here.") - 오역 수정: "올라갈 수 없다"는 부정문
 #: ../src/do.c:1315
 msgid "go up here."
-msgstr "여기서 올라간다."
+msgstr "여기서는 올라갈 수 없다."
 
 #: ../src/uhitm.c:2563
 msgid "go up in flames!"

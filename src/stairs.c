@@ -200,20 +200,24 @@ stairs_description(
 
     if (!known_branch_stairs(sway)) {
         /* ordinary stairs or branch stairs to not-yet-visited branch */
-        Sprintf(outbuf, "%s %s", stairs, updown);
         if (sway->u_traversed) {
             boolean specialdepth = (tolev.dnum == quest_dnum
                                     || single_level_branch(&tolev)); /* knox */
             int to_dlev = specialdepth ? dunlev(&tolev) : depth(&tolev);
 
-            Sprintf(eos(outbuf), _(" to level %d"), to_dlev);
+            /* single format so Korean can reorder into "level-N-bound
+               up staircase" (noun phrase, SOV-friendly) */
+            Sprintf(outbuf, C_("stairs", "%s %s to level %d"),
+                    stairs, updown, to_dlev);
+        } else {
+            Sprintf(outbuf, C_("stairs", "%s %s"), stairs, updown);
         }
     } else if (u.uz.dnum == 0 && u.uz.dlevel == 1 && sway->up) {
         /* stairs up from level one are a special case; they are marked
            as having been traversed because the hero obviously started
            the game by coming down them, but the remote side varies
            depending on whether the Amulet is being carried */
-        Sprintf(outbuf, _("%s%s %s %s"),
+        Sprintf(outbuf, C_("stairs", "%s%s %s %s"),
                 !u.uhave.amulet ? "" : _("branch "),
                 stairs, updown,
                 !u.uhave.amulet ? _("out of the dungeon")

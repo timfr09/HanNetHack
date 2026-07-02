@@ -5,6 +5,9 @@
 
 #include "hack.h"
 #include "i18n.h"
+#ifdef ENABLE_NLS
+#include "ko_postpos.h" /* ko_process_string for menu-window messages */
+#endif
 
 staticfn void inuse_classify(Loot *, struct obj *);
 staticfn char *loot_xname(struct obj *);
@@ -4309,6 +4312,16 @@ look_here(
         /* hardcoded "is" worked here because "iron bars" is actually
            "set of iron bars"; use vtense() instead of relying on that */
         Sprintf(fbuf, _("There %s %s here."), vtense(dfeature, _("are")), dfeature);
+#ifdef ENABLE_NLS
+        /* fbuf may be shown via putstr() (menu window path below) which,
+           unlike pline(), doesn't resolve Korean postposition tokens */
+        if (is_korean_locale() && strchr(fbuf, KO_PP_START)) {
+            char ppbuf[BUFSZ];
+
+            ko_process_string(ppbuf, sizeof ppbuf, fbuf);
+            Strcpy(fbuf, ppbuf);
+        }
+#endif
     }
 
     if (!otmp || is_lava(u.ux, u.uy)

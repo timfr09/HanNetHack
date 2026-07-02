@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-22 12:38+0000\n"
+"POT-Creation-Date: 2026-07-02 10:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: dat/Mon-loca.lua:67
 #: dat/castle.lua:151
+#: dat/Mon-loca.lua:67
 #: dat/soko1-1.lua:110
 #: dat/soko1-2.lua:112
 #. text field

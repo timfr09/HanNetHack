@@ -2562,10 +2562,22 @@ msgstr " 마법을 발동하기 위해"
 msgid " to blindfold yourself"
 msgstr " (눈가리개)"
 
-#: ../src/stairs.c:209
+# stairs.c stairs_description() - 목적지를 아는 일반 계단 명사구
+# 영어: "staircase up to level 3" → 한국어: "3층으로 이어지는 위쪽 계단"
+# %1$s=계단/사다리, %2$s=위/아래, %3$d=층수
+#: ../src/stairs.c:210
 #, c-format
-msgid " to level %d"
-msgstr " %d층으로"
+msgctxt "stairs"
+msgid "%s %s to level %d"
+msgstr "%3$d층으로 이어지는 %2$s쪽 %1$s"
+
+# stairs.c stairs_description() - 일반 계단 명사구
+# 영어: "staircase up" → 한국어: "위쪽 계단"
+#: ../src/stairs.c:213
+#, c-format
+msgctxt "stairs"
+msgid "%s %s"
+msgstr "%2$s쪽 %1$s"
 
 # ============================================================
 # [조합 메시지] 천장 매달리기 - insight.c
@@ -11150,10 +11162,15 @@ msgstr "%s%s"
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
-#: ../src/stairs.c:216
+# stairs.c stairs_description() - 1층 위 계단(던전 밖/원소계/엔드게임행) 명사구
+# 영어: "[branch ]staircase up out of the dungeon"
+# 한국어: "던전 밖으로 이어지는 위쪽 [분기 ]계단"
+# %1$s="분기 "/빈 문자열, %2$s=계단/사다리, %3$s=위/아래, %4$s=목적지("~으로")
+#: ../src/stairs.c:220
 #, c-format
+msgctxt "stairs"
 msgid "%s%s %s %s"
-msgstr "%s%s{이/가} %s %s!"
+msgstr "%4$s 이어지는 %3$s쪽 %1$s%2$s"
 
 # [리뷰 완료] weapon.c:460 — Your()+vtense(sear)+mon_nam, 은반지 화상
 # %1$s = "silver "/"left "/"right "/"", %2$s = rings = "반지/반지들"
@@ -31203,11 +31220,11 @@ msgstr "분기 "
 # %2$s = 방향 ("위"/"아래")
 # %3$s = 던전 이름 ("노움 광산" 등)
 # 영어: "branch staircase up to the Gnomish Mines"
-# 한국어: "노움 광산으로 가는 위쪽 계단 분기"
-#: ../src/stairs.c:229
+# 한국어: "노움 광산으로 이어지는 위쪽 분기 계단"
+#: ../src/stairs.c:233
 #, c-format
 msgid "branch %s %s to %s"
-msgstr "%3$s{으로/로} 가는 %2$s쪽 %1$s 분기"
+msgstr "%3$s{으로/로} 이어지는 %2$s쪽 분기 %1$s"
 
 #: ../src/obj_descr_i18n.c:64
 msgid "brass"
@@ -37419,6 +37436,13 @@ msgstr "여성"
 #: ../src/polyself.c:803
 msgid "female "
 msgstr "여성 "
+
+# objnam.c corpse_xname() - 시체가 합쳐지지 않는 이유(성별 차이) 표시용 접두사
+# 조합: "female newt corpse" → "암컷 영원 시체"
+#: ../src/objnam.c:1922
+msgctxt "corpse_gender"
+msgid "female "
+msgstr "암컷 "
 
 #: ../src/do_wear.c:1023 ../src/eat.c:2373
 msgid "feminine"
@@ -44270,6 +44294,13 @@ msgstr "남성"
 #: ../src/polyself.c:803
 msgid "male "
 msgstr "남성 "
+
+# objnam.c corpse_xname() - 시체가 합쳐지지 않는 이유(성별 차이) 표시용 접두사
+# 조합: "male newt corpse" → "수컷 영원 시체"
+#: ../src/objnam.c:1920
+msgctxt "corpse_gender"
+msgid "male "
+msgstr "수컷 "
 
 # 마법사 모욕어: 저주받은 자
 #: ../src/wizard.c:829

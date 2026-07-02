@@ -38,7 +38,6 @@
 #include "sys.h"
 #include "timeout.h"
 #include "winprocs.h"
-#include "wintype.h"
 #include "vision.h"
 #include "you.h"
 #include "i18n.h"
@@ -65,6 +64,7 @@
 #define CXN_PFX_THE 4   /* prefix with "the " (unless pname) */
 #define CXN_ARTICLE 8   /* include a/an/the prefix */
 #define CXN_NOCORPSE 16 /* suppress " corpse" suffix */
+#define CXN_ADDGNDR 32  /* include a gender */
 
 /* number of turns it takes for vault guard to show up */
 #define VAULT_GUARD_TIME 30

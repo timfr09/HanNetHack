@@ -37420,6 +37420,13 @@ msgstr "여성"
 msgid "female "
 msgstr "여성 "
 
+# objnam.c corpse_xname() - 시체가 합쳐지지 않는 이유(성별 차이) 표시용 접두사
+# 조합: "female newt corpse" → "암컷 영원 시체"
+#: ../src/objnam.c:1922
+msgctxt "corpse_gender"
+msgid "female "
+msgstr "암컷 "
+
 #: ../src/do_wear.c:1023 ../src/eat.c:2373
 msgid "feminine"
 msgstr "여성적인"
@@ -44270,6 +44277,13 @@ msgstr "남성"
 #: ../src/polyself.c:803
 msgid "male "
 msgstr "남성 "
+
+# objnam.c corpse_xname() - 시체가 합쳐지지 않는 이유(성별 차이) 표시용 접두사
+# 조합: "male newt corpse" → "수컷 영원 시체"
+#: ../src/objnam.c:1920
+msgctxt "corpse_gender"
+msgid "male "
+msgstr "수컷 "
 
 # 마법사 모욕어: 저주받은 자
 #: ../src/wizard.c:829

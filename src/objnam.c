@@ -1916,9 +1916,11 @@ corpse_xname(
        into the code, so the() has been modified to deal with capitalized
        monster names; we could switch to using it below like an() */
 
-    gndr = (gndr_prefix && otmp->spe & CORPSTAT_MALE) != 0     ? "male "
-           : (gndr_prefix && otmp->spe & CORPSTAT_FEMALE) != 0 ? "female "
-                                                               : "";
+    gndr = (gndr_prefix && otmp->spe & CORPSTAT_MALE) != 0
+               ? C_("corpse_gender", "male ")
+           : (gndr_prefix && otmp->spe & CORPSTAT_FEMALE) != 0
+               ? C_("corpse_gender", "female ")
+               : "";
     if (!adjective || !*adjective) {
         Strcat(nambuf, gndr);
         /* normal case:  newt corpse */

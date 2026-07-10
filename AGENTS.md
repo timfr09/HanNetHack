@@ -34,6 +34,17 @@ HACKDIR=~/nh/install/games/lib/nethackdir TERM=xterm-256color ./src/nethack
 ```
 Korean is the default language. Config goes in `~/.nethackrc`.
 
+**Cloud VM note:** `sys/unix/setup.sh hints/linux.500` sets `HACKDIR` to `$(repo root)/playground`,
+so after `make install` the runnable tree is `/workspace/playground`, not `~/nh/...`. Launch with:
+```bash
+HACKDIR=/workspace/playground TERM=xterm-256color ./src/nethack
+```
+This is a TTY (ncurses) game. For a GUI-terminal demo on the XFCE desktop (`DISPLAY=:1`,
+only `xfce4-terminal` is installed), the terminal's default foreground can equal the background
+(text renders invisible). Force colors first, e.g. prepend
+`printf '\033]10;#e6e6e6\007\033]11;#101010\007';` before the `nethack` command. Drive keys with
+`xdotool` targeting the *focused* window (`windowactivate --sync` then `key`), not `--window`.
+
 ### Translation Workflow
 - **Only `po/ko_manual.po` is committed.** It is the canonical source of Korean translations.
 - `po/ko.po` is a local cache rebuilt by `make update-po` from `nethack.pot`; it is gitignored and never edited by hand. `make compile` works without it (uses `ko_manual.po` directly).

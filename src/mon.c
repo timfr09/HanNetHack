@@ -3411,6 +3411,8 @@ set_ustuck(struct monst *mtmp)
 
     disp.botl = TRUE;
     u.ustuck = mtmp;
+    if (u.ustuck_mid)
+        u.ustuck_mid = 0;
     if (!u.ustuck) {
         u.uswallow = 0;
         u.uswldtim = 0;

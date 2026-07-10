@@ -1722,7 +1722,7 @@ notice_mon(struct monst *mtmp)
             set_msg_xy(mtmp->mx, mtmp->my);
             You(_("%s %s."), canseemon(mtmp) ? _("see") : _("notice"),
                 x_monnam(mtmp,
-                     mtmp->mtame ? ARTICLE_YOUR
+                     (mtmp->mtame && !Hallucination) ? ARTICLE_YOUR
                      : (!has_mgivenname(mtmp)
                         && !type_is_pname(mtmp->data)) ? ARTICLE_A
                      : ARTICLE_NONE,

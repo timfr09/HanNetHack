@@ -18546,6 +18546,22 @@ msgstr "셔츠의 무늬를 살펴본다"
 msgid "Look at what is here"
 msgstr "여기에 있는 것 보기"
 
+#: ../src/cmd.c:4515
+msgid "Pray here"
+msgstr "여기서 기도하기"
+
+#: ../src/cmd.c:4516
+msgid "Engrave here"
+msgstr "여기에 각인하기"
+
+#: ../src/cmd.c:4517
+msgid "View attributes"
+msgstr "능력치 보기"
+
+#: ../src/cmd.c:4518
+msgid "Access memories"
+msgstr "이전 메시지 보기"
+
 #: ../src/pickup.c:3420
 #, c-format
 msgid "Look inside %s"

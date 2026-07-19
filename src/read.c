@@ -668,22 +668,33 @@ stripspe(struct obj *obj)
 staticfn void
 p_glow1(struct obj *otmp)
 {
-    pline(_("%s briefly."), Yobjnam2(otmp, Blind ? _("vibrate") : _("glow")));
+    if (Blind)
+        pline(_("%s briefly."), Yobjnam2(otmp, _("vibrate")));
+    else
+        pline(C_("glow_color", "%s briefly."),
+              Yobjnam2(otmp, C_("glow_color", "glow")));
 }
 
 staticfn void
 p_glow2(struct obj *otmp, const char *color)
 {
-    pline(_("%s%s%s for a moment."), Yobjnam2(otmp, Blind ? _("vibrate") : _("glow")),
-          Blind ? "" : " ", Blind ? "" : hcolor(color));
+    if (Blind)
+        pline(_("%s for a moment."), Yobjnam2(otmp, _("vibrate")));
+    else
+        pline(C_("glow_color", "%s%s%s for a moment."),
+              Yobjnam2(otmp, C_("glow_color", "glow")), " ",
+              hcolor(color));
 }
 
 staticfn void
 p_glow3(struct obj *otmp, const char *color)
 {
-    pline(_("%s feebly%s%s for a moment."),
-          Yobjnam2(otmp, Blind ? _("vibrate") : _("glow")),
-          Blind ? "" : " ", Blind ? "" : hcolor(color));
+    if (Blind)
+        pline(_("%s feebly for a moment."), Yobjnam2(otmp, _("vibrate")));
+    else
+        pline(C_("glow_color", "%s feebly%s%s for a moment."),
+              Yobjnam2(otmp, C_("glow_color", "glow")), " ",
+              hcolor(color));
 }
 
 /* getobj callback for object to charge */

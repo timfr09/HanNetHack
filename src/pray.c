@@ -1188,7 +1188,8 @@ pleased(aligntyp g_align)
 
                 if (uwep->cursed) {
                     if (!Blind) {
-                        pline(_("%s %s%s."), Yobjnam2(uwep, _("softly glow")),
+                        pline(C_("softglow_color", "%s %s%s."),
+                              Yobjnam2(uwep, C_("glow_color", "softly glow")),
                               hcolor(NH_AMBER), repair_buf);
                         iflags.last_msg = PLNMSG_OBJ_GLOWS;
                     } else
@@ -1199,8 +1200,8 @@ pleased(aligntyp g_align)
                     *repair_buf = '\0';
                 } else if (!uwep->blessed) {
                     if (!Blind) {
-                        pline(_("%s with %s aura%s."),
-                              Yobjnam2(uwep, _("softly glow")),
+                        pline(C_("glow_color", "%s with %s aura%s."),
+                              Yobjnam2(uwep, C_("glow_color", "softly glow")),
                               an(hcolor(NH_LIGHT_BLUE)), repair_buf);
                         iflags.last_msg = PLNMSG_OBJ_GLOWS;
                     } else

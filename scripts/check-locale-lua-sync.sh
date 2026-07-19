@@ -59,6 +59,8 @@ done
 echo ""
 echo "CHECK 이면: 원본 대비 한국어 파일이 오래됐을 수 있음 → diff로 확인 후 병합."
 echo "  예: diff -u dat/nhlib.lua dat/locale/ko/nhlib.lua | less"
+echo "  줄 수만으로는 로직/메시지 누락이 안 보일 수 있음 → 심층 점검:"
+echo "  python3 scripts/audit-locale-lua-structure.py"
 echo ""
 
 if [ "$issues" -gt 0 ]; then

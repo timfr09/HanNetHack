@@ -162,6 +162,7 @@ python3 scripts/report-locale-ko-coverage.py  # KO 파일 안 영어 잔존 휴�
 | 래핑만 | `./scripts/check-i18n-wrapping.sh` |
 | locale TXT 동기화 점검 | `./scripts/check-locale-dat-sync.sh` |
 | locale Lua 짝 점검 | `./scripts/check-locale-lua-sync.sh` |
+| locale Lua **심층** (로직·메시지) | `python3 scripts/audit-locale-lua-structure.py` |
 
 ---
 

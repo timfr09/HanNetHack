@@ -921,8 +921,9 @@ chwepon(struct obj *otmp, int amount)
 
         if (amount >= 0 && uwep && will_weld(uwep)) { /* cursed tin opener */
             if (!Blind) {
-                Sprintf(buf, _("%s with %s aura."),
-                        Yobjnam2(uwep, _("glow")), an(hcolor(NH_AMBER)));
+                Sprintf(buf, C_("glow_color", "%s with %s aura."),
+                        Yobjnam2(uwep, C_("glow_color", "glow")),
+                        an(hcolor(NH_AMBER)));
                 uwep->bknown = !Hallucination; /* ok to bypass set_bknown() */
             } else {
                 /* cursed tin opener is wielded in right hand */
@@ -994,8 +995,8 @@ chwepon(struct obj *otmp, int amount)
     if (((uwep->spe > 5 && amount >= 0) || (uwep->spe < -5 && amount < 0))
         && rn2(3)) {
         if (!Blind)
-            pline(_("%s %s for a while and then %s."),
-                  Yobjnam2(uwep, _("violently glow")), color,
+            pline(C_("glow_color", "%s %s for a while and then %s."),
+                  Yobjnam2(uwep, C_("glow_color", "violently glow")), color,
                   otense(uwep, _("evaporate")));
         else
             pline(_("%s."), Yobjnam2(uwep, _("evaporate")));
@@ -1005,9 +1006,11 @@ chwepon(struct obj *otmp, int amount)
     }
     if (!Blind) {
         xtime = (amount * amount == 1) ? _("moment") : _("while");
-        pline(_("%s %s for a %s."),
-              Yobjnam2(uwep, amount == 0 ? _("violently glow") : _("glow")), color,
-              xtime);
+        pline(C_("glow_color", "%s %s for a %s."),
+              Yobjnam2(uwep,
+                       amount == 0 ? C_("glow_color", "violently glow")
+                                   : C_("glow_color", "glow")),
+              color, xtime);
         if (otyp != STRANGE_OBJECT && uwep->known
             && (amount > 0 || (amount < 0 && otmp->bknown)))
             makeknown(otyp);

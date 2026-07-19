@@ -1550,9 +1550,10 @@ H2Opotion_dip(
         if (useeit) {
             glowcolor = hcolor(glowcolor);
             if (altfmt)
-                pline(_("%s with %s aura."), objphrase, an(glowcolor));
+                pline(C_("glow_color", "%s with %s aura."), objphrase,
+                      an(glowcolor));
             else
-                pline(_("%s %s."), objphrase, glowcolor);
+                pline(C_("glow_color", "%s %s."), objphrase, glowcolor);
             iflags.last_msg = PLNMSG_OBJ_GLOWS;
             targobj->bknown = !Hallucination;
         } else {
@@ -1608,7 +1609,8 @@ impact_arti_light(
         curse(otmp);
     else
         bless(otmp);
-    H2Opotion_dip(otmp, obj, seeit, seeit ? Yobjnam2(obj, _("glow")) : "");
+    H2Opotion_dip(otmp, obj, seeit,
+                  seeit ? Yobjnam2(obj, C_("glow_color", "glow")) : "");
     dealloc_obj(otmp);
 #if 0   /* defer this until caller has used up the scroll so it won't be
          * visible; player was told that it disappeared as hero read it */
@@ -2457,7 +2459,7 @@ potion_dip(struct obj *obj, struct obj *potion)
     potion->in_use = TRUE; /* assume it will be used up */
     if (potion->otyp == POT_WATER) {
         boolean useeit = !Blind || (obj == ublindf && Blindfolded_only);
-        const char *obj_glows = Yobjnam2(obj, _("glow"));
+        const char *obj_glows = Yobjnam2(obj, C_("glow_color", "glow"));
 
         if (H2Opotion_dip(potion, obj, useeit, obj_glows)) {
             poof(potion);

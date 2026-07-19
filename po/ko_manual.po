@@ -3765,17 +3765,20 @@ msgstr "%s %s{이/가} 떨어졌다!"
 msgid "%s %s falls, unsupported!"
 msgstr "%s %s{이/가} 지지되지 않아 떨어졌다!"
 
-# [리뷰 완료] wield.c:993 — Yobjnam2+glow/violently glow + color + time
-# %1$s = Yobjnam2(uwep, "glow"/"violently glow") = "당신의 검{이/가} 빛나다/격렬하게 빛났다"
-# %2$s = color, %3$s = "잠깐"/"한동안"
-# 고유 포맷 (1건) — PO 오버라이드 안전
+# [리뷰 완료] wield.c — Yobjnam2+C_("glow_color") + color + time
+# %1$s = Yobjnam2(..., C_("glow_color","glow"|"violently glow")) = "당신의 검{이/가}"
+# %2$s = color, %3$s = "순간"/"잠시" (억제 — 포맷에 "잠시" 고정)
 # 영어: "Your sword glows red for a moment."
-# 한국어: "당신의 검이 빛나다 빨간 잠깐." → "잠깐 빨간 빛으로 당신의 검이 빛났다."
-# 주의: %1$s에 동사 포함 → %2$s(색상)의 위치 조정만 가능
-#: ../src/wield.c:1003
+# 한국어: "당신의 검이 잠시 빨간 빛을 발했다."
+#: ../src/wield.c:1013
 #, c-format
+msgctxt "glow_color"
 msgid "%s %s for a %s."
-msgstr "%3$s %2$s %1$s."
+msgstr "%1$s 잠시 %2$s 빛을 발했다.%3$.0s"
+
+# 구 공유 msgid 잔존(다른 경로 없음) — 위 glow_color 우선
+msgid "%s %s for a %s."
+msgstr "%1$s 잠시 %2$s 빛을 발했다.%3$.0s"
 
 # "tingle"은 이미 정의됨 (line 4993)
 # [조합 메시지] apply.c:1344-1345 - 광원 깜빡이다 꺼짐
@@ -3806,16 +3809,18 @@ msgctxt "autocurse"
 msgid "%s %s for a moment."
 msgstr "%1$s 잠시 %2$s 빛을 발했다."
 
-# [리뷰 완료] wield.c:982 — Yobjnam2+violently glow + color + otense+evaporate
-# %1$s = Yobjnam2(uwep, "violently glow") = "당신의 검{이/가} 격렬하게 빛났다"
-# %2$s = color, %3$s = otense(uwep, "evaporate") = "증발했다"
-# 고유 포맷 (1건) — PO 오버라이드 안전
+# [리뷰 완료] wield.c — Yobjnam2+C_("glow_color","violently glow") + color + evaporate
+# %1$s = "당신의 검{이/가}", %2$s = color, %3$s = otense("evaporate") = "증발했다"
 # 영어: "Your sword violently glows red for a while and then evaporates."
-# 한국어: "한동안 빨간 빛으로 당신의 검이 격렬하게 빛났다, 그러더니 증발했다."
-#: ../src/wield.c:992
+# 한국어: "당신의 검이 한동안 빨간 빛을 발하다가 증발했다."
+#: ../src/wield.c:1000
 #, c-format
+msgctxt "glow_color"
 msgid "%s %s for a while and then %s."
-msgstr "한동안 %2$s %1$s, 그러더니 %3$s."
+msgstr "%1$s 한동안 %2$s 빛을 발하다가 %3$s."
+
+msgid "%s %s for a while and then %s."
+msgstr "%1$s 한동안 %2$s 빛을 발하다가 %3$s."
 
 #: ../src/mhitu.c:1320
 #, c-format
@@ -4805,10 +4810,20 @@ msgstr "%1$s{이/가} %2$.0s%3$.0s%4$s{을/를} 해치지 않고 통과했다."
 # ============================================================
 # monmove.c - 몬스터 이동 메시지
 # 영어: "%s %s%s." = "The orc moves closer."
+# pray.c — 저주 해제 soft glow + repair_buf
+# %1$s = "장검{이/가}", %2$s = hcolor(AMBER), %3$s = repair_buf
+# 영어: "Your long sword softly glows amber and is now as good as new."
+# 한국어: "장검이 은은하게 호박색 빛을 발했다, 그리고 이제 새것처럼 좋아졌다."
+#: ../src/pray.c:1192
+#, c-format
+msgctxt "softglow_color"
+msgid "%s %s%s."
+msgstr "%1$s 은은하게 %2$s 빛을 발했다%3$s."
+
 # 한국어 어순: "오크가 더 가까이 이동한다." (부사 + 동사)
 # %1$s=몬스터, %2$s=동사, %3$s=위치부사
 #: ../src/invent.c:4289 ../src/mhitu.c:2113 ../src/monmove.c:42
-#: ../src/pray.c:1187 ../src/zap.c:3951
+#: ../src/zap.c:3951
 #, c-format
 msgid "%s %s%s."
 msgstr "%1$s{이/가}%3$s %2$s."
@@ -5722,13 +5737,19 @@ msgstr "%s 잠시 투명해지는 듯했다."
 # ============================================================
 # [리뷰 완료] read.c:658/669/927 — Yobjnam2+vibrate/glow, 충전/축복 효과
 # %s = Yobjnam2(obj, "vibrate"/"glow") = "당신의 X{이/가} 진동했다"/"빛나다"
-# 고유 포맷 (3건 모두 read.c) — PO 오버라이드 안전
-# 영어: "Your wand vibrates briefly."
-# 한국어: "잠깐 당신의 지팡이가 진동했다."
-#: ../src/read.c:659 ../src/read.c:670 ../src/read.c:928
+# [리뷰 완료] read.c p_glow1 — Blind는 vibrate 경로, 시야는 glow_color
+# 영어: "Your wand glows briefly." / "Your wand vibrates briefly."
+# 한국어: "당신의 지팡이가 잠시 빛을 발했다." / "잠깐 당신의 지팡이가 진동했다."
+#: ../src/read.c:660 ../src/read.c:673 ../src/read.c:941
 #, c-format
 msgid "%s briefly."
 msgstr "잠깐 %s."
+
+#: ../src/read.c:675
+#, c-format
+msgctxt "glow_color"
+msgid "%s briefly."
+msgstr "%s 잠시 빛을 발했다."
 
 #: ../src/uhitm.c:3420
 #, c-format
@@ -6670,13 +6691,17 @@ msgid "%s features %s."
 msgstr "%s{이/가} %s{을/를} 특징으로 한다."
 
 # [리뷰 완료] read.c:682 — Yobjnam2+vibrate/glow + "feebly" + hcolor
-# 고유 포맷 (1건) — PO 오버라이드 안전
+# [리뷰 완료] read.c p_glow3 — 시야 경로만 glow_color
 # 영어: "Your sword feebly glows blue for a moment."
-# 한국어: "잠깐 희미하게 당신의 검이 빛나다 파란."
-#: ../src/read.c:683
+# 한국어: "당신의 검이 잠시 희미하게 파란 빛을 발했다."
+#: ../src/read.c:696
 #, c-format
+msgctxt "glow_color"
 msgid "%s feebly%s%s for a moment."
-msgstr "잠깐 희미하게 %1$s%2$s%3$s."
+msgstr "%1$s 잠시 희미하게 %3$s 빛을 발했다.%2$.0s"
+
+msgid "%s feebly%s%s for a moment."
+msgstr "%1$s 잠시 희미하게 %3$s 빛을 발했다.%2$.0s"
 
 #: ../src/apply.c:184 ../src/do.c:2381
 #, c-format
@@ -10899,24 +10924,31 @@ msgstr "%1$s, %2$ld점으로,%3$.0s"
 # good as new."
 # 한국어 조합: "밝은 파란색 아우라와 함께 당신의 장검 은은하게 빛난다, 그리고 이제 새것처럼 좋아졌다."
 # 주의: %3$s가 빈 문자열이면 마침표로 종료
-#: ../src/pray.c:1198
+# pray.c — 축복 아우라 + repair_buf
+# %1$s = Yobjnam2(..., C_("glow_color","softly glow")) = "장검{이/가}"
+# %2$s = an(hcolor), %3$s = repair_buf 또는 ""
+# 영어: "Your long sword softly glows with a light blue aura and is now as good as new."
+# 한국어: "장검이 하늘색 아우라를 내뿜었다, 그리고 이제 새것처럼 좋아졌다."
+#: ../src/pray.c:1204
 #, c-format
+msgctxt "glow_color"
 msgid "%s with %s aura%s."
-msgstr "%2$s 아우라와 함께 %1$s%3$s."
+msgstr "%1$s %2$s 아우라를 내뿜었다%3$s."
+
+msgid "%s with %s aura%s."
+msgstr "%1$s %2$s 아우라를 내뿜었다%3$s."
 
 # --- 성수/저수 아우라 포맷 ---
-# potion.c:1549, wield.c:910 - 성수/저수 담그기 또는 주문 효과로 아이템 빛남(아우라)
-# %1$s=Yobjnam2(obj, "glow")="[당신의 물건] 빛나다", %2$s=an(hcolor)="[색상]"
-# [리뷰 완료] potion.c:1549+wield.c:910 — Yobjnam2(glow)/aobjnam(glow)+hcolor
-# %1$s = objphrase (Yobjnam2 또는 aobjnam 결과), %2$s = an(glowcolor) = 색상
-# Yobjnam2 경우: %1$s = "검{이/가} 빛나다" (glow 사전형 — Known Issue)
-# 안장 경우: %1$s = "안장{이/가}" (C_("Tobjnam","glow") 계사 억제)
-# 안장 경우 동사 누락 해결: 포맷에 "빛났다" 제공
+# potion.c / wield.c — C_("glow_color") 계사 억제 + 포맷 동사
+# %1$s = objphrase ("검{이/가}" / "안장{이/가}"), %2$s = an(glowcolor)
 # 영어: "Your sword glows with an amber aura."
-# 한국어: "검이 빛나다 호박색 아우라를 내뿜었다." (Yobjnam2, glow 사전형 잔여)
-# 한국어: "안장이 호박색 아우라를 내뿜었다." (안장, 계사 억제 + 포맷 동사)
-#: ../src/potion.c:1553 ../src/wield.c:919
+# 한국어: "검이 호박색 아우라를 내뿜었다."
+#: ../src/potion.c:1554 ../src/wield.c:925
 #, c-format
+msgctxt "glow_color"
+msgid "%s with %s aura."
+msgstr "%1$s %2$s 아우라를 내뿜었다."
+
 msgid "%s with %s aura."
 msgstr "%1$s %2$s 아우라를 내뿜었다."
 
@@ -11465,12 +11497,18 @@ msgstr "%s%s%s"
 msgid "%s%s%s called %s"
 msgstr "%s(이)라 불리는 %s%s%s"
 
-# [리뷰 완료] read.c:675 — Yobjnam2+vibrate/glow + hcolor, 충전 효과
-# %1$s = Yobjnam2, %2$s = " " 또는 "", %3$s = hcolor 또는 ""
-# 고유 포맷 (1건) — PO 오버라이드 안전
+# [리뷰 완료] read.c p_glow2 — 시야 경로 glow_color; Blind는 "%s for a moment."
+# %1$s = "검{이/가}", %3$s = hcolor
 # 영어: "Your sword glows blue for a moment."
-# 한국어: "잠깐 당신의 검이 빛나다 파란." (glow 사전형은 Known Issue)
-#: ../src/read.c:676
+# 한국어: "검이 잠시 파란 빛을 발했다."
+#: ../src/read.c:685
+#, c-format
+msgctxt "glow_color"
+msgid "%s%s%s for a moment."
+msgstr "%1$s 잠시 %3$s 빛을 발했다.%2$.0s"
+
+# [리뷰 완료] read.c:675 구 공유 포맷 (Blind 분기 분리 후 잔존용)
+#: ../src/read.c:685
 #, c-format
 msgid "%s%s%s for a moment."
 msgstr "잠깐 %1$s%2$s%3$s."
@@ -31222,14 +31260,14 @@ msgstr "바위가 %s구덩이에 안착한다."
 # [해결됨] steal.c "your" / steed.c "new" / do_wear.c "dust+falls" → 실제 이슈 아님
 # [해결됨] light.c ConcatF1 → 현재 코드에서 찾을 수 없음
 # 
-# [Known Issues — Yobjnam2 glow 사전형 (3차)]
-# - "%s %s." 46건 공유: Yobjnam2+glow 사전형 잔여
-#   (sit.c:625, apply.c:4317, read.c:1539, wield.c:975, pray.c:595/1298)
-# - "%s." 49건 공유: Yobjnam2+vibrate at read.c:1339, Yobjnam2+evaporate at
-# wield.c:986
-#   (활용형 전환으로 동사는 있으나 공유 포맷이라 별도 오버라이드 불가)
-# - bare "glow" 사전형 "빛나다": 명사/동사 이중 사용으로 활용형 전환 불가
-# - "%s with %s aura." 2건 공유 (potion.c:1549+wield.c:910): 동사 누락
+# [Known Issues — Yobjnam2 glow 사전형 (3차) — 일부 해결]
+# [해결됨] wield.c chwepon glow/violently glow → C_("glow_color") + 포맷 동사
+# [해결됨] potion.c/wield.c "%s with %s aura." → C_("glow_color")
+# [해결됨] pray.c softly glow + aura/repair → softglow_color / glow_color
+# [해결됨] read.c p_glow1/2/3 시야 경로 → C_("glow_color")
+# - "%s %s." 공유: sit/apply/read는 이미 C_("glow_color"); 기타 잔여 점검
+# - bare "glow" 사전형 "빛나다": 명사/동사 이중 사용 경로 잔여
+# - read.c 갑옷 인챈트 "%s %s%s%s%s for a %s." glow 사전형 잔여 (Known Issue)
 # ============================================================
 # 사전형(DICT-FORM) 동사 활용형 전환 (verify_ko_verbs.py 검출)
 # ============================================================
@@ -51843,14 +51881,14 @@ msgstr "켜진 물약을 끈다."
 msgid "soft"
 msgstr "부드러운"
 
-#: ../src/pray.c:1187 ../src/pray.c:1199
-msgid "softly glow"
-msgstr "은은하게 빛난다"
-
-#: ../src/pray.c:366 ../src/pray.c:598 ../src/pray.c:1304
+#: ../src/pray.c:366 ../src/pray.c:598 ../src/pray.c:1205 ../src/pray.c:1308
 msgctxt "glow_color"
 msgid "softly glow"
 msgstr "이다"
+
+# bare softly glow — 다른 잔존 경로용
+msgid "softly glow"
+msgstr "은은하게 빛난다"
 
 # 영화 스페이스볼즈(스타워즈 패러디 등장 화폐)
 #: ../src/invent.c:1538
@@ -56365,9 +56403,14 @@ msgstr "위반했다"
 msgid "violently "
 msgstr "난폭한"
 
-# --- 복합 동사 활용형 수정 (ko.po 오역/사전형 교정) ---
-# wield.c:983/994 Yobjnam2 — ko.po "격렬하게 빛나다" 사전형
-#: ../src/wield.c:993 ../src/wield.c:1004
+# wield.c — C_("glow_color","violently glow") 계사 억제
+#: ../src/wield.c:1001 ../src/wield.c:1015
+msgctxt "glow_color"
+msgid "violently glow"
+msgstr "이다"
+
+# wield.c Blind evaporate 등 — bare _("violently glow") 잔존 시
+#: ../src/wield.c:1001 ../src/wield.c:1015
 msgid "violently glow"
 msgstr "격렬하게 빛났다"
 

@@ -1191,12 +1191,19 @@ seffect_enchant_armor(struct obj **sobjp)
     s = scursed ? -otmp->spe : otmp->spe;
     if (s > (special_armor ? 5 : 3) && rn2(s)) {
         otmp->in_use = TRUE;
-        pline(_("%s violently %s%s%s for a while, then %s."), Yname2(otmp),
-              otense(otmp, Blind ? _("vibrate") : _("glow")),
-              (!Blind && !same_color) ? " " : "",
-              (Blind || same_color) ? "" : hcolor(scursed ? NH_BLACK
-                                                  : NH_SILVER),
-              otense(otmp, _("evaporate")));
+        /* Blind: vibrate stays in otense; sighted: glow verb is in the
+           glow_color format (Yobjnam2-style dict-form leak otherwise). */
+        if (Blind) {
+            pline(_("%s violently %s for a while, then %s."), Yname2(otmp),
+                  otense(otmp, _("vibrate")), otense(otmp, _("evaporate")));
+        } else {
+            pline(C_("glow_color",
+                     "%s violently %s%s for a while, then %s."),
+                  Yname2(otmp), (!same_color) ? " " : "",
+                  same_color ? ""
+                             : hcolor(scursed ? NH_BLACK : NH_SILVER),
+                  otense(otmp, _("evaporate")));
+        }
         remove_worn_item(otmp, FALSE);
         useup(otmp);
         return;
@@ -1263,13 +1270,19 @@ seffect_enchant_armor(struct obj **sobjp)
             maybe_adjust_light(otmp, old_light);
         return;
     }
-    pline(_("%s %s%s%s%s for a %s."), Yname2(otmp),
-          (s == 0) ? _("violently ") : "",
-          otense(otmp, Blind ? _("vibrate") : _("glow")),
-          (!Blind && !same_color) ? " " : "",
-          (Blind || same_color)
-          ? "" : hcolor(scursed ? NH_BLACK : NH_SILVER),
-          (s * s > 1) ? _("while") : _("moment"));
+    /* Blind: vibrate via otense; sighted: glow verb lives in glow_color
+       msgstr so bare _("glow") dict-form ("빛나다") does not leak. */
+    if (Blind) {
+        pline(_("%s %s%s for a %s."), Yname2(otmp),
+              (s == 0) ? _("violently ") : "", otense(otmp, _("vibrate")),
+              (s * s > 1) ? _("while") : _("moment"));
+    } else {
+        pline(C_("glow_color", "%s %s%s%s for a %s."), Yname2(otmp),
+              (s == 0) ? _("violently ") : "",
+              (!same_color) ? " " : "",
+              same_color ? "" : hcolor(scursed ? NH_BLACK : NH_SILVER),
+              (s * s > 1) ? _("while") : _("moment"));
+    }
     /* [this cost handling will need updating if shop pricing is
        ever changed to care about curse/bless status of armor] */
     if (s < 0)

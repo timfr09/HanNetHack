@@ -1,6 +1,6 @@
 # HanNetHack — Korean NetHack
 
-![Version](https://img.shields.io/badge/version-5.0.0--ko.0-blue)
+![Version](https://img.shields.io/badge/version-5.0.0--ko.5-blue)
 ![License](https://img.shields.io/badge/license-NGPL-green)
 ![Translation](https://img.shields.io/badge/translation-WIP-yellow)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey)
@@ -13,7 +13,7 @@
 
 2026년 1월, 업스트림 NetHack이 **5.0.0**([`NetHack-5.0.0_Released`](https://github.com/NetHack/NetHack/releases))을 출시했습니다. HanNetHack은 이를 반영해 **`HanNetHack-5.0`** 브랜치에서 빌드·번역·개발을 이어갑니다. **기본 브랜치와 일상적인 기여·번역 작업의 기준은 5.0**입니다. (과거 3.7 기반 작업은 `HanNetHack-3.7` 브랜치에 보존됩니다.)
 
-업스트림 변경은 [NetHack/NetHack](https://github.com/NetHack/NetHack)의 **`NetHack-5.0`** 브랜치를 가능할 때마다 병합합니다. 유지보수자용 병합 절차는 [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md)를 참고하세요.
+업스트림 변경은 [NetHack/NetHack](https://github.com/NetHack/NetHack)의 **`NetHack-5.0`** 브랜치를 가능할 때마다 병합합니다 (최근: 2026-07, Windows `-prag@` 조기 처리·Lua 버전 검사 등). 유지보수자용 병합 절차는 [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md)를 참고하세요.
 
 - **버그·오역·문구 개선 제안**: [GitHub Issues](https://github.com/timfr09/HanNetHack/issues)에 올려 주세요. (영문·한국어 모두 가능합니다.)
 - **원본 게임**: 상위 프로젝트는 [NetHack on GitHub](https://github.com/NetHack/NetHack)입니다.
@@ -145,7 +145,7 @@ See **Korean translation system (brief)** above for architecture; [`po/I18N_SYST
 
 ### Versioning
 
-HanNetHack uses semantic versioning with a Korean-translation suffix, e.g. `v5.0.0-ko.0` (based on NetHack 5.0.0, Korean iteration 0). The badge at the top of this file tracks the current packaging snapshot.
+HanNetHack uses semantic versioning with a Korean-translation suffix, e.g. `v5.0.0-ko.5` (based on NetHack 5.0.0, Korean iteration 5). The badge at the top of this file tracks the current packaging snapshot.
 
 ### License
 

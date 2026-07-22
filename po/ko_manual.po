@@ -4781,20 +4781,26 @@ msgstr "%s{이/가} 당신에게 %s%s%s..."
 msgid "%s %s%s%s!"
 msgstr "%s %s%s%s!"
 
-# [리뷰 완료] read.c:1246 — Yname2 + violently + otense+vibrate/glow + hcolor +
-# time
-# %1$s = Yname2(otmp), %2$s = "violently " 또는 ""
-# %3$s = otense("vibrate"/"glow"), %4$s = " " 또는 ""
-# %5$s = hcolor 또는 "", %6$s = "잠깐"/"한동안"
-# 고유 포맷 (1건) — PO 오버라이드 안전
+# [리뷰 완료] read.c seffect_enchant_armor — Blind/시야 분기
+# Blind: "%s %s%s for a %s." + otense(vibrate) — "한동안 갑옷이 격렬하게 진동했다."
+# Sighted: C_("glow_color","%s %s%s%s for a %s.") — 포맷에 "빛을 발했다" 고정
 # 영어: "Your armor violently glows silver for a while."
-# 한국어 (Blind): "한동안 당신의 갑옷이 격렬하게 진동했다."
-# 한국어 (Sighted): "한동안 당신의 갑옷이 격렬하게 은색으로 빛나다."
-# 주의: glow 사전형("빛나다") 잔여 — Known Issue
-#: ../src/read.c:1254
+# 한국어 (Sighted): "한동안 당신의 갑옷이 격렬하게 은색으로 빛을 발했다."
+#: ../src/read.c:1275
 #, c-format
+msgctxt "glow_color"
+msgid "%s %s%s%s for a %s."
+msgstr "%5$s %1$s{이/가} %2$s%4$s%3$s빛을 발했다."
+
+# Blind 분기 (vibrate)
+#: ../src/read.c:1271
+#, c-format
+msgid "%s %s%s for a %s."
+msgstr "%4$s %1$s{이/가} %2$s%3$s."
+
+# 구 공유 msgid 잔존 — glow 사전형 경로 제거 후 fallback
 msgid "%s %s%s%s%s for a %s."
-msgstr "%6$s %1$s{이/가} %2$s%5$s%4$s%3$s."
+msgstr "%6$s %1$s{이/가} %2$s%5$s%4$s빛을 발했다.%3$.0s"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -7045,7 +7051,7 @@ msgstr "%s{이/가} 빛났다가 사라진다."
 #: ../src/fountain.c:470
 #, c-format
 msgid "%s glows for a moment."
-msgstr "%s{이/가} 잠시 빛난다."
+msgstr "%s{이/가} 잠시 빛을 발했다."
 
 #: ../src/zap.c:1049
 #, c-format
@@ -10737,17 +10743,27 @@ msgstr "%s 매우 단단하다."
 msgid "%s very warm."
 msgstr "매우 따뜻하게 %s."
 
-# [리뷰 완료] read.c:1181 — Yname2 + otense+vibrate/glow + hcolor +
-# otense+evaporate
-# %1$s = Yname2(otmp), %2$s = otense("vibrate"/"glow") = "진동했다"/"빛나다"
-# %3$s = " " 또는 "", %4$s = hcolor 또는 "", %5$s = otense("evaporate") = "증발했다"
-# 고유 포맷 (1건) — PO 오버라이드 안전
+# [리뷰 완료] read.c 과인챈트 증발 — Blind/시야 분기
+# Blind: "%s violently %s for a while, then %s."
+# Sighted: C_("glow_color") — glow 동사는 포맷 고정, %2$s/%3$s = 공백+색
 # 영어: "Your armor violently glows silver for a while, then evaporates."
-# 한국어: "당신의 갑옷이 격렬하게 은색으로 진동하다가 증발했다."
+# 한국어 (Sighted): "당신의 갑옷이 한동안 격렬하게 은색으로 빛을 발하다가 증발했다."
+#: ../src/read.c:1201
+#, c-format
+msgctxt "glow_color"
+msgid "%s violently %s%s for a while, then %s."
+msgstr "%1$s{이/가} 한동안 격렬하게 %3$s%2$s빛을 발하다가 %4$s."
+
+#: ../src/read.c:1197
+#, c-format
+msgid "%s violently %s for a while, then %s."
+msgstr "%1$s{이/가} 한동안 격렬하게 진동하다가 %3$s.%2$.0s"
+
+# 구 공유 msgid 잔존
 #: ../src/read.c:1182
 #, c-format
 msgid "%s violently %s%s%s for a while, then %s."
-msgstr "%1$s{이/가} 격렬하게 %4$s%3$s%2$s 한동안, 그러더니 %5$s."
+msgstr "%1$s{이/가} 한동안 격렬하게 %4$s%3$s빛을 발하다가 %5$s.%2$.0s"
 
 #: ../src/priest.c:857
 #, c-format
@@ -25557,7 +25573,7 @@ msgstr "%s에 손이 닿지 않는다."
 #: ../src/pickup.c:3592
 #, c-format
 msgid "You can't tip %s while carrying so much."
-msgstr "짐이 너무 많아 %s{을/를} 기울일 수 없습니다."
+msgstr "짐이 너무 많아 %s{을/를} 기울일 수 없다."
 
 #: ../src/write.c:55
 msgid "You can't write such a weird scroll!"
@@ -31217,6 +31233,8 @@ msgstr "바위가 %s구덩이에 안착한다."
 # [OK] "%s %s for a while and then %s.": 어순 교정 (wield.c 과인챈트)
 # [OK] "%s violently %s%s%s for a while, then %s.": 어순 교정 (read.c 과인챈트)
 # [OK] "%s %s%s%s%s for a %s.": 어순 교정 (read.c 갑옷 인챈트)
+# [해결됨] read.c 갑옷 인챈트 glow 사전형 → Blind/시야 분기 + C_("glow_color")
+# [해결됨] "violently " "난폭한"→"격렬하게 "
 # 
 # === 사전형→활용형 전환 (3차 수정) ===
 # [OK] bare "vibrate": "진동하다"→"진동했다" (read.c Yobjnam2/otense)
@@ -31260,14 +31278,14 @@ msgstr "바위가 %s구덩이에 안착한다."
 # [해결됨] steal.c "your" / steed.c "new" / do_wear.c "dust+falls" → 실제 이슈 아님
 # [해결됨] light.c ConcatF1 → 현재 코드에서 찾을 수 없음
 # 
-# [Known Issues — Yobjnam2 glow 사전형 (3차) — 일부 해결]
+# [Known Issues — Yobjnam2 glow 사전형 (3차) — 해결]
 # [해결됨] wield.c chwepon glow/violently glow → C_("glow_color") + 포맷 동사
 # [해결됨] potion.c/wield.c "%s with %s aura." → C_("glow_color")
 # [해결됨] pray.c softly glow + aura/repair → softglow_color / glow_color
 # [해결됨] read.c p_glow1/2/3 시야 경로 → C_("glow_color")
+# [해결됨] read.c 갑옷 인챈트/과인챈트 → Blind 분기 + C_("glow_color")
 # - "%s %s." 공유: sit/apply/read는 이미 C_("glow_color"); 기타 잔여 점검
-# - bare "glow" 사전형 "빛나다": 명사/동사 이중 사용 경로 잔여
-# - read.c 갑옷 인챈트 "%s %s%s%s%s for a %s." glow 사전형 잔여 (Known Issue)
+# - bare "glow" 사전형 "빛나다": 명사/동사 이중 사용 경로 잔여 (worn autocurse 등 억제됨)
 # ============================================================
 # 사전형(DICT-FORM) 동사 활용형 전환 (verify_ko_verbs.py 검출)
 # ============================================================
@@ -40240,7 +40258,7 @@ msgstr "가지고 있다"
 # 조합: 시각적으로 볼 수 없을 때 — "%s where %s was!" 문장 종결형
 #: ../src/dogmove.c:1536
 msgid "has appeared"
-msgstr "나타난 것 같다"
+msgstr "나타난 듯하다"
 
 #: ../src/dog.c:1337
 msgid "has become feral"
@@ -45109,10 +45127,11 @@ msgstr "녹은 %s"
 msgid "molten lava"
 msgstr "용암"
 
-# read.c, wield.c - 시간 표현. "for a moment"
-#: ../src/read.c:1260 ../src/wield.c:1002
+# read.c, wield.c - 시간 표현. "for a moment" / "for a while"
+# wield.c glow_color는 %n$.0s로 억제하고 "잠시" 고정; read.c Blind는 %4$s 사용
+#: ../src/read.c:1278 ../src/read.c:1284 ../src/wield.c:1008
 msgid "moment"
-msgstr "순간"
+msgstr "잠시"
 
 #: ../src/do.c:581
 msgid "momentarily "
@@ -56399,9 +56418,9 @@ msgstr "바이올란트"
 msgid "violated"
 msgstr "위반했다"
 
-#: ../src/read.c:1255
+#: ../src/read.c:1273
 msgid "violently "
-msgstr "난폭한"
+msgstr "격렬하게 "
 
 # wield.c — C_("glow_color","violently glow") 계사 억제
 #: ../src/wield.c:1001 ../src/wield.c:1015
@@ -57165,9 +57184,9 @@ msgstr "%s{이/가} 순간이동한다."
 msgid "whickers."
 msgstr "부르릉거린다."
 
-#: ../src/read.c:1260 ../src/wield.c:1002
+#: ../src/read.c:1278 ../src/read.c:1284 ../src/wield.c:1008
 msgid "while"
-msgstr "잠시"
+msgstr "한동안"
 
 #: ../src/apply.c:2845
 msgid "while engulfed"

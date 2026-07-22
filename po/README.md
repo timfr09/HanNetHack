@@ -42,6 +42,8 @@ ko_manual.po (우선) + ko.po (선택, 로컬 캐시) → ko_merged.po → ko.mo
 
 ## PR / 품질 게이트 (권장)
 
+**머지 PR ≠ 다듬기 PR** — 업스트림 머지에는 최소 번역만, 문체 다듬기는 `i18n(ko):` 전용 PR. ([TRANSLATION_PROCESS.md](TRANSLATION_PROCESS.md) §3.A, [doc/i18n-upstream-merge.md](../doc/i18n-upstream-merge.md))
+
 저장소 루트에서:
 
 ```bash

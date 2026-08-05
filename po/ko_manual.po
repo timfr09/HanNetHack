@@ -6706,6 +6706,13 @@ msgctxt "glow_color"
 msgid "%s feebly%s%s for a moment."
 msgstr "%1$s 잠시 희미하게 %3$s 빛을 발했다.%2$.0s"
 
+# [리뷰] read.c:693 — Blind p_glow3: Yobjnam2+vibrate + "feebly"
+# 영어: "Your wand vibrates feebly for a moment."
+#: ../src/read.c:693
+#, c-format
+msgid "%s feebly for a moment."
+msgstr "잠시 %s, 희미하게."
+
 msgid "%s feebly%s%s for a moment."
 msgstr "%1$s 잠시 희미하게 %3$s 빛을 발했다.%2$.0s"
 
@@ -31598,12 +31605,12 @@ msgstr "친구"
 
 #: ../src/sfstruct.c:423
 msgid "buffering already enabled"
-msgstr "buffering already enabled"
+msgstr "버퍼링이 이미 활성화되어 있습니다"
 
 #: ../src/sfstruct.c:426
 #, c-format
 msgid "buffering of file %d failed"
-msgstr "buffering of file %d failed"
+msgstr "파일 %d의 버퍼링에 실패했습니다"
 
 #: ../src/monster_i18n.c:66 ../src/obj_descr_i18n.c:883
 msgid "bugbear"

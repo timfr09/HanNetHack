@@ -1181,7 +1181,7 @@ mon_poly(struct monst *magr, struct monst *mdef, int dmg)
                                     | SUPPRESS_INVISIBLE), FALSE));
                 else if (was_seen || magr == &gy.youmonst)
                     pline(_("%s%s%s."), Before, freaky,
-                          !was_seen ? "" : " and disappears");
+                          !was_seen ? "" : _(" and disappears"));
             }
             dmg = 0;
             if (can_teleport(magr->data)) {

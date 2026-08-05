@@ -1002,6 +1002,10 @@ msgstr " 추가로"
 msgid " and"
 msgstr " 그리고"
 
+#: ../src/mhitm.c:1184
+msgid " and disappears"
+msgstr " 사라졌다"
+
 # insight.c:1736 등 - 조건절 연결어
 #: ../src/artifact.c:1426 ../src/detect.c:1834 ../src/detect.c:1845
 #: ../src/detect.c:1860 ../src/do_wear.c:1789 ../src/do_wear.c:3377
@@ -12251,6 +12255,14 @@ msgstr "'%s' %s \"%s: %s\"."
 msgid "'%s' %s %u."
 msgstr "'%s' %s %u."
 
+#: ../src/options.c:4557
+msgid "changed to"
+msgstr "다음 값으로 변경:"
+
+#: ../src/options.c:4557
+msgid "not changed, still"
+msgstr "변경 없음, 여전히"
+
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
 # ============================================================
@@ -13078,7 +13090,7 @@ msgstr "하나"
 # "A <monster>" prefix for messages - 한국어에는 부정관사가 없으므로 공백으로 처리
 #: ../src/trap.c:4707
 msgid "A "
-msgstr "A "
+msgstr ""
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -13596,12 +13608,12 @@ msgstr "새 하이라이트 추가"
 #: ../src/botl.c:4336 ../src/botl.c:4345
 #, c-format
 msgid "Added hilite %s"
-msgstr "hilite %s 추가됨"
+msgstr "강조 표시 %s 추가"
 
 #: ../src/botl.c:4322
 #, c-format
 msgid "Added hilite condition/%s/%s"
-msgstr "hilite 조건/%s/%s 추가됨"
+msgstr "강조 조건 %s/%s 추가"
 
 #: ../src/role.c:279
 msgid "Adept"
@@ -13917,7 +13929,7 @@ msgstr "또 다른"
 
 #: ../src/trap.c:4708
 msgid "Another "
-msgstr " 다른"
+msgstr "또 다른 "
 
 #: ../src/role.c:124
 msgid "Anshar"
@@ -21309,7 +21321,7 @@ msgstr "몇몇"
 # 한국어에는 부정관사가 없으므로 빈 문자열로 처리
 #: ../src/trap.c:4707
 msgid "Some "
-msgstr "Some "
+msgstr ""
 
 #: ../src/pickup.c:3658
 #, c-format
@@ -38608,7 +38620,7 @@ msgstr "파편"
 
 #: ../src/mhitm.c:1174
 msgid "freakishly "
-msgstr "freakishly "
+msgstr "기괴하게 "
 
 #: ../src/do_wear.c:2712
 #, c-format
@@ -58725,7 +58737,7 @@ msgid "ANDOVA BEGARIN"
 msgstr "ANDOVA BEGARIN"
 
 msgid "An "
-msgstr "An "
+msgstr ""
 
 msgid "And just how do you expect to do that?"
 msgstr "대체 어떻게 그걸 하려고 하는가?"

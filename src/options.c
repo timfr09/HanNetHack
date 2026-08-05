@@ -4554,7 +4554,7 @@ optfn_versinfo(
         /* return handler_versinfo(); */
         (void) handler_versinfo();
         pline(_("'%s' %s %u."), optname,
-              (flags.versinfo == vi) ? "not changed, still" : "changed to",
+              (flags.versinfo == vi) ? _("not changed, still") : _("changed to"),
               flags.versinfo);
     } else if (req == get_val) {
         char vbuf[QBUFSZ];

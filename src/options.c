@@ -2592,6 +2592,14 @@ optfn_name(
 
         if ((op = string_for_env_opt(allopt[optidx].name, opts, FALSE))
             != empty_optstr) {
+#ifdef WIN32
+            /*
+             * Under windows, if we already set flags.debug with -D
+             * on the command line, leave that alone.
+             */
+            if (flags.debug && !strcmpi(svp.plname, "wizard"))
+                return optn_ok;
+#endif
             nmcpy(svp.plname, op, PL_NSIZ);
         } else
             return optn_err;
@@ -4546,7 +4554,7 @@ optfn_versinfo(
         /* return handler_versinfo(); */
         (void) handler_versinfo();
         pline(_("'%s' %s %u."), optname,
-              (flags.versinfo == vi) ? "not changed, still" : "changed to",
+              (flags.versinfo == vi) ? _("not changed, still") : _("changed to"),
               flags.versinfo);
     } else if (req == get_val) {
         char vbuf[QBUFSZ];

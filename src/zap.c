@@ -3596,7 +3596,7 @@ miss(const char *str, struct monst *mtmp)
 {
     pline(C_("miss", "%s %s %s."), The(str), vtense(str, _("miss")),
           ((cansee(gb.bhitpos.x, gb.bhitpos.y) || canspotmon(mtmp))
-           && flags.verbose) ? mon_nam(mtmp) : _("it"));
+           && flags.verbose) ? ((mtmp->mtame) ? noit_mon_nam(mtmp) : mon_nam(mtmp)) : _("it"));
 }
 
 staticfn void

@@ -4587,9 +4587,13 @@ status_hilite_menu(void)
         any = cg.zeroany;
         any.a_int = fld + 1;
         if (iflags.menu_tab_sep) {
-            Sprintf(buf, "%s\t", _(initblstats[i].fldname));
+            Sprintf(buf, "%s\t", !strcmp(initblstats[i].fldname, "hunger")
+                                 ? C_("status_field", "hunger")
+                                 : _(initblstats[i].fldname));
         } else {
-            Sprintf(buf, "%-18s ", _(initblstats[i].fldname));
+            Sprintf(buf, "%-18s ", !strcmp(initblstats[i].fldname, "hunger")
+                                   ? C_("status_field", "hunger")
+                                   : _(initblstats[i].fldname));
         }
         if (count)
             Sprintf(eos(buf), _("(%d defined)"), count);

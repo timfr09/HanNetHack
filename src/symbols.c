@@ -1085,9 +1085,11 @@ do_symset(boolean rogueflag)
                 if (symset_name && !strcmpi(sl->name, symset_name))
                     defindx = any.a_int;
                 if (iflags.menu_tab_sep) {
-                    Sprintf(buf, "%s\t%s", sl->name, sl->desc ? sl->desc : "");
+                    Sprintf(buf, "%s\t%s", C_("symset", sl->name),
+                            sl->desc ? C_("symset_desc", sl->desc) : "");
                 } else {
-                    Sprintf(buf, "%-*s %s", biggest + 2, sl->name, sl->desc ? sl->desc : "");
+                    Sprintf(buf, "%-*s %s", biggest + 2, C_("symset", sl->name),
+                            sl->desc ? C_("symset_desc", sl->desc) : "");
                 }
                 add_menu(tmpwin, &nul_glyphinfo, &any, 0, 0,
                          ATR_NONE, clr, buf,

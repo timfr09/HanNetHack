@@ -60652,3 +60652,65 @@ msgstr ""
 #, c-format
 msgid "  Unable to attach to parent.  (%%x%08lX) "
 msgstr "  Unable to attach to parent.  (%%x%08lX) "
+
+# Status hilite menu field names (botl.c; config keys shown to player)
+#: ../src/botl.c:4590
+msgid "carrying-capacity"
+msgstr "운반 한도"
+
+#: ../src/botl.c:4590
+msgid "score"
+msgstr "점수"
+
+#: ../src/botl.c:4590
+msgid "power"
+msgstr "마력"
+
+#: ../src/botl.c:4590
+msgid "power-max"
+msgstr "최대 마력"
+
+#: ../src/botl.c:4590
+msgid "experience-level"
+msgstr "경험 레벨"
+
+#: ../src/botl.c:4590
+msgid "armor-class"
+msgstr "방어 등급"
+
+#: ../src/botl.c:4590
+msgid "HD"
+msgstr "HD"
+
+#: ../src/botl.c:4590
+msgid "time"
+msgstr "턴"
+
+#: ../src/botl.c:4590
+msgid "hitpoints"
+msgstr "생명력"
+
+#: ../src/botl.c:4590
+msgid "hitpoints-max"
+msgstr "최대 생명력"
+
+#: ../src/botl.c:4590
+msgid "dungeon-level"
+msgstr "던전 층"
+
+#: ../src/botl.c:4590
+msgid "condition"
+msgstr "상태"
+
+#: ../src/botl.c:4590
+msgid "version"
+msgstr "버전"
+
+#: ../src/botl.c:4590
+msgid "terrain"
+msgstr "지형"
+
+#: ../src/botl.c:4595
+#, c-format
+msgid "(%d defined)"
+msgstr "(%d개 설정됨)"

@@ -2184,6 +2184,7 @@ revive_corpse(struct obj *corpse)
                     pline(_("%s disappears%s!"), The(cname), effect);
                 }
             }
+            (void) maybe_set_terrain_effects(mtmp, 0);
             break;
 
         case OBJ_MINVENT: /* probably a nymph's */

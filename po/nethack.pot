@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-09-01 20:31+0900\n"
+"POT-Creation-Date: 2026-09-01 20:43+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 11:31+0000\n"
+"POT-Creation-Date: 2026-09-01 11:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -4124,12 +4124,17 @@ msgstr ""
 msgid "Current %s hilites:"
 msgstr ""
 
-#: ../src/botl.c:4595
+#: ../src/botl.c:4591 ../src/botl.c:4595
+msgctxt "status_field"
+msgid "hunger"
+msgstr ""
+
+#: ../src/botl.c:4599
 #, c-format
 msgid "(%d defined)"
 msgstr ""
 
-#: ../src/botl.c:4600
+#: ../src/botl.c:4604
 msgid "Status hilites:"
 msgstr ""
 
@@ -43897,21 +43902,21 @@ msgstr ""
 msgid "are no appropriate %s symbol sets available."
 msgstr ""
 
-#: ../src/symbols.c:1098
+#: ../src/symbols.c:1100
 #, c-format
 msgid "Select %ssymbol set:"
 msgstr ""
 
-#: ../src/symbols.c:1099
+#: ../src/symbols.c:1101
 msgid "rogue level "
 msgstr ""
 
-#: ../src/symbols.c:1137
+#: ../src/symbols.c:1139
 #, c-format
 msgid "Unable to access \"%s\" file."
 msgstr ""
 
-#: ../src/symbols.c:1141
+#: ../src/symbols.c:1143
 #, c-format
 msgid "were no symbol sets found in \"%s\"."
 msgstr ""

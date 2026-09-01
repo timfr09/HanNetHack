@@ -676,13 +676,13 @@ doextlist(void)
                     menushown[pass] = 1;
                 }
                 if (iflags.menu_tab_sep) {
-                    Sprintf(buf, " %s\t%s\t%s", efp->ef_txt,
-                            doc_extcmd_flagstr(menuwin, efp), cmd_desc);
+                    Sprintf(buf, " %s\t%s\t%s", C_("extcmd", efp->ef_txt),
+                            doc_extcmd_flagstr(menuwin, efp), C_("extcmd_desc", cmd_desc));
                 } else {
                     /* longest ef_txt at present is "wizrumorcheck" (13 chars);
                        2nd field will be "    " or " [A]" or " [m]" or "[mA]" */
-                    Sprintf(buf, " %-14s %4s %s", efp->ef_txt,
-                            doc_extcmd_flagstr(menuwin, efp), cmd_desc);
+                    Sprintf(buf, " %-14s %4s %s", C_("extcmd", efp->ef_txt),
+                            doc_extcmd_flagstr(menuwin, efp), C_("extcmd_desc", cmd_desc));
                 }
                 add_menu_str(menuwin, buf);
                 ++n;

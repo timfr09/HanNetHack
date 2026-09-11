@@ -647,7 +647,7 @@ explode(
                         /* explosion was unseen; str=="explosion", */
                         /* svk.killer.name=="gas spore's explosion" */
                         if (!strcmp(str, "explosion"))
-                            Strcpy(svk.killer.name, str);
+                            Strcpy(svk.killer.name, _("explosion"));
                     } else if (str != svk.killer.name && str != hallu_buf) {
                         Strcpy(svk.killer.name, str);
                     }

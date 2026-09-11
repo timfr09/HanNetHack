@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-09-01 20:43+0900\n"
+"POT-Creation-Date: 2026-09-11 20:33+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 11:43+0000\n"
+"POT-Creation-Date: 2026-09-11 11:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -386,8 +386,8 @@ msgstr ""
 #: ../src/apply.c:458 ../src/detect.c:1756 ../src/dig.c:537 ../src/dig.c:549
 #: ../src/dig.c:555 ../src/dig.c:1396 ../src/dokick.c:945 ../src/dokick.c:994
 #: ../src/hack.c:705 ../src/hack.c:720 ../src/hack.c:807 ../src/lock.c:123
-#: ../src/lock.c:144 ../src/lock.c:917 ../src/objnam.c:3956
-#: ../src/objnam.c:3961 ../src/pager.c:2380 ../src/shk.c:5169 ../src/shk.c:5173
+#: ../src/lock.c:144 ../src/lock.c:917 ../src/objnam.c:3961
+#: ../src/objnam.c:3966 ../src/pager.c:2380 ../src/shk.c:5169 ../src/shk.c:5173
 #: ../src/shk.c:5180 ../src/shk.c:5184 ../src/trap.c:6093
 msgid "door"
 msgstr ""
@@ -547,10 +547,10 @@ msgstr ""
 #: ../src/apply.c:2144 ../src/detect.c:999 ../src/do.c:1806
 #: ../src/do_wear.c:498 ../src/do_wear.c:1168 ../src/dog.c:1214
 #: ../src/dokick.c:63 ../src/eat.c:1089 ../src/eat.c:1096 ../src/eat.c:1263
-#: ../src/eat.c:3484 ../src/explode.c:795 ../src/getpos.c:986
+#: ../src/eat.c:3484 ../src/explode.c:799 ../src/getpos.c:986
 #: ../src/invent.c:2064 ../src/invent.c:3201 ../src/invent.c:4620
 #: ../src/mail.c:375 ../src/mhitu.c:1649 ../src/muse.c:3146 ../src/music.c:615
-#: ../src/objnam.c:3778 ../src/objnam.c:3827 ../src/objnam.c:3958
+#: ../src/objnam.c:3783 ../src/objnam.c:3832 ../src/objnam.c:3963
 #: ../src/pickup.c:407 ../src/potion.c:1681 ../src/pray.c:578
 #: ../src/pray.c:1506 ../src/pray.c:1777 ../src/read.c:1382 ../src/read.c:2690
 #: ../src/read.c:2894 ../src/sit.c:500 ../src/teleport.c:1084
@@ -5865,7 +5865,7 @@ msgid "This %s is too hard to %s."
 msgstr ""
 
 #: ../src/dig.c:333 ../src/dig.c:555 ../src/dig.c:1400 ../src/dungeon.c:1790
-#: ../src/objnam.c:3801
+#: ../src/objnam.c:3806
 msgid "wall"
 msgstr ""
 
@@ -6416,7 +6416,7 @@ msgstr ""
 msgid "rock glows then fades."
 msgstr ""
 
-#: ../src/dig.c:1751 ../src/explode.c:685 ../src/mkobj.c:747 ../src/read.c:1402
+#: ../src/dig.c:1751 ../src/explode.c:689 ../src/mkobj.c:747 ../src/read.c:1402
 #: ../src/vault.c:940 ../src/wizcmds.c:316 ../src/zap.c:4154 ../src/zap.c:5058
 msgid "destroy"
 msgstr ""
@@ -6816,7 +6816,7 @@ msgstr ""
 msgid "%s %s on the altar."
 msgstr ""
 
-#: ../src/do.c:388 ../src/do_wear.c:1171 ../src/explode.c:910
+#: ../src/do.c:388 ../src/do_wear.c:1171 ../src/explode.c:914
 #: ../src/obj_descr_i18n.c:1155 ../src/pray.c:804 ../src/trap.c:1929
 msgid "land"
 msgstr ""
@@ -8625,27 +8625,27 @@ msgstr ""
 msgid "armor"
 msgstr ""
 
-#: ../src/do_wear.c:11 ../src/objnam.c:5631
+#: ../src/do_wear.c:11 ../src/objnam.c:5636
 msgid "suit"
 msgstr ""
 
-#: ../src/do_wear.c:12 ../src/mhitu.c:2128 ../src/objnam.c:5745
+#: ../src/do_wear.c:12 ../src/mhitu.c:2128 ../src/objnam.c:5750
 #: ../src/trap.c:150 ../src/trap.c:1659 ../src/trap.c:1725
 msgid "shirt"
 msgstr ""
 
-#: ../src/do_wear.c:12 ../src/obj_descr_i18n.c:230 ../src/objnam.c:5651
+#: ../src/do_wear.c:12 ../src/obj_descr_i18n.c:230 ../src/objnam.c:5656
 msgid "cloak"
 msgstr ""
 
 #: ../src/do_wear.c:13 ../src/mhitu.c:2027 ../src/mhitu.c:2058
-#: ../src/mhitu.c:2124 ../src/obj_descr_i18n.c:231 ../src/objnam.c:5689
+#: ../src/mhitu.c:2124 ../src/obj_descr_i18n.c:231 ../src/objnam.c:5694
 #: ../src/trap.c:159
 msgid "gloves"
 msgstr ""
 
 #: ../src/do_wear.c:13 ../src/mhitu.c:2122 ../src/obj_descr_i18n.c:232
-#: ../src/objnam.c:5708 ../src/trap.c:164
+#: ../src/objnam.c:5713 ../src/trap.c:164
 msgid "boots"
 msgstr ""
 
@@ -8655,7 +8655,7 @@ msgstr ""
 
 #: ../src/do_wear.c:14 ../src/mhitu.c:2125 ../src/muse.c:2804
 #: ../src/muse.c:2842 ../src/obj_descr_i18n.c:229 ../src/objnam.c:737
-#: ../src/objnam.c:5738 ../src/read.c:1162 ../src/read.c:1679
+#: ../src/objnam.c:5743 ../src/read.c:1162 ../src/read.c:1679
 #: ../src/trap.c:1633 ../src/trap.c:1694
 msgid "shield"
 msgstr ""
@@ -9888,7 +9888,7 @@ msgstr ""
 msgid "buddy"
 msgstr ""
 
-#: ../src/dokick.c:443 ../src/explode.c:683 ../src/uhitm.c:994
+#: ../src/dokick.c:443 ../src/explode.c:687 ../src/uhitm.c:994
 #: ../src/uhitm.c:1001 ../src/zap.c:5054
 msgid "shatter"
 msgstr ""
@@ -10495,7 +10495,7 @@ msgstr ""
 msgid "You move over %s."
 msgstr ""
 
-#: ../src/dothrow.c:932 ../src/objnam.c:3801 ../src/zap.c:3396
+#: ../src/dothrow.c:932 ../src/objnam.c:3806 ../src/zap.c:3396
 msgid "pool"
 msgstr ""
 
@@ -11305,7 +11305,7 @@ msgstr ""
 msgid "%sOracle of Delphi."
 msgstr ""
 
-#: ../src/dungeon.c:3650 ../src/fountain.c:815 ../src/objnam.c:3719
+#: ../src/dungeon.c:3650 ../src/fountain.c:815 ../src/objnam.c:3724
 #, c-format
 msgid "%s%s."
 msgstr ""
@@ -13823,69 +13823,73 @@ msgstr ""
 msgid "are unharmed!"
 msgstr ""
 
-#: ../src/explode.c:670
+#: ../src/explode.c:650 ../src/trap.c:6719
+msgid "explosion"
+msgstr ""
+
+#: ../src/explode.c:674
 msgid "It is fatal."
 msgstr ""
 
-#: ../src/explode.c:672
+#: ../src/explode.c:676
 #, c-format
 msgid "%s is fatal."
 msgstr ""
 
-#: ../src/explode.c:682 ../src/zap.c:5053
+#: ../src/explode.c:686 ../src/zap.c:5053
 msgid "burn away"
 msgstr ""
 
-#: ../src/explode.c:684 ../src/zap.c:5057
+#: ../src/explode.c:688 ../src/zap.c:5057
 msgid "disintegrate"
 msgstr ""
 
-#: ../src/explode.c:741
+#: ../src/explode.c:745
 #, c-format
 msgid "scattered object <%d,%d> not at scatter site <%d,%d>"
 msgstr ""
 
-#: ../src/explode.c:754
+#: ../src/explode.c:758
 msgid "chain shatters!"
 msgstr ""
 
-#: ../src/explode.c:777
+#: ../src/explode.c:781
 #, c-format
 msgid "%s apart."
 msgstr ""
 
-#: ../src/explode.c:777
+#: ../src/explode.c:781
 msgctxt "Tobjnam"
 msgid "break"
 msgstr ""
 
-#: ../src/explode.c:780
+#: ../src/explode.c:784
 msgid "stone breaking."
 msgstr ""
 
-#: ../src/explode.c:795
+#: ../src/explode.c:799
 msgid "crumble"
 msgstr ""
 
-#: ../src/explode.c:798
+#: ../src/explode.c:802
 msgid "stone crumbling."
 msgstr ""
 
-#: ../src/explode.c:978
+#: ../src/explode.c:982
 msgid "exploding unlit oil"
 msgstr ""
 
-#: ../src/explode.c:1008
+#: ../src/explode.c:1012
 #, c-format
 msgid "adtyp_to_expltype: bad explosion type %d"
 msgstr ""
 
-#: ../src/explode.c:1044
+#: ../src/explode.c:1048
 #, c-format
 msgid "unknown type for mon_explode %d"
 msgstr ""
 
-#: ../src/explode.c:1057
+#: ../src/explode.c:1061
 #, c-format
 msgid "%s explosion"
 msgstr ""
@@ -14985,7 +14989,7 @@ msgstr ""
 msgid "eat through the bars."
 msgstr ""
 
-#: ../src/hack.c:793 ../src/objnam.c:3943 ../src/objnam.c:3961
+#: ../src/hack.c:793 ../src/objnam.c:3948 ../src/objnam.c:3966
 msgid "secret door"
 msgstr ""
 
@@ -19796,7 +19800,7 @@ msgid "armament"
 msgstr ""
 
 #: ../src/invent.c:5503 ../src/invent.c:5538 ../src/obj_descr_i18n.c:522
-#: ../src/objnam.c:1373 ../src/objnam.c:3939
+#: ../src/objnam.c:1373 ../src/objnam.c:3944
 msgid "trapped "
 msgstr ""
 
@@ -28473,7 +28477,7 @@ msgstr ""
 msgid "alchemy smock"
 msgstr ""
 
-#: ../src/obj_descr_i18n.c:196 ../src/objnam.c:5640
+#: ../src/obj_descr_i18n.c:196 ../src/objnam.c:5645
 msgid "robe"
 msgstr ""
 
@@ -28581,7 +28585,7 @@ msgstr ""
 msgid "studded leather"
 msgstr ""
 
-#: ../src/obj_descr_i18n.c:228 ../src/objnam.c:5670
+#: ../src/obj_descr_i18n.c:228 ../src/objnam.c:5675
 msgid "helm"
 msgstr ""
 
@@ -28621,7 +28625,7 @@ msgstr ""
 msgid "slippery cloak"
 msgstr ""
 
-#: ../src/obj_descr_i18n.c:242 ../src/objnam.c:5646
+#: ../src/obj_descr_i18n.c:242 ../src/objnam.c:5651
 msgid "apron"
 msgstr ""
 
@@ -29497,11 +29501,11 @@ msgstr ""
 msgid "uncursed "
 msgstr ""
 
-#: ../src/obj_descr_i18n.c:523 ../src/objnam.c:1379 ../src/objnam.c:3952
+#: ../src/obj_descr_i18n.c:523 ../src/objnam.c:1379 ../src/objnam.c:3957
 msgid "broken "
 msgstr ""
 
-#: ../src/obj_descr_i18n.c:524 ../src/objnam.c:1381 ../src/objnam.c:3941
+#: ../src/obj_descr_i18n.c:524 ../src/objnam.c:1381 ../src/objnam.c:3946
 msgid "locked "
 msgstr ""
 
@@ -30528,7 +30532,7 @@ msgstr ""
 msgid "set of %s"
 msgstr ""
 
-#: ../src/objnam.c:740 ../src/objnam.c:5718
+#: ../src/objnam.c:740 ../src/objnam.c:5723
 msgid "smooth shield"
 msgstr ""
 
@@ -30812,178 +30816,178 @@ msgstr ""
 msgid "singular of null?"
 msgstr ""
 
-#: ../src/objnam.c:3722
+#: ../src/objnam.c:3727
 #, c-format
 msgid "Creation of %s failed."
 msgstr ""
 
-#: ../src/objnam.c:3739
+#: ../src/objnam.c:3744
 #, c-format
 msgid "A %sfountain."
 msgstr ""
 
-#: ../src/objnam.c:3739
+#: ../src/objnam.c:3744
 msgid "magic "
 msgstr ""
 
-#: ../src/objnam.c:3744
+#: ../src/objnam.c:3749
 msgid "A throne."
 msgstr ""
 
-#: ../src/objnam.c:3751
+#: ../src/objnam.c:3756
 msgid "A sink."
 msgstr ""
 
-#: ../src/objnam.c:3800
+#: ../src/objnam.c:3805
 #, c-format
 msgid "A %s of molten lava."
 msgstr ""
 
-#: ../src/objnam.c:3847
+#: ../src/objnam.c:3852
 #, c-format
 msgid "%s altar."
 msgstr ""
 
-#: ../src/objnam.c:3855
+#: ../src/objnam.c:3860
 #, c-format
 msgid "A %sgrave."
 msgstr ""
 
-#: ../src/objnam.c:3855
+#: ../src/objnam.c:3860
 msgid "disturbed "
 msgstr ""
 
-#: ../src/objnam.c:3858
+#: ../src/objnam.c:3863
 msgid "Can't place a grave here."
 msgstr ""
 
-#: ../src/objnam.c:3865
+#: ../src/objnam.c:3870
 msgid "A tree."
 msgstr ""
 
-#: ../src/objnam.c:3875
+#: ../src/objnam.c:3880
 msgid "Iron bars."
 msgstr ""
 
-#: ../src/objnam.c:3880
+#: ../src/objnam.c:3885
 msgid "A cloud."
 msgstr ""
 
-#: ../src/objnam.c:3948
+#: ../src/objnam.c:3953
 msgid "closed "
 msgstr ""
 
-#: ../src/objnam.c:3950
+#: ../src/objnam.c:3955
 msgid "open "
 msgstr ""
 
-#: ../src/objnam.c:3954
+#: ../src/objnam.c:3959
 msgid "doorless doorway"
 msgstr ""
 
-#: ../src/objnam.c:3962
+#: ../src/objnam.c:3967
 #, c-format
 msgid "%s requires door or wall location."
 msgstr ""
 
-#: ../src/objnam.c:3978
+#: ../src/objnam.c:3983
 msgid "A wall."
 msgstr ""
 
-#: ../src/objnam.c:3983
+#: ../src/objnam.c:3988
 msgid "Secret corridor."
 msgstr ""
 
-#: ../src/objnam.c:3986
+#: ../src/objnam.c:3991
 msgid "Secret corridor requires corridor location."
 msgstr ""
 
-#: ../src/objnam.c:3998
+#: ../src/objnam.c:4003
 msgid "Room floor."
 msgstr ""
 
-#: ../src/objnam.c:4010
+#: ../src/objnam.c:4015
 msgid "Room|floor|ground not allowed here."
 msgstr ""
 
-#: ../src/objnam.c:4067
+#: ../src/objnam.c:4072
 #, c-format
 msgid "%s %s the drawbridge."
 msgstr ""
 
-#: ../src/objnam.c:4068
+#: ../src/objnam.c:4073
 msgid "in front of"
 msgstr ""
 
-#: ../src/objnam.c:4068
+#: ../src/objnam.c:4073
 msgid "under"
 msgstr ""
 
-#: ../src/objnam.c:4856
+#: ../src/objnam.c:4861
 msgid "worthless piece of "
 msgstr ""
 
-#: ../src/objnam.c:5521
+#: ../src/objnam.c:5526
 #, c-format
 msgid "For a moment, you feel %s in your %s, but it disappears!"
 msgstr ""
 
-#: ../src/objnam.c:5607
+#: ../src/objnam.c:5612
 #, c-format
 msgid "unknown armor category (%s => %u)"
 msgstr ""
 
-#: ../src/objnam.c:5620
+#: ../src/objnam.c:5625
 msgid "dragon mail"
 msgstr ""
 
-#: ../src/objnam.c:5622
+#: ../src/objnam.c:5627
 msgid "dragon scales"
 msgstr ""
 
-#: ../src/objnam.c:5626
+#: ../src/objnam.c:5631
 msgid "mail"
 msgstr ""
 
-#: ../src/objnam.c:5628
+#: ../src/objnam.c:5633
 msgid "jacket"
 msgstr ""
 
-#: ../src/objnam.c:5642
+#: ../src/objnam.c:5647
 msgid "wrapping"
 msgstr ""
 
-#: ../src/objnam.c:5645
+#: ../src/objnam.c:5650
 msgid "smock"
 msgstr ""
 
-#: ../src/objnam.c:5670
+#: ../src/objnam.c:5675
 msgid "hat"
 msgstr ""
 
-#: ../src/objnam.c:5687
+#: ../src/objnam.c:5692
 msgid "gauntlets"
 msgstr ""
 
-#: ../src/objnam.c:5706
+#: ../src/objnam.c:5711
 msgid "shoes"
 msgstr ""
 
-#: ../src/objnam.c:5718
+#: ../src/objnam.c:5723
 msgid "silver shield"
 msgstr ""
 
-#: ../src/objnam.c:5790
+#: ../src/objnam.c:5795
 #, c-format
 msgid "safe_qbuf: prefix too long (%u characters)."
 msgstr ""
 
-#: ../src/objnam.c:5792
+#: ../src/objnam.c:5797
 #, c-format
 msgid "safe_qbuf: suffix too long (%u + %u characters)."
 msgstr ""
 
-#: ../src/objnam.c:5794
+#: ../src/objnam.c:5799
 #, c-format
 msgid "safe_qbuf: filler too long (%u + %u + %u characters)."
 msgstr ""
@@ -47346,10 +47350,6 @@ msgstr ""
 #: ../src/trap.c:6717
 #, c-format
 msgid "KABOOM!!  %s was booby-trapped!"
-msgstr ""
-
-#: ../src/trap.c:6719
-msgid "explosion"
 msgstr ""
 
 #: ../src/trap.c:6750

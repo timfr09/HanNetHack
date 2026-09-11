@@ -6639,7 +6639,7 @@ msgstr "%s{이/가} 폭발했다!"
 #: ../src/explode.c:1057
 #, c-format
 msgid "%s explosion"
-msgstr "%s 폭발."
+msgstr "%s 폭발"
 
 #: ../src/mkobj.c:1657
 #, c-format
@@ -37060,7 +37060,7 @@ msgstr "탐험했다"
 
 #: ../src/trap.c:6716
 msgid "explosion"
-msgstr "폭발."
+msgstr "폭발"
 
 #: ../src/explode.c:347
 #, c-format
@@ -44361,7 +44361,7 @@ msgstr "마법 에너지가 방출됐다!"
 
 #: ../src/pickup.c:2692 ../src/pickup.c:3803 ../src/trap.c:2317
 msgid "magical explosion"
-msgstr "폭발."
+msgstr "마법 폭발"
 
 #: ../src/mthrowu.c:47
 msgid "magma"

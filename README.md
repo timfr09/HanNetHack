@@ -13,7 +13,7 @@
 
 2026년 1월, 업스트림 NetHack이 **5.0.0**([`NetHack-5.0.0_Released`](https://github.com/NetHack/NetHack/releases))을 출시했습니다. HanNetHack은 이를 반영해 **`HanNetHack-5.0`** 브랜치에서 빌드·번역·개발을 이어갑니다. **기본 브랜치와 일상적인 기여·번역 작업의 기준은 5.0**입니다. (과거 3.7 기반 작업은 `HanNetHack-3.7` 브랜치에 보존됩니다.)
 
-업스트림 변경은 [NetHack/NetHack](https://github.com/NetHack/NetHack)의 **`NetHack-5.0`** 브랜치를 가능할 때마다 병합합니다 (최근: 2026-09, X11 탭 메뉴 열·비례 글꼴, undead 시체 섭취 수정 등). 유지보수자용 병합 절차는 [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md)를 참고하세요.
+업스트림 변경은 [NetHack/NetHack](https://github.com/NetHack/NetHack)의 **`NetHack-5.0`** 브랜치를 가능할 때마다 병합합니다 (최근: 2026-09, X11 BMP/GIF/PNG 타일·#wizcustom 탭 메뉴·소원 별칭·killed-by-a-died 수정 등). 유지보수자용 병합 절차는 [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md)를 참고하세요.
 
 - **버그·오역·문구 개선 제안**: [GitHub Issues](https://github.com/timfr09/HanNetHack/issues)에 올려 주세요. (영문·한국어 모두 가능합니다.)
 - **원본 게임**: 상위 프로젝트는 [NetHack on GitHub](https://github.com/NetHack/NetHack)입니다.

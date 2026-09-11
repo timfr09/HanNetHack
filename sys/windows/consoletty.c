@@ -168,6 +168,8 @@ extern void (*ibmgraphics_mode_callback)(void);  /* symbols.c */
 extern void (*utf8graphics_mode_callback)(void); /* symbols.c */
 #endif /* VIRTUAL_TERMINAL_SEQUENCES */
 
+static boolean OnWindows95_98_Me(void);
+
 static void init_custom_colors(void);
 static void free_custom_colors(void);
 
@@ -992,6 +994,12 @@ consoletty_repair_ctype_utf8(void)
         (void) setlocale(LC_CTYPE, "C.UTF-8");
 }
 #endif
+
+static boolean
+OnWindows95_98_Me(void)
+{
+    return ((GetVersion() & 0x80000000) != 0);
+}
 
 /*
  * Called after returning from ! or ^Z
@@ -2742,7 +2750,8 @@ void nethack_enter_consoletty(void)
     buffer_fill_to_end(console.back_buffer, &clear_cell, 0, 0);
 
     /* determine whether OS version has unicode support */
-    console.has_unicode = (IsWindows8OrGreater());
+    /* console.has_unicode = (IsWindows8OrGreater()); */
+    console.has_unicode = !OnWindows95_98_Me();
 
 #ifdef VIRTUAL_TERMINAL_SEQUENCES
     /* store the original code page*/

@@ -10,15 +10,15 @@
 # This file is distributed under the same license as NetHack.
 #
 #: ../src/dokick.c:268 ../src/dokick.c:285 ../src/dokick.c:326
-#: ../src/dokick.c:337 ../src/dothrow.c:2352 ../src/dothrow.c:2678
-#: ../src/dothrow.c:2697
+#: ../src/dokick.c:337 ../src/dothrow.c:2354 ../src/dothrow.c:2680
+#: ../src/dothrow.c:2699
 #, fuzzy
 msgid ""
 msgstr ""
 "#-#-#-#-#  nethack.pot.c (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
-"POT-Creation-Date: 2026-09-11 20:33+0900\n"
+"POT-Creation-Date: 2026-09-22 18:22+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  lua_strings.pot (NetHack 3.7)  #-#-#-#-#\n"
 "Project-Id-Version: NetHack 3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-11 11:33+0000\n"
+"POT-Creation-Date: 2026-09-22 09:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: HanNetHack Project\n"
 "Language-Team: Korean\n"
@@ -1290,7 +1290,7 @@ msgid "lantern is out of power."
 msgstr ""
 
 #: ../src/apply.c:1670 ../src/apply.c:1685 ../src/apply.c:2312
-#: ../src/apply.c:2400 ../src/apply.c:3670 ../src/apply.c:3689
+#: ../src/apply.c:2400 ../src/apply.c:3669 ../src/apply.c:3688
 #: ../src/artifact.c:2066 ../src/cmd.c:4225 ../src/do.c:2043 ../src/eat.c:2160
 #: ../src/engrave.c:1268 ../src/hack.c:122 ../src/hack.c:3435
 #: ../src/hack.c:4208 ../src/nhlua.c:632 ../src/nhlua.c:646 ../src/nhlua.c:662
@@ -1379,7 +1379,7 @@ msgstr ""
 msgid "aren't able to rub anything without hands."
 msgstr ""
 
-#: ../src/apply.c:1815 ../src/apply.c:4432
+#: ../src/apply.c:1815 ../src/apply.c:4430
 msgid "Sorry, I don't know how to use that."
 msgstr ""
 
@@ -1408,7 +1408,7 @@ msgstr ""
 msgid "Illegal move!"
 msgstr ""
 
-#: ../src/apply.c:1917 ../src/apply.c:3487 ../src/apply.c:3779
+#: ../src/apply.c:1917 ../src/apply.c:3487 ../src/apply.c:3778
 msgid "Too far!"
 msgstr ""
 
@@ -1830,7 +1830,7 @@ msgstr ""
 msgid "A sharp crack shatters %s%s."
 msgstr ""
 
-#: ../src/apply.c:2729 ../src/apply.c:3596 ../src/fountain.c:740
+#: ../src/apply.c:2729 ../src/apply.c:3595 ../src/fountain.c:740
 #: ../src/mhitu.c:140 ../src/potion.c:2535 ../src/uhitm.c:903 ../src/zap.c:1042
 msgid "one of "
 msgstr ""
@@ -2119,7 +2119,7 @@ msgstr ""
 msgid "Thump!  Your blow bounces harmlessly off the %s."
 msgstr ""
 
-#: ../src/apply.c:3480 ../src/apply.c:3772
+#: ../src/apply.c:3480 ../src/apply.c:3771
 msgid "the spot to hit"
 msgstr ""
 
@@ -2135,343 +2135,343 @@ msgstr ""
 msgid "blade doesn't reach there!"
 msgstr ""
 
-#: ../src/apply.c:3531
+#: ../src/apply.c:3530
 msgid "Shkinng!"
 msgstr ""
 
-#: ../src/apply.c:3549 ../src/dig.c:548 ../src/dig.c:1237 ../src/sounds.c:1339
+#: ../src/apply.c:3548 ../src/dig.c:548 ../src/dig.c:1237 ../src/sounds.c:1339
 #: ../src/trap.c:847
 msgid "statue"
 msgstr ""
 
-#: ../src/apply.c:3558 ../src/dig.c:549 ../src/dig.c:1237 ../src/hack.c:698
+#: ../src/apply.c:3557 ../src/dig.c:549 ../src/dig.c:1237 ../src/hack.c:698
 #: ../src/hack.c:713
 msgid "boulder"
 msgstr ""
 
-#: ../src/apply.c:3564
+#: ../src/apply.c:3563
 #, c-format
 msgid "uselessly attack %s."
 msgstr ""
 
-#: ../src/apply.c:3567 ../src/eat.c:2504 ../src/obj_descr_i18n.c:131
+#: ../src/apply.c:3566 ../src/eat.c:2504 ../src/obj_descr_i18n.c:131
 #: ../src/obj_descr_i18n.c:733 ../src/objnam.c:926 ../src/pager.c:789
 #: ../src/spell.c:1161
 msgid "stone"
 msgstr ""
 
-#: ../src/apply.c:3570 ../src/hack.c:2271 ../src/hack.c:2326
+#: ../src/apply.c:3569 ../src/hack.c:2271 ../src/hack.c:2326
 msgid "an unknown obstacle"
 msgstr ""
 
-#: ../src/apply.c:3572
+#: ../src/apply.c:3571
 msgid "miss; there is no one there to hit."
 msgstr ""
 
-#: ../src/apply.c:3593
+#: ../src/apply.c:3592
 msgid "give yourself a facial."
 msgstr ""
 
-#: ../src/apply.c:3595
+#: ../src/apply.c:3594
 #, c-format
 msgid "immerse your %s in %s%s."
 msgstr ""
 
-#: ../src/apply.c:3604
+#: ../src/apply.c:3603
 #, c-format
 msgid "There's %ssticky goop all over your %s."
 msgstr ""
 
-#: ../src/apply.c:3605 ../src/insight.c:1715 ../src/mcastu.c:788
+#: ../src/apply.c:3604 ../src/insight.c:1715 ../src/mcastu.c:788
 #: ../src/uhitm.c:3912
 msgid "more "
 msgstr ""
 
-#: ../src/apply.c:3607
+#: ../src/apply.c:3606
 #, c-format
 msgid "see through all the sticky goop on your %s."
 msgstr ""
 
-#: ../src/apply.c:3656
+#: ../src/apply.c:3655
 #, c-format
 msgid "smear royal jelly all over %s."
 msgstr ""
 
-#: ../src/apply.c:3668
+#: ../src/apply.c:3667
 #, c-format
 msgid "The %s %s feebly."
 msgstr ""
 
-#: ../src/apply.c:3668 ../src/apply.c:3687 ../src/artifact.c:2439
+#: ../src/apply.c:3667 ../src/apply.c:3686 ../src/artifact.c:2439
 #: ../src/obj_descr_i18n.c:445 ../src/sounds.c:455
 msgid "quiver"
 msgstr ""
 
-#: ../src/apply.c:3687
+#: ../src/apply.c:3686
 #, c-format
 msgid "The %s %s briefly."
 msgstr ""
 
-#: ../src/apply.c:3802
+#: ../src/apply.c:3801
 #, c-format
 msgid "an object on the %s"
 msgstr ""
 
-#: ../src/apply.c:3807 ../src/do_name.c:525 ../src/uhitm.c:6204
+#: ../src/apply.c:3806 ../src/do_name.c:525 ../src/uhitm.c:6204
 #: ../src/wizcmds.c:263 ../src/wizcmds.c:507 ../src/wizcmds.c:905
 msgid "a monster"
 msgstr ""
 
-#: ../src/apply.c:3809 ../src/end.c:250
+#: ../src/apply.c:3808 ../src/end.c:250
 #, c-format
 msgid "the %s"
 msgstr ""
 
-#: ../src/apply.c:3812
+#: ../src/apply.c:3811
 msgid "Aim for what?"
 msgstr ""
 
-#: ../src/apply.c:3833
+#: ../src/apply.c:3832
 #, c-format
 msgid "snag an object from the %s!"
 msgstr ""
 
-#: ../src/apply.c:3852
+#: ../src/apply.c:3851
 #, c-format
 msgid "pull in %s!"
 msgstr ""
 
-#: ../src/apply.c:3869
+#: ../src/apply.c:3867
 #, c-format
 msgid "hook slices through the %s."
 msgstr ""
 
-#: ../src/apply.c:3871
+#: ../src/apply.c:3869
 #, c-format
 msgid "are yanked toward the %s!"
 msgstr ""
 
-#: ../src/apply.c:3878
+#: ../src/apply.c:3876
 msgid "hook yourself!"
 msgstr ""
 
-#: ../src/apply.c:3879
+#: ../src/apply.c:3877
 msgid "a grappling hook"
 msgstr ""
 
-#: ../src/apply.c:3926
+#: ../src/apply.c:3924
 msgid "But nothing else happens..."
 msgstr ""
 
-#: ../src/apply.c:3939
+#: ../src/apply.c:3937
 #, c-format
 msgid "break %s without hands!"
 msgstr ""
 
-#: ../src/apply.c:3942
+#: ../src/apply.c:3940
 #, c-format
 msgid "%s are occupied!"
 msgstr ""
 
-#: ../src/apply.c:3945
+#: ../src/apply.c:3943
 #, c-format
 msgid "don't have the strength to break %s!"
 msgstr ""
 
-#: ../src/apply.c:3950
+#: ../src/apply.c:3948
 msgid "Are you really sure you want to break "
 msgstr ""
 
-#: ../src/apply.c:3951
+#: ../src/apply.c:3949
 msgid "the wand"
 msgstr ""
 
-#: ../src/apply.c:3953
+#: ../src/apply.c:3951
 #, c-format
 msgid "Raising %s high above your %s, you %s it in two!"
 msgstr ""
 
-#: ../src/apply.c:3954 ../src/mhitu.c:1354
+#: ../src/apply.c:3952 ../src/mhitu.c:1354
 msgid "snap"
 msgstr ""
 
-#: ../src/apply.c:3954 ../src/dig.c:514 ../src/dokick.c:961
+#: ../src/apply.c:3952 ../src/dig.c:514 ../src/dokick.c:961
 msgid "break"
 msgstr ""
 
-#: ../src/apply.c:4025
+#: ../src/apply.c:4023
 msgid "A wall of force smashes down around you!"
 msgstr ""
 
-#: ../src/apply.c:4138
+#: ../src/apply.c:4136
 #, c-format
 msgid "killed %sself by breaking a wand"
 msgstr ""
 
-#: ../src/apply.c:4234
+#: ../src/apply.c:4232
 msgid "aren't able to use or apply tools in your current form."
 msgstr ""
 
-#: ../src/apply.c:4266 ../src/wield.c:182
+#: ../src/apply.c:4264 ../src/wield.c:182
 #, c-format
 msgid "are already %s."
 msgstr ""
 
-#: ../src/apply.c:4267
+#: ../src/apply.c:4265
 msgid "covered by a towel"
 msgstr ""
 
-#: ../src/apply.c:4268
+#: ../src/apply.c:4266
 msgid "wearing a blindfold"
 msgstr ""
 
-#: ../src/apply.c:4269
+#: ../src/apply.c:4267
 msgid "wearing lenses"
 msgstr ""
 
-#: ../src/apply.c:4332 ../src/potion.c:1556 ../src/read.c:1615 ../src/sit.c:628
+#: ../src/apply.c:4330 ../src/potion.c:1556 ../src/read.c:1615 ../src/sit.c:628
 #, c-format
 msgctxt "glow_color"
 msgid "%s %s."
 msgstr ""
 
-#: ../src/apply.c:4333 ../src/potion.c:1613 ../src/potion.c:2462
+#: ../src/apply.c:4331 ../src/potion.c:1613 ../src/potion.c:2462
 #: ../src/read.c:675 ../src/read.c:685 ../src/read.c:696 ../src/read.c:1616
 #: ../src/sit.c:629 ../src/wield.c:925 ../src/wield.c:1012
 msgctxt "glow_color"
 msgid "glow"
 msgstr ""
 
-#: ../src/apply.c:4418
+#: ../src/apply.c:4416
 msgid "It rings! ... But no-one answers."
 msgstr ""
 
-#: ../src/apply.c:4492
+#: ../src/apply.c:4490
 msgid "don't want to get the pages even more soggy, do you?"
 msgstr ""
 
-#: ../src/apply.c:4496
+#: ../src/apply.c:4494
 #, c-format
 msgid "flip through the pages of %s."
 msgstr ""
 
-#: ../src/apply.c:4503
+#: ../src/apply.c:4501
 #, c-format
 msgid "the pages make an unpleasant %s sound."
 msgstr ""
 
-#: ../src/apply.c:4504
+#: ../src/apply.c:4502
 msgid "chuckling"
 msgstr ""
 
-#: ../src/apply.c:4505
+#: ../src/apply.c:4503
 msgid "rustling"
 msgstr ""
 
-#: ../src/apply.c:4507
+#: ../src/apply.c:4505
 #, c-format
 msgid "the pages glow faintly %s."
 msgstr ""
 
-#: ../src/apply.c:4509
+#: ../src/apply.c:4507
 msgid "the pages tremble."
 msgstr ""
 
-#: ../src/apply.c:4512
+#: ../src/apply.c:4510
 #, c-format
 msgid "The pages feel %s."
 msgstr ""
 
-#: ../src/apply.c:4513
+#: ../src/apply.c:4511
 msgid "freshly picked"
 msgstr ""
 
-#: ../src/apply.c:4514
+#: ../src/apply.c:4512
 msgid "rough and dry"
 msgstr ""
 
-#: ../src/apply.c:4516
+#: ../src/apply.c:4514
 #, c-format
 msgid "This spellbook %s."
 msgstr ""
 
-#: ../src/apply.c:4517
+#: ../src/apply.c:4515
 msgid "doesn't have much of a plot"
 msgstr ""
 
-#: ../src/apply.c:4518
+#: ../src/apply.c:4516
 msgid "has nothing written in it"
 msgstr ""
 
-#: ../src/apply.c:4521
+#: ../src/apply.c:4519
 msgid "enjoy the animated initials."
 msgstr ""
 
-#: ../src/apply.c:4523
+#: ../src/apply.c:4521
 msgid "This looks like it might be interesting to read."
 msgstr ""
 
-#: ../src/apply.c:4526
+#: ../src/apply.c:4524
 msgid "fresh"
 msgstr ""
 
-#: ../src/apply.c:4527
+#: ../src/apply.c:4525
 msgid "slightly faded"
 msgstr ""
 
-#: ../src/apply.c:4528
+#: ../src/apply.c:4526
 msgid "very faded"
 msgstr ""
 
-#: ../src/apply.c:4529
+#: ../src/apply.c:4527
 msgid "extremely faded"
 msgstr ""
 
-#: ../src/apply.c:4530
+#: ../src/apply.c:4528
 msgid "barely visible"
 msgstr ""
 
-#: ../src/apply.c:4534
+#: ../src/apply.c:4532
 #, c-format
 msgid "The%s ink in this spellbook is %s."
 msgstr ""
 
-#: ../src/apply.c:4535
+#: ../src/apply.c:4533
 msgid " magical"
 msgstr ""
 
-#: ../src/apply.c:4548
+#: ../src/apply.c:4546
 #, c-format
 msgid "flip %s."
 msgstr ""
 
-#: ../src/apply.c:4550
+#: ../src/apply.c:4548
 msgid "It tumbles away."
 msgstr ""
 
-#: ../src/apply.c:4554
+#: ../src/apply.c:4552
 #, c-format
 msgid "It slips between your %s."
 msgstr ""
 
-#: ../src/apply.c:4565
+#: ../src/apply.c:4563
 msgid "Wow, a double header!"
 msgstr ""
 
-#: ../src/apply.c:4567
+#: ../src/apply.c:4565
 msgid "The coin miraculously lands on its edge!"
 msgstr ""
 
-#: ../src/apply.c:4569
+#: ../src/apply.c:4567
 #, c-format
 msgid "It comes up %s."
 msgstr ""
 
-#: ../src/apply.c:4569
+#: ../src/apply.c:4567
 msgid "heads"
 msgstr ""
 
-#: ../src/apply.c:4569
+#: ../src/apply.c:4567
 msgid "tails"
 msgstr ""
 
@@ -3294,7 +3294,7 @@ msgid "watching your health"
 msgstr ""
 
 #: ../src/attrib.c:664 ../src/dig.c:1307 ../src/dog.c:1340 ../src/dokick.c:212
-#: ../src/dothrow.c:2019 ../src/dothrow.c:2573 ../src/eat.c:3053
+#: ../src/dothrow.c:2019 ../src/dothrow.c:2575 ../src/eat.c:3053
 #: ../src/engrave.c:868 ../src/engrave.c:876 ../src/hack.c:1723
 #: ../src/mcastu.c:700 ../src/mhitu.c:1715 ../src/mkobj.c:1616
 #: ../src/mon.c:1005 ../src/mon.c:1790 ../src/mthrowu.c:792 ../src/muse.c:282
@@ -3531,7 +3531,7 @@ msgstr ""
 
 #: ../src/ball.c:979 ../src/dbridge.c:934 ../src/do_wear.c:3224
 #: ../src/dokick.c:644 ../src/dokick.c:775 ../src/dokick.c:1951
-#: ../src/dokick.c:1954 ../src/dothrow.c:1862 ../src/dothrow.c:2780
+#: ../src/dokick.c:1954 ../src/dothrow.c:1862 ../src/dothrow.c:2782
 #: ../src/hack.c:543 ../src/mon.c:3308 ../src/mon.c:3597 ../src/mthrowu.c:201
 #: ../src/polyself.c:1301 ../src/read.c:2359 ../src/read.c:2432
 #: ../src/steal.c:834 ../src/steed.c:597 ../src/teleport.c:2142
@@ -6222,7 +6222,7 @@ msgid "Clang!"
 msgstr ""
 
 #: ../src/dig.c:1225 ../src/dig.c:1227 ../src/do.c:280 ../src/dothrow.c:1859
-#: ../src/dothrow.c:2709 ../src/mthrowu.c:973 ../src/uhitm.c:1272
+#: ../src/dothrow.c:2711 ../src/mthrowu.c:973 ../src/uhitm.c:1272
 #: ../src/uhitm.c:1298
 msgid "Splash!"
 msgstr ""
@@ -10770,115 +10770,115 @@ msgstr ""
 msgid "tosses"
 msgstr ""
 
-#: ../src/dothrow.c:2352 ../src/dothrow.c:2735
+#: ../src/dothrow.c:2354 ../src/dothrow.c:2737
 msgid " entrails"
 msgstr ""
 
-#: ../src/dothrow.c:2352
+#: ../src/dothrow.c:2354
 msgid " currents"
 msgstr ""
 
-#: ../src/dothrow.c:2356
+#: ../src/dothrow.c:2358
 #, c-format
 msgid "%s into %s%s."
 msgstr ""
 
-#: ../src/dothrow.c:2357
+#: ../src/dothrow.c:2359
 msgctxt "Tobjnam"
 msgid "vanish"
 msgstr ""
 
-#: ../src/dothrow.c:2371
+#: ../src/dothrow.c:2373
 msgid " is not interested in your junk."
 msgstr ""
 
-#: ../src/dothrow.c:2372
+#: ../src/dothrow.c:2374
 msgid " accepts your gift."
 msgstr ""
 
-#: ../src/dothrow.c:2373
+#: ../src/dothrow.c:2375
 msgid " hesitatingly"
 msgstr ""
 
-#: ../src/dothrow.c:2374
+#: ../src/dothrow.c:2376
 msgid " graciously"
 msgstr ""
 
-#: ../src/dothrow.c:2375
+#: ../src/dothrow.c:2377
 msgid " gratefully"
 msgstr ""
 
-#: ../src/dothrow.c:2523
+#: ../src/dothrow.c:2525
 #, c-format
 msgid "%s is released!"
 msgstr ""
 
-#: ../src/dothrow.c:2525
+#: ../src/dothrow.c:2527
 msgid "The picture-painting demon"
 msgstr ""
 
-#: ../src/dothrow.c:2567
+#: ../src/dothrow.c:2569
 msgid "smell a peculiar odor..."
 msgstr ""
 
-#: ../src/dothrow.c:2573
+#: ../src/dothrow.c:2575
 msgctxt "eyes_water"
 msgid "water"
 msgstr ""
 
-#: ../src/dothrow.c:2682
+#: ../src/dothrow.c:2684
 #, c-format
 msgid "breaking odd object (%d)?"
 msgstr ""
 
-#: ../src/dothrow.c:2689
+#: ../src/dothrow.c:2691
 msgid " into a thousand pieces"
-msgstr ""
-
-#: ../src/dothrow.c:2694
-#, c-format
-msgid "%s shatter!"
 msgstr ""
 
 #: ../src/dothrow.c:2696
 #, c-format
+msgid "%s shatter!"
+msgstr ""
+
+#: ../src/dothrow.c:2698
+#, c-format
 msgid "%s shatter%s%s!"
 msgstr ""
 
-#: ../src/dothrow.c:2697 ../src/insight.c:826 ../src/lock.c:710
+#: ../src/dothrow.c:2699 ../src/insight.c:826 ../src/lock.c:710
 #: ../src/objnam.c:1948
 msgid "s"
 msgstr ""
 
-#: ../src/dothrow.c:2701 ../src/uhitm.c:1248 ../src/uhitm.c:1271
+#: ../src/dothrow.c:2703 ../src/uhitm.c:1248 ../src/uhitm.c:1271
 #: ../src/uhitm.c:1298
 msgid "Splat!"
 msgstr ""
 
-#: ../src/dothrow.c:2705
+#: ../src/dothrow.c:2707
 msgid "What a mess!"
 msgstr ""
 
-#: ../src/dothrow.c:2721
+#: ../src/dothrow.c:2723
 msgid "cannot throw gold at yourself."
 msgstr ""
 
-#: ../src/dothrow.c:2736
+#: ../src/dothrow.c:2738
 #, c-format
 msgid "gold disappears into %s."
 msgstr ""
 
-#: ../src/dothrow.c:2744
+#: ../src/dothrow.c:2746
 #, c-format
 msgid "gold hits the %s, then falls back on top of your %s."
 msgstr ""
 
-#: ../src/dothrow.c:2748
+#: ../src/dothrow.c:2750
 #, c-format
 msgid "Fortunately, you are wearing %s!"
 msgstr ""
 
-#: ../src/dothrow.c:2783
+#: ../src/dothrow.c:2785
 #, c-format
 msgid "gold hits the %s."
 msgstr ""
@@ -38485,21 +38485,21 @@ msgstr ""
 msgid "This is level %d, not %d!"
 msgstr ""
 
-#: ../src/restore.c:1324
+#: ../src/restore.c:1327
 msgid "getlev: need portal but none found"
 msgstr ""
 
-#: ../src/restore.c:1445
+#: ../src/restore.c:1448
 #, c-format
 msgid "restore_gamelog: msg too big (%d)"
 msgstr ""
 
-#: ../src/restore.c:1472
+#: ../src/restore.c:1475
 #, c-format
 msgid "restore_msghistory: msg too big (%d)"
 msgstr ""
 
-#: ../src/restore.c:1606
+#: ../src/restore.c:1609
 msgid "Select one of your saved games"
 msgstr ""
 
@@ -39730,7 +39730,7 @@ msgstr ""
 msgid "savelev: where are we?"
 msgstr ""
 
-#: ../src/save.c:492
+#: ../src/save.c:493
 msgid "Save on bad file!"
 msgstr ""
 

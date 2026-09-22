@@ -24694,7 +24694,7 @@ msgstr "NetHack에 오신 것을 환영합니다."
 
 #: ../src/vault.c:1000
 msgid "Well, begone."
-msgstr "그럼, 꺼져."
+msgstr "자, 물러나라."
 
 #: ../src/mhitu.c:2151
 #, c-format
@@ -31954,11 +31954,11 @@ msgstr "침략자"
 
 #: ../src/wizard.c:825
 msgid "caitiff"
-msgstr "비열한 놈"
+msgstr "비겁한 자식"
 
 #: ../src/uhitm.c:338
 msgid "caitiff!"
-msgstr "비열한 놈!"
+msgstr "비겁한 자식!"
 
 #: ../src/sounds.c:1123
 msgid "cajoles you."
@@ -35097,11 +35097,11 @@ msgstr "설거지하는 소리가 들린다!"
 
 #: ../src/uhitm.c:342
 msgid "dishonorably attack the innocent!"
-msgstr "무고한 자를 비열하게 공격했다!"
+msgstr "무고한 자를 불명예스럽게 공격했다!"
 
 #: ../src/uhitm.c:1517
 msgid "dishonorably use a poisoned weapon!"
-msgstr "비열하게 독 무기를 사용했다!"
+msgstr "불명예스럽게 독 무기를 사용했다!"
 
 # zap.c - "The corpse disintegrates"
 #: ../src/explode.c:684 ../src/zap.c:5034

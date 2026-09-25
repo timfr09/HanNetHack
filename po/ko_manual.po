@@ -16908,15 +16908,15 @@ msgstr "안녕"
 
 #: ../src/mon.c:4158
 msgid "Halt!  You're under arrest!"
-msgstr "멈춰! 체포한다!"
+msgstr "멈춰라! 체포다!"
 
 #: ../src/dokick.c:844 ../src/monmove.c:187
 msgid "Halt, thief!  You're under arrest!"
-msgstr "멈춰라, 도둑! 당신을 체포한다!"
+msgstr "멈춰라, 도둑! 체포다!"
 
 #: ../src/dig.c:1390 ../src/dokick.c:858
 msgid "Halt, vandal!  You're under arrest!"
-msgstr "멈춰라, 반달! 체포다!"
+msgstr "멈춰라, 파괴자! 체포다!"
 
 #: ../src/do_name.c:1565
 msgid "Hard-Headipus Ravenus"
@@ -17300,7 +17300,7 @@ msgstr "그대에게 왕관을 씌우노라... 엘베레스의 손이여!"
 
 #: ../src/vault.c:548
 msgid "I don't know you."
-msgstr "당신을 모르겠는데."
+msgstr "너를 모르겠다."
 
 #: ../src/dokick.c:395
 msgid "I don't take bribes from scum like you!"
@@ -19079,7 +19079,7 @@ msgstr "대부분의"
 
 #: ../src/vault.c:1069
 msgid "Move along!"
-msgstr "비켜!"
+msgstr "어서 가라!"
 
 #: ../src/getpos.c:861
 #, c-format
@@ -20198,7 +20198,7 @@ msgstr "이전 편지는 무시해 주세요."
 
 #: ../src/sounds.c:1173 ../src/vault.c:581
 msgid "Please drop that gold and follow me."
-msgstr "금화를 떨어뜨리고 따라오세요."
+msgstr "그 금화를 내려놓고 따라와라."
 
 #: ../src/mail.c:501
 msgid "Please find enclosed a small token to represent your Owlbear"
@@ -20206,7 +20206,7 @@ msgstr "동봉된 작은 토큰은 당신의 올베어를 나타냅니다"
 
 #: ../src/sounds.c:1175 ../src/vault.c:557
 msgid "Please follow me."
-msgstr "따라오세요."
+msgstr "따라와라."
 
 #: ../src/pager.c:1904
 #, c-format
@@ -24694,7 +24694,7 @@ msgstr "NetHack에 오신 것을 환영합니다."
 
 #: ../src/vault.c:1000
 msgid "Well, begone."
-msgstr "그럼, 꺼져."
+msgstr "자, 물러나라."
 
 #: ../src/mhitu.c:2151
 #, c-format
@@ -24896,7 +24896,7 @@ msgstr "당신이 연주하는 것은 음악이라 부르기 어렵다..."
 
 #: ../src/vault.c:460
 msgid "What's going on here?"
-msgstr "여기서 무슨 일이야?"
+msgstr "여기서 무슨 일인가?"
 
 #: ../src/sounds.c:550 ../src/sounds.c:1036
 msgid "What?"
@@ -25900,7 +25900,7 @@ msgstr "극도로 힘들게"
 # 
 #: ../src/vault.c:567
 msgid "You have hidden gold."
-msgstr "네가 금화를 숨겨 뒀군."
+msgstr "금화를 숨겼군."
 
 #: ../src/pickup.c:69
 msgid "You have much trouble"
@@ -31954,11 +31954,11 @@ msgstr "침략자"
 
 #: ../src/wizard.c:825
 msgid "caitiff"
-msgstr "비열한 놈"
+msgstr "비겁한 자식"
 
 #: ../src/uhitm.c:338
 msgid "caitiff!"
-msgstr "비열한 놈!"
+msgstr "비겁한 자식!"
 
 #: ../src/sounds.c:1123
 msgid "cajoles you."
@@ -35097,11 +35097,11 @@ msgstr "설거지하는 소리가 들린다!"
 
 #: ../src/uhitm.c:342
 msgid "dishonorably attack the innocent!"
-msgstr "무고한 자를 비열하게 공격했다!"
+msgstr "무고한 자를 불명예스럽게 공격했다!"
 
 #: ../src/uhitm.c:1517
 msgid "dishonorably use a poisoned weapon!"
-msgstr "비열하게 독 무기를 사용했다!"
+msgstr "불명예스럽게 독 무기를 사용했다!"
 
 # zap.c - "The corpse disintegrates"
 #: ../src/explode.c:684 ../src/zap.c:5034

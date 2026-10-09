@@ -489,7 +489,7 @@ ghost_from_bottle(void)
         return;
     }
     pline(_("As you open the bottle, an enormous %s emerges!"),
-          Hallucination ? rndmonnam(NULL) : (const char *) "ghost");
+          Hallucination ? rndmonnam(NULL) : _("ghost"));
     if (flags.verbose)
         You(_("are frightened to death, and unable to move."));
     nomul(-3);
@@ -1696,8 +1696,8 @@ potionhit(struct monst *mon, struct obj *obj, int how)
                 int dmg;
 
                 pline(_("This burns%s!"),
-                      obj->blessed ? " a little"
-                                   : obj->cursed ? " a lot" : "");
+                      obj->blessed ? _(" a little")
+                                   : obj->cursed ? _(" a lot") : "");
                 dmg = d(obj->cursed ? 2 : 1, obj->blessed ? 4 : 8);
                 losehp(Maybe_Half_Phys(dmg), _("potion of acid"), KILLED_BY_AN);
             }

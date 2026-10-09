@@ -61,12 +61,22 @@ static NEARDATA const char *const barehands_or_martial[] = {
     N_("bare handed combat"), N_("martial arts")
 };
 
+/* a weapon skill is named after one weapon; msgctxt "skill" can name the
+   category differently from the item ("short sword": 숏소드, the item 소검) */
+staticfn const char *
+skill_objname(const char *name)
+{
+    const char *tr = C_("skill", name);
+
+    return strcmp(tr, name) ? tr : tr_obj_name(name);
+}
+
 #define P_NAME(type)                                    \
     ((skill_names_indices[type] > 0)                    \
-         ? OBJ_NAME(objects[skill_names_indices[type]]) \
+         ? skill_objname(OBJ_NAME(objects[skill_names_indices[type]])) \
          : (type == P_BARE_HANDED_COMBAT)               \
-               ? _(barehands_or_martial[martial_bonus()])  \
-               : _(odd_skill_names[-skill_names_indices[type]]))
+               ? C_("skill", barehands_or_martial[martial_bonus()])  \
+               : C_("skill", odd_skill_names[-skill_names_indices[type]]))
 
 /* targets that provide attacker with small to-hit bonus when using a spear */
 static NEARDATA const char kebabable[] = {
@@ -78,9 +88,9 @@ give_may_advance_msg(int skill)
 {
     You_feel(_("more confident in your %sskills."),
              (skill == P_NONE) ? ""
-                 : (skill <= P_LAST_WEAPON) ? "weapon "
-                     : (skill <= P_LAST_SPELL) ? "spell casting "
-                         : "fighting ");
+                 : (skill <= P_LAST_WEAPON) ? _("weapon ")
+                     : (skill <= P_LAST_SPELL) ? _("spell casting ")
+                         : _("fighting "));
     (void) handle_tip(TIP_ENHANCE);
 }
 
@@ -1296,6 +1306,9 @@ add_skills_to_menu(winid win, boolean selectable, boolean speedy)
                     Snprintf(buf, sizeof buf,
                              " %s%s\t[%s]", prefix, P_NAME(i),
                              sklnambuf);
+                /* Korean marks what can be advanced */
+                if (is_korean_locale() && selectable && can_advance(i, speedy))
+                    Strcat(buf, " [숙련 가능]");
             }
             any.a_int = selectable && can_advance(i, speedy) ? i + 1 : 0;
             add_menu(win, &nul_glyphinfo, &any, 0, 0,

@@ -829,7 +829,7 @@ hurtle_step(genericptr_t arg, coordxy x, coordxy y)
 
             if (bigmonst(gy.youmonst.data) || too_much) {
                 why = "wedging into a narrow crevice";
-                You(_("%sget forcefully wedged into a crevice."),                     too_much ? "and all your belongings " : "");
+                You(_("%sget forcefully wedged into a crevice."),                     too_much ? _("and all your belongings ") : "");
             }
         }
         if (why) {

@@ -4,6 +4,13 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+
+/* Korean prompts name the box first: "잠긴 큰 상자가 있다. …" (no "여기에") */
+#ifdef ENABLE_NLS
+#define KO_THERE_IS (is_korean_locale() ? "" : _("There is "))
+#else
+#define KO_THERE_IS _("There is ")
+#endif
 #include "i18n.h"
 
 /* occupation callbacks */
@@ -498,7 +505,15 @@ pick_lock(
                     /* "There is <a box> here; <verb> <it|its lock>?" */
                     Sprintf(qsfx, _(" here; %s %s?"),
                             verb, it ? _("it") : _("its lock"));
-                    (void) safe_qbuf(qbuf, _("There is "), qsfx, otmp, doname,
+#ifdef ENABLE_NLS
+                    if (is_korean_locale()) /* "잠긴 큰 상자가 있다. 열겠습니까?" */
+                        Sprintf(qsfx, "{이/가} 있다. %s",
+                                otmp->obroken ? "자물쇠를 고치겠습니까?"
+                                : !otmp->olocked ? "잠그겠습니까?"
+                                : (picktyp != LOCK_PICK) ? "열겠습니까?"
+                                : "자물쇠를 따겠습니까?");
+#endif
+                    (void) safe_qbuf(qbuf, KO_THERE_IS, qsfx, otmp, doname,
                                      ansimpleoname, _("a box"));
                     otmp->lknown = 1;
 
@@ -737,7 +752,7 @@ doforce(void)
                 otmp->lknown = 1;
                 continue;
             }
-            (void) safe_qbuf(qbuf, _("There is "), _(" here; force its lock?"),
+            (void) safe_qbuf(qbuf, KO_THERE_IS, _(" here; force its lock?"),
                              otmp, doname, ansimpleoname, _("a box"));
             otmp->lknown = 1;
 

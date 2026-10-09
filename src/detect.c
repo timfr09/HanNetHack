@@ -1882,7 +1882,7 @@ findit(void)
         /* at least 1 "remembered, unseen monster" marker has been removed */
         if (!num)
             You_feel(_("%sless paranoid."),
-                     found.num_kept_invis ? "somewhat " : "");
+                     found.num_kept_invis ? _("somewhat ") : "");
         num += found.num_cleared_invis;
     }
     /* note: num_kept_invis is not included in the final result */

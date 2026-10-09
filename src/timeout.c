@@ -726,7 +726,7 @@ nh_timeout(void)
             case FAST:
                 if (!Very_fast)
                     You_feel(_("yourself slow down%s."),
-                             Fast ? " a bit" : "");
+                             Fast ? _(" a bit") : "");
                 break;
             case CONFUSION:
                 /* So make_confused works properly */
@@ -884,8 +884,8 @@ nh_timeout(void)
             case MAGICAL_BREATHING:
                 if (!Breathless) {
                     if (region_danger())
-                        You(_("cough%s"),
-                            Poison_resistance ? "." : " and spit blood!");
+                        You(Poison_resistance ? _("cough.")
+                                              : _("cough and spit blood!"));
                 }
                 break;
             case STRANGLED:

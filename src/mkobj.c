@@ -3847,9 +3847,9 @@ pudding_merge_message(struct obj *otmp, struct obj *otmp2)
                            && (otmp2->ox != u.ux || otmp2->oy != u.uy));
 
             pline(_("The %s%s coalesce%s."),
-                  (onfloor && adj) ? "adjacent " : "",
+                  (onfloor && adj) ? _("adjacent ") : "",
                   makeplural(obj_typename(otmp->otyp)),
-                  inpack ? " inside your pack" : "");
+                  inpack ? _(" inside your pack") : "");
         }
     } else {
         Soundeffect(se_faint_sloshing, 25);

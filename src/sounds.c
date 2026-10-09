@@ -78,7 +78,7 @@ beehive_mon_sound(struct monst *mtmp)
         case 2:
             Soundeffect(se_bees, 100);
             You_hear(_("bees in your %sbonnet!"),
-                     uarmh ? "" : "(nonexistent) ");
+                     uarmh ? "" : _("(nonexistent) "));
             break;
         }
         return TRUE;

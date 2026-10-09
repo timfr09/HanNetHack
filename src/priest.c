@@ -446,7 +446,7 @@ intemple(int roomno)
             if (sanctum && !Hallucination)
                 priest->ispriest = 0;
             pline(_("%s intones:"),
-                  canseemon(priest) ? Monnam(priest) : "A nearby voice");
+                  canseemon(priest) ? Monnam(priest) : _("A nearby voice"));
             priest->ispriest = save_priest;
             epri_p->intone_time = svm.moves + (long) d(10, 500); /* ~2505 */
             /* make sure that we don't suppress entry message when
@@ -530,7 +530,7 @@ intemple(int roomno)
             int ngen = svm.mvitals[PM_GHOST].born;
             if (canspotmon(mtmp))
                 pline(_("A%s ghost appears next to you%c"),
-                      ngen < 5 ? "n enormous" : "",
+                      ngen < 5 ? _("n enormous") : "",
                       ngen < 10 ? '!' : '.');
             else
                 You(_("sense a presence close by!"));

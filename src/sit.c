@@ -229,7 +229,7 @@ throne_sit_effect(void)
         /* "[God] promptly vanishes in a puff of logic" is from
            Douglas Adams' _The_Hitchhiker's_Guide_to_the_Galaxy_. */
         pline_The(_("throne %s in a puff of logic."),
-                  cansee(tx, ty) ? "vanishes" : "has vanished");
+                  cansee(tx, ty) ? _("vanishes") : _("has vanished"));
     }
 }
 
@@ -441,7 +441,7 @@ dosit(void)
         obj = svl.level.objects[u.ux][u.uy];
         if (gy.youmonst.data->mlet == S_DRAGON && obj->oclass == COIN_CLASS) {
             You(_("coil up around your %shoard."),                 (obj->quan + money_cnt(gi.invent) < u.ulevel * 1000)
-                ? "meager " : "");
+                ? _("meager ") : "");
         } else if (obj->otyp == TOWEL) {
             pline(_("It's probably not a good time for a picnic..."));
         } else {
@@ -497,7 +497,7 @@ dosit(void)
             /* when flying, "you land" might need some refinement; it sounds
                as if you're staying on the ground but you will immediately
                take off again unless you become stuck in a holding trap */
-            You(_("%s."), Flying ? "land" : "sit down");
+            You(_("%s."), Flying ? C_("sit", "land") : C_("sit", "sit down"));
             dotrap(trap, VIASITTING);
         }
     } else if ((Underwater || Is_waterlevel(&u.uz))

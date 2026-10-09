@@ -113,6 +113,17 @@ self_lookat(char *outbuf)
     race[0] = '\0';
     if (!Upolyd)
         Sprintf(race, "%s ", gu.urace.adj);
+    if (is_korean_locale() && !Upolyd) /* "2레벨 엘프 사제 지망생 Dk" */
+        Sprintf(outbuf, "%s%d레벨 %s %s %s %s",
+                (Invis && (senseself() || !Blind)) ? _("invisible ") : "",
+                u.ulevel, _(gu.urace.adj), pmname(&mons[u.umonnum], Ugender),
+                rank_of(u.ulevel, Role_switch, flags.female),
+                upstart(strcpy(trapbuf, svp.plname))); /* as on the status line */
+    else if (is_korean_locale()) /* polymorphed: the form, then the name */
+        Sprintf(outbuf, "%s%s %s",
+                (Invis && (senseself() || !Blind)) ? _("invisible ") : "",
+                pmname(&mons[u.umonnum], Ugender), svp.plname);
+    else
     Sprintf(outbuf, _("%s%s%s called %s"),
             /* being blinded may hide invisibility from self */
             (Invis && (senseself() || !Blind)) ? _("invisible ") : "", race,
@@ -800,6 +811,7 @@ lookat(coordxy x, coordxy y, char *buf, char *monbuf)
     }
     return (pm && !Hallucination) ? pm : (struct permonst *) 0;
 }
+
 
 /* used to decide whether the context-sensitive inventory action menu for
    item 'otmp' should include the "/ - look up this item" choice */

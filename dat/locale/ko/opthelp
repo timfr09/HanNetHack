@@ -8,8 +8,8 @@ autodescribe   커서 아래 지형 설명                                   [Fa
 autodig        이동 시 땅파기 도구 장비 중이면 자동으로 파기          [False]
 autoopen       문으로 걸어가면 열기 시도                              [True]
 autopickup     이동할 때 자동으로 물건 줍기                           [True]
-autoquiver     빈 화살통으로 발사 시 적절한 인벤토리                  [False]
-               무기를 선택하여 화살통 채우기
+autoquiver     준비된 것 없이 원거리 공격 시 알맞은 물건을          [False]
+               골라 자동으로 준비
 BIOS           IBM ROM BIOS 호출 사용 허용                           [False]
 blind          캐릭터가 영구적으로 시각 장애                         [False]
 bones          뼈 파일 로딩 허용                                      [True]

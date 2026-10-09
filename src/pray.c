@@ -739,9 +739,9 @@ angrygods(aligntyp resp_god)
         godvoice(resp_god, (char *) 0);
         pline(_("\"Thou %s, %s.\""),
               (ugod_is_angry() && resp_god == u.ualign.type)
-                  ? "hast strayed from the path"
-                  : "art arrogant",
-              gy.youmonst.data->mlet == S_HUMAN ? "mortal" : "creature");
+                  ? _("hast strayed from the path")
+                  : _("art arrogant"),
+              gy.youmonst.data->mlet == S_HUMAN ? _("mortal") : _("creature"));
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
         verbalize(_("Thou must relearn thy lessons!"));
         (void) adjattrib(A_WIS, -1, FALSE);
@@ -773,7 +773,7 @@ angrygods(aligntyp resp_god)
                       : _("call upon"));
         /* [why isn't this using verbalize()?] */
         pline(_("\"Then die, %s!\""),
-              (gy.youmonst.data->mlet == S_HUMAN) ? "mortal" : "creature");
+              (gy.youmonst.data->mlet == S_HUMAN) ? _("mortal") : _("creature"));
         summon_minion(resp_god, FALSE);
         break;
 
@@ -1235,8 +1235,8 @@ pleased(aligntyp g_align)
                     godvoice(g_align, (char *) 0);
                     SetVoice((struct monst *) 0, 0, 80, voice_deity);
                     verbalize(_("Hark, %s!"), is_human(gy.youmonst.data)
-                                               ? "mortal"
-                                               : "creature");
+                                               ? _("mortal")
+                                               : _("creature"));
                     SetVoice((struct monst *) 0, 0, 80, voice_deity);
                     verbalize(
                        _("To enter the castle, thou must play the right tune!"));

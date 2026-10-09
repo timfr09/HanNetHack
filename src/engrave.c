@@ -394,8 +394,11 @@ read_engr_at(coordxy x, coordxy y)
                      && strchr(".!?", et[elen - 1]))) {
                 endpunct = ".";
             }
-            You(_("%s: \"%s\"%s"), (Blind) ? _("feel the words") : C_("engrave_read", "read"), et,
-                endpunct);
+            if (is_korean_locale()) /* "엘베레스"라고 쓰여 있다. */
+                You("%s\"%s\"라고 쓰여 있다.", Blind ? "손으로 더듬어 보니 " : "", et);
+            else
+                You(_("%s: \"%s\"%s"), (Blind) ? _("feel the words") : C_("engrave_read", "read"), et,
+                    endpunct);
             Strcpy(ep->engr_txt[remembered_text], ep->engr_txt[actual_text]);
             ep->eread = 1;
             ep->erevealed = 1;

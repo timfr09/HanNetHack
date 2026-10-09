@@ -2472,6 +2472,7 @@ extern struct obj *find_justpicked(struct obj *) NO_NNARGS;
 extern int pickup(int);
 extern int pickup_object(struct obj *, long, boolean) NONNULLARG1;
 extern int query_category(const char *, struct obj *, int, menu_item **, int) NONNULLARG14;
+extern const char *qcat_action_ctx; /* see query_category() */
 /* dotypeinv() call query_objlist with NULL arg1 */
 extern int query_objlist(const char *, struct obj **, int, menu_item **, int,
                          boolean(*)(struct obj *)) NONNULLARG24;

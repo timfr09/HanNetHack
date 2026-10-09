@@ -993,11 +993,13 @@ menu_drop(int retry)
         all_categories = (retry == -2);
     } else if (flags.menu_style == MENU_FULL) {
         all_categories = FALSE;
+        qcat_action_ctx = "drop";
         n = query_category(_("Drop what type of items?"), gi.invent,
                            (UNPAID_TYPES | ALL_TYPES | CHOOSE_ALL
                             | BUC_BLESSED | BUC_CURSED | BUC_UNCURSED
                             | BUC_UNKNOWN | JUSTPICKED | INCLUDE_VENOM),
                            &pick_list, PICK_ANY);
+        qcat_action_ctx = 0;
             /* when paranoid_confirm:A is set, 'A' by itself implies
                'A'+'a' which will be followed by a confirmation prompt;
                when that option isn't set, 'A' by itself is rejected
@@ -1113,9 +1115,9 @@ u_stuck_cannot_go(const char *updn)
 {
     if (u.ustuck) {
         if (u.uswallow || !sticks(gy.youmonst.data)) {
-            You(_("are %s, and cannot go %s."),                 !u.uswallow ? "being held"
-                : digests(u.ustuck->data) ? "swallowed"
-                : "engulfed", updn);
+            You(_("are %s, and cannot go %s."),                 !u.uswallow ? C_("state", "being held")
+                : digests(u.ustuck->data) ? C_("state", "swallowed")
+                : C_("state", "engulfed"), updn);
             return TRUE;
         } else {
             struct monst *mtmp = u.ustuck;
@@ -1234,7 +1236,7 @@ dodown(void)
                 return use_pick_axe2(uwep);
             } else {
                 You_cant(_("go down here%s."),
-                         (trap && trap->ttyp == VIBRATING_SQUARE) ? " yet"
+                         (trap && trap->ttyp == VIBRATING_SQUARE) ? _(" yet")
                                                                   : "");
                 return ECMD_OK;
             }

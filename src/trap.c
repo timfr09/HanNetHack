@@ -5954,8 +5954,8 @@ untrap(
                              (boxcnt == 1) ? _("is a container")
                                            : _("are containers"),
                              an(trapdescr),
-                             (ttmp->ttyp == WEB) ? _("Remove")
-                                                 : _("Disarm"),
+                             (ttmp->ttyp == WEB) ? C_("trap_verb", "Remove")
+                                                 : C_("trap_verb", "Disarm"),
                              the_trap);
                     switch (ynq(qbuf)) {
                     case 'q':

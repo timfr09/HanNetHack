@@ -1516,7 +1516,7 @@ artifact_hit(
     if (attacks(AD_ELEC, otmp)) {
         if (realizes_damage)
             pline_The(_("massive hammer hits%s %s%c"),
-                      !gs.spec_dbon_applies ? "" : "!  Lightning strikes",
+                      !gs.spec_dbon_applies ? "" : _("!  Lightning strikes"),
                       hittee, !gs.spec_dbon_applies ? '.' : '!');
         if (gs.spec_dbon_applies)
             wake_nearto(mdef->mx, mdef->my, 4 * 4);
@@ -1532,7 +1532,7 @@ artifact_hit(
             pline_The(_("imaginary widget hits%s %s%c"),
                       !gs.spec_dbon_applies
                           ? ""
-                          : "!  A hail of magic missiles strikes",
+                          : _("!  A hail of magic missiles strikes"),
                       hittee, !gs.spec_dbon_applies ? '.' : '!');
         return realizes_damage;
     }
@@ -2532,7 +2532,7 @@ retouch_object(
         /* hero can't handle this object, but didn't get touch_artifact()'s
            "<obj> evades your grasp|control" message; give an alternate one */
         You_cant(_("handle %s%s!"), yname(obj),
-                 obj->owornmask ? " anymore" : "");
+                 obj->owornmask ? _(" anymore") : "");
         /* also inflict damage unless touch_artifact() already did so */
         if (!touch_blasted) {
             const char *what = killer_xname(obj);

@@ -5,6 +5,7 @@
 
 #include "hack.h"
 #include "i18n.h"
+#include "ko_postpos.h"
 
 /* "an uncursed greased partly eaten guardian naga hatchling [corpse]" */
 #define PREFIX 80 /* (56) */
@@ -37,6 +38,7 @@ staticfn char *strprepend(char *, const char *) NONNULL NONNULLARG1;
 staticfn char *nextobuf(void) NONNULL;
 staticfn void releaseobuf(char *) NONNULLARG1;
 staticfn void xcalled(char *, int, const char *, const char *);
+staticfn const char *ko_objname(int);
 staticfn char *xname_flags(struct obj *, unsigned);
 staticfn char *minimal_xname(struct obj *);
 staticfn void add_erosion_words(struct obj *, char *);
@@ -243,7 +245,9 @@ obj_typename(int otyp)
         Strcpy(buf, _("ring"));
         break;
     case AMULET_CLASS:
-        if (nn)
+        if (nn && ko_objname(otyp))
+            Strcpy(buf, ko_objname(otyp));
+        else if (nn)
             Strcpy(buf, _(actualn));
         else
             Strcpy(buf, _("amulet"));
@@ -263,7 +267,8 @@ obj_typename(int otyp)
     default:
         if (nn) {
             Strcat(buf, _(actualn));
-            if (GemStone(otyp))
+            /* Korean names already say stone (부싯돌, 시금석, 행운의 돌) */
+            if (GemStone(otyp) && !is_korean_locale())
                 Strcat(buf, _(" stone"));
             if (un) /* 3: length of " (" + ")" which will enclose 'dn' */
                 xcalled(buf, BUFSZ - (dn ? (int) strlen(dn) + 3 : 0), "", un);
@@ -280,7 +285,9 @@ obj_typename(int otyp)
         return buf;
     }
     /* here for ring/scroll/potion/wand */
-    if (nn) {
+    if (nn && ko_objname(otyp)) {
+        Strcpy(buf, ko_objname(otyp));
+    } else if (nn) {
         if (ocl->oc_unique)
             Strcpy(buf, _(actualn)); /* avoid spellbook of Book of the Dead */
         else {
@@ -560,6 +567,32 @@ reorder_fruit(boolean forward)
     }
 }
 
+/* Korean: the one full name of a known potion, scroll, spellbook, ring, wand or amulet, so the
+   inventory (xname) and the discoveries list (obj_typename) agree and each name can decide for
+   itself whether it takes 의; msgctxt "objname", keyed by the English full name ("potion of
+   confusion", "amulet of ESP").  Null when not Korean or when the catalog has no entry. */
+staticfn const char *
+ko_objname(int otyp)
+{
+    const char *n = OBJ_NAME(objects[otyp]), *tr, *fmt;
+    char key[BUFSZ];
+
+    if (!is_korean_locale() || !n)
+        return (const char *) 0;
+    switch (objects[otyp].oc_class) {
+    case POTION_CLASS: fmt = "potion of %s"; break;
+    case SCROLL_CLASS: fmt = "scroll of %s"; break;
+    case SPBOOK_CLASS: fmt = objects[otyp].oc_unique ? "%s" : "spellbook of %s"; break;
+    case RING_CLASS: fmt = "ring of %s"; break;
+    case WAND_CLASS: fmt = "wand of %s"; break;
+    case AMULET_CLASS: fmt = "%s"; break;
+    default: return (const char *) 0;
+    }
+    Snprintf(key, sizeof key, fmt, n);
+    tr = C_("objname", key);
+    return strcmp(tr, key) ? tr : (const char *) 0;
+}
+
 /* add "<pfx> called <sfx>" to end of buf, truncating if necessary */
 staticfn void
 xcalled(
@@ -575,7 +608,10 @@ xcalled(
     if (pfxlen > bufsiz)
         panic(_("xcalled: not enough room for prefix (%d > %d)"),               pfxlen, bufsiz);
 
-    Sprintf(eos(buf), "%s%s%.*s", pfx, called_str, bufsiz - pfxlen, sfx);
+    if (is_korean_locale()) /* a type name is the player's note: "물약 (메모: 치료?)" */
+        Sprintf(eos(buf), "%s (메모: %.*s)", pfx, bufsiz - pfxlen - 12, sfx);
+    else
+        Sprintf(eos(buf), "%s%s%.*s", pfx, called_str, bufsiz - pfxlen, sfx);
 }
 
 char *
@@ -842,6 +878,10 @@ xname_flags(
                 /* i18n: use Sprintf for Korean word order reordering */
                 if (typ == POT_WATER && bknown
                     && (obj->blessed || obj->cursed)) {
+                    if (is_korean_locale()) /* 성수, 저주받은 물: no 물약 */
+                        Strcat(buf, obj->blessed ? _("holy water")
+                                                 : _("unholy water"));
+                    else
                     Sprintf(eos(buf), _("potion of %s"),
                             obj->blessed ? _("holy water")
                                          : _("unholy water"));
@@ -934,7 +974,8 @@ xname_flags(
                 Sprintf(buf, _("%s %s"), _(dn), rock);
         } else {
             Strcpy(buf, _(actualn));
-            if (GemStone(typ))
+            /* Korean names already say stone (부싯돌, 시금석, 행운의 돌) */
+            if (GemStone(typ) && !is_korean_locale())
                 Strcat(buf, _(" stone"));
         }
         break;
@@ -1006,7 +1047,28 @@ xname_flags(
         }
     }
 
-    if (has_oname(obj) && dknown) {
+    /* Korean: a known type's one full name replaces what the class code built; holy and unholy
+       water keep theirs, and the Amulet of Yendor and its imitation go by 'known' instead */
+    if (nn && dknown && ko_objname(typ)
+        && !(typ == POT_WATER && bknown && (obj->blessed || obj->cursed))
+        && typ != AMULET_OF_YENDOR && typ != FAKE_AMULET_OF_YENDOR) {
+        *buf = '\0';
+        ConcUpdate(buf);
+        Concat(buf, 0, ko_objname(typ));
+    }
+
+    if (has_oname(obj) && dknown && is_korean_locale()) {
+        /* Korean puts a personal name first: "엑스칼리버"라는 이름의 장검 */
+        char kbuf[BUFSZ];
+
+        Snprintf(kbuf, sizeof kbuf, "\"%s\"%s 이름의 %s", ONAME(obj),
+                 (ko_check_batchim(ONAME(obj)) != KO_BATCHIM_NONE) ? "이라는"
+                                                                  : "라는",
+                 buf);
+        *buf = '\0';
+        ConcUpdate(buf);
+        Concat(buf, 0, kbuf);
+    } else if (has_oname(obj) && dknown) {
         Concat(buf, 0, _(" named "));
 
         /* jump directly here if obj passes the has-personal-name test */
@@ -1241,7 +1303,7 @@ doname_base(
             vague_quan = (doname_flags & DONAME_VAGUE_QUAN) != 0,
             for_menu = (doname_flags & DONAME_FOR_MENU) != 0,
             with_corpse_genders = (doname_flags & DONAME_FORCE_GENDER) != 0;
-    boolean known, dknown, cknown, bknown, lknown,
+    boolean known, dknown, cknown, bknown, lknown, ko_typeknown,
             fake_arti, force_the;
     char prefix[PREFIX];
     char tmpbuf[PREFIX + 1]; /* for when we have to add something at
@@ -1273,6 +1335,9 @@ doname_base(
         bknown = obj->bknown;
         lknown = obj->lknown;
     }
+    /* types without a random appearance are known from the start */
+    ko_typeknown = (iflags.override_ID || !OBJ_DESCR(objects[obj->otyp])
+                    || objects[obj->otyp].oc_name_known);
 
     /* When using xname, we want "poisoned arrow", and when using
      * doname, we want "poisoned +0 arrow".  This kludge is about the only
@@ -1314,6 +1379,26 @@ doname_base(
             Strcpy(prefix, _("a "));
     }
 
+    /* Korean puts the enchantment first, right after the "+N " count
+       marker, so good items stand out; a known +0 is left out and an
+       unknown one is "+?" (rings only once the type is known, or "+?"
+       would give it away) */
+    if (is_korean_locale()
+        && (obj->oclass == WEAPON_CLASS || obj->oclass == ARMOR_CLASS
+            || is_weptool(obj)
+            || (obj->oclass == RING_CLASS && objects[obj->otyp].oc_charged
+                && ko_typeknown))
+        && (!known || obj->spe)) {
+        /* "the " is " " in Korean; without a count marker in front, the
+           enchantment itself would be read as the count */
+        if (prefix[0] != '+' && (!prefix[0] || !strcmp(prefix, " ")))
+            Strcpy(prefix, "+1 ");
+        if (!known)
+            Strcat(prefix, "+? ");
+        else
+            Sprintf(eos(prefix), "%+d ", obj->spe);
+    }
+
     /* "empty" goes at the beginning, but item count goes at the end */
     if (cknown
         /* bag of tricks: include "empty" prefix if it's known to
@@ -1331,7 +1416,27 @@ doname_base(
                 && !Has_contents(obj))))
         Strcat(prefix, _("empty "));
 
-    if (bknown && obj->oclass != COIN_CLASS
+    if (is_korean_locale()) {
+        /* Korean leaves out what is known and at its default and marks
+           what is unknown instead: a known "uncursed" is dropped, an
+           unknown curse status reads "미감정", an unknown type "정체불명의" */
+        if (!bknown) {
+            if (obj->oclass != COIN_CLASS && obj->oclass != ROCK_CLASS)
+                Strcat(prefix, "미감정 ");
+        } else if (obj->otyp != POT_WATER
+                   || !objects[POT_WATER].oc_name_known) {
+            if (obj->cursed)
+                Strcat(prefix, _("cursed "));
+            else if (obj->blessed)
+                Strcat(prefix, _("blessed "));
+        }
+        /* weapons and armor go without it: their appearance ("조잡한 단검",
+           "전투화") is never the name they have once known, so it already
+           says the type is unknown */
+        if (!ko_typeknown && obj->oclass != WEAPON_CLASS
+            && obj->oclass != ARMOR_CLASS)
+            Strcat(prefix, "정체불명의 ");
+    } else if (bknown && obj->oclass != COIN_CLASS
         && (obj->otyp != POT_WATER || !objects[POT_WATER].oc_name_known
             || (!obj->cursed && !obj->blessed))) {
         /* allow 'blessed clear potion' if we don't know it's holy water;
@@ -1435,7 +1540,7 @@ doname_base(
         if (ispoisoned)
             Strcat(prefix, _("poisoned "));
         add_erosion_words(obj, prefix);
-        if (known) {
+        if (known && !is_korean_locale()) {
             Sprintf(eos(prefix), "%+d ", obj->spe); /* sitoa(obj->spe)+" " */
         }
         break;
@@ -1496,8 +1601,20 @@ doname_base(
         break;
     case WAND_CLASS:
  charges:
-        if (known)
-            ConcatF2(bp, 0, _(" (%d:%d)"), (int) obj->recharged, obj->spe);
+        if (!is_korean_locale()) {
+            if (known)
+                ConcatF2(bp, 0, _(" (%d:%d)"), (int) obj->recharged, obj->spe);
+        } else if (known) {
+            if (obj->recharged)
+                ConcatF2(bp, 0, " (%d회, 재충전 %d)", obj->spe,
+                         (int) obj->recharged);
+            else
+                ConcatF1(bp, 0, " (%d회)", obj->spe);
+        } else if (obj->oclass == WAND_CLASS || ko_typeknown) {
+            /* every wand has charges; a tool only shows it has them
+               once its type is known */
+            Concat(bp, 0, " (?회)");
+        }
         break;
     case POTION_CLASS:
         if (obj->otyp == POT_OIL && obj->lamplit)
@@ -1505,13 +1622,19 @@ doname_base(
         break;
     case RING_CLASS:
  ring:  /* normal rings reach here 'naturally'; meat ring jumps here */
-        if (obj->owornmask & W_RINGR)
-            Concat(bp, 0, _(" (on right "));
-        if (obj->owornmask & W_RINGL)
-            Concat(bp, 0, _(" (on left "));
-        if (obj->owornmask & W_RING) /* either left or right */
-            ConcatF1(bp, 0, _("%s)"), body_part(HAND));
-        if (known && objects[obj->otyp].oc_charged) {
+        if (is_korean_locale()) {
+            if (obj->owornmask & W_RING)
+                Concat(bp, 0, (obj->owornmask & W_RINGR) ? " (오른손 장착중)"
+                                                         : " (왼손 장착중)");
+        } else {
+            if (obj->owornmask & W_RINGR)
+                Concat(bp, 0, _(" (on right "));
+            if (obj->owornmask & W_RINGL)
+                Concat(bp, 0, _(" (on left "));
+            if (obj->owornmask & W_RING) /* either left or right */
+                ConcatF1(bp, 0, _("%s)"), body_part(HAND));
+        }
+        if (known && objects[obj->otyp].oc_charged && !is_korean_locale()) {
             Sprintf(eos(prefix), "%+d ", obj->spe); /* sitoa(obj->spe)+" " */
         }
         break;
@@ -1590,7 +1713,7 @@ doname_base(
            except when those are being actively dual-wielded where the
            regular phrasing will list them as "in right hand" to
            contrast with secondary weapon's "in left hand" */
-        if ((obj->quan != 1L
+        if (!is_korean_locale() && (obj->quan != 1L
              || ((obj->oclass == WEAPON_CLASS)
                  ? (is_ammo(obj) || is_missile(obj))
                  : !is_weptool(obj)))
@@ -1610,11 +1733,18 @@ doname_base(
             }
             /* note: Sting's glow message, if added, will insert text
                in front of "(weapon in hand)"'s closing paren */
-            ConcatF2(bp, 0, _(" (%s %s)"),
-                     tethered ? _("tethered to")
-                     : twoweap_primary ? _("wielded in")
-                       : _("weapon in"),
-                     hand_s);
+            if (is_korean_locale())
+                /* Korean says 장착 for anything worn or wielded; only
+                   two-weapon combat names the hand */
+                Concat(bp, 0, tethered ? " (장착중, 줄 연결)"
+                              : !twoweap_primary ? " (장착중)"
+                                : URIGHTY ? " (오른손 장착중)" : " (왼손 장착중)");
+            else
+                ConcatF2(bp, 0, _(" (%s %s)"),
+                         tethered ? _("tethered to")
+                         : twoweap_primary ? _("wielded in")
+                           : _("weapon in"),
+                         hand_s);
 
             /* we just added a parenthesized phrase, but the right paren
                might be absent if the appended string got truncated */
@@ -1633,7 +1763,10 @@ doname_base(
         }
     }
     if (obj->owornmask & W_SWAPWEP) {
-        if (u.twoweap)
+        if (is_korean_locale())
+            Concat(bp, 0, !u.twoweap ? " (보조 무기)"
+                          : URIGHTY ? " (왼손 장착중)" : " (오른손 장착중)");
+        else if (u.twoweap)
             ConcatF2(bp, 0, _(" (wielded in %s %s)"),
                      URIGHTY ? _("left") : _("right"), body_part(HAND));
         else
@@ -1678,9 +1811,12 @@ doname_base(
         long quotedprice = unpaid_cost(obj, COST_CONTENTS);
 
         /* separately formatted suffix avoids need for ConcatF3() */
-        Sprintf(pricebuf, "%ld %s", quotedprice, currency(quotedprice));
-        ConcatF2(bp, 0, _(" (%s, %s)"),
-                 obj->unpaid ? _("unpaid") : _("contents"), pricebuf);
+        /* the price and each tag get their own msgid so a translation
+           can reorder them: Korean "(450골드에 판매 중)" */
+        Sprintf(pricebuf, C_("price", "%ld %s"), quotedprice,
+                currency(quotedprice));
+        ConcatF1(bp, 0, obj->unpaid ? _(" (unpaid, %s)") : _(" (contents, %s)"),
+                 pricebuf);
 
         record_price_quote(obj->otyp, quotedprice / obj->quan, TRUE);
     } else if (with_price) { /* on floor or in container on floor */
@@ -1690,9 +1826,9 @@ doname_base(
         if (price > 0L) {
             char pricebuf[40];
 
-            Sprintf(pricebuf, "%ld %s", price, currency(price));
-            ConcatF2(bp, 0, _(" (%s, %s)"),
-                     nochrg ? _("contents") : _("for sale"), pricebuf);
+            Sprintf(pricebuf, C_("price", "%ld %s"), price, currency(price));
+            ConcatF1(bp, 0, nochrg ? _(" (contents, %s)") : _(" (for sale, %s)"),
+                     pricebuf);
         } else if (nochrg > 0) {
             Concat(bp, 0, _(" (no charge)"));
         } else if (iflags.pricequotes && !objects[obj->otyp].oc_name_known) {
@@ -5574,7 +5710,7 @@ Japanese_item_name(int i, const char *ordinaryname)
 
     while (j->item) {
         if (i == j->item)
-            return j->name;
+            return _(j->name);
         j++;
     }
     return ordinaryname;

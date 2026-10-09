@@ -1258,7 +1258,7 @@ level_tele(void)
                 goto random_levtport;
             if (ynq(_("Go to Nowhere.  Are you sure?")) != 'y')
                 return;
-            You(_("%s in agony as your body begins to warp..."),                 is_silent(gy.youmonst.data) ? "writhe" : "scream");
+            You(_("%s in agony as your body begins to warp..."),                 is_silent(gy.youmonst.data) ? C_("agony", "writhe") : C_("agony", "scream"));
             display_nhwindow(WIN_MESSAGE, FALSE);
             You(_("cease to exist."));
             if (gi.invent)
@@ -1269,7 +1269,7 @@ level_tele(void)
             done(DIED);
             pline(_("An energized cloud of dust begins to coalesce."));
             Your(_("body rematerializes%s."),
-                 gi.invent ? ", and you gather up all your possessions" : "");
+                 gi.invent ? _(", and you gather up all your possessions") : "");
             return;
         }
 

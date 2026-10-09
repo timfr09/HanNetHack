@@ -346,6 +346,16 @@ rank_to_xlev(int rank)
  * for display in status line and other UI elements.
  * Original English strings are preserved in roles[] for game logic.
  */
+/* a rank title can share its English with another string ("Master" is also a
+   skill level, "Dame" a throne's form of address): msgctxt "rank" goes first */
+staticfn const char *
+tr_rank(const char *title)
+{
+    const char *res = C_("rank", title);
+
+    return (res != title) ? res : _(title);
+}
+
 const char *
 rank_of(int lev, short monnum, boolean female)
 {
@@ -362,9 +372,9 @@ rank_of(int lev, short monnum, boolean female)
     /* Find the rank */
     for (i = xlev_to_rank((int) lev); i >= 0; i--) {
         if (female && role->rank[i].f)
-            return _(role->rank[i].f);
+            return tr_rank(role->rank[i].f);
         if (role->rank[i].m)
-            return _(role->rank[i].m);
+            return tr_rank(role->rank[i].m);
     }
 
     /* Try the role name, instead */

@@ -1209,7 +1209,7 @@ tamedog(
                      && mons[obj->corpsenm].msize > mtmp->data->msize);
                 pline_mon(mtmp, _("%s catches %s%s"),
                           Monnam(mtmp), the(xname(obj)),
-                         !big_corpse ? "." : ", or vice versa!");
+                         !big_corpse ? "." : _(", or vice versa!"));
             } else if (cansee(mtmp->mx, mtmp->my))
                 pline(_("%s."), Tobjnam(obj, _("stop")));
             /* dog_eat expects a floor object */

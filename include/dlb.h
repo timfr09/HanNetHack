@@ -106,7 +106,12 @@ long rsrc_dlb_ftell(dlb *dp);
 #define dlb_init()
 #define dlb_cleanup()
 
+#ifdef ENABLE_NLS
+extern FILE *nondlb_fopen(const char *, const char *); /* locale first */
+#define dlb_fopen nondlb_fopen
+#else
 #define dlb_fopen fopen
+#endif
 #define dlb_fclose fclose
 #define dlb_fread fread
 #define dlb_fseek fseek

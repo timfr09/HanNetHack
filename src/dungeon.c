@@ -3579,10 +3579,10 @@ print_mapseen(
     if (mptr->custom)
         Sprintf(eos(buf), " \"%s\"", mptr->custom);
     if (on_level(&u.uz, &mptr->lev))
-        Sprintf(eos(buf), " <- You %s here.",
-                (final <= 0 || (final == 1 && how == ASCENDED)) ? "are"
-                  : (final == 1 && how == ESCAPED) ? "left from"
-                    : "were");
+        Sprintf(eos(buf), _(" <- You %s here."),
+                (final <= 0 || (final == 1 && how == ASCENDED)) ? _("are")
+                  : (final == 1 && how == ESCAPED) ? _("left from")
+                    : _("were"));
 
     any = cg.zeroany;
     if (final == -1)

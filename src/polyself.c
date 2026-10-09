@@ -1254,7 +1254,7 @@ break_armor(void)
             if (donning(otmp))
                 cancel_don();
             /* Drop weapon along with gloves */
-            You(_("drop your gloves%s!"), uwep ? " and weapon" : "");
+            You(_("drop your gloves%s!"), uwep ? _(" and weapon") : "");
             drop_weapon(0);
             (void) Gloves_off();
             /* Glib manipulation (ends immediately) handled by Gloves_off */
@@ -1786,12 +1786,12 @@ dohide(void)
     /* can't hide while being held (or holding) or while trapped
        (except for floor hiders [trapper or mimic] in pits) */
     if (u.ustuck || (u.utrap && (u.utraptype != TT_PIT || on_ceiling))) {
-        You_cant(_("hide while you're %s."),                  !u.ustuck ? "trapped"
-                   : u.uswallow ? (digests(u.ustuck->data) ? "swallowed"
-                                                           : "engulfed")
-                     : !sticks(gy.youmonst.data) ? "being held"
-                       : (humanoid(u.ustuck->data) ? "holding someone"
-                                                   : "holding that creature"));
+        You_cant(_("hide while you're %s."),                  !u.ustuck ? C_("state", "trapped")
+                   : u.uswallow ? (digests(u.ustuck->data) ? C_("state", "swallowed")
+                                                           : C_("state", "engulfed"))
+                     : !sticks(gy.youmonst.data) ? C_("state", "being held")
+                       : (humanoid(u.ustuck->data) ? C_("state", "holding someone")
+                                                   : C_("state", "holding that creature")));
         if (u.uundetected || (ismimic && U_AP_TYPE != M_AP_NOTHING)) {
             u.uundetected = 0;
             gy.youmonst.m_ap_type = M_AP_NOTHING;

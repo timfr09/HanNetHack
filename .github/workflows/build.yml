@@ -1,5 +1,5 @@
 # PR/푸시마다 리눅스·윈도우 표준 설정으로 전체 컴파일이 깨지지 않는지 확인합니다.
-# (AGENTS.md·README — Linux: sys/unix/setup.sh hints/linux.500 + make all;
+# (AGENTS.md·README — Linux: sys/unix/setup.sh hints/linux.501 + make all;
 #  Windows: nhsetup /install-makefile + nmake package)
 
 name: Build
@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   linux-unix-hints:
-    name: Linux (hints/linux.500, make all)
+    name: Linux (hints/linux.501, make all)
     runs-on: ubuntu-latest
     timeout-minutes: 120
 
@@ -55,9 +55,9 @@ jobs:
         run: |
           set -euo pipefail
           cd sys/unix
-          sh setup.sh hints/linux.500
+          sh setup.sh hints/linux.501
           cd ../..
-          make fetch-lua
+          # Lua is vendored under nhlua/ (no fetch-lua).
           make all
 
       - name: Verify outputs

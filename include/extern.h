@@ -2655,16 +2655,17 @@ extern void com_pager(const char *);
 extern void qt_pager(const char *);
 extern struct permonst *qt_montype(void);
 extern void deliver_splev_message(void);
+extern void free_questpager(void);
 
 /* ### random.c ### */
 
 #if defined(RANDOM) && !defined(__GO32__) /* djgpp has its own random */
-#ifndef CROSS_TO_AMIGA
+#if !defined(CROSS_TO_AMIGA) && !defined(CROSS_TO_ATARI)
 extern void srandom(unsigned);
 extern char *initstate(unsigned, char *, int);
 extern char *setstate(char *);
 extern long random(void);
-#endif /* CROSS_TO_AMIGA */
+#endif /* !CROSS_TO_AMIGA && !CROSS_TO_ATARI */
 #endif /* RANDOM */
 
 /* ### read.c ### */
@@ -2766,9 +2767,10 @@ void restore_gamelog(NHFILE *);
 boolean restgamestate(NHFILE *);
 void restore_msghistory(NHFILE *);
 #endif
-extern void rest_adjust_levelflags(long);
+extern void rest_adjust_levelflags(long, boolean);
 extern void moves_to_relative_time(long *);
 extern void relative_time_to_moves(long *);
+extern void bones_time_adjust(long *);
 extern boolean revision_increment(int, int, uchar *);
 
 /* ### revision.c ### */

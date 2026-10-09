@@ -19,9 +19,8 @@ sh scripts/build-linux-unix.sh
 
 **수동 (Unix):**
 ```bash
-cd sys/unix && sh setup.sh hints/linux.500 && cd ../..
-make fetch-lua   # downloads Lua 5.4.8 source (only needed once)
-make all         # compiles everything; do NOT use -j (parallel make can race on Lua)
+cd sys/unix && sh setup.sh hints/linux.501 && cd ../..
+make all         # compiles everything; Lua is in-tree under nhlua/ (do NOT use -j)
 make install     # installs to ~/nh/install/
 ```
 
@@ -34,7 +33,7 @@ HACKDIR=~/nh/install/games/lib/nethackdir TERM=xterm-256color ./src/nethack
 ```
 Korean is the default language. Config goes in `~/.nethackrc`.
 
-**Cloud VM note:** `sys/unix/setup.sh hints/linux.500` sets `HACKDIR` to `$(repo root)/playground`,
+**Cloud VM note:** `sys/unix/setup.sh hints/linux.501` sets `HACKDIR` to `$(repo root)/playground`,
 so after `make install` the runnable tree is `/workspace/playground`, not `~/nh/...`. Launch with:
 ```bash
 HACKDIR=/workspace/playground TERM=xterm-256color ./src/nethack

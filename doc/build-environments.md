@@ -7,7 +7,7 @@
 
 | 환경 | 설명 | 재현 방법 |
 |------|------|-----------|
-| **Linux / WSL (Unix)** | `hints/linux.500` + 상위 `Makefile` | `scripts/build-linux-unix.sh` |
+| **Linux / WSL (Unix)** | `hints/linux.501` + 상위 `Makefile` | `scripts/build-linux-unix.sh` |
 | **Windows MinGW-w64** | `sys/windows/GNUmakefile`, gcc, GNU make (MSYS2 권장) | `scripts/build-windows-mingw.sh` |
 | **Windows MSVC** | `Makefile.nmake`, `nmake` | `sys/windows/nhsetup.bat` 후 `src`에서 `nmake`(또는 `nmake /f Makefile.win`). **Visual Studio 또는 Build Tools for Visual Studio** 필요. 상세: `sys/windows/build-hannethack.txt`, `build-nmake.txt` |
 
@@ -15,7 +15,7 @@
 
 GNU make는 `src` 디렉터리에서 **`GNUmakefile`** 이름을 **`Makefile`보다 우선**합니다.
 Windows MinGW 빌드가 남긴 **`src/GNUmakefile`(gitignore)** 이 있으면, WSL에서
-`setup.sh hints/linux.500` 후 `make all`을 해도 **Unix `Makefile`이 아니라 Win32 규칙**이
+`setup.sh hints/linux.501` 후 `make all`을 해도 **Unix `Makefile`이 아니라 Win32 규칙**이
 잡혀 `io.h` 등으로 실패합니다.
 
 **대응:** `scripts/build-linux-unix.sh`가 빌드 전에 `src/GNUmakefile` 및 MinGW 전용

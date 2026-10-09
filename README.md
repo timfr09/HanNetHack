@@ -1,6 +1,6 @@
 # HanNetHack — Korean NetHack
 
-![Version](https://img.shields.io/badge/version-5.0.0--ko.5-blue)
+![Version](https://img.shields.io/badge/version-5.0.0--ko.7-blue)
 ![License](https://img.shields.io/badge/license-NGPL-green)
 ![Translation](https://img.shields.io/badge/translation-WIP-yellow)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey)
@@ -13,7 +13,7 @@
 
 2026년 1월, 업스트림 NetHack이 **5.0.0**([`NetHack-5.0.0_Released`](https://github.com/NetHack/NetHack/releases))을 출시했습니다. HanNetHack은 이를 반영해 **`HanNetHack-5.0`** 브랜치에서 빌드·번역·개발을 이어갑니다. **기본 브랜치와 일상적인 기여·번역 작업의 기준은 5.0**입니다. (과거 3.7 기반 작업은 `HanNetHack-3.7` 브랜치에 보존됩니다.)
 
-업스트림 변경은 [NetHack/NetHack](https://github.com/NetHack/NetHack)의 **`NetHack-5.0`** 브랜치를 가능할 때마다 병합합니다 (최근: 2026-09-25, vault 경비 거리·불명예 공격 검사·펫 허기·레벨 시계·Qt/Xcode/homebrew 빌드 등). 유지보수자용 병합 절차는 [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md)를 참고하세요.
+업스트림 변경은 [NetHack/NetHack](https://github.com/NetHack/NetHack)의 **`NetHack-5.0`** 브랜치를 가능할 때마다 병합합니다 (최근: 2026-10-09, in-tree nhlua/Lua 5.5.1·여행자 퀘스트 개편·curses windowcolors·vault 경비·m68k/Atari/Amiga 등). 유지보수자용 병합 절차는 [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md)를 참고하세요.
 
 - **버그·오역·문구 개선 제안**: [GitHub Issues](https://github.com/timfr09/HanNetHack/issues)에 올려 주세요. (영문·한국어 모두 가능합니다.)
 - **원본 게임**: 상위 프로젝트는 [NetHack on GitHub](https://github.com/NetHack/NetHack)입니다.
@@ -70,12 +70,11 @@ The easiest way to try the game is a release build from the [Releases](https://g
 git clone https://github.com/timfr09/HanNetHack.git
 cd HanNetHack
 
-# One-shot Unix build (recommended): cleans stray Win32 GNUmakefile, then hints/linux.500 + make all
+# One-shot Unix build (recommended): cleans stray Win32 GNUmakefile, then hints/linux.501 + make all
 # sh scripts/build-linux-unix.sh
 
-cd sys/unix && sh setup.sh hints/linux.500 && cd ../..
-make fetch-lua          # one-time: download Lua 5.4.8 source
-make all                # do NOT use -j (Lua build can race)
+cd sys/unix && sh setup.sh hints/linux.501 && cd ../..
+make all                # Lua is vendored under nhlua/; do NOT use -j
 make install            # installs to ~/nh/install/
 
 HACKDIR=~/nh/install/games/lib/nethackdir TERM=xterm-256color ./src/nethack
@@ -87,7 +86,7 @@ The Windows GUI build (`NetHackW.exe`) and console build (`NetHack.exe`) are sup
 
 **Build matrix (Unix / MinGW / MSVC) and GNUmakefile gotchas:** [`doc/build-environments.md`](doc/build-environments.md)
 
-Prerequisite fetch steps (Lua, PDCursesMod, etc.) are unchanged; see [`sys/windows/build-hannethack.txt`](sys/windows/build-hannethack.txt).
+Prerequisite fetch steps (PDCursesMod, gettext tools, etc.) are documented in [`sys/windows/build-hannethack.txt`](sys/windows/build-hannethack.txt). Lua is vendored under `nhlua/` (no separate Lua fetch).
 
 **Makefiles:** `sys\windows\nhsetup.bat` installs Windows nmake rules into `src\` **without overwriting** an existing Unix-generated `src\Makefile`. It writes `src\Makefile.win` (and matching `GNUmakefile.win`). From `src\`, run:
 
@@ -145,7 +144,7 @@ See **Korean translation system (brief)** above for architecture; [`po/I18N_SYST
 
 ### Versioning
 
-HanNetHack uses semantic versioning with a Korean-translation suffix, e.g. `v5.0.0-ko.5` (based on NetHack 5.0.0, Korean iteration 5). The badge at the top of this file tracks the current packaging snapshot.
+HanNetHack uses semantic versioning with a Korean-translation suffix, e.g. `v5.0.0-ko.7` (based on NetHack 5.0.0, Korean iteration 7). The badge at the top of this file tracks the current packaging snapshot.
 
 ### License
 

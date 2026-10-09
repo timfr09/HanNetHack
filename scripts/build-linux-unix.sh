@@ -17,10 +17,10 @@ rm -f src/GNUmakefile
 rm -f src/GNUmakefile.depend
 
 cd sys/unix
-sh setup.sh hints/linux.500
+sh setup.sh hints/linux.501
 cd "$ROOT"
 
-make fetch-lua
+# Lua is vendored under nhlua/ (no fetch-lua / submodules/lua).
 sh scripts/build-locale-rnddata.sh
 make all
 

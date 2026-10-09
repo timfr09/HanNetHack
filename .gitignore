@@ -39,7 +39,8 @@ __pycache__/
 src/NOPE
 
 # We generate makefiles by shell script
-Makefile
+**/Makefile
+!nhlua/**/Makefile
 # Windows nhsetup non-destructive outputs (src\)
 Makefile.win
 GNUmakefile.win
@@ -158,3 +159,4 @@ CLAUDE.local.md
 sys/lib/
 
 sys/amiga/regex/
+__pycache__/

@@ -1060,17 +1060,14 @@ xname_flags(
     if (nn && dknown && ko_objname(typ)
         && !(typ == POT_WATER && bknown && (obj->blessed || obj->cursed))
         && typ != AMULET_OF_YENDOR && typ != FAKE_AMULET_OF_YENDOR) {
-        char diluted_pfx[BUFSZ];
+        boolean keep_diluted = (obj->oclass == POTION_CLASS && dknown
+                                && obj->odiluted);
 
-        /* potion path may already have put "diluted " in buf */
-        if (obj->oclass == POTION_CLASS && dknown && obj->odiluted && *buf)
-            Strcpy(diluted_pfx, buf);
-        else
-            diluted_pfx[0] = '\0';
         *buf = '\0';
         ConcUpdate(buf);
-        if (*diluted_pfx)
-            Concat(buf, 0, diluted_pfx);
+        /* only the diluted marker — buf already held "diluted "+potion text */
+        if (keep_diluted)
+            Concat(buf, 0, _("diluted "));
         Concat(buf, 0, ko_objname(typ));
     }
 

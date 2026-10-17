@@ -1060,8 +1060,17 @@ xname_flags(
     if (nn && dknown && ko_objname(typ)
         && !(typ == POT_WATER && bknown && (obj->blessed || obj->cursed))
         && typ != AMULET_OF_YENDOR && typ != FAKE_AMULET_OF_YENDOR) {
+        char diluted_pfx[BUFSZ];
+
+        /* potion path may already have put "diluted " in buf */
+        if (obj->oclass == POTION_CLASS && dknown && obj->odiluted && *buf)
+            Strcpy(diluted_pfx, buf);
+        else
+            diluted_pfx[0] = '\0';
         *buf = '\0';
         ConcUpdate(buf);
+        if (*diluted_pfx)
+            Concat(buf, 0, diluted_pfx);
         Concat(buf, 0, ko_objname(typ));
     }
 
@@ -1618,11 +1627,8 @@ doname_base(
                          (int) obj->recharged);
             else
                 ConcatF1(bp, 0, " (%d회)", obj->spe);
-        } else if (obj->oclass == WAND_CLASS || ko_typeknown) {
-            /* every wand has charges; a tool only shows it has them
-               once its type is known */
-            Concat(bp, 0, " (?회)");
         }
+        /* do not show "(?회)" when unknown — matches English (no charge leak) */
         break;
     case POTION_CLASS:
         if (obj->otyp == POT_OIL && obj->lamplit)

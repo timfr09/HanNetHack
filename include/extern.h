@@ -2363,7 +2363,6 @@ extern void heed_all_options(void);
 extern void disregard_all_options(void);
 extern void heed_this_option(enum opt);
 extern void disregard_this_option(enum opt);
-extern void clear_ignore_errors_on_unmatched(void);
 #ifdef TTY_PERM_INVENT
 extern void check_perm_invent_again(void);
 #endif

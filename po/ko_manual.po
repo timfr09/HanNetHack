@@ -14726,7 +14726,7 @@ msgstr "하지만 닿을 수 없다!"
 #: ../src/shk.c:1971
 #, c-format
 msgid "But you don't%s have enough gold%s."
-msgstr "그러나 금화%2$s{이/가} 충분하지 않다.%1$.0s"
+msgstr "그러나 골드%2$s{이/가} 충분하지 않다.%1$.0s"
 
 # ============================================================
 # 아이템 메시지 (Item Messages)

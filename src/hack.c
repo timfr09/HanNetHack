@@ -3700,7 +3700,7 @@ check_special_room(boolean newlev)
         case COURT:
             You(_("enter an opulent%s room!"),
                 /* the throne room in Sam quest home level lacks a throne */
-                !furniture_present(THRONE, roomno) ? "" : " throne");
+                !furniture_present(THRONE, roomno) ? "" : _(" throne"));
             break;
         case LEPREHALL:
             You(_("enter a leprechaun hall!"));

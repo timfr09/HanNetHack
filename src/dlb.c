@@ -482,7 +482,9 @@ dlb_fopen(const char *name, const char *mode)
 {
     FILE *fp;
     dlb *dp;
-#if defined(ENABLE_NLS) && defined(SAFEPROCS)
+/* SAFEPROCS stands for "the game, not a utility" here; a wasm build
+   (__EMSCRIPTEN__) has no SAFEPROCS but wants locale/ko/ files too */
+#if defined(ENABLE_NLS) && (defined(SAFEPROCS) || defined(__EMSCRIPTEN__))
     char locale_name[BUFSZ];
     const char *lang;
 #endif
@@ -496,7 +498,7 @@ dlb_fopen(const char *name, const char *mode)
 
     dp = (dlb *) alloc(sizeof(dlb));
 
-#if defined(ENABLE_NLS) && defined(SAFEPROCS)
+#if defined(ENABLE_NLS) && (defined(SAFEPROCS) || defined(__EMSCRIPTEN__))
     /* Try locale-specific file first (e.g., "locale/ko/help") */
     lang = get_current_language();
     if (lang && *lang && strcmp(lang, "en") != 0) {
@@ -592,5 +594,20 @@ dlb_ftell(dlb *dp)
 }
 
 #endif /* DLB */
+
+#if !defined(DLB) && defined(ENABLE_NLS)
+/* without DLB, dlb_fopen() is this: like the DLB version, a translated
+   file (locale/<lang>/<name>) wins over the plain one when it exists */
+FILE *
+nondlb_fopen(const char *name, const char *mode)
+{
+    const char *localized = get_localized_filename(name);
+    FILE *fp;
+
+    if (localized != name && (fp = fopen(localized, mode)) != 0)
+        return fp;
+    return fopen(name, mode);
+}
+#endif
 
 /*dlb.c*/

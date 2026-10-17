@@ -688,8 +688,8 @@ mattacku(struct monst *mtmp)
             pline(_("%s %s!"), Something,
                   (likes_gold(mtmp->data)
                    && gy.youmonst.mappearance == GOLD_PIECE)
-                  ? "tries to pick you up"
-                  : "disturbs you");
+                  ? _("tries to pick you up")
+                  : _("disturbs you"));
         else /* see note about m_monnam() above */
             pline(_("Wait, %s!  That %s is really %s named %s!"), m_monnam(mtmp),
                   mimic_obj_name(&gy.youmonst),
@@ -1439,11 +1439,11 @@ gulpmu(struct monst *mtmp, struct attack *mattk)
         physical_damage = TRUE;
         if (mtmp->data == &mons[PM_FOG_CLOUD]) {
             You(_("are laden with moisture and %s"),                 flaming(gy.youmonst.data)
-                    ? "are smoldering out!"
-                    : Breathless ? "find it mildly uncomfortable."
+                    ? _("are smoldering out!")
+                    : Breathless ? _("find it mildly uncomfortable.")
                                  : amphibious(gy.youmonst.data)
-                                       ? "feel comforted."
-                                       : "can barely breathe!");
+                                       ? _("feel comforted.")
+                                       : _("can barely breathe!"));
             if ((Amphibious || Breathless) && !flaming(gy.youmonst.data))
                 tmp = 0;
         } else {
@@ -1566,9 +1566,9 @@ gulpmu(struct monst *mtmp, struct attack *mattk)
         ; /* life-saving has already expelled swallowed hero */
     } else if (touch_petrifies(gy.youmonst.data) && !resists_ston(mtmp)) {
         pline(_("%s very hurriedly %s you!"), Monnam(mtmp),
-              digests(mtmp->data) ? "regurgitates"
-              : enfolds(mtmp->data) ? "releases"
-                : "expels");
+              digests(mtmp->data) ? C_("expel", "regurgitates")
+              : enfolds(mtmp->data) ? C_("expel", "releases")
+                : C_("expel", "expels"));
         expels(mtmp, mtmp->data, FALSE);
     } else if (!u.uswldtim || gy.youmonst.data->msize >= MZ_HUGE) {
         /* As of 3.6.2: u.uswldtim used to be set to 0 by life-saving but it

@@ -4,6 +4,7 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+#include "ko_postpos.h"
 
 staticfn boolean item_naming_classification(struct obj *, char *, char *);
 staticfn int item_reading_classification(struct obj *, char *);
@@ -41,6 +42,7 @@ enum item_action_actions {
     IA_WHATIS_OBJ, /* '/' specify inventory object */
 };
 
+
 /* construct text for the menu entries for IA_NAME_OBJ and IA_NAME_OTYP */
 staticfn boolean
 item_naming_classification(
@@ -57,7 +59,10 @@ item_naming_classification(
         Recall[] = N_("Re-call or un-call");
 
     onamebuf[0] = ocallbuf[0] = '\0';
-    if (name_ok(obj) == GETOBJ_SUGGEST) {
+    if (name_ok(obj) == GETOBJ_SUGGEST && is_korean_locale()) {
+        /* the item is already on screen; Korean reads "이 물건에 이름 붙이기" */
+        Strcpy(onamebuf, (!has_oname(obj) || !*ONAME(obj)) ? _(Name) : _(Rename));
+    } else if (name_ok(obj) == GETOBJ_SUGGEST) {
         Sprintf(onamebuf, C_("action_item", "%s %s %s"),
                 (!has_oname(obj) || !*ONAME(obj)) ? _(Name) : _(Rename),
                 the_unique_obj(obj) ? _("the")
@@ -284,6 +289,8 @@ itemactions(struct obj *otmp)
     struct monst *mtmp;
     const char *light = otmp->lamplit ? _("Extinguish") : _("Light");
     boolean already_worn = (otmp->owornmask & (W_ARMOR | W_ACCESSORY)) != 0;
+    /* in Korean a shield is held, not worn (see 'W' and 'w') */
+    boolean korean = is_korean_locale();
 
     win = create_nhwindow(NHW_MENU);
     start_menu(win, MENU_BEHAVE_STANDARD);
@@ -300,9 +307,12 @@ itemactions(struct obj *otmp)
          * TODO: if uwep is ammo, tell player that to shoot instead of toss,
          *       the corresponding launcher must be wielded;
          */
-        Sprintf(buf, _("%s '%c' to %s %s %s"),
-                verb, HANDS_SYM, action, which,
-                is_plural(otmp) ? makeplural(what) : what);
+        if (is_korean_locale())
+            Strcpy(buf, (otmp == uquiver) ? "원거리 공격 준비 해제" : "무기 장착 해제");
+        else
+            Sprintf(buf, _("%s '%c' to %s %s %s"),
+                    verb, HANDS_SYM, action, which,
+                    is_plural(otmp) ? makeplural(what) : what);
         ia_addmenu(win, IA_UNWIELD, '-', buf);
     }
 
@@ -596,7 +606,10 @@ itemactions(struct obj *otmp)
 
     /* T: take off armor, tip carried container */
     if (otmp->owornmask & W_ARMOR)
-        ia_addmenu(win, IA_TAKEOFF_OBJ, 'T', _("Take off this armor"));
+        ia_addmenu(win, IA_TAKEOFF_OBJ, 'T',
+                   /* Korean: a shield is held, so it is put down */
+                   (korean && is_shield(otmp)) ? "손에서 내려놓기"
+                                               : _("Take off this armor"));
     if ((Is_container(otmp) && (Has_contents(otmp) || !otmp->cknown))
         || (otmp->otyp == HORN_OF_PLENTY && (otmp->spe > 0 || !otmp->known)))
         ia_addmenu(win, IA_TIP_CONTAINER, 'T',
@@ -623,6 +636,8 @@ itemactions(struct obj *otmp)
     } else if (otmp->otyp == TIN_OPENER) {
         ia_addmenu(win, IA_WIELD_OBJ, 'w',
                    _("Wield the tin opener to easily open tins"));
+    } else if (korean && is_shield(otmp)) {
+        ; /* Korean: added after 'W' as "무기로 사용하기" */
     } else if (!already_worn) {
         /* originally this was using "hold this item in your hands" but
            there's no concept of "holding an item", plus it unwields
@@ -647,14 +662,22 @@ itemactions(struct obj *otmp)
             long Wmask = armcat_to_wornmask(objects[otmp->otyp].oc_armcat);
             struct obj *o = wearmask_to_obj(Wmask);
 
-            if (!o)
-                Strcpy(buf, _("Wear this armor"));
-            else
+            if (!o) {
+                /* Korean: wearing a shield is holding it in a hand;
+                   common sense says "손에 들기" means this, not 'w' */
+                Strcpy(buf, (korean && is_shield(otmp)) ? "손에 들기"
+                                                        : _("Wear this armor"));
+                ia_addmenu(win, IA_WEAR_OBJ, 'W', buf);
+            } else {
                 Sprintf(buf, _("[already wearing %s]"), an(armor_simple_name(o)));
-
-            ia_addmenu(win, IA_WEAR_OBJ, 'W', buf);
+                ia_addmenu(win, IA_WEAR_OBJ, 'W', buf);
+            }
         }
     }
+
+    if (korean && is_shield(otmp) && !already_worn && otmp != uwep
+        && !cantwield(gy.youmonst.data))
+        ia_addmenu(win, IA_WIELD_OBJ, 'w', "무기로 사용하기");
 
     /* x: Swap main and readied weapon */
     if (otmp == uwep && uswapwep)
@@ -685,7 +708,10 @@ itemactions(struct obj *otmp)
             || (could_twoweap(gy.youmonst.data) && !uarms
                 && uwep && MAYBETWOWEAPON(uwep)
                 && uswapwep && MAYBETWOWEAPON(uswapwep)))) {
-        Sprintf(buf, _("Toggle two-weapon combat %s"), u.twoweap ? C_("toggle", "off") : C_("toggle", "on"));
+        if (is_korean_locale())
+            Strcpy(buf, u.twoweap ? "쌍수 전투 그만두기" : "쌍수 전투 시작하기");
+        else
+            Sprintf(buf, _("Toggle two-weapon combat %s"), u.twoweap ? C_("toggle", "off") : C_("toggle", "on"));
         ia_addmenu(win, IA_TWOWEAPON, 'X', buf);
     }
 

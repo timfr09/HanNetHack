@@ -555,7 +555,7 @@ invault(void)
         if (!umoney && !hidden_gold(TRUE)) {
             if (Deaf) {
                 pline(_("%s stomps%s."), noit_Monnam(guard),
-                      (Blind) ? "" : " and beckons");
+                      (Blind) ? "" : _(" and beckons"));
             } else {
                 SetVoice(guard, 0, 80, 0);
                 verbalize(_("Please follow me."));

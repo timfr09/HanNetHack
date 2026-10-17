@@ -553,7 +553,15 @@ obj_descr_strings_for_extraction(void)
     /* === Spell names (from objects.h SPELL definitions) === */
     /* Context-specific spell names (disambiguate from other meanings) */
     (void) C_("spell", "light");  /* vs color adj "light" (가벼운) */
+    (void) C_("rank", "Master");  /* vs skill level "Master" (달인) */
+    (void) C_("rank", "Dame");    /* vs throne address "Dame" */
     (void) C_("spell", "knock");  /* vs combat verb "knock" (두드리다) */
+    (void) C_("spell", "dig");  /* vs verb "dig" (파다) */
+    (void) C_("spell", "identify");  /* vs verb form (감정할) */
+    (void) C_("spell", "jumping");
+    (void) C_("spell", "clairvoyance");
+    (void) C_("spell", "extra healing");
+    (void) C_("spell", "haste self");
     (void) N_("dig");
     (void) N_("magic missile");
     (void) N_("fireball");

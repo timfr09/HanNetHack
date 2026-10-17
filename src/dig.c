@@ -943,7 +943,7 @@ dighole(boolean pit_only, boolean by_magic, coord *cc)
         if (ttmp && is_pit(ttmp->ttyp)
             && rn2(2)) {
             pline_The(_("boulder settles into the %spit."),
-                      (dig_x != u.ux || dig_y != u.uy) ? "adjacent " : "");
+                      (dig_x != u.ux || dig_y != u.uy) ? _("adjacent ") : "");
             ttmp->ttyp = PIT; /* crush spikes */
         } else {
             /*

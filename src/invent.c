@@ -4350,13 +4350,13 @@ look_here(
                   picked_some ? _(" more") : "");
         for (; otmp; otmp = otmp->nexthere)
             if (otmp->otyp == CORPSE && will_feel_cockatrice(otmp, FALSE)) {
-                pline(_("%s %s%s."),
+                pline(C_("cockatrice", "%s %s%s."),
                       (obj_cnt > 1) ? _("Including")
                       : (otmp->quan > 1L) ? _("They're")
                         : _("It's"),
                       corpse_xname(otmp, (const char *) 0, CXN_ARTICLE),
                       poly_when_stoned(gy.youmonst.data) ? ""
-                      : ", unfortunately");
+                      : _(", unfortunately"));
                 feel_cockatrice(otmp, FALSE);
                 break;
             }

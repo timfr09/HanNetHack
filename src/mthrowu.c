@@ -400,9 +400,11 @@ ohitmon(
         Soundeffect(se_splat_egg, 35);
         if (vis) {
             if (otmp->otyp == EGG) {
-                pline(_("Splat!  %s is hit with %s egg!"), Monnam(mtmp),
-                      otmp->known ? an(mons[otmp->corpsenm].pmnames[NEUTRAL])
-                                  : "an");
+                if (otmp->known)
+                    pline(_("Splat!  %s is hit with %s egg!"), Monnam(mtmp),
+                          an(mons[otmp->corpsenm].pmnames[NEUTRAL]));
+                else
+                    pline(_("Splat!  %s is hit with an egg!"), Monnam(mtmp));
             } else {
                 char how[BUFSZ];
 

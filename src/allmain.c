@@ -959,9 +959,19 @@ welcome(boolean new_game) /* false => restoring an old game */
             _((currentgend && gu.urole.name.f) ? gu.urole.name.f
                                                : gu.urole.name.m));
 
-    pline(new_game ? _("%s %s, welcome to NetHack!  You are a%s.")
-                   : _("%s %s, the%s, welcome back to NetHack!"),
-          Hello((struct monst *) 0), svp.plname, buf);
+    if (new_game && is_korean_locale())
+        /* two lines for a narrow (portrait) screen; no gender, the role
+           name says enough */
+        pline("반갑습니다! %s. 네트핵의 세계에 오신 것을 환영합니다!\n"
+              "지금부터 당신은 %s 성향의 %s %s입니다.",
+              svp.plname, align_str(u.ualignbase[A_ORIGINAL]),
+              _(gu.urace.adj),
+              _((currentgend && gu.urole.name.f) ? gu.urole.name.f
+                                                 : gu.urole.name.m));
+    else
+        pline(new_game ? _("%s %s, welcome to NetHack!  You are a%s.")
+                       : _("%s %s, the%s, welcome back to NetHack!"),
+              Hello((struct monst *) 0), svp.plname, buf);
 
     if (new_game) {
         /* guarantee that 'major' event category is never empty */

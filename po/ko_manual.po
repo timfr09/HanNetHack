@@ -34,7 +34,7 @@
 #    - kill → 죽이다/처치하다
 #    - miss → 빗나가다
 #    - damage → 피해
-#    - gold → 금화
+#    - gold / zorkmid → 골드
 #    - experience → 경험치
 #
 # 5. HanNetHack 구조·플랫폼 (재수정 방지):

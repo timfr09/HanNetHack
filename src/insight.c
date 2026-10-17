@@ -191,7 +191,9 @@ enlght_out_attr(const char *buf, int attr)
 #endif
     if (attr < 0) {
         n = strlen(buf);
-        attr = ATR_NONE;
+        /* -1: auto — menu heading style when the line ends with ':' */
+        attr = (n > 0 && buf[n - 1] == ':') ? iflags.menu_headings.attr
+                                            : ATR_NONE;
     }
     if (ge.en_via_menu) {
         anything any = cg.zeroany;

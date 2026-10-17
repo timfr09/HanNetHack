@@ -116,7 +116,9 @@ self_lookat(char *outbuf)
     if (is_korean_locale() && !Upolyd) /* "2레벨 엘프 사제 지망생 Dk" */
         Sprintf(outbuf, "%s%d레벨 %s %s %s %s",
                 (Invis && (senseself() || !Blind)) ? _("invisible ") : "",
-                u.ulevel, _(gu.urace.adj), pmname(&mons[u.umonnum], Ugender),
+                u.ulevel, _(gu.urace.adj),
+                /* pmname() already applies _() */
+                pmname(&mons[u.umonnum], Ugender),
                 rank_of(u.ulevel, Role_switch, flags.female),
                 upstart(strcpy(trapbuf, svp.plname))); /* as on the status line */
     else if (is_korean_locale()) /* polymorphed: the form, then the name */

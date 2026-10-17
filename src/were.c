@@ -113,7 +113,8 @@ new_were(struct monst *mon)
     if (canseemon(mon) && !Hallucination)
         pline(_("%s changes into a %s."), Monnam(mon),
               is_human(&mons[pm]) ? _("human")
-                                  /* pmname()+4: skip past "were" prefix */
+                                  /* English "were"+beast; translate beast only
+                                     (do not slice a KO pmname()) */
                                   : _(mons[pm].pmnames[NEUTRAL] + 4));
 
     set_mon_data(mon, &mons[pm]);
@@ -197,9 +198,10 @@ you_were(void)
     if (Unchanging || u.umonnum == u.ulycn)
         return;
     if (controllable_poly) {
-        /* `+4' => skip "were" prefix to get name of beast */
+        /* `+4' => skip English "were" prefix; translate the beast name
+           (pmname() would already be Korean and must not be sliced) */
         Sprintf(qbuf, _("Do you want to change into %s?"),
-                an(mons[u.ulycn].pmnames[NEUTRAL] + 4));
+                an(_(mons[u.ulycn].pmnames[NEUTRAL] + 4)));
         if (!paranoid_query(ParanoidWerechange, qbuf))
             return;
     } else if (monster_nearby()) {

@@ -752,8 +752,18 @@ doforce(void)
                 otmp->lknown = 1;
                 continue;
             }
-            (void) safe_qbuf(qbuf, KO_THERE_IS, _(" here; force its lock?"),
-                             otmp, doname, ansimpleoname, _("a box"));
+            {
+                char qsfx[QBUFSZ];
+
+#ifdef ENABLE_NLS
+                if (is_korean_locale()) /* "잠긴 큰 상자가 있다. 자물쇠를 강제로 열겠습니까?" */
+                    Strcpy(qsfx, "{이/가} 있다. 자물쇠를 강제로 열겠습니까?");
+                else
+#endif
+                    Strcpy(qsfx, _(" here; force its lock?"));
+                (void) safe_qbuf(qbuf, KO_THERE_IS, qsfx, otmp, doname,
+                                 ansimpleoname, _("a box"));
+            }
             otmp->lknown = 1;
 
             c = ynq(qbuf);

@@ -898,12 +898,12 @@ basics_enlightenment(int mode UNUSED, int final)
             enlght_out(buf);
         }
         if (umoney)
-            Sprintf(buf, " 금화 %ld개를 가지고 있다.", umoney);
+            Sprintf(buf, " 골드 %ld개를 가지고 있다.", umoney);
         else
-            Strcpy(buf, " 금화는 가지고 있지 않다.");
+            Strcpy(buf, " 골드는 가지고 있지 않다.");
         enlght_out(buf);
         if (hmoney) {
-            Sprintf(buf, " 가방 속에 금화 %ld개가 더 있다.", hmoney);
+            Sprintf(buf, " 가방 속에 골드 %ld개가 더 있다.", hmoney);
             enlght_out(buf);
         }
         return;

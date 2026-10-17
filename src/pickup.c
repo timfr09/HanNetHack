@@ -3299,7 +3299,6 @@ menu_loot(int retry, boolean put_in)
     boolean all_categories = TRUE, loot_everything = FALSE, autopick = FALSE;
     char buf[BUFSZ];
     boolean loot_justpicked = FALSE;
-    const char *action = put_in ? _("Put in") : _("Take out");
     struct obj *otmp, *otmp2;
     menu_item *pick_list;
     int mflags, res;

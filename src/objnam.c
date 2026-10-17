@@ -603,15 +603,23 @@ xcalled(
 {
     const char *called_str = _(" called ");
     int bufsiz = siz - 1 - (int) strlen(buf),
+        pfxlen, room;
+
+    if (is_korean_locale()) {
+        /* "물약 (메모: 치료?)" — fixed overhead is pfx + " (메모: " + ")" */
+        pfxlen = (int) strlen(pfx) + (int) strlen(" (메모: ") + 1;
+        if (pfxlen > bufsiz)
+            panic(_("xcalled: not enough room for prefix (%d > %d)"), pfxlen,
+                  bufsiz);
+        room = bufsiz - pfxlen;
+        Sprintf(eos(buf), "%s (메모: %.*s)", pfx, room, sfx);
+    } else {
         pfxlen = (int) (strlen(pfx) + strlen(called_str));
-
-    if (pfxlen > bufsiz)
-        panic(_("xcalled: not enough room for prefix (%d > %d)"),               pfxlen, bufsiz);
-
-    if (is_korean_locale()) /* a type name is the player's note: "물약 (메모: 치료?)" */
-        Sprintf(eos(buf), "%s (메모: %.*s)", pfx, bufsiz - pfxlen - 12, sfx);
-    else
+        if (pfxlen > bufsiz)
+            panic(_("xcalled: not enough room for prefix (%d > %d)"), pfxlen,
+                  bufsiz);
         Sprintf(eos(buf), "%s%s%.*s", pfx, called_str, bufsiz - pfxlen, sfx);
+    }
 }
 
 char *
@@ -5710,7 +5718,9 @@ Japanese_item_name(int i, const char *ordinaryname)
 
     while (j->item) {
         if (i == j->item)
-            return _(j->name);
+            /* Korean catalog keys English names; do not gettext the
+               Japanese alternate (wakizashi etc.) under a KO locale */
+            return is_korean_locale() ? j->name : _(j->name);
         j++;
     }
     return ordinaryname;

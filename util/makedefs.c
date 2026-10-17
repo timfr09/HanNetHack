@@ -1921,7 +1921,7 @@ get_gitinfo(char *githash, char *gitbranch)
         /* perror(infile); */
         return FALSE;
     }
-    set_fgetline_context(infile, FALSE, TRUE); /* UTF-8 ok (Korean oracles) */
+    set_fgetline_context(infile, TRUE, TRUE); /* ASCII-ish gitinfo only */
 
     /* read the gitinfo file */
     while ((line = fgetline(gifp)) != 0) {

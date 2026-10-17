@@ -284,9 +284,9 @@ des.door({ coord = { 40,15 }, state = "random" });
 
 des.object({ coord = { 48,7 }, id = "ring of levitation", buc = "not-cursed" });
 
-des.engraving({ coord = { 48,10 }, type = "burn", text = "'" .. tut_key("puton") .. "'로 반지나 목걸이를 착용하세요", degrade = false });
+des.engraving({ coord = { 48,10 }, type = "burn", text = "'" .. tut_key("puton") .. "'로 반지나 부적을 착용하세요", degrade = false });
 
-des.engraving({ coord = { 48,16 }, type = "burn", text = "'" .. tut_key("remove") .. "'로 반지나 목걸이를 벗으세요", degrade = false });
+des.engraving({ coord = { 48,16 }, type = "burn", text = "'" .. tut_key("remove") .. "'로 반지나 부적을 벗으세요", degrade = false });
 
 des.door({ coord = { 50,16 }, state = "closed" });
 

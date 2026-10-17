@@ -778,7 +778,7 @@ msgstr " 청각"
 #: ../src/obj_descr_i18n.c:462
 #, c-format
 msgid " Dx:%s"
-msgstr " 솜씨:%s"
+msgstr " 민첩:%s"
 
 #: ../src/botl.c:217 ../src/windows.c:1016
 msgid " Fly"
@@ -2523,7 +2523,7 @@ msgstr " "
 # suffix - 앞 공백 제거, 뒤 공백 추가
 #: ../src/insight.c:2434
 msgid " the Amulet of Yendor"
-msgstr "옌더의 목걸이를 "
+msgstr "옌더의 부적을 "
 
 # insight.c:2351-2358 - 업적: 아이템 소유/획득
 # enl_msg(You_, "have"/"have handled", "had"/"handled", suffix, "")
@@ -5180,7 +5180,7 @@ msgstr "%s 제단."
 #: ../src/objnam.c:684
 #, c-format
 msgid "%s amulet"
-msgstr "%s 목걸이"
+msgstr "%s 부적"
 
 #: ../src/sit.c:391
 #, c-format
@@ -11436,7 +11436,7 @@ msgstr "%1$s %5$s의 %4$s{을/를} 막았다!%2$.0s%3$.0s"
 #: ../src/do_wear.c:2457
 #, c-format
 msgid "%s%s are full, and you're already wearing an amulet and %s."
-msgstr "반지를 낄 %.0s%s{이/가} 다 찼고, 이미 목걸이와 %s{을/를} 착용하고 있다."
+msgstr "반지를 낄 %.0s%s{이/가} 다 찼고, 이미 부적와 %s{을/를} 착용하고 있다."
 
 #: ../src/do_wear.c:134
 #, c-format
@@ -13833,11 +13833,11 @@ msgstr "현재 더미에서 분리할 양은"
 
 #: ../src/invent.c:2141
 msgid "Amulet doesn't like being called names."
-msgstr "목걸이는 이름으로 불리는 것을 좋아하지 않는다."
+msgstr "부적은 이름으로 불리는 것을 좋아하지 않는다."
 
 #: ../src/invent.c:4815 ../src/obj_descr_i18n.c:1297
 msgid "Amulets"
-msgstr "목걸이"
+msgstr "부적"
 
 # 단수 항목을 나타냄
 #: ../src/trap.c:6931
@@ -15555,7 +15555,7 @@ msgstr "다이묘"
 
 #: ../src/role.c:203 ../src/sit.c:120 ../src/sit.c:130
 msgid "Dame"
-msgstr "귀부인"
+msgstr "영주"
 
 #: ../src/monster_i18n.c:382 ../src/obj_descr_i18n.c:799
 msgid "Dark One"
@@ -19649,7 +19649,7 @@ msgstr "오딘"
 
 #: ../src/iactions.c:482
 msgid "Offer this amulet as a sacrifice at this altar"
-msgstr "이 목걸이를 이 제단에 제물로 바치기"
+msgstr "이 부적을 이 제단에 제물로 바치기"
 
 #: ../src/iactions.c:478
 msgid "Offer this corpse as a sacrifice at this altar"
@@ -20441,7 +20441,7 @@ msgstr "렌즈 착용"
 
 #: ../src/iactions.c:505
 msgid "Put this amulet on"
-msgstr "목걸이 착용"
+msgstr "부적 착용"
 
 #: ../src/iactions.c:520
 #, c-format
@@ -20671,7 +20671,7 @@ msgstr "진정해요, 하나도 안 아플 거예요."
 #: ../src/wizard.c:855
 #, c-format
 msgid "Relinquish the amulet, %s!"
-msgstr "목걸이를 내놓아라, %s!"
+msgstr "부적을 내놓아라, %s!"
 
 #: ../src/were.c:224
 msgid "Remain in beast form?"
@@ -21575,7 +21575,7 @@ msgstr "마도사"
 
 #: ../src/quest.c:244
 msgid "Sorry to say, this is a mere imitation of the true Amulet of Yendor."
-msgstr "옌더 목걸이의 싸구려 플라스틱 모조품"
+msgstr "옌더 부적의 싸구려 플라스틱 모조품"
 
 #: ../src/apply.c:1812 ../src/apply.c:4429
 msgid "Sorry, I don't know how to use that."
@@ -21707,7 +21707,7 @@ msgstr "찌걱!"
 #: ../src/botl.c:101 ../src/invent.c:2605
 #, c-format
 msgid "St:%s Dx:%d Co:%d In:%d Wi:%d Ch:%d"
-msgstr "힘:%s 솜씨:%d 건강:%d 지능:%d 지혜:%d 매력:%d"
+msgstr "힘:%s 민첩:%d 건강:%d 지능:%d 지혜:%d 매력:%d"
 
 # mondata.c:1369 - 대문자 버전
 #: ../src/mondata.c:1369
@@ -26894,7 +26894,7 @@ msgstr "[이미 %s{을/를} 입고 있다]"
 
 #: ../src/iactions.c:506
 msgid "[already wearing an amulet]"
-msgstr "[이미 목걸이를 착용 중]"
+msgstr "[이미 부적을 착용 중]"
 
 #: ../src/iactions.c:516
 msgid "[already wearing eyewear]"
@@ -27805,7 +27805,7 @@ msgstr "종자"
 
 #: ../src/insight.c:72
 msgid "acquired The Amulet of Yendor"
-msgstr "옌더의 목걸이를 획득했다"
+msgstr "옌더의 부적을 획득했다"
 
 # ============================================================
 # insight.c 업적 관련 메시지 수정
@@ -28018,7 +28018,7 @@ msgstr "%s에게 화났다."
 
 #: ../src/attrib.c:12
 msgid "agile"
-msgstr "솜씨 좋은"
+msgstr "민첩한"
 
 #: ../src/do.c:611 ../src/dungeon.c:1760 ../src/spell.c:1162
 #: ../src/timeout.c:374
@@ -28191,7 +28191,7 @@ msgstr "이미"
 
 #: ../src/invent.c:967
 msgid "already have amulet?"
-msgstr "목걸이를 이미 가지고 있는가?"
+msgstr "부적을 이미 가지고 있는가?"
 
 #: ../src/invent.c:972
 msgid "already have candelabrum?"
@@ -28305,19 +28305,19 @@ msgstr "앰플"
 #: ../src/obj_descr_i18n.c:115 ../src/obj_descr_i18n.c:717 ../src/objnam.c:249
 #: ../src/objnam.c:675 ../src/objnam.c:682
 msgid "amulet"
-msgstr "목걸이"
+msgstr "부적"
 
 #: ../src/do_wear.c:1032
 msgid "amulet disintegrates!"
-msgstr "목걸이가 분해되었다!"
+msgstr "부적이 분해되었다!"
 
 #: ../src/zap.c:3193
 msgid "amulet grows hot for a moment, then cools."
-msgstr "목걸이가 잠시 뜨거워졌다가, 식는다."
+msgstr "부적이 잠시 뜨거워졌다가, 식는다."
 
 #: ../src/pray.c:393 ../src/timeout.c:899
 msgid "amulet vanishes!"
-msgstr "목걸이가 사라졌다!"
+msgstr "부적이 사라졌다!"
 
 # 지팡이
 # --- 지팡이 (Wands) ---
@@ -28349,7 +28349,7 @@ msgstr "공기 방울"
 # --- 부적 (Amulets) ---
 #: ../src/do_wear.c:2317
 msgid "an amulet"
-msgstr "목걸이"
+msgstr "부적"
 
 #: ../src/sounds.c:76
 msgid "an angry drone."
@@ -29268,7 +29268,7 @@ msgstr "눈가리개를 하고 있지 않다."
 
 #: ../src/invent.c:2333 ../src/invent.c:4706
 msgid "are not wearing an amulet."
-msgstr "목걸이를 걸고 있지 않다."
+msgstr "부적을 걸고 있지 않다."
 
 #: ../src/invent.c:4605
 msgid "are not wearing any armor."
@@ -34889,7 +34889,7 @@ msgstr "독실하게"
 
 #: ../src/attrib.c:21 ../src/obj_descr_i18n.c:1236
 msgid "dexterity"
-msgstr "솜씨"
+msgstr "민첩"
 
 #: ../src/dungeon.c:1881
 #, c-format
@@ -35567,7 +35567,7 @@ msgstr "정상적인 형태에서는 특수 능력이 없다!"
 
 #: ../src/invent.c:1364
 msgid "don't have amulet?"
-msgstr "목걸이가 없는가?"
+msgstr "부적이 없는가?"
 
 #: ../src/invent.c:2354
 #, c-format
@@ -39068,7 +39068,7 @@ msgstr "위산"
 
 #: ../src/obj_descr_i18n.c:200
 msgid "gauntlets of dexterity"
-msgstr "솜씨의 건틀릿"
+msgstr "민첩의 건틀릿"
 
 #: ../src/obj_descr_i18n.c:198
 msgid "gauntlets of fumbling"
@@ -46515,7 +46515,7 @@ msgstr "바칠"
 #: ../src/pray.c:1546
 #, c-format
 msgid "offer the Amulet of Yendor to %s..."
-msgstr "%s에게 옌더의 목걸이를 바친다..."
+msgstr "%s에게 옌더의 부적을 바친다..."
 
 #: ../src/monster_i18n.c:222 ../src/obj_descr_i18n.c:1012
 msgid "ogre"
@@ -54306,7 +54306,7 @@ msgstr "제단"
 
 #: ../src/spell.c:1290
 msgid "the amulet draining your energy away."
-msgstr "목걸이가 에너지를 빼앗아 가고 있다."
+msgstr "부적이 에너지를 빼앗아 가고 있다."
 
 #: ../src/pray.c:1203
 #, c-format
@@ -58523,47 +58523,47 @@ msgstr "{영웅 이름}"
 # AMULET 이름: 런타임은 include/objects.h, 추출은 src/obj_descr_i18n.c 의 N_()
 #: src/obj_descr_i18n.c
 msgid "amulet of ESP"
-msgstr "투시의 목걸이"
+msgstr "투시의 부적"
 
 #: src/obj_descr_i18n.c
 msgid "amulet of change"
-msgstr "변화의 목걸이"
+msgstr "변화의 부적"
 
 #: src/obj_descr_i18n.c
 msgid "amulet of flying"
-msgstr "비행의 목걸이"
+msgstr "비행의 부적"
 
 #: src/obj_descr_i18n.c
 msgid "amulet of guarding"
-msgstr "수호의 목걸이"
+msgstr "수호의 부적"
 
 #: src/obj_descr_i18n.c
 msgid "amulet of life saving"
-msgstr "생명 구원의 목걸이"
+msgstr "생명 구원의 부적"
 
 #: src/obj_descr_i18n.c
 msgid "amulet of reflection"
-msgstr "반사의 목걸이"
+msgstr "반사의 부적"
 
 #: src/obj_descr_i18n.c
 msgid "amulet of magical breathing"
-msgstr "마법 호흡의 목걸이"
+msgstr "마법 호흡의 부적"
 
 #: src/obj_descr_i18n.c
 msgid "amulet of restful sleep"
-msgstr "안식의 수면 목걸이"
+msgstr "안식의 수면 부적"
 
 #: src/obj_descr_i18n.c
 msgid "amulet of strangulation"
-msgstr "질식의 목걸이"
+msgstr "질식의 부적"
 
 #: src/obj_descr_i18n.c
 msgid "amulet of unchanging"
-msgstr "불변의 목걸이"
+msgstr "불변의 부적"
 
 #: src/obj_descr_i18n.c
 msgid "amulet versus poison"
-msgstr "독 방호의 목걸이"
+msgstr "독 방호의 부적"
 
 msgid ""
 "\n"
@@ -59009,7 +59009,7 @@ msgstr "괴물이"
 # do_statusline1() - 능력치 표시
 #, c-format
 msgid "St:%s Dx:%-1d Co:%-1d In:%-1d Wi:%-1d Ch:%-1d"
-msgstr "힘:%s 솜씨:%-1d 건강:%-1d 지능:%-1d 지혜:%-1d 매력:%-1d"
+msgstr "힘:%s 민첩:%-1d 건강:%-1d 지능:%-1d 지혜:%-1d 매력:%-1d"
 
 msgid "THARR"
 msgstr "THARR"
@@ -61221,7 +61221,7 @@ msgstr "장착 장비 확인"
 #. # Extended command menu (cmd.c doextlist)
 msgctxt "extcmd"
 msgid "seeamulet"
-msgstr "목걸이"
+msgstr "부적"
 
 #. # Extended command menu (cmd.c doextlist)
 msgctxt "extcmd"
@@ -61941,7 +61941,7 @@ msgstr "지나간 메시지 보기"
 #. # Extended command descriptions (cmd.c doextlist)
 msgctxt "extcmd_desc"
 msgid "put on an accessory (ring, amulet, etc)"
-msgstr "장신구 착용 (반지, 목걸이 등)"
+msgstr "장신구 착용 (반지, 부적 등)"
 
 #. # Extended command descriptions (cmd.c doextlist)
 msgctxt "extcmd_desc"
@@ -61971,7 +61971,7 @@ msgstr "화면 다시 그리기"
 #. # Extended command descriptions (cmd.c doextlist)
 msgctxt "extcmd_desc"
 msgid "remove an accessory (ring, amulet, etc)"
-msgstr "장신구 벗기 (반지, 목걸이 등)"
+msgstr "장신구 벗기 (반지, 부적 등)"
 
 #. # Extended command descriptions (cmd.c doextlist)
 msgctxt "extcmd_desc"
@@ -62031,7 +62031,7 @@ msgstr "장착 장비 확인"
 #. # Extended command descriptions (cmd.c doextlist)
 msgctxt "extcmd_desc"
 msgid "show the amulet currently worn"
-msgstr "착용 중인 목걸이 보기"
+msgstr "착용 중인 부적 보기"
 
 #. # Extended command descriptions (cmd.c doextlist)
 msgctxt "extcmd_desc"
@@ -62642,12 +62642,12 @@ msgstr "어리석어졌다"
 #: ../src/attrib.c:195
 msgctxt "attr_change"
 msgid "agile"
-msgstr "솜씨가 좋아졌다"
+msgstr "민첩해졌다"
 
 #: ../src/attrib.c:195
 msgctxt "attr_change"
 msgid "clumsy"
-msgstr "솜씨가 서툴러졌다"
+msgstr "둔해졌다"
 
 #: ../src/attrib.c:195
 msgctxt "attr_change"
@@ -62703,7 +62703,7 @@ msgstr "어리석은"
 #: ../src/attrib.c:179
 msgctxt "attr_max"
 msgid "agile"
-msgstr "솜씨 좋은"
+msgstr "민첩한"
 
 #: ../src/attrib.c:179
 msgctxt "attr_max"
@@ -63356,57 +63356,57 @@ msgstr "번개의 마법봉"
 
 msgctxt "objname"
 msgid "amulet of ESP"
-msgstr "텔레파시의 목걸이"
+msgstr "텔레파시의 부적"
 
 msgctxt "objname"
 msgid "amulet of life saving"
-msgstr "생명 구원의 목걸이"
+msgstr "생명 구원의 부적"
 
 msgctxt "objname"
 msgid "amulet of strangulation"
-msgstr "질식의 목걸이"
+msgstr "질식의 부적"
 
 msgctxt "objname"
 msgid "amulet of restful sleep"
-msgstr "숙면의 목걸이"
+msgstr "숙면의 부적"
 
 msgctxt "objname"
 msgid "amulet versus poison"
-msgstr "독 방호의 목걸이"
+msgstr "독 방호의 부적"
 
 msgctxt "objname"
 msgid "amulet of change"
-msgstr "변화의 목걸이"
+msgstr "변화의 부적"
 
 msgctxt "objname"
 msgid "amulet of unchanging"
-msgstr "불변의 목걸이"
+msgstr "불변의 부적"
 
 msgctxt "objname"
 msgid "amulet of reflection"
-msgstr "반사의 목걸이"
+msgstr "반사의 부적"
 
 msgctxt "objname"
 msgid "amulet of magical breathing"
-msgstr "마법 호흡의 목걸이"
+msgstr "마법 호흡의 부적"
 
 msgctxt "objname"
 msgid "amulet of guarding"
-msgstr "수호의 목걸이"
+msgstr "수호의 부적"
 
 msgctxt "objname"
 msgid "amulet of flying"
-msgstr "비행의 목걸이"
+msgstr "비행의 부적"
 
 msgctxt "objname"
 msgid "Book of the Dead"
 msgstr "사자의 서"
 
 msgid "Amulet of Yendor"
-msgstr "옌더의 목걸이"
+msgstr "옌더의 부적"
 
 msgid "cheap plastic imitation of the Amulet of Yendor"
-msgstr "옌더의 목걸이 모조품"
+msgstr "옌더의 부적 모조품"
 
 # here-menu (cmd.c there_cmd_menu_self): a box whose lock is known
 msgid "Force the lock of %s"

@@ -125,7 +125,7 @@ charm_snakes(int distance)
                 else
                     pline(_("%s freezes, then sways with the music%s."),
                           Monnam(mtmp),
-                          was_peaceful ? "" : ", and now seems quieter");
+                          was_peaceful ? "" : _(", and now seems quieter"));
             }
         }
     }

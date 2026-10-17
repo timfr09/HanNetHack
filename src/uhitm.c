@@ -541,7 +541,7 @@ do_attack(struct monst *mtmp)
                 You(_("begin bashing monsters with %s."), yname(uwep));
             else if (!cantwield(gy.youmonst.data))
                 You(_("begin %s monsters with your %s %s."),                     ing_suffix(Role_if(PM_MONK) ? "strike" : "bash"),
-                    uarmg ? "gloved" : "bare", /* Del Lamb */
+                    uarmg ? _("gloved") : _("bare"), /* Del Lamb */
                     makeplural(body_part(HAND)));
         }
     }
@@ -2205,7 +2205,7 @@ steal_it(struct monst *mdef, struct attack *mattk)
         if (gender(mdef) == (int) u.mfemale
             && gy.youmonst.data->mlet == S_NYMPH)
             You(_("charm %s.  %s gladly hands over %s%s possessions."),                 mon_nam(mdef), upstart(strcpy(heshe, mhe(mdef))),
-                !gold ? "" : "most of ", mhis(mdef));
+                !gold ? "" : _("most of "), mhis(mdef));
         else
             You(_("seduce %s and %s starts to take off %s clothes."),
                 mon_nam(mdef), mhe(mdef), mhis(mdef));
@@ -5110,8 +5110,8 @@ gulpum(struct monst *mdef, struct attack *mattk)
                     }
                 } else {
                     pline(_("%s is %s!"), Monnam(mdef),
-                          enfolds(gy.youmonst.data) ? "being squashed"
-                            : "pummeled with your debris");
+                          enfolds(gy.youmonst.data) ? C_("engulf", "being squashed")
+                            : C_("engulf", "pummeled with your debris"));
                 }
                 break;
             case AD_ACID:

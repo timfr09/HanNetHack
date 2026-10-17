@@ -176,7 +176,7 @@ adjattrib(
         if (msgflg == 0 && flags.verbose) {
             if (ABASE(ndx) == old_abase && AMAX(ndx) == old_amax) {
                 pline(_("You're %s as %s as you can get."),
-                      abonflg ? _("currently") : _("already"), _(attrstr));
+                      abonflg ? _("currently") : _("already"), C_("attr_max", attrstr));
             } else {
                 /* current stayed the same but base value changed, or
                    base is at minimum and reduction caused max to drop */
@@ -192,7 +192,8 @@ adjattrib(
 
     disp.botl = TRUE;
     if (msgflg <= 0)
-        You_feel(_("%s%s!"), (incr > 1 || incr < -1) ? _("very ") : "", _(attrstr));
+        You_feel(_("%s%s!"), (incr > 1 || incr < -1) ? C_("attr_change", "very ") : "",
+                 C_("attr_change", attrstr));
     if (program_state.in_moveloop && (ndx == A_STR || ndx == A_CON))
         encumber_msg();
     return TRUE;

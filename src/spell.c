@@ -389,8 +389,9 @@ learn(void)
     }
 
     Sprintf(splname,
-            objects[booktype].oc_name_known ? "\"%s\"" : "the \"%s\" spell",
-            OBJ_NAME(objects[booktype]));
+            objects[booktype].oc_name_known ? _("\"%s\"")
+                                            : _("the \"%s\" spell"),
+            tr_spell_name(OBJ_NAME(objects[booktype])));
     for (i = 0; i < MAXSPELL; i++)
         if (spellid(i) == booktype || spellid(i) == NO_SPELL)
             break;
@@ -564,7 +565,7 @@ study_book(struct obj *spellbook)
                 break;
         if (spellid(i) == booktype && spellknow(i) > KEEN / 10) {
             You(_("know \"%s\" quite well already."),
-                OBJ_NAME(objects[booktype]));
+                tr_spell_name(OBJ_NAME(objects[booktype])));
             /* hero has just been told what spell this book is for; it may
                have been undiscovered if spell was learned via divine gift */
             makeknown(booktype);
@@ -832,19 +833,19 @@ spelltypemnemonic(int skill)
 {
     switch (skill) {
     case P_ATTACK_SPELL:
-        return _("attack");
+        return C_("spell_school", "attack");
     case P_HEALING_SPELL:
-        return _("healing");
+        return C_("spell_school", "healing");
     case P_DIVINATION_SPELL:
-        return _("divination");
+        return C_("spell_school", "divination");
     case P_ENCHANTMENT_SPELL:
-        return _("enchantment");
+        return C_("spell_school", "enchantment");
     case P_CLERIC_SPELL:
-        return _("clerical");
+        return C_("spell_school", "clerical");
     case P_ESCAPE_SPELL:
-        return _("escape");
+        return C_("spell_school", "escape");
     case P_MATTER_SPELL:
-        return _("matter");
+        return C_("spell_school", "matter");
     default:
         impossible(_("Unknown spell skill, %d;"), skill);
         return "";
@@ -1313,8 +1314,8 @@ spelleffects_check(int spell, int *res, int *energy)
          */
         You(_("don't have enough energy to cast that spell%s."),
             (u.uen < u.uenmax) ? "" /* not at full energy => normal message */
-            : (*energy > u.uenpeak) ? " yet" /* haven't ever had enough */
-              : " anymore"); /* once had enough but have lost some since */
+            : (*energy > u.uenpeak) ? _(" yet") /* haven't ever had enough */
+              : _(" anymore")); /* once had enough but have lost some since */
         return TRUE;
     } else {
         if (spellid(spell) != SPE_DETECT_FOOD) {

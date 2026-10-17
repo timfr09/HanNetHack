@@ -1221,6 +1221,10 @@ query_objlist(const char *qstr,        /* query string */
     return n;
 }
 
+/* msgctxt of the 'A' entry's label ("take_out", "put_in", "drop") so a
+   translation can name the action; set by the caller around the call */
+const char *qcat_action_ctx = 0;
+
 /*
  * For menustyle:Full.
  *
@@ -1310,6 +1314,7 @@ query_category(
         return n;
     }
 
+
     win = create_nhwindow(NHW_MENU);
     start_menu(win, MENU_BEHAVE_STANDARD);
 
@@ -1319,7 +1324,8 @@ query_category(
 
     show_a = ((qflags & ALL_TYPES) != 0 && ccount > 1);
 
-    if ((qflags & CHOOSE_ALL) != 0) {
+    /* Korean shows 'A' last, as "묻지 않고 전부 <action>" */
+    if ((qflags & CHOOSE_ALL) != 0 && !is_korean_locale()) {
         invlet = 'A';
         any = cg.zeroany;
         any.a_int = 'A';
@@ -1349,7 +1355,9 @@ query_category(
         any.a_int = ALL_TYPES_SELECTED;
         add_menu(win, &nul_glyphinfo, &any, invlet, 0, ATR_NONE, clr,
                  do_worn ? _("All worn and wielded types") : _("All types"),
-                 MENU_ITEMFLAGS_SKIPINVERT);
+                 /* Korean: all types is the usual choice */
+                 MENU_ITEMFLAGS_SKIPINVERT
+                     | (is_korean_locale() ? MENU_ITEMFLAGS_SELECTED : 0));
         ++invlet; /* invlet = 'b'; */
     }
 
@@ -1450,6 +1458,18 @@ query_category(
         any.a_int = 'P';
         add_menu(win, &nul_glyphinfo, &any, invlet, 0, ATR_NONE, clr,
                  tmpbuf, MENU_ITEMFLAGS_SKIPINVERT);
+    }
+    if ((qflags & CHOOSE_ALL) != 0 && is_korean_locale()) {
+        add_menu_str(win, "");
+        any = cg.zeroany;
+        any.a_int = 'A';
+        add_menu(win, &nul_glyphinfo, &any, 'A', 0, ATR_NONE, clr,
+                 do_worn ? _("Auto-select every item being worn or wielded")
+                 : qcat_action_ctx
+                     ? C_(qcat_action_ctx, "Auto-select every relevant item")
+                     : _("Auto-select every relevant item"),
+                 MENU_ITEMFLAGS_SKIPINVERT);
+        verify_All = (how == PICK_ANY) && ParanoidAutoAll;
     }
     end_menu(win, qstr);
     n = select_menu(win, how, pick_list);
@@ -2333,7 +2353,7 @@ doloot_core(void)
             if (!underfoot && container_at(cc.x, cc.y, FALSE)) {
                 if (mtmp) {
                     You_cant(_("loot anything %sthere with %s in the way."),
-                             prev_inquiry ? "else " : "", mon_nam(mtmp));
+                             prev_inquiry ? _("else ") : "", mon_nam(mtmp));
                     return (timepassed ? ECMD_TIME : ECMD_OK);
                 } else {
                     You(_("have to be at a container to loot it."));
@@ -3080,7 +3100,11 @@ use_container(
      */
     for (;;) { /* repeats iff '?' or ':' gets chosen */
         outmaybe = (outokay || !gc.current_container->cknown);
-        if (!outmaybe)
+        if (is_korean_locale()) /* the menu's title: "큰 상자 뒤지기" */
+            Snprintf(qbuf, sizeof qbuf, "%s 뒤지기%s",
+                     simpleonames(gc.current_container),
+                     outmaybe ? "" : " (비어 있음)");
+        else if (!outmaybe)
             (void) safe_qbuf(qbuf, (char *) 0, " is empty.  Do what with it?",
                              gc.current_container, Yname2, Ysimple_name2,
                              "This");
@@ -3287,12 +3311,16 @@ menu_loot(int retry, boolean put_in)
         all_categories = (retry == -2);
     } else if (flags.menu_style == MENU_FULL) {
         all_categories = FALSE;
-        Sprintf(buf, _("%s what type of objects?"), action);
+        /* one msgid per action so a translation can inflect the verb */
+        Strcpy(buf, put_in ? _("Put in what type of objects?")
+                           : _("Take out what type of objects?"));
         mflags = (ALL_TYPES | UNPAID_TYPES | BUCX_TYPES | CHOOSE_ALL
                   | JUSTPICKED );
+        qcat_action_ctx = put_in ? "put_in" : "take_out";
         n = query_category(buf,
                            put_in ? gi.invent : gc.current_container->cobj,
                            mflags, &pick_list, PICK_ANY);
+        qcat_action_ctx = 0;
             /* when paranoid_confirm:A is set, 'A' by itself implies
                'A'+'a' which will be followed by a confirmation prompt;
                when that option isn't set, 'A' by itself is rejected
@@ -3365,7 +3393,8 @@ menu_loot(int retry, boolean put_in)
             mflags |= JUSTPICKED;
         if (!put_in)
             gc.current_container->cknown = 1;
-        Sprintf(buf, _("%s what?"), action);
+        /* one msgid per action so a translation can inflect the verb */
+        Strcpy(buf, put_in ? _("Put in what?") : _("Take out what?"));
         n = query_objlist(buf,
                           put_in ? &gi.invent : &(gc.current_container->cobj),
                           mflags, &pick_list, PICK_ANY,
@@ -3399,6 +3428,7 @@ menu_loot(int retry, boolean put_in)
     }
     return n_looted ? ECMD_TIME : ECMD_OK;
 }
+
 
 staticfn char
 in_or_out_menu(
@@ -3451,6 +3481,8 @@ in_or_out_menu(
                 outokay ? _("both reversed; ") : "");
         add_menu(win, &nul_glyphinfo, &any, menuselector[any.a_int], 0,
                  ATR_NONE, clr, buf, MENU_ITEMFLAGS_NONE);
+    }
+    if (inokay) {
         any.a_int = 6; /* 's' */
         Sprintf(buf, _("stash one item into %s"), thesimpleoname(obj));
         add_menu(win, &nul_glyphinfo, &any, menuselector[any.a_int], 0,

@@ -2122,7 +2122,7 @@ seffect_identify(struct obj **sobjp)
         /* spell cast with inventory empty or scroll read when it's
            the only item leaving empty inventory after being used up */
         pline(_("You're not carrying anything%s to be identified."),
-              (is_scroll) ? " else" : "");
+              (is_scroll) ? _(" else") : "");
     }
 }
 

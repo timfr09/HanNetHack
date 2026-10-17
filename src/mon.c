@@ -4193,7 +4193,7 @@ peacefuls_respond(struct monst *mtmp)
                         || (mon->data == &mons[quest_info(MS_LEADER)]
                             && mtmp->data != &mons[gu.urole.guardnum])) {
                         if (exclaimed)
-                            pline_mon(mon, _("%s%s"), buf, " then shrugs.");
+                            pline_mon(mon, _("%s%s"), buf, _(" then shrugs."));
                         continue;
                     }
 

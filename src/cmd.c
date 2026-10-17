@@ -6,6 +6,7 @@
 #include "hack.h"
 #include "func_tab.h"
 #include "i18n.h"
+#include "ko_postpos.h" /* ko_process_string for yn_function queries */
 
 #ifdef UNIX
 /*
@@ -4621,9 +4622,13 @@ there_cmd_menu_next2u(
         Sprintf(buf, _("Swap places with %s"), mon_nam(mtmp));
         mcmd_addmenu(win, MCMD_MOVE_DIR, buf), ++K;
 
-        Sprintf(buf, _("%s %s"),
-                !has_mgivenname(mtmp) ? _("Name") : _("Rename"),
-                mon_nam(mtmp));
+        if (is_korean_locale()) /* "길들인 작은 개 하치의 이름 바꾸기" */
+            Sprintf(buf, "%s의 %s", mon_nam(mtmp),
+                    !has_mgivenname(mtmp) ? "이름 붙이기" : "이름 바꾸기");
+        else
+            Sprintf(buf, _("%s %s"),
+                    !has_mgivenname(mtmp) ? _("Name") : _("Rename"),
+                    mon_nam(mtmp));
         mcmd_addmenu(win, MCMD_NAME, buf), ++K;
     }
 
@@ -5518,6 +5523,16 @@ yn_function(
 
     iflags.last_msg = PLNMSG_UNKNOWN; /* most recent pline is clobbered */
 
+#ifdef ENABLE_NLS
+    /* a translated question may carry {이/가}-style postpositions for the
+       object name formatted into it; pline() resolves them, so do we */
+    if (is_korean_locale() && strchr(query, KO_PP_START)) {
+        static char kobuf[BUFSZ];
+
+        ko_process_string(kobuf, sizeof kobuf, query);
+        query = kobuf;
+    }
+#endif
     /* maximum acceptable length is QBUFSZ-1 */
     if (strlen(query) >= QBUFSZ) {
         /* caller shouldn't have passed anything this long */

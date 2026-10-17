@@ -1,6 +1,6 @@
 # HanNetHack — Korean NetHack
 
-![Version](https://img.shields.io/badge/version-5.0.0--ko.7-blue)
+![Version](https://img.shields.io/badge/version-5.0.1--ko.1-blue)
 ![License](https://img.shields.io/badge/license-NGPL-green)
 ![Translation](https://img.shields.io/badge/translation-WIP-yellow)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey)
@@ -11,9 +11,9 @@
 
 ### NetHack 5.0과 앞으로의 작업
 
-2026년 1월, 업스트림 NetHack이 **5.0.0**([`NetHack-5.0.0_Released`](https://github.com/NetHack/NetHack/releases))을 출시했습니다. HanNetHack은 이를 반영해 **`HanNetHack-5.0`** 브랜치에서 빌드·번역·개발을 이어갑니다. **기본 브랜치와 일상적인 기여·번역 작업의 기준은 5.0**입니다. (과거 3.7 기반 작업은 `HanNetHack-3.7` 브랜치에 보존됩니다.)
+2026년 1월, 업스트림 NetHack이 **5.0.0**([`NetHack-5.0.0_Released`](https://github.com/NetHack/NetHack/releases))을 출시했고, 현재 `NetHack-5.0` 브랜치는 **5.0.1 WIP**(`PATCHLEVEL 1`)입니다. HanNetHack은 이를 따라 **`HanNetHack-5.0`**에서 빌드·번역·개발을 이어갑니다. **기본 브랜치와 일상적인 기여·번역 작업의 기준은 5.0**입니다. (과거 3.7 기반 작업은 `HanNetHack-3.7` 브랜치에 보존됩니다.)
 
-업스트림 변경은 [NetHack/NetHack](https://github.com/NetHack/NetHack)의 **`NetHack-5.0`** 브랜치를 가능할 때마다 병합합니다 (최근: 2026-10-09, in-tree nhlua/Lua 5.5.1·여행자 퀘스트 개편·curses windowcolors·vault 경비·m68k/Atari/Amiga 등). 유지보수자용 병합 절차는 [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md)를 참고하세요.
+업스트림 변경은 [NetHack/NetHack](https://github.com/NetHack/NetHack)의 **`NetHack-5.0`** 브랜치를 가능할 때마다 병합합니다 (최근: 2026-10-17, 변이체 레벨업 HP·탐침 알·Ludios 스폰·#wizlevelteleport 등). 유지보수자용 병합 절차는 [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md)를 참고하세요.
 
 - **버그·오역·문구 개선 제안**: [GitHub Issues](https://github.com/timfr09/HanNetHack/issues)에 올려 주세요. (영문·한국어 모두 가능합니다.)
 - **원본 게임**: 상위 프로젝트는 [NetHack on GitHub](https://github.com/NetHack/NetHack)입니다.
@@ -37,7 +37,7 @@
 
 **HanNetHack** is an unofficial, community-maintained Korean localization of NetHack **5.0** for Linux and Windows. It is **not** affiliated with the NetHack DevTeam.
 
-Upstream NetHack **5.0.0** shipped in January 2026 ([release tag](https://github.com/NetHack/NetHack/releases)). This fork tracks [`NetHack-5.0`](https://github.com/NetHack/NetHack/tree/NetHack-5.0) on [NetHack/NetHack](https://github.com/NetHack/NetHack). **Use branch [`HanNetHack-5.0`](https://github.com/timfr09/HanNetHack/tree/HanNetHack-5.0) for ongoing development and translation** (repository default branch). Older 3.7-era history remains on [`HanNetHack-3.7`](https://github.com/timfr09/HanNetHack/tree/HanNetHack-3.7). Maintainer-oriented merge workflow: [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md).
+Upstream NetHack **5.0.0** shipped in January 2026 ([release tag](https://github.com/NetHack/NetHack/releases)); the live [`NetHack-5.0`](https://github.com/NetHack/NetHack/tree/NetHack-5.0) branch is **5.0.1 WIP**. This fork tracks that branch on [NetHack/NetHack](https://github.com/NetHack/NetHack). **Use branch [`HanNetHack-5.0`](https://github.com/timfr09/HanNetHack/tree/HanNetHack-5.0) for ongoing development and translation** (repository default branch). Older 3.7-era history remains on [`HanNetHack-3.7`](https://github.com/timfr09/HanNetHack/tree/HanNetHack-3.7). Maintainer-oriented merge workflow: [`doc/i18n-upstream-merge.md`](doc/i18n-upstream-merge.md).
 
 - **Bugs, translation mistakes, or wording feedback**: please file [GitHub Issues](https://github.com/timfr09/HanNetHack/issues).
 - **Upstream source**: [NetHack/NetHack](https://github.com/NetHack/NetHack).
@@ -144,7 +144,7 @@ See **Korean translation system (brief)** above for architecture; [`po/I18N_SYST
 
 ### Versioning
 
-HanNetHack uses semantic versioning with a Korean-translation suffix, e.g. `v5.0.0-ko.7` (based on NetHack 5.0.0, Korean iteration 7). The badge at the top of this file tracks the current packaging snapshot.
+HanNetHack packaging tags follow upstream `VERSION_MAJOR.MINOR.PATCHLEVEL` plus a Korean iteration suffix, e.g. `v5.0.1-ko.1`. When the upstream patchlevel (or major/minor) advances, the `ko.N` counter **resets to 1**. The badge at the top of this file tracks the current packaging snapshot; the in-game string from `makedefs` may still look like `5.0.1-0` while upstream is WIP.
 
 ### License
 

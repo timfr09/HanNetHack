@@ -5,7 +5,7 @@
 # 사용법:
 #   ./scripts/merge-upstream.sh [upstream-branch]
 #
-# 기본값: upstream/master 또는 origin/NetHack-3.7
+# 기본값: upstream/NetHack-5.0
 
 set -e
 
@@ -48,11 +48,11 @@ get_upstream_branch() {
         return
     fi
 
-    # upstream 리모트가 있으면 사용
+    # HanNetHack-5.0 tracks upstream NetHack-5.0
     if git remote | grep -q "^upstream$"; then
-        echo "upstream/master"
+        echo "upstream/NetHack-5.0"
     else
-        echo "origin/NetHack-3.7"
+        echo "origin/HanNetHack-5.0"
     fi
 }
 
@@ -146,7 +146,8 @@ test_build() {
     info "Testing build..."
 
     cd "$PROJECT_ROOT"
-    if make -j$(nproc) 2>&1 | tail -5; then
+    # Lua is in-tree under nhlua/; parallel make is not recommended
+    if make all 2>&1 | tail -5; then
         info "Build successful!"
     else
         error "Build failed. Please check errors."

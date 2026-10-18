@@ -28,12 +28,12 @@ po/
 | `ko.po` | `update-po`가 POT에서 만드는 로컬 캐시 | ❌ X | X (gitignored) |
 | `ko_merged.po` | 병합 결과 | ❌ X | X (gitignored) |
 
-`ko.po`는 빌드에 꼭 필요하지 않습니다 — `make compile`은 `ko_manual.po`만으로도 정상 동작합니다. `update-po`를 실행해 로컬에 ko.po가 존재하면, 거기에 들어 있는 자동 추출 엔트리가 `ko_manual.po`가 아직 번역하지 않은 항목의 fallback으로 사용됩니다.
+`ko.po`는 **번역 원본이 아닙니다.** 빌드에도 필수가 아니며, `make compile`은 `ko_manual.po`만으로 동작합니다. `update-po` / `safe-update`로 로컬에 캐시가 생기면, 아직 `ko_manual.po`에 없는 msgid만 병합 시 fallback으로 쓰입니다. 새 문자열을 발견하면 곧바로 `ko_manual.po`에 옮겨 번역합니다.
 
 ### 병합 우선순위
 
 ```
-ko_manual.po (우선) + ko.po (선택, 로컬 캐시) → ko_merged.po → ko.mo
+ko_manual.po (유일 원본) + [있으면] ko.po (캐시 fallback) → ko_merged.po → nethack.mo
 ```
 
 동일한 msgid가 있으면 `ko_manual.po`의 번역이 사용됩니다.
@@ -79,10 +79,10 @@ cd po
 # 1. POT 템플릿 생성
 make pot
 
-# 2. 안전하게 ko.po 업데이트 (백업 자동 생성)
+# 2. (선택) 로컬 ko.po 캐시 갱신 — 새 msgid 목록 확인용
 make safe-update
 
-# 3. 새 문자열을 ko_manual.po에 번역 추가
+# 3. 새 문자열을 ko_manual.po에만 번역 추가
 vi ko_manual.po
 
 # 4. 병합 + 컴파일

@@ -4,9 +4,9 @@
 
 ## Overview
 
-HanNetHack extends NetHack 3.7 with a comprehensive internationalization system that supports:
+HanNetHack extends NetHack **5.0** with a comprehensive internationalization system that supports:
 
-1. **GNU gettext-based translation** - Standard i18n framework for message translation
+1. **gettext-style message catalog** - `_()` / `C_()` macros; runtime lookup via in-tree `mo_reader.c` (no `libintl` link)
 2. **Korean postposition system** - Automatic grammar handling for Korean language
 3. **Full-width character support** - Proper display of CJK characters in terminal
 4. **Runtime language switching** - Change language without restarting the game
@@ -41,8 +41,8 @@ HanNetHack extends NetHack 3.7 with a comprehensive internationalization system 
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │                    i18n.c / i18n.h                               │
-│   • _() macro → gettext()                                        │
-│   • Translation lookup from .mo file                             │
+│   • _() macro → nh_gettext() (alias: gettext)                    │
+│   • Translation lookup from bundled nethack.mo (mo_reader.c)     │
 │   • Korean postposition processing                               │
 └─────────────────────────────────────────────────────────────────┘
                               │
@@ -80,12 +80,11 @@ HanNetHack/
 │   └── obj_descr_i18n.c    # Object description markers
 ├── po/
 │   ├── nethack.pot         # Translation template
-│   ├── ko_manual.po        # Korean translations (canonical, committed)
-│   ├── ko.po               # Local cache rebuilt by update-po (gitignored)
-│   └── messages.mo         # Compiled translations
+│   ├── ko_manual.po        # Korean translations (sole canonical source)
+│   └── ko.po               # Optional local cache (update-po; gitignored)
 ├── dat/locale/
 │   └── ko/                 # Korean locale data
-│       ├── nethack.mo      # Installed message catalog (bundled in nhdat)
+│       ├── nethack.mo      # Message catalog (from make compile; bundled in nhdat)
 │       ├── help            # Localized help files
 │       ├── rumors.tru      # Localized rumors
 │       └── *.lua           # Localized Lua scripts
@@ -478,18 +477,18 @@ If the language has special grammar rules (like Korean postpositions), create de
 
 ### Makefile Targets
 
+Preferred: use `po/Makefile` (`make pot`, `make safe-update`, `make compile`).
+Canonical translations live only in `ko_manual.po`; `ko.po` is an optional local cache.
+
 ```bash
 # Generate POT template from source
 make pot
 
-# Update PO file with new strings
-msgmerge -U ko.po nethack.pot
+# Optional: rebuild local ko.po cache (new msgid discovery)
+make safe-update
 
-# Compile MO file
-msgfmt -c -v -o messages.mo ko.po
-
-# Install to locale directory
-cp messages.mo ../dat/locale/ko/nethack.mo
+# Merge ko_manual.po (+ ko.po if present) and install nethack.mo
+make compile
 ```
 
 ### Compilation Flags
@@ -611,7 +610,7 @@ int codepoint_to_utf8(unsigned int codepoint, char *outbuf);
 
 ### Messages Not Translated
 
-1. Check MO file is compiled: `msgfmt -c ko.po`
+1. Check MO catalog: `cd po && make compile` (or `msgfmt -c ko_manual.po`)
 2. Verify locale directory: `ls dat/locale/ko/`
 3. Check language setting: `OPTIONS=language:ko`
 4. Rebuild nhdat: `make`
@@ -632,9 +631,9 @@ int codepoint_to_utf8(unsigned int codepoint, char *outbuf);
 ### Build Errors
 
 ```
-undefined reference to `gettext'
+undefined reference to `nh_gettext' / `gettext'
 ```
-→ Link with `-lintl`
+→ Ensure `src/mo_reader.c` (and `i18n.c`) are in the link; HanNetHack does **not** use `-lintl`.
 
 ```
 i18n.h: No such file or directory
@@ -643,5 +642,6 @@ i18n.h: No such file or directory
 
 ---
 
-*This document describes the HanNetHack i18n system as of NetHack 3.7.*
+*This document describes the HanNetHack i18n system as of NetHack 5.0 / HanNetHack-5.0.*
 *For Korean-specific translation guidelines, see TRANSLATION_GUIDE_KO.md.*
+*Canonical PO source: `ko_manual.po` only (`ko.po` is a local cache).*

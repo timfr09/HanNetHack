@@ -21,13 +21,14 @@ HanNetHack은 두 가지 번역 메커니즘을 사용합니다:
 ### 1. gettext (C 소스 코드)
 
 ```
-src/*.c의 _("메시지") → po/nethack.pot → (선택) ko.po 캐시 + ko_manual.po → ko_merged.po → dat/locale/ko/nethack.mo → nhdat 번들
+src/*.c의 _("메시지") → po/nethack.pot → po/ko_manual.po → ko_merged.po → dat/locale/ko/nethack.mo → nhdat 번들
+                              └─ (선택) make update-po → 로컬 ko.po 캐시 (신규 msgid 조회·fallback)
 ```
 
 - 런타임에는 GNU libintl 대신 **`src/mo_reader.c`** 가 DLB 안의 `nethack.mo`를 읽고, `_()` 는 **`nh_gettext()`** 로 조회됩니다.
-- **ko_manual.po**: 저장소에 커밋되는 유일한 한국어 번역 원본(우선권).
-- **ko.po**: `make update-po` 로 로컬에서만 재생성되는 선택적 캐시(gitignored). 없어도 `make compile` 은 `ko_manual.po` 만으로 동작.
-- **ko_merged.po**: 빌드 시 `msgcat --use-first ko_manual.po ko.po`(ko.po가 있을 때만 후자 참여)로 생성.
+- **ko_manual.po**: 저장소에 커밋되는 **유일한** 한국어 번역 원본. 편집·리뷰·PR 대상은 여기만.
+- **ko.po**: `make update-po` / `safe-update` 가 POT에서 만드는 **로컬 전용 캐시**(gitignored). 번역 저장소가 아님. 없어도 `make compile` 은 `ko_manual.po` 만으로 동작.
+- **ko_merged.po**: 빌드 시 `msgcat --use-first ko_manual.po [ko.po]`(캐시가 있을 때만 후자 참여)로 생성.
 - 동일 msgid는 항상 **ko_manual.po** 쪽이 이깁니다.
 
 ### 2. 파일 교체 (데이터 파일, Lua)
@@ -57,9 +58,9 @@ if (do_dlb_fopen(dp, locale_name, mode)) {  // 한국어 파일 시도
 po/
 ├── Makefile             # 번역 빌드 시스템 (make pot, make compile 등)
 ├── nethack.pot          # 번역 템플릿 (xgettext로 생성)
-├── ko.po                # 로컬 전용 자동 병합 캐시 (gitignored, 선택)
-├── ko_manual.po         # 한국어 수동 번역 (커밋되는 유일 원본)
-└── ko_merged.po         # 빌드 시 자동 생성 (ko_manual.po + ko.po)
+├── ko_manual.po         # 한국어 번역 유일 원본 (커밋·편집 대상)
+├── ko.po                # 로컬 전용 캐시 (gitignored, 선택; 없어도 됨)
+└── ko_merged.po         # 빌드 시 자동 생성
 
 dat/locale/ko/
 ├── nethack.mo           # 컴파일된 gettext 번역 (nhdat에 번들됨)
@@ -72,14 +73,19 @@ dat/locale/ko/
 └── ...                  # 기타 번역 파일
 ```
 
-### ko_manual.po를 쓰는 이유
+### ko_manual.po / ko.po 역할
 
-`make safe-update`나 `make update-po`는 `ko.po`를 업스트림 변경에 맞춰 자동으로
-수정합니다. 이 과정에서 수동으로 세심하게 조정한 번역이 fuzzy로 표시되거나
-덮어쓰기될 수 있습니다. `ko_manual.po`에 넣은 번역은 이 과정에서 절대 영향받지 않으며,
-빌드 시 `msgcat --use-first`로 합칠 때 항상 우선권을 가집니다.
+| 파일 | 역할 | Git |
+|------|------|-----|
+| `ko_manual.po` | **유일한** 한국어 번역 원본. 모든 `msgstr`는 여기만 편집 | 커밋 |
+| `ko.po` | POT 대비 신규·변경 msgid를 보기 위한 **작업용 캐시**. 번역을 쌓지 않음 | ignore |
 
-**편집 규칙: `ko_manual.po`만 직접 편집.** `ko.po`는 `make update-po` 등으로 로컬에만 두고, 저장소에는 올리지 않습니다.
+`make safe-update` / `update-po`는 로컬 `ko.po`만 갱신한다. 예전에 `ko.po`에
+수동 번역을 두던 시절의 잔재가 아니라, **새 문자열 목록을 뽑는 다리**다.
+발견한 msgid는 `ko_manual.po`로 옮겨 번역하고, `make compile`로 끝낸다.
+캐시가 있으면 병합 시 `ko_manual.po`에 아직 없는 항목만 fallback으로 쓰인다.
+
+**편집 규칙: `ko_manual.po`만 직접 편집.** `ko.po`는 저장소에 올리지 않는다.
 
 ---
 
@@ -90,11 +96,13 @@ dat/locale/ko/
 **메커니즘:** gettext `_()`, `C_()`, `N_()` 매크로로 래핑된 문자열
 
 ```
-src/*.c → xgettext → po/nethack.pot → msgmerge → po/ko.po
-                                                   ↓
-                                    po/ko_manual.po + ko.po
-                                                   ↓ msgcat --use-first
-                                            ko_merged.po → ko.mo
+src/*.c → xgettext → po/nethack.pot
+                         │
+                         ├─→ (선택) msgmerge → 로컬 ko.po  # 신규 msgid 조회용
+                         │
+                         └─→ 번역은 전부 po/ko_manual.po에 추가/수정
+                                    ↓ msgcat --use-first (+ 있으면 ko.po)
+                              ko_merged.po → nethack.mo
 ```
 
 **업스트림 변경 시 처리 (po/Makefile 사용):**
@@ -103,13 +111,13 @@ src/*.c → xgettext → po/nethack.pot → msgmerge → po/ko.po
 # 1. 업스트림 병합 후 .pot 파일 재생성
 cd po && make pot
 
-# 2. ko.po 안전 업데이트 (자동 백업)
+# 2. (선택) 로컬 ko.po 캐시 갱신 — 새 msgid 목록 확인용
 make safe-update
 
-# 3. 새 문자열 중 수동 번역 필요한 것 → ko_manual.po에 추가
-# (ko.po는 직접 편집하지 않음)
+# 3. 새/변경 문자열 → ko_manual.po에만 번역 추가
+# (필요 시: python3 sync_new_msgids_to_manual.py)
 
-# 4. 컴파일 (merge + compile 자동 수행)
+# 4. 컴파일 (merge + compile; ko.po 없어도 동작)
 make compile
 
 # 5. 통계 확인
@@ -145,17 +153,17 @@ make stats
 
 ```bash
 # 1. 변경된 Lua 파일 확인
-git diff upstream/master --name-only -- 'dat/*.lua'
+git diff upstream/NetHack-5.0 --name-only -- 'dat/*.lua'
 
 # 2. 메시지가 있는 파일만 필터링
-for f in $(git diff upstream/master --name-only -- 'dat/*.lua'); do
+for f in $(git diff upstream/NetHack-5.0 --name-only -- 'dat/*.lua'); do
   if grep -q "pline\|verbalize\|nh.text" "$f"; then
     echo "번역 업데이트 필요: $f"
   fi
 done
 
 # 3. diff로 변경 내용 확인
-git diff upstream/master -- dat/nhlib.lua
+git diff upstream/NetHack-5.0 -- dat/nhlib.lua
 
 # 4. 한국어 파일에 동일한 변경 적용
 # dat/locale/ko/nhlib.lua 수동 편집
@@ -258,40 +266,39 @@ git remote set-url --push upstream no_push
 ### 전체 워크플로우
 
 ```bash
-# 1. 업스트림 가져오기
-git fetch upstream NetHack-3.7
+# 1. 업스트림 가져오기 (추적 브랜치: NetHack-5.0)
+git fetch upstream NetHack-5.0
 
 # 2. 업스트림 변경 사항 사전 분석
 #    - 어떤 파일이 변경되었는지 확인
 #    - i18n 래핑된 파일과 겹치는지 확인
-git log --oneline HEAD..upstream/NetHack-3.7
-git log --oneline --stat upstream/NetHack-3.7 -N  # N = 새 커밋 수
+git log --oneline HEAD..upstream/NetHack-5.0
+git log --oneline --stat upstream/NetHack-5.0 -N  # N = 새 커밋 수
 
 # 3. 병합
-git merge upstream/NetHack-3.7 --no-edit
+git merge upstream/NetHack-5.0 --no-edit
 
 # 4. 충돌 해결 (있다면) → "충돌 해결 전략" 섹션 참조
 
 # 5. 번역 파일 업데이트
 cd po
 make pot              # nethack.pot 재생성
-make safe-update      # ko.po 안전 업데이트 (백업 생성)
-make compile          # merge + compile
+make safe-update      # (선택) 로컬 ko.po 캐시 갱신 — 신규 msgid 조회용
+make compile          # ko_manual.po 기준 merge + compile
 
 # 6. 새 메시지에 대한 번역 추가
 #    - make untranslated로 미번역 문자열 확인
-#    - ko_manual.po에 번역 추가
+#    - ko_manual.po에만 번역 추가
 make untranslated
 # ko_manual.po 편집
 make compile          # 다시 컴파일
 
-# 7. 빌드 테스트
-cd .. && make -C sys/unix all  # 또는 프로젝트 빌드 명령
+# 7. 빌드 테스트 (루트에서; -j 비권장)
+cd .. && make all
 
-# 8. 커밋
+# 8. 커밋 (번역 원본만 — ko.po는 커밋하지 않음)
 git add po/ko_manual.po po/nethack.pot
-git commit --author="timfr09 <crefrog@gmail.com>" \
-  -m "Update translations after upstream merge"
+git commit -m "Update translations after upstream merge"
 ```
 
 ### 사전 분석이 중요한 이유
@@ -398,9 +405,9 @@ msgcat --use-first branch_a.po branch_b.po -o merged.po
 cd po
 
 make pot          # 소스에서 nethack.pot 재생성
-make safe-update  # ko.po 안전 업데이트 (자동 백업)
-make merge        # ko_manual.po + ko.po → ko_merged.po
-make compile      # merge + 컴파일 (ko.mo 생성)
+make safe-update  # (선택) 로컬 ko.po 캐시 갱신 (자동 백업)
+make merge        # ko_manual.po (+ 있으면 ko.po) → ko_merged.po
+make compile      # merge + 컴파일 → dat/locale/ko/nethack.mo
 make stats        # 번역 통계
 make check        # 번역 오류 검사
 make untranslated # 미번역 문자열 목록
@@ -410,58 +417,19 @@ make clean        # 생성 파일 삭제
 
 ### `scripts/merge-upstream.sh`
 
-업스트림 병합 전체 과정을 자동화하는 스크립트:
+업스트림 병합 보조 스크립트. 기본 추적 브랜치는 **`upstream/NetHack-5.0`**.
 
 ```bash
-#!/bin/bash
-# 업스트림 병합 스크립트
-set -e
+./scripts/merge-upstream.sh                 # upstream/NetHack-5.0
+./scripts/merge-upstream.sh upstream/NetHack-5.0
 
-echo "=== 1. 업스트림 fetch ==="
-git fetch upstream NetHack-3.7
-
-echo ""
-echo "=== 2. 새 업스트림 커밋 확인 ==="
-NEW_COMMITS=$(git log --oneline HEAD..upstream/NetHack-3.7 | wc -l)
-if [ "$NEW_COMMITS" -eq 0 ]; then
-    echo "업스트림과 동기화되어 있습니다."
-    exit 0
-fi
-echo "$NEW_COMMITS 개의 새 커밋:"
-git log --oneline HEAD..upstream/NetHack-3.7
-
-echo ""
-echo "=== 3. 변경된 파일 확인 ==="
-git log --stat HEAD..upstream/NetHack-3.7
-
-echo ""
-echo "=== 4. 병합 ==="
-git merge upstream/NetHack-3.7 --no-edit
-
-echo ""
-echo "=== 5. POT 파일 재생성 ==="
-cd po
-make pot
-
-echo ""
-echo "=== 6. ko.po 안전 업데이트 ==="
-make safe-update
-
-echo ""
-echo "=== 7. 컴파일 ==="
-make compile
-
-echo ""
-echo "=== 8. 통계 ==="
-make stats
-
-echo ""
-echo "=== 9. 미번역 문자열 ==="
-make untranslated
-
-echo ""
-echo "=== 완료 ==="
-echo "필요시 ko_manual.po에 새 번역을 추가한 후 make compile을 실행하세요."
+# 수동으로 동일한 흐름을 밟을 때:
+git fetch upstream NetHack-5.0
+git log --oneline HEAD..upstream/NetHack-5.0
+git merge upstream/NetHack-5.0 --no-edit
+cd po && make pot && make safe-update && make compile && make stats && make untranslated
+# 새 msgid → ko_manual.po에 번역 후 make compile
+cd .. && make all   # -j 비권장
 ```
 
 ---
@@ -471,10 +439,10 @@ echo "필요시 ko_manual.po에 새 번역을 추가한 후 make compile을 실�
 ### Q: msgfmt에서 format specification 오류가 발생함
 
 ```
-po/ko.po:1234: number of format specifications in 'msgid' and 'msgstr' does not match
+po/ko_manual.po:1234: number of format specifications in 'msgid' and 'msgstr' does not match
 ```
 
-**해결:** 원문과 번역의 `%s`, `%d` 등 포맷 지정자 개수가 일치해야 함.
+**해결:** `ko_manual.po`에서 원문과 번역의 `%s`, `%d` 등 포맷 지정자 개수를 맞춘다.
 
 ```
 # 잘못된 예
@@ -488,13 +456,15 @@ msgstr "%s{을/를} 맞혔다."
 
 ### Q: fuzzy 번역이 많이 생김
 
-업스트림에서 원문이 약간 변경되면 fuzzy로 표시됨.
+`make safe-update`로 만든 **로컬 `ko.po` 캐시**에서 업스트림 원문이 약간 바뀌면
+fuzzy로 표시될 수 있다. 캐시의 fuzzy는 커밋 대상이 아니다.
 
 ```bash
-# fuzzy 항목 찾기
+# (선택) 캐시에서 변경 후보 msgid 찾기
 grep -B2 "^#, fuzzy" po/ko.po | grep "msgid"
 
-# fuzzy 해제: #, fuzzy 줄에서 "fuzzy, " 또는 ", fuzzy" 제거
+# 실제 번역 수정은 항상 ko_manual.po에서
+# fuzzy 플래그가 ko_manual.po에 있으면 문맥에 맞게 고친 뒤 제거
 ```
 
 ### Q: 새로 추가된 Lua 파일에 메시지가 있는지 확인
@@ -537,7 +507,7 @@ msgstr " %1$s%3$s%2$s%4$s."
 
 ### Q: C_() 컨텍스트 항목이 번역이 안 됨
 
-`C_("context", "string")` 사용 시 ko_manual.po에 `msgctxt` 포함한 항목 필요:
+`C_("context", "string")` 사용 시 **`ko_manual.po`에만** `msgctxt` 포함한 항목이 있으면 된다:
 
 ```
 msgctxt "moon"
@@ -545,8 +515,8 @@ msgid "full"
 msgstr "보름"
 ```
 
-**그리고** ko.po에도 해당 항목이 있어야 합니다. `make pot && make safe-update` 후
-ko.po에 새 `msgctxt` 항목이 자동 추가되지만, fuzzy 플래그가 붙을 수 있으므로 확인 필요.
+`make pot`으로 POT에 컨텍스트가 잡혔는지 확인하고, 번역은 `ko_manual.po`에 추가한 뒤
+`make compile`하면 된다. 로컬 `ko.po` 캐시는 필수가 아니다.
 
 ---
 
@@ -554,10 +524,10 @@ ko.po에 새 `msgctxt` 항목이 자동 추가되지만, fuzzy 플래그가 붙�
 
 - [GNU gettext 매뉴얼](https://www.gnu.org/software/gettext/manual/)
 - [NetHack 소스 코드](https://github.com/NetHack/NetHack)
-- `po/ko_manual.po` — 수동 번역 (편집 대상)
+- `po/ko_manual.po` — 한국어 번역 유일 원본 (편집 대상)
 - `po/TRANSLATION_GUIDE_KO.md` — 한국어 번역 가이드 상세
 - `po/I18N_SYSTEM.md` — i18n 시스템 기술 문서
 
 ---
 
-*최종 업데이트: 2026-02-05*
+*최종 업데이트: 2026-10-18*

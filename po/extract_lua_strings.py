@@ -197,7 +197,7 @@ def generate_pot(strings, output=sys.stdout):
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: NetHack 3.7\\n"
+"Project-Id-Version: HanNetHack 5.0\\n"
 "Report-Msgid-Bugs-To: \\n"
 "POT-Creation-Date: {now}\\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n"

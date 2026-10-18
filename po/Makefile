@@ -1,4 +1,4 @@
-# NetHack 3.7 Translation Makefile
+# HanNetHack (NetHack 5.0) Translation Makefile
 # Copyright (c) HanNetHack Project, 2026
 # NetHack may be freely redistributed. See license for details.
 
@@ -45,8 +45,8 @@ XGETTEXT_OPTS = --keyword=_ --keyword=N_ \
                 --keyword=C_:1c,2 \
                 --from-code=UTF-8 \
                 --add-comments=TRANSLATORS: \
-                --package-name=NetHack \
-                --package-version=3.7 \
+                --package-name=HanNetHack \
+                --package-version=5.0 \
                 --msgid-bugs-address=hannethack@example.com \
                 --copyright-holder="HanNetHack Project"
 
@@ -84,9 +84,9 @@ pot-lua: $(LUA_SOURCES)
 		$(MSGINIT) -i $(POTFILE) -o $@ -l $* --no-translator; \
 	fi
 
-# Update existing PO files from POT (only auto-extracted strings)
-# Manual entries in *_manual.po are preserved separately
-# WARNING: This can modify ko.po! Use 'make safe-update' instead for safety.
+# Rebuild optional local ko.po cache from POT (new-msgid discovery aid).
+# Canonical translations live only in ko_manual.po — never edit ko.po by hand.
+# Prefer 'make safe-update' (creates a backup when ko.po already exists).
 update-po: $(POTFILE)
 	@for lang in $(LANGUAGES); do \
 		if [ -f $$lang.po ]; then \
@@ -119,8 +119,8 @@ safe-update: $(POTFILE)
 		fi \
 	done
 
-# Migrate ALL translated entries to ko_manual.po for permanent protection
-# This ensures no translations are lost when update-po modifies ko.po
+# One-shot: copy all currently translated merged entries into ko_manual.po
+# (historical helper; day-to-day work edits ko_manual.po directly)
 migrate: merge
 	@for lang in $(LANGUAGES); do \
 		if [ -f $${lang}_merged.po ]; then \
@@ -170,7 +170,7 @@ merge:
 	@for lang in $(LANGUAGES); do \
 		if [ -f $${lang}_manual.po ] && [ -f $$lang.po ]; then \
 			echo "Merging $${lang}_manual.po + $$lang.po -> $${lang}_merged.po"; \
-			echo "(Manual entries take priority over auto-extracted)"; \
+			echo "(ko_manual.po wins; ko.po is cache fallback only)"; \
 			$(MSGCAT) --use-first -o $${lang}_merged.po $${lang}_manual.po $$lang.po; \
 		elif [ -f $${lang}_manual.po ]; then \
 			echo "Using $${lang}_manual.po directly -> $${lang}_merged.po"; \
@@ -279,45 +279,44 @@ distclean: clean
 	rm -f $(POTFILE)
 
 help:
-	@echo "NetHack Translation Makefile"
+	@echo "HanNetHack Translation Makefile"
 	@echo ""
 	@echo "File Structure:"
-	@echo "  ko_manual.po    - Canonical Korean translations (SAFE, committed)"
-	@echo "  ko.po           - Local cache of auto-extracted POT entries"
-	@echo "                    (NOT committed; regenerate with update-po)"
+	@echo "  ko_manual.po    - Sole canonical Korean translations (edit+commit)"
+	@echo "  ko.po           - Optional local cache (NOT committed; update-po)"
 	@echo "  ko_merged.po    - Combined file (auto-generated, never edit)"
 	@echo "  lua_strings.pot - Strings from Lua files (auto-generated)"
 	@echo ""
 	@echo "IMPORTANT: Only edit ko_manual.po."
-	@echo "  - ko.po is a throwaway, rebuilt from nethack.pot"
-	@echo "  - ko_manual.po entries always win the merge"
+	@echo "  - ko.po is optional; make compile works without it"
+	@echo "  - ko_manual.po always wins when merging with a cache"
 	@echo ""
 	@echo "Targets:"
 	@echo "  pot          - Generate POT from C + Lua files (merged)"
 	@echo "  pot-c        - Generate POT from C files only"
 	@echo "  pot-lua      - Generate POT from Lua files only"
-	@echo "  safe-update  - Update ko.po with backup (RECOMMENDED)"
-	@echo "  update-po    - Update ko.po from POT (no backup)"
-	@echo "  merge        - Merge manual + auto -> merged"
-	@echo "  compile      - Compile merged PO to MO file"
+	@echo "  safe-update  - Rebuild local ko.po cache with backup (optional)"
+	@echo "  update-po    - Rebuild local ko.po cache (no backup)"
+	@echo "  merge        - ko_manual (+ cache if present) -> merged"
+	@echo "  compile      - Merge + msgfmt + copy to dat/locale/ko/nethack.mo"
 	@echo "  stats        - Show translation statistics"
 	@echo "  check        - Check for translation errors"
 	@echo "  translation-ci - msgfmt -c on manual+merged; stats (for PR/CI)"
 	@echo "  untranslated - List untranslated strings"
 	@echo "  fuzzy        - List fuzzy translations"
-	@echo "  migrate      - Auto-migrate ALL translations to ko_manual.po"
+	@echo "  migrate      - One-shot: copy merged translations into ko_manual.po"
 	@echo "  verify       - Check no translations were lost after merge"
 	@echo "  install      - Install MO files"
 	@echo "  clean        - Remove generated files"
 	@echo ""
 	@echo "Safe Workflow:"
 	@echo "  1. Edit ko_manual.po (add/fix translations)"
-	@echo "  2. make compile      (merge + compile)"
-	@echo "  3. make install      (copy to dat/locale)"
+	@echo "  2. make compile      (merge + MO + dat/locale copy)"
+	@echo "  3. cd .. && make all  (refresh nhdat)"
 	@echo ""
 	@echo "When adding new source strings:"
 	@echo "  1. make pot          (extract from C + Lua sources)"
-	@echo "  2. make safe-update  (update ko.po with backup)"
+	@echo "  2. make safe-update  (optional: local ko.po for new msgid list)"
 	@echo "  3. Edit ko_manual.po (add translations)"
 	@echo "  4. make compile"
 	@echo ""

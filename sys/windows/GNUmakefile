@@ -972,7 +972,7 @@ $(DAT)/bogusmon: $(U)makedefs.exe $(DAT)/bogusmon.txt $(DAT)/engrave.txt $(DAT)/
 $(LOCALE_KO_RND): $(DAT)/locale/ko/data.base $(DAT)/locale/ko/epitaph.txt \
 		$(DAT)/locale/ko/engrave.txt $(DAT)/locale/ko/bogusmon.txt \
 		$(U)makedefs.exe
-	sh scripts/build-locale-rnddata.sh
+	sh ../scripts/build-locale-rnddata.sh
 
 $(DLBLST): $(LUAFILES) | $(DAT_CLEAN) $(DAT_NOCLEAN) $(LOCALE_KO_RND)
 	echo data > $(DLBLST)

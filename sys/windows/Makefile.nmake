@@ -2497,8 +2497,8 @@ $(DAT)locale\ko\data $(DAT)locale\ko\epitaph $(DAT)locale\ko\engrave $(DAT)local
 		$(DAT)locale\ko\data.base $(DAT)locale\ko\epitaph.txt \
 		$(DAT)locale\ko\engrave.txt $(DAT)locale\ko\bogusmon.txt \
 		$(U)makedefs.exe
-	@echo Building Korean locale data tables via scripts/build-locale-rnddata.sh
-	@sh scripts/build-locale-rnddata.sh
+	@echo Building Korean locale data tables via ../scripts/build-locale-rnddata.sh
+	@sh ../scripts/build-locale-rnddata.sh
 
 $(DAT)rumors: $(U)makedefs.exe $(DAT)rumors.tru   $(DAT)rumors.fal
 	$(U)makedefs -r

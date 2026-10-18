@@ -2127,7 +2127,8 @@ nhdat$(NHV):	$(U)dlb.exe $(DAT)data $(DAT)oracles $(OPTIONS_FILE) $(LUA_FILES) \
 	$(DAT)rumors $(DAT)help $(DAT)hh $(DAT)cmdhelp $(DAT)keyhelp \
 	$(DAT)history $(DAT)opthelp $(DAT)optmenu $(DAT)wizhelp $(DAT)porthelp \
 	$(DAT)license $(DAT)engrave $(DAT)epitaph $(DAT)bogusmon $(DAT)tribute \
-	$(DAT)locale\ko\nethack.mo
+	$(DAT)locale\ko\nethack.mo $(DAT)locale\ko\data \
+	$(DAT)locale\ko\epitaph $(DAT)locale\ko\engrave $(DAT)locale\ko\bogusmon
 	@echo Building $@
 	@cd $(DAT)
 	@echo data >dlb.lst
@@ -2156,7 +2157,7 @@ nhdat$(NHV):	$(U)dlb.exe $(DAT)data $(DAT)oracles $(OPTIONS_FILE) $(LUA_FILES) \
 #	Paths stored with forward slashes so dlb_fopen() can look them
 #	up consistently on every platform.
 	@if exist locale\ko\nethack.mo @echo locale/ko/nethack.mo >>dlb.lst
-	@for %%N in (help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp data.base bogusmon engrave epitaph oracles.txt rumors.tru rumors.fal) do @if exist locale\ko\%%N @echo locale/ko/%%N >>dlb.lst
+	@for %%N in (help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp data bogusmon engrave epitaph oracles.txt rumors.tru rumors.fal) do @if exist locale\ko\%%N @echo locale/ko/%%N >>dlb.lst
 	@for %%N in (locale\ko\*.lua) do @echo locale/ko/%%~nxN >>dlb.lst
 	@$(U)dlb cIf dlb.lst $(SRC)nhdat
 	@cd $(SRC)
@@ -2488,6 +2489,16 @@ $(OUTL)alloc.o: alloc.c $(CONFIG_H)
 
 $(DAT)data: $(U)makedefs.exe $(DATABASE)
 	$(U)makedefs -d
+
+# Korean encyclopedia + rnd tables: use the shared script so UTF-8 Hangul
+# survives (stale util/makedefs.exe would turn it into '#') and EN dat/
+# files are restored via mktemp+trap.
+$(DAT)locale\ko\data $(DAT)locale\ko\epitaph $(DAT)locale\ko\engrave $(DAT)locale\ko\bogusmon: \
+		$(DAT)locale\ko\data.base $(DAT)locale\ko\epitaph.txt \
+		$(DAT)locale\ko\engrave.txt $(DAT)locale\ko\bogusmon.txt \
+		$(U)makedefs.exe
+	@echo Building Korean locale data tables via ../scripts/build-locale-rnddata.sh
+	@sh ../scripts/build-locale-rnddata.sh
 
 $(DAT)rumors: $(U)makedefs.exe $(DAT)rumors.tru   $(DAT)rumors.fal
 	$(U)makedefs -r

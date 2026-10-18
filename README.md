@@ -48,8 +48,8 @@ Source code uses GNU gettext-style macros (`_()`, `N_()`, `pgettext`, …). Tran
 
 At runtime, strings are resolved through the in-tree reader **`src/mo_reader.c`**. The game **does not link against GNU `libintl`**.
 
-- **Canonical translator-edited file in git:** `po/ko_manual.po`. A local `po/ko.po` produced by `make update-po` is an optional extraction/merge aid and is **not** committed.
-- Korean help, rumors, Lua, and other locale assets live under **`dat/locale/ko/`**; when opening data files, **`dlb_fopen()`** prefers language-specific paths when present.
+- **Sole canonical translation source in git:** `po/ko_manual.po` (edit and commit only this). A local `po/ko.po` from `make update-po` / `safe-update` is an optional new-msgid cache and is **not** committed; `make compile` works without it.
+- Korean help, rumors, encyclopedia (`data.base` → compiled `locale/ko/data`), Lua, and other locale assets live under **`dat/locale/ko/`**; **`dlb_fopen()`** prefers language-specific paths when present. Build compiled locale tables with `sh scripts/build-locale-rnddata.sh`.
 - Korean grammar markers in strings (topic/object particles, etc.) are interpreted by **`ko_postpos.c`**. Rules and tone guidelines: [`po/TRANSLATION_GUIDE_KO.md`](po/TRANSLATION_GUIDE_KO.md); APIs and pipeline: [`po/I18N_SYSTEM.md`](po/I18N_SYSTEM.md).
 
 ### Pre-built binaries

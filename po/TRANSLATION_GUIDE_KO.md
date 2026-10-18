@@ -24,10 +24,11 @@
 ## 1. 프로젝트 개요
 
 ### 1.1 HanNetHack이란?
-NetHack 3.7의 한국어 번역 프로젝트입니다. GNU gettext 기반 i18n 시스템을 사용합니다.
+NetHack **5.0**의 한국어 로컬라이즈 포크입니다. gettext 스타일 매크로(`_()` 등)와
+인트리 `.mo` 리더(`src/mo_reader.c`)를 쓰며, 번역 원본은 **`po/ko_manual.po`** 하나입니다.
 
 ### 1.2 번역 범위
-- **소스 코드 메시지**: 게임 내 모든 텍스트 (약 9,000+ 문자열)
+- **소스 코드 메시지**: 게임 내 텍스트 (`cd po && make stats`로 현재 개수 확인)
 - **도움말 파일**: help, cmdhelp, opthelp 등
 - **데이터 파일**: rumors, epitaph, engrave 등
 - **Lua 스크립트**: 퀘스트 대화, 던전 메시지 등
@@ -61,14 +62,14 @@ NetHack 3.7의 한국어 번역 프로젝트입니다. GNU gettext 기반 i18n �
 │   ├── i18n.h                    # _(), N_() 매크로
 │   └── ko_postpos.h              # 조사 처리 헤더
 ├── po/
-│   ├── ko_manual.po              # 한국어 번역 (편집 대상, 저장소 커밋)
-│   ├── ko.po                     # 로컬 캐시 (update-po가 생성, gitignored)
+│   ├── ko_manual.po              # 한국어 번역 유일 원본 (편집·커밋)
+│   ├── ko.po                     # 로컬 캐시 (신규 msgid 조회용, gitignored)
 │   ├── nethack.pot               # 번역 템플릿 (자동 생성)
-│   ├── messages.mo               # 컴파일된 번역
 │   ├── Makefile                  # 번역 빌드
-│   └── TRANSLATION_GUIDE.md      # 이 가이드
+│   └── TRANSLATION_GUIDE_KO.md   # 이 가이드
 ├── dat/
 │   ├── locale/ko/                # 한국어 데이터 파일
+│   │   ├── nethack.mo            # 컴파일된 메시지 카탈로그 (nhdat에 번들)
 │   │   ├── help                  # 도움말
 │   │   ├── cmdhelp               # 명령어 도움말
 │   │   ├── rumors.tru            # 진짜 소문
@@ -97,8 +98,9 @@ NetHack 3.7의 한국어 번역 프로젝트입니다. GNU gettext 기반 i18n �
 |------|------|------|
 | `*.c` | 소스 코드, _() 매크로로 래핑 | O |
 | `nethack.pot` | 추출된 문자열 템플릿 | X |
-| `ko.po` | 한국어 번역 | O |
-| `messages.mo` | 컴파일된 바이너리 | X |
+| `ko_manual.po` | **유일한** 한국어 번역 원본 | O |
+| `ko.po` | 로컬 캐시 (신규 msgid 조회·선택적 fallback) | X |
+| `dat/locale/ko/nethack.mo` | 컴파일된 바이너리 (nhdat 번들) | X |
 
 ### 3.3 매크로 종류
 
@@ -481,52 +483,55 @@ msgstr "투명 상태이다"
 
 ## 6. 번역 파일 관리
 
-> **⚠️ LLM 에이전트 주의사항**: 번역 수정 시 **반드시 ko_manual.po**를 편집하세요!
-> ko.po를 직접 수정하면 `make update-po` 실행 시 덮어씌워져 모든 작업이 손실됩니다.
-> ko_manual.po에 추가한 번역은 병합 시 ko.po보다 우선 적용됩니다.
+> **⚠️ LLM 에이전트 주의사항**: 번역 수정 시 **반드시 `ko_manual.po`만** 편집하세요!
+> `ko.po`는 번역 원본이 아니라 `update-po`가 만드는 로컬 캐시입니다. 여기 쓴 내용은
+> 저장소에 안 남고, `make update-po`로 덮어씌워질 수 있습니다.
 
-### ⚠️ 6.1 핵심 정책: ko_manual.po를 편집하세요!
+### ⚠️ 6.1 핵심 정책: `ko_manual.po`가 유일 원본
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │  파일 구조 및 역할                                          │
 ├─────────────────────────────────────────────────────────────┤
-│  ko_manual.po  →  ⭐ 수동 번역 (이 파일을 편집!)            │
-│  ko.po         →  ❌ 자동 추출 (편집 금지!)                 │
+│  ko_manual.po  →  ⭐ 유일한 번역 원본 (이 파일만 편집·커밋) │
+│  ko.po         →  로컬 캐시 (신규 msgid 조회용, 선택)       │
 │  ko_merged.po  →  병합 결과 (자동 생성)                     │
-│  ko.mo         →  컴파일된 바이너리 (자동 생성)             │
+│  nethack.mo    →  컴파일된 바이너리 (자동 생성)             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-| 파일 | 편집 | update-po 영향 | 설명 |
-|------|------|----------------|------|
-| `ko_manual.po` | ⭐ O | 없음 | 안전! 항상 이 파일 편집 |
-| `ko.po` | ❌ X | 덮어쓰기 가능 | 위험! 편집 비권장 |
+| 파일 | 편집 | Git | 설명 |
+|------|------|-----|------|
+| `ko_manual.po` | ⭐ O | 커밋 | **유일한** 한국어 번역 원본 |
+| `ko.po` | ❌ X | ignore | POT에서 재생성되는 작업용 캐시 |
 
-### 6.2 왜 ko.po를 직접 편집하면 안 되나요?
+`make compile`은 `ko_manual.po`만으로 동작한다. `ko.po`는 없어도 된다.
 
-1. **덮어쓰기 위험**: `make update-po` 실행 시 소스에서 다시 추출
-2. **데이터 손실**: 구조 변경 시 수동 편집 내용 손실 가능
-3. **병합 충돌**: ko_manual.po와 중복 시 혼란 발생
+### 6.2 `ko.po`의 현재 의미
+
+`ko.po`는 “두 번째 번역 파일”이 아니다.
+
+1. **신규 msgid 조회**: `make pot && make safe-update` 후 무엇이 생겼는지 본다
+2. **선택적 fallback**: 캐시가 있으면 `ko_manual.po`에 아직 없는 항목만 병합 시 채움
+3. **스텁 이관**: `sync_new_msgids_to_manual.py` 입력으로 쓰인 뒤, 번역은 `ko_manual.po`에서 완성
+
+번역을 `ko.po`에 쌓지 않는다. 발견한 항목은 곧바로 `ko_manual.po`로 옮긴다.
 
 ### 6.3 병합 우선순위
 
 ```
-ko_manual.po (우선) + ko.po (보조) → ko_merged.po
+ko_manual.po (유일 원본) + [있으면] ko.po (캐시 fallback) → ko_merged.po
 ```
 
-**동일한 msgid가 있으면 ko_manual.po의 번역이 사용됩니다.**
+**동일한 msgid가 있으면 `ko_manual.po`의 번역이 사용됩니다.**
 
 #### ⚠️ 빈 문자열 제한사항
 
 `msgcat --use-first`는 빈 문자열(`msgstr ""`)을 "미번역"으로 간주하여 무시합니다.
-따라서 ko_manual.po에서 빈 문자열로 덮어쓰기가 불가능합니다.
+조합 슬롯을 비워야 할 때는 `ko_manual.po`에서 영폭 공백(`​`)이나 일반 공백(`" "`)을
+쓰거나, 조합의 다른 조각에서 의미를 완성한다. (`ko.po`를 편집하지 않는다.)
 
-**빈 문자열이 필요한 경우:**
-1. ko.po를 직접 수정 (update-po 시 주의 필요)
-2. 또는 조합 메시지의 다른 부분에서 의미를 완성하도록 번역
-
-예: 동사 접두어 `"are "`, `"were "`는 ko.po에서 이미 빈 문자열로 되어 있음.
+예: 동사 접두어 `"are "`, `"were "` → `msgstr "​"` (영폭 공백).
 
 ### 6.4 안전한 워크플로우
 
@@ -538,8 +543,8 @@ cd po
 # 1. ko_manual.po 편집
 vi ko_manual.po
 
-# 2. 병합 + 컴파일 + 설치
-make compile && make install DESTDIR=../dat
+# 2. 병합 + 컴파일 (+ dat/locale/ko/nethack.mo 반영)
+make compile
 ```
 
 #### 소스에서 새 문자열 추출
@@ -550,7 +555,7 @@ cd po
 # 1. POT 템플릿 생성
 make pot
 
-# 2. 안전하게 ko.po 업데이트 (백업 자동 생성)
+# 2. (선택) 로컬 ko.po 캐시 갱신 — 새 msgid 목록 확인용
 make safe-update
 
 # 3. 새 문자열을 ko_manual.po에 번역 추가
@@ -560,17 +565,16 @@ vi ko_manual.po
 make compile
 ```
 
-### 6.5 ko_manual.po에 추가할 항목들
+### 6.5 ko_manual.po에 넣을 항목들
 
 - 몬스터 이름 (`newt` → `도롱뇽`)
 - 아이템 이름 (`long sword` → `장검`)
 - 역할/종족 이름
 - **포맷 문자열 어순 수정** (위치 지정자 `%1$s`, `%2$s` 사용)
 - **조합 메시지 어순 수정** (from_what() 관련 등)
-- **ko.po의 fuzzy/잘못된 번역 덮어쓰기**
-- ko.po의 잘못된 번역 수정 (덮어쓰기)
+- 업스트림/`make pot`으로 생긴 **새 msgid** 전체
 - 자동 추출되지 않는 문자열
-
+- 기존 번역 다듬기·용어 통일
 ### 6.6 PO 파일 구조
 
 ```
@@ -1029,32 +1033,32 @@ des.message("운명의 던전에 오신 것을 환영합니다!")
 ### 13.1 전체 빌드
 
 ```bash
-# 1. 소스 빌드
-cd .
-make -j4
+# 1. 소스 빌드 (병렬 make 비권장: Lua in-tree)
+make all
 
 # 2. POT 생성
 cd po && make pot
 
-# 3. PO 업데이트
-msgmerge -U ko.po nethack.pot
+# 3. (선택) 로컬 캐시로 신규 msgid 확인
+make safe-update
+# fuzzy 후보는 캐시(ko.po)에 생길 수 있음 — 번역은 ko_manual.po에만 반영
 
-# 4. fuzzy 처리
-grep -c "^#, fuzzy" ko.po
+# 4. 새/변경 문자열을 ko_manual.po에 번역
 
-# 5. MO 컴파일
-msgfmt -c -v -o messages.mo ko.po
+# 5. 병합 + MO 컴파일
+make compile
 
-# 6. 데이터 재생성
-cd .. && make
+# 6. 데이터 재생성 (nhdat에 .mo 반영)
+cd .. && make all
 ```
 
 ### 13.2 번역만 업데이트
 
 ```bash
-cd ./po
-msgfmt -c -v -o messages.mo ko.po
-cd .. && make
+cd po
+# ko_manual.po 편집 후
+make compile
+cd .. && make all
 ```
 
 ### 13.3 검증 체크리스트
@@ -1100,10 +1104,10 @@ cd .. && make
 ### 15.1 포맷 지정자 불일치
 
 ```
-ko.po:1234: format specifications not same
+ko_manual.po:1234: format specifications not same
 ```
 
-해결: %s, %d 순서/개수 일치
+해결: `ko_manual.po`에서 `%s`, `%d` 순서/개수 일치
 
 ### 15.2 인코딩 오류
 
@@ -1133,16 +1137,17 @@ invalid multibyte sequence
 
 ```
 1. 미번역 문자열 찾기
-   msgattrib --untranslated ko.po
+   cd po && make untranslated
+   # 또는: msgattrib --untranslated ko_manual.po
 
 2. 소스 확인 (컨텍스트 파악)
    grep -n "문자열" ../src/*.c
 
 3. 번역 추가
-   에디터로 ko.po 편집
+   에디터로 ko_manual.po 편집
 
 4. 컴파일 & 테스트
-   msgfmt -c -v -o messages.mo ko.po
+   make compile && cd .. && make all
 ```
 
 ### 16.2 소스 코드 수정 (새 문자열 래핑)
@@ -1155,19 +1160,19 @@ invalid multibyte sequence
    에디터로 소스 수정
 
 3. 빌드
-   cd .. && make -j4
+   make all
 
 4. POT 재생성
    cd po && make pot
 
-5. PO 업데이트
-   msgmerge -U ko.po nethack.pot
+5. (선택) 로컬 캐시로 신규 msgid 확인
+   make safe-update
 
 6. 새 문자열 번역
-   에디터로 ko.po 편집
+   에디터로 ko_manual.po 편집
 
 7. MO 컴파일 & 테스트
-   msgfmt -c -v -o messages.mo ko.po
+   make compile && cd .. && make all
 ```
 
 ### 16.3 조합 메시지 작업
@@ -1243,40 +1248,38 @@ grep "enl_msg" ../src/insight.c
 # 래핑 안 된 문자열
 grep 'pline("' ../src/*.c | grep -v '_('
 
-# PO 검색
-grep -A2 'msgid "문자열"' ko.po
+# PO 검색 (유일 원본)
+grep -A2 'msgid "문자열"' ko_manual.po
 ```
 
 ### 17.3 통계
 
 ```bash
-# 전체 상태
-msgfmt -c -v -o /dev/null ko.po
+# 전체 상태 (권장: make stats)
+msgfmt -c -v -o /dev/null ko_manual.po
 
 # fuzzy 개수
-grep -c "^#, fuzzy" ko.po
+grep -c "^#, fuzzy" ko_manual.po
 
 # 미번역 개수
-msgattrib --untranslated ko.po | grep -c "^msgid"
+msgattrib --untranslated ko_manual.po | grep -c "^msgid"
 
 # 총 문자열
-grep -c "^msgid " ko.po
+grep -c "^msgid " ko_manual.po
 ```
 
 ### 17.4 편집
 
 ```bash
-# PO 업데이트
-msgmerge -U ko.po nethack.pot
+# (선택) 로컬 캐시로 신규 msgid 확인
+make safe-update
 
-# MO 컴파일
-msgfmt -c -v -o messages.mo ko.po
+# 번역은 항상 ko_manual.po 편집 후
+make compile
 
-# 미번역 추출
-msgattrib --untranslated ko.po > untranslated.po
-
-# fuzzy 추출
-msgattrib --only-fuzzy ko.po > fuzzy.po
+# 미번역 / fuzzy 추출
+msgattrib --untranslated ko_manual.po > untranslated.po
+msgattrib --only-fuzzy ko_manual.po > fuzzy.po
 ```
 
 ### 17.5 빌드
@@ -1285,11 +1288,11 @@ msgattrib --only-fuzzy ko.po > fuzzy.po
 # POT 생성
 cd po && make pot
 
-# 전체 빌드
-cd . && make -j4
+# 전체 빌드 (Lua in-tree; -j 비권장)
+cd .. && make all
 
-# 클린 빌드
-make clean && make -j4
+# 클린 후 재빌드
+make clean && make all
 ```
 
 ---

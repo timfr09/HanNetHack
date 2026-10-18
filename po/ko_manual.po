@@ -13122,10 +13122,10 @@ msgstr "?) 속삭인다"
 msgid "A"
 msgstr "하나"
 
-# "A <monster>" prefix for messages - 한국어에는 부정관사가 없으므로 공백으로 처리
+# "A <monster>" prefix — 빈 msgstr면 gettext가 영어 "A "로 폴백. ZWSP 필수.
 #: ../src/trap.c:4707
 msgid "A "
-msgstr ""
+msgstr "​"
 
 # ============================================================
 # 전투 메시지 추가 (Additional Combat Messages)
@@ -21388,10 +21388,10 @@ msgstr "해결됨"
 msgid "Some"
 msgstr "몇몇"
 
-# 한국어에는 부정관사가 없으므로 빈 문자열로 처리
+# "Some <monster>" prefix — 빈 msgstr면 영어 폴백. ZWSP 필수.
 #: ../src/trap.c:4707
 msgid "Some "
-msgstr ""
+msgstr "​"
 
 #: ../src/pickup.c:3658
 #, c-format
@@ -58869,8 +58869,9 @@ msgstr ", 불행히도"
 msgid "ANDOVA BEGARIN"
 msgstr "ANDOVA BEGARIN"
 
+# "An <monster>" prefix — 빈 msgstr면 영어 폴백. ZWSP 필수.
 msgid "An "
-msgstr ""
+msgstr "​"
 
 msgid "And just how do you expect to do that?"
 msgstr "대체 어떻게 그걸 하려고 하는가?"

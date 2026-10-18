@@ -8,13 +8,13 @@
 
 | 경로 | 역할 | Git |
 |------|------|-----|
-| `po/ko_manual.po` | 한국어 **유일의 수동 편집** 소스 | 커밋 |
-| `po/ko.po` | `nethack.pot`에서 갱신되는 **로컬 캐시** (새 msgid 조회용) | 보통 무시 |
+| `po/ko_manual.po` | 한국어 **유일한** 번역 원본 (수동 편집·커밋) | 커밋 |
+| `po/ko.po` | POT에서 갱신되는 **로컬 캐시** (새 msgid 조회·선택적 fallback). 번역을 쌓지 않음 | ignore |
 | `po/ko_merged.po` | `msgcat` 병합 결과 | 생성물 |
 | `dat/locale/ko/nethack.mo` | `msgfmt` 출력 (게임이 읽는 카탈로그) | `make compile`로 갱신 |
 | `dat/locale/ko/*.lua`, `help` 등 | PO 밖 **데이터/스크립트** 직접 번역 | 각각 커밋 |
 
-`make compile`은 `ko_manual.po`만 있어도 동작한다. `ko.po`는 있으면 병합 시 **아직 `ko_manual.po`에 없는** 자동 추출 항목을 채우는 데 쓰인다(우선순위는 항상 `ko_manual.po`).
+`make compile`은 `ko_manual.po`만 있어도 동작한다. `ko.po`는 있으면 병합 시 **아직 `ko_manual.po`에 없는** 항목만 fallback으로 채운다(우선순위는 항상 `ko_manual.po`). 발견한 새 msgid는 캐시에 두지 말고 `ko_manual.po`로 옮긴다.
 
 ---
 

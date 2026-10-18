@@ -93,13 +93,18 @@ DATHELP = help hh cmdhelp keyhelp history opthelp optmenu usagehlp wizhelp
 # Korean message catalog shipped inside nhdat.  src/mo_reader.c
 # looks this up through dlb_fopen() as "locale/ko/nethack.mo".
 LOCALE_KO_MO = dat/locale/ko/nethack.mo
-LOCALE_KO_RND = dat/locale/ko/epitaph dat/locale/ko/engrave dat/locale/ko/bogusmon
-# Korean localized files (in locale/ko/ directory)
+# makedefs-processed locale assets (encyclopedia + rnd text)
+LOCALE_KO_RND = dat/locale/ko/data dat/locale/ko/epitaph \
+	dat/locale/ko/engrave dat/locale/ko/bogusmon
+# Korean localized files (in locale/ko/ directory).
+# Encyclopedia opens DATAFILE "data" → dlb prefers locale/ko/data.
 LOCALE_KO = locale/ko/nethack.mo \
 	locale/ko/help locale/ko/hh locale/ko/cmdhelp locale/ko/keyhelp \
 	locale/ko/history locale/ko/opthelp locale/ko/optmenu locale/ko/usagehlp locale/ko/wizhelp \
+	locale/ko/data \
 	locale/ko/bogusmon locale/ko/engrave locale/ko/epitaph \
 	locale/ko/oracles.txt locale/ko/rumors.tru locale/ko/rumors.fal \
+	locale/ko/nhcore.lua locale/ko/nhlib.lua \
 	locale/ko/quest.lua locale/ko/themerms.lua locale/ko/tut-1.lua locale/ko/tut-2.lua \
 	locale/ko/air.lua locale/ko/astral.lua locale/ko/earth.lua locale/ko/water.lua \
 	locale/ko/minend-2.lua locale/ko/Arc-loca.lua
@@ -155,8 +160,8 @@ all:    $(ALLDEP)
 $(LOCALE_KO_MO): po/ko_manual.po
 	( cd po && $(MAKE) compile )
 
-$(LOCALE_KO_RND): dat/locale/ko/epitaph.txt dat/locale/ko/engrave.txt \
-		dat/locale/ko/bogusmon.txt util/makedefs
+$(LOCALE_KO_RND): dat/locale/ko/data.base dat/locale/ko/epitaph.txt \
+		dat/locale/ko/engrave.txt dat/locale/ko/bogusmon.txt util/makedefs
 	sh scripts/build-locale-rnddata.sh
 
 $(GAME): $(LUA_LIB)

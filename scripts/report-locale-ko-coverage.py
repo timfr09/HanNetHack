@@ -164,7 +164,8 @@ def main() -> int:
         print("  (none found by heuristic)")
     print(f"\nTotal heuristic hits: {total}")
     print("\nNote: epitaph/oracles may keep Latin/English on purpose.")
-    print("Note: data.base is often partially translated.")
+    print("Note: data.base lookup keys/`~` excludes stay English; narrative should be KO.")
+    print("Note: runtime needs compiled locale/ko/data (scripts/build-locale-rnddata.sh).")
     return 0
 
 

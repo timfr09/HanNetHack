@@ -224,29 +224,24 @@ diff -u dat/opthelp dat/locale/ko/opthelp
 
 | 파일 | 설명 | 번역 상태 | 비고 |
 |------|------|----------|------|
-| `data.base` → `data` | 백과사전 (291KB) | ⚠️ 미번역 | 파일 교체 가능 |
+| `data.base` → `data` | 백과사전 | ✅ `dat/locale/ko/data.base` (서술문 번역) | 런타임은 컴파일된 `locale/ko/data` |
 | `license` | 라이선스 | ❌ 원본 유지 | 법적 문서 |
 | `rumors.*` | 소문 | ✅ 번역됨 | |
 | `oracles.txt` | 신탁 | ✅ 번역됨 | |
 
-**data.base 번역 방법:**
+**백과사전 (`data.base`) 운영:**
+
+- 편집 원본: `dat/locale/ko/data.base` (커밋). 조회 키·`~` 제외 패턴·`*` 헤더는 영어 유지.
+- 게임은 `dlb_fopen("data")` → `locale/ko/data`를 먼저 연다. **소스(`data.base`)만 넣으면 안 된다.**
+- 빌드: `sh scripts/build-locale-rnddata.sh` 가 `data.base` → `locale/ko/data`로 컴파일하고, Unix/`Makefile.nmake`가 nhdat에 번들한다.
 
 ```bash
-# 1. data.base 복사 및 번역
-cp dat/data.base dat/locale/ko/data.base
-# 수동으로 내용 번역
-
-# 2. 컴파일 (makedefs 사용)
-# data.base → data 로 컴파일됨
-cd dat/locale/ko
-../../util/makedefs -d
-
-# 또는 Makefile 사용
-make data -C dat/locale/ko
+# 업스트림에서 영어 백과가 바뀐 뒤
+diff -u dat/data.base dat/locale/ko/data.base | less
+# 변경 항목만 한국어로 반영한 다음:
+sh scripts/build-locale-rnddata.sh
+# 이후 make all / nmake 로 nhdat 재생성
 ```
-
-**참고:** `data.base`는 약 1,200개 항목이 있는 대규모 파일입니다.
-점진적 번역을 권장합니다.
 
 ---
 

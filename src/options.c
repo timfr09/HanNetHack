@@ -1,4 +1,4 @@
-/* NetHack 5.0	options.c	$NHDT-Date: 1778886716 2026/05/15 15:11:56 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.782 $ */
+/* $NHDT-Header: NetHack 5.0 options.c 2026/09/30_14:47:34 NetHack-5.0:1.799 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Michael Allison, 2008. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -5358,6 +5358,12 @@ optfn_boolean(
                   " compiled in."));
             iflags.idlecheckpoint = FALSE;
             give_opt_msg = FALSE;
+            break;
+#endif
+#ifdef WIN32CON
+        case opt_windowsterminal:
+            iflags.wt_how =
+                (negated) ? wt_in_config_negated : wt_in_config_not_negated;
             break;
 #endif
         default:

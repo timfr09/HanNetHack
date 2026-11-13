@@ -1,4 +1,4 @@
-/* NetHack 5.0	decl.c	$NHDT-Date: 1781973044 2026/06/20 16:30:44 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.368 $ */
+/* $NHDT-Header: NetHack 5.0 decl.c 2026/10/18_12:54:26 NetHack-5.0:1.374 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Michael Allison, 2009. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -547,7 +547,7 @@ static const struct instance_globals_n g_init_n = {
     0, /* now_or_before_idx */
     /* decl.c */
     NULL, /* nomovemsg */
-    0, /* nsubroom */
+    0,    /* nsubroom */
     /* dokick.c */
     UNDEFINED_VALUES, /* nowhere */
     /* files.c */
@@ -556,7 +556,7 @@ static const struct instance_globals_n g_init_n = {
     /* mhitm.c */
     0L, /* noisetime */
     /* mkmap.c */
-    UNDEFINED_PTR, /* new_locations */
+    UNDEFINED_PTR,   /* new_locations */
     UNDEFINED_VALUE, /* n_loc_filled */
     /* options.c */
     0, /* n_menu_mapped */
@@ -573,7 +573,13 @@ static const struct instance_globals_n g_init_n = {
     STRANGE_OBJECT, /* nocreate2 */
     STRANGE_OBJECT, /* nocreate3 */
     STRANGE_OBJECT, /* nocreate4 */
-    TRUE, /* havestate*/
+#ifdef NO_TERMS
+    TRUE,
+#else
+    FALSE,
+#endif
+
+TRUE, /* havestate*/
 };
 
 static const struct instance_globals_o g_init_o = {
@@ -831,7 +837,9 @@ static const struct instance_globals_w g_init_w = {
     UNDEFINED_PTR, /* wportal */
     /* new */
     { wdmode_traditional, NO_COLOR },       /* wsettings */
-    0L,                                     /* were.c, allmain.c */
+    /* were.c, allmain.c */
+    0L,                                     /* were_changes */
+    0L,                                     /* whitelist_shk */
     TRUE, /* havestate*/
 };
 

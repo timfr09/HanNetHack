@@ -1,4 +1,4 @@
-/* NetHack 5.0	lock.c	$NHDT-Date: 1781973052 2026/06/20 16:30:52 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.150 $ */
+/* $NHDT-Header: NetHack 5.0 lock.c 2026/11/02_21:05:17 NetHack-5.0:1.155 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2011. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -131,7 +131,7 @@ picklock(void)
                 alreadyunlocked = !(gx.xlock.door->doormask & D_LOCKED);
             } else {
                 gx.xlock.box->otrapped = 0;
-                gx.xlock.box->tknown = 0;
+                gx.xlock.box->tknown = 1; /* known not trapped */
                 what = (gx.xlock.box->otyp == CHEST) ? _("chest") : _("box");
                 alreadyunlocked = !gx.xlock.box->olocked;
             }
@@ -495,10 +495,9 @@ pick_lock(
                 } else if (autounlock
                           && (flags.autounlock & AUTOUNLOCK_APPLY_KEY) != 0) {
                     c = 'q';
-                    if (pick != &dummypick) {
-                        Sprintf(qbuf, _("Unlock it with %s?"), yname(pick));
-                        c = ynq(qbuf);
-                    }
+                    if (pick != &dummypick)
+                        c = ynq(safe_qbuf(qbuf, _("Unlock it with "), _("?"), pick,
+                                          yname, ysimple_name, _("that")));
                     if (c != 'y')
                         return PICKLOCK_DID_NOTHING;
                 } else {
@@ -639,13 +638,16 @@ pick_lock(
             }
 
             if (autounlock) {
-                Sprintf(qbuf,
-                        (door->doormask & D_LOCKED) ? _("Unlock it with %s?")
-                                                    : _("Lock it with %s?"),
-                        yname(pick));
+                Sprintf(qbuf, "%s it with ",
+                        (door->doormask & D_LOCKED) ? _("Unlock")
+                                                    : _("Lock"));
+                /* a long key name gets shortened to fit */
+                (void) safe_qbuf(qbuf, qbuf, _("?"), pick, yname, ysimple_name,
+                                 _("that"));
             } else {
-                Strcpy(qbuf, (door->doormask & D_LOCKED) ? _("Unlock it?")
-                                                         : _("Lock it?"));
+                Sprintf(qbuf, _("%s it?"),
+                        (door->doormask & D_LOCKED) ? _("Unlock")
+                                                    : _("Lock"));
             }
             c = ynq(qbuf);
             if (c != 'y')

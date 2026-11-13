@@ -1,4 +1,4 @@
-/* NetHack 5.0	teleport.c	$NHDT-Date: 1781973069 2026/06/20 16:31:09 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.246 $ */
+/* $NHDT-Header: NetHack 5.0 teleport.c 2026/06/20_16:31:09 NetHack-5.0:1.250 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2011. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -1221,9 +1221,10 @@ level_tele(void)
             } else if (!strcmp(buf, "\033")) { /* cancelled */
                 return;
             }
-            if (wizard && (protolev = find_level(buf)) != 0) {
+            if (wizard && (protolev = find_level_substr(buf)) != 0) {
                 newlevel.dnum = protolev->dlevel.dnum;
                 newlevel.dlevel = protolev->dlevel.dlevel;
+                newlev = depth(&u.uz);
                 force_dest = TRUE;
             } else if (wizard && !strcmp(buf, "?")) {
                 schar destlev;

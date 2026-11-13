@@ -1,4 +1,4 @@
-/* NetHack 5.0	wintty.c	$NHDT-Date: 1781973100 2026/06/20 16:31:40 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.438 $ */
+/* $NHDT-Header: NetHack 5.0 wintty.c 2026/11/02_21:05:17 NetHack-5.0:1.444 $ */
 /* Copyright (c) David Cohrs, 1991                                */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -547,6 +547,7 @@ tty_init_nhwindows(int *argcp UNUSED, char **argv UNUSED)
     ttyDisplay->inmore = ttyDisplay->inread = ttyDisplay->intr = 0;
     ttyDisplay->dismiss_more = 0;
     ttyDisplay->color = NO_COLOR;
+    ttyDisplay->framecolor = NO_COLOR;
     ttyDisplay->attrs = 0;
     ttyDisplay->topl_utf8 = 0;
     ttyDisplay->mixed = 0;
@@ -2293,13 +2294,15 @@ tty_putstr(winid window, int attr, const char *str)
         int suppress_history = (attr & ATR_NOHISTORY),
             urgent_message = (attr & ATR_URGENT);
 
-#if defined(ASCIIGRAPH) && !defined(NO_TERMS)
+#if defined(ASCIIGRAPH)
+#if !defined(NO_TERMS) || defined(WIN32CON)
         /* if ^C occurs, player is prompted with "Really quit?" and that
            prompt is issued via tty_putstr(WIN_MESSAGE); if ^C happens
            while writing DECgraphics chars, the prompt text would be
            rendered as VT line-drawing characters unless we do this;
            also, if color was in progress it wouldn't be switched off */
         end_glyphout();
+#endif
 #endif
         /* if message is designated 'urgent' don't suppress it if user has
            typed ESC at --More-- prompt when dismissing an earlier message;
@@ -3847,11 +3850,13 @@ void
 end_glyphout(void)
 {
     HUPSKIP();
-#if defined(ASCIIGRAPH) && !defined(NO_TERMS)
+#if defined(ASCIIGRAPH)
+#if !defined(NO_TERMS) || defined(WIN32CON)
     if (GFlag) {
         GFlag = FALSE;
         graph_off();
     }
+#endif
 #endif
     if (ttyDisplay->color != NO_COLOR) {
         term_end_color();
@@ -4050,8 +4055,8 @@ tty_print_glyph(
 
     print_vt_code3(AVTC_GLYPH_START, glyphinfo->gm.tileidx, special);
 
-#ifndef NO_TERMS
-    if (ul_hack && ch == '_') { /* non-destructive underscore */
+#if !defined(NO_TERMS)
+    if (ul_hack && ch == '_' ) { /* non-destructive underscore */
         (void) putchar((char) ' ');
         backsp();
     }

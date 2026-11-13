@@ -1,4 +1,4 @@
-/* NetHack 5.0	allmain.c	$NHDT-Date: 1781973040 2026/06/20 16:30:40 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.304 $ */
+/* $NHDT-Header: NetHack 5.0 allmain.c 2026/08/23_22:51:13 NetHack-5.0:1.309 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2012. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -962,8 +962,8 @@ welcome(boolean new_game) /* false => restoring an old game */
     if (new_game && is_korean_locale())
         /* two lines for a narrow (portrait) screen; no gender, the role
            name says enough */
-        pline("반갑습니다! %s. 네트핵의 세계에 오신 것을 환영합니다!\n"
-              "지금부터 당신은 %s 성향의 %s %s입니다.",
+        pline(_("반갑습니다! %s. 네트핵의 세계에 오신 것을 환영합니다!\n"
+                "지금부터 당신은 %s 성향의 %s %s입니다."),
               svp.plname, align_str(u.ualignbase[A_ORIGINAL]),
               _(gu.urace.adj),
               _((currentgend && gu.urole.name.f) ? gu.urole.name.f

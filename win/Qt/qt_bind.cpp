@@ -1,3 +1,4 @@
+// $NHDT-Header: NetHack 5.0 qt_bind.cpp 2026/10/17_14:49:13 NetHack-5.0:1.99 $
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
 // NetHack may be freely redistributed.  See license for details.
@@ -687,9 +688,7 @@ qt_timer_fire(void)
          * advantage and do a game checkpoint,
          * then resume the wait.
          */
-#if defined(INSURANCE)
-        save_currentstate();
-#endif /* INSURANCE */
+        do_idlecheckpoint();
     }
     if (qt_input_timer->isActive())
         qt_input_timer->stop();

@@ -1,4 +1,4 @@
-/* NetHack 5.0	mon.c	$NHDT-Date: 1781062909 2026/06/09 19:41:49 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.634 $ */
+/* $NHDT-Header: NetHack 5.0 mon.c 2026/11/02_21:05:17 NetHack-5.0:1.643 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Derek S. Ray, 2015. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -1387,18 +1387,20 @@ m_consume_obj(struct monst *mtmp, struct obj *otmp)
     } else if (otmp == uchain) {
         unpunish(); /* frees uchain */
     } else {
-        boolean deadmimic, slimer;
-        int poly, grow, heal, eyes, mstone, vis = canseemon(mtmp);
-        int corpsenm = (otmp->otyp == CORPSE ? otmp->corpsenm : NON_PM);
-
-        deadmimic = (otmp->otyp == CORPSE && (corpsenm == PM_SMALL_MIMIC
-                                              || corpsenm == PM_LARGE_MIMIC
-                                              || corpsenm == PM_GIANT_MIMIC));
-        slimer = (otmp->otyp == GLOB_OF_GREEN_SLIME);
+        short otyp = otmp->otyp;
+        int poly, grow, heal, eyes, mstone, vis = canseemon(mtmp),
+            corpsenm = ((otyp == CORPSE || otyp == EGG)
+                        ? otmp->corpsenm : NON_PM);
+        boolean deadmimic = (otyp == CORPSE
+                             && (corpsenm == PM_SMALL_MIMIC
+                                 || corpsenm == PM_LARGE_MIMIC
+                                 || corpsenm == PM_GIANT_MIMIC)),
+                slimer = (otyp == GLOB_OF_GREEN_SLIME),
+                pyroegg = (otyp == EGG && corpsenm == PM_PYROLISK);
         poly = polyfood(otmp);
         grow = mlevelgain(otmp);
         heal = mhealup(otmp);
-        eyes = (otmp->otyp == CARROT);
+        eyes = (otyp == CARROT);
         mstone = mstoning(otmp);
         delobj(otmp); /* munch */
         if (poly || slimer) {
@@ -1427,9 +1429,9 @@ m_consume_obj(struct monst *mtmp, struct obj *otmp)
             mcureblindness(mtmp, canseemon(mtmp));
         if (ispet && deadmimic)
             quickmimic(mtmp);
-        if (otmp->otyp == EGG && corpsenm == PM_PYROLISK)
+        if (pyroegg)
             explode(mtmp->mx, mtmp->my, -11, d(3, 6), 0, EXPL_FIERY);
-        if (corpsenm != NON_PM)
+        if (otyp == CORPSE && corpsenm != NON_PM)
             mon_givit(mtmp, &mons[corpsenm]);
     }
 }
@@ -1592,6 +1594,9 @@ meatobj(struct monst *mtmp) /* for gelatinous cubes */
         /* lastly, edible items; yum! */
         } else {
             /* devour */
+            boolean pyroegg = (otmp->otyp == EGG
+                               && otmp->corpsenm == PM_PYROLISK);
+
             ++count;
             if (cansee(mtmp->mx, mtmp->my)) {
                 /* (see above; distant_name() sometimes has side-effects */
@@ -1613,6 +1618,9 @@ meatobj(struct monst *mtmp) /* for gelatinous cubes */
             ptr = mtmp->data;
             if (ptr != original_ptr)
                 return !ptr ? 2 : 1;
+            /* a pyrolisk egg's explosion can burn up otmp2, so stop */
+            if (pyroegg)
+                otmp2 = (struct obj *) 0;
         }
 
         /* Engulf & devour is instant, so don't set meating */
@@ -4423,6 +4431,9 @@ normal_shape(struct monst *mon)
         unsigned mcan = mon->mcan;
 
         (void) newcham(mon, &mons[mcham], NC_SHOW_MSG);
+        /* reverting might have killed it */
+        if (DEADMONSTER(mon))
+            return;
         mon->cham = NON_PM;
         /* newcham() may uncancel a polymorphing monster; override that */
         if (mcan)
@@ -5473,6 +5484,9 @@ newcham(
     if (!(mtmp->misc_worn_check & W_ARMG))
         mselftouch(mtmp, _("No longer petrify-resistant, "),
                    !svc.context.mon_moving);
+    /* a wielded cockatrice corpse petrifies the new form outright */
+    if (DEADMONSTER(mtmp))
+        return 1; /* polymorph itself succeeded */
     (void) maybe_set_terrain_effects(mtmp, olddata);
     check_gear_next_turn(mtmp);
 

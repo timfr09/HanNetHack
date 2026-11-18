@@ -1,4 +1,4 @@
-/* NetHack 5.0	pickup.c	$NHDT-Date: 1781973061 2026/06/20 16:31:01 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.397 $ */
+/* $NHDT-Header: NetHack 5.0 pickup.c 2026/06/27_15:18:44 NetHack-5.0:1.405 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2012. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -908,6 +908,10 @@ pickup(int what) /* should be a long */
  pickupdone:
     gp.pickup_encumbrance = 0;
     add_valid_menu_class(0); /* reset */
+#ifdef TTY_PERM_INVENT
+    if (WINDOWPORT(tty))
+        docrt();
+#endif
     return (n_tried > 0);
 }
 

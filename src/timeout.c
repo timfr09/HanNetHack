@@ -1,4 +1,4 @@
-/* NetHack 5.0	timeout.c	$NHDT-Date: 1781973070 2026/06/20 16:31:10 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.212 $ */
+/* $NHDT-Header: NetHack 5.0 timeout.c 2026/06/20_22:26:43 NetHack-5.0:1.214 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2018. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -481,13 +481,11 @@ slimed_to_death(struct kinfo *kptr)
      * Despite lack of Unchanging, neither done() nor savelife() calls
      * rehumanize() if hero dies while polymorphed.
      * polymon() undoes the slime countdown's mimick-green-slime hack
-     * but does not perform polyself()'s light source bookkeeping.
+     * and updates the hero's light source to match the new form.
      * No longer need to manually increment uconduct.polyselfs to reflect
      * [formerly implicit] change of form; polymon() takes care of that.
      * Temporarily ungenocide if necessary.
      */
-    if (emits_light(gy.youmonst.data))
-        del_light_source(LS_MONSTER, monst_to_any(&gy.youmonst));
     save_mvflags = svm.mvitals[PM_GREEN_SLIME].mvflags;
     svm.mvitals[PM_GREEN_SLIME].mvflags = save_mvflags & ~G_GENOD;
     /* become a green slime; also resets youmonst.m_ap_type+.mappearance */

@@ -1,4 +1,4 @@
-/* NetHack 5.0	engrave.c	$NHDT-Date: 1781973048 2026/06/20 16:30:48 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.179 $ */
+/* $NHDT-Header: NetHack 5.0 engrave.c 2026/06/20_22:26:43 NetHack-5.0:1.181 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2012. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -395,7 +395,8 @@ read_engr_at(coordxy x, coordxy y)
                 endpunct = ".";
             }
             if (is_korean_locale()) /* "엘베레스"라고 쓰여 있다. */
-                You("%s\"%s\"라고 쓰여 있다.", Blind ? "손으로 더듬어 보니 " : "", et);
+                You(_("%s\"%s\"라고 쓰여 있다."),
+                    Blind ? _("손으로 더듬어 보니 ") : "", et);
             else
                 You(_("%s: \"%s\"%s"), (Blind) ? _("feel the words") : C_("engrave_read", "read"), et,
                     endpunct);

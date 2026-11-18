@@ -1,4 +1,4 @@
-/* NetHack 5.0	eat.c	$NHDT-Date: 1781973048 2026/06/20 16:30:48 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.354 $ */
+/* $NHDT-Header: NetHack 5.0 eat.c 2026/07/31_10:25:58 NetHack-5.0:1.358 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2012. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -1868,6 +1868,7 @@ eatcorpse(struct obj *otmp)
     long rotted = 0L;
     int ll_conduct = 0;
     boolean stoneable,
+            zombifying = obj_has_timer(otmp, ZOMBIFY_MON),
             slimeable = (mnum == PM_GREEN_SLIME && !Slimed && !Unchanging
                          && !slimeproof(gy.youmonst.data)),
             glob = otmp->globby ? TRUE : FALSE;
@@ -1899,6 +1900,8 @@ eatcorpse(struct obj *otmp)
             rotted += 2L;
         else if (otmp->blessed)
             rotted -= 2L;
+        if (zombifying)
+            rotted += 5L;
     }
 
     /* 5.0: globs don't become tainted, they shrink away */

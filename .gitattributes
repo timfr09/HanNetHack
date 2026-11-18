@@ -3,8 +3,11 @@
 *.sh NHSUBST text eol=lf
 *.pl NHSUBST
 *.md NHSUBST
+*.yml NHSUBST
+Contributing.md NHSUBST
 Porting NHSUBST
 README NHSUBST
+Cross-compiling NHSUBST
 * text=auto
 
 # Line endings: keep Unix/build/source/catalog files LF across Windows and WSL.

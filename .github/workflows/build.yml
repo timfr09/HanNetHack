@@ -12,6 +12,8 @@ on:
   pull_request:
     branches:
       - HanNetHack-5.0
+  merge_group:
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -160,3 +162,32 @@ jobs:
               throw "Unexpected bundled item: $bad"
             }
           }
+
+  check-lua-syntax:
+    name: Lua syntax check
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            build-essential flex bison \
+            libbz2-dev zlib1g-dev \
+            libfl-dev \
+            libncurses-dev \
+            pkg-config \
+            uuid-dev
+
+      - name: Generate makefiles
+        run: |
+          cd sys/unix
+          sh setup.sh hints/linux.501
+          cd ../..
+
+      - name: Check Lua scripts
+        run: make check-lua-syntax

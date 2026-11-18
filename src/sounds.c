@@ -690,8 +690,11 @@ domonnoise(struct monst *mtmp)
     if (Deaf)
         return ECMD_OK;
     /* shk_chat can handle nonverbal monsters */
-    if (is_silent(ptr) && !mtmp->isshk)
+    if (is_silent(ptr) && !mtmp->isshk) {
+        pline(_("%s %s"), Monnam(mtmp),
+              Hallucination ? _(walltalkmsg()) : _("makes no sound."));
         return ECMD_OK;
+    }
 
     /* leader might be poly'd; if he can still speak, give leader speech */
     if (mtmp->m_id == svq.quest_status.leader_m_id && msound > MS_ANIMAL)
@@ -1254,6 +1257,27 @@ dotalk(void)
     return result;
 }
 
+/* suffix message for when talking to a non-responsive whatever */
+const char *
+walltalkmsg(void)
+{
+    static const char *const walltalk[] = {
+        N_("gripes about its job."),
+        N_("tells you a funny joke!"),
+        N_("insults your heritage!"),
+        N_("chuckles."),
+        N_("guffaws merrily!"),
+        N_("deprecates your exploration efforts."),
+        N_("suggests a stint of rehab..."),
+        N_("doesn't seem to be interested."),
+    };
+    int idx = rn2(10);
+
+    if (idx >= SIZE(walltalk))
+        idx = SIZE(walltalk) - 1;
+    return walltalk[idx];
+}
+
 staticfn int
 dochat(void)
 {
@@ -1351,21 +1375,7 @@ dochat(void)
             } else if (!Hallucination) {
                 pline(_("It's like talking to a wall."));
             } else {
-                static const char *const walltalk[] = {
-                    N_("gripes about its job."),
-                    N_("tells you a funny joke!"),
-                    N_("insults your heritage!"),
-                    N_("chuckles."),
-                    N_("guffaws merrily!"),
-                    N_("deprecates your exploration efforts."),
-                    N_("suggests a stint of rehab..."),
-                    N_("doesn't seem to be interested."),
-                };
-                int idx = rn2(10);
-
-                if (idx >= SIZE(walltalk))
-                    idx = SIZE(walltalk) - 1;
-                pline_The(_("wall %s"), _(walltalk[idx]));
+                pline_The(_("wall %s"), _(walltalkmsg()));
             }
             return ECMD_OK;
         }

@@ -964,7 +964,7 @@ welcome(boolean new_game) /* false => restoring an old game */
     if (new_game && is_korean_locale())
         /* two lines for a narrow (portrait) screen; no gender, the role
            name says enough */
-        pline(_("반갑습니다! %s. 네트핵의 세계에 오신 것을 환영합니다!\n"
+        pline(_("반갑습니다! %s. 넷핵의 세계에 오신 것을 환영합니다!\n"
                 "지금부터 당신은 %s 성향의 %s %s입니다."),
               svp.plname, align_str(u.ualignbase[A_ORIGINAL]),
               _(gu.urace.adj),

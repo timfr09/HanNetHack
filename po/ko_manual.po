@@ -46,7 +46,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: NetHack 3.7\n"
+"Project-Id-Version: 넷핵 3.7\n"
 "Report-Msgid-Bugs-To: hannethack@example.com\n"
 "POT-Creation-Date: 2026-05-03 02:55+0900\n"
 "PO-Revision-Date: 2026-01-17 00:00+0900\n"
@@ -4902,12 +4902,12 @@ msgstr "%s{이/가} %s하고, 배낭을 %s!"
 #: ../src/allmain.c:920
 #, c-format
 msgid "%s %s, the%s, welcome back to NetHack!"
-msgstr "%s %s, %s, NetHack에 다시 오신 것을 환영합니다!"
+msgstr "%s %s, %s, 넷핵에 다시 오신 것을 환영합니다!"
 
 #: ../src/allmain.c:919
 #, c-format
 msgid "%s %s, welcome to NetHack!  You are a%s."
-msgstr "%s %s, NetHack에 오신 것을 환영한다! 당신은 %s이다."
+msgstr "%s %s, 넷핵에 오신 것을 환영한다! 당신은 %s이다."
 
 #: ../src/attrib.c:664 ../src/dig.c:1307 ../src/dog.c:1336 ../src/dokick.c:212
 #: ../src/dothrow.c:1966 ../src/dothrow.c:2520 ../src/eat.c:3042
@@ -13600,7 +13600,7 @@ msgstr "원주민"
 
 #: ../src/pager.c:2833
 msgid "About NetHack (version information)."
-msgstr "NetHack 정보 (버전 정보)."
+msgstr "넷핵 정보 (버전 정보)."
 
 # == Menu Control Help (메뉴 조작 도움말) ==
 # From src/options.c - hardcoded menu control descriptions
@@ -15296,7 +15296,7 @@ msgstr "복합 옵션:"
 
 #: ../src/pager.c:2836
 msgid "Concise history of NetHack."
-msgstr "NetHack의 간략한 역사."
+msgstr "넷핵의 간략한 역사."
 
 #: ../src/version.c:416
 #, c-format
@@ -15610,7 +15610,7 @@ msgstr "데모고르곤"
 
 #: ../src/pager.c:2845
 msgid "Description of NetHack's command line."
-msgstr "NetHack 명령줄 설명."
+msgstr "넷핵 명령줄 설명."
 
 #: ../src/pray.c:2669
 msgid "Despite your deafness, you seem to hear"
@@ -16552,7 +16552,7 @@ msgstr "잠시 %s!"
 
 #: ../src/pager.c:2739
 msgid "For more information on NetHack, or to report a bug,"
-msgstr "NetHack에 대한 자세한 정보나 버그 신고는,"
+msgstr "넷핵에 대한 자세한 정보나 버그 신고는,"
 
 #: ../src/zap.c:6175
 msgid "For object types which come in stacks, you may specify a plural name"
@@ -19249,11 +19249,11 @@ msgstr "네메시스 리디쿨리"
 
 #: ../src/allmain.c:871
 msgid "NetHack is filmed in front of an undead studio audience."
-msgstr "NetHack은 언데드 스튜디오 관객 앞에서 촬영되었다."
+msgstr "넷핵은 언데드 스튜디오 관객 앞에서 촬영되었다."
 
 #: ../src/artifact.c:2293 ../src/rumors.c:553
 msgid "NetHack rumors file closed for renovation."
-msgstr "NetHack 소문 파일이 수리를 위해 닫혔다."
+msgstr "넷핵 소문 파일이 수리를 위해 닫혔다."
 
 #: ../src/botl.c:1059
 msgid "Neutral"
@@ -22517,7 +22517,7 @@ msgstr "이 게임의 NHUUID는 { %s } 이다."
 
 #: ../src/pager.c:2846
 msgid "The NetHack license."
-msgstr "NetHack 라이선스."
+msgstr "넷핵 라이선스."
 
 #: ../src/rumors.c:675
 msgid "The Oracle meditates for a moment and then intones:"
@@ -22729,7 +22729,7 @@ msgstr "기초가 너무 단단해서 이 각도로는 뚫을 수 없다."
 
 #: ../src/wizcmds.c:552
 msgid "The fuzz tester will make NetHack execute random keypresses."
-msgstr "퍼즈 테스터가 NetHack이 무작위 키 입력을 실행하게 한다."
+msgstr "퍼즈 테스터가 넷핵이 무작위 키 입력을 실행하게 한다."
 
 #: ../src/apply.c:1134 ../src/mhitu.c:1728
 #, c-format
@@ -23444,14 +23444,14 @@ msgstr "이것이 당신의 %s{을/를} 채웠다!"
 #: ../src/version.c:735
 msgid ""
 "This save or bones file does not match this program (upgrades change "
-"internal layouts). On Windows 3.7+, delete *.NetHack-saved-game under "
-"%LOCALAPPDATA%\\NetHack\\3.7\\ and bones bon* under "
-"%PROGRAMDATA%\\NetHack\\3.7\\ (HanNetHack: sys/windows/cleanup-incompatible-"
+"internal layouts). On Windows 3.7+, delete *.넷핵-saved-game under "
+"%LOCALAPPDATA%\\넷핵\\3.7\\ and bones bon* under "
+"%PROGRAMDATA%\\넷핵\\3.7\\ (HanNetHack: sys/windows/cleanup-incompatible-"
 "saves.cmd).\n"
 msgstr ""
 "이 세이브나 bones는 지금 실행 중인 프로그램과 맞지 않습니다(내부 구조 변경). Windows 3.7+에서는 "
-"%%LOCALAPPDATA%%\\NetHack\\3.7\\ 안의 *.NetHack-saved-game과 "
-"%%PROGRAMDATA%%\\NetHack\\3.7\\ 안의 bon* bones를 지우거나, HanNetHack의 "
+"%%LOCALAPPDATA%%\\넷핵\\3.7\\ 안의 *.넷핵-saved-game과 "
+"%%PROGRAMDATA%%\\넷핵\\3.7\\ 안의 bon* bones를 지우거나, HanNetHack의 "
 "sys\\windows\\cleanup-incompatible-saves.cmd 를 실행하세요.\n"
 
 #: ../src/version.c:743
@@ -23783,7 +23783,7 @@ msgstr "현지 지원에 연락하려면, %s에게 연락하세요."
 
 #: ../src/pager.c:2733
 msgid "To contact the NetHack development team directly,"
-msgstr "NetHack 개발팀에 직접 연락하려면,"
+msgstr "넷핵 개발팀에 직접 연락하려면,"
 
 #: ../src/pray.c:1237
 msgid "To enter the castle, thou must play the right tune!"
@@ -24755,7 +24755,7 @@ msgstr "데이빗의 보물 동물원에 온 것을 환영한다!"
 # role.c - 게임 시작 시 환영 메시지. 단독 문장
 #: ../src/mail.c:495
 msgid "Welcome to NetHack."
-msgstr "NetHack에 오신 것을 환영합니다."
+msgstr "넷핵에 오신 것을 환영합니다."
 
 #: ../src/vault.c:1000
 msgid "Well, begone."
@@ -58576,10 +58576,10 @@ msgstr ""
 
 msgid ""
 "\n"
-"Are you perhaps trying to run NetHack within a zip utility?"
+"Are you perhaps trying to run 넷핵 within a zip utility?"
 msgstr ""
 "\n"
-"ZIP 유틸리티 안에서 NetHack을 실행하려는 것은 아닌지요?"
+"ZIP 유틸리티 안에서 넷핵을 실행하려는 것은 아닌지요?"
 
 msgid "         By Stichting Mathematisch Centrum and M. Stephenson."
 msgstr "         Stichting Mathematisch Centrum 및 M. Stephenson 제작."
@@ -58969,7 +58969,7 @@ msgstr "필수 파일을 열 수 없습니다: \"%s\""
 # Copyright 배너 (Copyright Banner)
 # ============================================================
 msgid "NetHack, Copyright 1985-2026"
-msgstr "NetHack, 저작권 1985-2026"
+msgstr "넷핵, 저작권 1985-2026"
 
 msgid "PRATYAVAYAH"
 msgstr "PRATYAVAYAH"
@@ -61812,7 +61812,7 @@ msgstr "여기서 할 수 있는 명령 메뉴 보기"
 #. # Extended command descriptions (cmd.c doextlist)
 msgctxt "extcmd_desc"
 msgid "show a summary of the game's development"
-msgstr "네트핵 개발 연표 보기"
+msgstr "넷핵 개발 연표 보기"
 
 #. # Extended command descriptions (cmd.c doextlist)
 msgctxt "extcmd_desc"
@@ -62172,7 +62172,7 @@ msgstr "처치한 몬스터 목록"
 #. # Extended command descriptions (cmd.c doextlist)
 msgctxt "extcmd_desc"
 msgid "list compile time options for this version of NetHack"
-msgstr "이 NetHack 버전의 컴파일 옵션 목록"
+msgstr "이 넷핵 버전의 컴파일 옵션 목록"
 
 #. # Extended command descriptions (cmd.c doextlist)
 msgctxt "extcmd_desc"
@@ -63822,3 +63822,76 @@ msgid "Remove"
 msgstr "걷어내겠습니까"
 
 # 종료 창: 플레이 시간, 능력치 탭 열, 던전 개요 현재 위치
+
+
+# ============================================================
+# New msgids after upstream merge (2026-11-22 23:18:54)
+# ============================================================
+
+msgid "This tastes funny."
+msgstr "맛이 우습다."
+
+msgid "This tastes remarkable!"
+msgstr "맛이 특별하다!"
+
+#, c-format
+msgid "%s is caught in the %s%s!"
+msgstr "%s{이/가} %s%s에 휩쓸렸다!"
+
+msgid " explosion"
+msgstr " 폭발"
+
+#, c-format
+msgid "%s resists the %s%s!"
+msgstr "%s{이/가} %s%s{을/를} 저항했다!"
+
+#, c-format
+msgid "are caught in the %s%s!"
+msgstr "%s%s에 휩쓸렸다!"
+
+#, c-format
+msgid "explosion of %s morphed into %s"
+msgstr "%s 폭발이 %s{으/로} 변함"
+
+msgid "What do you want to stash in "
+msgstr "넣기: "
+
+msgid "Unlock it with "
+msgstr "열기: "
+
+#, c-format
+msgid "%s it?"
+msgstr "%s할까요?"
+
+msgid "Put what type of objects into "
+msgstr "넣을 종류: "
+
+msgid "Take what type of objects out of "
+msgstr "꺼낼 종류: "
+
+msgid "Put what into "
+msgstr "넣기: "
+
+msgid "Take what out of "
+msgstr "꺼내기: "
+
+msgid "makes no sound."
+msgstr "아무 소리도 내지 않는다."
+
+#, c-format
+msgid "know %s is not trapped."
+msgstr "%s에 함정이 없다는 것을 안다."
+
+msgid ""
+"반갑습니다! %s. 넷핵의 세계에 오신 것을 환영합니다!\n"
+"지금부터 당신은 %s 성향의 %s %s입니다."
+msgstr ""
+"반갑습니다! %s. 넷핵의 세계에 오신 것을 환영합니다!\n"
+"지금부터 당신은 %s 성향의 %s %s입니다."
+
+#, c-format
+msgid "%s\"%s\"라고 쓰여 있다."
+msgstr "%s\"%s\"라고 쓰여 있다."
+
+msgid "손으로 더듬어 보니 "
+msgstr "손으로 더듬어 보니 "

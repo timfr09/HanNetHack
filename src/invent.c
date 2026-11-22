@@ -1772,7 +1772,7 @@ getobj(
 {
     struct obj *otmp;
     char ilet = 0;
-    char buf[BUFSZ], qbuf[QBUFSZ];
+    char buf[BUFSZ], qbuf[QBUFSZ], contbuf[QBUFSZ];
     char lets[BUFSZ], altlets[BUFSZ];
     int suggested = 0;
     char *bp = buf, *ap = altlets;
@@ -1929,10 +1929,18 @@ getobj(
         You(_("don't have anything %sto %s."), inaccess ? _("else ") : "", getobj_word(word));
         return (struct obj *) 0;
     }
+    /* when stashing into a container, name it in the prompt */
+    contbuf[0] = '\0';
+    if (gc.current_container && !strcmp(word, "stash"))
+        (void) safe_qbuf(contbuf, _("What do you want to stash in "), "?",
+                         gc.current_container, doname, ansimpleoname,
+                         "it");
     for (;;) {
         cnt = 0L;
         cntgiven = FALSE;
-        if (!strcmp(word, "tip"))
+        if (*contbuf)
+            Strcpy(qbuf, contbuf);
+        else if (!strcmp(word, "tip"))
             Sprintf(qbuf, _("What do you want to tip?"));
         else
             Sprintf(qbuf, _("What do you want to %s?"), getobj_word(word));
@@ -1989,9 +1997,13 @@ getobj(
                 allowed_choices = altlets;
 
             menuquery[0] = qbuf[0] = '\0';
-            if (iflags.force_invmenu)
-                Snprintf(menuquery, sizeof menuquery,
-                         _("What do you want to %s?"), getobj_word(word));
+            if (iflags.force_invmenu) {
+                if (*contbuf)
+                    Strcpy(menuquery, contbuf);
+                else
+                    Snprintf(menuquery, sizeof menuquery,
+                             _("What do you want to %s?"), getobj_word(word));
+            }
             if (!allowed_choices || *allowed_choices == HANDS_SYM
                 || *buf == HANDS_SYM)
                 handsbuf = getobj_hands_txt(word, qbuf);

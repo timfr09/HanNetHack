@@ -1,4 +1,4 @@
-/* NetHack 5.0	spell.c	$NHDT-Date: 1781973068 2026/06/20 16:31:08 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.189 $ */
+/* $NHDT-Header: NetHack 5.0 spell.c 2026/06/20_22:26:43 NetHack-5.0:1.191 $ */
 /*      Copyright (c) M. Stephenson 1988                          */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -361,6 +361,15 @@ learn(void)
     char splname[BUFSZ];
     boolean costly = TRUE, faded_to_blank = FALSE;
     struct obj *book = svc.context.spbook.book;
+
+    /* the book can be destroyed mid-study without interrupting the hero
+       (burned by a fire explosion, for one); book_disappears() has
+       cleared the pointer, so just stop */
+    if (!book) {
+        svc.context.spbook.delay = 0;
+        svc.context.spbook.o_id = 0;
+        return 0;
+    }
 
     /* JDS: lenses give 50% faster reading; 33% smaller read time */
     if (svc.context.spbook.delay && ublindf

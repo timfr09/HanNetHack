@@ -1,4 +1,4 @@
-/* NetHack 5.0	flag.h	$NHDT-Date: 1781973080 2026/06/20 16:31:20 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.265 $ */
+/* $NHDT-Header: NetHack 5.0 flag.h 2026/06/20_22:26:43 NetHack-5.0:1.268 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Michael Allison, 2006. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -241,7 +241,15 @@ enum debug_fuzzer_states {
     fuzzer_impossible_panic,
     fuzzer_impossible_continue
 };
-
+#ifdef WIN32
+#ifdef WIN32CON
+enum windowsterminal_how {
+    wt_not_in_config_at_all,
+    wt_in_config_not_negated,
+    wt_in_config_negated
+};
+#endif
+#endif
 /*
  * Stuff that really isn't option or platform related and does not
  * get saved and restored.  They are set and cleared during the game
@@ -497,6 +505,12 @@ struct instance_flags {
     boolean wiz_error_flag;     /* flag for tracking failed wizmode auth */
     boolean explore_error_flag; /* ditto for explore mode */
     boolean obsolete;  /* obsolete options can point at this, it isn't used */
+#ifdef WIN32
+#ifdef WIN32CON
+    boolean windowsterminal;
+    enum windowsterminal_how wt_how;
+#endif
+#endif
 };
 
 /*

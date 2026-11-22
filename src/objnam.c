@@ -1,4 +1,4 @@
-/* NetHack 5.0	objnam.c	$NHDT-Date: 1781973060 2026/06/20 16:31:00 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.464 $ */
+/* $NHDT-Header: NetHack 5.0 objnam.c 2026/11/02_21:05:17 NetHack-5.0:1.474 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2011. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -2484,20 +2484,28 @@ aobjnam(struct obj *otmp, const char *verb)
         bp = strprepend(bp, prefix);
     }
     if (verb) {
-        const char *translated_verb = otense(otmp, verb);
+        const char *vt = otense(otmp, verb);
+        char *outbuf = nextobuf();
+        size_t noun_max;
 
         if (is_korean_locale()) {
-            /* Insert subject particle; resolved by vpline's
-               ko_process_string */
-            Strcat(bp, "{이/가}");
-            if (!ko_verb_is_copula(translated_verb)) {
-                Strcat(bp, " ");
-                Strcat(bp, translated_verb);
-            }
+            const boolean is_copula = ko_verb_is_copula(vt);
+            const char *particle = "{이/가}";
+            const char *sep = is_copula ? "" : " ";
+            const char *tail = is_copula ? "" : vt;
+            size_t reserve = strlen(particle) + strlen(sep) + strlen(tail) + 1;
+
+            noun_max = (reserve < BUFSZ) ? (BUFSZ - reserve) : 0;
+            Snprintf(outbuf, BUFSZ, "%.*s%s%s%s",
+                     (int) noun_max, bp, particle, sep, tail);
         } else {
-            Strcat(bp, " ");
-            Strcat(bp, translated_verb);
+            /* the name can fill its obuf right to the end, leaving no room
+               for the verb there; build the result in a fresh obuf instead,
+               shortening the name if necessary so that the verb fits */
+            noun_max = (strlen(vt) + 2 < BUFSZ) ? (BUFSZ - 2 - strlen(vt)) : 0;
+            Snprintf(outbuf, BUFSZ, "%.*s %s", (int) noun_max, bp, vt);
         }
+        bp = outbuf;
     }
     return bp;
 }

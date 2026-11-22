@@ -1,4 +1,4 @@
-/* NetHack 5.0	tcap.h	$NHDT-Date: 1781973089 2026/06/20 16:31:29 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.17 $ */
+/* $NHDT-Header: NetHack 5.0 tcap.h 2026/06/20_22:26:43 NetHack-5.0:1.20 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1989. */
 /*-Copyright (c) Kenneth Lorber, Kensington, Maryland, 2015. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -14,7 +14,7 @@
 
 /* might display need graphics code? */
 #if !defined(AMIGA) && !defined(TOS) && !defined(MAC68K)
-#if defined(TERMLIB) || defined(OS2) || defined(MSDOS)
+#if defined(TERMLIB) || defined(OS2) || defined(MSDOS) || defined(WIN32CON)
 #define ASCIIGRAPH
 #endif
 #endif

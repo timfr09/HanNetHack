@@ -1,4 +1,4 @@
-/* NetHack 5.0	hacklib.c	$NHDT-Date: 1781973051 2026/06/20 16:30:51 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.133 $ */
+/* $NHDT-Header: NetHack 5.0 hacklib.c 2026/11/02_21:05:17 NetHack-5.0:1.137 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Michael Allison, 2007. */
 /* Copyright (c) Robert Patrick Rankin, 1991                      */
@@ -48,6 +48,7 @@
         int             distmin         (coordxy, coordxy, coordxy, coordxy)
         int             dist2           (coordxy, coordxy, coordxy, coordxy)
         boolean         online2         (coordxy, coordxy)
+        boolean         is_in_usignarr  (unsigned, unsigned *, int)
         int             strncmpi        (const char *, const char *, int)
         char *          strstri         (const char *, const char *)
         boolean         fuzzymatch      (const char *, const char *,
@@ -730,6 +731,18 @@ online2(coordxy x0, coordxy y0, coordxy x1, coordxy y1)
     return (boolean) (!dy || !dx || dy == dx || dy == -dx);
 }
 
+/* return TRUE if value is in array of unsigned values arrlen length */
+boolean
+is_in_usignarr(unsigned value, unsigned *arr, int arrlen)
+{
+    int i;
+
+    for (i = 0; i < arrlen; ++i)
+        if (arr[i] == value)
+            return TRUE;
+    return FALSE;
+}
+
 #ifndef STRNCMPI
 /* case-insensitive counted string comparison */
 /*{ aka strncasecmp }*/
@@ -891,7 +904,10 @@ TODO: add set_impossible(), impossible -> func pointer,
         impossible(_("snprintf %s: func %s, file line %d"),                    (n < 0) ? "format error" : "overflow",
                    func, line);
 #endif
-        str[size - 1] = '\0'; /* make sure it is nul terminated */
+        /* make sure it is nul terminated; with a size of 0 nothing was
+           written, and str[-1] would be outside the buffer */
+        if (size > 0)
+            str[size - 1] = '\0';
     }
 }
 

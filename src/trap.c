@@ -1,4 +1,4 @@
-/* NetHack 5.0	trap.c	$NHDT-Date: 1781973071 2026/06/20 16:31:11 $  $NHDT-Branch: NetHack-5.0 $:$NHDT-Revision: 1.645 $ */
+/* $NHDT-Header: NetHack 5.0 trap.c 2026/11/02_21:05:17 NetHack-5.0:1.653 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2013. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -2324,7 +2324,15 @@ trapeffect_magic_trap(
                 u.uenpeak = u.uenmax;
             return Trap_Effect_Finished;
         } else {
+            coordxy tx = trap->tx, ty = trap->ty;
+
             domagictrap();
+            /* domagictrap() can free the trap: the fire fate melts ice
+               underfoot (dofiretrap() -> melt_ice() ->
+               trap_ice_effects() -> deltrap()), and the plunge into the
+               water can move the hero; refetch it so steedintrap() never
+               reads freed memory or another square's trap */
+            trap = u_at(tx, ty) ? t_at(tx, ty) : (struct trap *) 0;
         }
         (void) steedintrap(trap, (struct obj *) 0);
     } else {
@@ -5829,7 +5837,7 @@ disarm_box(struct obj *box, boolean force, boolean confused)
         exercise(A_DEX, TRUE);
     } else {
         pline(_("That %s was not trapped."), xname(box));
-        box->tknown = 0;
+        box->tknown = 1; /* known not trapped */
     }
 }
 
@@ -5840,9 +5848,14 @@ untrap_box(
     boolean force,
     boolean confused)
 {
+    if (box->tknown && !box->otrapped) {
+        You(_("know %s is not trapped."), the(xname(box)));
+        return;
+    }
+
     if ((box->otrapped
          && (force || (!confused && rn2(MAXULEV + 1 - u.ulevel) < 10)))
-        || box->tknown
+        || (box->tknown && box->otrapped)
         || (!force && confused && !rn2(3))) {
         if (!(box->tknown && box->dknown))
             You(_("find a trap on %s!"), the(xname(box)));
@@ -5913,7 +5926,7 @@ untrap(
 
     if (here) /* are there are one or more containers here? */
         for (otmp = svl.level.objects[x][y]; otmp; otmp = otmp->nexthere)
-            if (Is_box(otmp)) {
+            if (Is_box(otmp) && !(otmp->tknown && !otmp->otrapped)) {
                 if (++boxcnt > 1)
                     break;
             }
@@ -6018,7 +6031,9 @@ untrap(
             for (otmp = svl.level.objects[x][y]; otmp; otmp = otmp->nexthere) {
                 if (!Is_box(otmp))
                     continue;
-                if (otmp->tknown && otmp->dknown)
+                if (otmp->tknown && !otmp->otrapped)
+                    continue;
+                if (otmp->tknown && otmp->otrapped && otmp->dknown)
                     (void) safe_qbuf(qbuf, _("Disarm this "), NULL,
                                      otmp, xname, ansimpleoname, _("a box"));
                 else
@@ -6029,7 +6044,7 @@ untrap(
                     case 'q':
                         return 0;
                     case 'y':
-                        if (otmp->tknown && otmp->dknown)
+                        if (otmp->tknown && otmp->otrapped && otmp->dknown)
                             disarm_box(otmp, force, confused);
                         else
                             untrap_box(otmp, force, confused);
@@ -6314,7 +6329,7 @@ chest_trap(
     boolean disarm)
 {
     struct obj *otmp = obj, *otmp2;
-    char buf[80];
+    char buf[BUFSZ];
     const char *msg;
     coord cc;
 
@@ -6380,6 +6395,8 @@ chest_trap(
 
             pline(_("%s!"), Tobjnam(obj, _("explode")));
             Sprintf(buf, _("exploding %s"), xname(obj));
+            pline(_("%s!"), Tobjnam(obj, _("explode")));
+            Snprintf(buf, sizeof buf, _("exploding %s"), xname(obj));
 
             if (costly)
                 loss += stolen_value(obj, ox, oy, (boolean) shkp->mpeaceful,
@@ -6812,7 +6829,8 @@ lava_effects(void)
 {
     struct obj *obj, *obj2, *nextobj;
     boolean usurvive, boil_away;
-    unsigned protect_oid = 0;
+    unsigned protect_oid[4]; /* items a caller still expects to hold */
+    int nprotect = 0;
     int burncount = 0, burnmesgcount = 0;
     const int dmg = d(6, 6); /* only applicable for water walking */
 
@@ -6840,19 +6858,22 @@ lava_effects(void)
         for (obj = gi.invent; obj; obj = nextobj) {
             nextobj = obj->nobj;
             if (obj->in_use) { /* remove_worn_item() sets in_use */
-                /* one item can be protected from burning up [accommodates
+                /* an item in use is protected from burning up [accommodates
                    steal(AMULET_OF_FLYING) -> remove_worn_item() -> fall
                    into lava (which happens before item is transferred
-                   from invent to thief->minvent)]; item will still be in
-                   inventory when we return to caller or save bones (or
-                   perform hangup save if that occurs) */
-                if (!protect_oid) {
-                    protect_oid = obj->o_id;
+                   from invent to thief->minvent)]; several can be in use
+                   at once - the scroll being read and the boots it
+                   destroys - and each caller expects to retain access to
+                   its own; item will still be in inventory when we return
+                   to caller or save bones (or perform hangup save if that
+                   occurs) */
+                if (nprotect < SIZE(protect_oid)) {
+                    protect_oid[nprotect++] = obj->o_id;
                     obj->in_use = 0;
                 } else {
                     impossible(
-                     "lava_effects: '%s' (#%u) is already in use; so is #%u.",
-                               simpleonames(obj), obj->o_id, protect_oid);
+                       "lava_effects: '%s' (#%u) is in use; so are %d others.",
+                               simpleonames(obj), obj->o_id, nprotect);
                 }
                 continue;
             }
@@ -6879,7 +6900,7 @@ lava_effects(void)
         ++burnmesgcount;
         iflags.in_lava_effects++; /* (see above) */
         (void) Boots_off();
-        if (obj->o_id != protect_oid)
+        if (!is_in_usignarr(obj->o_id, protect_oid, nprotect))
             useup(obj);
         iflags.in_lava_effects--;
         ++burncount;
@@ -6908,9 +6929,9 @@ lava_effects(void)
 
         for (obj = gi.invent; obj; obj = obj2) {
             obj2 = obj->nobj;
-            if (obj->o_id == protect_oid) {
+            if (is_in_usignarr(obj->o_id, protect_oid, nprotect)) {
                 /* skip protected item; caller expects to retain access */
-                obj->in_use = 1; /* was cleared when setting protect_oid */
+                obj->in_use = 1; /* was cleared when recording protect_oid */
             } else if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
                 if (usurvive && !Blind)
                     pline(_("%s glows a strange %s, but remains intact."),

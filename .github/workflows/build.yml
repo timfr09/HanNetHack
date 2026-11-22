@@ -51,7 +51,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p dat/locale/ko
-          msgfmt -o dat/locale/ko/nethack.mo po/ko_manual.po
+          msgfmt -c -o dat/locale/ko/nethack.mo po/ko_manual.po
 
       - name: Configure (Unix hints) and build
         run: |
@@ -68,6 +68,33 @@ jobs:
           test -x src/nethack
           test -f dat/nhdat
           test -f dat/locale/ko/nethack.mo
+
+  translation-ci:
+    name: Translation CI (msgfmt)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Install gettext
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            gettext
+
+      - name: make translation-ci
+        run: |
+          set -euo pipefail
+          cd po && make translation-ci
+
+      # Wrapping backlog must not block merges yet; surface as a soft check.
+      - name: i18n wrapping check (non-blocking)
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          bash scripts/check-i18n-wrapping.sh
 
   windows-nmake-package:
     name: Windows (nhsetup + nmake package)
@@ -120,7 +147,7 @@ jobs:
       - name: Compile Korean catalog (ko_manual.po → nethack.mo)
         shell: pwsh
         run: |
-          & "lib\gettext\bin\msgfmt.exe" -o "dat\locale\ko\nethack.mo" "po\ko_manual.po"
+          & "lib\gettext\bin\msgfmt.exe" -c -o "dat\locale\ko\nethack.mo" "po\ko_manual.po"
           if ($LASTEXITCODE -ne 0) { throw "msgfmt failed" }
 
       - name: nmake package

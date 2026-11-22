@@ -105,7 +105,7 @@ jobs:
         run: |
           # Always regenerate nethack.mo for release builds so nhdat
           # contains the latest translator-edited ko_manual.po content.
-          & "lib\gettext\bin\msgfmt.exe" -o "dat\locale\ko\nethack.mo" "po\ko_manual.po"
+          & "lib\gettext\bin\msgfmt.exe" -c -o "dat\locale\ko\nethack.mo" "po\ko_manual.po"
           if ($LASTEXITCODE -ne 0) {
             throw "msgfmt failed while compiling po/ko_manual.po"
           }

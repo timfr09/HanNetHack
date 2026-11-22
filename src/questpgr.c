@@ -54,8 +54,9 @@ ldrname(void)
 {
     int i = gu.urole.ldrnum;
 
-    Sprintf(gn.nambuf, "%s%s", type_is_pname(&mons[i]) ? "" : "the ",
-            mons[i].pmnames[NEUTRAL]);
+    Sprintf(gn.nambuf, "%s%s",
+            (type_is_pname(&mons[i]) || is_korean_locale()) ? "" : "the ",
+            _(mons[i].pmnames[NEUTRAL]));
     return gn.nambuf;
 }
 
@@ -128,8 +129,9 @@ neminame(void)
 {
     int i = gu.urole.neminum;
 
-    Sprintf(gn.nambuf, "%s%s", type_is_pname(&mons[i]) ? "" : "the ",
-            mons[i].pmnames[NEUTRAL]);
+    Sprintf(gn.nambuf, "%s%s",
+            (type_is_pname(&mons[i]) || is_korean_locale()) ? "" : "the ",
+            _(mons[i].pmnames[NEUTRAL]));
     return gn.nambuf;
 }
 
@@ -138,7 +140,7 @@ guardname(void) /* return your role leader's guard monster name */
 {
     int i = gu.urole.guardnum;
 
-    return mons[i].pmnames[NEUTRAL];
+    return _(mons[i].pmnames[NEUTRAL]);
 }
 
 staticfn const char *
@@ -245,8 +247,8 @@ convert_arg(char c)
         str = svp.plname;
         break;
     case 'c':
-        str = (flags.female && gu.urole.name.f) ? gu.urole.name.f
-                                               : gu.urole.name.m;
+        str = _((flags.female && gu.urole.name.f) ? gu.urole.name.f
+                                                  : gu.urole.name.m);
         break;
     case 'r':
         str = rank_of(u.ulevel, Role_switch, flags.female);

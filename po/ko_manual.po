@@ -54269,7 +54269,7 @@ msgstr "날조크 신전"
 # Rogue quest locations
 #: ../src/role.c:331 ../src/role.c:467
 msgid "the Thieves' Guild Hall"
-msgstr "도적 길드 회관"
+msgstr "도둑 길드 회관"
 
 # trap.c:5010 - 익사 메시지. "You sink like the Titanic"
 #: ../src/trap.c:5097

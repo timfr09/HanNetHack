@@ -402,7 +402,8 @@ dig(void)
                 You(_("hit yourself in the %s."), body_part(FOOT));
                 Sprintf(kbuf, _("chopping off %s own %s"), uhis(),
                         body_part(FOOT));
-                losehp(Maybe_Half_Phys(dmg), kbuf, KILLED_BY);
+                losehp(Maybe_Adjust_Phys(dmg, uwep->otyp),
+                       kbuf, KILLED_BY);
             } else {
                 You(_("destroy the bear trap with %s."),
                     yobjnam(uwep, (const char *) 0));
@@ -1186,7 +1187,7 @@ use_pick_axe2(struct obj *obj)
             dam = 1;
         You(_("hit yourself with %s."), yname(uwep));
         Sprintf(buf, _("%s own %s"), uhis(), OBJ_NAME(objects[obj->otyp]));
-        losehp(Maybe_Half_Phys(dam), buf, KILLED_BY);
+        losehp(Maybe_Adjust_Phys(dam, obj->otyp), buf, KILLED_BY);
         disp.botl = TRUE;
         return ECMD_TIME;
     } else if (u.dz == 0) {
@@ -1243,7 +1244,7 @@ use_pick_axe2(struct obj *obj)
                           vibrate ? _("  The axe-handle vibrates violently!")
                                   : "");
                     if (vibrate)
-                        losehp(Maybe_Half_Phys(2), _("axing a hard object"),
+                        losehp(Maybe_Adjust_Phys(2, STRANGE_OBJECT), _("axing a hard object"),
                                KILLED_BY);
                     wake_nearby(FALSE);
                 } else {
@@ -1593,7 +1594,7 @@ zap_dig(void)
                 You(_("loosen a rock from the %s."), ceiling(u.ux, u.uy));
                 pline(_("It falls on your %s!"), body_part(HEAD));
                 dmg = rnd(hard_helmet(uarmh) ? 2 : 6);
-                losehp(Maybe_Half_Phys(dmg), _("falling rock"), KILLED_BY_AN);
+                losehp(Maybe_Adjust_Phys(dmg, ROCK), _("falling rock"), KILLED_BY_AN);
                 otmp = mksobj_at(ROCK, u.ux, u.uy, FALSE, FALSE);
                 if (otmp) {
                     (void) xname(otmp); /* set dknown, maybe bknown */

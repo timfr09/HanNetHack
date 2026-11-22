@@ -1988,6 +1988,11 @@ eatcorpse(struct obj *otmp)
         You(_("peck the eyeball with delight."));
     } else if (tp) {
         ; /* we've already delivered a message; don't add "it tastes okay" */
+    } else if (noncorporeal(&mons[mnum])) {
+        /* wraith should be the only noncorporeal corpse (traditional);
+           avoid "stringy","fatty",&c for it */
+        pline(Hallucination ? _("This tastes funny.")
+                            : _("This tastes remarkable!"));
     } else {
         /* yummy is always False for omnivores, palatable always True */
         boolean yummy = (vegan(&mons[mnum])

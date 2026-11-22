@@ -1118,7 +1118,7 @@ inside_gas_cloud(genericptr_t p1, genericptr_t p2)
                   makeplural(body_part(LUNG)));
             You(_("cough and spit blood!"));
             wake_nearto(u.ux, u.uy, 2);
-            dam = Maybe_Half_Phys(rnd(dam) + 5);
+            dam = Maybe_Adjust_Phys(rnd(dam) + 5, STRANGE_OBJECT);
             if (Half_gas_damage) /* worn towel */
                 dam = (dam + 1) / 2;
             losehp(dam, _("gas cloud"), KILLED_BY_AN);

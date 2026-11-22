@@ -128,12 +128,11 @@
     <ClCompile Include="$(SrcDir)getpos.c" />
     <ClCompile Include="$(SrcDir)glyphs.c" />
     <ClCompile Include="$(SrcDir)hack.c" />
-    <ClCompile Include="$(SrcDir)i18n.c" />
-    <ClCompile Include="$(SrcDir)mo_reader.c" />
-    <ClCompile Include="$(SrcDir)ko_postpos.c" />
     <ClCompile Include="$(SrcDir)insight.c" />
+    <ClCompile Include="$(SrcDir)i18n.c" />
     <ClCompile Include="$(SrcDir)iactions.c" />
     <ClCompile Include="$(SrcDir)invent.c" />
+    <ClCompile Include="$(SrcDir)ko_postpos.c" />
     <ClCompile Include="$(SrcDir)isaac64.c" />
     <ClCompile Include="$(SrcDir)light.c" />
     <ClCompile Include="$(SrcDir)lock.c" />
@@ -147,6 +146,7 @@
     <ClCompile Include="$(SrcDir)mklev.c" />
     <ClCompile Include="$(SrcDir)mkmap.c" />
     <ClCompile Include="$(SrcDir)mkmaze.c" />
+    <ClCompile Include="$(SrcDir)mo_reader.c" />
     <ClCompile Include="$(SrcDir)mkobj.c" />
     <ClCompile Include="$(SrcDir)mkroom.c" />
     <ClCompile Include="$(SrcDir)mon.c" />
@@ -328,16 +328,29 @@
     <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <Target Name="BeforeBuild" Condition="Exists('$(RootDir)sys\windows\build-translations.cmd')">
-    <Exec Command="call &quot;$(RootDir)sys\windows\build-translations.cmd&quot;" WorkingDirectory="$(RootDir)" IgnoreExitCode="true" />
-  </Target>
   <Target Name="AfterBuild">
-    <MSBuild Projects="afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
+    <MSBuild Projects="afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
   </Target>
   <Target Name="AfterClean">
-    <MSBuild Projects="afternethack.proj" Targets="Clean" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
+    <MSBuild Projects="afternethack.proj" Targets="Clean" Properties="Configuration=$(Configuration)" />
   </Target>
   <Target Name="AfterRebuild">
-    <MSBuild Projects="afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
+    <MSBuild Projects="afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
+  </Target>
+	<Target Name="InjectGitHash" BeforeTargets="ClCompile" Condition="Exists('$(VSInstallDir)$(GitExeSub)git.exe') And Exists('$(RootDir).git')">
+		<!-- Run git rev-parse and capture output into a property -->
+		<Exec Command="&quot;$(VSInstallDir)$(GitExeSub)git.exe&quot; rev-parse --verify HEAD" ConsoleToMSBuild="true" IgnoreExitCode="true">
+			<Output TaskParameter="ConsoleOutput" PropertyName="GitCommitHash" />
+		</Exec>
+
+		<!-- Pass it to the C++ compiler as a preprocessor definition -->
+		<ItemGroup>
+			<ClCompile>
+				<PreprocessorDefinitions>NETHACK_GIT_SHA="$(GitCommitHash)";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+			</ClCompile>
+		</ItemGroup>
+	</Target>
+  <Target Name="BeforeBuild" Condition="Exists('$(RootDir)sys\windows\build-translations.cmd')">
+    <Exec Command="call &quot;$(RootDir)sys\windows\build-translations.cmd&quot;" WorkingDirectory="$(RootDir)" IgnoreExitCode="true" />
   </Target>
 </Project>

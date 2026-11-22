@@ -51,7 +51,7 @@ XGETTEXT_OPTS = --keyword=_ --keyword=N_ \
                 --copyright-holder="HanNetHack Project"
 
 .PHONY: all pot pot-lua update-po compile clean stats help merge migrate verify \
-        translation-ci
+        translation-ci missing obsolete fuzzy-preview
 
 all: compile
 
@@ -84,38 +84,37 @@ pot-lua: $(LUA_SOURCES)
 		$(MSGINIT) -i $(POTFILE) -o $@ -l $* --no-translator; \
 	fi
 
-# Rebuild optional local ko.po cache from POT (new-msgid discovery aid).
-# Canonical translations live only in ko_manual.po — never edit ko.po by hand.
-# Prefer 'make safe-update' (creates a backup when ko.po already exists).
+# Legacy: rebuild optional local ko.po from POT.
+# Prefer 'make missing' / 'make fuzzy-preview' against ko_manual.po — ko.po is
+# no longer used by merge/compile (builds are always ko_manual-only).
 update-po: $(POTFILE)
+	@echo "NOTE: update-po is legacy. Prefer: make missing / make fuzzy-preview"
 	@for lang in $(LANGUAGES); do \
 		if [ -f $$lang.po ]; then \
-			echo "Updating $$lang.po (auto-extracted strings only)..."; \
+			echo "Updating $$lang.po (local only; ignored by merge)..."; \
 			$(MSGMERGE) --no-fuzzy-matching -U $$lang.po $(POTFILE); \
-			echo "Note: Manual entries in $${lang}_manual.po are preserved."; \
 		else \
-			echo "Creating $$lang.po..."; \
+			echo "Creating $$lang.po (local only)..."; \
 			$(MSGINIT) -i $(POTFILE) -o $$lang.po -l $$lang --no-translator; \
 		fi \
 	done
 
-# Safe update with automatic backup
+# Legacy alias kept for scripts/docs; same as update-po with backup.
 safe-update: $(POTFILE)
+	@echo "NOTE: safe-update is legacy. Prefer: make missing / make fuzzy-preview"
 	@for lang in $(LANGUAGES); do \
 		if [ -f $$lang.po ]; then \
-			echo "=== Safe Update for $$lang.po ==="; \
 			backup="$$lang.po.backup.$$(date +%Y%m%d_%H%M%S)"; \
 			cp $$lang.po $$backup; \
-			echo "Backed up to $$backup"; \
 			$(MSGMERGE) --no-fuzzy-matching -U $$lang.po $(POTFILE); \
-			changed=$$(diff -q $$lang.po $$backup 2>/dev/null || echo "changed"); \
-			if [ -n "$$changed" ]; then \
-				echo "WARNING: $$lang.po was modified. Review changes with:"; \
-				echo "  diff $$backup $$lang.po"; \
-			else \
+			if diff -q $$lang.po $$backup >/dev/null 2>&1; then \
 				rm $$backup; \
 				echo "No changes to $$lang.po"; \
+			else \
+				echo "Updated $$lang.po (backup $$backup); not used by merge."; \
 			fi \
+		else \
+			$(MAKE) update-po; \
 		fi \
 	done
 
@@ -157,32 +156,53 @@ verify: merge
 		fi \
 	done
 
-# Merge auto-extracted and manual entries into <lang>_merged.po.
-#
-# ko_manual.po is the canonical source of Korean translations and is
-# the only PO file committed to the repository.  ko.po is treated as
-# a local cache: `make update-po` (or `make safe-update`) regenerates
-# it from the POT template so translators can inspect/fill untranslated
-# strings, but it is *not* required for a build.  If ko.po happens to
-# exist locally, its entries fill gaps that ko_manual.po hasn't covered
-# (ko_manual.po always wins when both define the same msgid).
+# Build <lang>_merged.po from ko_manual.po only (reproducible; ignores local ko.po).
 merge:
 	@for lang in $(LANGUAGES); do \
-		if [ -f $${lang}_manual.po ] && [ -f $$lang.po ]; then \
-			echo "Merging $${lang}_manual.po + $$lang.po -> $${lang}_merged.po"; \
-			echo "(ko_manual.po wins; ko.po is cache fallback only)"; \
-			$(MSGCAT) --use-first -o $${lang}_merged.po $${lang}_manual.po $$lang.po; \
-		elif [ -f $${lang}_manual.po ]; then \
-			echo "Using $${lang}_manual.po directly -> $${lang}_merged.po"; \
+		if [ -f $${lang}_manual.po ]; then \
+			echo "Using $${lang}_manual.po -> $${lang}_merged.po"; \
 			cp $${lang}_manual.po $${lang}_merged.po; \
-		elif [ -f $$lang.po ]; then \
-			echo "No manual file found, using $$lang.po directly"; \
-			cp $$lang.po $${lang}_merged.po; \
 		else \
-			echo "ERROR: neither $${lang}_manual.po nor $$lang.po exist" >&2; \
+			echo "ERROR: $${lang}_manual.po missing" >&2; \
 			exit 1; \
 		fi \
 	done
+
+# POT msgids missing from ko_manual.po (new / changed English after pot).
+missing: $(POTFILE)
+	@test -f ko_manual.po || (echo "ko_manual.po missing" >&2; exit 1)
+	@echo "=== msgids in $(POTFILE) not defined in ko_manual.po ==="
+	@msgcmp --use-untranslated ko_manual.po $(POTFILE) 2>&1 \
+		| grep 'this message is used but not defined' \
+		| sed 's/: this message is used but not defined.*//' \
+		|| true
+	@count=$$(msgcmp --use-untranslated ko_manual.po $(POTFILE) 2>&1 \
+		| grep -c 'this message is used but not defined' || true); \
+	echo "missing_count=$$count"
+
+# ko_manual.po entries not present in current POT (orphans / retired strings).
+obsolete: $(POTFILE)
+	@test -f ko_manual.po || (echo "ko_manual.po missing" >&2; exit 1)
+	@echo "=== msgids in ko_manual.po not used by $(POTFILE) ==="
+	@msgcmp ko_manual.po $(POTFILE) 2>&1 \
+		| grep 'warning: this message is not used' \
+		| sed 's/: warning: this message is not used//' \
+		|| true
+	@count=$$(msgcmp ko_manual.po $(POTFILE) 2>&1 \
+		| grep -c 'warning: this message is not used' || true); \
+	echo "obsolete_count=$$count"
+
+# Preview fuzzy matches without touching ko_manual.po (review aid).
+fuzzy-preview: $(POTFILE)
+	@test -f ko_manual.po || (echo "ko_manual.po missing" >&2; exit 1)
+	@tmp=ko_manual.fuzzy-preview.po; \
+	cp ko_manual.po $$tmp; \
+	$(MSGMERGE) --update --backup=none $$tmp $(POTFILE); \
+	echo "=== fuzzy entries in $$tmp (ko_manual.po unchanged) ==="; \
+	msgattrib --only-fuzzy --no-wrap $$tmp 2>/dev/null | head -80 || true; \
+	fcount=$$(msgattrib --only-fuzzy -o /dev/null $$tmp 2>&1 | grep -oE '^[0-9]+' | head -1 || echo 0); \
+	echo "fuzzy_preview_count=$${fcount:-0}"; \
+	echo "Inspect $$tmp then delete when done (gitignored pattern *.fuzzy-preview.po)."
 
 # Compile PO files to MO files
 # Uses merged file if manual entries exist
@@ -283,43 +303,31 @@ help:
 	@echo ""
 	@echo "File Structure:"
 	@echo "  ko_manual.po    - Sole canonical Korean translations (edit+commit)"
-	@echo "  ko.po           - Optional local cache (NOT committed; update-po)"
-	@echo "  ko_merged.po    - Combined file (auto-generated, never edit)"
-	@echo "  lua_strings.pot - Strings from Lua files (auto-generated)"
+	@echo "  ko_merged.po    - Copy of manual for msgfmt (auto-generated)"
+	@echo "  nethack.pot     - Template from sources (make pot)"
+	@echo "  ko.po           - Legacy local file (ignored by merge/compile)"
 	@echo ""
-	@echo "IMPORTANT: Only edit ko_manual.po."
-	@echo "  - ko.po is optional; make compile works without it"
-	@echo "  - ko_manual.po always wins when merging with a cache"
+	@echo "IMPORTANT: Only edit ko_manual.po. Builds never read ko.po."
 	@echo ""
 	@echo "Targets:"
-	@echo "  pot          - Generate POT from C + Lua files (merged)"
-	@echo "  pot-c        - Generate POT from C files only"
-	@echo "  pot-lua      - Generate POT from Lua files only"
-	@echo "  safe-update  - Rebuild local ko.po cache with backup (optional)"
-	@echo "  update-po    - Rebuild local ko.po cache (no backup)"
-	@echo "  merge        - ko_manual (+ cache if present) -> merged"
-	@echo "  compile      - Merge + msgfmt + copy to dat/locale/ko/nethack.mo"
-	@echo "  stats        - Show translation statistics"
-	@echo "  check        - Check for translation errors"
-	@echo "  translation-ci - msgfmt -c on manual+merged; stats (for PR/CI)"
-	@echo "  untranslated - List untranslated strings"
-	@echo "  fuzzy        - List fuzzy translations"
-	@echo "  migrate      - One-shot: copy merged translations into ko_manual.po"
-	@echo "  verify       - Check no translations were lost after merge"
-	@echo "  install      - Install MO files"
-	@echo "  clean        - Remove generated files"
+	@echo "  pot            - Generate POT from C + Lua files"
+	@echo "  merge          - ko_manual.po -> ko_merged.po"
+	@echo "  compile        - Merge + msgfmt + copy to dat/locale/ko/nethack.mo"
+	@echo "  missing        - POT msgids not in ko_manual.po"
+	@echo "  obsolete       - ko_manual.po msgids not in POT"
+	@echo "  fuzzy-preview  - msgmerge preview (does not edit ko_manual.po)"
+	@echo "  translation-ci - msgfmt -c on manual+merged (PR/CI)"
+	@echo "  untranslated   - Empty msgstr in merged"
+	@echo "  stats/check    - Statistics / msgfmt check"
+	@echo "  safe-update    - Legacy ko.po cache (optional, unused by merge)"
 	@echo ""
 	@echo "Safe Workflow:"
-	@echo "  1. Edit ko_manual.po (add/fix translations)"
-	@echo "  2. make compile      (merge + MO + dat/locale copy)"
-	@echo "  3. cd .. && make all  (refresh nhdat)"
+	@echo "  1. Edit ko_manual.po"
+	@echo "  2. make compile"
+	@echo "  3. cd .. && make all"
 	@echo ""
-	@echo "When adding new source strings:"
-	@echo "  1. make pot          (extract from C + Lua sources)"
-	@echo "  2. make safe-update  (optional: local ko.po for new msgid list)"
-	@echo "  3. Edit ko_manual.po (add translations)"
+	@echo "After upstream / new source strings:"
+	@echo "  1. make pot && make missing"
+	@echo "  2. (optional) make fuzzy-preview"
+	@echo "  3. Add translations to ko_manual.po"
 	@echo "  4. make compile"
-	@echo ""
-	@echo "Lua files extracted:"
-	@echo "  - dat/*.lua (quest.lua, tut-1.lua, etc.)"
-	@echo "  - Patterns: text=, synopsis=, des.message(), arrays"

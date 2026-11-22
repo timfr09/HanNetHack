@@ -22,14 +22,13 @@ HanNetHack은 두 가지 번역 메커니즘을 사용합니다:
 
 ```
 src/*.c의 _("메시지") → po/nethack.pot → po/ko_manual.po → ko_merged.po → dat/locale/ko/nethack.mo → nhdat 번들
-                              └─ (선택) make update-po → 로컬 ko.po 캐시 (신규 msgid 조회·fallback)
+                              └─ make missing / fuzzy-preview (신규·변경 msgid 조회)
 ```
 
 - 런타임에는 GNU libintl 대신 **`src/mo_reader.c`** 가 DLB 안의 `nethack.mo`를 읽고, `_()` 는 **`nh_gettext()`** 로 조회됩니다.
 - **ko_manual.po**: 저장소에 커밋되는 **유일한** 한국어 번역 원본. 편집·리뷰·PR 대상은 여기만.
-- **ko.po**: `make update-po` / `safe-update` 가 POT에서 만드는 **로컬 전용 캐시**(gitignored). 번역 저장소가 아님. 없어도 `make compile` 은 `ko_manual.po` 만으로 동작.
-- **ko_merged.po**: 빌드 시 `msgcat --use-first ko_manual.po [ko.po]`(캐시가 있을 때만 후자 참여)로 생성.
-- 동일 msgid는 항상 **ko_manual.po** 쪽이 이깁니다.
+- **ko_merged.po**: `make merge`가 `ko_manual.po`를 복사한 생성물(`msgfmt` 입력). 로컬 `ko.po`는 **읽지 않음**.
+- **ko.po**: 레거시 로컬 파일(gitignored). `merge`/`compile` 경로 밖.
 
 ### 2. 파일 교체 (데이터 파일, Lua)
 
@@ -73,19 +72,18 @@ dat/locale/ko/
 └── ...                  # 기타 번역 파일
 ```
 
-### ko_manual.po / ko.po 역할
+### ko_manual.po 역할
 
 | 파일 | 역할 | Git |
 |------|------|-----|
 | `ko_manual.po` | **유일한** 한국어 번역 원본. 모든 `msgstr`는 여기만 편집 | 커밋 |
-| `ko.po` | POT 대비 신규·변경 msgid를 보기 위한 **작업용 캐시**. 번역을 쌓지 않음 | ignore |
+| `ko_merged.po` | `ko_manual.po` 복사본 (`msgfmt` 입력) | 생성물 |
 
-`make safe-update` / `update-po`는 로컬 `ko.po`만 갱신한다. 예전에 `ko.po`에
-수동 번역을 두던 시절의 잔재가 아니라, **새 문자열 목록을 뽑는 다리**다.
-발견한 msgid는 `ko_manual.po`로 옮겨 번역하고, `make compile`로 끝낸다.
-캐시가 있으면 병합 시 `ko_manual.po`에 아직 없는 항목만 fallback으로 쓰인다.
+신규 msgid는 `make pot && make missing`으로 보고, (선택) `make fuzzy-preview`로
+원문 변경 힌트를 본 뒤 **`ko_manual.po`에만** 번역을 추가한다. `make obsolete`는
+POT에 없는 고아 항목 정리용이다.
 
-**편집 규칙: `ko_manual.po`만 직접 편집.** `ko.po`는 저장소에 올리지 않는다.
+**편집 규칙: `ko_manual.po`만 직접 편집.**
 
 ---
 
@@ -98,10 +96,10 @@ dat/locale/ko/
 ```
 src/*.c → xgettext → po/nethack.pot
                          │
-                         ├─→ (선택) msgmerge → 로컬 ko.po  # 신규 msgid 조회용
+                         ├─→ make missing / fuzzy-preview
                          │
                          └─→ 번역은 전부 po/ko_manual.po에 추가/수정
-                                    ↓ msgcat --use-first (+ 있으면 ko.po)
+                                    ↓ make merge (manual 복사)
                               ko_merged.po → nethack.mo
 ```
 
@@ -111,13 +109,13 @@ src/*.c → xgettext → po/nethack.pot
 # 1. 업스트림 병합 후 .pot 파일 재생성
 cd po && make pot
 
-# 2. (선택) 로컬 ko.po 캐시 갱신 — 새 msgid 목록 확인용
-make safe-update
+# 2. 새 msgid 목록
+make missing
+# (선택) make fuzzy-preview / make obsolete
 
 # 3. 새/변경 문자열 → ko_manual.po에만 번역 추가
-# (필요 시: python3 sync_new_msgids_to_manual.py)
 
-# 4. 컴파일 (merge + compile; ko.po 없어도 동작)
+# 4. 컴파일
 make compile
 
 # 5. 통계 확인
@@ -399,15 +397,16 @@ msgcat --use-first branch_a.po branch_b.po -o merged.po
 ```bash
 cd po
 
-make pot          # 소스에서 nethack.pot 재생성
-make safe-update  # (선택) 로컬 ko.po 캐시 갱신 (자동 백업)
-make merge        # ko_manual.po (+ 있으면 ko.po) → ko_merged.po
-make compile      # merge + 컴파일 → dat/locale/ko/nethack.mo
-make stats        # 번역 통계
-make check        # 번역 오류 검사
-make untranslated # 미번역 문자열 목록
-make fuzzy        # fuzzy 번역 목록
-make clean        # 생성 파일 삭제
+make pot           # 소스에서 nethack.pot 재생성
+make missing       # POT에만 있는 msgid
+make obsolete      # ko_manual에만 있는 msgid
+make fuzzy-preview # 원문 변경 fuzzy 힌트 (manual 미수정)
+make merge         # ko_manual.po → ko_merged.po
+make compile       # merge + 컴파일 → dat/locale/ko/nethack.mo
+make stats         # 번역 통계
+make check         # 번역 오류 검사
+make untranslated  # 미번역 문자열 목록
+make clean         # 생성 파일 삭제
 ```
 
 ### `scripts/merge-upstream.sh`
@@ -427,7 +426,8 @@ git fetch upstream NetHack-5.0
 git log --oneline HEAD..upstream/NetHack-5.0
 git merge upstream/NetHack-5.0 --no-edit
 # 충돌 시: 업스트림 로직 + _()/C_()·KO 경로 재적용 후 git add && git commit
-cd po && make pot && make safe-update && make compile && make stats && make untranslated
+cd po && make pot && make missing && make compile && make stats
+# (선택) make fuzzy-preview / make obsolete
 # 새 msgid → ko_manual.po에 번역 후 make compile
 cd .. && make all   # -j 비권장
 ```

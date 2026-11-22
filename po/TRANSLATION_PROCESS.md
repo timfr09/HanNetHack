@@ -9,12 +9,13 @@
 | 경로 | 역할 | Git |
 |------|------|-----|
 | `po/ko_manual.po` | 한국어 **유일한** 번역 원본 (수동 편집·커밋) | 커밋 |
-| `po/ko.po` | POT에서 갱신되는 **로컬 캐시** (새 msgid 조회·선택적 fallback). 번역을 쌓지 않음 | ignore |
-| `po/ko_merged.po` | `msgcat` 병합 결과 | 생성물 |
+| `po/ko_merged.po` | `ko_manual.po` 복사본 (`msgfmt` 입력) | 생성물 |
+| `po/nethack.pot` | 소스에서 추출한 템플릿 | 커밋(또는 CI 생성) |
+| `po/ko.po` | **레거시** 로컬 파일. `merge`/`compile`이 **읽지 않음** | ignore |
 | `dat/locale/ko/nethack.mo` | `msgfmt` 출력 (게임이 읽는 카탈로그) | `make compile`로 갱신 |
 | `dat/locale/ko/*.lua`, `help` 등 | PO 밖 **데이터/스크립트** 직접 번역 | 각각 커밋 |
 
-`make compile`은 `ko_manual.po`만 있어도 동작한다. `ko.po`는 있으면 병합 시 **아직 `ko_manual.po`에 없는** 항목만 fallback으로 채운다(우선순위는 항상 `ko_manual.po`). 발견한 새 msgid는 캐시에 두지 말고 `ko_manual.po`로 옮긴다.
+`make compile` / `merge`는 **`ko_manual.po`만** 사용한다(로컬에 `ko.po`가 있어도 무시). 신규 msgid는 `make missing`으로 보고 `ko_manual.po`에만 추가한다.
 
 ---
 
@@ -30,10 +31,12 @@
 ### B. 소스에 **새로** `_("...")`를 넣었거나 업스트림에서 C 문자열이 바뀐 경우
 
 1. `cd po && make pot` — C·Lua에서 `nethack.pot` 갱신.
-2. `cd po && make safe-update` — 로컬 `ko.po`를 POT에 맞게 갱신(백업 생성).
-3. **새/변경 msgid**를 `ko_manual.po`에 옮겨 적어 번역.
-4. `make compile` → 루트에서 `make all`.
-5. (PR 전) `translation-preflight.sh` + 래핑 검사는 이미 스크립트에 포함.
+2. `make missing` — POT에는 있고 `ko_manual.po`에 없는 msgid 목록.
+3. (선택) `make fuzzy-preview` — 원문이 살짝 바뀐 항목 힌트(`ko_manual.po`는 그대로).
+4. **새/변경 msgid**를 `ko_manual.po`에 번역 추가.
+5. `make compile` → 루트에서 `make all`.
+6. (PR 전) `translation-preflight.sh` (또는 `make translation-ci`).
+7. (선택) `make obsolete` — POT에 없는 고아 msgid 정리 후보.
 
 ### C. Lua 퀘스트/튜토리얼 등 (PO + 로케일 복제)
 

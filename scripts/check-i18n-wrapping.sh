@@ -200,9 +200,10 @@ main() {
             fi
         done
     else
-        # src/*.c 전체 검사
+        # src/*.c 전체 검사 (symlinks like NOPE -> /dev/null skip)
         for file in "$SRC_DIR"/*.c; do
             [ -f "$file" ] || continue
+            [ ! -L "$file" ] || continue
             check_file "$file"
         done
 
@@ -229,7 +230,11 @@ main() {
         echo "Run ./scripts/restore-i18n-wrapping.sh to fix automatically"
     fi
 
-    exit $ISSUES_FOUND
+    # Avoid exit codes wrapping past 255 (would look like success).
+    if [ "$ISSUES_FOUND" -gt 0 ]; then
+        exit 1
+    fi
+    exit 0
 }
 
 main "$@"

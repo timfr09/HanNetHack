@@ -7,7 +7,7 @@
 #
 # 기본값: upstream/NetHack-5.0
 
-set -e
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
@@ -83,38 +83,32 @@ do_merge() {
     fi
 }
 
-# 충돌 해결 시도
-resolve_conflicts() {
-    local conflicted_files=$(git diff --name-only --diff-filter=U)
+# 충돌 시 중단 + 수동 리뷰 힌트 (절대 --theirs로 로컬 i18n 로직을 버리지 않음)
+abort_on_conflicts() {
+    local conflicted_files
+    conflicted_files=$(git diff --name-only --diff-filter=U || true)
 
     if [ -z "$conflicted_files" ]; then
         return 0
     fi
 
-    info "Conflicted files:"
+    error "Merge conflicts require manual resolution (no auto --theirs)."
     echo "$conflicted_files"
-
-    # i18n 관련 파일 충돌은 업스트림 버전 사용 후 래핑 복구
+    echo ""
+    info "Files that also touch Korean/i18n helpers (review carefully):"
+    # shellcheck disable=SC2086
     for file in $conflicted_files; do
-        if [[ "$file" == src/*.c ]]; then
-            warn "Taking upstream version for $file (will restore i18n wrapping later)"
-            git checkout --theirs "$file"
-            git add "$file"
+        if [ -f "$file" ] && grep -Eq 'is_korean_locale|ko_process_string|KO_PP_|nh_gettext|\(\_|C_\(|N_\(' "$file" 2>/dev/null; then
+            echo "  * $file"
         fi
     done
-
-    # 아직 충돌이 남아있는지 확인
-    local remaining=$(git diff --name-only --diff-filter=U)
-    if [ -n "$remaining" ]; then
-        error "Some conflicts require manual resolution:"
-        echo "$remaining"
-        echo ""
-        echo "Please resolve these conflicts manually, then run:"
-        echo "  git add <resolved-files>"
-        echo "  git commit"
-        echo "  ./scripts/restore-i18n-wrapping.sh"
-        exit 1
-    fi
+    echo ""
+    echo "Resolve conflicts (keep upstream logic + re-apply _()/C_() and KO paths), then:"
+    echo "  git add <resolved-files>"
+    echo "  git commit"
+    echo "  cd po && make pot && make compile && make untranslated"
+    echo "See doc/i18n-upstream-merge.md"
+    exit 1
 }
 
 # i18n 래핑 복구
@@ -147,7 +141,7 @@ test_build() {
 
     cd "$PROJECT_ROOT"
     # Lua is in-tree under nhlua/; parallel make is not recommended
-    if make all 2>&1 | tail -5; then
+    if make all; then
         info "Build successful!"
     else
         error "Build failed. Please check errors."
@@ -169,32 +163,27 @@ main() {
     check_working_directory
     ensure_rerere
 
-    # 머지 수행
-    if do_merge "$upstream"; then
-        # 충돌 없이 성공
-        :
-    else
-        # 충돌 해결 시도
-        resolve_conflicts
-
-        # 머지 커밋 완료
-        git commit --no-edit || true
+    # 머지 수행 (충돌 시 abort_on_conflicts로 종료)
+    if ! do_merge "$upstream"; then
+        abort_on_conflicts
     fi
 
-    # i18n 래핑 복구
+    # 래핑 복구는 보조 수단일 뿐 — 충돌 없는 자동머지에서만 시도
     restore_wrapping
 
-    # 변경사항 있으면 커밋
     if ! git diff --quiet; then
-        info "Committing i18n wrapping restoration..."
-        git add -A
-        git commit -m "Restore i18n wrapping after upstream merge
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
+        info "i18n wrapping script changed files; review before committing:"
+        git status --short
+        warn "Not auto-committing. Stage/commit only after review."
     fi
 
-    # 번역 업데이트
+    # 번역 업데이트 (POT/compile; 실패는 경고만)
     update_translations
+
+    info "Manual review checklist:"
+    info "  - git diff upstream...HEAD --stat"
+    info "  - cd po && make untranslated / msgcmp ko_manual.po nethack.pot"
+    info "  - files with is_korean_locale / ko_process_string after merge"
 
     # 빌드 테스트
     test_build

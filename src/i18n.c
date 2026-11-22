@@ -537,8 +537,8 @@ nh_gettext(const char *msgid)
 {
     const char *tr;
 
-    if (!msgid)
-        return msgid;
+    if (!msgid || !*msgid)
+        return msgid; /* never return .mo header metadata for _("") */
     if (!g_catalog)
         return msgid;
     tr = mo_lookup(g_catalog, msgid);
@@ -554,7 +554,7 @@ nh_pgettext(const char *msgctxt, const char *msgid)
 {
     const char *tr;
 
-    if (!msgid)
+    if (!msgid || !*msgid)
         return msgid;
     if (!msgctxt || !*msgctxt)
         return nh_gettext(msgid);

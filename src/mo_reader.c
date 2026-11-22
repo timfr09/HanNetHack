@@ -104,8 +104,15 @@ catalog_build_hash(mo_catalog *cat)
     cat->htable_mask = size - 1;
 
     for (i = 0; i < cat->n_entries; i++) {
-        uint32_t h = fnv1a(cat->entries[i].key, cat->entries[i].keylen);
-        size_t slot = h & cat->htable_mask;
+        uint32_t h;
+        size_t slot;
+
+        /* Skip empty msgid (PO header metadata). Lookups of "" must miss. */
+        if (cat->entries[i].keylen == 0)
+            continue;
+
+        h = fnv1a(cat->entries[i].key, cat->entries[i].keylen);
+        slot = h & cat->htable_mask;
 
         /* Linear probe until empty slot. */
         while (cat->htable[slot] != HASH_EMPTY)
@@ -220,6 +227,10 @@ mo_lookup(const mo_catalog *cat, const char *msgid)
         return NULL;
 
     msgid_len = strlen(msgid);
+    /* Empty msgid is the catalog header; never treat it as a message. */
+    if (msgid_len == 0)
+        return NULL;
+
     slot = fnv1a(msgid, msgid_len) & cat->htable_mask;
     start = slot;
 
@@ -229,18 +240,8 @@ mo_lookup(const mo_catalog *cat, const char *msgid)
         if (idx == HASH_EMPTY)
             return NULL;
         if (cat->entries[idx].keylen == msgid_len
-            && memcmp(cat->entries[idx].key, msgid, msgid_len) == 0) {
-            const char *v = cat->entries[idx].value;
-            /*
-             * The empty msgid at the start of every catalog carries
-             * header metadata (Content-Type, Plural-Forms, ...).  A
-             * caller looking up "" almost certainly does not want
-             * that; but callers looking up real strings should get
-             * them even if their translation happens to be empty.
-             * We just return the value verbatim.
-             */
-            return v;
-        }
+            && memcmp(cat->entries[idx].key, msgid, msgid_len) == 0)
+            return cat->entries[idx].value;
         slot = (slot + 1) & cat->htable_mask;
     } while (slot != start);
 

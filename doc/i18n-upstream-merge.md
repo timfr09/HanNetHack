@@ -414,6 +414,10 @@ make clean        # 생성 파일 삭제
 
 업스트림 병합 보조 스크립트. 기본 추적 브랜치는 **`upstream/NetHack-5.0`**.
 
+충돌이 나면 **중단**한다. `git checkout --theirs`로 `src/*.c`를 통째로
+덮어쓰지 않는다(조사·`is_korean_locale` 분기·조합 메시지 로직이 사라질 수 있음).
+충돌 목록과 i18n 관련 파일 힌트만 출력한 뒤 수동 해결을 요구한다.
+
 ```bash
 ./scripts/merge-upstream.sh                 # upstream/NetHack-5.0
 ./scripts/merge-upstream.sh upstream/NetHack-5.0
@@ -422,6 +426,7 @@ make clean        # 생성 파일 삭제
 git fetch upstream NetHack-5.0
 git log --oneline HEAD..upstream/NetHack-5.0
 git merge upstream/NetHack-5.0 --no-edit
+# 충돌 시: 업스트림 로직 + _()/C_()·KO 경로 재적용 후 git add && git commit
 cd po && make pot && make safe-update && make compile && make stats && make untranslated
 # 새 msgid → ko_manual.po에 번역 후 make compile
 cd .. && make all   # -j 비권장

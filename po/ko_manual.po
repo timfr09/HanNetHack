@@ -24890,11 +24890,11 @@ msgstr "무엇을 보겠습니까:"
 msgid "What do you want to name %s "
 msgstr "%s에게 어떤 이름을 붙이겠습니까? "
 
-# do_name.c:302 - 발견 아티팩트는 %1$s%2$s가 빈 문자열
+# do_name.c:302 - 발견 아티팩트는 %1$s%2$s가 빈 문자열(접두사+safe_qbuf+?)
 #: ../src/do_name.c:302
 #, c-format
 msgid "What do you want to name %s%s"
-msgstr "이름 붙이기: %1$s%2$s"
+msgstr "%1$s%2$s이름: "
 
 #: ../src/do_name.c:550
 msgid "What do you want to name?"
@@ -29980,7 +29980,7 @@ msgstr "%s{을/를} 둘러싸려는 시도가 실패했다."
 msgid "attempted acquisition"
 msgstr "획득 시도"
 
-# [조합] insight.c #conduct — 소원 시도(성공·실패 포함)
+# [조합] insight.c #conduct — 소원 시도(성공·실패 포함; 예전 "used"에서 변경)
 #: ../src/insight.c:2445
 msgid "attempted no wishes"
 msgstr "소원을 시도한 적이 없다"
@@ -29988,7 +29988,7 @@ msgstr "소원을 시도한 적이 없다"
 #: ../src/insight.c:2447
 #, c-format
 msgid "attempted %ld wish%s"
-msgstr "%1$ld회 소원을 시도했다%2$.0s"
+msgstr "소원을 %1$ld회 시도했다%2$.0s"
 
 #: ../src/trap.c:5149
 msgid "attempted teleport spell fails."

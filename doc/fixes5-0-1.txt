@@ -134,6 +134,12 @@ fix lava death loop reading a used-up amulet
 allow wizgenesis to create long worms of specific length
 fix drawbridge stranding long worm's tail
 fix panic when landmine scattered saddle burns in lava
+fix farlook buffer overflow on a long engraving
+fix panic when bag of holding blows up and falls through a trap door
+fix panic when exploding bag causes hero to change position
+fix impossible when shape changer reverted before placed on the map
+fix nested lua calls breaking time limit
+add tutorial texts for #droptype and #showspells
 
 
 Platform- and/or Interface-Specific Fixes
@@ -412,4 +418,6 @@ new tree $TOP/nhlua
 	$TOP/nhlua/lua	    - lua source tree
 	$TOP/nhlua/nhlua-update.sh - script for dealing with a new Lua tarball
 Lua version in $TOP/nhlua is now 5.5.1
+don't create objects during the init decisions around what objects are needed,
+	only to then destroy the objects and try over
 

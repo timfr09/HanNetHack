@@ -76,9 +76,9 @@
 
 #elif defined(DUMP_ENUMS_PCHAR)
 /* allmain.c */
-#define PCHAR(idx, ch, sym, desc, clr) { sym, #sym },
+#define PCHAR(idx, ch, sym, desc, clr) { sym, #sym, 0 },
 #ifndef PCHAR2
-#define PCHAR2(idx, ch, sym, tilenm, desc, clr) { sym, #sym },
+#define PCHAR2(idx, ch, sym, tilenm, desc, clr) { sym, #sym, 0 },
 #endif
 #endif
 
@@ -284,11 +284,11 @@
 
 /* allmain.c */
 #elif defined(DUMP_ENUMS_MONSYMS)
-#define MONSYM(idx, ch, basename, sym, desc) { sym, #sym },
+#define MONSYM(idx, ch, basename, sym, desc) { sym, #sym, 0 },
 
 #elif defined(DUMP_ENUMS_MONSYMS_DEFCHAR)
 #define MONSYM(idx, ch, basename, sym, desc) \
-    { DEF_##basename, "DEF_" #basename },
+    { DEF_##basename, "DEF_" #basename, 0 },
 
 #endif
 
@@ -429,17 +429,17 @@
 #elif defined(DUMP_ENUMS_OBJCLASS_DEFCHARS)
 /* allmain.c */
 #define OBJCLASS(idx, ch, basename, sym, name, explain) \
-    { basename##_SYM, #basename "_SYM" },
+    { basename##_SYM, #basename "_SYM", 0 },
 
 #elif defined(DUMP_ENUMS_OBJCLASS_CLASSES)
 /* allmain.c */
 #define OBJCLASS(idx, ch, basename, sym, name, explain) \
-    { basename##_CLASS, #basename "_CLASS" },
+    { basename##_CLASS, #basename "_CLASS", 0 },
 
 #elif defined(DUMP_ENUMS_OBJCLASS_SYMS)
 /* allmain.c */
 #define OBJCLASS(idx, ch, basename, sym, name, explain) \
-    { sym , #sym },
+    { sym , #sym, 0 },
 #endif
 
 /* OBJCLASS with extra arg */
@@ -451,13 +451,13 @@
     { sname, name, explain },
 #elif defined(DUMP_ENUMS_OBJCLASS_DEFCHARS)
 #define OBJCLASS2(idx, ch, basename, sname, sym, name, explain) \
-    { sname, #sname },
+    { sname, #sname, 0 },
 #elif defined(DUMP_ENUMS_OBJCLASS_CLASSES)
 #define OBJCLASS2(idx, ch, basename, sname, sym, name, explain) \
-    { basename##_CLASS, #basename "_CLASS" },
+    { basename##_CLASS, #basename "_CLASS", 0 },
 #elif defined(DUMP_ENUMS_OBJCLASS_SYMS)
 #define OBJCLASS2(idx, ch, basename, sname, sym, name, explain) \
-    { sym , #sym },
+    { sym , #sym, 0 },
 #else
 #define OBJCLASS2(idx, ch, basename, sname, sym, name, explain) \
     OBJCLASS(idx, ch, basename, sym, name, explain)

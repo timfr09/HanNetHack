@@ -2442,9 +2442,9 @@ show_conduct(int final)
     }
 
     if (!u.uconduct.wishes) {
-        you_have_X(_("used no wishes"));
+        you_have_X(_("attempted no wishes"));
     } else {
-        Sprintf(buf, _("used %ld wish%s"), u.uconduct.wishes,
+        Sprintf(buf, _("attempted %ld wish%s"), u.uconduct.wishes,
                 (u.uconduct.wishes > 1L) ? _("es") : "");
         if (u.uconduct.wisharti) {
             /* if wisharti == wishes
@@ -2465,6 +2465,11 @@ show_conduct(int final)
             Sprintf(eos(buf), _("for %s)"),
                     (u.uconduct.wisharti == 1L) ? _("an artifact")
                                                 : _("artifacts"));
+            if (u.uconduct.failed_wishes) {
+                Sprintf(eos(buf), _(", %ld failed wish%s"),
+                        u.uconduct.failed_wishes,
+                        (u.uconduct.failed_wishes > 1L) ? _("es") : "");
+            }
         }
         you_have_X(buf);
 

@@ -3094,7 +3094,7 @@ munslime(struct monst *mon, boolean by_you)
             }
         }
         if (t && t->ttyp == FIRE_TRAP)
-            return muse_unslime(mon, &hands_obj, t, by_you);
+            return muse_unslime(mon, &pseudoobj[pseudo_hands], t, by_you);
 
     } /* MUSE */
 
@@ -3110,7 +3110,7 @@ muse_unslime(
     boolean by_you) /* true: if mon kills itself, hero gets credit/blame */
 {                   /* [by_you not honored if 'mon' triggers fire trap]. */
     struct obj *odummyp;
-    int otyp = obj->otyp, dmg = 0;
+    int otyp = (!Is_pseudoobj(obj) ? obj->otyp : STRANGE_OBJECT), dmg = 0;
     boolean vis = canseemon(mon), res = TRUE;
 
     if (vis)
@@ -3140,7 +3140,7 @@ muse_unslime(
                       trap->tseen ? _("the") : _("a"));
         }
         (void) mintrap(mon, FORCETRAP);
-    } else if (otyp == STRANGE_OBJECT) {
+    } else if (otyp == STRANGE_OBJECT) { /* Is_pseudoobj */
         /* monster is using fire breath on self */
         if (vis)
             pline_mon(mon, _("%s."),

@@ -706,28 +706,28 @@ debug_fields(char *opts)
 #define UNPREFIXED_COUNT (5)
 struct enum_dump monsdump[] = {
 #include "monsters.h"
-    { NUMMONS, "NUMMONS" },
-    { NON_PM, "NON_PM" },
-    { LOW_PM, "LOW_PM" },
-    { HIGH_PM, "HIGH_PM" },
-    { SPECIAL_PM, "SPECIAL_PM" }
+    { NUMMONS, "NUMMONS", 0 },
+    { NON_PM, "NON_PM", "\"not a monster\"" },
+    { LOW_PM, "LOW_PM", "first monster in mons[]" },
+    { HIGH_PM, "HIGH_PM", "last monster in mons[]" },
+    { SPECIAL_PM, "SPECIAL_PM", "[normal] < ~ < [special]" }
 };
 struct enum_dump objdump[] = {
 #include "objects.h"
-    { NUM_OBJECTS, "NUM_OBJECTS" },
+    { NUM_OBJECTS, "NUM_OBJECTS", 0 },
 };
 
 #define DUMP_ENUMS_PCHAR
 static struct enum_dump defsym_cmap_dump[] = {
 #include "defsym.h"
-    { MAXPCHARS, "MAXPCHARS" },
+    { MAXPCHARS, "MAXPCHARS", 0 },
 };
 #undef DUMP_ENUMS_PCHAR
 
 #define DUMP_ENUMS_MONSYMS
 static struct enum_dump defsym_mon_syms_dump[] = {
 #include "defsym.h"
-    { MAXMCLASSES, "MAXMCLASSES" },
+    { MAXMCLASSES, "MAXMCLASSES", 0 },
 };
 #undef DUMP_ENUMS_MONSYMS
 
@@ -745,8 +745,12 @@ static struct enum_dump objclass_defchars_dump[] = {
 
 #define DUMP_ENUMS_OBJCLASS_CLASSES
 static struct enum_dump objclass_classes_dump[] = {
+    { RANDOM_CLASS, "RANDOM_CLASS", 0 },
 #include "defsym.h"
-    { MAXOCLASSES, "MAXOCLASSES" },
+    { MAXOCLASSES, "MAXOCLASSES", 0 },
+    { BURNING_OIL, "BURNING_OIL", "(MAXOCLASSES + 1)" },
+    { MON_EXPLODE, "MON_EXPLODE", "(MAXOCLASSES + 2)" },
+    { TRAP_EXPLODE, "TRAP_EXPLODE", "(MAXOCLASSES + 3)" },
 };
 #undef DUMP_ENUMS_OBJCLASS_CLASSES
 
@@ -759,7 +763,7 @@ static struct enum_dump objclass_syms_dump[] = {
 #define DUMP_ARTI_ENUM
 static struct enum_dump arti_enum_dump[] = {
 #include "artilist.h"
-    { AFTER_LAST_ARTIFACT, "AFTER_LAST_ARTIFACT" }
+    { AFTER_LAST_ARTIFACT, "AFTER_LAST_ARTIFACT", 0 }
 };
 #undef DUMP_ARTI_ENUM
 
@@ -800,7 +804,7 @@ dump_enums(void)
         NUM_ENUM_DUMPS
     };
 
-#define dump_go(go) { GLYPH_##go, #go }
+#define dump_go(go) { GLYPH_##go, #go, 0 }
 static const struct enum_dump glyph_offsets_dump[] = {
         dump_go(MON_OFF),
         dump_go(MON_MALE_OFF),
@@ -849,29 +853,29 @@ static const struct enum_dump glyph_offsets_dump[] = {
         dump_go(STATUE_FEM_PILETOP_OFF),
         dump_go(UNEXPLORED_OFF),
         dump_go(NOTHING_OFF),
-        { MAX_GLYPH, "MAX_GLYPH" }
+        { MAX_GLYPH, "MAX_GLYPH", 0 }
     };
 #undef dump_go
 
-#define dump_om(om) { om, #om }
+#define dump_om(om, c) { om, #om, c }
     static const struct enum_dump omdump[] = {
-        dump_om(LAST_GENERIC),
-        dump_om(OBJCLASS_HACK),
-        dump_om(FIRST_OBJECT),
-        dump_om(FIRST_AMULET),
-        dump_om(LAST_AMULET),
-        dump_om(FIRST_SPELL),
-        dump_om(LAST_SPELL),
-        dump_om(MAXSPELL),
-        dump_om(FIRST_REAL_GEM),
-        dump_om(LAST_REAL_GEM),
-        dump_om(FIRST_GLASS_GEM),
-        dump_om(LAST_GLASS_GEM),
-        dump_om(NUM_REAL_GEMS),
-        dump_om(NUM_GLASS_GEMS),
-        dump_om(MAXEXPCHARS),
-        dump_om(MAXTCHARS),
-        dump_om(WARNCOUNT),
+        dump_om(LAST_GENERIC, 0),
+        dump_om(OBJCLASS_HACK, 0),
+        dump_om(FIRST_OBJECT, 0),
+        dump_om(FIRST_AMULET, 0),
+        dump_om(LAST_AMULET, 0),
+        dump_om(FIRST_SPELL, 0),
+        dump_om(LAST_SPELL, 0),
+        dump_om(MAXSPELL, 0),
+        dump_om(FIRST_REAL_GEM, 0),
+        dump_om(LAST_REAL_GEM, 0),
+        dump_om(FIRST_GLASS_GEM, 0),
+        dump_om(LAST_GLASS_GEM, 0),
+        dump_om(NUM_REAL_GEMS, 0),
+        dump_om(NUM_GLASS_GEMS, 0),
+        dump_om(MAXEXPCHARS, "number of explosion characters"),
+        dump_om(MAXTCHARS, "trap chars"),
+        dump_om(WARNCOUNT, "number of different warning levels"),
     };
 #undef dump_om
 
@@ -918,10 +922,13 @@ static const struct enum_dump glyph_offsets_dump[] = {
                            ? "" : edmp[i].pfx; /* "" or "PM_" */
             nmwidth = 27 - (int) strlen(nmprefix); /* 27 or 24 */
             if (edmp[i].dumpflgs > 0) {
-                Snprintf(comment, sizeof comment,
-                         "    /* '%c' */",
+                Snprintf(comment, sizeof comment, "    /* '%c' */",
                          (ed[i][j].val >= 32 && ed[i][j].val <= 126)
-                         ? ed[i][j].val : ' ');
+                             ? ed[i][j].val
+                             : ' ');
+            } else if (ed[i][j].comment != 0) {
+                Snprintf(comment, sizeof comment, "    /* %s */",
+                         ed[i][j].comment);
             } else {
                 comment[0] = '\0';
             }

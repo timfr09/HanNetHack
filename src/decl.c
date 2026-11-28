@@ -569,10 +569,8 @@ static const struct instance_globals_n g_init_n = {
     /* sp_lev.c */
     0, /* num_lregions */
     /* u_init.c */
-    STRANGE_OBJECT, /* nocreate */
-    STRANGE_OBJECT, /* nocreate2 */
-    STRANGE_OBJECT, /* nocreate3 */
-    STRANGE_OBJECT, /* nocreate4 */
+    { STRANGE_OBJECT, STRANGE_OBJECT, STRANGE_OBJECT, STRANGE_OBJECT,
+      STRANGE_OBJECT }, /* nocreate[5] array */
 #ifdef NO_TERMS
     TRUE,
 #else
@@ -777,6 +775,7 @@ static const struct instance_globals_t g_init_t = {
     WIN_ERR, /* toptenwin */
     /* uhitm.c */
     0, /* twohits */
+    FALSE,  /* tallied_wish */
     /**/
     TRUE, /* havestate*/
 };
@@ -1221,8 +1220,11 @@ decl_globals_init(void)
 #endif
 }
 
-/* fields in 'hands_obj' don't matter, just its distinct address */
-struct obj hands_obj = DUMMY;
+/* fields in these pseudoobj variables don't matter, just their distinct addresses
+ *  { pseudo_nothing, pseudo_hands, pseudo_terrain, pseudo_failedwish,
+          pseudo_failedterrain }
+ */
+struct obj pseudoobj[pseudo_max] = { DUMMY, DUMMY, DUMMY, DUMMY, DUMMY };
 
 /* gcc 12.2's static analyzer thinks that some fields of svc.context.victual
    are uninitialized when compiling 'bite(eat.c)' but that's impossible;

@@ -2643,7 +2643,8 @@ use_grease(struct obj *obj)
         consume_obj_charge(obj, TRUE);
 
         oldglib = (int) (Glib & TIMEOUT);
-        if (otmp != &hands_obj) {
+        /* upstream wrote Is_pseudoobj(obj); keep otmp (was hands_obj check) */
+        if (!Is_pseudoobj(otmp)) {
             You(_("cover %s with a thick layer of grease."), yname(otmp));
             otmp->greased = 1;
             if (obj->cursed && !nohands(gy.youmonst.data)) {

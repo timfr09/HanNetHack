@@ -693,10 +693,7 @@ struct instance_globals_n {
     int num_lregions;
 
     /* u_init.c */
-    short nocreate;
-    short nocreate2;
-    short nocreate3;
-    short nocreate4;
+    short nocreate[5];
 
     /* new */
     boolean no_terms; /* runtime differentiation of NO_TERMS */
@@ -977,6 +974,8 @@ struct instance_globals_t {
 
     /* uhitm.c */
     int twohits; /* 0: single hit; 1: first of 2; 2: second of 2 */
+
+    boolean tallied_wish;  /* has wish been tallied yet for this wish? */
 
     boolean havestate;
 };
@@ -1318,6 +1317,6 @@ struct const_globals {
 
 extern const struct const_globals cg;
 
-extern struct obj hands_obj;
+extern struct obj pseudoobj[pseudo_max];
 
 #endif /* DECL_H */

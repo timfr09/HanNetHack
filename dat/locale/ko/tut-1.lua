@@ -34,10 +34,10 @@ des.level_flags("mazelevel", "noflip",
 
 des.map([[
 ---------------------------------------------------------------------------
-|-.--|.......|......|..S....|.F.......|.............|.......|.............|
+|-.--|.......|......|..S....|.F.......|.............|........|............|
 |.-..........|......|--|....|.F.....|.|S-------.....|.....................|
-||.--|.......|..T......|....|.F.....|.|.......|.....|.......|.............|
-||.|.|.......|......|-.|....|.F.....|.|.......|.....|--------.............|
+||.--|.......|..T......|....|.F.....|.|.......|.....|........|............|
+||.|.|.......|......|-.|....|.F.....|.|.......|.....|---------............|
 ||.|.|.......|......||.|-.-----------.-.......|-S----.....................|
 |-+-S---------..---.||........................|...|.......................|
 |......|          |.-------------------.......|...|....--S----............|
@@ -320,17 +320,19 @@ des.trap({ type = "trap door", coord = { 73,15 } });
 
 --
 
-des.engraving({ coord = { 60,2 }, type = "engrave", text = "주문 시전", degrade = false });
+des.engraving({ coord = { 61,2 }, type = "engrave", text = "주문 시전", degrade = false });
 if (u.uenmax < 5) then
    -- TODO: make sure hero has enough Pw to cast the spell (5 pw) instead?
+   -- TODO: this test is done at level creation. hero may have gained a level since then.
    -- TODO: ensure the first cast of this spell succeeds?
-   des.engraving({ coord = { 59,2 }, type = "engrave", text = "주문을 시전할 마나가 부족합니다.", degrade = false });
+   des.engraving({ coord = { 60,2 }, type = "engrave", text = "주문을 시전할 마나가 부족합니다.", degrade = false });
 end
+des.engraving({ coord = { 59,2 }, type = "engrave", text = "'" .. tut_key("showspells") .. "'로 알고 있는 주문을 확인하세요", degrade = false });
 des.engraving({ coord = { 57,2 }, type = "engrave", text = "'" .. tut_key("pickup") .. "'로 마법책을 주우세요", degrade = false });
 des.object({ coord = { 57,2 }, id = "spellbook of light", buc = "blessed" });
 des.engraving({ coord = { 55,2 }, type = "engrave", text = "'" .. tut_key("read") .. "'로 마법책을 읽으세요", degrade = false });
 des.engraving({ coord = { 53,2 }, type = "engrave", text = "'" .. tut_key("cast") .. "'로 주문을 시전하세요", degrade = false });
-des.region(selection.area(53,01, 59, 3), "unlit");
+des.region(selection.area(53,01, 60, 3), "unlit");
 
 --
 

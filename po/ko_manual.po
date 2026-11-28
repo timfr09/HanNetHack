@@ -12597,6 +12597,12 @@ msgstr ", "
 msgid ", %d%s of %d segments"
 msgstr ", %3$d개 마디 중 %1$d%2$s"
 
+# [조합] insight.c #conduct — 실패한 소원 횟수 (%2$s = plur "es" 억제)
+#: ../src/insight.c:2469
+#, c-format
+msgid ", %ld failed wish%s"
+msgstr ", 실패한 소원 %1$ld회%2$.0s"
+
 #: ../src/pager.c:131
 #, c-format
 msgid ", %s"
@@ -24071,6 +24077,11 @@ msgstr "호환되지 않는 직업!"
 msgid "Unavailable command '%s'."
 msgstr "'%s' 명령은 사용할 수 없다."
 
+#: ../src/potion.c:2463
+#, c-format
+msgid "Unexpected non-hands pseudoobj in %s() %d"
+msgstr "Unexpected non-hands pseudoobj in %s() %d"
+
 # dbridge.c:467 - drawbridge life-save 후 재압사
 #: ../src/dbridge.c:467
 #, c-format
@@ -24873,11 +24884,17 @@ msgstr "무엇을 하시겠습니까?"
 msgid "What do you want to look at:"
 msgstr "무엇을 보겠습니까:"
 
-# do_name.c:302 - 물체 이름 짓기 질문
+# do_name.c:302 - 물체 이름 짓기 질문 (구형식; 업스트림이 %s%s로 변경)
 #: ../src/do_name.c:302
 #, c-format
 msgid "What do you want to name %s "
 msgstr "%s에게 어떤 이름을 붙이겠습니까? "
+
+# do_name.c:302 - 발견 아티팩트는 %1$s%2$s가 빈 문자열
+#: ../src/do_name.c:302
+#, c-format
+msgid "What do you want to name %s%s"
+msgstr "이름 붙이기: %1$s%2$s"
 
 #: ../src/do_name.c:550
 msgid "What do you want to name?"
@@ -29963,6 +29980,16 @@ msgstr "%s{을/를} 둘러싸려는 시도가 실패했다."
 msgid "attempted acquisition"
 msgstr "획득 시도"
 
+# [조합] insight.c #conduct — 소원 시도(성공·실패 포함)
+#: ../src/insight.c:2445
+msgid "attempted no wishes"
+msgstr "소원을 시도한 적이 없다"
+
+#: ../src/insight.c:2447
+#, c-format
+msgid "attempted %ld wish%s"
+msgstr "%1$ld회 소원을 시도했다%2$.0s"
+
 #: ../src/trap.c:5149
 msgid "attempted teleport spell fails."
 msgstr "시도한 순간이동 주문이 실패했다."
@@ -34515,6 +34542,10 @@ msgstr "dealloc_obj with cobj"
 #: ../src/mkobj.c:2756
 msgid "dealloc_obj with hands_obj"
 msgstr "dealloc_obj with hands_obj"
+
+#: ../src/mkobj.c:2785
+msgid "dealloc_obj with pseudoobj"
+msgstr "dealloc_obj with pseudoobj"
 
 #: ../src/mkobj.c:2752
 msgid "dealloc_obj with nobj"
